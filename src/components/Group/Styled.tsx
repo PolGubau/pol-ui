@@ -16,6 +16,7 @@ export const GroupStyled = styled.div<GroupStyledProps>`
   flex-direction: ${({ props }) => (props.vertical ? "column" : "row")};
   align-items: center;
   width: fit-content;
+
   ${(props) =>
     props.props.space === "small"
       ? `gap: ${props.theme.spacing.small};`
