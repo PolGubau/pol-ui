@@ -30,6 +30,11 @@ export const mercuryTheme: ITheme = {
     medium: "0px 4px 8px rgba(0, 0, 0, 0.25)",
     large: "0px 8px 16px rgba(0, 0, 0, 0.25)",
   },
+  fontSize: {
+    small: "12px",
+    medium: "14px",
+    large: "16px",
+  },
 
   ...globalTheme,
 };

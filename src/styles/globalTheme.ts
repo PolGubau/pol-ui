@@ -1,9 +1,4 @@
 export const globalTheme = {
-  fontSizes: {
-    small: "12px",
-    medium: "14px",
-    large: "16px",
-  },
   fontWeights: {
     normal: "normal",
     bold: "bold",

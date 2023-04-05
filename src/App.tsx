@@ -2,7 +2,7 @@ import { TbBook } from "react-icons/tb";
 import Button from "./components/Button/Button";
 import Group from "./components/Group/Group";
 import Text from "./components/Text/Text";
-import Quote from "./components/Quote/Quote";
+import { TextInput } from "./components/Inputs";
 
 function App() {
   return (
@@ -20,12 +20,6 @@ function App() {
           <Button text="Discover UI " icon="arrow" />
           <Button text="Read docs" icon={<TbBook />} primary />
         </Group>
-        <Quote>
-          <Text size={3} weight="bold">
-            Simple, easy to use and customizable.
-          </Text>
-          <Button text="Discover UI " icon="arrow" />
-        </Quote>
       </Group>
     </div>
   );
