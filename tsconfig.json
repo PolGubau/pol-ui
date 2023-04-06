@@ -1,16 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": "src/",
+    "baseUrl": "./src",
     "paths": {
       "@/*": [
         "*"
       ],
-      "vite/*": [
-        "vite/*"
-      ],
-      "root/*": [
-        "src/components/Root/*"
-      ]
     },
     "target": "ESNext",
     "useDefineForClassFields": true,
@@ -33,7 +27,13 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src",
+    "src/themes/globalTheme.ts",
+    "src/themes/mercuryTheme.ts",
+    "vite-env.d.ts",
+    "Constants.ts",
+    "assets",
+    "src/functionalities/IconByName.tsx"
   ],
   "references": [
     {

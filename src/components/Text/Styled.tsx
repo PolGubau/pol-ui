@@ -3,7 +3,7 @@ interface TextStyledProps {
   weight?: string;
   color?: string;
 }
-export const TextStyled = styled.div<TextStyledProps>`
+const TextStyled = styled.div<TextStyledProps>`
   h1 {
     font-size: 2.5rem;
     margin: 0;
@@ -44,3 +44,5 @@ export const TextStyled = styled.div<TextStyledProps>`
   margin: 0;
   padding: 0;
 `;
+
+export default TextStyled;

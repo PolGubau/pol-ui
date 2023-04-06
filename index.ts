@@ -1,3 +1,7 @@
-import * as module from "./src/";
+import * as components from "/src/components";
 
-export default module;
+const polUi = {
+  ...components,
+};
+
+export default polUi;

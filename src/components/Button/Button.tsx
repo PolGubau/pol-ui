@@ -1,8 +1,8 @@
 import React from "react";
 import Text from "../Text/Text";
-import { IconByName, IconName } from "../../assets/iconByName";
-import { ButtonStyled } from "./Styled";
 
+import { ButtonStyled } from "./Styled";
+import { IconByName, IconNameType } from "functionalities";
 export interface ButtonProps {
   /**
    * Button click handler
@@ -35,7 +35,7 @@ export interface ButtonProps {
    * @version 1.0.0
    *
    */
-  icon?: React.ReactNode | IconName | null;
+  icon?: React.ReactNode | IconNameType | null;
 
   /**
    * Button text
@@ -104,7 +104,7 @@ const Button: React.FC<ButtonProps> = ({
       {text && <Text> {text}</Text>}
       {icon && (
         <div className="icon">
-          {typeof icon === "string" ? IconByName(icon as IconName) : icon}
+          {typeof icon === "string" ? IconByName(icon as IconNameType) : icon}
         </div>
       )}
     </ButtonStyled>

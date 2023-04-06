@@ -22,8 +22,7 @@ export const TextInputStyled = styled.div<TextInputStyledProps>`
   input {
     border: 1px solid ${({ theme }) => theme.colors.primary};
     border-radius: ${({ theme }) => theme.borderRadius.small};
-    padding: ${({ theme }) => theme.spacing.small}
-      ${({ theme }) => theme.spacing.medium};
+    padding: ${({ theme }) => theme.spacing.small}${({ theme }) => theme.spacing.medium};
     font-size: ${({ theme }) => theme.fontSize.medium};
     &:disabled {
       color: ${({ theme }) => theme.colors.secondary};

@@ -37,53 +37,9 @@ import {
   TbZoomOut,
 } from "react-icons/tb";
 
-export type IconName =
-  | "arrow"
-  | "arrow-left"
-  | "arrow-up"
-  | "arrow-down"
-  | "arrow-up-short"
-  | "minimize"
-  | "expand"
-  | "shuffle"
-  | "settings"
-  | "settings-off"
-  | "alarm"
-  | "alert"
-  | "alert-filled"
-  | "layout"
-  | "layout-filled"
-  | "backspace"
-  | "baguette"
-  | "balloon"
-  | "battery"
-  | "battery-empty"
-  | "battery-full"
-  | "battery-charging"
-  | "battery-eco"
-  | "zoom"
-  | "zoom-out"
-  | "world"
-  | "window-minimize"
-  | "terminal"
-  | "text-size"
-  | "trash"
-  | "trending-up"
-  | "user-circle"
-  | "volume"
-  | "volume-3"
-  | "wifi"
-  | "wifi-off"
-  | "battery-1"
-  | "battery-2"
-  | "battery-4"
-  | "battery-charging"
-  | "battery-eco"
-  | "volume-off"
-  | "user"
-  | "trend";
+import { IconNameType } from ".";
 
-export const IconByName = (name: IconName) => {
+export const IconByName = (name: IconNameType) => {
   switch (name) {
     case "arrow":
       return <TbArrowNarrowRight />;

@@ -1,4 +1,4 @@
-import { globalTheme } from "../globalTheme";
+import { globalTheme } from "./globalTheme";
 import { ITheme } from "./ITheme";
 
 export const mercuryTheme: ITheme = {

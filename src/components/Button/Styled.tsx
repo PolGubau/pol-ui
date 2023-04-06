@@ -9,7 +9,7 @@ export interface ButtonStyledProps {
 
 export const ButtonStyled = styled.button<ButtonStyledProps>`
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "fit-content")};
-  disabled: ${({ disabled }) => disabled && "disabled"};
+
   display: flex;
   align-items: center;
   justify-content: center;

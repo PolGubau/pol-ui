@@ -1,8 +1,9 @@
 {
   "name": "pol-ui",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.4",
   "type": "module",
+  "license": "MIT",
   "description": "Pol UI is a React UI library for building interfaces. It is built with styled-components and uses customizable themes and components.",
   "keywords": [
     "interface",

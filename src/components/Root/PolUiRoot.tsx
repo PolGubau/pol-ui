@@ -1,5 +1,6 @@
+import React from "react";
 import { ThemeProvider } from "styled-components";
-import { mercuryTheme } from "../../styles/themes/mercuryTheme";
+import { mercuryTheme } from "themes";
 import { GlobalStyles } from "./Styled";
 
 const PolUiRoot = ({ children }: { children: React.ReactNode }) => {

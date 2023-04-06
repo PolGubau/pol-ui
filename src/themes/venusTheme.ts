@@ -1,5 +1,5 @@
-import { globalTheme } from "../globalTheme";
 import { ITheme } from "./ITheme";
+import { globalTheme } from "./globalTheme";
 
 export const venusTheme: ITheme = {
   colors: {
