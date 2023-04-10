@@ -1,6 +1,6 @@
 // Author: Pol Gubau Amores 2023
 
-import { IconByName, IconNameType } from "functionalities";
+import { IconByName, IconNameType } from "@/utils";
 import { QuoteStyled } from "./Styled";
 import { QuoteProps } from "./types";
 
