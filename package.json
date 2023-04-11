@@ -1,6 +1,6 @@
 {
   "name": "pol-ui",
-  "version": "0.0.39",
+  "version": "0.0.40",
   "description": "Beautiful and reusable React components with ease using our NPM package. Built with styled-components, React, and TypeScript, components are fully customizable and ready to be integrated into any website. Save time and effort by using our pre-built components for common UI elements such as buttons, inputs, and more.",
   "main": "src/index.ts",
   "keywords": [
