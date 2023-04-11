@@ -6,8 +6,7 @@ Pol-ui package is a collection of reusable React components that can be easily i
 
 To install the package, simply run the following command:
 
-```
-perl
+```perl
 npm install pol-ui
 
 ```
@@ -19,8 +18,7 @@ To use the package:
 1. Surround your <App/> with the <PolUiRoot /> component to acces themes and styles.
 2. Import the components you need and render them in your React application:
 
-```
-jsx
+```jsx
 import React from 'react';
 import { Button, Text, Group} from 'pol-ui';
 
