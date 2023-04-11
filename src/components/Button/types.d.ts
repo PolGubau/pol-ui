@@ -88,4 +88,15 @@ export interface ButtonProps {
    * @version 1.0.0
    * */
   children?: React.ReactNode;
+
+  /**
+   * outlined
+   * @default false
+   * @type boolean
+   * @example false
+   * @description if true, the button will be outlined
+   * @author pol
+   * @version 1.0.0
+   * */
+  outlined?: boolean;
 }

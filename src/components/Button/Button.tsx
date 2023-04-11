@@ -14,6 +14,7 @@ const Button: React.FC<ButtonProps> = ({
   primary = false,
   fullWidth = false,
   disabled = false,
+  outlined = false,
 }: ButtonProps) => {
   return (
     <ButtonStyled
@@ -22,6 +23,7 @@ const Button: React.FC<ButtonProps> = ({
       color={color}
       fullWidth={fullWidth}
       disabled={disabled}
+      outlined={outlined}
     >
       {children ? children : text && <Text> {text}</Text>}
       {icon && (

@@ -5,6 +5,7 @@ export interface ButtonStyledProps {
   color?: string | null;
   fullWidth?: boolean;
   disabled?: boolean;
+  outlined?: boolean;
 }
 
 export const ButtonStyled = styled.button<ButtonStyledProps>`
@@ -19,23 +20,40 @@ export const ButtonStyled = styled.button<ButtonStyledProps>`
   min-height: 40px;
   outline: none;
   border-radius: ${({ theme }) => theme.borderRadius.small};
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.neutral};
+  background-color: ${({ theme, outlined }) =>
+    outlined ? theme.colors.neutral : theme.colors.primary};
+
+  color: ${({ theme, outlined }) =>
+    outlined ? theme.colors.primary : theme.colors.neutral};
   padding: ${({ theme }) => theme.spacing.medium};
   user-select: none;
+
   ${(props) =>
-    props.primary &&
+    props.primary && props.outlined
+      ? `
+    background-color: ${props.theme.colors.neutral};
+    color: ${props.theme.colors.accent};
+    
     `
+      : `
     background-color: ${props.theme.colors.accent};
     font-weight: bold;
     color: ${props.theme.colors.primary};
   `}
 
   ${(props) =>
-    props.color &&
-    `
+    props.color && props.outlined
+      ? `
+    background-color: ${props.theme.colors.neutral};
+    color: ${props.color};
+  `
+      : `
     background-color: ${props.color};
+    color: ${props.theme.colors.neutral};
   `}
+  
+  
+  
     
   :focus:not(:focus-visible) {
     outline: none;
@@ -47,11 +65,9 @@ export const ButtonStyled = styled.button<ButtonStyledProps>`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
   }
   :hover {
     cursor: pointer;
-    transform: scale(0.99);
     filter: brightness(1.2);
   }
 
