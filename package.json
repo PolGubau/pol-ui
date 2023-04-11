@@ -1,13 +1,16 @@
 {
   "name": "pol-ui",
-  "version": "0.0.31",
+  "version": "0.0.32",
   "description": "UI Library focused on React and Styled Components",
   "main": "src/index.ts",
-  "tags": [
+  "keywords": [
     "react",
     "styled-components",
     "ui",
-    "library"
+    "library",
+    "npm",
+    "package"
+    
   ],
   "repository": {
     "type": "git",
