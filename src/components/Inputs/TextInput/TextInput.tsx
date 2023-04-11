@@ -1,13 +1,6 @@
+import React from "react";
 import { TextInputStyled } from "./Styled";
-
-export interface TextInputProps {
-  label?: string;
-  placeholder?: string;
-  value?: string;
-  disabled?: boolean;
-  readOnly?: boolean;
-  icon?: React.ReactNode | null;
-}
+import { TextInputProps } from "./types";
 
 const TextInput = ({
   label = "",

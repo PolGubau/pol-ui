@@ -2,6 +2,13 @@ import { globalTheme } from "./globalTheme";
 import { ITheme } from "./ITheme";
 
 export const mercuryTheme: ITheme = {
+  content: {
+    width: "100%",
+    maxWidth: "1200px",
+    centered: true,
+    padding: "0px",
+  },
+
   colors: {
     primary: "#2B2D42",
     secondary: "#8D99AE",

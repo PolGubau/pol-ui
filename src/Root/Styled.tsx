@@ -1,20 +1,21 @@
 import styled from "styled-components";
-
 export const GlobalStyles = styled.div`
-  background-color: ${(props) => props.theme.colors.neutral};
-  color: ${(props) => props.theme.colors.primary};
-  padding: ${(props) => props.theme.spacing.medium};
+  box-sizing: content-box;
+  background-color: ${(props) => props.theme.colors.neutral || "white"};
+  color: ${(props) => props.theme.colors.primary || "black"};
   width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   * {
     margin: 0;
     box-sizing: border-box;
     font-family: "Poppins", system-ui, Avenir, Helvetica, Arial, sans-serif;
-  }
-  :root {
-    line-height: 1.5;
-    font-weight: 400;
-    color-scheme: light dark;
-    color: ${({ theme }) => theme.colors.neutral};
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -22,18 +23,10 @@ export const GlobalStyles = styled.div`
     -webkit-text-size-adjust: 100%;
   }
   a {
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primary || "black"};
     text-decoration: inherit;
     :hover {
-      color: ${({ theme }) => theme.colors.secondary};
+      color: ${({ theme }) => theme.colors.secondary || "black"};
     }
-  }
-  body {
-    display: flex;
-    place-items: center;
-    min-width: 320px;
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
   }
 `;

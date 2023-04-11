@@ -1,8 +1,19 @@
 {
   "name": "pol-ui",
-  "version": "0.0.8",
+  "version": "0.0.31",
   "description": "UI Library focused on React and Styled Components",
   "main": "src/index.ts",
+  "tags": [
+    "react",
+    "styled-components",
+    "ui",
+    "library"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PolGubau/pol-ui"
+  },
+  "homepage": "https://github.com/PolGubau/pol-ui",
   "files": [
     "src/**/*"
   ],

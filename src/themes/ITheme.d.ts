@@ -1,4 +1,11 @@
 export interface ITheme {
+  content: {
+    width: string;
+    maxWidth: string;
+    centered: boolean;
+    padding: string;
+  };
+
   colors: {
     primary: string;
     secondary: string;

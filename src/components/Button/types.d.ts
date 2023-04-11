@@ -77,4 +77,15 @@ export interface ButtonProps {
    * @version 1.0.0
    * */
   fullWidth?: boolean;
+
+  /**
+   * children
+   * @default null
+   * @type React.ReactNode
+   * @example <div>children</div>
+   * @description if null, the button will not have children
+   * @author pol
+   * @version 1.0.0
+   * */
+  children?: React.ReactNode;
 }

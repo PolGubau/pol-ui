@@ -1,5 +1,6 @@
 // Author: Pol Gubau Amores 2023
 
+import React from "react";
 import { GroupStyled } from "./Styled";
 import { GroupProps } from "./types";
 

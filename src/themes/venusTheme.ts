@@ -2,6 +2,12 @@ import { ITheme } from "./ITheme";
 import { globalTheme } from "./globalTheme";
 
 export const venusTheme: ITheme = {
+  content: {
+    width: "100%",
+    maxWidth: "800px",
+    centered: false,
+    padding: "0px",
+  },
   colors: {
     primary: "#5D3333",
     secondary: "#C44D4D",
