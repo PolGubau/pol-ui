@@ -1,6 +1,15 @@
 import styled from "styled-components";
 
 export const LayoutStyled = styled.section`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+
   main {
     display: flex;
     flex-direction: column;

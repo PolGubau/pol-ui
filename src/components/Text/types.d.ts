@@ -35,4 +35,37 @@ export interface TextProps {
    * @description Color of the text
    * */
   color?: string;
+
+  /**
+   * href
+   * @default undefined
+   * @type string
+   * @example <Text href="https://www.google.com" />
+   * @description Link to be used
+   * */
+  href?: string;
+
+  /**
+   * isUnderline
+   * @default false
+   * @type boolean
+   *
+   * */
+  isUnderline?: boolean;
+
+  /**
+   * isItalic
+   * @default false
+   * @type boolean
+   *
+   * */
+  isItalic?: boolean;
+
+  /**
+   * isBold
+   * @default false
+   * @type boolean
+   *
+   * */
+  isBold?: boolean;
 }

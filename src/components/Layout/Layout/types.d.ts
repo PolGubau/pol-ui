@@ -1,7 +1,6 @@
 export interface ILinks {
-  onClick?: () => void;
   text: string;
-  href: string;
+  action?: string | null | Function;
 }
 export interface INavBar {
   title?: string;
@@ -10,5 +9,5 @@ export interface INavBar {
 
 export interface LayoutProps {
   children: React.ReactNode;
-  navBar?: INavBar;
+  navBar: INavBar | null;
 }
