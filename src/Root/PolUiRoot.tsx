@@ -3,16 +3,13 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./Styled";
 import { getTheme } from "../utils/getTheme";
 import { PolUiRootProps } from "./types";
-import { INavBar, Layout } from "../components/Layout/Layout";
+import { Layout } from "../components/Layout/Layout";
 
 //
-const PolUiRoot = ({
-  children,
-  theme = "mercury",
-  navBar = null,
-}: PolUiRootProps) => {
+const PolUiRoot = ({ children, theme = "mercury", navBar }: PolUiRootProps) => {
   try {
     const themeObject = typeof theme === "string" ? getTheme(theme) : theme;
+
     return (
       <ThemeProvider theme={themeObject}>
         <GlobalStyles>

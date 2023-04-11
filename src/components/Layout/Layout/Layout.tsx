@@ -1,25 +1,12 @@
 import React from "react";
-import NavBar from "../Header/NavBar";
+import NavBar from "../NavBar/NavBar";
 import { LayoutStyled } from "./Styled";
-import { INavBar, LayoutProps } from "./types";
+import { LayoutProps } from "./types";
 
-const defaultNavBar: INavBar = {
-  title: "PolUi",
-  links: [
-    {
-      text: "Home",
-      action: "/",
-    },
-    {
-      text: "About",
-      action: "/about",
-    },
-  ],
-};
-const Layout = ({ children, navBar = defaultNavBar }: LayoutProps) => {
+const Layout = ({ children, navBar }: LayoutProps) => {
   return (
     <LayoutStyled>
-      <NavBar title={navBar?.title} links={navBar?.links} />
+      {navBar && <NavBar title={navBar.title} links={navBar.links} />}
       <main>{children}</main>
     </LayoutStyled>
   );
