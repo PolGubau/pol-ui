@@ -4,6 +4,7 @@ import Text from "../Text/Text";
 import { ButtonStyled } from "./Styled";
 import { ButtonProps } from "./types";
 import { IconByName, IconNameType } from "../../utils";
+import Icon from "components/Icon/Icon";
 
 const Button: React.FC<ButtonProps> = ({
   onClick,
@@ -26,11 +27,7 @@ const Button: React.FC<ButtonProps> = ({
       outlined={outlined}
     >
       {children ? children : text && <Text> {text}</Text>}
-      {icon && (
-        <div className="icon">
-          {typeof icon === "string" ? IconByName(icon as IconNameType) : icon}
-        </div>
-      )}
+      {icon && <Icon icon={icon} />}
     </ButtonStyled>
   );
 };

@@ -7,7 +7,16 @@
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true
+        "forceConsistentCasingInFileNames": true,
+        "baseUrl": "src/",
+        "paths": {
+            "@h/*": [
+                "src/hooks/*"
+            ],
+            "@c/*": [
+                "src/components/*"
+            ]
+        }
     },
     "$schema": "https://json.schemastore.org/tsconfig",
     "display": "Recommended"
