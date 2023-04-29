@@ -7,6 +7,8 @@ import { ButtonProps } from "../../types";
 const Button: React.FC<ButtonProps> = ({
   onClick,
   icon = null,
+  iconColor = undefined,
+
   text,
   children,
   color = undefined,
@@ -25,7 +27,7 @@ const Button: React.FC<ButtonProps> = ({
       outlined={outlined}
     >
       {children ? children : text && <Text> {text}</Text>}
-      {icon && <Icon icon={icon} />}
+      {icon && <Icon icon={icon} color={iconColor} />}
     </ButtonStyled>
   );
 };

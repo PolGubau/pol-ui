@@ -1,17 +1,20 @@
 import React from "react";
 import { IconNameType } from "../../types";
 import { IconByName } from "../../utils/IconByName";
+import { IconStyled } from "./IconStyled";
 
 interface IconProps {
   icon: React.ReactNode | string;
-  onClick: any;
+  onClick?: any;
+  color?: string;
+  size?: string;
 }
 
-const Icon = ({ icon, onClick }: IconProps) => {
+const Icon = ({ icon, onClick, color, size }: IconProps) => {
   return (
-    <div className="icon" onClick={onClick}>
+    <IconStyled onClick={onClick} color={color} size={size}>
       {typeof icon === "string" ? IconByName(icon as IconNameType) : icon}
-    </div>
+    </IconStyled>
   );
 };
 export default Icon;

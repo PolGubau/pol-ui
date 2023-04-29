@@ -2,7 +2,7 @@
 
 import React from "react";
 import { GroupStyled } from "./Styled";
-import { GroupProps } from "types";
+import { GroupProps } from "../../../types";
 
 export type GroupSpace = "none" | "small" | "medium" | "large";
 

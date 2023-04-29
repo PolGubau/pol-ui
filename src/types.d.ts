@@ -147,6 +147,15 @@ export interface ButtonProps {
    * @version 1.0.0
    * */
   outlined?: boolean;
+
+  /**
+   * color of the icon
+   * @default undefined
+   * @type string
+   * @example "red"
+   *
+   * */
+  iconColor?: string;
 }
 
 export interface TextInputProps {

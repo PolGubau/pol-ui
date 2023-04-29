@@ -1,4 +1,4 @@
-import { ITheme } from "types";
+import { ITheme } from "../types";
 import { globalTheme } from "./globalTheme";
 
 export const venusTheme: ITheme = {

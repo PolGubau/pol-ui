@@ -1,6 +1,6 @@
 import React from "react";
 import { TextInputStyled } from "./Styled";
-import { TextInputProps } from "types";
+import { TextInputProps } from "../../../types";
 
 const TextInput = ({
   label = "",

@@ -1,5 +1,5 @@
 import { TbCheck, TbForbid2 } from "react-icons/tb";
-import Chip from "../Chips/MultipleChips/Chip";
+import Chip from "../Chips/Chip";
 import IconField from "./components/IconField";
 import React from "react";
 import { truncateString } from "../../utils";

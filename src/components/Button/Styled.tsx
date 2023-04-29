@@ -16,7 +16,7 @@ export const ButtonStyled = styled.button<ButtonStyledProps>`
   justify-content: center;
   gap: ${({ theme }) => theme.spacing.small};
   transition: all 0.1s ease-in-out;
-  border: none;
+  border: 1px solid transparent;
   min-height: 40px;
   border-radius: ${({ theme }) => theme.borderRadius.small};
   background-color: ${({ theme, outlined }) =>
@@ -68,11 +68,7 @@ export const ButtonStyled = styled.button<ButtonStyledProps>`
   button:focus {
     box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.accent};
   }
-  .icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+
   :hover {
     cursor: pointer;
     filter: brightness(0.9);

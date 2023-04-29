@@ -1,13 +1,6 @@
 import styled from "styled-components";
-
-interface GridStyledProps {
-  rows?: number;
-  columns?: number;
-  autoResponsive?: boolean;
-  colorful?: boolean;
-  centered?: boolean;
-  small?: boolean;
-}
+import React from "react";
+import { GridStyledProps } from "./types";
 
 export const GridStyled = styled.div<GridStyledProps>`
   display: grid;
