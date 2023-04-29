@@ -206,6 +206,15 @@ export interface QuoteProps {
    * @version 1.0.0
    **/
   icon?: React.ReactNode | IconName | null;
+
+  /**
+   * Trigger on click
+   * @default null
+   * @type function
+   * @example () => console.log("clicked")
+   *
+   * */
+  onClick?: () => void;
 }
 
 export interface TextProps {

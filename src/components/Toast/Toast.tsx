@@ -1,11 +1,11 @@
-import { Snackbar } from "@mui/material";
 import { useRecoilState } from "recoil";
-import ToastStateAtom, { emptyToast } from "states/Toasts.state";
-import Slide from "@mui/material/Slide";
-import { generateUUID } from "resources/metadata/form/utils";
+
 import styled, { keyframes } from "styled-components";
-import IconButton from "components/Common/Buttons/IconButton/IconButton";
 import { GrClose } from "react-icons/gr";
+import React from "react";
+import ToastStateAtom, { emptyToast } from "../../states/Toasts.state";
+import { Icon } from "../Icon";
+import { useToast } from "../../hooks";
 
 const bgLoadingAnimation = keyframes`
     from{
@@ -22,6 +22,10 @@ interface ToastStyledProps {
 }
 
 export const ToastStyled = styled.div<ToastStyledProps>`
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
   display: flex;
   animation: ${bgLoadingAnimation} ${({ duration }) => duration}ms linear;
   gap: 20px;
@@ -48,31 +52,24 @@ export const ToastStyled = styled.div<ToastStyledProps>`
 `;
 
 const Toast = () => {
-  const [toast, setToastState] = useRecoilState(ToastStateAtom);
-
-  const Transition = (props: any) => {
-    return <Slide {...props} direction="up" />;
-  };
-
+  const { resetToast, toast } = useToast();
   const handleClose = () => {
-    setToastState(emptyToast);
+    resetToast();
   };
+
+  // count to 3 and then close the toast
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      handleClose();
+    }, toast.duration || 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <>
-      <Snackbar
-        open={toast.show}
-        onClose={handleClose}
-        TransitionComponent={Transition}
-        key={generateUUID()}
-        autoHideDuration={toast.duration || 3000}
-      >
-        <ToastStyled duration={toast.duration || 3000}>
-          <p>{toast.message}</p>
-          <IconButton icon={<GrClose />} onClick={handleClose} />
-        </ToastStyled>
-      </Snackbar>
-    </>
+    <ToastStyled duration={toast.duration || 3000}>
+      <p>{toast.message}</p>
+      <Icon icon={<GrClose />} onClick={handleClose} />
+    </ToastStyled>
   );
 };
 export default Toast;

@@ -2,9 +2,14 @@ import React from "react";
 import { IconNameType } from "../../types";
 import { IconByName } from "../../utils/IconByName";
 
-const Icon = ({ icon }: { icon: React.ReactNode | string }) => {
+interface IconProps {
+  icon: React.ReactNode | string;
+  onClick: () => void;
+}
+
+const Icon = ({ icon, onClick }: IconProps) => {
   return (
-    <div className="icon">
+    <div className="icon" onClick={onClick}>
       {typeof icon === "string" ? IconByName(icon as IconNameType) : icon}
     </div>
   );

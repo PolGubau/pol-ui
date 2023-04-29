@@ -5,9 +5,9 @@ import { QuoteStyled } from "./Styled";
 import React from "react";
 import { QuoteProps } from "../../types";
 
-const Quote = ({ children, color, icon }: QuoteProps) => {
+const Quote = ({ children, color, icon, onClick }: QuoteProps) => {
   return (
-    <QuoteStyled color={color} hasIcon={icon}>
+    <QuoteStyled onClick={onClick} color={color} hasIcon={icon}>
       <article>
         {icon && <Icon icon={icon} />}
 

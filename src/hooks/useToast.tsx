@@ -1,13 +1,18 @@
-import { useSetRecoilState } from "recoil";
-import ToastStateAtom, { ToastType } from "../states/Toasts.state";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import ToastStateAtom, { ToastType, emptyToast } from "../states/Toasts.state";
 
 const useToast = () => {
-  const trigger = useSetRecoilState(ToastStateAtom);
-  const triggerToast = (
-    message: string,
-    type: ToastType = "success",
-    duration: number = 3000
-  ) => {
+  const [toast, trigger] = useRecoilState(ToastStateAtom);
+
+  const triggerToast = ({
+    message,
+    type = "success",
+    duration = 3000,
+  }: {
+    message: string;
+    type?: ToastType;
+    duration?: number;
+  }) => {
     trigger({
       show: true,
       message,
@@ -15,7 +20,12 @@ const useToast = () => {
       duration,
     });
   };
-  return { triggerToast };
+
+  const resetToast = () => {
+    trigger(emptyToast);
+  };
+
+  return { triggerToast, resetToast, toast };
 };
 
 export default useToast;
