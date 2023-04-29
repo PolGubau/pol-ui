@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export interface ButtonStyledProps {
   primary: boolean;
-  color?: string | null;
+  color?: string | undefined;
   fullWidth?: boolean;
   disabled?: boolean;
   outlined?: boolean;
@@ -18,7 +18,6 @@ export const ButtonStyled = styled.button<ButtonStyledProps>`
   transition: all 0.1s ease-in-out;
   border: none;
   min-height: 40px;
-  outline: none;
   border-radius: ${({ theme }) => theme.borderRadius.small};
   background-color: ${({ theme, outlined }) =>
     outlined ? theme.colors.neutral : theme.colors.primary};
@@ -26,30 +25,38 @@ export const ButtonStyled = styled.button<ButtonStyledProps>`
   color: ${({ theme, outlined }) =>
     outlined ? theme.colors.primary : theme.colors.neutral};
   padding: ${({ theme }) => theme.spacing.medium};
-  user-select: none;
 
   ${(props) =>
-    props.primary && props.outlined
-      ? `
-    background-color: ${props.theme.colors.neutral};
-    color: ${props.theme.colors.accent};
-    
+    props.outlined &&
     `
-      : `
-    background-color: ${props.theme.colors.accent};
-    font-weight: bold;
+    border: 1px solid ${props.theme.colors.primary};
+    background-color: ${props.theme.colors.neutral};
     color: ${props.theme.colors.primary};
   `}
 
   ${(props) =>
-    props.color && props.outlined
-      ? `
+    props.primary &&
+    props.outlined &&
+    `
+      border: 1px solid ${props.theme.colors.accent};
     background-color: ${props.theme.colors.neutral};
-    color: ${props.color};
-  `
-      : `
+    color: ${props.theme.colors.accent};
+  
+  `}
+
+
+  ${(props) =>
+    props.color &&
+    !props.outlined &&
+    `
     background-color: ${props.color};
-    color: ${props.theme.colors.neutral};
+  `}
+  ${(props) =>
+    props.color &&
+    props.outlined &&
+    `
+    border-color: ${props.color};
+    color: ${props.color};
   `}
   
   
@@ -68,7 +75,8 @@ export const ButtonStyled = styled.button<ButtonStyledProps>`
   }
   :hover {
     cursor: pointer;
-    filter: brightness(1.2);
+    filter: brightness(0.9);
+    transform: scale(0.95);
   }
 
   :disabled {
