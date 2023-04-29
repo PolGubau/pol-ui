@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { UseKeyboardShortcutsProps } from "./types";
+import { UseKeyboardShortcutsProps } from "../types";
 
 function useKeyboardShortcuts(newShortcuts: UseKeyboardShortcutsProps[]) {
   useEffect(() => {

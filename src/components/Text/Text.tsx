@@ -1,6 +1,6 @@
 import React from "react";
 import TextStyled from "./Styled";
-import { TextProps } from "./types";
+import { TextProps } from "types";
 
 const isALink = (href: string | undefined, text: string) => {
   if (href) {

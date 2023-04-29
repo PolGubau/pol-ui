@@ -1,10 +1,8 @@
 import React from "react";
 import Text from "../Text/Text";
-
 import { ButtonStyled } from "./Styled";
-import { ButtonProps } from "./types";
-import { IconByName, IconNameType } from "../../utils";
-import Icon from "components/Icon/Icon";
+import Icon from "../Icon/Icon";
+import { ButtonProps } from "../../types";
 
 const Button: React.FC<ButtonProps> = ({
   onClick,

@@ -2,8 +2,8 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./Styled";
 import { getTheme } from "../utils/getTheme";
-import { PolUiRootProps } from "./types";
 import { Layout } from "../components/Layout/Layout";
+import { PolUiRootProps } from "types";
 
 //
 const PolUiRoot = ({ children, theme = "mercury", navBar }: PolUiRootProps) => {

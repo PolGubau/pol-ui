@@ -1,5 +1,5 @@
+import { ITheme } from "types";
 import { globalTheme } from "./globalTheme";
-import { ITheme } from "./ITheme";
 
 export const mercuryTheme: ITheme = {
   content: {

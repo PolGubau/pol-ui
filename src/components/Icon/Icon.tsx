@@ -1,5 +1,6 @@
 import React from "react";
-import { IconByName, IconNameType } from "utils";
+import { IconNameType } from "../../types";
+import { IconByName } from "../../utils/IconByName";
 
 const Icon = ({ icon }: { icon: React.ReactNode | string }) => {
   return (

@@ -36,8 +36,8 @@ import {
   TbZoomIn,
   TbZoomOut,
 } from "react-icons/tb";
-import { IconNameType } from "./types";
 import React from "react";
+import { IconNameType } from "../types";
 
 export const IconByName = (name: IconNameType) => {
   switch (name) {

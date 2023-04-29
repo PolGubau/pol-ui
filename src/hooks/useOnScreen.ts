@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { UseOnScreenOptions } from "./types";
+import { UseOnScreenOptions } from "types";
 
 function useOnScreen(
   ref: React.RefObject<HTMLElement>,

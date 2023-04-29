@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "../../Button";
 import { NavBarStyled } from "./Styled";
-import { INavBar } from "./types";
+import { INavBar } from "types";
 
 const NavBar = ({ links, title }: INavBar) => {
   return (

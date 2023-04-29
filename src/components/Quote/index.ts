@@ -1,3 +1,2 @@
 export { default as Quote } from './Quote';
 export * from './Styled';
-export * from './types.d';

@@ -8,15 +8,8 @@ import {
   ModalFooter,
 } from "./ModalStyled";
 import { useOnClickOutside } from "../../hooks";
-interface ModalProps {
-  children: React.ReactNode;
-  open: boolean;
-  onClose: () => void;
-  title?: string;
-  hideCloseButton?: boolean;
-  footer?: React.ReactNode;
-  onDismiss?: () => void;
-}
+import { Icon } from "../Icon";
+import { ModalProps } from "../../types";
 
 const Modal: React.FC<ModalProps> = ({
   children,
@@ -25,7 +18,7 @@ const Modal: React.FC<ModalProps> = ({
   title,
   hideCloseButton,
   footer,
-  onDismiss,
+  onDismiss = onClose,
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);
   useOnClickOutside(ref, onDismiss);
@@ -37,7 +30,7 @@ const Modal: React.FC<ModalProps> = ({
           {title && <ModalTitle>{title}</ModalTitle>}
           {!hideCloseButton && (
             <CloseButton onClick={onClose}>
-              <span>&times;</span>
+              <Icon icon={"close"} />
             </CloseButton>
           )}
         </ModalHeader>

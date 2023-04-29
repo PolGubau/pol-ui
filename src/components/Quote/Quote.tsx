@@ -1,9 +1,9 @@
 // Author: Pol Gubau Amores 2023
 
-import Icon from "components/Icon/Icon";
+import Icon from "../../components/Icon/Icon";
 import { QuoteStyled } from "./Styled";
-import { QuoteProps } from "./types";
 import React from "react";
+import { QuoteProps } from "../../types";
 
 const Quote = ({ children, color, icon }: QuoteProps) => {
   return (

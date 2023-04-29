@@ -1,4 +1,3 @@
-export * from "./ITheme.d";
-export * from "./globalTheme";
-export * from "./mercuryTheme";
-export * from "./venusTheme";
+export * from './globalTheme';
+export * from './mercuryTheme';
+export * from './venusTheme';

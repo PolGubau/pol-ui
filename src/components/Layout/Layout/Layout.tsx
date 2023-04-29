@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "../NavBar/NavBar";
 import { LayoutStyled } from "./Styled";
-import { LayoutProps } from "./types";
+import { LayoutProps } from "types";
 
 const Layout = ({ children, navBar }: LayoutProps) => {
   return (
