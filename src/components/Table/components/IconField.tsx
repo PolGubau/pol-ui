@@ -1,6 +1,5 @@
-import IconButton from "components/Common/Buttons/IconButton/IconButton";
-import { useSetRecoilState } from "recoil";
-import ToastStateAtom from "states/Toasts.state";
+import { Icon } from "../../Icon";
+import React from "react";
 
 interface IIconField {
   value: string;
@@ -8,8 +7,6 @@ interface IIconField {
 }
 
 const IconField = ({ value, icon }: IIconField) => {
-  const setToastState = useSetRecoilState(ToastStateAtom);
-
   const copyToClipboard = (value: string) => {
     navigator.clipboard.writeText(value);
   };
@@ -17,13 +14,8 @@ const IconField = ({ value, icon }: IIconField) => {
   const handleClickIcon = (e: { stopPropagation: () => void }) => {
     e.stopPropagation();
     copyToClipboard(value);
-    setToastState({
-      show: true,
-      message: "Copied to clipboard",
-      type: "success",
-    });
   };
 
-  return <IconButton onClick={handleClickIcon} icon={icon} />;
+  return <Icon onClick={handleClickIcon} icon={icon} />;
 };
 export default IconField;

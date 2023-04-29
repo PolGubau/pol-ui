@@ -4,7 +4,7 @@ import { IconByName } from "../../utils/IconByName";
 
 interface IconProps {
   icon: React.ReactNode | string;
-  onClick: () => void;
+  onClick: any;
 }
 
 const Icon = ({ icon, onClick }: IconProps) => {

@@ -1,10 +1,6 @@
 import styled from "styled-components";
 
-interface TableStyledProps {
-  isMenuOpen: boolean;
-}
-
-export const TableStyled = styled.div<TableStyledProps>`
+export const TableStyled = styled.div`
   header {
     margin-bottom: 10px;
     display: flex;

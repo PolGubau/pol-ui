@@ -1,11 +1,7 @@
-import { useRecoilState } from "recoil";
-
 import styled, { keyframes } from "styled-components";
 import { GrClose } from "react-icons/gr";
 import React from "react";
-import ToastStateAtom, { emptyToast } from "../../states/Toasts.state";
-import { Icon } from "../Icon";
-import { useToast } from "../../hooks";
+import { Icon } from "../../Icon";
 
 const bgLoadingAnimation = keyframes`
     from{
@@ -51,16 +47,17 @@ export const ToastStyled = styled.div<ToastStyledProps>`
   }
 `;
 
-const Toast = () => {
-  const { resetToast, toast } = useToast();
-  const handleClose = () => {
-    resetToast();
-  };
-
+const Toast = ({
+  toast,
+  onClose,
+}: {
+  toast: { message: string; duration: number; show: boolean };
+  onClose: () => void;
+}) => {
   // count to 3 and then close the toast
   React.useEffect(() => {
     const timer = setTimeout(() => {
-      handleClose();
+      onClose();
     }, toast.duration || 3000);
     return () => clearTimeout(timer);
   }, []);
@@ -68,7 +65,7 @@ const Toast = () => {
   return (
     <ToastStyled duration={toast.duration || 3000}>
       <p>{toast.message}</p>
-      <Icon icon={<GrClose />} onClick={handleClose} />
+      <Icon icon={<GrClose />} onClick={onClose} />
     </ToastStyled>
   );
 };

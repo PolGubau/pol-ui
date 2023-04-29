@@ -158,15 +158,6 @@ export interface TextInputProps {
   icon?: React.ReactNode | null;
 }
 
-export interface ModalProps {
-  children: React.ReactNode;
-  open: boolean;
-  onClose: () => void;
-  title?: string;
-  hideCloseButton?: boolean;
-  footer?: React.ReactNode;
-  onDismiss?: () => void;
-}
 export interface INavBar {
   title?: string;
   links?: ILinks[];

@@ -1,5 +1,3 @@
-import { MenuOpenedState } from "components/Menu/MenuState";
-import { useRecoilValue } from "recoil";
 import { TableStyled } from "./Style/TableStyled";
 import { TableProps } from "./typed";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -14,6 +12,7 @@ import {
   excludeThese,
 } from "./utils/functions";
 import { useState } from "react";
+import React from "react";
 
 const Table = ({
   data,
@@ -25,7 +24,6 @@ const Table = ({
 }: TableProps) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isMenuOpen = useRecoilValue(MenuOpenedState);
 
   const [dataFiltered, setDataFiltered] = useState(data);
 
@@ -66,7 +64,7 @@ const Table = ({
     setDataFiltered(dataFiltered);
   };
   return (
-    <TableStyled isMenuOpen={isMenuOpen}>
+    <TableStyled>
       <header>
         {title && <h1>{title}</h1>}
         <input

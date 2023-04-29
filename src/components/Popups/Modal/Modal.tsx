@@ -7,10 +7,18 @@ import {
   CloseButton,
   ModalFooter,
 } from "./ModalStyled";
-import { useOnClickOutside } from "../../hooks";
-import { Icon } from "../Icon";
-import { ModalProps } from "../../types";
+import { useOnClickOutside } from "../../../hooks";
+import { Icon } from "../../Icon";
 
+export interface ModalProps {
+  children: React.ReactNode;
+  open: boolean;
+  onClose: () => void;
+  title?: string;
+  hideCloseButton?: boolean;
+  footer?: React.ReactNode;
+  onDismiss?: () => void;
+}
 const Modal: React.FC<ModalProps> = ({
   children,
   open,
@@ -30,7 +38,7 @@ const Modal: React.FC<ModalProps> = ({
           {title && <ModalTitle>{title}</ModalTitle>}
           {!hideCloseButton && (
             <CloseButton onClick={onClose}>
-              <Icon icon={"close"} />
+              <Icon icon={"close"} onClick={undefined} />
             </CloseButton>
           )}
         </ModalHeader>

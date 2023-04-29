@@ -6,5 +6,4 @@ export { default as useLocalStorage } from "./useLocalStorage";
 export { default as useOnClickOutside } from "./useOnClickOutside";
 export { default as useOnScreen } from "./useOnScreen";
 export { default as useRouter } from "./useRouter";
-export { default as useToast } from "./useToast";
 export { default as useToggle } from "./useToggle";

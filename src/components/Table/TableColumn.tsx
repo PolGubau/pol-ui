@@ -1,7 +1,8 @@
 import { TbCheck, TbForbid2 } from "react-icons/tb";
-import { maxChars } from "utils";
 import Chip from "../Chips/MultipleChips/Chip";
 import IconField from "./components/IconField";
+import React from "react";
+import { truncateString } from "../../utils";
 
 interface TableColumnProps {
   value: string;
@@ -36,7 +37,7 @@ const TableColumn = ({ value, icon }: TableColumnProps) => {
       );
 
     default:
-      return <td>{maxChars(value, 50)}</td>;
+      return <td>{truncateString(value, 50)}</td>;
   }
 };
 export default TableColumn;
