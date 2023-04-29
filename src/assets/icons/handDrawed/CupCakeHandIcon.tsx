@@ -1,4 +1,6 @@
 import { SVGProps } from "react";
+import React from "react";
+
 const CupCakeHandIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     className="importedIcon"

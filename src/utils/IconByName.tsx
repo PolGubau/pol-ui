@@ -38,6 +38,16 @@ import {
 } from "react-icons/tb";
 import React from "react";
 import { IconNameType } from "../types";
+import {
+  ChatTextHandIcon,
+  CupCakeHandIcon,
+  ExclamationHandIcon,
+  HearthHandIcon,
+  NotesHandIcon,
+  StarHandIcon,
+  UndrawHandIcon,
+  UserHandIcon,
+} from "../assets/icons/handDrawed";
 
 export const IconByName = (name: IconNameType) => {
   switch (name) {
@@ -113,6 +123,22 @@ export const IconByName = (name: IconNameType) => {
       return <TbUserCircle />;
     case "trend":
       return <TbTrendingUp />;
+    case "hd-chatText":
+      return <ChatTextHandIcon />;
+    case "hd-cupCake":
+      return <CupCakeHandIcon />;
+    case "hd-exclamation":
+      return <ExclamationHandIcon />;
+    case "hd-heart":
+      return <HearthHandIcon />;
+    case "hd-notes":
+      return <NotesHandIcon />;
+    case "hd-star":
+      return <StarHandIcon />;
+    case "hd-undraw":
+      return <UndrawHandIcon />;
+    case "hd-user":
+      return <UserHandIcon />;
 
     default:
       return <TbArrowNarrowRight />;

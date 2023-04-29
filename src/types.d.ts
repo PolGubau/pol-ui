@@ -322,7 +322,15 @@ export type IconNameType =
   | "battery-eco"
   | "volume-off"
   | "user"
-  | "trend";
+  | "trend"
+  | "hd-chatText"
+  | "hd-cupCake"
+  | "hd-exclamation"
+  | "hd-heart"
+  | "hd-notes"
+  | "hd-star"
+  | "hd-undraw"
+  | "hd-user";
 
 export interface ITheme {
   content: {

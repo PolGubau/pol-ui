@@ -1,3 +1,4 @@
+import React from "react";
 import { SVGProps } from "react";
 const UserHandIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
