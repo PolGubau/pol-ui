@@ -432,3 +432,15 @@ export interface UseOnScreenOptions {
    * */
   once?: boolean;
 }
+
+export interface ILanguageAndText {
+  text: string;
+  language: string;
+}
+
+export interface ILanguage {
+  code: string;
+  name: string;
+  short: string;
+  available: boolean;
+}
