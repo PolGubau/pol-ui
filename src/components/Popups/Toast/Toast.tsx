@@ -4,7 +4,25 @@ import { Icon } from "../../Icon";
 import { IToast } from "./types";
 import { ToastContainerStyled, ToastStyled } from "./ToastStyled";
 
-const Toast = ({ toast, onClose }: { toast: IToast; onClose: () => void }) => {
+interface ToastProps {
+  toast: IToast;
+  onClose: () => void;
+  onClick?: () => void;
+  transitionDuration?: number;
+  transition?: "slide" | "fade" | "none";
+  y?: "top" | "bottom";
+  x?: "left" | "right" | "center";
+}
+
+const Toast = ({
+  toast,
+  onClose,
+  onClick = onClose,
+  transitionDuration,
+  transition,
+  y,
+  x,
+}: ToastProps) => {
   const [aboutToClose, setAboutToClose] = React.useState(false);
   // count to 3 and then close the toast
 
@@ -28,7 +46,14 @@ const Toast = ({ toast, onClose }: { toast: IToast; onClose: () => void }) => {
   };
 
   return (
-    <ToastContainerStyled aboutToClose={aboutToClose}>
+    <ToastContainerStyled
+      aboutToClose={aboutToClose}
+      onClick={onClick}
+      transitionDuration={transitionDuration}
+      transition={transition || "slide"}
+      y={y || "bottom"}
+      x={x || "left"}
+    >
       <ToastStyled duration={toast.duration || 3000}>
         <p>{toast.message}</p>
         <Icon icon={<GrClose />} onClick={closeToast} />

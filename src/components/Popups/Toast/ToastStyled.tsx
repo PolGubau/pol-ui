@@ -12,14 +12,25 @@ const bgLoadingAnimation = keyframes`
         background-position: 0 0;
     }
 `;
-const slide = keyframes`
+const slideUp = keyframes`
      from {
     transform: translateY(100%) scale(0.5);
   }
   to {
     transform: translateY(0%) scale(1);
   }
-
+`;
+const slideDown = keyframes`
+      from {
+    transform: scale(0.5);
+    opacity: 0;
+    top: -20px;
+  }
+  to {
+    transform:  scale(1);
+    opacity: 1;
+    top: 20px;
+  }
 `;
 
 const fade = keyframes`
@@ -34,12 +45,10 @@ const fade = keyframes`
 const exit = keyframes`
         from {    
             transform: translateY(100%) scale(0.5);
-
     bottom:20px;
     }
     to {    
         transform: translateY(0%) scale(1);
-
     bottom: -100%;
 
     }
@@ -49,12 +58,36 @@ interface ToastContainerStyledProps {
   aboutToClose: boolean;
   transitionDuration?: number;
   transition?: "slide" | "fade" | "none";
+  y?: "top" | "bottom";
+  x?: "left" | "right" | "center";
 }
 export const ToastContainerStyled = styled.div<ToastContainerStyledProps>`
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  animation: ${({ transition }) => {
+
+  ${({ y }) =>
+    y === "top"
+      ? css`
+          top: 20px;
+        `
+      : css`
+          bottom: 20px;
+        `}
+  ${({ x }) =>
+    x === "left"
+      ? css`
+          left: 20px;
+        `
+      : x === "right"
+      ? css`
+          right: 20px;
+        `
+      : css`
+          margin: 0;
+        `}
+          
+
+  
+  animation: ${({ transition, y }) => {
     switch (transition) {
       case "none":
         return css``;
@@ -64,7 +97,7 @@ export const ToastContainerStyled = styled.div<ToastContainerStyledProps>`
         `;
       default:
         return css`
-          ${slide} 0.1s ease-in-out;
+          ${y === "top" ? slideDown : slideUp} 0.1s ease-in-out;
         `;
     }
   }};
@@ -83,6 +116,10 @@ export const ToastContainerStyled = styled.div<ToastContainerStyledProps>`
       animation: ${exit} 0.1s ease-in-out;
       bottom: -200%;
     `}
+    
+    :hover {
+    cursor: pointer;
+  }
 `;
 
 export const ToastStyled = styled.div<ToastStyledProps>`
@@ -92,9 +129,9 @@ export const ToastStyled = styled.div<ToastStyledProps>`
   background-size: 200% 200%;
   background-image: linear-gradient(
     to right,
-    transparent 0%,
+    ${({ theme }) => theme.colors.neutral} 0%,
     ${({ theme }) => theme.colors.accent} 50%,
-    transparent 50%
+    ${({ theme }) => theme.colors.neutral} 50%
   );
   color: ${({ theme }) => theme.colors.primary};
 
