@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 
-import { MyComponent } from "../src/Button";
+import { Button } from "../src/Button";
 
-test("MyComponent displays correctoy", () => {
-	render(<MyComponent title="My Component" />);
+test("Button displays correctly", () => {
+	render(<Button title="My Component" />);
 
 	const heading = screen.getByText(/My Component/i);
 
