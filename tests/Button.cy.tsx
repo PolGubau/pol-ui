@@ -1,9 +1,12 @@
-import { Button } from "../src/Button";
-
+import { Button, Text } from "components";
 describe("<Button />", () => {
 	it("renders", () => {
-		cy.mount(<Button title="My component" />);
+		cy.mount(
+			<Button>
+				<Text value="Funky Button" />
+			</Button>
+		);
 
-		cy.findByText(/My component/i);
+		cy.findByText(/Funky Button/i);
 	});
 });

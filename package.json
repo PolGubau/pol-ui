@@ -2,7 +2,7 @@
 	"name": "pol-ui",
 	"author": "Pol Gubau Amores",
 	"license": "MIT",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"type": "module",
 	"private": false,
 	"files": [
@@ -36,7 +36,6 @@
 		"extends": [
 			"react-app",
 			"react-app/jest",
-			"eslint-config-codely/typescript",
 			"plugin:storybook/recommended"
 		],
 		"settings": {
@@ -129,5 +128,8 @@
 		"vite": "^4.3.8",
 		"vite-plugin-css-injected-by-js": "^3.1.1",
 		"vite-plugin-dts": "^2.3.0"
+	},
+	"dependencies": {
+		"styled-components": "^6.0.7"
 	}
 }

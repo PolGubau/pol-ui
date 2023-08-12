@@ -1,12 +1,14 @@
 import { render, screen } from "@testing-library/react";
-import React from "react";
-
-import { Button } from "../src/Button";
+import { Button, Text } from "components";
 
 test("Button displays correctly", () => {
-	render(<Button title="My Component" />);
+	render(
+		<Button>
+			<Text value="Funky Button" />
+		</Button>
+	);
 
-	const heading = screen.getByText(/My Component/i);
+	const heading = screen.getByText(/Funky Button/i);
 
 	expect(heading).toBeInTheDocument();
 });
