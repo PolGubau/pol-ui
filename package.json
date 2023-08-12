@@ -8,8 +8,8 @@
 	"files": [
 		"dist"
 	],
-	"main": "./dist/my-component.umd.cjs",
-	"module": "./dist/my-component.js",
+	"main": "./dist/@pol/ui.umd.cjs",
+	"module": "./dist/@pol/ui.js",
 	"types": "./dist/index.d.ts",
 	"peerDependencies": {
 		"react": "^18.2.0",
