@@ -1,9 +1,10 @@
 {
-	"name": "@pol/ui",
+	"name": "pol-ui",
 	"author": "Pol Gubau Amores",
 	"license": "MIT",
 	"version": "1.0.0",
 	"type": "module",
+	"private": false,
 	"files": [
 		"dist"
 	],
