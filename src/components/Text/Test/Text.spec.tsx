@@ -38,4 +38,29 @@ describe("Text Component", () => {
 		const text = screen.getByText(TestTexts.TEXT);
 		expect(text.tagName).toBe("P");
 	});
+	test("Displays as p if size is not a valid number", () => {
+		render(<Text value={TestTexts.TEXT} size={7} />);
+		const text = screen.getByText(TestTexts.TEXT);
+		expect(text.tagName).toBe("P");
+	});
+	test("If isBold prop is true, the text is displayed as bold and should have font-bold class", () => {
+		render(<Text value={TestTexts.TEXT} isBold={true} />);
+		const text = screen.getByRole("text");
+		expect(text).toHaveClass("font-bold");
+	});
+	test("If isBold prop is false, the text is displayed as normal and should not have font-bold class", () => {
+		render(<Text value={TestTexts.TEXT} isBold={false} />);
+		const text = screen.getByRole("text");
+		expect(text).not.toHaveClass("font-bold");
+	});
+	test("If isItalic prop is true, the text is displayed as italic and should have italic class", () => {
+		render(<Text value={TestTexts.TEXT} isItalic={true} />);
+		const text = screen.getByRole("text");
+		expect(text).toHaveClass("italic");
+	});
+	test("If isItalic prop is false, the text is displayed as normal and should not have italic class", () => {
+		render(<Text value={TestTexts.TEXT} isItalic={false} />);
+		const text = screen.getByRole("text");
+		expect(text).not.toHaveClass("italic");
+	});
 });

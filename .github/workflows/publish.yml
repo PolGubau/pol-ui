@@ -23,8 +23,8 @@ jobs:
       - name: 💅 Lint
         run: npm run lint
 
-      - name: 🧪 Unit Tests
-        run: npm run test
+      - name: 🧪 Unit Tests and coverage
+        run: npm run jest --coverage
 
       - name: 🧑‍🔬 Component Tests
         run: npm run cy:run

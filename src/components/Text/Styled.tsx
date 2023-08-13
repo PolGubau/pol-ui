@@ -1,27 +1,25 @@
 import styled from "styled-components";
-import "../../style/baseTheme.css"; // applying base styles
+import "../../style/baseTheme.scss";
 interface TextStyledProps {
 	$weight?: string;
 	$color?: string;
 	$maxLines?: number;
 }
+
 const TextStyled = styled.div<TextStyledProps>`
 	h1 {
 		font-size: 2.5rem;
 		margin: 0;
-		font-weight: ${(props) => (props.$weight ? props.$weight : "bold")};
 	}
 
 	h2 {
 		font-size: 2rem;
 		margin: 0;
-		font-weight: ${(props) => (props.$weight ? props.$weight : "bold")};
 	}
 
 	h3 {
 		font-size: 1.75rem;
 		margin: 0;
-		font-weight: ${(props) => (props.$weight ? props.$weight : "bold")};
 	}
 
 	h4 {

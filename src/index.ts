@@ -1,4 +1,3 @@
-import { Button } from "./components";
-import { Text } from "./components";
+import { Button, Text } from "./components";
 
 export { Button, Text };
