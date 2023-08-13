@@ -55,7 +55,14 @@ export const H6: Story = {
 export const Bold: Story = {
 	args: {
 		value: texts.shortText,
-		weight: "bold",
+		isBold: true,
+	},
+};
+export const Italic: Story = {
+	args: {
+		value: texts.shortText,
+		isItalic: true,
+		isBold: false,
 	},
 };
 export const Color: Story = {
@@ -96,7 +103,6 @@ export const MarkdownMax1Line: Story = {
 	},
 };
 export const Empty: Story = {
-	
 	args: {
 		value: "",
 	},
