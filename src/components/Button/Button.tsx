@@ -35,7 +35,7 @@ const Button: React.FC<Props> = ({
 	return (
 		<button
 			aria-label={ariaLabel}
-			disabled={disabled || !Boolean(onClick)}
+			disabled={disabled || !onClick}
 			id={id}
 			onClick={handleClick}
 			className={`				
