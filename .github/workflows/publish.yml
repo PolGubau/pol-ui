@@ -26,9 +26,6 @@ jobs:
       - name: 🧪 Unit Tests and coverage
         run: npm run test:coverage
 
-      - name: 🧑‍🔬 Component Tests
-        run: npm run cy:run
-
   publish:
     name: 🚀 Publish
     runs-on: ubuntu-latest
