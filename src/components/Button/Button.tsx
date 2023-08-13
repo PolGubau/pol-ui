@@ -31,7 +31,6 @@ const Button: React.FC<Props> = ({
 		event.preventDefault();
 		onClick?.();
 	};
-
 	return (
 		<button
 			aria-label={ariaLabel}
