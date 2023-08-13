@@ -21,6 +21,7 @@ describe("Text Component", () => {
 		const text = screen.getByText("Text S...");
 		expect(text).toBeInTheDocument();
 	});
+
 	test("Displays Markdown correctly", () => {
 		render(<Text value="**Bold**" isMarkdown />);
 		const text = screen.getByText("Bold");

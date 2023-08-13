@@ -59,19 +59,23 @@ describe("Button Component", () => {
 		expect(suffix).toBeInTheDocument();
 	});
 	test('Rounded button should have "rounded-xl" or "rounded-lg" class', () => {
-		render(<Button rounded>{Texts.TEXT}</Button>);
+		render(
+			<Button rounded size="large">
+				{Texts.TEXT}
+			</Button>
+		);
 		const button = screen.getByText(Texts.TEXT);
-		expect(button).toHaveClass("rounded-xl" ?? "rounded-lg");
+		expect(button).toHaveClass("rounded-xl");
 	});
 	test("Rounded prop is default to true", () => {
-		render(<Button>{Texts.TEXT}</Button>);
+		render(<Button size="small">{Texts.TEXT}</Button>);
 		const button = screen.getByText(Texts.TEXT);
-		expect(button).toHaveClass("rounded-xl" ?? "rounded-lg");
+		expect(button).toHaveClass("rounded-lg");
 	});
 	test('If Rouded Prop is false, it should not have "rounded-xl" or "rounded-lg" class', () => {
 		render(<Button rounded={false}>{Texts.TEXT}</Button>);
 		const button = screen.getByText(Texts.TEXT);
-		expect(button).not.toHaveClass("rounded-xl" ?? "rounded-lg");
+		expect(button).not.toHaveClass("rounded-xl");
 	});
 	test("If Rouded Prop is false, it should have 'rounded-none' class", () => {
 		render(<Button rounded={false}>{Texts.TEXT}</Button>);
