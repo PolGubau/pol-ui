@@ -45,7 +45,6 @@ const TextStyled = styled.div<TextStyledProps>`
 	-webkit-line-clamp: ${(props) => props.$maxLines};
 	line-clamp: ${(props) => props.$maxLines};
 	-webkit-box-orient: vertical;
-
 	color: ${(props) => props.$color};
 	margin: 0;
 	padding: 0;

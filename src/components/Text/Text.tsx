@@ -17,16 +17,17 @@ interface Props {
 const Text: React.FC<Props> = ({
 	value, // Text to be displayed
 	size, // Size of the text
-	color = undefined, // Color of the text
+	color, // Color of the text
 	maxLines = 99, // Max lines of the text
 	maxLength = 999, // Max length of the text
 	isMarkdown = false, // If the text is markdown
-	className = undefined, // Class name of the text
+	className, // Class name of the text
 	isItalic = false, // If the text is italic
 	isBold = false, // If the text is bold
 }): JSX.Element => {
 	const shortedText = shorterText({ value, maxLength });
 	const sizedText = textSizer({ size, value: shortedText, isMarkdown });
+
 	return (
 		<TextStyled
 			className={` 

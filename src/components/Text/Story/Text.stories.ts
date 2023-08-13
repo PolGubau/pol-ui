@@ -68,7 +68,7 @@ export const Italic: Story = {
 export const Color: Story = {
 	args: {
 		value: texts.shortText,
-		color: "red",
+		color: "#ff0000",
 	},
 };
 export const MaxLength: Story = {
