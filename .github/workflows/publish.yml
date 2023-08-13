@@ -24,7 +24,7 @@ jobs:
         run: npm run lint
 
       - name: 🧪 Unit Tests and coverage
-        run: npm run jest --coverage
+        run: npm run test:coverage
 
       - name: 🧑‍🔬 Component Tests
         run: npm run cy:run
