@@ -25,7 +25,6 @@
     "src",
     "tests/**/*.spec.tsx",
     "tests/tests-config/jest/**/*.ts",
-    "cypress.config.ts",
-    "vite.config.ts"
+     "vite.config.ts"
   ]
 }

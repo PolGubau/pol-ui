@@ -36,19 +36,10 @@ import { Button } from "pol-ui";
 
 ## ✅ Testing
 
-This package has unit and component tests configured with Jest and Cypress.
-
-### Unit tests
+This package has unit and component tests configured with Jest
 
 `npm run test`: Run unit tests with Jest and React Testing Library
 `npm run test:watch`: Run unit tests on watch mode
-
-### Component tests
-
-```
-  npm run cy:open: Open Cypress in dev mode
-  npm run cy:run: Execute Cypress in CLI
-```
 
 ## 🔦 Linting
 
