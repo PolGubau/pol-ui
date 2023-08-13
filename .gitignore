@@ -11,8 +11,8 @@ node_modules/
 # Build output
 dist
 
-.coverage
+coverage/
 
-.swc
+.swc/
 
 
