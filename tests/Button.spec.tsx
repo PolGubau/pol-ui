@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Button, Text } from "../src";
+import React from "react";
 
 test("Button displays correctly", () => {
 	render(
