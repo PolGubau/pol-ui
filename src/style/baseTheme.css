@@ -1,0 +1,16 @@
+@font-face {
+	font-family: "Poppins";
+	font-style: normal;
+	font-weight: 400;
+	font-display: auto;
+	src: local("Poppins"), url("./fonts/Poppins-Regular.ttf") format("truetype");
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+:root {
+	font-family: "Poppins", Arial, sans-serif;
+}
