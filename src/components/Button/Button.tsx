@@ -27,16 +27,12 @@ const Button: React.FC<Props> = ({
 	suffix,
 	rounded = true,
 }): JSX.Element => {
-	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-		event.preventDefault();
-		onClick?.();
-	};
 	return (
 		<button
 			aria-label={ariaLabel}
 			disabled={disabled || !onClick}
 			id={id}
-			onClick={handleClick}
+			onClick={onClick}
 			className={`				
 				cursor-pointer
 				${type === "main" ? "bg-accent text-primary hover:bg-accent/50" : ""}
