@@ -1,25 +1,27 @@
 import styled from "styled-components";
+import "../../style/baseTheme.css"; // applying base styles
 interface TextStyledProps {
 	$weight?: string;
 	$color?: string;
+	$maxLines?: number;
 }
 const TextStyled = styled.div<TextStyledProps>`
 	h1 {
 		font-size: 2.5rem;
 		margin: 0;
-		font-weight: ${(props) => props.$weight};
+		font-weight: ${(props) => (props.$weight ? props.$weight : "bold")};
 	}
 
 	h2 {
 		font-size: 2rem;
 		margin: 0;
-		font-weight: ${(props) => props.$weight};
+		font-weight: ${(props) => (props.$weight ? props.$weight : "bold")};
 	}
 
 	h3 {
 		font-size: 1.75rem;
 		margin: 0;
-		font-weight: ${(props) => props.$weight};
+		font-weight: ${(props) => (props.$weight ? props.$weight : "bold")};
 	}
 
 	h4 {
@@ -45,6 +47,11 @@ const TextStyled = styled.div<TextStyledProps>`
 		margin: 0;
 		font-weight: ${(props) => props.$weight};
 	}
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: ${(props) => props.$maxLines};
+	line-clamp: ${(props) => props.$maxLines};
+	-webkit-box-orient: vertical;
 
 	color: ${(props) => props.$color};
 	margin: 0;
