@@ -10,3 +10,9 @@ node_modules/
 
 # Build output
 dist
+
+.coverage
+
+.swc
+
+
