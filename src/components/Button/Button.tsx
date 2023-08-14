@@ -26,7 +26,7 @@ const Button: React.FC<Props> = ({
 	prefix,
 	suffix,
 	rounded = true,
-}): React.JSX.Element => {
+}) => {
 	return (
 		<button
 			aria-label={ariaLabel}
