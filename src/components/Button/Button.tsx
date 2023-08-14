@@ -45,7 +45,6 @@ const Button: React.FC<Props> = ({
 				${size === "large" ? "px-4 py-2.5 text-lg" : ""}
 				${size === "normal" ? "px-4 py-2 text-base" : ""}
 				${size === "small" ? "px-3 py-2 text-sm rounded-lg" : ""}
-			 				
 				${!rounded ? "rounded-none" : ""}
 				${className ?? ""}
  			`}
