@@ -37,7 +37,7 @@ export const inputStyles = tv({
             peer`,
 	variants: {
 		multiline: {
-			true: "input peer  min-h-[100px] max-h-[300px] resize-y",
+			true: "input peer min-h-[100px] max-h-[300px] resize-y",
 			false: "input peer  ",
 		},
 	},
