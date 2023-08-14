@@ -16,12 +16,12 @@ describe("Switch Component", () => {
 		expect(input).toBeDisabled();
 	});
 	test("You can set it to checked via props", () => {
-		render(<Switch checked />);
+		render(<Switch checked onChange={() => {}} />);
 		const input = screen.getByRole("switch");
 		expect(input).toBeChecked();
 	});
 	test("You can set false to checked via props", () => {
-		render(<Switch checked={false} />);
+		render(<Switch checked={false} onChange={() => {}} />);
 		const input = screen.getByRole("switch");
 		expect(input).not.toBeChecked();
 	});
@@ -59,14 +59,14 @@ describe("Switch Component", () => {
 
 	test("ClassNames are applyed to the container", () => {
 		render(<Switch className="test" />);
-		const input = screen.getByTestId("switchContainer");
+		const input = screen.getByRole("switch");
 		expect(input).toHaveClass("test");
 	});
 
-	test("If we click the container, we will trigger a function", () => {
+	test("If we click the switch, we will trigger a function", () => {
 		const mockFn = jest.fn();
-		render(<Switch onChange={mockFn} />);
-		const input = screen.getByTestId("switchContainer");
+		render(<Switch checked={false} onChange={mockFn} />);
+		const input = screen.getByRole("switch");
 		input.click();
 		expect(mockFn).toHaveBeenCalled();
 	});

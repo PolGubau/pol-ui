@@ -20,21 +20,17 @@ export const Switch: React.FC<Props> = ({
 	className,
 	size = "normal",
 }) => {
-	const toggleSwitch = (e: { preventDefault: () => void }) => {
-		e.preventDefault();
+	const toggleSwitch = () => {
 		onChange?.(!checked);
 	};
 
 	return (
-		<div
-			data-testId="switchContainer"
-			className={`flex gap-3 ${className} items-center`}
-			onClick={toggleSwitch}
-		>
+		<div data-testid="switchContainer" className={`flex gap-3  items-center`}>
 			<input
 				role="switch"
 				disabled={disabled}
 				checked={checked}
+				onChange={toggleSwitch}
 				className={`
 				flex
 				items-center
@@ -107,7 +103,7 @@ export const Switch: React.FC<Props> = ({
 				dark:checked:bg-primary 
 				dark:checked:after:bg-primary 
 				dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] 
-				dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]`}
+				dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] ${className}`}
 				type="checkbox"
 				id="flexSwitchCheckDefault"
 			/>
