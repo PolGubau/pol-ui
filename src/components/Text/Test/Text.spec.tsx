@@ -21,17 +21,34 @@ describe("Text Component", () => {
 		const text = screen.getByText("Text S...");
 		expect(text).toBeInTheDocument();
 	});
+	test("Only truncates when maxLength is shorter than the sent value", () => {
+		render(<Text value={TestTexts.TEXT} maxLength={100} />);
+		const text = screen.getByText(TestTexts.TEXT);
+		expect(text).toBeInTheDocument();
+	});
 
 	test("Displays Markdown correctly", () => {
 		render(<Text value="**Bold**" isMarkdown />);
 		const text = screen.getByText("Bold");
 		expect(text).toBeInTheDocument();
 	});
+	test("If its a header and markdow, it will be displayes as a markdown as well", () => {
+		render(<Text value="**Bold**" isMarkdown size={1} />);
+		const text = screen.getByText("Bold");
+		expect(text).toBeInTheDocument();
+		expect(text.tagName).toBe("STRONG");
+	});
+
 	[1, 2, 3, 4, 5, 6].forEach((size) => {
 		test(`Displays as h${size} if size is ${size}`, () => {
 			render(<Text value={TestTexts.TEXT} size={size} />);
 			const text = screen.getByText(TestTexts.TEXT);
 			expect(text.tagName).toBe(`H${size}`);
+		});
+		test(`Displays as markdown if size is ${size}and they have markdown`, () => {
+			render(<Text value={TestTexts.TEXT} isMarkdown size={size} />);
+			const text = screen.getByText(TestTexts.TEXT);
+			expect(text.tagName).toBe(`SPAN`);
 		});
 	});
 	test("Displays as p if size is not specified", () => {
