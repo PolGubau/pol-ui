@@ -1,15 +1,5 @@
 import React from "react";
 
-//
-
-export const spring = {
-	type: "spring",
-	stiffness: 700,
-	damping: 30,
-};
-
-//
-
 interface Props {
 	label?: string;
 	name?: string;
@@ -18,7 +8,6 @@ interface Props {
 	error?: string;
 	className?: string;
 	disabled?: boolean;
-	helperText?: string;
 	size?: "small" | "normal" | "large";
 }
 
@@ -28,7 +17,6 @@ export const Switch: React.FC<Props> = ({
 	onChange,
 	disabled,
 	error,
-	helperText,
 	className,
 	size = "normal",
 }) => {
@@ -38,8 +26,14 @@ export const Switch: React.FC<Props> = ({
 	};
 
 	return (
-		<div className={`flex gap-3 ${className} items-center `} onClick={toggleSwitch}>
+		<div
+			data-testId="switchContainer"
+			className={`flex gap-3 ${className} items-center`}
+			onClick={toggleSwitch}
+		>
 			<input
+				role="switch"
+				disabled={disabled}
 				checked={checked}
 				className={`
 				flex
@@ -115,11 +109,12 @@ export const Switch: React.FC<Props> = ({
 				dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] 
 				dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]`}
 				type="checkbox"
-				role="switch"
 				id="flexSwitchCheckDefault"
 			/>
 			{label && (
 				<label
+					role="heading"
+					aria-level={4}
 					className={`inline-block pl-[0.15rem] hover:cursor-pointer ${
 						error ? "text-red-400" : ""
 					}`}
@@ -128,6 +123,7 @@ export const Switch: React.FC<Props> = ({
 					{label}
 				</label>
 			)}
+			{error && <p className="text-red-400">{error}</p>}
 		</div>
 	);
 };
