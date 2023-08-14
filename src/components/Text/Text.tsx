@@ -24,7 +24,7 @@ const Text: React.FC<Props> = ({
 	className, // Class name of the text
 	isItalic = false, // If the text is italic
 	isBold = false, // If the text is bold
-}): JSX.Element => {
+}): React.JSX.Element => {
 	const shortedText = shorterText({ value, maxLength });
 	const sizedText = textSizer({ size, value: shortedText, isMarkdown });
 

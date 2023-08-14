@@ -34,7 +34,7 @@ export const Switch: React.FC<Props> = ({
 }) => {
 	const toggleSwitch = (e: { preventDefault: () => void }) => {
 		e.preventDefault();
-		onChange && onChange(!checked);
+		onChange?.(!checked);
 	};
 
 	return (

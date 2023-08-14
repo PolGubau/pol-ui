@@ -8,7 +8,7 @@ export const textSizer = ({
 	size?: number;
 	value: string;
 	isMarkdown: boolean;
-}): JSX.Element => {
+}): React.JSX.Element => {
 	switch (size) {
 		case 1:
 			return <h1>{isMarkdown ? <Markdown>{value}</Markdown> : value}</h1>;
