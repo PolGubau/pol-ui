@@ -13,6 +13,7 @@ export const Default: Story = {
 	args: {
 		label: "Switch",
 		checked: true,
+		size: "normal",
 	},
 };
 export const Small: Story = {

@@ -104,4 +104,27 @@ describe("Button Component", () => {
 		const button = screen.getByText(Texts.TEXT);
 		expect(button).toHaveClass("test");
 	});
+
+	// Types Tests (main,normal,outlined,text)
+
+	test("If type is main, should have bg-accent and text-primary classes", () => {
+		render(<Button type="main">{Texts.TEXT}</Button>);
+		const button = screen.getByText(Texts.TEXT);
+		expect(button).toHaveClass("bg-accent text-primary");
+	});
+	test("If type is normal, should have bg-primary and text-white classes", () => {
+		render(<Button type="normal">{Texts.TEXT}</Button>);
+		const button = screen.getByText(Texts.TEXT);
+		expect(button).toHaveClass("bg-primary text-white");
+	});
+	test("If type is outlined, should have bg-white text-primary   ring-1 ring-primary classes", () => {
+		render(<Button type="outlined">{Texts.TEXT}</Button>);
+		const button = screen.getByText(Texts.TEXT);
+		expect(button).toHaveClass("bg-white text-primary ring-1 ring-primary");
+	});
+	test("If type is text, should have bg-transparent and text-primary classes", () => {
+		render(<Button type="text">{Texts.TEXT}</Button>);
+		const button = screen.getByText(Texts.TEXT);
+		expect(button).toHaveClass("bg-white text-primary");
+	});
 });
