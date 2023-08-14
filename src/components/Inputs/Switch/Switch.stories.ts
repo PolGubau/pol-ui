@@ -37,3 +37,10 @@ export const Disabled: Story = {
 		disabled: true,
 	},
 };
+export const WithError: Story = {
+	args: {
+		label: "Switch",
+		checked: true,
+		error: "This is an error",
+	},
+};

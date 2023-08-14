@@ -24,7 +24,7 @@ export const Switch: React.FC<Props> = ({
 	};
 
 	return (
-		<div data-testid="switchContainer" className={`flex gap-3  items-center`}>
+		<div className={`flex gap-3  items-center`}>
 			<input
 				role="switch"
 				disabled={disabled}
@@ -61,7 +61,7 @@ export const Switch: React.FC<Props> = ({
 				after:transition-[background-color_0.2s,transform_0.2s] 
 				after:content-[''] 
 				
-				checked:bg-accent 
+				checked:bg-accent/60
  				checked:after:z-[2] 
  				checked:after:ml-[0.8rem] 
  				${size === "large" ? "checked:after:ml-[1rem] " : ""}
@@ -71,54 +71,42 @@ export const Switch: React.FC<Props> = ({
 				checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] 
 				checked:after:transition-[background-color_0.2s,transform_0.2s] 
 				checked:after:content-[''] 
-				
+				transition-all
 				hover:cursor-pointer 
 				focus:outline-none 
-				
-				focus:ring-0 
-				focus:before:scale-100 
-				focus:before:opacity-[0.12] 
-				focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] 
-				focus:before:transition-[box-shadow_0.2s,transform_0.2s] 
-				focus:after:absolute 
-				focus:after:z-[1] 
-				focus:after:block 
-				focus:after:h-6 
-				focus:after:w-6 
-				focus:after:rounded-full 
-				focus:after:content-[''] 
-				
-				checked:focus:border-primary 
-				checked:focus:bg-primary 
-				checked:focus:before:ml-[1.0625rem] 
-				checked:focus:before:scale-100 
-				checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] 
-				checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] 
-				
+				focus:ring-accent
+				focus:ring-4
+				active:outline-none 
+ 				active:ring-accent/50
+				active:ring-4
 				disabled:opacity-50
-				
+				disabled:cursor-not-allowed
 				dark:bg-neutral-600 
 				dark:after:bg-neutral-400 
 				dark:checked:bg-primary 
 				dark:checked:after:bg-primary 
-				dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] 
-				dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] ${className}`}
+				 ${className}`}
 				type="checkbox"
 				id="flexSwitchCheckDefault"
 			/>
 			{label && (
 				<label
 					role="heading"
+					onClick={toggleSwitch}
 					aria-level={4}
-					className={`inline-block pl-[0.15rem] hover:cursor-pointer ${
-						error ? "text-red-400" : ""
-					}`}
+					className={`
+					hover:cursor-pointer 
+					
+					${disabled ? "text-neutral-400 hover:cursor-not-allowed" : "text-primary hover:cursor-pointer "}
+					${size === "small" ? "text-sm" : ""}
+					${size === "large" ? "text-lg" : ""}
+					${error ? "text-red-400" : ""}`}
 					htmlFor="flexSwitchCheckDefault"
 				>
 					{label}
 				</label>
 			)}
-			{error && <p className="text-red-400">{error}</p>}
+			{error && <small className="text-red-400">{`(${error})`}</small>}
 		</div>
 	);
 };
