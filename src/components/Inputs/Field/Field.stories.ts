@@ -68,3 +68,23 @@ export const MultilineWithLabels: Story = {
 		multiline: true,
 	},
 };
+export const DateInput: Story = {
+	args: {
+		label: "Date",
+		type: "date",
+	},
+};
+export const Email: Story = {
+	args: {
+		label: "Email",
+		value: "youremail@email.com",
+		type: "email",
+	},
+};
+export const InvalidEmail: Story = {
+	args: {
+		label: "A bad email",
+		value: "youremail@@",
+		type: "email",
+	},
+};

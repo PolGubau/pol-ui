@@ -26,15 +26,18 @@ export const labelStyles = tv({
 });
 
 export const inputStyles = tv({
-	base: `transition-all
-            outline-none
-            rounded-lg
-            p-2
-            ring-1
-            ring-primary          
+	base: `
+      transition-all
+      outline-none
+      rounded-lg
+      p-2
+			invalid:ring-1 
+			invalid:ring-red-500
+      ring-1
+      ring-primary          
 			hover:shadow-lg
-            focus:ring-accent
-            peer`,
+      focus:ring-accent
+      peer`,
 	variants: {
 		multiline: {
 			true: "input peer min-h-[100px] max-h-[300px] resize-y",
