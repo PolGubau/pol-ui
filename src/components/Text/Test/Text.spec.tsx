@@ -16,6 +16,7 @@ describe("Text Component", () => {
 		expect(heading).not.toBeInstanceOf(String);
 	});
 
+	// Truncate
 	test("Truncates correctly", () => {
 		render(<Text value={TestTexts.TEXT} maxLength={6} />);
 		const text = screen.getByText("Text S...");
@@ -26,6 +27,8 @@ describe("Text Component", () => {
 		const text = screen.getByText(TestTexts.TEXT);
 		expect(text).toBeInTheDocument();
 	});
+
+	// Markdown and headers
 
 	test("Displays Markdown correctly", () => {
 		render(<Text value="**Bold**" isMarkdown />);
@@ -61,6 +64,8 @@ describe("Text Component", () => {
 		const text = screen.getByText(TestTexts.TEXT);
 		expect(text.tagName).toBe("P");
 	});
+
+	// Bold and italic
 	test("If isBold prop is true, the text is displayed as bold and should have font-bold class", () => {
 		render(<Text value={TestTexts.TEXT} isBold={true} />);
 		const text = screen.getByRole("text");
