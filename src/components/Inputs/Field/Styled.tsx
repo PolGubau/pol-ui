@@ -32,7 +32,7 @@ export const inputStyles = tv({
             p-2
             ring-1
             ring-primary          
-            hover:shadow-lg
+			hover:shadow-lg
             focus:ring-accent
             peer`,
 	variants: {

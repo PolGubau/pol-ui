@@ -47,11 +47,13 @@ export const InputWithHelperTextAndError: Story = {
 };
 export const Disabled: Story = {
 	args: {
+		label: "I'm disabled",
 		disabled: true,
 	},
 };
 export const MaxLength: Story = {
 	args: {
+		label: "No more than 10 characters",
 		maxLength: 10,
 	},
 };
