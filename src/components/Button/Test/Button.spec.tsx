@@ -17,11 +17,14 @@ describe("Button Component", () => {
 		button.click();
 		expect(onClick).toHaveBeenCalled();
 	});
-	test("Button is disabled", () => {
+
+	test("If button is disabled, it has opacity-50 cursor-not-allowed classes", () => {
 		render(<Button disabled>{Texts.TEXT}</Button>);
 		const button = screen.getByText(Texts.TEXT);
 		expect(button).toBeDisabled();
+		expect(button).toHaveClass("opacity-50 cursor-not-allowed");
 	});
+
 	test("Button is not disabled", () => {
 		render(<Button onClick={() => {}}>{Texts.TEXT}</Button>);
 		const button = screen.getByText(Texts.TEXT);
@@ -58,7 +61,16 @@ describe("Button Component", () => {
 		expect(prefix).toBeInTheDocument();
 		expect(suffix).toBeInTheDocument();
 	});
-	test('Rounded button should have "rounded-xl" or "rounded-lg" class', () => {
+	test('Rounded normal button should have "rounded-xl"  class', () => {
+		render(
+			<Button rounded size="normal">
+				{Texts.TEXT}
+			</Button>
+		);
+		const button = screen.getByText(Texts.TEXT);
+		expect(button).toHaveClass("rounded-xl");
+	});
+	test('Rounded large button should have "rounded-xl"  class', () => {
 		render(
 			<Button rounded size="large">
 				{Texts.TEXT}
@@ -66,6 +78,15 @@ describe("Button Component", () => {
 		);
 		const button = screen.getByText(Texts.TEXT);
 		expect(button).toHaveClass("rounded-xl");
+	});
+	test('Rounded small button should have "rounded-lg"  class', () => {
+		render(
+			<Button rounded size="small">
+				{Texts.TEXT}
+			</Button>
+		);
+		const button = screen.getByText(Texts.TEXT);
+		expect(button).toHaveClass("rounded-lg");
 	});
 	test("Rounded prop is default to true", () => {
 		render(<Button size="small">{Texts.TEXT}</Button>);

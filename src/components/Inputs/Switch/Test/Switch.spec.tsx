@@ -8,8 +8,17 @@ describe("Switch Component", () => {
 	test("Displays correctly it's label", () => {
 		render(<Switch label={Texts.TEXT} />);
 		const heading = screen.getByText(Texts.TEXT);
+		// Has the label
 		expect(heading).toBeInTheDocument();
+
+		// By default it's not checked
+		const input = screen.getByRole("switch");
+		expect(input).not.toBeChecked();
+
+		// By default it's not disabled
+		expect(input).not.toBeDisabled();
 	});
+
 	test("You can disable it via props", () => {
 		render(<Switch disabled />);
 		const input = screen.getByRole("switch");

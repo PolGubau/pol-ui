@@ -2,7 +2,6 @@ import React from "react";
 
 interface Props {
 	label?: string;
-	name?: string;
 	checked?: boolean;
 	onChange?: (value: boolean) => void;
 	error?: string;
