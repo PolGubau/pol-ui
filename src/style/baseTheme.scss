@@ -3,35 +3,35 @@
 @tailwind utilities;
 
 @font-face {
-  font-weight: 400;
-  font-family: Poppins;
-  font-style: normal;
-  src: local("Poppins"), url("./fonts/Poppins-Regular.ttf") format("truetype");
-  font-display: auto;
+	font-weight: 400;
+	font-family: Poppins;
+	font-style: normal;
+	src: local("Poppins"), url("../assets/fonts/Poppins-Regular.ttf") format("truetype");
+	font-display: auto;
 }
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 :root {
-  --font-family-title: "Poppins", arial, sans-serif;
-  --font-family-body: "Poppins", arial, sans-serif;
+	--font-family-title: "Poppins", arial, sans-serif;
+	--font-family-body: "Poppins", arial, sans-serif;
 
-  font-family: var(--font-family-body);
+	font-family: var(--font-family-body);
 
-  code {
-    font-family: var(--font-family-body);
-  }
+	code {
+		font-family: var(--font-family-body);
+	}
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-family-title);
-  }
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-family-title);
+	}
 }

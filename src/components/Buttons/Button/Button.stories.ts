@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Button from "./Button";
 
 const meta = {
-	title: "Button",
+	title: "Buttons/Button",
 	component: Button,
 	tags: ["autodocs"],
 } satisfies Meta<typeof Button>;
@@ -80,7 +80,36 @@ export const WithSuffix: Story = {
 export const WithPrefixAndSuffix: Story = {
 	args: {
 		children: "I have a prefix and a suffix",
-		prefix: "🎷",
-		suffix: "🥁",
+		prefix: "🤠",
+		suffix: "Suffy",
+	},
+};
+export const WithIcon: Story = {
+	args: {
+		children: "I have an icon",
+		icon: "check",
+		iconPosition: "left",
+	},
+};
+export const MainWithIcon: Story = {
+	args: {
+		type: "main",
+		iconPosition: "left",
+		children: "I have an icon",
+		icon: "check",
+	},
+};
+export const WithIconRight: Story = {
+	args: {
+		children: "I have an icon",
+		icon: "check",
+		iconPosition: "right",
+	},
+};
+export const WithIconOnly: Story = {
+	args: {
+		children: "",
+		icon: "check",
+		iconPosition: "left",
 	},
 };

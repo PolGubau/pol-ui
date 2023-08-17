@@ -1,5 +1,5 @@
 import { getIcon } from "../../utils";
-import { IconType } from "./types";
+import { IconType } from "./types.d";
 
 export type colorTypes = "neutral" | "success" | "danger" | "main";
 interface IconProps {
@@ -10,14 +10,14 @@ interface IconProps {
 	id?: string;
 }
 
-const Icon = ({ icon, color = "neutral", size, className, id }: IconProps) => {
+const Icon = ({ icon, color, size, className, id }: IconProps) => {
 	const resultIcon = typeof icon === "string" ? getIcon(icon) : icon;
 	return (
 		<div
 			role="img"
 			style={{ fontSize: size }}
 			id={id}
-			className={`text-${color} 
+			className={`
 			${color === "neutral" ? "text-primary" : ""}
 			${color === "success" ? "text-green-500" : ""}
 			${color === "danger" ? "text-red-500" : ""}

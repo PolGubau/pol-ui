@@ -1,7 +1,7 @@
 import React from "react";
-import "../../style/baseTheme.scss";
+import "../../../style/baseTheme.scss";
+import { Icon, IconType } from "../../Icon";
 interface Props {
-	children: React.ReactNode;
 	onClick?: () => void;
 	id?: string;
 	className?: string;
@@ -9,22 +9,19 @@ interface Props {
 	disabled?: boolean;
 	type?: "main" | "normal" | "outlined" | "text";
 	size?: "large" | "normal" | "small";
-	prefix?: React.ReactNode;
-	suffix?: React.ReactNode;
+	icon?: IconType;
 	rounded?: boolean;
 }
 
-const Button: React.FC<Props> = ({
+const IconButton: React.FC<Props> = ({
 	className,
-	children,
 	id,
 	onClick,
 	disabled = false,
-	ariaLabel = "button",
+	ariaLabel = "Icon Button",
 	type = "normal",
 	size = "normal",
-	prefix,
-	suffix,
+	icon,
 	rounded = true,
 }) => {
 	return (
@@ -33,8 +30,11 @@ const Button: React.FC<Props> = ({
 			disabled={disabled || !onClick}
 			id={id}
 			onClick={onClick}
-			className={`				
-				cursor-pointer
+			className={`
+			flex
+			 	h-full
+				cursor-pointer aspect-square
+				
 				${type === "main" ? "bg-accent text-primary hover:bg-accent/50" : ""}
 				${type === "normal" ? "bg-primary text-white hover:bg-primary/50" : ""}
 				${type === "outlined" ? "bg-white text-primary   ring-1 ring-primary hover:bg-primary/30" : ""}
@@ -42,17 +42,18 @@ const Button: React.FC<Props> = ({
 				${disabled ? "opacity-50 cursor-not-allowed" : ""}
 				transition-colors
  				${rounded ? "rounded-xl" : ""}
-				${size === "large" ? "px-4 py-2.5 text-lg" : ""}
-				${size === "normal" ? "px-4 py-2 text-base" : ""}
-				${size === "small" ? "px-3 py-2 text-sm rounded-lg" : ""}
+				${size === "large" ? "p-3 text-lg" : ""}
+				${size === "normal" ? "p-2 text-base" : ""}
+				${size === "small" ? "p-1.5 text-sm rounded-lg" : ""}
 				${!rounded ? "rounded-none" : ""}
+				
+				
+			 
 				${className ?? ""}
  			`}
 		>
-			{prefix && <span className="mr-2">{prefix}</span>}
-			{children}
-			{suffix && <span className="ml-2">{suffix}</span>}
+			<Icon icon={icon} className="text-2xl" />
 		</button>
 	);
 };
-export default Button;
+export default IconButton;
