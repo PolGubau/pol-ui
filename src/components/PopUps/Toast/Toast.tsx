@@ -2,7 +2,7 @@ import React from "react";
 import { GrClose } from "react-icons/gr";
 import ToastStyled from "./ToastStyled";
 import { ToastProps } from "./types.d";
-import { Button } from "../../Button";
+import { Button } from "../../Buttons";
 
 interface Props {
 	state: ToastProps;

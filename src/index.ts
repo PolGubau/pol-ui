@@ -1,9 +1,7 @@
-import { Button, Text, Icon, Field, Switch } from "./components";
+import { Button, IconButton, Text, Icon, Field, Switch } from "./components";
 
 import {
 	getIcon,
-	alphabeticalArraySorter,
-	transformDateToISOString,
 	generateUUID,
 	toCamelCase,
 	toKebabCase,
@@ -19,20 +17,34 @@ import {
 	getLocalStorage,
 	setToLocalStorage,
 	removeFromLocalStorage,
+
+	// sorters
+	sortStrings,
+	sortNumbers,
+	sortDates,
+
+	// dates
+	dateTimeToDate,
+	dateToDateTime,
+	getToday,
 } from "./utils";
 
 import { Identifier } from "./common.d";
 
 export {
+	// components
 	Button,
+	IconButton,
 	Text,
 	Icon,
 	Field,
 	Switch,
-	getIcon,
-	alphabeticalArraySorter,
-	transformDateToISOString,
+
+	// utils
 	generateUUID,
+
+	// string conversion
+	getIcon,
 	toCamelCase,
 	toKebabCase,
 	toUpperCase,
@@ -44,9 +56,21 @@ export {
 	formatString,
 	randomString,
 	lowerAndNoSpace,
+
+	// storage functions
 	getLocalStorage,
 	setToLocalStorage,
 	removeFromLocalStorage,
+
+	// sorters
+	sortStrings,
+	sortNumbers,
+	sortDates,
+
+	// dates
+	dateTimeToDate,
+	dateToDateTime,
+	getToday,
 };
 
 export type { Identifier };

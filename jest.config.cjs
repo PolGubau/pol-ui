@@ -35,5 +35,6 @@ module.exports = {
 	  ".d.ts",
 	  ".test.ts",
 	  ".model.tsx",
+	  "index.ts"
     ]
 };

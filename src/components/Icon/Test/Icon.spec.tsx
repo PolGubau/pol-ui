@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import Icon from "../Icon";
 import { TbCheck } from "react-icons/tb";
- 
+
 const enum Texts {
 	TEXT = "check",
 }
@@ -13,8 +13,8 @@ describe("Icon Component", () => {
 	});
 	// colors
 
-	test("Displays correctly it's default (text-primary) color", () => {
-		render(<Icon icon={Texts.TEXT} />);
+	test("Displays correctly it's neutral color", () => {
+		render(<Icon icon={Texts.TEXT} color="neutral" />);
 		const icon = screen.getByRole("img");
 		expect(icon).toHaveClass("text-primary");
 	});
@@ -75,8 +75,4 @@ describe("Icon Component", () => {
 		const icon = screen.getByRole("img");
 		expect(icon).toBeInTheDocument();
 	});
-
- 
-
-	
 });
