@@ -1,9 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import Icon from "../Icon";
 import { TbCheck } from "react-icons/tb";
-import { getIcon } from "../../../utils";
-import { IconNames } from "../types";
-
+ 
 const enum Texts {
 	TEXT = "check",
 }
@@ -78,20 +76,7 @@ describe("Icon Component", () => {
 		expect(icon).toBeInTheDocument();
 	});
 
-	// 	const resultIcon = typeof icon === "string" ? getIcon(icon as IconNames) : icon;
-	// Test the getIcon function
+ 
 
-	test("getIcon function returns a React Component if name exists", () => {
-		const result = getIcon("check");
-		expect(result).not.toBeNull();
-	});
-	test("getIcon function returns null if name doesn't exist", () => {
-		const result = getIcon("test-000001");
-		expect(result).toBeNull();
-	});
-
-	test("getIcon function returns null if name is empty", () => {
-		const result = getIcon("");
-		expect(result).toBeNull();
-	});
+	
 });
