@@ -29,5 +29,11 @@ module.exports = {
 	coveragePathIgnorePatterns: [
       ".stories.ts",
 	  "Styled.tsx",
+	  ".model.ts",
+	  ".interface.ts",
+	  ".mock.ts",
+	  ".d.ts",
+	  ".test.ts",
+	  ".model.tsx",
     ]
 };
