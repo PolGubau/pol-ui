@@ -1,3 +1,6 @@
-import { Button, Text } from "./components";
+import { Button, Text, Icon, Field, Switch } from "./components";
 
-export { Button, Text };
+import { getIcon } from "./utils";
+import types from "./common.d";
+
+export { Button, Text, Icon, Field, Switch, getIcon, types };

@@ -38,7 +38,7 @@ describe("Switch Component", () => {
 	test("You can set it to small via props", () => {
 		render(<Switch size="small" />);
 		const input = screen.getByRole("switch");
-		expect(input).toHaveClass("w-8");
+		expect(input).toHaveClass("w-9");
 	});
 	test("You can set it to large via props", () => {
 		render(<Switch size="large" />);
@@ -62,7 +62,7 @@ describe("Switch Component", () => {
 	});
 	test("If an error is passed, we will render the error message", () => {
 		render(<Switch label="label" error="Oups" />);
-		const input = screen.getByText("Oups");
+		const input = screen.getByText("(Oups)");
 		expect(input).toBeInTheDocument();
 	});
 

@@ -4,6 +4,7 @@ import { Field } from "../Field";
 const meta = {
 	title: "Inputs/Field",
 	component: Field,
+	tags: ["autodocs"],
 } satisfies Meta<typeof Field>;
 
 export default meta;

@@ -4,6 +4,7 @@ import { Switch } from "../Switch";
 const meta = {
 	title: "Inputs/Switch",
 	component: Switch,
+	tags: ["autodocs"],
 } satisfies Meta<typeof Switch>;
 
 export default meta;
