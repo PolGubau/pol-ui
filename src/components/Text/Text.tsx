@@ -33,6 +33,7 @@ const Text: React.FC<Props> = ({
 			className={` 
 				${isBold ? "font-bold" : ""}
 				${isItalic ? "italic" : ""}
+				p-0 m-0 overflow-hidden 
 			${className}`}
 			$color={color}
 			role="text"
