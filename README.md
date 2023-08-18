@@ -49,3 +49,75 @@ This package has unit and component tests configured with Jest
 ## 🚀 CI and Publishing
 
 This template comes with a GitHub Actions workflow to automatically publish on any push to `main` when the `package.json` version number differs from the latest on npm.
+
+### Future improvements
+
+0. **General Components:**
+
+   - ✅ Toast
+   - ✅ Modal
+   - ✅ Wrapper
+   - ✅ IconButton
+   - ✅ Button
+   - ✅ Icon
+   - ✅ (Text) Typography
+
+1. **Input Components:**
+   - ✅ Switch
+   - ✅ Field (Input and TextArea)
+   - 🟨 Checkbox
+   - Radio
+2. **Select Components:**
+   - Dropdown
+   - MultiSelect
+   - Autocomplete
+3. **Data Display Components:**
+   - Avatar
+   - Badge
+   - Tooltip
+   - Progress Bar
+   - Spinner
+   - Divider
+4. **Layout Components:**
+   - Grid System
+   - Card
+   - Accordion
+   - Tabs
+   - Pagination
+5. **Navigation Components:**
+   - Navbar
+   - Sidebar
+   - Breadcrumbs
+   - Menu
+   - Stepper
+6. **Form Components:**
+   - Form
+   - FormField
+   - FormValidation
+   - Date Picker
+   - Time Picker
+7. **Feedback Components:**
+   - Alert
+   - Snackbar
+   - Notification
+   - Toast
+   - Modal (you mentioned you have this, but it's really versatile)
+8. **Charts and Data Visualization Components:**
+   - Bar Chart
+   - Line Chart
+   - Pie Chart
+   - Data Table
+9. **Media Components:**
+   - Image
+   - Video
+   - Audio Player
+10. **Overlay Components:**
+    - Overlay (like a semi-transparent overlay for modals or full-page loading)
+    - Tooltip
+    - Popover
+11. **Animation Components:**
+    - Animations (for providing pre-designed animation effects)
+12. **Utilities:**
+    - Theme Provider
+    - Responsive Utilities (for handling different screen sizes)
+    - CSS Reset or Normalize (for consistent styling)
