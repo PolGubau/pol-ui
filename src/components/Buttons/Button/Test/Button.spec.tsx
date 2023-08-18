@@ -133,10 +133,10 @@ describe("Button Component", () => {
 		const button = screen.getByText(Texts.TEXT);
 		expect(button).toHaveClass("bg-accent text-primary");
 	});
-	test("If type is normal, should have bg-primary and text-white classes", () => {
+	test("If type is normal, should have bg-primary/60 and text-white classes", () => {
 		render(<Button type="normal">{Texts.TEXT}</Button>);
 		const button = screen.getByText(Texts.TEXT);
-		expect(button).toHaveClass("bg-primary text-white");
+		expect(button).toHaveClass("bg-primary/60 text-white");
 	});
 	test("If type is outlined, should have bg-white text-primary   ring-1 ring-primary classes", () => {
 		render(<Button type="outlined">{Texts.TEXT}</Button>);
