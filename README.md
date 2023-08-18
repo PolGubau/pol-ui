@@ -65,8 +65,8 @@ This template comes with a GitHub Actions workflow to automatically publish on a
 1. **Input Components:**
    - ✅ Switch
    - ✅ Field (Input and TextArea)
-   - 🟨 Checkbox
-   - Radio
+   - ✅ Checkbox
+   - ✅ Radio
 2. **Select Components:**
    - Dropdown
    - MultiSelect

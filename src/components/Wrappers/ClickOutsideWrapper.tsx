@@ -5,7 +5,7 @@ interface ClickOutsideWrapperProps {
 	children: React.ReactNode;
 }
 
-export const ClickOutsideWrapper = ({ onClickOutside, children }: ClickOutsideWrapperProps) => {
+const ClickOutsideWrapper = ({ onClickOutside, children }: ClickOutsideWrapperProps) => {
 	const wrapperRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
@@ -24,3 +24,4 @@ export const ClickOutsideWrapper = ({ onClickOutside, children }: ClickOutsideWr
 
 	return <div ref={wrapperRef}>{children}</div>;
 };
+export default ClickOutsideWrapper;

@@ -1,5 +1,5 @@
 import React from "react";
-import { checkIconBySize, checkboxContainer, roundedBySize } from "./Checkbox.styles";
+import { checkIconBySize, checkboxContainer } from "./Radio.styles";
 import { Icon } from "../../Icon";
 import { Transition } from "@headlessui/react";
 
@@ -16,7 +16,7 @@ interface Props {
 	size?: "xs" | "sm" | "md" | "lg" | "xl";
 }
 
-const Checkbox: React.FC<Props> = ({
+const Radio: React.FC<Props> = ({
 	label,
 	value,
 	onChange,
@@ -42,7 +42,7 @@ const Checkbox: React.FC<Props> = ({
 			}
 		>
 			<div
-				className={`relative aspect-square flex items-center justify-center text-primary overflow-hidden 
+				className={`relative aspect-square flex items-center justify-center text-primary overflow-hidden rounded-full
 				
 				
 				${size === "xs" && "h-3 "}
@@ -52,17 +52,16 @@ const Checkbox: React.FC<Props> = ({
 				${size === "xl" && "h-12  "}
 				
 				
-				${roundedBySize({ size })}
 				`}
 			>
 				<input
 					name={name}
-					type="checkbox"
+					type="radio"
 					checked={value}
 					onChange={handleChange}
 					disabled={disabled}
 					className={`
-					transition-all duration-100 w-full h-full  appearance-none bg-gray-300 cursor-pointer
+					transition-all duration-100 w-full h-full  appearance-none bg-gray-300 cursor-pointer rounded-full
 					
 					checked:bg-accent  
 					
@@ -72,8 +71,7 @@ const Checkbox: React.FC<Props> = ({
 					
 					focus:ring-4 focus:ring-primary focus:ring-inset focus:ring-opacity-50
 					
-				${roundedBySize({ size })}
-				 `}
+ 				 `}
 				/>
 				<Transition
 					className={` ${checkIconBySize({ size })}`}
@@ -96,4 +94,4 @@ const Checkbox: React.FC<Props> = ({
 	);
 };
 
-export default Checkbox;
+export default Radio;

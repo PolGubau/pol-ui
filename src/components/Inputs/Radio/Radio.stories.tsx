@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Checkbox from "./Checkbox";
+import Radio from "./Radio";
 
 const meta = {
-	title: "Inputs/Checkbox",
-	component: Checkbox,
+	title: "Inputs/Radio",
+	component: Radio,
 	tags: ["autodocs"],
-} satisfies Meta<typeof Checkbox>;
+} satisfies Meta<typeof Radio>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -26,13 +26,13 @@ export const CheckedState: Story = {
 	args: {
 		...Default.args,
 		value: true,
-		label: "Look, this checkbox is checked",
+		label: "Look, this radio is checked",
 	},
 };
 export const Disabled: Story = {
 	args: {
 		...Default.args,
-		label: "Disabled Checkbox",
+		label: "Disabled Radio",
 		disabled: true,
 	},
 };
@@ -42,7 +42,7 @@ export const CustomIcon: Story = {
 		value: true,
 
 		checkIcon: "user",
-		label: "Who would use this icon for a checkbox?",
+		label: "Who would use this icon for a radio?",
 	},
 };
 export const SmallCheckBox: Story = {
@@ -68,11 +68,11 @@ export const AllSizes: Story = {
 	render(args) {
 		return (
 			<div className="flex flex-col space-y-4">
-				<Checkbox {...args} size="xs" label="Extra Small (xs)" />
-				<Checkbox {...args} size="sm" label="Small (sm)" />
-				<Checkbox {...args} size="md" label="Medium (md)" />
-				<Checkbox {...args} size="lg" label="Large (lg)" />
-				<Checkbox {...args} size="xl" label="Extra Large (xl)" />
+				<Radio {...args} size="xs" label="Extra Small (xs)" />
+				<Radio {...args} size="sm" label="Small (sm)" />
+				<Radio {...args} size="md" label="Medium (md)" />
+				<Radio {...args} size="lg" label="Large (lg)" />
+				<Radio {...args} size="xl" label="Extra Large (xl)" />
 			</div>
 		);
 	},

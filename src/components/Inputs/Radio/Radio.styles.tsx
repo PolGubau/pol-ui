@@ -12,22 +12,6 @@ export const checkboxContainer = tv({
 	},
 });
 
-export const roundedBySize = tv({
-	base: "rounded-md",
-	variants: {
-		size: {
-			xs: "rounded-sm",
-			sm: "rounded",
-			md: "rounded-md",
-			lg: "rounded-xl",
-			xl: "rounded-2xl",
-		},
-	},
-	defaultVariants: {
-		size: "md",
-	},
-});
-
 export const checkIconBySize = tv({
 	base: "text-primary absolute transition-all duration-100 user-select-none pointer-events-none",
 	variants: {

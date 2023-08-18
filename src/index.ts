@@ -1,4 +1,17 @@
-import { Button, IconButton, Text, Icon, Field, Switch } from "./components";
+import {
+	Button,
+	IconButton,
+	Text,
+	Icon,
+	Field,
+	Switch,
+	Checkbox,
+	Radio,
+	RadioGroup,
+	CheckboxGroup,
+	ClickOutsideWrapper,
+	Wrapper,
+} from "./components";
 
 import {
 	getIcon,
@@ -39,6 +52,12 @@ export {
 	Icon,
 	Field,
 	Switch,
+	Checkbox,
+	Radio,
+	CheckboxGroup,
+	RadioGroup,
+	Wrapper,
+	ClickOutsideWrapper,
 
 	// utils
 	generateUUID,
