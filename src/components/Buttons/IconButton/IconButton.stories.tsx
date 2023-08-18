@@ -46,19 +46,19 @@ export const Disabled: Story = {
 export const SmallButton: Story = {
 	args: {
 		...Default.args,
-		size: "small",
+		size: "sm",
 	},
 };
 export const NormalButton: Story = {
 	args: {
 		...Default.args,
-		size: "normal",
+		size: "md",
 	},
 };
 export const LargeButton: Story = {
 	args: {
 		...Default.args,
-		size: "large",
+		size: "lg",
 	},
 };
 export const SquareButton: Story = {
@@ -74,6 +74,20 @@ export const WithOtherButtons: Story = {
 			<Button>Button</Button>
 			<IconButton {...args} />
 			<IconButton {...args} />
+		</div>
+	),
+	args: {
+		...Default.args,
+	},
+};
+export const AllSizes: Story = {
+	render: (args) => (
+		<div className="flex flex-col gap-2">
+			<IconButton {...args} size="xs" />
+			<IconButton {...args} size="sm" />
+			<IconButton {...args} size="md" />
+			<IconButton {...args} size="lg" />
+			<IconButton {...args} size="xl" />
 		</div>
 	),
 	args: {

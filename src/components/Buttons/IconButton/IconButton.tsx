@@ -1,6 +1,8 @@
 import React from "react";
 import "../../../style/baseTheme.scss";
-import { Icon, IconType } from "../../Icon";
+import { IconType } from "../../Icon";
+import { Button } from "../Button";
+import { Sizes } from "../../../common";
 interface Props {
 	onClick?: () => void;
 	id?: string;
@@ -8,7 +10,7 @@ interface Props {
 	ariaLabel?: string;
 	disabled?: boolean;
 	type?: "main" | "normal" | "outlined" | "text";
-	size?: "large" | "normal" | "small";
+	size?: Sizes;
 	icon?: IconType;
 	rounded?: boolean;
 }
@@ -20,39 +22,23 @@ const IconButton: React.FC<Props> = ({
 	disabled = false,
 	ariaLabel = "Icon Button",
 	type = "normal",
-	size = "normal",
+	size = "md",
 	icon,
 	rounded = true,
 }) => {
 	return (
-		<button
+		<Button
 			aria-label={ariaLabel}
 			disabled={disabled || !onClick}
 			id={id}
 			onClick={onClick}
-			className={`
-			flex
- 				cursor-pointer aspect-square
-				
-				${type === "main" ? "bg-accent  hover:bg-accent/50" : ""}
-				${type === "normal" ? "bg-primary text-white hover:bg-primary/50" : ""}
-				${type === "outlined" ? "bg-white    ring-1 ring-primary hover:bg-primary/30" : ""}
-				${type === "text" ? "bg-transparent  hover:bg-primary/30" : ""}
-				${disabled ? "opacity-50 cursor-not-allowed" : ""}
-				transition-colors
- 				${rounded ? "rounded-xl" : ""}
-				${size === "large" ? "p-3 text-lg" : ""}
-				${size === "normal" ? "p-2 text-base" : ""}
-				${size === "small" ? "p-1.5 text-sm rounded-lg" : ""}
-				${!rounded ? "rounded-none" : ""}
-				
-				
-			 
-				${className ?? ""}
- 			`}
-		>
-			<Icon icon={icon} className="text-2xl" />
-		</button>
+			className={className}
+			type={type}
+			size={size}
+			rounded={rounded}
+			onlyIcon
+			icon={icon}
+		/>
 	);
 };
 export default IconButton;

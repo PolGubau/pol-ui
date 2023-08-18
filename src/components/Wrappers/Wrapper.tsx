@@ -2,19 +2,20 @@ import React from "react";
 import ClickOutsideWrapper from "./ClickOutsideWrapper";
 
 interface Props {
-	onClick?: () => void;
+	onClickOutside?: () => void;
 	children?: React.ReactNode;
 	hasOverlay?: boolean;
 }
 
-const Wrapper: React.FC<Props> = ({ onClick, children, hasOverlay }: any) => {
+const Wrapper: React.FC<Props> = ({ onClickOutside, children, hasOverlay }: any) => {
 	return (
-		<div
-			className={` flex  overflow-y-auto overflow-x-hidden absolute right-0 left-0 top-0 bottom-0 z-50 justify-center items-center md:h-full md:inset-0 
+		<ClickOutsideWrapper
+			className={` flex h-fit w-full overflow-x-hidden absolute top-0 z-40 justify-center items-center md:h-full md:inset-0 
 				${hasOverlay ? "bg-primary/10" : ""}`}
+			onClickOutside={onClickOutside}
 		>
-			<ClickOutsideWrapper onClickOutside={onClick}>{children}</ClickOutsideWrapper>
-		</div>
+			{children}
+		</ClickOutsideWrapper>
 	);
 };
 export default Wrapper;

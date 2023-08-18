@@ -40,7 +40,7 @@ const config = {
 		},
 	},
 
-	plugins: [require("tailwindcss-animated")],
+	plugins: [require("tailwindcss-animated"), require("@headlessui/tailwindcss")({ prefix: "ui" })],
 };
 
 export default config;

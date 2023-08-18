@@ -130,6 +130,7 @@
 		"vite-plugin-dts": "^2.3.0"
 	},
 	"dependencies": {
-		"@headlessui/react": "^1.7.17"
+		"@headlessui/react": "^1.7.17",
+		"@headlessui/tailwindcss": "^0.2.0"
 	}
 }

@@ -13,28 +13,43 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
 	args: {
 		children: "I'm a normal button",
+		iconPosition: "left",
+		rounded: true,
+		autoFocus: false,
+		fullWidth: false,
+		type: "normal",
+		size: "md",
+		disabled: false,
+		id: "button",
 	},
 };
 export const Outlined: Story = {
 	args: {
+		...Default.args,
 		children: "I have an outline",
 		type: "outlined",
 	},
 };
 export const Text: Story = {
 	args: {
+		...Default.args,
+
 		children: "More discreet",
 		type: "text",
 	},
 };
 export const Main: Story = {
 	args: {
+		...Default.args,
+
 		children: "The important one",
 		type: "main",
 	},
 };
 export const Disabled: Story = {
 	args: {
+		...Default.args,
+
 		children: "Not here anymore",
 		disabled: true,
 	},
@@ -42,50 +57,40 @@ export const Disabled: Story = {
 
 export const SmallButton: Story = {
 	args: {
+		...Default.args,
+
 		children: "Small",
-		size: "small",
+		size: "sm",
 	},
 };
 export const NormalButton: Story = {
 	args: {
+		...Default.args,
+
 		children: "Normal",
-		size: "normal",
+		size: "md",
 	},
 };
 export const LargeButton: Story = {
 	args: {
+		...Default.args,
+
 		children: "The big one",
-		size: "large",
+		size: "lg",
 	},
 };
 export const SquareButton: Story = {
 	args: {
+		...Default.args,
+
 		children: "I'm a rectangle",
-		size: "large",
 		rounded: false,
-	},
-};
-export const WithPrefix: Story = {
-	args: {
-		children: "I have a prefix",
-		prefix: "👍",
-	},
-};
-export const WithSuffix: Story = {
-	args: {
-		children: "I have a suffix",
-		suffix: "👍",
-	},
-};
-export const WithPrefixAndSuffix: Story = {
-	args: {
-		children: "I have a prefix and a suffix",
-		prefix: "🤠",
-		suffix: "Suffy",
 	},
 };
 export const WithIcon: Story = {
 	args: {
+		...Default.args,
+
 		children: "I have an icon",
 		icon: "check",
 		iconPosition: "left",
@@ -93,6 +98,8 @@ export const WithIcon: Story = {
 };
 export const MainWithIcon: Story = {
 	args: {
+		...Default.args,
+
 		type: "main",
 		iconPosition: "left",
 		children: "I have an icon",
@@ -101,6 +108,8 @@ export const MainWithIcon: Story = {
 };
 export const WithIconRight: Story = {
 	args: {
+		...Default.args,
+
 		children: "I have an icon",
 		icon: "check",
 		iconPosition: "right",
@@ -108,8 +117,25 @@ export const WithIconRight: Story = {
 };
 export const WithIconOnly: Story = {
 	args: {
+		...Default.args,
 		children: "",
+		onlyIcon: true,
 		icon: "check",
 		iconPosition: "left",
+	},
+};
+export const AllSizes: Story = {
+	render: (args) => (
+		<div className="flex flex-col gap-2">
+			<Button {...args} size="xs" children="Extra Small" />
+			<Button {...args} size="sm" children="Small" />
+			<Button {...args} size="md" children="Normal" />
+			<Button {...args} size="lg" children="Large" />
+			<Button {...args} size="xl" children="Extra Large" />
+		</div>
+	),
+	args: {
+		...Default.args,
+		children: "I'm a button",
 	},
 };

@@ -30,17 +30,20 @@ export const BadName: Story = {
 export const CustomColor: Story = {
 	args: {
 		...Default.args,
-		className: "text-yellow-700",
+		className: "text-yellow-500",
 	},
 };
 
 export const IconColors: Story = {
 	render: (args) => (
 		<>
-			<Icon {...args} color="neutral" />
+			<Icon {...args} color="info" />
 			<Icon {...args} color="success" />
 			<Icon {...args} color="danger" />
-			<Icon {...args} color="main" />
+			<Icon {...args} color="warning" />
+			<Icon {...args} color="accent" />
+			<Icon {...args} color="light" />
+			<Icon {...args} color="dark" />
 		</>
 	),
 	args: {
@@ -50,16 +53,17 @@ export const IconColors: Story = {
 export const SmallIcon: Story = {
 	args: {
 		...Default.args,
-		size: "10px",
+		size: "sm",
 	},
 };
 export const CustomSize: Story = {
 	render: (args) => (
 		<>
-			<Icon {...args} size="10px" />
-			<Icon {...args} size="24px" />
-			<Icon {...args} size="48px" />
-			<Icon {...args} size="96px" />
+			<Icon {...args} size="xs" />
+			<Icon {...args} size="sm" />
+			<Icon {...args} size="md" />
+			<Icon {...args} size="lg" />
+			<Icon {...args} size="xl" />
 		</>
 	),
 	args: {

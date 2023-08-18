@@ -13,8 +13,8 @@ describe("Icon Component", () => {
 	});
 	// colors
 
-	test("Displays correctly it's neutral color", () => {
-		render(<Icon icon={Texts.TEXT} color="neutral" />);
+	test("Displays correctly it's info color", () => {
+		render(<Icon icon={Texts.TEXT} color="info" />);
 		const icon = screen.getByRole("img");
 		expect(icon).toHaveClass("text-primary");
 	});
@@ -29,7 +29,7 @@ describe("Icon Component", () => {
 		expect(icon).toHaveClass("text-red-500");
 	});
 	test("Displays correctly it's main color", () => {
-		render(<Icon icon={Texts.TEXT} color="main" />);
+		render(<Icon icon={Texts.TEXT} color="accent" />);
 		const icon = screen.getByRole("img");
 		expect(icon).toHaveClass("text-accent");
 	});
@@ -39,15 +39,15 @@ describe("Icon Component", () => {
 		const icon = screen.getByRole("img");
 		expect(icon).toHaveStyle({ fontSize: "" });
 	});
-	test("Displays correctly it's 10px size", () => {
-		render(<Icon icon={Texts.TEXT} size="10px" />);
+	test("Displays correctly it's sm size", () => {
+		render(<Icon icon={Texts.TEXT} size="sm" />);
 		const icon = screen.getByRole("img");
-		expect(icon).toHaveStyle({ fontSize: "10px" });
+		expect(icon).toHaveStyle({ fontSize: "text-lg" });
 	});
-	test("Displays correctly it's 20px size", () => {
-		render(<Icon icon={Texts.TEXT} size="20px" />);
+	test("Displays correctly it's lg size", () => {
+		render(<Icon icon={Texts.TEXT} size="lg" />);
 		const icon = screen.getByRole("img");
-		expect(icon).toHaveStyle({ fontSize: "20px" });
+		expect(icon).toHaveStyle({ fontSize: "text-4xl" });
 	});
 
 	// className
