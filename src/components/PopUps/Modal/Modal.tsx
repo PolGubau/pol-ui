@@ -3,8 +3,7 @@ import { ModalProps } from "./types";
 import React, { useEffect } from "react";
 import { Icon } from "../../Icon";
 import { Button, IconButton } from "../../Buttons";
-import { ClickOutsideWrapper } from "../../Wrappers";
-import { Text } from "../../Text";
+ import { Text } from "../../Text";
 import Wrapper from "../../Wrappers/Wrapper";
 
 interface Props {

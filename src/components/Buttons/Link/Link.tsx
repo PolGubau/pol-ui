@@ -1,18 +1,16 @@
 import React from "react";
 import "../../../style/baseTheme.scss";
 import { Icon, IconType } from "../../Icon";
-import { button } from "./Button.styles";
+import { button } from "./Link.styles";
 import { Side, Sizes } from "../../../common";
-
-export type ButtonType = "main" | "normal" | "outlined" | "text";
 interface Props {
 	children?: React.ReactNode;
-	onClick?: () => void;
+	onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
 	id?: string;
 	className?: string;
 	ariaLabel?: string;
 	disabled?: boolean;
-	type?: ButtonType;
+	type?: "main" | "normal" | "outlined" | "text";
 	size?: Sizes;
 	rounded?: boolean;
 	icon?: IconType;
@@ -21,11 +19,10 @@ interface Props {
 	fullWidth?: boolean;
 	centered?: boolean;
 	onlyIcon?: boolean;
-	href?: string;
-	ref?: React.RefObject<HTMLButtonElement>;
+	href: string;
 }
 
-const Button: React.FC<Props> = ({
+const Link: React.FC<Props> = ({
 	className,
 	children,
 	id,
@@ -41,16 +38,26 @@ const Button: React.FC<Props> = ({
 	fullWidth = false,
 	centered = false,
 	onlyIcon = false,
-	ref,
+	href,
 }) => {
+	const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+		event.preventDefault();
+		if (onClick) {
+			onClick(event);
+		}
+
+		window.history.pushState({}, "", href);
+		const navEvent = new PopStateEvent("popstate");
+		window.dispatchEvent(navEvent);
+	};
+
 	return (
-		<button
-			ref={ref}
+		<a
+			href={href}
 			aria-label={ariaLabel}
-			disabled={disabled || !onClick}
 			autoFocus={autoFocus}
 			id={id}
-			onClick={onClick}
+			onClick={handleLinkClick}
 			className={`${button({
 				type,
 				size,
@@ -64,7 +71,7 @@ const Button: React.FC<Props> = ({
 			{icon && iconPosition === "left" && <Icon icon={icon} size={size} />}
 			{!onlyIcon && children}
 			{icon && iconPosition === "right" && <Icon icon={icon} size={size} />}
-		</button>
+		</a>
 	);
 };
-export default Button;
+export default Link;

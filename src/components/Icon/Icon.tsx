@@ -11,7 +11,7 @@ interface IconProps {
 	id?: string;
 }
 
-const Icon = ({ icon, color = "info", size, className, id }: IconProps) => {
+const Icon = ({ icon, color, size, className, id }: IconProps) => {
 	const resultIcon = typeof icon === "string" ? getIcon(icon) : icon;
 	return (
 		<div role="img" id={id} className={`${iconStyles({ size, color })} ${className}`}>

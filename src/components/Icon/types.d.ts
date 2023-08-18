@@ -6,6 +6,9 @@ export interface IconData {
 }
 
 export enum IconNames {
+	minimize = "minimize",
+	expand = "expand",
+	more = "more",
 	plus = "plus",
 	menus = "menus",
 	alarm = "alarm",

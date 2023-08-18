@@ -3,13 +3,14 @@ import "../../../style/baseTheme.scss";
 import { IconType } from "../../Icon";
 import { Button } from "../Button";
 import { Sizes } from "../../../common";
+import { ButtonType } from "../Button/Button";
 interface Props {
 	onClick?: () => void;
 	id?: string;
 	className?: string;
 	ariaLabel?: string;
 	disabled?: boolean;
-	type?: "main" | "normal" | "outlined" | "text";
+	type?: ButtonType;
 	size?: Sizes;
 	icon?: IconType;
 	rounded?: boolean;

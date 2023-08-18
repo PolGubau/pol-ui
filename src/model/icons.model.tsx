@@ -1,9 +1,11 @@
 import { BiUserCircle, BiWorld } from "react-icons/bi";
-import { CgPerformance } from "react-icons/cg";
+import { CgMoreVerticalAlt, CgPerformance } from "react-icons/cg";
 import { FaRegIdCard } from "react-icons/fa";
 import {
 	MdAlternateEmail,
 	MdClose,
+	MdExpandLess,
+	MdExpandMore,
 	MdOutlineNotListedLocation,
 	MdOutlineShortcut,
 	MdOutlineTextsms,
@@ -72,10 +74,13 @@ import {
 	TbEdit,
 } from "react-icons/tb";
 import { TiFlowSwitch } from "react-icons/ti";
-import { IconData, IconNames } from "../types.d";
+import { IconData, IconNames } from "../components/Icon/types.d";
 // This code exports an array of objects containing icon names and their corresponding React components. The IconNames enum is used to ensure that only valid icon names are used. This code can be used in a React project to easily display icons by name.
 
 export const icons: IconData[] = [
+	{ name: IconNames.minimize, icon: <MdExpandLess /> },
+	{ name: IconNames.expand, icon: <MdExpandMore /> },
+	{ name: IconNames.more, icon: <CgMoreVerticalAlt /> },
 	{ name: IconNames.plus, icon: <TbPlus /> },
 	{ name: IconNames.menus, icon: <TbMenu2 /> },
 	{ name: IconNames.alarm, icon: <TbAlarm /> },

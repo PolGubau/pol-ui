@@ -5,12 +5,13 @@ export const iconStyles = tv({
 	variants: {
 		size: {
 			xs: "text-sm",
-			sm: "text-lg",
-			md: "text-2xl",
-			lg: "text-4xl",
-			xl: "text-6xl",
+			sm: "text-md",
+			md: "text-lg",
+			lg: "text-2xl",
+			xl: "text-4xl",
 		},
 		color: {
+			default: "text-current",
 			info: "text-primary",
 			success: "text-green-500",
 			danger: "text-red-500",
@@ -22,6 +23,6 @@ export const iconStyles = tv({
 	},
 	defaultVariants: {
 		size: "md",
-		color: "info",
+		color: "default",
 	},
 });
