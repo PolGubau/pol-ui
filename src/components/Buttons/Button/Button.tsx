@@ -63,6 +63,3 @@ const Button: React.FC<Props> = ({
 };
 export default Button;
 
-// ${size === "large" ? "px-4 py-3 text-lg" : ""}
-// 				   ${size === "normal" ? "px-4 py-2 text-base" : ""}
-// 				  ${size === "small" ? "px-3 py-1.5 text-sm rounded-lg" : ""}

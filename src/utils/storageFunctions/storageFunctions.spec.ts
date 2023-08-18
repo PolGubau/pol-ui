@@ -26,6 +26,12 @@ describe("Storage Functions", () => {
 		localStorageMock.clear();
 	});
 
+	it("the 3 functions should be defined", () => {
+		expect(getLocalStorage).toBeDefined();
+		expect(setToLocalStorage).toBeDefined();
+		expect(removeFromLocalStorage).toBeDefined();
+	});
+
 	it("should get a value from localStorage", () => {
 		const key = "testKey";
 		const initialValue = "defaultValue";

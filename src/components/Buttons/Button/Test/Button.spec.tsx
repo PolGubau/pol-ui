@@ -128,4 +128,22 @@ describe("Button Component", () => {
 		const button = screen.getByText(Texts.TEXT);
 		expect(button).toHaveClass("bg-transparent text-primary");
 	});
+
+	// Centered
+
+	test("If centered prop is true, should have justify-center text-center classes", () => {
+		render(<Button centered>{Texts.TEXT}</Button>);
+		const button = screen.getByText(Texts.TEXT);
+		expect(button).toHaveClass("justify-center text-center");
+	});
+
+	test("if onlyIcon prop is true, then there is not children", () => {
+		render(
+			<Button onlyIcon icon="search">
+				Children
+			</Button>
+		);
+		const button = screen.getByRole("button");
+		expect(button).not.toHaveTextContent("Children");
+	});
 });
