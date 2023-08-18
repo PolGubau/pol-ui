@@ -15,7 +15,7 @@ export const labelStyles = tv({
         pointer-events-none `,
 	variants: {
 		isUp: {
-			true: "text-primary py-0 translate-y-[-50%] bg-white text-sm focus:text-accent",
+			true: "text-primary/80 py-0 translate-y-[-50%] bg-white text-sm focus:text-accent",
 			false: " ",
 		},
 	},
@@ -34,17 +34,22 @@ export const inputStyles = tv({
 			invalid:ring-1 
 			invalid:ring-red-500
       ring-1
-      ring-primary          
-			hover:shadow-lg
+      ring-primary/60          
+			hover:ring-accent
       focus:ring-accent
       peer`,
 	variants: {
 		multiline: {
 			true: "input peer min-h-[100px] max-h-[300px] resize-y",
-			false: "input peer  ",
+			false: "input peer",
+		},
+		fullWidth: {
+			true: "w-full",
+			false: "w-fit min-w-max",
 		},
 	},
 	defaultVariants: {
 		multiline: false,
+		fullWidth: false,
 	},
 });

@@ -32,8 +32,7 @@ const IconButton: React.FC<Props> = ({
 			onClick={onClick}
 			className={`
 			flex
-			 	h-full
-				cursor-pointer aspect-square
+ 				cursor-pointer aspect-square
 				
 				${type === "main" ? "bg-accent text-primary hover:bg-accent/50" : ""}
 				${type === "normal" ? "bg-primary text-white hover:bg-primary/50" : ""}

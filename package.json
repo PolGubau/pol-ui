@@ -110,6 +110,7 @@
 		"prop-types": "^15.8.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
+		"react-icons": "^4.10.1",
 		"sass": "^1.60.0",
 		"storybook": "^7.2.3",
 		"styled-components": "^6.0.7",
@@ -117,13 +118,12 @@
 		"stylelint-config-rational-order": "^0.0.4",
 		"stylelint-config-standard-scss": "^3.0.0",
 		"stylelint-order": "^5.0.0",
+		"tailwind-variants": "^0.1.13",
 		"tailwindcss": "^3.3.3",
+		"tailwindcss-animated": "^1.0.1",
 		"typescript": "^4.9.5",
 		"vite": "^4.3.8",
 		"vite-plugin-css-injected-by-js": "^3.1.1",
-		"vite-plugin-dts": "^2.3.0",
-		"react-icons": "^4.10.1",
-		"tailwind-variants": "^0.1.13"
-	},
-	"dependencies": {}
+		"vite-plugin-dts": "^2.3.0"
+	}
 }

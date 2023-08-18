@@ -15,6 +15,8 @@ interface Props {
 	rounded?: boolean;
 	icon?: IconType;
 	iconPosition?: "left" | "right";
+	autoFocus?: boolean;
+	fullWidth?: boolean;
 }
 
 const Button: React.FC<Props> = ({
@@ -31,18 +33,21 @@ const Button: React.FC<Props> = ({
 	rounded = true,
 	icon,
 	iconPosition = "left",
+	autoFocus = false,
+	fullWidth = false,
 }) => {
 	return (
 		<button
 			aria-label={ariaLabel}
 			disabled={disabled || !onClick}
+			autoFocus={autoFocus}
 			id={id}
 			onClick={onClick}
 			className={`		
 			flex items-center justify-center gap-2		
 				cursor-pointer
 				${type === "main" ? "bg-accent text-primary hover:bg-accent/50" : ""}
-				${type === "normal" ? "bg-primary text-white hover:bg-primary/50" : ""}
+				${type === "normal" ? "bg-primary/60 text-white hover:bg-primary/80" : ""}
 				${type === "outlined" ? "bg-white text-primary   ring-1 ring-primary hover:bg-primary/30" : ""}
 				${type === "text" ? "bg-white text-primary hover:bg-primary/30" : ""}
 				${disabled ? "opacity-50 cursor-not-allowed" : ""}
@@ -52,6 +57,11 @@ const Button: React.FC<Props> = ({
 				${size === "normal" ? "px-4 py-2 text-base" : ""}
 				${size === "small" ? "px-3 py-1.5 text-sm rounded-lg" : ""}
 				${!rounded ? "rounded-none" : ""}
+				
+				
+				${fullWidth ? "w-full" : "w-fit"}
+				
+				
 				${className ?? ""}
  			`}
 		>

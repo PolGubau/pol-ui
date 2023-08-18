@@ -12,6 +12,7 @@ interface Props {
 	maxLength?: number;
 	isMarkdown?: boolean;
 	className?: string;
+	centered?: boolean;
 }
 
 const Text: React.FC<Props> = ({
@@ -24,6 +25,7 @@ const Text: React.FC<Props> = ({
 	className, // Class name of the text
 	isItalic = false, // If the text is italic
 	isBold = false, // If the text is bold
+	centered = false, // If the text is centered
 }): React.JSX.Element => {
 	const shortedText = shorterText({ value, maxLength });
 	const sizedText = textSizer({ size, value: shortedText, isMarkdown });
@@ -33,6 +35,8 @@ const Text: React.FC<Props> = ({
 			className={` 
 				${isBold ? "font-bold" : ""}
 				${isItalic ? "italic" : ""}
+				${centered ? "text-center" : "text-left"}
+				
 				p-0 m-0 overflow-hidden 
 			${className}`}
 			$color={color}

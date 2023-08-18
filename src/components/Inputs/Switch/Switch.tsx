@@ -28,7 +28,7 @@ export const Switch: React.FC<Props> = ({
 			<input
 				role="switch"
 				disabled={disabled}
-				checked={checked}
+				defaultChecked={checked}
 				onChange={toggleSwitch}
 				className={`
 				flex

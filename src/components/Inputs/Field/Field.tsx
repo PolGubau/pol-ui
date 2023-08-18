@@ -68,7 +68,7 @@ const Field = <T extends string | number>({
 					required={required}
 					defaultValue={value ?? ""}
 					onChange={handleChange}
-					className={inputStyles({ multiline: true }) + className}
+					className={inputStyles({ multiline: true, fullWidth }) + className}
 				/>
 			) : (
 				<input
@@ -80,7 +80,7 @@ const Field = <T extends string | number>({
 					disabled={disabled}
 					defaultValue={value ?? ""}
 					onChange={handleChange}
-					className={inputStyles({ multiline: false }) + className}
+					className={inputStyles({ multiline: false, fullWidth }) + className}
 				/>
 			)}
 			{Boolean(label) && (

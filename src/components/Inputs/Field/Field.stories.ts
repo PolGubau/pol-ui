@@ -82,10 +82,19 @@ export const Email: Story = {
 		type: "email",
 	},
 };
+
 export const InvalidEmail: Story = {
 	args: {
 		label: "A bad email",
 		value: "youremail@@",
 		type: "email",
+	},
+};
+export const FullWidth: Story = {
+	args: {
+		label: "Email",
+		value: "youremail@email.com",
+		type: "email",
+		fullWidth: true,
 	},
 };
