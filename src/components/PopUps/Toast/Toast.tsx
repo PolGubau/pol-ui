@@ -1,8 +1,7 @@
 import React from "react";
-import { GrClose } from "react-icons/gr";
-import ToastStyled from "./ToastStyled";
+import { toast } from "./Toast.styles";
 import { ToastProps } from "./types.d";
-import { Button } from "../../Buttons";
+import { Button, IconButton } from "../../Buttons";
 
 interface Props {
 	state: ToastProps;
@@ -10,20 +9,28 @@ interface Props {
 }
 
 export const Toast = ({ state, setState }: Props) => {
-	const { message, duration, type, action } = state;
+	const { message, duration, variant, action } = state;
 	const handleClose = () => {
 		setState({ ...state, isOpen: false });
 	};
+	const autoClose = () => {
+		setTimeout(() => {
+			handleClose();
+		}, duration);
+	};
+	React.useEffect(() => {
+		autoClose();
+	}, []);
 
 	return (
-		<ToastStyled duration={duration ?? 3000} type={type}>
-			<p>{message}</p>
+		<div className={toast({ variant })}>
+			<p className={`text-lg`}>{message}</p>
 			{action && (
 				<Button icon={action?.icon ?? ""} onClick={action?.onClick}>
 					{action.label ?? "OK"}
 				</Button>
 			)}
-			<GrClose onClick={handleClose} />
-		</ToastStyled>
+			<IconButton icon="close" type="text" onClick={handleClose} />
+		</div>
 	);
 };

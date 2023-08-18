@@ -38,6 +38,9 @@
 			"react-app/jest",
 			"plugin:storybook/recommended"
 		],
+		"rules": {
+			"react-hooks/exhaustive-deps": "off"
+		},
 		"settings": {
 			"import/resolver": {
 				"node": {

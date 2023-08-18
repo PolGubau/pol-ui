@@ -1,14 +1,13 @@
-export type ToastType = 'success' | 'error';
+export type ToastType = "success" | "danger" | "info";
 
 export interface ToastProps {
-  isOpen?: boolean;
-  message?: string;
-  type?: ToastType;
-  show?: boolean;
-  duration?: number;
-  action?: {
-    label?: string;
-    icon?: string;
-    onClick: () => void;
-  };
+	isOpen?: boolean;
+	message?: string;
+	variant?: ToastType;
+	duration?: number;
+	action?: {
+		label?: string;
+		icon?: string;
+		onClick: () => void;
+	};
 }

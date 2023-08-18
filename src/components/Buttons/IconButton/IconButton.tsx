@@ -34,10 +34,10 @@ const IconButton: React.FC<Props> = ({
 			flex
  				cursor-pointer aspect-square
 				
-				${type === "main" ? "bg-accent text-primary hover:bg-accent/50" : ""}
+				${type === "main" ? "bg-accent  hover:bg-accent/50" : ""}
 				${type === "normal" ? "bg-primary text-white hover:bg-primary/50" : ""}
-				${type === "outlined" ? "bg-white text-primary   ring-1 ring-primary hover:bg-primary/30" : ""}
-				${type === "text" ? "bg-white text-primary hover:bg-primary/30" : ""}
+				${type === "outlined" ? "bg-white    ring-1 ring-primary hover:bg-primary/30" : ""}
+				${type === "text" ? "bg-transparent  hover:bg-primary/30" : ""}
 				${disabled ? "opacity-50 cursor-not-allowed" : ""}
 				transition-colors
  				${rounded ? "rounded-xl" : ""}

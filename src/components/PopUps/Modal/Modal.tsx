@@ -68,7 +68,7 @@ const Modal = ({ state, setState }: Props) => {
 			<section
 				onKeyDown={keyDownHandler}
 				ref={modalRef}
-				className={`animate-fade-up animate-once animate-ease-out flex flex-col gap-4 relative   rounded-2xl max-w-3xl w-full bg-white dark:bg-gray-800 dark:ring-gray-700 dark:text-gray-200   justify-center p-6 shadow-2xl`}
+				className={`animate-fade-up animate-once animate-ease-out flex flex-col gap-4 relative animate-duration-500  rounded-2xl max-w-3xl w-full bg-white dark:bg-gray-800 dark:ring-gray-700 dark:text-gray-200   justify-center p-6 shadow-2xl`}
 			>
 				<IconButton
 					className="absolute right-4 top-4"
