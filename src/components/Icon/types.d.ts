@@ -6,13 +6,16 @@ export interface IconData {
 }
 
 export enum IconNames {
+	expandLess = "expandLess",
+	expandMore = "expandMore",
+	expandboth = "expandboth",
 	minimize = "minimize",
 	expand = "expand",
 	more = "more",
 	plus = "plus",
 	menus = "menus",
 	alarm = "alarm",
-	TbTrash = "TbTrash",
+	trash = "trash",
 	warning = "warning",
 	settings = "settings",
 	binary = "binary",
@@ -82,7 +85,6 @@ export enum IconNames {
 	upload = "upload",
 	uploadCloud = "uploadCloud",
 	close = "close",
-	trash = "trash",
 	save = "save",
 	link = "link",
 	question = "question",

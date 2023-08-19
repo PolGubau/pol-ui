@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { Button } from "../../../Buttons";
-import useClickOutside from "../../../../hooks/useClickOutside";
-import { formatString } from "../../../../utils";
-import { Link } from "../../../Buttons/Link";
-import { ButtonType } from "../../../Buttons/Button/Button";
-import { Side } from "../../../../common";
 import { Transition } from "@headlessui/react";
+import Button, { ButtonType } from "../../Buttons/Button/Button";
+import useClickOutside from "../../../hooks/useClickOutside";
+import { Side } from "../../../common";
+import { formatString } from "../../../utils";
+import { Link } from "../../Buttons/Link";
 
 export interface MenuItem {
 	id: string;

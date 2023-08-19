@@ -11,7 +11,12 @@ import {
 	MdOutlineTextsms,
 	MdSave,
 } from "react-icons/md";
-import { RiMedalFill, RiMenuUnfoldLine, RiShieldUserLine } from "react-icons/ri";
+import {
+	RiExpandUpDownLine,
+	RiMedalFill,
+	RiMenuUnfoldLine,
+	RiShieldUserLine,
+} from "react-icons/ri";
 import {
 	TbAdjustmentsAlt,
 	TbAlarm,
@@ -78,13 +83,16 @@ import { IconData, IconNames } from "../components/Icon/types.d";
 // This code exports an array of objects containing icon names and their corresponding React components. The IconNames enum is used to ensure that only valid icon names are used. This code can be used in a React project to easily display icons by name.
 
 export const icons: IconData[] = [
+	{ name: IconNames.expandboth, icon: <RiExpandUpDownLine /> },
+	{ name: IconNames.expandMore, icon: <MdExpandMore /> },
+	{ name: IconNames.expandLess, icon: <MdExpandLess /> },
 	{ name: IconNames.minimize, icon: <MdExpandLess /> },
 	{ name: IconNames.expand, icon: <MdExpandMore /> },
 	{ name: IconNames.more, icon: <CgMoreVerticalAlt /> },
 	{ name: IconNames.plus, icon: <TbPlus /> },
 	{ name: IconNames.menus, icon: <TbMenu2 /> },
 	{ name: IconNames.alarm, icon: <TbAlarm /> },
-	{ name: IconNames.TbTrash, icon: <TbTrash /> },
+	{ name: IconNames.trash, icon: <TbTrash /> },
 	{ name: IconNames.warning, icon: <TbAlertTriangle /> },
 	{ name: IconNames.settings, icon: <TbAdjustmentsAlt /> },
 	{ name: IconNames.binary, icon: <TbBinary /> },
@@ -160,5 +168,7 @@ export const icons: IconData[] = [
 	{ name: IconNames.question, icon: <TbQuestionMark /> },
 	{ name: IconNames.edit, icon: <TbEdit /> },
 ];
+type IconName = keyof typeof IconNames;
 
 export default icons;
+export type { IconName };

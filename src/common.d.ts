@@ -10,3 +10,20 @@ export type ColorTypes =
 	| "dark"
 	| "light"
 	| "default";
+
+export type BasicProps = {
+	className?: string;
+	style?: React.CSSProperties;
+	children?: React.ReactNode;
+	id?: string;
+};
+
+export type ID = {
+	id: Identifier;
+};
+export interface AnyButId extends ID {
+	[key: string]: any;
+}
+export interface anyObject {
+	[key: string]: any;
+}

@@ -6,18 +6,12 @@ const config = {
 			colors: {
 				primary: {
 					DEFAULT: "#2B2D42",
-					light: "#3C3C3C",
-					dark: "#1C1C1C",
 				},
 				accent: {
-					DEFAULT: "#FFC107",
-					light: "#FFD54F",
-					dark: "#FFA000",
+					DEFAULT: "#41ff07",
 				},
 				secondary: {
 					DEFAULT: "#8D99AE",
-					light: "#A8B2C1",
-					dark: "#6F7D8C",
 				},
 			},
 

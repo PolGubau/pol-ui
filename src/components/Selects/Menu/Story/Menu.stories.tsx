@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Menu from "../Menu";
 import { mockmenu } from "./mockMenus";
-import { Link } from "../../../../Buttons/Link";
+import { Link } from "../../../Buttons/Link";
 
 const meta = {
 	title: "Selects/Menu",
