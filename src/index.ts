@@ -17,6 +17,7 @@ import {
 	Menu,
 	Select,
 	MultiSelect,
+	Autocomplete,
 } from "./components";
 
 import {
@@ -70,6 +71,7 @@ export {
 	Menu,
 	Select,
 	MultiSelect,
+	Autocomplete,
 
 	// utils
 	generateUUID,
