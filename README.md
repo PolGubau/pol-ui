@@ -54,9 +54,6 @@ This template comes with a GitHub Actions workflow to automatically publish on a
 
 0. **General Components:**
 
-   - ✅ Toast
-   - ✅ Modal
-   - ✅ Wrapper
    - ✅ IconButton
    - ✅ Button
    - ✅ Icon
@@ -74,7 +71,6 @@ This template comes with a GitHub Actions workflow to automatically publish on a
    - ✅ Autocomplete
 3. **Data Display Components:**
    - ✅ Avatar
-   - ✅ Image
    - ✅ Badge
    - 🦺 Tooltip
    - Progress Bar
@@ -94,7 +90,6 @@ This template comes with a GitHub Actions workflow to automatically publish on a
    - Stepper
 6. **Form Components:**
    - Form
-   - FormField
    - FormValidation
    - Date Picker
    - Time Picker
@@ -102,24 +97,26 @@ This template comes with a GitHub Actions workflow to automatically publish on a
    - Alert
    - Snackbar
    - Notification
-   - Toast
-   - Modal (you mentioned you have this, but it's really versatile)
+   - ✅ Toast
+   - ✅ Modal
 8. **Charts and Data Visualization Components:**
    - Bar Chart
    - Line Chart
    - Pie Chart
    - Data Table
 9. **Media Components:**
-   - Image
+   - ✅ Image
    - Video
    - Audio Player
 10. **Overlay Components:**
-    - Overlay (like a semi-transparent overlay for modals or full-page loading)
-    - Tooltip
-    - Popover
+
+- ✅ Wrapper
+- Tooltip
+- Popover
+
 11. **Animation Components:**
     - Animations (for providing pre-designed animation effects)
 12. **Utilities:**
     - Theme Provider
     - Responsive Utilities (for handling different screen sizes)
-    - CSS Reset or Normalize (for consistent styling)
+    - ✅ CSS Reset or Normalize (for consistent styling)

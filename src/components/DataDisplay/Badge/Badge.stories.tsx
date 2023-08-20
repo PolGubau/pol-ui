@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Badge from "./Badge";
-import { Image } from "../Image";
+import { Image } from "../../Media/Image";
+import { Button } from "../../Buttons";
 
 const meta = {
 	title: "Data Display/Badge",
@@ -101,6 +102,28 @@ export const PassingMaxAsNumber: Story = {
 	args: {
 		...Default.args,
 		content: 100000,
+		color: "info",
+
+		max: 99,
+	},
+};
+export const Icon: Story = {
+	args: {
+		...Default.args,
+		icon: "script",
+		content: 100000,
+		color: "info",
+
+		max: 99,
+	},
+};
+export const HideBadges: Story = {
+	args: {
+		...Default.args,
+		children: <Button>Your followers</Button>,
+		icon: "user",
+		content: 100000,
+		isVisible: false,
 		color: "info",
 
 		max: 99,

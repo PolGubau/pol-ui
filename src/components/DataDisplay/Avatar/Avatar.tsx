@@ -2,7 +2,7 @@ import React from "react";
 import { ColorTypes, Rounded, Sizes } from "../../../common";
 import { Link } from "../../Buttons/Link";
 import { avatarImageStyle, avatarStyle } from "./avatar.styles";
-import { Image } from "../Image";
+import { Image } from "../../Media/Image";
 import Badge from "../Badge/Badge";
 
 interface Props {
