@@ -1,18 +1,21 @@
 import React from "react";
-import { Sizes } from "../../../common";
+import { ColorTypes, Rounded, Sizes } from "../../../common";
 import { Link } from "../../Buttons/Link";
 import { avatarImageStyle, avatarStyle } from "./avatar.styles";
 import { Image } from "../Image";
+import Badge from "../Badge/Badge";
 
 interface Props {
 	src: string;
 	name: string;
-	rounded?: "circular" | "rounded" | "square";
+	rounded?: Rounded;
 	description?: string;
 	size?: Sizes;
 	href?: string;
 	hasText?: boolean;
 	variant?: "transparent" | "main" | "neutral";
+	badge?: string;
+	badgeColor?: ColorTypes;
 }
 
 const Avatar: React.FC<Props> = ({
@@ -24,10 +27,23 @@ const Avatar: React.FC<Props> = ({
 	href,
 	hasText = true,
 	variant = "transparent",
+	badge,
+	badgeColor,
 }) => {
+	const ImageContent = (
+		<Image src={src} rounded={rounded} alt={name} className={avatarImageStyle({ size })} />
+	);
+
 	const avatarContent = (
 		<div className={`flex gap-2 items-center ${avatarStyle({ size, variant })}`}>
-			<Image src={src} rounded={rounded} alt={name} className={avatarImageStyle({ size })} />
+			{badge ? (
+				<Badge content={badge} color={badgeColor}>
+					{ImageContent}
+				</Badge>
+			) : (
+				ImageContent
+			)}
+
 			{hasText && (
 				<div className="flex flex-col">
 					{name}

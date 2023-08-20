@@ -1,2 +1,3 @@
-export { default as Avatar } from "./Avatar/Avatar";
+export * from "./Avatar";
+export * from "./Badge";
 export * from "./Image";

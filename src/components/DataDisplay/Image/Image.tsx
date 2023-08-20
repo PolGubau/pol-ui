@@ -1,5 +1,6 @@
 import React from "react";
 import { imageStyle } from "./image.styles";
+import { Rounded } from "../../../common";
 interface Props {
 	src: string;
 	alt: string;
@@ -7,13 +8,15 @@ interface Props {
 	className?: string;
 	height?: string;
 	width?: string;
-	rounded?: "circular" | "square" | "rounded";
+	rounded?: Rounded;
 }
 
 const Image: React.FC<Props> = ({
 	src,
 	alt,
-	renderOnError = <span>{alt[0]}</span>,
+	renderOnError = (
+		<span className="w-[100px] aspect-square flex items-center justify-center">{alt[0]}</span>
+	),
 	className,
 	width = "100px",
 	height = "100px",

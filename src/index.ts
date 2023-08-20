@@ -20,6 +20,7 @@ import {
 	Autocomplete,
 	Image,
 	Avatar,
+	Badge,
 } from "./components";
 
 import {
@@ -76,6 +77,7 @@ export {
 	Autocomplete,
 	Image,
 	Avatar,
+	Badge,
 
 	// utils
 	generateUUID,

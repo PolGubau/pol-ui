@@ -27,3 +27,4 @@ export interface AnyButId extends ID {
 export interface anyObject {
 	[key: string]: any;
 }
+export type Rounded = "circular" | "square" | "rounded";

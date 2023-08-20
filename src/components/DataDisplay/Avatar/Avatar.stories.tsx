@@ -85,3 +85,11 @@ export const WrongUrl: Story = {
 		src: "3.14159265359",
 	},
 };
+export const WithBadge: Story = {
+	args: {
+		...Default.args,
+		size: "lg",
+		badge: "hi",
+		badgeColor: "dark",
+	},
+};
