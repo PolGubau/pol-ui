@@ -69,7 +69,7 @@ export default function Menu({
 			</Button>
 			<Transition
 				show={open}
-				enter="transition-all duration-75"
+				enter="transition-all duration-150"
 				enterFrom="translate-y-0 opacity-0"
 				enterTo="translate-y-1 opacity-100"
 				leave="transition-all duration-150"
