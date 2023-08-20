@@ -5,3 +5,4 @@ export * from "./PopUps";
 export * from "./Selects";
 export * from "./Text";
 export * from "./Wrappers";
+export * from "./DataDisplay";

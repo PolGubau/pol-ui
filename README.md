@@ -71,10 +71,11 @@ This template comes with a GitHub Actions workflow to automatically publish on a
    - ✅ Menu
    - ✅ Dropdown
    - ✅ MultiSelect
-   - 🦺 Autocomplete
+   - ✅ Autocomplete
 3. **Data Display Components:**
-   - Avatar
-   - Badge
+   - ✅ Avatar
+   - ✅ Image
+   - 🦺 Badge
    - Tooltip
    - Progress Bar
    - Spinner

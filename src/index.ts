@@ -18,6 +18,8 @@ import {
 	Select,
 	MultiSelect,
 	Autocomplete,
+	Image,
+	Avatar,
 } from "./components";
 
 import {
@@ -72,6 +74,8 @@ export {
 	Select,
 	MultiSelect,
 	Autocomplete,
+	Image,
+	Avatar,
 
 	// utils
 	generateUUID,
