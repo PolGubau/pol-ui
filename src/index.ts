@@ -11,6 +11,12 @@ import {
 	CheckboxGroup,
 	ClickOutsideWrapper,
 	Wrapper,
+	Modal,
+	Toast,
+	PopupsProvider,
+	Menu,
+	Select,
+	MultiSelect,
 } from "./components";
 
 import {
@@ -58,6 +64,12 @@ export {
 	RadioGroup,
 	Wrapper,
 	ClickOutsideWrapper,
+	Modal,
+	Toast,
+	PopupsProvider,
+	Menu,
+	Select,
+	MultiSelect,
 
 	// utils
 	generateUUID,
