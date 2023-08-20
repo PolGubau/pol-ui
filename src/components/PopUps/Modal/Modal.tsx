@@ -3,7 +3,7 @@ import { ModalProps } from "./types";
 import React, { useEffect } from "react";
 import { Icon } from "../../Icon";
 import { Button, IconButton } from "../../Buttons";
- import { Text } from "../../Text";
+import { Text } from "../../Text";
 import Wrapper from "../../Wrappers/Wrapper";
 
 interface Props {
@@ -63,7 +63,7 @@ const Modal = ({ state, setState }: Props) => {
 	};
 
 	return (
-		<Wrapper onClick={closeModal} hasOverlay={true}>
+		<Wrapper onClickOutside={closeModal} hasOverlay={true}>
 			<section
 				onKeyDown={keyDownHandler}
 				ref={modalRef}
@@ -77,7 +77,7 @@ const Modal = ({ state, setState }: Props) => {
 				/>
 				{title && (
 					<header className="max-w-[80%] flex gap-4 items-center">
-						<Icon icon={icon} size="30px" />
+						<Icon icon={icon} size="xl" />
 						<Text size={4} className="" value={title} />
 					</header>
 				)}

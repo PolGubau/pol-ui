@@ -68,10 +68,10 @@ This template comes with a GitHub Actions workflow to automatically publish on a
    - ✅ Checkbox
    - ✅ Radio
 2. **Select Components:**
-   - Menu
-   - Dropdown
-   - MultiSelect
-   - Autocomplete
+   - ✅ Menu
+   - ✅ Dropdown
+   - ✅ MultiSelect
+   - 🦺 Autocomplete
 3. **Data Display Components:**
    - Avatar
    - Badge
