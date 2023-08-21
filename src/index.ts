@@ -21,6 +21,7 @@ import {
 	Image,
 	Avatar,
 	Badge,
+	Tooltip,
 } from "./components";
 
 import {
@@ -52,9 +53,14 @@ import {
 	getToday,
 } from "./utils";
 
+import { useHover, useClickOutside } from "./hooks";
 import { Identifier } from "./common.d";
 
 export {
+	//Hooks
+	useHover,
+	useClickOutside,
+
 	// components
 	Button,
 	IconButton,
@@ -78,6 +84,7 @@ export {
 	Image,
 	Avatar,
 	Badge,
+	Tooltip,
 
 	// utils
 	generateUUID,

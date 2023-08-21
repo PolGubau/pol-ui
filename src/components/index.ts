@@ -6,3 +6,4 @@ export * from "./Selects";
 export * from "./Text";
 export * from "./Wrappers";
 export * from "./DataDisplay";
+export * from "./Media";
