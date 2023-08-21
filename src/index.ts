@@ -22,6 +22,7 @@ import {
 	Avatar,
 	Badge,
 	Tooltip,
+	ProgessBar,
 } from "./components";
 
 import {
@@ -85,6 +86,7 @@ export {
 	Avatar,
 	Badge,
 	Tooltip,
+	ProgessBar,
 
 	// utils
 	generateUUID,

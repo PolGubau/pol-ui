@@ -72,8 +72,8 @@ This template comes with a GitHub Actions workflow to automatically publish on a
 3. **Data Display Components:**
    - ✅ Avatar
    - ✅ Badge
-   - 🦺 Tooltip
-   - Progress Bar
+   - ✅ Tooltip
+   - 🦺 Progress Bar
    - Spinner
    - Divider
 4. **Layout Components:**
