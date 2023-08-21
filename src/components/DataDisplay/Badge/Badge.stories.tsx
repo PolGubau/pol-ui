@@ -113,7 +113,6 @@ export const Icon: Story = {
 		icon: "script",
 		content: 100000,
 		color: "info",
-
 		max: 99,
 	},
 };
