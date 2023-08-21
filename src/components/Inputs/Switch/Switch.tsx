@@ -19,16 +19,40 @@ export const Switch: React.FC<Props> = ({
 	className,
 	size = "normal",
 }) => {
+	const [isChecked, setIsCheck] = React.useState(checked);
+
 	const toggleSwitch = () => {
-		onChange?.(!checked);
+		setIsCheck(!isChecked);
+		onChange?.(!isChecked);
+	};
+	const toggleTrue = () => {
+		setIsCheck(true);
+		onChange?.(true);
+	};
+	const toggleFalse = () => {
+		setIsCheck(false);
+		onChange?.(false);
 	};
 
 	return (
 		<div className={`flex gap-3  items-center`}>
 			<input
+				onKeyDown={(e) => {
+					if (e.key === "Enter") {
+						toggleSwitch();
+					} else if (e.key === " ") {
+						toggleSwitch();
+					}
+					// if arrow Left or arrow Right is pressed toggle the switch on or off
+					else if (e.key === "ArrowLeft") {
+						if (isChecked) toggleFalse();
+					} else if (e.key === "ArrowRight") {
+						if (!isChecked) toggleTrue();
+					}
+				}}
 				role="switch"
 				disabled={disabled}
-				defaultChecked={checked}
+				checked={isChecked}
 				onChange={toggleSwitch}
 				className={`
 				flex

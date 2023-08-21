@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Modal from "../Modal";
 import {
 	defaultModal,
+	defaultModalWithSelect,
 	modalWithBothButtons,
 	modalWithCutomButtons,
 	modalWithoutButtons,
@@ -46,5 +47,6 @@ export const TestingFocus: Story = {
 	),
 	args: {
 		...Default.args,
+		state: defaultModalWithSelect,
 	},
 };
