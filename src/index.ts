@@ -23,6 +23,11 @@ import {
 	Badge,
 	Tooltip,
 	ProgessBar,
+	Loader,
+	Spinner,
+	Bars,
+	Dots,
+	Pulse,
 } from "./components";
 
 import {
@@ -87,6 +92,11 @@ export {
 	Badge,
 	Tooltip,
 	ProgessBar,
+	Loader,
+	Spinner,
+	Bars,
+	Dots,
+	Pulse,
 
 	// utils
 	generateUUID,

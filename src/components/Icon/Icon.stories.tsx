@@ -44,6 +44,7 @@ export const IconColors: Story = {
 			<Icon {...args} color="accent" />
 			<Icon {...args} color="light" />
 			<Icon {...args} color="dark" />
+			<Icon {...args} color="default" />
 		</>
 	),
 	args: {
