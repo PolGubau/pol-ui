@@ -16,17 +16,17 @@ describe("Icon Component", () => {
 	test("Displays correctly it's info color", () => {
 		render(<Icon icon={Texts.TEXT} color="info" />);
 		const icon = screen.getByRole("img");
-		expect(icon).toHaveClass("text-primary");
+		expect(icon).toHaveClass("text-info");
 	});
 	test("Displays correctly it's success color", () => {
 		render(<Icon icon={Texts.TEXT} color="success" />);
 		const icon = screen.getByRole("img");
-		expect(icon).toHaveClass("text-green-500");
+		expect(icon).toHaveClass("text-success");
 	});
 	test("Displays correctly it's danger color", () => {
 		render(<Icon icon={Texts.TEXT} color="danger" />);
 		const icon = screen.getByRole("img");
-		expect(icon).toHaveClass("text-red-500");
+		expect(icon).toHaveClass("text-danger");
 	});
 	test("Displays correctly it's main color", () => {
 		render(<Icon icon={Texts.TEXT} color="accent" />);
