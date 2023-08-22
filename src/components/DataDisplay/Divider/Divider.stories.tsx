@@ -87,5 +87,7 @@ export const SomeWeights: Story = {
 			<Divider {...args} weight={35} message="Po" />
 		</div>
 	),
-	args: {},
+};
+export const CustomMessageBackground: Story = {
+	args: { message: "or", customTextBackground: "red" },
 };

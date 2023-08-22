@@ -1,7 +1,7 @@
 import { tv } from "tailwind-variants";
 
 export const tooltipContainerStyle = tv({
-	base: `w-fit h-fit relative`,
+	base: ` relative`,
 });
 export const tooltipStylePosition = tv({
 	base: `text-light text-xs rounded-md  absolute pointer-events-none`,

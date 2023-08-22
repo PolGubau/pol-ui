@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import ProgessBar from "./ProgessBar";
+import { Text } from "../../Text";
 
 const meta = {
 	title: "Data Display/Progess Bar",
@@ -20,10 +21,10 @@ export const Squared: Story = {
 	args: { value: 50, rounded: "square" },
 };
 export const Marks: Story = {
-	args: { value: 50, dividedIn: 9 },
+	args: { value: 50, marks: 9 },
 };
 export const FewMarks: Story = {
-	args: { value: 25, dividedIn: 4 },
+	args: { value: 25, marks: 4 },
 };
 export const PointerDown: Story = {
 	args: { value: 70, pointerPosition: "bottom" },
@@ -80,6 +81,55 @@ export const AllSizes: Story = {
 			<ProgessBar {...args} size="md" />
 			<ProgessBar {...args} size="lg" />
 			<ProgessBar {...args} size="xl" />
+		</div>
+	),
+	args: {
+		...Default.args,
+	},
+};
+export const ShowingMin: Story = {
+	args: { value: 70, showMin: true, pointerPosition: "bottom" },
+};
+export const ShowingMax: Story = {
+	args: { value: 70, showMax: true, pointerPosition: "bottom" },
+};
+export const ShowingMaxAndMax: Story = {
+	args: { value: 70, showMax: true, showMin: true, pointerPosition: "bottom" },
+};
+
+export const CustomMinAndMax: Story = {
+	args: { value: 7, showMax: true, showMin: true, min: 1, max: 10, pointerPosition: "bottom" },
+};
+export const MoreThan100Percent: Story = {
+	args: { value: 99, showMax: true, showMin: true, min: 1, max: 2, pointerPosition: "bottom" },
+};
+
+export const SchoolMarks: Story = {
+	render: (args) => (
+		<div className=" gap-8 flex-col flex p-8 ">
+			<Text value="My marks in school" />
+			<ProgessBar
+				{...args}
+				value={9}
+				marks={10}
+				min={0}
+				max={10}
+				variant="info"
+				marksColor="light"
+				marksOpacity={60}
+			/>
+		</div>
+	),
+	args: {
+		...Default.args,
+	},
+};
+export const CustomMarksOpacity: Story = {
+	render: (args) => (
+		<div className=" gap-8 flex-col flex p-8 ">
+			<ProgessBar {...args} value={50} marks={10} marksOpacity={10} />
+			<ProgessBar {...args} value={50} marks={10} marksOpacity={40} />
+			<ProgessBar {...args} value={50} marks={10} marksOpacity={100} />
 		</div>
 	),
 	args: {

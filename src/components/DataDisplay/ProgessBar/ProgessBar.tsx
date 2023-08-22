@@ -1,31 +1,47 @@
 import React from "react";
-import { arrowPointerPB, backgroundBar, pointerPB, progressBar } from "./ProgessBar.styles";
-import { ColorTypes, Rounded, Sizes } from "../../../common";
+import { backgroundBar, progressBar } from "./ProgessBar.styles";
+import { ColorTypes, Opacities, Rounded, Sizes } from "../../../common";
 import { roundedStyles } from "../../../style";
+import ProgressBarPointer from "./components/Pointer/Pointer";
+import ProgressBarMarks from "./components/Marks/Marks";
 
 interface ProgressBarProps {
 	value: number; // Value of the progress bar (0-100)
 	height?: string; // Height of the progress bar
-	dividedIn?: number; // Interval to show marks (percentage)
 	className?: string; // Additional CSS classes
 	rounded?: Rounded;
 	pointer?: boolean;
 	pointerPosition?: "top" | "bottom";
 	hasValueInside?: boolean;
+	pointerWithArrow?: boolean;
 	variant?: ColorTypes;
 	size?: Sizes;
+	min?: number;
+	max?: number;
+	showMin?: boolean;
+	showMax?: boolean;
+	marks?: number; // Interval to show marks (percentage)
+	marksColor?: ColorTypes;
+	marksOpacity?: Opacities;
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({
 	value,
-	dividedIn = 0,
-	rounded,
+	marks = 0,
+	marksColor = "dark",
+	rounded = "circular",
 	className = "",
 	pointer = true,
 	pointerPosition = "top",
 	hasValueInside = false,
+	pointerWithArrow = true,
 	variant = "accent",
 	size = "md",
+	min = 0,
+	max = 100,
+	showMin = false,
+	showMax = false,
+	marksOpacity = 20,
 }) => {
 	const maxPercent = 100;
 	const minPercent = 0;
@@ -35,67 +51,57 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 	if (value < minPercent) {
 		value = minPercent;
 	}
+	if (min > max) {
+		min = max;
+	}
+	if (max < min) {
+		max = min;
+	}
 
-	const renderMarks = () => {
-		// marks is a number, represents the number of marks to show
-		if (dividedIn) {
-			// if marks is 10, we want to show 10 marks, so we need 10 absolute divs
+	// take the min and max as references to calculate the value as a percentage of them
+	// if min is 0 and max is 100, and value is 50, then value is 50% of the total
+	// if min is 50 and max is 100, and value is 75, then value is 50% of the total
 
-			const marksArray = Array.from({ length: dividedIn }, (_, i) => i);
-			return marksArray.map((mark) => {
-				return (
-					<div
-						key={mark}
-						className={`w-px h-full last:hidden bg-primary/20 absolute top-0 z-[1]  `}
-						style={{
-							// place the mark at the correct position, if we have 3 marks, we want to place the first mark at 25%, the second at 50%, and the third at 75%.
-							left: `${(100 / dividedIn) * (mark + 1)}%`,
-						}}
-					></div>
-				);
-			});
-		}
+	// percent formula will be: if min is 0 and max is 100, and value is 50, then value is 50% of the total
 
-		return null;
-	};
+	const percentageWithDecimals = ((value - min) * 100) / (max - min);
+	// round the percentage to the nearest integer
+	let percentage = Math.round(percentageWithDecimals);
+	if (isNaN(percentage)) return null;
+	if (isNaN(value)) return null;
+
+	if (percentage > 100) percentage = 100;
+	if (percentage < 0) percentage = 0;
 
 	return (
 		<div
 			className={`${backgroundBar({ variant, size })} ${roundedStyles({ rounded })} ${className}`}
 		>
 			{pointer && (
-				<>
-					<div
-						className={arrowPointerPB({ pointerPosition })}
-						style={{
-							left: `${value}%`,
-						}}
-					></div>
-					<div
-						className={pointerPB({ pointerPosition })}
-						style={{
-							left: `${value}%`,
-						}}
-					>
-						{value}
-					</div>
-				</>
+				<ProgressBarPointer
+					pointerWithArrow={pointerWithArrow}
+					value={value}
+					percentage={percentage}
+					pointerPosition={pointerPosition}
+				/>
 			)}
 			<div className={`overflow-hidden transition-all  ${roundedStyles({ rounded })}`}>
-				{renderMarks()}
+				<ProgressBarMarks marks={marks} marksColor={marksColor} opacity={marksOpacity} />
 				<div
 					className={`${progressBar({ variant })} ${roundedStyles({ rounded })}`}
 					style={{
-						width: `${value}%`,
+						width: `${percentage}%`,
 					}}
 					role="progressbar"
-					aria-valuenow={value}
-					aria-valuemin={0}
-					aria-valuemax={100}
+					aria-valuenow={percentage}
+					aria-valuemin={min}
+					aria-valuemax={max}
 				>
-					{hasValueInside && value}
+					{hasValueInside && percentage}
 				</div>
 			</div>
+			{showMin && <div className="absolute left-1 top-0 2">{min}</div>}
+			{showMax && <div className="absolute right-1 top-0">{max}</div>}
 		</div>
 	);
 };
