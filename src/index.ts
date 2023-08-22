@@ -28,6 +28,7 @@ import {
 	Bars,
 	Dots,
 	Pulse,
+	Divider,
 } from "./components";
 
 import {
@@ -97,6 +98,7 @@ export {
 	Bars,
 	Dots,
 	Pulse,
+	Divider,
 
 	// utils
 	generateUUID,

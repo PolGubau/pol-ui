@@ -4,6 +4,8 @@ const config = {
 	theme: {
 		extend: {
 			colors: {
+				background: "Canvas",
+				text: "CanvasText",
 				primary: "#2B2D42",
 				accent: "#41ff07",
 				secondary: "#8D99AE",

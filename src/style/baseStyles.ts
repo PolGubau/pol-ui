@@ -39,7 +39,6 @@ export const bgVariant = tv({
 			danger: "bg-danger",
 			warning: "bg-warning",
 			accent: "bg-accent",
-			variant: "bg-accent",
 			info: "bg-info",
 			dark: "bg-dark",
 			light: "bg-light",
@@ -48,5 +47,56 @@ export const bgVariant = tv({
 	},
 	defaultVariants: {
 		variant: "accent",
+	},
+});
+export const horizontalMargins = tv({
+	base: "",
+	variants: {
+		margin: {
+			none: "",
+			auto: "mx-auto",
+			small: "mx-2",
+			medium: "mx-4",
+			large: "mx-8",
+		},
+	},
+	defaultVariants: {
+		margin: "none",
+	},
+});
+export const verticalMargins = tv({
+	base: "",
+	variants: {
+		margin: {
+			none: "",
+			auto: "my-auto",
+			small: "my-2",
+			medium: "my-4",
+			large: "my-8",
+		},
+	},
+	defaultVariants: {
+		margin: "none",
+	},
+});
+export const applyOpacity = tv({
+	base: "",
+	variants: {
+		opacity: {
+			0: "opacity-0",
+			10: "opacity-10",
+			20: "opacity-20",
+			30: "opacity-30",
+			40: "opacity-40",
+			50: "opacity-50",
+			60: "opacity-60",
+			70: "opacity-70",
+			80: "opacity-80",
+			90: "opacity-90",
+			100: "opacity-100",
+		},
+	},
+	defaultVariants: {
+		opacity: 100,
 	},
 });
