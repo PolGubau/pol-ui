@@ -75,9 +75,9 @@ This template comes with a GitHub Actions workflow to automatically publish on a
    - ✅ Tooltip
    - ✅ Progress Bar
    - ✅ Loaders (Spinner, Bars, Dots, Pulse)
-   - 🦺 Divider
+   - ✅ Divider
 4. **Layout Components:**
-   - Grid System
+   - 🦺 Grid System
    - Card
    - Accordion
    - Tabs
