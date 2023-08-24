@@ -33,6 +33,7 @@ const Text: React.FC<Props> = ({
 	return (
 		<TextStyled
 			className={` 
+			w-fit
 				${isBold ? "font-bold" : ""}
 				${isItalic ? "italic" : ""}
 				${centered ? "text-center" : "text-left"}

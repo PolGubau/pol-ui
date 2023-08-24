@@ -14,7 +14,7 @@ const config = {
 				warning: "#d19c3a",
 				info: "#3a6fd1",
 				dark: "#272727",
-				light: "#e6e6e6",
+				light: "#f5f5f5",
 				current: "currentColor",
 				transparent: "transparent",
 				black: "#000",

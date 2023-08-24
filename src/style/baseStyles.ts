@@ -1,6 +1,6 @@
 import { tv } from "tailwind-variants";
 
-export const roundedStyles = tv({
+export const applyRoundess = tv({
 	variants: {
 		rounded: {
 			circular: "rounded-full",
@@ -98,5 +98,20 @@ export const applyOpacity = tv({
 	},
 	defaultVariants: {
 		opacity: 100,
+	},
+});
+export const applyPadding = tv({
+	base: "",
+	variants: {
+		padding: {
+			none: "",
+			auto: "p-auto",
+			small: "p-2",
+			medium: "p-4",
+			large: "p-8",
+		},
+	},
+	defaultVariants: {
+		padding: "none",
 	},
 });

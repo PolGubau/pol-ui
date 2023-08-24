@@ -9,10 +9,15 @@ interface IconProps {
 	size?: Sizes;
 	className?: string;
 	id?: string;
+	alwaysRender?: boolean;
 }
 
-const Icon = ({ icon, color, size, className, id }: IconProps) => {
-	const resultIcon = typeof icon === "string" ? getIcon(icon) : icon;
+const Icon = ({ icon, color, size, className, id, alwaysRender }: IconProps) => {
+	const getStringIcon = (icon: string) => {
+		return getIcon(icon) ?? alwaysRender ? icon : null;
+	};
+
+	const resultIcon = typeof icon === "string" ? getStringIcon(icon) : icon;
 	return (
 		<div role="img" id={id} className={`${iconStyles({ size, color })} ${className}`}>
 			{resultIcon}

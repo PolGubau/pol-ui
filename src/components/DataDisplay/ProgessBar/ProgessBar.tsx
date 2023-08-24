@@ -1,7 +1,7 @@
 import React from "react";
 import { backgroundBar, progressBar } from "./ProgessBar.styles";
 import { ColorTypes, Opacities, Rounded, Sizes } from "../../../common";
-import { roundedStyles } from "../../../style";
+import { applyRoundess } from "../../../style";
 import ProgressBarPointer from "./components/Pointer/Pointer";
 import ProgressBarMarks from "./components/Marks/Marks";
 
@@ -75,7 +75,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 
 	return (
 		<div
-			className={`${backgroundBar({ variant, size })} ${roundedStyles({ rounded })} ${className}`}
+			className={`${backgroundBar({ variant, size })} ${applyRoundess({ rounded })} ${className}`}
 		>
 			{pointer && (
 				<ProgressBarPointer
@@ -85,10 +85,10 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 					pointerPosition={pointerPosition}
 				/>
 			)}
-			<div className={`overflow-hidden transition-all  ${roundedStyles({ rounded })}`}>
+			<div className={`overflow-hidden transition-all  ${applyRoundess({ rounded })}`}>
 				<ProgressBarMarks marks={marks} marksColor={marksColor} opacity={marksOpacity} />
 				<div
-					className={`${progressBar({ variant })} ${roundedStyles({ rounded })}`}
+					className={`${progressBar({ variant })} ${applyRoundess({ rounded })}`}
 					style={{
 						width: `${percentage}%`,
 					}}

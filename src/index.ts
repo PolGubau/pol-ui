@@ -29,6 +29,8 @@ import {
 	Dots,
 	Pulse,
 	Divider,
+	GridItem,
+	Grid,
 } from "./components";
 
 import {
@@ -99,6 +101,8 @@ export {
 	Dots,
 	Pulse,
 	Divider,
+	GridItem,
+	Grid,
 
 	// utils
 	generateUUID,

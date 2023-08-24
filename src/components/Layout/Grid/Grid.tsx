@@ -8,6 +8,9 @@ interface GridProps {
 	gap?: string | [string, string];
 	justifyItems?: "center" | "end" | "start" | "stretch";
 	alignItems?: "center" | "end" | "start" | "stretch" | "baseline";
+	className?: string;
+	id?: string;
+	styles?: React.CSSProperties;
 }
 
 export const gridStyles = tv({
@@ -34,16 +37,28 @@ export const gridStyles = tv({
 	},
 });
 
-const Grid: React.FC<GridProps> = ({ children, columns, gap, rows, justifyItems, alignItems }) => {
+const Grid: React.FC<GridProps> = ({
+	children,
+	columns,
+	gap,
+	rows,
+	justifyItems,
+	alignItems,
+	className,
+	id,
+	styles,
+}) => {
 	const gapX = Array.isArray(gap) ? gap[0] : gap;
 	const gapY = Array.isArray(gap) ? gap[1] : gap;
 	return (
 		<section
-			className={gridStyles({ justifyItems, alignItems })}
+			id={id}
+			className={`${gridStyles({ justifyItems, alignItems })} ${className ?? ""}`}
 			style={{
 				gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
 				gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`,
 				gap: `${gapY} ${gapX}`,
+				...styles,
 			}}
 		>
 			{children}

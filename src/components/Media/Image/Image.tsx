@@ -9,6 +9,7 @@ interface Props {
 	height?: string;
 	width?: string;
 	rounded?: Rounded;
+	aspectRatio?: "1/1" | "4/3" | "16/9" | "9/16" | "3/4" | "8/5";
 }
 
 const Image: React.FC<Props> = ({
@@ -21,11 +22,12 @@ const Image: React.FC<Props> = ({
 	width = "100px",
 	height = "100px",
 	rounded,
+	aspectRatio,
 }) => {
 	const [hasError, setHasError] = React.useState(false);
 
 	return (
-		<div className={`${imageStyle({ rounded })} ${className}`}>
+		<div className={`${imageStyle({ rounded, aspectRatio })} ${className}`}>
 			{hasError ? (
 				renderOnError
 			) : (
