@@ -1,9 +1,10 @@
 "use client";
 import React, { useMemo } from "react";
-import TabBar from "./TabBar/TabBar";
+import TabBar from "./components/TabBar/TabBar";
 import { SizesWithFull, SizesWithNone } from "../../../common";
 import { applyMaxWidth, applyPadding, applyRoundessSizes } from "../../../style";
 import { tabStyles } from "./tab.styles";
+import TabContent from "./components/TabContent/TabContent";
 
 export interface TabsItemProps {
 	title: string;
@@ -21,6 +22,7 @@ interface Props {
 	padding?: SizesWithNone;
 	rounded?: SizesWithNone;
 	maxWidth?: SizesWithFull;
+	classNameContent?: string;
 }
 
 const Tabs: React.FC<Props> = ({
@@ -32,6 +34,7 @@ const Tabs: React.FC<Props> = ({
 	padding = "md",
 	rounded = "none",
 	maxWidth = "full",
+	classNameContent,
 }) => {
 	const [activeTab, setActiveTab] = React.useState(defaultOpenedIndex ?? 0);
 	const selectedContent = useMemo(() => data[activeTab].content, [data, activeTab]);
@@ -51,7 +54,7 @@ const Tabs: React.FC<Props> = ({
 					padding,
 				})}`}
 			>
-				{selectedContent}
+				<TabContent content={selectedContent} className={classNameContent} />
 			</main>
 		</section>
 	);

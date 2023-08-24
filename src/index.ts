@@ -34,6 +34,9 @@ import {
 	Card,
 	Accordion,
 	AccordionItem,
+	Tabs,
+	TabBar,
+	TabContent,
 } from "./components";
 
 import {
@@ -109,6 +112,9 @@ export {
 	Card,
 	Accordion,
 	AccordionItem,
+	Tabs,
+	TabBar,
+	TabContent,
 
 	// utils
 	generateUUID,

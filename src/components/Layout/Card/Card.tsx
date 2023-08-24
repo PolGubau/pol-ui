@@ -1,5 +1,5 @@
 import React from "react";
-import { ColorTypes, Rounded, Sizes, Spacings } from "../../../common";
+import { ColorTypes, Rounded, Sizes, SizesWithNone } from "../../../common";
 import { applyPadding, applyRoundess, bgVariant } from "../../../style";
 import { cardStyle } from "./Card.style";
 
@@ -12,7 +12,7 @@ interface Props {
 	children?: React.ReactNode;
 	cardHeader?: React.ReactNode;
 	cardFooter?: React.ReactNode;
-	padding?: Spacings;
+	padding?: SizesWithNone | "auto";
 }
 const Card: React.FC<Props> = ({
 	hasBorder = true,

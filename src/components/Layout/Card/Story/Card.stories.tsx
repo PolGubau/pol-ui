@@ -33,7 +33,7 @@ export const Default: Story = {
 export const Example: Story = {
 	args: {
 		variant: "info",
-		padding: "medium",
+		padding: "md",
 
 		children: (
 			<>
@@ -74,7 +74,7 @@ export const WithHeader: Story = {
 				/>
 			</>
 		),
-		padding: "medium",
+		padding: "md",
 		children: (
 			<>
 				<Grid columns="2" gap={"20px"}>
@@ -101,7 +101,7 @@ export const WithHeader: Story = {
 export const WithFooter: Story = {
 	args: {
 		variant: "dark",
-		padding: "medium",
+		padding: "md",
 		cardFooter: (
 			<>
 				<Text size={4} value="Login" className="text-light" />{" "}
@@ -120,7 +120,7 @@ export const WithFooter: Story = {
 };
 export const SideLarge: Story = {
 	args: {
-		padding: "medium",
+		padding: "md",
 		maxWidth: "xl",
 		children: (
 			<Text value="lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Quisquam, voluptatum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
@@ -129,7 +129,7 @@ export const SideLarge: Story = {
 };
 export const SideSmall: Story = {
 	args: {
-		padding: "medium",
+		padding: "md",
 		maxWidth: "xs",
 		children: (
 			<Text value="lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Quisquam, voluptatum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
@@ -138,7 +138,7 @@ export const SideSmall: Story = {
 };
 export const SideFull: Story = {
 	args: {
-		padding: "medium",
+		padding: "md",
 		maxWidth: "full",
 		children: (
 			<Text value="lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Quisquam, voluptatum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
@@ -147,7 +147,7 @@ export const SideFull: Story = {
 };
 export const SquareCard: Story = {
 	args: {
-		padding: "medium",
+		padding: "md",
 		rounded: "square",
 		children: (
 			<Text value="lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum." />
@@ -156,7 +156,7 @@ export const SquareCard: Story = {
 };
 export const CircularCard: Story = {
 	args: {
-		padding: "medium",
+		padding: "md",
 		rounded: "circular",
 		children: <Text value="lorem ipsum dolor sit amet." />,
 	},
