@@ -1,9 +1,13 @@
 import React from "react";
 import AccordionItem from "./AccordionItem";
+import { accordion } from "./accordion.style";
+import { SizesWithNone, SizesWithFull } from "../../../common";
+import { applyRoundessSizes } from "../../../style";
 export interface AccordionItemProps {
 	title: string;
 	content: string | React.ReactNode;
 	icon?: string | React.ReactNode;
+	className?: string;
 }
 
 interface Props {
@@ -11,6 +15,13 @@ interface Props {
 	hasIcon?: boolean;
 	defaultOpened?: number[];
 	data: AccordionItemProps[];
+	className?: string;
+	id?: string;
+	ariaLabel?: string;
+	hasDividers?: boolean;
+	rounded?: SizesWithNone;
+	hasBorder?: boolean;
+	maxWidth?: SizesWithFull;
 }
 
 const Accordion: React.FC<Props> = ({
@@ -18,6 +29,13 @@ const Accordion: React.FC<Props> = ({
 	data = [],
 	openMode = "single",
 	defaultOpened = null,
+	className,
+	id,
+	ariaLabel,
+	hasDividers = true,
+	rounded = "md",
+	hasBorder = true,
+	maxWidth,
 }) => {
 	const [openedIndex, setOpenedIndex] = React.useState<number[] | null>(defaultOpened);
 
@@ -32,15 +50,12 @@ const Accordion: React.FC<Props> = ({
 			return prevValue.filter((i) => i !== index);
 		});
 	};
-	const closeAll = () => {
-		setOpenedIndex(null);
-	};
+
 	const toggleOpened = (index: number) => {
 		if (openMode === "single") {
 			if (isThisItemOpened(index)) {
 				closeItem(index);
 			} else {
-				closeAll();
 				setOpenedIndex([index]);
 			}
 		} else {
@@ -58,9 +73,17 @@ const Accordion: React.FC<Props> = ({
 	};
 
 	return (
-		<section className="flex flex-col  max-w-2xl divide-y border rounded-xl">
+		<section
+			className={`${accordion({ hasDividers, hasBorder, maxWidth })} ${applyRoundessSizes({
+				rounded,
+			})} 
+			${className}`}
+			id={id}
+			aria-label={ariaLabel}
+		>
 			{data.map((item, _i) => (
 				<AccordionItem
+					rounded={rounded}
 					key={item.title}
 					item={item}
 					hasIcon={hasIcon}

@@ -31,6 +31,9 @@ import {
 	Divider,
 	GridItem,
 	Grid,
+	Card,
+	Accordion,
+	AccordionItem,
 } from "./components";
 
 import {
@@ -103,6 +106,9 @@ export {
 	Divider,
 	GridItem,
 	Grid,
+	Card,
+	Accordion,
+	AccordionItem,
 
 	// utils
 	generateUUID,

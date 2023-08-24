@@ -14,7 +14,11 @@ interface IconProps {
 
 const Icon = ({ icon, color, size, className, id, alwaysRender }: IconProps) => {
 	const getStringIcon = (icon: string) => {
-		return getIcon(icon) ?? alwaysRender ? icon : null;
+		const iconResult = getIcon(icon);
+		if (iconResult === null) {
+			return alwaysRender ? icon : null;
+		}
+		return iconResult;
 	};
 
 	const resultIcon = typeof icon === "string" ? getStringIcon(icon) : icon;

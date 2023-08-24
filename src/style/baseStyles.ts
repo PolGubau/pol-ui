@@ -115,3 +115,19 @@ export const applyPadding = tv({
 		padding: "none",
 	},
 });
+export const applyRoundessSizes = tv({
+	base: "",
+	variants: {
+		rounded: {
+			none: "rounded-none",
+			xs: "rounded-xs",
+			sm: "rounded-sm",
+			md: "rounded-md",
+			lg: "rounded-lg",
+			xl: "rounded-xl",
+		},
+	},
+	defaultVariants: {
+		rounded: "none",
+	},
+});

@@ -1,5 +1,8 @@
 export type Identifier = string | number;
 export type Sizes = "xs" | "sm" | "md" | "lg" | "xl";
+export type SizesWithNone = Sizes | "none";
+export type SizesWithFull = Sizes | "full";
+export type SizesComplete = Sizes | "none" | "full";
 export type Side = "right" | "left";
 export type ColorTypes =
 	| "success"

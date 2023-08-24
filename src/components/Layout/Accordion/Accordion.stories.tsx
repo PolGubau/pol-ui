@@ -114,3 +114,109 @@ export const DefaultOpenedSingle: Story = {
 		],
 	},
 };
+export const RoundedXl: Story = {
+	args: {
+		rounded: "xl",
+		data: [
+			{
+				title: "Our Mission",
+				content: "Our mission is to make the world a better place.",
+			},
+			{
+				title: "Our Vision",
+				content: "Our vision is to make the world a better place.",
+			},
+		],
+	},
+};
+export const Square: Story = {
+	args: {
+		rounded: "xs",
+		data: [
+			{
+				title: "Our Mission",
+				content: "Our mission is to make the world a better place.",
+			},
+			{
+				title: "Our Vision",
+				content: "Our vision is to make the world a better place.",
+			},
+		],
+	},
+};
+export const Borderless: Story = {
+	args: {
+		hasBorder: false,
+		data: [
+			{
+				title: "Our Mission",
+				content: "Our mission is to make the world a better place.",
+			},
+			{
+				title: "Our Vision",
+				content: "Our vision is to make the world a better place.",
+			},
+		],
+	},
+};
+export const WithoutDivider: Story = {
+	args: {
+		hasDividers: false,
+		data: [
+			{
+				title: "Our Mission",
+				content: "Our mission is to make the world a better place.",
+			},
+			{
+				title: "Our Vision",
+				content: "Our vision is to make the world a better place.",
+			},
+		],
+	},
+};
+export const Minimalist: Story = {
+	args: {
+		hasBorder: false,
+		hasDividers: false,
+		data: [
+			{
+				title: "Our Mission",
+				content: "Our mission is to make the world a better place.",
+			},
+			{
+				title: "Our Vision",
+				content: "Our vision is to make the world a better place.",
+			},
+		],
+	},
+};
+export const MaxWidthXs: Story = {
+	args: {
+		maxWidth: "xs",
+		data: [
+			{
+				title: "Our Mission",
+				content: "Our mission is to make the world a better place.",
+			},
+			{
+				title: "Our Vision",
+				content: "Our vision is to make the world a better place.",
+			},
+		],
+	},
+};
+export const WithoutIcons: Story = {
+	args: {
+		hasIcon: false,
+		data: [
+			{
+				title: "Our Mission",
+				content: "Our mission is to make the world a better place.",
+			},
+			{
+				title: "Our Vision",
+				content: "Our vision is to make the world a better place.",
+			},
+		],
+	},
+};
