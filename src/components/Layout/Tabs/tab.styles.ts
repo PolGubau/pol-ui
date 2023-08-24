@@ -1,11 +1,10 @@
 import { tv } from "tailwind-variants";
 
-export const accordion = tv({
-	base: "flex flex-col overflow-hidden",
-
+export const tabStyles = tv({
+	base: "flex flex-col ",
 	variants: {
-		hasDividers: {
-			true: "divide-y",
+		hasDivider: {
+			true: "divide-y divide-gray-200 dark:divide-gray-700",
 			false: "divide-none",
 		},
 		hasBorder: {
@@ -14,7 +13,7 @@ export const accordion = tv({
 		},
 	},
 	defaultVariants: {
-		hasDividers: true,
+		hasDivider: true,
 		hasBorder: true,
 	},
 });

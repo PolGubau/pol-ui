@@ -1,7 +1,9 @@
 "use client";
 import React, { useMemo } from "react";
-import { Button } from "../../Buttons";
-import { Icon } from "../../Icon";
+import TabBar from "./TabBar/TabBar";
+import { SizesWithFull, SizesWithNone } from "../../../common";
+import { applyMaxWidth, applyPadding, applyRoundessSizes } from "../../../style";
+import { tabStyles } from "./tab.styles";
 
 export interface TabsItemProps {
 	title: string;
@@ -13,33 +15,44 @@ export interface TabsItemProps {
 interface Props {
 	defaultOpenedIndex?: number;
 	data: TabsItemProps[];
+	hasDivider?: boolean;
+	hasBorder?: boolean;
+	className?: string;
+	padding?: SizesWithNone;
+	rounded?: SizesWithNone;
+	maxWidth?: SizesWithFull;
 }
 
-const Tabs: React.FC<Props> = ({ data, defaultOpenedIndex }) => {
+const Tabs: React.FC<Props> = ({
+	data,
+	defaultOpenedIndex,
+	className,
+	hasBorder,
+	hasDivider,
+	padding = "md",
+	rounded = "none",
+	maxWidth = "full",
+}) => {
 	const [activeTab, setActiveTab] = React.useState(defaultOpenedIndex ?? 0);
 	const selectedContent = useMemo(() => data[activeTab].content, [data, activeTab]);
 
 	return (
-		<section>
-			<ul className="flex gap-2">
-				{data.map((item, index) => (
-					<li
-						key={item.title}
-						className={` px-2 py-1 rounded-md cursor-pointer hover:shadow-inner
-					${index === activeTab ? "bg-dark/60 text-light" : ""}
-					`}
-						tabIndex={index}
-						onClick={() => setActiveTab(index)}
-					>
-						<button className="flex items-center ">
-							{item.icon && <Icon alwaysRender icon={item.icon} />}
-							{item.title}
-						</button>
-					</li>
-				))}
-			</ul>
-
-			<main className="tabs-content">{selectedContent}</main>
+		<section
+			className={`${tabStyles({ hasBorder, hasDivider })} ${applyRoundessSizes({
+				rounded,
+			})} 
+			
+			${applyMaxWidth({ maxWidth })}
+			${className}`}
+		>
+			<TabBar data={data} activeTab={activeTab} setActiveTab={setActiveTab} padding={padding} />
+			<main
+				className={`${applyPadding({
+					padding,
+				})}`}
+			>
+				{selectedContent}
+			</main>
 		</section>
 	);
 };

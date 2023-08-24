@@ -5,6 +5,7 @@ import {
 	defaultModalWithSelect,
 	modalWithBothButtons,
 	modalWithCutomButtons,
+	modalWithLogin,
 	modalWithoutButtons,
 } from "./exampleModals";
 import { Button } from "../../../Buttons";
@@ -48,5 +49,15 @@ export const TestingFocus: Story = {
 	args: {
 		...Default.args,
 		state: defaultModalWithSelect,
+	},
+};
+export const Complex: Story = {
+	render: (args) => (
+		<>
+			<Modal {...args} state={modalWithLogin} />
+		</>
+	),
+	args: {
+		...Default.args,
 	},
 };

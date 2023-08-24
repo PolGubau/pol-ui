@@ -105,10 +105,12 @@ export const applyPadding = tv({
 	variants: {
 		padding: {
 			none: "",
+			xs: "p-1",
+			sm: "p-2",
+			md: "p-4",
+			lg: "p-8",
+			xl: "p-16",
 			auto: "p-auto",
-			small: "p-2",
-			medium: "p-4",
-			large: "p-8",
 		},
 	},
 	defaultVariants: {
@@ -129,5 +131,39 @@ export const applyRoundessSizes = tv({
 	},
 	defaultVariants: {
 		rounded: "none",
+	},
+});
+export const applyMaxWidth = tv({
+	base: "",
+	variants: {
+		maxWidth: {
+			xs: "max-w-xs",
+			sm: "max-w-sm",
+			md: "max-w-md",
+			lg: "max-w-lg",
+			xl: "max-w-xl",
+			full: "max-w-full",
+		},
+	},
+	defaultVariants: {
+		maxWidth: "full",
+	},
+});
+export const applyShadow = tv({
+	base: "",
+	variants: {
+		shadow: {
+			none: "",
+			sm: "shadow-sm",
+			md: "shadow-md",
+			lg: "shadow-lg",
+			xl: "shadow-xl",
+			"2xl": "shadow-2xl",
+			inner: "shadow-inner",
+			outline: "shadow-outline",
+		},
+	},
+	defaultVariants: {
+		shadow: "none",
 	},
 });

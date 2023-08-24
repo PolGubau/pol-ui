@@ -2,7 +2,7 @@ import React from "react";
 import AccordionItem from "./AccordionItem";
 import { accordion } from "./accordion.style";
 import { SizesWithNone, SizesWithFull } from "../../../common";
-import { applyRoundessSizes } from "../../../style";
+import { applyMaxWidth, applyRoundessSizes } from "../../../style";
 export interface AccordionItemProps {
 	title: string;
 	content: string | React.ReactNode;
@@ -74,7 +74,9 @@ const Accordion: React.FC<Props> = ({
 
 	return (
 		<section
-			className={`${accordion({ hasDividers, hasBorder, maxWidth })} ${applyRoundessSizes({
+			className={`${accordion({ hasDividers, hasBorder })} ${applyMaxWidth({
+				maxWidth,
+			})} ${applyRoundessSizes({
 				rounded,
 			})} 
 			${className}`}

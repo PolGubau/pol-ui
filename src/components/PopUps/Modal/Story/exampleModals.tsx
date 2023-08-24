@@ -1,5 +1,7 @@
 import { Button } from "../../../Buttons";
+import { IconNames } from "../../../Icon";
 import { Field, Switch } from "../../../Inputs";
+import Tabs from "../../../Layout/Tabs/Tabs";
 import { Autocomplete } from "../../../Selects";
 import { ModalProps } from "../types";
 const texts = {
@@ -29,6 +31,49 @@ export const defaultModal: ModalProps = {
 		text: "Submit",
 		onClick: () => {},
 	},
+};
+export const modalWithLogin: ModalProps = {
+	isOpen: true,
+	handleClose: () => {
+		alert(texts.handleClose);
+	},
+	children: (
+		<Tabs
+			hasBorder={false}
+			data={[
+				{
+					title: "Login",
+					content: (
+						<div className="flex gap-4 flex-col">
+							<h3>Already have an account? Login.</h3>
+							<Field label="Email" fullWidth />
+							<Field label="password" type="password" fullWidth />
+							<Switch label="Remember me" checked={true} onChange={() => {}} />
+							<Button icon={IconNames.arrow} type="main" iconPosition="right">
+								Login
+							</Button>
+						</div>
+					),
+				},
+				{
+					title: "Create Account",
+					content: (
+						<div className="flex gap-4 flex-col">
+							<h3>First time here? Create an account.</h3>
+							<div className="flex gap-4">
+								<Field label="Email" fullWidth />
+								<Field label="Username" fullWidth />
+							</div>
+							<Field label="password" type="password" fullWidth />
+							<Button icon={IconNames.arrow} type="main" iconPosition="right">
+								Create an account
+							</Button>
+						</div>
+					),
+				},
+			]}
+		/>
+	),
 };
 export const defaultModalWithSelect: ModalProps = {
 	isOpen: true,
