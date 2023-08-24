@@ -5,6 +5,7 @@ import { Text } from "../../Text";
 import { AccordionItemProps } from "./Accordion";
 import { SizesWithNone } from "../../../common";
 import { applyRoundessSizes } from "../../../style";
+import { Button } from "../../Buttons";
 interface Props {
 	hasIcon?: boolean;
 	isOpened?: boolean;
@@ -17,25 +18,27 @@ const AccordionItem: React.FC<Props> = ({
 	hasIcon,
 	isOpened = false,
 	toggleOpen,
-	rounded,
+	rounded = "none",
 }) => {
 	return (
-		<article
-			key={item.title}
-			className={`flex flex-col gap-1 ${applyRoundessSizes({ rounded })} ${item.className}`}
-		>
-			<header
-				className="flex justify-between items-center  rounded-lg cursor-pointer hover:bg-gray-100 py-2 px-4 "
-				onClick={toggleOpen}
-			>
-				<Text size={4} className="text-primary" value={item.title}></Text>
-				{hasIcon && (
-					<Icon
-						alwaysRender={true}
-						icon={item.icon ?? IconNames.arrowdown}
-						className={`transition-transform transform ${isOpened ? "rotate-180" : ""}`}
-					/>
-				)}
+		<article key={item.title} className={`flex flex-col gap-1 overflow-hidden  ${item.className}`}>
+			<header>
+				<Button
+					rounded={false}
+					type="text"
+					fullWidth
+					onClick={toggleOpen}
+					className="flex justify-between items-center rounded-lg cursor-pointer py-2 px-4 "
+				>
+					<Text size={4} value={item.title}></Text>
+					{hasIcon && (
+						<Icon
+							alwaysRender={true}
+							icon={item.icon ?? IconNames.arrowdown}
+							className={`transition-transform transform ${isOpened ? "rotate-180" : ""}`}
+						/>
+					)}
+				</Button>
 			</header>
 			<Transition
 				show={isOpened}

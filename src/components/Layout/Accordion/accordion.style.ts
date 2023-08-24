@@ -1,7 +1,7 @@
 import { tv } from "tailwind-variants";
 
 export const accordion = tv({
-	base: "flex flex-col ",
+	base: "flex flex-col overflow-hidden",
 
 	variants: {
 		hasDividers: {

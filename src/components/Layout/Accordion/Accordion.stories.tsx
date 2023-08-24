@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Accordion from "./Accordion";
+import { Button } from "../../Buttons";
+import { Image } from "../../Media";
 const meta = {
 	title: "Layout/Accordion",
 	component: Accordion,
@@ -216,6 +218,58 @@ export const WithoutIcons: Story = {
 			{
 				title: "Our Vision",
 				content: "Our vision is to make the world a better place.",
+			},
+		],
+	},
+};
+export const CustomContent: Story = {
+	args: {
+		defaultOpened: [0],
+		data: [
+			{
+				title: "Our Mission",
+				content: (
+					<div className="flex flex-col gap-2">
+						<p>Our mission is to make the world a better place.</p>
+						<Button>Click me</Button>
+					</div>
+				),
+			},
+			{
+				title: "Our Vision",
+				content: (
+					<>
+						<p>Our vision is to make the world a better place.</p>
+						<Image src="https://picsum.photos/seed/picsum/200/300" alt="Random image" />
+					</>
+				),
+			},
+		],
+	},
+};
+export const CustomItems: Story = {
+	args: {
+		defaultOpened: [0],
+		data: [
+			{
+				title: "Our Mission",
+				content: (
+					<div className="flex flex-col gap-2">
+						<p>Our mission is to make the world a better place.</p>
+						<Button>Click me</Button>
+					</div>
+				),
+				className: "bg-red-500",
+			},
+			{
+				title: "Our Vision",
+				content: (
+					<>
+						<p>Our vision is to make the world a better place.</p>
+						<Image src="https://picsum.photos/seed/picsum/200/300" alt="Random image" />
+					</>
+				),
+				className: "bg-green-500 text-white",
 			},
 		],
 	},

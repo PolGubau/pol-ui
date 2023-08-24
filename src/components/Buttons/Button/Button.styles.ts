@@ -19,8 +19,8 @@ export const button = tv({
 		type: {
 			main: "bg-accent text-primary hover:bg-accent/50",
 			normal: "bg-primary/60 text-white hover:bg-primary/80",
-			outlined: "bg-white text-primary ring-1 ring-primary hover:bg-primary/30",
-			text: "bg-transparent text-primary hover:bg-primary/30",
+			outlined: "bg-white text-primary ring-1 ring-primary hover:bg-primary/10",
+			text: "bg-transparent text-primary hover:bg-primary/10",
 		},
 		disabled: {
 			true: "opacity-50 cursor-not-allowed",
