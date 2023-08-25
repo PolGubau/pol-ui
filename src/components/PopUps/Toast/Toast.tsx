@@ -1,6 +1,6 @@
 import React from "react";
 import { toast } from "./Toast.styles";
-import { ToastProps } from "./types.d";
+import { ToastProps } from "./types";
 import { Button, IconButton } from "../../Buttons";
 
 interface Props {

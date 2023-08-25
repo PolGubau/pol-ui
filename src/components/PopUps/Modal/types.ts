@@ -1,3 +1,6 @@
+import { ButtonType } from "../../Buttons/Button/Button";
+import { IconType } from "../../Icon";
+
 export interface ModalProps {
 	isOpen: boolean;
 	handleClose?: () => void;

@@ -1,7 +1,7 @@
 import { ColorTypes, Sizes } from "../../types";
 import { getIcon } from "../../utils";
 import { iconStyles } from "./Icon.styles";
-import { IconType } from "./types.d";
+import { IconType } from "./types";
 
 interface IconProps {
 	icon: IconType;
