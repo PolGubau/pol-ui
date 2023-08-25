@@ -1,5 +1,5 @@
 import { TbLoader2 } from "react-icons/tb";
-import { ColorTypes, Sizes } from "../../../../../common";
+import { ColorTypes, Sizes } from "../../../../../types";
 import { textVariant } from "../../../../../style";
 import { Icon } from "../../../../Icon";
 

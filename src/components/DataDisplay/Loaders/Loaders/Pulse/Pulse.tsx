@@ -1,5 +1,5 @@
 import { keyframes, styled } from "styled-components";
-import { ColorTypes } from "../../../../../common";
+import { ColorTypes } from "../../../../../types";
 import { bgVariant } from "../../../../../style";
 
 const pulseAnimation = keyframes`

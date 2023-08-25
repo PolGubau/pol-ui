@@ -1,6 +1,6 @@
 import React from "react";
 import { imageStyle } from "./image.styles";
-import { Rounded } from "../../../common";
+import { Rounded } from "../../../types";
 interface Props {
 	src: string;
 	alt: string;

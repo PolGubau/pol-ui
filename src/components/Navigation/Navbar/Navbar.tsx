@@ -1,9 +1,9 @@
 import { tv } from "tailwind-variants";
-import { Shadow, SizesWithNone } from "../../../common";
 import { applyPadding, applyShadow } from "../../../style";
 import { Button } from "../../Buttons";
 import { Field } from "../../Inputs";
 import React from "react";
+import { Shadow, SizesWithNone } from "../../../types";
 
 export const navbar = tv({
 	base: "  w-full h-16 flex justify-between items-center p-4",

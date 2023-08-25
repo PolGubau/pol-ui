@@ -2,8 +2,8 @@ import React from "react";
 import "../../../style/baseTheme.scss";
 import { IconType } from "../../Icon";
 import { Button } from "../Button";
-import { Sizes } from "../../../common";
 import { ButtonType } from "../Button/Button";
+import { Sizes } from "../../../types";
 interface Props {
 	onClick?: () => void;
 	id?: string;

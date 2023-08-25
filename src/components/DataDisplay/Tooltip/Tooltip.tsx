@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
-import { BasicProps } from "../../../common";
 import { useHover } from "../../../hooks";
 import { Transition } from "@headlessui/react";
 import { tooltipContainerStyle, tooltipStylePosition } from "./Tooltip.styles";
+import { BasicProps } from "../../../types";
 
 interface Props extends BasicProps {
 	content: React.ReactNode | string;

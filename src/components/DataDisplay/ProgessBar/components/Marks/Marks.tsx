@@ -1,4 +1,4 @@
-import { ColorTypes, Opacities } from "../../../../../common";
+import { ColorTypes, Opacities } from "../../../../../types";
 import { applyOpacity, bgVariant } from "../../../../../style";
 
 interface Props {

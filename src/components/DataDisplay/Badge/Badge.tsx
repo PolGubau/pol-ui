@@ -1,8 +1,8 @@
 import { Transition } from "@headlessui/react";
-import { BasicProps, ColorTypes, Rounded, Sizes } from "../../../common";
 import { Icon, IconType } from "../../Icon";
 import { badgeStyles } from "./Badge.styles";
 import { Fragment } from "react";
+import { BasicProps, ColorTypes, Rounded, Sizes } from "../../../types";
 
 interface Props extends BasicProps {
 	content: string | number;

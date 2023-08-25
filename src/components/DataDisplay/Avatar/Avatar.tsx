@@ -1,9 +1,9 @@
 import React from "react";
-import { ColorTypes, Rounded, Sizes } from "../../../common";
 import { Link } from "../../Buttons/Link";
 import { avatarImageStyle, avatarStyle } from "./avatar.styles";
 import { Image } from "../../Media/Image";
 import Badge from "../Badge/Badge";
+import { ColorTypes, Rounded, Sizes } from "../../../types";
 
 interface Props {
 	src: string;

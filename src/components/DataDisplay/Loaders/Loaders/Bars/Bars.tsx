@@ -1,4 +1,4 @@
-import { ColorTypes, Sizes } from "../../../../../common";
+import { ColorTypes, Sizes } from "../../../../../types";
 import { bgVariant } from "../../../../../style";
 import { Styles, dotsSize } from "./Bars.styles";
 

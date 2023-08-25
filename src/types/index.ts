@@ -27,9 +27,7 @@ export type ID = {
 export interface AnyButId extends ID {
 	[key: string]: any;
 }
-export interface anyObject {
-	[key: string]: any;
-}
+
 export type Rounded = "circular" | "square" | "rounded";
 export type Alignments = "left" | "center" | "right";
 export type Spacings = "none" | "small" | "medium" | "large" | "auto";

@@ -1,8 +1,8 @@
 import React from "react";
 import { TabsItemProps } from "../../Tabs";
 import { applyPadding } from "../../../../../style";
-import { SizesWithFull, SizesWithNone } from "../../../../../common";
 import { Button } from "../../../../Buttons";
+import { SizesWithNone, SizesWithFull } from "../../../../../types";
 interface Props {
 	data: TabsItemProps[];
 	activeTab: number;

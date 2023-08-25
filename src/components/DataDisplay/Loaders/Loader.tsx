@@ -1,5 +1,5 @@
 import React from "react";
-import { ColorTypes, Sizes } from "../../../common";
+import { ColorTypes, Sizes } from "../../../types";
 import { spinnerStyled } from "./Loader.styles";
 import { Dots, Bars, Pulse } from "./Loaders";
 import Spinner from "./Loaders/Spinner/Spinner";

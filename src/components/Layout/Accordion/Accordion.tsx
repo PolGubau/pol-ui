@@ -1,8 +1,8 @@
 import React from "react";
 import AccordionItem from "./AccordionItem";
 import { accordion } from "./accordion.style";
-import { SizesWithNone, SizesWithFull } from "../../../common";
 import { applyMaxWidth, applyRoundessSizes } from "../../../style";
+import { SizesWithNone, SizesWithFull } from "../../../types";
 export interface AccordionItemProps {
 	title: string;
 	content: string | React.ReactNode;

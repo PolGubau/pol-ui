@@ -54,10 +54,12 @@ export const horizontalMargins = tv({
 	variants: {
 		margin: {
 			none: "",
+			xs: "mx-1",
+			sm: "mx-2",
+			md: "mx-4",
+			lg: "mx-8",
+			xl: "mx-16",
 			auto: "mx-auto",
-			small: "mx-2",
-			medium: "mx-4",
-			large: "mx-8",
 		},
 	},
 	defaultVariants: {
@@ -70,9 +72,11 @@ export const verticalMargins = tv({
 		margin: {
 			none: "",
 			auto: "my-auto",
-			small: "my-2",
-			medium: "my-4",
-			large: "my-8",
+			xs: "my-1",
+			sm: "my-2",
+			md: "my-4",
+			lg: "my-8",
+			xl: "my-16",
 		},
 	},
 	defaultVariants: {

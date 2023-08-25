@@ -1,10 +1,10 @@
 "use client";
 import React, { useMemo } from "react";
 import TabBar from "./components/TabBar/TabBar";
-import { SizesWithFull, SizesWithNone } from "../../../common";
 import { applyMaxWidth, applyPadding, applyRoundessSizes } from "../../../style";
 import { tabStyles } from "./tab.styles";
 import TabContent from "./components/TabContent/TabContent";
+import { SizesWithNone, SizesWithFull } from "../../../types";
 
 export interface TabsItemProps {
 	title: string;

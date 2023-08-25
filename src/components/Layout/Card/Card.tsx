@@ -1,7 +1,7 @@
 import React from "react";
-import { ColorTypes, Rounded, Sizes, SizesWithNone } from "../../../common";
 import { applyPadding, applyRoundess, bgVariant } from "../../../style";
 import { cardStyle } from "./Card.style";
+import { Rounded, ColorTypes, Sizes, SizesWithNone } from "../../../types";
 
 interface Props {
 	hasShadow?: boolean;

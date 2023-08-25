@@ -1,4 +1,4 @@
-import { anyObject } from "../../../../common";
+import { anyObject } from "../ ../../../types";
 import { SelectItems } from "../types";
 
 export const mockSelectIdName: anyObject[] = [

@@ -1,6 +1,6 @@
 import React from "react";
 import { backgroundBar, progressBar } from "./ProgessBar.styles";
-import { ColorTypes, Opacities, Rounded, Sizes } from "../../../common";
+import { ColorTypes, Opacities, Rounded, Sizes } from "../../../types";
 import { applyRoundess } from "../../../style";
 import ProgressBarPointer from "./components/Pointer/Pointer";
 import ProgressBarMarks from "./components/Marks/Marks";

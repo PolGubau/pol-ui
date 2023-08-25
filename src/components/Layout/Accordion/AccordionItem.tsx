@@ -3,9 +3,9 @@ import { Icon, IconNames } from "../../Icon";
 import { Transition } from "@headlessui/react";
 import { Text } from "../../Text";
 import { AccordionItemProps } from "./Accordion";
-import { SizesWithNone } from "../../../common";
 import { applyRoundessSizes } from "../../../style";
 import { Button } from "../../Buttons";
+import { SizesWithNone } from "../../../types";
 interface Props {
 	hasIcon?: boolean;
 	isOpened?: boolean;
@@ -21,7 +21,12 @@ const AccordionItem: React.FC<Props> = ({
 	rounded = "none",
 }) => {
 	return (
-		<article key={item.title} className={`flex flex-col gap-1 overflow-hidden  ${item.className}`}>
+		<article
+			key={item.title}
+			className={`flex flex-col gap-1 overflow-hidden ${applyRoundessSizes({ rounded })} ${
+				item.className
+			}`}
+		>
 			<header>
 				<Button
 					rounded={false}

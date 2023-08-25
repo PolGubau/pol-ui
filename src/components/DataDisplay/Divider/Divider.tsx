@@ -1,5 +1,4 @@
 import React from "react";
-import { Alignments, ColorTypes, Margins, Opacities } from "../../../common";
 import {
 	applyOpacity,
 	bgVariant,
@@ -9,6 +8,7 @@ import {
 } from "../../../style";
 import { tv } from "tailwind-variants";
 import { Icon } from "../../Icon";
+import { ColorTypes, Alignments, Opacities, SizesWithNone } from "../../../types";
 
 interface Props {
 	orientation?: "horizontal" | "vertical";
@@ -17,7 +17,7 @@ interface Props {
 	message?: string | React.ReactNode;
 	messagePosition?: Alignments;
 	icon?: string;
-	margin?: Margins;
+	margin?: SizesWithNone;
 	opacity?: Opacities;
 	customTextBackground?: string;
 }
@@ -66,7 +66,7 @@ const Divider: React.FC<Props> = ({
 	message,
 	messagePosition = "center",
 	icon,
-	margin = "small",
+	margin = "sm",
 	opacity,
 	customTextBackground = "canvas",
 }) => {

@@ -73,7 +73,7 @@ import {
 } from "./utils";
 
 import { useHover, useClickOutside } from "./hooks";
-import { Identifier } from "./common.d";
+import { Identifier } from "./types";
 
 export {
 	//Hooks

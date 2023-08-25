@@ -2,8 +2,7 @@ import React from "react";
 import "../../../style/baseTheme.scss";
 import { Icon, IconType } from "../../Icon";
 import { button } from "./Button.styles";
-import { Side, Sizes } from "../../../common";
-
+import { Side, Sizes } from "../../../types";
 export type ButtonType = "main" | "normal" | "outlined" | "text";
 interface Props {
 	children?: React.ReactNode;

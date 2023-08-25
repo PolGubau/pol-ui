@@ -2,7 +2,7 @@ import React from "react";
 import "../../../style/baseTheme.scss";
 import { Icon, IconType } from "../../Icon";
 import { button } from "./Link.styles";
-import { Side, Sizes } from "../../../common";
+import { Side, Sizes } from "../../../types";
 interface Props {
 	children?: React.ReactNode;
 	onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
