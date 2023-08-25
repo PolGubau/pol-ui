@@ -2,7 +2,7 @@
 	"name": "pol-ui",
 	"author": "Pol Gubau Amores",
 	"license": "MIT",
-	"version": "1.0.18",
+	"version": "1.0.19",
 	"type": "module",
 	"private": false,
 	"files": [
@@ -81,6 +81,8 @@
 	},
 	"devDependencies": {
 		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+		"@headlessui/react": "^1.7.17",
+		"@headlessui/tailwindcss": "^0.2.0",
 		"@storybook/addon-essentials": "^7.0.17",
 		"@storybook/addon-interactions": "^7.0.17",
 		"@storybook/addon-links": "^7.0.17",
@@ -112,6 +114,7 @@
 		"postcss-cli": "^10.1.0",
 		"prop-types": "^15.8.1",
 		"react": "^18.2.0",
+		"react-confetti-explosion": "^2.1.2",
 		"react-dom": "^18.2.0",
 		"react-icons": "^4.10.1",
 		"sass": "^1.60.0",
@@ -128,9 +131,6 @@
 		"vite": "^4.3.8",
 		"vite-plugin-css-injected-by-js": "^3.1.1",
 		"vite-plugin-dts": "^2.3.0",
-		"@headlessui/react": "^1.7.17",
-		"@headlessui/tailwindcss": "^0.2.0",
-		"react-confetti-explosion": "^2.1.2"
-	},
-	"dependencies": {}
+		"vite-plugin-svgr": "^3.2.0"
+	}
 }

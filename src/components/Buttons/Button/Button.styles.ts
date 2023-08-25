@@ -1,7 +1,7 @@
 import { tv } from "tailwind-variants";
 
 export const button = tv({
-	base: "flex items-center justify-center gap-2 cursor-pointer transition-colors  cursor-pointer ",
+	base: "flex items-center justify-center gap-2 cursor-pointer transition-colors  cursor-pointer truncate  ",
 
 	variants: {
 		size: {

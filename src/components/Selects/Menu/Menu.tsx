@@ -7,7 +7,7 @@ import { formatString } from "../../../utils";
 import { Link } from "../../Buttons/Link";
 
 export interface MenuItem {
-	id: string;
+	id?: string;
 	label: string;
 	icon?: string;
 	onClick?: () => void;
@@ -80,11 +80,17 @@ export default function Menu({
 				<div className={`p-1 ${dividers ? "divide-y divide-gray-100" : ""} gap-col gap-0.5`}>
 					{items.map((item) =>
 						item.href ? (
-							<Link key={item.id} icon={item.icon} type="text" fullWidth href={item.href}>
+							<Link key={item.label} icon={item.icon} type="text" fullWidth href={item.href}>
 								{formatString(item.label)}
 							</Link>
 						) : (
-							<Button key={item.id} icon={item.icon} type="text" fullWidth onClick={item.onClick}>
+							<Button
+								key={item.label}
+								icon={item.icon}
+								type="text"
+								fullWidth
+								onClick={item.onClick}
+							>
 								{formatString(item.label)}
 							</Button>
 						)
