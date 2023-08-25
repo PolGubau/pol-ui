@@ -2,7 +2,7 @@
 	"name": "pol-ui",
 	"author": "Pol Gubau Amores",
 	"license": "MIT",
-	"version": "1.0.16",
+	"version": "1.0.17",
 	"type": "module",
 	"private": false,
 	"files": [
@@ -127,10 +127,10 @@
 		"typescript": "^4.9.5",
 		"vite": "^4.3.8",
 		"vite-plugin-css-injected-by-js": "^3.1.1",
-		"vite-plugin-dts": "^2.3.0"
-	},
-	"dependencies": {
+		"vite-plugin-dts": "^2.3.0",
 		"@headlessui/react": "^1.7.17",
-		"@headlessui/tailwindcss": "^0.2.0"
-	}
+		"@headlessui/tailwindcss": "^0.2.0",
+		"react-confetti-explosion": "^2.1.2"
+	},
+	"dependencies": {}
 }

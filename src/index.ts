@@ -66,6 +66,7 @@ import {
 	dateTimeToDate,
 	dateToDateTime,
 	getToday,
+	copyToClipboard,
 } from "./utils";
 
 import { useHover, useClickOutside } from "./hooks";
@@ -118,6 +119,7 @@ export {
 
 	// utils
 	generateUUID,
+	copyToClipboard,
 
 	// string conversion
 	getIcon,

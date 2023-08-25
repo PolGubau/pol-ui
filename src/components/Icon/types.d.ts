@@ -6,6 +6,8 @@ export interface IconData {
 }
 
 export enum IconNames {
+	copy = "copy",
+	clipboard = "clipboard",
 	expandLess = "expandLess",
 	expandMore = "expandMore",
 	expandboth = "expandboth",
