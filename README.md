@@ -80,8 +80,8 @@ This template comes with a GitHub Actions workflow to automatically publish on a
    - ✅ Grid System
    - ✅ Card
    - ✅ Accordion
-   - 🦺 Tabs
-   - Pagination
+   - ✅ Tabs
+   - 🦺 Pagination
 5. **Navigation Components:**
    - Navbar
    - Sidebar

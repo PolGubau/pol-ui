@@ -6,6 +6,10 @@ export interface IconData {
 }
 
 export enum IconNames {
+	arrowBarLeft = "arrowBarLeft",
+	arrowBarRight = "arrowBarRight",
+	arrowBarUp = "arrowBarUp",
+	arrowBarDown = "arrowBarDown",
 	copy = "copy",
 	clipboard = "clipboard",
 	expandLess = "expandLess",
