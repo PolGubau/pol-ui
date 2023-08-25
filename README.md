@@ -81,12 +81,12 @@ This template comes with a GitHub Actions workflow to automatically publish on a
    - ✅ Card
    - ✅ Accordion
    - ✅ Tabs
-   - 🦺 Pagination
+   - ✅ Pagination
 5. **Navigation Components:**
    - Navbar
    - Sidebar
    - Breadcrumbs
-   - Menu
+   - ✅ Menu
    - Stepper
 6. **Form Components:**
    - Form

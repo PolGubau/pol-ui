@@ -37,6 +37,8 @@ import {
 	Tabs,
 	TabBar,
 	TabContent,
+	Pagination,
+	TablePagination,
 } from "./components";
 
 import {
@@ -116,6 +118,8 @@ export {
 	Tabs,
 	TabBar,
 	TabContent,
+	Pagination,
+	TablePagination,
 
 	// utils
 	generateUUID,
