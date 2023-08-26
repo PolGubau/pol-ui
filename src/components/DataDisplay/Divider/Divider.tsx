@@ -1,25 +1,28 @@
 import React from "react";
 import {
+	applyAlignments,
+	applyBgColor,
+	applyColor,
+	applyMarginX,
+	applyMarginY,
 	applyOpacity,
-	bgVariant,
-	horizontalMargins,
-	textVariant,
-	verticalMargins,
+	applyRounded,
 } from "../../../style";
-import { tv } from "tailwind-variants";
 import { Icon } from "../../Icon";
-import { ColorTypes, Alignments, Opacities, SizesWithNone } from "../../../types";
+import { ColorTypes, Alignments, SizesWithNone, Tens, Direction, BaseProps } from "../../../types";
 
-interface Props {
-	orientation?: "horizontal" | "vertical";
-	variant?: ColorTypes;
+interface Props extends BaseProps {
+	direction?: Direction;
+	color?: ColorTypes;
 	weight?: number;
 	message?: string | React.ReactNode;
 	messagePosition?: Alignments;
 	icon?: string;
 	margin?: SizesWithNone;
-	opacity?: Opacities;
-	customTextBackground?: string;
+	opacity?: Tens;
+	messageColor?: ColorTypes;
+	messageBgColor?: ColorTypes;
+	messageRounded?: SizesWithNone;
 }
 
 // The divider container represents a horizontal rule that separates content in lists and layouts.
@@ -39,64 +42,61 @@ interface Props {
 
 // You can also pass an icon as well.
 
-const barStyle = tv({
-	base: "relative rounded-full flex   flex items-center ",
-	variants: {
-		orientation: {
-			horizontal: "h-0.5 w-full",
-			vertical: "w-0.5",
-		},
-		messagePosition: {
-			center: "justify-center",
-			left: "justify-start",
-			right: "justify-end",
-		},
-	},
-
-	defaultVariants: {
-		orientation: "horizontal",
-		messagePosition: "center",
-	},
-});
+const barStyle = (
+	direction: Direction,
+	messagePosition: Alignments,
+	margin: SizesWithNone,
+	className?: string
+) => {
+	return `relative rounded-full flex items-center ${
+		direction === "x" ? "h-0.5 w-full" : "w-0.5"
+	} ${applyAlignments(messagePosition)} ${direction === "x" && applyMarginY(margin)}
+            ${direction === "y" && applyMarginX(margin)}
+			
+			${className}
+`;
+};
 
 const Divider: React.FC<Props> = ({
-	orientation = "horizontal",
-	variant = "default",
+	id,
+	className,
+	ariaLabel,
+	style,
+
+	direction = "x",
+	color = "primary",
 	weight = 1,
 	message,
 	messagePosition = "center",
 	icon,
 	margin = "sm",
 	opacity,
-	customTextBackground = "canvas",
+	messageBgColor = "background",
+	messageRounded = "md",
 }) => {
 	return (
 		<div
+			id={id}
+			aria-label={ariaLabel}
 			className={`
-            ${orientation}    
-            ${bgVariant({ variant })}
-            ${barStyle({ orientation, messagePosition })}  
-			${applyOpacity({ opacity })}
-            ${orientation === "horizontal" && verticalMargins({ margin })}
-            ${orientation === "vertical" && horizontalMargins({ margin })}
-			
+			${applyBgColor(color)}
+            ${barStyle(direction, messagePosition, margin, className)}  
+			${applyOpacity(opacity)}
             `}
 			style={{
-				height: orientation === "horizontal" ? weight : "100%",
-				width: orientation === "vertical" ? weight : "100%",
+				height: direction === "x" ? weight : "100%",
+				width: direction === "y" ? weight : "100%",
+				...style,
 			}}
 		>
 			{message && (
 				<div
-					className={`absolute flex justify-center gap-2 bg-background rounded-lg  ${textVariant({
-						variant,
-					})}
-					
-					${orientation === "horizontal" ? "px-2" : "py-1"}
+					className={`absolute flex justify-center gap-2  
+					${applyColor(color)}
+					${applyBgColor(messageBgColor)}
+					${applyRounded(messageRounded)}
+					${direction === "x" ? "px-2" : "py-1"}
 					`}
-					style={{
-						backgroundColor: customTextBackground,
-					}}
 				>
 					{icon && <Icon icon={icon} />}
 					{message}

@@ -1,7 +1,7 @@
 import React from "react";
 import AccordionItem from "./AccordionItem";
 import { accordion } from "./accordion.style";
-import { applyMaxWidth, applyRoundessSizes } from "../../../style";
+import { applyMaxWidth, applyRounded } from "../../../style";
 import { SizesWithNone, SizesWithFull } from "../../../types";
 export interface AccordionItemProps {
 	title: string;
@@ -76,9 +76,7 @@ const Accordion: React.FC<Props> = ({
 		<section
 			className={`${accordion({ hasDividers, hasBorder })} ${applyMaxWidth({
 				maxWidth,
-			})} ${applyRoundessSizes({
-				rounded,
-			})} 
+			})} ${applyRounded(rounded)} 
 			${className}`}
 			id={id}
 			aria-label={ariaLabel}

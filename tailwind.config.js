@@ -4,21 +4,25 @@ const config = {
 	theme: {
 		extend: {
 			colors: {
+				// Contrasts
 				background: "Canvas",
-				text: "CanvasText",
-				primary: "#2B2D42",
+				contrast: "CanvasText",
+
+				// Base
+				primary: "#2b422f",
+				secondary: "#436447",
+
+				// Accent
 				accent: "#41ff07",
-				secondary: "#8D99AE",
+
+				// Status
 				success: "#63c056",
 				danger: "#d13a3a",
-				warning: "#d19c3a",
 				info: "#3a6fd1",
-				dark: "#272727",
-				light: "#f5f5f5",
+
+				// Utility
 				current: "currentColor",
 				transparent: "transparent",
-				black: "#000",
-				white: "#fff",
 			},
 		},
 	},

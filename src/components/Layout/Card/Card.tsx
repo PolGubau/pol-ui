@@ -1,57 +1,52 @@
 import React from "react";
-import { applyPadding, applyRoundess, bgVariant } from "../../../style";
 import { cardStyle } from "./Card.style";
-import { Rounded, ColorTypes, Sizes, SizesWithNone } from "../../../types";
+import { ColorTypes, Sizes, SizesWithNone } from "../../../types";
+import { applyBgColor, applyPadding, applyRounded } from "../../../style";
 
 interface Props {
 	hasShadow?: boolean;
 	hasBorder?: boolean;
-	rounded?: Rounded;
-	variant?: ColorTypes;
+	rounded?: SizesWithNone;
+	color?: ColorTypes;
 	maxWidth?: Sizes | "full";
 	children?: React.ReactNode;
 	cardHeader?: React.ReactNode;
 	cardFooter?: React.ReactNode;
-	padding?: SizesWithNone | "auto";
+	padding?: {
+		x: SizesWithNone;
+		y: SizesWithNone;
+	};
 }
 const Card: React.FC<Props> = ({
 	hasBorder = true,
 	hasShadow = true,
-	variant = "light",
-	rounded = "rounded",
+	color = "background",
+	rounded = "lg",
 	maxWidth,
 	cardHeader,
 	cardFooter,
 	children,
-	padding,
+	padding = { x: "md", y: "md" },
 }) => {
 	return (
 		<div
-			className={`${cardStyle({ hasBorder, hasShadow, maxWidth })} ${applyRoundess({
-				rounded,
-			})} ${bgVariant({
-				variant,
-			})}`}
+			className={`${cardStyle({ hasBorder, hasShadow, maxWidth })} ${applyRounded(
+				rounded
+			)} ${applyBgColor(color)}`}
 		>
 			{cardHeader && (
 				<header
 					className={`flex justify-between border-b-2 border-opacity-50 items-center  ${applyPadding(
-						{ padding }
+						padding
 					)}`}
 				>
 					{cardHeader}
 				</header>
 			)}
-			<div className={`flex flex-col gap-2 ${applyPadding({ padding })}`}>{children}</div>
+			<div className={`flex flex-col gap-2 ${applyPadding(padding)}`}>{children}</div>
 
 			{cardFooter && (
-				<footer
-					className={`flex justify-between ${applyPadding({
-						padding,
-					})}`}
-				>
-					{cardFooter}
-				</footer>
+				<footer className={`flex justify-between ${applyPadding(padding)}`}>{cardFooter}</footer>
 			)}
 		</div>
 	);

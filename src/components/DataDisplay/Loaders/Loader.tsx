@@ -7,24 +7,24 @@ import Spinner from "./Loaders/Spinner/Spinner";
 interface LoaderProps {
 	type?: "spinner" | "dots" | "bars" | "pulse";
 	size?: Sizes;
-	variant?: ColorTypes;
+	color?: ColorTypes;
 }
 
-const Loader: React.FC<LoaderProps> = ({ type = "spinner", variant, size }) => {
+const Loader: React.FC<LoaderProps> = ({ type = "spinner", color, size }) => {
 	switch (type) {
 		case "pulse":
-			return <Pulse className={spinnerStyled({ size })} variant={variant ?? "accent"} />;
+			return <Pulse className={spinnerStyled({ size })} color={color ?? "accent"} />;
 		case "bars":
-			return <Bars size={size} variant={variant ?? "accent"} amount={3} />;
+			return <Bars size={size} color={color ?? "accent"} amount={3} />;
 		case "dots":
-			return <Dots size={size} variant={variant ?? "accent"} amount={3} />;
+			return <Dots size={size} color={color ?? "accent"} amount={3} />;
 
 		default:
 			return (
 				<Spinner
 					className={spinnerStyled({ size })}
 					size={size ?? "md"}
-					variant={variant ?? "accent"}
+					color={color ?? "accent"}
 				/>
 			);
 	}

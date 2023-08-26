@@ -1,20 +1,20 @@
 import React from "react";
-import { backgroundBar, progressBar } from "./ProgessBar.styles";
-import { ColorTypes, Opacities, Rounded, Sizes } from "../../../types";
-import { applyRoundess } from "../../../style";
+import { backgroundBar } from "./ProgessBar.styles";
+import { ColorTypes, Sizes, SizesComplete, Tens } from "../../../types";
 import ProgressBarPointer from "./components/Pointer/Pointer";
 import ProgressBarMarks from "./components/Marks/Marks";
+import { applyBgColor, applyRounded } from "../../../style";
 
 interface ProgressBarProps {
 	value: number; // Value of the progress bar (0-100)
 	height?: string; // Height of the progress bar
 	className?: string; // Additional CSS classes
-	rounded?: Rounded;
+	rounded?: SizesComplete;
 	pointer?: boolean;
 	pointerPosition?: "top" | "bottom";
 	hasValueInside?: boolean;
 	pointerWithArrow?: boolean;
-	variant?: ColorTypes;
+	color?: ColorTypes;
 	size?: Sizes;
 	min?: number;
 	max?: number;
@@ -22,20 +22,20 @@ interface ProgressBarProps {
 	showMax?: boolean;
 	marks?: number; // Interval to show marks (percentage)
 	marksColor?: ColorTypes;
-	marksOpacity?: Opacities;
+	marksOpacity?: Tens;
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({
 	value,
 	marks = 0,
-	marksColor = "dark",
-	rounded = "circular",
+	marksColor = "primary",
+	rounded = "full",
 	className = "",
 	pointer = true,
 	pointerPosition = "top",
 	hasValueInside = false,
 	pointerWithArrow = true,
-	variant = "accent",
+	color = "accent",
 	size = "md",
 	min = 0,
 	max = 100,
@@ -74,9 +74,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 	if (percentage < 0) percentage = 0;
 
 	return (
-		<div
-			className={`${backgroundBar({ variant, size })} ${applyRoundess({ rounded })} ${className}`}
-		>
+		<div className={`${backgroundBar({ size })} ${applyRounded(rounded)} ${className}`}>
 			{pointer && (
 				<ProgressBarPointer
 					pointerWithArrow={pointerWithArrow}
@@ -85,10 +83,12 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 					pointerPosition={pointerPosition}
 				/>
 			)}
-			<div className={`overflow-hidden transition-all  ${applyRoundess({ rounded })}`}>
-				<ProgressBarMarks marks={marks} marksColor={marksColor} opacity={marksOpacity} />
+			<div className={`overflow-hidden transition-all  ${applyRounded(rounded)}`}>
+				<ProgressBarMarks marks={marks} color={marksColor} opacity={marksOpacity} />
 				<div
-					className={`${progressBar({ variant })} ${applyRoundess({ rounded })}`}
+					className={` h-full w-fit absolute top-0 left-0 flex items-center justify-center  ${applyBgColor(
+						color
+					)} ${applyRounded(rounded)}`}
 					style={{
 						width: `${percentage}%`,
 					}}

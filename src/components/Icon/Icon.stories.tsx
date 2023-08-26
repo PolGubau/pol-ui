@@ -4,7 +4,7 @@ import Icon from "./Icon";
 import { TbCheck } from "react-icons/tb";
 
 const meta = {
-	title: "Icon",
+	title: "Base/Icon",
 	component: Icon,
 	tags: ["autodocs"],
 } satisfies Meta<typeof Icon>;
@@ -40,11 +40,8 @@ export const IconColors: Story = {
 			<Icon {...args} color="info" />
 			<Icon {...args} color="success" />
 			<Icon {...args} color="danger" />
-			<Icon {...args} color="warning" />
 			<Icon {...args} color="accent" />
-			<Icon {...args} color="light" />
-			<Icon {...args} color="dark" />
-			<Icon {...args} color="default" />
+			<Icon {...args} color="contrast" />
 		</>
 	),
 	args: {

@@ -1,26 +1,33 @@
 import React from "react";
 import "../../../style/baseTheme.scss";
 import { Icon, IconType } from "../../Icon";
-import { button } from "./Button.styles";
-import { Side, Sizes } from "../../../types";
-export type ButtonType = "main" | "normal" | "outlined" | "text";
-interface Props {
+import { buttonStyles } from "./Button.styles";
+import {
+	type BaseProps,
+	ColorTypes,
+	Side,
+	Sizes,
+	SizesComplete,
+	SizesWithNone,
+} from "../../../types";
+export type ButtonVariant = "filled" | "outlined" | "text";
+interface Props extends BaseProps {
 	children?: React.ReactNode;
 	onClick?: () => void;
-	id?: string;
-	className?: string;
-	ariaLabel?: string;
 	disabled?: boolean;
-	type?: ButtonType;
+	variant?: ButtonVariant;
+	color?: ColorTypes;
 	size?: Sizes;
-	rounded?: boolean;
+	rounded?: SizesComplete;
 	icon?: IconType;
 	iconPosition?: Side;
 	autoFocus?: boolean;
 	fullWidth?: boolean;
 	centered?: boolean;
-	onlyIcon?: boolean;
-	href?: string;
+	padding?: {
+		x: SizesWithNone;
+		y: SizesWithNone;
+	};
 	ref?: React.RefObject<HTMLButtonElement>;
 }
 
@@ -31,15 +38,17 @@ const Button: React.FC<Props> = ({
 	onClick,
 	disabled = false,
 	ariaLabel = "button",
-	type = "normal",
+	variant = "filled",
+	color = "primary",
 	size = "md",
-	rounded = true,
+	rounded = "lg",
 	icon,
 	iconPosition = "left",
 	autoFocus = false,
 	fullWidth = false,
 	centered = false,
-	onlyIcon = false,
+	padding = { x: "md", y: "sm" },
+	style,
 	ref,
 }) => {
 	return (
@@ -50,18 +59,21 @@ const Button: React.FC<Props> = ({
 			autoFocus={autoFocus}
 			id={id}
 			onClick={onClick}
-			className={`${button({
-				type,
-				size,
+			style={style}
+			className={buttonStyles({
 				rounded,
+				size,
 				fullWidth,
-				centered,
-				onlyIcon,
 				disabled,
-			})}	${className}`}
+				centered,
+				padding,
+				variant,
+				color,
+				className,
+			})}
 		>
 			{icon && iconPosition === "left" && <Icon icon={icon} size={size} />}
-			{!onlyIcon && children}
+			{children}
 			{icon && iconPosition === "right" && <Icon icon={icon} size={size} />}
 		</button>
 	);

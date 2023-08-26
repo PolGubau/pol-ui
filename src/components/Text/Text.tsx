@@ -33,13 +33,11 @@ const Text: React.FC<Props> = ({
 	return (
 		<TextStyled
 			className={` 
-			w-fit
+				w-fit
 				${isBold ? "font-bold" : ""}
 				${isItalic ? "italic" : ""}
 				${centered ? "text-center" : "text-left"}
-				
-				p-0 m-0 overflow-hidden 
-			${className}`}
+ 			${className}`}
 			$color={color}
 			role="text"
 			$maxLines={maxLines}

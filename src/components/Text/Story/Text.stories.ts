@@ -3,7 +3,7 @@ import texts from "./data.json";
 import Text from "../Text";
 
 const meta = {
-	title: "Text",
+	title: "Base/Text",
 	component: Text,
 	tags: ["autodocs"],
 } satisfies Meta<typeof Text>;

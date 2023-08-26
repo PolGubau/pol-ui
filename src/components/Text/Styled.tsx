@@ -40,6 +40,9 @@ const TextStyled = styled.div<TextStyledProps>`
 		font-size: 1rem;
 		margin: 0;
 	}
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
 	display: -webkit-box;
 	-webkit-line-clamp: ${(props) => props.$maxLines};
 	line-clamp: ${(props) => props.$maxLines};

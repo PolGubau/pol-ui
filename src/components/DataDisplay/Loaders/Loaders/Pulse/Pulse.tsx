@@ -1,6 +1,6 @@
 import { keyframes, styled } from "styled-components";
 import { ColorTypes } from "../../../../../types";
-import { bgVariant } from "../../../../../style";
+import { applyBgColor } from "../../../../../style";
 
 const pulseAnimation = keyframes`
     0% {
@@ -26,12 +26,12 @@ const PulseStyled = styled.div`
 	animation-fill-mode: forwards;
 `;
 
-const Pulse = ({ className, variant }: { className: string; variant: ColorTypes }) => {
+const Pulse = ({ className, color }: { className: string; color: ColorTypes }) => {
 	return (
 		<PulseStyled
-			className={`flex rounded-full justify-center items-center  ${bgVariant({
-				variant,
-			})} ${className}`}
+			className={`flex rounded-full justify-center items-center  ${applyBgColor(
+				color
+			)} ${className}`}
 		></PulseStyled>
 	);
 };

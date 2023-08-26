@@ -4,32 +4,24 @@ export type SizesWithNone = Sizes | "none";
 export type SizesWithFull = Sizes | "full";
 export type SizesComplete = Sizes | "none" | "full";
 export type Side = "right" | "left";
+export type Direction = "x" | "y";
+export type Alignments = Side | "center";
+export type Tens = 0 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100;
+export type Shadow = SizesWithNone | "inner" | "outline";
+
 export type ColorTypes =
+	| "primary"
+	| "secondary"
 	| "success"
 	| "danger"
 	| "accent"
-	| "warning"
 	| "info"
-	| "dark"
-	| "light"
-	| "default";
+	| "background"
+	| "contrast";
 
-export type BasicProps = {
+export type BaseProps = {
 	className?: string;
 	style?: React.CSSProperties;
-	children?: React.ReactNode;
 	id?: string;
+	ariaLabel?: string;
 };
-
-export type ID = {
-	id: Identifier;
-};
-export interface AnyButId extends ID {
-	[key: string]: any;
-}
-
-export type Rounded = "circular" | "square" | "rounded";
-export type Alignments = "left" | "center" | "right";
-export type Spacings = "none" | "small" | "medium" | "large" | "auto";
-export type Opacities = 0 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100;
-export type Shadow = "none" | "sm" | "md" | "lg" | "xl" | "2xl" | "inner" | "outline";

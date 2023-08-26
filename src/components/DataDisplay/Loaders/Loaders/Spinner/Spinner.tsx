@@ -1,23 +1,23 @@
 import { TbLoader2 } from "react-icons/tb";
 import { ColorTypes, Sizes } from "../../../../../types";
-import { textVariant } from "../../../../../style";
+import { applyColor } from "../../../../../style";
 import { Icon } from "../../../../Icon";
 
 const Spinner = ({
 	className,
 	size,
-	variant,
+	color,
 }: {
 	className: string;
 	size: Sizes;
-	variant: ColorTypes;
+	color: ColorTypes;
 }) => {
 	return (
-		<div className={`flex justify-center items-center w-fit scale-150 ${textVariant({ variant })}`}>
+		<div className={`flex justify-center items-center w-fit scale-150 ${applyColor(color)}`}>
 			<Icon
 				icon={<TbLoader2 />}
 				size={size}
-				color={variant}
+				color={color}
 				className={`w-fit h-fit   animate-spin animate-infinite animate-duration-[1400ms] animate-ease-in-out animate-fill-forwards ${className}`}
 			/>
 		</div>

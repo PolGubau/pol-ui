@@ -1,47 +1,48 @@
 import React from "react";
 import "../../../style/baseTheme.scss";
 import { Icon, IconType } from "../../Icon";
-import { button } from "./Link.styles";
-import { Side, Sizes } from "../../../types";
-interface Props {
+import { BaseProps, ColorTypes, Side, Sizes, SizesComplete, SizesWithNone } from "../../../types";
+import { buttonStyles } from "../Button/Button.styles";
+import { ButtonVariant } from "../Button/Button";
+interface Props extends BaseProps {
 	children?: React.ReactNode;
-	onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
-	id?: string;
-	className?: string;
-	ariaLabel?: string;
-	disabled?: boolean;
-	type?: "main" | "normal" | "outlined" | "text";
+	href: string;
+	variant?: ButtonVariant;
+	color?: ColorTypes;
 	size?: Sizes;
-	rounded?: boolean;
+	rounded?: SizesComplete;
 	icon?: IconType;
 	iconPosition?: Side;
 	autoFocus?: boolean;
 	fullWidth?: boolean;
 	centered?: boolean;
-	onlyIcon?: boolean;
-	href: string;
+	onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+	padding?: {
+		x: SizesWithNone;
+		y: SizesWithNone;
+	};
 }
 
 const Link: React.FC<Props> = ({
 	className,
 	children,
 	id,
-	onClick,
-	disabled = false,
+	href,
 	ariaLabel = "button",
-	type = "normal",
+	variant = "filled",
+	color = "primary",
 	size = "md",
-	rounded = true,
+	rounded = "lg",
 	icon,
+	onClick,
 	iconPosition = "left",
 	autoFocus = false,
 	fullWidth = false,
 	centered = false,
-	onlyIcon = false,
-	href,
+	padding = { x: "md", y: "sm" },
+	style,
 }) => {
 	const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-		event.preventDefault();
 		if (onClick) {
 			onClick(event);
 		}
@@ -58,18 +59,20 @@ const Link: React.FC<Props> = ({
 			autoFocus={autoFocus}
 			id={id}
 			onClick={handleLinkClick}
-			className={`${button({
-				type,
-				size,
+			style={style}
+			className={buttonStyles({
 				rounded,
+				size,
 				fullWidth,
 				centered,
-				onlyIcon,
-				disabled,
-			})}	${className}`}
+				padding,
+				variant,
+				color,
+				className,
+			})}
 		>
 			{icon && iconPosition === "left" && <Icon icon={icon} size={size} />}
-			{!onlyIcon && children}
+			{children}
 			{icon && iconPosition === "right" && <Icon icon={icon} size={size} />}
 		</a>
 	);
