@@ -1,4 +1,4 @@
-import { ButtonType } from "../../Buttons/Button/Button";
+import { ButtonVariant } from "../../Buttons/Button/Button";
 import { IconType } from "../../Icon";
 
 export interface ModalProps {
@@ -8,14 +8,14 @@ export interface ModalProps {
 	title?: string;
 	icon?: IconType;
 	cancelButton?: {
-		buttonType?: ButtonType;
+		buttonType?: ButtonVariant;
 		icon?: IconType;
 		text?: string;
 		onClick?: () => Promise<void> | void;
 	};
 	submitButton?: {
 		customColor?: string;
-		buttonType?: ButtonType;
+		buttonType?: ButtonVariant;
 		icon?: IconType;
 		text?: string;
 		onClick?: () => Promise<void> | void;

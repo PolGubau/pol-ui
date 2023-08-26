@@ -28,7 +28,11 @@ export const Default: Story = {
 		logo: <Logo width={"25px"} />,
 		children: (
 			<ul className="flex gap-2">
-				<Menu label="Menu" buttonType="text" items={[{ label: "Item 1" }, { label: "Item 2" }]} />
+				<Menu
+					label="Menu"
+					buttonVariant="text"
+					items={[{ label: "Item 1" }, { label: "Item 2" }]}
+				/>
 				<Link href="/1" type="text">
 					Link
 				</Link>

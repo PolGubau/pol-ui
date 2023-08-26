@@ -1,5 +1,5 @@
 import React from "react";
-import Button, { ButtonType } from "../../../Buttons/Button/Button";
+import Button, { ButtonVariant } from "../../../Buttons/Button/Button";
 import { IconButton } from "../../../Buttons";
 import { IconNames } from "../../../Icon";
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 	rowsPerPage: number;
 	surroundingButtons?: boolean;
 	totalResults: number;
-	variant?: ButtonType;
+	variant?: ButtonVariant;
 }
 const Pagination: React.FC<Props> = ({
 	page,
@@ -37,7 +37,7 @@ const Pagination: React.FC<Props> = ({
 		<div className={`flex items-center justify-center gap-3`}>
 			{surroundingButtons && (
 				<IconButton
-					type={variant}
+					variant={variant}
 					icon={IconNames.arrowleft}
 					onClick={() => onPageChange?.(page - 1)}
 					disabled={page === 1}
@@ -45,7 +45,7 @@ const Pagination: React.FC<Props> = ({
 			)}
 			{getPages().map((pageNumber) => (
 				<Button
-					type={variant}
+					variant={variant}
 					key={pageNumber}
 					onClick={() => onPageChange?.(pageNumber)}
 					disabled={page === pageNumber}
@@ -55,7 +55,7 @@ const Pagination: React.FC<Props> = ({
 			))}
 			{surroundingButtons && (
 				<IconButton
-					type={variant}
+					variant={variant}
 					icon={IconNames.arrowright}
 					onClick={() => onPageChange?.(page + 1)}
 					disabled={page * rowsPerPage >= totalResults}

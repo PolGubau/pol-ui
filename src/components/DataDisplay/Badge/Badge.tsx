@@ -2,14 +2,16 @@ import { Transition } from "@headlessui/react";
 import { Icon, IconType } from "../../Icon";
 import { badgeStyles } from "./Badge.styles";
 import { Fragment } from "react";
-import { BasicProps, ColorTypes, Rounded, Sizes } from "../../../types";
+import { ColorTypes, Sizes, BaseProps, SizesComplete, Shadow } from "../../../types";
+import { applyBgColor, applyRounded, applyShadow } from "../../../style";
 
-interface Props extends BasicProps {
+interface Props extends BaseProps {
 	content: string | number;
 	variant?: "dot" | "text";
 	color?: ColorTypes;
+	shadow?: Shadow;
 	size?: Sizes;
-	shape?: Rounded;
+	rounded?: SizesComplete;
 	max?: number;
 	horizontal?: "left" | "right";
 	vertical?: "top" | "bottom";
@@ -18,15 +20,17 @@ interface Props extends BasicProps {
 	ariaLabel?: string;
 	ariaDescribedby?: string;
 	icon?: IconType;
+	children?: React.ReactNode;
 }
 const Badge = ({
 	content,
 	color = "accent",
 	size = "md",
-	shape = "circular",
+	rounded = "full",
 	max = 99,
 	className = "",
 	style,
+	shadow = "none",
 	id,
 	children = null,
 	horizontal = "right",
@@ -63,13 +67,16 @@ const Badge = ({
 			>
 				<span
 					className={`${badgeStyles({
-						shape,
 						size,
-						color,
 						horizontal,
 						vertical,
 						clickable: Boolean(onClick),
-					})} ${className}`}
+					})} 
+					${applyRounded(rounded)}
+					${applyBgColor(color)}
+					${applyShadow(shadow)}
+					
+					${className}`}
 					onClick={onClick}
 					aria-label={ariaLabel}
 					aria-describedby={ariaDescribedby}

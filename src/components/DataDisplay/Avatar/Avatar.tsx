@@ -3,12 +3,12 @@ import { Link } from "../../Buttons/Link";
 import { avatarImageStyle, avatarStyle } from "./avatar.styles";
 import { Image } from "../../Media/Image";
 import Badge from "../Badge/Badge";
-import { ColorTypes, Rounded, Sizes } from "../../../types";
+import { ColorTypes, Sizes, SizesComplete } from "../../../types";
 
 interface Props {
 	src: string;
 	name: string;
-	rounded?: Rounded;
+	rounded?: SizesComplete;
 	description?: string;
 	size?: Sizes;
 	href?: string;
@@ -21,7 +21,7 @@ interface Props {
 const Avatar: React.FC<Props> = ({
 	src,
 	name,
-	rounded,
+	rounded = "none",
 	description,
 	size,
 	href,
@@ -54,7 +54,7 @@ const Avatar: React.FC<Props> = ({
 	);
 
 	return href ? (
-		<Link type="text" href={href}>
+		<Link variant="text" href={href}>
 			{avatarContent}
 		</Link>
 	) : (

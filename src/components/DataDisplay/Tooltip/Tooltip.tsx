@@ -2,15 +2,16 @@ import React, { Fragment } from "react";
 import { useHover } from "../../../hooks";
 import { Transition } from "@headlessui/react";
 import { tooltipContainerStyle, tooltipStylePosition } from "./Tooltip.styles";
-import { BasicProps } from "../../../types";
+import { BaseProps } from "../../../types";
 
-interface Props extends BasicProps {
+interface Props extends BaseProps {
 	content: React.ReactNode | string;
 	position?: "top" | "bottom" | "left" | "right";
 	enterDelay?: number;
 	leaveDelay?: number;
 	tooltipClassName?: string;
 	tooltipStyle?: React.CSSProperties;
+	children: React.ReactNode;
 }
 
 const Tooltip = ({

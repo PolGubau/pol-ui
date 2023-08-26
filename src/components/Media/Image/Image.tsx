@@ -1,6 +1,7 @@
 import React from "react";
 import { imageStyle } from "./image.styles";
-import { Rounded } from "../../../types";
+import { applyRounded } from "../../../style";
+import { SizesComplete } from "../../../types";
 interface Props {
 	src: string;
 	alt: string;
@@ -8,7 +9,7 @@ interface Props {
 	className?: string;
 	height?: string;
 	width?: string;
-	rounded?: Rounded;
+	rounded: SizesComplete;
 	aspectRatio?: "1/1" | "4/3" | "16/9" | "9/16" | "3/4" | "8/5";
 }
 
@@ -21,13 +22,13 @@ const Image: React.FC<Props> = ({
 	className,
 	width = "100px",
 	height = "100px",
-	rounded,
+	rounded = "none",
 	aspectRatio,
 }) => {
 	const [hasError, setHasError] = React.useState(false);
 
 	return (
-		<div className={`${imageStyle({ rounded, aspectRatio })} ${className}`}>
+		<div className={`${imageStyle({ aspectRatio })} ${applyRounded(rounded)} ${className}`}>
 			{hasError ? (
 				renderOnError
 			) : (

@@ -3,15 +3,15 @@ import { Icon, IconNames } from "../../Icon";
 import { Transition } from "@headlessui/react";
 import { Text } from "../../Text";
 import { AccordionItemProps } from "./Accordion";
-import { applyRoundessSizes } from "../../../style";
 import { Button } from "../../Buttons";
-import { SizesWithNone } from "../../../types";
+import { SizesComplete } from "../../../types";
+import { applyRounded } from "../../../style";
 interface Props {
 	hasIcon?: boolean;
 	isOpened?: boolean;
 	toggleOpen?: () => void;
 	item: AccordionItemProps;
-	rounded: SizesWithNone;
+	rounded: SizesComplete;
 }
 const AccordionItem: React.FC<Props> = ({
 	item,
@@ -23,14 +23,12 @@ const AccordionItem: React.FC<Props> = ({
 	return (
 		<article
 			key={item.title}
-			className={`flex flex-col gap-1 overflow-hidden ${applyRoundessSizes({ rounded })} ${
-				item.className
-			}`}
+			className={`flex flex-col gap-1 overflow-hidden ${applyRounded(rounded)} ${item.className}`}
 		>
 			<header>
 				<Button
-					rounded={false}
-					type="text"
+					rounded={"none"}
+					variant="text"
 					fullWidth
 					onClick={toggleOpen}
 					className="flex justify-between items-center rounded-lg cursor-pointer py-2 px-4 "

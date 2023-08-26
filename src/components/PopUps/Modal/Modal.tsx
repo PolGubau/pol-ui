@@ -73,7 +73,7 @@ const Modal = ({ state, setState }: Props) => {
 					className="absolute right-4 top-4"
 					icon="close"
 					onClick={closeModal}
-					type="text"
+					variant="text"
 				/>
 				{title && (
 					<header className="max-w-[80%] flex gap-4 items-center">
@@ -86,7 +86,7 @@ const Modal = ({ state, setState }: Props) => {
 					<footer className="flex gap-4 w-full">
 						{cancelButton && (
 							<Button
-								type={cancelButton.buttonType || "normal"}
+								variant={cancelButton.buttonType ?? "filled"}
 								onClick={() => cancelButton.onClick?.()}
 								icon={cancelButton?.icon}
 							>
@@ -96,7 +96,7 @@ const Modal = ({ state, setState }: Props) => {
 						{submitButton && (
 							<Button
 								autoFocus
-								type={submitButton.buttonType || "main"}
+								variant={submitButton.buttonType ?? "filled"}
 								onClick={() => submitButton.onClick?.()}
 								icon={submitButton?.icon}
 							>

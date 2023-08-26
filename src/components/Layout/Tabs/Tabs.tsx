@@ -1,10 +1,10 @@
 "use client";
 import React, { useMemo } from "react";
 import TabBar from "./components/TabBar/TabBar";
-import { applyMaxWidth, applyPadding, applyRoundessSizes } from "../../../style";
+import { applyMaxWidth, applyPadding, applyRounded } from "../../../style";
 import { tabStyles } from "./tab.styles";
 import TabContent from "./components/TabContent/TabContent";
-import { SizesWithNone, SizesWithFull } from "../../../types";
+import { SizesWithNone, SizesWithFull, SizesComplete } from "../../../types";
 
 export interface TabsItemProps {
 	title: string;
@@ -19,8 +19,11 @@ interface Props {
 	hasDivider?: boolean;
 	hasBorder?: boolean;
 	className?: string;
-	padding?: SizesWithNone;
-	rounded?: SizesWithNone;
+	padding?: {
+		x: SizesWithNone;
+		y: SizesWithNone;
+	};
+	rounded?: SizesComplete;
 	maxWidth?: SizesWithFull;
 	classNameContent?: string;
 }
@@ -31,7 +34,7 @@ const Tabs: React.FC<Props> = ({
 	className,
 	hasBorder,
 	hasDivider,
-	padding = "md",
+	padding = { x: "sm", y: "sm" },
 	rounded = "none",
 	maxWidth = "full",
 	classNameContent,
@@ -41,19 +44,13 @@ const Tabs: React.FC<Props> = ({
 
 	return (
 		<section
-			className={`${tabStyles({ hasBorder, hasDivider })} ${applyRoundessSizes({
-				rounded,
-			})} 
+			className={`${tabStyles({ hasBorder, hasDivider })} ${applyRounded(rounded)} 
 			
-			${applyMaxWidth({ maxWidth })}
+			${applyMaxWidth(maxWidth)}
 			${className}`}
 		>
 			<TabBar data={data} activeTab={activeTab} setActiveTab={setActiveTab} padding={padding} />
-			<main
-				className={`${applyPadding({
-					padding,
-				})}`}
-			>
+			<main className={`${applyPadding(padding)}`}>
 				<TabContent content={selectedContent} className={classNameContent} />
 			</main>
 		</section>

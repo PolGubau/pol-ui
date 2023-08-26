@@ -4,6 +4,7 @@ import { Button } from "../../Buttons";
 import { Field } from "../../Inputs";
 import React from "react";
 import { Shadow, SizesWithNone } from "../../../types";
+import { Link } from "../../Buttons/Link";
 
 export const navbar = tv({
 	base: "  w-full h-16 flex justify-between items-center p-4",
@@ -29,7 +30,10 @@ interface Props {
 	backgroundColor?: string;
 	logo?: React.ReactNode;
 	shadow?: Shadow;
-	padding?: SizesWithNone;
+	padding?: {
+		x: SizesWithNone;
+		y: SizesWithNone;
+	};
 	cta?: {
 		label: string;
 		href: string;
@@ -54,7 +58,7 @@ const Navbar: React.FC<Props> = ({
 	logo,
 	children,
 	shadow,
-	padding,
+	padding = { x: "sm", y: "sm" },
 	cta,
 	handleSearch,
 	customRight,
@@ -63,9 +67,9 @@ const Navbar: React.FC<Props> = ({
 }) => {
 	return (
 		<div
-			className={`${navbar({ position })} ${applyPadding({ padding })} ${applyShadow({
-				shadow,
-			})}${className ?? ""}`}
+			className={`${navbar({ position })} ${applyPadding(padding)} ${applyShadow(shadow)}${
+				className ?? ""
+			}`}
 			style={{
 				backgroundColor: backgroundColor,
 			}}
@@ -74,11 +78,16 @@ const Navbar: React.FC<Props> = ({
 			<div>{children}</div>
 			{(cta || handleSearch || customRight) && (
 				<div className="flex gap-1">
-					{cta && (
-						<Button type="main" href={cta.href ?? ""} onClick={cta.onClick}>
-							{cta.label}
-						</Button>
-					)}
+					{cta &&
+						(cta.href ? (
+							<Link color="accent" href={cta.href ?? ""} onClick={cta.onClick}>
+								{cta.label}
+							</Link>
+						) : (
+							<Button color="accent" onClick={cta.onClick}>
+								{cta.label}
+							</Button>
+						))}
 					{handleSearch && <Field type="search" label="Search" onChange={handleSearch} />}
 					{customRight}
 				</div>

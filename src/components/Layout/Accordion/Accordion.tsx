@@ -74,9 +74,9 @@ const Accordion: React.FC<Props> = ({
 
 	return (
 		<section
-			className={`${accordion({ hasDividers, hasBorder })} ${applyMaxWidth({
-				maxWidth,
-			})} ${applyRounded(rounded)} 
+			className={`${accordion({ hasDividers, hasBorder })} ${applyMaxWidth(
+				maxWidth
+			)} ${applyRounded(rounded)} 
 			${className}`}
 			id={id}
 			aria-label={ariaLabel}

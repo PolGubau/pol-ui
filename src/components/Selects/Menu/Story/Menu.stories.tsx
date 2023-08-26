@@ -12,13 +12,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	args: { label: "Menu", items: mockmenu, buttonType: "normal" },
+	args: { label: "Menu", items: mockmenu, buttonVariant: "normal" },
 };
 export const WithoutLabel: Story = {
-	args: { items: mockmenu, buttonType: "normal" },
+	args: { items: mockmenu, buttonVariant: "normal" },
 };
 export const CustomButton: Story = {
-	args: { label: "Nice label", items: mockmenu, buttonType: "text" },
+	args: { label: "Nice label", items: mockmenu, buttonVariant: "text" },
 };
 export const Dividers: Story = {
 	args: { label: "Nice label", items: mockmenu, dividers: true },
@@ -29,13 +29,13 @@ export const ChangeIcon: Story = {
 export const NavIdea: Story = {
 	render: (args) => (
 		<div className="flex gap-2">
-			<Menu {...args} label="About us" buttonType="text" items={mockmenu} />
-			<Menu {...args} label="Our Products" buttonType="text" items={mockmenu} />
+			<Menu {...args} label="About us" buttonVariant="text" items={mockmenu} />
+			<Menu {...args} label="Our Products" buttonVariant="text" items={mockmenu} />
 			<Link {...args} href="/ugly-blog" type="text">
 				Visit our blog
 			</Link>
-			<Menu {...args} openIcon="more" buttonType="text" items={mockmenu} />
+			<Menu {...args} openIcon="more" buttonVariant="text" items={mockmenu} />
 		</div>
 	),
-	args: { items: mockmenu, buttonType: "normal" },
+	args: { items: mockmenu, buttonVariant: "normal" },
 };

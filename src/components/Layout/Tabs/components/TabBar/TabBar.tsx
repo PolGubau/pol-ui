@@ -7,24 +7,33 @@ interface Props {
 	data: TabsItemProps[];
 	activeTab: number;
 	setActiveTab: (index: number) => void;
-	padding?: SizesWithNone;
+	padding?: {
+		x: SizesWithNone;
+		y: SizesWithNone;
+	};
 	maxWidth?: SizesWithFull;
 }
 
-const TabBar: React.FC<Props> = ({ data, activeTab, setActiveTab, padding }) => {
+const TabBar: React.FC<Props> = ({
+	data,
+	activeTab,
+	setActiveTab,
+	padding = {
+		x: "sm",
+		y: "sm",
+	},
+}) => {
 	return (
 		<>
 			<ul
-				// hide scrollbar
 				className={`flex gap-2 max-w-full overflow-x-auto md:snap-x  whitespace-nowrap overflow-auto scrollbar-hide
-			${applyPadding({
-				padding,
-			})}`}
+			${applyPadding(padding)}`}
 			>
 				{data.map((item, index) => (
 					<li key={item.title} aria-label="Tab">
 						<Button
-							type={index === activeTab ? "main" : "text"}
+							variant={index === activeTab ? "filled" : "text"}
+							color={index === activeTab ? "accent" : "primary"}
 							icon={item.icon}
 							onClick={() => setActiveTab(index)}
 						>

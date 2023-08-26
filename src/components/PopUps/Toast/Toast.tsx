@@ -30,7 +30,7 @@ export const Toast = ({ state, setState }: Props) => {
 					{action.label ?? "OK"}
 				</Button>
 			)}
-			<IconButton icon="close" type="text" onClick={handleClose} />
+			<IconButton icon="close" variant="text" onClick={handleClose} />
 		</div>
 	);
 };

@@ -2,21 +2,24 @@ import { Fragment, useState } from "react";
 import { Combobox, Transition } from "@headlessui/react";
 import { Icon, IconNames } from "../../Icon";
 import { SelectItems } from "./types";
-import { ButtonType } from "../../Buttons/Button/Button";
 import { IconName } from "../../../model/icons.model";
-import { autocompleteButton } from "./Autocomplete.styles";
+import { ButtonVariant } from "../../Buttons/Button/Button";
+import { applyFullWidth } from "../../../style";
+import { applyButtonVariant } from "../../Buttons/Button/Button.styles";
+import { ColorTypes } from "../../../types";
 
 interface Props {
 	label?: string;
 	fullWidth?: boolean;
 	items: SelectItems[];
 	placeholder?: string;
-	variant?: ButtonType;
+	variant?: ButtonVariant;
 	buttonIcon?: IconName;
 	keyField?: string;
 	value?: SelectItems;
 	onChange?: (value: SelectItems) => void;
 	noFoundMessage?: string;
+	color: ColorTypes;
 }
 
 export default function Autocomplete({
@@ -24,10 +27,11 @@ export default function Autocomplete({
 	placeholder = "Search",
 	fullWidth,
 	items = [],
-	variant,
+	variant = "filled",
 	buttonIcon = IconNames.expandboth,
 	keyField = "name",
 	value,
+	color = "primary",
 	noFoundMessage = "Nothing found.",
 	onChange,
 }: Props) {
@@ -70,7 +74,31 @@ export default function Autocomplete({
 					</Combobox.Label>
 				)}
 
-				<div className={autocompleteButton({ fullWidth, variant })}>
+				<div
+					className={`relative 
+					cursor-pointer 
+					rounded-lg    
+					pr-10 text-left 
+					transition-all
+					
+					
+					focus:outline-none 
+					focus-visible:border-accent
+					focus-visible:ring-2 
+					focus-visible:ring-white 
+					focus-visible:ring-opacity-75 
+					focus-visible:ring-offset-2 
+					focus-visible:ring-offset-accent 
+				
+					active:ring-2
+					active:ring-offset-2
+					active:ring-offset-accent
+					active:ring-white
+					
+					sm:text-sm
+ 					${applyButtonVariant({ variant, color })} 
+					${applyFullWidth(fullWidth)}`}
+				>
 					<Combobox.Input
 						className={`py-2 pl-3 w-full border-none text-sm focus:ring-0 focus:border-none bg-transparent focus:outline-none placeholder:text-current focus-within:ring-2`}
 						displayValue={(person: any) => person.name}

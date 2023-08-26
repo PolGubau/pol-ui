@@ -9,7 +9,7 @@ import {
 	Alignments,
 } from "../types";
 
-export const applyMaxWidth = (size: SizesWithFull) => {
+export const applyMaxWidth = (size?: SizesWithFull) => {
 	switch (size) {
 		case "xs":
 			return "max-w-xs";
@@ -21,11 +21,11 @@ export const applyMaxWidth = (size: SizesWithFull) => {
 			return "max-w-lg";
 		case "xl":
 			return "max-w-xl";
-		case "full":
+		default:
 			return "max-w-full";
 	}
 };
-export const applyShadow = (shadow: Shadow = "none") => {
+export const applyShadow = (shadow?: Shadow) => {
 	switch (shadow) {
 		case "xs":
 			return "shadow-sm";
@@ -45,21 +45,22 @@ export const applyShadow = (shadow: Shadow = "none") => {
 			return "shadow-none";
 	}
 };
-export const applyTextSize = (size: Sizes = "md") => {
+export const applyTextSize = (size?: Sizes) => {
 	switch (size) {
 		case "xs":
 			return "text-xs";
 		case "sm":
 			return "text-sm";
-		case "md":
-			return "text-md";
+
 		case "lg":
 			return "text-lg";
 		case "xl":
 			return "text-xl";
+		default:
+			return "text-md";
 	}
 };
-export const applyMarginX = (x: SizesWithNone = "none") => {
+export const applyMarginX = (x?: SizesWithNone) => {
 	switch (x) {
 		case "xs":
 			return "mx-1";
@@ -75,7 +76,7 @@ export const applyMarginX = (x: SizesWithNone = "none") => {
 			return "mx-0";
 	}
 };
-export const applyMarginY = (y: SizesWithNone = "none") => {
+export const applyMarginY = (y?: SizesWithNone) => {
 	switch (y) {
 		case "xs":
 			return "my-1";
@@ -141,7 +142,7 @@ export const applyDisabled = (b: boolean = false) => {
 export const applyCentered = (b: boolean = false) => {
 	return b ? "justify-center text-center" : "justify-start text-left";
 };
-export const applyRounded = (round: SizesComplete = "none") => {
+export const applyRounded = (round?: SizesComplete) => {
 	switch (round) {
 		case "xs":
 			return "rounded-sm";
@@ -153,13 +154,15 @@ export const applyRounded = (round: SizesComplete = "none") => {
 			return "rounded-xl";
 		case "xl":
 			return "rounded-2xl";
-		case "none":
-			return "rounded-none";
+
 		case "full":
 			return "rounded-full";
+
+		default:
+			return "rounded-none";
 	}
 };
-export const applyBgColor = (color: ColorTypes = "primary") => {
+export const applyBgColor = (color?: ColorTypes) => {
 	switch (color) {
 		case "secondary":
 			return "bg-secondary";
@@ -179,7 +182,7 @@ export const applyBgColor = (color: ColorTypes = "primary") => {
 			return "bg-primary";
 	}
 };
-export const applyColor = (color: ColorTypes = "primary") => {
+export const applyColor = (color?: ColorTypes) => {
 	switch (color) {
 		case "secondary":
 			return "text-secondary";
@@ -199,7 +202,7 @@ export const applyColor = (color: ColorTypes = "primary") => {
 			return "text-primary";
 	}
 };
-export const applyOpacity = (opacity: Tens = 100) => {
+export const applyOpacity = (opacity?: Tens) => {
 	switch (opacity) {
 		case 0:
 			return "opacity-0";
@@ -225,7 +228,7 @@ export const applyOpacity = (opacity: Tens = 100) => {
 			return "opacity-100";
 	}
 };
-export const applyAlignments = (v: Alignments) => {
+export const applyAlignments = (v?: Alignments) => {
 	switch (v) {
 		case "left":
 			return "justify-start";

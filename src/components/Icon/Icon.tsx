@@ -1,6 +1,6 @@
+import { applyColor, applyTextSize } from "../../style";
 import { ColorTypes, Sizes } from "../../types";
 import { getIcon } from "../../utils";
-import { iconStyles } from "./Icon.styles";
 import { IconType } from "./types";
 
 interface IconProps {
@@ -23,7 +23,11 @@ const Icon = ({ icon, color, size, className, id, alwaysRender }: IconProps) => 
 
 	const resultIcon = typeof icon === "string" ? getStringIcon(icon) : icon;
 	return (
-		<div role="img" id={id} className={`${iconStyles({ size, color })} ${className}`}>
+		<div
+			role="img"
+			id={id}
+			className={`p-1 ${applyTextSize(size)} ${applyColor(color)}} ${className}`}
+		>
 			{resultIcon}
 		</div>
 	);

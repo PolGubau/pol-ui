@@ -12,27 +12,14 @@ import { ButtonVariant } from "./Button";
 // variant is the shape (filled, outlined, text, icon)
 // color is the color of the button from a predefined list
 
-export const applyButtonVariant = (variant: ButtonVariant, color: ColorTypes) => {
+export const applyButtonVariant = ({
+	variant = "filled",
+	color = "primary",
+}: {
+	variant?: ButtonVariant;
+	color: ColorTypes;
+}): string => {
 	switch (variant) {
-		case "filled":
-			switch (color) {
-				case "secondary":
-					return `bg-secondary text-background hover:bg-secondary/${"20"}`;
-				case "success":
-					return "bg-success text-background hover:bg-success/80";
-				case "danger":
-					return "bg-danger text-background hover:bg-danger/80";
-				case "accent":
-					return "bg-accent text-background hover:bg-accent/80";
-				case "info":
-					return "bg-info text-background hover:bg-info/80";
-				case "background":
-					return "bg-background text-contrast hover:bg-background/80";
-				case "contrast":
-					return "bg-contrast text-background hover:bg-contrast/80";
-				default:
-					return "bg-primary text-background hover:bg-primary/80";
-			}
 		case "outlined":
 			switch (color) {
 				case "secondary":
@@ -71,6 +58,25 @@ export const applyButtonVariant = (variant: ButtonVariant, color: ColorTypes) =>
 				default:
 					return "bg-transparent text-primary hover:bg-primary/10";
 			}
+		default:
+			switch (color) {
+				case "secondary":
+					return `bg-secondary text-background hover:bg-secondary/${"20"}`;
+				case "success":
+					return "bg-success text-background hover:bg-success/80";
+				case "danger":
+					return "bg-danger text-background hover:bg-danger/80";
+				case "accent":
+					return "bg-accent text-background hover:bg-accent/80";
+				case "info":
+					return "bg-info text-background hover:bg-info/80";
+				case "background":
+					return "bg-background text-contrast hover:bg-background/80";
+				case "contrast":
+					return "bg-contrast text-background hover:bg-contrast/80";
+				default:
+					return "bg-primary text-background hover:bg-primary/80";
+			}
 	}
 };
 
@@ -78,7 +84,7 @@ interface ButtonStylesProps {
 	rounded: SizesComplete;
 	size: Sizes;
 	fullWidth: boolean;
-	disabled: boolean;
+	disabled?: boolean;
 	centered: boolean;
 	padding: { x: SizesWithNone; y: SizesWithNone };
 	variant: ButtonVariant;
@@ -104,7 +110,7 @@ export const buttonStyles = ({
 	${applyDisabled(disabled)}
 	${applyCentered(centered)}	
 	${applyPadding(padding)}
-	${applyButtonVariant(variant, color)}
+	${applyButtonVariant({ variant, color })}
 	${className}
 	`;
 };

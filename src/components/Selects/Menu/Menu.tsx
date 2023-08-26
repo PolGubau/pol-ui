@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Transition } from "@headlessui/react";
-import Button, { ButtonType } from "../../Buttons/Button/Button";
+import Button, { ButtonVariant } from "../../Buttons/Button/Button";
 import useClickOutside from "../../../hooks/useClickOutside";
 import { formatString } from "../../../utils";
 import { Link } from "../../Buttons/Link";
@@ -17,7 +17,7 @@ export interface MenuItem {
 interface Props {
 	label?: string;
 	items: MenuItem[];
-	buttonType?: ButtonType;
+	buttonVariant?: ButtonVariant;
 	iconSide?: Side;
 	openIcon?: string;
 	closeIcon?: string;
@@ -27,7 +27,7 @@ interface Props {
 export default function Menu({
 	label,
 	items = [],
-	buttonType = "normal",
+	buttonVariant = "filled",
 	iconSide = "right",
 	openIcon = "arrowDown",
 	closeIcon = openIcon ?? "arrowDown",
@@ -56,8 +56,7 @@ export default function Menu({
 	return (
 		<div className="relative" ref={modalRef}>
 			<Button
-				onlyIcon={!label}
-				type={buttonType}
+				variant={buttonVariant}
 				onClick={() => {
 					setOpen((prev) => !prev);
 				}}
@@ -80,14 +79,14 @@ export default function Menu({
 				<div className={`p-1 ${dividers ? "divide-y divide-gray-100" : ""} gap-col gap-0.5`}>
 					{items.map((item) =>
 						item.href ? (
-							<Link key={item.label} icon={item.icon} type="text" fullWidth href={item.href}>
+							<Link key={item.label} icon={item.icon} variant="text" fullWidth href={item.href}>
 								{formatString(item.label)}
 							</Link>
 						) : (
 							<Button
 								key={item.label}
 								icon={item.icon}
-								type="text"
+								variant="text"
 								fullWidth
 								onClick={item.onClick}
 							>

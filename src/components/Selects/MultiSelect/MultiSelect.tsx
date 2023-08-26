@@ -1,17 +1,20 @@
 import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { Icon, IconNames } from "../../Icon";
-import { ButtonType } from "../../Buttons/Button/Button";
 import { IconName } from "../../../model/icons.model";
-import { selectButton } from "./Select.styles";
 import { SelectItems } from "./types";
+import { ButtonVariant } from "../../Buttons/Button/Button";
+import { applyFullWidth } from "../../../style";
+import { applyButtonVariant } from "../../Buttons/Button/Button.styles";
+import { ColorTypes } from "../../../types";
 
 interface Props {
 	label?: string;
 	fullWidth?: boolean;
 	items: SelectItems[];
 	placeholder?: string;
-	variant?: ButtonType;
+	variant?: ButtonVariant;
+	color?: ColorTypes;
 	buttonIcon?: IconName;
 	keyField?: string;
 	values?: SelectItems[];
@@ -22,9 +25,10 @@ export default function Select({
 	placeholder = "Select",
 	fullWidth,
 	items,
-	variant,
+	variant = "filled",
 	buttonIcon = IconNames.expandboth,
 	keyField = "name",
+	color = "primary",
 	values = [],
 	onChange,
 }: Props) {
@@ -62,7 +66,33 @@ export default function Select({
 			{label && (
 				<Listbox.Label className="block text-sm font-medium text-gray-700">{label}</Listbox.Label>
 			)}
-			<Listbox.Button className={selectButton({ fullWidth, variant })}>
+			<Listbox.Button
+				className={`relative 
+					cursor-pointer 
+					rounded-lg    
+					pr-10 text-left 
+					transition-all
+					
+					
+					focus:outline-none 
+					focus-visible:border-accent
+					focus-visible:ring-2 
+					focus-visible:ring-white 
+					focus-visible:ring-opacity-75 
+					focus-visible:ring-offset-2 
+					focus-visible:ring-offset-accent 
+				
+					active:ring-2
+					active:ring-offset-2
+					active:ring-offset-accent
+					active:ring-white
+					
+					sm:text-sm
+ 					${applyButtonVariant({ variant, color })} 
+					${applyFullWidth(fullWidth)}
+					
+					`}
+			>
 				<span className="block truncate">{takeButtonName()}</span>
 				<span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
 					<Icon icon={buttonIcon} aria-hidden="true" />

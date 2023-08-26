@@ -2,7 +2,7 @@ import React from "react";
 import { Select } from "../../../Selects";
 import { IconNames } from "../../../Icon";
 import { IconButton } from "../../../Buttons";
-import Button, { ButtonType } from "../../../Buttons/Button/Button";
+import Button, { ButtonVariant } from "../../../Buttons/Button/Button";
 interface Props {
 	page: number;
 	onPageChange?: (page: number) => void;
@@ -10,7 +10,7 @@ interface Props {
 	onRowsPerPageChange?: (rowsPerPage: number) => void;
 	totalResults: number;
 	rowsPerPageText?: string;
-	variant?: ButtonType;
+	variant?: ButtonVariant;
 	showFirstAndLastButtons?: boolean;
 	showMiddleButtons?: boolean;
 }
@@ -57,7 +57,7 @@ const TablePagination: React.FC<Props> = ({
 					<div className="flex items-center gap-3">
 						{getPages().map((pageNumber) => (
 							<Button
-								type={variant}
+								variant={variant}
 								key={pageNumber}
 								className="text-sm"
 								onClick={() => onPageChange?.(pageNumber)}
@@ -75,7 +75,7 @@ const TablePagination: React.FC<Props> = ({
 					</span>
 					{showFirstAndLastButtons && (
 						<IconButton
-							type={variant}
+							variant={variant}
 							icon={IconNames.arrowBarLeft}
 							className="  text-sm  "
 							onClick={() => onPageChange?.(1)}
@@ -84,14 +84,14 @@ const TablePagination: React.FC<Props> = ({
 					)}
 
 					<IconButton
-						type={variant}
+						variant={variant}
 						icon={IconNames.arrowleft}
 						className="  text-sm  "
 						onClick={() => onPageChange?.(page - 1)}
 						disabled={page === 1}
 					/>
 					<IconButton
-						type={variant}
+						variant={variant}
 						icon={IconNames.arrowright}
 						className="  text-sm  "
 						onClick={() => onPageChange?.(page + 1)}
@@ -100,7 +100,7 @@ const TablePagination: React.FC<Props> = ({
 					{showFirstAndLastButtons && (
 						// Go to last page
 						<IconButton
-							type={variant}
+							variant={variant}
 							icon={IconNames.arrowBarRight}
 							className="text-sm"
 							onClick={() => onPageChange?.(lastPage)}
