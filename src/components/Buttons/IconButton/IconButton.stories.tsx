@@ -21,19 +21,20 @@ export const Default: Story = {
 export const Outlined: Story = {
 	args: {
 		...Default.args,
-		type: "outlined",
+		variant: "outlined",
 	},
 };
 export const Text: Story = {
 	args: {
 		...Default.args,
-		type: "text",
+		variant: "text",
 	},
 };
 export const Main: Story = {
 	args: {
 		...Default.args,
-		type: "main",
+		variant: "filled",
+		color: "accent",
 	},
 };
 export const Disabled: Story = {
@@ -64,7 +65,7 @@ export const LargeButton: Story = {
 export const SquareButton: Story = {
 	args: {
 		...Default.args,
-		rounded: false,
+		rounded: "none",
 	},
 };
 
