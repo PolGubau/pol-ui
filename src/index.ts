@@ -40,6 +40,8 @@ import {
 	Pagination,
 	TablePagination,
 	Navbar,
+	Link,
+	CopyButton,
 } from "./components";
 
 import {
@@ -122,6 +124,8 @@ export {
 	Pagination,
 	TablePagination,
 	Navbar,
+	Link,
+	CopyButton,
 
 	// utils
 	generateUUID,
