@@ -1,7 +1,6 @@
 import React from "react";
-import { imageStyle } from "./image.styles";
-import { applyRounded } from "../../../style";
-import { SizesComplete } from "../../../types";
+import { applyAspectRatio, applyRounded } from "../../../style";
+import { AspectRatios, SizesComplete } from "../../../types";
 interface Props {
 	src: string;
 	alt: string;
@@ -10,25 +9,39 @@ interface Props {
 	height?: string;
 	width?: string;
 	rounded: SizesComplete;
-	aspectRatio?: "1/1" | "4/3" | "16/9" | "9/16" | "3/4" | "8/5";
+	aspectRatio?: AspectRatios;
 }
 
 const Image: React.FC<Props> = ({
 	src,
 	alt,
-	renderOnError = (
-		<span className="w-[100px] aspect-square flex items-center justify-center">{alt[0]}</span>
-	),
 	className,
-	width = "100px",
-	height = "100px",
+	width,
+	height,
 	rounded = "none",
 	aspectRatio,
+	renderOnError = (
+		<span
+			className={`aspect-square flex items-center justify-center  ${applyAspectRatio(
+				aspectRatio
+			)} ${applyRounded(rounded)} ${className}`}
+			style={{
+				width,
+				height,
+			}}
+		>
+			{alt[0]}
+		</span>
+	),
 }) => {
 	const [hasError, setHasError] = React.useState(false);
 
 	return (
-		<div className={`${imageStyle({ aspectRatio })} ${applyRounded(rounded)} ${className}`}>
+		<div
+			className={`w-fit h-fit inline-flex items-center justify-center overflow-hidden bg-gray-300 dark:bg-gray-700 object-cover ${applyAspectRatio(
+				aspectRatio
+			)} ${applyRounded(rounded)} ${className}`}
+		>
 			{hasError ? (
 				renderOnError
 			) : (

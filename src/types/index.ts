@@ -25,3 +25,4 @@ export type BaseProps = {
 	id?: string;
 	ariaLabel?: string;
 };
+export type AspectRatios = "1/1" | "3/2" | "4/3" | "16/9" | "21/9";

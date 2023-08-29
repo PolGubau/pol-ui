@@ -7,6 +7,7 @@ import {
 	SizesWithFull,
 	Shadow,
 	Alignments,
+	AspectRatios,
 } from "../types";
 
 export const applyMaxWidth = (size?: SizesWithFull) => {
@@ -236,5 +237,22 @@ export const applyAlignments = (v?: Alignments) => {
 			return "justify-end";
 		default:
 			return "justify-center";
+	}
+};
+
+export const applyAspectRatio = (ratio?: AspectRatios) => {
+	switch (ratio) {
+		case "1/1":
+			return "aspect-w-1 aspect-h-1";
+		case "3/2":
+			return "aspect-w-3 aspect-h-2";
+		case "4/3":
+			return "aspect-w-4 aspect-h-3";
+		case "16/9":
+			return "aspect-w-16 aspect-h-9";
+		case "21/9":
+			return "aspect-w-21 aspect-h-9";
+		default:
+			return "aspect-none";
 	}
 };

@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "../../Buttons/Link";
-import { avatarImageStyle, avatarStyle } from "./avatar.styles";
 import { Image } from "../../Media/Image";
 import Badge from "../Badge/Badge";
 import { ColorTypes, Sizes, SizesComplete } from "../../../types";
+import { applyRounded, applyTextSize } from "../../../style";
+import { applyButtonVariant } from "../../Buttons/Button/Button.styles";
+import { ButtonVariant } from "../../Buttons/Button/Button";
 
 interface Props {
 	src: string;
@@ -13,7 +15,8 @@ interface Props {
 	size?: Sizes;
 	href?: string;
 	hasText?: boolean;
-	variant?: "transparent" | "main" | "neutral";
+	variant?: ButtonVariant;
+	color?: ColorTypes;
 	badge?: string;
 	badgeColor?: ColorTypes;
 }
@@ -23,19 +26,55 @@ const Avatar: React.FC<Props> = ({
 	name,
 	rounded = "none",
 	description,
-	size,
+	size = "md",
 	href,
 	hasText = true,
-	variant = "transparent",
+	variant = "text",
+	color = "background",
 	badge,
 	badgeColor,
 }) => {
 	const ImageContent = (
-		<Image src={src} rounded={rounded} alt={name} className={avatarImageStyle({ size })} />
+		<Image
+			src={src}
+			rounded={rounded}
+			aspectRatio="1/1"
+			height={
+				size === "xs"
+					? "30px"
+					: size === "sm"
+					? "40px"
+					: size === "md"
+					? "50px"
+					: size === "lg"
+					? "60px"
+					: "70px"
+			}
+			width={
+				size === "xs"
+					? "30px"
+					: size === "sm"
+					? "40px"
+					: size === "md"
+					? "50px"
+					: size === "lg"
+					? "60px"
+					: "70px"
+			}
+			alt={name}
+			className={`${applyRounded(rounded)} `}
+		/>
 	);
 
 	const avatarContent = (
-		<div className={`flex gap-2 items-center ${avatarStyle({ size, variant })}`}>
+		<div
+			className={`p-1 flex w-fit h-fit gap-2 items-center ${applyTextSize(size)} ${applyRounded(
+				rounded
+			)} ${applyButtonVariant({
+				variant,
+				color,
+			})} `}
+		>
 			{badge ? (
 				<Badge content={badge} color={badgeColor}>
 					{ImageContent}

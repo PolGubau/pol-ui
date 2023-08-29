@@ -27,7 +27,7 @@ const Badge = ({
 	color = "accent",
 	size = "md",
 	rounded = "full",
-	max = 99,
+	max = 5,
 	className = "",
 	style,
 	shadow = "none",
@@ -54,7 +54,7 @@ const Badge = ({
 	};
 
 	return (
-		<div className="relative w-fit" style={style} id={id}>
+		<div className="relative w-[60px] h-[60px] aspect-square" style={style} id={id}>
 			<Transition
 				as={Fragment}
 				show={isVisible}

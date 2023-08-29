@@ -15,7 +15,7 @@ export const Default: Story = {
 		src: "https://www.thispersondoesnotexist.com",
 		name: "John Doe",
 		size: "md",
-		rounded: "circular",
+		rounded: "full",
 		hasText: false,
 	},
 };
@@ -38,7 +38,7 @@ export const RoundedABit: Story = {
 		...Default.args,
 		hasText: true,
 
-		rounded: "rounded",
+		rounded: "md",
 	},
 };
 export const Squared: Story = {
@@ -46,15 +46,18 @@ export const Squared: Story = {
 		...Default.args,
 		hasText: true,
 
-		rounded: "square",
+		rounded: "none",
 	},
 };
 export const AllRoundedTypes: Story = {
 	render: (args) => (
 		<div className="gap gap-2 flex flex-col">
-			<Avatar {...args} rounded="circular" />
-			<Avatar {...args} rounded="rounded" />
-			<Avatar {...args} rounded="square" />
+			<Avatar {...args} rounded="full" />
+			<Avatar {...args} rounded="xl" />
+			<Avatar {...args} rounded="lg" />
+			<Avatar {...args} rounded="md" />
+			<Avatar {...args} rounded="sm" />
+			<Avatar {...args} rounded="none" />
 		</div>
 	),
 	args: {
@@ -90,6 +93,36 @@ export const WithBadge: Story = {
 		...Default.args,
 		size: "lg",
 		badge: "hi",
-		badgeColor: "dark",
+		badgeColor: "primary",
+	},
+};
+export const WithBackground: Story = {
+	args: {
+		...Default.args,
+		size: "lg",
+		color: "contrast",
+		variant: "filled",
+		badge: "hi",
+		badgeColor: "primary",
+	},
+};
+export const WithBackgroundLargeBadge: Story = {
+	args: {
+		...Default.args,
+		size: "lg",
+		color: "contrast",
+		variant: "filled",
+		badge: "Some really long text that will overflow and be hidden by the badge",
+		badgeColor: "primary",
+	},
+};
+export const NewsInAvatar: Story = {
+	args: {
+		...Default.args,
+		size: "lg",
+		color: "accent",
+		variant: "outlined",
+		badge: "1",
+		badgeColor: "accent",
 	},
 };

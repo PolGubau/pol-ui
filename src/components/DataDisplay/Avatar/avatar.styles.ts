@@ -1,38 +1,16 @@
-import { tv } from "tailwind-variants";
-export const avatarStyle = tv({
-	base: "flex items-center space-x-2",
-	variants: {
-		size: {
-			xs: "text-xs",
-			sm: "text-sm",
-			md: "text-md",
-			lg: "text-lg",
-			xl: "text-xl",
-		},
-		variant: {
-			transparent: "bg-transparent",
-			main: "bg-gray-200 dark:bg-gray-800",
-			neutral: "bg-gray-300 dark:bg-gray-700",
-		},
-	},
-	defaultVariants: {
-		size: "md",
-		variant: "transparent",
-	},
-});
+import { Sizes } from "../../../types";
 
-export const avatarImageStyle = tv({
-	base: "inline-flex items-center justify-center overflow-hidden w-6 h-6 bg-gray-300 dark:bg-gray-700",
-	variants: {
-		size: {
-			xs: "w-6 h-6",
-			sm: "w-8 h-8",
-			md: "w-10 h-10",
-			lg: "w-12 h-12",
-			xl: "w-14 h-14",
-		},
-	},
-	defaultVariants: {
-		size: "md",
-	},
-});
+export const applyAvatarSizes = (size?: Sizes) => {
+	switch (size) {
+		case "xs":
+			return `w-4 max-h-4`;
+		case "sm":
+			return `w-6 max-h-6`;
+		case "lg":
+			return `w-10 max-h-10`;
+		case "xl":
+			return `w-12 max-h-12`;
+		default:
+			return `w-8 max-h-8`;
+	}
+};
