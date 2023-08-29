@@ -15,10 +15,13 @@ export const Default: Story = {
 	args: { value: 50 },
 };
 export const Rounded: Story = {
-	args: { value: 50, rounded: "rounded" },
+	args: { value: 50, rounded: "full" },
 };
 export const Squared: Story = {
-	args: { value: 50, rounded: "square" },
+	args: { value: 50, rounded: "none" },
+};
+export const RoundMd: Story = {
+	args: { value: 50, rounded: "md" },
 };
 export const Marks: Story = {
 	args: { value: 50, marks: 9 },
@@ -42,14 +45,11 @@ export const JustValueInside: Story = {
 export const AllColors: Story = {
 	render: (args) => (
 		<div className=" gap-8 flex p-8 ">
-			<ProgessBar {...args} variant="accent" value={10} />
-			<ProgessBar {...args} variant="success" value={20} />
-			<ProgessBar {...args} variant="danger" value={30} />
-			<ProgessBar {...args} variant="warning" value={40} />
-			<ProgessBar {...args} variant="info" value={50} />
-			<ProgessBar {...args} variant="dark" value={60} />
-			<ProgessBar {...args} variant="light" value={70} />
-			<ProgessBar {...args} variant="default" value={80} />
+			<ProgessBar {...args} color="accent" value={10} />
+			<ProgessBar {...args} color="success" value={20} />
+			<ProgessBar {...args} color="danger" value={30} />
+			<ProgessBar {...args} color="info" value={50} />
+			<ProgessBar {...args} color="contrast" value={60} />
 		</div>
 	),
 	args: {
@@ -59,14 +59,11 @@ export const AllColors: Story = {
 export const AllColorsVertical: Story = {
 	render: (args) => (
 		<div className=" gap-8 flex-col flex p-8 ">
-			<ProgessBar {...args} variant="accent" value={10} />
-			<ProgessBar {...args} variant="success" value={20} />
-			<ProgessBar {...args} variant="danger" value={30} />
-			<ProgessBar {...args} variant="warning" value={40} />
-			<ProgessBar {...args} variant="info" value={50} />
-			<ProgessBar {...args} variant="dark" value={60} />
-			<ProgessBar {...args} variant="light" value={70} />
-			<ProgessBar {...args} variant="default" value={80} />
+			<ProgessBar {...args} color="accent" value={10} />
+			<ProgessBar {...args} color="success" value={20} />
+			<ProgessBar {...args} color="danger" value={30} />
+			<ProgessBar {...args} color="info" value={50} />
+			<ProgessBar {...args} color="contrast" value={80} />
 		</div>
 	),
 	args: {
@@ -114,8 +111,8 @@ export const SchoolMarks: Story = {
 				marks={10}
 				min={0}
 				max={10}
-				variant="info"
-				marksColor="light"
+				color="info"
+				marksColor="background"
 				marksOpacity={60}
 			/>
 		</div>

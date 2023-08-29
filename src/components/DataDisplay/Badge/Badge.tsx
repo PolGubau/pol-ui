@@ -2,7 +2,7 @@ import { Transition } from "@headlessui/react";
 import { Icon, IconType } from "../../Base/Icon";
 import { badgeStyles } from "./Badge.styles";
 import { Fragment } from "react";
-import { ColorTypes, Sizes, BaseProps, SizesComplete, Shadow } from "../../../types";
+import { ColorTypes, Sizes, BaseProps, SizesComplete, Shadow, Side } from "../../../types";
 import { applyBgColor, applyRounded, applyShadow } from "../../../style";
 
 interface Props extends BaseProps {
@@ -13,7 +13,7 @@ interface Props extends BaseProps {
 	size?: Sizes;
 	rounded?: SizesComplete;
 	max?: number;
-	horizontal?: "left" | "right";
+	horizontal?: Side;
 	vertical?: "top" | "bottom";
 	onClick?: () => void | Promise<void>;
 	isVisible?: boolean;
@@ -71,12 +71,12 @@ const Badge = ({
 						horizontal,
 						vertical,
 						clickable: Boolean(onClick),
+						className,
 					})} 
 					${applyRounded(rounded)}
 					${applyBgColor(color)}
 					${applyShadow(shadow)}
-					
-					${className}`}
+					 `}
 					onClick={onClick}
 					aria-label={ariaLabel}
 					aria-describedby={ariaDescribedby}

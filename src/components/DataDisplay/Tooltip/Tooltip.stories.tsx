@@ -19,14 +19,21 @@ export const Default: Story = {
 
 	args: {
 		children: (
-			<Image src="https://www.thispersondoesnotexist.com" rounded="rounded" alt="randomPerson" />
+			<div className="w-fit">
+				<Image
+					src="https://www.thispersondoesnotexist.com"
+					width="150px"
+					rounded="lg"
+					alt="randomPerson"
+				/>
+			</div>
 		),
-		content: "Small Tooltip",
+		content: "Tooltip",
 	},
 };
 export const Bottom: Story = {
 	render: (args) => (
-		<div className="  flex p-8 ">
+		<div className=" w-fit flex p-8 ">
 			<Tooltip {...args} />
 		</div>
 	),
@@ -38,7 +45,7 @@ export const Bottom: Story = {
 };
 export const Left: Story = {
 	render: (args) => (
-		<div className="  flex p-8 ">
+		<div className="w-fit  flex p-8 ">
 			<Tooltip {...args} />
 		</div>
 	),
@@ -49,7 +56,7 @@ export const Left: Story = {
 };
 export const Rigth: Story = {
 	render: (args) => (
-		<div className="  flex p-8 ">
+		<div className="w-fit  flex p-8 ">
 			<Tooltip {...args} />
 		</div>
 	),
@@ -130,8 +137,13 @@ export const CustomElement: Story = {
 		...Default.args,
 		position: "right",
 		content: (
-			<div className="flex flex-col gap-2 p-4 bg-light min-w-[100px] rounded-lg">
-				<Image src="https://www.thispersondoesnotexist.com" rounded="rounded" alt="randomPerson" />
+			<div className="flex flex-col gap-2 p-4 rounded-lg">
+				<Image
+					src="https://www.thispersondoesnotexist.com"
+					rounded="xl"
+					alt="randomPerson"
+					width="150px"
+				/>
 				<p className="text-dark">Have you seen this person? 🤔</p>
 			</div>
 		),

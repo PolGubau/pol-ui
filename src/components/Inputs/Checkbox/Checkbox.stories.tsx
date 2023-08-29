@@ -45,6 +45,20 @@ export const CustomIcon: Story = {
 		label: "Who would use this icon for a checkbox?",
 	},
 };
+export const Square: Story = {
+	args: {
+		...Default.args,
+		rounded: "none",
+		label: "Square checkbox",
+	},
+};
+export const Circle: Story = {
+	args: {
+		...Default.args,
+		rounded: "full",
+		label: "Circle checkbox",
+	},
+};
 export const SmallCheckBox: Story = {
 	args: {
 		...Default.args,
@@ -73,6 +87,24 @@ export const AllSizes: Story = {
 				<Checkbox {...args} size="md" label="Medium (md)" />
 				<Checkbox {...args} size="lg" label="Large (lg)" />
 				<Checkbox {...args} size="xl" label="Extra Large (xl)" />
+			</div>
+		);
+	},
+	args: {
+		value: true,
+	},
+};
+export const AllColors: Story = {
+	render(args) {
+		return (
+			<div className="flex flex-col space-y-4">
+				<Checkbox {...args} color="primary" iconColor="background" />
+				<Checkbox {...args} color="secondary" />
+				<Checkbox {...args} color="success" />
+				<Checkbox {...args} color="danger" />
+				<Checkbox {...args} color="accent" />
+				<Checkbox {...args} color="contrast" />
+				<Checkbox {...args} color="info" iconColor="background" />
 			</div>
 		);
 	},

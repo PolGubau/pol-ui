@@ -13,7 +13,7 @@ interface LoaderProps {
 const Loader: React.FC<LoaderProps> = ({ type = "spinner", color, size }) => {
 	switch (type) {
 		case "pulse":
-			return <Pulse className={spinnerStyled({ size })} color={color ?? "accent"} />;
+			return <Pulse className={spinnerStyled(size)} color={color ?? "accent"} />;
 		case "bars":
 			return <Bars size={size} color={color ?? "accent"} amount={3} />;
 		case "dots":
@@ -21,11 +21,7 @@ const Loader: React.FC<LoaderProps> = ({ type = "spinner", color, size }) => {
 
 		default:
 			return (
-				<Spinner
-					className={spinnerStyled({ size })}
-					size={size ?? "md"}
-					color={color ?? "accent"}
-				/>
+				<Spinner className={spinnerStyled(size)} size={size ?? "md"} color={color ?? "accent"} />
 			);
 	}
 };

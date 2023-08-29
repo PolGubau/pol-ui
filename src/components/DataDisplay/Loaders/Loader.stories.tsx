@@ -38,14 +38,12 @@ export const AllTypes: Story = {
 export const AllColors: Story = {
 	render: (args) => (
 		<div className="flex gap-8 p-8 items-center">
-			<Loader {...args} type="spinner" variant="success" />
-			<Loader {...args} type="pulse" variant="danger" />
-			<Loader {...args} type="dots" variant="accent" />
-			<Loader {...args} type="bars" variant="warning" />
-			<Loader {...args} type="spinner" variant="info" />
-			<Loader {...args} type="pulse" variant="dark" />
-			<Loader {...args} type="dots" variant="light" />
-			<Loader {...args} type="bars" variant="default" />
+			<Loader {...args} type="spinner" color="success" />
+			<Loader {...args} type="pulse" color="danger" />
+			<Loader {...args} type="dots" color="accent" />
+			<Loader {...args} type="bars" color="background" />
+			<Loader {...args} type="spinner" color="info" />
+			<Loader {...args} type="pulse" color="contrast" />
 		</div>
 	),
 	args: {

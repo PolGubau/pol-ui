@@ -16,8 +16,8 @@ const Image: React.FC<Props> = ({
 	src,
 	alt,
 	className,
-	width,
-	height,
+	width = "100px",
+	height = "100px",
 	rounded = "none",
 	aspectRatio,
 	renderOnError = (

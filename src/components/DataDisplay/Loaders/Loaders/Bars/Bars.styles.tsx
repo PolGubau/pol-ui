@@ -1,5 +1,5 @@
 import { keyframes, styled } from "styled-components";
-import { tv } from "tailwind-variants";
+import { Sizes } from "../../../../../types";
 
 const animation = keyframes`
     0% {
@@ -21,11 +21,19 @@ export const Styles = styled.div<{ $index: number }>`
 	animation-delay: ${({ $index }) => $index * 0.4}s;
 `;
 
-export const dotsSize = tv({
-	variants: {
-		size: { xs: "h-5 w-1", sm: "h-6 w-2", md: "h-7 w-3", lg: "h-8 w-4", xl: "h-9 w-5" },
-	},
-	defaultVariants: {
-		size: "md",
-	},
-});
+export const dotsSize = ({ size }: { size?: Sizes }) => {
+	switch (size) {
+		case "xs":
+			return "h-5 w-1";
+		case "sm":
+			return "h-6 w-2";
+		case "md":
+			return "h-7 w-3";
+		case "lg":
+			return "h-8 w-4";
+		case "xl":
+			return "h-9 w-5";
+		default:
+			return "h-7 w-3";
+	}
+};

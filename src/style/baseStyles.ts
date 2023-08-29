@@ -143,6 +143,22 @@ export const applyDisabled = (b: boolean = false) => {
 export const applyCentered = (b: boolean = false) => {
 	return b ? "justify-center text-center" : "justify-start text-left";
 };
+export const applyShyRounded = (round?: Sizes) => {
+	switch (round) {
+		case "xs":
+			return "rounded-sm";
+		case "sm":
+			return "rounded-md";
+
+		case "lg":
+			return "rounded-xl";
+		case "xl":
+			return "rounded-2xl";
+
+		default:
+			return "rounded-lg";
+	}
+};
 export const applyRounded = (round?: SizesComplete) => {
 	switch (round) {
 		case "xs":
@@ -181,6 +197,26 @@ export const applyBgColor = (color?: ColorTypes) => {
 			return "bg-contrast";
 		default:
 			return "bg-primary";
+	}
+};
+export const applyBgColorInChecked = (color?: ColorTypes) => {
+	switch (color) {
+		case "secondary":
+			return "checked:bg-secondary";
+		case "success":
+			return "checked:bg-success";
+		case "danger":
+			return "checked:bg-danger";
+		case "accent":
+			return "checked:bg-accent";
+		case "info":
+			return "checked:bg-info";
+		case "background":
+			return "checked:bg-background";
+		case "contrast":
+			return "checked:bg-contrast checked:text-background";
+		default:
+			return "checked:bg-primary";
 	}
 };
 export const applyColor = (color?: ColorTypes) => {

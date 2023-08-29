@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { useHover } from "../../../hooks";
 import { Transition } from "@headlessui/react";
-import { tooltipContainerStyle, tooltipStylePosition } from "./Tooltip.styles";
+import { tooltipStylePosition } from "./Tooltip.styles";
 import { BaseProps } from "../../../types";
 
 interface Props extends BaseProps {
@@ -29,7 +29,7 @@ const Tooltip = ({
 	const { isHovering, hoverProps } = useHover({ enterDelay, leaveDelay });
 
 	return (
-		<div className={tooltipContainerStyle()}>
+		<div className="relative w-fit">
 			<Transition
 				as={Fragment}
 				show={isHovering}
