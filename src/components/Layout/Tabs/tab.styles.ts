@@ -1,19 +1,14 @@
-import { tv } from "tailwind-variants";
+interface Props {
+	hasDivider?: boolean;
+	hasBorder?: boolean;
+}
 
-export const tabStyles = tv({
-	base: "flex flex-col ",
-	variants: {
-		hasDivider: {
-			true: "divide-y divide-gray-200 dark:divide-gray-700",
-			false: "divide-none",
-		},
-		hasBorder: {
-			true: "border border-gray-200 dark:border-gray-700",
-			false: "border-none",
-		},
-	},
-	defaultVariants: {
-		hasDivider: true,
-		hasBorder: true,
-	},
-});
+export const tabStyles = ({ hasDivider = true, hasBorder = true }: Props) => {
+	const base = "flex flex-col ";
+
+	const divider = hasDivider ? "divide-y divide-gray-200 dark:divide-gray-700" : "divide-none";
+
+	const border = hasBorder ? "border border-gray-200 dark:border-gray-700" : "border-none";
+
+	return `${base} ${divider} ${border}`;
+};

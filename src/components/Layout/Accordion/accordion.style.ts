@@ -1,20 +1,12 @@
-import { tv } from "tailwind-variants";
+ 
+interface Props {
+	hasDividers?: boolean;
+	hasBorder?: boolean;
+}
 
-export const accordion = tv({
-	base: "flex flex-col overflow-hidden",
-
-	variants: {
-		hasDividers: {
-			true: "divide-y",
-			false: "divide-none",
-		},
-		hasBorder: {
-			true: "border border-gray-200 dark:border-gray-700",
-			false: "border-none",
-		},
-	},
-	defaultVariants: {
-		hasDividers: true,
-		hasBorder: true,
-	},
-});
+export const accordionStyles = ({ hasDividers = true, hasBorder = true }: Props) => {
+	const base = "flex flex-col overflow-hidden";
+	const divider = hasDividers ? "divide-y" : "divide-none";
+	const border = hasBorder ? "border border-gray-200 dark:border-gray-700" : "border-none";
+	return `${base} ${divider} ${border}`;
+};

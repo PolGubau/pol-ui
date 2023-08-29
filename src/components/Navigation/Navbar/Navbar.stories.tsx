@@ -4,7 +4,7 @@ import { Link } from "../../Buttons/Link";
 import { ReactComponent as Logo } from "../../../assets/logo/Logo.svg";
 import { Menu } from "../../Selects";
 import { Icon } from "../../Base/Icon";
-import { mockText } from "./MockText";
+import { mockText } from "./mockText";
 
 const meta = {
 	title: "Navigation/Navbar",
@@ -33,10 +33,10 @@ export const Default: Story = {
 					buttonVariant="text"
 					items={[{ label: "Item 1" }, { label: "Item 2" }]}
 				/>
-				<Link href="/1" type="text">
+				<Link href="/1" variant="text">
 					Link
 				</Link>
-				<Link href="/2" type="text">
+				<Link href="/2" variant="text">
 					Link
 				</Link>
 			</ul>

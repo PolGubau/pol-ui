@@ -1,29 +1,9 @@
-import { tv } from "tailwind-variants";
-import { applyPadding, applyShadow } from "../../../style";
 import { Button } from "../../Buttons";
 import { Field } from "../../Inputs";
 import React from "react";
 import { Shadow, SizesWithNone } from "../../../types";
 import { Link } from "../../Buttons/Link";
-
-export const navbar = tv({
-	base: "  w-full h-16 flex justify-between items-center p-4",
-	variants: {
-		position: {
-			fixed: "fixed top-0 left-0 w-full",
-			relative: "relative",
-			absolute: "absolute",
-			sticky: "sticky top-0 left-0 w-full",
-			static: "static",
-			inherit: "inherit",
-			initial: "initial",
-			unset: "unset",
-		},
-	},
-	defaultVariants: {
-		position: "relative",
-	},
-});
+import { navbar } from "./NavBar.styles";
 
 interface Props {
 	children?: React.ReactNode;
@@ -67,9 +47,7 @@ const Navbar: React.FC<Props> = ({
 }) => {
 	return (
 		<div
-			className={`${navbar({ position })} ${applyPadding(padding)} ${applyShadow(shadow)}${
-				className ?? ""
-			}`}
+			className={`${navbar({ position, padding, shadow, className })} `}
 			style={{
 				backgroundColor: backgroundColor,
 			}}

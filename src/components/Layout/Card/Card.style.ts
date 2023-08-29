@@ -1,29 +1,27 @@
-import { tv } from "tailwind-variants";
+import { ColorTypes, Shadow, Sizes, SizesComplete } from "../../../types";
+import { applyMaxWidth, applyShadow, applyRounded, applyBgColor } from "../../../style";
 
-export const cardStyle = tv({
-	base: " rounded-3xl flex flex-col gap-2 w-fit",
-	variants: {
-		hasShadow: {
-			true: "shadow-lg",
-			false: "",
-		},
-		hasBorder: {
-			true: "ring-2 ring-gray-200",
-			false: "",
-		},
-		maxWidth: {
-			xl: "max-w-xl",
-			lg: "max-w-lg",
-			md: "max-w-md",
-			sm: "max-w-sm",
-			xs: "max-w-xs",
-			full: "max-w-full",
-		},
-	},
-	defaultVariants: {
-		hasBorder: true,
-		hasShadow: true,
-		maxWidth: "md",
-		padding: "md",
-	},
-});
+interface Props {
+	hasBorder?: boolean;
+	maxWidth?: Sizes | "full";
+	shadow?: Shadow;
+	rounded: SizesComplete;
+	color: ColorTypes;
+	className?: string;
+}
+
+export const cardStyle = ({
+	hasBorder = true,
+	maxWidth = "full",
+	shadow = "none",
+	rounded,
+	color,
+	className,
+}: Props) => {
+	const base = " flex flex-col gap-2 w-fit";
+	const border = hasBorder ? "ring-2 ring-gray-200" : "";
+
+	return `${base} ${border} ${applyMaxWidth(maxWidth)} ${applyShadow(shadow)} ${applyRounded(
+		rounded
+	)} ${applyBgColor(color)} ${className}`;
+};

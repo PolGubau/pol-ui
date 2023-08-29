@@ -1,5 +1,4 @@
 import React from "react";
-import { toast } from "./Toast.styles";
 import { ToastProps } from "./types";
 import { Button, IconButton } from "../../Buttons";
 
@@ -23,7 +22,11 @@ export const Toast = ({ state, setState }: Props) => {
 	}, []);
 
 	return (
-		<div className={toast({ variant })}>
+		<div
+			className={
+				"flex gap-2 items-center w-fit px-4 py-3 rounded-xl pl-6 animate-fade-right animate-duration-500 animate-ease-out "
+			}
+		>
 			<p className={`text-lg`}>{message}</p>
 			{action && (
 				<Button icon={action?.icon ?? ""} onClick={action?.onClick}>

@@ -1,7 +1,8 @@
 import React from "react";
-import { checkIconBySize, checkboxContainer } from "./Radio.styles";
 import { Icon } from "../../Base/Icon";
 import { Transition } from "@headlessui/react";
+import { applyBgColorInChecked, applyDisabled, applyRounded, applyTextSize } from "../../../style";
+import { ColorTypes, Sizes, SizesComplete } from "../../../types";
 
 interface Props {
 	label?: string;
@@ -9,11 +10,12 @@ interface Props {
 	onChange?: (value: boolean) => void;
 	disabled?: boolean;
 	errorMessage?: string;
-	color?: string;
+	colorChecked?: ColorTypes;
+	iconColor?: ColorTypes;
 	checkIcon?: React.JSX.Element | string;
 	className?: string;
 	name?: string;
-	size?: "xs" | "sm" | "md" | "lg" | "xl";
+	size?: Sizes;
 }
 
 const Radio: React.FC<Props> = ({
@@ -25,6 +27,8 @@ const Radio: React.FC<Props> = ({
 	checkIcon = "check",
 	className,
 	name,
+	colorChecked = "accent",
+	iconColor = "contrast",
 	size = "md",
 }) => {
 	const handleChange = (event: { target: { checked: boolean } }) => {
@@ -35,23 +39,18 @@ const Radio: React.FC<Props> = ({
 
 	return (
 		<div
-			className={
-				checkboxContainer({
-					disabled,
-				}) + className
-			}
+			className={`inline-flex items-center space-x-2 text-contrast text-sm  cursor-pointer ${applyDisabled(
+				disabled
+			)} ${className}`}
 		>
 			<div
-				className={`relative aspect-square flex items-center justify-center text-primary overflow-hidden rounded-full
-				
-				
+				className={`relative aspect-square flex items-center justify-center text-primary overflow-hidden   rounded-full
+ 
 				${size === "xs" && "h-3 "}
 				${size === "sm" && "h-4  "}
 				${size === "md" && "h-5  "}
 				${size === "lg" && "h-8  "}
 				${size === "xl" && "h-12  "}
-				
-				
 				`}
 			>
 				<input
@@ -61,9 +60,9 @@ const Radio: React.FC<Props> = ({
 					onChange={handleChange}
 					disabled={disabled}
 					className={`
-					transition-all duration-100 w-full h-full  appearance-none bg-gray-300 cursor-pointer rounded-full
-					
-					checked:bg-accent  
+					transition-all duration-100 w-full h-full  appearance-none bg-gray-300 cursor-pointer    rounded-full
+ 					
+ 					${applyBgColorInChecked(colorChecked)}
 					
 					disabled:bg-gray-300 disabled:border-transparent disabled:ring-0 disabled:ring-transparent
 					
@@ -74,7 +73,9 @@ const Radio: React.FC<Props> = ({
  				 `}
 				/>
 				<Transition
-					className={` ${checkIconBySize({ size })}`}
+					className={`text-primary absolute transition-all duration-100 user-select-none pointer-events-none ${applyTextSize(
+						size
+					)}`}
 					show={value}
 					enter="transition-all duration-200"
 					enterFrom="translate-y-8"
@@ -83,11 +84,11 @@ const Radio: React.FC<Props> = ({
 					leaveFrom="translate-y-0"
 					leaveTo="-translate-y-8"
 				>
-					<Icon icon={checkIcon} />
+					<Icon icon={checkIcon} color={iconColor} />
 				</Transition>
 			</div>
 
-			<span className="text-gray-700">{label}</span>
+			<span className="text-contrast">{label}</span>
 
 			{errorMessage && <span className="text-red-500">{errorMessage}</span>}
 		</div>

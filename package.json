@@ -117,7 +117,6 @@
 		"react-confetti-explosion": "^2.1.2",
 		"react-dom": "^18.2.0",
 		"react-icons": "^4.10.1",
-		"sass": "^1.60.0",
 		"storybook": "^7.2.3",
 		"styled-components": "^6.0.7",
 		"stylelint": "^14.16.1",
@@ -131,8 +130,5 @@
 		"vite-plugin-css-injected-by-js": "^3.1.1",
 		"vite-plugin-dts": "^2.3.0",
 		"vite-plugin-svgr": "^3.2.0"
-	},
-	"dependencies": {
-		"tailwind-variants": "^0.1.13"
 	}
 }

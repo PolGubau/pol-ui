@@ -1,6 +1,6 @@
 import React from "react";
 import AccordionItem from "./AccordionItem";
-import { accordion } from "./accordion.style";
+import { accordionStyles } from "./accordion.style";
 import { applyMaxWidth, applyRounded } from "../../../style";
 import { SizesWithNone, SizesWithFull } from "../../../types";
 export interface AccordionItemProps {
@@ -74,7 +74,7 @@ const Accordion: React.FC<Props> = ({
 
 	return (
 		<section
-			className={`${accordion({ hasDividers, hasBorder })} ${applyMaxWidth(
+			className={`${accordionStyles({ hasDividers, hasBorder })} ${applyMaxWidth(
 				maxWidth
 			)} ${applyRounded(rounded)} 
 			${className}`}

@@ -1,10 +1,16 @@
 import React from "react";
 import { cardStyle } from "./Card.style";
-import { ColorTypes, Sizes, SizesWithNone } from "../../../types";
-import { applyBgColor, applyPadding, applyRounded } from "../../../style";
+import { ColorTypes, Shadow, Sizes, SizesWithNone } from "../../../types";
+import {
+	applyBgColor,
+	applyMaxWidth,
+	applyPadding,
+	applyRounded,
+	applyShadow,
+} from "../../../style";
 
 interface Props {
-	hasShadow?: boolean;
+	shadow?: Shadow;
 	hasBorder?: boolean;
 	rounded?: SizesWithNone;
 	color?: ColorTypes;
@@ -12,14 +18,15 @@ interface Props {
 	children?: React.ReactNode;
 	cardHeader?: React.ReactNode;
 	cardFooter?: React.ReactNode;
+	className?: string;
 	padding?: {
 		x: SizesWithNone;
 		y: SizesWithNone;
 	};
 }
 const Card: React.FC<Props> = ({
+	shadow,
 	hasBorder = true,
-	hasShadow = true,
 	color = "background",
 	rounded = "lg",
 	maxWidth,
@@ -27,12 +34,18 @@ const Card: React.FC<Props> = ({
 	cardFooter,
 	children,
 	padding = { x: "md", y: "md" },
+	className,
 }) => {
 	return (
 		<div
-			className={`${cardStyle({ hasBorder, hasShadow, maxWidth })} ${applyRounded(
-				rounded
-			)} ${applyBgColor(color)}`}
+			className={`${cardStyle({
+				hasBorder,
+				maxWidth,
+				shadow,
+				rounded,
+				color,
+				className,
+			})} `}
 		>
 			{cardHeader && (
 				<header

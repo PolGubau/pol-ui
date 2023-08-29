@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import { tv } from "tailwind-variants";
+import { gridStyles } from "./Grid.styles";
 
 interface GridProps {
 	children: ReactNode;
@@ -12,30 +13,6 @@ interface GridProps {
 	id?: string;
 	styles?: React.CSSProperties;
 }
-
-export const gridStyles = tv({
-	base: "grid",
-	variants: {
-		justifyItems: {
-			center: "justify-items-center",
-			end: "justify-items-end",
-			start: "justify-items-start",
-			stretch: "justify-items-stretch",
-		},
-		alignItems: {
-			center: "align-items-center",
-			end: "align-items-end",
-			start: "align-items-start",
-			stretch: "align-items-stretch",
-			baseline: "align-items-baseline",
-		},
-	},
-
-	defaultVariants: {
-		justifyItems: "stretch",
-		alignItems: "stretch",
-	},
-});
 
 const Grid: React.FC<GridProps> = ({
 	children,
