@@ -1,6 +1,6 @@
 import React from "react";
 import { checkIconBySize, checkboxContainer, roundedBySize } from "./Checkbox.styles";
-import { Icon } from "../../Icon";
+import { Icon } from "../../Base/Icon";
 import { Transition } from "@headlessui/react";
 
 interface Props {

@@ -1,5 +1,5 @@
 import { Button } from "../../../Buttons";
-import { IconNames } from "../../../Icon";
+import { IconNames } from "../../../Base/Icon";
 import { Field, Switch } from "../../../Inputs";
 import Tabs from "../../../Layout/Tabs/Tabs";
 import { Autocomplete } from "../../../Selects";

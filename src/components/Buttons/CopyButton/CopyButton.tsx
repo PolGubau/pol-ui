@@ -1,5 +1,5 @@
 import React from "react";
-import { Icon, IconNames } from "../../Icon";
+import { Icon, IconNames } from "../../Base/Icon";
 import { Button } from "../Button";
 import { copyToClipboard } from "../../../utils";
 import { Transition } from "@headlessui/react";
@@ -24,17 +24,13 @@ const CopyButton: React.FC<Props> = ({
 	const text = value ?? printableValueToCopy;
 
 	const [copied, setCopied] = React.useState(false);
+	const handleCopy = () => {
+		copyToClipboard(printableValueToCopy);
+		setCopied(true);
+	};
+
 	return (
-		<Button
-			className={`truncate`}
-			{...props}
-			// iconPosition="right"
-			// icon={copied ? IconNames.check : icon}
-			onClick={() => {
-				copyToClipboard(printableValueToCopy);
-				setCopied(true);
-			}}
-		>
+		<Button className={`truncate`} {...props} onClick={handleCopy}>
 			{text}
 			{!copied && <Icon className="ml-2" icon={icon} />}
 			<Transition

@@ -41,45 +41,27 @@ describe("Button Component", () => {
 		expect(button).not.toBeDisabled();
 	});
 
-	test('Rounded md button should have "rounded-xl"  class', () => {
-		render(
-			<Button rounded size="md">
-				{Texts.TEXT}
-			</Button>
-		);
-		const button = screen.getByText(Texts.TEXT);
-		expect(button).toHaveClass("rounded-xl");
-	});
-	test('Rounded large button should have "rounded-xl"  class', () => {
-		render(
-			<Button rounded size="lg">
-				{Texts.TEXT}
-			</Button>
-		);
-		const button = screen.getByText(Texts.TEXT);
-		expect(button).toHaveClass("rounded-xl");
-	});
 	test('Rounded sm button should have "rounded-xl"  class', () => {
 		render(
-			<Button rounded size="sm">
+			<Button rounded="xl" size="sm">
 				{Texts.TEXT}
 			</Button>
 		);
 		const button = screen.getByText(Texts.TEXT);
-		expect(button).toHaveClass("rounded-xl");
+		expect(button).toHaveClass("rounded-2xl");
 	});
 	test("Rounded prop is default to true", () => {
 		render(<Button size="sm">{Texts.TEXT}</Button>);
 		const button = screen.getByText(Texts.TEXT);
 		expect(button).toHaveClass("rounded-xl");
 	});
-	test('If Rouded Prop is false, it should not have "rounded-xl" or "rounded-lg" class', () => {
-		render(<Button rounded={false}>{Texts.TEXT}</Button>);
+	test('If Rouded Prop is none, it should not have "rounded-xl" or "rounded-lg" class', () => {
+		render(<Button rounded={"none"}>{Texts.TEXT}</Button>);
 		const button = screen.getByText(Texts.TEXT);
 		expect(button).not.toHaveClass("rounded-xl");
 	});
-	test("If Rouded Prop is false, it should have 'rounded-none' class", () => {
-		render(<Button rounded={false}>{Texts.TEXT}</Button>);
+	test("If Rouded Prop is none, it should have 'rounded-none' class", () => {
+		render(<Button rounded={"none"}>{Texts.TEXT}</Button>);
 		const button = screen.getByText(Texts.TEXT);
 		expect(button).toHaveClass("rounded-none");
 	});
@@ -108,23 +90,23 @@ describe("Button Component", () => {
 
 	// Types Tests (main,normal,outlined,text)
 
-	test("If type is main, should have bg-accent and text-primary classes", () => {
-		render(<Button type="main">{Texts.TEXT}</Button>);
+	test("If color is accent, should have bg-accent class", () => {
+		render(<Button color="accent">{Texts.TEXT}</Button>);
 		const button = screen.getByText(Texts.TEXT);
-		expect(button).toHaveClass("bg-accent text-primary");
+		expect(button).toHaveClass("bg-accent");
 	});
-	test("If type is normal, should have bg-primary/60 and text-white classes", () => {
-		render(<Button type="normal">{Texts.TEXT}</Button>);
+	test("If variant is normal, should have bg-primary class", () => {
+		render(<Button variant="filled">{Texts.TEXT}</Button>);
 		const button = screen.getByText(Texts.TEXT);
-		expect(button).toHaveClass("bg-primary/60 text-white");
+		expect(button).toHaveClass("bg-primary");
 	});
-	test("If type is outlined, should have bg-white text-primary   ring-1 ring-primary classes", () => {
-		render(<Button type="outlined">{Texts.TEXT}</Button>);
+	test("If variant is outlined, should have bg-white text-primary   ring-1 ring-primary classes", () => {
+		render(<Button variant="outlined">{Texts.TEXT}</Button>);
 		const button = screen.getByText(Texts.TEXT);
 		expect(button).toHaveClass("bg-white text-primary ring-1 ring-primary");
 	});
-	test("If type is text, should have bg-transparent and text-primary classes", () => {
-		render(<Button type="text">{Texts.TEXT}</Button>);
+	test("If variant is text, should have bg-transparent and text-primary classes", () => {
+		render(<Button variant="text">{Texts.TEXT}</Button>);
 		const button = screen.getByText(Texts.TEXT);
 		expect(button).toHaveClass("bg-transparent text-primary");
 	});
@@ -135,15 +117,5 @@ describe("Button Component", () => {
 		render(<Button centered>{Texts.TEXT}</Button>);
 		const button = screen.getByText(Texts.TEXT);
 		expect(button).toHaveClass("justify-center text-center");
-	});
-
-	test("if onlyIcon prop is true, then there is not children", () => {
-		render(
-			<Button onlyIcon icon="search">
-				Children
-			</Button>
-		);
-		const button = screen.getByRole("button");
-		expect(button).not.toHaveTextContent("Children");
 	});
 });

@@ -85,7 +85,7 @@ import {
 	TbArrowBarToRight,
 } from "react-icons/tb";
 import { TiFlowSwitch } from "react-icons/ti";
-import { IconData, IconNames } from "../components/Icon/types";
+import { IconData, IconNames } from "../components/Base/Icon/types";
 // This code exports an array of objects containing icon names and their corresponding React components. The IconNames enum is used to ensure that only valid icon names are used. This code can be used in a React project to easily display icons by name.
 
 export const icons: IconData[] = [

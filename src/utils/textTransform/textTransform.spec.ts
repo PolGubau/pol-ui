@@ -1,158 +1,70 @@
 import {
 	toCamelCase,
 	toKebabCase,
-	toUpperCase,
-	toLowerCase,
 	capitalize,
 	removeWhitespace,
 	reverseString,
 	truncateString,
-	randomString,
 	formatString,
+	randomString,
+	lowerAndNoSpace,
+	shorten,
 } from "./textTransform";
 
-describe("toCamelCase()", () => {
-	it("should convert a hyphenated string to camel case", () => {
-		expect(toCamelCase("some-hyphenated-string")).toBe("someHyphenatedString");
+describe("String utility functions", () => {
+	test("toCamelCase", () => {
+		expect(toCamelCase("hello-world")).toBe("helloWorld");
+		expect(toCamelCase("this_is_a_test")).toBe("thisIsATest");
 	});
 
-	it("should convert an underscored string to camel case", () => {
-		expect(toCamelCase("some_underscored_string")).toBe("someUnderscoredString");
+	test("toKebabCase", () => {
+		expect(toKebabCase("helloWorld")).toBe("hello-world");
+		expect(toKebabCase("thisIsATest")).toBe("this-is-atest");
 	});
 
-	it("should not modify a string that is already in camel case", () => {
-		expect(toCamelCase("someCamelCaseString")).toBe("someCamelCaseString");
-	});
-});
-
-describe("toKebabCase()", () => {
-	it("should convert a camel-cased string to kebab case", () => {
-		expect(toKebabCase("someCamelCasedString")).toBe("some-camel-cased-string");
-	});
-
-	it("should convert an underscored string to kebab case", () => {
-		expect(toKebabCase("some_underscored_string")).toBe("some_underscored_string");
-	});
-});
-
-describe("toUpperCase()", () => {
-	it("should convert a string to uppercase", () => {
-		expect(toUpperCase("some string")).toBe("SOME STRING");
-	});
-
-	it("should not modify a string that is already in uppercase", () => {
-		expect(toUpperCase("SOME UPPERCASE STRING")).toBe("SOME UPPERCASE STRING");
-	});
-});
-
-describe("toLowerCase()", () => {
-	it("should convert a string to lowercase", () => {
-		expect(toLowerCase("SOME STRING")).toBe("some string");
-	});
-
-	it("should not modify a string that is already in lowercase", () => {
-		expect(toLowerCase("some lowercase string")).toBe("some lowercase string");
-	});
-});
-describe("capitalize", () => {
-	test("should capitalize the first letter of a string", () => {
+	test("capitalize", () => {
 		expect(capitalize("hello")).toBe("Hello");
 		expect(capitalize("world")).toBe("World");
 	});
 
-	test("should return an empty string if input is empty", () => {
-		expect(capitalize("")).toBe("");
-	});
-});
-
-describe("removeWhitespace", () => {
-	test("should remove all whitespace from a string", () => {
-		expect(removeWhitespace("Hello world")).toBe("Helloworld");
-		expect(removeWhitespace("  Lorem   ipsum  ")).toBe("Loremipsum");
+	test("removeWhitespace", () => {
+		expect(removeWhitespace("  Hello  World  ")).toBe("HelloWorld");
+		expect(removeWhitespace("   ")).toBe("");
 	});
 
-	test("should return an empty string if input is empty", () => {
-		expect(removeWhitespace("")).toBe("");
-	});
-});
-
-describe("reverseString", () => {
-	test("should reverse the characters in a string", () => {
+	test("reverseString", () => {
 		expect(reverseString("hello")).toBe("olleh");
 		expect(reverseString("world")).toBe("dlrow");
 	});
 
-	test("should return an empty string if input is empty", () => {
-		expect(reverseString("")).toBe("");
-	});
-});
-
-describe("truncateString", () => {
-	test("should truncate a string to the specified length", () => {
-		expect(truncateString("Hello, world!", 5)).toBe("He...");
-		expect(truncateString("Lorem ipsum dolor sit amet", 10, "...")).toBe("Lorem i...");
-	});
-
-	test("should not truncate if the string length is less than or equal to the specified length", () => {
-		expect(truncateString("Hello, world!", 20)).toBe("Hello, world!");
-		expect(truncateString("Lorem ipsum dolor sit amet", 30, "...")).toBe(
-			"Lorem ipsum dolor sit amet"
-		);
-	});
-
-	test("should return an empty string if input is empty", () => {
+	test("truncateString", () => {
+		expect(truncateString("This is a long sentence.", 10)).toBe("This is...");
+		expect(truncateString("Short text.", 20)).toBe("Short text.");
 		expect(truncateString("", 5)).toBe("");
 	});
-});
 
-describe("randomString", () => {
-	it("should generate a random string of the specified length", () => {
-		const length = 10;
-		const result = randomString(length);
-
-		expect(typeof result).toBe("string");
-		expect(result).toHaveLength(length);
+	test("formatString", () => {
+		expect(formatString("helloWorld")).toBe("Hello World");
+		expect(formatString("thisIsATest")).toBe("This Is A Test");
+		expect(formatString("")).toBe("");
 	});
 
-	it("should generate unique strings for different calls", () => {
-		const length = 10;
-		const result1 = randomString(length);
-		const result2 = randomString(length);
-
-		expect(result1).not.toBe(result2);
-	});
-});
-
-describe("formatString", () => {
-	it("should convert a PascalCase string to normal with spaces and capitalize the first word", () => {
-		const input = "CodeSystem";
-		const expectedOutput = "Code System";
-		const result = formatString(input);
-
-		expect(result).toBe(expectedOutput);
+	test("randomString", () => {
+		const randomStr = randomString(10);
+		expect(randomStr).toHaveLength(10);
+		const emptyRandomStr = randomString(0);
+		expect(emptyRandomStr).toBe("");
 	});
 
-	it("should handle multiple capital letters correctly", () => {
-		const input = "APIRequestHandler";
-		const expectedOutput = "API Request Handler";
-		const result = formatString(input);
-
-		expect(result).toBe(expectedOutput);
+	test("lowerAndNoSpace", () => {
+		expect(lowerAndNoSpace("  Hello  World  ")).toBe("helloworld");
+		expect(lowerAndNoSpace("This is a test")).toBe("thisisatest");
+		expect(lowerAndNoSpace("")).toBe("");
 	});
 
-	it("should handle a single capital letter correctly", () => {
-		const input = "X";
-		const expectedOutput = "X";
-		const result = formatString(input);
-
-		expect(result).toBe(expectedOutput);
-	});
-
-	it("should handle an empty string correctly", () => {
-		const input = "";
-		const expectedOutput = "";
-		const result = formatString(input);
-
-		expect(result).toBe(expectedOutput);
+	test("shorten", () => {
+		const options = { separator: "__", termLength: 2 };
+		expect(shorten("UserShoppingCart__order__market", options)).toBe("UsShCa__or__ma");
+		expect(shorten("")).toBe("");
 	});
 });

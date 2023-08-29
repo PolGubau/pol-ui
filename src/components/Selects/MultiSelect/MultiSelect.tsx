@@ -1,6 +1,6 @@
 import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
-import { Icon, IconNames } from "../../Icon";
+import { Icon, IconNames } from "../../Base/Icon";
 import { IconName } from "../../../model/icons.model";
 import { SelectItems } from "./types";
 import { ButtonVariant } from "../../Buttons/Button/Button";
@@ -20,7 +20,7 @@ interface Props {
 	values?: SelectItems[];
 	onChange?: (values: SelectItems[]) => void;
 }
-export default function Select({
+export default function MultiSelect({
 	label,
 	placeholder = "Select",
 	fullWidth,
@@ -92,6 +92,7 @@ export default function Select({
 					${applyFullWidth(fullWidth)}
 					
 					`}
+				role="button"
 			>
 				<span className="block truncate">{takeButtonName()}</span>
 				<span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">

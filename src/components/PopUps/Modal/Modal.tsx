@@ -1,21 +1,29 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { ModalProps } from "./types";
-import React, { useEffect } from "react";
-import { Icon } from "../../Icon";
-import { Button, IconButton } from "../../Buttons";
-import { Text } from "../../Text";
-import Wrapper from "../../Wrappers/Wrapper";
 
+import React, { useEffect } from "react";
+import { IconButton, Button } from "../../Buttons";
+import { Icon } from "../../Base/Icon";
+import { Wrapper } from "../../Wrappers";
+import { ModalProps } from "./types";
+import { Text } from "../../Text";
 interface Props {
 	state: ModalProps;
 	setState?: React.Dispatch<React.SetStateAction<ModalProps>>;
 }
+
+export enum ModalCloseReason {
+	Escape = "Escape",
+	ClickOutside = "ClickOutside",
+	Submit = "Submit",
+	Cancel = "Cancel",
+}
+
 const Modal = ({ state, setState }: Props) => {
 	const { handleClose, title, icon, children, cancelButton, submitButton } = state;
 	const modalRef = React.useRef(null);
-	const closeModal = () => {
+	const closeModal = (reason: ModalCloseReason) => {
 		if (handleClose) {
-			handleClose();
+			handleClose(reason);
 		}
 		setState?.({ ...state, isOpen: false });
 	};
@@ -32,7 +40,7 @@ const Modal = ({ state, setState }: Props) => {
 
 		// Scape function
 		if (e.key === "Escape") {
-			closeModal();
+			closeModal(ModalCloseReason.Escape);
 		}
 
 		// Tab trap
@@ -63,20 +71,20 @@ const Modal = ({ state, setState }: Props) => {
 	};
 
 	return (
-		<Wrapper onClickOutside={closeModal} hasOverlay={true}>
+		<Wrapper onClickOutside={() => closeModal(ModalCloseReason.ClickOutside)} hasOverlay={true}>
 			<section
 				onKeyDown={keyDownHandler}
 				ref={modalRef}
-				className={`animate-fade-up animate-once animate-ease-out flex flex-col gap-4 relative animate-duration-500  rounded-2xl max-w-3xl w-full bg-white dark:bg-gray-800 dark:ring-gray-700 dark:text-gray-200   justify-center p-6 shadow-2xl`}
+				className={`animate-fade-up animate-once animate-ease-out flex flex-col gap-4 relative animate-duration-500  rounded-2xl  w-full bg-white dark:bg-gray-800 dark:ring-gray-700 dark:text-gray-200   justify-center p-6 shadow-2xl max-w-[90vw] md:max-w-3xl `}
 			>
 				<IconButton
 					className="absolute right-4 top-4"
 					icon="close"
-					onClick={closeModal}
+					onClick={() => closeModal(ModalCloseReason.Cancel)}
 					variant="text"
 				/>
 				{title && (
-					<header className="max-w-[80%] flex gap-4 items-center">
+					<header className="max-w-[85%] flex gap-4 items-center ">
 						<Icon icon={icon} size="xl" />
 						<Text size={4} className="" value={title} />
 					</header>

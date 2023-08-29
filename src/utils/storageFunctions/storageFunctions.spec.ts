@@ -1,61 +1,58 @@
-// storageFunctions.test.ts
 import { getLocalStorage, setToLocalStorage, removeFromLocalStorage } from "./storageFunctions";
 
-// Mocking localStorage
-const localStorageMock = (function () {
-	let store: Record<string, string> = {};
-	return {
-		getItem: function (key: string) {
-			return store[key] || null;
-		},
-		setItem: function (key: string, value: string) {
-			store[key] = value.toString();
-		},
-		removeItem: function (key: string) {
-			delete store[key];
-		},
-		clear: function () {
-			store = {};
-		},
-	};
-})();
-Object.defineProperty(window, "localStorage", { value: localStorageMock });
+describe("localStorage functions", () => {
+	// Mocking localStorage
+	const localStorageMock = (() => {
+		let store: { [key: string]: string } = {};
+		return {
+			getItem: (key: string) => store[key] || null,
+			setItem: (key: string, value: string) => {
+				store[key] = value.toString();
+			},
+			removeItem: (key: string) => {
+				delete store[key];
+			},
+			clear: () => {
+				store = {};
+			},
+		};
+	})();
 
-describe("Storage Functions", () => {
-	beforeEach(() => {
+	Object.defineProperty(window, "localStorage", { value: localStorageMock });
+
+	afterEach(() => {
 		localStorageMock.clear();
 	});
 
-	it("the 3 functions should be defined", () => {
-		expect(getLocalStorage).toBeDefined();
-		expect(setToLocalStorage).toBeDefined();
-		expect(removeFromLocalStorage).toBeDefined();
+	test("getLocalStorage returns initial value if key is not present", () => {
+		const key = "testKey";
+		const initialValue = "initial";
+		const result = getLocalStorage(key, initialValue);
+		expect(result).toBe(initialValue);
 	});
 
-	it("should get a value from localStorage", () => {
+	test("getLocalStorage returns stored value if key is present", () => {
 		const key = "testKey";
-		const initialValue = "defaultValue";
-		setToLocalStorage(key, initialValue);
-
-		const retrievedValue = getLocalStorage(key, "fallbackValue");
-		expect(retrievedValue).toBe(initialValue);
+		const storedValue = "stored";
+		localStorageMock.setItem(key, JSON.stringify(storedValue));
+		const result = getLocalStorage(key, "initial");
+		expect(result).toBe(storedValue);
 	});
 
-	it("should set a value in localStorage", () => {
+	test("setToLocalStorage stores value correctly", () => {
 		const key = "testKey";
-		const value = { some: "data" };
+		const value = "stored";
 		setToLocalStorage(key, value);
-
-		const retrievedValue = JSON.parse(localStorageMock.getItem(key)!);
-		expect(retrievedValue).toEqual(value);
+		const storedValue = localStorageMock.getItem(key);
+		expect(storedValue).toBe(JSON.stringify(value));
 	});
 
-	it("should remove a value from localStorage", () => {
+	test("removeFromLocalStorage removes value correctly", () => {
 		const key = "testKey";
-		setToLocalStorage(key, "valueToRemove");
-
+		const value = "stored";
+		localStorageMock.setItem(key, JSON.stringify(value));
 		removeFromLocalStorage(key);
-		const retrievedValue = localStorageMock.getItem(key);
-		expect(retrievedValue).toBeNull();
+		const storedValue = localStorageMock.getItem(key);
+		expect(storedValue).toBeNull();
 	});
 });

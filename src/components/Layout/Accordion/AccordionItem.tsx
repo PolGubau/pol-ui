@@ -1,5 +1,5 @@
 import React from "react";
-import { Icon, IconNames } from "../../Icon";
+import { Icon, IconNames } from "../../Base/Icon";
 import { Transition } from "@headlessui/react";
 import { Text } from "../../Text";
 import { AccordionItemProps } from "./Accordion";

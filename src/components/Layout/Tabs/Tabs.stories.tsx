@@ -5,7 +5,7 @@ import { Modal } from "../../PopUps";
 import { modalWithLogin } from "../../PopUps/Modal/Story/exampleModals";
 import { defaultData, tooManyTabs } from "./Story/tabData";
 import { Field, Switch } from "../../Inputs";
-import { IconNames } from "../../Icon";
+import { IconNames } from "../../Base/Icon";
 const meta = {
 	title: "Layout/Tabs",
 	component: Tabs,

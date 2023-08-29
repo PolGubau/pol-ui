@@ -1,6 +1,6 @@
 import React from "react";
 import { Select } from "../../../Selects";
-import { IconNames } from "../../../Icon";
+import { IconNames } from "../../../Base/Icon";
 import { IconButton } from "../../../Buttons";
 import Button, { ButtonVariant } from "../../../Buttons/Button/Button";
 interface Props {

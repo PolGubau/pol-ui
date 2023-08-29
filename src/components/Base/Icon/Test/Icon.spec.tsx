@@ -70,9 +70,17 @@ describe("Icon Component", () => {
 		const icon = screen.getByRole("img");
 		expect(icon).toBeInTheDocument();
 	});
+
+	// Alwaysrender
+	// by default icon returns null if the string is not found, if you pass alwaysRender it will return the sent string
 	test("Displays correctly it's icon if it's a string value", () => {
-		render(<Icon icon={Texts.TEXT} />);
+		render(<Icon icon={Texts.TEXT} alwaysRender />);
 		const icon = screen.getByRole("img");
 		expect(icon).toBeInTheDocument();
+	});
+	test("If no alwaysRender and icon is not found it returns null", () => {
+		render(<Icon icon="test" />);
+		const icon = screen.queryByRole("img");
+		expect(icon).not.toHaveTextContent("test");
 	});
 });

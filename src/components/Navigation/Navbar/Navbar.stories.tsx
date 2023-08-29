@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import { Link } from "../../Buttons/Link";
 import { ReactComponent as Logo } from "../../../assets/logo/Logo.svg";
 import { Menu } from "../../Selects";
-import { Icon } from "../../Icon";
+import { Icon } from "../../Base/Icon";
 import { mockText } from "./MockText";
 
 const meta = {

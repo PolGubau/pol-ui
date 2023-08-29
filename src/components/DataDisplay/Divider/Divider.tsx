@@ -8,7 +8,7 @@ import {
 	applyOpacity,
 	applyRounded,
 } from "../../../style";
-import { Icon } from "../../Icon";
+import { Icon } from "../../Base/Icon";
 import { ColorTypes, Alignments, SizesWithNone, Tens, Direction, BaseProps } from "../../../types";
 
 interface Props extends BaseProps {

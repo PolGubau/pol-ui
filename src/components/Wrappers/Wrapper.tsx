@@ -1,5 +1,4 @@
 import React from "react";
-import ClickOutsideWrapper from "./ClickOutsideWrapper";
 
 interface Props {
 	onClickOutside?: () => void;
@@ -7,15 +6,21 @@ interface Props {
 	hasOverlay?: boolean;
 }
 
-const Wrapper: React.FC<Props> = ({ onClickOutside, children, hasOverlay }: any) => {
+const Wrapper: React.FC<Props> = ({ onClickOutside, children, hasOverlay }): React.JSX.Element => {
+	const handleWrapperClick = (e: { target: any; currentTarget: any }) => {
+		if (e.target === e.currentTarget) {
+			onClickOutside?.();
+		}
+	};
 	return (
-		<ClickOutsideWrapper
-			className={` flex h-fit w-full overflow-x-hidden absolute top-0 z-40 justify-center items-center md:h-full md:inset-0 
+		<div
+			role="dialog"
+			className={`flex h-fit min-h-screen w-full overflow-x-hidden absolute top-0 z-40 justify-center items-center md:h-full 
 				${hasOverlay ? "bg-primary/10" : ""}`}
-			onClickOutside={onClickOutside}
+			onClick={handleWrapperClick}
 		>
 			{children}
-		</ClickOutsideWrapper>
+		</div>
 	);
 };
 export default Wrapper;

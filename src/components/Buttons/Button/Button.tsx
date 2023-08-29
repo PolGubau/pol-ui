@@ -1,6 +1,6 @@
 import React from "react";
 import "../../../style/baseTheme.scss";
-import { Icon, IconType } from "../../Icon";
+import { Icon, IconType } from "../../Base/Icon";
 import { buttonStyles } from "./Button.styles";
 import {
 	type BaseProps,

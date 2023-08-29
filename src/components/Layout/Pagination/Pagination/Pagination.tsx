@@ -1,7 +1,7 @@
 import React from "react";
 import Button, { ButtonVariant } from "../../../Buttons/Button/Button";
 import { IconButton } from "../../../Buttons";
-import { IconNames } from "../../../Icon";
+import { IconNames } from "../../../Base/Icon";
 interface Props {
 	page: number;
 	onPageChange?: (page: number) => void;

@@ -1,6 +1,6 @@
 import React from "react";
 import "../../../style/baseTheme.scss";
-import { IconType } from "../../Icon";
+import { IconType } from "../../Base/Icon";
 import { Button } from "../Button";
 import { BaseProps, ColorTypes, Sizes, SizesComplete, SizesWithNone } from "../../../types";
 import { ButtonVariant } from "../Button/Button";

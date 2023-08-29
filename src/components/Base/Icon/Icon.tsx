@@ -1,6 +1,6 @@
-import { applyColor, applyTextSize } from "../../style";
-import { ColorTypes, Sizes } from "../../types";
-import { getIcon } from "../../utils";
+import { applyColor, applyTextSize } from "../../../style";
+import { ColorTypes, Sizes } from "../../../types";
+import { getIcon } from "../../../utils";
 import { IconType } from "./types";
 
 interface IconProps {
@@ -25,8 +25,9 @@ const Icon = ({ icon, color, size, className, id, alwaysRender }: IconProps) => 
 	return (
 		<div
 			role="img"
+			data-testId={typeof icon === "string" ? `icon-${icon}` : "icon"}
 			id={id}
-			className={`p-1 ${applyTextSize(size)} ${applyColor(color)}} ${className}`}
+			className={`${applyTextSize(size)} ${applyColor(color)} ${className}`}
 		>
 			{resultIcon}
 		</div>

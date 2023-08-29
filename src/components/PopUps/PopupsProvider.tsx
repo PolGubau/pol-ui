@@ -9,7 +9,7 @@ interface Props {
 	modalState: ModalProps;
 	setToast: React.Dispatch<React.SetStateAction<ToastProps>>;
 	setModal: React.Dispatch<React.SetStateAction<ModalProps>>;
-	children: React.ReactNode;
+	children?: React.ReactNode;
 }
 
 const PopupsProvider: React.FC<Props> = ({

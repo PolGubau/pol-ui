@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import { Switch } from "../Switch";
 
 const enum Texts {
@@ -76,7 +76,9 @@ describe("Switch Component", () => {
 		const mockFn = jest.fn();
 		render(<Switch checked={false} onChange={mockFn} />);
 		const input = screen.getByRole("switch");
-		input.click();
+		act(() => {
+			input.click();
+		});
 		expect(mockFn).toHaveBeenCalled();
 	});
 });

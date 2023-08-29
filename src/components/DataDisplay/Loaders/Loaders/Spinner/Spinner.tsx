@@ -1,7 +1,7 @@
 import { TbLoader2 } from "react-icons/tb";
 import { ColorTypes, Sizes } from "../../../../../types";
 import { applyColor } from "../../../../../style";
-import { Icon } from "../../../../Icon";
+import { Icon } from "../../../../Base/Icon";
 
 const Spinner = ({
 	className,

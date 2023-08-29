@@ -1,5 +1,5 @@
 import { Transition } from "@headlessui/react";
-import { Icon, IconType } from "../../Icon";
+import { Icon, IconType } from "../../Base/Icon";
 import { badgeStyles } from "./Badge.styles";
 import { Fragment } from "react";
 import { ColorTypes, Sizes, BaseProps, SizesComplete, Shadow } from "../../../types";
