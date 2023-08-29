@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Tabs from "./Tabs";
 import { Button } from "../../Buttons";
-import { Modal } from "../../PopUps";
-import { modalWithLogin } from "../../PopUps/Modal/Story/exampleModals";
 import { defaultData, tooManyTabs } from "./Story/tabData";
 import { Field, Switch } from "../../Inputs";
 import { IconNames } from "../../Base/Icon";

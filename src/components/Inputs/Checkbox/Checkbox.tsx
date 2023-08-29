@@ -1,13 +1,7 @@
 import React from "react";
 import { Icon } from "../../Base/Icon";
 import { Transition } from "@headlessui/react";
-import {
-	applyBgColorInChecked,
-	applyDisabled,
-	applyRounded,
-	applyShyRounded,
-	applyTextSize,
-} from "../../../style";
+import { applyBgColorInChecked, applyDisabled, applyRounded, applyTextSize } from "../../../style";
 import { ColorTypes, Identifier, Sizes, SizesComplete } from "../../../types";
 
 interface Props {

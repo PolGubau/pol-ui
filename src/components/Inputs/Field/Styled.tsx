@@ -1,5 +1,4 @@
-import { tv } from "tailwind-variants";
-
+ 
 export const labelStyles = (isUp: boolean) => {
 	const base = `label transition-all absolute text-primary/60 top-0 left-2 translate-y-1 p-1 pointer-events-none `;
 	const isUpClasses = isUp

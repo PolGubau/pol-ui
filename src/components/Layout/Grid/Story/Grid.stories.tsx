@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Grid from "../Grid";
-import GridItem from "../GridItem";
 import { DifferentSpanGrid, someCells, someCellsRandomized } from "./GridData";
 
 const meta = {

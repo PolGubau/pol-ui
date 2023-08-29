@@ -1,13 +1,7 @@
 import React from "react";
 import { cardStyle } from "./Card.style";
 import { ColorTypes, Shadow, Sizes, SizesWithNone } from "../../../types";
-import {
-	applyBgColor,
-	applyMaxWidth,
-	applyPadding,
-	applyRounded,
-	applyShadow,
-} from "../../../style";
+import { applyPadding } from "../../../style";
 
 interface Props {
 	shadow?: Shadow;

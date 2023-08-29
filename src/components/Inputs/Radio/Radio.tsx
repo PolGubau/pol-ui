@@ -1,8 +1,8 @@
 import React from "react";
 import { Icon } from "../../Base/Icon";
 import { Transition } from "@headlessui/react";
-import { applyBgColorInChecked, applyDisabled, applyRounded, applyTextSize } from "../../../style";
-import { ColorTypes, Sizes, SizesComplete } from "../../../types";
+import { applyBgColorInChecked, applyDisabled, applyTextSize } from "../../../style";
+import { ColorTypes, Sizes } from "../../../types";
 
 interface Props {
 	label?: string;

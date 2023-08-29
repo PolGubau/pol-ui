@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
-import { tv } from "tailwind-variants";
-import { gridStyles } from "./Grid.styles";
+ import { gridStyles } from "./Grid.styles";
 
 interface GridProps {
 	children: ReactNode;

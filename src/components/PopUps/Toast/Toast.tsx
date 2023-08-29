@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const Toast = ({ state, setState }: Props) => {
-	const { message, duration, variant, action } = state;
+	const { message, duration, action } = state;
 	const handleClose = () => {
 		setState({ ...state, isOpen: false });
 	};
