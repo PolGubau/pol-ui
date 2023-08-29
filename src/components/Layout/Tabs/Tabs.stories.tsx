@@ -81,7 +81,7 @@ export const Complex: Story = {
 						<Field label="Email" fullWidth />
 						<Field label="password" type="password" fullWidth />
 						<Switch label="Remember me" checked={true} onChange={() => {}} />
-						<Button icon={IconNames.arrow} type="main" iconPosition="right">
+						<Button icon={IconNames.arrow} color="accent" iconPosition="right">
 							Login
 						</Button>
 					</div>
@@ -97,7 +97,7 @@ export const Complex: Story = {
 							<Field label="Username" fullWidth />
 						</div>
 						<Field label="password" type="password" fullWidth />
-						<Button icon={IconNames.arrow} type="main" iconPosition="right">
+						<Button icon={IconNames.arrow} color="accent" iconPosition="right">
 							Create an account
 						</Button>
 					</div>
