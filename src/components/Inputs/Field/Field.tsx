@@ -1,5 +1,5 @@
 import { ChangeEvent } from "react";
-import { containerStyles, inputStyles, labelStyles } from "./Styled";
+import { inputStyles, labelStyles } from "./Styled";
 import React from "react";
 interface Props<T> {
 	label?: string;
@@ -58,7 +58,7 @@ const Field = <T extends string | number>({
 		type === "number" ||
 		Boolean(value?.length);
 	return (
-		<div className={containerStyles()}>
+		<div className={"flex flex-col gap-1   relative   w-full text-primary transition-all"}>
 			{multiline ? (
 				<textarea
 					onFocus={() => setFocused(true)}
@@ -84,13 +84,13 @@ const Field = <T extends string | number>({
 				/>
 			)}
 			{Boolean(label) && (
-				<label className={labelStyles({ isUp: hasValue || focused })}>
+				<label className={labelStyles(hasValue || focused)}>
 					{label}
 					{required && `*`}
 				</label>
 			)}
 			{Boolean(helperText) && <span className="color-primary/60 text-xs">{helperText}</span>}
-			{Boolean(error) && <span className="text-xs text-red-500">{error}</span>}
+			{Boolean(error) && <span className="text-xs text-danger">{error}</span>}
 		</div>
 	);
 };
