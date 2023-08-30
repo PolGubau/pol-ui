@@ -46,8 +46,6 @@ const Field = <T extends string | number>({
 				newValue = "" as T;
 			}
 		}
-		if (!newValue) return;
-
 		onChange(newValue);
 	};
 	const [focused, setFocused] = React.useState(false);
