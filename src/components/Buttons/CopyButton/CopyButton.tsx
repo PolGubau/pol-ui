@@ -43,7 +43,13 @@ const CopyButton: React.FC<Props> = ({
 				leaveTo="opacity-0 scale-50"
 			>
 				{hasConfetti && (
-					<ConfettiExplosion force={0.4} duration={2200} particleCount={15} width={200} />
+					<ConfettiExplosion
+						force={0.4}
+						duration={2200}
+						particleCount={15}
+						width={200}
+						zIndex={999}
+					/>
 				)}
 				<Icon className="ml-2" icon={IconNames.check} />
 			</Transition>

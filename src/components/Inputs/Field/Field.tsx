@@ -1,6 +1,5 @@
-import { ChangeEvent } from "react";
+import React, { ChangeEvent } from "react";
 import { inputStyles, labelStyles } from "./Styled";
-import React from "react";
 interface Props<T> {
 	label?: string;
 	name?: string;
