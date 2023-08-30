@@ -1,5 +1,5 @@
 import React from "react";
-import "../../../style/baseTheme.scss";
+import "../../../style/baseTheme.css";
 import { Icon, IconType } from "../../Base/Icon";
 import { BaseProps, ColorTypes, Side, Sizes, SizesComplete, SizesWithNone } from "../../../types";
 import { buttonStyles } from "../Button/Button.styles";

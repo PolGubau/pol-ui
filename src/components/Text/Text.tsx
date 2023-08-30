@@ -1,7 +1,7 @@
 import React from "react";
 import TextStyled from "./Styled";
 import { shorterText, textSizer } from "./text.functions";
-import "../../style/baseTheme.scss";
+import "../../style/baseTheme.css";
 interface Props {
 	size?: number;
 	isBold?: boolean;

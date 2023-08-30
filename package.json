@@ -20,8 +20,8 @@
 		"test": "jest",
 		"test:watch": "jest --watch",
 		"lint": "eslint --ignore-path .gitignore .",
-		"lint:fix": "eslint --fix --ignore-path .gitignore . && stylelint --fix **/*.scss",
-		"lint:styles": "stylelint **/*.scss",
+		"lint:fix": "eslint --fix --ignore-path .gitignore . && stylelint --fix **/*.css",
+		"lint:styles": "stylelint **/*.css",
 		"docs": "storybook dev -p 6006",
 		"build:docs": "storybook build",
 		"test:coverage": "jest --coverage"
