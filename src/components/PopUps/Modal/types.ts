@@ -10,7 +10,7 @@ export enum ModalCloseReason {
 }
 export interface ModalProps {
 	isOpen: boolean;
-	handleClose?: (reason: ModalCloseReason) => void;
+	handleClose?: (reason?: ModalCloseReason) => void;
 	children?: React.ReactNode;
 	title?: string;
 	icon?: IconType;

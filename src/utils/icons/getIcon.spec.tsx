@@ -21,9 +21,7 @@ describe("getIcon function", () => {
 
 	it("returns null and logs an error for missing icons", () => {
 		const iconName = "MissingIcon";
-
 		const icon = getIcon(iconName);
-
 		expect(icon).toBeUndefined();
 	});
 

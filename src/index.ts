@@ -11,7 +11,10 @@ import {
 	CheckboxGroup,
 	Wrapper,
 	Modal,
+	ModalCloseReason,
+	ModalProps,
 	Toast,
+	ToastProps,
 	PopupsProvider,
 	Menu,
 	Select,
@@ -159,4 +162,4 @@ export {
 	getToday,
 };
 
-export type { Identifier, IconNames, IconData };
+export type { Identifier, IconNames, IconData, ModalCloseReason, ModalProps, ToastProps };

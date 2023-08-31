@@ -2,7 +2,7 @@
 	"name": "pol-ui",
 	"author": "Pol Gubau Amores",
 	"license": "MIT",
-	"version": "1.0.28",
+	"version": "1.0.29",
 	"type": "module",
 	"private": false,
 	"files": [
