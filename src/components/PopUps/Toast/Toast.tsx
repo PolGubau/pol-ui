@@ -6,13 +6,13 @@ import { ToastProps } from "./types";
 
 interface Props {
 	state: ToastProps;
-	setState: React.Dispatch<React.SetStateAction<ToastProps>>;
+	setState?: React.Dispatch<React.SetStateAction<ToastProps>>;
 }
 
 export const Toast = ({ state, setState }: Props) => {
 	const { message, duration, variant, action } = state;
 	const handleClose = () => {
-		setState({ ...state, isOpen: false });
+		setState?.({ ...state, isOpen: false });
 	};
 
 	return (
