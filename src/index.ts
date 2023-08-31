@@ -129,6 +129,9 @@ export {
 	Link,
 	CopyButton,
 
+	// enums
+	ModalCloseReason,
+
 	// utils
 	generateUUID,
 	copyToClipboard,
@@ -162,4 +165,4 @@ export {
 	getToday,
 };
 
-export type { Identifier, IconNames, IconData, ModalCloseReason, ModalProps, ToastProps };
+export type { Identifier, IconNames, IconData, ModalProps, ToastProps };
