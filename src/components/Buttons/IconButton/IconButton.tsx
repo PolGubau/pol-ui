@@ -40,7 +40,7 @@ const IconButton: React.FC<Props> = ({
 	return (
 		<Button
 			aria-label={ariaLabel}
-			disabled={disabled || !onClick}
+			disabled={disabled}
 			id={id}
 			style={style}
 			onClick={onClick}

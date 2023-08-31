@@ -1,9 +1,14 @@
-export type ToastType = "success" | "danger" | "info";
+export enum ToastTypes {
+	neutral = "neutral",
+	success = "success",
+	danger = "danger",
+}
+
+export type ToastVariant = keyof typeof ToastTypes;
 
 export interface ToastProps {
-	isOpen?: boolean;
-	message?: string;
-	variant?: ToastType;
+	message: string;
+	variant?: ToastVariant;
 	duration?: number;
 	action?: {
 		label?: string;
@@ -11,3 +16,9 @@ export interface ToastProps {
 		onClick: () => void;
 	};
 }
+
+export const defaultToast: ToastProps = {
+	message: "Saved!",
+	variant: "neutral",
+	duration: 3000,
+};

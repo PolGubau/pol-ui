@@ -12,21 +12,25 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
 	args: {
-		state: defaultToast,
+		toast: defaultToast,
+		onClose: () => alert("onClose"),
 	},
 };
 export const SuccessToast: Story = {
 	args: {
-		state: successToast,
+		toast: successToast,
+		onClose: () => alert("onClose"),
 	},
 };
 export const DangerToast: Story = {
 	args: {
-		state: dangerToast,
+		toast: dangerToast,
+		onClose: () => alert("onClose"),
 	},
 };
 export const WithAction: Story = {
 	args: {
-		state: toastWithAction,
+		toast: toastWithAction,
+		onClose: () => alert("onClose"),
 	},
 };

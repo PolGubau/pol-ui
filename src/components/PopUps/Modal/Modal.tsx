@@ -9,7 +9,7 @@ import { Text } from "../../Text";
 import { applyMaxWidth } from "../../../style";
 interface Props {
 	state: ModalProps;
-	setState?: React.Dispatch<React.SetStateAction<ModalProps>>;
+	setState?: (state: ModalProps) => void;
 }
 
 const Modal = ({ state, setState }: Props) => {

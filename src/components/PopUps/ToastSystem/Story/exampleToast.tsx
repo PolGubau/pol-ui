@@ -1,23 +1,28 @@
-import { ToastProps } from "../types";
+import { ToastProps } from "../../Toast/types";
+
 const texts = {
 	message: "This is a toast",
 };
 export const defaultToast: ToastProps = {
- 	message: texts.message,
+	isOpen: true,
+	message: texts.message,
 	duration: 3000,
 };
 export const successToast: ToastProps = {
- 	message: texts.message,
+	isOpen: true,
+	message: texts.message,
 	variant: "success",
 	duration: 3000,
 };
 export const dangerToast: ToastProps = {
- 	message: texts.message,
+	isOpen: true,
+	message: texts.message,
 	variant: "danger",
 	duration: 3000,
 };
 export const toastWithAction: ToastProps = {
- 	message: 'DROP TABLE "users" without WHERE ',
+	isOpen: true,
+	message: 'DROP TABLE "users" without WHERE ',
 	duration: 3000,
 	action: {
 		label: "Undo",
