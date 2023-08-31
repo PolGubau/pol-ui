@@ -85,7 +85,6 @@ export enum IconNames {
 	castle = "castle",
 	messages = "messages",
 	database = "database",
-	scripts = "scripts",
 	departments = "departments",
 	home = "home",
 	upload = "upload",

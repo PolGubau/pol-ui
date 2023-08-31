@@ -41,6 +41,8 @@ import {
 	Navbar,
 	Link,
 	CopyButton,
+	IconNames,
+	IconData,
 } from "./components";
 
 import {
@@ -157,4 +159,4 @@ export {
 	getToday,
 };
 
-export type { Identifier };
+export type { Identifier, IconNames, IconData };

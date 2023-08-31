@@ -5,7 +5,7 @@ import { Button } from "../Button";
 import { BaseProps, ColorTypes, Sizes, SizesComplete, SizesWithNone } from "../../../types";
 import { ButtonVariant } from "../Button/Button";
 interface Props extends BaseProps {
-	onClick?: () => void;
+	onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 	disabled?: boolean;
 	variant?: ButtonVariant;
 	color?: ColorTypes;

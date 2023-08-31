@@ -4,22 +4,16 @@ import React, { useEffect } from "react";
 import { IconButton, Button } from "../../Buttons";
 import { Icon } from "../../Base/Icon";
 import { Wrapper } from "../../Wrappers";
-import { ModalProps } from "./types";
+import { ModalCloseReason, ModalProps } from "./types";
 import { Text } from "../../Text";
+import { applyMaxWidth } from "../../../style";
 interface Props {
 	state: ModalProps;
 	setState?: React.Dispatch<React.SetStateAction<ModalProps>>;
 }
 
-export enum ModalCloseReason {
-	Escape = "Escape",
-	ClickOutside = "ClickOutside",
-	Submit = "Submit",
-	Cancel = "Cancel",
-}
-
 const Modal = ({ state, setState }: Props) => {
-	const { handleClose, title, icon, children, cancelButton, submitButton } = state;
+	const { handleClose, maxWidth, title, icon, children, cancelButton, submitButton } = state;
 	const modalRef = React.useRef(null);
 	const closeModal = (reason: ModalCloseReason) => {
 		if (handleClose) {
@@ -75,7 +69,9 @@ const Modal = ({ state, setState }: Props) => {
 			<section
 				onKeyDown={keyDownHandler}
 				ref={modalRef}
-				className={`animate-fade-up animate-once animate-ease-out flex flex-col gap-4 relative animate-duration-500  rounded-2xl  w-full bg-white dark:bg-gray-800 dark:ring-gray-700 dark:text-gray-200   justify-center p-6 shadow-2xl max-w-[90vw] md:max-w-3xl `}
+				className={`animate-fade-up animate-once animate-ease-out flex flex-col gap-4 relative animate-duration-500  rounded-2xl  w-full bg-white dark:bg-gray-800 dark:ring-gray-700 dark:text-gray-200   justify-center p-6 shadow-2xl max-w-[90vw] md:max-w-3xl ${applyMaxWidth(
+					maxWidth
+				)}`}
 			>
 				<IconButton
 					className="absolute right-4 top-4"
@@ -95,7 +91,10 @@ const Modal = ({ state, setState }: Props) => {
 						{cancelButton && (
 							<Button
 								variant={cancelButton.buttonType ?? "filled"}
-								onClick={() => cancelButton.onClick?.()}
+								onClick={() => {
+									cancelButton.onClick?.();
+									closeModal(ModalCloseReason.Cancel);
+								}}
 								icon={cancelButton?.icon}
 							>
 								{cancelButton.text}
@@ -105,7 +104,10 @@ const Modal = ({ state, setState }: Props) => {
 							<Button
 								autoFocus
 								variant={submitButton.buttonType ?? "filled"}
-								onClick={() => submitButton.onClick?.()}
+								onClick={() => {
+									submitButton.onClick?.();
+									closeModal(ModalCloseReason.Submit);
+								}}
 								icon={submitButton?.icon}
 							>
 								{submitButton.text}

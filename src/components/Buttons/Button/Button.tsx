@@ -13,7 +13,7 @@ import {
 export type ButtonVariant = "filled" | "outlined" | "text";
 interface Props extends BaseProps {
 	children?: React.ReactNode;
-	onClick?: () => void;
+	onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 	disabled?: boolean;
 	variant?: ButtonVariant;
 	color?: ColorTypes;
