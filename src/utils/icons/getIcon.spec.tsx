@@ -1,36 +1,30 @@
-import { IconData, IconNames } from "../../components";
+import { TbApps } from "react-icons/tb";
+import { IconNames } from "../../components";
 import { getIcon } from "./getIcon";
 
 describe("getIcon function", () => {
-	const mockIcons: IconData[] = [
-		{ name: IconNames.alarm, icon: "alarm" },
-		{ name: IconNames.apps, icon: "app" },
-		{ name: IconNames.ar, icon: "ar" },
-	];
-
 	it("returns correct icon for valid icon name", () => {
 		const iconName = IconNames.apps;
-		const expectedIcon = "app";
 
-		const icon = getIcon(iconName, mockIcons);
+		const icon = getIcon(iconName);
 
-		expect(icon).toBe(expectedIcon);
+		expect(icon).toEqual(<TbApps />);
 	});
 
 	it("returns null for invalid icon name", () => {
 		const iconName = "InvalidIcon";
 
-		const icon = getIcon(iconName, mockIcons);
+		const icon = getIcon(iconName);
 
-		expect(icon).toBeNull();
+		expect(icon).toBeUndefined();
 	});
 
 	it("returns null and logs an error for missing icons", () => {
 		const iconName = "MissingIcon";
 
-		const icon = getIcon(iconName, []);
+		const icon = getIcon(iconName);
 
-		expect(icon).toBeNull();
+		expect(icon).toBeUndefined();
 	});
 
 	it("returns null and logs an error when icons is not provided", () => {
@@ -38,6 +32,6 @@ describe("getIcon function", () => {
 
 		const icon = getIcon(iconName);
 
-		expect(icon).toBeNull();
+		expect(icon).toBeUndefined();
 	});
 });

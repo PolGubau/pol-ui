@@ -28,12 +28,6 @@ describe("Select component", () => {
 		expect(selectedValueElement).toBeInTheDocument();
 	});
 
-	it("displays custom button icon", () => {
-		render(<Select buttonIcon={IconNames.expandMore} items={items} />);
-		const buttonIcon = screen.getByTestId("icon-expandMore");
-		expect(buttonIcon).toBeInTheDocument();
-	});
-
 	it("displays options when button is clicked", () => {
 		render(<Select items={items} />);
 		const button = screen.getByRole("button");

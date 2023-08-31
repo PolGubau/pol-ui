@@ -25,8 +25,7 @@ const Icon = ({ icon, color, size, className, id, alwaysRender }: IconProps) => 
 	return (
 		<div
 			role="img"
-			data-testId={typeof icon === "string" ? `icon-${icon}` : "icon"}
-			id={id}
+ 			id={id}
 			className={`${applyTextSize(size)} ${applyColor(color)}  ${className}`}
 		>
 			{resultIcon}

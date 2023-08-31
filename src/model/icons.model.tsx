@@ -168,7 +168,6 @@ export const icons: IconData[] = [
 	{ name: IconNames.castle, icon: <TbBuildingCastle /> },
 	{ name: IconNames.messages, icon: <TbMessages /> },
 	{ name: IconNames.database, icon: <TbDatabase /> },
-	{ name: IconNames.scripts, icon: <TbScriptPlus /> },
 	{ name: IconNames.departments, icon: <TbBuildingCommunity /> },
 	{ name: IconNames.home, icon: <TbHome /> },
 	{ name: IconNames.upload, icon: <TbUpload /> },
