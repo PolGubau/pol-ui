@@ -1,4 +1,3 @@
-"use client";
 import React, { useMemo } from "react";
 import TabBar from "./components/TabBar/TabBar";
 import { applyMaxWidth, applyPadding, applyRounded } from "../../../style";
