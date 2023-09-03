@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Navbar from "./Navbar";
 import { Link } from "../../Buttons/Link";
-import { ReactComponent as Logo } from "../../../assets/logo/Logo.svg";
 import { Menu } from "../../Selects";
-import { Icon } from "../../Base/Icon";
+import { Icon, IconNames } from "../../Base/Icon";
 import { mockText } from "./mockText";
+import { Text } from "../../Text";
+import { Avatar } from "../../DataDisplay";
 
 const meta = {
 	title: "Navigation/Navbar",
@@ -25,7 +26,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
 	args: {
-		logo: <Logo width={"25px"} />,
+		logo: <Text size={5} value="logo" />,
 		children: (
 			<ul className="flex gap-2">
 				<Menu
@@ -67,9 +68,21 @@ export const Searchable: Story = {
 export const CustomRightPart: Story = {
 	args: {
 		...Default.args,
-		customRight: <Icon alwaysRender icon="🤨" size="md" />,
+		customRight: (
+			<>
+				<Avatar
+					src="a"
+					name="Profile"
+					rounded="full"
+					hasText
+					description="Level 45"
+					color="contrast"
+				/>
+			</>
+		),
 	},
 };
+
 export const LargeContent: Story = {
 	render: () => (
 		<>

@@ -12,14 +12,7 @@ interface Props {
 	children?: React.ReactNode;
 }
 
-const PopupsProvider: React.FC<Props> = ({
-	toasts,
-	modal,
-	setToast,
-	setModal,
-
-	children,
-}) => {
+const PopupsProvider: React.FC<Props> = ({ toasts, modal, setToast, setModal, children }) => {
 	return (
 		<>
 			{modal?.isOpen && setModal && <Modal state={modal} setState={setModal} />}

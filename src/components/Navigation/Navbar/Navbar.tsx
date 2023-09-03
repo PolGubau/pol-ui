@@ -45,6 +45,7 @@ const Navbar: React.FC<Props> = ({
 	position = "relative",
 	className,
 }) => {
+	const hasRightPart = cta || customRight || handleSearch;
 	return (
 		<div
 			className={`${navbar({ position, padding, shadow, className })} `}
@@ -54,7 +55,7 @@ const Navbar: React.FC<Props> = ({
 		>
 			<div>{logo}</div>
 			<div>{children}</div>
-			{(cta || handleSearch || customRight) && (
+			{hasRightPart && (
 				<div className="flex gap-1">
 					{cta &&
 						(cta.href ? (
