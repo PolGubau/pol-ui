@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import CopyButton from "./CopyButton";
 import { Field } from "../../Inputs";
-
+import { Text } from "../../Text";
+import texts from "../../Text/Story/data.json";
 const meta = {
 	title: "Buttons/CopyButton",
 	component: CopyButton,
@@ -42,4 +43,17 @@ export const CustomValue: Story = {
 };
 export const WitoutConfetti: Story = {
 	args: { valueToCopy: "Copy me!", hasConfetti: false },
+};
+export const CopyLargeText: Story = {
+	render: (args) => (
+		<div className="flex gap-4 flex-col">
+			<Text value={texts.longText} />
+
+			<CopyButton {...args} value="Copy" valueToCopy={texts.longText} />
+		</div>
+	),
+	args: {
+		value: "Copy",
+		valueToCopy: texts.longText,
+	},
 };

@@ -221,6 +221,8 @@ export const applyBgColorInChecked = (color?: ColorTypes) => {
 };
 export const applyColor = (color?: ColorTypes) => {
 	switch (color) {
+		case "primary":
+			return "text-primary";
 		case "secondary":
 			return "text-secondary";
 		case "success":
@@ -236,7 +238,7 @@ export const applyColor = (color?: ColorTypes) => {
 		case "contrast":
 			return "text-contrast";
 		default:
-			return "text-primary";
+			return "text-default";
 	}
 };
 export const applyOpacity = (opacity?: Tens) => {

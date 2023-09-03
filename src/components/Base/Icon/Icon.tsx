@@ -23,11 +23,7 @@ const Icon = ({ icon, color, size, className, id, alwaysRender }: IconProps) => 
 
 	const resultIcon = typeof icon === "string" ? getStringIcon(icon) : icon;
 	return (
-		<div
-			role="img"
- 			id={id}
-			className={`${applyTextSize(size)} ${applyColor(color)}  ${className}`}
-		>
+		<div role="img" id={id} className={`${applyTextSize(size)} ${applyColor(color)}  ${className}`}>
 			{resultIcon}
 		</div>
 	);
