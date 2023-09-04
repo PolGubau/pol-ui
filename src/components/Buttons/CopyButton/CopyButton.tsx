@@ -4,18 +4,21 @@ import { Button } from "../Button";
 import { copyToClipboard } from "../../../utils";
 import { Transition } from "@headlessui/react";
 import ConfettiExplosion from "react-confetti-explosion";
+import { ButtonVariant } from "../Button/Button";
 
 interface Props {
 	value?: string | number;
 	valueToCopy: string | number | object;
 	icon?: string;
 	hasConfetti?: boolean;
+	variant?: ButtonVariant;
 }
 const CopyButton: React.FC<Props> = ({
 	value,
 	valueToCopy,
 	icon = IconNames.copy,
 	hasConfetti = true,
+	variant,
 	...props
 }) => {
 	const printableValueToCopy =
@@ -30,7 +33,7 @@ const CopyButton: React.FC<Props> = ({
 	};
 
 	return (
-		<Button className={`truncate`} {...props} onClick={handleCopy}>
+		<Button className={`truncate`} variant={variant} {...props} onClick={handleCopy}>
 			{text}
 			{!copied && <Icon className="ml-2" icon={icon} />}
 			<Transition
