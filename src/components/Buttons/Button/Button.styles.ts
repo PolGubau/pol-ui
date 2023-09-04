@@ -103,7 +103,7 @@ export const buttonStyles = ({
 	color,
 	className,
 }: ButtonStylesProps) => {
-	return `flex items-center gap-2 transition-all flex-nowrap 
+	return `flex items-center gap-2 transition-all flex-nowrap jusify-between
 	${applyRounded(rounded)}
 	${applyTextSize(size)} 
 	${applyFullWidth(fullWidth)} 

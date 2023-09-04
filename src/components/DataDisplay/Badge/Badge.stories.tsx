@@ -15,7 +15,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
 	args: {
 		children: (
-			<Image src="https://www.thispersondoesnotexist.com" rounded="rounded" alt="randomPerson" />
+			<Image src="https://www.thispersondoesnotexist.com" rounded="full" alt="randomPerson" />
 		),
 		content: 1,
 		onClick: undefined,
@@ -32,12 +32,9 @@ export const AllColors: Story = {
 		<div className="flex gap-3 ">
 			<Badge {...args} color="accent" />
 			<Badge {...args} color="success" />
-			<Badge {...args} color="warning" />
 			<Badge {...args} color="danger" />
 			<Badge {...args} color="info" />
-			<Badge {...args} color="dark" />
-			<Badge {...args} color="light" />
-			<Badge {...args} color="default" />
+			<Badge {...args} color="contrast" />
 		</div>
 	),
 	args: {
@@ -55,7 +52,6 @@ export const AllSizes: Story = {
 		<div className="flex gap-3 ">
 			<Badge {...args} color="accent" size="xs" />
 			<Badge {...args} color="success" size="sm" />
-			<Badge {...args} color="warning" size="md" />
 			<Badge {...args} color="danger" size="lg" />
 			<Badge {...args} color="info" size="xl" />
 		</div>
@@ -75,7 +71,7 @@ export const Positions: Story = {
 	render: (args) => (
 		<div className="flex gap-3 ">
 			<Badge {...args} color="accent" horizontal="left" vertical="bottom" />
-			<Badge {...args} color="warning" /> <Badge {...args} color="danger" vertical="bottom" />
+			<Badge {...args} color="danger" vertical="bottom" />
 			<Badge {...args} color="success" horizontal="left" />
 		</div>
 	),

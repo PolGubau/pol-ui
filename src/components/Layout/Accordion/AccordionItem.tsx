@@ -3,8 +3,8 @@ import { Icon, IconNames } from "../../Base/Icon";
 import { Transition } from "@headlessui/react";
 import { Text } from "../../Text";
 import { AccordionItemProps } from "./Accordion";
-import { Button } from "../../Buttons";
-import { SizesComplete } from "../../../types";
+import { Button, Link } from "../../Buttons";
+import { SizesComplete, TextSize } from "../../../types";
 import { applyRounded } from "../../../style";
 interface Props {
 	hasIcon?: boolean;
@@ -12,6 +12,7 @@ interface Props {
 	toggleOpen?: () => void;
 	item: AccordionItemProps;
 	rounded: SizesComplete;
+	titleSize?: TextSize;
 }
 const AccordionItem: React.FC<Props> = ({
 	item,
@@ -19,6 +20,7 @@ const AccordionItem: React.FC<Props> = ({
 	isOpened = false,
 	toggleOpen,
 	rounded = "none",
+	titleSize = 4,
 }) => {
 	return (
 		<article
@@ -33,7 +35,7 @@ const AccordionItem: React.FC<Props> = ({
 					onClick={toggleOpen}
 					className="flex justify-between items-center rounded-lg cursor-pointer py-2 px-4 "
 				>
-					<Text size={4} value={item.title}></Text>
+					<Text size={titleSize} value={item.title}></Text>
 					{hasIcon && (
 						<Icon
 							alwaysRender={true}
@@ -52,7 +54,15 @@ const AccordionItem: React.FC<Props> = ({
 				leaveFrom="opacity-100 scale-100  translate-y-0 "
 				leaveTo="opacity-0 scale-95 -translate-y-1  "
 			>
-				<p className="py-2 px-4">{item.content}</p>
+				<p className="py-2 px-4">
+					{item.href ? (
+						<Link fullWidth variant="text" href={item.href}>
+							{item.content}
+						</Link>
+					) : (
+						item.content
+					)}
+				</p>
 			</Transition>
 		</article>
 	);

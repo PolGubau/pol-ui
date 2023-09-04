@@ -2,12 +2,13 @@ import React from "react";
 import AccordionItem from "./AccordionItem";
 import { accordionStyles } from "./accordion.style";
 import { applyMaxWidth, applyRounded } from "../../../style";
-import { SizesWithNone, SizesWithFull } from "../../../types";
+import { SizesWithNone, SizesWithFull, TextSize } from "../../../types";
 export interface AccordionItemProps {
 	title: string;
 	content: string | React.ReactNode;
 	icon?: string | React.ReactNode;
 	className?: string;
+	href?: string;
 }
 
 interface Props {
@@ -22,6 +23,7 @@ interface Props {
 	rounded?: SizesWithNone;
 	hasBorder?: boolean;
 	maxWidth?: SizesWithFull;
+	titleSize?: TextSize;
 }
 
 const Accordion: React.FC<Props> = ({
@@ -36,6 +38,7 @@ const Accordion: React.FC<Props> = ({
 	rounded = "none",
 	hasBorder = true,
 	maxWidth,
+	titleSize = 4,
 }) => {
 	const [openedIndex, setOpenedIndex] = React.useState<number[] | null>(defaultOpened);
 
@@ -83,6 +86,7 @@ const Accordion: React.FC<Props> = ({
 		>
 			{data.map((item, _i) => (
 				<AccordionItem
+					titleSize={titleSize}
 					rounded={rounded}
 					key={item.title}
 					item={item}

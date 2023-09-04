@@ -4,7 +4,8 @@ import Button, { ButtonVariant } from "../../Buttons/Button/Button";
 import useClickOutside from "../../../hooks/useClickOutside";
 import { formatString } from "../../../utils";
 import { Link } from "../../Buttons/Link";
-import { Side } from "../../../types";
+import { Positions, Side } from "../../../types";
+import { menuStyles } from "./Menu.styles";
 
 export interface MenuItem {
 	id?: string;
@@ -17,21 +18,25 @@ export interface MenuItem {
 interface Props {
 	label?: string;
 	items: MenuItem[];
-	buttonVariant?: ButtonVariant;
+	variant?: ButtonVariant;
 	iconSide?: Side;
 	openIcon?: string;
 	closeIcon?: string;
 	dividers?: boolean;
+	direction?: Positions;
+	fullWidth?: boolean;
 }
 
 export default function Menu({
 	label,
 	items = [],
-	buttonVariant = "filled",
+	variant = "filled",
 	iconSide = "right",
 	openIcon = "arrowDown",
 	closeIcon = openIcon ?? "arrowDown",
 	dividers = false,
+	direction = "bottom",
+	fullWidth = false,
 }: Props) {
 	const [open, setOpen] = useState(false);
 	const modalRef = useRef(null);
@@ -56,13 +61,15 @@ export default function Menu({
 	return (
 		<div className="relative" ref={modalRef}>
 			<Button
-				variant={buttonVariant}
+				variant={variant}
 				onClick={() => {
+					if (!items.length) return;
 					setOpen((prev) => !prev);
 				}}
-				icon={open ? closeIcon : openIcon}
+				icon={Boolean(items.length) && (open ? closeIcon : openIcon)}
 				iconPosition={iconSide}
 				ref={modalRef}
+				fullWidth={fullWidth}
 			>
 				{label}
 			</Button>
@@ -74,7 +81,7 @@ export default function Menu({
 				leave="transition-all duration-150"
 				leaveFrom="opacity-100 translate-y-1"
 				leaveTo="opacity-0 translate-y-0"
-				className={`absolute left-0 mt-2 w-56 origin-top-right rounded-2xl bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10 `}
+				className={menuStyles({ direction })}
 			>
 				<div className={`p-1 ${dividers ? "divide-y divide-gray-100" : ""} gap-col gap-0.5`}>
 					{items.map((item) =>

@@ -83,8 +83,8 @@ This template comes with a GitHub Actions workflow to automatically publish on a
    - ✅ Tabs
    - ✅ Pagination
 5. **Navigation Components:**
-   - 🦺 Navbar
-   - Sidebar
+   - ✅ Navbar
+   - 🦺 Sidebar
    - Breadcrumbs
    - ✅ Menu
    - Stepper
