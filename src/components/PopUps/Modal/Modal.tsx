@@ -30,6 +30,7 @@ const Modal = ({ state, setState, padding = "md", rounded = padding }: Props) =>
 		return () => {
 			window.removeEventListener("keydown", keyDownHandler);
 		};
+		// While this component is displayed, disable background scroll
 	}, []);
 
 	const keyDownHandler = (e: { key: string; shiftKey: any; preventDefault: () => void }) => {

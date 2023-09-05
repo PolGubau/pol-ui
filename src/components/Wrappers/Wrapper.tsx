@@ -15,7 +15,7 @@ const Wrapper: React.FC<Props> = ({ onClickOutside, children, hasOverlay }): Rea
 	return (
 		<div
 			role="dialog"
-			className={`flex h-fit min-h-screen w-full overflow-x-hidden absolute top-0 z-40 justify-center items-center md:h-full 
+			className={`flex h-full min-h-screen w-full overflow-x-hidden absolute top-0 z-40 justify-center items-center md:h-full 
 				${hasOverlay ? "bg-primary/10" : ""}`}
 			onClick={handleWrapperClick}
 		>
