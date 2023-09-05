@@ -61,3 +61,36 @@ export const Complex: Story = {
 		...Default.args,
 	},
 };
+export const NoPadding: Story = {
+	args: {
+		state: modalWithBothButtons,
+		padding: "none",
+	},
+};
+export const LargePadding: Story = {
+	args: {
+		state: modalWithBothButtons,
+		padding: "xl",
+	},
+};
+export const SmallRounded: Story = {
+	args: {
+		state: modalWithBothButtons,
+		padding: "xl",
+		rounded: "none",
+	},
+};
+export const LargeRounded: Story = {
+	args: {
+		state: modalWithBothButtons,
+		padding: "sm",
+		rounded: "xl",
+	},
+};
+export const FullRounded: Story = {
+	args: {
+		state: modalWithBothButtons,
+		padding: "xl",
+		rounded: "full",
+	},
+};

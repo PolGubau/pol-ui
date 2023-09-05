@@ -95,6 +95,9 @@ export const applyMarginY = (y?: SizesWithNone) => {
 };
 export const applyMargin = ({ x = "none", y = "none" }: { x?: SizesWithNone; y?: SizesWithNone }) =>
 	`${applyMarginX(x)} ${applyMarginY(y)}`;
+
+export const applySameMargin = (v: SizesWithNone = "none") =>
+	`${applyMarginX(v)} ${applyMarginY(v)}`;
 export const applyPaddingX = (x: SizesWithNone = "none") => {
 	switch (x) {
 		case "xs":
@@ -127,6 +130,9 @@ export const applyPaddingY = (y: SizesWithNone = "none") => {
 			return "py-0";
 	}
 };
+
+export const applySamePadding = (v: SizesWithNone = "none") =>
+	`${applyPaddingX(v)} ${applyPaddingY(v)}`;
 export const applyPadding = ({
 	x = "none",
 	y = "none",
@@ -171,6 +177,26 @@ export const applyRounded = (round?: SizesComplete) => {
 			return "rounded-xl";
 		case "xl":
 			return "rounded-2xl";
+
+		case "full":
+			return "rounded-full";
+
+		default:
+			return "rounded-none";
+	}
+};
+export const applyRoundedLarge = (round?: SizesComplete) => {
+	switch (round) {
+		case "xs":
+			return "rounded-lg";
+		case "sm":
+			return "rounded-xl";
+		case "md":
+			return "rounded-2xl";
+		case "lg":
+			return "rounded-2xl";
+		case "xl":
+			return "rounded-3xl";
 
 		case "full":
 			return "rounded-full";

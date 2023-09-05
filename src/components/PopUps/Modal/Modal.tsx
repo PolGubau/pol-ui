@@ -6,13 +6,16 @@ import { Icon } from "../../Base/Icon";
 import { Wrapper } from "../../Wrappers";
 import { ModalCloseReason, ModalProps } from "./types";
 import { Text } from "../../Text";
-import { applyMaxWidth } from "../../../style";
+import { applyMaxWidth, applyRoundedLarge, applySamePadding } from "../../../style";
+import { SizesComplete, SizesWithNone } from "../../../types";
 interface Props {
 	state: ModalProps;
 	setState?: (state: ModalProps) => void;
+	padding?: SizesWithNone;
+	rounded?: SizesComplete;
 }
 
-const Modal = ({ state, setState }: Props) => {
+const Modal = ({ state, setState, padding = "md", rounded = padding }: Props) => {
 	const { handleClose, maxWidth, title, icon, children, cancelButton, submitButton } = state;
 	const modalRef = React.useRef(null);
 	const closeModal = (reason: ModalCloseReason) => {
@@ -69,9 +72,12 @@ const Modal = ({ state, setState }: Props) => {
 			<section
 				onKeyDown={keyDownHandler}
 				ref={modalRef}
-				className={`animate-fade-up animate-once animate-ease-out flex flex-col gap-4 relative animate-duration-500  rounded-2xl  w-full bg-white dark:bg-gray-800 dark:ring-gray-700 dark:text-gray-200   justify-center p-6 shadow-2xl max-w-[90vw] md:max-w-3xl ${applyMaxWidth(
+				className={`animate-fade-up animate-once animate-ease-out flex flex-col gap-4 relative animate-duration-500    w-full bg-white dark:bg-gray-800 dark:ring-gray-700 dark:text-gray-200   justify-center  shadow-2xl max-w-[90vw] md:max-w-3xl ${applyMaxWidth(
 					maxWidth
-				)}`}
+				)}
+				${applySamePadding(padding)}
+				${applyRoundedLarge(rounded)}
+				`}
 			>
 				<IconButton
 					className="absolute right-4 top-4"
