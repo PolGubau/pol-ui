@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Navbar from "./Navbar";
 import { Link } from "../../Buttons/Link";
 import { Menu } from "../../Selects";
-import { Icon, IconNames } from "../../Base/Icon";
 import { mockText } from "./mockText";
 import { Text } from "../../Text";
 import { Avatar } from "../../DataDisplay";
@@ -29,11 +28,7 @@ export const Default: Story = {
 		logo: <Text size={5} value="logo" />,
 		children: (
 			<ul className="flex gap-2">
-				<Menu
-					label="Menu"
-					buttonVariant="text"
-					items={[{ label: "Item 1" }, { label: "Item 2" }]}
-				/>
+				<Menu label="Menu" variant="text" items={[{ label: "Item 1" }, { label: "Item 2" }]} />
 				<Link href="/1" variant="text">
 					Link
 				</Link>

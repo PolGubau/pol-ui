@@ -1,6 +1,5 @@
 import { render, fireEvent, screen } from "@testing-library/react";
 import Select from "./Select";
-import { IconNames } from "../../Base/Icon";
 
 const items = [
 	{ id: 1, name: "Item 1" },
