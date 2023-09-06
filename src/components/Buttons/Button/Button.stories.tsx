@@ -248,3 +248,14 @@ export const AllColors: Story = {
 		children: "I'm a button",
 	},
 };
+export const DarkMode: Story = {
+	render: (args) => (
+		<div className="dark">
+			<Button {...args} children="Dark Button" className="" />
+		</div>
+	),
+	args: {
+		...Default.args,
+		children: "I'm a button",
+	},
+};

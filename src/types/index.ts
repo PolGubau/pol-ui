@@ -1,5 +1,6 @@
-export type Identifier = string | number;
 export type Sizes = "xs" | "sm" | "md" | "lg" | "xl";
+
+export type Identifier = string | number;
 export type SizesWithNone = Sizes | "none";
 export type SizesWithFull = Sizes | "full";
 export type SizesComplete = Sizes | "none" | "full";
@@ -28,3 +29,14 @@ export type BaseProps = {
 	ariaLabel?: string;
 };
 export type AspectRatios = "1/1" | "3/2" | "4/3" | "16/9" | "21/9";
+export interface Theme {
+	background: string;
+	contrast: string;
+	primary: string;
+	secondary: string;
+	accent: string;
+	success: string;
+	danger: string;
+	info: string;
+	transparent: string;
+}

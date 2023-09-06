@@ -45,7 +45,7 @@ const Navbar: React.FC<Props> = ({
 	position = "relative",
 	className,
 }) => {
-	const hasRightPart = cta || customRight || handleSearch;
+	const hasRightPart = cta ?? customRight ?? handleSearch;
 	return (
 		<div
 			className={`${navbar({ position, padding, shadow, className })} `}

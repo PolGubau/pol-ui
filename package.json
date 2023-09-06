@@ -2,7 +2,7 @@
 	"name": "pol-ui",
 	"author": "Pol Gubau Amores",
 	"license": "MIT",
-	"version": "1.0.35",
+	"version": "1.0.36",
 	"type": "module",
 	"private": false,
 	"files": [
@@ -132,6 +132,7 @@
 		"vite-plugin-svgr": "^3.2.0"
 	},
 	"dependencies": {
-		"framer-motion": "^10.16.2"
+		"framer-motion": "^10.16.2",
+		"polui-plugin": "^1.0.0"
 	}
 }

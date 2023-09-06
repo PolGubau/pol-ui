@@ -23,40 +23,40 @@ export const applyButtonVariant = ({
 		case "outlined":
 			switch (color) {
 				case "secondary":
-					return "bg-white text-secondary ring-1 ring-secondary hover:bg-secondary/10";
+					return "text-secondary ring-1 ring-secondary hover:bg-secondary/10";
 				case "success":
-					return "bg-white text-success ring-1 ring-success hover:bg-success/10";
+					return "text-success ring-1 ring-success hover:bg-success/10";
 				case "danger":
-					return "bg-white text-danger ring-1 ring-danger hover:bg-danger/10";
+					return "text-danger ring-1 ring-danger hover:bg-danger/10";
 				case "accent":
-					return "bg-white text-accent ring-1 ring-accent hover:bg-accent/10";
+					return "text-accent ring-1 ring-accent hover:bg-accent/10";
 				case "info":
-					return "bg-white text-info ring-1 ring-info hover:bg-info/10";
+					return "text-info ring-1 ring-info hover:bg-info/10";
 				case "background":
-					return "bg-white text-background ring-1 ring-background hover:bg-background/10";
+					return "text-background ring-1 ring-background hover:bg-background/10";
 				case "contrast":
-					return "bg-white text-contrast ring-1 ring-contrast hover:bg-contrast/10";
+					return "text-contrast ring-1 ring-contrast hover:bg-contrast/10";
 				default:
-					return "bg-white text-primary ring-1 ring-primary hover:bg-primary/10";
+					return "text-primary ring-1 ring-primary hover:bg-primary/10";
 			}
 		case "text":
 			switch (color) {
 				case "secondary":
-					return "bg-transparent text-secondary hover:bg-secondary/10";
+					return "text-secondary hover:bg-secondary/10";
 				case "success":
-					return "bg-transparent text-success hover:bg-success/10";
+					return "text-success hover:bg-success/10";
 				case "danger":
-					return "bg-transparent text-danger hover:bg-danger/10";
+					return "text-danger hover:bg-danger/10";
 				case "accent":
-					return "bg-transparent text-accent hover:bg-accent/10";
+					return "text-accent hover:bg-accent/10";
 				case "info":
-					return "bg-transparent text-info hover:bg-info/10";
+					return "text-info hover:bg-info/10";
 				case "background":
-					return "bg-transparent text-background hover:bg-background/10";
+					return "text-background hover:bg-background/10";
 				case "contrast":
-					return "bg-transparent text-contrast hover:bg-contrast/10";
+					return "text-contrast hover:bg-contrast/10";
 				default:
-					return "bg-transparent text-primary hover:bg-primary/10";
+					return "text-primary hover:bg-primary/10";
 			}
 		default:
 			switch (color) {
