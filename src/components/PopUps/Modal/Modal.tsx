@@ -27,7 +27,12 @@ const Modal = ({ state, setState, padding = "md", rounded = padding }: Props) =>
 	useEffect(() => {
 		// if you press esc key, close modal
 		window.addEventListener("keydown", keyDownHandler);
+
+		// no scroll
+		const body = document.querySelector("body");
+		body?.style.setProperty("overflow", "hidden");
 		return () => {
+			body?.style.setProperty("overflow", "auto");
 			window.removeEventListener("keydown", keyDownHandler);
 		};
 		// While this component is displayed, disable background scroll
