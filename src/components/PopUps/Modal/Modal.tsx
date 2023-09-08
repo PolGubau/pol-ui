@@ -102,7 +102,8 @@ const Modal = ({ state, setState, padding = "md", rounded = padding }: Props) =>
 					<footer className="flex gap-4 w-full">
 						{cancelButton && (
 							<Button
-								variant={cancelButton.buttonType ?? "filled"}
+								variant={cancelButton.variant ?? "filled"}
+								color={cancelButton.color ?? "background"}
 								onClick={() => {
 									cancelButton.onClick?.();
 									closeModal(ModalCloseReason.Cancel);
@@ -115,7 +116,8 @@ const Modal = ({ state, setState, padding = "md", rounded = padding }: Props) =>
 						{submitButton && (
 							<Button
 								autoFocus
-								variant={submitButton.buttonType ?? "filled"}
+								variant={submitButton.variant ?? "filled"}
+								color={submitButton.color ?? "accent"}
 								onClick={() => {
 									submitButton.onClick?.();
 									closeModal(ModalCloseReason.Submit);
