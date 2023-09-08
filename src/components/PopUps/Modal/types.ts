@@ -16,7 +16,7 @@ export interface ModalProps {
 	icon?: IconType;
 	maxWidth?: SizesWithFull;
 	cancelButton?: {
-		color: ColorTypes;
+		color?: ColorTypes;
 		variant?: ButtonVariant;
 		icon?: IconType;
 		text?: string;
