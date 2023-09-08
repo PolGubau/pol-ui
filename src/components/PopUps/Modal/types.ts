@@ -1,6 +1,6 @@
 import { ButtonVariant } from "../../Buttons/Button/Button";
 import { IconType } from "../../Base/Icon";
-import { ColorTypes, SizesWithFull } from "../../../types";
+import { ColorTypes, SizesComplete, SizesWithFull, SizesWithNone } from "../../../types";
 export enum ModalCloseReason {
 	Escape = "Escape",
 	ClickOutside = "ClickOutside",
@@ -14,6 +14,8 @@ export interface ModalProps {
 	children?: React.ReactNode;
 	title?: string;
 	icon?: IconType;
+	padding: SizesWithNone;
+	rounded: SizesComplete;
 	maxWidth?: SizesWithFull;
 	cancelButton?: {
 		color?: ColorTypes;

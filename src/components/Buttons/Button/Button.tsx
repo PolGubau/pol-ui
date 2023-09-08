@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "../../../style/baseTheme.css";
 import { Icon, IconType } from "../../Base/Icon";
 import { buttonStyles } from "./Button.styles";
@@ -10,6 +10,7 @@ import {
 	SizesComplete,
 	SizesWithNone,
 } from "../../../types";
+import useRipple from "../../../hooks/useRipple";
 export type ButtonVariant = "filled" | "outlined" | "text";
 interface Props extends BaseProps {
 	children?: React.ReactNode;
@@ -28,7 +29,7 @@ interface Props extends BaseProps {
 		x: SizesWithNone;
 		y: SizesWithNone;
 	};
-	ref?: React.RefObject<HTMLButtonElement>;
+	customRef?: React.RefObject<HTMLButtonElement>;
 }
 
 const Button: React.FC<Props> = ({
@@ -49,16 +50,25 @@ const Button: React.FC<Props> = ({
 	centered = false,
 	padding = { x: "md", y: "sm" },
 	style,
-	ref,
+	customRef,
 }) => {
+	const ref = useRef<HTMLButtonElement>(null);
+	const ripples = useRipple(ref);
+
+	const handleClick = (e: any) => {
+		if (onClick) {
+			onClick(e);
+		}
+	};
+
 	return (
 		<button
-			ref={ref}
+			ref={customRef ?? ref}
 			aria-label={ariaLabel}
 			disabled={disabled || !onClick}
 			autoFocus={autoFocus}
 			id={id}
-			onClick={onClick}
+			onClick={handleClick}
 			style={style}
 			className={buttonStyles({
 				rounded,
@@ -72,6 +82,7 @@ const Button: React.FC<Props> = ({
 				className,
 			})}
 		>
+			{ripples}
 			{icon && iconPosition === "left" && <Icon icon={icon} size={size} />}
 			{children}
 			{icon && iconPosition === "right" && <Icon icon={icon} size={size} />}

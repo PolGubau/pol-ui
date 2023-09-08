@@ -1,24 +1,23 @@
 import { GrClose } from "react-icons/gr";
-import ToastStyled, { toastStyles } from "./ToastStyled";
+import { toastStyles } from "./ToastStyled";
 import { Button, IconButton } from "../../Buttons";
 import { ToastProps, ToastTypes, defaultToast } from "./types";
 import React from "react";
-
+import { motion } from "framer-motion";
+import { Direction } from "../../../types";
 interface Props {
 	toast: ToastProps;
 	onClose?: () => void;
+	direction?: Direction;
 }
 const toastVariants = {
 	initial: {
 		opacity: 0,
-
-		y: 50,
-		scale: 0.2,
+		scale: 0.8,
 		transition: { duration: 0.1 },
 	},
 	animate: {
 		opacity: 1,
-		y: 0,
 		scale: 1,
 	},
 	exit: {
@@ -26,10 +25,9 @@ const toastVariants = {
 		scale: 0.2,
 		transition: { ease: "easeOut", duration: 0.15 },
 	},
-	hover: { scale: 1.05, transition: { duration: 0.1 } },
 };
 
-export const Toast = ({ toast = defaultToast, onClose }: Props) => {
+export const Toast = ({ toast = defaultToast, onClose, direction }: Props) => {
 	const DEFAULT_TOAST_TYPE = ToastTypes.neutral;
 
 	// autoClose when toast.duration is set
@@ -44,20 +42,16 @@ export const Toast = ({ toast = defaultToast, onClose }: Props) => {
 	}, [toast.duration, onClose]);
 
 	return (
-		<ToastStyled
-			dragConstraints={{ left: 0, right: 300 }}
-			dragElastic={0.9}
-			dragTransition={{ bounceStiffness: 600, bounceDamping: 10 }}
-			onDragEnd={onClose}
-			drag="x"
-			whileDrag={{ scale: 0.8 }}
+		<motion.div
 			variants={toastVariants} // Defined animation states
-			whileHover="hover" // Animation on hover gesture
 			initial="initial" // Starting animation
 			animate="animate" // Values to animate to
-			exit="exit" // Target to animate to when removed from the tree
-			className={toastStyles({ variant: toast.variant, defaultType: DEFAULT_TOAST_TYPE })}
-			duration={toast.duration ?? 3000}
+			exit="exit"
+			className={toastStyles({
+				variant: toast.variant,
+				defaultType: DEFAULT_TOAST_TYPE,
+				direction,
+			})}
 		>
 			<p>{toast.message}</p>
 			{toast.action && (
@@ -66,6 +60,6 @@ export const Toast = ({ toast = defaultToast, onClose }: Props) => {
 				</Button>
 			)}
 			<IconButton variant="text" icon={<GrClose />} onClick={onClose} />
-		</ToastStyled>
+		</motion.div>
 	);
 };

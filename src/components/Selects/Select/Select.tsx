@@ -19,6 +19,7 @@ interface Props {
 	value?: SelectItems;
 	color?: ColorTypes;
 	onChange?: (value: SelectItems) => void;
+	nullable?: boolean;
 }
 export default function Select({
 	label,
@@ -31,7 +32,9 @@ export default function Select({
 	value,
 	color = "primary",
 	onChange,
-}: Props) {
+	nullable = false,
+}: // TODO: add nullable
+Props) {
 	const [selected, setSelected] = useState<undefined | SelectItems>(value ?? undefined);
 
 	const handleChanges = (value: SelectItems) => {
@@ -69,8 +72,10 @@ export default function Select({
 				<Listbox.Button
 					className={`relative 
 					cursor-pointer 
-					rounded-lg    
-					pr-10 text-left 
+					rounded-xl
+					p-2
+					pl-3    
+					pr-8 text-left 
 					transition-all
 					
 					

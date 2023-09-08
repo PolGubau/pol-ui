@@ -1,22 +1,24 @@
 import React from "react";
 import { cardStyle } from "./Card.style";
-import { ColorTypes, Shadow, Sizes, SizesWithNone } from "../../../types";
+import { ColorTypes, Shadow, Sizes, SizesComplete, SizesWithNone } from "../../../types";
 import { applyPadding } from "../../../style";
 
 interface Props {
 	shadow?: Shadow;
 	hasBorder?: boolean;
-	rounded?: SizesWithNone;
+	rounded?: SizesComplete;
 	color?: ColorTypes;
 	maxWidth?: Sizes | "full";
 	children?: React.ReactNode;
 	cardHeader?: React.ReactNode;
 	cardFooter?: React.ReactNode;
 	className?: string;
-	padding?: {
-		x: SizesWithNone;
-		y: SizesWithNone;
-	};
+	padding?:
+		| {
+				x: SizesWithNone;
+				y: SizesWithNone;
+		  }
+		| SizesWithNone;
 }
 const Card: React.FC<Props> = ({
 	shadow,

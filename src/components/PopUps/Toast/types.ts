@@ -8,6 +8,7 @@ export type ToastVariant = keyof typeof ToastTypes;
 
 export interface ToastProps {
 	message: string;
+	
 	variant?: ToastVariant;
 	duration?: number;
 	action?: {

@@ -25,14 +25,14 @@ export const Default: Story = {
 			</div>
 		),
 		hasBorder: true,
-		hasShadow: true,
+		shadow: "md",
 		maxWidth: "md",
-		variant: "light",
+		color: "background",
 	},
 };
 export const Example: Story = {
 	args: {
-		variant: "info",
+		color: "info",
 		padding: "md",
 
 		children: (
@@ -43,7 +43,7 @@ export const Example: Story = {
 						<Text value="C418" className="text-light" />
 					</div>
 					<Image
-						rounded="rounded"
+						rounded="full"
 						src="https://i.ytimg.com/vi/CmU4QPpiVNQ/maxresdefault.jpg"
 						alt="Sweden"
 						width="100%"
@@ -60,7 +60,7 @@ export const Example: Story = {
 };
 export const WithHeader: Story = {
 	args: {
-		variant: "light",
+		color: "background",
 		cardHeader: (
 			<>
 				{" "}
@@ -83,7 +83,7 @@ export const WithHeader: Story = {
 						<Text value="C418" />
 					</div>
 					<Image
-						rounded="rounded"
+						rounded="full"
 						src="https://i.ytimg.com/vi/CmU4QPpiVNQ/maxresdefault.jpg"
 						alt="Sweden"
 						width="100%"
@@ -100,7 +100,7 @@ export const WithHeader: Story = {
 };
 export const WithFooter: Story = {
 	args: {
-		variant: "dark",
+		color: "contrast",
 		padding: "md",
 		cardFooter: (
 			<>
@@ -148,7 +148,7 @@ export const SideFull: Story = {
 export const SquareCard: Story = {
 	args: {
 		padding: "md",
-		rounded: "square",
+		rounded: "none",
 		children: (
 			<Text value="lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum." />
 		),
@@ -157,7 +157,7 @@ export const SquareCard: Story = {
 export const CircularCard: Story = {
 	args: {
 		padding: "md",
-		rounded: "circular",
+		rounded: "full",
 		children: <Text value="lorem ipsum dolor sit amet." />,
 	},
 };

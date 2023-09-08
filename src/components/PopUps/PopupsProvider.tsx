@@ -3,7 +3,6 @@ import { Modal } from "./Modal";
 import { ToastProps } from "./Toast/types";
 import { ModalProps } from "./Modal/types";
 import ToastSystem from "./ToastSystem/ToastSystem";
-import { SizesComplete, SizesWithNone } from "../../types";
 
 interface Props {
 	toasts?: ToastProps[];
@@ -11,24 +10,12 @@ interface Props {
 	setToast?: (toasts: ToastProps[]) => void;
 	setModal?: (model: ModalProps) => void;
 	children?: React.ReactNode;
-	modalPadding?: SizesWithNone;
-	modalRounded?: SizesComplete;
 }
 
-const PopupsProvider: React.FC<Props> = ({
-	toasts,
-	modal,
-	setToast,
-	setModal,
-	children,
-	modalPadding,
-	modalRounded,
-}) => {
+const PopupsProvider: React.FC<Props> = ({ toasts, modal, setToast, setModal, children }) => {
 	return (
 		<>
-			{modal?.isOpen && setModal && (
-				<Modal state={modal} setState={setModal} padding={modalPadding} rounded={modalRounded} />
-			)}
+			{modal?.isOpen && setModal && <Modal state={modal} setState={setModal} />}
 			{toasts && setToast && <ToastSystem toasts={toasts} onChange={setToast} />}
 			{children}
 		</>

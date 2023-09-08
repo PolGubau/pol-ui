@@ -1,40 +1,25 @@
-import styled, { keyframes } from "styled-components";
+import { Direction } from "../../../types";
 import { ToastVariant } from "./types";
-import { motion } from "framer-motion";
-
-interface ToastStyledProps {
-	duration: number;
-}
-
-const bgLoadingAnimation = keyframes`
-    from{
-        background-position: 100% 100%; 
-    } 
-    to{
-        background-position: 0 0;
-    }
-`;
-
-const ToastStyled = styled(motion.li)<ToastStyledProps>`
-	animation: ${bgLoadingAnimation} ${({ duration }) => duration}ms linear;
-	background-size: 200% 200%;
-`;
-
-export default ToastStyled;
 
 interface Props {
 	variant?: ToastVariant;
 	defaultType: ToastVariant;
+	direction?: Direction;
 }
 
-export const toastStyles = ({ variant, defaultType }: Props) => {
+export const toastStyles = ({ variant, defaultType, direction }: Props) => {
 	const base =
-		"h-fit w-fit flex justify-center items-center gap-4 bg-gradient-to-r px-4 py-3 pl-6 rounded-xl shadow-md from-background-light to-background-contrast text-background border border-dark";
+		"h-fit w-fit flex justify-center items-center gap-4 bg-gradient-to-r px-4 py-3 pl-6 rounded-xl shadow-md border transition-all truncate min-w-fit";
 	const toastVariants = {
-		success: "bg-success text-contrast",
-		danger: "bg-danger text-contrast",
-		neutral: "bg-primary/10 text-contrast",
+		success: "text-contrast from-success/10 to-success border-success",
+		danger: "  text-contrast from-danger/10 to-danger border-danger",
+		neutral: "text-contrast from-primary/10 to-primary/30 border-primary",
 	};
 
-	return `${base} ${toastVariants[variant ?? defaultType]}`;
+	const animationSide = {
+		x: "hover:mb-1",
+		y: "hover:ml-1",
+	};
+
+	return `${base} ${toastVariants[variant ?? defaultType]} ${animationSide[direction ?? "y"]}`;
 };

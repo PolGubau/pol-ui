@@ -10,14 +10,13 @@ interface Props {
 }
 
 export const toastSystemStyles = ({ direction }: { direction: Direction }) => {
-	const base =
-		"container-snap h-fit truncate w-fit fixed z-40 justify-center items-left gap-4 bottom-4 left-4 flex";
+	const base = " w-full fixed z-40 justify-end  gap-4 bottom-4 left-4 flex";
 	const toastVariants = {
-		x: "flex-row-reverse overflow-x-auto",
-		y: "flex-col overflow-y-auto",
+		x: "flex-row-reverse overflow-x-auto items-end",
+		y: "flex-col overflow-y-hidden items-start",
 	};
 
-	return `${toastVariants[direction ?? "x"]} ${base}`;
+	return `${toastVariants[direction ?? "y"]} ${base}`;
 };
 
 const ToastSystem: React.FC<Props> = ({ toasts = [], direction = "y", onChange }) => {
@@ -32,7 +31,12 @@ const ToastSystem: React.FC<Props> = ({ toasts = [], direction = "y", onChange }
 		<ul className={toastSystemStyles({ direction })}>
 			{Boolean(allToasts?.length) &&
 				allToasts.map((toast, index: number) => (
-					<Toast key={toast.message + new Date()} toast={toast} onClose={handleCloseToast(index)} />
+					<Toast
+						key={toast.message + new Date()}
+						toast={toast}
+						onClose={handleCloseToast(index)}
+						direction={direction}
+					/>
 				))}
 		</ul>
 	);

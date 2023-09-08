@@ -10,16 +10,17 @@ import {
 const meta = {
 	title: "Selects/Select",
 	component: Select,
+	tags: ["autodocs"],
 } satisfies Meta<typeof Select>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	args: { items: mockSelectJustNames, variant: "normal", fullWidth: false },
+	args: { items: mockSelectJustNames, fullWidth: false },
 };
 export const MainSelect: Story = {
-	args: { ...Default.args, variant: "main" },
+	args: { ...Default.args, color: "accent" },
 };
 export const TextSelect: Story = {
 	args: { ...Default.args, variant: "text" },
@@ -40,7 +41,7 @@ export const WithLabel: Story = {
 	args: { ...Default.args, label: "Select your favorite" },
 };
 export const FullWidth: Story = {
-	args: { ...Default.args, fullWidth: true, variant: "normal" },
+	args: { ...Default.args, fullWidth: true },
 };
 export const FullWidthOutlined: Story = {
 	args: { ...Default.args, fullWidth: true, variant: "outlined" },

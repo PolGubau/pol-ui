@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-
 import React, { useEffect } from "react";
 import { IconButton, Button } from "../../Buttons";
 import { Icon } from "../../Base/Icon";
@@ -8,6 +6,7 @@ import { ModalCloseReason, ModalProps } from "./types";
 import { Text } from "../../Text";
 import { applyMaxWidth, applyRoundedLarge, applySamePadding } from "../../../style";
 import { SizesComplete, SizesWithNone } from "../../../types";
+import { useLockBodyScroll } from "@uidotdev/usehooks";
 interface Props {
 	state: ModalProps;
 	setState?: (state: ModalProps) => void;
@@ -16,6 +15,8 @@ interface Props {
 }
 
 const Modal = ({ state, setState, padding = "md", rounded = padding }: Props) => {
+	useLockBodyScroll();
+
 	const { handleClose, maxWidth, title, icon, children, cancelButton, submitButton } = state;
 	const modalRef = React.useRef(null);
 	const closeModal = (reason: ModalCloseReason) => {
@@ -27,15 +28,9 @@ const Modal = ({ state, setState, padding = "md", rounded = padding }: Props) =>
 	useEffect(() => {
 		// if you press esc key, close modal
 		window.addEventListener("keydown", keyDownHandler);
-
-		// no scroll
-		const body = document.querySelector("body");
-		body?.style.setProperty("overflow", "hidden");
 		return () => {
-			body?.style.setProperty("overflow", "auto");
 			window.removeEventListener("keydown", keyDownHandler);
 		};
-		// While this component is displayed, disable background scroll
 	}, []);
 
 	const keyDownHandler = (e: { key: string; shiftKey: any; preventDefault: () => void }) => {

@@ -133,7 +133,15 @@ export const applyPaddingY = (y: SizesWithNone = "none") => {
 
 export const applySamePadding = (v: SizesWithNone = "none") =>
 	`${applyPaddingX(v)} ${applyPaddingY(v)}`;
-export const applyPadding = ({
+
+export const applyPadding = (amount: SizesWithNone | { x: SizesWithNone; y: SizesWithNone }) => {
+	if (typeof amount === "string") {
+		return applySamePadding(amount);
+	}
+	return applyDifferentPadding(amount);
+};
+
+export const applyDifferentPadding = ({
 	x = "none",
 	y = "none",
 }: {
@@ -220,7 +228,7 @@ export const applyBgColor = (color?: ColorTypes) => {
 		case "background":
 			return "bg-background";
 		case "contrast":
-			return "bg-contrast";
+			return "bg-contrast text-background";
 		default:
 			return "bg-primary";
 	}
