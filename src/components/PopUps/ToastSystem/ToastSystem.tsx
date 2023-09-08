@@ -26,12 +26,14 @@ const ToastSystem: React.FC<Props> = ({ toasts = [], direction = "y", onChange }
 		newToasts.splice(index, 1);
 		onChange(newToasts);
 	};
+	const allToasts = toasts ?? [];
 
 	return (
 		<ul className={toastSystemStyles({ direction })}>
-			{toasts.map((toast, index: number) => (
-				<Toast key={toast.message + new Date()} toast={toast} onClose={handleCloseToast(index)} />
-			))}
+			{Boolean(allToasts?.length) &&
+				allToasts.map((toast, index: number) => (
+					<Toast key={toast.message + new Date()} toast={toast} onClose={handleCloseToast(index)} />
+				))}
 		</ul>
 	);
 };
