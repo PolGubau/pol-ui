@@ -25,7 +25,9 @@ const AccordionItem: React.FC<Props> = ({
 	return (
 		<article
 			key={item.title}
-			className={`flex flex-col gap-1 overflow-hidden ${applyRounded(rounded)} ${item.className}`}
+			className={`flex flex-col gap-1 overflow-hidden w-full ${applyRounded(rounded)} ${
+				item.className
+			}`}
 		>
 			<header>
 				<Button
@@ -33,7 +35,7 @@ const AccordionItem: React.FC<Props> = ({
 					variant="text"
 					fullWidth
 					onClick={toggleOpen}
-					className="flex justify-between items-center rounded-lg cursor-pointer py-2 px-4 "
+					className="justify-between w-full"
 				>
 					<Text size={titleSize} value={item.title}></Text>
 					{hasIcon && (

@@ -3,6 +3,7 @@ import Accordion from "./Accordion";
 import { Button, Link } from "../../Buttons";
 import { Image } from "../../Media";
 import { Navbar } from "../../Navigation";
+import { IconNames } from "../../Base";
 const meta = {
 	title: "Layout/Accordion",
 	component: Accordion,
@@ -278,13 +279,13 @@ export const CustomItems: Story = {
 export const UsageAsSidebar: Story = {
 	render(args) {
 		return (
-			<div className="flex flex-col gap-4 bg-sky-100 ring ring-sky-400">
+			<div className="flex flex-col ring ring-sky-400">
 				<Navbar logo="MyApp" />
-				<main className="flex gap-4">
+				<main className="flex ">
 					<div className="">
 						<Accordion {...args} />
 					</div>
-					<div className="">
+					<div className="bg-sky-100 p-8">
 						<p>
 							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum
 							quibusdam. Quisquam, voluptatum quibusdam. Quisquam, voluptatum
@@ -299,14 +300,19 @@ export const UsageAsSidebar: Story = {
 		defaultOpened: [0],
 		titleSize: 6,
 		hasBorder: false,
-		rounded: "xl",
 		data: [
 			{
 				title: "Home",
 				content: (
 					<div className="flex flex-col gap-2">
-						<Link variant="text" href="/nowhere">
+						<Link variant="text" icon={IconNames.database} href="/nowhere">
 							Dashboard
+						</Link>
+						<Link variant="text" icon="user" href="/nowhere">
+							Menu
+						</Link>
+						<Link variant="text" icon="book" href="/nowhere">
+							Docs
 						</Link>
 					</div>
 				),
@@ -314,10 +320,17 @@ export const UsageAsSidebar: Story = {
 			{
 				title: "Profile",
 				content: (
-					<>
-						<p>Our vision is to make the world a better place.</p>
-						<Image src="https://picsum.photos/seed/picsum/200/300" alt="Random image" />
-					</>
+					<div className="flex flex-col gap-2">
+						<Link variant="text" href="/nowhere">
+							Your Profile
+						</Link>
+						<Link variant="text" href="/nowhere">
+							Preferences
+						</Link>
+						<Link variant="text" href="/nowhere">
+							Data
+						</Link>
+					</div>
 				),
 			},
 		],

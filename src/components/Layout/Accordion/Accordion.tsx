@@ -53,7 +53,6 @@ const Accordion: React.FC<Props> = ({
 			return prevValue.filter((i) => i !== index);
 		});
 	};
-
 	const toggleOpened = (index: number) => {
 		if (openMode === "single") {
 			if (isThisItemOpened(index)) {
