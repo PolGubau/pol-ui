@@ -8,7 +8,6 @@ import {
 	Side,
 	Sizes,
 	SizesComplete,
-	SizesWithNone,
 	paddingOneOrBothValues,
 } from "../../../types";
 import useRipple from "../../../hooks/useRipple";

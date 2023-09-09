@@ -2,7 +2,7 @@ import { Side, Sizes } from "../../../types";
 export const baseStyles =
 	"absolute flex justify-center items-center text-white text-xs font-bold bg-accent transition-all backdrop-blur-md p-1 truncate";
 
-export const applyHorizontalPlacement = (v: Side) => (v === "left" ? "-left-2" : "-right-1");
+export const applyHorizontalPlacement = (v: Side) => (v === "left" ? "left-1" : "right-1");
 export const applyVerticalPlacement = (v: "top" | "bottom") =>
 	v === "top" ? "-top-1" : "-bottom-0";
 export const clickableStyles = (v: boolean) =>

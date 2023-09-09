@@ -126,3 +126,27 @@ export const NewsInAvatar: Story = {
 		badgeColor: "accent",
 	},
 };
+export const IsALink: Story = {
+	args: {
+		...Default.args,
+		size: "lg",
+		href: "https://www.polgubau.com",
+		rounded: "full",
+		color: "accent",
+		variant: "outlined",
+		badge: "1",
+		badgeColor: "accent",
+	},
+};
+export const IsAButton: Story = {
+	args: {
+		...Default.args,
+		size: "lg",
+		onClick: () => alert("hi"),
+		rounded: "full",
+		color: "accent",
+		variant: "outlined",
+		badge: "1",
+		badgeColor: "accent",
+	},
+};

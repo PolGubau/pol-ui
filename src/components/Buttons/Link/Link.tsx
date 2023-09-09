@@ -1,7 +1,14 @@
 import React from "react";
 import "../../../style/baseTheme.css";
 import { Icon, IconType } from "../../Base/Icon";
-import { BaseProps, ColorTypes, Side, Sizes, SizesComplete, SizesWithNone } from "../../../types";
+import {
+	BaseProps,
+	ColorTypes,
+	Side,
+	Sizes,
+	SizesComplete,
+	paddingOneOrBothValues,
+} from "../../../types";
 import { buttonStyles } from "../Button/Button.styles";
 import { ButtonVariant } from "../Button/Button";
 interface Props extends BaseProps {
@@ -17,10 +24,7 @@ interface Props extends BaseProps {
 	fullWidth?: boolean;
 	centered?: boolean;
 	onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
-	padding?: {
-		x: SizesWithNone;
-		y: SizesWithNone;
-	};
+	padding?: paddingOneOrBothValues;
 }
 
 const Link: React.FC<Props> = ({

@@ -5,7 +5,7 @@ import Badge from "../Badge/Badge";
 import { ColorTypes, Sizes, SizesComplete } from "../../../types";
 import { applyRounded, applyTextSize } from "../../../style";
 import { applyButtonVariant } from "../../Buttons/Button/Button.styles";
-import { ButtonVariant } from "../../Buttons/Button/Button";
+import Button, { ButtonVariant } from "../../Buttons/Button/Button";
 
 interface Props {
 	src: string;
@@ -19,7 +19,25 @@ interface Props {
 	color?: ColorTypes;
 	badge?: string;
 	badgeColor?: ColorTypes;
+	onClick?: (
+		event:
+			| React.MouseEvent<HTMLAnchorElement, MouseEvent>
+			| React.MouseEvent<HTMLButtonElement, MouseEvent>
+	) => void;
 }
+
+// inner functions
+
+const applySize = (size: Sizes) => {
+	const sizes = {
+		xs: "30px",
+		sm: "40px",
+		md: "50px",
+		lg: "60px",
+		xl: "70px",
+	};
+	return sizes[size];
+};
 
 const Avatar: React.FC<Props> = ({
 	src,
@@ -33,34 +51,15 @@ const Avatar: React.FC<Props> = ({
 	color = "background",
 	badge,
 	badgeColor,
+	onClick,
 }) => {
 	const ImageContent = (
 		<Image
 			src={src}
 			rounded={rounded}
 			aspectRatio="1/1"
-			height={
-				size === "xs"
-					? "30px"
-					: size === "sm"
-					? "40px"
-					: size === "md"
-					? "50px"
-					: size === "lg"
-					? "60px"
-					: "70px"
-			}
-			width={
-				size === "xs"
-					? "30px"
-					: size === "sm"
-					? "40px"
-					: size === "md"
-					? "50px"
-					: size === "lg"
-					? "60px"
-					: "70px"
-			}
+			height={applySize(size)}
+			width={applySize(size)}
 			alt={name}
 			className={`${applyRounded(rounded)} `}
 		/>
@@ -84,7 +83,7 @@ const Avatar: React.FC<Props> = ({
 			)}
 
 			{hasText && (
-				<div className="flex flex-col">
+				<div className="flex flex-col text-contrast dark:text-contrast-dark">
 					{name}
 					{description && <small>{description}</small>}
 				</div>
@@ -92,13 +91,25 @@ const Avatar: React.FC<Props> = ({
 		</div>
 	);
 
-	return href ? (
-		<Link variant="text" href={href}>
-			{avatarContent}
-		</Link>
-	) : (
-		avatarContent
-	);
+	const isALink = Boolean(href);
+	const isAButton = Boolean(onClick);
+
+	if (isALink) {
+		return (
+			<Link variant="text" href={href ?? ""} padding={"sm"} rounded="full">
+				{avatarContent}
+			</Link>
+		);
+	}
+	if (isAButton) {
+		return (
+			<Button variant="text" padding={"sm"} rounded="full" onClick={onClick}>
+				{avatarContent}
+			</Button>
+		);
+	}
+
+	return avatarContent;
 };
 
 export default Avatar;

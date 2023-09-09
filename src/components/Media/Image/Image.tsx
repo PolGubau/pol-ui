@@ -8,7 +8,7 @@ interface Props {
 	className?: string;
 	height?: string;
 	width?: string;
-	rounded: SizesComplete;
+	rounded?: SizesComplete;
 	aspectRatio?: AspectRatios;
 }
 
