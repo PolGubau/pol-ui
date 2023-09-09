@@ -4,6 +4,14 @@ export type Identifier = string | number;
 export type SizesWithNone = Sizes | "none";
 export type SizesWithFull = Sizes | "full";
 export type SizesComplete = Sizes | "none" | "full";
+
+export type paddingOneOrBothValues =
+	| SizesWithNone
+	| {
+			x: SizesWithNone;
+			y: SizesWithNone;
+	  };
+
 export type Side = "right" | "left";
 export type Direction = "x" | "y";
 export type Alignments = Side | "center";

@@ -9,6 +9,7 @@ import {
 	Sizes,
 	SizesComplete,
 	SizesWithNone,
+	paddingOneOrBothValues,
 } from "../../../types";
 import useRipple from "../../../hooks/useRipple";
 export type ButtonVariant = "filled" | "outlined" | "text";
@@ -25,11 +26,12 @@ interface Props extends BaseProps {
 	autoFocus?: boolean;
 	fullWidth?: boolean;
 	centered?: boolean;
-	padding?: {
-		x: SizesWithNone;
-		y: SizesWithNone;
-	};
+	padding?: paddingOneOrBothValues;
 	customRef?: React.RefObject<HTMLButtonElement>;
+	hasRipple?: boolean;
+	rippleColor?: ColorTypes;
+	rippleOpacity?: number;
+	rippleDuration?: number;
 }
 
 const Button: React.FC<Props> = ({
@@ -51,9 +53,20 @@ const Button: React.FC<Props> = ({
 	padding = { x: "md", y: "sm" },
 	style,
 	customRef,
+
+	hasRipple = true,
+	rippleColor,
+	rippleOpacity,
+	rippleDuration,
 }) => {
 	const ref = useRef<HTMLButtonElement>(null);
-	const ripples = useRipple(ref);
+	const ripples = useRipple({
+		hasRipple,
+		ref,
+		duration: rippleDuration,
+		color: rippleColor,
+		opacity: rippleOpacity,
+	});
 
 	const handleClick = (e: any) => {
 		if (onClick) {

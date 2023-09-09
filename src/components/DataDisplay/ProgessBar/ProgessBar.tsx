@@ -4,6 +4,7 @@ import { ColorTypes, Sizes, SizesComplete, Tens } from "../../../types";
 import ProgressBarPointer from "./components/Pointer/Pointer";
 import ProgressBarMarks from "./components/Marks/Marks";
 import { applyBgColor, applyRounded } from "../../../style";
+import { AnimatedInnerBar } from "./components/AnimatedInnerBar";
 
 interface ProgressBarProps {
 	value: number; // Value of the progress bar (0-100)
@@ -23,6 +24,7 @@ interface ProgressBarProps {
 	marks?: number; // Interval to show marks (percentage)
 	marksColor?: ColorTypes;
 	marksOpacity?: Tens;
+	innerClassName?: string;
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({
@@ -42,6 +44,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 	showMin = false,
 	showMax = false,
 	marksOpacity = 20,
+	innerClassName = "",
 }) => {
 	const maxPercent = 100;
 	const minPercent = 0;
@@ -85,20 +88,19 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 			)}
 			<div className={`overflow-hidden transition-all  ${applyRounded(rounded)}`}>
 				<ProgressBarMarks marks={marks} color={marksColor} opacity={marksOpacity} />
-				<div
-					className={` h-full w-fit absolute top-0 left-0 flex items-center justify-center  ${applyBgColor(
+
+				<AnimatedInnerBar
+					finalWidth={percentage}
+					className={`h-full absolute top-0 left-0 flex items-center justify-center  ${applyBgColor(
 						color
-					)} ${applyRounded(rounded)}`}
-					style={{
-						width: `${percentage}%`,
-					}}
+					)} ${applyRounded(rounded)}${innerClassName}`}
 					role="progressbar"
 					aria-valuenow={percentage}
 					aria-valuemin={min}
 					aria-valuemax={max}
 				>
 					{hasValueInside && percentage}
-				</div>
+				</AnimatedInnerBar>
 			</div>
 			{showMin && <div className="absolute left-1 top-0 2">{min}</div>}
 			{showMax && <div className="absolute right-1 top-0">{max}</div>}

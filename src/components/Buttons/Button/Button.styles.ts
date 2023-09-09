@@ -6,7 +6,13 @@ import {
 	applyCentered,
 	applyPadding,
 } from "../../../style";
-import { ColorTypes, Sizes, SizesComplete, SizesWithNone } from "./../../../types/index";
+import {
+	ColorTypes,
+	Sizes,
+	SizesComplete,
+	SizesWithNone,
+	paddingOneOrBothValues,
+} from "./../../../types/index";
 import { ButtonVariant } from "./Button";
 
 // variant is the shape (filled, outlined, text, icon)
@@ -86,7 +92,7 @@ interface ButtonStylesProps {
 	fullWidth: boolean;
 	disabled?: boolean;
 	centered: boolean;
-	padding: { x: SizesWithNone; y: SizesWithNone };
+	padding: paddingOneOrBothValues;
 	variant: ButtonVariant;
 	color: ColorTypes;
 	className?: string;
@@ -103,7 +109,7 @@ export const buttonStyles = ({
 	color,
 	className,
 }: ButtonStylesProps) => {
-	return `flex items-center gap-2 transition-all flex-nowrap jusify-between
+	return `flex items-center gap-2 transition-all flex-nowrap jusify-between min-h-10 relative overflow-hidden
 	${applyRounded(rounded)}
 	${applyTextSize(size)} 
 	${applyFullWidth(fullWidth)} 

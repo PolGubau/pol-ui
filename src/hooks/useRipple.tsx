@@ -3,8 +3,25 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useDebounce } from "usehooks-ts";
+import { ColorTypes } from "../types";
+import { applyBgColor } from "../style";
+interface RippleStyledProps {
+	$duration: number;
+	$opacity: number;
+}
 
-const RippleStyled = styled.span`
+const RippleStyled = styled.span<RippleStyledProps>`
+	overflow: hidden;
+	pointer-events: none;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	opacity: ${(props) => props.$opacity};
+	border-radius: 50%;
+	transform: scale(0);
+	animation-duration: ${(props) => props.$duration}s;
+	animation-name: ripple;
+	animation-timing-function: ease-in-out;
 	@keyframes ripple {
 		to {
 			transform: scale(4);
@@ -16,11 +33,28 @@ const RippleStyled = styled.span`
 /**
  * This hook accepts a ref to any element and adds a click event handler that creates ripples when click
  */
-const useRipple = <T extends HTMLElement>(ref: React.RefObject<T>) => {
+
+interface RippleProps {
+	ref: React.RefObject<HTMLElement>;
+	duration?: number;
+	color?: ColorTypes;
+	hasRipple?: boolean;
+	opacity?: number;
+}
+
+const useRipple = ({
+	hasRipple = true,
+	ref,
+	duration = 0.5,
+	color = "background",
+	opacity = 0.3,
+}: RippleProps) => {
 	//ripples are just styles that we attach to span elements
 	const [ripples, setRipples] = useState<React.CSSProperties[]>([]);
 
 	useEffect(() => {
+		if (!hasRipple) return;
+
 		//check if there's a ref
 		if (ref.current) {
 			const elem = ref.current;
@@ -53,6 +87,8 @@ const useRipple = <T extends HTMLElement>(ref: React.RefObject<T>) => {
 			return () => {
 				elem.removeEventListener("click", clickHandler);
 			};
+		} else {
+			console.warn("No ref provided to useRipple");
 		}
 	}, [ref, ripples]);
 
@@ -64,23 +100,18 @@ const useRipple = <T extends HTMLElement>(ref: React.RefObject<T>) => {
 		}
 	}, [_debounced.length]);
 
+	if (!hasRipple) return null;
+
 	//map through the ripples and return span elements.
 	//this will be added to the button component later
 	return ripples?.map((style, i) => {
 		return (
 			<RippleStyled
 				key={i}
-				style={{
-					...style,
-					//should be absolutely positioned
-					position: "absolute",
-					backgroundColor: "#FFFFFF",
-					opacity: "25%",
-					transform: "scale(0)",
-					// add ripple animation from styles.css
-					animation: "ripple 600ms linear",
-					borderRadius: "50%",
-				}}
+				style={style}
+				$duration={duration}
+				$opacity={opacity}
+				className={`${applyBgColor(color)}`}
 			/>
 		);
 	});

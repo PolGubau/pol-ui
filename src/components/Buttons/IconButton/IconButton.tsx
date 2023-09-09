@@ -44,7 +44,7 @@ const IconButton: React.FC<Props> = ({
 			id={id}
 			style={style}
 			onClick={onClick}
-			className={`aspect-square  ${className}`}
+			className={`aspect-square ${className}`}
 			variant={variant}
 			size={size}
 			rounded={rounded}
@@ -54,7 +54,7 @@ const IconButton: React.FC<Props> = ({
 			centered={centered}
 			fullWidth={fullWidth}
 			autoFocus={autoFocus}
-			ref={ref}
+			customRef={ref}
 		/>
 	);
 };
