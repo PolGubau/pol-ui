@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import Button from "../Button";
 import { ApplyCenteredOutput } from "../../../../style";
 
@@ -15,7 +15,7 @@ describe("Button Component", () => {
 		const onClick = jest.fn();
 		render(<Button onClick={onClick}>{Texts.TEXT}</Button>);
 		const button = screen.getByRole("button");
-		button.click();
+		fireEvent.click(button);
 		expect(onClick).toHaveBeenCalled();
 	});
 
@@ -70,7 +70,7 @@ describe("Button Component", () => {
 		const handleClick = jest.fn();
 		render(<Button onClick={handleClick}>{Texts.TEXT}</Button>);
 		const button = screen.getByText(Texts.TEXT);
-		button.click();
+		fireEvent.click(button);
 		expect(handleClick).toHaveBeenCalled();
 	});
 	test("If button is disabled, should have opacity-50 class", () => {
