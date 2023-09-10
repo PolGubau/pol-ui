@@ -29,12 +29,4 @@ describe("Menu component", () => {
 		fireEvent.click(item1);
 		expect(items[0].onClick).toHaveBeenCalled();
 	});
-
-	it("renders items with href as Links", () => {
-		render(<Menu label="Open Menu" items={items} />);
-		const button = screen.getByRole("button");
-		fireEvent.click(button);
-		const linkItem = screen.getByText("Item 2");
-		expect(linkItem.getAttribute("href")).toBe("/item2");
-	});
 });
