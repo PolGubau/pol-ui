@@ -28,7 +28,7 @@ interface Props {
 	direction?: Positions;
 	fullWidth?: boolean;
 	color?: ColorTypes;
-	rounded: SizesComplete;
+	rounded?: SizesComplete;
 	className?: string;
 }
 

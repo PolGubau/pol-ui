@@ -57,3 +57,6 @@ export const CopyLargeText: Story = {
 		valueToCopy: texts.longText,
 	},
 };
+export const CustomTextAfterCopy: Story = {
+	args: { valueToCopy: "Copy me!", textAfterCopied: ";)" },
+};

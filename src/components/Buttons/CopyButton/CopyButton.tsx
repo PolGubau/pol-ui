@@ -12,6 +12,7 @@ interface Props {
 	icon?: string;
 	hasConfetti?: boolean;
 	variant?: ButtonVariant;
+	textAfterCopied?: string;
 }
 const CopyButton: React.FC<Props> = ({
 	value,
@@ -19,12 +20,13 @@ const CopyButton: React.FC<Props> = ({
 	icon = IconNames.copy,
 	hasConfetti = true,
 	variant,
+	textAfterCopied,
 	...props
 }) => {
 	const printableValueToCopy =
 		typeof valueToCopy === "object" ? JSON.stringify(valueToCopy) : valueToCopy;
 
-	const text = value ?? printableValueToCopy;
+	const textBeforeCopied = value ?? printableValueToCopy;
 
 	const [copied, setCopied] = React.useState(false);
 	const handleCopy = () => {
@@ -33,29 +35,42 @@ const CopyButton: React.FC<Props> = ({
 	};
 
 	return (
-		<Button className={`truncate`} variant={variant} {...props} onClick={handleCopy}>
-			{text}
-			{!copied && <Icon className="ml-2" icon={icon} />}
-			<Transition
-				show={copied}
-				enter="transition-opacity duration-300"
-				enterFrom="opacity-0 scale-50"
-				enterTo="opacity-100 scale-100"
-				leave="transition-opacity duration-500"
-				leaveFrom="opacity-100 scale-100"
-				leaveTo="opacity-0 scale-50"
-			>
-				{hasConfetti && (
-					<ConfettiExplosion
-						force={0.4}
-						duration={2200}
-						particleCount={15}
-						width={200}
-						zIndex={999}
-					/>
-				)}
-				<Icon className="ml-2" icon={IconNames.check} />
-			</Transition>
+		<Button
+			className={`truncate`}
+			variant={variant}
+			iconPosition="right"
+			icon={
+				<>
+					{copied && hasConfetti && (
+						<ConfettiExplosion
+							force={0.4}
+							duration={2200}
+							particleCount={15}
+							width={200}
+							zIndex={999}
+						/>
+					)}
+					{copied ? (
+						<Transition
+							show={copied}
+							enter="transition-all duration-1000 "
+							enterFrom="opacity-0 transform scale-0"
+							enterTo="opacity-100 transform scale-100"
+							leave="transition-all duration-1000"
+							leaveFrom="opacity-100 transform scale-100"
+							leaveTo="opacity-0 	transform scale-0"
+						>
+							<Icon icon={IconNames.check} />
+						</Transition>
+					) : (
+						<Icon icon={icon} />
+					)}
+				</>
+			}
+			{...props}
+			onClick={handleCopy}
+		>
+			{copied ? textAfterCopied ?? textBeforeCopied : textBeforeCopied}
 		</Button>
 	);
 };

@@ -18,12 +18,14 @@ interface Props {
 	keyField?: string;
 	values?: SelectItems[];
 	onChange?: (values: SelectItems[]) => void;
-	rounded: SizesComplete;
+	rounded?: SizesComplete;
 	className?: string;
 }
+
+export const MultiSelectDefaultPlaceholder = "Select Multiple";
 export default function MultiSelect({
 	label,
-	placeholder = "Select Multiple",
+	placeholder = MultiSelectDefaultPlaceholder,
 	fullWidth,
 	items,
 	variant = "filled",

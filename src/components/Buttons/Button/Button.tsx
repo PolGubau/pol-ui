@@ -11,6 +11,7 @@ import {
 	paddingOneOrBothValues,
 	JustifyContent,
 	Position,
+	Size,
 } from "../../../types";
 import useRipple from "../../../hooks/useRipple";
 export type ButtonVariant = "filled" | "outlined" | "text";
@@ -46,14 +47,14 @@ const Button: React.FC<Props> = ({
 	ariaLabel = "button",
 	variant = "filled",
 	color = "primary",
-	size = "md",
-	rounded = "lg",
+	size = Size.md,
+	rounded = Size.lg,
 	icon,
 	iconPosition = "left",
 	autoFocus = false,
 	fullWidth = false,
 	centered = false,
-	padding = { x: "md", y: "sm" },
+	padding = { x: Size.md, y: Size.sm },
 	style,
 	customRef,
 	justify = icon ? "between" : "center",

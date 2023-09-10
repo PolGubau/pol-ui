@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import MultiSelect from "../MultiSelect";
+import MultiSelect, { MultiSelectDefaultPlaceholder } from "../MultiSelect";
 
 describe("MultiSelect component", () => {
 	const items = [
@@ -10,7 +10,7 @@ describe("MultiSelect component", () => {
 
 	it("renders the component with default placeholder", () => {
 		render(<MultiSelect items={items} />);
-		const placeholder = screen.getByText("Select");
+		const placeholder = screen.getByText(MultiSelectDefaultPlaceholder);
 		expect(placeholder).toBeInTheDocument();
 	});
 
@@ -68,13 +68,13 @@ describe("MultiSelect component", () => {
 
 	it("handles empty values array", () => {
 		render(<MultiSelect items={items} values={[]} />);
-		const placeholder = screen.getByText("Select");
+		const placeholder = screen.getByText(MultiSelectDefaultPlaceholder);
 		expect(placeholder).toBeInTheDocument();
 	});
 
 	it("handles undefined values array", () => {
 		render(<MultiSelect items={items} values={undefined} />);
-		const placeholder = screen.getByText("Select");
+		const placeholder = screen.getByText(MultiSelectDefaultPlaceholder);
 		expect(placeholder).toBeInTheDocument();
 	});
 

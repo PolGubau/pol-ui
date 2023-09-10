@@ -161,7 +161,13 @@ export const applyFullWidth = (b?: boolean): string => {
 export const applyDisabled = (b: boolean = false) => {
 	return b ? "opacity-50 cursor-not-allowed" : "cursor-pointer";
 };
-export const applyCentered = (b: boolean = false) => {
+
+export enum ApplyCenteredOutput {
+	true = "justify-center text-center",
+	false = "justify-start text-left",
+}
+type ApplyCenteredOutputType = `${ApplyCenteredOutput}`;
+export const applyCentered = (b: boolean = false): ApplyCenteredOutputType => {
 	return b ? "justify-center text-center" : "justify-start text-left";
 };
 export const applyAlignCenter = (b: boolean = false) => {

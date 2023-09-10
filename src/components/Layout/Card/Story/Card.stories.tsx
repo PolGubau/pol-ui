@@ -44,7 +44,7 @@ export const Example: Story = {
 					</div>
 					<Image
 						rounded="full"
-						src="https://i.ytimg.com/vi/CmU4QPpiVNQ/maxresdefault.jpg"
+						src="https://i.ytimg.com/vi/Wu-JGgR2f0k/maxresdefault.jpg"
 						alt="Sweden"
 						width="100%"
 					/>
@@ -63,7 +63,6 @@ export const WithHeader: Story = {
 		color: "background",
 		cardHeader: (
 			<>
-				{" "}
 				<Text size={1} value="Current song" />{" "}
 				<Menu
 					items={[
@@ -84,7 +83,7 @@ export const WithHeader: Story = {
 					</div>
 					<Image
 						rounded="full"
-						src="https://i.ytimg.com/vi/CmU4QPpiVNQ/maxresdefault.jpg"
+						src="https://i.ytimg.com/vi/Wu-JGgR2f0k/maxresdefault.jpg"
 						alt="Sweden"
 						width="100%"
 					/>

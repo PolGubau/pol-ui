@@ -116,7 +116,7 @@ export const buttonStyles = ({
 	className,
 	position = "relative",
 }: ButtonStylesProps) => {
-	return `flex items-center gap-2 transition-all flex-nowrap justify-between min-h-10 overflow-hidden
+	return `flex items-center gap-2 transition-all flex-nowrap justify-between min-h-10 overflow-hidden box-content
 	${applyRounded(rounded)}
 	${applyPosition(position)}
 	${applyTextSize(size)} 

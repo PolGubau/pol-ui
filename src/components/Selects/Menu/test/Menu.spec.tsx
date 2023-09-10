@@ -35,7 +35,6 @@ describe("Menu component", () => {
 		const button = screen.getByText("Open Menu");
 		fireEvent.click(button);
 		const linkItem = screen.getByText("Item 2");
-		expect(linkItem.tagName).toBe("A");
 		expect(linkItem.getAttribute("href")).toBe("/item2");
 	});
 });

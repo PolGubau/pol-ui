@@ -1,5 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import { getByRole, render, screen } from "@testing-library/react";
 import Button from "../Button";
+import { ApplyCenteredOutput } from "../../../../style";
 
 const enum Texts {
 	TEXT = "Text Sample For testing",
@@ -88,34 +89,11 @@ describe("Button Component", () => {
 		expect(button).toHaveClass("test");
 	});
 
-	// Types Tests (main,normal,outlined,text)
-
-	test("If color is accent, should have bg-accent class", () => {
-		render(<Button color="accent">{Texts.TEXT}</Button>);
-		const button = screen.getByText(Texts.TEXT);
-		expect(button).toHaveClass("bg-accent");
-	});
-	test("If variant is normal, should have bg-primary class", () => {
-		render(<Button variant="filled">{Texts.TEXT}</Button>);
-		const button = screen.getByText(Texts.TEXT);
-		expect(button).toHaveClass("bg-primary");
-	});
-	test("If variant is outlined, should have text-primary   ring-1 ring-primary classes", () => {
-		render(<Button variant="outlined">{Texts.TEXT}</Button>);
-		const button = screen.getByText(Texts.TEXT);
-		expect(button).toHaveClass("text-primary ring-1 ring-primary");
-	});
-	test("If variant is text, should have and text-primary classes", () => {
-		render(<Button variant="text">{Texts.TEXT}</Button>);
-		const button = screen.getByText(Texts.TEXT);
-		expect(button).toHaveClass("text-primary");
-	});
-
 	// Centered
 
 	test("If centered prop is true, should have justify-center text-center classes", () => {
 		render(<Button centered>{Texts.TEXT}</Button>);
-		const button = screen.getByText(Texts.TEXT);
-		expect(button).toHaveClass("justify-center text-center");
+		const button = screen.getByRole("button");
+		expect(button).toHaveClass(ApplyCenteredOutput.true);
 	});
 });

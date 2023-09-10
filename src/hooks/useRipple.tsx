@@ -111,7 +111,7 @@ const useRipple = ({
 				style={style}
 				$duration={duration}
 				$opacity={opacity}
-				className={`brightness-90 ${applyBgColor(color)}`}
+				className={`brightness-90 z-10 ${applyBgColor(color)}`}
 			/>
 		);
 	});

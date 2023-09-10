@@ -1,10 +1,9 @@
 import { TbApps } from "react-icons/tb";
-import { IconNames } from "../../components";
 import { getIcon } from "./getIcon";
 
 describe("getIcon function", () => {
 	it("returns correct icon for valid icon name", () => {
-		const iconName = IconNames.apps;
+		const iconName = "apps";
 
 		const icon = getIcon(iconName);
 
