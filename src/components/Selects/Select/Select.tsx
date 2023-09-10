@@ -4,9 +4,8 @@ import { Icon, IconNames } from "../../Base/Icon";
 import { SelectItems } from "./types";
 import { IconName } from "../../../model/icons.model";
 import { ButtonVariant } from "../../Buttons/Button/Button";
-import { applyFullWidth } from "../../../style";
-import { applyButtonVariant } from "../../Buttons/Button/Button.styles";
-import { ColorTypes } from "../../../types";
+import { ColorTypes, SizesComplete } from "../../../types";
+import { selectStyles } from "../selectStyles";
 
 interface Props {
 	label?: string;
@@ -17,9 +16,11 @@ interface Props {
 	buttonIcon?: IconName;
 	keyField?: string;
 	value?: SelectItems;
+	rounded?: SizesComplete;
 	color?: ColorTypes;
 	onChange?: (value: SelectItems) => void;
 	nullable?: boolean;
+	className?: string;
 }
 export default function Select({
 	label,
@@ -31,8 +32,10 @@ export default function Select({
 	keyField = "name",
 	value,
 	color = "primary",
+	rounded = "lg",
 	onChange,
 	nullable = false,
+	className,
 }: // TODO: add nullable
 Props) {
 	const [selected, setSelected] = useState<undefined | SelectItems>(value ?? undefined);
@@ -70,33 +73,13 @@ Props) {
 					<Listbox.Label className="block text-sm font-medium text-gray-700">{label}</Listbox.Label>
 				)}
 				<Listbox.Button
-					className={`relative 
-					cursor-pointer 
-					rounded-xl
-					p-2
-					pl-3    
-					pr-8 text-left 
-					transition-all
-					
-					
-					focus:outline-none 
-					focus-visible:border-accent
-					focus-visible:ring-2 
-					focus-visible:ring-white 
-					focus-visible:ring-opacity-75 
-					focus-visible:ring-offset-2 
-					focus-visible:ring-offset-accent 
-				
-					active:ring-2
-					active:ring-offset-2
-					active:ring-offset-accent
-					active:ring-white
-					
-					sm:text-sm
- 					${applyButtonVariant({ variant, color })} 
-					${applyFullWidth(fullWidth)}
-					
-					`}
+					className={`${selectStyles({
+						fullWidth,
+						variant,
+						color,
+						rounded,
+					})}
+					${className}`}
 				>
 					<span className="block truncate">{buttonValue}</span>
 					<span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">

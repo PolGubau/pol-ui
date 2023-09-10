@@ -4,9 +4,9 @@ import { Icon, IconNames } from "../../Base/Icon";
 import { SelectItems } from "./types";
 import { IconName } from "../../../model/icons.model";
 import { ButtonVariant } from "../../Buttons/Button/Button";
-import { applyFullWidth } from "../../../style";
+import { applyFullWidth, applyRounded } from "../../../style";
 import { applyButtonVariant } from "../../Buttons/Button/Button.styles";
-import { ColorTypes } from "../../../types";
+import { ColorTypes, SizesComplete } from "../../../types";
 
 interface Props {
 	label?: string;
@@ -19,7 +19,8 @@ interface Props {
 	value?: SelectItems;
 	onChange?: (value: SelectItems) => void;
 	noFoundMessage?: string;
-	color: ColorTypes;
+	color?: ColorTypes;
+	rounded?: SizesComplete;
 }
 
 export default function Autocomplete({
@@ -32,6 +33,7 @@ export default function Autocomplete({
 	keyField = "name",
 	value,
 	color = "primary",
+	rounded = "lg",
 	noFoundMessage = "Nothing found.",
 	onChange,
 }: Props) {
@@ -77,7 +79,7 @@ export default function Autocomplete({
 				<div
 					className={`relative 
 					cursor-pointer 
-					rounded-lg    
+ 					h-10   
 					pr-10 text-left 
 					transition-all
 					
@@ -96,6 +98,7 @@ export default function Autocomplete({
 					active:ring-white
 					
 					sm:text-sm
+					${applyRounded(rounded)}
  					${applyButtonVariant({ variant, color })} 
 					${applyFullWidth(fullWidth)}`}
 				>

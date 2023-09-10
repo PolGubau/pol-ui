@@ -4,6 +4,7 @@ import { Icon, IconType } from "../../Base/Icon";
 import {
 	BaseProps,
 	ColorTypes,
+	JustifyContent,
 	Side,
 	Sizes,
 	SizesComplete,
@@ -25,6 +26,7 @@ interface Props extends BaseProps {
 	centered?: boolean;
 	onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
 	padding?: paddingOneOrBothValues;
+	justify?: JustifyContent;
 }
 
 const Link: React.FC<Props> = ({
@@ -43,6 +45,7 @@ const Link: React.FC<Props> = ({
 	autoFocus = false,
 	fullWidth = false,
 	centered = false,
+	justify = icon ? "between" : "center",
 	padding = { x: "md", y: "sm" },
 	style,
 }) => {
@@ -72,11 +75,12 @@ const Link: React.FC<Props> = ({
 				padding,
 				variant,
 				color,
+				justify,
 				className,
 			})}
 		>
 			{icon && iconPosition === "left" && <Icon icon={icon} size={size} />}
-			{children}
+			<div className="w-full">{children}</div>
 			{icon && iconPosition === "right" && <Icon icon={icon} size={size} />}
 		</a>
 	);

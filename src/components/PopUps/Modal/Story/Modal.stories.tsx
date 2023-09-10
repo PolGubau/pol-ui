@@ -7,6 +7,7 @@ import {
 	modalWithCutomButtons,
 	modalWithLogin,
 	modalWithoutButtons,
+	rounded,
 } from "./exampleModals";
 import { Button } from "../../../Buttons";
 
@@ -63,34 +64,52 @@ export const Complex: Story = {
 };
 export const NoPadding: Story = {
 	args: {
-		state: modalWithBothButtons,
-		padding: "none",
+		state: {
+			...defaultModal,
+			padding: "none",
+		},
 	},
 };
 export const LargePadding: Story = {
 	args: {
-		state: modalWithBothButtons,
-		padding: "xl",
+		state: {
+			...defaultModal,
+			padding: "xl",
+		},
 	},
 };
 export const SmallRounded: Story = {
 	args: {
-		state: modalWithBothButtons,
-		padding: "xl",
-		rounded: "none",
+		state: {
+			...defaultModal,
+			rounded: "sm",
+		},
 	},
 };
 export const LargeRounded: Story = {
 	args: {
-		state: modalWithBothButtons,
-		padding: "sm",
-		rounded: "xl",
+		state: {
+			...defaultModal,
+			rounded: "xl",
+		},
 	},
 };
 export const FullRounded: Story = {
 	args: {
-		state: modalWithBothButtons,
-		padding: "xl",
-		rounded: "full",
+		state: {
+			...rounded,
+			centered: true,
+			rounded: "full",
+		},
+	},
+};
+export const WithoutClosingButton: Story = {
+	args: {
+		state: {
+			...rounded,
+			hasCloseButton: false,
+			centered: true,
+			rounded: "full",
+		},
 	},
 };

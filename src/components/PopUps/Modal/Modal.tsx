@@ -4,21 +4,33 @@ import { Icon } from "../../Base/Icon";
 import { Wrapper } from "../../Wrappers";
 import { ModalCloseReason, ModalProps } from "./types";
 import { Text } from "../../Text";
-import { applyMaxWidth, applyRoundedLarge, applySamePadding } from "../../../style";
-import { SizesComplete, SizesWithNone } from "../../../types";
+import { applyAlignCenter, applyCentered } from "../../../style";
 import { useLockBodyScroll } from "@uidotdev/usehooks";
+import { closeButton, modalStyles } from "./modalStyles";
 interface Props {
 	state: ModalProps;
 	setState?: (state: ModalProps) => void;
-	padding?: SizesWithNone;
-	rounded?: SizesComplete;
 }
 
-const Modal = ({ state, setState, padding = "md", rounded = padding }: Props) => {
+const Modal = ({ state, setState }: Props) => {
 	useLockBodyScroll();
 
-	const { handleClose, maxWidth, title, icon, children, cancelButton, submitButton } = state;
+	const {
+		handleClose,
+		title,
+		icon,
+		children,
+		centered,
+		cancelButton,
+		submitButton,
+		shadow,
+		hasCloseButton = true,
+		rounded = "xl",
+		padding = "lg",
+		maxWidth = "xl",
+	} = state;
 	const modalRef = React.useRef(null);
+
 	const closeModal = (reason: ModalCloseReason) => {
 		if (handleClose) {
 			handleClose(reason);
@@ -73,28 +85,49 @@ const Modal = ({ state, setState, padding = "md", rounded = padding }: Props) =>
 			<section
 				onKeyDown={keyDownHandler}
 				ref={modalRef}
-				className={`animate-fade-up animate-once animate-ease-out flex flex-col gap-4 relative animate-duration-500    w-full bg-white dark:bg-gray-800 dark:ring-gray-700 dark:text-gray-200   justify-center  shadow-2xl max-w-[90vw] md:max-w-3xl ${applyMaxWidth(
-					maxWidth
-				)}
-				${applySamePadding(padding)}
-				${applyRoundedLarge(rounded)}
+				className={` 
+				${modalStyles({
+					centered,
+					maxWidth,
+					padding,
+					rounded,
+					shadow,
+				})}
 				`}
 			>
-				<IconButton
-					className="absolute right-4 top-4"
-					icon="close"
-					onClick={() => closeModal(ModalCloseReason.Cancel)}
-					variant="text"
-				/>
+				{hasCloseButton && (
+					<IconButton
+						position="absolute"
+						className={closeButton({ centered })}
+						icon="close"
+						centered
+						onClick={() => closeModal(ModalCloseReason.Cancel)}
+						variant="text"
+					/>
+				)}
 				{title && (
 					<header className="max-w-[85%] flex gap-4 items-center ">
 						<Icon icon={icon} size="xl" />
 						<Text size={4} className="" value={title} />
 					</header>
 				)}
-				<section className=" min-h-20 text-black/70"> {children}</section>
+
+				<section
+					className={` text-black/70
+				${applyCentered(centered)}
+				${applyAlignCenter(centered)}
+				
+				`}
+				>
+					{children}
+				</section>
+
 				{(cancelButton || submitButton) && (
-					<footer className="flex gap-4 w-full">
+					<footer
+						className={`flex gap-4 w-full 
+						${applyAlignCenter(centered)} 
+						${applyCentered(centered)}`}
+					>
 						{cancelButton && (
 							<Button
 								variant={cancelButton.variant ?? "filled"}

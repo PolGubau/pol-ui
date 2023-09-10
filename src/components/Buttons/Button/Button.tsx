@@ -9,6 +9,8 @@ import {
 	Sizes,
 	SizesComplete,
 	paddingOneOrBothValues,
+	JustifyContent,
+	Position,
 } from "../../../types";
 import useRipple from "../../../hooks/useRipple";
 export type ButtonVariant = "filled" | "outlined" | "text";
@@ -31,6 +33,8 @@ interface Props extends BaseProps {
 	rippleColor?: ColorTypes;
 	rippleOpacity?: number;
 	rippleDuration?: number;
+	justify?: JustifyContent;
+	position?: Position;
 }
 
 const Button: React.FC<Props> = ({
@@ -52,11 +56,12 @@ const Button: React.FC<Props> = ({
 	padding = { x: "md", y: "sm" },
 	style,
 	customRef,
-
-	hasRipple = true,
+	justify = icon ? "between" : "center",
 	rippleColor,
 	rippleOpacity,
 	rippleDuration,
+	position = "relative",
+	hasRipple = position === "relative",
 }) => {
 	const ref = useRef<HTMLButtonElement>(null);
 	const ripples = useRipple({
@@ -91,12 +96,14 @@ const Button: React.FC<Props> = ({
 				padding,
 				variant,
 				color,
+				justify,
 				className,
+				position,
 			})}
 		>
 			{ripples}
 			{icon && iconPosition === "left" && <Icon icon={icon} size={size} />}
-			{children}
+			<div className="w-full">{children}</div>
 			{icon && iconPosition === "right" && <Icon icon={icon} size={size} />}
 		</button>
 	);

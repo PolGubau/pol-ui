@@ -4,6 +4,7 @@ import { Field, Switch } from "../../../Inputs";
 import Tabs from "../../../Layout/Tabs/Tabs";
 import { Autocomplete } from "../../../Selects";
 import { ModalProps } from "../types";
+import { Text } from "../../../Text";
 const texts = {
 	handleClose: "Closing modal",
 };
@@ -26,7 +27,7 @@ export const defaultModal: ModalProps = {
 	icon: "idCard",
 
 	submitButton: {
-		buttonType: "main",
+		color: "accent",
 		icon: "check",
 		text: "Submit",
 		onClick: () => {},
@@ -49,7 +50,7 @@ export const modalWithLogin: ModalProps = {
 							<Field label="Email" fullWidth />
 							<Field label="password" type="password" fullWidth />
 							<Switch label="Remember me" checked={true} onChange={() => {}} />
-							<Button icon={IconNames.arrow} type="main" iconPosition="right">
+							<Button icon={IconNames.arrow} color="accent" iconPosition="right">
 								Login
 							</Button>
 						</div>
@@ -65,7 +66,7 @@ export const modalWithLogin: ModalProps = {
 								<Field label="Username" fullWidth />
 							</div>
 							<Field label="password" type="password" fullWidth />
-							<Button icon={IconNames.arrow} type="main" iconPosition="right">
+							<Button icon={IconNames.arrow} color="accent" iconPosition="right">
 								Create an account
 							</Button>
 						</div>
@@ -103,7 +104,7 @@ export const defaultModalWithSelect: ModalProps = {
 	icon: "idCard",
 
 	submitButton: {
-		buttonType: "main",
+		color: "accent",
 		icon: "check",
 		text: "Submit",
 		onClick: () => {},
@@ -127,14 +128,15 @@ export const modalWithBothButtons: ModalProps = {
 	title: "Payment successful",
 	icon: "idCard",
 	cancelButton: {
-		buttonType: "normal",
+		variant: "text",
 		icon: "close",
 		text: "Cancel",
+		color: "contrast",
 		onClick: () => {},
 	},
 
 	submitButton: {
-		buttonType: "main",
+		color: "accent",
 		icon: "check",
 		text: "Submit",
 		onClick: () => {},
@@ -168,4 +170,20 @@ export const modalWithCutomButtons: ModalProps = {
 	),
 	title: "How many people are in your team?",
 	icon: "binary",
+};
+export const rounded: ModalProps = {
+	isOpen: true,
+	handleClose: () => {
+		alert(texts.handleClose);
+	},
+
+	children: (
+		<div className="flex flex-col gap-2">
+			<Text size={4} value="This is a rounded modal" />
+			<Button fullWidth centered>
+				Cool🤠
+			</Button>
+		</div>
+	),
+	title: "Can you see that?",
 };

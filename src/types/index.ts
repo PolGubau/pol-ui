@@ -1,4 +1,12 @@
-export type Sizes = "xs" | "sm" | "md" | "lg" | "xl";
+export enum Size {
+	"xs" = "xs",
+	"sm" = "sm",
+	"md" = "md",
+	"lg" = "lg",
+	"xl" = "xl",
+}
+
+export type Sizes = keyof typeof Size;
 
 export type Identifier = string | number;
 export type SizesWithNone = Sizes | "none";
@@ -19,16 +27,24 @@ export type Positions = "top" | "bottom" | Side;
 export type Tens = 0 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100;
 export type TextSize = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 export type Shadow = SizesWithNone | "inner" | "outline";
+export type JustifyContent = "start" | "end" | "center" | "between" | "around" | "evenly";
 
-export type ColorTypes =
-	| "primary"
-	| "secondary"
-	| "success"
-	| "danger"
-	| "accent"
-	| "info"
-	| "background"
-	| "contrast";
+
+
+export type Position = "relative" | "absolute" | "fixed" | "sticky";
+
+export enum ColorType {
+	"primary" = "primary",
+	"secondary" = "secondary",
+	"success" = "success",
+	"danger" = "danger",
+	"accent" = "accent",
+	"info" = "info",
+	"background" = "background",
+	"contrast" = "contrast",
+}
+
+export type ColorTypes = keyof typeof ColorType;
 
 export type BaseProps = {
 	className?: string;
@@ -48,3 +64,16 @@ export interface Theme {
 	info: string;
 	transparent: string;
 }
+
+export enum Transitions {
+	"slideBottom" = "slideBottom",
+	"slideTop" = "slideTop",
+	"slideLeft" = "slideLeft",
+	"slideRight" = "slideRight",
+	"fade" = "fade",
+	"flipUp" = "flipUp",
+	"flipDown" = "flipDown",
+	"none" = "none",
+}
+
+export type Transition = keyof typeof Transitions;

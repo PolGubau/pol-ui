@@ -259,3 +259,24 @@ export const DarkMode: Story = {
 		children: "I'm a button",
 	},
 };
+export const CustomRipple: Story = {
+	render: (args) => (
+		<div className="dark flex gap-1">
+			<Button {...args} children="Normal" padding="lg" />
+			<Button {...args} children="Slow danger" rippleColor="danger" rippleDuration={1} />
+			<Button {...args} children="fast accent" rippleColor="accent" rippleDuration={0.2} />
+			<Button {...args} children="all accent" rippleColor="accent" color="accent" />
+			<Button
+				{...args}
+				children="info full opacity"
+				rippleColor="info"
+				rippleOpacity={100}
+				rippleDuration={0.4}
+			/>
+		</div>
+	),
+	args: {
+		...Default.args,
+		padding: "lg",
+	},
+};

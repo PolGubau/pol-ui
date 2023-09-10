@@ -1,8 +1,15 @@
 import React from "react";
 import "../../../style/baseTheme.css";
-import { IconType } from "../../Base/Icon";
+import { Icon, IconType } from "../../Base/Icon";
 import { Button } from "../Button";
-import { BaseProps, ColorTypes, Sizes, SizesComplete, SizesWithNone } from "../../../types";
+import {
+	BaseProps,
+	ColorTypes,
+	Position,
+	Sizes,
+	SizesComplete,
+	SizesWithNone,
+} from "../../../types";
 import { ButtonVariant } from "../Button/Button";
 interface Props extends BaseProps {
 	onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
@@ -17,6 +24,7 @@ interface Props extends BaseProps {
 	centered?: boolean;
 	padding?: SizesWithNone;
 	ref?: React.RefObject<HTMLButtonElement>;
+	position?: Position;
 }
 
 const IconButton: React.FC<Props> = ({
@@ -32,13 +40,15 @@ const IconButton: React.FC<Props> = ({
 	icon,
 	autoFocus = false,
 	fullWidth = false,
-	centered = false,
+	centered = true,
 	padding = "sm",
 	style,
 	ref,
+	position,
 }) => {
 	return (
 		<Button
+			centered={centered}
 			aria-label={ariaLabel}
 			disabled={disabled}
 			id={id}
@@ -48,14 +58,15 @@ const IconButton: React.FC<Props> = ({
 			variant={variant}
 			size={size}
 			rounded={rounded}
-			icon={icon}
 			padding={{ x: padding, y: padding }}
 			color={color}
-			centered={centered}
 			fullWidth={fullWidth}
 			autoFocus={autoFocus}
+			position={position}
 			customRef={ref}
-		/>
+		>
+			<Icon icon={icon} />
+		</Button>
 	);
 };
 export default IconButton;

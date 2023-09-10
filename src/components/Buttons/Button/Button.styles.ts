@@ -5,13 +5,16 @@ import {
 	applyDisabled,
 	applyCentered,
 	applyPadding,
+	applyJustifyContent,
+	applyPosition,
 } from "../../../style";
 import {
 	ColorTypes,
+	JustifyContent,
 	Sizes,
 	SizesComplete,
-	SizesWithNone,
 	paddingOneOrBothValues,
+	Position,
 } from "./../../../types/index";
 import { ButtonVariant } from "./Button";
 
@@ -23,7 +26,7 @@ export const applyButtonVariant = ({
 	color = "primary",
 }: {
 	variant?: ButtonVariant;
-	color: ColorTypes;
+	color?: ColorTypes;
 }): string => {
 	switch (variant) {
 		case "outlined":
@@ -96,6 +99,8 @@ interface ButtonStylesProps {
 	variant: ButtonVariant;
 	color: ColorTypes;
 	className?: string;
+	justify: JustifyContent;
+	position: Position;
 }
 
 export const buttonStyles = ({
@@ -107,15 +112,19 @@ export const buttonStyles = ({
 	padding,
 	variant,
 	color,
+	justify,
 	className,
+	position = "relative",
 }: ButtonStylesProps) => {
-	return `flex items-center gap-2 transition-all flex-nowrap jusify-between min-h-10 relative overflow-hidden
+	return `flex items-center gap-2 transition-all flex-nowrap justify-between min-h-10 overflow-hidden
 	${applyRounded(rounded)}
+	${applyPosition(position)}
 	${applyTextSize(size)} 
 	${applyFullWidth(fullWidth)} 
 	${applyDisabled(disabled)}
 	${applyCentered(centered)}	
 	${applyPadding(padding)}
+	${applyJustifyContent(justify)}
 	${applyButtonVariant({ variant, color })}
 	${className}
 	`;

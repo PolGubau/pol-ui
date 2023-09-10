@@ -1,83 +1,22 @@
 {
-	"name": "pol-ui",
 	"author": "Pol Gubau Amores",
-	"license": "MIT",
-	"version": "1.0.39",
-	"type": "module",
-	"private": false,
-	"files": [
-		"dist"
-	],
-	"main": "./dist/@pol/ui.umd.cjs",
-	"module": "./dist/@pol/ui.js",
-	"types": "./dist/index.d.ts",
-	"peerDependencies": {
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
-	},
-	"scripts": {
-		"build": "vite build",
-		"test": "jest",
-		"test:watch": "jest --watch",
-		"lint": "eslint --ignore-path .gitignore .",
-		"lint:fix": "eslint --fix --ignore-path .gitignore . && stylelint --fix **/*.css",
-		"lint:styles": "stylelint **/*.css",
-		"docs": "storybook dev -p 6006",
-		"build:docs": "storybook build",
-		"test:coverage": "jest --coverage"
-	},
-	"exports": {
-		".": {
-			"import": "./dist/@pol/ui.js",
-			"require": "./dist/@pol/ui.umd.cjs"
-		}
-	},
-	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"react-app/jest",
-			"plugin:storybook/recommended"
-		],
-		"rules": {
-			"react-hooks/exhaustive-deps": "off"
-		},
-		"settings": {
-			"import/resolver": {
-				"node": {
-					"extensions": [
-						".js",
-						".jsx",
-						".ts",
-						".tsx"
-					]
-				}
-			}
-		},
-		"overrides": [
-			{
-				"files": [
-					"*.ts",
-					"*.tsx"
-				],
-				"parserOptions": {
-					"project": [
-						"./tsconfig.json"
-					]
-				}
-			}
-		]
-	},
 	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
 		"development": [
 			"last 1 chrome version",
 			"last 1 firefox version",
 			"last 1 safari version"
+		],
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
 		]
+	},
+	"dependencies": {
+		"@uidotdev/usehooks": "^2.2.0",
+		"framer-motion": "^10.16.2",
+		"polui-plugin": "^1.0.0",
+		"usehooks-ts": "^2.9.1"
 	},
 	"devDependencies": {
 		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
@@ -131,10 +70,71 @@
 		"vite-plugin-dts": "^2.3.0",
 		"vite-plugin-svgr": "^3.2.0"
 	},
-	"dependencies": {
-		"@uidotdev/usehooks": "^2.2.0",
-		"framer-motion": "^10.16.2",
-		"polui-plugin": "^1.0.0",
-		"usehooks-ts": "^2.9.1"
-	}
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest",
+			"plugin:storybook/recommended"
+		],
+		"overrides": [
+			{
+				"files": [
+					"*.ts",
+					"*.tsx"
+				],
+				"parserOptions": {
+					"project": [
+						"./tsconfig.json"
+					]
+				}
+			}
+		],
+		"rules": {
+			"react-hooks/exhaustive-deps": "off"
+		},
+		"settings": {
+			"import/resolver": {
+				"node": {
+					"extensions": [
+						".js",
+						".jsx",
+						".ts",
+						".tsx"
+					]
+				}
+			}
+		}
+	},
+	"exports": {
+		".": {
+			"import": "./dist/@pol/ui.js",
+			"require": "./dist/@pol/ui.umd.cjs"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"license": "MIT",
+	"main": "./dist/@pol/ui.umd.cjs",
+	"module": "./dist/@pol/ui.js",
+	"name": "pol-ui",
+	"peerDependencies": {
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"private": false,
+	"scripts": {
+		"build": "vite build",
+		"build:docs": "storybook build",
+		"docs": "storybook dev -p 6006",
+		"lint": "eslint --ignore-path .gitignore .",
+		"lint:fix": "eslint --fix --ignore-path .gitignore . && stylelint --fix **/*.css",
+		"lint:styles": "stylelint **/*.css",
+		"test": "jest",
+		"test:coverage": "jest --coverage",
+		"test:watch": "jest --watch"
+	},
+	"type": "module",
+	"types": "./dist/index.d.ts",
+	"version": "1.0.40"
 }

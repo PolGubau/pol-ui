@@ -8,6 +8,11 @@ import {
 	Shadow,
 	Alignments,
 	AspectRatios,
+	JustifyContent,
+	Position,
+	Transition,
+	Transitions,
+	Size,
 } from "../types";
 
 export const applyMaxWidth = (size?: SizesWithFull) => {
@@ -98,6 +103,7 @@ export const applyMargin = ({ x = "none", y = "none" }: { x?: SizesWithNone; y?:
 
 export const applySameMargin = (v: SizesWithNone = "none") =>
 	`${applyMarginX(v)} ${applyMarginY(v)}`;
+
 export const applyPaddingX = (x: SizesWithNone = "none") => {
 	switch (x) {
 		case "xs":
@@ -148,7 +154,8 @@ export const applyDifferentPadding = ({
 	x?: SizesWithNone;
 	y?: SizesWithNone;
 }) => `${applyPaddingX(x)} ${applyPaddingY(y)}`;
-export const applyFullWidth = (b: boolean = false) => {
+
+export const applyFullWidth = (b?: boolean): string => {
 	return b ? "w-full" : "w-fit";
 };
 export const applyDisabled = (b: boolean = false) => {
@@ -157,6 +164,10 @@ export const applyDisabled = (b: boolean = false) => {
 export const applyCentered = (b: boolean = false) => {
 	return b ? "justify-center text-center" : "justify-start text-left";
 };
+export const applyAlignCenter = (b: boolean = false) => {
+	return b ? "items-center" : "items-start";
+};
+
 export const applyShyRounded = (round?: Sizes) => {
 	switch (round) {
 		case "xs":
@@ -327,4 +338,82 @@ export const applyAspectRatio = (ratio?: AspectRatios) => {
 		default:
 			return "aspect-none";
 	}
+};
+export const applyJustifyContent = (v?: JustifyContent) => {
+	switch (v) {
+		case "start":
+			return "justify-start";
+		case "end":
+			return "justify-end";
+		case "center":
+			return "justify-center";
+		case "between":
+			return "justify-between";
+		case "around":
+			return "justify-around";
+		case "evenly":
+			return "justify-evenly";
+		default:
+			return "justify-start";
+	}
+};
+export const applyPosition = (v?: Position) => {
+	switch (v) {
+		case "absolute":
+			return "absolute";
+		case "fixed":
+			return "fixed";
+		case "sticky":
+			return "sticky";
+		default:
+			return "relative";
+	}
+};
+
+export const applyTransitionDuration = (duration?: SizesWithNone) => {
+	switch (duration) {
+		case Size.xs:
+			return "transition duration-75";
+		case Size.sm:
+			return "transition duration-100";
+		case Size.lg:
+			return "transition duration-300";
+		case Size.xl:
+			return "transition duration-500";
+		default:
+			return "transition duration-200";
+	}
+};
+
+interface TransitionProps {
+	transition?: Transition;
+	duration?: SizesWithNone;
+	out?: boolean;
+}
+export const applyTransition = ({
+	transition = Transitions.none,
+	duration = "md",
+	out = false,
+}: TransitionProps) => {
+	const base = "transition animate-once animate-ease-out";
+	const durationClass = applyTransitionDuration(duration);
+
+	const transitions = {
+		slideBottom: `animate-fade-up`,
+		slideTop: `animate-fade-down`,
+		slideLeft: `animate-fade-left`,
+		slideRight: `animate-fade-right`,
+
+		fade: `animate-fade`,
+		flipUp: `animate-flip-up`,
+		flipDown: `animate-flip-down`,
+
+		none: ``,
+	};
+
+	const isReverse = out ? "animate-reverse" : "";
+
+	const transitionClass = transitions[transition];
+
+	return `${base} ${durationClass} ${transitionClass} ${isReverse}`;
 };

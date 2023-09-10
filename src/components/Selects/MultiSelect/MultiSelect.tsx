@@ -4,9 +4,8 @@ import { Icon, IconNames } from "../../Base/Icon";
 import { IconName } from "../../../model/icons.model";
 import { SelectItems } from "./types";
 import { ButtonVariant } from "../../Buttons/Button/Button";
-import { applyFullWidth } from "../../../style";
-import { applyButtonVariant } from "../../Buttons/Button/Button.styles";
-import { ColorTypes } from "../../../types";
+import { ColorTypes, SizesComplete } from "../../../types";
+import { selectStyles } from "../selectStyles";
 
 interface Props {
 	label?: string;
@@ -19,10 +18,12 @@ interface Props {
 	keyField?: string;
 	values?: SelectItems[];
 	onChange?: (values: SelectItems[]) => void;
+	rounded: SizesComplete;
+	className?: string;
 }
 export default function MultiSelect({
 	label,
-	placeholder = "Select",
+	placeholder = "Select Multiple",
 	fullWidth,
 	items,
 	variant = "filled",
@@ -30,6 +31,8 @@ export default function MultiSelect({
 	keyField = "name",
 	color = "primary",
 	values = [],
+	rounded = "lg",
+	className,
 	onChange,
 }: Props) {
 	const [selected, setSelected] = useState<SelectItems[]>(values);
@@ -67,31 +70,13 @@ export default function MultiSelect({
 				<Listbox.Label className="block text-sm font-medium text-gray-700">{label}</Listbox.Label>
 			)}
 			<Listbox.Button
-				className={`relative 
-					cursor-pointer 
-					rounded-lg    
-					pr-10 text-left 
-					transition-all
-					
-					
-					focus:outline-none 
-					focus-visible:border-accent
-					focus-visible:ring-2 
-					focus-visible:ring-white 
-					focus-visible:ring-opacity-75 
-					focus-visible:ring-offset-2 
-					focus-visible:ring-offset-accent 
-				
-					active:ring-2
-					active:ring-offset-2
-					active:ring-offset-accent
-					active:ring-white
-					
-					sm:text-sm
- 					${applyButtonVariant({ variant, color })} 
-					${applyFullWidth(fullWidth)}
-					
-					`}
+				className={`${selectStyles({
+					fullWidth,
+					variant,
+					color,
+					rounded,
+				})}
+					${className}`}
 				role="button"
 			>
 				<span className="block truncate">{takeButtonName()}</span>

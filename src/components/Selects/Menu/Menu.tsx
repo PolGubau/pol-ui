@@ -4,8 +4,10 @@ import Button, { ButtonVariant } from "../../Buttons/Button/Button";
 import useClickOutside from "../../../hooks/useClickOutside";
 import { formatString } from "../../../utils";
 import { Link } from "../../Buttons/Link";
-import { Positions, Side } from "../../../types";
+import { ColorTypes, Positions, Side, SizesComplete } from "../../../types";
 import { menuStyles } from "./Menu.styles";
+import { selectStyles } from "../selectStyles";
+import { Icon } from "../../Base";
 
 export interface MenuItem {
 	id?: string;
@@ -25,6 +27,9 @@ interface Props {
 	dividers?: boolean;
 	direction?: Positions;
 	fullWidth?: boolean;
+	color?: ColorTypes;
+	rounded: SizesComplete;
+	className?: string;
 }
 
 export default function Menu({
@@ -37,6 +42,9 @@ export default function Menu({
 	dividers = false,
 	direction = "bottom",
 	fullWidth = false,
+	color = "primary",
+	rounded = "lg",
+	className = "",
 }: Props) {
 	const [open, setOpen] = useState(false);
 	const modalRef = useRef(null);
@@ -61,17 +69,26 @@ export default function Menu({
 	return (
 		<div className="relative" ref={modalRef}>
 			<Button
+				className={`${selectStyles({
+					fullWidth,
+					variant,
+					color,
+					rounded,
+				})}
+					${className}`}
 				variant={variant}
 				onClick={() => {
 					if (!items.length) return;
 					setOpen((prev) => !prev);
 				}}
-				icon={Boolean(items.length) && (open ? closeIcon : openIcon)}
 				iconPosition={iconSide}
-				ref={modalRef}
+				customRef={modalRef}
 				fullWidth={fullWidth}
 			>
 				{label}
+				<span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+					<Icon icon={Boolean(items.length) && (open ? closeIcon : openIcon)} aria-hidden="true" />
+				</span>
 			</Button>
 			<Transition
 				show={open}
@@ -86,11 +103,19 @@ export default function Menu({
 				<div className={`p-1 ${dividers ? "divide-y divide-gray-100" : ""} gap-col gap-0.5`}>
 					{items.map((item) =>
 						item.href ? (
-							<Link key={item.label} icon={item.icon} variant="text" fullWidth href={item.href}>
+							<Link
+								justify="start"
+								key={item.label}
+								icon={item.icon}
+								variant="text"
+								fullWidth
+								href={item.href}
+							>
 								{formatString(item.label)}
 							</Link>
 						) : (
 							<Button
+								justify="start"
 								key={item.label}
 								icon={item.icon}
 								variant="text"
