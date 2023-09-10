@@ -14,9 +14,9 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
 	args: {
 		children: someCells,
-		columns: "3",
-		rows: "1",
-		gap: "0",
+		cols: 3,
+		rows: 1,
+		gap: "0px",
 	},
 };
 export const WithGap: Story = {
@@ -35,8 +35,8 @@ export const CustomCellSize: Story = {
 	render: (args) => <DifferentSpanGrid args={args} />,
 	args: {
 		...Default.args,
-		columns: "2",
-		rows: "2",
+		cols: 2,
+		rows: 2,
 	},
 };
 export const CustomAlign: Story = {

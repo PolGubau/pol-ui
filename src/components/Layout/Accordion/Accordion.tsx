@@ -28,6 +28,7 @@ interface Props {
 	maxWidth?: SizesWithFull;
 	titleSize?: TextSize;
 	arrowIconPosition?: Side;
+	paintOpened?: boolean;
 }
 
 const Accordion: React.FC<Props> = ({
@@ -44,6 +45,7 @@ const Accordion: React.FC<Props> = ({
 	maxWidth,
 	arrowIconPosition = Sides.right,
 	titleSize = 4,
+	paintOpened = true,
 }) => {
 	const [openedIndex, setOpenedIndex] = React.useState<number[] | null>(defaultOpened);
 
@@ -90,6 +92,7 @@ const Accordion: React.FC<Props> = ({
 		>
 			{data.map((item, _i) => (
 				<AccordionItem
+					paintOpened={paintOpened}
 					titleSize={titleSize}
 					rounded={rounded}
 					key={item.title}

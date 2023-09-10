@@ -4,6 +4,9 @@ import { Button, Link } from "../../Buttons";
 import { Image } from "../../Media";
 import { Navbar } from "../../Navigation";
 import { IconNames } from "../../Base";
+import { Card } from "../Card";
+import { Grid } from "../Grid";
+import { Text } from "../../Text";
 const meta = {
 	title: "Layout/Accordion",
 	component: Accordion,
@@ -15,6 +18,25 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
 	args: {
+		data: [
+			{
+				title: "Title 1",
+				content: "Content 1",
+			},
+			{
+				title: "Title 2",
+				content: "Content 2",
+			},
+			{
+				title: "Title 3",
+				content: "Content 3",
+			},
+		],
+	},
+};
+export const NoPaintOpened: Story = {
+	args: {
+		paintOpened: false,
 		data: [
 			{
 				title: "Title 1",
@@ -302,10 +324,10 @@ export const UsageAsSidebar: Story = {
 						<Accordion {...args} />
 					</div>
 					<div className="bg-sky-100 p-8">
-						<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum
-							quibusdam. Quisquam, voluptatum quibusdam. Quisquam, voluptatum
-						</p>
+						<Text
+							size={6}
+							value={`This component can be used as sidebar how you can see here, but if you use the <SideBar /> component you will have more options as expand prop or min-width, this is a test to explore how Accordion component works, but it isn't a good practice.`}
+						/>
 					</div>
 				</main>
 			</div>
@@ -346,6 +368,39 @@ export const UsageAsSidebar: Story = {
 						<Link variant="text" href="/nowhere">
 							Data
 						</Link>
+					</div>
+				),
+			},
+			{
+				title: "Export",
+				content: (
+					<div className="flex flex-col gap-2">
+						<Grid rows={2} gap={"10px"}>
+							<Card className="flex w-full flex-col gap-2">
+								<Text size={6} value="Export" />
+								<Link variant="text" icon={IconNames.database} href="/nowhere">
+									Dashboard
+								</Link>
+								<Link variant="text" icon="user" href="/nowhere">
+									Menu
+								</Link>
+								<Link variant="text" icon="book" href="/nowhere">
+									Docs
+								</Link>
+							</Card>
+							<Card className="flex flex-col gap-2">
+								<Text size={6} value="Save Data" />
+								<Link variant="text" icon={IconNames.database} href="/nowhere">
+									Dashboard
+								</Link>
+								<Link variant="text" icon="user" href="/nowhere">
+									Menu
+								</Link>
+								<Link variant="text" icon="book" href="/nowhere">
+									Docs
+								</Link>
+							</Card>
+						</Grid>
 					</div>
 				),
 			},

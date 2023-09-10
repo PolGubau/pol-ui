@@ -1,10 +1,10 @@
 import React, { ReactNode } from "react";
- import { gridStyles } from "./Grid.styles";
+import { gridStyles } from "./Grid.styles";
 
 interface GridProps {
 	children: ReactNode;
-	columns?: string;
-	rows?: string;
+	cols?: number;
+	rows?: number;
 	gap?: string | [string, string];
 	justifyItems?: "center" | "end" | "start" | "stretch";
 	alignItems?: "center" | "end" | "start" | "stretch" | "baseline";
@@ -15,7 +15,7 @@ interface GridProps {
 
 const Grid: React.FC<GridProps> = ({
 	children,
-	columns,
+	cols,
 	gap,
 	rows,
 	justifyItems,
@@ -31,7 +31,7 @@ const Grid: React.FC<GridProps> = ({
 			id={id}
 			className={`${gridStyles({ justifyItems, alignItems })} ${className ?? ""}`}
 			style={{
-				gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
+				gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
 				gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`,
 				gap: `${gapY} ${gapX}`,
 				...styles,

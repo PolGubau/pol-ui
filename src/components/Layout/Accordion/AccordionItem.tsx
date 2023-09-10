@@ -14,6 +14,7 @@ interface Props {
 	rounded: SizesComplete;
 	titleSize?: TextSize;
 	arrowIconPosition?: Side;
+	paintOpened?: boolean;
 }
 const AccordionItem: React.FC<Props> = ({
 	item,
@@ -22,6 +23,7 @@ const AccordionItem: React.FC<Props> = ({
 	toggleOpen,
 	rounded = "none",
 	titleSize = 4,
+	paintOpened,
 	arrowIconPosition = Sides.right,
 }) => {
 	const iconArrow = item.arrowIcon ?? IconNames.arrowup;
@@ -36,7 +38,7 @@ const AccordionItem: React.FC<Props> = ({
 			<header>
 				<Button
 					rounded="none"
-					variant="text"
+					variant={paintOpened && isOpened ? "filled" : "text"}
 					onClick={toggleOpen}
 					fullWidth
 					justify={JustifyContents.between}
