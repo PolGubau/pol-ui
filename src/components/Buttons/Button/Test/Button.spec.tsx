@@ -1,4 +1,4 @@
-import { getByRole, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Button from "../Button";
 import { ApplyCenteredOutput } from "../../../../style";
 
@@ -14,31 +14,31 @@ describe("Button Component", () => {
 	test("Button is clickable", () => {
 		const onClick = jest.fn();
 		render(<Button onClick={onClick}>{Texts.TEXT}</Button>);
-		const button = screen.getByText(Texts.TEXT);
+		const button = screen.getByRole("button");
 		button.click();
 		expect(onClick).toHaveBeenCalled();
 	});
 
 	test("If button is disabled, it has opacity-50 cursor-not-allowed classes", () => {
 		render(<Button disabled>{Texts.TEXT}</Button>);
-		const button = screen.getByText(Texts.TEXT);
+		const button = screen.getByRole("button");
 		expect(button).toBeDisabled();
 		expect(button).toHaveClass("opacity-50 cursor-not-allowed");
 	});
 
 	test("Button is not disabled", () => {
 		render(<Button onClick={() => {}}>{Texts.TEXT}</Button>);
-		const button = screen.getByText(Texts.TEXT);
+		const button = screen.getByRole("button");
 		expect(button).not.toBeDisabled();
 	});
 	test("If no OnClick is passed, it should be disabled as well", () => {
 		render(<Button>{Texts.TEXT}</Button>);
-		const button = screen.getByText(Texts.TEXT);
+		const button = screen.getByRole("button");
 		expect(button).toBeDisabled();
 	});
 	test("Button is not disabled if onClick is passed", () => {
 		render(<Button onClick={() => {}}>{Texts.TEXT}</Button>);
-		const button = screen.getByText(Texts.TEXT);
+		const button = screen.getByRole("button");
 		expect(button).not.toBeDisabled();
 	});
 
@@ -48,22 +48,22 @@ describe("Button Component", () => {
 				{Texts.TEXT}
 			</Button>
 		);
-		const button = screen.getByText(Texts.TEXT);
+		const button = screen.getByRole("button");
 		expect(button).toHaveClass("rounded-2xl");
 	});
 	test("Rounded prop is default to true", () => {
 		render(<Button size="sm">{Texts.TEXT}</Button>);
-		const button = screen.getByText(Texts.TEXT);
+		const button = screen.getByRole("button");
 		expect(button).toHaveClass("rounded-xl");
 	});
 	test('If Rouded Prop is none, it should not have "rounded-xl" or "rounded-lg" class', () => {
 		render(<Button rounded={"none"}>{Texts.TEXT}</Button>);
-		const button = screen.getByText(Texts.TEXT);
+		const button = screen.getByRole("button");
 		expect(button).not.toHaveClass("rounded-xl");
 	});
 	test("If Rouded Prop is none, it should have 'rounded-none' class", () => {
 		render(<Button rounded={"none"}>{Texts.TEXT}</Button>);
-		const button = screen.getByText(Texts.TEXT);
+		const button = screen.getByRole("button");
 		expect(button).toHaveClass("rounded-none");
 	});
 	test("When clicking the button, we call a function", () => {
@@ -75,17 +75,17 @@ describe("Button Component", () => {
 	});
 	test("If button is disabled, should have opacity-50 class", () => {
 		render(<Button disabled>{Texts.TEXT}</Button>);
-		const button = screen.getByText(Texts.TEXT);
+		const button = screen.getByRole("button");
 		expect(button).toHaveClass("opacity-50");
 	});
 	test("If button has an id prop, apply it", () => {
 		render(<Button id="test">{Texts.TEXT}</Button>);
-		const button = screen.getByText(Texts.TEXT);
+		const button = screen.getByRole("button");
 		expect(button).toHaveAttribute("id", "test");
 	});
 	test("You can apply custom classNames", () => {
 		render(<Button className="test">{Texts.TEXT}</Button>);
-		const button = screen.getByText(Texts.TEXT);
+		const button = screen.getByRole("button");
 		expect(button).toHaveClass("test");
 	});
 

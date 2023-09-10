@@ -32,7 +32,7 @@ describe("Menu component", () => {
 
 	it("renders items with href as Links", () => {
 		render(<Menu label="Open Menu" items={items} />);
-		const button = screen.getByText("Open Menu");
+		const button = screen.getByRole("button");
 		fireEvent.click(button);
 		const linkItem = screen.getByText("Item 2");
 		expect(linkItem.getAttribute("href")).toBe("/item2");
