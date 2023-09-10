@@ -2,18 +2,21 @@ import React from "react";
 import AccordionItem from "./AccordionItem";
 import { accordionStyles } from "./accordion.style";
 import { applyMaxWidth, applyRounded } from "../../../style";
-import { SizesWithNone, SizesWithFull, TextSize } from "../../../types";
+import { SizesWithNone, SizesWithFull, TextSize, Side, Sides } from "../../../types";
+import { IconType } from "../../Base";
 export interface AccordionItemProps {
 	title: string;
 	content: string | React.ReactNode;
-	icon?: string | React.ReactNode;
+	icon?: IconType;
 	className?: string;
 	href?: string;
+	arrowIcon?: IconType;
+	arrowIconOpened?: IconType;
 }
 
 interface Props {
 	openMode?: "single" | "multiple";
-	hasIcon?: boolean;
+	hasArrowIcon?: boolean;
 	defaultOpened?: number[];
 	data: AccordionItemProps[];
 	className?: string;
@@ -24,10 +27,11 @@ interface Props {
 	hasBorder?: boolean;
 	maxWidth?: SizesWithFull;
 	titleSize?: TextSize;
+	arrowIconPosition?: Side;
 }
 
 const Accordion: React.FC<Props> = ({
-	hasIcon = true,
+	hasArrowIcon = true,
 	data = [],
 	openMode = "single",
 	defaultOpened = null,
@@ -38,6 +42,7 @@ const Accordion: React.FC<Props> = ({
 	rounded = "none",
 	hasBorder = true,
 	maxWidth,
+	arrowIconPosition = Sides.right,
 	titleSize = 4,
 }) => {
 	const [openedIndex, setOpenedIndex] = React.useState<number[] | null>(defaultOpened);
@@ -88,8 +93,9 @@ const Accordion: React.FC<Props> = ({
 					titleSize={titleSize}
 					rounded={rounded}
 					key={item.title}
+					arrowIconPosition={arrowIconPosition}
 					item={item}
-					hasIcon={hasIcon}
+					hasArrowIcon={hasArrowIcon}
 					isOpened={isThisItemOpened(_i)}
 					toggleOpen={() => toggleOpened(_i)}
 				/>

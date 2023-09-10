@@ -57,7 +57,7 @@ export const CustomIcons: Story = {
 			{
 				title: "Our Mission",
 				content: "Our mission is to make the world a better place.",
-				icon: "🎇",
+				icon: "user",
 			},
 			{
 				title: "Our Vision",
@@ -209,9 +209,9 @@ export const MaxWidthXs: Story = {
 		],
 	},
 };
-export const WithoutIcons: Story = {
+export const WithoutArrowIcons: Story = {
 	args: {
-		hasIcon: false,
+		hasArrowIcon: false,
 		data: [
 			{
 				title: "Our Mission",
@@ -219,6 +219,22 @@ export const WithoutIcons: Story = {
 			},
 			{
 				title: "Our Vision",
+				content: "Our vision is to make the world a better place.",
+			},
+		],
+	},
+};
+export const WithIcons: Story = {
+	args: {
+		data: [
+			{
+				icon: "script",
+				title: "One of our icons",
+				content: "Our mission is to make the world a better place.",
+			},
+			{
+				icon: "🌍",
+				title: "Custom emoji as icon",
 				content: "Our vision is to make the world a better place.",
 			},
 		],

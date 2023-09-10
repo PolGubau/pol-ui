@@ -20,16 +20,28 @@ export type paddingOneOrBothValues =
 			y: SizesWithNone;
 	  };
 
-export type Side = "right" | "left";
+export enum Sides {
+	"right" = "right",
+	"left" = "left",
+}
+
+export type Side = `${Sides}`;
 export type Direction = "x" | "y";
 export type Alignments = Side | "center";
 export type Positions = "top" | "bottom" | Side;
 export type Tens = 0 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100;
 export type TextSize = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 export type Shadow = SizesWithNone | "inner" | "outline";
-export type JustifyContent = "start" | "end" | "center" | "between" | "around" | "evenly";
 
-
+export enum JustifyContents {
+	"start" = "start",
+	"end" = "end",
+	"center" = "center",
+	"between" = "between",
+	"around" = "around",
+	"evenly" = "evenly",
+}
+export type JustifyContent = `${JustifyContents}`;
 
 export type Position = "relative" | "absolute" | "fixed" | "sticky";
 

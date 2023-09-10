@@ -12,8 +12,10 @@ import {
 	JustifyContent,
 	Position,
 	Size,
+	JustifyContents,
 } from "../../../types";
 import useRipple from "../../../hooks/useRipple";
+import { applyJustifyContent } from "../../../style";
 export type ButtonVariant = "filled" | "outlined" | "text";
 interface Props extends BaseProps {
 	children?: React.ReactNode;
@@ -57,7 +59,7 @@ const Button: React.FC<Props> = ({
 	padding = { x: Size.md, y: Size.sm },
 	style,
 	customRef,
-	justify = icon ? "between" : "center",
+	justify = icon ? JustifyContents.center : JustifyContents.center,
 	rippleColor,
 	rippleOpacity,
 	rippleDuration,
@@ -104,7 +106,9 @@ const Button: React.FC<Props> = ({
 		>
 			{ripples}
 			{icon && iconPosition === "left" && <Icon icon={icon} size={size} />}
-			<div className="w-full">{children}</div>
+			<div className={`w-full flex gap-2 items-center ${applyJustifyContent(justify) ?? ""}`}>
+				{children}
+			</div>
 			{icon && iconPosition === "right" && <Icon icon={icon} size={size} />}
 		</button>
 	);

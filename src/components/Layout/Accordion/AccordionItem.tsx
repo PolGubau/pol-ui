@@ -4,24 +4,28 @@ import { Transition } from "@headlessui/react";
 import { Text } from "../../Text";
 import { AccordionItemProps } from "./Accordion";
 import { Button, Link } from "../../Buttons";
-import { SizesComplete, TextSize } from "../../../types";
+import { JustifyContents, Side, Sides, SizesComplete, TextSize } from "../../../types";
 import { applyRounded } from "../../../style";
 interface Props {
-	hasIcon?: boolean;
+	hasArrowIcon?: boolean;
 	isOpened?: boolean;
 	toggleOpen?: () => void;
 	item: AccordionItemProps;
 	rounded: SizesComplete;
 	titleSize?: TextSize;
+	arrowIconPosition?: Side;
 }
 const AccordionItem: React.FC<Props> = ({
 	item,
-	hasIcon,
+	hasArrowIcon = true,
 	isOpened = false,
 	toggleOpen,
 	rounded = "none",
 	titleSize = 4,
+	arrowIconPosition = Sides.right,
 }) => {
+	const iconArrow = item.arrowIcon ?? IconNames.arrowup;
+
 	return (
 		<article
 			key={item.title}
@@ -31,18 +35,22 @@ const AccordionItem: React.FC<Props> = ({
 		>
 			<header>
 				<Button
-					rounded={"none"}
+					rounded="none"
 					variant="text"
-					fullWidth
 					onClick={toggleOpen}
-					className="justify-between w-full"
+					fullWidth
+					justify={JustifyContents.between}
+					icon={item.icon && <Icon icon={item.icon} alwaysRender />}
+					className={`flex ${
+						arrowIconPosition === Sides.left ? "flex-row-reverse" : "flex-row"
+					}    ${hasArrowIcon ? "pr-4" : ""}`}
 				>
 					<Text size={titleSize} value={item.title}></Text>
-					{hasIcon && (
+					{hasArrowIcon && (
 						<Icon
-							alwaysRender={true}
-							icon={item.icon ?? IconNames.arrowdown}
-							className={`transition-transform transform ${isOpened ? "rotate-180" : ""}`}
+							icon={isOpened ? iconArrow : item.arrowIconOpened ?? iconArrow}
+							className={`transition-transform transform
+							${!item.arrowIconOpened && isOpened ? "rotate-180" : ""}`}
 						/>
 					)}
 				</Button>
