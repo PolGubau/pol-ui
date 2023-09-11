@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Image from "./Image";
 
 const meta = {
-	title: "Data Display/Image",
+	title: "Media/Image",
 	component: Image,
 	tags: ["autodocs"],
 } satisfies Meta<typeof Image>;
@@ -25,12 +25,12 @@ export const WithWidth: Story = {
 export const Rounded: Story = {
 	args: {
 		...Default.args,
-		rounded: "rounded",
+		rounded: "xl",
 	},
 };
 export const Circular: Story = {
 	args: {
 		...Default.args,
-		rounded: "circular",
+		rounded: "full",
 	},
 };

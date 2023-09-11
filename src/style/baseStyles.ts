@@ -1,3 +1,4 @@
+import { CSSProperties } from "react";
 import {
 	Sizes,
 	SizesWithNone,
@@ -13,6 +14,7 @@ import {
 	Transition,
 	Transitions,
 	Size,
+	AspectRatio,
 } from "../types";
 
 export const applyMaxWidth = (size?: SizesWithFull) => {
@@ -329,22 +331,27 @@ export const applyAlignments = (v?: Alignments) => {
 	}
 };
 
-export const applyAspectRatio = (ratio?: AspectRatios) => {
-	switch (ratio) {
-		case "1/1":
-			return "aspect-w-1 aspect-h-1";
-		case "3/2":
-			return "aspect-w-3 aspect-h-2";
-		case "4/3":
-			return "aspect-w-4 aspect-h-3";
-		case "16/9":
-			return "aspect-w-16 aspect-h-9";
-		case "21/9":
-			return "aspect-w-21 aspect-h-9";
-		default:
-			return "aspect-none";
+export const applyAspectRatio = (aspectRatio?: AspectRatios): CSSProperties => {
+	if (!aspectRatio) return {};
+	console.log("aspectRatio", aspectRatio);
+	const aspectRatioParts = aspectRatio?.split(":") ?? [];
+
+	if (aspectRatioParts.length !== 2) {
+		throw new Error("Invalid aspect ratio format. Use 'width:height' (e.g., '16:9').");
 	}
+
+	const width = parseInt(aspectRatioParts[0]);
+	const height = parseInt(aspectRatioParts[1]);
+
+	if (isNaN(width) || isNaN(height) || width <= 0 || height <= 0) {
+		throw new Error("Invalid aspect ratio values. Width and height must be positive numbers.");
+	}
+
+	return {
+		aspectRatio: `${width}/${height}`,
+	};
 };
+
 export const applyJustifyContent = (v?: JustifyContent) => {
 	switch (v) {
 		case "start":

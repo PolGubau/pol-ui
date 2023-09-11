@@ -16,13 +16,13 @@ const Image: React.FC<Props> = ({
 	src,
 	alt,
 	className,
-	width = "100px",
-	height = "100px",
+	width = "100%",
+	height = "100%",
 	rounded = "none",
 	aspectRatio,
 	renderOnError = (
 		<span
-			className={`aspect-square flex items-center justify-center  ${applyAspectRatio(
+			className={`aspect-square flex items-center justify-center bg-gray-300 dark:bg-gray-700 ${applyAspectRatio(
 				aspectRatio
 			)} ${applyRounded(rounded)} ${className}`}
 			style={{
@@ -37,17 +37,27 @@ const Image: React.FC<Props> = ({
 	const [hasError, setHasError] = React.useState(false);
 
 	return (
-		<div
-			className={`w-fit h-fit inline-flex items-center justify-center overflow-hidden bg-gray-300 dark:bg-gray-700 object-cover ${applyAspectRatio(
-				aspectRatio
-			)} ${applyRounded(rounded)} ${className}`}
-		>
+		<figure>
 			{hasError ? (
 				renderOnError
 			) : (
-				<img height={height} width={width} src={src} alt={alt} onError={() => setHasError(true)} />
+				<>
+					<img
+						className={` flex items-center justify-center overflow-hidden object-cover 
+						
+ 						${applyRounded(rounded)} 
+						
+						${className}`}
+						height={height}
+						width={width}
+						src={src}
+						alt={alt}
+						onError={() => setHasError(true)}
+						style={aspectRatio && applyAspectRatio(aspectRatio)}
+					/>
+				</>
 			)}
-		</div>
+		</figure>
 	);
 };
 

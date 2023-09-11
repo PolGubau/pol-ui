@@ -64,7 +64,17 @@ export type BaseProps = {
 	id?: string;
 	ariaLabel?: string;
 };
-export type AspectRatios = "1/1" | "3/2" | "4/3" | "16/9" | "21/9";
+
+export enum AspectRatio {
+	SixteenNine = "16:9",
+	FourThree = "4:3",
+	OneOne = "1:1",
+	ThreeTwo = "3:2",
+	EightFive = "8:5",
+}
+
+export type AspectRatios = `${AspectRatio}`;
+
 export interface Theme {
 	background: string;
 	contrast: string;
