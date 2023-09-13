@@ -6,7 +6,7 @@ export enum Size {
 	"xl" = "xl",
 }
 
-export type Sizes = keyof typeof Size;
+export type Sizes = `${Size}`;
 
 export type Identifier = string | number;
 export type SizesWithNone = Sizes | "none";
@@ -24,11 +24,19 @@ export enum Sides {
 	"right" = "right",
 	"left" = "left",
 }
-
 export type Side = `${Sides}`;
-export type Direction = "x" | "y";
+
+export enum Directions {
+	"x" = "x",
+	"y" = "y",
+}
+export type Direction = `${Directions}`;
+
 export type Alignments = Side | "center";
+
+// 4 sides (Locations, Placement)
 export type Positions = "top" | "bottom" | Side;
+
 export type Tens = 0 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100;
 export type TextSize = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 export type Shadow = SizesWithNone | "inner" | "outline";
@@ -43,6 +51,7 @@ export enum JustifyContents {
 }
 export type JustifyContent = `${JustifyContents}`;
 
+// css positions
 export type Position = "relative" | "absolute" | "fixed" | "sticky";
 
 export enum ColorType {

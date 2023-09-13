@@ -1,51 +1,33 @@
 import styled from "styled-components";
 
 export const SlideShowStyled = styled.div`
-	.carousel-images {
-		position: relative;
-		border-radius: 10px;
-		height: 400px;
-		max-width: 650px;
-		margin: auto;
-		overflow: hidden;
-	}
-	.carousel-images img {
-		width: 99%;
-		height: 99%;
-	}
-	.slide_direction {
-		display: flex;
-		justify-content: space-between;
-	}
-	.left,
-	.right {
-		margin: 0 20px;
+	position: relative;
+	max-width: 100%;
+	overflow: hidden;
+	min-height: 100px;
+	height: 100%;
+	.next,
+	.prev {
+		top: calc(50%);
+		transform: translateY(-50%);
 		position: absolute;
-		top: 0;
-		bottom: 0;
-		margin: auto 10px;
-		height: 25px;
-		width: 25px;
+		user-select: none;
+		z-index: 2;
 	}
-	.left {
-		left: 0;
+
+	.next {
+		right: 10px;
 	}
-	.right {
-		right: 0;
+
+	.prev {
+		left: 10px;
 	}
-	.carousel-indicator {
-		margin-top: 20px;
-		display: flex;
-		justify-content: center;
-		gap: 10px;
-	}
-	.dot {
-		background-color: #333;
-		width: 15px;
-		height: 15px;
-		border-radius: 50%;
-	}
-	.active {
-		background-color: #fa2020;
+
+	.item {
+		position: absolute;
+		width: 90%;
+		margin: 0 5%;
+		height: 100%;
+		max-width: 100vw;
 	}
 `;

@@ -49,6 +49,7 @@
 		"jest-environment-jsdom": "^29.5.0",
 		"jest-transform-stub": "^2.0.0",
 		"markdown-to-jsx": "^7.3.2",
+		"popmotion": "^11.0.5",
 		"postcss": "^8.4.27",
 		"postcss-cli": "^10.1.0",
 		"prop-types": "^15.8.1",

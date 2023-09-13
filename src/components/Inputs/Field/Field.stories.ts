@@ -27,6 +27,12 @@ export const NumberType: Story = {
 		type: "number",
 	},
 };
+export const DateField: Story = {
+	args: {
+		label: "Date Input",
+		type: "date",
+	},
+};
 export const HelperText: Story = {
 	args: {
 		label: "Input",
