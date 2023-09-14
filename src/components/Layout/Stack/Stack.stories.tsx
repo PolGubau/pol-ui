@@ -25,9 +25,9 @@ export const Default: Story = {
 	args: {
 		children: [
 			<>
-				<div className="bg-red-500 w-20 h-20 flex items-center justify-center">1</div>
-				<div className="bg-blue-500 w-20 h-20 flex items-center justify-center">2</div>
-				<div className="bg-green-500 w-20 h-20 flex items-center justify-center">3</div>
+				<div className="bg-fuchsia-500 w-20 h-20 flex items-center justify-center">1</div>
+				<div className="bg-pink-500 w-20 h-20 flex items-center justify-center">2</div>
+				<div className="bg-rose-500 w-20 h-20 flex items-center justify-center">3</div>
 			</>,
 		],
 	},
@@ -172,6 +172,42 @@ export const CustomWidth: Story = {
 			<Stack direction="column">
 				<Text value="width='100%', this is the default prop" />
 				<Stack {...args} className="bg-blue-200" width={"100%"} />
+			</Stack>
+		</Stack>
+	),
+};
+
+export const CustomElement: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"As prop 'as' you can pass any valid HTML tag name. This allows you to use Stack as a header or footer or whatever you want. Use this tag to improve SEO and your syntax.",
+			},
+		},
+	},
+
+	args: {
+		...Default.args,
+	},
+	render: (args: any) => (
+		<Stack direction="column" gap={40} className=" w-full">
+			<Stack direction="column">
+				<Text value="As header" />
+				<Stack {...args} className="bg-red-200" as="header" />
+			</Stack>
+			<Stack direction="column">
+				<Text value="As footer" />
+				<Stack {...args} className="bg-green-200" as="footer" />
+			</Stack>
+			<Stack direction="column">
+				<Text value="As button" />
+				<Stack
+					{...args}
+					className="bg-blue-200"
+					as="button"
+					onClick={() => alert("Now I am a button")}
+				/>
 			</Stack>
 		</Stack>
 	),

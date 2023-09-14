@@ -13,7 +13,7 @@ import {
 	JustifyContent,
 	Sizes,
 	SizesComplete,
-	paddingOneOrBothValues,
+	PaddingOneOrBothValues,
 	Position,
 } from "./../../../types/index";
 import { ButtonVariant } from "./Button";
@@ -95,7 +95,7 @@ interface ButtonStylesProps {
 	fullWidth: boolean;
 	disabled?: boolean;
 	centered: boolean;
-	padding: paddingOneOrBothValues;
+	padding: PaddingOneOrBothValues;
 	variant: ButtonVariant;
 	color: ColorTypes;
 	className?: string;

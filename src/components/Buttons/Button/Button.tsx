@@ -8,7 +8,7 @@ import {
 	Side,
 	Sizes,
 	SizesComplete,
-	paddingOneOrBothValues,
+	PaddingOneOrBothValues,
 	JustifyContent,
 	Position,
 	Size,
@@ -30,7 +30,7 @@ interface Props extends BaseProps {
 	autoFocus?: boolean;
 	fullWidth?: boolean;
 	centered?: boolean;
-	padding?: paddingOneOrBothValues;
+	padding?: PaddingOneOrBothValues;
 	customRef?: React.RefObject<HTMLButtonElement>;
 	hasRipple?: boolean;
 	rippleColor?: ColorTypes;

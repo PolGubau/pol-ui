@@ -78,7 +78,6 @@ import {
 } from "./utils";
 
 import { useHover, useClickOutside } from "./hooks";
-import { Identifier } from "./types";
 
 export {
 	//Hooks
@@ -165,4 +164,5 @@ export {
 	getToday,
 };
 
-export type { Identifier, IconNames, IconData, ModalProps, ToastProps };
+export type { IconNames, IconData, ModalProps, ToastProps };
+export * from "./types";

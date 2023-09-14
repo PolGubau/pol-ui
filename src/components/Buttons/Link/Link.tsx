@@ -8,7 +8,7 @@ import {
 	Side,
 	Sizes,
 	SizesComplete,
-	paddingOneOrBothValues,
+	PaddingOneOrBothValues,
 } from "../../../types";
 import { buttonStyles } from "../Button/Button.styles";
 import { ButtonVariant } from "../Button/Button";
@@ -25,7 +25,7 @@ interface Props extends BaseProps {
 	fullWidth?: boolean;
 	centered?: boolean;
 	onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
-	padding?: paddingOneOrBothValues;
+	padding?: PaddingOneOrBothValues;
 	justify?: JustifyContent;
 }
 

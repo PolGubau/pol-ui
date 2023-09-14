@@ -26,7 +26,7 @@ export type SizesWithNone = Sizes | "none";
 export type SizesWithFull = Sizes | "full";
 export type SizesComplete = Sizes | "none" | "full";
 
-export type paddingOneOrBothValues =
+export type PaddingOneOrBothValues =
 	| SizesWithNone
 	| {
 			x: SizesWithNone;

@@ -9,6 +9,7 @@ import {
 	JustifyContent,
 	JustifyContents,
 } from "../../../types";
+import { StackStyled } from "./StackStyles";
 
 interface StackProps extends IFlexDirection, IFlexWrap {
 	children: ReactNode;
@@ -19,9 +20,11 @@ interface StackProps extends IFlexDirection, IFlexWrap {
 	className?: string;
 	justify?: JustifyContent;
 	width?: number | string;
+	as?: keyof React.JSX.IntrinsicElements; // This allows specifying HTML tag names as values for the 'as' prop.
 }
 
 const Stack: React.FC<StackProps> = ({
+	as = "div",
 	children,
 	wrap = FlexWraps.wrap,
 	direction = FlexDirections.row,
@@ -38,21 +41,19 @@ const Stack: React.FC<StackProps> = ({
 	const classes = `flex items-${alignItems} ${className}`;
 
 	return (
-		<div
+		<StackStyled
+			as={as}
+			$alignItems={alignItems}
+			$gap={properGap}
+			$grow={grow}
+			$justify={justify}
+			$width={properWidth}
+			$wrap={wrap}
+			$direction={direction}
 			className={classes}
-			style={{
-				justifyContent: justify,
-				flexDirection: direction,
-				gap: properGap,
-				justifyItems: justify,
-				flexWrap: wrap,
-				alignItems: alignItems,
-				flexGrow: grow,
-				width: properWidth,
-			}}
 		>
 			{children}
-		</div>
+		</StackStyled>
 	);
 };
 
