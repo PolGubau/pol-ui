@@ -2,10 +2,22 @@ import styled from "styled-components";
 
 export const SlideShowStyled = styled.div`
 	position: relative;
-	max-width: 100%;
-	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	overflow-x: hidden;
+	overflow-y: visible;
 	min-height: 100px;
 	height: 100%;
+
+	.slideshow {
+		display: flex;
+		justify-content: center;
+		position: absolute;
+		height: 100%;
+		align-items: center;
+		overflow-y: auto;
+		max-height: 100%;
+	}
 	.next,
 	.prev {
 		top: calc(50%);
@@ -24,10 +36,19 @@ export const SlideShowStyled = styled.div`
 	}
 
 	.item {
-		position: absolute;
+		display: flex;
+		justify-content: center;
+		overflow-y: auto;
+		padding: 1px;
 		width: 90%;
 		margin: 0 5%;
-		height: 100%;
-		max-width: 100vw;
+		height: fit-content;
+		max-width: 100%;
+		max-height: 100%;
+
+		& > * {
+			max-height: 100%;
+			height: fit-content;
+		}
 	}
 `;

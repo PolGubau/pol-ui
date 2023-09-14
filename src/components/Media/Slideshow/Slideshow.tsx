@@ -5,6 +5,9 @@ import { wrap } from "popmotion";
 import { IconButton } from "../../Buttons";
 import { IconNames } from "../../Base";
 import { SlideShowStyled } from "./SlideshowStyled";
+import { ButtonVariant } from "../../Buttons/Button/Button";
+import { SizesComplete } from "../../../types";
+import { applyRounded } from "../../../style";
 
 const variants = {
 	enter: (direction: number) => {
@@ -42,8 +45,17 @@ const swipePower = (offset: number, velocity: number) => {
 interface Props {
 	items: React.ReactNode[];
 	hasPagination?: boolean;
+	hasNavigation?: boolean;
+	navigationVariant?: ButtonVariant;
+	rounded?: SizesComplete;
 }
-const Slideshow: React.FC<Props> = ({ items }) => {
+const Slideshow: React.FC<Props> = ({
+	items,
+	hasNavigation = true,
+	navigationVariant = "filled",
+	hasPagination = true,
+	rounded = "md",
+}) => {
 	const [[page, direction], setPage] = useState<[number, number]>([0, 0]);
 
 	// We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
@@ -57,14 +69,14 @@ const Slideshow: React.FC<Props> = ({ items }) => {
 	};
 
 	return (
-		<SlideShowStyled>
+		<SlideShowStyled className={`  ${applyRounded(rounded)}`}>
 			<AnimatePresence initial={false} custom={direction}>
 				<motion.div
 					key={page}
-					className="carousel"
 					custom={direction}
 					variants={variants}
 					initial="enter"
+					className="slideshow"
 					animate="center"
 					exit="exit"
 					transition={{
@@ -85,10 +97,23 @@ const Slideshow: React.FC<Props> = ({ items }) => {
 				>
 					<div className="item">{items[imageIndex]}</div>
 				</motion.div>
+				{hasNavigation && (
+					<>
+						<IconButton
+							variant={navigationVariant}
+							className="prev"
+							icon={IconNames.arrowleft}
+							onClick={() => paginate(-1)}
+						/>
+						<IconButton
+							variant={navigationVariant}
+							className="next"
+							icon={IconNames.arrowright}
+							onClick={() => paginate(1)}
+						/>
+					</>
+				)}
 			</AnimatePresence>
-
-			<IconButton className="prev" icon={IconNames.arrowleft} onClick={() => paginate(-1)} />
-			<IconButton className="next" icon={IconNames.arrowright} onClick={() => paginate(1)} />
 		</SlideShowStyled>
 	);
 };

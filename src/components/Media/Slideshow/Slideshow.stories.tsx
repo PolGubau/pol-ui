@@ -8,6 +8,23 @@ const meta = {
 	title: "Media/Slideshow",
 	component: Slideshow,
 	tags: ["autodocs"],
+	parameters: {
+		docs: {
+			description: {
+				component:
+					"The slideshow is a component that allows you to display a series of items in a horizontal scrollable container. It is responsive and supports touch gestures.",
+			},
+		},
+	},
+
+	decorators: [
+		(Story) => (
+			<div className="p-4 w-3xl  h-96 bg-accent/10 ">
+				{/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
+				<Story />
+			</div>
+		),
+	],
 } satisfies Meta<typeof Slideshow>;
 
 export default meta;
@@ -22,9 +39,10 @@ export const Default: Story = {
 			},
 		},
 	},
+
 	args: {
 		items: [
-			<figure>
+			<figure key={1}>
 				<Image
 					aspectRatio={AspectRatio.OneOne}
 					rounded="md"
@@ -33,7 +51,7 @@ export const Default: Story = {
 				/>
 			</figure>,
 
-			<figure>
+			<figure key={2}>
 				<Image
 					rounded="md"
 					aspectRatio={AspectRatio.OneOne}
@@ -41,7 +59,7 @@ export const Default: Story = {
 					alt="a path in the middle of a forest surrounded by tall trees"
 				/>
 			</figure>,
-			<figure>
+			<figure key={3}>
 				<Image
 					aspectRatio={AspectRatio.OneOne}
 					rounded="md"
@@ -49,7 +67,7 @@ export const Default: Story = {
 					alt="a pineapple, an egg and an orange on a table"
 				/>
 			</figure>,
-			<figure>
+			<figure key={4}>
 				<Image
 					aspectRatio={AspectRatio.OneOne}
 					rounded="md"
@@ -79,25 +97,27 @@ export const Recipe: Story = {
 	args: {
 		...Default.args,
 		items: [
-			<Card>
+			<Card key={1}>
 				<Text size={3} value="Recipe X " />
-				<Text
-					size={2}
-					value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit."
-				/>
+				<Text value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit." />
 			</Card>,
-			<Card>
+			<Card key={2}>
 				<Text size={3} value="Ingredients" />
-				<Text
-					size={2}
-					value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit."
-				/>
+				<Text value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit." />
 			</Card>,
-			<Card>
+			<Card key={3}>
+				<Text size={3} value="Instructions" />
+				<Text value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit." />
+			</Card>,
+			<Card key={4}>
 				<Text size={3} value="Instructions" />
 				<Text
-					size={2}
-					value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit."
+					value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit."
 				/>
 			</Card>,
 		],
