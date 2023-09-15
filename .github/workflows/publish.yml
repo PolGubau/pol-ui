@@ -15,16 +15,16 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: "npm"
+          cache: "pnpm"
 
       - name: 📥 Install Dependencies
-        run: npm install
+        run: pnpm install
 
       - name: 💅 Lint
-        run: npm run lint
+        run: pnpm run lint
 
       - name: 🧪 Unit Tests and coverage
-        run: npm run test:coverage
+        run: pnpm run test:coverage
 
   publish:
     name: 🚀 Publish
@@ -40,15 +40,15 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: "npm"
+          cache: "pnpm"
 
       - name: 📥 Install Dependencies
-        run: npm install
+        run: pnpm install
 
       - name: 🛠️ Build
-        run: npm run build
+        run: pnpm run build
 
-      - name: 🚀 Publish to npm
+      - name: 🚀 Publish to pnpm
         uses: JS-DevTools/npm-publish@v2.2.1
         with:
           token: ${{ secrets.NPM_TOKEN }}
