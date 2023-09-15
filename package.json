@@ -106,12 +106,6 @@
 			}
 		}
 	},
-	"exports": {
-		".": {
-			"import": "./dist/@pol/ui.js",
-			"require": "./dist/@pol/ui.umd.cjs"
-		}
-	},
 	"files": [
 		"dist"
 	],
@@ -138,5 +132,5 @@
 	"type": "module",
 	"types": "./dist/types/index.d.ts",
 	"typings": "",
-	"version": "1.0.45"
+	"version": "1.0.46"
 }
