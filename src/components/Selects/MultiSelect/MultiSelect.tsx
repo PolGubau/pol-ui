@@ -1,9 +1,16 @@
 import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { Icon, IconNames } from "../../Base/Icon";
-import { IconName } from "../../../model/icons.model";
 import { SelectItems } from "./types";
-import { ColorType, SizesComplete, ButtonVariant } from "../../../types";
+import {
+	ColorType,
+	SizesComplete,
+	ButtonVariant,
+	IconType,
+	Sizes,
+	ColorTypes,
+	ButtonVariants,
+} from "../../../types";
 import { selectStyles } from "../selectStyles";
 
 interface Props {
@@ -13,7 +20,7 @@ interface Props {
 	placeholder?: string;
 	variant?: ButtonVariant;
 	color?: ColorType;
-	buttonIcon?: IconName;
+	buttonIcon?: IconType;
 	keyField?: string;
 	values?: SelectItems[];
 	onChange?: (values: SelectItems[]) => void;
@@ -27,21 +34,19 @@ export default function MultiSelect({
 	placeholder = MultiSelectDefaultPlaceholder,
 	fullWidth,
 	items,
-	variant = "filled",
+	variant = ButtonVariants.filled,
 	buttonIcon = IconNames.expandboth,
 	keyField = "name",
-	color = "primary",
+	color = ColorTypes.primary,
 	values = [],
-	rounded = "lg",
+	rounded = Sizes.lg,
 	className,
 	onChange,
 }: Props) {
 	const [selected, setSelected] = useState<SelectItems[]>(values);
 
 	const handleChanges = (values: SelectItems[]) => {
-		console.log("values", values);
 		setSelected(values);
-
 		onChange?.(values);
 	};
 

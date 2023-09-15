@@ -2,8 +2,7 @@ import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { Icon, IconNames } from "../../Base/Icon";
 import { SelectItems } from "./types";
-import { IconName } from "../../../model/icons.model";
-import { ColorType, SizesComplete, ButtonVariant } from "../../../types";
+import { ColorType, SizesComplete, ButtonVariant, IconType } from "../../../types";
 import { selectStyles } from "../selectStyles";
 
 interface Props {
@@ -12,7 +11,7 @@ interface Props {
 	items: SelectItems[];
 	placeholder?: string;
 	variant?: ButtonVariant;
-	buttonIcon?: IconName;
+	buttonIcon?: IconType;
 	keyField?: string;
 	value?: SelectItems;
 	rounded?: SizesComplete;

@@ -2,10 +2,9 @@ import { Fragment, useState } from "react";
 import { Combobox, Transition } from "@headlessui/react";
 import { Icon, IconNames } from "../../Base/Icon";
 import { SelectItems } from "./types";
-import { IconName } from "../../../model/icons.model";
 import { applyFullWidth, applyRounded } from "../../../style";
 import { applyButtonVariant } from "../../Buttons/Button/Button.styles";
-import { ButtonVariant, ColorType, SizesComplete } from "../../../types";
+import { ButtonVariant, ColorType, IconType, SizesComplete } from "../../../types";
 
 interface Props {
 	label?: string;
@@ -13,7 +12,7 @@ interface Props {
 	items: SelectItems[];
 	placeholder?: string;
 	variant?: ButtonVariant;
-	buttonIcon?: IconName;
+	buttonIcon?: IconType;
 	keyField?: string;
 	value?: SelectItems;
 	onChange?: (value: SelectItems) => void;

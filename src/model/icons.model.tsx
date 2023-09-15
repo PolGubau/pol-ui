@@ -180,7 +180,5 @@ export const icons: IconData[] = [
 	{ name: IconNames.question, icon: <TbQuestionMark /> },
 	{ name: IconNames.edit, icon: <TbEdit /> },
 ];
-type IconName = keyof typeof IconNames;
 
 export default icons;
-export type { IconName };
