@@ -138,5 +138,5 @@
 	"type": "module",
 	"types": "./dist/types/index.d.ts",
 	"typings": "",
-	"version": "1.0.46"
+	"version": "1.0.47"
 }
