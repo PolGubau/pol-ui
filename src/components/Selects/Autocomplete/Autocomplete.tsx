@@ -6,7 +6,7 @@ import { IconName } from "../../../model/icons.model";
 import { ButtonVariant } from "../../Buttons/Button/Button";
 import { applyFullWidth, applyRounded } from "../../../style";
 import { applyButtonVariant } from "../../Buttons/Button/Button.styles";
-import { ColorTypes, SizesComplete } from "../../../types";
+import { ColorType, SizesComplete } from "../../../types";
 
 interface Props {
 	label?: string;
@@ -19,7 +19,7 @@ interface Props {
 	value?: SelectItems;
 	onChange?: (value: SelectItems) => void;
 	noFoundMessage?: string;
-	color?: ColorTypes;
+	color?: ColorType;
 	rounded?: SizesComplete;
 }
 

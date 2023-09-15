@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import {
 	applyRounded,
 	applyTextSize,
@@ -9,9 +10,9 @@ import {
 	applyPosition,
 } from "../../../style";
 import {
-	ColorTypes,
+	ColorType,
 	JustifyContent,
-	Sizes,
+	Size,
 	SizesComplete,
 	PaddingOneOrBothValues,
 	Position,
@@ -26,7 +27,7 @@ export const applyButtonVariant = ({
 	color = "primary",
 }: {
 	variant?: ButtonVariant;
-	color?: ColorTypes;
+	color?: ColorType;
 }): string => {
 	switch (variant) {
 		case "outlined":
@@ -91,13 +92,13 @@ export const applyButtonVariant = ({
 
 interface ButtonStylesProps {
 	rounded: SizesComplete;
-	size: Sizes;
+	size: Size;
 	fullWidth: boolean;
 	disabled?: boolean;
 	centered: boolean;
 	padding: PaddingOneOrBothValues;
 	variant: ButtonVariant;
-	color: ColorTypes;
+	color: ColorType;
 	className?: string;
 	justify: JustifyContent;
 	position: Position;
@@ -129,3 +130,5 @@ export const buttonStyles = ({
 	${className}
 	`;
 };
+
+export const ButtonStyled = styled.button``;

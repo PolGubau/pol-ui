@@ -2,21 +2,14 @@ import React from "react";
 import "../../../style/baseTheme.css";
 import { Icon, IconType } from "../../Base/Icon";
 import { Button } from "../Button";
-import {
-	BaseProps,
-	ColorTypes,
-	Position,
-	Sizes,
-	SizesComplete,
-	SizesWithNone,
-} from "../../../types";
+import { BaseProps, ColorType, Position, Size, SizesComplete, SizesWithNone } from "../../../types";
 import { ButtonVariant } from "../Button/Button";
 interface Props extends BaseProps {
 	onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 	disabled?: boolean;
 	variant?: ButtonVariant;
-	color?: ColorTypes;
-	size?: Sizes;
+	color?: ColorType;
+	size?: Size;
 	rounded?: SizesComplete;
 	icon?: IconType;
 	autoFocus?: boolean;
@@ -25,6 +18,7 @@ interface Props extends BaseProps {
 	padding?: SizesWithNone;
 	ref?: React.RefObject<HTMLButtonElement>;
 	position?: Position;
+	href?: string;
 }
 
 const IconButton: React.FC<Props> = ({
@@ -42,12 +36,14 @@ const IconButton: React.FC<Props> = ({
 	fullWidth = false,
 	centered = true,
 	padding = "sm",
+	href,
 	style,
 	ref,
 	position,
 }) => {
 	return (
 		<Button
+			href={href}
 			centered={centered}
 			aria-label={ariaLabel}
 			disabled={disabled}

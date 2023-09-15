@@ -1,12 +1,12 @@
 import { applyColor, applyTextSize } from "../../../style";
-import { ColorTypes, Sizes } from "../../../types";
+import { ColorType, Size } from "../../../types";
 import { getIcon } from "../../../utils";
 import { IconType } from "./types";
 
 interface IconProps {
 	icon: IconType;
-	color?: ColorTypes;
-	size?: Sizes;
+	color?: ColorType;
+	size?: Size;
 	className?: string;
 	id?: string;
 	alwaysRender?: boolean;

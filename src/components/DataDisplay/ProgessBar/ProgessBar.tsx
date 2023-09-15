@@ -1,6 +1,6 @@
 import React from "react";
 import { backgroundBar } from "./ProgessBar.styles";
-import { ColorTypes, Sizes, SizesComplete, Tens } from "../../../types";
+import { ColorType, Size, SizesComplete, Tens } from "../../../types";
 import ProgressBarPointer from "./components/Pointer/Pointer";
 import ProgressBarMarks from "./components/Marks/Marks";
 import { applyBgColor, applyRounded } from "../../../style";
@@ -15,14 +15,14 @@ interface ProgressBarProps {
 	pointerPosition?: "top" | "bottom";
 	hasValueInside?: boolean;
 	pointerWithArrow?: boolean;
-	color?: ColorTypes;
-	size?: Sizes;
+	color?: ColorType;
+	size?: Size;
 	min?: number;
 	max?: number;
 	showMin?: boolean;
 	showMax?: boolean;
 	marks?: number; // Interval to show marks (percentage)
-	marksColor?: ColorTypes;
+	marksColor?: ColorType;
 	marksOpacity?: Tens;
 	innerClassName?: string;
 }

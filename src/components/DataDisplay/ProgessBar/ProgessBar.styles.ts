@@ -1,6 +1,6 @@
-import { Sizes } from "../../../types";
+import { Size } from "../../../types";
 
-export const backgroundBar = ({ size }: { size: Sizes }) => {
+export const backgroundBar = ({ size }: { size: Size }) => {
 	const baseStyles =
 		" bg-primary/10   w-full relative  outline-2  max-w-full transition-all duration-300 ease-in-out";
 	switch (size) {

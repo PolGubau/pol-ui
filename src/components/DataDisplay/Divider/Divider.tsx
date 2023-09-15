@@ -9,19 +9,29 @@ import {
 	applyRounded,
 } from "../../../style";
 import { Icon } from "../../Base/Icon";
-import { ColorTypes, Alignments, SizesWithNone, Tens, Direction, BaseProps } from "../../../types";
+import {
+	ColorType,
+	Alignments,
+	SizesWithNone,
+	Tens,
+	Direction,
+	BaseProps,
+	Directions,
+	ColorTypes,
+	Sizes,
+} from "../../../types";
 
 interface Props extends BaseProps {
 	direction?: Direction;
-	color?: ColorTypes;
+	color?: ColorType;
 	weight?: number;
 	message?: string | React.ReactNode;
 	messagePosition?: Alignments;
 	icon?: string;
 	margin?: SizesWithNone;
 	opacity?: Tens;
-	messageColor?: ColorTypes;
-	messageBgColor?: ColorTypes;
+	messageColor?: ColorType;
+	messageBgColor?: ColorType;
 	messageRounded?: SizesWithNone;
 }
 
@@ -63,16 +73,16 @@ const Divider: React.FC<Props> = ({
 	ariaLabel,
 	style,
 
-	direction = "x",
-	color = "primary",
+	direction = Directions.x,
+	color = ColorTypes.primary,
 	weight = 1,
 	message,
 	messagePosition = "center",
 	icon,
-	margin = "sm",
+	margin = Sizes.sm,
 	opacity,
-	messageBgColor = "background",
-	messageRounded = "md",
+	messageBgColor = ColorTypes.background,
+	messageRounded = Sizes.md,
 }) => {
 	return (
 		<div
@@ -84,8 +94,8 @@ const Divider: React.FC<Props> = ({
 			${applyOpacity(opacity)}
             `}
 			style={{
-				height: direction === "x" ? weight : "100%",
-				width: direction === "y" ? weight : "100%",
+				height: direction === Directions.x ? weight : "100%",
+				width: direction === Directions.y ? weight : "100%",
 				...style,
 			}}
 		>

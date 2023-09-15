@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Divider from "./Divider";
 import { Button } from "../../Buttons";
+import { ButtonVariants, ColorTypes, Directions, Sizes } from "../../../types";
 const meta = {
 	title: "Data Display/Divider",
 	component: Divider,
@@ -17,53 +18,49 @@ export const Default: Story = {
 export const Vertical: Story = {
 	render: (args) => (
 		<div className="flex overflow-hidden border-2  border-primary w-fit rounded-xl">
-			<Button rounded={false} type="text">
+			<Button rounded={"none"} variant={ButtonVariants.text}>
 				Edit
 			</Button>
-			<Button rounded={false} type="text">
+			<Button rounded={"none"} variant={ButtonVariants.text}>
 				Show
 			</Button>
-			<Divider {...args} orientation="vertical" />
-			<Button rounded={false} type="text">
+			<Divider {...args} direction="y" />
+			<Button rounded={"none"} variant={ButtonVariants.text}>
 				Delete
 			</Button>
 		</div>
 	),
-	args: { orientation: "vertical" },
+	args: { direction: "y" },
 };
 export const WithMargins: Story = {
 	render: (args) => (
 		<div className="flex overflow-hidden border-2  border-primary w-fit rounded-xl">
-			<Button rounded={false} type="text">
+			<Button rounded={"none"} variant={ButtonVariants.text}>
 				Edit
 			</Button>
-			<Divider {...args} orientation="vertical" margin="small" />
+			<Divider {...args} direction={Directions.y} margin={Sizes.sm} />
 
-			<Button rounded={false} type="text">
+			<Button rounded={"none"} variant={ButtonVariants.text}>
 				Show
 			</Button>
-			<Divider {...args} orientation="vertical" margin="large" />
-			<Button rounded={false} type="text">
+			<Divider {...args} direction={Directions.y} margin={Sizes.lg} />
+			<Button rounded={"none"} variant={ButtonVariants.text}>
 				Delete
 			</Button>
 		</div>
 	),
-	args: { orientation: "vertical" },
+	args: { direction: Directions.y },
 };
 export const DangerBar: Story = {
-	args: { variant: "danger" },
+	args: { color: "danger" },
 };
-export const AllColors: Story = {
+export const SomeColors: Story = {
 	render: (args) => (
 		<div className="">
-			<Divider {...args} variant="success" />
-			<Divider {...args} variant="danger" />
-			<Divider {...args} variant="warning" />
-			<Divider {...args} variant="accent" />
-			<Divider {...args} variant="dark" />
-			<Divider {...args} variant="info" />
-			<Divider {...args} variant="light" />
-			<Divider {...args} variant="default" />
+			<Divider {...args} color="success" />
+			<Divider {...args} color="danger" />
+			<Divider {...args} color="accent" />
+			<Divider {...args} color="info" />
 		</div>
 	),
 	args: {},
@@ -89,5 +86,5 @@ export const SomeWeights: Story = {
 	),
 };
 export const CustomMessageBackground: Story = {
-	args: { message: "or", customTextBackground: "red" },
+	args: { message: "or", messageBgColor: ColorTypes.danger },
 };

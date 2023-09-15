@@ -16,3 +16,6 @@ coverage/
 .swc/
 
 
+.storybook-static/
+
+

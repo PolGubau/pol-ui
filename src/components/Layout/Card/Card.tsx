@@ -1,14 +1,14 @@
 import React from "react";
 import { cardStyle } from "./Card.style";
-import { ColorTypes, Shadow, Sizes, SizesComplete, SizesWithNone } from "../../../types";
+import { ColorType, Shadow, Size, SizesComplete, SizesWithNone } from "../../../types";
 import { applyPadding } from "../../../style";
 
 interface Props {
 	shadow?: Shadow;
 	hasBorder?: boolean;
 	rounded?: SizesComplete;
-	color?: ColorTypes;
-	maxWidth?: Sizes | "full";
+	color?: ColorType;
+	maxWidth?: Size | "full";
 	children?: React.ReactNode;
 	cardHeader?: React.ReactNode;
 	cardFooter?: React.ReactNode;

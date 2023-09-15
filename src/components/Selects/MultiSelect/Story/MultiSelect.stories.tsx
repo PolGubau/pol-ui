@@ -16,10 +16,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	args: { items: mockSelectJustNames, variant: "normal", fullWidth: false },
+	args: { items: mockSelectJustNames, variant: "filled", fullWidth: false },
 };
 export const MainSelect: Story = {
-	args: { ...Default.args, variant: "main" },
+	args: { ...Default.args, variant: "filled" },
 };
 export const TextSelect: Story = {
 	args: { ...Default.args, variant: "text" },

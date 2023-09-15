@@ -2,15 +2,15 @@ import { Transition } from "@headlessui/react";
 import { Icon, IconType } from "../../Base/Icon";
 import { badgeStyles } from "./Badge.styles";
 import { Fragment } from "react";
-import { ColorTypes, Sizes, BaseProps, SizesComplete, Shadow, Side } from "../../../types";
+import { ColorType, Size, BaseProps, SizesComplete, Shadow, Side } from "../../../types";
 import { applyBgColor, applyRounded, applyShadow } from "../../../style";
 
 interface Props extends BaseProps {
 	content: string | number;
 	variant?: "dot" | "text";
-	color?: ColorTypes;
+	color?: ColorType;
 	shadow?: Shadow;
-	size?: Sizes;
+	size?: Size;
 	rounded?: SizesComplete;
 	max?: number;
 	horizontal?: Side;

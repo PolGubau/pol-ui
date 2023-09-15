@@ -6,12 +6,28 @@ const meta = {
 	title: "Buttons/Button",
 	component: Button,
 	tags: ["autodocs"],
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"The button component is one of the main axes of the design system. It is used by default to create buttons, but it can also be used to create links. Various components use it internally, such as the `ButtonGroup` or the `IconButton`.",
+			},
+		},
+	},
 } satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"The button component is one of the main axes of the design system. It is used by default to create buttons, but it can also be used to create links. Various components use it internally, such as the `ButtonGroup` or the `IconButton`.",
+			},
+		},
+	},
 	args: {
 		children: "I'm a normal button",
 		iconPosition: "left",
@@ -23,6 +39,13 @@ export const Default: Story = {
 		size: "md",
 		disabled: false,
 		id: "button",
+	},
+};
+export const Link: Story = {
+	args: {
+		...Default.args,
+		children: "I'm a link",
+		href: "https://polgubau.com",
 	},
 };
 export const Outlined: Story = {

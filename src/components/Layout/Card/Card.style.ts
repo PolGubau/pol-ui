@@ -1,12 +1,12 @@
-import { ColorTypes, Shadow, Sizes, SizesComplete } from "../../../types";
+import { ColorType, Shadow, Size, SizesComplete } from "../../../types";
 import { applyMaxWidth, applyShadow, applyRounded, applyBgColor } from "../../../style";
 
 interface Props {
 	hasBorder?: boolean;
-	maxWidth?: Sizes | "full";
+	maxWidth?: Size | "full";
 	shadow?: Shadow;
 	rounded: SizesComplete;
-	color: ColorTypes;
+	color: ColorType;
 	className?: string;
 }
 

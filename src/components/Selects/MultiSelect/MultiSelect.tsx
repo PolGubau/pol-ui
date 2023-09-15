@@ -4,7 +4,7 @@ import { Icon, IconNames } from "../../Base/Icon";
 import { IconName } from "../../../model/icons.model";
 import { SelectItems } from "./types";
 import { ButtonVariant } from "../../Buttons/Button/Button";
-import { ColorTypes, SizesComplete } from "../../../types";
+import { ColorType, SizesComplete } from "../../../types";
 import { selectStyles } from "../selectStyles";
 
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
 	items: SelectItems[];
 	placeholder?: string;
 	variant?: ButtonVariant;
-	color?: ColorTypes;
+	color?: ColorType;
 	buttonIcon?: IconName;
 	keyField?: string;
 	values?: SelectItems[];

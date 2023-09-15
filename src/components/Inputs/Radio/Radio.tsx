@@ -2,7 +2,7 @@ import React from "react";
 import { Icon } from "../../Base/Icon";
 import { Transition } from "@headlessui/react";
 import { applyBgColorInChecked, applyDisabled, applyTextSize } from "../../../style";
-import { ColorTypes, Sizes } from "../../../types";
+import { ColorType, Size } from "../../../types";
 
 interface Props {
 	label?: string;
@@ -10,12 +10,12 @@ interface Props {
 	onChange?: (value: boolean) => void;
 	disabled?: boolean;
 	errorMessage?: string;
-	colorChecked?: ColorTypes;
-	iconColor?: ColorTypes;
+	colorChecked?: ColorType;
+	iconColor?: ColorType;
 	checkIcon?: React.JSX.Element | string;
 	className?: string;
 	name?: string;
-	size?: Sizes;
+	size?: Size;
 }
 
 const Radio: React.FC<Props> = ({

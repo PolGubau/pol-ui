@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useDebounce } from "usehooks-ts";
-import { ColorTypes } from "../types";
+import { ColorType } from "../types";
 import { applyBgColor } from "../style";
 interface RippleStyledProps {
 	$duration: number;
@@ -37,7 +37,7 @@ const RippleStyled = styled.span<RippleStyledProps>`
 interface RippleProps {
 	ref: React.RefObject<HTMLElement>;
 	duration?: number;
-	color?: ColorTypes;
+	color?: ColorType;
 	hasRipple?: boolean;
 	opacity?: number;
 }

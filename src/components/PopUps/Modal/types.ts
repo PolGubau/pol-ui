@@ -1,6 +1,6 @@
 import { ButtonVariant } from "../../Buttons/Button/Button";
 import { IconType } from "../../Base/Icon";
-import { ColorTypes, Shadow, SizesComplete, SizesWithFull, SizesWithNone } from "../../../types";
+import { ColorType, Shadow, SizesComplete, SizesWithFull, SizesWithNone } from "../../../types";
 export enum ModalCloseReason {
 	Escape = "Escape",
 	ClickOutside = "ClickOutside",
@@ -21,14 +21,14 @@ export interface ModalProps {
 	hasCloseButton?: boolean;
 	maxWidth?: SizesWithFull;
 	cancelButton?: {
-		color?: ColorTypes;
+		color?: ColorType;
 		variant?: ButtonVariant;
 		icon?: IconType;
 		text?: string;
 		onClick?: () => Promise<void> | void;
 	};
 	submitButton?: {
-		color?: ColorTypes;
+		color?: ColorType;
 		variant?: ButtonVariant;
 		icon?: IconType;
 		text?: string;

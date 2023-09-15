@@ -37,7 +37,7 @@ export const Example: Story = {
 
 		children: (
 			<>
-				<Grid className="p-4" columns="2" gap={"20px"}>
+				<Grid className="p-4" cols={2} gap={"20px"}>
 					<div className="flex gap-2 flex-col">
 						<Text size={2} value="Sweden" className="text-light" />
 						<Text value="C418" className="text-light" />
@@ -76,7 +76,7 @@ export const WithHeader: Story = {
 		padding: "md",
 		children: (
 			<>
-				<Grid columns="2" gap={"20px"}>
+				<Grid cols={2} gap={"20px"}>
 					<div className="flex gap-2 flex-col">
 						<Text size={2} value="Sweden" />
 						<Text value="C418" />

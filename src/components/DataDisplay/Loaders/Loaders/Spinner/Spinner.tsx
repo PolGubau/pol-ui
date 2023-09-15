@@ -1,5 +1,5 @@
 import { TbLoader2 } from "react-icons/tb";
-import { ColorTypes, Sizes } from "../../../../../types";
+import { ColorType, Size } from "../../../../../types";
 import { applyColor } from "../../../../../style";
 import { Icon } from "../../../../Base/Icon";
 
@@ -9,8 +9,8 @@ const Spinner = ({
 	color,
 }: {
 	className: string;
-	size: Sizes;
-	color: ColorTypes;
+	size: Size;
+	color: ColorType;
 }) => {
 	return (
 		<div className={`flex justify-center items-center w-fit scale-150 ${applyColor(color)}`}>

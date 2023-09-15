@@ -1,29 +1,33 @@
 import React, { useRef } from "react";
 import "../../../style/baseTheme.css";
 import { Icon, IconType } from "../../Base/Icon";
-import { buttonStyles } from "./Button.styles";
+import { buttonStyles, ButtonStyled } from "./Button.styles";
 import {
 	type BaseProps,
-	ColorTypes,
+	ColorType,
 	Side,
-	Sizes,
+	Size,
 	SizesComplete,
 	PaddingOneOrBothValues,
 	JustifyContent,
 	Position,
-	Size,
+	Sizes,
 	JustifyContents,
+	ButtonVariant,
 } from "../../../types";
 import useRipple from "../../../hooks/useRipple";
 import { applyJustifyContent } from "../../../style";
-export type ButtonVariant = "filled" | "outlined" | "text";
-interface Props extends BaseProps {
+export interface ButtonProps extends BaseProps {
 	children?: React.ReactNode;
-	onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+	onClick?: (
+		event:
+			| React.MouseEvent<HTMLAnchorElement, MouseEvent>
+			| React.MouseEvent<HTMLButtonElement, MouseEvent>
+	) => void;
 	disabled?: boolean;
 	variant?: ButtonVariant;
-	color?: ColorTypes;
-	size?: Sizes;
+	color?: ColorType;
+	size?: Size;
 	rounded?: SizesComplete;
 	icon?: IconType;
 	iconPosition?: Side;
@@ -33,33 +37,35 @@ interface Props extends BaseProps {
 	padding?: PaddingOneOrBothValues;
 	customRef?: React.RefObject<HTMLButtonElement>;
 	hasRipple?: boolean;
-	rippleColor?: ColorTypes;
+	rippleColor?: ColorType;
 	rippleOpacity?: number;
 	rippleDuration?: number;
 	justify?: JustifyContent;
 	position?: Position;
+	href?: string;
 }
 
-const Button: React.FC<Props> = ({
+const Button: React.FC<ButtonProps> = ({
 	className,
 	children,
 	id,
 	onClick,
 	disabled = false,
 	ariaLabel = "button",
+	href,
 	variant = "filled",
 	color = "primary",
-	size = Size.md,
-	rounded = Size.lg,
+	size = Sizes.md,
+	rounded = Sizes.lg,
 	icon,
 	iconPosition = "left",
 	autoFocus = false,
 	fullWidth = false,
 	centered = false,
-	padding = { x: Size.md, y: Size.sm },
+	padding = { x: Sizes.md, y: Sizes.sm },
 	style,
 	customRef,
-	justify = icon ? JustifyContents.center : JustifyContents.center,
+	justify = JustifyContents.center,
 	rippleColor,
 	rippleOpacity,
 	rippleDuration,
@@ -75,15 +81,25 @@ const Button: React.FC<Props> = ({
 		opacity: rippleOpacity,
 	});
 
-	const handleClick = (e: any) => {
+	const handleClick = (
+		event:
+			| React.MouseEvent<HTMLAnchorElement, MouseEvent>
+			| React.MouseEvent<HTMLButtonElement, MouseEvent>
+	) => {
 		if (onClick) {
-			onClick(e);
+			onClick(event);
 		}
+
+		window.history.pushState({}, "", href);
+		const navEvent = new PopStateEvent("popstate");
+		window.dispatchEvent(navEvent);
 	};
 
 	return (
-		<button
+		<ButtonStyled
+			as={href ? "a" : "button"}
 			ref={customRef ?? ref}
+			href={href}
 			aria-label={ariaLabel}
 			disabled={disabled || !onClick}
 			autoFocus={autoFocus}
@@ -110,7 +126,7 @@ const Button: React.FC<Props> = ({
 				{children}
 			</div>
 			{icon && iconPosition === "right" && <Icon icon={icon} size={size} />}
-		</button>
+		</ButtonStyled>
 	);
 };
 export default Button;

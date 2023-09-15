@@ -1,9 +1,9 @@
 import { CSSProperties } from "react";
 import {
-	Sizes,
+	Size,
 	SizesWithNone,
 	SizesComplete,
-	ColorTypes,
+	ColorType,
 	Tens,
 	SizesWithFull,
 	Shadow,
@@ -13,8 +13,7 @@ import {
 	Position,
 	Transition,
 	Transitions,
-	Size,
-	AspectRatio,
+	Sizes,
 } from "../types";
 
 export const applyMaxWidth = (size?: SizesWithFull) => {
@@ -53,7 +52,7 @@ export const applyShadow = (shadow?: Shadow) => {
 			return "shadow-none";
 	}
 };
-export const applyTextSize = (size?: Sizes) => {
+export const applyTextSize = (size?: Size) => {
 	switch (size) {
 		case "xs":
 			return "text-xs";
@@ -176,7 +175,7 @@ export const applyAlignCenter = (b: boolean = false) => {
 	return b ? "items-center" : "items-start";
 };
 
-export const applyShyRounded = (round?: Sizes) => {
+export const applyShyRounded = (round?: Size) => {
 	switch (round) {
 		case "xs":
 			return "rounded-sm";
@@ -232,7 +231,7 @@ export const applyRoundedLarge = (round?: SizesComplete) => {
 			return "rounded-none";
 	}
 };
-export const applyBgColor = (color?: ColorTypes) => {
+export const applyBgColor = (color?: ColorType) => {
 	switch (color) {
 		case "secondary":
 			return "bg-secondary";
@@ -252,7 +251,7 @@ export const applyBgColor = (color?: ColorTypes) => {
 			return "bg-primary";
 	}
 };
-export const applyBgColorInChecked = (color?: ColorTypes) => {
+export const applyBgColorInChecked = (color?: ColorType) => {
 	switch (color) {
 		case "secondary":
 			return "checked:bg-secondary";
@@ -272,7 +271,7 @@ export const applyBgColorInChecked = (color?: ColorTypes) => {
 			return "checked:bg-primary";
 	}
 };
-export const applyColor = (color?: ColorTypes) => {
+export const applyColor = (color?: ColorType) => {
 	switch (color) {
 		case "primary":
 			return "text-primary";
@@ -360,11 +359,11 @@ export const applyJustifyContent = (v?: JustifyContent) => {
 			return "justify-end";
 		case "center":
 			return "justify-center";
-		case "between":
+		case "space-between":
 			return "justify-between";
-		case "around":
+		case "space-around":
 			return "justify-around";
-		case "evenly":
+		case "space-evenly":
 			return "justify-evenly";
 		default:
 			return "justify-start";
@@ -385,13 +384,13 @@ export const applyPosition = (v?: Position) => {
 
 export const applyTransitionDuration = (duration?: SizesWithNone) => {
 	switch (duration) {
-		case Size.xs:
+		case Sizes.xs:
 			return "transition duration-75";
-		case Size.sm:
+		case Sizes.sm:
 			return "transition duration-100";
-		case Size.lg:
+		case Sizes.lg:
 			return "transition duration-300";
-		case Size.xl:
+		case Sizes.xl:
 			return "transition duration-500";
 		default:
 			return "transition duration-200";

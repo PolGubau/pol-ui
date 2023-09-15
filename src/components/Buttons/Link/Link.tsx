@@ -1,88 +1,70 @@
 import React from "react";
 import "../../../style/baseTheme.css";
-import { Icon, IconType } from "../../Base/Icon";
-import {
-	BaseProps,
-	ColorTypes,
-	JustifyContent,
-	Side,
-	Sizes,
-	SizesComplete,
-	PaddingOneOrBothValues,
-} from "../../../types";
-import { buttonStyles } from "../Button/Button.styles";
-import { ButtonVariant } from "../Button/Button";
-interface Props extends BaseProps {
-	children?: React.ReactNode;
+import { Icon } from "../../Base/Icon";
+import { BaseProps } from "../../../types";
+import Button, { ButtonProps } from "../Button/Button";
+interface Props extends BaseProps, ButtonProps {
 	href: string;
-	variant?: ButtonVariant;
-	color?: ColorTypes;
-	size?: Sizes;
-	rounded?: SizesComplete;
-	icon?: IconType;
-	iconPosition?: Side;
-	autoFocus?: boolean;
-	fullWidth?: boolean;
-	centered?: boolean;
-	onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
-	padding?: PaddingOneOrBothValues;
-	justify?: JustifyContent;
 }
 
 const Link: React.FC<Props> = ({
 	className,
 	children,
 	id,
-	href,
+	onClick,
+	disabled = false,
 	ariaLabel = "button",
+	href,
 	variant = "filled",
 	color = "primary",
-	size = "md",
-	rounded = "lg",
+	size,
+	rounded,
 	icon,
-	onClick,
 	iconPosition = "left",
 	autoFocus = false,
 	fullWidth = false,
 	centered = false,
-	justify = icon ? "between" : "center",
-	padding = { x: "md", y: "sm" },
+	padding,
 	style,
+	customRef,
+	justify,
+	rippleColor,
+	rippleOpacity,
+	rippleDuration,
+	position,
+	hasRipple = position === "relative",
 }) => {
-	const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-		if (onClick) {
-			onClick(event);
-		}
-
-		window.history.pushState({}, "", href);
-		const navEvent = new PopStateEvent("popstate");
-		window.dispatchEvent(navEvent);
-	};
-
 	return (
-		<a
+		<Button
+			className={className}
+			disabled={disabled}
+			variant={variant}
+			color={color}
+			size={size}
+			rounded={rounded}
+			icon={icon}
+			iconPosition={iconPosition}
+			fullWidth={fullWidth}
+			centered={centered}
+			padding={padding}
+			customRef={customRef}
+			justify={justify}
+			rippleColor={rippleColor}
+			rippleOpacity={rippleOpacity}
+			rippleDuration={rippleDuration}
+			position={position}
+			hasRipple={hasRipple}
 			href={href}
 			aria-label={ariaLabel}
 			autoFocus={autoFocus}
 			id={id}
-			onClick={handleLinkClick}
+			onClick={(event) => onClick?.(event as React.MouseEvent<HTMLAnchorElement, MouseEvent>)}
 			style={style}
-			className={buttonStyles({
-				rounded,
-				size,
-				fullWidth,
-				centered,
-				padding,
-				variant,
-				color,
-				justify,
-				className,
-			})}
 		>
 			{icon && iconPosition === "left" && <Icon icon={icon} size={size} />}
 			<div className="w-full">{children}</div>
 			{icon && iconPosition === "right" && <Icon icon={icon} size={size} />}
-		</a>
+		</Button>
 	);
 };
 export default Link;

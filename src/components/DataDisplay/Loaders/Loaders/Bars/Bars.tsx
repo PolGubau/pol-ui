@@ -1,12 +1,12 @@
 import { applyBgColor } from "../../../../../style";
-import { ColorTypes, Sizes } from "../../../../../types";
+import { ColorType, Size } from "../../../../../types";
 import { Styles, dotsSize } from "./Bars.styles";
 
 interface Props {
 	className?: string;
-	color?: ColorTypes;
+	color?: ColorType;
 	amount?: number;
-	size?: Sizes;
+	size?: Size;
 }
 
 const Bars: React.FC<Props> = ({ className, color, amount = 3, size }) => {

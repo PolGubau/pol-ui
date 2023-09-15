@@ -1,4 +1,4 @@
-import { Side, Sizes } from "../../../types";
+import { Side, Size } from "../../../types";
 export const baseStyles =
 	"absolute flex justify-center items-center text-white text-xs font-bold bg-accent transition-all backdrop-blur-md p-1 truncate";
 
@@ -7,7 +7,7 @@ export const applyVerticalPlacement = (v: "top" | "bottom") =>
 	v === "top" ? "-top-1" : "-bottom-0";
 export const clickableStyles = (v: boolean) =>
 	v ? "cursor-pointer hover:ring-2 active:animated-pulse" : "cursor-auto";
-export const badgeSizeStyles = (v: Sizes) => {
+export const badgeSizeStyles = (v: Size) => {
 	switch (v) {
 		case "xs":
 			return "min-w-[0.75rem] h-3 text-xs";
@@ -25,7 +25,7 @@ export const badgeSizeStyles = (v: Sizes) => {
 };
 
 interface Props {
-	size?: Sizes;
+	size?: Size;
 	horizontal?: Side;
 	vertical?: "top" | "bottom";
 	clickable?: boolean;

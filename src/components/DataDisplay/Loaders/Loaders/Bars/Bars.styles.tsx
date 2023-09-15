@@ -1,5 +1,5 @@
 import { keyframes, styled } from "styled-components";
-import { Sizes } from "../../../../../types";
+import { Size } from "../../../../../types";
 
 const animation = keyframes`
     0% {
@@ -21,7 +21,7 @@ export const Styles = styled.div<{ $index: number }>`
 	animation-delay: ${({ $index }) => $index * 0.4}s;
 `;
 
-export const dotsSize = ({ size }: { size?: Sizes }) => {
+export const dotsSize = ({ size }: { size?: Size }) => {
 	switch (size) {
 		case "xs":
 			return "h-5 w-1";

@@ -2,23 +2,23 @@ import React from "react";
 import { Link } from "../../Buttons/Link";
 import { Image } from "../../Media/Image";
 import Badge from "../Badge/Badge";
-import { ColorTypes, Sizes, SizesComplete } from "../../../types";
+import { ButtonVariant, ColorType, Size, SizesComplete } from "../../../types";
 import { applyRounded, applyTextSize } from "../../../style";
 import { applyButtonVariant } from "../../Buttons/Button/Button.styles";
-import Button, { ButtonVariant } from "../../Buttons/Button/Button";
+import Button from "../../Buttons/Button/Button";
 
 interface Props {
 	src: string;
 	name: string;
 	rounded?: SizesComplete;
 	description?: string;
-	size?: Sizes;
+	size?: Size;
 	href?: string;
 	hasText?: boolean;
 	variant?: ButtonVariant;
-	color?: ColorTypes;
+	color?: ColorType;
 	badge?: string;
-	badgeColor?: ColorTypes;
+	badgeColor?: ColorType;
 	onClick?: (
 		event:
 			| React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -28,7 +28,7 @@ interface Props {
 
 // inner functions
 
-const applySize = (size: Sizes) => {
+const applySize = (size: Size) => {
 	const sizes = {
 		xs: "30px",
 		sm: "40px",
@@ -57,7 +57,7 @@ const Avatar: React.FC<Props> = ({
 		<Image
 			src={src}
 			rounded={rounded}
-			aspectRatio="1/1"
+			aspectRatio="1:1"
 			height={applySize(size)}
 			width={applySize(size)}
 			alt={name}

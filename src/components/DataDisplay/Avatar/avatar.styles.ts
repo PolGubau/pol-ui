@@ -1,6 +1,6 @@
-import { Sizes } from "../../../types";
+import { Size } from "../../../types";
 
-export const applyAvatarSizes = (size?: Sizes) => {
+export const applyAvatarSizes = (size?: Size) => {
 	switch (size) {
 		case "xs":
 			return `w-4 max-h-4`;

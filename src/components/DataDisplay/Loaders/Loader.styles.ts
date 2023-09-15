@@ -1,6 +1,6 @@
-import { Sizes } from "../../../types";
+import { Size } from "../../../types";
 
-export const spinnerStyled = (size?: Sizes) => {
+export const spinnerStyled = (size?: Size) => {
 	switch (size) {
 		case "xs":
 			return "h-2 w-2";

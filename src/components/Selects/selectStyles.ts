@@ -1,5 +1,5 @@
 import { applyFullWidth, applyRounded } from "../../style";
-import { ColorTypes, SizesComplete } from "../../types";
+import { ColorType, SizesComplete } from "../../types";
 import { ButtonVariant } from "../Buttons/Button/Button";
 import { applyButtonVariant } from "../Buttons/Button/Button.styles";
 
@@ -7,7 +7,7 @@ interface Props {
 	rounded?: SizesComplete;
 	fullWidth?: boolean;
 	variant?: ButtonVariant;
-	color?: ColorTypes;
+	color?: ColorType;
 }
 
 export const selectStyles = ({ rounded, fullWidth, variant, color }: Props): string => {

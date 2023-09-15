@@ -4,7 +4,7 @@ import Button, { ButtonVariant } from "../../Buttons/Button/Button";
 import useClickOutside from "../../../hooks/useClickOutside";
 import { formatString } from "../../../utils";
 import { Link } from "../../Buttons/Link";
-import { ColorTypes, Positions, Side, SizesComplete } from "../../../types";
+import { ColorType, Positions, Side, SizesComplete } from "../../../types";
 import { menuStyles } from "./Menu.styles";
 import { selectStyles } from "../selectStyles";
 import { Icon } from "../../Base";
@@ -27,7 +27,7 @@ interface Props {
 	dividers?: boolean;
 	direction?: Positions;
 	fullWidth?: boolean;
-	color?: ColorTypes;
+	color?: ColorType;
 	rounded?: SizesComplete;
 	className?: string;
 }

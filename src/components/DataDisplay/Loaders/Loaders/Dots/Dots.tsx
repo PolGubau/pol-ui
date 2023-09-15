@@ -1,12 +1,12 @@
-import { ColorTypes, Sizes } from "../../../../../types";
+import { ColorType, Size } from "../../../../../types";
 import { applyBgColor } from "../../../../../style";
 import { Styles, dotsSize } from "./Dots.styles";
 
 interface Props {
 	className?: string;
-	color?: ColorTypes;
+	color?: ColorType;
 	amount?: number;
-	size?: Sizes;
+	size?: Size;
 }
 
 const Dots: React.FC<Props> = ({ className, color, amount = 3, size = "md" }) => {

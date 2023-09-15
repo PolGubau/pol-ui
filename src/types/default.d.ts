@@ -11,7 +11,7 @@ export enum Globals {
 
 export type Global = `${Globals}`;
 
-export enum Size {
+export enum Sizes {
 	"xs" = "xs",
 	"sm" = "sm",
 	"md" = "md",
@@ -19,12 +19,13 @@ export enum Size {
 	"xl" = "xl",
 }
 
-export type Sizes = `${Size}`;
+export type Size = `${Sizes}`;
 
 export type Identifier = string | number;
-export type SizesWithNone = Sizes | "none";
-export type SizesWithFull = Sizes | "full";
-export type SizesComplete = Sizes | "none" | "full";
+export type SizesWithNone = Size | "none";
+export type SizesWithFull = Size | "full";
+
+export type SizesComplete = Size | "none" | "full";
 
 export type PaddingOneOrBothValues =
 	| SizesWithNone
@@ -57,7 +58,7 @@ export type Shadow = SizesWithNone | "inner" | "outline";
 // css positions
 export type Position = "relative" | "absolute" | "fixed" | "sticky";
 
-export enum ColorType {
+export enum ColorTypes {
 	"primary" = "primary",
 	"secondary" = "secondary",
 	"success" = "success",
@@ -68,7 +69,7 @@ export enum ColorType {
 	"contrast" = "contrast",
 }
 
-export type ColorTypes = keyof typeof ColorType;
+export type ColorType = keyof typeof ColorTypes;
 
 export type BaseProps = {
 	className?: string;
@@ -121,3 +122,11 @@ export type Overflow =
 	| "scroll"
 	| "visible"
 	| (string & {});
+
+export enum ButtonVariants {
+	"filled" = "filled",
+	"outlined" = "outlined",
+	"text" = "text",
+}
+
+export type ButtonVariant = "filled" | "outlined" | "text";
