@@ -106,6 +106,12 @@
 			}
 		}
 	},
+	"exports": {
+		".": {
+			"import": "./dist/@pol/ui.js",
+			"require": "./dist/@pol/ui.umd.cjs"
+		}
+	},
 	"files": [
 		"dist"
 	],
