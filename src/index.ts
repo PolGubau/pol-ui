@@ -11,10 +11,7 @@ import {
 	CheckboxGroup,
 	Wrapper,
 	Modal,
-	ModalCloseReason,
-	ModalProps,
 	Toast,
-	ToastProps,
 	PopupsProvider,
 	Menu,
 	Select,
@@ -45,45 +42,11 @@ import {
 	Link,
 	CopyButton,
 	IconNames,
-	IconData,
+	NavbarItem,
+	Sidebar,
 } from "./components";
 
-import {
-	getIcon,
-	generateUUID,
-	toCamelCase,
-	toKebabCase,
-	capitalize,
-	shorten,
-	removeWhitespace,
-	reverseString,
-	truncateString,
-	formatString,
-	randomString,
-	lowerAndNoSpace,
-	getLocalStorage,
-	setToLocalStorage,
-	removeFromLocalStorage,
-
-	// sorters
-	sortStrings,
-	sortNumbers,
-	sortDates,
-
-	// dates
-	dateTimeToDate,
-	dateToDateTime,
-	getToday,
-	copyToClipboard,
-} from "./utils";
-
-import { useHover, useClickOutside } from "./hooks";
-
 export {
-	//Hooks
-	useHover,
-	useClickOutside,
-
 	// components
 	Button,
 	IconButton,
@@ -127,42 +90,13 @@ export {
 	Navbar,
 	Link,
 	CopyButton,
+	NavbarItem,
+	Sidebar,
 
 	// enums
-	ModalCloseReason,
-
-	// utils
-	generateUUID,
-	copyToClipboard,
-
-	// string conversion
-	getIcon,
-	toCamelCase,
-	toKebabCase,
-	shorten,
-	capitalize,
-	removeWhitespace,
-	reverseString,
-	truncateString,
-	formatString,
-	randomString,
-	lowerAndNoSpace,
-
-	// storage functions
-	getLocalStorage,
-	setToLocalStorage,
-	removeFromLocalStorage,
-
-	// sorters
-	sortStrings,
-	sortNumbers,
-	sortDates,
-
-	// dates
-	dateTimeToDate,
-	dateToDateTime,
-	getToday,
+	IconNames,
 };
 
-export type { IconNames, IconData, ModalProps, ToastProps };
+export * from "./hooks";
 export * from "./types";
+export * from "./utils";

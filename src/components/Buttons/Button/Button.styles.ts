@@ -16,8 +16,8 @@ import {
 	SizesComplete,
 	PaddingOneOrBothValues,
 	Position,
+	ButtonVariant,
 } from "./../../../types/index";
-import { ButtonVariant } from "./Button";
 
 // variant is the shape (filled, outlined, text, icon)
 // color is the color of the button from a predefined list

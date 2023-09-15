@@ -30,7 +30,7 @@ export const Main: Story = {
 		page: 1,
 		rowsPerPage: 10,
 		totalResults: 100,
-		variant: "main",
+		variant: "filled",
 	},
 };
 export const Text: Story = {

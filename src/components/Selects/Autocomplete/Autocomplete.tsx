@@ -3,10 +3,9 @@ import { Combobox, Transition } from "@headlessui/react";
 import { Icon, IconNames } from "../../Base/Icon";
 import { SelectItems } from "./types";
 import { IconName } from "../../../model/icons.model";
-import { ButtonVariant } from "../../Buttons/Button/Button";
 import { applyFullWidth, applyRounded } from "../../../style";
 import { applyButtonVariant } from "../../Buttons/Button/Button.styles";
-import { ColorType, SizesComplete } from "../../../types";
+import { ButtonVariant, ColorType, SizesComplete } from "../../../types";
 
 interface Props {
 	label?: string;

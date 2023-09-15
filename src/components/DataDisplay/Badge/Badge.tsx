@@ -1,8 +1,8 @@
 import { Transition } from "@headlessui/react";
-import { Icon, IconType } from "../../Base/Icon";
+import { Icon } from "../../Base/Icon";
 import { badgeStyles } from "./Badge.styles";
 import { Fragment } from "react";
-import { ColorType, Size, BaseProps, SizesComplete, Shadow, Side } from "../../../types";
+import { ColorType, Size, BaseProps, SizesComplete, Shadow, Side, IconType } from "../../../types";
 import { applyBgColor, applyRounded, applyShadow } from "../../../style";
 
 interface Props extends BaseProps {
@@ -39,7 +39,7 @@ const Badge = ({
 	isVisible = true,
 	ariaLabel = "badge",
 	ariaDescribedby = "Badge Popup to show short notifications",
-	icon = null,
+	icon,
 }: Props) => {
 	const isMoreThanMax = (content: number | string, max: number) => {
 		if (typeof content === "number") return content > max;

@@ -1,5 +1,4 @@
-import { Direction } from "../../../types";
-import { ToastVariant } from "./types";
+import { Direction, ToastVariant } from "../../../types";
 
 interface Props {
 	variant?: ToastVariant;

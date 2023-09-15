@@ -2,15 +2,12 @@ import React from "react";
 import { TabsItemProps } from "../../Tabs";
 import { applyPadding } from "../../../../../style";
 import { Button } from "../../../../Buttons";
-import { SizesWithNone, SizesWithFull } from "../../../../../types";
+import { SizesWithFull, PaddingOneOrBothValues } from "../../../../../types";
 interface Props {
 	data: TabsItemProps[];
 	activeTab: number;
 	setActiveTab: (index: number) => void;
-	padding?: {
-		x: SizesWithNone;
-		y: SizesWithNone;
-	};
+	padding?: PaddingOneOrBothValues;
 	maxWidth?: SizesWithFull;
 }
 

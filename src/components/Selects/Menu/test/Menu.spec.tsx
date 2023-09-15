@@ -1,11 +1,11 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import Menu from "../Menu";
+import Menu, { MenuItem } from "../Menu";
 
 describe("Menu component", () => {
-	const items = [
+	const items: MenuItem[] = [
 		{ label: "Item 1", onClick: jest.fn() },
 		{ label: "Item 2", href: "/item2" },
-		{ label: "Item 3", icon: "icon3", onClick: jest.fn() },
+		{ label: "Item 3", onClick: jest.fn(), icon: "check" },
 	];
 
 	it("opens and closes the menu", async () => {

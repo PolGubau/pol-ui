@@ -1,6 +1,5 @@
-import { Side } from "../../../types";
+import { Side, ButtonVariant, IconType } from "../../../types";
 import { Link } from "../../Buttons";
-import { ButtonVariant } from "../../Buttons/Button/Button";
 
 interface Props {
 	href: string;
@@ -8,7 +7,7 @@ interface Props {
 	className?: string;
 	id?: string;
 	label: string;
-	icon?: string;
+	icon?: IconType;
 	iconPosition?: Side;
 	active?: boolean;
 }
@@ -18,7 +17,7 @@ const NavbarItem: React.FC<Props> = ({
 	className = "",
 	id = "",
 	label,
-	icon = "",
+	icon,
 	iconPosition = "left",
 	active = false,
 }) => {

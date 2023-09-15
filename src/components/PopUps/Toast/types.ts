@@ -1,25 +1,7 @@
-export enum ToastTypes {
-	neutral = "neutral",
-	success = "success",
-	danger = "danger",
-}
-
-export type ToastVariant = keyof typeof ToastTypes;
-
-export interface ToastProps {
-	message: string;
-	
-	variant?: ToastVariant;
-	duration?: number;
-	action?: {
-		label?: string;
-		icon?: string;
-		onClick: () => void;
-	};
-}
+import { ToastProps, ToastTypes } from "../../../types";
 
 export const defaultToast: ToastProps = {
 	message: "Saved!",
-	variant: "neutral",
+	variant: ToastTypes.neutral,
 	duration: 3000,
 };

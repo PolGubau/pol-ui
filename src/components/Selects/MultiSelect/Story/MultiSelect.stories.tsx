@@ -40,7 +40,7 @@ export const WithLabel: Story = {
 	args: { ...Default.args, label: "Select your favorite" },
 };
 export const FullWidth: Story = {
-	args: { ...Default.args, fullWidth: true, variant: "normal" },
+	args: { ...Default.args, fullWidth: true, variant: "filled" },
 };
 export const FullWidthOutlined: Story = {
 	args: { ...Default.args, fullWidth: true, variant: "outlined" },

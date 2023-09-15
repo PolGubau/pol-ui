@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { IconButton, Button } from "../../Buttons";
 import { Icon } from "../../Base/Icon";
 import { Wrapper } from "../../Wrappers";
-import { ModalCloseReason, ModalProps } from "./types";
 import { Text } from "../../Text";
 import { applyAlignCenter, applyCentered } from "../../../style";
 import { useLockBodyScroll } from "@uidotdev/usehooks";
 import { closeButton, modalStyles } from "./modalStyles";
+import { ModalCloseReason, ModalProps } from "../../../types";
 interface Props {
 	state: ModalProps;
 	setState?: (state: ModalProps) => void;
@@ -107,7 +107,7 @@ const Modal = ({ state, setState }: Props) => {
 				)}
 				{title && (
 					<header className="max-w-[85%] flex gap-4 items-center ">
-						<Icon icon={icon} size="xl" />
+						{icon && <Icon icon={icon} size="xl" />}
 						<Text size={4} className="" value={title} />
 					</header>
 				)}

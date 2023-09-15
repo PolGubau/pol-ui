@@ -1,7 +1,6 @@
-import { anyObject } from "../ ../../../types";
 import { SelectItems } from "../types";
 
-export const mockSelectIdName: anyObject[] = [
+export const mockSelectIdName: any[] = [
 	{ id: 1, name: "Pol Gubau" },
 	{ id: 2, name: "Polseres" },
 	{ id: 3, name: "NotRealPol" },

@@ -1,3 +1,5 @@
+import { ButtonVariants } from "../../../types";
+import { IconNames } from "../../Base";
 import { Link } from "../../Buttons";
 import { Accordion } from "../../Layout";
 
@@ -5,13 +7,13 @@ function Sidebar() {
 	return (
 		<div className="h-full w-64 py-4 px-2  ">
 			<ul className="flex gap-2 flex-col">
-				<Link href="/" variant="text" icon="user" fullWidth>
+				<Link href="/" variant={ButtonVariants.text} icon={IconNames.user} fullWidth>
 					Dashboard
 				</Link>
-				<Link href="/" variant="text" icon="user" fullWidth>
+				<Link href="/" variant={ButtonVariants.text} icon={IconNames.user} fullWidth>
 					Dashboard
 				</Link>
-				<Link href="/" variant="text" icon="user" fullWidth>
+				<Link href="/" variant={ButtonVariants.text} icon={IconNames.user} fullWidth>
 					Dashboard
 				</Link>
 				<Accordion
@@ -24,14 +26,14 @@ function Sidebar() {
 							title: "Profile",
 							content: "Account",
 							href: "/profile",
-							icon: "arrowDown",
+							icon: IconNames.arrowdown,
 						},
 					]}
 				/>
-				<Link href="/" variant="text" icon="user" fullWidth>
+				<Link href="/" variant={ButtonVariants.text} icon={IconNames.user} fullWidth>
 					Dashboard
 				</Link>
-				<Link href="/" variant="text" icon="user" fullWidth>
+				<Link href="/" variant={ButtonVariants.text} icon={IconNames.user} fullWidth>
 					Dashboard
 				</Link>
 			</ul>

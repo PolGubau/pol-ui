@@ -1,7 +1,6 @@
 import { applyColor, applyTextSize } from "../../../style";
-import { ColorType, Size } from "../../../types";
+import { ColorType, IconType, Size } from "../../../types";
 import { getIcon } from "../../../utils";
-import { IconType } from "./types";
 
 interface IconProps {
 	icon: IconType;

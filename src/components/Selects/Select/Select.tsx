@@ -3,8 +3,7 @@ import { Listbox, Transition } from "@headlessui/react";
 import { Icon, IconNames } from "../../Base/Icon";
 import { SelectItems } from "./types";
 import { IconName } from "../../../model/icons.model";
-import { ButtonVariant } from "../../Buttons/Button/Button";
-import { ColorType, SizesComplete } from "../../../types";
+import { ColorType, SizesComplete, ButtonVariant } from "../../../types";
 import { selectStyles } from "../selectStyles";
 
 interface Props {

@@ -1,9 +1,3 @@
-export type IconType = React.ReactNode | IconNames;
-
-export interface IconData {
-	name: IconNames;
-	icon: React.ReactNode;
-}
 
 export enum IconNames {
 	arrowBarLeft = "arrowBarLeft",

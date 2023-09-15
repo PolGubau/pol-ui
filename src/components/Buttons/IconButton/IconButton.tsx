@@ -1,17 +1,29 @@
 import React from "react";
 import "../../../style/baseTheme.css";
-import { Icon, IconType } from "../../Base/Icon";
 import { Button } from "../Button";
-import { BaseProps, ColorType, Position, Size, SizesComplete, SizesWithNone } from "../../../types";
-import { ButtonVariant } from "../Button/Button";
+import {
+	BaseProps,
+	ButtonVariant,
+	ColorType,
+	IconType,
+	Position,
+	Size,
+	SizesComplete,
+	SizesWithNone,
+} from "../../../types";
+import { Icon } from "../../Base";
 interface Props extends BaseProps {
-	onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+	onClick?: (
+		event:
+			| React.MouseEvent<HTMLAnchorElement, MouseEvent>
+			| React.MouseEvent<HTMLButtonElement, MouseEvent>
+	) => void;
 	disabled?: boolean;
 	variant?: ButtonVariant;
 	color?: ColorType;
 	size?: Size;
 	rounded?: SizesComplete;
-	icon?: IconType;
+	icon: IconType;
 	autoFocus?: boolean;
 	fullWidth?: boolean;
 	centered?: boolean;

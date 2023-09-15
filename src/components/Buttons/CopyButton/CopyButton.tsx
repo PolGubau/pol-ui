@@ -4,12 +4,12 @@ import { Button } from "../Button";
 import { copyToClipboard } from "../../../utils";
 import { Transition } from "@headlessui/react";
 import ConfettiExplosion from "react-confetti-explosion";
-import { ButtonVariant } from "../Button/Button";
+import { ButtonVariant, IconType } from "../../../types";
 
 interface Props {
 	value?: string | number;
 	valueToCopy: string | number | object;
-	icon?: string;
+	icon?: IconType;
 	hasConfetti?: boolean;
 	variant?: ButtonVariant;
 	textAfterCopied?: string;

@@ -2,7 +2,7 @@ import React from "react";
 import { Icon } from "../../Base/Icon";
 import { Transition } from "@headlessui/react";
 import { applyBgColorInChecked, applyDisabled, applyTextSize } from "../../../style";
-import { ColorType, Size } from "../../../types";
+import { ColorType, IconType, Size } from "../../../types";
 
 interface Props {
 	label?: string;
@@ -12,7 +12,7 @@ interface Props {
 	errorMessage?: string;
 	colorChecked?: ColorType;
 	iconColor?: ColorType;
-	checkIcon?: React.JSX.Element | string;
+	checkIcon?: IconType;
 	className?: string;
 	name?: string;
 	size?: Size;

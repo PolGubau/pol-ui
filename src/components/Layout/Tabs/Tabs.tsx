@@ -3,12 +3,12 @@ import TabBar from "./components/TabBar/TabBar";
 import { applyMaxWidth, applyPadding, applyRounded } from "../../../style";
 import { tabStyles } from "./tab.styles";
 import TabContent from "./components/TabContent/TabContent";
-import { SizesWithNone, SizesWithFull, SizesComplete } from "../../../types";
+import { SizesWithNone, SizesWithFull, SizesComplete, IconType } from "../../../types";
 
 export interface TabsItemProps {
 	title: string;
 	content: string | React.ReactNode;
-	icon?: string | React.ReactNode;
+	icon?: IconType;
 	className?: string;
 }
 

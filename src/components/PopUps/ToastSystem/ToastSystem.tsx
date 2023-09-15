@@ -1,6 +1,5 @@
 import React from "react";
-import { ToastProps } from "../Toast/types";
-import { Direction } from "../../../types";
+import { Direction, ToastProps } from "../../../types";
 import { Toast } from "../Toast/Toast";
 
 interface Props {

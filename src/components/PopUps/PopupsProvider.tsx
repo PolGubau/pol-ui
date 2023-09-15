@@ -1,8 +1,7 @@
 import React from "react";
 import { Modal } from "./Modal";
-import { ToastProps } from "./Toast/types";
-import { ModalProps } from "./Modal/types";
 import ToastSystem from "./ToastSystem/ToastSystem";
+import { ModalProps, ToastProps } from "../../types";
 
 interface Props {
 	toasts?: ToastProps[];

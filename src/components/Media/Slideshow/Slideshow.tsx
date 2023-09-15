@@ -5,8 +5,7 @@ import { wrap } from "popmotion";
 import { IconButton } from "../../Buttons";
 import { IconNames } from "../../Base";
 import { SlideShowStyled } from "./SlideshowStyled";
-import { ButtonVariant } from "../../Buttons/Button/Button";
-import { SizesComplete } from "../../../types";
+import { SizesComplete, ButtonVariant } from "../../../types";
 import { applyRounded } from "../../../style";
 
 const variants = {

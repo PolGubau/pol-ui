@@ -1,6 +1,5 @@
 import { applyFullWidth, applyRounded } from "../../style";
-import { ColorType, SizesComplete } from "../../types";
-import { ButtonVariant } from "../Buttons/Button/Button";
+import { ButtonVariant, ColorType, SizesComplete } from "../../types";
 import { applyButtonVariant } from "../Buttons/Button/Button.styles";
 
 interface Props {

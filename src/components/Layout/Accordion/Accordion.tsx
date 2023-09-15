@@ -2,8 +2,7 @@ import React from "react";
 import AccordionItem from "./AccordionItem";
 import { accordionStyles } from "./accordion.style";
 import { applyMaxWidth, applyRounded } from "../../../style";
-import { SizesWithNone, SizesWithFull, TextSize, Side, Sides } from "../../../types";
-import { IconType } from "../../Base";
+import { SizesWithNone, SizesWithFull, TextSize, Side, Sides, IconType } from "../../../types";
 export interface AccordionItemProps {
 	title: string;
 	content: string | React.ReactNode;
@@ -62,22 +61,16 @@ const Accordion: React.FC<Props> = ({
 	};
 	const toggleOpened = (index: number) => {
 		if (openMode === "single") {
-			if (isThisItemOpened(index)) {
-				closeItem(index);
-			} else {
-				setOpenedIndex([index]);
-			}
+			isThisItemOpened(index) ? closeItem(index) : setOpenedIndex([index]);
 		} else {
-			if (isThisItemOpened(index)) {
-				closeItem(index);
-			} else {
-				setOpenedIndex((prevValue) => {
-					if (prevValue === null) {
-						return [index];
-					}
-					return [...prevValue, index];
-				});
-			}
+			isThisItemOpened(index)
+				? closeItem(index)
+				: setOpenedIndex((prevValue) => {
+						if (prevValue === null) {
+							return [index];
+						}
+						return [...prevValue, index];
+				  });
 		}
 	};
 

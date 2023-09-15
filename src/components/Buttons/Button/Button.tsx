@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import "../../../style/baseTheme.css";
-import { Icon, IconType } from "../../Base/Icon";
+import { Icon } from "../../Base/Icon";
 import { buttonStyles, ButtonStyled } from "./Button.styles";
 import {
 	type BaseProps,
@@ -14,6 +14,7 @@ import {
 	Sizes,
 	JustifyContents,
 	ButtonVariant,
+	IconType,
 } from "../../../types";
 import useRipple from "../../../hooks/useRipple";
 import { applyJustifyContent } from "../../../style";

@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { Transition } from "@headlessui/react";
-import Button, { ButtonVariant } from "../../Buttons/Button/Button";
+import Button from "../../Buttons/Button/Button";
 import useClickOutside from "../../../hooks/useClickOutside";
 import { formatString } from "../../../utils";
 import { Link } from "../../Buttons/Link";
-import { ColorType, Positions, Side, SizesComplete } from "../../../types";
+import { ButtonVariant, ColorType, IconType, Positions, Side, SizesComplete } from "../../../types";
 import { menuStyles } from "./Menu.styles";
 import { selectStyles } from "../selectStyles";
 import { Icon } from "../../Base";
@@ -12,7 +12,7 @@ import { Icon } from "../../Base";
 export interface MenuItem {
 	id?: string;
 	label: string;
-	icon?: string;
+	icon?: IconType;
 	onClick?: () => void;
 	href?: string;
 }
@@ -22,8 +22,8 @@ interface Props {
 	items: MenuItem[];
 	variant?: ButtonVariant;
 	iconSide?: Side;
-	openIcon?: string;
-	closeIcon?: string;
+	openIcon?: IconType;
+	closeIcon?: IconType;
 	dividers?: boolean;
 	direction?: Positions;
 	fullWidth?: boolean;
@@ -37,7 +37,7 @@ export default function Menu({
 	items = [],
 	variant = "filled",
 	iconSide = "right",
-	openIcon = "arrowDown",
+	openIcon = "arrowdown",
 	closeIcon = openIcon ?? "arrowDown",
 	dividers = false,
 	direction = "bottom",
@@ -86,9 +86,11 @@ export default function Menu({
 				fullWidth={fullWidth}
 			>
 				{label}
-				<span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-					<Icon icon={Boolean(items.length) && (open ? closeIcon : openIcon)} aria-hidden="true" />
-				</span>
+				{items.length > 0 && (
+					<span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+						<Icon icon={open ? closeIcon : openIcon} aria-hidden="true" />
+					</span>
+				)}
 			</Button>
 			<Transition
 				show={open}

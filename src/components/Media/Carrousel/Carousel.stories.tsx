@@ -25,7 +25,7 @@ export const Default: Story = {
 	args: {
 		gap: 10,
 		children: [
-			<figure>
+			<figure key={0}>
 				<Image
 					aspectRatio={AspectRatio.OneOne}
 					rounded="md"
@@ -33,7 +33,7 @@ export const Default: Story = {
 					alt="a black building with a grass roof and a white steeple"
 				/>
 			</figure>,
-			<figure>
+			<figure key={1}>
 				<Image
 					rounded="md"
 					aspectRatio={AspectRatio.OneOne}
@@ -41,7 +41,7 @@ export const Default: Story = {
 					alt="a path in the middle of a forest surrounded by tall trees"
 				/>
 			</figure>,
-			<figure>
+			<figure key={2}>
 				<Image
 					aspectRatio={AspectRatio.OneOne}
 					rounded="md"
@@ -49,7 +49,7 @@ export const Default: Story = {
 					alt="a pineapple, an egg and an orange on a table"
 				/>
 			</figure>,
-			<figure>
+			<figure key={3}>
 				<Image
 					aspectRatio={AspectRatio.OneOne}
 					rounded="md"

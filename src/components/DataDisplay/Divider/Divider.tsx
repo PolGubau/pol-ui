@@ -19,6 +19,7 @@ import {
 	Directions,
 	ColorTypes,
 	Sizes,
+	IconType,
 } from "../../../types";
 
 interface Props extends BaseProps {
@@ -27,7 +28,7 @@ interface Props extends BaseProps {
 	weight?: number;
 	message?: string | React.ReactNode;
 	messagePosition?: Alignments;
-	icon?: string;
+	icon?: IconType;
 	margin?: SizesWithNone;
 	opacity?: Tens;
 	messageColor?: ColorType;

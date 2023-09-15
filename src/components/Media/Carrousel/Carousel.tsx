@@ -3,17 +3,17 @@ import { scrollSliderNext, scrollSliderPrevious } from "./functions/scroll";
 import { Icon, IconNames } from "../../Base";
 import { CarrouselStyled } from "./CarouselStyled";
 import { IconButton } from "../../Buttons";
-import React from "react";
+import { IconType } from "../../../types";
 
 /**
  * Props for the Carousel component.
  */
 export interface CarouselProps {
-	children: JSX.Element[];
+	children: React.JSX.Element[];
 	prevAriaLabel?: string;
 	nextAriaLabel?: string;
-	prevButtonContent?: React.ReactNode;
-	nextButtonContent?: React.ReactNode;
+	prevButtonContent?: IconType;
+	nextButtonContent?: IconType;
 	gap?: number;
 }
 
@@ -61,8 +61,8 @@ export function Carousel({
 	return (
 		<CarrouselStyled $gap={gap}>
 			<section ref={slider} className="slider">
-				{children.map((child, i) => (
-					<article key={i} className="slide">
+				{children.map((child) => (
+					<article key={child.key} className="slide">
 						{child}
 					</article>
 				))}
