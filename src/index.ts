@@ -44,6 +44,8 @@ import {
 	IconNames,
 	NavbarItem,
 	Sidebar,
+	Stack,
+	ButtonGroup,
 } from "./components";
 
 export {
@@ -92,6 +94,8 @@ export {
 	CopyButton,
 	NavbarItem,
 	Sidebar,
+	Stack,
+	ButtonGroup,
 
 	// enums
 	IconNames,
