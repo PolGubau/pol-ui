@@ -102,7 +102,7 @@ export default function Menu({
 				leaveTo="opacity-0 translate-y-0"
 				className={menuStyles({ direction })}
 			>
-				<div className={`p-1 ${dividers ? "divide-y divide-gray-100" : ""} gap-col gap-0.5`}>
+				<div className={`z-50 p-1 ${dividers ? "divide-y divide-gray-100" : ""} gap-col gap-0.5`}>
 					{items.map((item) =>
 						item.href ? (
 							<Link

@@ -91,7 +91,7 @@ Props) {
 					leaveTo="opacity-0"
 				>
 					<Listbox.Options
-						className={`absolute mt-1 max-h-60 w-fit overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm  `}
+						className={`absolute mt-1 max-h-60 w-fit overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-50 `}
 					>
 						{items.map((person) => {
 							// the key is used to identify the item in the list
