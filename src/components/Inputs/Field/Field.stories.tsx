@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Field } from "../Field";
+import { Field } from ".";
+import { ButtonVariants } from "../../../types";
 
 const meta = {
 	title: "Inputs/Field",
@@ -19,6 +20,20 @@ export const WithValue: Story = {
 	args: {
 		label: "Input",
 		value: "This is a value",
+	},
+};
+export const Filled: Story = {
+	args: {
+		label: "Input",
+		value: "This is a value",
+		variant: ButtonVariants.filled,
+	},
+};
+export const Text: Story = {
+	args: {
+		label: "Input",
+		value: "This is a value",
+		variant: ButtonVariants.text,
 	},
 };
 export const NumberType: Story = {
@@ -102,5 +117,18 @@ export const FullWidth: Story = {
 		value: "youremail@email.com",
 		type: "email",
 		fullWidth: true,
+	},
+};
+
+export const DarkMode: Story = {
+	render: (args) => (
+		<div className="dark">
+			<div className="dark:bg-background-dark p-8">
+				<Field {...args} />
+			</div>
+		</div>
+	),
+	args: {
+		...Default.args,
 	},
 };

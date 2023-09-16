@@ -271,6 +271,43 @@ export const AllColors: Story = {
 		children: "I'm a button",
 	},
 };
+export const AllColorsBlackMode: Story = {
+	render: (args) => (
+		<main className="dark">
+			<div className="flex gap-2 p-8 bg-background dark:bg-background-dark">
+				<div className="flex flex-col gap-2">
+					<Button {...args} color="primary" children="primary" />
+					<Button {...args} color="secondary" children="secondary" />
+					<Button {...args} color="accent" children="accent" />
+					<Divider />
+					<Button {...args} color="success" children="success" />
+					<Button {...args} color="danger" children="danger" />
+					<Button {...args} color="info" children="info" />
+				</div>
+				<div className="flex flex-col gap-2">
+					<Button {...args} variant="outlined" color="primary" children="primary" />
+					<Button {...args} variant="outlined" color="secondary" children="secondary" />
+					<Button {...args} variant="outlined" color="accent" children="accent" /> <Divider />
+					<Button {...args} variant="outlined" color="success" children="success" />
+					<Button {...args} variant="outlined" color="danger" children="danger" />
+					<Button {...args} variant="outlined" color="info" children="info" />
+				</div>
+				<div className="flex flex-col gap-2">
+					<Button {...args} variant="text" color="primary" children="primary" />
+					<Button {...args} variant="text" color="secondary" children="secondary" />
+					<Button {...args} variant="text" color="accent" children="accent" /> <Divider />
+					<Button {...args} variant="text" color="success" children="success" />
+					<Button {...args} variant="text" color="danger" children="danger" />
+					<Button {...args} variant="text" color="info" children="info" />
+				</div>
+			</div>
+		</main>
+	),
+	args: {
+		...Default.args,
+		children: "I'm a button",
+	},
+};
 export const DarkMode: Story = {
 	render: (args) => (
 		<div className="dark">

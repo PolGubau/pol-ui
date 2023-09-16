@@ -1,20 +1,20 @@
-import { SelectItems } from "../types";
+import { SelectOption } from "../../../../types";
 
-export const mockSelectIdName: any[] = [
+export const mockSelectIdName: SelectOption[] = [
 	{ id: 1, name: "Pol Gubau" },
 	{ id: 2, name: "Polseres" },
 	{ id: 3, name: "NotRealPol" },
 	{ id: 4, name: "CodedByPol" },
 	{ id: 5, name: "Polderless" },
 ];
-export const mockSelectJustNames: SelectItems[] = [
+export const mockSelectJustNames: SelectOption[] = [
 	{ name: "Pol Gubau" },
 	{ name: "Polseres" },
 	{ name: "NotRealPol" },
 	{ name: "CodedByPol" },
 	{ name: "Polderless" },
 ];
-export const withComplexeObject: SelectItems[] = [
+export const withComplexeObject: SelectOption[] = [
 	{
 		id: 1,
 		title: "Pol Gubau",
@@ -52,7 +52,7 @@ export const withComplexeObject: SelectItems[] = [
 		single: true,
 	},
 ];
-export const withComplexeObjectWithName: SelectItems[] = [
+export const withComplexeObjectWithName: SelectOption[] = [
 	{
 		id: 1,
 		name: "Pol Gubau",

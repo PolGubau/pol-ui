@@ -1,25 +1,47 @@
 /** @type {import('tailwindcss').Config} */
+
+const palette = {
+	white: "#FAFAFA",
+	black: "#232323",
+
+	primary: "#2a2945",
+	primaryDark: "#8986db",
+
+	secondary: "#435db0",
+	secondaryDark: "#bcbbeb",
+
+	accent: "#ffb300",
+	accentDark: "#dfe65f",
+
+	success: "#9bc88e",
+	successDark: "#9bc88e",
+
+	danger: "#ff7b7b",
+	dangerDark: "#ff7b7b",
+
+	info: "#56caca",
+	infoDark: "#56caca",
+};
+
 const config = {
 	darkMode: "class",
 
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
-		extend: {
-			colors: {
-				background: { DEFAULT: "#FAFAFA", dark: "#232323" },
-				contrast: { DEFAULT: "#232323", dark: "#FAFAFA" },
-				// Base
-				primary: { DEFAULT: "#2b422f", dark: "#7fc38a" },
-				secondary: { DEFAULT: "#696969", dark: "#ababab" },
-				// Accent
-				accent: { DEFAULT: "#41ff07", dark: "#41ff07" },
-				// Status
-				success: { DEFAULT: "#caffba", dark: "#4a6442" },
-				danger: { DEFAULT: "#ff7b7b", dark: "#7b0000" },
-				info: { DEFAULT: "#7bffff", dark: "#007b7b" },
-				// Utility
-				transparent: "transparent",
-			},
+		colors: {
+			background: { DEFAULT: palette.white, dark: palette.black },
+			contrast: { DEFAULT: palette.black, dark: palette.white },
+			// Base
+			primary: { DEFAULT: palette.primary, dark: palette.primaryDark },
+			secondary: { DEFAULT: palette.secondary, dark: palette.secondaryDark },
+			// Accent
+			accent: { DEFAULT: palette.accent, dark: palette.accentDark },
+			// Status
+			success: { DEFAULT: palette.success, dark: palette.successDark },
+			danger: { DEFAULT: palette.danger, dark: palette.dangerDark },
+			info: { DEFAULT: palette.info, dark: palette.infoDark },
+			// Utility
+			transparent: "transparent",
 		},
 	},
 

@@ -71,7 +71,7 @@ const Button: React.FC<ButtonProps> = ({
 	rippleOpacity,
 	rippleDuration,
 	position = "relative",
-	hasRipple = position === "relative",
+	hasRipple = position !== "absolute" && position !== "fixed",
 }) => {
 	const ref = useRef<HTMLButtonElement>(null);
 	const ripples = useRipple({

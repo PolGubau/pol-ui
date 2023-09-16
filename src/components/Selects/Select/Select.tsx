@@ -1,22 +1,21 @@
 import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { Icon, IconNames } from "../../Base/Icon";
-import { SelectItems } from "./types";
-import { ColorType, SizesComplete, ButtonVariant, IconType } from "../../../types";
+import { ColorType, SizesComplete, ButtonVariant, IconType, SelectOption } from "../../../types";
 import { selectStyles } from "../selectStyles";
 
 interface Props {
 	label?: string;
 	fullWidth?: boolean;
-	items: SelectItems[];
+	items: SelectOption[];
 	placeholder?: string;
 	variant?: ButtonVariant;
 	buttonIcon?: IconType;
 	keyField?: string;
-	value?: SelectItems;
+	value?: SelectOption;
 	rounded?: SizesComplete;
 	color?: ColorType;
-	onChange?: (value: SelectItems) => void;
+	onChange?: (value: SelectOption) => void;
 	nullable?: boolean;
 	className?: string;
 }
@@ -36,14 +35,14 @@ export default function Select({
 	className,
 }: // TODO: add nullable
 Props) {
-	const [selected, setSelected] = useState<undefined | SelectItems>(value ?? undefined);
+	const [selected, setSelected] = useState<undefined | SelectOption>(value ?? undefined);
 
-	const handleChanges = (value: SelectItems) => {
+	const handleChanges = (value: SelectOption) => {
 		setSelected(value);
 		onChange?.(value);
 	};
 
-	const firstFieldNotNullOrUndefined = (item: SelectItems): string => {
+	const firstFieldNotNullOrUndefined = (item: SelectOption): string => {
 		return (
 			Object.values(item)
 				.find((value) => value !== null && value !== undefined)
@@ -51,14 +50,14 @@ Props) {
 		);
 	};
 
-	const returnObjectIfNotNumberString = (item: SelectItems): string | number => {
+	const returnObjectIfNotNumberString = (item: SelectOption): string | number => {
 		if (typeof item === "string") return item;
 		if (typeof item === "number") return item;
 
 		return item[keyField]?.toString() ?? firstFieldNotNullOrUndefined(item);
 	};
 
-	const takingFielWithDesired = (item: SelectItems): string | number => {
+	const takingFielWithDesired = (item: SelectOption): string | number => {
 		return returnObjectIfNotNumberString(item);
 	};
 

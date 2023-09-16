@@ -81,6 +81,20 @@ export const WithOtherButtons: Story = {
 		...Default.args,
 	},
 };
+export const DarkMode: Story = {
+	render: (args) => (
+		<main className="dark bg-background-dark p-4">
+			<div className="flex gap-2">
+				<Button onClick={() => {}}>Button</Button>
+				<IconButton {...args} />
+				<IconButton {...args} />
+			</div>
+		</main>
+	),
+	args: {
+		...Default.args,
+	},
+};
 export const AllSizes: Story = {
 	render: (args) => (
 		<div className="flex flex-col gap-2">

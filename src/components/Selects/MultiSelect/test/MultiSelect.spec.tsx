@@ -9,20 +9,20 @@ describe("MultiSelect component", () => {
 	];
 
 	it("renders the component with default placeholder", () => {
-		render(<MultiSelect items={items} />);
+		render(<MultiSelect options={items} />);
 		const placeholder = screen.getByText(MultiSelectDefaultPlaceholder);
 		expect(placeholder).toBeInTheDocument();
 	});
 
 	it("renders the selected values", () => {
 		const selected = [{ id: 2, name: "Option 2" }];
-		render(<MultiSelect items={items} values={selected} />);
+		render(<MultiSelect options={items} values={selected} />);
 		const selectedValue = screen.getByText("Option 2");
 		expect(selectedValue).toBeInTheDocument();
 	});
 
 	it("opens options when clicked", () => {
-		render(<MultiSelect items={items} />);
+		render(<MultiSelect options={items} />);
 		const selectButton = screen.getByRole("button");
 		fireEvent.click(selectButton);
 		const option1 = screen.getByText("Option 1");
@@ -35,7 +35,7 @@ describe("MultiSelect component", () => {
 
 	it("selects options", async () => {
 		const onChange = jest.fn();
-		render(<MultiSelect items={items} onChange={onChange} />);
+		render(<MultiSelect options={items} onChange={onChange} />);
 		const selectButton = screen.getByRole("button");
 		fireEvent.click(selectButton);
 		const option1 = screen.getByText("Option 1");
@@ -51,14 +51,14 @@ describe("MultiSelect component", () => {
 	});
 
 	it("renders label", () => {
-		render(<MultiSelect label="Select options" items={items} />);
+		render(<MultiSelect label="Select options" options={items} />);
 		const label = screen.getByText("Select options");
 		expect(label).toBeInTheDocument();
 	});
 
 	it("handles uncontrolled component", () => {
 		const onChange = jest.fn();
-		render(<MultiSelect items={items} onChange={onChange} />);
+		render(<MultiSelect options={items} onChange={onChange} />);
 		const selectButton = screen.getByRole("button");
 		fireEvent.click(selectButton);
 		const option1 = screen.getByText("Option 1");
@@ -67,13 +67,13 @@ describe("MultiSelect component", () => {
 	});
 
 	it("handles empty values array", () => {
-		render(<MultiSelect items={items} values={[]} />);
+		render(<MultiSelect options={items} values={[]} />);
 		const placeholder = screen.getByText(MultiSelectDefaultPlaceholder);
 		expect(placeholder).toBeInTheDocument();
 	});
 
 	it("handles undefined values array", () => {
-		render(<MultiSelect items={items} values={undefined} />);
+		render(<MultiSelect options={items} values={undefined} />);
 		const placeholder = screen.getByText(MultiSelectDefaultPlaceholder);
 		expect(placeholder).toBeInTheDocument();
 	});
@@ -84,7 +84,7 @@ describe("MultiSelect component", () => {
 			{ id: 1, name: "Option 1" },
 			{ id: 3, name: "Option 3" },
 		];
-		render(<MultiSelect items={items} values={selected} onChange={onChange} />);
+		render(<MultiSelect options={items} values={selected} onChange={onChange} />);
 		const selectButton = screen.getByRole("button");
 		fireEvent.click(selectButton);
 		const option2 = screen.getByText("Option 2");

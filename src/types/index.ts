@@ -343,3 +343,7 @@ export interface ToastProps {
 		onClick: () => void;
 	};
 }
+export type SelectOption =
+	| { [key: string]: string | number | boolean | object | undefined | null }
+	| number
+	| string;
