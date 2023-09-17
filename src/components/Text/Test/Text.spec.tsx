@@ -66,7 +66,7 @@ describe("Text Component", () => {
 	});
 
 	test("If isBold prop is false, the text is displayed as normal and should not have font-bold class", () => {
-		render(<Text value={TestTexts.TEXT} isBold={false} />);
+		render(<Text value={TestTexts.TEXT}  />);
 		const text = screen.getByRole("text");
 		expect(text).not.toHaveClass("font-bold");
 	});
