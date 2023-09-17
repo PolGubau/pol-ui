@@ -50,7 +50,6 @@ import {
 } from "./components";
 
 export {
-	// components
 	Button,
 	IconButton,
 	Text,
