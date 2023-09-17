@@ -22,11 +22,7 @@ export const CutomIcon: Story = {
 		icon: <TbCheck />,
 	},
 };
-export const BadName: Story = {
-	args: {
-		icon: "hello",
-	},
-};
+
 export const CustomColor: Story = {
 	args: {
 		...Default.args,

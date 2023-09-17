@@ -48,6 +48,7 @@ const config = {
 			},
 			// Utility
 			transparent: "transparent",
+			current: "currentColor",
 		},
 	},
 

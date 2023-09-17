@@ -14,6 +14,7 @@ import {
 	Transition,
 	Transitions,
 	Sizes,
+	ColorTypes,
 } from "../types";
 
 export const applyMaxWidth = (size?: SizesWithFull) => {
@@ -273,24 +274,24 @@ export const applyBgColorInChecked = (color?: ColorType) => {
 };
 export const applyColor = (color?: ColorType) => {
 	switch (color) {
-		case "primary":
+		case ColorTypes.primary:
 			return "text-primary dark:text-primary-inverted";
-		case "secondary":
+		case ColorTypes.secondary:
 			return "text-secondary dark:text-secondary-inverted";
-		case "success":
+		case ColorTypes.success:
 			return "text-success dark:text-success-inverted";
-		case "danger":
+		case ColorTypes.danger:
 			return "text-danger dark:text-danger-inverted";
-		case "accent":
+		case ColorTypes.accent:
 			return "text-accent dark:text-accent-inverted";
-		case "info":
+		case ColorTypes.info:
 			return "text-info dark:text-info-inverted";
-		case "background":
+		case ColorTypes.background:
 			return "text-background dark:text-background-inverted";
-		case "contrast":
+		case ColorTypes.contrast:
 			return "text-contrast dark:text-contrast-inverted";
 		default:
-			return "text-default dark:text-default-inverted";
+			return "text-default ";
 	}
 };
 export const applyOpacity = (opacity?: Tens) => {

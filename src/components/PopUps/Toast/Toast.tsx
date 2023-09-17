@@ -4,7 +4,7 @@ import { Button, IconButton } from "../../Buttons";
 import { defaultToast } from "./types";
 import React from "react";
 import { motion } from "framer-motion";
-import { Direction, ToastProps, ToastTypes } from "../../../types";
+import { ButtonVariants, Direction, ToastProps, ToastTypes } from "../../../types";
 interface Props {
 	toast: ToastProps;
 	onClose?: () => void;
@@ -55,11 +55,15 @@ export const Toast = ({ toast = defaultToast, onClose, direction }: Props) => {
 		>
 			<p>{toast.message}</p>
 			{toast.action && (
-				<Button variant="text" icon={toast.action?.icon} onClick={toast.action?.onClick}>
+				<Button
+					variant={ButtonVariants.text}
+					icon={toast.action?.icon}
+					onClick={toast.action?.onClick}
+				>
 					{toast.action.label}
 				</Button>
 			)}
-			<IconButton variant="text" icon={<GrClose />} onClick={onClose} />
+			<IconButton variant={ButtonVariants.text} icon={<GrClose />} onClick={onClose} />
 		</motion.div>
 	);
 };

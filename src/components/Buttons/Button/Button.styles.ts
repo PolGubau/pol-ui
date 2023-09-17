@@ -68,7 +68,7 @@ export const applyButtonVariant = ({
 				case "contrast":
 					return "text-contrast hover:bg-contrast/10 dark:text-contrast-inverted dark:hover:bg-contrast-inverted/10 focus:ring-contrast/80 dark:focus:ring-contrast-inverted/80 focus:bg-contrast/20 dark:focus:bg-contrast-inverted/20";
 				default:
-					return "text-primary hover:bg-primary/10 dark:hover:bg-primary-inverted/10 focus:ring-primary/80 dark:focus:ring-primary-inverted/80 focus:bg-primary/20 dark:focus:bg-primary-inverted/20";
+					return "text-primary dark:text-primary-inverted hover:bg-primary/10 dark:hover:bg-primary-inverted/10 focus:ring-primary/80 dark:focus:ring-primary-inverted/80 focus:bg-primary/20 dark:focus:bg-primary-inverted/20";
 			}
 		default:
 			switch (color) {
@@ -120,7 +120,7 @@ export const buttonStyles = ({
 	className,
 	position = "relative",
 }: ButtonStylesProps) => {
-	return `flex items-center gap-2 transition-all flex-nowrap min-h-10 overflow-hidden focus:outline-none focus:ring-2  transition-all  
+	return `flex items-center gap-2 transition-all flex-nowrap min-h-10 overflow-hidden focus:outline-none focus:ring-2 transition-all  
 	
 	focus:ring-opacity-50 
 	focus:ring-offset-2 

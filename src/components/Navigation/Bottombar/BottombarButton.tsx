@@ -21,8 +21,8 @@ const BottombarButton: React.FC<Props> = ({ item, rounded = "full" }) => {
 					fullWidth
 					rounded={rounded}
 					centered
-					variant={item.onClick ? "filled" : "text"}
-					color={item.onClick ? "accent" : "primary"}
+					variant={item.active ? "filled" : "text"}
+					color={item.active ? "accent" : "primary"}
 					className={`items-center justify-center rounded-full hover:bg-inverted:hover:bg-background-inverted group `}
 				>
 					<div className="flex flex-col gap-1 items-center">

@@ -35,3 +35,16 @@ export const WithAction: Story = {
 		onClose: () => console.log("onClose"),
 	},
 };
+
+export const DarkMode: Story = {
+	args: {
+		...Default.args,
+	},
+	render: (args) => (
+		<div className="dark">
+			<main className="bg-background-inverted w-full h-screen p-8 rounded-lg">
+				<Toast {...args} />
+			</main>
+		</div>
+	),
+};

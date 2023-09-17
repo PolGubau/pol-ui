@@ -2,11 +2,9 @@ import { applyMaxWidth, applyPadding, applyRounded } from "../../../style";
 import {
 	IconType,
 	PaddingOneOrBothValues,
-	Sides,
 	Sizes,
 	SizesComplete,
 	SizesWithFull,
-	SizesWithNone,
 } from "../../../types";
 import BottombarButton from "./BottombarButton";
 
@@ -15,6 +13,7 @@ export interface BottombarItem {
 	icon?: IconType;
 	link?: string;
 	onClick?: () => void;
+	active?: boolean;
 }
 
 interface Props {
@@ -41,7 +40,7 @@ const Bottombar: React.FC<Props> = ({
 			className={`fixed z-50 ${applyMaxWidth(maxWidth)} 
 			${fillEmptyWidth ? "w-full" : "w-fit"}
 			
-			-translate-x-1/2 left-1/2 backdrop-blur-sm bg-background-inverted/10 dark:bg-background/70 ${applyRounded(
+			-translate-x-1/2 left-1/2 backdrop-blur-sm bg-background-inverted/10 dark:bg-background/20 ${applyRounded(
 				rounded
 			)}`}
 			style={{
