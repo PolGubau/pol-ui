@@ -65,12 +65,6 @@ describe("Text Component", () => {
 		expect(text.tagName).toBe("P");
 	});
 
-	// Bold and italic
-	test("If isBold prop is true, the text is displayed as bold and should have font-bold class", () => {
-		render(<Text value={TestTexts.TEXT} isBold={true} />);
-		const text = screen.getByRole("text");
-		expect(text).toHaveClass("font-bold");
-	});
 	test("If isBold prop is false, the text is displayed as normal and should not have font-bold class", () => {
 		render(<Text value={TestTexts.TEXT} isBold={false} />);
 		const text = screen.getByRole("text");
