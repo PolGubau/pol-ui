@@ -274,7 +274,7 @@ export const AllColors: Story = {
 export const AllColorsBlackMode: Story = {
 	render: (args) => (
 		<main className="dark">
-			<div className="flex gap-2 p-8 bg-background dark:bg-background-dark">
+			<div className="flex gap-2 p-8 bg-background dark:bg-background-inverted">
 				<div className="flex flex-col gap-2">
 					<Button {...args} color="primary" children="primary" />
 					<Button {...args} color="secondary" children="secondary" />

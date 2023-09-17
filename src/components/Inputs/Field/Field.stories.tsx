@@ -123,7 +123,7 @@ export const FullWidth: Story = {
 export const DarkMode: Story = {
 	render: (args) => (
 		<div className="dark">
-			<div className="dark:bg-background-dark p-8">
+			<div className="dark:bg-background-inverted p-8">
 				<Field {...args} />
 			</div>
 		</div>

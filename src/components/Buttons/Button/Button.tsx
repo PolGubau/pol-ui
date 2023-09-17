@@ -15,6 +15,9 @@ import {
 	JustifyContents,
 	ButtonVariant,
 	IconType,
+	ButtonVariants,
+	ColorTypes,
+	Sides,
 } from "../../../types";
 import useRipple from "../../../hooks/useRipple";
 import { applyJustifyContent } from "../../../style";
@@ -54,12 +57,12 @@ const Button: React.FC<ButtonProps> = ({
 	disabled = false,
 	ariaLabel = "button",
 	href,
-	variant = "filled",
-	color = "primary",
+	variant = ButtonVariants.filled,
+	color = ColorTypes.primary,
 	size = Sizes.md,
 	rounded = Sizes.lg,
 	icon,
-	iconPosition = "left",
+	iconPosition = Sides.left,
 	autoFocus = false,
 	fullWidth = false,
 	centered = false,
@@ -122,10 +125,15 @@ const Button: React.FC<ButtonProps> = ({
 			})}
 		>
 			{ripples}
+
 			{icon && iconPosition === "left" && <Icon icon={icon} size={size} />}
-			<div className={`w-full flex gap-2 items-center ${applyJustifyContent(justify) ?? ""}`}>
-				{children}
-			</div>
+
+			{children && (
+				<div className={`w-full flex gap-2 items-center ${applyJustifyContent(justify) ?? ""}`}>
+					{children}
+				</div>
+			)}
+
 			{icon && iconPosition === "right" && <Icon icon={icon} size={size} />}
 		</ButtonStyled>
 	);

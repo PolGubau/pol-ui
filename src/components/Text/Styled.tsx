@@ -3,6 +3,7 @@ import "../../style/baseTheme.css";
 interface TextStyledProps {
 	$color?: string;
 	$maxLines?: number;
+	$weight?: number;
 }
 
 const TextStyled = styled.div<TextStyledProps>`
@@ -42,12 +43,14 @@ const TextStyled = styled.div<TextStyledProps>`
 	}
 	padding: 0;
 	margin: 0;
-	overflow: hidden;
+	overflow-y: hidden;
+	overflow-x: auto;
 	display: -webkit-box;
 	-webkit-line-clamp: ${(props) => props.$maxLines};
 	line-clamp: ${(props) => props.$maxLines};
 	-webkit-box-orient: vertical;
-	color: ${(props) => props.$color};
+	color: ${(props) => props.$color} !important;
+	font-weight: ${(props) => props.$weight} !important;
 `;
 
 export default TextStyled;

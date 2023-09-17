@@ -19,62 +19,68 @@ export const Default: Story = {
 
 export const H1: Story = {
 	args: {
-		value: texts.shortText,
+		...Default.args,
 		size: 1,
 	},
 };
 export const H2: Story = {
 	args: {
-		value: texts.shortText,
+		...Default.args,
 		size: 2,
 	},
 };
 export const H3: Story = {
 	args: {
-		value: texts.shortText,
+		...Default.args,
 		size: 3,
 	},
 };
 export const H4: Story = {
 	args: {
-		value: texts.shortText,
+		...Default.args,
 		size: 4,
 	},
 };
 export const H5: Story = {
 	args: {
-		value: texts.shortText,
+		...Default.args,
 		size: 5,
 	},
 };
 export const H6: Story = {
 	args: {
-		value: texts.shortText,
+		...Default.args,
 		size: 6,
 	},
 };
-export const Bold: Story = {
+export const Weights: Story = {
 	args: {
-		value: texts.shortText,
-		isBold: true,
+		...Default.args,
+		weight: 700,
 	},
+	render: (args) => (
+		<>
+			<Text {...args} size={2} weight={400} />
+
+			<Text {...args} size={2} weight={800} />
+		</>
+	),
 };
 export const Italic: Story = {
 	args: {
-		value: texts.shortText,
+		...Default.args,
 		isItalic: true,
-		isBold: false,
 	},
 };
 export const Color: Story = {
 	args: {
-		value: texts.shortText,
+		...Default.args,
 		color: "#ff0000",
 	},
 };
 export const MaxLength: Story = {
 	args: {
-		value: texts.shortText,
+		...Default.args,
 		maxLength: 5,
 	},
 };
@@ -107,4 +113,18 @@ export const Empty: Story = {
 	args: {
 		value: "",
 	},
+};
+
+export const DarkMode: Story = {
+	args: {
+		value: texts.shortText,
+	},
+	render: (args) => (
+		<div className="dark ">
+			<div className="  bg-background-inverted p-4">
+				<Text {...args} size={3} />
+				<Text {...args} color="#0000ff" />
+			</div>
+		</div>
+	),
 };

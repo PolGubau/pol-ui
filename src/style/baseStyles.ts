@@ -234,63 +234,63 @@ export const applyRoundedLarge = (round?: SizesComplete) => {
 export const applyBgColor = (color?: ColorType) => {
 	switch (color) {
 		case "secondary":
-			return "bg-secondary";
+			return "bg-secondary dark:bg-secondary-inverted";
 		case "success":
-			return "bg-success";
+			return "bg-success dark:bg-success-inverted";
 		case "danger":
-			return "bg-danger";
+			return "bg-danger dark:bg-danger-inverted";
 		case "accent":
-			return "bg-accent";
+			return "bg-accent dark:bg-accent-inverted";
 		case "info":
-			return "bg-info";
+			return "bg-info dark:bg-info-inverted";
 		case "background":
-			return "bg-background";
+			return "bg-background dark:bg-background-inverted";
 		case "contrast":
-			return "bg-contrast text-background";
+			return "bg-background-inverted text-background dark:bg-background dark:text-background-inverted";
 		default:
-			return "bg-primary";
+			return "bg-primary dark:bg-primary-inverted";
 	}
 };
 export const applyBgColorInChecked = (color?: ColorType) => {
 	switch (color) {
 		case "secondary":
-			return "checked:bg-secondary";
+			return "checked:bg-secondary dark:checked:bg-secondary-inverted";
 		case "success":
-			return "checked:bg-success";
+			return "checked:bg-success dark:checked:bg-success-inverted";
 		case "danger":
-			return "checked:bg-danger";
+			return "checked:bg-danger dark:checked:bg-danger-inverted";
 		case "accent":
-			return "checked:bg-accent";
+			return "checked:bg-accent dark:checked:bg-accent-inverted";
 		case "info":
-			return "checked:bg-info";
+			return "checked:bg-info dark:checked:bg-info-inverted";
 		case "background":
-			return "checked:bg-background";
+			return "checked:bg-background dark:checked:bg-background-inverted";
 		case "contrast":
-			return "checked:bg-contrast checked:text-background";
+			return "checked:bg-background-inverted checked:text-background dark:checked:bg-background dark:checked:text-background-inverted";
 		default:
-			return "checked:bg-primary";
+			return "checked:bg-primary	 dark:checked:bg-primary-inverted";
 	}
 };
 export const applyColor = (color?: ColorType) => {
 	switch (color) {
 		case "primary":
-			return "text-primary";
+			return "text-primary dark:text-primary-inverted";
 		case "secondary":
-			return "text-secondary";
+			return "text-secondary dark:text-secondary-inverted";
 		case "success":
-			return "text-success";
+			return "text-success dark:text-success-inverted";
 		case "danger":
-			return "text-danger";
+			return "text-danger dark:text-danger-inverted";
 		case "accent":
-			return "text-accent";
+			return "text-accent dark:text-accent-inverted";
 		case "info":
-			return "text-info";
+			return "text-info dark:text-info-inverted";
 		case "background":
-			return "text-background";
+			return "text-background dark:text-background-inverted";
 		case "contrast":
-			return "text-contrast";
+			return "text-contrast dark:text-contrast-inverted";
 		default:
-			return "text-default";
+			return "text-default dark:text-default-inverted";
 	}
 };
 export const applyOpacity = (opacity?: Tens) => {

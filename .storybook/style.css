@@ -1,0 +1,44 @@
+:root {
+	--theme-white: 250, 240, 240;
+	--theme-black: 35, 35, 35;
+
+	--theme-primary: 42, 41, 69;
+	--theme-primary-inverted: 148, 144, 211;
+
+	--theme-secondary: 67, 93, 176;
+	--theme-secondary-inverted: 188, 187, 235;
+
+	--theme-accent: 255, 179, 0;
+	--theme-accent-inverted: 223, 230, 95;
+
+	--theme-success: 155, 200, 142;
+	--theme-success-inverted: 155, 200, 142;
+
+	--theme-danger: 255, 123, 123;
+	--theme-danger-inverted: 255, 123, 123;
+
+	--theme-info: 86, 202, 202;
+	--theme-info-inverted: 86, 202, 202;
+}
+/* :root {
+  --theme-white: #fafafa;
+  --theme-black: #232323;
+
+  --theme-primary: #2a2945;
+  --theme-primary-inverted: #9490d3;
+
+  --theme-secondary: #435db0;
+  --theme-secondary-inverted: #bcbbeb;
+
+  --theme-accent: #ffb300;
+  --theme-accent-inverted: #dfe65f;
+
+  --theme-success: #9bc88e;
+  --theme-success-inverted: #9bc88e;
+
+  --theme-danger: #ff7b7b;
+  --theme-danger-inverted: #ff7b7b;
+
+  --theme-info: #56caca;
+  --theme-info-inverted: #56caca;
+} */

@@ -47,7 +47,7 @@ const useRipple = ({
 	ref,
 	duration = 0.5,
 	color = "background",
-	opacity = 0.3,
+	opacity = 0.5,
 }: RippleProps) => {
 	//ripples are just styles that we attach to span elements
 	const [ripples, setRipples] = useState<React.CSSProperties[]>([]);

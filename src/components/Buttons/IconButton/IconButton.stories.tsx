@@ -83,7 +83,7 @@ export const WithOtherButtons: Story = {
 };
 export const DarkMode: Story = {
 	render: (args) => (
-		<main className="dark bg-background-dark p-4">
+		<main className="dark bg-background-inverted p-4">
 			<div className="flex gap-2">
 				<Button onClick={() => {}}>Button</Button>
 				<IconButton {...args} />

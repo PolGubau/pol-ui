@@ -83,7 +83,7 @@ const Avatar: React.FC<Props> = ({
 			)}
 
 			{hasText && (
-				<div className="flex flex-col text-contrast dark:text-contrast-dark">
+				<div className="flex flex-col text-contrast dark:text-contrast-inverted">
 					{name}
 					{description && <small>{description}</small>}
 				</div>

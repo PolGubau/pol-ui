@@ -3,8 +3,8 @@ import { IconNames } from "../../../Base/Icon";
 import { Field, Switch } from "../../../Inputs";
 import Tabs from "../../../Layout/Tabs/Tabs";
 import { Autocomplete } from "../../../Selects";
-import { ModalProps } from "../types";
 import { Text } from "../../../Text";
+import { ModalProps } from "../../../../types";
 const texts = {
 	handleClose: "Closing modal",
 };
@@ -24,7 +24,7 @@ export const defaultModal: ModalProps = {
 		</div>
 	),
 	title: "Payment successful",
-	icon: "idCard",
+	icon: "idcard",
 
 	submitButton: {
 		color: "accent",
@@ -101,7 +101,7 @@ export const defaultModalWithSelect: ModalProps = {
 		</div>
 	),
 	title: "Payment successful",
-	icon: "idCard",
+	icon: "idcard",
 
 	submitButton: {
 		color: "accent",
@@ -126,7 +126,7 @@ export const modalWithBothButtons: ModalProps = {
 		</div>
 	),
 	title: "Payment successful",
-	icon: "idCard",
+	icon: "idcard",
 	cancelButton: {
 		variant: "text",
 		icon: "close",

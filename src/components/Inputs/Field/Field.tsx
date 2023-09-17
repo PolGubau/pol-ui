@@ -81,27 +81,27 @@ const Field = <T extends string | number>({
             
 						bg-transparent 
             
-						text-background-dark 
-						dark:text-background dark:focus:border-background-dark 
+						text-background-inverted 
+						dark:text-background dark:focus:border-background-inverted 
             
             
             
              ${
 								variant === ButtonVariants.filled &&
-								"bg-background-dark/20 dark:bg-background/20 pb-3 pt-3 focus:bg-background-dark/10 dark:focus:bg-background/10"
+								"bg-background-inverted/20 dark:bg-background/20 pb-3 pt-3 focus:bg-background-inverted/10 dark:focus:bg-background/10"
 							}
              ${
 								variant === ButtonVariants.outlined &&
-								"border border-background-dark/20 dark:border-background/40"
+								"border border-background-inverted/20 dark:border-background/40"
 							}
             
 						
-						focus:outline-none focus:ring-0 focus:border-accent focus:dark:border-accent-dark 
+						focus:outline-none focus:ring-0 focus:border-accent focus:dark:border-accent-inverted 
 						
 						peer 
             
-            disabled:text-background-dark/10 disabled:border-background-dark/10  disabled:cursor-not-allowed
-            disabled:dark:text-background-dark/10 disabled:dark:border-background-dark/10
+            disabled:text-background-inverted/10 disabled:border-background-inverted/10  disabled:cursor-not-allowed
+            disabled:dark:text-background-inverted/10 disabled:dark:border-background-inverted/10
             
             
             
@@ -113,10 +113,10 @@ const Field = <T extends string | number>({
 						htmlFor="floating_outlined"
 						className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2  z-10 origin-[0] px-2 pointer-events-none
             
-            text-background-dark/90  bg-background
-            dark:text-background dark:bg-background-dark
+            text-background-inverted/90  bg-background
+            dark:text-background dark:bg-background-inverted
             
-            peer-focus:px-2 peer-focus:text-accent peer-focus:dark:text-accent-dark peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1
+            peer-focus:px-2 peer-focus:text-accent peer-focus:dark:text-accent-inverted peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1
             
                ${
 									variant === ButtonVariants.filled &&

@@ -3,7 +3,7 @@ interface Props {
 	isJustText: boolean;
 }
 export const tooltipStylePosition = (props: Props) => {
-	const base = `text-background text-xs bg-contrast rounded-md absolute pointer-events-none`;
+	const base = `text-background dark:text-background-inverted text-xs bg-background-inverted dark:bg-background rounded-lg absolute pointer-events-none`;
 
 	const position = {
 		// each position shows in which direction the tooltip is pointing, it's all relative to the tooltip container and it's outside the tooltip itself
@@ -13,7 +13,7 @@ export const tooltipStylePosition = (props: Props) => {
 		right: `left-full top-1/2 transform -translate-x-1 -translate-y-1/2`,
 	};
 
-	const isJustTextClasses = `p-1 bg-dark rounded-md text-light`;
+	const isJustTextClasses = `py-1 px-2 bg-inverted rounded-md text-light`;
 
 	return `${base} ${position[props.position]} ${props.isJustText && isJustTextClasses}`;
 };

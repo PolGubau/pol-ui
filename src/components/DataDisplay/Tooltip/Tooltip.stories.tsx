@@ -144,7 +144,7 @@ export const CustomElement: Story = {
 					alt="randomPerson"
 					width="150px"
 				/>
-				<p className="text-dark">Have you seen this person? 🤔</p>
+				<p className="text-inverted">Have you seen this person? 🤔</p>
 			</div>
 		),
 	},
