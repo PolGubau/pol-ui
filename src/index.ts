@@ -46,6 +46,7 @@ import {
 	Sidebar,
 	Stack,
 	ButtonGroup,
+	Bottombar,
 } from "./components";
 
 export {
@@ -96,6 +97,7 @@ export {
 	Sidebar,
 	Stack,
 	ButtonGroup,
+	Bottombar,
 
 	// enums
 	IconNames,
