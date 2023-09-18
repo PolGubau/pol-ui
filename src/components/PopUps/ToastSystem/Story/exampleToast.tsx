@@ -1,4 +1,4 @@
-import { ToastProps } from "../../Toast/types";
+import { ToastProps } from "../../../../types";
 
 const texts = {
 	message: "This is a toast",
