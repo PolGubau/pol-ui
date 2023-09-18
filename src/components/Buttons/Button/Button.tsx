@@ -47,6 +47,7 @@ export interface ButtonProps extends BaseProps {
 	justify?: JustifyContent;
 	position?: Position;
 	href?: string;
+	buttonType?: "button" | "submit" | "reset";
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -75,6 +76,7 @@ const Button: React.FC<ButtonProps> = ({
 	rippleDuration,
 	position = "relative",
 	hasRipple = position !== "absolute" && position !== "fixed",
+	buttonType = "button",
 }) => {
 	const ref = useRef<HTMLButtonElement>(null);
 	const ripples = useRipple({
@@ -109,6 +111,7 @@ const Button: React.FC<ButtonProps> = ({
 			autoFocus={autoFocus}
 			id={id}
 			onClick={handleClick}
+			type={buttonType}
 			style={style}
 			className={buttonStyles({
 				rounded,
