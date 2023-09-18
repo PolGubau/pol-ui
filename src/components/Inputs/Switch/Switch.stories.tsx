@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Switch } from "../Switch";
+import { Switch } from ".";
 
 const meta = {
 	title: "Inputs/Switch",
@@ -44,4 +44,22 @@ export const WithError: Story = {
 		checked: true,
 		error: "This is an error",
 	},
+};
+
+export const DarkMode: Story = {
+	args: {
+		...Default.args,
+	},
+	render: (args) => (
+		<div className="flex flex-col gap-4">
+			<div className="dark">
+				<div className=" bg-background-inverted flex p-4 rounded-xl">
+					<Switch {...args} />
+				</div>
+			</div>
+			<div className=" bg-background flex p-4 rounded-xl">
+				<Switch {...args} />
+			</div>
+		</div>
+	),
 };

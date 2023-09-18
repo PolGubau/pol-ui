@@ -13,9 +13,13 @@ interface Props {
 	className?: string;
 	centered?: boolean;
 	weight?: number;
+	role?: string;
+	as?: "label" | "p" | "span" | "div";
+	htmlFor?: string;
 }
 
 const Text: React.FC<Props> = ({
+	as = "p",
 	value, // Text to be displayed
 	size, // Size of the text
 	color, // Color of the text
@@ -26,12 +30,15 @@ const Text: React.FC<Props> = ({
 	isItalic = false, // If the text is italic
 	centered = false, // If the text is centered
 	weight = 400, // Weight of the text
+	role = "text",
+	htmlFor,
 }): React.JSX.Element => {
 	const shortedText = shorterText({ value, maxLength });
 	const sizedText = textSizer({ size, value: shortedText, isMarkdown });
 
 	return (
 		<TextStyled
+			as={as}
 			className={` 
 				w-fit
  				${isItalic ? "italic" : ""}
@@ -43,9 +50,10 @@ const Text: React.FC<Props> = ({
 		
  			${className}`}
 			$color={color}
-			role="text"
+			role={role}
 			$maxLines={maxLines}
 			$weight={weight}
+			htmlFor={htmlFor}
 		>
 			{sizedText}
 		</TextStyled>
