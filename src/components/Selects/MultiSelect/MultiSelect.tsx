@@ -93,7 +93,7 @@ export default function MultiSelect({
 				leaveTo="opacity-0"
 			>
 				<Listbox.Options
-					className={`absolute mt-1 max-h-60 w-fit overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm  z-50`}
+					className={`bg-background dark:bg-background-inverted  absolute mt-1 max-h-60 w-fit overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm  z-50`}
 				>
 					{options.map((obj) => {
 						const label = getLabelFromOption(obj, keyField);

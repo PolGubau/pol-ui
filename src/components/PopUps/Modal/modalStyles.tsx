@@ -6,7 +6,6 @@ import {
 	applyRoundedLarge,
 	applyShadow,
 	applyTransition,
-	applyJustifyContent,
 } from "../../../style";
 import { Shadow, SizesComplete, SizesWithFull, SizesWithNone, Transition } from "../../../types";
 
@@ -28,7 +27,7 @@ export const modalStyles = ({
 	transitionType = "slideBottom",
 	transitionDuration = "md",
 }: Props): string => {
-	const layout = `flex flex-col gap-4 relative    w-full bg-white dark:bg-gray-800 dark:ring-gray-700 dark:text-gray-200   justify-center  shadow-2xl   md:max-w-3xl `;
+	const layout = `flex flex-col gap-4 relative w-full bg-background dark:bg-background-inverted  text-background-inverted dark:text-background justify-center shadow-2xl md:max-w-3xl `;
 
 	const base = ` ${layout}`;
 	const transitionClass = applyTransition({
