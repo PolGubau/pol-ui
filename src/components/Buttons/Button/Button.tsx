@@ -21,6 +21,7 @@ import {
 } from "../../../types";
 import useRipple from "../../../hooks/useRipple";
 import { applyJustifyContent } from "../../../style";
+import { useMediaQuery } from "../../../hooks";
 export interface ButtonProps extends BaseProps {
 	children?: React.ReactNode;
 	onClick?: (
@@ -48,6 +49,7 @@ export interface ButtonProps extends BaseProps {
 	position?: Position;
 	href?: string;
 	buttonType?: "button" | "submit" | "reset";
+	hideWhenLessThan?: number;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -59,6 +61,7 @@ const Button: React.FC<ButtonProps> = ({
 	ariaLabel = "button",
 	href,
 	variant = ButtonVariants.filled,
+	hideWhenLessThan = 0,
 	color = ColorTypes.primary,
 	size = Sizes.md,
 	rounded = Sizes.lg,
@@ -78,6 +81,8 @@ const Button: React.FC<ButtonProps> = ({
 	hasRipple = position !== "absolute" && position !== "fixed",
 	buttonType = "button",
 }) => {
+	const isHidden = useMediaQuery(hideWhenLessThan);
+
 	const ref = useRef<HTMLButtonElement>(null);
 	const ripples = useRipple({
 		hasRipple,
@@ -100,6 +105,12 @@ const Button: React.FC<ButtonProps> = ({
 		const navEvent = new PopStateEvent("popstate");
 		window.dispatchEvent(navEvent);
 	};
+
+	// Show children if:
+	// 1. Always if doenst have icon
+	// If has icon and screen less than hideWhenLessThan
+
+	const shouldShowChildren = !icon || !isHidden;
 
 	return (
 		<ButtonStyled
@@ -131,7 +142,7 @@ const Button: React.FC<ButtonProps> = ({
 
 			{icon && iconPosition === "left" && <Icon icon={icon} size={size} />}
 
-			{children && (
+			{children && shouldShowChildren && (
 				<div className={`w-full flex gap-2 items-center ${applyJustifyContent(justify) ?? ""}`}>
 					{children}
 				</div>

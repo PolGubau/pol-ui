@@ -120,7 +120,7 @@ export const buttonStyles = ({
 	className,
 	position = "relative",
 }: ButtonStylesProps) => {
-	return `flex items-center gap-2 transition-all flex-nowrap min-h-10 overflow-hidden focus:outline-none focus:ring-2 transition-all  
+	return `flex items-center gap-2 transition-all flex-nowrap min-h-10 overflow-hidden focus:outline-none focus:ring-2 transition-all  h-10
 	
 	focus:ring-opacity-50 
 	focus:ring-offset-2 

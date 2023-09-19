@@ -340,3 +340,11 @@ export const CustomRipple: Story = {
 		padding: "lg",
 	},
 };
+export const HideTextInTablet: Story = {
+	args: {
+		...Default.args,
+		icon: "check",
+		children: "Resize your screen",
+		hideWhenLessThan: 666,
+	},
+};
