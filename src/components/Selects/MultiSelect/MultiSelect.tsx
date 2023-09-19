@@ -50,9 +50,9 @@ export default function MultiSelect({
 }: Props) {
 	const [selected, setSelected] = useState<SelectOption[]>(values);
 
-	const { getLabelFromOption, getLabelsString } = useGetLabels();
+	const { getLabelFromOption, getProperLabel } = useGetLabels();
 
-	const valueString: string = getLabelsString({
+	const valueString: string = getProperLabel({
 		options: selected,
 		keyField,
 		limit: labelLimit,

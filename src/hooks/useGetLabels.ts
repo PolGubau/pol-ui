@@ -1,5 +1,12 @@
 import { SelectOption } from "../types";
 import { arrayToString } from "../utils/arrayUtils/limitArray";
+interface GetProperLabelProps {
+	options: SelectOption[];
+	keyField?: string;
+	limit?: number;
+	and?: string;
+	placeholder?: string;
+}
 
 export const useGetLabels = () => {
 	/*
@@ -43,21 +50,13 @@ export const useGetLabels = () => {
 		return labels;
 	};
 
-	interface GetLabelsString {
-		options: SelectOption[];
-		keyField?: string;
-		limit?: number;
-		and?: string;
-		placeholder?: string;
-	}
-
-	const getLabelsString = ({
+	const getProperLabel = ({
 		options,
 		keyField,
 		limit,
 		and,
 		placeholder,
-	}: GetLabelsString): string => {
+	}: GetProperLabelProps): string => {
 		const labels = getLabelsFromOptions(options, keyField);
 
 		if (labels.length === 0) return placeholder ?? "No value";
@@ -67,5 +66,5 @@ export const useGetLabels = () => {
 		return string;
 	};
 
-	return { getLabelFromOption, getLabelsFromOptions, getLabelsString };
+	return { getLabelFromOption, getLabelsFromOptions, getProperLabel };
 };
