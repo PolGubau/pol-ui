@@ -2,6 +2,21 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import Menu, { MenuItem } from "../Menu";
 
 describe("Menu component", () => {
+	beforeAll(() => {
+		Object.defineProperty(window, "matchMedia", {
+			writable: true,
+			value: jest.fn().mockImplementation((query) => ({
+				matches: false,
+				media: query,
+				onchange: null,
+				addListener: jest.fn(), // Deprecated
+				removeListener: jest.fn(), // Deprecated
+				addEventListener: jest.fn(),
+				removeEventListener: jest.fn(),
+				dispatchEvent: jest.fn(),
+			})),
+		});
+	});
 	const items: MenuItem[] = [
 		{ label: "Item 1", onClick: jest.fn() },
 		{ label: "Item 2", href: "/item2" },
