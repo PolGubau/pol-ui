@@ -113,7 +113,7 @@ const Modal = ({ state, setState }: Props) => {
 				)}
 
 				<section
-					className={` text-black/70
+					className={` text-black/70 w-full flex flex-col gap-2
 				${applyCentered(centered)}
 				${applyAlignCenter(centered)}
 				
