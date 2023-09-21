@@ -47,6 +47,8 @@ interface Props {
 	hasNavigation?: boolean;
 	navigationVariant?: ButtonVariant;
 	rounded?: SizesComplete;
+	imagePosition?: "center" | "top" | "bottom";
+	scrollable?: boolean;
 }
 const Slideshow: React.FC<Props> = ({
 	items,
@@ -54,6 +56,8 @@ const Slideshow: React.FC<Props> = ({
 	navigationVariant = "filled",
 	hasPagination = true,
 	rounded = "md",
+	imagePosition = "center",
+	scrollable = false,
 }) => {
 	const [[page, direction], setPage] = useState<[number, number]>([0, 0]);
 
@@ -68,7 +72,22 @@ const Slideshow: React.FC<Props> = ({
 	};
 
 	return (
-		<SlideShowStyled className={`  ${applyRounded(rounded)}`}>
+		<SlideShowStyled
+			className={`  ${applyRounded(rounded)}`}
+			onKeyDown={(e) => {
+				if (e.key === "Enter") {
+					paginate(1);
+				} else if (e.key === " ") {
+					paginate(1);
+				}
+				// if arrow Left or arrow Right is pressed toggle the switch on or off
+				else if (e.key === "ArrowLeft") {
+					paginate(-1);
+				} else if (e.key === "ArrowRight") {
+					paginate(1);
+				}
+			}}
+		>
 			<AnimatePresence initial={false} custom={direction}>
 				<motion.div
 					key={page}
@@ -94,7 +113,17 @@ const Slideshow: React.FC<Props> = ({
 						}
 					}}
 				>
-					<div className="item">{items[imageIndex]}</div>
+					<div
+						className={`item ${applyRounded(rounded)} 
+						${imagePosition === "center" ? "items-center" : ""}
+						${imagePosition === "top" ? "items-start" : ""}
+						${imagePosition === "bottom" ? "items-end" : ""}
+						
+						${scrollable ? "overflow-y-auto" : "overflow-y-hidden"}
+					`}
+					>
+						{items[imageIndex]}
+					</div>
 				</motion.div>
 				{hasNavigation && (
 					<>
@@ -113,6 +142,24 @@ const Slideshow: React.FC<Props> = ({
 					</>
 				)}
 			</AnimatePresence>
+
+			{hasPagination && (
+				<div className="flex justify-center gap-2 mt-2 absolute bottom-1 z-20 ">
+					{items.map((_, i) => (
+						<button
+							key={i}
+							onClick={() => paginate(i - page)}
+							className={` 
+							
+							transition-all duration-300   
+						w-3 h-3 rounded-full  hover:border-primary   focus:ring-2 focus:ring-primary/50 
+						
+						${i === imageIndex ? "bg-accent" : "bg-primary"}
+						`}
+						></button>
+					))}
+				</div>
+			)}
 		</SlideShowStyled>
 	);
 };

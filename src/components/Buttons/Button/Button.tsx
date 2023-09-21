@@ -35,7 +35,7 @@ export interface ButtonProps extends BaseProps {
 	color?: ColorType;
 	size?: Size;
 	rounded?: SizesComplete;
-	icon?: IconType;
+	icon?: IconType | string;
 	iconPosition?: Side;
 	autoFocus?: boolean;
 	fullWidth?: boolean;
@@ -77,7 +77,7 @@ const Button: React.FC<ButtonProps> = ({
 	padding = { x: Sizes.md, y: Sizes.sm },
 	style,
 	customRef,
-	justify = JustifyContents.center,
+	justify = JustifyContents.start,
 	rippleColor,
 	rippleOpacity,
 	rippleDuration,

@@ -3,7 +3,7 @@ import { ColorType, IconType, Size } from "../../../types";
 import { getIcon } from "../../../utils";
 
 interface IconProps {
-	icon: IconType;
+	icon: IconType | string;
 	color?: ColorType;
 	size?: Size;
 	className?: string;

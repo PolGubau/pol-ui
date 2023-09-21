@@ -378,25 +378,25 @@ export const UsageAsSidebar: Story = {
 						<Grid rows={2} gap={"10px"}>
 							<Card className="flex w-full flex-col gap-2">
 								<Text size={6} value="Export" />
-								<Link variant="text" icon={IconNames.database} href="/nowhere">
+								<Link fullWidth variant="text" icon={IconNames.database} href="/nowhere">
 									Dashboard
 								</Link>
-								<Link variant="text" icon="user" href="/nowhere">
+								<Link variant="text" fullWidth icon="user" href="/nowhere">
 									Menu
 								</Link>
-								<Link variant="text" icon="book" href="/nowhere">
+								<Link variant="text" fullWidth icon="book" href="/nowhere">
 									Docs
 								</Link>
 							</Card>
 							<Card className="flex flex-col gap-2">
 								<Text size={6} value="Save Data" />
-								<Link variant="text" icon={IconNames.database} href="/nowhere">
+								<Link variant="text" fullWidth icon={IconNames.database} href="/nowhere">
 									Dashboard
 								</Link>
-								<Link variant="text" icon="user" href="/nowhere">
+								<Link variant="text" fullWidth icon="user" href="/nowhere">
 									Menu
 								</Link>
-								<Link variant="text" icon="book" href="/nowhere">
+								<Link variant="text" fullWidth icon="book" href="/nowhere">
 									Docs
 								</Link>
 							</Card>

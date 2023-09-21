@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useDebounce } from "usehooks-ts";
-import { ColorType } from "../types";
+import { ColorType, ColorTypes } from "../types";
 import { applyBgColor } from "../style";
 interface RippleStyledProps {
 	$duration: number;
@@ -46,7 +46,7 @@ const useRipple = ({
 	hasRipple = true,
 	ref,
 	duration = 0.5,
-	color = "background",
+	color = ColorTypes.background,
 	opacity = 0.5,
 }: RippleProps) => {
 	//ripples are just styles that we attach to span elements

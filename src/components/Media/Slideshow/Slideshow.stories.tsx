@@ -19,7 +19,7 @@ const meta = {
 
 	decorators: [
 		(Story) => (
-			<div className="p-4 w-3xl  h-96 bg-accent/10 ">
+			<div className="p-4 w-3xl  h-[590px] bg-accent/10 ">
 				{/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
 				<Story />
 			</div>
@@ -44,6 +44,7 @@ export const Default: Story = {
 		items: [
 			<figure key={1}>
 				<Image
+					className="select-none pointer-events-none"
 					aspectRatio={AspectRatio.OneOne}
 					rounded="md"
 					src="https://images.unsplash.com/photo-1678780358430-fb4ec1d01167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1065&q=80"
@@ -54,6 +55,7 @@ export const Default: Story = {
 			<figure key={2}>
 				<Image
 					rounded="md"
+					className="select-none pointer-events-none"
 					aspectRatio={AspectRatio.OneOne}
 					src="https://images.unsplash.com/photo-1669802004186-31c3cf5eb4ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1065&q=80"
 					alt="a path in the middle of a forest surrounded by tall trees"
@@ -61,6 +63,7 @@ export const Default: Story = {
 			</figure>,
 			<figure key={3}>
 				<Image
+					className="select-none pointer-events-none"
 					aspectRatio={AspectRatio.OneOne}
 					rounded="md"
 					src="https://images.unsplash.com/photo-1669216110293-556c7a667f6b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
@@ -69,6 +72,7 @@ export const Default: Story = {
 			</figure>,
 			<figure key={4}>
 				<Image
+					className="select-none pointer-events-none"
 					aspectRatio={AspectRatio.OneOne}
 					rounded="md"
 					src="https://images.unsplash.com/photo-1670594729251-236f61911482?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80"
@@ -96,6 +100,7 @@ export const WithoutPagination: Story = {
 export const Recipe: Story = {
 	args: {
 		...Default.args,
+		imagePosition: "top",
 		items: [
 			<Card key={1}>
 				<Text size={3} value="Recipe X " />

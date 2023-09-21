@@ -6,7 +6,7 @@ import { SizesWithNone, SizesWithFull, TextSize, Side, Sides, IconType } from ".
 export interface AccordionItemProps {
 	title: string;
 	content: string | React.ReactNode;
-	icon?: IconType;
+	icon?: string | IconType;
 	className?: string;
 	href?: string;
 	arrowIcon?: IconType;

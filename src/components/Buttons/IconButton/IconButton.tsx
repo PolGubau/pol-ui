@@ -72,9 +72,8 @@ const IconButton: React.FC<Props> = ({
 			autoFocus={autoFocus}
 			position={position}
 			customRef={ref}
-		>
-			<Icon icon={icon} />
-		</Button>
+			icon={icon}
+		></Button>
 	);
 };
 export default IconButton;

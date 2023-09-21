@@ -58,13 +58,10 @@ const Link: React.FC<Props> = ({
 			aria-label={ariaLabel}
 			autoFocus={autoFocus}
 			id={id}
+			children={children}
 			onClick={(event) => onClick?.(event as React.MouseEvent<HTMLAnchorElement, MouseEvent>)}
 			style={style}
-		>
-			{icon && iconPosition === "left" && <Icon icon={icon} size={size} />}
-			<div className="w-full">{children}</div>
-			{icon && iconPosition === "right" && <Icon icon={icon} size={size} />}
-		</Button>
+		/>
 	);
 };
 export default Link;

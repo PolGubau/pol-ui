@@ -13,9 +13,9 @@ export const SlideShowStyled = styled.div`
 		display: flex;
 		justify-content: center;
 		position: absolute;
+		width: 100%;
 		height: 100%;
 		align-items: center;
-		overflow-y: auto;
 		max-height: 100%;
 	}
 	.next,
@@ -28,20 +28,18 @@ export const SlideShowStyled = styled.div`
 	}
 
 	.next {
-		right: 10px;
+		right: 5px;
 	}
 
 	.prev {
-		left: 10px;
+		left: 5px;
 	}
 
 	.item {
 		display: flex;
 		justify-content: center;
-		overflow-y: auto;
 		padding: 1px;
-		width: 90%;
-		margin: 0 5%;
+		width: calc(100% - 100px);
 		height: fit-content;
 		max-width: 100%;
 		max-height: 100%;
