@@ -39,7 +39,7 @@ const Accordion: React.FC<Props> = ({
 	id,
 	ariaLabel,
 	hasDividers = true,
-	rounded = "none",
+	rounded = "md",
 	hasBorder = true,
 	maxWidth,
 	arrowIconPosition = Sides.right,

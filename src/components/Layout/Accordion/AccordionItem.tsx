@@ -31,13 +31,11 @@ const AccordionItem: React.FC<Props> = ({
 	return (
 		<article
 			key={item.title}
-			className={`flex flex-col gap-1 overflow-hidden w-full ${applyRounded(rounded)} ${
-				item.className
-			}`}
+			className={`flex flex-col gap-1  w-full ${applyRounded(rounded)} ${item.className}`}
 		>
 			<header>
 				<Button
-					rounded="none"
+					rounded={rounded}
 					variant={paintOpened && isOpened ? "filled" : "text"}
 					onClick={toggleOpen}
 					fullWidth
