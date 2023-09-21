@@ -1,112 +1,93 @@
 import { Fragment, useState } from "react";
 import { Combobox, Transition } from "@headlessui/react";
 import { Icon, IconNames } from "../../Base/Icon";
-import { SelectItems } from "./types";
-import { applyFullWidth, applyRounded } from "../../../style";
-import { applyButtonVariant } from "../../Buttons/Button/Button.styles";
-import { ButtonVariant, ColorType, IconType, SizesComplete } from "../../../types";
+import { ButtonVariants, ColorTypes, JustifyContents, SelectOption, Sizes } from "../../../types";
+import { BaseButtonProps, labelClasses, popupStyles } from "../types";
+import { selectStyles } from "../selectStyles";
+import { useGetLabels } from "../../../hooks";
 
-interface Props {
-	label?: string;
-	fullWidth?: boolean;
-	items: SelectItems[];
-	placeholder?: string;
-	variant?: ButtonVariant;
-	buttonIcon?: IconType;
+interface Props extends BaseButtonProps {
+	value?: SelectOption;
+	options: SelectOption[];
 	keyField?: string;
-	value?: SelectItems;
-	onChange?: (value: SelectItems) => void;
+	onChange?: (value: SelectOption) => void;
 	noFoundMessage?: string;
-	color?: ColorType;
-	rounded?: SizesComplete;
 }
 
 export default function Autocomplete({
+	variant = ButtonVariants.filled,
+	color = ColorTypes.primary,
+	rounded = Sizes.lg,
+	className = "",
+	disabled = false,
+	size = Sizes.md,
+	centered = false,
+	padding = { x: Sizes.md, y: Sizes.sm },
+	justify = JustifyContents.center,
+	position = "relative",
 	label,
 	placeholder = "Search",
-	fullWidth,
-	items = [],
-	variant = "filled",
+	fullWidth = false,
+	options = [],
 	buttonIcon = IconNames.expandboth,
 	keyField = "name",
 	value,
-	color = "primary",
-	rounded = "lg",
 	noFoundMessage = "Nothing found.",
 	onChange,
 }: Props) {
-	const [selected, setSelected] = useState<undefined | SelectItems>(value ?? undefined);
-	const [query, setQuery] = useState("");
-	const firstFieldNotNullOrUndefined = (item: SelectItems): string => {
-		return (
-			Object.values(item)
-				.find((value) => value !== null && value !== undefined)
-				?.toString() ?? ""
-		);
-	};
-	const takingFielWithDesired = (item: SelectItems): string => {
-		const validField = item[keyField]?.toString() ?? firstFieldNotNullOrUndefined(item);
-		return validField;
-	};
+	const [selected, setSelected] = useState<undefined | SelectOption>(value ?? undefined);
+	const { getLabelFromOption } = useGetLabels();
+
+	const [query, setQuery] = useState<string>("");
+
 	const filteredItems =
 		query === ""
-			? items
-			: items.filter((item) =>
-					takingFielWithDesired(item)
+			? options
+			: options.filter((item) =>
+					getLabelFromOption(item)
 						.toLowerCase()
 						.replace(/\s+/g, "")
 						.includes(query.toLowerCase().replace(/\s+/g, ""))
 			  );
 
-	const handleChanges = (value: SelectItems) => {
+	const handleChanges = (value: SelectOption) => {
 		setSelected(value);
 		onChange?.(value);
 	};
 
-	const buttonValue = (selected && takingFielWithDesired(selected)) ?? placeholder;
+	const buttonValue =
+		(selected ? getLabelFromOption(selected, keyField) : placeholder) ?? placeholder;
 
 	return (
 		<Combobox value={selected} onChange={handleChanges}>
 			<div className="relative mt-1">
-				{label && (
-					<Combobox.Label className="block text-sm font-medium text-gray-700">
-						{label}
-					</Combobox.Label>
-				)}
+				{label && <Combobox.Label className={labelClasses}>{label}</Combobox.Label>}
 
 				<div
-					className={`relative 
-					cursor-pointer 
- 					h-10   
-					pr-10 text-left 
-					transition-all
+					className={`${selectStyles({
+						rounded,
+						size,
+						fullWidth,
+						disabled,
+						centered,
+						padding,
+						variant,
+						color,
+						justify,
+						className,
+						position,
+					})}
 					
 					
-					focus:outline-none 
-					focus-visible:border-accent
-					focus-visible:ring-2 
-					focus-visible:ring-white 
-					focus-visible:ring-opacity-75 
-					focus-visible:ring-offset-2 
-					focus-visible:ring-offset-accent 
-				
-					active:ring-2
-					active:ring-offset-2
-					active:ring-offset-accent
-					active:ring-white
-					
-					sm:text-sm
-					${applyRounded(rounded)}
- 					${applyButtonVariant({ variant, color })} 
-					${applyFullWidth(fullWidth)}`}
+					`}
 				>
 					<Combobox.Input
-						className={`py-2 pl-3 w-full border-none text-sm focus:ring-0 focus:border-none bg-transparent focus:outline-none placeholder:text-current focus-within:ring-2`}
-						displayValue={(person: any) => person.name}
+						className={`p-1 w-full border-none focus:ring-0 focus:border-none bg-transparent focus:outline-none placeholder:text-current focus-within:ring-2`}
+						displayValue={(item: SelectOption) => getLabelFromOption(item, keyField) ?? placeholder}
 						onChange={(event) => setQuery(event.target.value)}
 						placeholder={buttonValue}
 					/>
-					<Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
+					<Combobox.Button className="w-fuit px-3 justify- absolute inset-y-0 right-0 flex items-center ">
 						<Icon icon={buttonIcon} aria-hidden="true" />
 					</Combobox.Button>
 				</div>
@@ -121,24 +102,21 @@ export default function Autocomplete({
 					leaveTo="opacity-0 translate-y-0"
 					afterLeave={() => setQuery("")}
 				>
-					<Combobox.Options className="absolute mt-1 max-h-60 w-fit min-w-[20vw] overflow-auto rounded-xl z-50 bg-background dark:bg-background-inverted  py-1 text-base shadow-lg ring-1 ring-primary ring-opacity-5 focus:outline-none sm:text-sm focus:ring-4 focus-ring-accent">
+					<Combobox.Options className={`${popupStyles} ${fullWidth ? "w-full" : "w-fit"} `}>
 						{filteredItems.length === 0 && query !== "" ? (
-							<div className="relative cursor-default select-none py-2 px-4 text-gray-700">
+							<div className="relative cursor-default select-none py-2 px-4  text-primary/80">
 								{noFoundMessage}
 							</div>
 						) : (
 							filteredItems.map((item) => {
 								// the key is used to identify the item in the list
 								// it will be the keyField if it exists, otherwise the name or if there isn't name, the first value of the object
-								const key =
-									item[keyField]?.toString() ??
-									item.name?.toString() ??
-									firstFieldNotNullOrUndefined(item);
+								const label = getLabelFromOption(item, keyField);
 								return (
 									<Combobox.Option
-										key={key}
+										key={label}
 										className={({ active }) =>
-											`relative  select-none py-2 pl-10 pr-4 cursor-pointer ${
+											`relative select-none py-2 pl-10 pr-4 cursor-pointer ${
 												active ? "bg-accent/20 " : ""
 											}`
 										}
@@ -149,7 +127,7 @@ export default function Autocomplete({
 												<span
 													className={`block truncate ${selected ? "font-medium" : "font-normal"}`}
 												>
-													{key}
+													{label}
 												</span>
 												{selected ? (
 													<span

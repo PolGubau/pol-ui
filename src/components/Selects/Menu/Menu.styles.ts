@@ -6,7 +6,7 @@ interface Props {
 
 export const menuStyles = ({ direction = "bottom" }: Props) => {
 	const base =
-		"absolute w-56 rounded-2xl bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10 ";
+		"absolute min-w-[180px] w-fit rounded-2xl  max-h-60 overflow-auto p-1 gap-1 bg-background dark:bg-background-inverted text-background-inverted dark:text-background shadow-lg ring-1 ring-background-inverted ring-opacity-5 focus:outline-none sm:text-sm z-50";
 
 	const directions = {
 		top: "bottom-full mb-2 origin-bottom-right",

@@ -13,7 +13,7 @@ const meta = {
 
 	decorators: [
 		(Story) => (
-			<div className="w-full relative overflow-auto h-[300px] items-center  bg-blue-300 ring-1 ring-primary">
+			<div className="w-full relative overflow-auto h-[300px] items-center  bg-background ring-1 ring-primary">
 				<Story />
 			</div>
 		),
@@ -28,7 +28,7 @@ export const Default: Story = {
 		logo: <Text size={5} value="logo" />,
 		children: (
 			<ul className="flex gap-2">
-				<Menu label="Menu" variant="text" items={[{ label: "Item 1" }, { label: "Item 2" }]} />
+				<Menu label="Menu" variant="text" options={[{ label: "Item 1" }, { label: "Item 2" }]} />
 				<Link href="/1" variant="text">
 					Link
 				</Link>

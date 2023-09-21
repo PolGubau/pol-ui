@@ -4,49 +4,63 @@ import Button from "../../Buttons/Button/Button";
 import useClickOutside from "../../../hooks/useClickOutside";
 import { formatString } from "../../../utils";
 import { Link } from "../../Buttons/Link";
-import { ButtonVariant, ColorType, IconType, Positions, Side, SizesComplete } from "../../../types";
+import {
+	ButtonVariants,
+	ColorTypes,
+	IconType,
+	JustifyContents,
+	Positions,
+	Side,
+	Sides,
+	Sizes,
+} from "../../../types";
 import { menuStyles } from "./Menu.styles";
 import { selectStyles } from "../selectStyles";
-import { Icon } from "../../Base";
+import { Icon, IconNames } from "../../Base";
+import { BaseButtonProps } from "../types";
 
 export interface MenuItem {
 	id?: string;
-	label: string;
+	label?: string;
 	icon?: IconType;
 	onClick?: () => void;
 	href?: string;
 }
 
-interface Props {
-	label?: string;
-	items: MenuItem[];
-	variant?: ButtonVariant;
+interface Props extends BaseButtonProps {
+	options: MenuItem[];
 	iconSide?: Side;
 	openIcon?: IconType;
 	closeIcon?: IconType;
 	dividers?: boolean;
 	direction?: Positions;
-	fullWidth?: boolean;
-	color?: ColorType;
-	rounded?: SizesComplete;
-	className?: string;
+	icon?: IconType;
 }
 
 export default function Menu({
 	label,
-	items = [],
-	variant = "filled",
-	iconSide = "right",
-	openIcon = "arrowdown",
-	closeIcon = openIcon ?? "arrowDown",
+	options = [],
+	variant = ButtonVariants.filled,
+	iconSide = Sides.left,
+	openIcon = IconNames.expand,
+	closeIcon = openIcon ?? IconNames.expand,
 	dividers = false,
 	direction = "bottom",
 	fullWidth = false,
-	color = "primary",
-	rounded = "lg",
+	color = ColorTypes.primary,
+	rounded = Sizes.lg,
 	className = "",
+	size = Sizes.md,
+	disabled = false,
+	centered = false,
+	buttonIcon,
+	icon,
+	padding = { x: Sizes.md, y: Sizes.sm },
+	justify = "center",
+	position = "relative",
 }: Props) {
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState<boolean>(false);
+
 	const modalRef = useRef(null);
 	useClickOutside(modalRef, () => {
 		setOpen(false);
@@ -70,15 +84,23 @@ export default function Menu({
 		<div className="relative" ref={modalRef}>
 			<Button
 				className={`${selectStyles({
+					rounded,
 					fullWidth,
 					variant,
 					color,
-					rounded,
+					size,
+					disabled,
+					centered,
+					padding,
+					justify,
+					className,
+					position,
 				})}
 					${className}`}
 				variant={variant}
+				icon={icon}
 				onClick={() => {
-					if (!items.length) return;
+					if (!options.length) return;
 					setOpen((prev) => !prev);
 				}}
 				iconPosition={iconSide}
@@ -86,10 +108,12 @@ export default function Menu({
 				fullWidth={fullWidth}
 			>
 				{label}
-				{items.length > 0 && (
-					<span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-						<Icon icon={open ? closeIcon : openIcon} aria-hidden="true" />
-					</span>
+				{options.length > 0 && (
+					<Icon
+						icon={open ? closeIcon : openIcon}
+						aria-hidden="true"
+						className="pointer-events-none inset-y-0 flex items-center "
+					/>
 				)}
 			</Button>
 			<Transition
@@ -102,37 +126,36 @@ export default function Menu({
 				leaveTo="opacity-0 translate-y-0"
 				className={menuStyles({ direction })}
 			>
-				<div
-					className={`bg-background dark:bg-background-inverted  z-50 p-1 ${
-						dividers ? "divide-y divide-gray-100" : ""
-					} gap-col gap-0.5`}
-				>
-					{items.map((item) =>
-						item.href ? (
-							<Link
-								justify="start"
-								key={item.label}
-								icon={item.icon}
-								variant="text"
-								fullWidth
-								href={item.href}
-							>
-								{formatString(item.label)}
-							</Link>
-						) : (
-							<Button
-								justify="start"
-								key={item.label}
-								icon={item.icon}
-								variant="text"
-								fullWidth
-								onClick={item.onClick}
-							>
-								{formatString(item.label)}
-							</Button>
-						)
-					)}
-				</div>
+				<>
+					{options.map((item) => (
+						<>
+							{item.href ? (
+								<Link
+									justify={JustifyContents.start}
+									key={item.label}
+									icon={item.icon}
+									variant="text"
+									fullWidth
+									href={item.href}
+								>
+									{item.label && formatString(item.label)}
+								</Link>
+							) : (
+								<Button
+									justify={JustifyContents.start}
+									key={item.label}
+									icon={item.icon}
+									variant="text"
+									fullWidth
+									onClick={item.onClick}
+								>
+									{item.label && formatString(item.label)}
+								</Button>
+							)}
+							{dividers && <div className="h-px bg-primary/20" />}
+						</>
+					))}
+				</>
 			</Transition>
 		</div>
 	);

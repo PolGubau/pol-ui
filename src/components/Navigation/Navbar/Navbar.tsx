@@ -1,7 +1,7 @@
 import { Button } from "../../Buttons";
 import { Field } from "../../Inputs";
 import React from "react";
-import { Shadow, SizesWithNone } from "../../../types";
+import { PaddingOneOrBothValues, Shadow } from "../../../types";
 import { Link } from "../../Buttons/Link";
 import { navbar } from "./NavBar.styles";
 
@@ -10,10 +10,7 @@ interface Props {
 	backgroundColor?: string;
 	logo?: React.ReactNode;
 	shadow?: Shadow;
-	padding?: {
-		x: SizesWithNone;
-		y: SizesWithNone;
-	};
+	padding?: PaddingOneOrBothValues;
 	cta?: {
 		label: string;
 		href: string;

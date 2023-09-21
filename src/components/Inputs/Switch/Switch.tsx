@@ -113,6 +113,10 @@ export const Switch: React.FC<Props> = ({
 				dark:after:bg-primary-inverted
 				dark:checked:bg-accent 
 				dark:checked:after:bg-primary 
+				
+				
+				${error ? "ring-danger ring-2" : ""}
+				
 				 ${className}`}
 				type="checkbox"
 				id="flexSwitchCheckDefault"
@@ -126,12 +130,12 @@ export const Switch: React.FC<Props> = ({
 					${disabled ? "text-neutral-400 hover:cursor-not-allowed" : "text-primary hover:cursor-pointer "}
 					${size === "small" ? "text-sm" : ""}
 					${size === "large" ? "text-lg" : ""}
-					${error ? "text-red-400" : ""}`}
+					${error ? "text-danger" : ""}`}
 					htmlFor="flexSwitchCheckDefault"
 					value={label}
 				/>
 			)}
-			{error && <small className="text-red-400">{`(${error})`}</small>}
+			{error && <small className="text-danger">{`(${error})`}</small>}
 		</div>
 	);
 };

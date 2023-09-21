@@ -25,7 +25,7 @@ export const useGetLabels = () => {
 		return firstProperty;
 	};
 
-	const getLabelFromOption = (option: SelectOption, keyField?: string): string | null => {
+	const getLabelFromOption = (option: SelectOption, keyField?: string): string => {
 		let label: string = "";
 
 		if (typeof option === "string" || typeof option === "number") {
@@ -40,7 +40,7 @@ export const useGetLabels = () => {
 			}
 		}
 
-		return label.length > 0 ? label : null;
+		return label.length > 0 ? label : "No value";
 	};
 
 	const getLabelsFromOptions = (options: SelectOption[], keyField?: string): string[] => {

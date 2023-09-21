@@ -24,7 +24,7 @@ describe("Menu component", () => {
 	];
 
 	it("opens and closes the menu", async () => {
-		render(<Menu label="Open Menu" items={items} />);
+		render(<Menu label="Open Menu" optio s={items} />);
 		const button = screen.getByText("Open Menu");
 		fireEvent.click(button);
 		const item1 = screen.getByText("Item 1");
@@ -37,7 +37,7 @@ describe("Menu component", () => {
 	});
 
 	it("triggers item's onClick handler", () => {
-		render(<Menu label="Open Menu" items={items} />);
+		render(<Menu label="Open Menu" optio s={items} />);
 		const button = screen.getByText("Open Menu");
 		fireEvent.click(button);
 		const item1 = screen.getByText("Item 1");

@@ -137,7 +137,7 @@ const Button: React.FC<ButtonProps> = ({
 			onClick={handleClick}
 			type={buttonType}
 			style={style}
-			className={buttonStyles({
+			className={`${buttonStyles({
 				loading,
 				rounded,
 				size,
@@ -151,19 +151,17 @@ const Button: React.FC<ButtonProps> = ({
 				className,
 				position,
 			})}
+			${children ? "w-fit" : "flex justify-center items-center aspect-square"}
+			`}
 		>
-			{ripples}
-
 			{isLoading && <Loader size={size} color={loaderColor} />}
 			{icon && iconPosition === "left" && <Icon icon={icon} size={size} />}
-
 			{children && shouldShowChildren && (
 				<div className={`w-full flex gap-2 items-center  ${applyJustifyContent(justify) ?? ""}`}>
 					{children}
 				</div>
 			)}
-
-			{icon && iconPosition === "right" && <Icon icon={icon} size={size} />}
+			{icon && iconPosition === "right" && <Icon icon={icon} size={size} />} {ripples}
 		</ButtonStyled>
 	);
 };

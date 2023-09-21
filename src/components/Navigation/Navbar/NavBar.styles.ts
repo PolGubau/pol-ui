@@ -1,5 +1,5 @@
 import { applyPadding, applyShadow } from "../../../style";
-import { Shadow, SizesWithNone } from "../../../types";
+import { PaddingOneOrBothValues, Shadow, Sizes } from "../../../types";
 
 interface Props {
 	position:
@@ -14,15 +14,12 @@ interface Props {
 
 	className?: string;
 	shadow?: Shadow;
-	padding?: {
-		x: SizesWithNone;
-		y: SizesWithNone;
-	};
+	padding?: PaddingOneOrBothValues;
 }
 export const navbar = ({
 	position = "relative",
-	shadow = "md",
-	padding = { x: "sm", y: "sm" },
+	shadow = Sizes.md,
+	padding = { x: Sizes.sm, y: Sizes.sm },
 	className,
 }: Props) => {
 	const base = "w-full h-16 flex justify-between items-center p-4";

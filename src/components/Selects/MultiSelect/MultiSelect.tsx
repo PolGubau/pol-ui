@@ -1,32 +1,16 @@
 import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { Icon, IconNames } from "../../Base/Icon";
-import {
-	ColorType,
-	SizesComplete,
-	ButtonVariant,
-	IconType,
-	Sizes,
-	ColorTypes,
-	ButtonVariants,
-	SelectOption,
-} from "../../../types";
+import { Sizes, ColorTypes, ButtonVariants, SelectOption, JustifyContents } from "../../../types";
 import { selectStyles } from "../selectStyles";
 import { useGetLabels } from "../../../hooks/useGetLabels";
+import { BaseButtonProps, labelClasses, popupStyles } from "../types";
 
-interface Props {
-	label?: string;
-	fullWidth?: boolean;
+interface Props extends BaseButtonProps {
 	options: SelectOption[];
-	placeholder?: string;
-	variant?: ButtonVariant;
-	color?: ColorType;
-	buttonIcon?: IconType;
 	keyField?: string;
 	values?: SelectOption[];
 	onChange?: (values: SelectOption[]) => void;
-	rounded?: SizesComplete;
-	className?: string;
 	labelLimit?: number;
 	and?: string;
 }
@@ -35,7 +19,6 @@ export const MultiSelectDefaultPlaceholder = "Select Multiple";
 export default function MultiSelect({
 	label,
 	placeholder = MultiSelectDefaultPlaceholder,
-	fullWidth,
 	options = [],
 	variant = ButtonVariants.filled,
 	buttonIcon = IconNames.expandboth,
@@ -47,6 +30,14 @@ export default function MultiSelect({
 	className,
 	and,
 	onChange,
+	fullWidth = false,
+	nullable = false,
+	disabled = false,
+	size = Sizes.md,
+	centered = false,
+	padding = { x: Sizes.md, y: Sizes.sm },
+	justify = JustifyContents.center,
+	position = "relative",
 }: Props) {
 	const [selected, setSelected] = useState<SelectOption[]>(values);
 
@@ -67,20 +58,27 @@ export default function MultiSelect({
 
 	return (
 		<Listbox value={selected} onChange={handleChanges} multiple>
-			{label && (
-				<Listbox.Label className="block text-sm font-medium text-gray-700">{label}</Listbox.Label>
-			)}
+			{label && <Listbox.Label className={labelClasses}>{label}</Listbox.Label>}
 			<Listbox.Button
-				className={`${selectStyles({
+				className={`
+				${selectStyles({
+					rounded,
+					size,
 					fullWidth,
+					disabled,
+					centered,
+					padding,
 					variant,
 					color,
-					rounded,
+					justify,
+					className,
+					position,
 				})}
+
 					${className}`}
 				role="button"
 			>
-				<span className="block truncate">{valueString}</span>
+				<span className="block truncate pr-4">{valueString}</span>
 				<span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
 					<Icon icon={buttonIcon} aria-hidden="true" />
 				</span>
@@ -92,9 +90,7 @@ export default function MultiSelect({
 				leaveFrom="opacity-100"
 				leaveTo="opacity-0"
 			>
-				<Listbox.Options
-					className={`bg-background dark:bg-background-inverted  absolute mt-1 max-h-60 w-fit overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm  z-50`}
-				>
+				<Listbox.Options className={`${popupStyles} ${fullWidth ? "w-full" : "w-fit"} `}>
 					{options.map((obj) => {
 						const label = getLabelFromOption(obj, keyField);
 
@@ -105,7 +101,7 @@ export default function MultiSelect({
 								key={label}
 								className={({ active }) =>
 									`relative  select-none py-2 pl-10 pr-4 cursor-pointer ${
-										active ? "bg-accent/30 text-accent" : "text-gray-900"
+										active ? "bg-accent/30 " : "text-primary/90"
 									}`
 								}
 								value={obj}
@@ -114,7 +110,7 @@ export default function MultiSelect({
 									<>
 										<span
 											className={`block truncate ${selected ? "font-medium" : "font-normal"} ${
-												active ? "text-accent brightness-50" : "text-gray-900"
+												active ? "text-accent brightness-50" : "text-primary/90"
 											}`}
 										>
 											{label}

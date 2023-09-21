@@ -19,6 +19,8 @@ import {
 	ButtonVariant,
 	ColorTypes,
 	ButtonVariants,
+	Sizes,
+	JustifyContents,
 } from "./../../../types/index";
 
 // variant is the shape (filled, outlined, text, icon)
@@ -93,7 +95,7 @@ export const applyButtonVariant = ({
 	}
 };
 
-interface ButtonStylesProps {
+export interface ButtonStylesProps {
 	rounded: SizesComplete;
 	size: Size;
 	fullWidth: boolean;
@@ -103,31 +105,34 @@ interface ButtonStylesProps {
 	variant: ButtonVariant;
 	color: ColorType;
 	className?: string;
-	justify: JustifyContent;
-	position: Position;
+	justify?: JustifyContent;
+	position?: Position;
 	loading?: boolean;
 }
 
 export const buttonStyles = ({
-	rounded,
-	size,
-	fullWidth,
-	disabled,
-	centered,
-	padding,
-	variant,
-	color,
-	justify,
-	className,
-	loading,
+	rounded = Sizes.lg,
+	size = Sizes.md,
+	fullWidth = false,
+	disabled = false,
+	centered = false,
+	padding = { x: Sizes.md, y: Sizes.sm },
+	variant = ButtonVariants.filled,
+	color = ColorTypes.primary,
+	justify = JustifyContents.center,
+	className = "",
+	loading = false,
 	position = "relative",
 }: ButtonStylesProps) => {
-	return `flex items-center gap-2 transition-all flex-nowrap min-h-10 overflow-hidden focus:outline-none focus:ring-2 transition-all  h-10
+	return `flex items-center gap-2 transition-all flex-nowrap min-h-10 overflow-hidden focus-within:outline-none focus-within:ring-2 transition-all  h-10
 	
-	focus:ring-opacity-50 
-	focus:ring-offset-2 
-	focus:ring-offset-transparent
-	dark:focus:ring-offset-transparent
+	focus-within:ring-opacity-50 
+	focus-within:ring-offset-2 
+	focus-within:ring-offset-transparent
+	dark:focus-within:ring-offset-transparent
+	
+	
+	
 	
 	${color === ColorTypes.success ? "ring-success dark:ring-success-inverted" : ""}
 	${color === ColorTypes.danger ? "ring-danger dark:ring-danger-inverted" : ""}

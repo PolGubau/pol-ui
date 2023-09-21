@@ -11,6 +11,14 @@ const meta = {
 	title: "Selects/MultiSelect",
 	component: MultiSelect,
 	tags: ["autodocs"],
+	decorators: [
+		(Story) => (
+			<div className="p-8 h-96 bg-primary/10 ">
+				{/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
+				<Story />
+			</div>
+		),
+	],
 } satisfies Meta<typeof MultiSelect>;
 
 export default meta;

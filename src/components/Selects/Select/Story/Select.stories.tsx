@@ -11,6 +11,14 @@ const meta = {
 	title: "Selects/Select",
 	component: Select,
 	tags: ["autodocs"],
+	decorators: [
+		(Story) => (
+			<div className="p-8 h-96 bg-primary/10 ">
+				{/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
+				<Story />
+			</div>
+		),
+	],
 } satisfies Meta<typeof Select>;
 
 export default meta;
@@ -18,6 +26,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
 	args: { items: mockSelectJustNames, fullWidth: false },
+};
+export const Nullable: Story = {
+	args: { ...Default.args, nullable: true },
 };
 export const MainSelect: Story = {
 	args: { ...Default.args, color: "accent" },
@@ -54,45 +65,49 @@ export const ItemsWithIDAndName: Story = {
 };
 export const ComplexeWithoutNameField: Story = {
 	args: { ...Default.args },
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"We sent a complex object without specifying the keyField and name doesn't exist in the object, so the first key is chosed (id)",
+			},
+		},
+	},
 	render: (args) => (
 		<div className="flex flex-col gap-2">
-			<small>
-				We sent a complex object without specifying the keyField and name doesn't exist in the
-				object, so the first key is chosed (id)
-			</small>
 			<Select {...args} items={withComplexeObject} />
 		</div>
 	),
 };
 export const ComplexeWithValue: Story = {
-	args: { ...Default.args },
-	render: (args) => (
-		<div className="flex flex-col gap-2">
-			<small>
-				Predefaulted to the value of the first item, so the first item is selected (items[0]). How
-				this object has a name fiel, it's the name that is displayed
-			</small>
-			<Select {...args} value={withComplexeObjectWithName[0]} />
-		</div>
-	),
+	args: { ...Default.args, value: withComplexeObjectWithName[0] },
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"Predefaulted to the value of the first item, so the first item is selected (items[0]). How this object has a name fiel, it's the name that is displayed",
+			},
+		},
+	},
 };
 export const ComplexeSpecifyingName: Story = {
-	args: { ...Default.args },
-	render: (args) => (
-		<div className="flex flex-col gap-2">
-			<small>We sent a complex object with keyField, so the keyField is chosed (title)</small>
-			<Select {...args} value={withComplexeObject[0]} keyField="title" />
-		</div>
-	),
+	args: { ...Default.args, value: withComplexeObject[0], keyField: "title" },
+	parameters: {
+		docs: {
+			description: {
+				story: "We sent a complex object with keyField, so the keyField is chosed (title)",
+			},
+		},
+	},
 };
 export const ComplexeWithNameField: Story = {
-	args: { ...Default.args },
-	render: (args) => (
-		<div className="flex flex-col gap-2">
-			<small>
-				We sent a complex object without specifying the keyField but name exists, so name is chosed
-			</small>
-			<Select {...args} items={withComplexeObjectWithName} />
-		</div>
-	),
+	args: { ...Default.args, items: withComplexeObjectWithName },
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"We sent a complex object without specifying the keyField but name exists, so name is chosed",
+			},
+		},
+	},
 };

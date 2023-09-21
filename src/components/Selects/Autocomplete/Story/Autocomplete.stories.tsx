@@ -6,9 +6,18 @@ import {
 	withComplexeObject,
 	withComplexeObjectWithName,
 } from "./mockObjects";
+import { ButtonVariants } from "../../../../types";
 
 const meta = {
 	title: "Selects/Autocomplete",
+	tags: ["autodocs"],
+	decorators: [
+		(Story) => (
+			<div className="p-8 h-96 bg-primary/10 rounded-xl">
+				<Story />
+			</div>
+		),
+	],
 	component: Autocomplete,
 } satisfies Meta<typeof Autocomplete>;
 
@@ -16,16 +25,16 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	args: { items: mockSelectJustNames, variant: "filled", fullWidth: false },
+	args: { options: mockSelectJustNames, variant: ButtonVariants.filled, fullWidth: false },
 };
 export const MainSelect: Story = {
-	args: { ...Default.args, variant: "filled" },
+	args: { ...Default.args, variant: ButtonVariants.filled },
 };
 export const TextSelect: Story = {
-	args: { ...Default.args, variant: "text" },
+	args: { ...Default.args, variant: ButtonVariants.text },
 };
 export const OutlinedSelect: Story = {
-	args: { ...Default.args, variant: "outlined" },
+	args: { ...Default.args, variant: ButtonVariants.outlined },
 };
 export const CustomIcon: Story = {
 	args: { ...Default.args, buttonIcon: "script" },
@@ -40,16 +49,16 @@ export const WithLabel: Story = {
 	args: { ...Default.args, label: "Select your favorite" },
 };
 export const FullWidth: Story = {
-	args: { ...Default.args, fullWidth: true, variant: "filled" },
+	args: { ...Default.args, fullWidth: true, variant: ButtonVariants.filled },
 };
 export const FullWidthOutlined: Story = {
-	args: { ...Default.args, fullWidth: true, variant: "outlined" },
+	args: { ...Default.args, fullWidth: true, variant: ButtonVariants.outlined },
 };
 export const FullWidthText: Story = {
-	args: { ...Default.args, fullWidth: true, variant: "text" },
+	args: { ...Default.args, fullWidth: true, variant: ButtonVariants.text },
 };
 export const ItemsWithIDAndName: Story = {
-	args: { ...Default.args, items: mockSelectIdName },
+	args: { ...Default.args, options: mockSelectIdName },
 };
 export const ComplexeWithoutNameField: Story = {
 	args: { ...Default.args },
@@ -59,7 +68,7 @@ export const ComplexeWithoutNameField: Story = {
 				We sent a complex object without specifying the keyField and name doesn't exist in the
 				object, so the first key is chosed (id)
 			</small>
-			<Autocomplete {...args} items={withComplexeObject} />
+			<Autocomplete {...args} options={withComplexeObject} />
 		</div>
 	),
 };
@@ -91,7 +100,7 @@ export const ComplexeWithNameField: Story = {
 			<small>
 				We sent a complex object without specifying the keyField but name exists, so name is chosed
 			</small>
-			<Autocomplete {...args} items={withComplexeObjectWithName} />
+			<Autocomplete {...args} options={withComplexeObjectWithName} />
 		</div>
 	),
 };

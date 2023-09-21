@@ -65,7 +65,8 @@ export const WithHeader: Story = {
 			<>
 				<Text size={1} value="Current song" />{" "}
 				<Menu
-					items={[
+					optio
+					s={[
 						{ id: "1", label: "Save" },
 						{ id: "1", label: "Delete" },
 					]}
@@ -105,7 +106,8 @@ export const WithFooter: Story = {
 			<>
 				<Text size={4} value="Login" className="text-light" />{" "}
 				<Menu
-					items={[
+					optio
+					s={[
 						{ id: "1", label: "With email" },
 						{ id: "2", label: "With token" },
 					]}
