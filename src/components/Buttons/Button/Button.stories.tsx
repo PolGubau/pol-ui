@@ -311,7 +311,9 @@ export const AllColorsBlackMode: Story = {
 export const DarkMode: Story = {
 	render: (args) => (
 		<div className="dark">
-			<Button {...args} children="Dark Button" className="" />
+			<div className="flex gap-2 p-4 rounded-xl bg-background-inverted">
+				<Button {...args} children="Dark Button" className="" />
+			</div>
 		</div>
 	),
 	args: {
@@ -321,11 +323,12 @@ export const DarkMode: Story = {
 };
 export const CustomRipple: Story = {
 	render: (args) => (
-		<div className="dark flex gap-1">
-			<Button {...args} children="Normal" padding="lg" />
+		<div className="flex flex-wrap gap-1">
+			<Button {...args} children="Normal" />
 			<Button {...args} children="Slow danger" rippleColor="danger" rippleDuration={1} />
 			<Button {...args} children="fast accent" rippleColor="accent" rippleDuration={0.2} />
 			<Button {...args} children="all accent" rippleColor="accent" color="accent" />
+			<Button {...args} children="all accent" rippleColor="accent" color="secondary" />
 			<Button
 				{...args}
 				children="info full opacity"
@@ -337,7 +340,6 @@ export const CustomRipple: Story = {
 	),
 	args: {
 		...Default.args,
-		padding: "lg",
 	},
 };
 export const HideTextInTablet: Story = {
@@ -346,5 +348,27 @@ export const HideTextInTablet: Story = {
 		icon: "check",
 		children: "Resize your screen",
 		hideWhenLessThan: 666,
+	},
+};
+export const LoadingButton: Story = {
+	args: {
+		...Default.args,
+		children: "Loading",
+		loading: true,
+	},
+};
+export const AutoLoadOnClick: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"The button will automatically set the loading state when clicked. You don't need to pass a loading external state, usefull if it will just load onclick without any other state validation.",
+			},
+		},
+	},
+	args: {
+		...Default.args,
+		children: "Click me",
+		loadOnClick: true,
 	},
 };

@@ -22,6 +22,7 @@ import {
 import useRipple from "../../../hooks/useRipple";
 import { applyJustifyContent } from "../../../style";
 import { useMediaQuery } from "../../../hooks";
+import { Loader } from "../../DataDisplay";
 export interface ButtonProps extends BaseProps {
 	children?: React.ReactNode;
 	onClick?: (
@@ -50,6 +51,9 @@ export interface ButtonProps extends BaseProps {
 	href?: string;
 	buttonType?: "button" | "submit" | "reset";
 	hideWhenLessThan?: number;
+	loading?: boolean;
+	loaderColor?: ColorType;
+	loadOnClick?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -80,8 +84,13 @@ const Button: React.FC<ButtonProps> = ({
 	position = "relative",
 	hasRipple = position !== "absolute" && position !== "fixed",
 	buttonType = "button",
+	loading = false,
+	loaderColor = variant === ButtonVariants.text ? ColorTypes.primary : ColorTypes.background,
+	loadOnClick = false,
 }) => {
 	const isHidden = useMediaQuery(hideWhenLessThan);
+
+	const [isLoading, setIsLoading] = React.useState(loading);
 
 	const ref = useRef<HTMLButtonElement>(null);
 	const ripples = useRipple({
@@ -97,6 +106,10 @@ const Button: React.FC<ButtonProps> = ({
 			| React.MouseEvent<HTMLAnchorElement, MouseEvent>
 			| React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
+		if (loadOnClick) {
+			setIsLoading(true);
+		}
+
 		if (onClick) {
 			onClick(event);
 		}
@@ -125,6 +138,7 @@ const Button: React.FC<ButtonProps> = ({
 			type={buttonType}
 			style={style}
 			className={buttonStyles({
+				loading,
 				rounded,
 				size,
 				fullWidth,
@@ -140,10 +154,11 @@ const Button: React.FC<ButtonProps> = ({
 		>
 			{ripples}
 
+			{isLoading && <Loader size={size} color={loaderColor} />}
 			{icon && iconPosition === "left" && <Icon icon={icon} size={size} />}
 
 			{children && shouldShowChildren && (
-				<div className={`w-full flex gap-2 items-center ${applyJustifyContent(justify) ?? ""}`}>
+				<div className={`w-full flex gap-2 items-center  ${applyJustifyContent(justify) ?? ""}`}>
 					{children}
 				</div>
 			)}

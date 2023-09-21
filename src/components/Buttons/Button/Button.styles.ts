@@ -105,6 +105,7 @@ interface ButtonStylesProps {
 	className?: string;
 	justify: JustifyContent;
 	position: Position;
+	loading?: boolean;
 }
 
 export const buttonStyles = ({
@@ -118,6 +119,7 @@ export const buttonStyles = ({
 	color,
 	justify,
 	className,
+	loading,
 	position = "relative",
 }: ButtonStylesProps) => {
 	return `flex items-center gap-2 transition-all flex-nowrap min-h-10 overflow-hidden focus:outline-none focus:ring-2 transition-all  h-10
@@ -135,6 +137,8 @@ export const buttonStyles = ({
 	${color === ColorTypes.primary ? "ring-primary dark:ring-primary-inverted" : ""}
 	${color === ColorTypes.secondary ? "ring-secondary dark:ring-secondary-inverted" : ""}
  	
+	
+	${loading ? "cursor-wait opacity-90" : "cursor-pointer"}
 	${applyRounded(rounded)}
 	${applyPosition(position)}
 	${applyTextSize(size)} 
