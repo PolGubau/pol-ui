@@ -58,7 +58,7 @@ describe("Switch Component", () => {
 	test("If we pass an error, label will be red", () => {
 		render(<Switch label="label" error="Oups" />);
 		const input = screen.getByRole("heading");
-		expect(input).toHaveClass("text-red-400");
+		expect(input).toHaveClass("text-danger");
 	});
 	test("If an error is passed, we will render the error message", () => {
 		render(<Switch label="label" error="Oups" />);
