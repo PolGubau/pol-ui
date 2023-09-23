@@ -1,9 +1,9 @@
 import React from "react";
 import { Text } from "../../Text";
-import { Size, Sizes } from "../../../types";
+import { BaseProps, Size, Sizes } from "../../../types";
 import { SwitchStyle } from "./style/SwitchStyle";
 
-interface Props {
+interface Props extends BaseProps {
 	label?: string;
 	checked?: boolean;
 	onChange?: (value: boolean) => void;
@@ -11,6 +11,8 @@ interface Props {
 	className?: string;
 	disabled?: boolean;
 	size?: Size;
+	labelId?: string;
+	name?: string;
 }
 
 export const Switch: React.FC<Props> = ({
@@ -21,6 +23,11 @@ export const Switch: React.FC<Props> = ({
 	error,
 	className = "",
 	size = Sizes.md,
+	style,
+	id,
+	labelId,
+	ariaLabel,
+	name = "switch",
 }) => {
 	const [isChecked, setIsCheck] = React.useState(checked);
 
@@ -40,6 +47,11 @@ export const Switch: React.FC<Props> = ({
 	return (
 		<div className={`flex gap-3 items-center`}>
 			<input
+				id={id}
+				aria-label={ariaLabel}
+				aria-labelledby={labelId}
+				style={style}
+				name={name}
 				onKeyDown={(e) => {
 					if (e.key === "Enter") {
 						toggleSwitch();
@@ -62,10 +74,9 @@ export const Switch: React.FC<Props> = ({
 				${SwitchStyle({
 					size,
 					error,
-				})})}
+				})}
 				 ${className}`}
 				type="checkbox"
-				name="switch"
 			/>
 			{label && (
 				<Text
@@ -73,8 +84,9 @@ export const Switch: React.FC<Props> = ({
 					as="label"
 					aria-level={4}
 					disabled={disabled}
+					id={labelId}
 					className={`
-					${disabled ? "text-neutral-400 hover:cursor-not-allowed" : "text-primary hover:cursor-pointer "}
+					${disabled ? "opacity-70 hover:cursor-not-allowed" : "hover:cursor-pointer "}
 					${size === "sm" ? "text-sm" : ""}
 					${size === "lg" ? "text-lg" : ""}
 					${error ? "text-danger" : ""}`}

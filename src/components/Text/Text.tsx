@@ -21,6 +21,8 @@ interface Props {
 	htmlFor?: string;
 	disabled?: boolean;
 	children?: string;
+	id?: string;
+	ariaLabel?: string;
 }
 
 const Text: React.FC<Props> = ({
@@ -39,6 +41,8 @@ const Text: React.FC<Props> = ({
 	htmlFor,
 	disabled = false,
 	children,
+	id,
+	ariaLabel = "text",
 }): React.JSX.Element => {
 	const properSize = typeof size === "number" ? `${size}px` : size ?? undefined;
 
@@ -48,6 +52,8 @@ const Text: React.FC<Props> = ({
 	return (
 		<TextStyled
 			as={as}
+			id={id}
+			aria-label={ariaLabel}
 			className={` 
 				w-fit 
  				${isItalic ? "italic" : ""}
