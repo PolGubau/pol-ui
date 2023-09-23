@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Switch } from ".";
+import { Sizes } from "../../../types";
 
 const meta = {
 	title: "Inputs/Switch",
@@ -14,20 +15,20 @@ export const Default: Story = {
 	args: {
 		label: "Switch",
 		checked: true,
-		size: "normal",
+		size: Sizes.md,
 	},
 };
 export const Small: Story = {
 	args: {
 		label: "Switch",
-		size: "small",
+		size: Sizes.sm,
 		checked: true,
 	},
 };
 export const Large: Story = {
 	args: {
 		label: "Switch",
-		size: "large",
+		size: Sizes.lg,
 		checked: true,
 	},
 };

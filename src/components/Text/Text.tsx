@@ -16,6 +16,7 @@ interface Props {
 	role?: string;
 	as?: "label" | "p" | "span" | "div";
 	htmlFor?: string;
+	disabled?: boolean;
 }
 
 const Text: React.FC<Props> = ({
@@ -32,6 +33,7 @@ const Text: React.FC<Props> = ({
 	weight = 400, // Weight of the text
 	role = "text",
 	htmlFor,
+	disabled = false,
 }): React.JSX.Element => {
 	const shortedText = shorterText({ value, maxLength });
 	const sizedText = textSizer({ size, value: shortedText, isMarkdown });
@@ -43,7 +45,9 @@ const Text: React.FC<Props> = ({
 				w-fit
  				${isItalic ? "italic" : ""}
 				${centered ? "text-center" : "text-left"}
-				
+				${size ? `text-${size}` : "text-md"}	
+				${color ? `text-${color}` : "text-text"}
+				${disabled ? "cursor-not-allowed opacity-70" : ""}
 				text:text-background-inverted
 				dark:text-background
 				
