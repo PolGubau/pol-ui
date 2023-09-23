@@ -1,11 +1,14 @@
 import React from "react";
 import TextStyled from "./Styled";
-import { shorterText, textSizer } from "./text.functions";
+import { shorterText } from "./text.functions";
 import "../../style/baseTheme.css";
+import { applyColor } from "../../style";
+import { ColorType } from "../../types";
+import Markdown from "markdown-to-jsx";
 interface Props {
-	size?: number;
+	size?: number | string;
 	isItalic?: boolean;
-	color?: string;
+	color?: ColorType;
 	value: string;
 	maxLines?: number;
 	maxLength?: number;
@@ -14,9 +17,10 @@ interface Props {
 	centered?: boolean;
 	weight?: number;
 	role?: string;
-	as?: "label" | "p" | "span" | "div";
+	as?: "label" | "p" | "span" | "div" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 	htmlFor?: string;
 	disabled?: boolean;
+	children?: string;
 }
 
 const Text: React.FC<Props> = ({
@@ -31,35 +35,36 @@ const Text: React.FC<Props> = ({
 	isItalic = false, // If the text is italic
 	centered = false, // If the text is centered
 	weight = 400, // Weight of the text
-	role = "text",
+	role = "text", // Role of the text
 	htmlFor,
 	disabled = false,
+	children,
 }): React.JSX.Element => {
-	const shortedText = shorterText({ value, maxLength });
-	const sizedText = textSizer({ size, value: shortedText, isMarkdown });
+	const properSize = typeof size === "number" ? `${size}px` : size ?? undefined;
+
+	const properValue = value ?? children;
+	const shortedText = shorterText({ value: properValue, maxLength });
 
 	return (
 		<TextStyled
 			as={as}
 			className={` 
-				w-fit
+				w-fit 
  				${isItalic ? "italic" : ""}
 				${centered ? "text-center" : "text-left"}
-				${size ? `text-${size}` : "text-md"}	
-				${color ? `text-${color}` : "text-text"}
-				${disabled ? "cursor-not-allowed opacity-70" : ""}
-				text:text-background-inverted
-				dark:text-background
+			
+ 				${disabled ? "cursor-not-allowed opacity-70" : ""}
+				${applyColor(color)}
 				
-		
- 			${className}`}
-			$color={color}
+ 		${className}
+ 			`}
+			$size={properSize}
 			role={role}
 			$maxLines={maxLines}
 			$weight={weight}
 			htmlFor={htmlFor}
 		>
-			{sizedText}
+			{isMarkdown ? <Markdown>{shortedText}</Markdown> : shortedText}
 		</TextStyled>
 	);
 };

@@ -10,7 +10,7 @@ import BottombarButton from "./BottombarButton";
 
 export interface BottombarItem {
 	name: string;
-	icon?: IconType;
+	icon: IconType;
 	link?: string;
 	onClick?: () => void;
 	active?: boolean;
@@ -19,41 +19,56 @@ export interface BottombarItem {
 interface Props {
 	maxWidth?: SizesWithFull;
 	rounded?: SizesComplete;
+	itemRounded?: SizesComplete;
 	items: Array<BottombarItem>;
 	bottomMargin?: number | string;
 	fillEmptyWidth?: boolean;
-	itemsRounded?: SizesComplete;
 	padding?: PaddingOneOrBothValues;
+	onlyShowActiveText?: boolean;
+	flexDirection?: "row" | "column";
 }
 const Bottombar: React.FC<Props> = ({
 	items,
 	maxWidth = Sizes.lg,
 	rounded = "full",
-	bottomMargin = "10px",
-	fillEmptyWidth = true,
-	itemsRounded = "full",
+	itemRounded = rounded,
+	bottomMargin = 20,
+	fillEmptyWidth = false,
 	padding = Sizes.sm,
+	onlyShowActiveText = true,
+	flexDirection = "row",
 }) => {
 	const properBottomMargin = typeof bottomMargin === "number" ? `${bottomMargin}px` : bottomMargin;
+
+	//
+
 	return (
 		<div
-			className={`fixed z-50 ${applyMaxWidth(maxWidth)} 
-			${fillEmptyWidth ? "w-full" : "w-fit"}
-			
-			-translate-x-1/2 left-1/2 backdrop-blur-sm bg-background-inverted/10 dark:bg-background/20 ${applyRounded(
-				rounded
-			)}`}
+			className={`w-fit fixed z-50 ${applyMaxWidth(maxWidth)} 
+			${maxWidth === "full" && "bottom-0 w-full rounded-none"}
+			${fillEmptyWidth ? "w-full items-center flex gap-2" : "w-fit"}
+				-translate-x-1/2 left-1/2 bg-background-inverted dark:bg-background 
+				
+				${applyRounded(rounded)}`}
 			style={{
 				bottom: properBottomMargin,
 			}}
 		>
 			<div
-				className={`flex h-full gap-2 mx-auto justify-center ${applyPadding(
-					padding
-				)} justify-items-center`}
+				className={`flex h-full gap-4  mx-auto  
+				${fillEmptyWidth ? "w-full items-center flex justify-center" : "w-fit"}
+				
+				  ${applyPadding(padding)}`}
 			>
 				{items.map((item) => (
-					<BottombarButton item={item} key={item.name} rounded={itemsRounded} />
+					<BottombarButton
+						item={item}
+						key={item.name}
+						rounded={itemRounded}
+						flexDirection={flexDirection}
+						fillEmptyWidth={fillEmptyWidth}
+						onlyShowActiveText={onlyShowActiveText}
+					/>
 				))}
 			</div>
 		</div>

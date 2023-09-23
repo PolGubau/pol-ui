@@ -52,7 +52,7 @@ const Card: React.FC<Props> = ({
 					{cardHeader}
 				</header>
 			)}
-			<div className={`flex flex-col gap-2 ${applyPadding(padding)}`}>{children}</div>
+			<div className={` ${applyPadding(padding)}`}>{children}</div>
 
 			{cardFooter && (
 				<footer className={`flex justify-between ${applyPadding(padding)}`}>{cardFooter}</footer>

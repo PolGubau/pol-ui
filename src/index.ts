@@ -47,6 +47,7 @@ import {
 	Stack,
 	ButtonGroup,
 	Bottombar,
+	Datacard,
 } from "./components";
 
 export {
@@ -97,6 +98,7 @@ export {
 	Stack,
 	ButtonGroup,
 	Bottombar,
+	Datacard,
 
 	// enums
 	IconNames,

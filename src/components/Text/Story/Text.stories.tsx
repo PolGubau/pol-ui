@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import texts from "./data.json";
 import Text from "../Text";
+import { ColorTypes } from "../../../types";
 
 const meta = {
 	title: "Base/Text",
@@ -20,37 +21,37 @@ export const Default: Story = {
 export const H1: Story = {
 	args: {
 		...Default.args,
-		size: 1,
+		as: "h1",
 	},
 };
 export const H2: Story = {
 	args: {
 		...Default.args,
-		size: 2,
+		as: "h2",
 	},
 };
 export const H3: Story = {
 	args: {
 		...Default.args,
-		size: 3,
+		as: "h3",
 	},
 };
 export const H4: Story = {
 	args: {
 		...Default.args,
-		size: 4,
+		as: "h4",
 	},
 };
 export const H5: Story = {
 	args: {
 		...Default.args,
-		size: 5,
+		as: "h5",
 	},
 };
 export const H6: Story = {
 	args: {
 		...Default.args,
-		size: 6,
+		as: "h6",
 	},
 };
 export const Weights: Story = {
@@ -60,9 +61,9 @@ export const Weights: Story = {
 	},
 	render: (args) => (
 		<>
-			<Text {...args} size={2} weight={400} />
+			<Text {...args} weight={400} />
 
-			<Text {...args} size={2} weight={800} />
+			<Text {...args} weight={800} />
 		</>
 	),
 };
@@ -75,7 +76,7 @@ export const Italic: Story = {
 export const Color: Story = {
 	args: {
 		...Default.args,
-		color: "#ff0000",
+		color: ColorTypes.danger,
 	},
 };
 export const MaxLength: Story = {
@@ -121,9 +122,9 @@ export const DarkMode: Story = {
 	},
 	render: (args) => (
 		<div className="dark ">
-			<div className="  bg-background-inverted p-4">
-				<Text {...args} size={3} />
-				<Text {...args} color="#0000ff" />
+			<div className="text-background-inverted  dark:text-background bg-background-inverted p-4">
+				<Text {...args} as="h3" />
+				<Text {...args} />
 			</div>
 		</div>
 	),

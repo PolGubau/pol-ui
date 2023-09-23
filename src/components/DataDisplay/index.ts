@@ -9,3 +9,4 @@ export * from "./Loaders/Loaders";
 export * from "./Loaders";
 export * from "./ProgessBar";
 export * from "./Tooltip";
+export * from "./Datacard";

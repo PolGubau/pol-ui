@@ -102,8 +102,8 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 					{hasValueInside && percentage}
 				</AnimatedInnerBar>
 			</div>
-			{showMin && <div className="absolute left-1 top-0 2">{min}</div>}
-			{showMax && <div className="absolute right-1 top-0">{max}</div>}
+			{showMin && <div className="absolute left-1 top-0 2 pl-1">{min}</div>}
+			{showMax && <div className="absolute right-1 top-0 pr-1">{max}</div>}
 		</div>
 	);
 };

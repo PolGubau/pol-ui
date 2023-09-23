@@ -11,7 +11,6 @@ import {
 	SizesComplete,
 	SizesWithNone,
 } from "../../../types";
-import { Icon } from "../../Base";
 interface Props extends BaseProps {
 	onClick?: (
 		event:
@@ -31,6 +30,7 @@ interface Props extends BaseProps {
 	ref?: React.RefObject<HTMLButtonElement>;
 	position?: Position;
 	href?: string;
+	loadOnClick?: boolean;
 }
 
 const IconButton: React.FC<Props> = ({
@@ -52,6 +52,7 @@ const IconButton: React.FC<Props> = ({
 	style,
 	ref,
 	position,
+	loadOnClick,
 }) => {
 	return (
 		<Button
@@ -61,6 +62,7 @@ const IconButton: React.FC<Props> = ({
 			disabled={disabled}
 			id={id}
 			style={style}
+			loadOnClick={loadOnClick}
 			onClick={onClick}
 			className={`aspect-square ${className}`}
 			variant={variant}
@@ -73,7 +75,7 @@ const IconButton: React.FC<Props> = ({
 			position={position}
 			customRef={ref}
 			icon={icon}
-		></Button>
+		/>
 	);
 };
 export default IconButton;

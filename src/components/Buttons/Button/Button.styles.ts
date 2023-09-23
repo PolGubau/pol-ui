@@ -65,8 +65,10 @@ export const applyButtonVariant = ({
 					return "text-accent hover:bg-accent/10 dark:text-accent-inverted dark:hover:bg-accent-inverted/10 focus:ring-accent/80 dark:focus:ring-accent-inverted/80 focus:bg-accent/20 dark:focus:bg-accent-inverted/20";
 				case "info":
 					return "text-info hover:bg-info/10 dark:text-info-inverted dark:hover:bg-info-inverted/10 focus:ring-info/80 dark:focus:ring-info-inverted/80 focus:bg-info/20 dark:focus:bg-info-inverted/20";
+
 				case "background":
 					return "text-background hover:bg-background/10 dark:text-background-inverted dark:hover:bg-background-inverted/10 focus:ring-background/80 dark:focus:ring-background-inverted/80 focus:bg-background/20 dark:focus:bg-background-inverted/20";
+
 				case "contrast":
 					return "text-contrast hover:bg-contrast/10 dark:text-contrast-inverted dark:hover:bg-contrast-inverted/10 focus:ring-contrast/80 dark:focus:ring-contrast-inverted/80 focus:bg-contrast/20 dark:focus:bg-contrast-inverted/20";
 				default:

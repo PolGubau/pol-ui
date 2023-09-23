@@ -1,9 +1,9 @@
 import { applyColor, applyTextSize } from "../../../style";
-import { ColorType, IconType, Size } from "../../../types";
+import { ColorType, Size } from "../../../types";
 import { getIcon } from "../../../utils";
 
 interface IconProps {
-	icon: IconType | string;
+	icon: string | React.JSX.Element;
 	color?: ColorType;
 	size?: Size;
 	className?: string;

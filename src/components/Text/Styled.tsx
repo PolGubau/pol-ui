@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import "../../style/baseTheme.css";
 interface TextStyledProps {
-	$color?: string;
 	$maxLines?: number;
 	$weight?: number;
+	$size?: string;
 }
 
 const TextStyled = styled.div<TextStyledProps>`
@@ -49,7 +49,9 @@ const TextStyled = styled.div<TextStyledProps>`
 	-webkit-line-clamp: ${(props) => props.$maxLines};
 	line-clamp: ${(props) => props.$maxLines};
 	-webkit-box-orient: vertical;
-	color: ${(props) => props.$color} !important;
+
+	font-size: ${(props) => props.$size};
+
 	font-weight: ${(props) => props.$weight} !important;
 `;
 

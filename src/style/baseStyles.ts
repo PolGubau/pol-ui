@@ -59,7 +59,6 @@ export const applyTextSize = (size?: Size) => {
 			return "text-xs";
 		case "sm":
 			return "text-sm";
-
 		case "lg":
 			return "text-lg";
 		case "xl":

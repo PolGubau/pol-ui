@@ -1,37 +1,63 @@
 import React from "react";
 import { Button } from "../../Buttons";
 import { BottombarItem } from "./Bottombar";
-import { Tooltip } from "../../DataDisplay";
-import { Icon } from "../../Base";
 import { Sizes, SizesComplete } from "../../../types";
+import { Text } from "../../Text";
+import { Icon } from "../../Base";
 
 interface Props {
 	item: BottombarItem;
 	rounded?: SizesComplete;
+	flexDirection?: "row" | "column";
+
+	fillEmptyWidth?: boolean;
+	onlyShowActiveText?: boolean;
 }
 
-const BottombarButton: React.FC<Props> = ({ item, rounded = "full" }) => {
+const BottombarButton: React.FC<Props> = ({
+	item,
+	rounded = "full",
+	fillEmptyWidth = false,
+	flexDirection,
+	onlyShowActiveText = false,
+}) => {
+	const hasLabel = (onlyShowActiveText && item.active) || !onlyShowActiveText;
+
 	return (
-		<>
-			<Tooltip content={item.name}>
-				<Button
-					key={item.name}
-					href={item.link}
-					onClick={item.onClick}
-					fullWidth
-					rounded={rounded}
-					centered
-					variant={item.active ? "filled" : "text"}
-					color={item.active ? "accent" : "primary"}
-					className={`items-center justify-center rounded-full hover:bg-inverted:hover:bg-background-inverted group `}
+		<div
+			className={`  
+		${fillEmptyWidth ? "w-full items-center flex" : "w-fit"}
+		`}
+		>
+			<Button
+				loadOnClick
+				key={item.name}
+				href={item.link}
+				onClick={item.onClick}
+				rounded={rounded}
+				justify="center"
+				centered
+				fullWidth
+				size={Sizes.xl}
+				variant={item.active ? "filled" : "text"}
+				color={item.active ? "accent" : "background"}
+				padding={Sizes.md}
+			>
+				<div
+					className={`flex items-center 
+					${flexDirection === "row" ? "flex-row gap-2" : "flex-col gap-1"}
+					${!hasLabel && "justify-center"}
+					 
+					`}
 				>
-					<div className="flex flex-col gap-1 items-center">
-						{item.icon && <Icon icon={item.icon} size={Sizes.lg} />} <small>{item.name}</small>
-					</div>
-				</Button>
-			</Tooltip>
+					<Icon icon={item.icon} />
+
+					{hasLabel && <Text size={6} value={item.name} />}
+				</div>
+			</Button>
+
 			<span className="sr-only">{item.name}</span>
-		</>
+		</div>
 	);
 };
 
