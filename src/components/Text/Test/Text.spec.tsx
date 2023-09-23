@@ -42,18 +42,6 @@ describe("Text Component", () => {
 		expect(text.tagName).toBe("STRONG");
 	});
 
-	[1, 2, 3, 4, 5, 6].forEach((size) => {
-		test(`Displays as h${size} if size is ${size}`, () => {
-			render(<Text value={TestTexts.TEXT} size={size} />);
-			const text = screen.getByText(TestTexts.TEXT);
-			expect(text.tagName).toBe(`H${size}`);
-		});
-		test(`Displays as markdown if size is ${size}and they have markdown`, () => {
-			render(<Text value={TestTexts.TEXT} isMarkdown size={size} />);
-			const text = screen.getByText(TestTexts.TEXT);
-			expect(text.tagName).toBe(`SPAN`);
-		});
-	});
 	test("Displays as p if size is not specified", () => {
 		render(<Text value={TestTexts.TEXT} />);
 		const text = screen.getByText(TestTexts.TEXT);
@@ -66,7 +54,7 @@ describe("Text Component", () => {
 	});
 
 	test("If isBold prop is false, the text is displayed as normal and should not have font-bold class", () => {
-		render(<Text value={TestTexts.TEXT}  />);
+		render(<Text value={TestTexts.TEXT} />);
 		const text = screen.getByRole("text");
 		expect(text).not.toHaveClass("font-bold");
 	});

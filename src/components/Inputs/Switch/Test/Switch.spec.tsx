@@ -36,12 +36,12 @@ describe("Switch Component", () => {
 	});
 
 	test("You can set it to small via props", () => {
-		render(<Switch size="small" />);
+		render(<Switch size="sm" />);
 		const input = screen.getByRole("switch");
 		expect(input).toHaveClass("w-9");
 	});
 	test("You can set it to large via props", () => {
-		render(<Switch size="large" />);
+		render(<Switch size="lg" />);
 		const input = screen.getByRole("switch");
 		expect(input).toHaveClass("w-12");
 	});
