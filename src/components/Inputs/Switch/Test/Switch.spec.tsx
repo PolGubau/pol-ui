@@ -10,15 +10,12 @@ describe("Switch Component", () => {
 		const heading = screen.getByText(Texts.TEXT);
 		// Has the label
 		expect(heading).toBeInTheDocument();
-
 		// By default it's not checked
 		const input = screen.getByRole("switch");
 		expect(input).not.toBeChecked();
-
 		// By default it's not disabled
 		expect(input).not.toBeDisabled();
 	});
-
 	test("You can disable it via props", () => {
 		render(<Switch disabled />);
 		const input = screen.getByRole("switch");
@@ -34,7 +31,6 @@ describe("Switch Component", () => {
 		const input = screen.getByRole("switch");
 		expect(input).not.toBeChecked();
 	});
-
 	test("You can set it to small via props", () => {
 		render(<Switch size="sm" />);
 		const input = screen.getByRole("switch");
@@ -65,13 +61,11 @@ describe("Switch Component", () => {
 		const input = screen.getByText("(Oups)");
 		expect(input).toBeInTheDocument();
 	});
-
 	test("ClassNames are applyed to the container", () => {
 		render(<Switch className="test" />);
 		const input = screen.getByRole("switch");
 		expect(input).toHaveClass("test");
 	});
-
 	test("If we click the switch, we will trigger a function", () => {
 		const mockFn = jest.fn();
 		render(<Switch checked={false} onChange={mockFn} />);
