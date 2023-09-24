@@ -1,4 +1,4 @@
-import { ColorType, Shadow, Size, SizesComplete } from "../../../types";
+import { Color, Shadow, Size, SizesComplete } from "../../../types";
 import { applyMaxWidth, applyShadow, applyRounded, applyBgColor } from "../../../style";
 
 interface Props {
@@ -6,12 +6,12 @@ interface Props {
 	maxWidth?: Size | "full";
 	shadow?: Shadow;
 	rounded: SizesComplete;
-	color: ColorType;
+	color?: Color;
 	className?: string;
 }
 
 export const cardStyle = ({
-	hasBorder = true,
+	hasBorder = false,
 	maxWidth = "full",
 	shadow = "none",
 	rounded,
@@ -19,7 +19,7 @@ export const cardStyle = ({
 	className,
 }: Props) => {
 	const base = " flex flex-col gap-2 w-fit";
-	const border = hasBorder ? "ring-2 ring-gray-200" : "";
+	const border = hasBorder ? "ring ring-primary" : "";
 
 	return `${base} ${border} ${applyMaxWidth(maxWidth)} ${applyShadow(shadow)} ${applyRounded(
 		rounded

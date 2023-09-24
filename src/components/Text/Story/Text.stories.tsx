@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import texts from "./data.json";
 import Text from "../Text";
-import { ColorTypes } from "../../../types";
+import { Colors } from "../../../types";
 
 const meta = {
 	title: "Base/Text",
@@ -76,7 +76,7 @@ export const Italic: Story = {
 export const Color: Story = {
 	args: {
 		...Default.args,
-		color: ColorTypes.danger,
+		color: Colors.danger,
 	},
 };
 export const MaxLength: Story = {

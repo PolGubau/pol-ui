@@ -1,10 +1,10 @@
 import { applyColor, applyTextSize } from "../../../style";
-import { ColorType, Size } from "../../../types";
+import { Color, Size } from "../../../types";
 import { getIcon } from "../../../utils";
 
 interface IconProps {
 	icon: string | React.JSX.Element;
-	color?: ColorType;
+	color?: Color;
 	size?: Size;
 	className?: string;
 	id?: string;

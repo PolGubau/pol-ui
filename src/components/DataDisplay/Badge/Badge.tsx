@@ -2,13 +2,26 @@ import { Transition } from "@headlessui/react";
 import { Icon } from "../../Base/Icon";
 import { badgeStyles } from "./Badge.styles";
 import { Fragment } from "react";
-import { ColorType, Size, BaseProps, SizesComplete, Shadow, Side, IconType } from "../../../types";
+import {
+	Color,
+	Size,
+	BaseProps,
+	SizesComplete,
+	Shadow,
+	Side,
+	IconType,
+	Sizes,
+	Colors,
+	Sides,
+	Placements,
+	SidesY,
+} from "../../../types";
 import { applyBgColor, applyRounded, applyShadow } from "../../../style";
 
 interface Props extends BaseProps {
 	content: string | number;
 	variant?: "dot" | "text";
-	color?: ColorType;
+	color?: Color;
 	shadow?: Shadow;
 	size?: Size;
 	rounded?: SizesComplete;
@@ -24,8 +37,8 @@ interface Props extends BaseProps {
 }
 const Badge = ({
 	content,
-	color = "accent",
-	size = "md",
+	color = Colors.accent,
+	size = Sizes.md,
 	rounded = "full",
 	max = 5,
 	className = "",
@@ -33,8 +46,8 @@ const Badge = ({
 	shadow = "none",
 	id,
 	children = null,
-	horizontal = "right",
-	vertical = "top",
+	horizontal = Sides.right,
+	vertical = SidesY.top,
 	onClick = undefined,
 	isVisible = true,
 	ariaLabel = "badge",

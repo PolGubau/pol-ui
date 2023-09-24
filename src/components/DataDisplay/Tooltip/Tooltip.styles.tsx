@@ -1,6 +1,5 @@
 interface Props {
 	position: "top" | "bottom" | "left" | "right";
-	isJustText: boolean;
 }
 export const tooltipStylePosition = (props: Props) => {
 	const base = `text-background dark:text-background-inverted text-xs bg-background-inverted dark:bg-background rounded-lg absolute pointer-events-none`;
@@ -15,5 +14,5 @@ export const tooltipStylePosition = (props: Props) => {
 
 	const isJustTextClasses = `py-1 px-2 bg-inverted rounded-md text-light`;
 
-	return `${base} ${position[props.position]} ${props.isJustText && isJustTextClasses}`;
+	return `${base} ${position[props.position]} ${isJustTextClasses}`;
 };

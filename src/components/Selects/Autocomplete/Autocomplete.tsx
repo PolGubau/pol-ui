@@ -1,7 +1,7 @@
 import { Fragment, useState } from "react";
 import { Combobox, Transition } from "@headlessui/react";
 import { Icon, IconNames } from "../../Base/Icon";
-import { ButtonVariants, ColorTypes, JustifyContents, SelectOption, Sizes } from "../../../types";
+import { ButtonVariants, Colors, JustifyContents, SelectOption, Sizes } from "../../../types";
 import { BaseButtonProps, labelClasses, popupStyles } from "../types";
 import { selectStyles } from "../selectStyles";
 import { useGetLabels } from "../../../hooks";
@@ -16,7 +16,7 @@ interface Props extends BaseButtonProps {
 
 export default function Autocomplete({
 	variant = ButtonVariants.filled,
-	color = ColorTypes.primary,
+	color = Colors.primary,
 	rounded = Sizes.lg,
 	className = "",
 	disabled = false,

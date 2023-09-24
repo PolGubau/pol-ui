@@ -1,9 +1,9 @@
-import { ColorType, Tens } from "../../../../../types";
+import { Color, Tens } from "../../../../../types";
 import { applyBgColor, applyOpacity } from "../../../../../style";
 
 interface Props {
 	marks: number;
-	color?: ColorType;
+	color?: Color;
 	opacity?: Tens;
 }
 const ProgressBarMarks: React.FC<Props> = ({ marks, color, opacity }) => {

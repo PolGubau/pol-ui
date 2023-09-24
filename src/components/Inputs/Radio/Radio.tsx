@@ -2,7 +2,7 @@ import React from "react";
 import { Icon } from "../../Base/Icon";
 import { Transition } from "@headlessui/react";
 import { applyBgColorInChecked, applyDisabled, applyTextSize } from "../../../style";
-import { ColorType, IconType, Size } from "../../../types";
+import { Color, IconType, Size } from "../../../types";
 
 interface Props {
 	label?: string;
@@ -10,8 +10,8 @@ interface Props {
 	onChange?: (value: boolean) => void;
 	disabled?: boolean;
 	errorMessage?: string;
-	colorChecked?: ColorType;
-	iconColor?: ColorType;
+	colorChecked?: Color;
+	iconColor?: Color;
 	checkIcon?: IconType;
 	className?: string;
 	name?: string;

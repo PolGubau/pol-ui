@@ -10,14 +10,14 @@ import {
 	applyPosition,
 } from "../../../style";
 import {
-	ColorType,
+	Color,
 	JustifyContent,
 	Size,
 	SizesComplete,
 	PaddingOneOrBothValues,
 	Position,
 	ButtonVariant,
-	ColorTypes,
+	Colors,
 	ButtonVariants,
 	Sizes,
 	JustifyContents,
@@ -28,10 +28,10 @@ import {
 
 export const applyButtonVariant = ({
 	variant = ButtonVariants.filled,
-	color = ColorTypes.primary,
+	color = Colors.primary,
 }: {
 	variant?: ButtonVariant;
-	color?: ColorType;
+	color?: Color;
 }): string => {
 	switch (variant) {
 		case ButtonVariants.outlined:
@@ -105,7 +105,7 @@ export interface ButtonStylesProps {
 	centered: boolean;
 	padding: PaddingOneOrBothValues;
 	variant: ButtonVariant;
-	color: ColorType;
+	color: Color;
 	className?: string;
 	justify?: JustifyContent;
 	position?: Position;
@@ -120,7 +120,7 @@ export const buttonStyles = ({
 	centered = false,
 	padding = { x: Sizes.md, y: Sizes.sm },
 	variant = ButtonVariants.filled,
-	color = ColorTypes.primary,
+	color = Colors.primary,
 	justify = JustifyContents.center,
 	className = "",
 	loading = false,
@@ -136,13 +136,13 @@ export const buttonStyles = ({
 	
 	
 	
-	${color === ColorTypes.success ? "ring-success dark:ring-success-inverted" : ""}
-	${color === ColorTypes.danger ? "ring-danger dark:ring-danger-inverted" : ""}
-	${color === ColorTypes.info ? "ring-info dark:ring-info-inverted" : ""}
-	${color === ColorTypes.secondary ? "ring-secondary dark:ring-secondary-inverted" : ""}
-	${color === ColorTypes.accent ? "ring-accent dark:ring-accent-inverted" : ""}
-	${color === ColorTypes.primary ? "ring-primary dark:ring-primary-inverted" : ""}
-	${color === ColorTypes.secondary ? "ring-secondary dark:ring-secondary-inverted" : ""}
+	${color === Colors.success ? "ring-success dark:ring-success-inverted" : ""}
+	${color === Colors.danger ? "ring-danger dark:ring-danger-inverted" : ""}
+	${color === Colors.info ? "ring-info dark:ring-info-inverted" : ""}
+	${color === Colors.secondary ? "ring-secondary dark:ring-secondary-inverted" : ""}
+	${color === Colors.accent ? "ring-accent dark:ring-accent-inverted" : ""}
+	${color === Colors.primary ? "ring-primary dark:ring-primary-inverted" : ""}
+	${color === Colors.secondary ? "ring-secondary dark:ring-secondary-inverted" : ""}
  	
 	
 	${loading ? "cursor-wait opacity-90" : "cursor-pointer"}

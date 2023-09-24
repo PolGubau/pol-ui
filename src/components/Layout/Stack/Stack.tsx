@@ -21,6 +21,7 @@ interface StackProps extends IFlexDirection, IFlexWrap {
 	justify?: JustifyContent;
 	width?: number | string;
 	as?: keyof React.JSX.IntrinsicElements; // This allows specifying HTML tag names as values for the 'as' prop.
+	style?: React.CSSProperties;
 }
 
 const Stack: React.FC<StackProps> = ({
@@ -34,6 +35,7 @@ const Stack: React.FC<StackProps> = ({
 	grow = 0,
 	justify = JustifyContents["flex-start"],
 	width = "100%",
+	style,
 }: StackProps) => {
 	const properGap = typeof gap === "number" ? `${gap}px` : gap;
 	const properWidth = typeof width === "number" ? `${width}px` : width;
@@ -51,6 +53,7 @@ const Stack: React.FC<StackProps> = ({
 			$wrap={wrap}
 			$direction={direction}
 			className={classes}
+			style={style}
 		>
 			{children}
 		</StackStyled>

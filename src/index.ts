@@ -48,8 +48,10 @@ import {
 	ButtonGroup,
 	Bottombar,
 	Datacard,
+	WeeklyTracker,
+	TrackerItem,
 } from "./components";
-
+import { PolUITheme } from "./style";
 export {
 	Button,
 	IconButton,
@@ -99,7 +101,11 @@ export {
 	ButtonGroup,
 	Bottombar,
 	Datacard,
+	WeeklyTracker,
+	TrackerItem,
 
+	// theme
+	PolUITheme,
 	// enums
 	IconNames,
 };

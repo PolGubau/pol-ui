@@ -10,29 +10,29 @@ import {
 } from "../../../style";
 import { Icon } from "../../Base/Icon";
 import {
-	ColorType,
+	Color,
 	Alignments,
 	SizesWithNone,
 	Tens,
 	Direction,
 	BaseProps,
 	Directions,
-	ColorTypes,
+	Colors,
 	Sizes,
 	IconType,
 } from "../../../types";
 
 interface Props extends BaseProps {
 	direction?: Direction;
-	color?: ColorType;
+	color?: Color;
 	weight?: number;
 	message?: string | React.ReactNode;
 	messagePosition?: Alignments;
 	icon?: IconType;
 	margin?: SizesWithNone;
 	opacity?: Tens;
-	messageColor?: ColorType;
-	messageBgColor?: ColorType;
+	messageColor?: Color;
+	messageBgColor?: Color;
 	messageRounded?: SizesWithNone;
 }
 
@@ -75,14 +75,14 @@ const Divider: React.FC<Props> = ({
 	style,
 
 	direction = Directions.x,
-	color = ColorTypes.primary,
+	color = Colors.primary,
 	weight = 1,
 	message,
 	messagePosition = "center",
 	icon,
 	margin = Sizes.sm,
 	opacity,
-	messageBgColor = ColorTypes.background,
+	messageBgColor = Colors.background,
 	messageRounded = Sizes.md,
 }) => {
 	return (

@@ -4,7 +4,7 @@ import { Icon } from "../../Base/Icon";
 import { buttonStyles, ButtonStyled } from "./Button.styles";
 import {
 	type BaseProps,
-	ColorType,
+	Color,
 	Side,
 	Size,
 	SizesComplete,
@@ -16,7 +16,7 @@ import {
 	ButtonVariant,
 	IconType,
 	ButtonVariants,
-	ColorTypes,
+	Colors,
 	Sides,
 } from "../../../types";
 import useRipple from "../../../hooks/useRipple";
@@ -32,7 +32,7 @@ export interface ButtonProps extends BaseProps {
 	) => void;
 	disabled?: boolean;
 	variant?: ButtonVariant;
-	color?: ColorType;
+	color?: Color;
 	size?: Size;
 	rounded?: SizesComplete;
 	icon?: IconType | string;
@@ -43,7 +43,7 @@ export interface ButtonProps extends BaseProps {
 	padding?: PaddingOneOrBothValues;
 	customRef?: React.RefObject<HTMLButtonElement>;
 	hasRipple?: boolean;
-	rippleColor?: ColorType;
+	rippleColor?: Color;
 	rippleOpacity?: number;
 	rippleDuration?: number;
 	justify?: JustifyContent;
@@ -52,7 +52,7 @@ export interface ButtonProps extends BaseProps {
 	buttonType?: "button" | "submit" | "reset";
 	hideWhenLessThan?: number;
 	loading?: boolean;
-	loaderColor?: ColorType;
+	loaderColor?: Color;
 	loadOnClick?: boolean;
 }
 
@@ -66,7 +66,7 @@ const Button: React.FC<ButtonProps> = ({
 	href,
 	variant = ButtonVariants.filled,
 	hideWhenLessThan = 0,
-	color = ColorTypes.primary,
+	color = Colors.primary,
 	size = Sizes.md,
 	rounded = Sizes.lg,
 	icon,
@@ -85,7 +85,7 @@ const Button: React.FC<ButtonProps> = ({
 	hasRipple = position !== "absolute" && position !== "fixed",
 	buttonType = "button",
 	loading = false,
-	loaderColor = variant === ButtonVariants.text ? ColorTypes.primary : ColorTypes.background,
+	loaderColor = variant === ButtonVariants.text ? Colors.primary : Colors.background,
 	loadOnClick = false,
 }) => {
 	const isHidden = useMediaQuery(hideWhenLessThan);

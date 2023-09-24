@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Divider from "./Divider";
 import { Button } from "../../Buttons";
-import { ButtonVariants, ColorTypes, Directions, Sizes } from "../../../types";
+import { ButtonVariants, Colors, Directions, Sizes } from "../../../types";
 const meta = {
 	title: "Data Display/Divider",
 	component: Divider,
@@ -86,5 +86,5 @@ export const SomeWeights: Story = {
 	),
 };
 export const CustomMessageBackground: Story = {
-	args: { message: "or", messageBgColor: ColorTypes.danger },
+	args: { message: "or", messageBgColor: Colors.danger },
 };

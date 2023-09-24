@@ -3,13 +3,13 @@ import TextStyled from "./Styled";
 import { shorterText } from "./text.functions";
 import "../../style/baseTheme.css";
 import { applyColor } from "../../style";
-import { ColorType } from "../../types";
+import { Color } from "../../types";
 import Markdown from "markdown-to-jsx";
 interface Props {
 	size?: number | string;
 	isItalic?: boolean;
-	color?: ColorType;
-	value: string;
+	color?: Color;
+	value?: string;
 	maxLines?: number;
 	maxLength?: number;
 	isMarkdown?: boolean;
@@ -46,7 +46,12 @@ const Text: React.FC<Props> = ({
 }): React.JSX.Element => {
 	const properSize = typeof size === "number" ? `${size}px` : size ?? undefined;
 
-	const properValue = value ?? children;
+	const properValue = value ?? children ?? "";
+
+	if (!properValue) {
+		throw new Error("Text component must have a value or children");
+	}
+
 	const shortedText = shorterText({ value: properValue, maxLength });
 
 	return (

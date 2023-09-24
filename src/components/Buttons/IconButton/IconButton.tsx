@@ -4,7 +4,7 @@ import { Button } from "../Button";
 import {
 	BaseProps,
 	ButtonVariant,
-	ColorType,
+	Color,
 	IconType,
 	Position,
 	Size,
@@ -19,7 +19,7 @@ interface Props extends BaseProps {
 	) => void;
 	disabled?: boolean;
 	variant?: ButtonVariant;
-	color?: ColorType;
+	color?: Color;
 	size?: Size;
 	rounded?: SizesComplete;
 	icon: IconType;

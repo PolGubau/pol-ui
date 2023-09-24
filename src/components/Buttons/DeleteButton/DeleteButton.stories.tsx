@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import DeleteButton from "./DeleteButton";
-import { ButtonVariants, ColorTypes, ModalProps, Sides } from "../../../types";
+import { ButtonVariants, Colors, ModalProps, Sides } from "../../../types";
 
 const meta = {
 	title: "Buttons/DeleteButton",
@@ -81,14 +81,14 @@ export const CustomColor: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: `As a normal button, you can customize the color but the default will be ${ColorTypes.danger} (ColorTypes.danger).`,
+				story: `As a normal button, you can customize the color but the default will be ${Colors.danger} (Colors.danger).`,
 			},
 		},
 	},
 	args: {
 		...Default.args,
 		children: "Delete",
-		color: ColorTypes.info,
+		color: Colors.info,
 	},
 };
 export const CustomVariant: Story = {
@@ -96,7 +96,6 @@ export const CustomVariant: Story = {
 		docs: {
 			description: {
 				story: `As a normal button, you can customize the variant but the default will be ${ButtonVariants.filled} (ButtonVariants.filled).`,
-				
 			},
 		},
 	},

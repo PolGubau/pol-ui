@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "../../Buttons/Link";
 import { Image } from "../../Media/Image";
 import Badge from "../Badge/Badge";
-import { ButtonVariant, ColorType, Size, SizesComplete } from "../../../types";
+import { ButtonVariant, Color, Size, SizesComplete } from "../../../types";
 import { applyRounded, applyTextSize } from "../../../style";
 import { applyButtonVariant } from "../../Buttons/Button/Button.styles";
 import Button from "../../Buttons/Button/Button";
@@ -16,9 +16,9 @@ interface Props {
 	href?: string;
 	hasText?: boolean;
 	variant?: ButtonVariant;
-	color?: ColorType;
+	color?: Color;
 	badge?: string;
-	badgeColor?: ColorType;
+	badgeColor?: Color;
 	onClick?: (
 		event:
 			| React.MouseEvent<HTMLAnchorElement, MouseEvent>

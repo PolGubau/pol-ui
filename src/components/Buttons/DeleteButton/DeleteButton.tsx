@@ -1,8 +1,8 @@
 import {
 	ButtonVariant,
 	ButtonVariants,
-	ColorType,
-	ColorTypes,
+	Color,
+	Colors,
 	IconType,
 	ModalProps,
 	Side,
@@ -22,7 +22,7 @@ interface DeleteButtonProps {
 	modalTitle?: string;
 	modalChildren?: React.ReactNode;
 	submitText?: string;
-	color?: ColorType;
+	color?: Color;
 }
 
 const DeleteButton: React.FC<DeleteButtonProps> = ({
@@ -35,7 +35,7 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({
 	modalTitle = "Deleting",
 	modalChildren = "Are you sure you want to delete this?",
 	submitText = "Delete",
-	color = ColorTypes.danger,
+	color = Colors.danger,
 }) => {
 	const handleClick = () => {
 		const defaultModal: ModalProps = {

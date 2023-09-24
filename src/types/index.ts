@@ -50,8 +50,17 @@ export type Direction = `${Directions}`;
 
 export type Alignments = Side | "center";
 
-// 4 sides (Locations, Placement)
-export type Positions = "top" | "bottom" | Side;
+export enum SidesY {
+	"top" = "top",
+	"bottom" = "bottom",
+}
+export type SideY = `${SidesY}`;
+export const Placements = {
+	...Sides,
+	...SidesY,
+};
+
+export type Placement = SideY | Side;
 
 export type Tens = 0 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100;
 export type TextSize = 1 | 2 | 3 | 4 | 5 | 6 | 7;
@@ -60,7 +69,7 @@ export type Shadow = SizesWithNone | "inner" | "outline";
 // css positions
 export type Position = "relative" | "absolute" | "fixed" | "sticky";
 
-export enum ColorTypes {
+export enum Colors {
 	"primary" = "primary",
 	"secondary" = "secondary",
 	"success" = "success",
@@ -71,7 +80,7 @@ export enum ColorTypes {
 	"contrast" = "contrast",
 }
 
-export type ColorType = keyof typeof ColorTypes;
+export type Color = `${Colors}`;
 
 export type BaseProps = {
 	className?: string;
@@ -311,14 +320,14 @@ export interface ModalProps {
 	hasCloseButton?: boolean;
 	maxWidth?: SizesWithFull;
 	cancelButton?: {
-		color?: ColorType;
+		color?: Color;
 		variant?: ButtonVariant;
 		icon?: IconType;
 		text?: string;
 		onClick?: () => Promise<void> | void;
 	};
 	submitButton?: {
-		color?: ColorType;
+		color?: Color;
 		variant?: ButtonVariant;
 		icon?: IconType;
 		text?: string;

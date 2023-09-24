@@ -1,39 +1,44 @@
 import React from "react";
 import { cardStyle } from "./Card.style";
-import { ColorType, Shadow, Size, SizesComplete, SizesWithNone } from "../../../types";
+import { Color, PaddingOneOrBothValues, Shadow, Size, Sizes, SizesComplete } from "../../../types";
 import { applyPadding } from "../../../style";
 
 interface Props {
 	shadow?: Shadow;
 	hasBorder?: boolean;
 	rounded?: SizesComplete;
-	color?: ColorType;
+	color?: Color;
+	customBackground?: string;
 	maxWidth?: Size | "full";
 	children?: React.ReactNode;
 	cardHeader?: React.ReactNode;
 	cardFooter?: React.ReactNode;
 	className?: string;
-	padding?:
-		| {
-				x: SizesWithNone;
-				y: SizesWithNone;
-		  }
-		| SizesWithNone;
+	style?: React.CSSProperties;
+	onClick?: () => void;
+	padding?: PaddingOneOrBothValues;
+	contentClassname?: string;
 }
 const Card: React.FC<Props> = ({
 	shadow,
-	hasBorder = true,
-	color = "background",
-	rounded = "lg",
+	hasBorder = false,
+	color,
+	rounded = Sizes.lg,
 	maxWidth,
 	cardHeader,
 	cardFooter,
 	children,
-	padding = { x: "md", y: "md" },
+	padding = Sizes.md,
 	className,
+	customBackground,
+	onClick,
+	style,
+	contentClassname,
 }) => {
 	return (
-		<div
+		<button
+			disabled={onClick ? false : true}
+			onClick={onClick}
 			className={`${cardStyle({
 				hasBorder,
 				maxWidth,
@@ -42,6 +47,10 @@ const Card: React.FC<Props> = ({
 				color,
 				className,
 			})} `}
+			style={{
+				...style,
+				backgroundColor: customBackground,
+			}}
 		>
 			{cardHeader && (
 				<header
@@ -52,12 +61,12 @@ const Card: React.FC<Props> = ({
 					{cardHeader}
 				</header>
 			)}
-			<div className={` ${applyPadding(padding)}`}>{children}</div>
+			<div className={`${contentClassname} ${applyPadding(padding)}`}>{children}</div>
 
 			{cardFooter && (
 				<footer className={`flex justify-between ${applyPadding(padding)}`}>{cardFooter}</footer>
 			)}
-		</div>
+		</button>
 	);
 };
 

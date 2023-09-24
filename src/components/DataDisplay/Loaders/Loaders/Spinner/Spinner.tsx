@@ -1,17 +1,9 @@
 import { TbLoader2 } from "react-icons/tb";
-import { ColorType, Size } from "../../../../../types";
+import { Color, Size } from "../../../../../types";
 import { applyColor } from "../../../../../style";
 import { Icon } from "../../../../Base/Icon";
 
-const Spinner = ({
-	className,
-	size,
-	color,
-}: {
-	className: string;
-	size: Size;
-	color: ColorType;
-}) => {
+const Spinner = ({ className, size, color }: { className: string; size: Size; color: Color }) => {
 	return (
 		<div className={`flex justify-center items-center w-fit scale-150 ${applyColor(color)}`}>
 			<Icon

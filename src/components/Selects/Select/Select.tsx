@@ -2,13 +2,13 @@ import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { Icon, IconNames } from "../../Base/Icon";
 import {
-	ColorType,
+	Color,
 	SizesComplete,
 	ButtonVariant,
 	IconType,
 	SelectOption,
 	ButtonVariants,
-	ColorTypes,
+	Colors,
 	Sizes,
 	Size,
 	PaddingOneOrBothValues,
@@ -29,7 +29,7 @@ interface Props {
 	keyField?: string;
 	value?: SelectOption;
 	rounded?: SizesComplete;
-	color?: ColorType;
+	color?: Color;
 	onChange?: (value: SelectOption) => void;
 	nullable?: boolean;
 	className?: string;
@@ -49,7 +49,7 @@ export default function Select({
 	buttonIcon = IconNames.expandboth,
 	keyField = "name",
 	value,
-	color = ColorTypes.primary,
+	color = Colors.primary,
 	rounded = Sizes.lg,
 	onChange,
 	nullable = false,

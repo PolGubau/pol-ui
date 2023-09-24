@@ -3,7 +3,7 @@ import {
 	PaddingOneOrBothValues,
 	Position,
 	Size,
-	ColorType,
+	Color,
 	SizesComplete,
 	ButtonVariant,
 	IconType,
@@ -21,7 +21,7 @@ export interface BaseButtonProps {
 	fullWidth?: boolean;
 	placeholder?: string;
 	variant?: ButtonVariant;
-	color?: ColorType;
+	color?: Color;
 	buttonIcon?: IconType;
 	rounded?: SizesComplete;
 	className?: string;

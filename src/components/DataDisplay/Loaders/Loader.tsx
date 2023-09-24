@@ -1,5 +1,5 @@
 import React from "react";
-import { ColorType, Size } from "../../../types";
+import { Color, Size } from "../../../types";
 import { spinnerStyled } from "./Loader.styles";
 import { Dots, Bars, Pulse } from "./Loaders";
 import Spinner from "./Loaders/Spinner/Spinner";
@@ -7,7 +7,7 @@ import Spinner from "./Loaders/Spinner/Spinner";
 interface LoaderProps {
 	type?: "spinner" | "dots" | "bars" | "pulse";
 	size?: Size;
-	color?: ColorType;
+	color?: Color;
 }
 
 const Loader: React.FC<LoaderProps> = ({ type = "spinner", color, size }) => {

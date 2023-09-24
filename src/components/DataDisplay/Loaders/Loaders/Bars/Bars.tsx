@@ -1,10 +1,10 @@
 import { applyBgColor } from "../../../../../style";
-import { ColorType, Size } from "../../../../../types";
+import { Color, Size } from "../../../../../types";
 import { Styles, dotsSize } from "./Bars.styles";
 
 interface Props {
 	className?: string;
-	color?: ColorType;
+	color?: Color;
 	amount?: number;
 	size?: Size;
 }

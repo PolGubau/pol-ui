@@ -3,7 +3,7 @@ import {
 	Size,
 	SizesWithNone,
 	SizesComplete,
-	ColorType,
+	Color,
 	Tens,
 	SizesWithFull,
 	Shadow,
@@ -14,7 +14,7 @@ import {
 	Transition,
 	Transitions,
 	Sizes,
-	ColorTypes,
+	Colors,
 } from "../types";
 
 export const applyMaxWidth = (size?: SizesWithFull) => {
@@ -231,27 +231,27 @@ export const applyRoundedLarge = (round?: SizesComplete) => {
 			return "rounded-none";
 	}
 };
-export const applyBgColor = (color?: ColorType) => {
+export const applyBgColor = (color?: Color) => {
 	switch (color) {
-		case "secondary":
+		case Colors.secondary:
 			return "bg-secondary dark:bg-secondary-inverted";
-		case "success":
+		case Colors.success:
 			return "bg-success dark:bg-success-inverted";
-		case "danger":
+		case Colors.danger:
 			return "bg-danger dark:bg-danger-inverted";
-		case "accent":
+		case Colors.accent:
 			return "bg-accent dark:bg-accent-inverted";
-		case "info":
+		case Colors.info:
 			return "bg-info dark:bg-info-inverted";
-		case "background":
+		case Colors.background:
 			return "bg-background dark:bg-background-inverted";
-		case "contrast":
+		case Colors.contrast:
 			return "bg-background-inverted text-background dark:bg-background dark:text-background-inverted";
 		default:
 			return "bg-primary dark:bg-primary-inverted";
 	}
 };
-export const applyBgColorInChecked = (color?: ColorType) => {
+export const applyBgColorInChecked = (color?: Color) => {
 	switch (color) {
 		case "secondary":
 			return "checked:bg-secondary dark:checked:bg-secondary-inverted";
@@ -271,23 +271,23 @@ export const applyBgColorInChecked = (color?: ColorType) => {
 			return "checked:bg-primary	 dark:checked:bg-primary-inverted";
 	}
 };
-export const applyColor = (color?: ColorType) => {
+export const applyColor = (color?: Color) => {
 	switch (color) {
-		case ColorTypes.primary:
+		case Colors.primary:
 			return "text-primary dark:text-primary-inverted";
-		case ColorTypes.secondary:
+		case Colors.secondary:
 			return "text-secondary dark:text-secondary-inverted";
-		case ColorTypes.success:
+		case Colors.success:
 			return "text-success dark:text-success-inverted";
-		case ColorTypes.danger:
+		case Colors.danger:
 			return "text-danger dark:text-danger-inverted";
-		case ColorTypes.accent:
+		case Colors.accent:
 			return "text-accent dark:text-accent-inverted";
-		case ColorTypes.info:
+		case Colors.info:
 			return "text-info dark:text-info-inverted";
-		case ColorTypes.background:
+		case Colors.background:
 			return "text-background dark:text-background-inverted";
-		case ColorTypes.contrast:
+		case Colors.contrast:
 			return "text-contrast dark:text-contrast-inverted";
 		default:
 			return "text-default ";

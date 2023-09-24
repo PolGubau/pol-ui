@@ -1,5 +1,5 @@
 import { keyframes, styled } from "styled-components";
-import { ColorType } from "../../../../../types";
+import { Color } from "../../../../../types";
 import { applyBgColor } from "../../../../../style";
 
 const pulseAnimation = keyframes`
@@ -26,7 +26,7 @@ const PulseStyled = styled.div`
 	animation-fill-mode: forwards;
 `;
 
-const Pulse = ({ className, color }: { className: string; color: ColorType }) => {
+const Pulse = ({ className, color }: { className: string; color: Color }) => {
 	return (
 		<PulseStyled
 			className={`flex rounded-full justify-center items-center  ${applyBgColor(

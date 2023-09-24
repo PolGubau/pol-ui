@@ -6,7 +6,7 @@ import { formatString } from "../../../utils";
 import { Link } from "../../Buttons/Link";
 import {
 	ButtonVariants,
-	ColorTypes,
+	Colors,
 	IconType,
 	JustifyContents,
 	Positions,
@@ -47,7 +47,7 @@ export default function Menu({
 	dividers = false,
 	direction = "bottom",
 	fullWidth = false,
-	color = ColorTypes.primary,
+	color = Colors.primary,
 	rounded = Sizes.lg,
 	className = "",
 	size = Sizes.md,

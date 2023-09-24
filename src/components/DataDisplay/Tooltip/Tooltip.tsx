@@ -2,22 +2,23 @@ import React, { Fragment } from "react";
 import { useHover } from "../../../hooks";
 import { Transition } from "@headlessui/react";
 import { tooltipStylePosition } from "./Tooltip.styles";
-import { BaseProps } from "../../../types";
+import { BaseProps, Placement, Placements } from "../../../types";
 
 interface Props extends BaseProps {
 	content: React.ReactNode | string;
-	position?: "top" | "bottom" | "left" | "right";
+	position?: Placement;
 	enterDelay?: number;
 	leaveDelay?: number;
 	tooltipClassName?: string;
 	tooltipStyle?: React.CSSProperties;
 	children: React.ReactNode;
+	className?: string;
 }
 
 const Tooltip = ({
 	children,
 	content,
-	position = "top",
+	position = Placements.top,
 	className,
 	id,
 	style,
@@ -29,7 +30,7 @@ const Tooltip = ({
 	const { isHovering, hoverProps } = useHover({ enterDelay, leaveDelay });
 
 	return (
-		<div className="relative w-fit">
+		<div className="relative">
 			<Transition
 				as={Fragment}
 				show={isHovering}
@@ -43,7 +44,6 @@ const Tooltip = ({
 				<div
 					className={`${tooltipStylePosition({
 						position,
-						isJustText: typeof content === "string",
 					})} ${tooltipClassName ?? ""}`}
 					style={tooltipStyle}
 				>
@@ -51,7 +51,7 @@ const Tooltip = ({
 				</div>
 			</Transition>
 
-			<div {...hoverProps} className={className} id={id} style={style}>
+			<div {...hoverProps} className={`min-w-[20px] w-full ${className}`} id={id} style={style}>
 				{children}
 			</div>
 		</div>
