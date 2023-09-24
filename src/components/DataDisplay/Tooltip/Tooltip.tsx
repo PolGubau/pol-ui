@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
-import { useHover } from "../../../hooks";
 import { Transition } from "@headlessui/react";
 import { tooltipStylePosition } from "./Tooltip.styles";
 import { BaseProps, Placement, Placements } from "../../../types";
+import { useHover } from "../../../hooks";
 
 interface Props extends BaseProps {
 	content: React.ReactNode | string;

@@ -4,7 +4,6 @@ import { Icon } from "../../Base/Icon";
 import { Wrapper } from "../../Wrappers";
 import { Text } from "../../Text";
 import { applyAlignCenter, applyCentered } from "../../../style";
-import { useLockBodyScroll } from "@uidotdev/usehooks";
 import { closeButton, modalStyles } from "./modalStyles";
 import { ModalCloseReason, ModalProps } from "../../../types";
 interface Props {
@@ -13,8 +12,6 @@ interface Props {
 }
 
 const Modal = ({ state, setState }: Props) => {
-	useLockBodyScroll();
-
 	const {
 		handleClose,
 		title,

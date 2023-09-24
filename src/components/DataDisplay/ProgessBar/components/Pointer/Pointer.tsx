@@ -1,10 +1,13 @@
 import React from "react";
 import { arrowPointerPB, pointerPB } from "./Pointer.styles";
+import { motion } from "framer-motion";
 interface Props {
 	value: number;
 	percentage: number;
 	pointerPosition: "top" | "bottom";
 	pointerWithArrow?: boolean;
+	vertical?: boolean;
+	showPointer?: boolean;
 }
 
 const ProgressBarPointer: React.FC<Props> = ({
@@ -12,26 +15,36 @@ const ProgressBarPointer: React.FC<Props> = ({
 	percentage,
 	pointerPosition,
 	pointerWithArrow,
+	vertical,
 }) => {
+	const stylesIfVertical = {
+		bottom: `${percentage}%`,
+	};
+	const stylesIfHorizontal = {
+		left: `${percentage}%`,
+	};
+
 	return (
-		<>
+		<motion.div
+			key={percentage}
+			initial={{ opacity: 0, y: 5 }}
+			animate={{ opacity: 1, y: 0 }}
+			exit={{ opacity: 0, y: 5 }}
+			transition={{ type: "spring", stiffness: 100 }}
+		>
 			{pointerWithArrow && (
 				<span
-					className={arrowPointerPB({ pointerPosition })}
-					style={{
-						left: `${percentage}%`,
-					}}
-				></span>
+					className={arrowPointerPB({ pointerPosition, vertical })}
+					style={vertical ? stylesIfVertical : stylesIfHorizontal}
+				/>
 			)}
 			<div
-				className={pointerPB({ pointerPosition })}
-				style={{
-					left: `${percentage}%`,
-				}}
+				className={pointerPB({ pointerPosition, vertical })}
+				style={vertical ? stylesIfVertical : stylesIfHorizontal}
 			>
 				{value}
 			</div>
-		</>
+		</motion.div>
 	);
 };
 

@@ -231,10 +231,10 @@ export const applyRoundedLarge = (round?: SizesComplete) => {
 			return "rounded-none";
 	}
 };
-export const applyBgColor = (color?: Color) => {
+export const applyBgColor = (color?: Color, opacity?: Tens) => {
 	switch (color) {
 		case Colors.secondary:
-			return "bg-secondary dark:bg-secondary-inverted";
+			return `bg-secondary dark:bg-secondary-inverted`;
 		case Colors.success:
 			return "bg-success dark:bg-success-inverted";
 		case Colors.danger:
@@ -269,6 +269,32 @@ export const applyBgColorInChecked = (color?: Color) => {
 			return "checked:bg-background-inverted checked:text-background dark:checked:bg-background dark:checked:text-background-inverted";
 		default:
 			return "checked:bg-primary	 dark:checked:bg-primary-inverted";
+	}
+};
+export const applyBgOpacity = (opacity?: Tens) => {
+	switch (opacity) {
+		case 0:
+			return "bg-opacity-0";
+		case 10:
+			return "bg-opacity-10";
+		case 20:
+			return "bg-opacity-20";
+		case 30:
+			return "bg-opacity-30";
+		case 40:
+			return "bg-opacity-40";
+		case 50:
+			return "bg-opacity-50";
+		case 60:
+			return "bg-opacity-60";
+		case 70:
+			return "bg-opacity-70";
+		case 80:
+			return "bg-opacity-80";
+		case 90:
+			return "bg-opacity-90";
+		default:
+			return "bg-opacity-100";
 	}
 };
 export const applyColor = (color?: Color) => {

@@ -1,19 +1,23 @@
 import { Size } from "../../../types";
 
-export const backgroundBar = ({ size }: { size: Size }) => {
-	const baseStyles =
-		" bg-primary/10   w-full relative  outline-2  max-w-full transition-all duration-300 ease-in-out";
+export const backgroundBar = ({ size, vertical }: { size: Size; vertical: boolean }) => {
+	const baseStyles = ` relative  outline-2  transition-all duration-300 ease-in-out
+	
+	${vertical ? "h-full max-h-full" : "w-full max-w-full "}
+	
+	`;
+
 	switch (size) {
 		case "xs":
-			return `${baseStyles} h-2`;
+			return `${baseStyles} ${vertical ? "w-2" : "h-2"} `;
 		case "sm":
-			return `${baseStyles} h-4`;
+			return `${baseStyles}  ${vertical ? "w-4" : "h-4"}`;
 
 		case "lg":
-			return `${baseStyles} h-8`;
+			return `${baseStyles}  ${vertical ? "w-8" : "h-8"}`;
 		case "xl":
-			return `${baseStyles} h-12`;
+			return `${baseStyles}  ${vertical ? "w-12" : "h-12"}`;
 		default:
-			return `${baseStyles} h-6`;
+			return `${baseStyles}   ${vertical ? "w-6" : "h-6"}`;
 	}
 };

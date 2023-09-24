@@ -1,21 +1,34 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { backgroundBar } from "./ProgessBar.styles";
-import { Color, Size, SizesComplete, Tens } from "../../../types";
+import {
+	Color,
+	Colors,
+	Direction,
+	Directions,
+	Placements,
+	Size,
+	Sizes,
+	SizesComplete,
+	Tens,
+} from "../../../types";
 import ProgressBarPointer from "./components/Pointer/Pointer";
 import ProgressBarMarks from "./components/Marks/Marks";
-import { applyBgColor, applyRounded } from "../../../style";
+import { applyBgColor, applyBgOpacity, applyRounded } from "../../../style";
 import { AnimatedInnerBar } from "./components/AnimatedInnerBar";
+import { useHover } from "../../../hooks";
+import { AnimatePresence } from "framer-motion";
 
 interface ProgressBarProps {
 	value: number; // Value of the progress bar (0-100)
 	height?: string; // Height of the progress bar
 	className?: string; // Additional CSS classes
 	rounded?: SizesComplete;
-	pointer?: boolean;
+	pointer?: "always" | "never" | "onHover";
 	pointerPosition?: "top" | "bottom";
 	hasValueInside?: boolean;
 	pointerWithArrow?: boolean;
-	color?: Color;
+	innerColor?: Color;
+	backgroundColor?: Color;
 	size?: Size;
 	min?: number;
 	max?: number;
@@ -25,27 +38,41 @@ interface ProgressBarProps {
 	marksColor?: Color;
 	marksOpacity?: Tens;
 	innerClassName?: string;
+	direction?: Direction;
+	hoverPointerEnterDelay?: number;
+	hoverPointerLeaveDelay?: number;
+	backgroundOpacity?: Tens;
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({
 	value,
 	marks = 0,
-	marksColor = "primary",
+	marksColor = Colors.accent,
+	innerColor = Colors.accent,
+	backgroundColor = Colors.primary,
+	backgroundOpacity = 10,
 	rounded = "full",
 	className = "",
-	pointer = true,
-	pointerPosition = "top",
+	pointer = "always",
+	pointerPosition = Placements.top,
 	hasValueInside = false,
 	pointerWithArrow = true,
-	color = "accent",
-	size = "md",
+	size = Sizes.md,
 	min = 0,
 	max = 100,
 	showMin = false,
 	showMax = false,
 	marksOpacity = 20,
 	innerClassName = "",
+	direction = Directions.x,
+	hoverPointerEnterDelay = 0,
+	hoverPointerLeaveDelay = 0,
 }) => {
+	const { isHovering, hoverProps } = useHover({
+		enterDelay: hoverPointerEnterDelay,
+		leaveDelay: hoverPointerLeaveDelay,
+	});
+
 	const maxPercent = 100;
 	const minPercent = 0;
 	if (value > maxPercent) {
@@ -76,23 +103,44 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 	if (percentage > 100) percentage = 100;
 	if (percentage < 0) percentage = 0;
 
+	const isVertical = direction === Directions.y;
+
+	const showPointer = pointer === "always" || (pointer === "onHover" && isHovering);
 	return (
-		<div className={`${backgroundBar({ size })} ${applyRounded(rounded)} ${className}`}>
-			{pointer && (
-				<ProgressBarPointer
-					pointerWithArrow={pointerWithArrow}
-					value={value}
-					percentage={percentage}
-					pointerPosition={pointerPosition}
-				/>
-			)}
+		<div
+			{...hoverProps}
+			className={`${backgroundBar({ size, vertical: isVertical })} ${applyRounded(rounded)}
+			${applyBgColor(backgroundColor)}
+			${applyBgOpacity(backgroundOpacity)}
+			${className}`}
+		>
+			<AnimatePresence>
+				{showPointer && (
+					<ProgressBarPointer
+						showPointer={showPointer}
+						pointerWithArrow={pointerWithArrow}
+						value={value}
+						percentage={percentage}
+						pointerPosition={pointerPosition}
+						vertical={isVertical}
+					/>
+				)}
+			</AnimatePresence>
 			<div className={`overflow-hidden transition-all  ${applyRounded(rounded)}`}>
-				<ProgressBarMarks marks={marks} color={marksColor} opacity={marksOpacity} />
+				<ProgressBarMarks
+					marks={marks}
+					color={marksColor}
+					opacity={marksOpacity}
+					vertical={isVertical}
+				/>
 
 				<AnimatedInnerBar
+					$vertical={isVertical}
 					finalWidth={percentage}
-					className={`h-full absolute top-0 left-0 flex items-center justify-center  ${applyBgColor(
-						color
+					className={` ${
+						direction === Directions.x ? "h-full" : "w-full"
+					}  absolute bottom-0 left-0 flex items-center justify-center  ${applyBgColor(
+						innerColor
 					)} ${applyRounded(rounded)}${innerClassName}`}
 					role="progressbar"
 					aria-valuenow={percentage}

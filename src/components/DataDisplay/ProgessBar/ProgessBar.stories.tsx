@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import ProgessBar from "./ProgessBar";
 import { Text } from "../../Text";
+import { Colors, Directions, Sizes } from "../../../types";
 
 const meta = {
 	title: "Data Display/Progess Bar",
@@ -33,23 +34,26 @@ export const PointerDown: Story = {
 	args: { value: 70, pointerPosition: "bottom" },
 };
 export const WithoutPointer: Story = {
-	args: { value: 70, pointer: false },
+	args: { value: 70, pointer: "never" },
+};
+export const OnHoverPointer: Story = {
+	args: { value: 70, pointer: "onHover" },
 };
 export const WithValueInside: Story = {
 	args: { value: 70, pointerPosition: "bottom", hasValueInside: true },
 };
 export const JustValueInside: Story = {
-	args: { value: 70, hasValueInside: true, pointer: false },
+	args: { value: 70, hasValueInside: true, pointer: "never" },
 };
 
 export const AllColors: Story = {
 	render: (args) => (
 		<div className=" gap-8 flex p-8 ">
-			<ProgessBar {...args} color="accent" value={10} />
-			<ProgessBar {...args} color="success" value={20} />
-			<ProgessBar {...args} color="danger" value={30} />
-			<ProgessBar {...args} color="info" value={50} />
-			<ProgessBar {...args} color="contrast" value={60} />
+			<ProgessBar {...args} innerColor="accent" value={10} />
+			<ProgessBar {...args} innerColor="success" value={20} />
+			<ProgessBar {...args} innerColor="danger" value={30} />
+			<ProgessBar {...args} innerColor="info" value={50} />
+			<ProgessBar {...args} innerColor="contrast" value={60} />
 		</div>
 	),
 	args: {
@@ -59,11 +63,11 @@ export const AllColors: Story = {
 export const AllColorsVertical: Story = {
 	render: (args) => (
 		<div className=" gap-8 flex-col flex p-8 ">
-			<ProgessBar {...args} color="accent" value={10} />
-			<ProgessBar {...args} color="success" value={20} />
-			<ProgessBar {...args} color="danger" value={30} />
-			<ProgessBar {...args} color="info" value={50} />
-			<ProgessBar {...args} color="contrast" value={80} />
+			<ProgessBar {...args} innerColor="accent" value={10} />
+			<ProgessBar {...args} innerColor="success" value={20} />
+			<ProgessBar {...args} innerColor="danger" value={30} />
+			<ProgessBar {...args} innerColor="info" value={50} />
+			<ProgessBar {...args} innerColor="contrast" value={80} />
 		</div>
 	),
 	args: {
@@ -73,11 +77,11 @@ export const AllColorsVertical: Story = {
 export const AllSizes: Story = {
 	render: (args) => (
 		<div className=" gap-8 flex-col flex p-8 ">
-			<ProgessBar {...args} size="xs" />
-			<ProgessBar {...args} size="sm" />
-			<ProgessBar {...args} size="md" />
-			<ProgessBar {...args} size="lg" />
-			<ProgessBar {...args} size="xl" />
+			<ProgessBar {...args} size={Sizes.sm} />
+			<ProgessBar {...args} size={Sizes.sm} />
+			<ProgessBar {...args} size={Sizes.md} />
+			<ProgessBar {...args} size={Sizes.lg} />
+			<ProgessBar {...args} size={Sizes.xl} />
 		</div>
 	),
 	args: {
@@ -111,8 +115,10 @@ export const SchoolMarks: Story = {
 				marks={10}
 				min={0}
 				max={10}
-				color="info"
-				marksColor="background"
+				innerColor={Colors.info}
+				backgroundColor={Colors.info}
+				backgroundOpacity={30}
+				marksColor={Colors.background}
 				marksOpacity={60}
 			/>
 		</div>
@@ -132,4 +138,24 @@ export const CustomMarksOpacity: Story = {
 	args: {
 		...Default.args,
 	},
+};
+export const Vertical: Story = {
+	args: { value: 70, direction: Directions.y },
+	render: (args) => (
+		<div className="h-[100px] flex gap-2">
+			<ProgessBar {...args} pointer="onHover" size="sm" value={30} />
+			<ProgessBar {...args} pointer="onHover" size="sm" value={60} />
+			<ProgessBar {...args} pointer="onHover" size="sm" value={80} />
+		</div>
+	),
+};
+export const VerticalAlwaysShowPointer: Story = {
+	args: { value: 70, direction: Directions.y },
+	render: (args) => (
+		<div className="h-[200px] flex gap-4 bg-primary/20 p-8">
+			<ProgessBar {...args} pointer="always" size="sm" value={30} />
+			<ProgessBar {...args} pointer="always" size="sm" value={60} />
+			<ProgessBar {...args} pointer="always" size="sm" value={80} />
+		</div>
+	),
 };
