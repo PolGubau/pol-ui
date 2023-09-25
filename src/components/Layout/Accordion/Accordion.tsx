@@ -4,6 +4,7 @@ import { accordionStyles } from "./accordion.style";
 import { applyMaxWidth, applyRounded } from "../../../style";
 import { SizesWithNone, SizesWithFull, Side, Sides, IconType, Sizes } from "../../../types";
 import { Divider } from "../../DataDisplay";
+import { AnimatePresence } from "framer-motion";
 export interface AccordionItemProps {
 	title: string;
 	content: string | React.ReactNode;
@@ -29,6 +30,7 @@ interface Props {
 	titleSize?: number | string;
 	arrowIconPosition?: Side;
 	paintOpened?: boolean;
+	transitionDuration?: number;
 }
 
 const Accordion: React.FC<Props> = ({
@@ -46,6 +48,7 @@ const Accordion: React.FC<Props> = ({
 	arrowIconPosition = Sides.right,
 	titleSize,
 	paintOpened = true,
+	transitionDuration = 0.2,
 }) => {
 	const [openedIndex, setOpenedIndex] = React.useState<number[] | null>(defaultOpened);
 
@@ -87,12 +90,11 @@ const Accordion: React.FC<Props> = ({
 			{data.map((item, _i) => {
 				const itsNotLastItem = _i !== data.length - 1;
 				return (
-					<>
+					<div key={item.title}>
 						<AccordionItem
 							paintOpened={paintOpened}
 							titleSize={titleSize}
 							rounded={rounded}
-							key={item.title}
 							arrowIconPosition={arrowIconPosition}
 							item={item}
 							hasArrowIcon={hasArrowIcon}
@@ -100,7 +102,7 @@ const Accordion: React.FC<Props> = ({
 							toggleOpen={() => toggleOpened(_i)}
 						/>
 						{hasDividers && itsNotLastItem && <Divider margin="none" />}
-					</>
+					</div>
 				);
 			})}
 		</section>

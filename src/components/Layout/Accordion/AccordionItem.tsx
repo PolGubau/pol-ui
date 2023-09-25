@@ -1,10 +1,10 @@
 import React from "react";
 import { Icon, IconNames } from "../../Base/Icon";
-import { Transition } from "@headlessui/react";
 import { Text } from "../../Text";
 import { AccordionItemProps } from "./Accordion";
 import { Button, Link } from "../../Buttons";
 import { JustifyContents, Side, Sides, SizesComplete } from "../../../types";
+import { AnimatePresence, motion } from "framer-motion";
 interface Props {
 	hasArrowIcon?: boolean;
 	isOpened?: boolean;
@@ -53,25 +53,30 @@ const AccordionItem: React.FC<Props> = ({
 					)}
 				</Button>
 			</header>
-			<Transition
-				show={isOpened}
-				enter="transition-all ease-out duration-100 transform"
-				enterFrom="opacity-0 scale-95 -translate-y-1  "
-				enterTo="opacity-100 scale-100 translate-y-0  "
-				leave="transition-all ease-in duration-75 transform"
-				leaveFrom="opacity-100 scale-100  translate-y-0 "
-				leaveTo="opacity-0 scale-95 -translate-y-1  "
-			>
-				<p className="py-2 px-4">
-					{item.href ? (
-						<Link fullWidth variant="text" href={item.href}>
-							{item.content}
-						</Link>
-					) : (
-						item.content
-					)}
-				</p>
-			</Transition>
+			<AnimatePresence>
+				{isOpened && (
+					<motion.div
+						transition={{
+							ease: "linear",
+							duration: 0.1,
+							opacity: { duration: 0.1 },
+						}}
+						initial={{ opacity: 0, height: 0 }}
+						animate={{ opacity: 1, height: "auto" }}
+						exit={{ opacity: 0, height: 0 }}
+					>
+						<p className="py-2 px-4">
+							{item.href ? (
+								<Link fullWidth variant="text" href={item.href}>
+									{item.content}
+								</Link>
+							) : (
+								item.content
+							)}
+						</p>
+					</motion.div>
+				)}
+			</AnimatePresence>
 		</article>
 	);
 };
