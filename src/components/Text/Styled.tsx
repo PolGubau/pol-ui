@@ -41,6 +41,7 @@ const TextStyled = styled.div<TextStyledProps>`
 		font-size: 1rem;
 		margin: 0;
 	}
+	text-wrap: balance;
 	padding: 0;
 	margin: 0;
 	overflow-y: hidden;

@@ -7,6 +7,7 @@ import { IconNames } from "../../Base";
 import { Card } from "../Card";
 import { Grid } from "../Grid";
 import { Text } from "../../Text";
+import { Stack } from "../Stack";
 const meta = {
 	title: "Layout/Accordion",
 	component: Accordion,
@@ -321,11 +322,10 @@ export const UsageAsSidebar: Story = {
 				<Navbar logo="MyApp" />
 				<main className="flex ">
 					<div className="">
-						<Accordion {...args} />
+						<Accordion {...args} rounded="none" />
 					</div>
-					<div className="bg-sky-100 p-8">
+					<div className="bg-info/20 p-8">
 						<Text
-							size={6}
 							value={`This component can be used as sidebar how you can see here, but if you use the <SideBar /> component you will have more options as expand prop or min-width, this is a test to explore how Accordion component works, but it isn't a good practice.`}
 						/>
 					</div>
@@ -336,20 +336,19 @@ export const UsageAsSidebar: Story = {
 	args: {
 		maxWidth: "xs",
 		defaultOpened: [0],
-		titleSize: 6,
 		hasBorder: false,
 		data: [
 			{
 				title: "Home",
 				content: (
 					<div className="flex flex-col gap-2">
-						<Link variant="text" icon={IconNames.database} href="/nowhere">
+						<Link variant="text" fullWidth icon={IconNames.database} href="/nowhere">
 							Dashboard
 						</Link>
-						<Link variant="text" icon="user" href="/nowhere">
+						<Link variant="text" fullWidth icon="user" href="/nowhere">
 							Menu
 						</Link>
-						<Link variant="text" icon="book" href="/nowhere">
+						<Link variant="text" fullWidth icon="book" href="/nowhere">
 							Docs
 						</Link>
 					</div>
@@ -359,13 +358,13 @@ export const UsageAsSidebar: Story = {
 				title: "Profile",
 				content: (
 					<div className="flex flex-col gap-2">
-						<Link variant="text" href="/nowhere">
+						<Link variant="text" fullWidth href="/nowhere">
 							Your Profile
 						</Link>
-						<Link variant="text" href="/nowhere">
+						<Link variant="text" fullWidth href="/nowhere">
 							Preferences
 						</Link>
-						<Link variant="text" href="/nowhere">
+						<Link variant="text" fullWidth href="/nowhere">
 							Data
 						</Link>
 					</div>
@@ -376,29 +375,34 @@ export const UsageAsSidebar: Story = {
 				content: (
 					<div className="flex flex-col gap-2">
 						<Grid rows={2} gap={"10px"}>
-							<Card className="flex w-full flex-col gap-2">
-								<Text size={6} value="Export" />
-								<Link fullWidth variant="text" icon={IconNames.database} href="/nowhere">
-									Dashboard
-								</Link>
-								<Link variant="text" fullWidth icon="user" href="/nowhere">
-									Menu
-								</Link>
-								<Link variant="text" fullWidth icon="book" href="/nowhere">
-									Docs
-								</Link>
+							<Card className="flex w-full flex-col gap-2" customBackground="#e3e3e3">
+								<Stack direction="column" gap="10px">
+									<Text value="Export" />
+									<Link fullWidth icon={IconNames.database} href="/nowhere">
+										Dashboard
+									</Link>
+									<Link fullWidth icon="user" href="/nowhere">
+										Menu
+									</Link>
+									<Link fullWidth icon="book" href="/nowhere">
+										Docs
+									</Link>
+								</Stack>
 							</Card>
-							<Card className="flex flex-col gap-2">
-								<Text size={6} value="Save Data" />
-								<Link variant="text" fullWidth icon={IconNames.database} href="/nowhere">
-									Dashboard
-								</Link>
-								<Link variant="text" fullWidth icon="user" href="/nowhere">
-									Menu
-								</Link>
-								<Link variant="text" fullWidth icon="book" href="/nowhere">
-									Docs
-								</Link>
+
+							<Card className="flex w-full flex-col gap-2" customBackground="#e3e3e3">
+								<Stack direction="column" gap="10px">
+									<Text value="Export 2" />
+									<Link fullWidth icon={IconNames.database} href="/nowhere">
+										Dashboard
+									</Link>
+									<Link fullWidth icon="user" href="/nowhere">
+										Menu
+									</Link>
+									<Link fullWidth icon="book" href="/nowhere">
+										Docs
+									</Link>
+								</Stack>
 							</Card>
 						</Grid>
 					</div>

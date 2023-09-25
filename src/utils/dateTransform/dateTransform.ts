@@ -95,3 +95,13 @@ export const getDaysAfter = (date: string, numberOfDays: number): string[] => {
 	}
 	return days;
 };
+
+const days = ["S", "M", "T", "W", "T", "F", "S"];
+
+export const getWeekDay = (date: string) => {
+	const day = new Date(date).getDay();
+	return days[day];
+};
+export const getDay = (date: string) => {
+	return new Date(date).getDate();
+};

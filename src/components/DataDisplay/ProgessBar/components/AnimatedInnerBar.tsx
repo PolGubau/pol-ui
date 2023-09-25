@@ -24,6 +24,7 @@ const slideInFromBottom = keyframes<AnimationProps>`
 `;
 
 export const AnimatedInnerBar = styled.div<AnimationProps>`
+	z-index: 1;
 	animation: 0.5s ease-out;
 	animation-name: ${(props) => (props.$vertical ? slideInFromBottom : slideInFromLeft)};
 	/* 

@@ -2,7 +2,7 @@ import React from "react";
 import TextStyled from "./Styled";
 import { shorterText } from "./text.functions";
 import "../../style/baseTheme.css";
-import { applyColor } from "../../style";
+import { applyColor, applyInvertedColor } from "../../style";
 import { Color } from "../../types";
 import Markdown from "markdown-to-jsx";
 interface Props {
@@ -23,6 +23,7 @@ interface Props {
 	children?: string;
 	id?: string;
 	ariaLabel?: string;
+	invertColor?: boolean;
 }
 
 const Text: React.FC<Props> = ({
@@ -43,6 +44,7 @@ const Text: React.FC<Props> = ({
 	children,
 	id,
 	ariaLabel = "text",
+	invertColor = false,
 }): React.JSX.Element => {
 	const properSize = typeof size === "number" ? `${size}px` : size ?? undefined;
 
@@ -63,10 +65,8 @@ const Text: React.FC<Props> = ({
 				w-fit 
  				${isItalic ? "italic" : ""}
 				${centered ? "text-center" : "text-left"}
-			
  				${disabled ? "cursor-not-allowed opacity-70" : ""}
-				${applyColor(color)}
-				
+				${invertColor ? applyInvertedColor(color) : applyColor(color)}
  		${className}
  			`}
 			$size={properSize}

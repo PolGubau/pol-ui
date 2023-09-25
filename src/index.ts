@@ -50,6 +50,8 @@ import {
 	Datacard,
 	WeeklyTracker,
 	TrackerItem,
+	ColumnChart,
+	Week,
 } from "./components";
 import { PolUITheme } from "./style";
 export {
@@ -103,6 +105,8 @@ export {
 	Datacard,
 	WeeklyTracker,
 	TrackerItem,
+	ColumnChart,
+	Week,
 
 	// theme
 	PolUITheme,

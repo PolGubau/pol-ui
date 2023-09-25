@@ -1,6 +1,14 @@
 import React from "react";
 import { cardStyle } from "./Card.style";
-import { Color, PaddingOneOrBothValues, Shadow, Size, Sizes, SizesComplete } from "../../../types";
+import {
+	Color,
+	Colors,
+	PaddingOneOrBothValues,
+	Shadow,
+	Size,
+	Sizes,
+	SizesComplete,
+} from "../../../types";
 import { applyPadding } from "../../../style";
 
 interface Props {
@@ -22,7 +30,7 @@ interface Props {
 const Card: React.FC<Props> = ({
 	shadow,
 	hasBorder = false,
-	color,
+	color = Colors.background,
 	rounded = Sizes.lg,
 	maxWidth,
 	cardHeader,
@@ -37,7 +45,7 @@ const Card: React.FC<Props> = ({
 }) => {
 	return (
 		<button
-			disabled={onClick ? false : true}
+			disabled={Boolean(onClick)}
 			onClick={onClick}
 			className={`${cardStyle({
 				hasBorder,
@@ -54,7 +62,7 @@ const Card: React.FC<Props> = ({
 		>
 			{cardHeader && (
 				<header
-					className={`flex justify-between border-b-2 border-opacity-50 items-center  ${applyPadding(
+					className={`flex justify-between border-b border-opacity-50 items-center w-full ${applyPadding(
 						padding
 					)}`}
 				>

@@ -4,7 +4,7 @@ import {
 	SizesWithNone,
 	SizesComplete,
 	Color,
-	Tens,
+	Ten,
 	SizesWithFull,
 	Shadow,
 	Alignments,
@@ -55,13 +55,13 @@ export const applyShadow = (shadow?: Shadow) => {
 };
 export const applyTextSize = (size?: Size) => {
 	switch (size) {
-		case "xs":
+		case Sizes.xs:
 			return "text-xs";
-		case "sm":
+		case Sizes.sm:
 			return "text-sm";
-		case "lg":
+		case Sizes.md:
 			return "text-lg";
-		case "xl":
+		case Sizes.lg:
 			return "text-xl";
 		default:
 			return "text-md";
@@ -231,7 +231,8 @@ export const applyRoundedLarge = (round?: SizesComplete) => {
 			return "rounded-none";
 	}
 };
-export const applyBgColor = (color?: Color, opacity?: Tens) => {
+
+export const applyBgColor = (color?: Color) => {
 	switch (color) {
 		case Colors.secondary:
 			return `bg-secondary dark:bg-secondary-inverted`;
@@ -253,25 +254,25 @@ export const applyBgColor = (color?: Color, opacity?: Tens) => {
 };
 export const applyBgColorInChecked = (color?: Color) => {
 	switch (color) {
-		case "secondary":
+		case Colors.secondary:
 			return "checked:bg-secondary dark:checked:bg-secondary-inverted";
-		case "success":
+		case Colors.success:
 			return "checked:bg-success dark:checked:bg-success-inverted";
-		case "danger":
+		case Colors.danger:
 			return "checked:bg-danger dark:checked:bg-danger-inverted";
-		case "accent":
+		case Colors.accent:
 			return "checked:bg-accent dark:checked:bg-accent-inverted";
-		case "info":
+		case Colors.info:
 			return "checked:bg-info dark:checked:bg-info-inverted";
-		case "background":
+		case Colors.background:
 			return "checked:bg-background dark:checked:bg-background-inverted";
-		case "contrast":
+		case Colors.contrast:
 			return "checked:bg-background-inverted checked:text-background dark:checked:bg-background dark:checked:text-background-inverted";
 		default:
 			return "checked:bg-primary	 dark:checked:bg-primary-inverted";
 	}
 };
-export const applyBgOpacity = (opacity?: Tens) => {
+export const applyBgOpacity = (opacity?: Ten) => {
 	switch (opacity) {
 		case 0:
 			return "bg-opacity-0";
@@ -314,12 +315,34 @@ export const applyColor = (color?: Color) => {
 		case Colors.background:
 			return "text-background dark:text-background-inverted";
 		case Colors.contrast:
-			return "text-contrast dark:text-contrast-inverted";
+			return "text-background-inverted dark:text-background";
 		default:
 			return "text-default ";
 	}
 };
-export const applyOpacity = (opacity?: Tens) => {
+export const applyInvertedColor = (color?: Color) => {
+	switch (color) {
+		case Colors.primary:
+			return "dark:text-primary text-primary-inverted";
+		case Colors.secondary:
+			return "dark:text-secondary text-secondary-inverted";
+		case Colors.success:
+			return "dark:text-success text-success-inverted";
+		case Colors.danger:
+			return "dark:text-danger text-danger-inverted";
+		case Colors.accent:
+			return "dark:text-accent text-accent-inverted";
+		case Colors.info:
+			return "dark:text-info text-info-inverted";
+		case Colors.background:
+			return "dark:text-background text-background-inverted";
+		case Colors.contrast:
+			return "dark:text-background-inverted text-background";
+		default:
+			return "text-default ";
+	}
+};
+export const applyOpacity = (opacity?: Ten) => {
 	switch (opacity) {
 		case 0:
 			return "opacity-0";

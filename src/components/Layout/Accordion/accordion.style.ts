@@ -3,9 +3,8 @@ interface Props {
 	hasBorder?: boolean;
 }
 
-export const accordionStyles = ({ hasDividers = true, hasBorder = true }: Props) => {
-	const base = "flex flex-col  w-full min-w-md";
-	const divider = hasDividers ? "divide-y" : "divide-none";
+export const accordionStyles = ({ hasBorder = true }: Props) => {
+	const base = "flex flex-col w-full min-w-md overflow-hidden ";
 	const border = hasBorder ? "border " : "border-none";
-	return `${base} ${divider} ${border}`;
+	return `${base}  ${border}`;
 };

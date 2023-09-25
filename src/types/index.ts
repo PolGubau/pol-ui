@@ -62,12 +62,19 @@ export const Placements = {
 
 export type Placement = SideY | Side;
 
-export type Tens = 0 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100;
-export type TextSize = 1 | 2 | 3 | 4 | 5 | 6 | 7;
+export type Ten = 0 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100;
 export type Shadow = SizesWithNone | "inner" | "outline";
 
 // css positions
-export type Position = "relative" | "absolute" | "fixed" | "sticky";
+
+export enum Positions {
+	"relative" = "relative",
+	"absolute" = "absolute",
+	"fixed" = "fixed",
+	"sticky" = "sticky",
+}
+
+export type Position = `${Positions}`;
 
 export enum Colors {
 	"primary" = "primary",
@@ -356,3 +363,11 @@ export type SelectOption =
 	| { [key: string]: string | number | boolean | object | undefined | null }
 	| number
 	| string;
+
+export enum PointerTriggers {
+	"always" = "always",
+	"never" = "never",
+	"onHover" = "onHover",
+}
+
+export type PointerTrigger = `${PointerTriggers}`;

@@ -27,9 +27,12 @@ const ProgressBarPointer: React.FC<Props> = ({
 	return (
 		<motion.div
 			key={percentage}
-			initial={{ opacity: 0, y: 5 }}
-			animate={{ opacity: 1, y: 0 }}
-			exit={{ opacity: 0, y: 5 }}
+			initial={{ opacity: 0, y: 5, zIndex: 2 }}
+			animate={{ opacity: 1, y: -5, zIndex: 2 }}
+			exit={{ opacity: 0, y: 5, zIndex: 2 }}
+			style={{
+				zIndex: 2,
+			}}
 			transition={{ type: "spring", stiffness: 100 }}
 		>
 			{pointerWithArrow && (

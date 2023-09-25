@@ -5,6 +5,8 @@ import { Button } from "../../../Buttons";
 import { Grid, GridItem } from "../../Grid";
 import { Image } from "../../../Media";
 import { Menu } from "../../../Selects";
+import { Stack } from "../../Stack";
+import { Icon } from "../../../Base";
 const meta = {
 	title: "Layout/Card",
 	component: Card,
@@ -18,10 +20,8 @@ export const Default: Story = {
 	args: {
 		children: (
 			<div className="p-4">
-				<Text size={2} value="Download" />
-				<Button fullWidth centered>
-					Download
-				</Button>
+				<Text as="h2" value="Click" />
+				<Button centered>Download</Button>
 			</div>
 		),
 		hasBorder: true,
@@ -39,7 +39,7 @@ export const Example: Story = {
 			<>
 				<Grid className="p-4" cols={2} gap={"20px"}>
 					<div className="flex gap-2 flex-col">
-						<Text size={2} value="Sweden" className="text-light" />
+						<Text as="h2" value="Sweden" className="text-light" />
 						<Text value="C418" className="text-light" />
 					</div>
 					<Image
@@ -60,63 +60,36 @@ export const Example: Story = {
 };
 export const WithHeader: Story = {
 	args: {
-		color: "background",
 		cardHeader: (
-			<>
-				<Text size={1} value="Current song" />{" "}
-				<Menu
-					optio
-					s={[
-						{ id: "1", label: "Save" },
-						{ id: "1", label: "Delete" },
-					]}
-					label="More"
-				/>
-			</>
+			<Stack gap={"6px"}>
+				<Icon icon="user" />
+				<Text value="Login" />
+			</Stack>
 		),
 		padding: "md",
+		maxWidth: "xs",
 		children: (
-			<>
-				<Grid cols={2} gap={"20px"}>
-					<div className="flex gap-2 flex-col">
-						<Text size={2} value="Sweden" />
-						<Text value="C418" />
-					</div>
-					<Image
-						rounded="full"
-						src="https://i.ytimg.com/vi/Wu-JGgR2f0k/maxresdefault.jpg"
-						alt="Sweden"
-						width="100%"
-					/>
-					<GridItem howManyColumns="2">
-						<Button fullWidth centered>
-							Download
-						</Button>
-					</GridItem>
-				</Grid>
-			</>
+			<Text value="Your account is being verified now by our staff." className="text-light" />
 		),
 	},
 };
 export const WithFooter: Story = {
 	args: {
-		color: "contrast",
 		padding: "md",
 		cardFooter: (
-			<>
-				<Text size={4} value="Login" className="text-light" />{" "}
+			<Stack>
+				<Text value="Login" className="text-light" />
 				<Menu
-					optio
-					s={[
+					options={[
 						{ id: "1", label: "With email" },
 						{ id: "2", label: "With token" },
 					]}
 					label="Mode"
 				/>
-			</>
+			</Stack>
 		),
 
-		children: <Text size={2} value="Not Autorized" className="text-light" />,
+		children: <Text as="h4" value="Not Autorized" className="text-light" />,
 	},
 };
 export const SideLarge: Story = {

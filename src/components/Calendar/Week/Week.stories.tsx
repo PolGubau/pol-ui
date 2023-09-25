@@ -37,3 +37,16 @@ export const WithOnClick: Story = {
 		},
 	},
 };
+export const CustomDays: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: "You can customize the number of days before and after the current day.",
+			},
+		},
+	},
+	args: {
+		daysBefore: 2,
+		daysAfter: 2,
+	},
+};

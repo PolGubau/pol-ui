@@ -4,15 +4,14 @@ import { Transition } from "@headlessui/react";
 import { Text } from "../../Text";
 import { AccordionItemProps } from "./Accordion";
 import { Button, Link } from "../../Buttons";
-import { JustifyContents, Side, Sides, SizesComplete, TextSize } from "../../../types";
-import { applyRounded } from "../../../style";
+import { JustifyContents, Side, Sides, SizesComplete } from "../../../types";
 interface Props {
 	hasArrowIcon?: boolean;
 	isOpened?: boolean;
 	toggleOpen?: () => void;
 	item: AccordionItemProps;
 	rounded: SizesComplete;
-	titleSize?: TextSize;
+	titleSize?: number | string;
 	arrowIconPosition?: Side;
 	paintOpened?: boolean;
 }
@@ -21,21 +20,17 @@ const AccordionItem: React.FC<Props> = ({
 	hasArrowIcon = true,
 	isOpened = false,
 	toggleOpen,
-	rounded = "none",
-	titleSize = 4,
+	titleSize,
 	paintOpened,
 	arrowIconPosition = Sides.right,
 }) => {
 	const iconArrow = item.arrowIcon ?? IconNames.arrowup;
-
+	const properTextSize = typeof titleSize === "number" ? `${titleSize}px` : titleSize;
 	return (
-		<article
-			key={item.title}
-			className={`flex flex-col gap-1  w-full ${applyRounded(rounded)} ${item.className}`}
-		>
-			<header>
+		<article key={item.title} className={`flex flex-col gap-1 w-full $ ${item.className}`}>
+			<header className={`overflow-hidden `}>
 				<Button
-					rounded={rounded}
+					rounded="none"
 					variant={paintOpened && isOpened ? "filled" : "text"}
 					onClick={toggleOpen}
 					fullWidth
@@ -43,9 +38,12 @@ const AccordionItem: React.FC<Props> = ({
 					icon={item.icon && <Icon icon={item.icon} alwaysRender />}
 					className={`flex ${
 						arrowIconPosition === Sides.left ? "flex-row-reverse" : "flex-row"
-					}    ${hasArrowIcon ? "pr-4" : ""}`}
+					}    ${hasArrowIcon ? "pr-4" : ""}
+					
+					
+					`}
 				>
-					<Text size={titleSize} value={item.title}></Text>
+					<Text size={properTextSize} value={item.title}></Text>
 					{hasArrowIcon && (
 						<Icon
 							icon={isOpened ? iconArrow : item.arrowIconOpened ?? iconArrow}

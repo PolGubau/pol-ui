@@ -6,10 +6,12 @@ import {
 	Direction,
 	Directions,
 	Placements,
+	PointerTrigger,
+	PointerTriggers,
 	Size,
 	Sizes,
 	SizesComplete,
-	Tens,
+	Ten,
 } from "../../../types";
 import ProgressBarPointer from "./components/Pointer/Pointer";
 import ProgressBarMarks from "./components/Marks/Marks";
@@ -23,7 +25,7 @@ interface ProgressBarProps {
 	height?: string; // Height of the progress bar
 	className?: string; // Additional CSS classes
 	rounded?: SizesComplete;
-	pointer?: "always" | "never" | "onHover";
+	pointer?: PointerTrigger;
 	pointerPosition?: "top" | "bottom";
 	hasValueInside?: boolean;
 	pointerWithArrow?: boolean;
@@ -36,12 +38,12 @@ interface ProgressBarProps {
 	showMax?: boolean;
 	marks?: number; // Interval to show marks (percentage)
 	marksColor?: Color;
-	marksOpacity?: Tens;
+	marksOpacity?: Ten;
 	innerClassName?: string;
 	direction?: Direction;
 	hoverPointerEnterDelay?: number;
 	hoverPointerLeaveDelay?: number;
-	backgroundOpacity?: Tens;
+	backgroundOpacity?: Ten;
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({
@@ -53,7 +55,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 	backgroundOpacity = 10,
 	rounded = "full",
 	className = "",
-	pointer = "always",
+	pointer = PointerTriggers.always,
 	pointerPosition = Placements.top,
 	hasValueInside = false,
 	pointerWithArrow = true,

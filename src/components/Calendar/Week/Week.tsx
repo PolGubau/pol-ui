@@ -55,7 +55,9 @@ const Week: React.FC<Props> = ({
 						contentClassname="flex flex-col items-center justify-center "
 						onClick={onClick && handleClicked}
 						key={date}
-						className={`w-full aspect-square flex items-center justify-center`}
+						className={`w-full aspect-square flex items-center justify-center ${
+							onClick ? "cursor-pointer" : "cursor-default"
+						}`}
 						padding="none"
 					>
 						<Text>{getWeekDay(date)}</Text>

@@ -13,7 +13,7 @@ import {
 	Color,
 	Alignments,
 	SizesWithNone,
-	Tens,
+	Ten,
 	Direction,
 	BaseProps,
 	Directions,
@@ -30,7 +30,7 @@ interface Props extends BaseProps {
 	messagePosition?: Alignments;
 	icon?: IconType;
 	margin?: SizesWithNone;
-	opacity?: Tens;
+	opacity?: Ten;
 	messageColor?: Color;
 	messageBgColor?: Color;
 	messageRounded?: SizesWithNone;

@@ -1,3 +1,4 @@
+import { getDay, getWeekDay } from "../../../utils";
 import { Card, Stack } from "../../Layout";
 import { Text } from "../../Text";
 
@@ -61,16 +62,6 @@ const WeeklyTracker: React.FC<Props> = ({
 		} else {
 			return colors.find((color) => color.value > value)?.color;
 		}
-	};
-
-	const days = ["S", "M", "T", "W", "T", "F", "S"];
-
-	const getWeekDay = (date: string) => {
-		const day = new Date(date).getDay();
-		return days[day];
-	};
-	const getDay = (date: string) => {
-		return new Date(date).getDate();
 	};
 
 	return (
