@@ -12,14 +12,14 @@ const Box: React.FC<Props> = ({ children, as = "div", className, ariaLabel, id, 
 	return (
 		<BoxStyled
 			as={as}
-			className={`${className ? className : ""} flex `}
 			aria-label={ariaLabel}
 			id={id}
 			style={{
+				minHeight: "30px",
+				minWidth: "30px",
 				...style,
-				minHeight: "100px",
-				minWidth: "100px",
 			}}
+			className={`flex w-fit ${className ?? ""}  `}
 		>
 			{children}
 		</BoxStyled>

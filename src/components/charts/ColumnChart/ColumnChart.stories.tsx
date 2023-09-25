@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import ColumnChart from "./ColumnChart";
+import { Colors } from "../../../types";
 
 const meta = {
 	title: "Charts/ColumnChart",
@@ -11,5 +12,18 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	args: { value: 50 },
+	args: { title: "My last data" },
+};
+
+export const CustomBgColor: Story = {
+	args: { title: "My last data", backgroundColor: "#f00" },
+};
+export const CustomBgColorAndOpacity: Story = {
+	args: { title: "My last data", backgroundColor: "#f00", backgroundOpacity: 50 },
+};
+export const CustomBgVar: Story = {
+	args: {
+		title: "My last data",
+		backgroundColor: Colors.accent,
+	},
 };
