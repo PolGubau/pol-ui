@@ -12,7 +12,7 @@ export const pointerPB = ({ pointerPosition = "top", vertical = false }: Props) 
 
 	if (vertical) return `${base} left-1/2 -top-5`;
 
-	return `${base}`;
+	return `${base} -top-5`;
 };
 export const arrowPointerPB = ({ pointerPosition = "top", vertical = false }: Props) => {
 	const base = `absolute  transform  -translate-x-1/2  w-3 h-3 z-10 rotate-45 bg-primary text-white text-xs flex items-center justify-center rounded-none`;

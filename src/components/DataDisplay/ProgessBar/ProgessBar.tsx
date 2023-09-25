@@ -109,7 +109,10 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 	return (
 		<div
 			{...hoverProps}
-			className={`${backgroundBar({ size, vertical: isVertical })} ${applyRounded(rounded)}
+			className={`min-h-[10px] min-w-[10px] ${backgroundBar({
+				size,
+				vertical: isVertical,
+			})} ${applyRounded(rounded)}
 			${applyBgColor(backgroundColor)}
 			${applyBgOpacity(backgroundOpacity)}
 			${className}`}

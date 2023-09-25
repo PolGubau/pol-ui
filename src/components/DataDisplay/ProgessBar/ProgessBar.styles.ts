@@ -3,7 +3,7 @@ import { Size } from "../../../types";
 export const backgroundBar = ({ size, vertical }: { size: Size; vertical: boolean }) => {
 	const baseStyles = ` relative  outline-2  transition-all duration-300 ease-in-out
 	
-	${vertical ? "h-full max-h-full" : "w-full max-w-full "}
+	${vertical ? " max-h-full" : "w-full max-w-full "}
 	
 	`;
 
