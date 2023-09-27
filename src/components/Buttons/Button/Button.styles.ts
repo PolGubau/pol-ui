@@ -98,14 +98,14 @@ export const applyButtonVariant = ({
 };
 
 export interface ButtonStylesProps {
-	rounded: SizesComplete;
-	size: Size;
-	fullWidth: boolean;
+	rounded?: SizesComplete;
+	size?: Size;
+	fullWidth?: boolean;
 	disabled?: boolean;
-	centered: boolean;
-	padding: PaddingOneOrBothValues;
-	variant: ButtonVariant;
-	color: Color;
+	centered?: boolean;
+	padding?: PaddingOneOrBothValues;
+	variant?: ButtonVariant;
+	color?: Color;
 	className?: string;
 	justify?: JustifyContent;
 	position?: Position;

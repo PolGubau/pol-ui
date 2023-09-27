@@ -54,8 +54,11 @@ This template comes with a GitHub Actions workflow to automatically publish on a
 
 0. **General Components:**
 
+   - ✅ Box
    - ✅ IconButton
    - ✅ Button
+   - ✅ DeleteButton
+   - ✅ CopyButton
    - ✅ Icon
    - ✅ (Text) Typography
 
@@ -79,12 +82,14 @@ This template comes with a GitHub Actions workflow to automatically publish on a
    - ✅ Progress Bar
    - ✅ Loaders (Spinner, Bars, Dots, Pulse)
    - ✅ Divider
+   - ✅ Datacard
 4. **Layout Components:**
    <!-- These components are used for laying out the page. -->
    - ✅ Grid System
    - ✅ Card
    - ✅ Accordion
    - ✅ Tabs
+   - ✅ NavigationBar
    - ✅ Pagination
 5. **Navigation Components:**
    <!-- These components are used for navigating between pages. -->
@@ -92,6 +97,7 @@ This template comes with a GitHub Actions workflow to automatically publish on a
    - 🦺 Sidebar
    - Breadcrumbs
    - ✅ Menu
+   - ✅ BottomBar
    - Stepper
 6. **Form Components:**
    <!-- These components are used for getting input from the user. -->
@@ -115,7 +121,8 @@ This template comes with a GitHub Actions workflow to automatically publish on a
 9. **Media Components:**
    <!-- These components are used for displaying media to the user. -->
    - ✅ Image
-   - 🦺 Carousel
+   - ✅ Carousel
+   - ✅ Slideshow
    - Video
    - Audio Player
 10. **Overlay Components:**
@@ -123,10 +130,18 @@ This template comes with a GitHub Actions workflow to automatically publish on a
 
 - Drawer
 - ✅ Wrapper
-- Tooltip
 - Popover
 
-11. **Utilities:**
+11. **Calendars:**
+
+    - ✅ Week
+
+12. **Trackers:**
+
+    - ✅ TrackerItem
+    - ✅ WeeklyTracke
+
+13. **Utilities:**
     - Theme Provider
     - ✅ Responsive Utilities (for handling different screen sizes)
     - ✅ CSS Reset or Normalize (for consistent styling)

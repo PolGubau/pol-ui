@@ -4,10 +4,18 @@ import { Button } from "../../Buttons";
 import { defaultData, tooManyTabs } from "./Story/tabData";
 import { Field, Switch } from "../../Inputs";
 import { IconNames } from "../../Base/Icon";
+import { Sizes } from "../../../types";
 const meta = {
 	title: "Layout/Tabs",
 	component: Tabs,
 	tags: ["autodocs"],
+	decorators: [
+		(Story: any) => (
+			<div className="bg-background dark:bg-background-inverted">
+				<Story />
+			</div>
+		),
+	],
 } satisfies Meta<typeof Tabs>;
 
 export default meta;
@@ -71,7 +79,7 @@ export const Minimalist: Story = {
 };
 export const Complex: Story = {
 	args: {
-		rounded: "xl",
+		rounded: Sizes.xl,
 		data: [
 			{
 				title: "Login",
@@ -124,6 +132,12 @@ export const RoundedXL: Story = {
 	args: {
 		maxWidth: "md",
 		rounded: "xl",
+		data: defaultData,
+	},
+};
+export const NoFluent: Story = {
+	args: {
+		fluent: false,
 		data: defaultData,
 	},
 };

@@ -3,7 +3,9 @@ import TabBar from "./components/TabBar/TabBar";
 import { applyMaxWidth, applyPadding, applyRounded } from "../../../style";
 import { tabStyles } from "./tab.styles";
 import TabContent from "./components/TabContent/TabContent";
-import { SizesWithNone, SizesWithFull, SizesComplete, IconType } from "../../../types";
+import { SizesWithNone, SizesWithFull, SizesComplete, IconType, Sizes } from "../../../types";
+import NavigationBar from "../NavigationBar/NavigationBar";
+import { AnimatePresence, motion } from "framer-motion";
 
 export interface TabsItemProps {
 	title: string;
@@ -24,7 +26,9 @@ interface Props {
 	};
 	rounded?: SizesComplete;
 	maxWidth?: SizesWithFull;
+	fluent?: boolean;
 	classNameContent?: string;
+	invertTextOnSelected?: boolean;
 }
 
 const Tabs: React.FC<Props> = ({
@@ -33,10 +37,12 @@ const Tabs: React.FC<Props> = ({
 	className,
 	hasBorder,
 	hasDivider,
-	padding = { x: "sm", y: "sm" },
-	rounded = "none",
+	padding = Sizes.md,
+	rounded = Sizes.xl,
+	fluent = true,
 	maxWidth = "full",
 	classNameContent,
+	invertTextOnSelected,
 }) => {
 	const [activeTab, setActiveTab] = React.useState(defaultOpenedIndex ?? 0);
 	const selectedContent = useMemo(() => data[activeTab].content, [data, activeTab]);
@@ -48,9 +54,19 @@ const Tabs: React.FC<Props> = ({
 			${applyMaxWidth(maxWidth)}
 			${className}`}
 		>
-			<TabBar data={data} activeTab={activeTab} setActiveTab={setActiveTab} padding={padding} />
+			<TabBar
+				invertTextOnSelected={invertTextOnSelected}
+				data={data}
+				activeTab={activeTab}
+				setActiveTab={setActiveTab}
+				padding={padding}
+				fluent={fluent}
+			/>
+
 			<main className={`${applyPadding(padding)}`}>
-				<TabContent content={selectedContent} className={classNameContent} />
+				<div className={className}>
+					<TabContent content={selectedContent} className={classNameContent} key={activeTab} />{" "}
+				</div>
 			</main>
 		</section>
 	);

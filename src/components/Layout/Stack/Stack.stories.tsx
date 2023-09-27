@@ -25,9 +25,9 @@ export const Default: Story = {
 	args: {
 		children: [
 			<>
-				<div className="bg-fuchsia-500 w-20 h-20 flex items-center justify-center">1</div>
-				<div className="bg-pink-500 w-20 h-20 flex items-center justify-center">2</div>
-				<div className="bg-rose-500 w-20 h-20 flex items-center justify-center">3</div>
+				<div className="bg-danger w-20 h-20 flex items-center justify-center">1</div>
+				<div className="bg-info w-20 h-20 flex items-center justify-center">2</div>
+				<div className="bg-success w-20 h-20 flex items-center justify-center">3</div>
 			</>,
 		],
 	},
@@ -100,9 +100,9 @@ export const AlignItems: Story = {
 	},
 	render: (args: any) => (
 		<Stack direction="row" gap={40} className=" w-full">
-			<Stack {...args} alignItems="start" direction="column" className="bg-red-200" />
-			<Stack {...args} alignItems="center" direction="column" className="bg-green-200" />
-			<Stack {...args} alignItems="end" direction="column" className="bg-blue-200" />
+			<Stack {...args} alignItems="start" direction="column" className="bg-danger" />
+			<Stack {...args} alignItems="center" direction="column" className="bg-success" />
+			<Stack {...args} alignItems="end" direction="column" className="bg-info" />
 		</Stack>
 	),
 };
