@@ -1,6 +1,7 @@
 import React from "react";
 import { Direction, ToastProps } from "../../../types";
 import { Toast } from "../Toast/Toast";
+import { motion } from "framer-motion";
 
 interface Props {
 	direction?: Direction;
@@ -28,7 +29,15 @@ const ToastSystem: React.FC<Props> = ({ toasts = [], direction = "y", onChange }
 	const allToasts = toasts ?? [];
 
 	return (
-		<ul className={toastSystemStyles({ direction })}>
+		  <motion.div
+            style={{
+                 overflow: "hidden",
+                 willChange: "transform",
+                cursor: "grab",
+            }}
+            whileTap={{ cursor: "grabbing" }}
+            layout
+            transition={{ type: "spring", stiffness: 600, damping: 30 }} className={toastSystemStyles({ direction })}>
 			{Boolean(allToasts?.length) &&
 				allToasts.map((toast, index: number) => (
 					<Toast
@@ -38,7 +47,7 @@ const ToastSystem: React.FC<Props> = ({ toasts = [], direction = "y", onChange }
 						direction={direction}
 					/>
 				))}
-		</ul>
+		</motion.div>
 	);
 };
 

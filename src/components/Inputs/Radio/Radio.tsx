@@ -60,11 +60,11 @@ const Radio: React.FC<Props> = ({
 					onChange={handleChange}
 					disabled={disabled}
 					className={`
-					transition-all duration-100 w-full h-full  appearance-none bg-gray-300 cursor-pointer    rounded-full
+					transition-all duration-100 w-full h-full  appearance-none bg-background-inverted/20 cursor-pointer    rounded-full
  					
  					${applyBgColorInChecked(colorChecked)}
 					
-					disabled:bg-gray-300 disabled:border-transparent disabled:ring-0 disabled:ring-transparent
+					disabled:bg-primary/30 disabled:border-transparent disabled:ring-0 disabled:ring-transparent
 					
 					active:brightness-90 active:checked:brightness-90
 					

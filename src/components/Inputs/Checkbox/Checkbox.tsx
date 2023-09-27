@@ -67,7 +67,7 @@ const Checkbox: React.FC<Props> = ({
 					onChange={handleChange}
 					disabled={disabled}
 					className={`
-					transition-all duration-100 w-full h-full  appearance-none  cursor-pointer bg-primary/10 ring-0 ring-transparent 
+					transition-all duration-100 w-full h-full  appearance-none  cursor-pointer bg-background-inverted/20 ring-0 ring-transparent 
 					${applyBgColorInChecked(color)}
    					disabled:bg-primary/10 disabled:border-transparent disabled:ring-0 disabled:ring-transparent
 					active:brightness-90 active:checked:brightness-90

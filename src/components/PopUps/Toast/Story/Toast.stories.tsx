@@ -17,6 +17,12 @@ export const Default: Story = {
 		onClose: () => console.log("onClose"),
 	},
 };
+export const DragToDelete: Story = {
+	args: {
+		toast: { ...defaultToast, duration: 123456789 },
+		onClose: () => alert("onClose"),
+	},
+};
 export const SuccessToast: Story = {
 	args: {
 		toast: successToast,

@@ -16,6 +16,7 @@ interface Props<T> {
 	maxLength?: number;
 	fullWidth?: boolean;
 	size?: "small" | "normal" | "large";
+	autoComplete?: "on" | "off";
 	variant?: ButtonVariant;
 	props?: Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof Props<T>>;
 }
@@ -31,6 +32,7 @@ const Field = <T extends string | number>({
 	multiline,
 	helperText,
 	name,
+	autoComplete = "off",
 	className,
 	maxLength,
 	variant = ButtonVariants.outlined,
@@ -63,11 +65,12 @@ const Field = <T extends string | number>({
 					name={name}
 					defaultValue={value ?? ""}
 					onChange={handleChange}
-					className={inputStyles({ multiline: true, fullWidth }) + className}
+					className={inputStyles({ multiline: false, fullWidth, variant, error }) + className}
 				/>
 			) : (
 				<div className="relative">
 					<input
+						autoComplete={autoComplete}
 						onChange={handleChange}
 						defaultValue={value ?? ""}
 						disabled={disabled}
@@ -77,41 +80,13 @@ const Field = <T extends string | number>({
 						type={type}
 						{...(props as Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof Props<T>>)}
 						id="label"
-						className={`block px-2.5 pb-2.5 pt-4 w-full text-sm rounded-lg appearance-none   duration-300
-            
-						bg-transparent 
-            
-						text-background-inverted 
-						dark:text-background dark:focus:border-background-inverted 
-            
-            
-            
-             ${
-								variant === ButtonVariants.filled &&
-								"bg-background-inverted/20 dark:bg-background/20 pb-3 pt-3 focus:bg-background-inverted/10 dark:focus:bg-background/10"
-							}
-             ${
-								variant === ButtonVariants.outlined &&
-								"border border-background-inverted/20 dark:border-background/40"
-							}
-            
-						
-						focus:outline-none focus:ring-0 focus:border-accent focus:dark:border-accent-inverted 
-						
-						peer 
-            
-            disabled:text-background-inverted/10 disabled:border-background-inverted/10  disabled:cursor-not-allowed
-            disabled:dark:text-background-inverted/10 disabled:dark:border-background-inverted/10
-            
-            
-            
-            `}
+						className={inputStyles({ multiline: false, fullWidth, variant, error }) + className}
 						placeholder=" "
 					/>
 
 					<label
 						htmlFor="floating_outlined"
-						className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2  z-10 origin-[0] px-2 pointer-events-none
+						className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2  z-10 origin-[0] px-2 pointer-events-none rounded-lg
             
             text-background-inverted/90  bg-background
             dark:text-background dark:bg-background-inverted
@@ -120,7 +95,9 @@ const Field = <T extends string | number>({
             
                ${
 									variant === ButtonVariants.filled &&
-									"bg-transparent peer-focus:bg-transparent peer-focus:dark:bg-transparent -translate-y-7 peer-focus:-translate-y-7  peer-focus:scale-90  scale-90"
+									`bg-transparent
+									dark:bg-transparent
+									peer-focus:bg-transparent peer-focus:dark:bg-transparent -translate-y-7 peer-focus:-translate-y-7  peer-focus:scale-90  scale-90`
 								}
             
             `}

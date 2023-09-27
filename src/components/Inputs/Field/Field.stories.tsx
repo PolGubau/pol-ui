@@ -6,6 +6,13 @@ const meta = {
 	title: "Inputs/Field",
 	component: Field,
 	tags: ["autodocs"],
+	decorators: [
+		(Story) => (
+			<div className="p-8 bg-background">
+				<Story />
+			</div>
+		),
+	],
 } satisfies Meta<typeof Field>;
 
 export default meta;
@@ -120,11 +127,25 @@ export const FullWidth: Story = {
 	},
 };
 
+export const AllTypes: Story = {
+	render: (args) => (
+		<div className="dark:bg-background-inverted p-8 flex gap-4 flex-col">
+			<Field {...args} />
+			<Field variant="filled" {...args} />
+			<Field variant="text" {...args} />
+		</div>
+	),
+	args: {
+		...Default.args,
+	},
+};
 export const DarkMode: Story = {
 	render: (args) => (
 		<div className="dark">
-			<div className="dark:bg-background-inverted p-8">
+			<div className="dark:bg-background-inverted p-8 flex gap-4 flex-col">
 				<Field {...args} />
+				<Field variant="filled" {...args} />
+				<Field variant="text" {...args} />
 			</div>
 		</div>
 	),

@@ -50,3 +50,24 @@ export const CustomDays: Story = {
 		daysAfter: 2,
 	},
 };
+
+export const DarkMode: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: "You can customize the color of the current day.",
+			},
+		},
+	},
+	render: (args) => {
+		return (
+			<div className="dark">
+				<div className="dark:bg-background w-full min-h-[500px]">
+					<Week {...args} />
+				</div>
+			</div>
+		);
+	},
+
+	args: {},
+};
