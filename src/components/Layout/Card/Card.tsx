@@ -1,81 +1,76 @@
-import React from "react";
-import { cardStyle } from "./Card.style";
-import {
-	Color,
-	Colors,
-	PaddingOneOrBothValues,
-	Shadow,
-	Size,
-	Sizes,
-	SizesComplete,
-} from "../../../types";
-import { applyPadding } from "../../../style";
-
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import { MouseEvent, useRef } from "react";
+import { Color, Colors, PaddingOneOrBothValues, Sizes, SizesComplete } from "../../../types";
+import { applyPadding, applyRounded } from "../../../style";
+import { useRipple } from "../../../hooks";
 interface Props {
-	shadow?: Shadow;
-	hasBorder?: boolean;
+	children: React.ReactNode;
 	rounded?: SizesComplete;
-	color?: Color;
-	customBackground?: string;
-	maxWidth?: Size | "full";
-	children?: React.ReactNode;
-	cardHeader?: React.ReactNode;
-	cardFooter?: React.ReactNode;
-	className?: string;
-	style?: React.CSSProperties;
-	onClick?: () => void;
 	padding?: PaddingOneOrBothValues;
-	contentClassname?: string;
+	lightColor?: string;
+	lightSize?: number;
+	onClick?: () => void | undefined;
+	rippleColor?: Color;
+	rippleOpacity?: number;
+	rippleDuration?: number;
+	hasRipple?: boolean;
+	transparencyOnHover?: number;
 }
-const Card: React.FC<Props> = ({
-	shadow,
-	hasBorder = false,
-	color = Colors.background,
-	rounded = Sizes.lg,
-	maxWidth,
-	cardHeader,
-	cardFooter,
+
+export default function Card({
 	children,
-	padding = Sizes.md,
-	className,
-	customBackground,
-	onClick,
-	style,
-	contentClassname,
-}) => {
+	lightColor = "rgba(14, 165, 233, 0.25)",
+	lightSize = 650,
+	onClick = undefined,
+	rounded = Sizes.lg,
+	padding = Sizes.lg,
+	rippleColor = Colors.secondary,
+	rippleOpacity = 0.25,
+	rippleDuration = 0.5,
+	hasRipple = Boolean(onClick),
+}: Props) {
+	let mouseX = useMotionValue(0);
+	let mouseY = useMotionValue(0);
+
+	function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
+		let { left, top } = currentTarget.getBoundingClientRect();
+		mouseX.set(clientX - left);
+		mouseY.set(clientY - top);
+	}
+
+	const ref = useRef<HTMLDivElement>(null);
+
+	const ripples = useRipple({
+		hasRipple,
+		ref,
+		duration: rippleDuration,
+		color: rippleColor,
+		opacity: rippleOpacity,
+	});
+
 	return (
-		<button
-			disabled={Boolean(onClick)}
+		<div
+			ref={ref}
+			className={`group overflow-hidden relative max-w-md ${applyRounded(rounded)}  ${applyPadding(
+				padding
+			)} border border-primary  bg-primary/10 shadow-2xl`}
+			onMouseMove={handleMouseMove}
 			onClick={onClick}
-			className={`${cardStyle({
-				hasBorder,
-				maxWidth,
-				shadow,
-				rounded,
-				color,
-				className,
-			})} `}
-			style={{
-				...style,
-				backgroundColor: customBackground,
-			}}
 		>
-			{cardHeader && (
-				<header
-					className={`flex justify-between border-b border-opacity-50 items-center w-full ${applyPadding(
-						padding
-					)}`}
-				>
-					{cardHeader}
-				</header>
-			)}
-			<div className={`${contentClassname} ${applyPadding(padding)}`}>{children}</div>
-
-			{cardFooter && (
-				<footer className={`flex justify-between ${applyPadding(padding)}`}>{cardFooter}</footer>
-			)}
-		</button>
+			<motion.div
+				className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
+				style={{
+					background: useMotionTemplate`
+            radial-gradient(
+              ${lightSize}px circle at ${mouseX}px ${mouseY}px,
+              ${lightColor},
+              transparent 80%
+            )
+          `,
+				}}
+			/>
+			{ripples}
+			{children}
+		</div>
 	);
-};
-
-export default Card;
+}

@@ -24,6 +24,7 @@ interface Props {
 	id?: string;
 	ariaLabel?: string;
 	invertColor?: boolean;
+	balanced?: boolean;
 	style?: React.CSSProperties;
 }
 
@@ -47,6 +48,7 @@ const Text: React.FC<Props> = ({
 	ariaLabel = "text",
 	invertColor = false,
 	style = {},
+	balanced = false,
 }): React.JSX.Element => {
 	const properSize = typeof size === "number" ? `${size}px` : size ?? undefined;
 
@@ -65,14 +67,20 @@ const Text: React.FC<Props> = ({
 			id={id}
 			aria-label={ariaLabel}
 			className={` 
+			
+			
+			${className}
+			
+			
 				w-fit 
 				${!color && "text-background-inverted dark:text-background"}
  				${isItalic ? "italic" : ""}
 				${centered ? "text-center" : "text-left"}
  				${disabled ? "cursor-not-allowed opacity-70" : ""}
 				${invertColor ? applyInvertedColor(color) : applyColor(color)}
- 		${className}
+ 		
  			`}
+			$balanced={balanced}
 			$size={properSize}
 			role={role}
 			$maxLines={maxLines}

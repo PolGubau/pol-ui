@@ -53,6 +53,7 @@ export interface ButtonProps extends BaseProps {
 	hideWhenLessThan?: number;
 	loading?: boolean;
 	loaderColor?: Color;
+	onMouseMove?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 	loadOnClick?: boolean;
 }
 
@@ -64,6 +65,7 @@ const Button: React.FC<ButtonProps> = ({
 	disabled = false,
 	ariaLabel = "button",
 	href,
+	onMouseMove,
 	variant = ButtonVariants.filled,
 	hideWhenLessThan = 0,
 	color = Colors.primary,
@@ -130,6 +132,7 @@ const Button: React.FC<ButtonProps> = ({
 			as={href ? "a" : "button"}
 			ref={customRef ?? ref}
 			href={href}
+			onMouseMove={onMouseMove}
 			aria-label={ariaLabel}
 			disabled={disabled || !onClick}
 			autoFocus={autoFocus}
