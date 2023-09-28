@@ -2,17 +2,19 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Text } from "../../Text";
 import Box from "../../Base/Box/Box";
-import { Stack } from "../Stack";
 import {
-	ButtonVariants,
+	AlignItem,
+	AlignItems,
 	Color,
 	Colors,
+	Direction,
+	Directions,
+	JustifyContent,
 	JustifyContents,
-	Sizes,
 	SizesComplete,
 } from "../../../types";
-import { applyBgColor, applyRounded } from "../../../style";
-import { buttonStyles } from "../../Buttons/Button/Button.styles";
+import { applyBgColor, applyColor, applyRounded } from "../../../style";
+import { Stack } from "../Stack";
 
 interface Props {
 	style?: React.CSSProperties;
@@ -23,6 +25,10 @@ interface Props {
 	colorSelected?: Color;
 	invertTextOnSelected?: boolean;
 	colorText?: Color;
+	textSize?: number;
+	direction?: Direction;
+	alignItems?: AlignItem;
+	justify?: JustifyContent;
 }
 
 export default function NavigationBar({
@@ -30,39 +36,35 @@ export default function NavigationBar({
 	style = {},
 	onChange,
 	data = [],
-	rounded = Sizes.lg,
+	rounded = "full",
+	colorText = Colors.primary,
 	colorSelected = Colors.accent,
 	invertTextOnSelected = false,
-	colorText = Colors.primary,
+	textSize = 16,
+	direction = Directions.x,
+	alignItems = AlignItems.start,
+	justify = JustifyContents.start,
 }: Props) {
-	const [selected, setSelected] = useState(defaultSelected);
+	const [activeIndex, setActiveIndex] = useState(defaultSelected);
 
 	const goPrevious = () => {
-		if (selected > 0) {
-			setSelected(selected - 1);
-			onChange?.(selected - 1);
+		if (activeIndex > 0) {
+			setActiveIndex(activeIndex - 1);
+			onChange?.(activeIndex - 1);
 		}
 	};
 	const goNext = () => {
-		if (selected < data.length - 1) {
-			setSelected(selected + 1);
-			onChange?.(selected + 1);
+		if (activeIndex < data.length - 1) {
+			setActiveIndex(activeIndex + 1);
+			onChange?.(activeIndex + 1);
 		}
 	};
-	let tabs = [
-		{ id: "world", label: "World" },
-		{ id: "ny", label: "N.Y." },
-		{ id: "business", label: "Business" },
-		{ id: "arts", label: "Arts" },
-		{ id: "science", label: "Science" },
-	];
-	let [activeTab, setActiveTab] = useState(tabs[0].id);
 
 	return (
 		// <div style={style}>
 		// 	<Stack className="overflow-auto p-1" wrap="nowrap">
 		// 		{data.map((name, i) => {
-		// 			const isSelected = i === selected;
+		// 			const isSelected = i === activeIndex;
 		// 			return (
 		// 				<motion.button
 		// 					onKeyDown={(e) => {
@@ -79,7 +81,7 @@ export default function NavigationBar({
 		// 						}
 		// 					}}
 		// 					className={`relative  ${buttonStyles({
-		// 						padding: { x: Sizes.xs, y: Sizes.md },
+		// 						padding: { x: "none", y: Sizes.xs },
 		// 						variant: ButtonVariants.text,
 		// 					})}  ${applyRounded(
 		// 						rounded
@@ -90,7 +92,7 @@ export default function NavigationBar({
 		// 					key={name}
 		// 					transition={{ duration: 0.2 }}
 		// 					onTap={() => {
-		// 						setSelected(i);
+		// 						setActiveIndex(i);
 		// 						onChange?.(i);
 		// 					}}
 		// 				>
@@ -116,29 +118,62 @@ export default function NavigationBar({
 		// 		})}
 		// 	</Stack>
 		// </div>
-		<div className="flex space-x-1">
-			{tabs.map((tab) => (
+		<Stack
+			direction={direction === Directions.x ? "row" : "column"}
+			wrap="nowrap"
+			gap={0}
+			alignItems={alignItems}
+			justify={justify}
+			style={style}
+		>
+			{data.map((tab, i) => (
 				<button
-					key={tab.id}
-					onClick={() => setActiveTab(tab.id)}
-					className={`${
-						activeTab === tab.id ? "" : "hover:text-background-inverted/60"
-					} relative rounded-full px-3 py-1.5 text-sm font-medium text-background-inverted outline-primary transition focus-visible:outline-2`}
-					style={{
-						WebkitTapHighlightColor: "transparent",
+					key={tab}
+					onKeyDown={(e) => {
+						if (e.key === "Enter") {
+							goNext();
+						} else if (e.key === " ") {
+							goNext();
+						}
+						// if arrow Left or arrow Right is pressed toggle the switch on or off
+						else if (e.key === "ArrowLeft") {
+							goPrevious();
+						} else if (e.key === "ArrowRight") {
+							goNext();
+						}
 					}}
+					onClick={() => {
+						setActiveIndex(i);
+						onChange?.(i);
+					}}
+					role="tab"
+					className={`${activeIndex === i ? " " : "hover:text-primary/20"}
+
+					relative rounded-full px-3 py-1.5 text-sm font-medium outline-primary transition focus-visible:outline-2 ${applyColor(
+						colorText
+					)}`}
+					style={style}
 				>
-					{activeTab === tab.id && (
+					{activeIndex === i && (
 						<motion.span
 							layoutId="bubble"
-							className="absolute inset-0 z-10 bg-background mix-blend-difference"
-							style={{ borderRadius: 9999 }}
-							transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+							className={`absolute inset-0 z-0 ${applyBgColor(colorSelected)}
+ 
+							${applyRounded(rounded)}`}
+							transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
 						/>
 					)}
-					{tab.label}
+					<Box style={{ zIndex: 1 }} className={`relative py-1 px-3 ${applyRounded(rounded)}  `}>
+						<Text
+							color={colorText}
+							invertColor={Boolean(invertTextOnSelected && activeIndex === i)}
+							size={textSize}
+						>
+							{tab}
+						</Text>
+					</Box>
 				</button>
 			))}
-		</div>
+		</Stack>
 	);
 }

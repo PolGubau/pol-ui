@@ -3,9 +3,14 @@ import TabBar from "./components/TabBar/TabBar";
 import { applyMaxWidth, applyPadding, applyRounded } from "../../../style";
 import { tabStyles } from "./tab.styles";
 import TabContent from "./components/TabContent/TabContent";
-import { SizesWithNone, SizesWithFull, SizesComplete, IconType, Sizes } from "../../../types";
-import NavigationBar from "../NavigationBar/NavigationBar";
-import { AnimatePresence, motion } from "framer-motion";
+import {
+	SizesWithNone,
+	SizesWithFull,
+	SizesComplete,
+	IconType,
+	Sizes,
+	Color,
+} from "../../../types";
 
 export interface TabsItemProps {
 	title: string;
@@ -25,6 +30,7 @@ interface Props {
 		y: SizesWithNone;
 	};
 	rounded?: SizesComplete;
+	selectionColor?: Color;
 	maxWidth?: SizesWithFull;
 	fluent?: boolean;
 	classNameContent?: string;

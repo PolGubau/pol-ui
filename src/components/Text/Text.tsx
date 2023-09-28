@@ -26,6 +26,7 @@ interface Props {
 	invertColor?: boolean;
 	balanced?: boolean;
 	style?: React.CSSProperties;
+	customRef?: React.RefObject<any>;
 }
 
 const Text: React.FC<Props> = ({
@@ -49,6 +50,7 @@ const Text: React.FC<Props> = ({
 	invertColor = false,
 	style = {},
 	balanced = false,
+	customRef,
 }): React.JSX.Element => {
 	const properSize = typeof size === "number" ? `${size}px` : size ?? undefined;
 
@@ -62,6 +64,7 @@ const Text: React.FC<Props> = ({
 
 	return (
 		<TextStyled
+			ref={customRef}
 			as={as}
 			style={style}
 			id={id}

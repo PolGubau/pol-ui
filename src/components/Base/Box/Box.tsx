@@ -15,8 +15,8 @@ const Box: React.FC<Props> = ({ children, as = "div", className, ariaLabel, id, 
 			aria-label={ariaLabel}
 			id={id}
 			style={{
-				minHeight: "30px",
-				minWidth: "30px",
+				minHeight: "20px",
+				minWidth: "20px",
 				...style,
 			}}
 			className={`flex w-fit ${className ?? ""}  `}
