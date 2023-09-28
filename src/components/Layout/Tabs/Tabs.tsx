@@ -35,6 +35,7 @@ interface Props {
 	fluent?: boolean;
 	classNameContent?: string;
 	invertTextOnSelected?: boolean;
+	contentMovementAmount?: number;
 }
 
 const Tabs: React.FC<Props> = ({
@@ -49,6 +50,7 @@ const Tabs: React.FC<Props> = ({
 	maxWidth = "full",
 	classNameContent,
 	invertTextOnSelected,
+	contentMovementAmount = 10,
 }) => {
 	const [activeTab, setActiveTab] = React.useState(defaultOpenedIndex ?? 0);
 	const selectedContent = useMemo(() => data[activeTab].content, [data, activeTab]);
@@ -71,7 +73,12 @@ const Tabs: React.FC<Props> = ({
 
 			<main className={`${applyPadding(padding)}`}>
 				<div className={className}>
-					<TabContent content={selectedContent} className={classNameContent} key={activeTab} />{" "}
+					<TabContent
+						content={selectedContent}
+						className={classNameContent}
+						key={activeTab}
+						movementAmount={contentMovementAmount}
+					/>
 				</div>
 			</main>
 		</section>

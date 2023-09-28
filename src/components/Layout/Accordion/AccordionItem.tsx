@@ -3,7 +3,7 @@ import { Icon, IconNames } from "../../Base/Icon";
 import { Text } from "../../Text";
 import { AccordionItemProps } from "./Accordion";
 import { Button, Link } from "../../Buttons";
-import { JustifyContents, Side, Sides, SizesComplete } from "../../../types";
+import { Colors, JustifyContents, Side, Sides, SizesComplete } from "../../../types";
 import { AnimatePresence, motion } from "framer-motion";
 interface Props {
 	hasArrowIcon?: boolean;
@@ -27,7 +27,7 @@ const AccordionItem: React.FC<Props> = ({
 	const iconArrow = item.arrowIcon ?? IconNames.arrowup;
 	const properTextSize = typeof titleSize === "number" ? `${titleSize}px` : titleSize;
 	return (
-		<article key={item.title} className={`flex flex-col gap-1 w-full $ ${item.className}`}>
+		<article key={item.title} className={`flex flex-col gap-1 w-full  ${item.className}`}>
 			<header className={`overflow-hidden `}>
 				<Button
 					rounded="none"
@@ -39,11 +39,14 @@ const AccordionItem: React.FC<Props> = ({
 					className={`flex ${
 						arrowIconPosition === Sides.left ? "flex-row-reverse" : "flex-row"
 					}    ${hasArrowIcon ? "pr-4" : ""}
-					
-					
 					`}
 				>
-					<Text size={properTextSize} value={item.title}></Text>
+					<Text
+						size={properTextSize}
+						value={item.title}
+						invertColor={paintOpened && isOpened}
+						color={paintOpened && isOpened ? Colors.secondary : Colors.contrast}
+					/>
 					{hasArrowIcon && (
 						<Icon
 							icon={isOpened ? iconArrow : item.arrowIconOpened ?? iconArrow}

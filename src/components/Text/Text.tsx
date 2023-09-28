@@ -27,6 +27,7 @@ interface Props {
 	balanced?: boolean;
 	style?: React.CSSProperties;
 	customRef?: React.RefObject<any>;
+	onClick?: (e: any) => void;
 }
 
 const Text: React.FC<Props> = ({
@@ -51,6 +52,7 @@ const Text: React.FC<Props> = ({
 	style = {},
 	balanced = false,
 	customRef,
+	onClick,
 }): React.JSX.Element => {
 	const properSize = typeof size === "number" ? `${size}px` : size ?? undefined;
 
@@ -64,6 +66,7 @@ const Text: React.FC<Props> = ({
 
 	return (
 		<TextStyled
+			onClick={onClick}
 			ref={customRef}
 			as={as}
 			style={style}

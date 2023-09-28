@@ -321,7 +321,7 @@ export const UsageAsSidebar: Story = {
 			<div className="flex flex-col ring ring-sky-400">
 				<Navbar logo="MyApp" />
 				<main className="flex ">
-					<div className="">
+					<div className="min-w-[40%]">
 						<Accordion {...args} rounded="none" />
 					</div>
 					<div className="bg-info/20 p-8">
@@ -375,8 +375,8 @@ export const UsageAsSidebar: Story = {
 				content: (
 					<div className="flex flex-col gap-2">
 						<Grid rows={2} gap={"10px"}>
-							<Card className="flex w-full flex-col gap-2" customBackground="#e3e3e3">
-								<Stack direction="column" gap="10px">
+							<Card>
+								<Stack direction="column" gap="10px" alignItems="start">
 									<Text value="Export" />
 									<Link fullWidth icon={IconNames.database} href="/nowhere">
 										Dashboard
@@ -390,8 +390,8 @@ export const UsageAsSidebar: Story = {
 								</Stack>
 							</Card>
 
-							<Card className="flex w-full flex-col gap-2" customBackground="#e3e3e3">
-								<Stack direction="column" gap="10px">
+							<Card>
+								<Stack direction="column" gap="10px" alignItems="start">
 									<Text value="Export 2" />
 									<Link fullWidth icon={IconNames.database} href="/nowhere">
 										Dashboard

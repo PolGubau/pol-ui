@@ -2,9 +2,11 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Tabs from "./Tabs";
 import { Button } from "../../Buttons";
 import { defaultData, tooManyTabs } from "./Story/tabData";
-import { Field, Switch } from "../../Inputs";
+import { Checkbox, Field, Radio, Switch } from "../../Inputs";
 import { IconNames } from "../../Base/Icon";
 import { Sizes } from "../../../types";
+import { Text } from "../../Text";
+import { Card } from "../Card";
 const meta = {
 	title: "Layout/Tabs",
 	component: Tabs,
@@ -135,9 +137,86 @@ export const RoundedXL: Story = {
 		data: defaultData,
 	},
 };
+export const CustomMovementAmount: Story = {
+	args: {
+		contentMovementAmount: -20,
+		data: defaultData,
+	},
+};
 export const NoFluent: Story = {
 	args: {
 		fluent: false,
 		data: defaultData,
 	},
+};
+export const DarkMode: Story = {
+	args: {
+		rounded: Sizes.xl,
+		data: [
+			{
+				title: "Login",
+				content: (
+					<div className="flex gap-4 flex-col">
+						<Text as="h3">Already have an account? Login.</Text>
+						<Field label="Email" fullWidth />
+						<Field label="password" type="password" fullWidth />
+						<Radio label="Remember me" value={true} onChange={() => {}} />
+						<Checkbox label="Remember me" value={true} onChange={() => {}} />
+						<Switch label="Remember me" checked={true} onChange={() => {}} />
+						<Button icon={IconNames.arrow} color="accent" iconPosition="right">
+							Login
+						</Button>
+					</div>
+				),
+			},
+			{
+				title: "Create Account",
+				content: (
+					<div className="flex gap-4 flex-col">
+						<Text as="h3">First time here? Create an account.</Text>
+
+						<div className="flex gap-4">
+							<Field label="Email" fullWidth />
+							<Field label="Username" fullWidth />
+						</div>
+						<Field label="password" type="password" fullWidth />
+						<Button icon={IconNames.arrow} color="accent" iconPosition="right">
+							Create an account
+						</Button>
+					</div>
+				),
+			},
+		],
+	},
+
+	render: (args) => (
+		<div className="dark">
+			<div className="bg-background dark:bg-background-inverted p-8">
+				<Tabs {...args} />
+			</div>
+		</div>
+	),
+};
+
+export const InCard: Story = {
+	args: {
+		...DarkMode.args,
+	},
+	render: (args) => (
+		<section className="flex gap-8 flex-col">
+			{" "}
+			<div className="bg-background dark:bg-background-inverted p-8">
+				<Card padding="none">
+					<Tabs {...args} hasBorder={false} />
+				</Card>
+			</div>
+			<div className="dark">
+				<div className="bg-background dark:bg-background-inverted p-8">
+					<Card padding="none">
+						<Tabs {...args} hasBorder={false} />
+					</Card>
+				</div>
+			</div>
+		</section>
+	),
 };

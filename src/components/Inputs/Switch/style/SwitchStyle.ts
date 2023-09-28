@@ -26,8 +26,11 @@ export const SwitchStyle = ({ size = Sizes.md, error }: SwitchStyleProps): strin
  				after:z-[2] 
  				after:h-5 
 				after:w-5 
+				${size === "xs" ? "after:h-3 after:w-3" : ""}
 				${size === "sm" ? "after:h-4 after:w-4" : ""}
 				${size === "lg" ? "after:h-6 after:w-6" : ""}
+				${size === "xl" ? "after:h-7 after:w-7" : ""}
+				
 				after:rounded-full 
 				after:border-none 
 				after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] 
@@ -47,12 +50,13 @@ export const SwitchStyle = ({ size = Sizes.md, error }: SwitchStyleProps): strin
 				hover:cursor-pointer 
 				focus:outline-none 
 				focus:ring-accent
+				dark:focus:ring-accent-inverted
 				focus:ring-2
 				disabled:opacity-50
 				disabled:cursor-not-allowed
 				
 				
-				bg-primary/30
+				bg-background-inverted/30
 				after:bg-background
 				
 				checked:bg-accent/60
@@ -61,7 +65,7 @@ export const SwitchStyle = ({ size = Sizes.md, error }: SwitchStyleProps): strin
 				
 				dark:bg-background/30
 				dark:after:bg-primary-inverted
-				dark:checked:bg-accent 
+				dark:checked:bg-accent-inverted
 				dark:checked:after:bg-primary 
 				
 				

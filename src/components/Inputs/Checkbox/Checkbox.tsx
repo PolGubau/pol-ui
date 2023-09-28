@@ -1,8 +1,15 @@
 import React from "react";
-import { Icon } from "../../Base/Icon";
+import { Icon, IconNames } from "../../Base/Icon";
 import { Transition } from "@headlessui/react";
-import { applyBgColorInChecked, applyDisabled, applyRounded, applyTextSize } from "../../../style";
-import { Color, IconType, Identifier, Size, SizesComplete } from "../../../types";
+import {
+	applyBgColorInChecked,
+	applyColor,
+	applyDisabled,
+	applyRounded,
+	applyTextSize,
+} from "../../../style";
+import { Color, Colors, IconType, Identifier, Size, Sizes, SizesComplete } from "../../../types";
+import { Text } from "../../Text";
 
 interface Props {
 	label?: Identifier;
@@ -25,15 +32,17 @@ const Checkbox: React.FC<Props> = ({
 	onChange,
 	disabled = false,
 	errorMessage,
-	color = "accent",
-	checkIcon = "check",
-	iconColor = "contrast",
+	color = Colors.accent,
+	checkIcon = IconNames.check,
+	iconColor = Colors.background,
 	className,
 	name,
-	rounded,
-	size = "md",
+	rounded = Sizes.sm,
+	size = Sizes.md,
 }) => {
+	const [isSelected, setIsSelected] = React.useState<boolean>(value);
 	const handleChange = (event: { target: { checked: boolean } }) => {
+		setIsSelected((prev) => !prev);
 		if (onChange) {
 			onChange(event.target.checked);
 		}
@@ -63,23 +72,28 @@ const Checkbox: React.FC<Props> = ({
 				<input
 					name={name}
 					type="checkbox"
-					checked={value}
+					checked={isSelected}
 					onChange={handleChange}
 					disabled={disabled}
 					className={`
-					transition-all duration-100 w-full h-full  appearance-none  cursor-pointer bg-background-inverted/20 ring-0 ring-transparent 
+					transition-all duration-100 w-full h-full  appearance-none  cursor-pointer  focus:scale-90 
+					
+					
+					bg-background-inverted/30 dark:bg-background/30   
+					
 					${applyBgColorInChecked(color)}
+					
+					
+					
    					disabled:bg-primary/10 disabled:border-transparent disabled:ring-0 disabled:ring-transparent
-					active:brightness-90 active:checked:brightness-90
-					focus:brightness-75
-				${applyRounded(rounded ?? size)}
+ 				${applyRounded(rounded ?? size)}
 				 `}
 				/>
 				<Transition
 					className={`text-primary absolute transition-all duration-100 user-select-none pointer-events-none ${applyTextSize(
 						size
 					)} `}
-					show={value}
+					show={isSelected}
 					enter="transition-all duration-200"
 					enterFrom="translate-y-8"
 					enterTo="translate-y-0"
@@ -91,9 +105,13 @@ const Checkbox: React.FC<Props> = ({
 				</Transition>
 			</div>
 
-			<span className="text-primary/80">{label}</span>
+			{label && <Text onClick={handleChange}>{label?.toString()}</Text>}
 
-			{errorMessage && <span className="text-danger">{errorMessage}</span>}
+			{errorMessage && (
+				<Text size={12} className={applyColor(Colors.danger)}>
+					{errorMessage}
+				</Text>
+			)}
 		</div>
 	);
 };

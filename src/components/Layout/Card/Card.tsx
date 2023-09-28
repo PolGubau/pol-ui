@@ -1,17 +1,26 @@
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { MouseEvent, useRef } from "react";
 import {
+	BaseProps,
 	Color,
 	Colors,
 	PaddingOneOrBothValues,
 	Shadow,
 	Sizes,
 	SizesComplete,
+	Ten,
+	Tens,
 } from "../../../types";
-import { applyPadding, applyRounded, applyShadow } from "../../../style";
+import {
+	applyBgColor,
+	applyBgOpacity,
+	applyPadding,
+	applyRounded,
+	applyShadow,
+} from "../../../style";
 import { useRipple } from "../../../hooks";
 
-interface Props {
+interface Props extends BaseProps {
 	children: React.ReactNode;
 	rounded?: SizesComplete;
 	padding?: PaddingOneOrBothValues;
@@ -33,11 +42,14 @@ interface Props {
 
 	// The transparency of the light effect when the mouse is over the card.
 	shadow?: Shadow;
+
+	bgColor?: Color;
+	bgOpacity?: Ten;
 }
 
 export default function Card({
 	children,
-	lightColor = "rgba(14, 165, 233, 0.25)",
+	lightColor = "rgba(25, 14, 233, 0.25)",
 	lightSize = 550,
 	lightOpacity = 80,
 	onClick = undefined,
@@ -48,6 +60,11 @@ export default function Card({
 	rippleDuration = 0.5,
 	shadow = Sizes.xl,
 	hasRipple = false,
+	className = "",
+	id,
+	style,
+	bgColor = Colors.primary,
+	bgOpacity = Tens.ten,
 }: Props) {
 	// In the card component, you can have a ripple effect when you click on it and a light effect that follows the mouse.
 
@@ -77,11 +94,16 @@ export default function Card({
 	return (
 		<div
 			ref={ref}
+			id={id}
+			style={style}
 			className={`group overflow-hidden relative max-w-md ${applyRounded(rounded)}  ${applyPadding(
 				padding
-			)} border border-primary-inverted/50  bg-primary/10 dark:bg-primary-inverted/10 ${applyShadow(
-				shadow
-			)}`}
+			)} border border-primary-inverted/50  
+			
+			${applyBgColor(bgColor)} 
+			
+			${applyBgOpacity(bgOpacity)}
+			${applyShadow(shadow)} ${className}`}
 			onMouseMove={handleMouseMove} // The handleMouseMove function is called when the mouse moves over the card.
 			onClick={onClick}
 		>

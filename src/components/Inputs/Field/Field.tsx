@@ -88,10 +88,10 @@ const Field = <T extends string | number>({
 						htmlFor="floating_outlined"
 						className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2  z-10 origin-[0] px-2 pointer-events-none rounded-lg
             
-            text-background-inverted/90  bg-background
-            dark:text-background dark:bg-background-inverted
+            text-background-inverted/90  bg-transparent
+            dark:text-background  
             
-            peer-focus:px-2 peer-focus:text-accent peer-focus:dark:text-accent-inverted peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1
+            peer-focus:bg-background peer-focus:dark:bg-background-inverted peer-focus:text-accent peer-focus:dark:text-accent-inverted peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1
             
                ${
 									variant === ButtonVariants.filled &&
