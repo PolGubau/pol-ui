@@ -62,6 +62,22 @@ export const Placements = {
 
 export type Placement = SideY | Side;
 
+// enum tens that has key as 'twenty' and value as 20 each 10 as number
+
+export enum Tens {
+	"zero" = 0,
+	"ten" = 10,
+	"twenty" = 20,
+	"thirty" = 30,
+	"forty" = 40,
+	"fifty" = 50,
+	"sixty" = 60,
+	"seventy" = 70,
+	"eighty" = 80,
+	"ninety" = 90,
+	"hundred" = 100,
+}
+
 export type Ten = 0 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100;
 export type Shadow = SizesWithNone | "inner" | "outline";
 

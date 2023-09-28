@@ -29,12 +29,8 @@ const Datacard: React.FC<Props> = ({
 	return (
 		<div
 			className={`flex gap-3 items-center justify-center w-fit p-2 pr-4  bg-transparent transition-all duration-200 ease-in-out
-        
         ${onClick && "cursor-pointer hover:shadow-lg hover:bg-background-inverted/10"}
-        
                             ${applyRounded(rounded)}
-
-        
         `}
 			onClick={onClick}
 		>

@@ -252,6 +252,26 @@ export const applyBgColor = (color?: Color) => {
 			return "bg-primary dark:bg-primary-inverted";
 	}
 };
+export const applyBgColorInverted = (color?: Color) => {
+	switch (color) {
+		case Colors.secondary:
+			return `dark:bg-secondary bg-secondary-inverted`;
+		case Colors.success:
+			return "dark:bg-success bg-success-inverted";
+		case Colors.danger:
+			return "dark:bg-danger bg-danger-inverted";
+		case Colors.accent:
+			return "dark:bg-accent bg-accent-inverted";
+		case Colors.info:
+			return "dark:bg-info bg-info-inverted";
+		case Colors.background:
+			return "dark:bg-background bg-background-inverted";
+		case Colors.contrast:
+			return "dark:bg-background-inverted dark:text-background bg-background text-background-inverted";
+		default:
+			return "dark:bg-primary bg-primary-inverted";
+	}
+};
 export const applyBgColorInChecked = (color?: Color) => {
 	switch (color) {
 		case Colors.secondary:
@@ -275,27 +295,27 @@ export const applyBgColorInChecked = (color?: Color) => {
 export const applyBgOpacity = (opacity?: Ten) => {
 	switch (opacity) {
 		case 0:
-			return "bg-opacity-0";
+			return "bg-opacity-0 dark:bg-opacity-0";
 		case 10:
-			return "bg-opacity-10";
+			return "bg-opacity-10 dark:bg-opacity-10";
 		case 20:
-			return "bg-opacity-20";
+			return "bg-opacity-20 dark:bg-opacity-20";
 		case 30:
-			return "bg-opacity-30";
+			return "bg-opacity-30 dark:bg-opacity-30";
 		case 40:
-			return "bg-opacity-40";
+			return "bg-opacity-40 dark:bg-opacity-40";
 		case 50:
-			return "bg-opacity-50";
+			return "bg-opacity-50 dark:bg-opacity-50";
 		case 60:
-			return "bg-opacity-60";
+			return "bg-opacity-60 dark:bg-opacity-60";
 		case 70:
-			return "bg-opacity-70";
+			return "bg-opacity-70 dark:bg-opacity-70";
 		case 80:
-			return "bg-opacity-80";
+			return "bg-opacity-80 dark:bg-opacity-80";
 		case 90:
-			return "bg-opacity-90";
+			return "bg-opacity-90 dark:bg-opacity-90";
 		default:
-			return "bg-opacity-100";
+			return "bg-opacity-100 dark:bg-opacity-100";
 	}
 };
 export const applyColor = (color?: Color) => {

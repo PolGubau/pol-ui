@@ -52,6 +52,7 @@ import {
 	TrackerItem,
 	ColumnChart,
 	Week,
+	Dock,
 } from "./components";
 import { PolUITheme } from "./style";
 export {
@@ -107,6 +108,7 @@ export {
 	TrackerItem,
 	ColumnChart,
 	Week,
+	Dock,
 
 	// theme
 	PolUITheme,

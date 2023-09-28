@@ -7,6 +7,13 @@ const meta = {
 	title: "Layout/Card",
 	component: Card,
 	tags: ["autodocs"],
+	decorators: [
+		(Story) => (
+			<div className="w-full p-16 bg-background dark:bg-background-inverted">
+				<Story />
+			</div>
+		),
+	],
 } satisfies Meta<typeof Card>;
 
 export default meta;
@@ -35,6 +42,45 @@ export const Default: Story = {
 export const OnClick: Story = {
 	args: {
 		...Default.args,
-		onClick: () => alert("Clicked!"),
+		hasRipple: true,
+		onClick: () => console.log("Clicked!"),
+	},
+};
+
+export const DarkMode: Story = {
+	render: (args) => (
+		<div className="dark">
+			<div className="w-full dark:bg-background-inverted p-16">
+				<Card {...args} />
+			</div>
+		</div>
+	),
+	args: {
+		...Default.args,
+	},
+};
+export const CustomRipple: Story = {
+	args: {
+		...Default.args,
+		hasRipple: true,
+		rippleColor: Colors.danger,
+		rippleDuration: 2,
+		rippleOpacity: 0.5,
+	},
+};
+export const CustomPadding: Story = {
+	args: {
+		...Default.args,
+		padding: {
+			y: "xl",
+			x: "none",
+		},
+	},
+};
+export const CustomLight: Story = {
+	args: {
+		...Default.args,
+		lightOpacity: 10,
+		lightColor: "#ff5",
 	},
 };
