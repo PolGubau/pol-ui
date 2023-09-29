@@ -1,4 +1,4 @@
-import { ButtonVariant, ButtonVariants } from "../../../types";
+import { ButtonVariant, Variants } from "../../../types";
 
 export const labelStyles = (isUp: boolean) => {
 	const base = `label transition-all absolute text-primary/60 top-0 left-2 translate-y-1 p-1 pointer-events-none `;
@@ -19,7 +19,7 @@ interface Props {
 export const inputStyles = ({
 	multiline,
 	fullWidth,
-	variant = ButtonVariants.outlined,
+	variant = Variants.outlined,
 	error,
 }: Props) => {
 	const base = `block px-2.5 pb-2.5 pt-4 w-full text-sm rounded-lg appearance-none   duration-300
@@ -29,7 +29,7 @@ export const inputStyles = ({
 						focus:ring-0 
  				 
             			 ${
-											variant === ButtonVariants.filled &&
+											variant === Variants.filled &&
 											`
 								bg-background-inverted/20 dark:bg-background/20
 								
@@ -38,7 +38,7 @@ export const inputStyles = ({
 										}
 								
              			${
-										variant === ButtonVariants.outlined &&
+										variant === Variants.outlined &&
 										`bg-transparent border   		
 										${
 											error
@@ -47,7 +47,7 @@ export const inputStyles = ({
 										}				
 										`
 									}
- 							${variant === ButtonVariants.text && "bg-transparent"}
+ 							${variant === Variants.text && "bg-transparent"}
             
 				
 						

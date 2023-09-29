@@ -5,7 +5,7 @@ import useClickOutside from "../../../hooks/useClickOutside";
 import { formatString } from "../../../utils";
 import { Link } from "../../Buttons/Link";
 import {
-	ButtonVariants,
+	Variants,
 	Colors,
 	IconType,
 	JustifyContents,
@@ -40,7 +40,7 @@ interface Props extends BaseButtonProps {
 export default function Menu({
 	label,
 	options = [],
-	variant = ButtonVariants.filled,
+	variant = Variants.filled,
 	iconSide = Sides.left,
 	openIcon = IconNames.expand,
 	closeIcon = openIcon ?? IconNames.expand,

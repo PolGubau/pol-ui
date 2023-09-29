@@ -49,10 +49,10 @@ export const Filled: Story = {
 		centered: true,
 		children: (
 			<>
-				<Button rounded="none" variant="text" fullWidth onClick={() => {}}>
+				<Button rounded="none" centered variant="text" fullWidth onClick={() => {}}>
 					Button 1
 				</Button>
-				<Button rounded="none" variant="text" fullWidth onClick={() => {}}>
+				<Button rounded="none" centered variant="text" fullWidth onClick={() => {}}>
 					Button 2
 				</Button>
 			</>

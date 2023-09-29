@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Button from "./Button";
 import { Divider } from "../../DataDisplay";
+import { Variants, Colors, Sizes } from "../../../types";
 
 const meta = {
 	title: "Buttons/Button",
@@ -34,9 +35,9 @@ export const Default: Story = {
 		rounded: "lg",
 		autoFocus: false,
 		fullWidth: false,
-		variant: "filled",
-		color: "primary",
-		size: "md",
+		variant: Variants.filled,
+		color: Colors.primary,
+		size: Sizes.md,
 		disabled: false,
 		id: "button",
 	},

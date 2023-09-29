@@ -20,7 +20,7 @@ const ButtonGroup = ({
 	return (
 		<div
 			className={
-				`inline-flex ring-1 ring-primary overflow-hidden
+				`inline-flex ring-1 ring-primary overflow-hidden  
 				
 				${applyCentered(centered)}
 				${applyFullWidth(fullWidth)}

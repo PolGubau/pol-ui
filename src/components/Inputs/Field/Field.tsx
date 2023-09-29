@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from "react";
 import { inputStyles } from "./Styled";
-import { ButtonVariant, ButtonVariants } from "../../../types";
+import { ButtonVariant, Variants } from "../../../types";
 interface Props<T> {
 	label?: string;
 	name?: string;
@@ -35,7 +35,7 @@ const Field = <T extends string | number>({
 	autoComplete = "off",
 	className,
 	maxLength,
-	variant = ButtonVariants.outlined,
+	variant = Variants.outlined,
 	fullWidth = false,
 	size = "normal",
 	...props
@@ -94,7 +94,7 @@ const Field = <T extends string | number>({
             peer-focus:bg-background peer-focus:dark:bg-background-inverted peer-focus:text-accent peer-focus:dark:text-accent-inverted peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1
             
                ${
-									variant === ButtonVariants.filled &&
+									variant === Variants.filled &&
 									`bg-transparent
 									dark:bg-transparent
 									peer-focus:bg-transparent peer-focus:dark:bg-transparent -translate-y-7 peer-focus:-translate-y-7  peer-focus:scale-90  scale-90`

@@ -156,13 +156,13 @@ export type Overflow =
 	| "scroll"
 	| "visible";
 
-export enum ButtonVariants {
+export enum Variants {
 	"filled" = "filled",
 	"outlined" = "outlined",
 	"text" = "text",
 }
 
-export type ButtonVariant = `${ButtonVariants}`;
+export type ButtonVariant = `${Variants}`;
 
 // Basic justification for flexbox
 export enum BaseJustifies {

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import WeeklyTracker from "./WeeklyTracker";
-
 const meta = {
 	title: "Trackers/WeeklyTracker",
 	component: WeeklyTracker,
@@ -16,7 +15,7 @@ const mockData = [
 	},
 	{
 		date: "2023-09-19",
-		value: 19,
+		value: 80,
 	},
 	{
 		date: "2023-09-20",
@@ -35,7 +34,7 @@ const mockData = [
 		value: 4,
 	},
 	{
-		date: "2023-09-24",
+		date: new Date().toISOString().split("T")[0],
 		value: 70,
 	},
 ];

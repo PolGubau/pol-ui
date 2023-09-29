@@ -15,7 +15,7 @@ import {
 	JustifyContents,
 	ButtonVariant,
 	IconType,
-	ButtonVariants,
+	Variants,
 	Colors,
 	Sides,
 } from "../../../types";
@@ -66,7 +66,7 @@ const Button: React.FC<ButtonProps> = ({
 	ariaLabel = "button",
 	href,
 	onMouseMove,
-	variant = ButtonVariants.filled,
+	variant = Variants.filled,
 	hideWhenLessThan = 0,
 	color = Colors.primary,
 	size = Sizes.md,
@@ -87,7 +87,7 @@ const Button: React.FC<ButtonProps> = ({
 	hasRipple = position !== "absolute" && position !== "fixed",
 	buttonType = "button",
 	loading = false,
-	loaderColor = variant === ButtonVariants.text ? Colors.primary : Colors.background,
+	loaderColor = variant === Variants.text ? Colors.primary : Colors.background,
 	loadOnClick = false,
 }) => {
 	const isHidden = useMediaQuery(hideWhenLessThan);

@@ -1,39 +1,12 @@
+import { Colors, Ten } from "../../../types";
 import { getDay, getWeekDay } from "../../../utils";
 import { Card, Stack } from "../../Layout";
 import { Text } from "../../Text";
 
-interface ColorProps {
-	color: string;
-	value: number;
-}
-const mockColors = [
-	{
-		color: "#ffffbe",
-		value: 0,
-	},
-	{
-		color: "#ff4",
-		value: 10,
-	},
-	{
-		color: "#fa4",
-		value: 20,
-	},
-	{
-		color: "#f44",
-		value: 30,
-	},
-	{
-		color: "#a44",
-		value: 40,
-	},
-];
-
 interface Props {
-	defaultColor?: string;
+	bgColor?: Colors;
 	onClick?: (YYYYMMDD: string) => void;
 	maxWidth?: number;
-	colors?: ColorProps[];
 	data: {
 		date: string;
 		value: number;
@@ -44,24 +17,25 @@ const WeeklyTracker: React.FC<Props> = ({
 	onClick,
 	maxWidth = "800px",
 	data,
-	colors = mockColors,
-	defaultColor = "#b8b8b8",
+	bgColor = Colors.accent,
 }) => {
 	const lastRecords = data.slice(-7);
 
-	const getBackgroundColor = (value: number, colors: ColorProps[]) => {
-		// if value is less than the first color, return the first color
-		// if value is more than the last color, return the last color
-		// else return the color that is greater than the value
-		const firstColor = colors[0];
-		const lastColor = colors[colors.length - 1];
-		if (value <= firstColor.value) {
-			return firstColor.color;
-		} else if (value >= lastColor.value) {
-			return lastColor.color;
-		} else {
-			return colors.find((color) => color.value > value)?.color;
-		}
+	interface GetOpacity {
+		allValues: number[];
+		thisValue: number;
+	}
+	const getOpacity = ({ allValues, thisValue }: GetOpacity): Ten => {
+		const max = Math.max(...allValues);
+
+		// get the max value, this one will return 100, then take the percent of the others, example: 12,6. Then 12 will be 100 and 6 will be 50
+
+		const percent = (thisValue * 100) / max;
+		// now move the percent to the nearest 10
+
+		const ten = Math.round(percent / 10) * 10;
+
+		return ten as Ten;
 	};
 
 	return (
@@ -82,18 +56,22 @@ const WeeklyTracker: React.FC<Props> = ({
 
 				return (
 					<Card
-						contentClassname="flex flex-col items-center justify-center"
 						onClick={onClick && handleClicked}
 						key={record.date}
-						className="w-full aspect-square flex items-center justify-center"
+						shadow={isThisDayToday ? "lg" : "none"}
+						className={`w-full aspect-square flex items-center justify-center ${
+							isThisDayToday ? "scale-110" : ""
+						}`}
 						padding="none"
-						customBackground={getBackgroundColor(record.value, colors) ?? defaultColor}
-						hasBorder={isThisDayToday}
+						bgColor={bgColor}
+						bgOpacity={getOpacity({ allValues: data.map((d) => d.value), thisValue: record.value })}
 					>
-						<Text centered>{getWeekDay(record.date) + " " + getDay(record.date)}</Text>
-						<Text centered size={"1.5em"}>
-							{record.value.toString()}
-						</Text>
+						<Stack direction="column" justify="center" alignItems="center" gap={0}>
+							<Text centered>{getWeekDay(record.date) + " " + getDay(record.date)}</Text>
+							<Text centered size={"1.5em"}>
+								{record.value.toString()}
+							</Text>
+						</Stack>
 					</Card>
 				);
 			})}

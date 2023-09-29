@@ -1,4 +1,4 @@
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import { MotionValue, motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { MouseEvent, useRef } from "react";
 import {
 	BaseProps,
@@ -19,6 +19,7 @@ import {
 	applyShadow,
 } from "../../../style";
 import { useRipple } from "../../../hooks";
+import { motionRoundedGradient } from "../../../utils/styleUtils/motionRoundedGradient";
 
 interface Props extends BaseProps {
 	children: React.ReactNode;
@@ -111,15 +112,13 @@ export default function Card({
 				className={`pointer-events-none absolute -inset-px ${applyRounded(
 					rounded
 				)} opacity-0 transition duration-300 group-hover:opacity-100`}
-				style={{
-					background: useMotionTemplate`
-            radial-gradient(
-              ${lightSize}px circle at ${mouseX}px ${mouseY}px,
-              ${lightColor},
-              transparent ${lightOpacity}%
-            )
-          `,
-				}}
+				style={motionRoundedGradient({
+					mouseX,
+					mouseY,
+					color: lightColor,
+					opacity: lightOpacity,
+					size: lightSize,
+				})}
 			/>
 
 			{/* The ripples are created with the useRipple hook. */}

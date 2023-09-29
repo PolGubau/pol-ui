@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Field } from ".";
-import { ButtonVariants } from "../../../types";
+import { Variants } from "../../../types";
 
 const meta = {
 	title: "Inputs/Field",
@@ -33,14 +33,14 @@ export const Filled: Story = {
 	args: {
 		label: "Input",
 		value: "This is a value",
-		variant: ButtonVariants.filled,
+		variant: Variants.filled,
 	},
 };
 export const Text: Story = {
 	args: {
 		label: "Input",
 		value: "This is a value",
-		variant: ButtonVariants.text,
+		variant: Variants.text,
 	},
 };
 export const NumberType: Story = {
@@ -130,9 +130,9 @@ export const FullWidth: Story = {
 export const AllTypes: Story = {
 	render: (args) => (
 		<div className="dark:bg-background-inverted p-8 flex gap-4 flex-col">
-			<Field {...args} />
-			<Field variant="filled" {...args} />
-			<Field variant="text" {...args} />
+			<Field variant={Variants.outlined} {...args} />
+			<Field variant={Variants.filled} {...args} />
+			<Field variant={Variants.text} {...args} />
 		</div>
 	),
 	args: {
@@ -143,9 +143,9 @@ export const DarkMode: Story = {
 	render: (args) => (
 		<div className="dark">
 			<div className="dark:bg-background-inverted p-8 flex gap-4 flex-col">
-				<Field {...args} />
-				<Field variant="filled" {...args} />
-				<Field variant="text" {...args} />
+				<Field variant={Variants.outlined} {...args} />
+				<Field variant={Variants.filled} {...args} />
+				<Field variant={Variants.text} {...args} />
 			</div>
 		</div>
 	),

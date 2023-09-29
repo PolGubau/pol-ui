@@ -18,7 +18,7 @@ import {
 	Position,
 	ButtonVariant,
 	Colors,
-	ButtonVariants,
+	Variants,
 	Sizes,
 	JustifyContents,
 } from "./../../../types/index";
@@ -27,14 +27,14 @@ import {
 // color is the color of the button from a predefined list
 
 export const applyButtonVariant = ({
-	variant = ButtonVariants.filled,
+	variant = Variants.filled,
 	color = Colors.primary,
 }: {
 	variant?: ButtonVariant;
 	color?: Color;
 }): string => {
 	switch (variant) {
-		case ButtonVariants.outlined:
+		case Variants.outlined:
 			switch (color) {
 				case "secondary":
 					return "text-secondary ring-1 hover:bg-secondary/10 dark:text-secondary-inverted dark:hover:bg-secondary-inverted/10 ";
@@ -53,7 +53,7 @@ export const applyButtonVariant = ({
 				default:
 					return "text-primary ring-1  hover:bg-primary/10 dark:text-primary-inverted dark:hover:bg-primary-inverted/10 ";
 			}
-		case ButtonVariants.text:
+		case Variants.text:
 			switch (color) {
 				case "secondary":
 					return "text-secondary hover:bg-secondary/10 dark:text-secondary-inverted dark:hover:bg-secondary-inverted/10 focus:ring-secondary/80 dark:focus:ring-secondary-inverted/80 focus:bg-secondary/20 dark:focus:bg-secondary-inverted/20";
@@ -119,7 +119,7 @@ export const buttonStyles = ({
 	disabled = false,
 	centered = false,
 	padding = { x: Sizes.md, y: Sizes.sm },
-	variant = ButtonVariants.filled,
+	variant = Variants.filled,
 	color = Colors.primary,
 	justify = JustifyContents.center,
 	className = "",

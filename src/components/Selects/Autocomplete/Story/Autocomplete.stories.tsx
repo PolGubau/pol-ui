@@ -6,7 +6,7 @@ import {
 	withComplexeObject,
 	withComplexeObjectWithName,
 } from "./mockObjects";
-import { ButtonVariants } from "../../../../types";
+import { Variants } from "../../../../types";
 
 const meta = {
 	title: "Selects/Autocomplete",
@@ -25,16 +25,16 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	args: { options: mockSelectJustNames, variant: ButtonVariants.filled, fullWidth: false },
+	args: { options: mockSelectJustNames, variant: Variants.filled, fullWidth: false },
 };
 export const MainSelect: Story = {
-	args: { ...Default.args, variant: ButtonVariants.filled },
+	args: { ...Default.args, variant: Variants.filled },
 };
 export const TextSelect: Story = {
-	args: { ...Default.args, variant: ButtonVariants.text },
+	args: { ...Default.args, variant: Variants.text },
 };
 export const OutlinedSelect: Story = {
-	args: { ...Default.args, variant: ButtonVariants.outlined },
+	args: { ...Default.args, variant: Variants.outlined },
 };
 export const CustomIcon: Story = {
 	args: { ...Default.args, buttonIcon: "script" },
@@ -49,13 +49,13 @@ export const WithLabel: Story = {
 	args: { ...Default.args, label: "Select your favorite" },
 };
 export const FullWidth: Story = {
-	args: { ...Default.args, fullWidth: true, variant: ButtonVariants.filled },
+	args: { ...Default.args, fullWidth: true, variant: Variants.filled },
 };
 export const FullWidthOutlined: Story = {
-	args: { ...Default.args, fullWidth: true, variant: ButtonVariants.outlined },
+	args: { ...Default.args, fullWidth: true, variant: Variants.outlined },
 };
 export const FullWidthText: Story = {
-	args: { ...Default.args, fullWidth: true, variant: ButtonVariants.text },
+	args: { ...Default.args, fullWidth: true, variant: Variants.text },
 };
 export const ItemsWithIDAndName: Story = {
 	args: { ...Default.args, options: mockSelectIdName },

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Menu from "../Menu";
 import { mockmenu } from "./mockMenus";
-import { ButtonVariants } from "../../../../types";
+import { Variants } from "../../../../types";
 import { IconNames } from "../../../Base";
 
 const meta = {
@@ -13,13 +13,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	args: { label: "Menu", options: mockmenu, variant: ButtonVariants.filled },
+	args: { label: "Menu", options: mockmenu, variant: Variants.filled },
 };
 export const WithoutLabel: Story = {
-	args: { options: mockmenu, variant: ButtonVariants.filled },
+	args: { options: mockmenu, variant: Variants.filled },
 };
 export const CustomButton: Story = {
-	args: { label: "Nice label", options: mockmenu, variant: ButtonVariants.text },
+	args: { label: "Nice label", options: mockmenu, variant: Variants.text },
 };
 export const Dividers: Story = {
 	args: { label: "Nice label", options: mockmenu, dividers: true },
@@ -39,17 +39,17 @@ export const NavIdea: Story = {
 				{...args}
 				label="About us"
 				icon={IconNames.euro}
-				variant={ButtonVariants.text}
+				variant={Variants.text}
 				options={mockmenu}
 			/>
-			<Menu {...args} label="Profile" variant={ButtonVariants.text} options={mockmenu} />
+			<Menu {...args} label="Profile" variant={Variants.text} options={mockmenu} />
 
-			<Menu {...args} label="Without Items" variant={ButtonVariants.text} options={[]} />
+			<Menu {...args} label="Without Items" variant={Variants.text} options={[]} />
 
-			<Menu {...args} openIcon="more" variant={ButtonVariants.text} options={mockmenu} />
+			<Menu {...args} openIcon="more" variant={Variants.text} options={mockmenu} />
 		</div>
 	),
-	args: { options: mockmenu, variant: ButtonVariants.filled },
+	args: { options: mockmenu, variant: Variants.filled },
 };
 export const Directions: Story = {
 	render: (args) => (
@@ -60,5 +60,5 @@ export const Directions: Story = {
 			<Menu {...args} label="Left" options={mockmenu} direction="left" />
 		</div>
 	),
-	args: { options: mockmenu, variant: ButtonVariants.filled },
+	args: { options: mockmenu, variant: Variants.filled },
 };

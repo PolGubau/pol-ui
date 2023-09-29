@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Divider from "./Divider";
 import { Button } from "../../Buttons";
-import { ButtonVariants, Colors, Directions, Sizes } from "../../../types";
+import { Variants, Colors, Directions, Sizes } from "../../../types";
 const meta = {
 	title: "Data Display/Divider",
 	component: Divider,
@@ -18,14 +18,14 @@ export const Default: Story = {
 export const Vertical: Story = {
 	render: (args) => (
 		<div className="flex overflow-hidden border-2  border-primary w-fit rounded-xl">
-			<Button rounded={"none"} variant={ButtonVariants.text}>
+			<Button rounded={"none"} variant={Variants.text}>
 				Edit
 			</Button>
-			<Button rounded={"none"} variant={ButtonVariants.text}>
+			<Button rounded={"none"} variant={Variants.text}>
 				Show
 			</Button>
 			<Divider {...args} direction="y" />
-			<Button rounded={"none"} variant={ButtonVariants.text}>
+			<Button rounded={"none"} variant={Variants.text}>
 				Delete
 			</Button>
 		</div>
@@ -35,16 +35,16 @@ export const Vertical: Story = {
 export const WithMargins: Story = {
 	render: (args) => (
 		<div className="flex overflow-hidden border-2  border-primary w-fit rounded-xl">
-			<Button rounded={"none"} variant={ButtonVariants.text}>
+			<Button rounded={"none"} variant={Variants.text}>
 				Edit
 			</Button>
 			<Divider {...args} direction={Directions.y} margin={Sizes.sm} />
 
-			<Button rounded={"none"} variant={ButtonVariants.text}>
+			<Button rounded={"none"} variant={Variants.text}>
 				Show
 			</Button>
 			<Divider {...args} direction={Directions.y} margin={Sizes.lg} />
-			<Button rounded={"none"} variant={ButtonVariants.text}>
+			<Button rounded={"none"} variant={Variants.text}>
 				Delete
 			</Button>
 		</div>

@@ -1,7 +1,7 @@
 import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { Icon, IconNames } from "../../Base/Icon";
-import { Sizes, Colors, ButtonVariants, SelectOption, JustifyContents } from "../../../types";
+import { Sizes, Colors, Variants, SelectOption, JustifyContents } from "../../../types";
 import { selectStyles } from "../selectStyles";
 import { useGetLabels } from "../../../hooks/useGetLabels";
 import { BaseButtonProps, labelClasses, popupStyles } from "../types";
@@ -20,7 +20,7 @@ export default function MultiSelect({
 	label,
 	placeholder = MultiSelectDefaultPlaceholder,
 	options = [],
-	variant = ButtonVariants.filled,
+	variant = Variants.filled,
 	buttonIcon = IconNames.expandboth,
 	keyField = "name",
 	color = Colors.primary,

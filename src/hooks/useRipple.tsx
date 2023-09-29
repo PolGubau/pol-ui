@@ -22,9 +22,10 @@ const RippleStyled = styled.span<RippleStyledProps>`
 	animation-duration: ${(props) => props.$duration}s;
 	animation-name: ripple;
 	animation-timing-function: ease-in-out;
+
 	@keyframes ripple {
 		to {
-			transform: scale(4);
+			transform: scale(2);
 			opacity: 0;
 		}
 	}

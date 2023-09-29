@@ -82,7 +82,7 @@ export default function NavigationBar({
 		// 					}}
 		// 					className={`relative  ${buttonStyles({
 		// 						padding: { x: "none", y: Sizes.xs },
-		// 						variant: ButtonVariants.text,
+		// 						variant: Variants.text,
 		// 					})}  ${applyRounded(
 		// 						rounded
 		// 					)} focus-visible:outline-none focus-visible:ring-2   ring-primary transition-all overflow-visible

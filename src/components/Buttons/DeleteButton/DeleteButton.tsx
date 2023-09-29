@@ -1,12 +1,4 @@
-import {
-	ButtonVariant,
-	ButtonVariants,
-	Color,
-	Colors,
-	IconType,
-	ModalProps,
-	Side,
-} from "../../../types";
+import { ButtonVariant, Variants, Color, Colors, IconType, ModalProps, Side } from "../../../types";
 import { IconNames } from "../../Base";
 import { Button } from "../Button";
 import { IconButton } from "../IconButton";
@@ -31,7 +23,7 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({
 	icon = IconNames.trash,
 	iconPosition = "right",
 	children,
-	variant = ButtonVariants.filled,
+	variant = Variants.filled,
 	modalTitle = "Deleting",
 	modalChildren = "Are you sure you want to delete this?",
 	submitText = "Delete",
