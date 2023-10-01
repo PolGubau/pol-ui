@@ -25,7 +25,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
 	args: {
-		logo: <Text size={5} value="logo" />,
+		logo: <Text value="logo" />,
 		children: (
 			<ul className="flex gap-2">
 				<Menu label="Menu" variant="text" options={[{ label: "Item 1" }, { label: "Item 2" }]} />

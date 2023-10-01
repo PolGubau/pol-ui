@@ -103,19 +103,19 @@ export const Recipe: Story = {
 		imagePosition: "top",
 		items: [
 			<Card key={1}>
-				<Text size={3} value="Recipe X " />
+				<Text value="Recipe X " />
 				<Text value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit." />
 			</Card>,
 			<Card key={2}>
-				<Text size={3} value="Ingredients" />
+				<Text value="Ingredients" />
 				<Text value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit." />
 			</Card>,
 			<Card key={3}>
-				<Text size={3} value="Instructions" />
+				<Text value="Instructions" />
 				<Text value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit." />
 			</Card>,
 			<Card key={4}>
-				<Text size={3} value="Instructions" />
+				<Text value="Instructions" />
 				<Text
 					value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.

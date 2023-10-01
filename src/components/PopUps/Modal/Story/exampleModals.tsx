@@ -179,7 +179,7 @@ export const rounded: ModalProps = {
 
 	children: (
 		<div className="flex flex-col gap-2">
-			<Text size={4} value="This is a rounded modal" />
+			<Text  value="This is a rounded modal" />
 			<Button fullWidth centered>
 				Cool🤠
 			</Button>

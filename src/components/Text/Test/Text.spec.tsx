@@ -36,7 +36,7 @@ describe("Text Component", () => {
 		expect(text).toBeInTheDocument();
 	});
 	test("If its a header and markdow, it will be displayes as a markdown as well", () => {
-		render(<Text value="**Bold**" isMarkdown size={1} />);
+		render(<Text value="**Bold**" isMarkdown />);
 		const text = screen.getByText("Bold");
 		expect(text).toBeInTheDocument();
 		expect(text.tagName).toBe("STRONG");

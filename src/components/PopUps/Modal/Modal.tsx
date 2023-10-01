@@ -105,7 +105,7 @@ const Modal = ({ state, setState }: Props) => {
 				{title && (
 					<header className="max-w-[85%] flex gap-4 items-center ">
 						{icon && <Icon icon={icon} size="xl" />}
-						<Text size={4} className="" value={title} />
+						<Text   className="" value={title} />
 					</header>
 				)}
 

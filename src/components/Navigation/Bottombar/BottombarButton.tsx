@@ -52,7 +52,7 @@ const BottombarButton: React.FC<Props> = ({
 				>
 					<Icon icon={item.icon} />
 
-					{hasLabel && <Text size={6} value={item.name} />}
+					{hasLabel && <Text value={item.name} />}
 				</div>
 			</Button>
 
