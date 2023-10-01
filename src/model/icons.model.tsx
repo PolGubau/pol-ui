@@ -83,6 +83,18 @@ import {
 	TbArrowBarToDown,
 	TbArrowBarToLeft,
 	TbArrowBarToRight,
+	TbCloud,
+	TbCoffee,
+	TbCrop,
+	TbDeviceDesktop,
+	TbDiscountCheck,
+	TbInfoCircle,
+	TbMicrophone,
+	TbMoon,
+	TbNavigation,
+	TbRotate,
+	TbShare,
+	TbCategory2,
 } from "react-icons/tb";
 import { TiFlowSwitch } from "react-icons/ti";
 import { IconNames } from "../components/Base/Icon/IconNames";
@@ -90,6 +102,18 @@ import { IconData } from "../types";
 // This code exports an array of objects containing icon names and their corresponding React components. The IconNames enum is used to ensure that only valid icon names are used. This code can be used in a React project to easily display icons by name.
 
 export const icons: IconData[] = [
+	{ name: IconNames.category, icon: <TbCategory2 /> },
+	{ name: IconNames.share, icon: <TbShare /> },
+	{ name: IconNames.rotate, icon: <TbRotate /> },
+	{ name: IconNames.moon, icon: <TbMoon /> },
+	{ name: IconNames.navigation, icon: <TbNavigation /> },
+	{ name: IconNames.microphone, icon: <TbMicrophone /> },
+	{ name: IconNames.info, icon: <TbInfoCircle /> },
+	{ name: IconNames.verified, icon: <TbDiscountCheck /> },
+	{ name: IconNames.desktop, icon: <TbDeviceDesktop /> },
+	{ name: IconNames.crop, icon: <TbCrop /> },
+	{ name: IconNames.coffee, icon: <TbCoffee /> },
+	{ name: IconNames.cloud, icon: <TbCloud /> },
 	{ name: IconNames.arrowBarUp, icon: <TbArrowBarToUp /> },
 	{ name: IconNames.arrowBarRight, icon: <TbArrowBarToRight /> },
 	{ name: IconNames.arrowBarLeft, icon: <TbArrowBarToLeft /> },

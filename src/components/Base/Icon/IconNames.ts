@@ -1,4 +1,3 @@
-
 export enum IconNames {
 	arrowBarLeft = "arrowBarLeft",
 	arrowBarRight = "arrowBarRight",
@@ -88,4 +87,16 @@ export enum IconNames {
 	link = "link",
 	question = "question",
 	edit = "edit",
+	cloud = "cloud",
+	coffee = "coffee",
+	crop = "crop",
+	desktop = "desktop",
+	verified = "verified",
+	info = "info",
+	microphone = "microphone",
+	moon = "moon",
+	navigation = "navigation",
+	rotate = "rotate",
+	share = "share",
+	category = "category",
 }

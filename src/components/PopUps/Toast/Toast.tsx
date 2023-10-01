@@ -11,7 +11,7 @@ import {
 	Variants,
 } from "../../../types";
 import { IconButton } from "../../Buttons";
-import { Icon } from "../../Base";
+import { Icon, IconNames } from "../../Base";
 import { applyBgColor, applyBgOpacity } from "../../../style";
 interface Props {
 	toast: ToastProps;
@@ -63,11 +63,28 @@ export const Toast = ({ toast = defaultToast, onClose }: Props) => {
 							getColorByToastVariant(toast.variant)
 						)} ${applyBgOpacity(20)} rounded-lg dark:bg-blue-800 dark:text-blue`}
 					>
-						<Icon icon={"check"} color={getColorByToastVariant(toast.variant)} />
+						{toast.variant === ToastVariants.neutral && (
+							<Icon
+								icon={toast.icon ?? IconNames.info}
+								color={getColorByToastVariant(toast.variant)}
+							/>
+						)}
+						{toast.variant === ToastVariants.success && (
+							<Icon
+								icon={toast.icon ?? IconNames.check}
+								color={getColorByToastVariant(toast.variant)}
+							/>
+						)}
+						{toast.variant === ToastVariants.danger && (
+							<Icon
+								icon={toast.icon ?? IconNames.close}
+								color={getColorByToastVariant(toast.variant)}
+							/>
+						)}
 					</div>
-					<div className="ml-3 text-sm font-normal">Set yourself free.</div>
+					<div className="ml-3 text-sm font-normal">{toast.message}</div>
 				</header>
-				<IconButton icon={"close"} onClick={onClose} variant={Variants.text} />
+				<IconButton icon={IconNames.close} onClick={onClose} variant={Variants.text} />
 			</li>
 		</motion.div>
 	);

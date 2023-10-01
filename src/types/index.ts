@@ -368,6 +368,7 @@ export type ToastVariant = `${ToastVariants}`;
 export interface ToastProps {
 	uuid: string;
 	message: string;
+	icon?: IconType;
 	variant?: ToastVariant;
 	duration?: number;
 	action?: {
