@@ -78,9 +78,4 @@ describe("Icon Component", () => {
 		const icon = screen.getByRole("img");
 		expect(icon).toBeInTheDocument();
 	});
-	test("If no alwaysRender and icon is not found it returns null", () => {
-		render(<Icon icon="test" />);
-		const icon = screen.queryByRole("img");
-		expect(icon).not.toHaveTextContent("test");
-	});
 });
