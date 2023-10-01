@@ -90,7 +90,7 @@ export const defaultModalWithSelect: ModalProps = {
 			<Autocomplete
 				variant="outlined"
 				label="Card number"
-				items={[
+				options={[
 					{ label: "**** **** **** 4242" },
 					{ label: "**** **** **** 2485" },
 					{ label: "**** **** **** 7525" },
@@ -179,7 +179,7 @@ export const rounded: ModalProps = {
 
 	children: (
 		<div className="flex flex-col gap-2">
-			<Text  value="This is a rounded modal" />
+			<Text value="This is a rounded modal" />
 			<Button fullWidth centered>
 				Cool🤠
 			</Button>
