@@ -19,6 +19,8 @@ interface Props<T> {
 	autoComplete?: "on" | "off";
 	variant?: ButtonVariant;
 	props?: Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof Props<T>>;
+	id?: string;
+	idLabel?: string;
 }
 
 const Field = <T extends string | number>({
@@ -38,6 +40,8 @@ const Field = <T extends string | number>({
 	variant = Variants.outlined,
 	fullWidth = false,
 	size = "normal",
+	id,
+	idLabel,
 	...props
 }: Props<T>) => {
 	const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
@@ -79,12 +83,13 @@ const Field = <T extends string | number>({
 						maxLength={maxLength}
 						type={type}
 						{...(props as Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof Props<T>>)}
-						id="label"
+						id={id}
 						className={inputStyles({ multiline: false, fullWidth, variant, error }) + className}
 						placeholder=" "
 					/>
 
 					<label
+						id={idLabel}
 						htmlFor="floating_outlined"
 						className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2  z-10 origin-[0] px-2 pointer-events-none rounded-lg
             
