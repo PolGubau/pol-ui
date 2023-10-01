@@ -29,15 +29,7 @@ const ToastSystem: React.FC<Props> = ({ toasts = [], direction = "y", onChange }
 	const allToasts = toasts ?? [];
 
 	return (
-		  <motion.div
-            style={{
-                 overflow: "hidden",
-                 willChange: "transform",
-                cursor: "grab",
-            }}
-            whileTap={{ cursor: "grabbing" }}
-            layout
-            transition={{ type: "spring", stiffness: 600, damping: 30 }} className={toastSystemStyles({ direction })}>
+		<motion.div className={toastSystemStyles({ direction })}>
 			{Boolean(allToasts?.length) &&
 				allToasts.map((toast, index: number) => (
 					<Toast

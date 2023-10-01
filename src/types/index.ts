@@ -358,14 +358,15 @@ export interface ModalProps {
 	};
 }
 
-export enum ToastTypes {
+export enum ToastVariants {
 	neutral = "neutral",
 	success = "success",
 	danger = "danger",
 }
-export type ToastVariant = `${ToastTypes}`;
+export type ToastVariant = `${ToastVariants}`;
 
 export interface ToastProps {
+	uuid: string;
 	message: string;
 	variant?: ToastVariant;
 	duration?: number;

@@ -1,7 +1,8 @@
-import { ToastProps, ToastTypes } from "../../../types";
+import { ToastProps, ToastVariants } from "../../../types";
 
 export const defaultToast: ToastProps = {
+	uuid: "default-toast",
 	message: "Saved!",
-	variant: ToastTypes.neutral,
+	variant: ToastVariants.neutral,
 	duration: 3000,
 };

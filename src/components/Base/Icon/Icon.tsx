@@ -1,7 +1,7 @@
 import { applyColor, applyTextSize } from "../../../style";
 import { Color, Size } from "../../../types";
 import { getIcon } from "../../../utils";
- interface IconProps {
+interface IconProps {
 	icon: string | React.JSX.Element;
 	color?: Color;
 	size?: Size;
@@ -22,6 +22,7 @@ const Icon = ({ icon, color, size, className, id, alwaysRender, style }: IconPro
 
 	const resultIcon = typeof icon === "string" ? getStringIcon(icon) : icon;
 
+	const label = typeof icon === "string" ? icon : "";
 	return (
 		<div
 			role="img"
@@ -31,6 +32,7 @@ const Icon = ({ icon, color, size, className, id, alwaysRender, style }: IconPro
 			style={style}
 		>
 			{resultIcon}
+			<span className="sr-only">{label} icon</span>
 		</div>
 	);
 };

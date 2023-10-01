@@ -337,7 +337,7 @@ export const applyColor = (color?: Color) => {
 		case Colors.contrast:
 			return "text-background-inverted dark:text-background";
 		default:
-			return "text-default ";
+			return "text-default";
 	}
 };
 export const applyInvertedColor = (color?: Color) => {

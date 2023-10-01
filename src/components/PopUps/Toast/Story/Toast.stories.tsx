@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Toast } from "../Toast";
 import { dangerToast, defaultToast, successToast, toastWithAction } from "./exampleToast";
+import { ToastVariants, Variants } from "../../../../types";
 
 const meta = {
 	title: "Popups/Toast",
@@ -48,7 +49,9 @@ export const DarkMode: Story = {
 	},
 	render: (args) => (
 		<div className="dark">
-			<main className="bg-background-inverted w-full h-screen p-8 rounded-lg">
+			<main className="bg-background-inverted w-full h-screen p-8 rounded-lg flex gap-4 flex-col">
+				<Toast {...args} toast={defaultToast} />
+				<Toast {...args} />
 				<Toast {...args} />
 			</main>
 		</div>
