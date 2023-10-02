@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "../../Buttons/Link";
 import { Image } from "../../Media/Image";
 import Badge from "../Badge/Badge";
-import { ButtonVariant, Color, Size, SizesComplete } from "../../../types";
+import { BaseProps, ButtonVariant, Color, Size, SizesComplete } from "../../../types";
 import { applyRounded, applyTextSize } from "../../../style";
 import { applyButtonVariant } from "../../Buttons/Button/Button.styles";
 import Button from "../../Buttons/Button/Button";
 
-interface Props {
+interface Props extends BaseProps {
 	src: string;
 	name: string;
 	rounded?: SizesComplete;
@@ -42,6 +42,10 @@ const applySize = (size: Size) => {
 const Avatar: React.FC<Props> = ({
 	src,
 	name,
+	id,
+	className,
+	ariaLabel,
+	style,
 	rounded = "none",
 	description,
 	size = "md",
@@ -72,7 +76,10 @@ const Avatar: React.FC<Props> = ({
 			)} ${applyButtonVariant({
 				variant,
 				color,
-			})} `}
+			})} ${className ?? ""}`}
+			style={style}
+			id={id}
+			aria-label={ariaLabel}
 		>
 			{badge ? (
 				<Badge content={badge} color={badgeColor}>

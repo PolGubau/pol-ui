@@ -2,12 +2,7 @@ export * from "./Accordion";
 export * from "./Card";
 export * from "./Grid";
 export * from "./NavigationBar";
-export * from "./Pagination/Pagination";
-export * from "./Pagination/TablePagination";
 export * from "./Pagination";
 export * from "./Stack";
-export * from "./Tabs/Story/tabData";
-export * from "./Tabs/components/TabBar";
-export * from "./Tabs/components/TabContent";
-export * from "./Tabs/components";
+
 export * from "./Tabs";
