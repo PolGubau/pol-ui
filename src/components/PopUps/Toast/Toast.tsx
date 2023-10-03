@@ -43,44 +43,38 @@ export const Toast = ({ toast = defaultToast, onClose }: Props) => {
 				return Colors.primary;
 		}
 	};
+	const getDefaultIconByToastVariant = (varinat?: ToastVariant) => {
+		switch (varinat) {
+			case ToastVariants.success:
+				return IconNames.check;
+			case ToastVariants.danger:
+				return IconNames.close;
+			case ToastVariants.neutral:
+				return IconNames.info;
+			default:
+				return IconNames.info;
+		}
+	};
 
 	return (
-		<motion.div
-		// className={toastStyles({
-		// 	variant: toast.variant,
-		// 	defaultType: DEFAULT_TOAST_TYPE,
-		// 	direction,
-		// })}
-		>
+		<motion.div>
 			<li
 				id="toast-default"
-				className="flex items-center w-full max-w-xs p-4 text-contrast/80 bg-background-inverted/10 rounded-lg shadow justify-between dark:text-background/80 dark:bg-background/10"
+				className="flex items-center w-full max-w-xs p-4 text-contrast/80 bg-background-inverted/10 rounded-2xl shadow justify-between dark:text-background/80 dark:bg-background/10"
 				role="alert"
 			>
 				<header className="flex items-center">
 					<div
 						className={`inline-flex items-center justify-center flex-shrink-0 w-8 h-8 ${applyBgColor(
 							getColorByToastVariant(toast.variant)
-						)} ${applyBgOpacity(20)} rounded-lg dark:bg-blue-800 dark:text-blue`}
+						)} ${applyBgOpacity(20)} rounded-lg`}
 					>
-						{toast.variant === ToastVariants.neutral && (
+						<>
 							<Icon
-								icon={toast.icon ?? IconNames.info}
+								icon={toast.icon ?? getDefaultIconByToastVariant(toast.variant)}
 								color={getColorByToastVariant(toast.variant)}
 							/>
-						)}
-						{toast.variant === ToastVariants.success && (
-							<Icon
-								icon={toast.icon ?? IconNames.check}
-								color={getColorByToastVariant(toast.variant)}
-							/>
-						)}
-						{toast.variant === ToastVariants.danger && (
-							<Icon
-								icon={toast.icon ?? IconNames.close}
-								color={getColorByToastVariant(toast.variant)}
-							/>
-						)}
+						</>
 					</div>
 					<div className="ml-3 text-sm font-normal">{toast.message}</div>
 				</header>

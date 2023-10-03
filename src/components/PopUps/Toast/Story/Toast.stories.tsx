@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Toast } from "../Toast";
 import { dangerToast, defaultToast, successToast, toastWithAction } from "./exampleToast";
-import { ToastVariants, Variants } from "../../../../types";
+import { ToastVariants } from "../../../../types";
 
 const meta = {
 	title: "Popups/Toast",
@@ -46,6 +46,7 @@ export const WithAction: Story = {
 export const DarkMode: Story = {
 	args: {
 		...Default.args,
+		onClose: () => console.log("onClose"),
 	},
 	render: (args) => (
 		<div className="dark">
@@ -53,6 +54,8 @@ export const DarkMode: Story = {
 				<Toast {...args} toast={defaultToast} />
 				<Toast {...args} />
 				<Toast {...args} />
+				<Toast {...args} toast={{ ...defaultToast, variant: ToastVariants.success }} />
+				<Toast {...args} toast={{ ...defaultToast, variant: ToastVariants.danger }} />
 			</main>
 		</div>
 	),

@@ -1,5 +1,6 @@
 import { ToastProps } from "../../../../types";
 import { generateUUID } from "../../../../utils";
+import { IconNames } from "../../../Base";
 
 const texts = {
 	message: "This is a toast",
@@ -25,6 +26,8 @@ export const dangerToast: ToastProps = {
 };
 export const toastWithAction: ToastProps = {
 	uuid: generateUUID(),
+	icon: IconNames.trash,
+	variant: "danger",
 	message: 'DROP TABLE "users" without WHERE ',
 	duration: 3000,
 	action: {
