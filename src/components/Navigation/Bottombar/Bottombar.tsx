@@ -77,6 +77,7 @@ const Bottombar: React.FC<Props> = ({
 				  ${applyPadding(padding)}`}
 			>
 				<NavigationBar
+					onChange={onChange}
 					onlyShowSelectedText={onlyShowActiveText}
 					direction={direction}
 					data={items}
