@@ -15,7 +15,7 @@ import {
 export interface TabsItemProps {
 	title: string;
 	content: string | React.ReactNode;
-	icon?: IconType;
+	icon?: string | IconType;
 	className?: string;
 }
 

@@ -12,7 +12,7 @@ import {
 	JustifyContents,
 	SizesComplete,
 } from "../../../types";
-import { applyBgColor, applyColor, applyInvertedColor, applyRounded } from "../../../style";
+import { applyBgColor, applyColor, applyRounded } from "../../../style";
 import { Stack } from "../Stack";
 import { BottombarItem } from "../../Navigation/Bottombar/Bottombar";
 import { Icon } from "../../Base";

@@ -4,6 +4,7 @@ import { applyPadding } from "../../../../../style";
 import { Button } from "../../../../Buttons";
 import { SizesWithFull, PaddingOneOrBothValues } from "../../../../../types";
 import NavigationBar from "../../../NavigationBar/NavigationBar";
+import { BottombarItem } from "../../../../Navigation/Bottombar/Bottombar";
 interface Props {
 	data: TabsItemProps[];
 	activeTab: number;
@@ -25,6 +26,9 @@ const TabBar: React.FC<Props> = ({
 		y: "sm",
 	},
 }) => {
+	const tabHeaderData: BottombarItem[] = data.map((item) => {
+		return { name: item.title, icon: item.icon };
+	});
 	return (
 		<>
 			<ul
@@ -34,7 +38,7 @@ const TabBar: React.FC<Props> = ({
 				{fluent ? (
 					<NavigationBar
 						invertTextOnSelected={invertTextOnSelected}
-						data={data.map((item) => item.title)}
+						data={tabHeaderData}
 						defaultSelected={activeTab}
 						onChange={setActiveTab}
 					/>
