@@ -33,6 +33,7 @@ interface Props {
 	invertTextOnSelected?: boolean;
 	itemRounded?: SizesComplete;
 	onlyShowSelectedText?: boolean;
+	textSize?: number;
 }
 
 export default function NavigationBar({
@@ -50,6 +51,7 @@ export default function NavigationBar({
 	invertTextOnSelected = false,
 	itemRounded = rounded,
 	onlyShowSelectedText = false,
+	textSize = 20,
 }: Props) {
 	const [activeIndex, setActiveIndex] = useState(defaultSelected);
 
@@ -132,7 +134,7 @@ export default function NavigationBar({
 								itemRounded
 							)}  `}
 						>
-							<Stack direction={"row"} gap={4}>
+							<Stack direction={"row"} gap={4} wrap="nowrap" className="truncate">
 								{tab.icon && (
 									<Icon
 										size={"xl"}
@@ -145,7 +147,7 @@ export default function NavigationBar({
 									<Text
 										color={colorText}
 										invertColor={activeIndex === i && invertTextOnSelected}
-										size={"xl"}
+										size={textSize}
 									>
 										{tab.name}
 									</Text>

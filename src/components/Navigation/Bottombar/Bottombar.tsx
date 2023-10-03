@@ -1,5 +1,6 @@
 import { applyMaxWidth, applyPadding, applyRounded } from "../../../style";
 import {
+	BaseProps,
 	Colors,
 	Direction,
 	Directions,
@@ -13,12 +14,12 @@ import {
 import { NavigationBar } from "../../Layout";
 export interface BottombarItem {
 	name: string;
-	icon?: IconType;
+	icon?: string | IconType;
 	link?: string;
 	onClick?: () => void;
 }
 
-interface Props {
+interface Props extends BaseProps {
 	maxWidth?: SizesWithFull;
 	rounded?: SizesComplete;
 	itemRounded?: SizesComplete;
@@ -31,6 +32,7 @@ interface Props {
 	defaultSelected?: number;
 	direction?: Direction;
 	invertTextOnSelected?: boolean;
+	onChange?: (index: number) => void;
 }
 const Bottombar: React.FC<Props> = ({
 	items,
@@ -44,6 +46,11 @@ const Bottombar: React.FC<Props> = ({
 	direction = Directions.x,
 	defaultSelected = 0,
 	invertTextOnSelected = false,
+	id,
+	className = "",
+	style = {},
+	ariaLabel = "",
+	onChange,
 }) => {
 	const properBottomMargin = typeof bottomMargin === "number" ? `${bottomMargin}px` : bottomMargin;
 
@@ -51,13 +58,15 @@ const Bottombar: React.FC<Props> = ({
 
 	return (
 		<div
+			id={id}
 			className={`w-fit fixed z-50 ${applyMaxWidth(maxWidth)} 
 			${maxWidth === "full" && "bottom-0 w-full rounded-none"}
 			${fillEmptyWidth ? "w-full items-between flex gap-2" : "w-fit"}
 				-translate-x-1/2 left-1/2 bg-background-inverted dark:bg-background 
 				
-				${applyRounded(rounded)}`}
+				${applyRounded(rounded)} ${className}`}
 			style={{
+				...style,
 				bottom: properBottomMargin,
 			}}
 		>

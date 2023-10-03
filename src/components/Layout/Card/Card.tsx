@@ -8,12 +8,14 @@ import {
 	Shadow,
 	Sizes,
 	SizesComplete,
+	SizesWithFull,
 	Ten,
 	Tens,
 } from "../../../types";
 import {
 	applyBgColor,
 	applyBgOpacity,
+	applyMaxWidth,
 	applyPadding,
 	applyRounded,
 	applyShadow,
@@ -46,6 +48,7 @@ interface Props extends BaseProps {
 
 	bgColor?: Color;
 	bgOpacity?: Ten;
+	maxWidth?: SizesWithFull;
 }
 
 export default function Card({
@@ -66,6 +69,7 @@ export default function Card({
 	style,
 	bgColor = Colors.primary,
 	bgOpacity = Tens.ten,
+	maxWidth = "full",
 }: Props) {
 	// In the card component, you can have a ripple effect when you click on it and a light effect that follows the mouse.
 
@@ -97,9 +101,9 @@ export default function Card({
 			ref={ref}
 			id={id}
 			style={style}
-			className={`group overflow-hidden relative max-w-md ${applyRounded(rounded)}  ${applyPadding(
-				padding
-			)} border border-primary-inverted/50  
+			className={`group overflow-hidden relative ${applyMaxWidth(maxWidth)} ${applyRounded(
+				rounded
+			)}  ${applyPadding(padding)} border border-primary-inverted/50  
 			
 			${applyBgColor(bgColor)} 
 			
