@@ -9,7 +9,7 @@ interface Props {
 	size?: number | string;
 	isItalic?: boolean;
 	color?: Color;
-	value?: string;
+	value?: string | number;
 	maxLines?: number;
 	maxLength?: number;
 	isMarkdown?: boolean;
@@ -20,7 +20,7 @@ interface Props {
 	as?: "label" | "p" | "span" | "div" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 	htmlFor?: string;
 	disabled?: boolean;
-	children?: string;
+	children?: string | number;
 	id?: string;
 	ariaLabel?: string;
 	invertColor?: boolean;
@@ -56,7 +56,7 @@ const Text: React.FC<Props> = ({
 }): React.JSX.Element => {
 	const properSize = typeof size === "number" ? `${size}px` : size ?? undefined;
 
-	const properValue = value ?? children ?? "";
+	const properValue = value?.toString() ?? children?.toString() ?? "";
 
 	if (!properValue) {
 		throw new Error("Text component must have a value or children");

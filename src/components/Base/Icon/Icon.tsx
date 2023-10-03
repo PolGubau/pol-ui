@@ -1,4 +1,4 @@
-import { applyColor, applyInvertedColor, applyTextSize } from "../../../style";
+import { applyColor, applyTextSize } from "../../../style";
 import { Color, Size } from "../../../types";
 import { getIcon } from "../../../utils";
 interface IconProps {
@@ -9,19 +9,9 @@ interface IconProps {
 	id?: string;
 	alwaysRender?: boolean;
 	style?: any;
-	invertColor?: boolean;
 }
 
-const Icon = ({
-	icon,
-	color,
-	size,
-	invertColor,
-	className,
-	id,
-	alwaysRender,
-	style,
-}: IconProps) => {
+const Icon = ({ icon, color, size, className, id, alwaysRender, style }: IconProps) => {
 	const getStringIcon = (icon: string): React.ReactNode => {
 		const iconResult = getIcon(icon);
 		if (!iconResult) {
@@ -37,9 +27,7 @@ const Icon = ({
 		<div
 			role="img"
 			id={id}
-			className={`${applyTextSize(size)} ${
-				invertColor ? applyInvertedColor(color) : applyColor(color)
-			} 			
+			className={`${applyTextSize(size)} ${applyColor(color)} 			
  ${className}`}
 			style={style}
 		>

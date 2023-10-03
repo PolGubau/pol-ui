@@ -60,7 +60,7 @@ export const Toast = ({ toast = defaultToast, onClose }: Props) => {
 		<motion.div>
 			<li
 				id="toast-default"
-				className="flex items-center w-full max-w-xs p-4 text-contrast/80 bg-background-inverted/10 rounded-2xl shadow justify-between dark:text-background/80 dark:bg-background/10"
+				className="flex items-center w-full max-w-xs p-2 gap-2 text-contrast/80 bg-background-inverted/10 rounded-2xl shadow justify-between dark:text-background/80 dark:bg-background/10"
 				role="alert"
 			>
 				<header className="flex items-center">
@@ -78,7 +78,7 @@ export const Toast = ({ toast = defaultToast, onClose }: Props) => {
 					</div>
 					<div className="ml-3 text-sm font-normal">{toast.message}</div>
 				</header>
-				<IconButton icon={IconNames.close} onClick={onClose} variant={Variants.text} />
+				<IconButton icon={IconNames.close} onClick={onClose} variant={Variants.text} padding="xs" />
 			</li>
 		</motion.div>
 	);

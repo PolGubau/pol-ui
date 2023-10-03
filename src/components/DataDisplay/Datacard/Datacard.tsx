@@ -1,8 +1,8 @@
 import React from "react";
-import { IconType, PaddingOneOrBothValues, Sizes, SizesComplete } from "../../../types";
+import { Colors, IconType, PaddingOneOrBothValues, Sizes, SizesComplete } from "../../../types";
 import { Icon } from "../../Base";
 import { Text } from "../../Text";
-import { applyPadding, applyRounded } from "../../../style";
+import { applyBgColor, applyPadding, applyRounded } from "../../../style";
 interface Props {
 	label?: string;
 	value: string;
@@ -36,22 +36,27 @@ const Datacard: React.FC<Props> = ({
 		>
 			{icon && (
 				<div
-					className={`flex h-full flex-col gap-2 justify-center bg-accent  items-center  aspect-square w-full
-                    
-             ${applyPadding(padding)}
+					className={`flex h-full flex-col gap-2 justify-center  bg-opacity-50 items-center  aspect-square w-full
+                    ${applyBgColor(Colors.accent)}
+            		${applyPadding(padding)}
                     ${applyRounded(rounded)}
                     
                     ${iconClassName}
                     
                     `}
 				>
-					<Icon size="xl" icon={icon} color="primary" />
+					<Icon size="xl" className="scale-150" icon={icon} />
 				</div>
 			)}
 
 			<div className="flex flex-col justify-center">
 				{label && (
-					<Text as="span" color="primary" value={label} className={`text-sm ${labelClassName}`} />
+					<Text
+						as="span"
+						color="primary"
+						value={label}
+						className={`text-sm truncate  ${labelClassName}`}
+					/>
 				)}
 				{value && (
 					<Text color="accent" value={value} className={`truncate text-2xl ${valueClassName}`} />

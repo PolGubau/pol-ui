@@ -34,7 +34,7 @@ const Stack: React.FC<StackProps> = ({
 	className = "",
 	grow = 0,
 	justify = JustifyContents["flex-start"],
-	width = "100%",
+	width = "auto",
 	style,
 }: StackProps) => {
 	const properGap = typeof gap === "number" ? `${gap}px` : gap;
