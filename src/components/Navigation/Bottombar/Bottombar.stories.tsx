@@ -19,19 +19,14 @@ export const Default: Story = {
 			{
 				name: "Home",
 				icon: <PiHouseFill />,
-				active: true,
-
-				link: "/?path=/story/navigation-bottombar--default",
 			},
 			{
 				name: "Settings",
 				icon: <RiSettings4Fill />,
-				link: "/?path=/story/navigation-bottombar--default",
 			},
 			{
 				name: "Profile",
 				icon: <TiUser />,
-				link: "/?path=/story/navigation-bottombar--default",
 			},
 			{
 				name: "Search",
@@ -72,6 +67,7 @@ export const WithoutPadding: Story = {
 	args: {
 		...Default.args,
 		padding: "none",
+		itemRounded: "none",
 	},
 };
 export const BigPadding: Story = {
@@ -83,6 +79,16 @@ export const BigPadding: Story = {
 
 export const DarkMode: Story = {
 	args: { ...Default.args },
+	render: (args) => (
+		<div className="dark">
+			<main className="dark:bg-background-inverted w-full h-screen ">
+				<Bottombar {...args} />
+			</main>
+		</div>
+	),
+};
+export const InvertWhenSelected: Story = {
+	args: { ...Default.args, invertTextOnSelected: true },
 	render: (args) => (
 		<div className="dark">
 			<main className="dark:bg-background-inverted w-full h-screen ">

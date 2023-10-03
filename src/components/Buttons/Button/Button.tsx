@@ -55,6 +55,8 @@ export interface ButtonProps extends BaseProps {
 	loaderColor?: Color;
 	onMouseMove?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 	loadOnClick?: boolean;
+	onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
+	role?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -66,6 +68,7 @@ const Button: React.FC<ButtonProps> = ({
 	ariaLabel = "button",
 	href,
 	onMouseMove,
+	onKeyDown,
 	variant = Variants.filled,
 	hideWhenLessThan = 0,
 	color = Colors.primary,
@@ -89,6 +92,7 @@ const Button: React.FC<ButtonProps> = ({
 	loading = false,
 	loaderColor = variant === Variants.text ? Colors.primary : Colors.background,
 	loadOnClick = false,
+	role = "button",
 }) => {
 	const isHidden = useMediaQuery(hideWhenLessThan);
 
@@ -132,7 +136,9 @@ const Button: React.FC<ButtonProps> = ({
 			as={href ? "a" : "button"}
 			ref={customRef ?? ref}
 			href={href}
+			role={role}
 			onMouseMove={onMouseMove}
+			onKeyDown={onKeyDown}
 			aria-label={ariaLabel}
 			disabled={disabled || !onClick}
 			autoFocus={autoFocus}

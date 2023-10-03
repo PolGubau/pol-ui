@@ -1,19 +1,21 @@
 import { applyMaxWidth, applyPadding, applyRounded } from "../../../style";
 import {
+	Colors,
+	Direction,
+	Directions,
 	IconType,
+	JustifyContents,
 	PaddingOneOrBothValues,
 	Sizes,
 	SizesComplete,
 	SizesWithFull,
 } from "../../../types";
-import BottombarButton from "./BottombarButton";
-
+import { NavigationBar } from "../../Layout";
 export interface BottombarItem {
 	name: string;
-	icon: IconType;
+	icon?: IconType;
 	link?: string;
 	onClick?: () => void;
-	active?: boolean;
 }
 
 interface Props {
@@ -26,6 +28,9 @@ interface Props {
 	padding?: PaddingOneOrBothValues;
 	onlyShowActiveText?: boolean;
 	flexDirection?: "row" | "column";
+	defaultSelected?: number;
+	direction?: Direction;
+	invertTextOnSelected?: boolean;
 }
 const Bottombar: React.FC<Props> = ({
 	items,
@@ -36,7 +41,9 @@ const Bottombar: React.FC<Props> = ({
 	fillEmptyWidth = false,
 	padding = Sizes.sm,
 	onlyShowActiveText = true,
-	flexDirection = "row",
+	direction = Directions.x,
+	defaultSelected = 0,
+	invertTextOnSelected = false,
 }) => {
 	const properBottomMargin = typeof bottomMargin === "number" ? `${bottomMargin}px` : bottomMargin;
 
@@ -46,7 +53,7 @@ const Bottombar: React.FC<Props> = ({
 		<div
 			className={`w-fit fixed z-50 ${applyMaxWidth(maxWidth)} 
 			${maxWidth === "full" && "bottom-0 w-full rounded-none"}
-			${fillEmptyWidth ? "w-full items-center flex gap-2" : "w-fit"}
+			${fillEmptyWidth ? "w-full items-between flex gap-2" : "w-fit"}
 				-translate-x-1/2 left-1/2 bg-background-inverted dark:bg-background 
 				
 				${applyRounded(rounded)}`}
@@ -56,20 +63,21 @@ const Bottombar: React.FC<Props> = ({
 		>
 			<div
 				className={`flex h-full gap-4  mx-auto  
-				${fillEmptyWidth ? "w-full items-center flex justify-center" : "w-fit"}
+				${fillEmptyWidth ? "w-full items-between flex justify-center" : "w-fit"}
 				
 				  ${applyPadding(padding)}`}
 			>
-				{items.map((item) => (
-					<BottombarButton
-						item={item}
-						key={item.name}
-						rounded={itemRounded}
-						flexDirection={flexDirection}
-						fillEmptyWidth={fillEmptyWidth}
-						onlyShowActiveText={onlyShowActiveText}
-					/>
-				))}
+				<NavigationBar
+					onlyShowSelectedText={onlyShowActiveText}
+					direction={direction}
+					data={items}
+					justify={fillEmptyWidth ? JustifyContents.between : JustifyContents.center}
+					defaultSelected={defaultSelected}
+					rounded={rounded}
+					itemRounded={itemRounded}
+					colorText={Colors.background}
+					invertTextOnSelected={invertTextOnSelected}
+				/>
 			</div>
 		</div>
 	);
