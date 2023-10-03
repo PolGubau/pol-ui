@@ -45,7 +45,6 @@ interface Props extends BaseProps {
 
 	// The transparency of the light effect when the mouse is over the card.
 	shadow?: Shadow;
-
 	bgColor?: Color;
 	bgOpacity?: Ten;
 	maxWidth?: SizesWithFull;

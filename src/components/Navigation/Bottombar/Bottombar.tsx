@@ -49,7 +49,6 @@ const Bottombar: React.FC<Props> = ({
 	id,
 	className = "",
 	style = {},
-	ariaLabel = "",
 	onChange,
 }) => {
 	const properBottomMargin = typeof bottomMargin === "number" ? `${bottomMargin}px` : bottomMargin;

@@ -58,10 +58,6 @@ const Text: React.FC<Props> = ({
 
 	const properValue = value?.toString() ?? children?.toString() ?? "";
 
-	if (!properValue) {
-		throw new Error("Text component must have a value or children");
-	}
-
 	const shortedText = shorterText({ value: properValue, maxLength });
 
 	return (
