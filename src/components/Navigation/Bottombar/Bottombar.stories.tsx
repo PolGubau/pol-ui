@@ -36,6 +36,32 @@ export const Default: Story = {
 		],
 	},
 };
+export const WithLinks: Story = {
+	args: {
+		items: [
+			{
+				name: "Home",
+				icon: <PiHouseFill />,
+				link: "/",
+			},
+			{
+				name: "Settings",
+				icon: <RiSettings4Fill />,
+				link: "/settings",
+			},
+			{
+				name: "Profile",
+				icon: <TiUser />,
+				link: "/profile",
+			},
+			{
+				name: "Search",
+				icon: <FaSearch />,
+				onClick: () => alert("Clicked!"),
+			},
+		],
+	},
+};
 export const SmallRounded: Story = {
 	args: {
 		...Default.args,

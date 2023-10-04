@@ -1,6 +1,6 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import Box from "../../Base/Box/Box";
+import { BrowserRouter, Link } from "react-router-dom";
 import {
 	AlignItem,
 	AlignItems,
@@ -12,11 +12,10 @@ import {
 	JustifyContents,
 	SizesComplete,
 } from "../../../types";
-import { applyBgColor, applyColor, applyRounded } from "../../../style";
+import { applyRounded } from "../../../style";
 import { Stack } from "../Stack";
 import { BottombarItem } from "../../Navigation/Bottombar/Bottombar";
-import { Icon } from "../../Base";
-import { Text } from "../../Text";
+import NavigationBarItem from "./NavigationBarItem";
 
 interface Props {
 	style?: React.CSSProperties;
@@ -35,6 +34,19 @@ interface Props {
 	onlyShowSelectedText?: boolean;
 	textSize?: number;
 }
+
+const IsALink = ({ link, children }: { link?: string; children: React.ReactNode }) => {
+	if (link) {
+		return (
+			<BrowserRouter>
+				<Link to={link} className="h-full">
+					{children}
+				</Link>
+			</BrowserRouter>
+		);
+	}
+	return <>{children}</>;
+};
 
 export default function NavigationBar({
 	defaultSelected = 0,
@@ -74,6 +86,7 @@ export default function NavigationBar({
 		}
 		return true;
 	};
+
 	return (
 		<AnimatePresence>
 			<Stack
@@ -85,77 +98,54 @@ export default function NavigationBar({
 				style={style}
 				className={`${className} ${applyRounded(rounded)} transition-all w-full`}
 			>
-				{data.map((tab, i) => (
-					<button
-						key={tab.name}
-						onKeyDown={(e) => {
-							if (e.key === "Enter") {
-								goNext();
-							} else if (e.key === " ") {
-								goNext();
-							}
-							// if arrow Left or arrow Right is pressed toggle the switch on or off
-							else if (e.key === "ArrowLeft") {
-								goPrevious();
-							} else if (e.key === "ArrowRight") {
-								goNext();
-							}
-						}}
-						onClick={() => {
-							setActiveIndex(i);
-							onChange?.(i);
-							tab.onClick?.();
-						}}
-						role="tab"
-						className={`flex items-center justify-center flex-grow relative transition-all ${applyColor(
-							colorText
-						)} focus-visible:ring-2 focus-visible:ring-accent py-1 px-3 ${applyRounded(
-							itemRounded
-						)} `}
-						style={style}
-					>
-						{activeIndex === i && (
-							<motion.span
-								layoutId="bubble"
-								className={`absolute inset-0 z-0 ${applyBgColor(colorSelected)}
- 
-							${applyRounded(rounded)}`}
-								transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
+				{data.map((tab, i) => {
+					const isALink = Boolean(tab.link);
+
+					if (isALink) {
+						return (
+							<IsALink link={tab.link} key={tab.name}>
+								<NavigationBarItem
+									tab={tab}
+									setActiveIndex={setActiveIndex}
+									activeIndex={activeIndex}
+									onChange={onChange}
+									i={i}
+									style={style}
+									colorSelected={colorSelected}
+									colorText={colorText}
+									invertTextOnSelected={invertTextOnSelected}
+									textSize={textSize}
+									goNext={goNext}
+									goPrevious={goPrevious}
+									rounded={rounded}
+									itemRounded={itemRounded}
+									shouldShowText={shouldShowText}
+								/>
+							</IsALink>
+						);
+					} else {
+						return (
+							<NavigationBarItem
+								key={tab.name}
+								tab={tab}
+								setActiveIndex={setActiveIndex}
+								activeIndex={activeIndex}
+								onChange={onChange}
+								i={i}
+								style={style}
+								colorSelected={colorSelected}
+								colorText={colorText}
+								invertTextOnSelected={invertTextOnSelected}
+								textSize={textSize}
+								goNext={goNext}
+								goPrevious={goPrevious}
+								rounded={rounded}
+								itemRounded={itemRounded}
+								shouldShowText={shouldShowText}
 							/>
-						)}
-						<a
-							onClick={() => {
-								tab.link && window.history.pushState({}, "", tab.link);
-								tab.link && window.dispatchEvent(new PopStateEvent("popstate"));
-							}}
-							href={tab.link}
-							style={{ zIndex: 1 }}
-							className={`relative flex justify-center items-center  ${applyRounded(
-								itemRounded
-							)}  `}
-						>
-							<Stack direction={"row"} gap={4} wrap="nowrap" className="truncate">
-								{tab.icon && (
-									<Icon
-										size={"xl"}
-										color={colorText}
-										invertColor={activeIndex === i && invertTextOnSelected}
-										icon={tab.icon}
-									/>
-								)}
-								{shouldShowText(i) && (
-									<Text
-										color={colorText}
-										invertColor={activeIndex === i && invertTextOnSelected}
-										size={textSize}
-									>
-										{tab.name}
-									</Text>
-								)}
-							</Stack>
-						</a>
-					</button>
-				))}
+						);
+					}
+				})}
 			</Stack>
 		</AnimatePresence>
 	);
