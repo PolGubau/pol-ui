@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import {
 	AlignItem,
 	AlignItems,
+	BaseProps,
 	FlexDirections,
 	FlexWraps,
 	IFlexDirection,
@@ -11,7 +12,7 @@ import {
 } from "../../../types";
 import { StackStyled } from "./StackStyles";
 
-interface StackProps extends IFlexDirection, IFlexWrap {
+interface StackProps extends IFlexDirection, IFlexWrap, BaseProps {
 	children: ReactNode;
 	// If gap is number = gap in px, if its an string you can use any valid css unit
 	gap?: number | string;
@@ -21,7 +22,6 @@ interface StackProps extends IFlexDirection, IFlexWrap {
 	justify?: JustifyContent;
 	width?: number | string;
 	as?: keyof React.JSX.IntrinsicElements; // This allows specifying HTML tag names as values for the 'as' prop.
-	style?: React.CSSProperties;
 }
 
 const Stack: React.FC<StackProps> = ({
@@ -36,6 +36,8 @@ const Stack: React.FC<StackProps> = ({
 	justify = JustifyContents["flex-start"],
 	width = "auto",
 	style,
+	id,
+	ariaLabel,
 }: StackProps) => {
 	const properGap = typeof gap === "number" ? `${gap}px` : gap;
 	const properWidth = typeof width === "number" ? `${width}px` : width;
@@ -44,6 +46,8 @@ const Stack: React.FC<StackProps> = ({
 
 	return (
 		<StackStyled
+			id={id}
+			aria-label={ariaLabel}
 			as={as}
 			$alignItems={alignItems}
 			$gap={properGap}
