@@ -10,6 +10,7 @@ import {
 	IconType,
 	Sizes,
 	Color,
+	PaddingOneOrBothValues,
 } from "../../../types";
 
 export interface TabsItemProps {
@@ -25,10 +26,7 @@ interface Props {
 	hasDivider?: boolean;
 	hasBorder?: boolean;
 	className?: string;
-	padding?: {
-		x: SizesWithNone;
-		y: SizesWithNone;
-	};
+	padding?: PaddingOneOrBothValues;
 	rounded?: SizesComplete;
 	selectionColor?: Color;
 	maxWidth?: SizesWithFull;

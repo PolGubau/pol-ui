@@ -401,7 +401,6 @@ export const applyAlignments = (v?: Alignments) => {
 
 export const applyAspectRatio = (aspectRatio?: AspectRatios): CSSProperties => {
 	if (!aspectRatio) return {};
-	console.log("aspectRatio", aspectRatio);
 	const aspectRatioParts = aspectRatio?.split(":") ?? [];
 
 	if (aspectRatioParts.length !== 2) {
