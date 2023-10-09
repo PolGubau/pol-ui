@@ -1,6 +1,7 @@
 import React from "react";
 import { Text } from "../../../Text";
 import Radio from "../../Radio/Radio";
+import { Direction, Directions } from "../../../../types";
 
 // Example of value prop:
 // const value = ['key1', 'key2', 'key3'];
@@ -13,22 +14,24 @@ interface Props {
 	value: string[] | number[];
 	selectedValue: string | number;
 	onChange: (newSelectedValue: string | number) => void;
-	axis?: "x" | "y";
+	axis?: Direction;
+	groupName: string;
 }
 
 const RadioGroup: React.FC<Props> = ({
 	label,
 	value = [],
 	onChange,
-	axis = "y",
+	axis = Directions.y,
 	selectedValue,
+	groupName,
 }) => {
 	const handleChange = (newSelectedValue: string | number) => {
 		onChange(newSelectedValue);
 	};
 
 	return (
-		<div className={`flex  gap-3 ${axis === "x" ? "flex-row" : "flex-col"}`}>
+		<div className={`flex  gap-3 ${axis === Directions.x ? "flex-row" : "flex-col"}`}>
 			{label && <Text value={label} />}
 			{value.map((item: string | number, index: number) => {
 				const checked =
@@ -40,7 +43,7 @@ const RadioGroup: React.FC<Props> = ({
 						key={item}
 						label={item.toString()}
 						value={checked}
-						name={item.toString()}
+						name={groupName}
 						onChange={() => handleChange(item)}
 					/>
 				);

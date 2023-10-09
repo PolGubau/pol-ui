@@ -2,7 +2,7 @@ import React from "react";
 import { TabsItemProps } from "../../Tabs";
 import { applyPadding } from "../../../../../style";
 import { Button } from "../../../../Buttons";
-import { SizesWithFull, PaddingOneOrBothValues } from "../../../../../types";
+import { SizesWithFull, PaddingOneOrBothValues, Sizes } from "../../../../../types";
 import NavigationBar from "../../../NavigationBar/NavigationBar";
 import { BottombarItem } from "../../../../Navigation/Bottombar/Bottombar";
 interface Props {
@@ -13,17 +13,19 @@ interface Props {
 	maxWidth?: SizesWithFull;
 	fluent?: boolean;
 	invertTextOnSelected?: boolean;
+	layoutId?: string;
 }
 
 const TabBar: React.FC<Props> = ({
 	data,
 	activeTab,
+	layoutId,
 	invertTextOnSelected = false,
 	setActiveTab,
 	fluent = false,
 	padding = {
-		x: "sm",
-		y: "sm",
+		x: Sizes.sm,
+		y: Sizes.sm,
 	},
 }) => {
 	const tabHeaderData: BottombarItem[] = data.map((item) => {
@@ -41,6 +43,7 @@ const TabBar: React.FC<Props> = ({
 						data={tabHeaderData}
 						defaultSelected={activeTab}
 						onChange={setActiveTab}
+						layoutId={layoutId}
 					/>
 				) : (
 					data.map((item, index) => (

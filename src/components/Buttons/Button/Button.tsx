@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import "../../../style/baseTheme.css";
+import "../../../style/global.css";
 import { Icon } from "../../Base/Icon";
 import { buttonStyles, ButtonStyled } from "./Button.styles";
 import {

@@ -33,6 +33,7 @@ interface Props {
 	itemRounded?: SizesComplete;
 	onlyShowSelectedText?: boolean;
 	textSize?: number;
+	layoutId?: string;
 }
 
 const IsALink = ({ link, children }: { link?: string; children: React.ReactNode }) => {
@@ -64,6 +65,7 @@ export default function NavigationBar({
 	itemRounded = rounded,
 	onlyShowSelectedText = false,
 	textSize = 20,
+	layoutId = "bubble",
 }: Props) {
 	const [activeIndex, setActiveIndex] = useState(defaultSelected);
 
@@ -120,6 +122,7 @@ export default function NavigationBar({
 									rounded={rounded}
 									itemRounded={itemRounded}
 									shouldShowText={shouldShowText}
+									layoutId={layoutId}
 								/>
 							</IsALink>
 						);
@@ -142,6 +145,7 @@ export default function NavigationBar({
 								rounded={rounded}
 								itemRounded={itemRounded}
 								shouldShowText={shouldShowText}
+								layoutId={layoutId}
 							/>
 						);
 					}

@@ -4,7 +4,6 @@ import { applyMaxWidth, applyPadding, applyRounded } from "../../../style";
 import { tabStyles } from "./tab.styles";
 import TabContent from "./components/TabContent/TabContent";
 import {
-	SizesWithNone,
 	SizesWithFull,
 	SizesComplete,
 	IconType,
@@ -34,6 +33,7 @@ interface Props {
 	classNameContent?: string;
 	invertTextOnSelected?: boolean;
 	contentMovementAmount?: number;
+	layoutId?: string;
 }
 
 const Tabs: React.FC<Props> = ({
@@ -49,18 +49,19 @@ const Tabs: React.FC<Props> = ({
 	classNameContent,
 	invertTextOnSelected,
 	contentMovementAmount = 10,
+	layoutId,
 }) => {
 	const [activeTab, setActiveTab] = React.useState(defaultOpenedIndex ?? 0);
 	const selectedContent = useMemo(() => data[activeTab].content, [data, activeTab]);
 
-	return (
-		<section
-			className={`${tabStyles({ hasBorder, hasDivider })} ${applyRounded(rounded)} 
-			
+	const tabInlineStyles = `${tabStyles({ hasBorder, hasDivider })} ${applyRounded(rounded)} 
 			${applyMaxWidth(maxWidth)}
-			${className}`}
-		>
+			${className}`;
+
+	return (
+		<section className={tabInlineStyles}>
 			<TabBar
+				layoutId={layoutId}
 				invertTextOnSelected={invertTextOnSelected}
 				data={data}
 				activeTab={activeTab}

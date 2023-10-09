@@ -1,7 +1,6 @@
 import React from "react";
-import "../../../style/baseTheme.css";
-import { Icon } from "../../Base/Icon";
-import { BaseProps } from "../../../types";
+import "../../../style/global.css";
+import { BaseProps, Colors, Positions, Sides, Variants } from "../../../types";
 import Button, { ButtonProps } from "../Button/Button";
 interface Props extends BaseProps, ButtonProps {
 	href: string;
@@ -15,12 +14,12 @@ const Link: React.FC<Props> = ({
 	disabled = false,
 	ariaLabel = "button",
 	href,
-	variant = "filled",
-	color = "primary",
+	variant = Variants.filled,
+	color = Colors.primary,
 	size,
 	rounded,
 	icon,
-	iconPosition = "left",
+	iconPosition = Sides.left,
 	autoFocus = false,
 	fullWidth = false,
 	centered = false,
@@ -32,7 +31,7 @@ const Link: React.FC<Props> = ({
 	rippleOpacity,
 	rippleDuration,
 	position,
-	hasRipple = position === "relative",
+	hasRipple = position === Positions.relative,
 }) => {
 	return (
 		<Button

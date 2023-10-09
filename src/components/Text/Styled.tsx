@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import "../../style/baseTheme.css";
+import "../../style/global.css";
 interface TextStyledProps {
 	$maxLines?: number;
 	$weight?: number;

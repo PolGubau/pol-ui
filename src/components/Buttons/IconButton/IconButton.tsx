@@ -1,5 +1,5 @@
 import React from "react";
-import "../../../style/baseTheme.css";
+import "../../../style/global.css";
 import { Button } from "../Button";
 import {
 	BaseProps,

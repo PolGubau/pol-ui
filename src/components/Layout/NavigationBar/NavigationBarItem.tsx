@@ -20,6 +20,7 @@ interface Props {
 	textSize?: number;
 	rounded?: SizesComplete;
 	itemRounded?: SizesComplete;
+	layoutId?: string;
 
 	goNext: () => void;
 	goPrevious: () => void;
@@ -41,6 +42,7 @@ const NavigationBarItem: React.FC<Props> = ({
 	rounded,
 	itemRounded,
 	shouldShowText = () => true,
+	layoutId = "bubble",
 }) => {
 	return (
 		<button
@@ -73,7 +75,7 @@ const NavigationBarItem: React.FC<Props> = ({
 		>
 			{activeIndex === i && (
 				<motion.span
-					layoutId="bubble"
+					layoutId={layoutId}
 					className={`absolute inset-0 z-0 ${applyBgColor(colorSelected)}
  
 							${applyRounded(rounded)}`}

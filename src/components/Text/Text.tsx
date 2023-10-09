@@ -1,7 +1,7 @@
 import React from "react";
 import TextStyled from "./Styled";
 import { shorterText } from "./text.functions";
-import "../../style/baseTheme.css";
+import "../../style/global.css";
 import { applyColor, applyInvertedColor } from "../../style";
 import { Color } from "../../types";
 import Markdown from "markdown-to-jsx";
