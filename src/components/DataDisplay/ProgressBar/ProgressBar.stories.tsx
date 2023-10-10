@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import ProgessBar from "./ProgessBar";
+import ProgessBar from "./ProgressBar";
 import { Text } from "../../Text";
 import { Colors, Directions, Sizes } from "../../../types";
 

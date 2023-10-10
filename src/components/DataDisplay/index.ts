@@ -7,6 +7,6 @@ export * from "./Loaders/Loaders/Pulse";
 export * from "./Loaders/Loaders/Spinner";
 export * from "./Loaders/Loaders";
 export * from "./Loaders";
-export * from "./ProgessBar";
+export * from "./ProgressBar";
 export * from "./Tooltip";
 export * from "./Datacard";

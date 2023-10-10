@@ -1,6 +1,7 @@
 import React from "react";
 import { Text } from "../../../Text";
 import Checkbox from "../../Checkbox/Checkbox";
+import { Direction } from "../../../../types";
 
 // Example of value prop:
 // const value = [
@@ -18,7 +19,7 @@ interface Props {
 	label?: string;
 	value: NameValueBoolean[];
 	onChange: (newValue: NameValueBoolean[]) => void;
-	axis?: "x" | "y";
+	axis?: Direction;
 }
 
 const CheckboxGroup: React.FC<Props> = ({ label, value = [], onChange, axis = "y" }) => {

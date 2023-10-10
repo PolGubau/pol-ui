@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { backgroundBar } from "./ProgessBar.styles";
+import { backgroundBar } from "./ProgressBar.styles";
 import {
 	Color,
 	Colors,
