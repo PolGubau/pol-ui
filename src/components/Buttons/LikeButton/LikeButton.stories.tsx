@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import LikeButton from "./LikeButton";
-import { Colors } from "../../../types";
 import { Icon, IconNames } from "../../Base";
 
 const meta = {
