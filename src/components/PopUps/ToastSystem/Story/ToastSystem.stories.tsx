@@ -13,6 +13,9 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
 	args: {
 		toasts: [defaultToast, dangerToast],
+		onChange: (toasts) => {
+			console.log(toasts);
+		},
 	},
 };
 export const LotsOfToasts: Story = {

@@ -20,21 +20,26 @@ export const toastSystemStyles = ({ direction }: { direction: Direction }) => {
 };
 
 const ToastSystem: React.FC<Props> = ({ toasts = [], direction = "y", onChange }) => {
-	const handleCloseToast = (index: number) => () => {
-		const newToasts = [...toasts];
-		newToasts.splice(index, 1);
-		onChange(newToasts);
+	const handleCloseToast = (toastID: string) => {
+		const oldToasts = [...toasts];
+
+		const allToastButDeleted = oldToasts.filter((toast) => toast.uuid !== toastID);
+		console.log(allToastButDeleted);
+
+		onChange(allToastButDeleted);
 	};
 	const allToasts = toasts ?? [];
 
 	return (
 		<motion.div className={toastSystemStyles({ direction })}>
 			{Boolean(allToasts?.length) &&
-				allToasts.map((toast, index: number) => (
+				allToasts.map((toast) => (
 					<Toast
 						key={toast.message + new Date()}
 						toast={toast}
-						onClose={handleCloseToast(index)}
+						onClose={(id) => {
+							handleCloseToast(id);
+						}}
 						direction={direction}
 					/>
 				))}

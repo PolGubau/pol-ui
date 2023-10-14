@@ -1,4 +1,3 @@
-import { defaultToast } from "./types";
 import React from "react";
 import { motion } from "framer-motion";
 import {
@@ -15,16 +14,20 @@ import { Icon, IconNames } from "../../Base";
 import { applyBgColor, applyBgOpacity } from "../../../style";
 interface Props {
 	toast: ToastProps;
-	onClose?: () => void;
+	onClose: (toastId: string) => void;
 	direction?: Direction;
 }
 
-export const Toast = ({ toast = defaultToast, onClose }: Props) => {
+export const Toast = ({ toast, onClose }: Props) => {
+	const handleClose = () => {
+		onClose(toast.uuid);
+	};
+
 	// autoClose when toast.duration is set
 	React.useEffect(() => {
 		if (toast.duration) {
 			const timer = setTimeout(() => {
-				onClose?.();
+				handleClose();
 			}, toast.duration);
 
 			return () => clearTimeout(timer);
@@ -78,7 +81,14 @@ export const Toast = ({ toast = defaultToast, onClose }: Props) => {
 					</div>
 					<div className="ml-3 text-sm font-normal">{toast.message}</div>
 				</header>
-				<IconButton icon={IconNames.close} onClick={onClose} variant={Variants.text} padding="xs" />
+				<IconButton
+					icon={IconNames.close}
+					onClick={() => {
+						handleClose();
+					}}
+					variant={Variants.text}
+					padding="xs"
+				/>
 			</li>
 		</motion.div>
 	);

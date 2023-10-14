@@ -12,3 +12,4 @@ export * from "./Media";
 export * from "./Trackers";
 export * from "./charts";
 export * from "./Calendar";
+export * from "./Backgrounds";
