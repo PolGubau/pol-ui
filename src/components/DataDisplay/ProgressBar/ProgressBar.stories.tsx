@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import ProgessBar from "./ProgressBar";
+import ProgressBar from "./ProgressBar";
 import { Text } from "../../Text";
 import { Colors, Directions, Sizes } from "../../../types";
 
 const meta = {
 	title: "Data Display/Progess Bar",
-	component: ProgessBar,
+	component: ProgressBar,
 	tags: ["autodocs"],
-} satisfies Meta<typeof ProgessBar>;
+} satisfies Meta<typeof ProgressBar>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -49,11 +49,11 @@ export const JustValueInside: Story = {
 export const AllColors: Story = {
 	render: (args) => (
 		<div className=" gap-8 flex p-8 ">
-			<ProgessBar {...args} innerColor="accent" value={10} />
-			<ProgessBar {...args} innerColor="success" value={20} />
-			<ProgessBar {...args} innerColor="danger" value={30} />
-			<ProgessBar {...args} innerColor="info" value={50} />
-			<ProgessBar {...args} innerColor="contrast" value={60} />
+			<ProgressBar {...args} innerColor="accent" value={10} />
+			<ProgressBar {...args} innerColor="success" value={20} />
+			<ProgressBar {...args} innerColor="danger" value={30} />
+			<ProgressBar {...args} innerColor="info" value={50} />
+			<ProgressBar {...args} innerColor="contrast" value={60} />
 		</div>
 	),
 	args: {
@@ -63,11 +63,11 @@ export const AllColors: Story = {
 export const AllColorsVertical: Story = {
 	render: (args) => (
 		<div className=" gap-8 flex-col flex p-8 ">
-			<ProgessBar {...args} innerColor="accent" value={10} />
-			<ProgessBar {...args} innerColor="success" value={20} />
-			<ProgessBar {...args} innerColor="danger" value={30} />
-			<ProgessBar {...args} innerColor="info" value={50} />
-			<ProgessBar {...args} innerColor="contrast" value={80} />
+			<ProgressBar {...args} innerColor="accent" value={10} />
+			<ProgressBar {...args} innerColor="success" value={20} />
+			<ProgressBar {...args} innerColor="danger" value={30} />
+			<ProgressBar {...args} innerColor="info" value={50} />
+			<ProgressBar {...args} innerColor="contrast" value={80} />
 		</div>
 	),
 	args: {
@@ -77,11 +77,11 @@ export const AllColorsVertical: Story = {
 export const AllSizes: Story = {
 	render: (args) => (
 		<div className=" gap-8 flex-col flex p-8 ">
-			<ProgessBar {...args} size={Sizes.sm} />
-			<ProgessBar {...args} size={Sizes.sm} />
-			<ProgessBar {...args} size={Sizes.md} />
-			<ProgessBar {...args} size={Sizes.lg} />
-			<ProgessBar {...args} size={Sizes.xl} />
+			<ProgressBar {...args} size={Sizes.sm} />
+			<ProgressBar {...args} size={Sizes.sm} />
+			<ProgressBar {...args} size={Sizes.md} />
+			<ProgressBar {...args} size={Sizes.lg} />
+			<ProgressBar {...args} size={Sizes.xl} />
 		</div>
 	),
 	args: {
@@ -109,7 +109,7 @@ export const SchoolMarks: Story = {
 	render: (args) => (
 		<div className=" gap-8 flex-col flex p-8 ">
 			<Text value="My marks in school" />
-			<ProgessBar
+			<ProgressBar
 				{...args}
 				value={9}
 				marks={10}
@@ -130,9 +130,9 @@ export const SchoolMarks: Story = {
 export const CustomMarksOpacity: Story = {
 	render: (args) => (
 		<div className=" gap-8 flex-col flex p-8 ">
-			<ProgessBar {...args} value={50} marks={10} marksOpacity={10} />
-			<ProgessBar {...args} value={50} marks={10} marksOpacity={40} />
-			<ProgessBar {...args} value={50} marks={10} marksOpacity={100} />
+			<ProgressBar {...args} value={50} marks={10} marksOpacity={10} />
+			<ProgressBar {...args} value={50} marks={10} marksOpacity={40} />
+			<ProgressBar {...args} value={50} marks={10} marksOpacity={100} />
 		</div>
 	),
 	args: {
@@ -143,9 +143,9 @@ export const Vertical: Story = {
 	args: { value: 70, direction: Directions.y },
 	render: (args) => (
 		<div className="h-[100px] flex gap-2">
-			<ProgessBar {...args} pointer="onHover" size="sm" value={30} />
-			<ProgessBar {...args} pointer="onHover" size="sm" value={60} />
-			<ProgessBar {...args} pointer="onHover" size="sm" value={80} />
+			<ProgressBar {...args} pointer="onHover" size="sm" value={30} />
+			<ProgressBar {...args} pointer="onHover" size="sm" value={60} />
+			<ProgressBar {...args} pointer="onHover" size="sm" value={80} />
 		</div>
 	),
 };
@@ -153,9 +153,9 @@ export const VerticalAlwaysShowPointer: Story = {
 	args: { value: 70, direction: Directions.y },
 	render: (args) => (
 		<div className="h-[200px] flex gap-4 bg-primary/20 p-8">
-			<ProgessBar {...args} pointer="always" size="sm" value={30} />
-			<ProgessBar {...args} pointer="always" size="sm" value={60} />
-			<ProgessBar {...args} pointer="always" size="sm" value={80} />
+			<ProgressBar {...args} pointer="always" size="sm" value={30} />
+			<ProgressBar {...args} pointer="always" size="sm" value={60} />
+			<ProgressBar {...args} pointer="always" size="sm" value={80} />
 		</div>
 	),
 };

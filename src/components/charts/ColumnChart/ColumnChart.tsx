@@ -1,4 +1,4 @@
-import { ProgessBar } from "../../DataDisplay";
+import { ProgressBar } from "../../DataDisplay";
 import {
 	Color,
 	Colors,
@@ -78,7 +78,7 @@ const ColumnChart: React.FC<Props> = ({
 			{title && <Text invertColor={invertText} color={textColor} size="sm" value={title} />}
 			<div className="flex gap-2">
 				{data.map((item) => (
-					<ProgessBar
+					<ProgressBar
 						key={item.date}
 						direction={Directions.y}
 						pointer={pointerTrigger}
