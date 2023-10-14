@@ -95,6 +95,16 @@ import {
 	TbRotate,
 	TbShare,
 	TbCategory2,
+	TbHeartFilled,
+	TbStarFilled,
+	TbStarHalfFilled,
+	TbArchive,
+	TbClockFilled,
+	TbCloudFilled,
+	TbCookie,
+	TbPhoto,
+	TbRocket,
+	TbSettingsFilled,
 } from "react-icons/tb";
 import { TiFlowSwitch } from "react-icons/ti";
 import { IconNames } from "../components/Base/Icon/IconNames";
@@ -188,8 +198,9 @@ export const icons: IconData[] = [
 	{ name: IconNames.server, icon: <TbServerBolt /> },
 	{ name: IconNames.shortcut, icon: <MdOutlineShortcut /> },
 	{ name: IconNames.wifi, icon: <TbWifi /> },
-	{ name: IconNames.hearth, icon: <TbHeart /> },
+	{ name: IconNames.heart, icon: <TbHeart /> },
 	{ name: IconNames.star, icon: <TbStar /> },
+	{ name: IconNames.starFilled, icon: <TbStarFilled /> },
 	{ name: IconNames.castle, icon: <TbBuildingCastle /> },
 	{ name: IconNames.messages, icon: <TbMessages /> },
 	{ name: IconNames.database, icon: <TbDatabase /> },
@@ -203,6 +214,15 @@ export const icons: IconData[] = [
 	{ name: IconNames.link, icon: <TbLink /> },
 	{ name: IconNames.question, icon: <TbQuestionMark /> },
 	{ name: IconNames.edit, icon: <TbEdit /> },
+	{ name: IconNames.heartFilled, icon: <TbHeartFilled /> },
+	{ name: IconNames.starHalf, icon: <TbStarHalfFilled /> },
+	{ name: IconNames.archive, icon: <TbArchive /> },
+	{ name: IconNames.clockFilled, icon: <TbClockFilled /> },
+	{ name: IconNames.cloudFilled, icon: <TbCloudFilled /> },
+	{ name: IconNames.photo, icon: <TbPhoto /> },
+	{ name: IconNames.cookie, icon: <TbCookie /> },
+	{ name: IconNames.rocket, icon: <TbRocket /> },
+	{ name: IconNames.settingsFilled, icon: <TbSettingsFilled /> },
 ];
 
 export default icons;
