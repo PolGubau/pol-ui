@@ -3,7 +3,7 @@ import { Icon, IconNames } from "../../Base/Icon";
 import { Button } from "../Button";
 import { Transition } from "@headlessui/react";
 import ConfettiExplosion from "react-confetti-explosion";
-import { ButtonVariant, IconType, Side, Sides, Variants } from "../../../types";
+import { ButtonVariant, Colors, IconType, Side, Sides, Variants } from "../../../types";
 import { IconButton } from "../IconButton";
 
 interface Props {
@@ -15,16 +15,22 @@ interface Props {
 	variant?: ButtonVariant;
 	iconPosition?: Side;
 	hasConfetti?: boolean;
+	colorLiked?: Colors;
+	colorNotLiked?: Colors;
+	colors?: string[];
 }
 const CopyButton: React.FC<Props> = ({
 	label,
 	liked = false,
 	onLike,
-	iconLiked = IconNames.heart,
-	iconNotLiked = IconNames.heartOutline,
+	iconLiked = IconNames.heartFilled,
+	iconNotLiked = IconNames.heart,
 	variant = Variants.filled,
 	iconPosition = Sides.right,
 	hasConfetti = true,
+	colorLiked = Colors.accent,
+	colorNotLiked = Colors.primary,
+	colors,
 
 	...props
 }) => {
@@ -36,19 +42,12 @@ const CopyButton: React.FC<Props> = ({
 
 	return label ? (
 		<Button
+			className="relative"
+			color={isLiked ? colorLiked : colorNotLiked}
 			variant={variant}
 			iconPosition={iconPosition}
 			icon={
 				<>
-					{liked && hasConfetti && (
-						<ConfettiExplosion
-							force={0.4}
-							duration={2200}
-							particleCount={15}
-							width={200}
-							zIndex={999}
-						/>
-					)}
 					{liked ? (
 						<Transition
 							show={liked}
@@ -66,11 +65,41 @@ const CopyButton: React.FC<Props> = ({
 					)}
 				</>
 			}
-			{...props}
 			onClick={handleLike}
-		></Button>
+		>
+			{hasConfetti && isLiked && (
+				<ConfettiExplosion
+					className="absolute top-[50%] left-[50%] transform translate-x-[-50%] -translate-y-[-50%]"
+					force={0.4}
+					duration={2200}
+					particleCount={15}
+					colors={colors}
+					width={200}
+					zIndex={999}
+				/>
+			)}
+			{label}
+		</Button>
 	) : (
-		<IconButton icon={isLiked ? iconLiked : iconNotLiked} onClick={handleLike} />
+		<>
+			<IconButton
+				icon={isLiked ? iconLiked : iconNotLiked}
+				color={isLiked ? colorLiked : colorNotLiked}
+				variant={variant}
+				onClick={handleLike}
+			/>
+
+			{hasConfetti && isLiked && (
+				<ConfettiExplosion
+					force={0.4}
+					duration={2200}
+					colors={colors}
+					particleCount={15}
+					width={200}
+					zIndex={999}
+				/>
+			)}
+		</>
 	);
 };
 

@@ -1,1 +1,1 @@
-export { default as CopyButton } from "./LikeButton";
+export { default as LikeButton } from "./LikeButton";

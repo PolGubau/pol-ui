@@ -1,4 +1,4 @@
-import { motion,  useMotionValue } from "framer-motion";
+import { motion, useMotionValue } from "framer-motion";
 import { MouseEvent, useRef } from "react";
 import {
 	BaseProps,

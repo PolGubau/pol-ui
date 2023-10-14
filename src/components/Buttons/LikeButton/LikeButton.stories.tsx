@@ -1,62 +1,34 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import CopyButton from "./LikeButton";
-import { Field } from "../../Inputs";
-import { Text } from "../../Text";
-import texts from "../../Text/Story/data.json";
+import LikeButton from "./LikeButton";
+import { Colors } from "../../../types";
+import { Icon, IconNames } from "../../Base";
+
 const meta = {
-	title: "Buttons/CopyButton",
-	component: CopyButton,
+	title: "Buttons/LikeButton",
+	component: LikeButton,
 	tags: ["autodocs"],
-} satisfies Meta<typeof CopyButton>;
+} satisfies Meta<typeof LikeButton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	args: { valueToCopy: "Copy me!" },
+	args: {},
 };
-export const WithNumber: Story = {
-	args: { valueToCopy: 486 },
-};
-export const WithObject: Story = {
+export const WithLabel: Story = {
 	args: {
-		valueToCopy: {
-			name: "John Doe",
-			age: 42,
-		},
+		label: "Like",
 	},
 };
-export const CustomValue: Story = {
-	render: (args) => (
-		<div className="flex gap-4 flex-col">
-			<CopyButton {...args} value="Copy this!" />
-			<Field label="Paste here"></Field>
-		</div>
-	),
+export const ConfettiColors: Story = {
 	args: {
-		valueToCopy: {
-			name: "John Doe",
-			age: 42,
-		},
-		value: "Copy!",
+		label: "Like",
+		colors: ["#000"],
 	},
 };
-export const WitoutConfetti: Story = {
-	args: { valueToCopy: "Copy me!", hasConfetti: false },
-};
-export const CopyLargeText: Story = {
-	render: (args) => (
-		<div className="flex gap-4 flex-col">
-			<Text value={texts.longText} />
-
-			<CopyButton {...args} value="Copy" valueToCopy={texts.longText} />
-		</div>
-	),
+export const CustomIcons: Story = {
 	args: {
-		value: "Copy",
-		valueToCopy: texts.longText,
+		iconLiked: <Icon icon={IconNames.alarm} />,
+		iconNotLiked: <Icon icon={IconNames.archive} />,
 	},
-};
-export const CustomTextAfterCopy: Story = {
-	args: { valueToCopy: "Copy me!", textAfterCopied: ";)" },
 };

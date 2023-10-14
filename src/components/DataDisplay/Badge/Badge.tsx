@@ -13,7 +13,7 @@ import {
 	Sizes,
 	Colors,
 	Sides,
- 	SidesY,
+	SidesY,
 } from "../../../types";
 import { applyBgColor, applyRounded, applyShadow } from "../../../style";
 
