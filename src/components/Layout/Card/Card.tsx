@@ -48,6 +48,7 @@ interface Props extends BaseProps {
 	bgColor?: Color;
 	bgOpacity?: Ten;
 	maxWidth?: SizesWithFull;
+	contentClassname?: string;
 }
 
 export default function Card({
@@ -64,6 +65,7 @@ export default function Card({
 	shadow = Sizes.xl,
 	hasRipple = false,
 	className = "",
+	contentClassname = "",
 	id,
 	style,
 	bgColor = Colors.primary,
@@ -114,7 +116,7 @@ export default function Card({
 			<motion.div
 				className={`pointer-events-none absolute -inset-px ${applyRounded(
 					rounded
-				)} opacity-0 transition duration-300 group-hover:opacity-100`}
+				)} opacity-0 transition duration-300 group-hover:opacity-100 ${contentClassname}`}
 				style={motionRoundedGradient({
 					mouseX,
 					mouseY,

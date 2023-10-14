@@ -51,7 +51,7 @@ const Week: React.FC<Props> = ({
 
 				return (
 					<Card
-						color={isThisDayToday ? todayColor : defaultColor}
+						bgColor={isThisDayToday ? todayColor : defaultColor}
 						contentClassname="flex flex-col items-center justify-center "
 						onClick={onClick && handleClicked}
 						key={date}
