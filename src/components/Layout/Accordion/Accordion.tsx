@@ -4,7 +4,6 @@ import { accordionStyles } from "./accordion.style";
 import { applyMaxWidth, applyRounded } from "../../../style";
 import { SizesWithNone, SizesWithFull, Side, Sides, IconType, Sizes } from "../../../types";
 import { Divider } from "../../DataDisplay";
-import { AnimatePresence } from "framer-motion";
 export interface AccordionItemProps {
 	title: string;
 	content: string | React.ReactNode;
