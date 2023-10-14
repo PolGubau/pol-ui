@@ -2,8 +2,7 @@ import { useState } from "react";
 import { Text } from "../../Text";
 import { Colors } from "../../../types";
 import { applyBgColor } from "../../../style";
-import styled from "styled-components";
-interface Props {
+ interface Props {
 	value: number;
 	onChange: (value: number) => void;
 	min?: number;
