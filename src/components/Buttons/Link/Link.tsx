@@ -32,6 +32,7 @@ const Link: React.FC<Props> = ({
 	rippleDuration,
 	position,
 	hasRipple = position === Positions.relative,
+	download = false,
 }) => {
 	return (
 		<Button
@@ -60,6 +61,7 @@ const Link: React.FC<Props> = ({
 			children={children}
 			onClick={(event) => onClick?.(event as React.MouseEvent<HTMLAnchorElement, MouseEvent>)}
 			style={style}
+			download={download}
 		/>
 	);
 };

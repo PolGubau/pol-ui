@@ -57,6 +57,7 @@ export interface ButtonProps extends BaseProps {
 	loadOnClick?: boolean;
 	onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
 	role?: string;
+	download?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -93,6 +94,7 @@ const Button: React.FC<ButtonProps> = ({
 	loaderColor = variant === Variants.text ? Colors.primary : Colors.background,
 	loadOnClick = false,
 	role = "button",
+	download = false,
 }) => {
 	const isHidden = useMediaQuery(hideWhenLessThan);
 
@@ -136,6 +138,7 @@ const Button: React.FC<ButtonProps> = ({
 			as={href ? "a" : "button"}
 			ref={customRef ?? ref}
 			href={href}
+			download={download}
 			role={role}
 			onMouseMove={onMouseMove}
 			onKeyDown={onKeyDown}
