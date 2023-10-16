@@ -26,7 +26,7 @@ export const Switch: React.FC<Props> = ({
 	style,
 	id,
 	labelId,
-	ariaLabel,
+	ariaLabel = label ?? "switch",
 	name = "switch",
 }) => {
 	const [isChecked, setIsCheck] = React.useState(checked);
@@ -94,7 +94,7 @@ export const Switch: React.FC<Props> = ({
 					value={label}
 				/>
 			)}
-			{error && <small className="text-danger">{`(${error})`}</small>}
+			{error && <Text as="small" className="text-danger">{`(${error})`}</Text>}
 		</div>
 	);
 };

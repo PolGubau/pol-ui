@@ -114,7 +114,7 @@ This template comes with a GitHub Actions workflow to automatically publish on a
    - ✅ Modal
 8. **Charts and Data Visualization Components:**
    <!-- These components are used for displaying data to the user. -->
-   - Bar Chart
+   - ✅ Bar Chart
    - Line Chart
    - Pie Chart
    - Data Table

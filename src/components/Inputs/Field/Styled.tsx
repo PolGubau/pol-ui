@@ -1,4 +1,5 @@
-import { ButtonVariant, Variants } from "../../../types";
+import { applyRounded } from "../../../style";
+import { ButtonVariant, Sizes, SizesComplete, Variants } from "../../../types";
 
 export const labelStyles = (isUp: boolean) => {
 	const base = `label transition-all absolute text-primary/60 top-0 left-2 translate-y-1 p-1 pointer-events-none `;
@@ -14,6 +15,7 @@ interface Props {
 	fullWidth: boolean;
 	variant: ButtonVariant;
 	error?: string;
+	rounded?: SizesComplete;
 }
 
 export const inputStyles = ({
@@ -21,8 +23,11 @@ export const inputStyles = ({
 	fullWidth,
 	variant = Variants.outlined,
 	error,
+	rounded = Sizes.md,
 }: Props) => {
-	const base = `block px-2.5 pb-2.5 pt-4 w-full text-sm rounded-lg appearance-none   duration-300
+	const base = `block px-2.5 pb-2.5 pt-4 w-full text-sm ${applyRounded(
+		rounded
+	)} appearance-none   duration-300
 						text-background-inverted 
 						dark:text-background 		
 						focus:outline-none 
@@ -47,7 +52,7 @@ export const inputStyles = ({
 										}				
 										`
 									}
- 							${variant === Variants.text && "bg-transparent"}
+ 							${variant === Variants.text && "bg-transparent focus:outline-none focus:ring-0 focus:border-none"}
             
 				
 						
@@ -57,7 +62,7 @@ export const inputStyles = ({
 					disabled:text-background-inverted/10 disabled:border-background-inverted/10  disabled:cursor-not-allowed
 					disabled:dark:text-background-inverted/10 disabled:dark:border-background-inverted/10`;
 	const multilineClasses = multiline
-		? "input peer min-h-[100px] max-h-[300px] resize-y"
+		? "input peer min-h-[100px] max-h-[300px] resize-y form-sizing"
 		: "input peer";
 	const fullWidthClasses = fullWidth ? "w-full" : "w-fit min-w-max";
 

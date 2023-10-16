@@ -17,7 +17,7 @@ interface Props {
 	centered?: boolean;
 	weight?: number;
 	role?: string;
-	as?: "label" | "p" | "span" | "div" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+	as?: "label" | "p" | "span" | "div" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "small";
 	htmlFor?: string;
 	disabled?: boolean;
 	children?: string | number;

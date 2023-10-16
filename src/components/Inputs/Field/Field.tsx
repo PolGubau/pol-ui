@@ -1,6 +1,7 @@
 import React, { ChangeEvent } from "react";
 import { inputStyles } from "./Styled";
-import { ButtonVariant, Variants } from "../../../types";
+import { ButtonVariant, Colors, Sizes, SizesComplete, Variants } from "../../../types";
+import { applyBgColor, applyColor, applyInvertedColor, applyRounded } from "../../../style";
 interface Props<T> {
 	label?: string;
 	name?: string;
@@ -21,6 +22,7 @@ interface Props<T> {
 	props?: Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof Props<T>>;
 	id?: string;
 	idLabel?: string;
+	rounded?: SizesComplete;
 }
 
 const Field = <T extends string | number>({
@@ -42,6 +44,7 @@ const Field = <T extends string | number>({
 	size = "normal",
 	id,
 	idLabel,
+	rounded = Sizes.md,
 	...props
 }: Props<T>) => {
 	const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
@@ -84,19 +87,23 @@ const Field = <T extends string | number>({
 						type={type}
 						{...(props as Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof Props<T>>)}
 						id={id}
-						className={inputStyles({ multiline: false, fullWidth, variant, error }) + className}
+						className={
+							inputStyles({ multiline: false, fullWidth, variant, error, rounded }) + className
+						}
 						placeholder=" "
 					/>
 
 					<label
 						id={idLabel}
 						htmlFor="floating_outlined"
-						className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2  z-10 origin-[0] px-2 pointer-events-none rounded-lg
-            
-            text-background-inverted/90  bg-transparent
-            dark:text-background  
-            
-            peer-focus:bg-background peer-focus:dark:bg-background-inverted peer-focus:text-accent peer-focus:dark:text-accent-inverted peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1
+						className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2  z-10 origin-[0] px-2 pointer-events-none  ${applyRounded(
+							rounded
+						)}
+            ${applyInvertedColor(Colors.background)}
+  			${applyBgColor(Colors.background)}
+         
+             peer-focus:bg-background peer-focus:dark:bg-background-inverted peer-focus:text-accent peer-focus:dark:text-accent-inverted peer-placeholder-shown:scale-100 
+			peer-placeholder-shown:bg-transparent peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1
             
                ${
 									variant === Variants.filled &&
