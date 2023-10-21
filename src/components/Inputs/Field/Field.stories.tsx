@@ -113,6 +113,7 @@ export const Email: Story = {
 
 export const InvalidEmail: Story = {
 	args: {
+		error: "Your email is invalid",
 		label: "A bad email",
 		value: "youremail@@",
 		type: "email",

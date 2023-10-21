@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from "react";
 import { inputStyles } from "./Styled";
 import { ButtonVariant, Colors, Sizes, SizesComplete, Variants } from "../../../types";
-import { applyBgColor, applyColor, applyInvertedColor, applyRounded } from "../../../style";
+import { applyBgColor, applyInvertedColor, applyRounded } from "../../../style";
 interface Props<T> {
 	label?: string;
 	name?: string;
