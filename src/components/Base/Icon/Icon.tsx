@@ -1,10 +1,10 @@
-import { applyColor, applyInvertedColor, applyTextSize } from "../../../style";
-import { Color, Size, Sizes } from "../../../types";
+import { applyColor, applyInvertedColor } from "../../../style";
+import { Color } from "../../../types";
 import { getIcon } from "../../../utils";
 interface IconProps {
 	icon: string | React.JSX.Element;
 	color?: Color;
-	size?: Size;
+	size?: number;
 	className?: string;
 	id?: string;
 	alwaysRender?: boolean;
@@ -15,7 +15,7 @@ interface IconProps {
 const Icon = ({
 	icon,
 	color,
-	size = Sizes.md,
+	size = 20,
 	className = "",
 	id,
 	alwaysRender = false,
@@ -37,11 +37,16 @@ const Icon = ({
 		<div
 			role="img"
 			id={id}
-			className={`${applyTextSize(size)} ${
-				invertColor ? applyInvertedColor(color) : applyColor(color)
-			} 			
+			className={`  ${invertColor ? applyInvertedColor(color) : applyColor(color)} 			
  ${className}`}
-			style={style}
+			style={{
+				width: size,
+				height: size,
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "center",
+				...style,
+			}}
 		>
 			{resultIcon}
 			<span className="sr-only">{label} icon</span>

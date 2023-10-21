@@ -39,16 +39,6 @@ describe("Icon Component", () => {
 		const icon = screen.getByRole("img");
 		expect(icon).toHaveStyle({ fontSize: "" });
 	});
-	test("Displays correctly it's sm size", () => {
-		render(<Icon icon={Texts.TEXT} size="sm" />);
-		const icon = screen.getByRole("img");
-		expect(icon).toHaveStyle({ fontSize: "text-lg" });
-	});
-	test("Displays correctly it's lg size", () => {
-		render(<Icon icon={Texts.TEXT} size="lg" />);
-		const icon = screen.getByRole("img");
-		expect(icon).toHaveStyle({ fontSize: "text-4xl" });
-	});
 
 	// className
 	test("Displays correctly it's className", () => {

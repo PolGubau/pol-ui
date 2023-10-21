@@ -23,6 +23,7 @@ interface Props extends BaseProps {
 	color?: Color;
 	shadow?: Shadow;
 	size?: Size;
+	iconSize?: number;
 	rounded?: SizesComplete;
 	max?: number;
 	horizontal?: Side;
@@ -38,6 +39,7 @@ const Badge = ({
 	content,
 	color = Colors.accent,
 	size = Sizes.md,
+	iconSize = 20,
 	rounded = "full",
 	max = 5,
 	className = "",
@@ -93,7 +95,7 @@ const Badge = ({
 					aria-label={ariaLabel}
 					aria-describedby={ariaDescribedby}
 				>
-					{icon && <Icon icon={icon} size={size} />}
+					{icon && <Icon icon={icon} size={iconSize} />}
 					{isMoreThanMax(content, max) ? passingMaxText(content, max) : content}
 				</span>
 			</Transition>

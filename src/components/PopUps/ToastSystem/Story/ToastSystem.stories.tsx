@@ -21,7 +21,7 @@ export const Default: Story = {
 export const LotsOfToasts: Story = {
 	args: {
 		onChange: (toasts) => {
-			alert("Closing" + toasts.toString());
+			console.log("ToastsRemaining" + toasts.toString());
 		},
 		toasts: [
 			defaultToast,
