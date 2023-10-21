@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Menu from "../Menu";
 import { mockmenu } from "./mockMenus";
-import { Variants } from "../../../../types";
+import { Placements, Variants } from "../../../../types";
 import { IconNames } from "../../../Base";
 
 const meta = {
@@ -54,10 +54,10 @@ export const NavIdea: Story = {
 export const Directions: Story = {
 	render: (args) => (
 		<div className="flex gap-2 p-8">
-			<Menu {...args} label="Bottom" options={mockmenu} direction="bottom" />
-			<Menu {...args} label="Top" options={mockmenu} direction="top" />
-			<Menu {...args} label="Right" options={mockmenu} direction="right" />
-			<Menu {...args} label="Left" options={mockmenu} direction="left" />
+			<Menu {...args} label="Bottom" options={mockmenu} placement={Placements.bottom} />
+			<Menu {...args} label="Top" options={mockmenu} placement={Placements.top} />
+			<Menu {...args} label="Right" options={mockmenu} placement={Placements.right} />
+			<Menu {...args} label="Left" options={mockmenu} placement={Placements.left} />
 		</div>
 	),
 	args: { options: mockmenu, variant: Variants.filled },

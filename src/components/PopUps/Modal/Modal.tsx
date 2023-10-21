@@ -22,6 +22,7 @@ const Modal = ({ state, setState }: Props) => {
 		cancelButton,
 		submitButton,
 		shadow,
+		iconSize = 35,
 		hasCloseButton = true,
 		rounded = "xl",
 		padding = "lg",
@@ -114,7 +115,7 @@ const Modal = ({ state, setState }: Props) => {
 					)}
 					{title && (
 						<header className="max-w-[85%] flex gap-4 items-center ">
-							{icon && <Icon icon={icon} size="xl" />}
+							{icon && <Icon icon={icon} size={iconSize} />}
 							<Text className="" value={title} />
 						</header>
 					)}

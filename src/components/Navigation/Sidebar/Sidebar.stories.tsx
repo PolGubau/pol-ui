@@ -20,5 +20,5 @@ const defaultLinks = [
 ];
 
 export const Default: Story = {
-	// args: { links: defaultLinks },
+	args: { links: defaultLinks },
 };

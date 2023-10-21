@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useMediaQuery } from "../../../hooks";
 import { IconButton, Link } from "../../Buttons";
 import { Icon, IconNames } from "../../Base";
-import { JustifyContents, Variants } from "../../../types";
+import { JustifyContents, Sizes, SizesComplete, Variants } from "../../../types";
 import { Text } from "../../Text";
 import { Logo } from "../../../assets";
 
@@ -12,16 +12,14 @@ interface SidebarProps {
 	brandName?: string;
 	brandLogo?: React.ReactNode;
 	links?: { label: string; href: string; icon: IconNames }[];
+	rounded?: SizesComplete;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({
 	brandName = "Acme",
+	rounded = Sizes.lg,
 	brandLogo = <Logo />,
-	links = [
-		{ label: "Dashboard", href: "/", icon: IconNames.home },
-		{ label: "Settings", href: "/settings", icon: IconNames.settings },
-		{ label: "Logout", href: "/logout", icon: IconNames.arrowBarLeft },
-	],
+	links = [],
 }) => {
 	let isTabletMid = useMediaQuery(768);
 

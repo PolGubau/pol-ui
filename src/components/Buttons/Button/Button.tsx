@@ -36,6 +36,7 @@ export interface ButtonProps extends BaseProps {
 	size?: Size;
 	rounded?: SizesComplete;
 	icon?: IconType | string;
+	iconSize?: number;
 	iconPosition?: Side;
 	autoFocus?: boolean;
 	fullWidth?: boolean;
@@ -74,6 +75,7 @@ const Button: React.FC<ButtonProps> = ({
 	hideWhenLessThan = 0,
 	color = Colors.primary,
 	size = Sizes.md,
+	iconSize = 20,
 	rounded = Sizes.lg,
 	icon,
 	iconPosition = Sides.left,
@@ -167,13 +169,13 @@ const Button: React.FC<ButtonProps> = ({
 			`}
 		>
 			{isLoading && <Loader size={size} color={loaderColor} />}
-			{icon && iconPosition === "left" && <Icon icon={icon} size={size} />}
+			{icon && iconPosition === "left" && <Icon icon={icon} size={iconSize} />}
 			{children && shouldShowChildren && (
 				<div className={`w-full flex gap-2 items-center  ${applyJustifyContent(justify) ?? ""}`}>
 					{children}
 				</div>
 			)}
-			{icon && iconPosition === "right" && <Icon icon={icon} size={size} />} {ripples}
+			{icon && iconPosition === "right" && <Icon icon={icon} size={iconSize} />} {ripples}
 		</ButtonStyled>
 	);
 };

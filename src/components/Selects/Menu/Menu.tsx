@@ -9,10 +9,11 @@ import {
 	Colors,
 	IconType,
 	JustifyContents,
-	Positions,
+	Placements,
 	Side,
 	Sides,
 	Sizes,
+	Placement,
 } from "../../../types";
 import { menuStyles } from "./Menu.styles";
 import { selectStyles } from "../selectStyles";
@@ -33,7 +34,7 @@ interface Props extends BaseButtonProps {
 	openIcon?: IconType;
 	closeIcon?: IconType;
 	dividers?: boolean;
-	direction?: Positions;
+	placement?: Placement;
 	icon?: IconType;
 }
 
@@ -45,7 +46,7 @@ export default function Menu({
 	openIcon = IconNames.expand,
 	closeIcon = openIcon ?? IconNames.expand,
 	dividers = false,
-	direction = "bottom",
+	placement = Placements.bottom,
 	fullWidth = false,
 	color = Colors.primary,
 	rounded = Sizes.lg,
@@ -124,7 +125,7 @@ export default function Menu({
 				leave="transition-all duration-150"
 				leaveFrom="opacity-100 translate-y-1"
 				leaveTo="opacity-0 translate-y-0"
-				className={menuStyles({ direction })}
+				className={menuStyles({ placement })}
 			>
 				<>
 					{options.map((item) => (
