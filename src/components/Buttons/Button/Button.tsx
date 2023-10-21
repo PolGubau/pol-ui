@@ -168,7 +168,7 @@ const Button: React.FC<ButtonProps> = ({
 			${children ? "w-fit" : "flex justify-center items-center aspect-square"}
 			`}
 		>
-			{isLoading && <Loader size={size} color={loaderColor} />}
+			{isLoading && <Loader size={iconSize} color={loaderColor} />}
 			{icon && iconPosition === "left" && <Icon icon={icon} size={iconSize} />}
 			{children && shouldShowChildren && (
 				<div className={`w-full flex gap-2 items-center  ${applyJustifyContent(justify) ?? ""}`}>

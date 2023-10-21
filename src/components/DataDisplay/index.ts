@@ -1,12 +1,16 @@
 export * from "./Avatar";
 export * from "./Badge";
+export * from "./Datacard";
 export * from "./Divider";
-export * from "./Loaders/Loaders/Bars";
 export * from "./Loaders/Loaders/Dots";
+export * from "./Loaders/Loaders/LightSaber";
 export * from "./Loaders/Loaders/Pulse";
 export * from "./Loaders/Loaders/Spinner";
 export * from "./Loaders/Loaders";
 export * from "./Loaders";
+export * from "./ProgressBar/components/AnimatedInnerBar";
+export { default as Marks } from "./ProgressBar/components/Marks/Marks";
+export * from "./ProgressBar/components/Pointer/Pointer.styles";
+export { default as Pointer } from "./ProgressBar/components/Pointer/Pointer";
 export * from "./ProgressBar";
 export * from "./Tooltip";
-export * from "./Datacard";

@@ -392,3 +392,11 @@ export enum PointerTriggers {
 }
 
 export type PointerTrigger = `${PointerTriggers}`;
+
+export enum LoaderTypes {
+	Spinner = "spinner",
+	Pulse = "pulse",
+	Dots = "dots",
+	LightSaber = "lightSaber",
+}
+export type LoaderType = `${LoaderTypes}`;

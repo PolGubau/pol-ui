@@ -1,11 +1,11 @@
 import React from "react";
-import { Color, Colors } from "../../../types";
-import { Dots, Bars, Pulse } from "./Loaders";
+import { Color, Colors, LoaderType, LoaderTypes } from "../../../types";
+import { Dots, Pulse } from "./Loaders";
 import Spinner from "./Loaders/Spinner/Spinner";
 import { LightSaber } from "./Loaders/LightSaber";
 
 interface LoaderProps {
-	type?: "spinner" | "dots" | "bars" | "pulse" | "lightSaber";
+	type?: LoaderType;
 	size?: number;
 	color?: Color;
 	className?: string;
@@ -14,9 +14,9 @@ interface LoaderProps {
 }
 
 const Loader: React.FC<LoaderProps> = ({
-	type = "spinner",
+	type = LoaderTypes.Spinner,
 	color,
-	size = 35,
+	size = 20,
 	className = "",
 	animationDuration = 2,
 	colors = ["#ff4", "#4f4", "#44f", "#f44"],
@@ -32,11 +32,10 @@ const Loader: React.FC<LoaderProps> = ({
 					color={color ?? Colors.accent}
 				/>
 			);
-		case "bars":
-			return <Bars size={size} color={color ?? Colors.accent} amount={3} />;
-		case "dots":
+
+		case LoaderTypes.Dots:
 			return <Dots className={className} animationDuration={animationDuration} colors={colors} />;
-		case "lightSaber":
+		case LoaderTypes.LightSaber:
 			return <LightSaber size={size} color={color ?? Colors.accent} amount={3} />;
 
 		default:

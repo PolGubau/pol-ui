@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Loader from "./Loader";
-import { Colors } from "../../../types";
+import { Colors, LoaderTypes } from "../../../types";
 const meta = {
 	title: "Data Display/Loader",
 	component: Loader,
@@ -14,25 +14,22 @@ export const Default: Story = {
 	args: {},
 };
 export const Pulse: Story = {
-	args: { type: "pulse" },
+	args: { type: LoaderTypes.Spinner },
 };
 export const LightSaber: Story = {
-	args: { type: "lightSaber" },
-};
-export const Bars: Story = {
-	args: { type: "bars" },
+	args: { type: LoaderTypes.LightSaber },
 };
 export const Dots: Story = {
-	args: { type: "dots" },
+	args: { type: LoaderTypes.Dots },
 };
 
 export const AllTypes: Story = {
 	render: (args) => (
 		<div className="flex gap-8 p-8 items-center">
-			<Loader {...args} type="spinner" />
-			<Loader {...args} type="pulse" />
-			<Loader {...args} type="dots" />
-			<Loader {...args} type="lightSaber" />
+			<Loader {...args} type={LoaderTypes.Spinner} />
+			<Loader {...args} type={LoaderTypes.Pulse} />
+			<Loader {...args} type={LoaderTypes.Dots} />
+			<Loader {...args} type={LoaderTypes.LightSaber} />
 		</div>
 	),
 	args: {
@@ -42,12 +39,11 @@ export const AllTypes: Story = {
 export const AllColors: Story = {
 	render: (args) => (
 		<div className="flex gap-8 p-8 items-center">
-			<Loader {...args} type="spinner" color={Colors.accent} />
-			<Loader {...args} type="pulse" color={Colors.secondary} />
-			<Loader {...args} type="dots" color={Colors.success} />
-			<Loader {...args} type="bars" color={Colors.danger} />
-			<Loader {...args} type="spinner" color={Colors.info} />
-			<Loader {...args} type="pulse" color={Colors.primary} />
+			<Loader {...args} type={LoaderTypes.Spinner} color={Colors.accent} />
+			<Loader {...args} type={LoaderTypes.Pulse} color={Colors.secondary} />
+			<Loader {...args} type={LoaderTypes.Dots} color={Colors.success} />
+			<Loader {...args} type={LoaderTypes.Dots} color={Colors.info} />
+			<Loader {...args} type={LoaderTypes.Spinner} color={Colors.primary} />
 		</div>
 	),
 	args: {
