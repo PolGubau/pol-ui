@@ -83,7 +83,7 @@ const Button: React.FC<ButtonProps> = ({
 	padding = { x: Sizes.md, y: Sizes.sm },
 	style,
 	customRef,
-	justify = JustifyContents.start,
+	justify = JustifyContents.center,
 	rippleColor,
 	rippleOpacity,
 	rippleDuration,

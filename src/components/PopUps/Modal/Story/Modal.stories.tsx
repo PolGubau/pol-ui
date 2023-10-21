@@ -113,3 +113,62 @@ export const WithoutClosingButton: Story = {
 		},
 	},
 };
+export const CustomTransition: Story = {
+	render: (args) => (
+		<>
+			<Modal {...args} />
+		</>
+	),
+	args: {
+		...Default.args,
+		state: {
+			...modalWithLogin,
+			transitionDuration: 3,
+		},
+	},
+};
+export const CustomTransition2: Story = {
+	render: (args) => (
+		<>
+			<Modal {...args} />
+		</>
+	),
+	args: {
+		...Default.args,
+		state: {
+			...modalWithLogin,
+			transitionDuration: 0.1,
+			transitionMovement: 30,
+		},
+	},
+};
+export const CustomTransition3: Story = {
+	render: (args) => (
+		<>
+			<Modal {...args} />
+		</>
+	),
+	args: {
+		...Default.args,
+		state: {
+			...modalWithLogin,
+			transitionDuration: 2,
+			transitionMovement: 300,
+		},
+	},
+};
+export const CustomTransition4: Story = {
+	render: (args) => (
+		<>
+			<Modal {...args} />
+		</>
+	),
+	args: {
+		...Default.args,
+		state: {
+			...modalWithLogin,
+			transitionDuration: 2,
+			transitionMovement: -300,
+		},
+	},
+};

@@ -339,6 +339,8 @@ export interface ModalProps {
 	icon?: IconType;
 	padding?: SizesWithNone;
 	rounded?: SizesComplete;
+	transitionDuration?: number;
+	transitionMovement?: number;
 	shadow?: Shadow;
 	hasCloseButton?: boolean;
 	maxWidth?: SizesWithFull;

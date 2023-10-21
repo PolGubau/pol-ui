@@ -5,9 +5,8 @@ import {
 	applySamePadding,
 	applyRoundedLarge,
 	applyShadow,
-	applyTransition,
 } from "../../../style";
-import { Shadow, SizesComplete, SizesWithFull, SizesWithNone, Transition } from "../../../types";
+import { Shadow, SizesComplete, SizesWithFull, SizesWithNone } from "../../../types";
 
 interface Props {
 	centered?: boolean;
@@ -15,8 +14,6 @@ interface Props {
 	padding?: SizesWithNone;
 	rounded?: SizesComplete;
 	shadow?: Shadow;
-	transitionType?: Transition;
-	transitionDuration?: SizesWithNone;
 }
 export const modalStyles = ({
 	centered,
@@ -24,16 +21,11 @@ export const modalStyles = ({
 	padding,
 	rounded,
 	shadow = "xl",
-	transitionType = "slideBottom",
-	transitionDuration = "md",
 }: Props): string => {
-	const layout = `flex flex-col gap-4 relative w-full bg-background dark:bg-background-inverted  text-background-inverted dark:text-background justify-center shadow-2xl md:max-w-3xl `;
+	const layout = `flex flex-col gap-4 relative w-full bg-background dark:bg-background-inverted  text-background-inverted dark:text-background justify-center shadow-2xl md:max-w-3xl z-50`;
 
 	const base = ` ${layout}`;
-	const transitionClass = applyTransition({
-		transition: transitionType,
-		duration: transitionDuration,
-	});
+
 	const shadowClass = applyShadow(shadow);
 	const centeredClass = applyCentered(centered);
 	const alignedClass = applyAlignCenter(centered);
@@ -41,7 +33,7 @@ export const modalStyles = ({
 	const paddingClass = applySamePadding(padding);
 	const roundedClass = applyRoundedLarge(rounded);
 
-	return `${base} ${centeredClass} ${alignedClass} ${maxWidthClass} ${paddingClass} ${roundedClass} ${shadowClass} ${transitionClass}`;
+	return `${base} ${centeredClass} ${alignedClass} ${maxWidthClass} ${paddingClass} ${roundedClass} ${shadowClass} `;
 };
 
 interface Props {

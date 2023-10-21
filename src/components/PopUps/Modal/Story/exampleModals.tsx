@@ -34,6 +34,7 @@ export const defaultModal: ModalProps = {
 	},
 };
 export const modalWithLogin: ModalProps = {
+	
 	isOpen: true,
 	handleClose: () => {
 		alert(texts.handleClose);
@@ -180,9 +181,7 @@ export const rounded: ModalProps = {
 	children: (
 		<div className="flex flex-col gap-2">
 			<Text value="This is a rounded modal" />
-			<Button fullWidth centered>
-				Cool🤠
-			</Button>
+			<Button fullWidth>Cool🤠</Button>
 		</div>
 	),
 	title: "Can you see that?",

@@ -5,6 +5,7 @@ import { Wrapper } from "../../Wrappers";
 import { Text } from "../../Text";
 import { applyAlignCenter, applyCentered } from "../../../style";
 import { closeButton, modalStyles } from "./modalStyles";
+import { AnimatePresence, motion } from "framer-motion";
 import { ModalCloseReason, ModalProps } from "../../../types";
 interface Props {
 	state: ModalProps;
@@ -24,6 +25,8 @@ const Modal = ({ state, setState }: Props) => {
 		hasCloseButton = true,
 		rounded = "xl",
 		padding = "lg",
+		transitionDuration = 0.3,
+		transitionMovement = 20,
 		maxWidth = "xl",
 	} = state;
 	const modalRef = React.useRef(null);
@@ -79,10 +82,16 @@ const Modal = ({ state, setState }: Props) => {
 
 	return (
 		<Wrapper onClickOutside={() => closeModal(ModalCloseReason.ClickOutside)} hasOverlay={true}>
-			<section
-				onKeyDown={keyDownHandler}
-				ref={modalRef}
-				className={` 
+			{" "}
+			<AnimatePresence>
+				<motion.section
+					onKeyDown={keyDownHandler}
+					ref={modalRef}
+					transition={{ duration: transitionDuration }}
+					initial={{ opacity: 0, y: transitionMovement }}
+					animate={{ opacity: 1, y: 0 }}
+					exit={{ opacity: 0, y: transitionMovement }}
+					className={` 
 				${modalStyles({
 					centered,
 					maxWidth,
@@ -90,71 +99,73 @@ const Modal = ({ state, setState }: Props) => {
 					rounded,
 					shadow,
 				})}
+				
 				`}
-			>
-				{hasCloseButton && (
-					<IconButton
-						position="absolute"
-						className={closeButton({ centered })}
-						icon="close"
-						centered
-						onClick={() => closeModal(ModalCloseReason.Cancel)}
-						variant="text"
-					/>
-				)}
-				{title && (
-					<header className="max-w-[85%] flex gap-4 items-center ">
-						{icon && <Icon icon={icon} size="xl" />}
-						<Text   className="" value={title} />
-					</header>
-				)}
+				>
+					{hasCloseButton && (
+						<IconButton
+							position="absolute"
+							className={closeButton({ centered })}
+							icon="close"
+							centered
+							onClick={() => closeModal(ModalCloseReason.Cancel)}
+							variant="text"
+						/>
+					)}
+					{title && (
+						<header className="max-w-[85%] flex gap-4 items-center ">
+							{icon && <Icon icon={icon} size="xl" />}
+							<Text className="" value={title} />
+						</header>
+					)}
 
-				<section
-					className={` text-black/70 w-full flex flex-col gap-2
+					<section
+						className={` text-black/70 w-full flex flex-col gap-2
 				${applyCentered(centered)}
 				${applyAlignCenter(centered)}
 				
 				`}
-				>
-					{children}
-				</section>
+					>
+						{children}
+					</section>
 
-				{(cancelButton || submitButton) && (
-					<footer
-						className={`flex gap-4 w-full 
+					{(cancelButton || submitButton) && (
+						<footer
+							className={`flex gap-4 w-full 
 						${applyAlignCenter(centered)} 
 						${applyCentered(centered)}`}
-					>
-						{cancelButton && (
-							<Button
-								variant={cancelButton.variant ?? "filled"}
-								color={cancelButton.color ?? "background"}
-								onClick={() => {
-									cancelButton.onClick?.();
-									closeModal(ModalCloseReason.Cancel);
-								}}
-								icon={cancelButton?.icon}
-							>
-								{cancelButton.text}
-							</Button>
-						)}
-						{submitButton && (
-							<Button
-								autoFocus
-								variant={submitButton.variant ?? "filled"}
-								color={submitButton.color ?? "accent"}
-								onClick={() => {
-									submitButton.onClick?.();
-									closeModal(ModalCloseReason.Submit);
-								}}
-								icon={submitButton?.icon}
-							>
-								{submitButton.text}
-							</Button>
-						)}
-					</footer>
-				)}
-			</section>
+						>
+							{cancelButton && (
+								<Button
+									variant={cancelButton.variant ?? "filled"}
+									color={cancelButton.color ?? "background"}
+									onClick={() => {
+										cancelButton.onClick?.();
+										closeModal(ModalCloseReason.Cancel);
+									}}
+									icon={cancelButton?.icon}
+								>
+									{cancelButton.text}
+								</Button>
+							)}
+							{submitButton && (
+								<Button
+									autoFocus
+									variant={submitButton.variant ?? "filled"}
+									color={submitButton.color ?? "accent"}
+									onClick={() => {
+										submitButton.onClick?.();
+										closeModal(ModalCloseReason.Submit);
+									}}
+									icon={submitButton?.icon}
+								>
+									{submitButton.text}
+								</Button>
+							)}
+						</footer>
+					)}
+				</motion.section>
+			</AnimatePresence>
 		</Wrapper>
 	);
 };
