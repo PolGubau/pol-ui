@@ -26,9 +26,10 @@ const PulseStyled = styled.div`
 	animation-fill-mode: forwards;
 `;
 
-const Pulse = ({ className, color }: { className: string; color: Color }) => {
+const Pulse = ({ className, color, style }: { className?: string; color?: Color; style: any }) => {
 	return (
 		<PulseStyled
+			style={style}
 			className={`flex rounded-full justify-center items-center  ${applyBgColor(
 				color
 			)} ${className}`}

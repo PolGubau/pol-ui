@@ -1,29 +1,20 @@
-import { Color, Size } from "../../../../../types";
-import { applyBgColor } from "../../../../../style";
-import { Styles, dotsSize } from "./Dots.styles";
+import { DotsStyled } from "./DotsStyled";
 
 interface Props {
 	className?: string;
-	color?: Color;
-	amount?: number;
-	size?: Size;
+	animationDuration?: number;
+	colors?: string[];
 }
 
-const Dots: React.FC<Props> = ({ className, color, amount = 3, size = "md" }) => {
-	const array = Array.from(Array(amount).keys()) ?? [0, 1, 2];
-
+const Dots: React.FC<Props> = ({
+	className = "",
+	animationDuration = 2,
+	colors = ["#ff4", "#4f4", "#44f", "#f44"],
+}) => {
 	return (
-		<div className="flex gap-1">
-			{array.map((n, index) => (
-				<Styles
-					$index={index}
-					key={n}
-					className={` rounded-full ${dotsSize({
-						size,
-					})}  ${applyBgColor(color)} ${className ?? ""}`}
-				></Styles>
-			))}
-		</div>
+		<DotsStyled animationDuration={animationDuration} colors={colors}>
+			<div className={`loader ${className}`}></div>
+		</DotsStyled>
 	);
 };
 

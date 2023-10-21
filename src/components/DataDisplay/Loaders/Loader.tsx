@@ -1,28 +1,46 @@
 import React from "react";
-import { Color, Size } from "../../../types";
-import { spinnerStyled } from "./Loader.styles";
+import { Color, Colors } from "../../../types";
 import { Dots, Bars, Pulse } from "./Loaders";
 import Spinner from "./Loaders/Spinner/Spinner";
+import { LightSaber } from "./Loaders/LightSaber";
 
 interface LoaderProps {
-	type?: "spinner" | "dots" | "bars" | "pulse";
-	size?: Size;
+	type?: "spinner" | "dots" | "bars" | "pulse" | "lightSaber";
+	size?: number;
 	color?: Color;
+	className?: string;
+	animationDuration?: number;
+	colors?: string[];
 }
 
-const Loader: React.FC<LoaderProps> = ({ type = "spinner", color, size }) => {
+const Loader: React.FC<LoaderProps> = ({
+	type = "spinner",
+	color,
+	size = 35,
+	className = "",
+	animationDuration = 2,
+	colors = ["#ff4", "#4f4", "#44f", "#f44"],
+}) => {
 	switch (type) {
 		case "pulse":
-			return <Pulse className={spinnerStyled(size)} color={color ?? "accent"} />;
+			return (
+				<Pulse
+					style={{
+						width: size,
+						height: size,
+					}}
+					color={color ?? Colors.accent}
+				/>
+			);
 		case "bars":
-			return <Bars size={size} color={color ?? "accent"} amount={3} />;
+			return <Bars size={size} color={color ?? Colors.accent} amount={3} />;
 		case "dots":
-			return <Dots size={size} color={color ?? "accent"} amount={3} />;
+			return <Dots className={className} animationDuration={animationDuration} colors={colors} />;
+		case "lightSaber":
+			return <LightSaber size={size} color={color ?? Colors.accent} amount={3} />;
 
 		default:
-			return (
-				<Spinner className={spinnerStyled(size)} size={size ?? "md"} color={color ?? "accent"} />
-			);
+			return <Spinner size={size} color={color ?? Colors.accent} />;
 	}
 };
 

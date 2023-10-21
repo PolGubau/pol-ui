@@ -20,20 +20,3 @@ export const Styles = styled.div<{ $index: number }>`
 	animation-iteration-count: infinite;
 	animation-delay: ${({ $index }) => $index * 0.4}s;
 `;
-
-export const dotsSize = ({ size }: { size?: Size }) => {
-	switch (size) {
-		case "xs":
-			return "h-5 w-1";
-		case "sm":
-			return "h-6 w-2";
-		case "md":
-			return "h-7 w-3";
-		case "lg":
-			return "h-8 w-4";
-		case "xl":
-			return "h-9 w-5";
-		default:
-			return "h-7 w-3";
-	}
-};

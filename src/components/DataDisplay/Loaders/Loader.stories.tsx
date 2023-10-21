@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Loader from "./Loader";
+import { Colors } from "../../../types";
 const meta = {
 	title: "Data Display/Loader",
 	component: Loader,
@@ -15,6 +16,9 @@ export const Default: Story = {
 export const Pulse: Story = {
 	args: { type: "pulse" },
 };
+export const LightSaber: Story = {
+	args: { type: "lightSaber" },
+};
 export const Bars: Story = {
 	args: { type: "bars" },
 };
@@ -28,7 +32,7 @@ export const AllTypes: Story = {
 			<Loader {...args} type="spinner" />
 			<Loader {...args} type="pulse" />
 			<Loader {...args} type="dots" />
-			<Loader {...args} type="bars" />
+			<Loader {...args} type="lightSaber" />
 		</div>
 	),
 	args: {
@@ -38,12 +42,12 @@ export const AllTypes: Story = {
 export const AllColors: Story = {
 	render: (args) => (
 		<div className="flex gap-8 p-8 items-center">
-			<Loader {...args} type="spinner" color="success" />
-			<Loader {...args} type="pulse" color="danger" />
-			<Loader {...args} type="dots" color="accent" />
-			<Loader {...args} type="bars" color="background" />
-			<Loader {...args} type="spinner" color="info" />
-			<Loader {...args} type="pulse" color="contrast" />
+			<Loader {...args} type="spinner" color={Colors.accent} />
+			<Loader {...args} type="pulse" color={Colors.secondary} />
+			<Loader {...args} type="dots" color={Colors.success} />
+			<Loader {...args} type="bars" color={Colors.danger} />
+			<Loader {...args} type="spinner" color={Colors.info} />
+			<Loader {...args} type="pulse" color={Colors.primary} />
 		</div>
 	),
 	args: {
@@ -53,11 +57,11 @@ export const AllColors: Story = {
 export const AllSizes: Story = {
 	render: (args) => (
 		<div className="flex gap-8 p-8 items-center">
-			<Loader {...args} size="xs" />
-			<Loader {...args} size="sm" />
-			<Loader {...args} size="md" />
-			<Loader {...args} size="lg" />
-			<Loader {...args} size="xl" />
+			<Loader {...args} size={15} />
+			<Loader {...args} size={25} />
+			<Loader {...args} size={35} />
+			<Loader {...args} size={45} />
+			<Loader {...args} size={55} />
 		</div>
 	),
 	args: {

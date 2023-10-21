@@ -10,6 +10,7 @@ interface Props {
 	onClick?: () => void;
 	padding?: PaddingOneOrBothValues;
 	rounded?: SizesComplete;
+	iconSize?: number;
 
 	labelClassName?: string;
 	valueClassName?: string;
@@ -19,6 +20,7 @@ const Datacard: React.FC<Props> = ({
 	label,
 	value,
 	icon,
+	iconSize = 35,
 	onClick,
 	padding = Sizes.md,
 	rounded = Sizes.lg,
@@ -45,7 +47,7 @@ const Datacard: React.FC<Props> = ({
                     
                     `}
 				>
-					<Icon size="xl" className="scale-150" icon={icon} />
+					<Icon size={iconSize} className="scale-150" icon={icon} />
 				</div>
 			)}
 

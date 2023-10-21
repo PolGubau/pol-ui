@@ -21,6 +21,7 @@ interface Props {
 	rounded?: SizesComplete;
 	itemRounded?: SizesComplete;
 	layoutId?: string;
+	iconSize?: number;
 
 	goNext: () => void;
 	goPrevious: () => void;
@@ -39,6 +40,7 @@ const NavigationBarItem: React.FC<Props> = ({
 	textSize,
 	goNext,
 	goPrevious,
+	iconSize = 25,
 	rounded,
 	itemRounded,
 	shouldShowText = () => true,
@@ -89,7 +91,7 @@ const NavigationBarItem: React.FC<Props> = ({
 				<Stack direction={"row"} gap={4} wrap="nowrap" className="truncate">
 					{tab.icon && (
 						<Icon
-							size={"xl"}
+							size={iconSize}
 							color={colorText}
 							invertColor={activeIndex === i && invertTextOnSelected}
 							icon={tab.icon}
