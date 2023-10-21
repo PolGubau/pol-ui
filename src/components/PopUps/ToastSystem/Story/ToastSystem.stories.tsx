@@ -20,7 +20,27 @@ export const Default: Story = {
 };
 export const LotsOfToasts: Story = {
 	args: {
-		toasts: [defaultToast, dangerToast, successToast, toastWithAction],
+		onChange: (toasts) => {
+			alert("Closing" + toasts.toString());
+		},
+		toasts: [
+			defaultToast,
+			dangerToast,
+			successToast,
+			toastWithAction,
+			defaultToast,
+			dangerToast,
+			successToast,
+			toastWithAction,
+			defaultToast,
+			dangerToast,
+			successToast,
+			toastWithAction,
+			defaultToast,
+			dangerToast,
+			successToast,
+			toastWithAction,
+		],
 	},
 };
 export const Horizontal: Story = {
