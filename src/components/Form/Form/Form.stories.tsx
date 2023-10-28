@@ -23,7 +23,7 @@ export const Default: Story = {
 	},
 	args: {
 		onSubmit() {
-			console.log("Submitted");
+			alert("Submitted");
 		},
 
 		children: (

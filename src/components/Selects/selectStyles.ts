@@ -15,8 +15,7 @@ export const selectStyles = ({
 	className,
 	position,
 }: Props): string => {
-	const base = `
-	${buttonStyles({
+	const base = ` relative 	${buttonStyles({
 		rounded,
 		size,
 		fullWidth,

@@ -23,31 +23,39 @@ const RadioGroup: React.FC<Props> = ({
 	value = [],
 	onChange,
 	axis = Directions.y,
-	selectedValue,
+	selectedValue = 0,
 	groupName,
 }) => {
+	const isThisChecked = (item: string | number) => {
+		return typeof selectedValue === "number"
+			? item === selectedValue
+			: item.toString() === selectedValue;
+	};
+	const [indexChecked, setIndexChecked] = React.useState<number>(
+		value.findIndex((item) => isThisChecked(item))
+	);
+
 	const handleChange = (newSelectedValue: string | number) => {
+		setIndexChecked(value.findIndex((item) => isThisChecked(item)));
 		onChange(newSelectedValue);
 	};
 
 	return (
-		<div className={`flex  gap-3 ${axis === Directions.x ? "flex-row" : "flex-col"}`}>
-			{label && <Text value={label} />}
-			{value.map((item: string | number, index: number) => {
-				const checked =
-					typeof selectedValue === "number"
-						? index === selectedValue
-						: item.toString() === selectedValue;
-				return (
-					<Radio
-						key={item}
-						label={item.toString()}
-						value={checked}
-						name={groupName}
-						onChange={() => handleChange(item)}
-					/>
-				);
-			})}
+		<div className="flex flex-col gap-2">
+			{label && <Text isMarkdown value={label} />}
+			<div className={`flex  gap-3 ${axis === Directions.x ? "flex-row" : "flex-col"}`}>
+				{value.map((item: string | number, index: number) => {
+					return (
+						<Radio
+							key={item}
+							label={item.toString()}
+							value={indexChecked === index}
+							name={groupName}
+							onChange={() => handleChange(item)}
+						/>
+					);
+				})}
+			</div>
 		</div>
 	);
 };

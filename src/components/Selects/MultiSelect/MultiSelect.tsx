@@ -57,10 +57,12 @@ export default function MultiSelect({
 	};
 
 	return (
-		<Listbox value={selected} onChange={handleChanges} multiple>
-			{label && <Listbox.Label className={labelClasses}>{label}</Listbox.Label>}
-			<Listbox.Button
-				className={`
+		<div className="relative ">
+			<Listbox value={selected} onChange={handleChanges} multiple>
+				{label && <Listbox.Label className={labelClasses}>{label}</Listbox.Label>}
+
+				<Listbox.Button
+					className={` 
 				${selectStyles({
 					rounded,
 					size,
@@ -74,59 +76,59 @@ export default function MultiSelect({
 					className,
 					position,
 				})}
+ 					${className} `}
+					role="button"
+				>
+					<span className="block truncate pr-4 ">{valueString}</span>
+					<span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 ">
+						<Icon icon={buttonIcon} aria-hidden="true" />
+					</span>
+				</Listbox.Button>
 
-					${className}`}
-				role="button"
-			>
-				<span className="block truncate pr-4">{valueString}</span>
-				<span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-					<Icon icon={buttonIcon} aria-hidden="true" />
-				</span>
-			</Listbox.Button>
+				<Transition
+					as={Fragment}
+					leave="transition ease-in duration-100"
+					leaveFrom="opacity-100"
+					leaveTo="opacity-0"
+				>
+					<Listbox.Options className={`${popupStyles} ${fullWidth ? "w-full" : "w-fit"} `}>
+						{options.map((obj) => {
+							const label = getLabelFromOption(obj, keyField);
 
-			<Transition
-				as={Fragment}
-				leave="transition ease-in duration-100"
-				leaveFrom="opacity-100"
-				leaveTo="opacity-0"
-			>
-				<Listbox.Options className={`${popupStyles} ${fullWidth ? "w-full" : "w-fit"} `}>
-					{options.map((obj) => {
-						const label = getLabelFromOption(obj, keyField);
-
-						// the key is used to identify the item in the list
-						// it will be the keyField if it exists, otherwise the name or if there isn't name, the first value of the object
-						return (
-							<Listbox.Option
-								key={label}
-								className={({ active }) =>
-									`relative  select-none py-2 pl-10 pr-4 cursor-pointer ${
-										active ? "bg-accent/30 " : "text-primary/90"
-									}`
-								}
-								value={obj}
-							>
-								{({ active, selected }) => (
-									<>
-										<span
-											className={`block truncate ${selected ? "font-medium" : "font-normal"} ${
-												active ? "text-accent brightness-50" : "text-primary/90"
-											}`}
-										>
-											{label}
-										</span>
-										{selected ? (
-											<span className="absolute inset-y-0 left-0 flex items-center pl-3 text-accent">
-												<Icon icon={IconNames.check} aria-hidden="true" />
+							// the key is used to identify the item in the list
+							// it will be the keyField if it exists, otherwise the name or if there isn't name, the first value of the object
+							return (
+								<Listbox.Option
+									key={label}
+									className={({ active }) =>
+										`relative  select-none py-2 pl-10 pr-4 cursor-pointer ${
+											active ? "bg-accent/30 " : "text-primary/90"
+										}`
+									}
+									value={obj}
+								>
+									{({ active, selected }) => (
+										<>
+											<span
+												className={`block truncate ${selected ? "font-medium" : "font-normal"} ${
+													active ? "text-accent brightness-50" : "text-primary/90"
+												}`}
+											>
+												{label}
 											</span>
-										) : null}
-									</>
-								)}
-							</Listbox.Option>
-						);
-					})}
-				</Listbox.Options>
-			</Transition>
-		</Listbox>
+											{selected ? (
+												<span className="absolute inset-y-0 left-0 flex items-center pl-3 text-accent">
+													<Icon icon={IconNames.check} aria-hidden="true" />
+												</span>
+											) : null}
+										</>
+									)}
+								</Listbox.Option>
+							);
+						})}
+					</Listbox.Options>
+				</Transition>
+			</Listbox>
+		</div>
 	);
 }

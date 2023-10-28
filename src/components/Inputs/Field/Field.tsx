@@ -65,6 +65,10 @@ const Field = <T extends string | number>({
 		<div className={"flex flex-col gap-1   relative   w-full text-primary transition-all"}>
 			{multiline ? (
 				<textarea
+					style={{
+						minHeight: "100px",
+						maxHeight: "300px",
+					}}
 					rows={5}
 					disabled={disabled ?? false}
 					maxLength={maxLength}

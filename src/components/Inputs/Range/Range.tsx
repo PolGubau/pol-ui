@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Text } from "../../Text";
 import { Colors } from "../../../types";
 import { applyBgColor } from "../../../style";
- interface Props {
+interface Props {
 	value: number;
-	onChange: (value: number) => void;
+	onChange?: (value: number) => void;
 	min?: number;
 	max?: number;
 	step?: number;
@@ -23,7 +23,7 @@ const Range: React.FC<Props> = ({
 	value,
 	onChange,
 	min = 0,
-	max = 5,
+	max = 10,
 	step = 0.1,
 
 	className = "",
@@ -42,7 +42,7 @@ const Range: React.FC<Props> = ({
 	const [valueState, setValueState] = useState(value);
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setValueState(Number(e.target.value));
-		onChange(Number(e.target.value));
+		onChange?.(Number(e.target.value));
 	};
 
 	return (

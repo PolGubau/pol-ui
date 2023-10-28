@@ -2,10 +2,20 @@ import React from "react";
 import { Link } from "../../Buttons/Link";
 import { Image } from "../../Media/Image";
 import Badge from "../Badge/Badge";
-import { BaseProps, ButtonVariant, Color, Size, SizesComplete } from "../../../types";
+import {
+	BaseProps,
+	ButtonVariant,
+	Color,
+	Colors,
+	Size,
+	Sizes,
+	SizesComplete,
+	Variants,
+} from "../../../types";
 import { applyRounded, applyTextSize } from "../../../style";
 import { applyButtonVariant } from "../../Buttons/Button/Button.styles";
 import Button from "../../Buttons/Button/Button";
+import { Text } from "../../Text";
 
 interface Props extends BaseProps {
 	src: string;
@@ -48,13 +58,13 @@ const Avatar: React.FC<Props> = ({
 	style,
 	rounded = "none",
 	description,
-	size = "md",
+	size = Sizes.md,
 	href,
 	hasText = true,
-	variant = "text",
-	color = "background",
+	variant = Variants.text,
+	color = Colors.background,
 	badge,
-	badgeColor,
+	badgeColor = Colors.primary,
 	onClick,
 }) => {
 	const ImageContent = (
@@ -71,9 +81,12 @@ const Avatar: React.FC<Props> = ({
 
 	const avatarContent = (
 		<div
-			className={`p-1 flex w-fit h-fit gap-2 items-center ${applyTextSize(size)} ${applyRounded(
+			className={`flex w-fit h-fit gap-2 items-center ${applyTextSize(size)} ${applyRounded(
 				rounded
-			)} ${applyButtonVariant({
+			)} 
+			${hasText ? "pr-4" : ""}
+			
+			${applyButtonVariant({
 				variant,
 				color,
 			})} ${className ?? ""}`}
@@ -81,42 +94,49 @@ const Avatar: React.FC<Props> = ({
 			id={id}
 			aria-label={ariaLabel}
 		>
-			{badge ? (
-				<Badge content={badge} color={badgeColor}>
-					{ImageContent}
-				</Badge>
-			) : (
-				ImageContent
-			)}
-
+			{ImageContent}
 			{hasText && (
-				<div className="flex flex-col text-contrast dark:text-contrast-inverted">
-					{name}
-					{description && <small>{description}</small>}
+				<div className="flex flex-col gap-0">
+					<Text>{name}</Text>
+					{description && (
+						<Text size={12} as="small">
+							{name}
+						</Text>
+					)}
 				</div>
 			)}
 		</div>
 	);
 
 	const isALink = Boolean(href);
+
 	const isAButton = Boolean(onClick);
+	console.log("isAButton", (e: any) => onClick?.(e));
 
 	if (isALink) {
 		return (
-			<Link variant="text" href={href ?? ""} padding={"sm"} rounded="full">
-				{avatarContent}
-			</Link>
+			<Badge content={badge ?? ""} isVisible={Boolean(badge)} color={badgeColor}>
+				<Link variant={Variants.text} href={href ?? ""} padding={"none"} rounded={rounded}>
+					{avatarContent}
+				</Link>
+			</Badge>
 		);
 	}
 	if (isAButton) {
 		return (
-			<Button variant="text" padding={"sm"} rounded="full" onClick={onClick}>
-				{avatarContent}
-			</Button>
+			<Badge content={badge ?? ""} isVisible={Boolean(badge)} color={badgeColor}>
+				<Button variant={Variants.text} padding={"none"} rounded={rounded} onClick={onClick}>
+					{avatarContent}
+				</Button>
+			</Badge>
 		);
 	}
 
-	return avatarContent;
+	return (
+		<Badge content={badge ?? ""} isVisible={Boolean(badge)} color={badgeColor}>
+			{avatarContent}
+		</Badge>
+	);
 };
 
 export default Avatar;

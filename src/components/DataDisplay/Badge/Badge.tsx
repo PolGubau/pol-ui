@@ -80,7 +80,7 @@ const Badge = ({
 				leaveTo="opacity-0 scale-0"
 			>
 				<span
-					className={`${badgeStyles({
+					className={` z-30 ${badgeStyles({
 						size,
 						horizontal,
 						vertical,

@@ -3,8 +3,9 @@ import TextStyled from "./Styled";
 import { shorterText } from "./text.functions";
 import "../../style/global.css";
 import { applyColor, applyInvertedColor } from "../../style";
-import { Color } from "../../types";
+import { Color, TextHtmlTag, TextHtmlTags } from "../../types";
 import Markdown from "markdown-to-jsx";
+
 interface Props {
 	size?: number | string;
 	isItalic?: boolean;
@@ -17,7 +18,7 @@ interface Props {
 	centered?: boolean;
 	weight?: number;
 	role?: string;
-	as?: "label" | "p" | "span" | "div" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "small";
+	as?: TextHtmlTag;
 	htmlFor?: string;
 	disabled?: boolean;
 	children?: string | number;
@@ -31,7 +32,7 @@ interface Props {
 }
 
 const Text: React.FC<Props> = ({
-	as = "p",
+	as = TextHtmlTags.p,
 	value, // Text to be displayed
 	size, // Size of the text
 	color, // Color of the text
@@ -41,7 +42,7 @@ const Text: React.FC<Props> = ({
 	className, // Class name of the text
 	isItalic = false, // If the text is italic
 	centered = false, // If the text is centered
-	weight = 400, // Weight of the text
+	weight, // Weight of the text
 	role = "text", // Role of the text
 	htmlFor,
 	disabled = false,
@@ -72,8 +73,6 @@ const Text: React.FC<Props> = ({
 			
 			
 			${className}
-			
-			
 				w-fit 
 				${!color && "text-background-inverted dark:text-background"}
  				${isItalic ? "italic" : ""}

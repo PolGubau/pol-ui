@@ -82,7 +82,7 @@ export default function Autocomplete({
 					`}
 				>
 					<Combobox.Input
-						className={`p-1 w-full border-none focus:ring-0 focus:border-none bg-transparent focus:outline-none placeholder:text-current focus-within:ring-2`}
+						className={`p-1 w-full border-none focus:ring-0 focus:border-none bg-transparent focus:outline-none placeholder:text-current focus-within:ring-2 min-h-8`}
 						displayValue={(item: SelectOption) => getLabelFromOption(item, keyField) ?? placeholder}
 						onChange={(event) => setQuery(event.target.value)}
 						placeholder={buttonValue}

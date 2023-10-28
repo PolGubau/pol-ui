@@ -19,7 +19,7 @@ const TextStyled = styled.div<TextStyledProps>`
 
 	font-size: ${(props) => props.$size};
 
-	font-weight: ${(props) => props.$weight} !important;
+	font-weight: ${(props) => props.$weight};
 `;
 
 export default TextStyled;
