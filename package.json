@@ -35,10 +35,10 @@
 		"@testing-library/react": "^14.0.0",
 		"@testing-library/user-event": "^14.5.1",
 		"@types/jest": "^29.5.7",
-		"@types/node": "^16.18.60",
+		"@types/node": "^20.8.10",
 		"@types/react": "^18.2.33",
 		"@types/react-dom": "^18.2.14",
-		"@vitejs/plugin-react": "^3.1.0",
+		"@vitejs/plugin-react": "^4.1.0",
 		"autoprefixer": "^10.4.16",
 		"eslint": "^8.52.0",
 		"eslint-config-react-app": "^7.0.1",
@@ -126,5 +126,5 @@
 	"type": "module",
 	"types": "./dist/index.d.ts",
 	"typings": "",
-	"version": "1.0.92"
+	"version": "1.0.93"
 }
