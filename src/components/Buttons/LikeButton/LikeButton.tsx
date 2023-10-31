@@ -1,10 +1,10 @@
-import React from "react";
 import { Icon, IconNames } from "../../Base/Icon";
 import { Button } from "../Button";
 import { Transition } from "@headlessui/react";
 import ConfettiExplosion from "react-confetti-explosion";
 import { ButtonVariant, Colors, IconType, Side, Sides, Variants } from "../../../types";
 import { IconButton } from "../IconButton";
+import React from "react";
 
 interface Props {
 	label?: string;
@@ -31,13 +31,12 @@ const CopyButton: React.FC<Props> = ({
 	colorLiked = Colors.accent,
 	colorNotLiked = Colors.primary,
 	colors,
-
-	...props
 }) => {
 	const [isLiked, setIsLiked] = React.useState(false);
 
 	const handleLike = () => {
 		setIsLiked((prev) => !prev);
+		onLike?.();
 	};
 
 	return label ? (
