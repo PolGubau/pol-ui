@@ -6,13 +6,21 @@ const meta = {
 	title: "Buttons/LikeButton",
 	component: LikeButton,
 	tags: ["autodocs"],
+	parameters: {
+		controls: { expanded: true },
+	},
 } satisfies Meta<typeof LikeButton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	args: {},
+	args: {
+		label: undefined,
+		onLike: () => null,
+		iconLiked: undefined,
+		iconNotLiked: undefined,
+	},
 };
 export const WithLabel: Story = {
 	args: {
