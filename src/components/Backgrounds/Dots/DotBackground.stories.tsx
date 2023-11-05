@@ -1,8 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import DotBackground from "./DotBackground";
-import { Text } from "../../Text";
-import { applyBgColor, applyPadding } from "../../../style";
-import { Colors, Sizes } from "../../../types";
 
 const meta = {
 	title: "Backgrounds/DotBackground",
@@ -15,16 +12,23 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
 	args: {},
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"Each Pol/UI's background will adapt to the parent size (or use tailwind / style to change it)",
+			},
+		},
+	},
+
 	render: (args) => (
-		<DotBackground {...args} className="flex items-center justify-center h-36">
-			<Text
-				className={`p-2 ${applyBgColor(Colors.accent)} rounded-xl ${applyPadding({
-					x: Sizes.md,
-					y: Sizes.sm,
-				})}`}
-			>
-				Hello
-			</Text>
-		</DotBackground>
+		<div
+			className="flex items-center justify-center"
+			style={{
+				height: "500px",
+			}}
+		>
+			<DotBackground {...args}></DotBackground>
+		</div>
 	),
 };

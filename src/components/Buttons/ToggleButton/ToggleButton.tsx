@@ -1,41 +1,52 @@
-import useToggle from "../../../hooks/useToggle";
-import { IconType, Variants } from "../../../types";
+import { BaseProps, IconType, Variants } from "../../../types";
 import { Button } from "../Button";
+import useBoolean from "../../../hooks/useBoolean";
 
-interface Props {
-	onChange?: (value: string) => void;
+interface Props extends BaseProps {
+	onChange?: (value: boolean) => void;
+	onChangeValue?: (value: any) => void;
 	isActive?: boolean;
-	label: string | string[];
+	content: any;
 	icon?: IconType;
 }
 
-const ToggleButton = ({ onChange, isActive = false, label, icon }: Props) => {
-	const { currentOption, toggle } = useToggle({
-		values: [true, false],
-	});
-	const handleChange = () => {
-		toggle();
-		onChange?.(currentOption);
-	};
-
+const ToggleButton = ({
+	onChange,
+	onChangeValue,
+	isActive = false,
+	content,
+	icon,
+	className = "",
+	style = {},
+	id,
+	ariaLabel,
+}: Props) => {
+	const { current, toggle } = useBoolean(isActive);
 	const getLabel = () => {
 		// If label is an array, return the 0 in false and 1 in true
-		// if is an string, return always the same
-		if (typeof label === "string") {
-			return label;
-		}
+		// if it's one element, return always the same
 
-		if (Array.isArray(label)) {
-			return label[currentOption ? 0 : 1];
+		if (Array.isArray(content)) {
+			return content[current ? 0 : 1];
+		} else {
+			return content;
 		}
-		return label;
+	};
+	const handleChange = () => {
+		toggle();
+		onChange?.(current);
+		onChangeValue?.(getLabel());
 	};
 
 	return (
 		<Button
+			style={style}
+			ariaLabel={ariaLabel}
+			id={id}
+			className={className}
 			icon={icon}
 			onClick={handleChange}
-			variant={currentOption ? Variants.filled : Variants.text}
+			variant={current ? Variants.filled : Variants.text}
 		>
 			{getLabel()}
 		</Button>

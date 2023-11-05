@@ -35,7 +35,7 @@ export interface ButtonProps extends BaseProps {
 	color?: Color;
 	size?: Size;
 	rounded?: SizesComplete;
-	icon?: IconType | string;
+	icon?: IconType;
 	iconSize?: number;
 	iconPosition?: Side;
 	autoFocus?: boolean;

@@ -19,9 +19,10 @@ export const Default: Story = {
 				You'll find here some examples of Pol/ui potential, have a great time and contact us in case
 				of doubts.
 			</Text>
-			<Link href="mailto:gubaupol@gmail.com" className="underline mt-8">
+			<Link href="mailto:gubaupol@gmail.com" className="underline my-8">
 				Author's email
 			</Link>
+			<Logo />
 		</>
 	),
 };

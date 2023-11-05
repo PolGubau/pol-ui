@@ -15,6 +15,7 @@ interface DotProps {
 
 const DotBackgroundStyled = styled.div<DotProps>`
 	width: 100%;
+	height: 100%;
 	background-size: ${({ size }) => size}px ${({ size }) => size}px;
 	background-image: radial-gradient(circle at 4px 6px, ${({ color }) => color} 2px, transparent 0);
 	background-position: center;

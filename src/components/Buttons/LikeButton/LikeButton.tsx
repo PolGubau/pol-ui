@@ -5,6 +5,7 @@ import ConfettiExplosion from "react-confetti-explosion";
 import { ButtonVariant, Colors, IconType, Side, Sides, Variants } from "../../../types";
 import { IconButton } from "../IconButton";
 import React from "react";
+import useBoolean from "../../../hooks/useBoolean";
 
 interface Props {
 	label?: string;
@@ -32,17 +33,17 @@ const CopyButton: React.FC<Props> = ({
 	colorNotLiked = Colors.primary,
 	colors,
 }) => {
-	const [isLiked, setIsLiked] = React.useState(false);
+	const { current, toggle } = useBoolean(liked);
 
 	const handleLike = () => {
-		setIsLiked((prev) => !prev);
+		toggle();
 		onLike?.();
 	};
 
 	return label ? (
 		<Button
 			className="relative"
-			color={isLiked ? colorLiked : colorNotLiked}
+			color={current ? colorLiked : colorNotLiked}
 			variant={variant}
 			iconPosition={iconPosition}
 			icon={
@@ -66,7 +67,7 @@ const CopyButton: React.FC<Props> = ({
 			}
 			onClick={handleLike}
 		>
-			{hasConfetti && isLiked && (
+			{hasConfetti && current && (
 				<ConfettiExplosion
 					className="absolute top-[50%] left-[50%] transform translate-x-[-50%] -translate-y-[-50%]"
 					force={0.4}
@@ -82,13 +83,13 @@ const CopyButton: React.FC<Props> = ({
 	) : (
 		<>
 			<IconButton
-				icon={isLiked ? iconLiked : iconNotLiked}
-				color={isLiked ? colorLiked : colorNotLiked}
+				icon={current ? iconLiked : iconNotLiked}
+				color={current ? colorLiked : colorNotLiked}
 				variant={variant}
 				onClick={handleLike}
 			/>
 
-			{hasConfetti && isLiked && (
+			{hasConfetti && current && (
 				<ConfettiExplosion
 					force={0.4}
 					duration={2200}
