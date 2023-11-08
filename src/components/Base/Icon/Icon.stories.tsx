@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Icon from "./Icon";
 
 import { TbCheck } from "react-icons/tb";
+import { Colors } from "../../../types";
 
 const meta = {
 	title: "Base/Icon",
@@ -26,7 +27,7 @@ export const CutomIcon: Story = {
 export const CustomColor: Story = {
 	args: {
 		...Default.args,
-		className: "text-yellow-500",
+		color: Colors.accent,
 	},
 };
 
