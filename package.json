@@ -27,5 +27,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "packageManager": "pnpm@7.15.0"
+  "packageManager": "pnpm@7.15.0",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
 }
