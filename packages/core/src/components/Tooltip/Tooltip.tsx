@@ -1,5 +1,4 @@
 'use client';
-import { TooltipComponent, TooltipProps } from '@components/Tooltip/Tooltip.types';
 import { useTooltip } from '@components/Tooltip/use-tooltip.hook';
 import { FloatingArrow, FloatingPortal } from '@floating-ui/react';
 import { useComponentTheme } from '@theme/theme.context';
@@ -16,6 +15,7 @@ import {
 } from 'react';
 import { useMergeRefs } from '@floating-ui/react';
 import { twMerge } from 'tailwind-merge';
+import { TooltipComponent, TooltipProps, TooltipProps } from './Tooltip.types';
 
 const defaultProps: Partial<TooltipProps> = {
   color: 'dark',

@@ -1,15 +1,12 @@
 'use client';
-import { useDropdownContext } from '@components/Dropdown/Dropdown.context';
-import { useInputGroupContext } from '@components/InputGroup/InputGroup.context';
-import { Spinner } from '@components/Spinner';
-import { ChevronDownIcon } from '@icons/ChevronDown';
-import { useComponentTheme } from '@theme/theme.context';
-import { useComponentVariant } from '@theme/variant.context';
-import { usePropId } from '@utils/usePropId';
 import { PolymorphicComponentProp, PolymorphicRef } from '../../types';
 import { ButtonComponent, ButtonProps } from './Button.types';
 import { ElementType, forwardRef, useMemo } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { Spinner, useComponentTheme, useComponentVariant, usePropId } from '../..';
+import { useDropdownContext } from '../../../dist/components/Dropdown/Dropdown.context';
+import { useInputGroupContext } from '../../../dist/components/InputGroup/InputGroup.context';
+import { ChevronDownIcon } from '../../../dist/icons/ChevronDown';
 
 const defaultProps: Partial<ButtonProps> = {
   animation: 'none',

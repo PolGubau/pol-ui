@@ -1,9 +1,5 @@
 'use client';
-import {
-  AccordionComponent,
-  AccordionContext,
-  AccordionProps,
-} from '@components/Accordion/Accordion.types';
+
 import { AccordionBody } from '@components/Accordion/AccordionBody/AccordionBody';
 import { AccordionHeader } from '@components/Accordion/AccordionHeader/AccordionHeader';
 import { AccordionItem } from '@components/Accordion/AccordionItem/AccordionItem';
@@ -13,6 +9,7 @@ import { usePropId } from '@utils/usePropId';
 import { forwardRef, Ref, useMemo, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { AccordionContextProvider } from './Accordion.context';
+import { AccordionComponent, AccordionContext, AccordionProps } from './Accordion.types';
 
 const defaultProps: Partial<AccordionProps> = {
   activeColor: 'dark',

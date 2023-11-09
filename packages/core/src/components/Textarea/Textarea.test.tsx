@@ -1,7 +1,5 @@
-import { Input } from '@components/Input';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { createRef } from 'react';
-import * as React from 'react';
 import { describe, it } from 'vitest';
 import { render } from '@testing-library/react';
 import { Textarea } from '.';

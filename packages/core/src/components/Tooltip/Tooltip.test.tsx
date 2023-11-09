@@ -1,4 +1,3 @@
-import { Button } from '@components/Button';
 import * as React from 'react';
 import { describe, it } from 'vitest';
 import { render } from '@testing-library/react';
@@ -6,6 +5,7 @@ import { Tooltip } from '.';
 import { createRef } from 'react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { act } from 'react-dom/test-utils';
+import { Button } from '../..';
 
 describe('Tooltip', () => {
   it('should render', () => {
