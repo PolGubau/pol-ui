@@ -1,21 +1,18 @@
-# Dependency directories
-node_modules/
-
-# Optional npm cache directory
-.npm
-
-# dotenv environment variables file
-.env
-.env.test
-
-# Build output
+.DS_Store
+node_modules
+.turbo
+*.log
+.next
 dist
+dist-ssr
+*.local
+.env
+.cache
+server/dist
+public/dist
+storybook-static/
+.idea
 
-coverage/
 
-.swc/
-
-
-.storybook-static/
-
-old.txt
+# Contentlayer
+.contentlayer

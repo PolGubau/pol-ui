@@ -1,9 +1,0 @@
-{
-  "files.associations": {
-    "*.css": "tailwindcss"
-  },
-  "sonarlint.connectedMode.project": {
-    "connectionId": "PolGubau_ui",
-    "projectKey": "PolGubau_ui"
-  }
-}

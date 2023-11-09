@@ -1,0 +1,497 @@
+---
+title: Button
+description: A clickable element that can function as either a hyperlink or a regular button.
+intro: The Button component is a versatile component that can function as either a regular button or an anchor link element. It can be configured in a variety of ways by adjusting properties such as size, color and more.
+source: Button
+theme: Button.styles.ts
+variants: Button.variants.ts
+polymorphic: true
+---
+
+# Import
+---
+Import the `Button` component using the following import statement.
+
+```tsx
+import { Button } from '@rewind-ui/core';
+```
+
+# Variants
+---
+The `Button` component comes with a number of pre-defined variants that can be used to change the appearance of the component. The variants can be used by passing the variant name as a prop to the component. A variant is basically a pre-set set of properties. Read more about variants [here](https://rewind-ui.dev/variants).
+
+Available variants are: `primary`, `secondary`, `tertiary`, `link`, `danger`, `success`, `warning` and `info`.
+
+<View>
+  <Button variant="primary">Primary</Button>
+  <Button variant="secondary">Secondary</Button>
+  <Button variant="tertiary">Tertiary</Button>
+  <Button variant="link">Link</Button>
+  <Button variant="danger">Danger</Button>
+  <Button variant="success">Success</Button>
+  <Button variant="warning">Warning</Button>
+  <Button variant="info">Info</Button>
+</View>
+
+```tsx
+<View>
+  <Button variant="primary">Primary</Button>
+  <Button variant="secondary">Secondary</Button>
+  <Button variant="tertiary">Tertiary</Button>
+  <Button variant="link">Link</Button>
+  <Button variant="danger">Danger</Button>
+  <Button variant="success">Success</Button>
+  <Button variant="warning">Warning</Button>
+  <Button variant="info">Info</Button>
+</View>
+```
+
+# Tones & Colors
+---
+The `Button` component comes with four tones: `solid`, `light`, `outline` and `transparent`.
+
+The available `color` values are: `white`, `blue`, `red`, `green`, `yellow`, `purple`, `gray`, `dark` and `black`.
+
+## Solid
+<View>
+  <Button color="white">White</Button>
+  <Button color="blue">Blue</Button>
+  <Button color="red">Red</Button>
+  <Button color="green">Green</Button>
+  <Button color="yellow">Yellow</Button>
+  <Button color="purple">Purple</Button>
+  <Button color="gray">Gray</Button>
+  <Button color="dark">Dark</Button>
+  <Button color="black">Black</Button>
+</View>
+
+```tsx
+<View>
+  <Button color="white">White</Button>
+  <Button color="blue">Blue</Button>
+  <Button color="red">Red</Button>
+  <Button color="green">Green</Button>
+  <Button color="yellow">Yellow</Button>
+  <Button color="purple">Purple</Button>
+  <Button color="gray">Gray</Button>
+  <Button color="dark">Dark</Button>
+  <Button color="black">Black</Button>
+</View>
+```
+
+## Light
+<View>
+  <Button tone="light" color="white">White</Button>
+  <Button tone="light" color="blue">Blue</Button>
+  <Button tone="light" color="red">Red</Button>
+  <Button tone="light" color="green">Green</Button>
+  <Button tone="light" color="yellow">Yellow</Button>
+  <Button tone="light" color="purple">Purple</Button>
+  <Button tone="light" color="gray">Gray</Button>
+  <Button tone="light" color="dark">Dark</Button>
+  <Button tone="light" color="black">Black</Button>
+</View>
+
+```tsx
+<View>
+  <Button tone="light" color="white">White</Button>
+  <Button tone="light" color="blue">Blue</Button>
+  <Button tone="light" color="red">Red</Button>
+  <Button tone="light" color="green">Green</Button>
+  <Button tone="light" color="yellow">Yellow</Button>
+  <Button tone="light" color="purple">Purple</Button>
+  <Button tone="light" color="gray">Gray</Button>
+  <Button tone="light" color="dark">Dark</Button>
+  <Button tone="light" color="black">Black</Button>
+</View>
+```
+
+## Outline
+<View>
+  <Button tone="outline" color="white">White</Button>
+  <Button tone="outline" color="blue">Blue</Button>
+  <Button tone="outline" color="red">Red</Button>
+  <Button tone="outline" color="green">Green</Button>
+  <Button tone="outline" color="yellow">Yellow</Button>
+  <Button tone="outline" color="purple">Purple</Button>
+  <Button tone="outline" color="gray">Gray</Button>
+  <Button tone="outline" color="dark">Dark</Button>
+  <Button tone="outline" color="black">Black</Button>
+</View>
+
+```tsx
+<View>
+  <Button tone="outline" color="white">White</Button>
+  <Button tone="outline" color="blue">Blue</Button>
+  <Button tone="outline" color="red">Red</Button>
+  <Button tone="outline" color="green">Green</Button>
+  <Button tone="outline" color="yellow">Yellow</Button>
+  <Button tone="outline" color="purple">Purple</Button>
+  <Button tone="outline" color="gray">Gray</Button>
+  <Button tone="outline" color="dark">Dark</Button>
+  <Button tone="outline" color="black">Black</Button>
+</View>
+```
+
+## Transparent
+<View>
+  <Button tone="transparent" color="white">White</Button>
+  <Button tone="transparent" color="blue">Blue</Button>
+  <Button tone="transparent" color="red">Red</Button>
+  <Button tone="transparent" color="green">Green</Button>
+  <Button tone="transparent" color="yellow">Yellow</Button>
+  <Button tone="transparent" color="purple">Purple</Button>
+  <Button tone="transparent" color="gray">Gray</Button>
+  <Button tone="transparent" color="dark">Dark</Button>
+  <Button tone="transparent" color="black">Black</Button>
+</View>
+
+```tsx
+<View>
+  <Button tone="transparent" color="white">White</Button>
+  <Button tone="transparent" color="blue">Blue</Button>
+  <Button tone="transparent" color="red">Red</Button>
+  <Button tone="transparent" color="green">Green</Button>
+  <Button tone="transparent" color="yellow">Yellow</Button>
+  <Button tone="transparent" color="purple">Purple</Button>
+  <Button tone="transparent" color="gray">Gray</Button>
+  <Button tone="transparent" color="dark">Dark</Button>
+  <Button tone="transparent" color="black">Black</Button>
+</View>
+```
+
+# Sizes
+---
+Available `size` values are: `xs`, `sm`, `md` and `lg`.
+
+<View>
+  <Button size="xs">Button</Button>
+  <Button size="sm">Button</Button>
+  <Button size="md">Button</Button>
+  <Button size="lg">Button</Button>
+</View>
+
+```tsx
+<View>
+  <Button size="xs">Button</Button>
+  <Button size="sm">Button</Button>
+  <Button size="md">Button</Button>
+  <Button size="lg">Button</Button>
+</View>
+```
+
+# Radiuses
+---
+Available `radius` values are: `none`, `sm`, `md`, `lg` and `full`.
+
+<View>
+  <Button radius="none">Button</Button>
+  <Button radius="sm">Button</Button>
+  <Button radius="md">Button</Button>
+  <Button radius="lg">Button</Button>
+  <Button radius="full">Button</Button>
+</View>
+
+```tsx
+<View>
+  <Button radius="none">Button</Button>
+  <Button radius="sm">Button</Button>
+  <Button radius="md">Button</Button>
+  <Button radius="lg">Button</Button>
+  <Button radius="full">Button</Button>
+</View>
+```
+
+# Shadows
+---
+Available `shadow` values are: `none`, `xs`, `sm`, `md` and `lg`.
+
+<View>
+  <Button shadow="none" shadowColor="black">Button</Button>
+  <Button shadow="sm" shadowColor="black">Button</Button>
+  <Button shadow="base" shadowColor="black">Button</Button>
+  <Button shadow="md" shadowColor="black">Button</Button>
+  <Button shadow="lg" shadowColor="black">Button</Button>
+  <Button shadow="xl" shadowColor="black">Button</Button>
+</View>
+
+```tsx
+<View>
+  <Button shadow="none">Button</Button>
+  <Button shadow="sm">Button</Button>
+  <Button shadow="base">Button</Button>
+  <Button shadow="md">Button</Button>
+  <Button shadow="lg">Button</Button>
+  <Button shadow="xl">Button</Button>
+</View>
+```
+
+## Shadow colors
+Available `shadowColor` values are: `blue`, `red`, `green`, `yellow`, `purple`, `gray`, `dark` and `black`.
+
+<View>
+  <Button shadow="lg" color="blue" shadowColor="blue">Button</Button>
+  <Button shadow="lg" color="red" shadowColor="red">Button</Button>
+  <Button shadow="lg" color="green" shadowColor="green">Button</Button>
+  <Button shadow="lg" color="yellow" shadowColor="yellow">Button</Button>
+  <Button shadow="lg" color="purple" shadowColor="purple">Button</Button>
+  <Button shadow="lg" color="gray" shadowColor="gray">Button</Button>
+  <Button shadow="lg" color="dark" shadowColor="dark">Button</Button>
+  <Button shadow="lg" color="black" shadowColor="black">Button</Button>
+</View>
+
+```tsx
+<View>
+  <Button shadow="lg" color="blue" shadowColor="blue">Button</Button>
+  <Button shadow="lg" color="red" shadowColor="red">Button</Button>
+  <Button shadow="lg" color="green" shadowColor="green">Button</Button>
+  <Button shadow="lg" color="yellow" shadowColor="yellow">Button</Button>
+  <Button shadow="lg" color="purple" shadowColor="purple">Button</Button>
+  <Button shadow="lg" color="gray" shadowColor="gray">Button</Button>
+  <Button shadow="lg" color="dark" shadowColor="dark">Button</Button>
+  <Button shadow="lg" color="black" shadowColor="black">Button</Button>
+</View>
+```
+
+# States
+---
+`Button` component supports `disabled` and `loading` states.
+
+<View>
+  <Button disabled>Button</Button>
+  <Button loading>Button</Button>
+</View>
+
+```tsx
+<View>
+  <Button disabled>Button</Button>
+  <Button loading>Button</Button>
+</View>
+```
+
+# Icon
+---
+If your button children contain just an icon, you can use the `icon` prop to make your button square.
+
+<View>
+  <Button size="xs" icon>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M224,128a95.76,95.76,0,0,1-31.8,71.37A72,72,0,0,0,128,160a40,40,0,1,0-40-40,40,40,0,0,0,40,40,72,72,0,0,0-64.2,39.37h0A96,96,0,0,1,184.92,50.69a16,16,0,0,0,20.39,20.39A95.61,95.61,0,0,1,224,128Z" opacity="0.2"></path><path d="M228.25,63.07l-4.66-2.69a23.6,23.6,0,0,0,0-8.76l4.66-2.69a8,8,0,0,0-8-13.86l-4.67,2.7A23.92,23.92,0,0,0,208,33.38V28a8,8,0,0,0-16,0v5.38a23.92,23.92,0,0,0-7.58,4.39l-4.67-2.7a8,8,0,1,0-8,13.86l4.66,2.69a23.6,23.6,0,0,0,0,8.76l-4.66,2.69a8,8,0,0,0,4,14.93,7.92,7.92,0,0,0,4-1.07l4.67-2.7A23.92,23.92,0,0,0,192,78.62V84a8,8,0,0,0,16,0V78.62a23.92,23.92,0,0,0,7.58-4.39l4.67,2.7a7.92,7.92,0,0,0,4,1.07,8,8,0,0,0,4-14.93ZM192,56a8,8,0,1,1,8,8A8,8,0,0,1,192,56Zm29.35,48.11a8,8,0,0,0-6.57,9.21A88.85,88.85,0,0,1,216,128a87.62,87.62,0,0,1-22.24,58.41,79.66,79.66,0,0,0-36.06-28.75,48,48,0,1,0-59.4,0,79.66,79.66,0,0,0-36.06,28.75A88,88,0,0,1,128,40a88.76,88.76,0,0,1,14.68,1.22,8,8,0,0,0,2.64-15.78,103.92,103.92,0,1,0,85.24,85.24A8,8,0,0,0,221.35,104.11ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0Z"></path></svg>
+  </Button>
+
+  <Button size="sm" icon>
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 256 256"><path d="M224,128a95.76,95.76,0,0,1-31.8,71.37A72,72,0,0,0,128,160a40,40,0,1,0-40-40,40,40,0,0,0,40,40,72,72,0,0,0-64.2,39.37h0A96,96,0,0,1,184.92,50.69a16,16,0,0,0,20.39,20.39A95.61,95.61,0,0,1,224,128Z" opacity="0.2"></path><path d="M228.25,63.07l-4.66-2.69a23.6,23.6,0,0,0,0-8.76l4.66-2.69a8,8,0,0,0-8-13.86l-4.67,2.7A23.92,23.92,0,0,0,208,33.38V28a8,8,0,0,0-16,0v5.38a23.92,23.92,0,0,0-7.58,4.39l-4.67-2.7a8,8,0,1,0-8,13.86l4.66,2.69a23.6,23.6,0,0,0,0,8.76l-4.66,2.69a8,8,0,0,0,4,14.93,7.92,7.92,0,0,0,4-1.07l4.67-2.7A23.92,23.92,0,0,0,192,78.62V84a8,8,0,0,0,16,0V78.62a23.92,23.92,0,0,0,7.58-4.39l4.67,2.7a7.92,7.92,0,0,0,4,1.07,8,8,0,0,0,4-14.93ZM192,56a8,8,0,1,1,8,8A8,8,0,0,1,192,56Zm29.35,48.11a8,8,0,0,0-6.57,9.21A88.85,88.85,0,0,1,216,128a87.62,87.62,0,0,1-22.24,58.41,79.66,79.66,0,0,0-36.06-28.75,48,48,0,1,0-59.4,0,79.66,79.66,0,0,0-36.06,28.75A88,88,0,0,1,128,40a88.76,88.76,0,0,1,14.68,1.22,8,8,0,0,0,2.64-15.78,103.92,103.92,0,1,0,85.24,85.24A8,8,0,0,0,221.35,104.11ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0Z"></path></svg>
+  </Button>
+
+  <Button size="md" icon>
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 256 256"><path d="M224,128a95.76,95.76,0,0,1-31.8,71.37A72,72,0,0,0,128,160a40,40,0,1,0-40-40,40,40,0,0,0,40,40,72,72,0,0,0-64.2,39.37h0A96,96,0,0,1,184.92,50.69a16,16,0,0,0,20.39,20.39A95.61,95.61,0,0,1,224,128Z" opacity="0.2"></path><path d="M228.25,63.07l-4.66-2.69a23.6,23.6,0,0,0,0-8.76l4.66-2.69a8,8,0,0,0-8-13.86l-4.67,2.7A23.92,23.92,0,0,0,208,33.38V28a8,8,0,0,0-16,0v5.38a23.92,23.92,0,0,0-7.58,4.39l-4.67-2.7a8,8,0,1,0-8,13.86l4.66,2.69a23.6,23.6,0,0,0,0,8.76l-4.66,2.69a8,8,0,0,0,4,14.93,7.92,7.92,0,0,0,4-1.07l4.67-2.7A23.92,23.92,0,0,0,192,78.62V84a8,8,0,0,0,16,0V78.62a23.92,23.92,0,0,0,7.58-4.39l4.67,2.7a7.92,7.92,0,0,0,4,1.07,8,8,0,0,0,4-14.93ZM192,56a8,8,0,1,1,8,8A8,8,0,0,1,192,56Zm29.35,48.11a8,8,0,0,0-6.57,9.21A88.85,88.85,0,0,1,216,128a87.62,87.62,0,0,1-22.24,58.41,79.66,79.66,0,0,0-36.06-28.75,48,48,0,1,0-59.4,0,79.66,79.66,0,0,0-36.06,28.75A88,88,0,0,1,128,40a88.76,88.76,0,0,1,14.68,1.22,8,8,0,0,0,2.64-15.78,103.92,103.92,0,1,0,85.24,85.24A8,8,0,0,0,221.35,104.11ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0Z"></path></svg>
+  </Button>
+
+  <Button size="lg" icon>
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 256 256"><path d="M224,128a95.76,95.76,0,0,1-31.8,71.37A72,72,0,0,0,128,160a40,40,0,1,0-40-40,40,40,0,0,0,40,40,72,72,0,0,0-64.2,39.37h0A96,96,0,0,1,184.92,50.69a16,16,0,0,0,20.39,20.39A95.61,95.61,0,0,1,224,128Z" opacity="0.2"></path><path d="M228.25,63.07l-4.66-2.69a23.6,23.6,0,0,0,0-8.76l4.66-2.69a8,8,0,0,0-8-13.86l-4.67,2.7A23.92,23.92,0,0,0,208,33.38V28a8,8,0,0,0-16,0v5.38a23.92,23.92,0,0,0-7.58,4.39l-4.67-2.7a8,8,0,1,0-8,13.86l4.66,2.69a23.6,23.6,0,0,0,0,8.76l-4.66,2.69a8,8,0,0,0,4,14.93,7.92,7.92,0,0,0,4-1.07l4.67-2.7A23.92,23.92,0,0,0,192,78.62V84a8,8,0,0,0,16,0V78.62a23.92,23.92,0,0,0,7.58-4.39l4.67,2.7a7.92,7.92,0,0,0,4,1.07,8,8,0,0,0,4-14.93ZM192,56a8,8,0,1,1,8,8A8,8,0,0,1,192,56Zm29.35,48.11a8,8,0,0,0-6.57,9.21A88.85,88.85,0,0,1,216,128a87.62,87.62,0,0,1-22.24,58.41,79.66,79.66,0,0,0-36.06-28.75,48,48,0,1,0-59.4,0,79.66,79.66,0,0,0-36.06,28.75A88,88,0,0,1,128,40a88.76,88.76,0,0,1,14.68,1.22,8,8,0,0,0,2.64-15.78,103.92,103.92,0,1,0,85.24,85.24A8,8,0,0,0,221.35,104.11ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0Z"></path></svg>
+  </Button>
+</View>
+
+```tsx
+<View>
+  <Button size="xs" icon>...</Button>
+  <Button size="sm" icon>...</Button>
+  <Button size="md" icon>...</Button>
+  <Button size="lg" icon>...</Button>
+</View>
+```
+
+# Ring
+---
+You can add a ring to the `Button` by setting the `withRing` prop to `true`.
+
+<View>
+  <Button withRing={true}>Click me!</Button>
+  <Button withRing={false}>Click me!</Button>
+</View>
+
+```tsx
+<View>
+  <Button withRing={true}>Click me!</Button>
+  <Button withRing={false}>Click me!</Button>
+</View>
+```
+
+# Animation
+---
+Available `animation` values are: `pulse` and `bounce`.
+
+<View>
+  <Button animation="pulse">Button</Button>
+  <Button animation="bounce">Button</Button>
+</View>
+
+```tsx
+<View>
+  <Button animation="pulse">Button</Button>
+  <Button animation="bounce">Button</Button>
+</View>
+```
+
+# Polymorphic
+---
+The `Button` component is a polymorphic component. This means that you can use it as a button, a link or any html element. You can use the `as` prop to change the underlying html element.
+
+<View>
+  <Button variant="link" as="a" href="https://www.google.com" target="_blank">Google</Button>
+</View>
+
+```tsx
+<View>
+  <Button
+    variant="link"
+    as="a"
+    href="https://www.google.com"
+    target="_blank"
+  >
+    Google
+  </Button>
+</View>
+```
+
+# Ref
+---
+The `Button` component supports the `ref` prop, which allows for obtaining a reference to the associated underlying HTML element.
+
+```tsx
+import { useRef } from 'react';
+import { Button } from '@rewind-ui/core';
+
+function App() {
+  const ref = useRef<HTMLButtonElement>(null);
+  return <Button ref={ref}>Click me!</Button>;
+}
+```
+
+# Examples
+---
+## Full width
+
+<View>
+  <Button className="w-full">Click me!</Button>
+</View>
+
+```tsx
+<View>
+  <Button className="w-full">Click me!</Button>
+</View>
+```
+
+## On click event
+
+<View>
+  <Button onClick={() => alert('Hello World!')}>Click me!</Button>
+</View>
+
+```tsx
+<View>
+  <Button onClick={() => alert('Hello World!')}>Click me!</Button>
+</View>
+```
+
+## Classname overrides
+
+To avoid completely [overwriting the default styles](https://rewind-ui.dev/theming), the `className` prop can be used to override the default classes. Rewind-UI is using [tailwind-merge](https://github.com/dcastil/tailwind-merge) to merge the default classes with the classes you provide in the `className` prop and resolve any possible conflicts.
+
+<View>
+  <Button className="text-white bg-pink-500 focus:bg-pink-600 hover:bg-pink-600 active:bg-pink-600/90 focus:ring-pink-300">I am pink</Button>
+</View>
+
+```tsx
+<View>
+  <Button className="text-white bg-pink-500 focus:bg-pink-600 hover:bg-pink-600 active:bg-pink-600/90 focus:ring-pink-300">
+    I am pink
+  </Button>
+</View>
+```
+
+# API Reference
+---
+## Properties
+All known button properties (e.g. type="submit") can be used on the `Button` component. Furthermore, the following properties are also supported:
+
+| Prop        | Type                | Description                                                                                | Default     |
+|:------------|:--------------------|:-------------------------------------------------------------------------------------------|:------------|
+| animation   | `ButtonAnimation`   | Sets the animation type                                                                    | `none`      |
+| color       | `ButtonColor`       | Sets the color                                                                             | `dark`      |
+| disabled    | `boolean`           | Disables button                                                                            | `false`     |
+| icon        | `boolean`           | Makes the button a perfect square in case the button contains just an icon instead of text | `false`     |
+| loading     | `boolean`           | Shows a loading spinner and disables the button                                            | `false`     |
+| radius      | `ButtonRadius`      | Sets the border radius                                                                     | `md`        |
+| shadow      | `ButtonShadow`      | Sets the shadow size                                                                       | `none`      |
+| shadowColor | `ButtonShadowColor` | Sets the shadow color                                                                      | `none`      |
+| size        | `ButtonSize`        | Sets the button size                                                                       | `md`        |
+| tone        | `ButtonTone`        | Sets the button tone                                                                       | `solid`     |
+| variant     | `ButtonVariant`     | Sets the button variant                                                                    | `undefined` |
+| withRing    | `boolean`           | Shows a ring around the button on active state                                             | `true`      |
+
+## Events
+The `Button` component supports all known button events (e.g. `onClick`, `onMouseEnter`, `onMouseLeave`, `onFocus`, `onBlur`, etc.).
+<View>
+  <Button onMouseEnter={() => alert('Hello World!')}>On mouse enter!</Button>
+</View>
+
+## Types
+
+```tsx
+type ButtonAnimation = 'none' | 'pulse' | 'bounce';
+```
+
+```tsx
+type ButtonColor =
+  | 'white'
+  | 'blue'
+  | 'red'
+  | 'green'
+  | 'yellow'
+  | 'purple'
+  | 'gray'
+  | 'dark'
+  | 'black';
+```
+
+```tsx
+type ButtonRadius = 'none' | 'sm' | 'base' | 'md' | 'lg' | 'full';
+```
+
+```tsx
+type ButtonShadow = 'none' | 'sm' | 'base' | 'md' | 'lg' | 'xl';
+```
+
+```tsx
+type ButtonShadowColor =
+  | 'none'
+  | 'white'
+  | 'blue'
+  | 'red'
+  | 'green'
+  | 'yellow'
+  | 'purple'
+  | 'gray'
+  | 'dark'
+  | 'black';
+```
+
+```tsx
+type ButtonSize = 'xs' | 'sm' | 'md' | 'lg';
+```
+
+```tsx
+type ButtonTone = 'solid' | 'light' | 'outline' | 'transparent';
+```
+
+```tsx
+type ButtonVariant =
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'link'
+  | 'danger'
+  | 'success'
+  | 'warning'
+  | 'info';
+```
