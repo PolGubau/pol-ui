@@ -34,7 +34,7 @@
     "@codesandbox/sandpack-themes": "^2.0.21",
     "@tailwindcss/typography": "^0.5.9",
     "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.21",
+    "postcss": "^8.4.31",
     "remark": "^14.0.2",
     "remark-gfm": "^3.0.1",
     "tailwind-scrollbar": "^2.0.1",
