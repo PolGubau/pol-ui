@@ -1,5 +1,5 @@
 {
-  "name": "@rewind-ui/core",
+  "name": "pol-ui",
   "description": "A React component library for building modern web applications using Tailwind CSS.",
   "version": "0.18.0",
   "license": "MIT",
