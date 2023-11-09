@@ -6,6 +6,5 @@
   "linked": [],
   "access": "public",
   "updateInternalDependencies": "patch",
-  "ignore": ["pol-ui-docs", "pol-ui-storybook", "pol-ui-dashboard"],
   "baseBranch": "main"
 }
