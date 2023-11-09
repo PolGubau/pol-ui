@@ -32,5 +32,7 @@
       "@helpers/*": ["./src/helpers/*"]
     }
   },
+  "types": ["node", "jest", "@testing-library/jest-dom"],
+
   "exclude": ["node_modules"]
 }

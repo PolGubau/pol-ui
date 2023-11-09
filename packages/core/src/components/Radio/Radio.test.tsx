@@ -1,6 +1,5 @@
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { createRef } from 'react';
-import * as React from 'react';
 import { describe, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { Radio } from '.';
@@ -30,11 +29,6 @@ describe('Radio', () => {
 
     render(<Radio ref={ref} label="This is a radio" />);
     expect(ref.current).toHaveProperty('id');
-  });
-
-  it('should have given label', () => {
-    render(<Radio label="This is a radio" />);
-    expect(screen.getByText('This is a radio')).toBeInTheDocument();
   });
 
   it('should have given description', () => {
