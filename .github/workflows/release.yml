@@ -33,10 +33,10 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-        node-version: '20.x'
-        access: 'public'
+        node-version: 20.x
+        access: public
         publish: pnpm run release
-        registry-url: 'https://registry.npmjs.org/'
+        registry-url: https://registry.npmjs.org/
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
