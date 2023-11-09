@@ -1,7 +1,7 @@
 {
   "name": "pol-ui",
   "description": "A React component library for building modern web applications using Tailwind CSS.",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "license": "MIT",
   "author": {
     "name": "Pol Gubau Amores",
@@ -23,7 +23,11 @@
     "tailwindcss",
     "nextjs",
     "components",
-    "ui-kit"
+    "ui-kit",
+    "ui",
+    "pol gubau amores",
+    "polgubau",
+    "pol-ui"
   ],
   "main": "dist/index.cjs",
   "module": "dist/index.js",
