@@ -35,7 +35,6 @@ jobs:
         with:
           # This expects you to have a script called release which does a build for your packages and calls changeset publish
           publish: pnpm run release
-
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
         env:
