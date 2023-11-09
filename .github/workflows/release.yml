@@ -38,7 +38,6 @@ jobs:
           publish: pnpm run release
           registry-url: 'https://registry.npmjs.org/'
           
-
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
