@@ -20,7 +20,7 @@ npm install pol-/ui
 2. Import the components you want to use
 
 ```js
-import { Button } from "pol-ui";
+import { Button } from 'pol-ui';
 ```
 
 3. Use them in your project
@@ -31,7 +31,7 @@ import { Button } from "pol-ui";
 
 ## 📚 Documentation
 
-- `npm run docs`: Run Storybook documentation in dev mode
+- `npm run dev`: Run port 6006 to read Storybook documentation in dev mode
 - `npm run build:docs`: Build Storybook documentation
 
 ## ✅ Testing
