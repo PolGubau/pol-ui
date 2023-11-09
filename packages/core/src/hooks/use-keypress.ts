@@ -21,6 +21,7 @@ export function useKeypress(
     };
 
     document.addEventListener('keydown', handle);
+
     return () => {
       document.removeEventListener('keydown', handle);
     };

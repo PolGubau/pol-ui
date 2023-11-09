@@ -29,10 +29,8 @@
       "@hooks/*": ["./src/hooks/*"],
       "@types/*": ["./src/types/*"],
       "@animations/*": ["./src/animations/*"],
-      "@helpers/*": ["./src/helpers/*"]
+      "@helpers/*": ["./src/helpers/*"],
     }
   },
-  "types": ["node", "jest", "@testing-library/jest-dom"],
-
   "exclude": ["node_modules"]
 }

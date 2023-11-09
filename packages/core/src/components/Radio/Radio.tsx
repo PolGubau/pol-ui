@@ -1,9 +1,10 @@
 'use client';
 import { RadioComponent, RadioProps } from '@components/Radio';
 import { useRadioGroupContext } from '@components/Radio/RadioGroup.context';
+import { useComponentTheme } from '@theme/theme.context';
+import { usePropId } from '@utils/usePropId';
 import { ChangeEvent, forwardRef, Ref, useMemo } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { useComponentTheme, usePropId } from '../..';
 
 const defaultProps: Partial<RadioProps> = {
   color: 'dark',

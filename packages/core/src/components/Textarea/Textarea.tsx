@@ -41,7 +41,7 @@ const Textarea: TextareaComponent = forwardRef(
       ...props,
     };
     const propId = usePropId(props.id);
-    const id = controlId ?? propId;
+    const id = controlId || propId;
 
     const classes = useMemo(() => {
       return twMerge(

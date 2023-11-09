@@ -1,12 +1,12 @@
 'use client';
+import { Tab } from '@components/Tabs/Tab';
+import { TabContent } from '@components/Tabs/TabContent';
+import { TabList } from '@components/Tabs/TabList';
 import { TabsComponent, TabsContext, TabsProps } from '@components/Tabs/Tabs.types';
 import { useComponentTheme } from '@theme/theme.context';
 import { usePropId } from '@utils/usePropId';
 import { forwardRef, Ref, useState } from 'react';
 import { TabsContextProvider } from './Tabs.context';
-import { Tab } from './Tab/Tab';
-import { TabList } from './TabList';
-import { TabContent } from './TabContent';
 
 const defaultProps: Partial<TabsProps> = {
   color: 'dark',

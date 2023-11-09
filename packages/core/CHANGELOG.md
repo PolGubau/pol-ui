@@ -1,4 +1,4 @@
-# Pol/UI /core
+# @rewind-ui/core
 
 ## 0.18.0
 
