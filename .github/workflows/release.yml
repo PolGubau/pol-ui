@@ -33,6 +33,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
+          registry-url: 'https://registry.npmjs.org'
           publish: pnpm run release
 
         env:
