@@ -1,20 +1,21 @@
-.DS_Store
-node_modules
-.turbo
-*.log
-.next
-dist
-dist-ssr
-*.local
+# Dependency directories
+node_modules/
+
+# Optional npm cache directory
+.npm
+
+# dotenv environment variables file
 .env
-.cache
-server/dist
-public/dist
-storybook-static/
-.idea
+.env.test
+
+# Build output
+dist
+
+coverage/
+
+.swc/
 
 
- 
+.storybook-static/
 
-# Contentlayer
-.contentlayer
+old.txt
