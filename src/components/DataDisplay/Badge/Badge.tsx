@@ -1,5 +1,4 @@
 import { Transition } from "@headlessui/react";
-import { Icon } from "../../Base/Icon";
 import { badgeStyles } from "./Badge.styles";
 import { Fragment } from "react";
 import {
@@ -16,6 +15,7 @@ import {
 	SidesY,
 } from "../../../types";
 import { applyBgColor, applyRounded, applyShadow } from "../../../style";
+import Icon from "../../Base/Icon/Icon";
 
 interface Props extends BaseProps {
 	content: string | number;
