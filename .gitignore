@@ -19,3 +19,7 @@ coverage/
 .storybook-static/
 
 old.txt
+
+
+
+.env.local
