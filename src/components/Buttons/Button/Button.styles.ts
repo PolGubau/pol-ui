@@ -21,7 +21,7 @@ import {
 	Variants,
 	Sizes,
 	JustifyContents,
-} from "./../../../types/index";
+} from "../../../types/index";
 
 // variant is the shape (filled, outlined, text, icon)
 // color is the color of the button from a predefined list
