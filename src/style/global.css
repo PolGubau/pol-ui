@@ -2,28 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-	font-weight: 400;
-	font-family: Poppins;
-	font-style: normal;
-	src: local("Poppins"), url("../assets/fonts/Poppins-Regular.ttf") format("truetype");
-	font-display: auto;
-}
-@font-face {
-	font-weight: 800;
-	font-family: Poppins;
-	font-style: normal;
-	src: local("Poppins"), url("../assets/fonts/Poppins-Bold.ttf") format("truetype");
-	font-display: auto;
-}
-@font-face {
-	font-weight: 300;
-	font-family: Poppins;
-	font-style: normal;
-	src: local("Poppins-Light"), url("../assets/fonts/Poppins-Light.ttf") format("truetype");
-	font-display: auto;
-}
-
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -31,24 +9,9 @@
 }
 
 :root {
-	--font-family-title: "Poppins", arial, sans-serif;
-	--font-family-body: "Poppins", arial, sans-serif;
-
-	font-family: var(--font-family-body);
 	font-size: 14;
 }
-code {
-	font-family: var(--font-family-body);
-}
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-family: var(--font-family-title);
-}
 h1 {
 	font-size: 2.5rem;
 	font-weight: 800;
