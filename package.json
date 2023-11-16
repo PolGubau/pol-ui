@@ -130,7 +130,7 @@
 		"test:watch": "jest --watch"
 	},
 	"type": "module",
-	"types": "./dist/src/types.d.ts",
+	"types": "./dist/src/index.ts",
 	"typings": "",
 	"version": "2.0.4"
 }

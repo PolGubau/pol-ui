@@ -41,7 +41,7 @@ const Radio: React.FC<Props> = ({
 			onChange(event.target.checked);
 		}
 	};
- 	return (
+	return (
 		<div
 			className={`inline-flex items-center gap-2   cursor-pointer ${applyDisabled(
 				disabled

@@ -34,7 +34,6 @@ export const defaultModal: ModalProps = {
 	},
 };
 export const modalWithLogin: ModalProps = {
-	
 	isOpen: true,
 	handleClose: () => {
 		alert(texts.handleClose);

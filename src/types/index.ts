@@ -1,4 +1,4 @@
-import { IconNames } from "./components";
+import { IconNames } from "../components";
 
 export type ValueOf<T> = T[keyof T];
 
