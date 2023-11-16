@@ -16,6 +16,7 @@
 		]
 	},
 	"dependencies": {
+		"@changesets/cli": "^2.26.2",
 		"framer-motion": "^10.16.5",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
@@ -25,7 +26,6 @@
 		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
 		"@headlessui/react": "^1.7.17",
 		"@headlessui/tailwindcss": "^0.2.0",
-		"usehooks-ts": "^2.9.1",
 		"@storybook/addon-essentials": "^7.5.2",
 		"@storybook/addon-interactions": "^7.5.2",
 		"@storybook/addon-links": "^7.5.2",
@@ -64,6 +64,7 @@
 		"tailwindcss": "^3.3.5",
 		"tailwindcss-animated": "^1.0.1",
 		"typescript": "^5.2.2",
+		"usehooks-ts": "^2.9.1",
 		"vite": "^4.5.0",
 		"vite-plugin-css-injected-by-js": "^3.3.0",
 		"vite-plugin-dts": "^3.6.3",
@@ -117,6 +118,7 @@
 	},
 	"private": false,
 	"scripts": {
+		"release": "npm run build && npm run changeset publish",
 		"build": "vite build",
 		"build:docs": "storybook build",
 		"docs": "storybook dev -p 6006",
