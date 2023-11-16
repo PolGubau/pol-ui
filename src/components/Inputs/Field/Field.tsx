@@ -17,7 +17,7 @@ interface Props<T> {
 	maxLength?: number;
 	fullWidth?: boolean;
 	size?: "small" | "normal" | "large";
-	autoComplete?: "on" | "off";
+	autoComplete?: string;
 	variant?: ButtonVariant;
 	props?: Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof Props<T>>;
 	id?: string;
