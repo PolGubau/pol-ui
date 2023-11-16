@@ -118,7 +118,8 @@
 	},
 	"private": false,
 	"scripts": {
-		"release": "npm run build && npm run changeset publish",
+		"version": "px changeset version",
+		"release": "npm run build && npx changeset publish",
 		"build": "vite build",
 		"build:docs": "storybook build",
 		"docs": "storybook dev -p 6006",
