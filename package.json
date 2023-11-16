@@ -118,7 +118,7 @@
 	},
 	"private": false,
 	"scripts": {
-		"version": "px changeset version",
+		"version": "npx changeset version",
 		"release": "npm run build && npx changeset publish",
 		"build": "vite build",
 		"build:docs": "storybook build",
@@ -132,5 +132,5 @@
 	"type": "module",
 	"types": "./dist/src/index.ts",
 	"typings": "",
-	"version": "2.0.4"
+	"version": "2.0.5"
 }
