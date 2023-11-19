@@ -19,7 +19,7 @@ import { Sidebar } from '~/src';
 const code = `
 'use client';
 
-import { Sidebar } from 'flowbite-react';
+import { Sidebar } from 'pol-ui';
 import {
   HiArrowSmRight,
   HiChartPie,

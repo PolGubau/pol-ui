@@ -6,7 +6,7 @@ import { type CodeData } from '~/components/code-demo';
 import { Tabs } from '~/src';
 
 const code = `
-import { Tabs } from 'flowbite-react';
+import { Tabs } from 'pol-ui';
 import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';
 

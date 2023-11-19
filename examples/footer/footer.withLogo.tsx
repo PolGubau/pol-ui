@@ -4,7 +4,7 @@ import { Footer, FooterBrand, FooterCopyright, FooterDivider, FooterLink, Footer
 const code = `
 'use client';
 
-import { Footer } from 'flowbite-react';
+import { Footer } from 'pol-ui';
 
 function Component() {
   return (
@@ -33,7 +33,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Footer, FooterBrand, FooterCopyright, FooterDivider, FooterLink, FooterLinkGroup } from 'flowbite-react';
+import { Footer, FooterBrand, FooterCopyright, FooterDivider, FooterLink, FooterLinkGroup } from 'pol-ui';
 
 function Component() {
   return (

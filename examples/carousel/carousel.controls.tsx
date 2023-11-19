@@ -4,7 +4,7 @@ import { Carousel } from '~/src';
 const code = `
 'use client';
 
-import { Carousel } from 'flowbite-react';
+import { Carousel } from 'pol-ui';
 
 function Component() {
   return (
@@ -22,7 +22,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Carousel } from 'flowbite-react';
+import { Carousel } from 'pol-ui';
 
 function Component() {
   return (

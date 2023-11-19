@@ -14,7 +14,7 @@ import {
 const code = `
 'use client';
 
-import { Footer } from 'flowbite-react';
+import { Footer } from 'pol-ui';
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
 
 function Component() {
@@ -81,7 +81,7 @@ import {
   FooterLink,
   FooterLinkGroup,
   FooterTitle,
-} from 'flowbite-react';
+} from 'pol-ui';
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
 
 function Component() {

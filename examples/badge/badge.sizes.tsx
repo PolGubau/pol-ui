@@ -4,7 +4,7 @@ import { Badge } from '~/src';
 const code = `
 'use client';
 
-import { Badge } from 'flowbite-react';
+import { Badge } from 'pol-ui';
 
 function Component() {
   return (
@@ -39,7 +39,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Badge } from 'flowbite-react';
+import { Badge } from 'pol-ui';
 
 function Component() {
   return (

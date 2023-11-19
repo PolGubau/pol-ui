@@ -4,7 +4,7 @@ import { type CodeData } from '~/components/code-demo';
 import { Tabs } from '~/src';
 
 const code = `
-import { Tabs } from 'flowbite-react';
+import { Tabs } from 'pol-ui';
 
 function Component() {
   return (

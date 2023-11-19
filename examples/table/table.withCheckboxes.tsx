@@ -4,7 +4,7 @@ import { Checkbox, Table, TableBody, TableCell, TableHead, TableHeadCell, TableR
 const code = `
 'use client';
 
-import { Checkbox, Table } from 'flowbite-react';
+import { Checkbox, Table } from 'pol-ui';
 
 function Component() {
   return (
@@ -75,7 +75,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Checkbox, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from 'flowbite-react';
+import { Checkbox, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from 'pol-ui';
 
 function Component() {
   return (

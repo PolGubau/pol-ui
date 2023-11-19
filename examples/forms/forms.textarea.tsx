@@ -4,7 +4,7 @@ import { Label, Textarea } from '~/src';
 const code = `
 'use client';
 
-import { Label, Textarea } from 'flowbite-react';
+import { Label, Textarea } from 'pol-ui';
 
 function Component() {
   return (
@@ -19,7 +19,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Label, Textarea } from 'flowbite-react';
+import { Label, Textarea } from 'pol-ui';
 
 function Component() {
   return (

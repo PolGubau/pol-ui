@@ -4,7 +4,7 @@ import { Toast, ToastToggle } from '~/src';
 const code = `
 'use client';
 
-import { Toast } from 'flowbite-react';
+import { Toast } from 'pol-ui';
 
 function Component() {
   return (
@@ -25,7 +25,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Toast, ToastToggle } from 'flowbite-react';
+import { Toast, ToastToggle } from 'pol-ui';
 
 function Component() {
   return (

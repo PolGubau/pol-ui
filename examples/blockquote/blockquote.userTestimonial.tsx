@@ -4,7 +4,7 @@ import { Avatar, Blockquote } from '~/src';
 const code = `
 'use client';
 
-import { Avatar, Blockquote } from 'flowbite-react';
+import { Avatar, Blockquote } from 'pol-ui';
 
 function Component() {
   return (
@@ -37,7 +37,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Avatar, Blockquote } from 'flowbite-react';
+import { Avatar, Blockquote } from 'pol-ui';
 
 function Component() {
   return (

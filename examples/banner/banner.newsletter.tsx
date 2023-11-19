@@ -5,7 +5,7 @@ import { Banner, BannerCollapseButton, Button, Label, TextInput } from '~/src';
 const code = `
 'use client';
 
-import { Banner, Button, Label, TextInput } from 'flowbite-react';
+import { Banner, Button, Label, TextInput } from 'pol-ui';
 import { HiX } from 'react-icons/hi';
 
 function Component() {
@@ -34,7 +34,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Banner, BannerCollapseButton, Button, Label, TextInput } from 'flowbite-react';
+import { Banner, BannerCollapseButton, Button, Label, TextInput } from 'pol-ui';
 import { HiX } from 'react-icons/hi';
 
 function Component() {

@@ -7,7 +7,7 @@ import { Button, Checkbox, Label, Modal, TextInput } from '~/src';
 const code = `
 'use client';
 
-import { Button, Checkbox, Label, Modal, TextInput } from 'flowbite-react';
+import { Button, Checkbox, Label, Modal, TextInput } from 'pol-ui';
 import { useState } from 'react';
 
 function Component() {

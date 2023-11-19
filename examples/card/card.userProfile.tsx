@@ -5,7 +5,7 @@ import { Card, Dropdown, DropdownItem } from '~/src';
 const code = `
 'use client';
 
-import { Card, Dropdown } from 'flowbite-react';
+import { Card, Dropdown } from 'pol-ui';
 import Image from 'next/image';
 
 function Component() {
@@ -70,7 +70,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Card, Dropdown, DropdownItem } from 'flowbite-react';
+import { Card, Dropdown, DropdownItem } from 'pol-ui';
 import Image from 'next/image';
 
 function Component() {

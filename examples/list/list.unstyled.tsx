@@ -4,7 +4,7 @@ import { List, ListItem } from '~/src';
 const code = `
 'use client';
 
-import { List } from 'flowbite-react';
+import { List } from 'pol-ui';
 
 function Component() {
   return (
@@ -18,7 +18,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { List, ListItem } from 'flowbite-react';
+import { List, ListItem } from 'pol-ui';
 
 function Component() {
   return (

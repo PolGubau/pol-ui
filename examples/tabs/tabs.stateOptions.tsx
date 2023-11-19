@@ -9,7 +9,7 @@ import { Button, Tabs, type TabsRef } from '~/src';
 const code = `
 'use client';
 
-import { Button, Tabs, TabsRef } from 'flowbite-react';
+import { Button, Tabs, TabsRef } from 'pol-ui';
 import { useRef, useState } from 'react';
 import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';

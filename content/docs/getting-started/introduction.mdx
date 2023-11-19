@@ -3,7 +3,7 @@ title: Flowbite React - UI Component Library
 description: Learn more about the free and open-source Flowbite React UI components and start building modern web applications using React components based on Tailwind CSS
 ---
 
-[Flowbite React](https://github.com/themesberg/flowbite-react) is a free and open-source UI component library based on the core Flowbite components and built with React components and interactivity handling.
+[Flowbite React](https://github.com/polgubau/pol-ui) is a free and open-source UI component library based on the core Flowbite components and built with React components and interactivity handling.
 
 This library features hundreds of interactive elements such as navbars, dropdowns, modals, and sidebars all handled by React and based on the utility classes from Tailwind CSS.
 
@@ -47,16 +47,16 @@ Add Tailwind CSS to a CSS file:
 1. Install Flowbite and Flowbite React:
 
 ```bash
-npm i flowbite-react # or yarn add flowbite flowbite-react
+npm i pol-ui # or yarn add flowbite pol-ui
 ```
 
-2. Add the Flowbite plugin to `tailwind.config.js`, and include content from `flowbite-react`:
+2. Add the Flowbite plugin to `tailwind.config.js`, and include content from `pol-ui`:
 
 ```javascript
 module.exports = {
   content: [
     ...,
-    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
+    'node_modules/pol-ui/**/*.{js,jsx,ts,tsx}'
   ],
   plugins: [..., require('flowbite/plugin')],
   ...
@@ -65,10 +65,10 @@ module.exports = {
 
 ### Try it out
 
-How you use Flowbite React depends on your project setup. In general, you can just import the components you want to use from `flowbite-react` and use them in a React `.jsx` file:
+How you use Flowbite React depends on your project setup. In general, you can just import the components you want to use from `pol-ui` and use them in a React `.jsx` file:
 
 ```jsx
-import { Button } from 'flowbite-react';
+import { Button } from 'pol-ui';
 
 export default function MyPage() {
   return (

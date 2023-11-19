@@ -10,7 +10,7 @@ import { Sidebar } from '~/src';
 const code = `
 'use client';
 
-import { Sidebar } from 'flowbite-react';
+import { Sidebar } from 'pol-ui';
 import { BiBuoy } from 'react-icons/bi';
 import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
 

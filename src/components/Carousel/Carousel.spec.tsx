@@ -134,11 +134,11 @@ const nonActiveIndicatorClasses = 'bg-white/50 hover:bg-white dark:bg-gray-800/5
 
 const TestCarousel: FC<CarouselProps> = (props) => (
   <Carousel {...props}>
-    <Image alt="" src="https://flowbite.com/docs/images/carousel/carousel-1.svg" height="100" width="100" />
-    <Image alt="" src="https://flowbite.com/docs/images/carousel/carousel-2.svg" height="100" width="100" />
-    <Image alt="" src="https://flowbite.com/docs/images/carousel/carousel-3.svg" height="100" width="100" />
-    <Image alt="" src="https://flowbite.com/docs/images/carousel/carousel-4.svg" height="100" width="100" />
-    <Image alt="" src="https://flowbite.com/docs/images/carousel/carousel-5.svg" height="100" width="100" />
+    <Image alt="" src="https://polgubau.com/docs/images/carousel/carousel-1.svg" height="100" width="100" />
+    <Image alt="" src="https://polgubau.com/docs/images/carousel/carousel-2.svg" height="100" width="100" />
+    <Image alt="" src="https://polgubau.com/docs/images/carousel/carousel-3.svg" height="100" width="100" />
+    <Image alt="" src="https://polgubau.com/docs/images/carousel/carousel-4.svg" height="100" width="100" />
+    <Image alt="" src="https://polgubau.com/docs/images/carousel/carousel-5.svg" height="100" width="100" />
   </Carousel>
 );
 

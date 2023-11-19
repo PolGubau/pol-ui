@@ -6,7 +6,7 @@ import { Banner, BannerCollapseButton } from '~/src';
 const code = `
 'use client';
 
-import { Banner } from 'flowbite-react';
+import { Banner } from 'pol-ui';
 import { HiArrowRight, HiX } from 'react-icons/hi';
 import { MdPercent } from 'react-icons/md';
 
@@ -41,7 +41,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Banner, BannerCollapseButton } from 'flowbite-react';
+import { Banner, BannerCollapseButton } from 'pol-ui';
 import { HiArrowRight, HiX } from 'react-icons/hi';
 import { MdPercent } from 'react-icons/md';
 

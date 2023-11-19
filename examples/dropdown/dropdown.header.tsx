@@ -4,7 +4,7 @@ import { Dropdown, DropdownDivider, DropdownHeader, DropdownItem } from '~/src';
 const code = `
 'use client';
 
-import { Dropdown } from 'flowbite-react';
+import { Dropdown } from 'pol-ui';
 
 function Component() {
   return (
@@ -24,7 +24,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Dropdown, DropdownDivider, DropdownHeader, DropdownItem } from 'flowbite-react';
+import { Dropdown, DropdownDivider, DropdownHeader, DropdownItem } from 'pol-ui';
 
 function Component() {
   return (

@@ -32,13 +32,13 @@ export const WithA11yImage = Template.bind({});
 WithA11yImage.storyName = 'With image with alt text';
 WithA11yImage.args = {
   imgAlt: 'Meaningful alt text for an image that is not purely decorative',
-  imgSrc: 'https://flowbite.com/docs/images/blog/image-1.jpg',
+  imgSrc: 'https://polgubau.com/docs/images/blog/image-1.jpg',
 };
 
 export const WithDecorativeImage = Template.bind({});
 WithDecorativeImage.storyName = 'With decorative image';
 WithDecorativeImage.args = {
-  imgSrc: 'https://flowbite.com/docs/images/blog/image-1.jpg',
+  imgSrc: 'https://polgubau.com/docs/images/blog/image-1.jpg',
 };
 
 export const WithNextImage = Template.bind({});
@@ -51,7 +51,7 @@ WithNextImage.args = {
       loader={({ src }) => src}
       width={1200}
       height={800}
-      src={'https://flowbite.com/docs/images/blog/image-1.jpg'}
+      src={'https://polgubau.com/docs/images/blog/image-1.jpg'}
     />
   ),
 };

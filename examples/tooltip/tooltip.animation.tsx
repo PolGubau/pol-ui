@@ -4,7 +4,7 @@ import { Button, Tooltip } from '~/src';
 const code = `
 'use client';
 
-import { Button, Tooltip } from 'flowbite-react';
+import { Button, Tooltip } from 'pol-ui';
 
 function Component() {
   return (
@@ -30,7 +30,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Button, Tooltip } from 'flowbite-react';
+import { Button, Tooltip } from 'pol-ui';
 
 function Component() {
   return (

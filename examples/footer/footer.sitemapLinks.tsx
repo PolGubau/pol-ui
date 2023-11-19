@@ -5,7 +5,7 @@ import { Footer, FooterCopyright, FooterIcon, FooterLink, FooterLinkGroup, Foote
 const code = `
 'use client';
 
-import { Footer } from 'flowbite-react';
+import { Footer } from 'pol-ui';
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
 
 function Component() {
@@ -66,7 +66,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Footer, FooterCopyright, FooterIcon, FooterLink, FooterLinkGroup, FooterTitle } from 'flowbite-react';
+import { Footer, FooterCopyright, FooterIcon, FooterLink, FooterLinkGroup, FooterTitle } from 'pol-ui';
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
 
 function Component() {

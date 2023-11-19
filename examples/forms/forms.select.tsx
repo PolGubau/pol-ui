@@ -4,7 +4,7 @@ import { Label, Select } from '~/src';
 const code = `
 'use client';
 
-import { Label, Select } from 'flowbite-react';
+import { Label, Select } from 'pol-ui';
 
 function Component() {
   return (
@@ -24,7 +24,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Label, Select } from 'flowbite-react';
+import { Label, Select } from 'pol-ui';
 
 function Component() {
   return (

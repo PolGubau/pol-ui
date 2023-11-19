@@ -5,7 +5,7 @@ import { Button } from '~/src';
 const code = `
 'use client';
 
-import { Button } from 'flowbite-react';
+import { Button } from 'pol-ui';
 import { HiOutlineArrowRight, HiShoppingCart } from 'react-icons/hi';
 
 function Component() {
@@ -25,7 +25,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Button } from 'flowbite-react';
+import { Button } from 'pol-ui';
 import { HiOutlineArrowRight, HiShoppingCart } from 'react-icons/hi';
 
 function Component() {

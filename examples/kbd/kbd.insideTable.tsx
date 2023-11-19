@@ -5,7 +5,7 @@ import { Kbd, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } 
 const code = `
 'use client';
 
-import { Kbd, Table } from 'flowbite-react';
+import { Kbd, Table } from 'pol-ui';
 import { MdKeyboardArrowDown, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowUp } from 'react-icons/md';
 
 function Component() {
@@ -49,7 +49,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Kbd, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from 'flowbite-react';
+import { Kbd, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from 'pol-ui';
 import { MdKeyboardArrowDown, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowUp } from 'react-icons/md';
 
 function Component() {

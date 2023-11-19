@@ -9,7 +9,7 @@ import { Badge, Sidebar } from '~/src';
 const code = `
 'use client';
 
-import { Badge, Sidebar } from 'flowbite-react';
+import { Badge, Sidebar } from 'pol-ui';
 import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
 
 function Component() {

@@ -4,7 +4,7 @@ import { Kbd } from '~/src';
 const code = `
 'use client';
 
-import { Kbd } from 'flowbite-react';
+import { Kbd } from 'pol-ui';
 
 function Component() {
   return (
@@ -25,7 +25,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Kbd } from 'flowbite-react';
+import { Kbd } from 'pol-ui';
 
 function Component() {
   return (

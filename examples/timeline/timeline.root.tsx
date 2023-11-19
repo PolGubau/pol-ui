@@ -14,7 +14,7 @@ import {
 const code = `
 'use client';
 
-import { Button, Timeline } from 'flowbite-react';
+import { Button, Timeline } from 'pol-ui';
 import { HiArrowNarrowRight } from 'react-icons/hi';
 
 function Component() {
@@ -71,7 +71,7 @@ import {
   TimelinePoint,
   TimelineTime,
   TimelineTitle,
-} from 'flowbite-react';
+} from 'pol-ui';
 import { HiArrowNarrowRight } from 'react-icons/hi';
 
 function Component() {

@@ -5,7 +5,7 @@ import { Toast } from '~/src';
 const code = `
 'use client';
 
-import { Toast } from 'flowbite-react';
+import { Toast } from 'pol-ui';
 import { FaTelegramPlane } from 'react-icons/fa';
 
 function Component() {
@@ -19,7 +19,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Toast } from 'flowbite-react';
+import { Toast } from 'pol-ui';
 import { FaTelegramPlane } from 'react-icons/fa';
 
 function Component() {

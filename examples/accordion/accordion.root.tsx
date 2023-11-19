@@ -4,7 +4,7 @@ import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from '~/s
 const code = `
 'use client';
 
-import { Accordion } from 'flowbite-react';
+import { Accordion } from 'pol-ui';
 
 function Component() {
   return (
@@ -81,7 +81,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from 'flowbite-react';
+import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from 'pol-ui';
 
 function Component() {
   return (

@@ -4,7 +4,7 @@ import { Button } from '~/src';
 const code = `
 'use client';
 
-import { Button } from 'flowbite-react';
+import { Button } from 'pol-ui';
 
 function Component() {
   return (
@@ -23,7 +23,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Button } from 'flowbite-react';
+import { Button } from 'pol-ui';
 
 function Component() {
   return (

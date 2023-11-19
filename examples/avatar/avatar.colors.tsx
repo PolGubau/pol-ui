@@ -4,7 +4,7 @@ import { Avatar } from '~/src';
 const code = `
 'use client';
 
-import { Avatar } from 'flowbite-react';
+import { Avatar } from 'pol-ui';
 
 function Component() {
   return (
@@ -29,7 +29,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Avatar } from 'flowbite-react';
+import { Avatar } from 'pol-ui';
 
 function Component() {
   return (

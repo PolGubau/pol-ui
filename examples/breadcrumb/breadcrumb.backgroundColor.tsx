@@ -5,7 +5,7 @@ import { Breadcrumb, BreadcrumbItem } from '~/src';
 const code = `
 'use client';
 
-import { Breadcrumb } from 'flowbite-react';
+import { Breadcrumb } from 'pol-ui';
 import { HiHome } from 'react-icons/hi';
 
 function Component() {
@@ -22,7 +22,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Breadcrumb, BreadcrumbItem } from 'flowbite-react';
+import { Breadcrumb, BreadcrumbItem } from 'pol-ui';
 import { HiHome } from 'react-icons/hi';
 
 function Component() {

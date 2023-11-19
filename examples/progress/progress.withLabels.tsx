@@ -4,7 +4,7 @@ import { Progress } from '~/src';
 const code = `
 'use client';
 
-import { Progress } from 'flowbite-react';
+import { Progress } from 'pol-ui';
 
 function Component() {
   return <Progress progress={50} textLabel="Flowbite" size="lg" labelProgress labelText />;
@@ -12,7 +12,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Progress } from 'flowbite-react';
+import { Progress } from 'pol-ui';
 
 function Component() {
   return <Progress progress={50} textLabel="Flowbite" size="lg" labelProgress labelText />;

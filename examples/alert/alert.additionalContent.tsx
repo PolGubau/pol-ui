@@ -6,7 +6,7 @@ const code = `
 'use client';
 
 import { HiEye, HiInformationCircle } from 'react-icons/hi';
-import { Alert } from 'flowbite-react';
+import { Alert } from 'pol-ui';
 
 function Component() {
   return (
@@ -45,7 +45,7 @@ function ExampleAdditionalContent() {
 
 const codeRSC = `
 import { HiEye, HiInformationCircle } from 'react-icons/hi';
-import { Alert } from 'flowbite-react';
+import { Alert } from 'pol-ui';
 
 function Component() {
   return (

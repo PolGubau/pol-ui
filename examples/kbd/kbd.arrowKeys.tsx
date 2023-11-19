@@ -5,7 +5,7 @@ import { Kbd } from '~/src';
 const code = `
 'use client';
 
-import { Kbd } from 'flowbite-react';
+import { Kbd } from 'pol-ui';
 import { MdKeyboardArrowDown, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowUp } from 'react-icons/md';
 
 function Component() {
@@ -21,7 +21,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Kbd } from 'flowbite-react';
+import { Kbd } from 'pol-ui';
 import { MdKeyboardArrowDown, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowUp } from 'react-icons/md';
 
 function Component() {

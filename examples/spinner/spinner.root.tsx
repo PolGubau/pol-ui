@@ -4,7 +4,7 @@ import { Spinner } from '~/src';
 const code = `
 'use client';
 
-import { Spinner } from 'flowbite-react';
+import { Spinner } from 'pol-ui';
 
 function Component() {
   return <Spinner aria-label="Default status example" />;
@@ -12,7 +12,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Spinner } from 'flowbite-react';
+import { Spinner } from 'pol-ui';
 
 function Component() {
   return <Spinner aria-label="Default status example" />;

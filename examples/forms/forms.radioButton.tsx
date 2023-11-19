@@ -4,7 +4,7 @@ import { Label, Radio } from '~/src';
 const code = `
 'use client';
 
-import { Label, Radio } from 'flowbite-react';
+import { Label, Radio } from 'pol-ui';
 
 function Component() {
   return (
@@ -38,7 +38,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Label, Radio } from 'flowbite-react';
+import { Label, Radio } from 'pol-ui';
 
 function Component() {
   return (

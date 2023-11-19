@@ -4,7 +4,7 @@ import { Blockquote } from '~/src';
 const code = `
 'use client';
 
-import { Blockquote } from 'flowbite-react';
+import { Blockquote } from 'pol-ui';
 
 function Component() {
   return (
@@ -38,7 +38,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Blockquote } from 'flowbite-react';
+import { Blockquote } from 'pol-ui';
 
 function Component() {
   return (

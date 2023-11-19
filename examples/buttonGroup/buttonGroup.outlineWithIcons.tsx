@@ -5,7 +5,7 @@ import { Button, ButtonGroup } from '~/src';
 const code = `
 'use client';
 
-import { Button } from 'flowbite-react';
+import { Button } from 'pol-ui';
 import { HiAdjustments, HiCloudDownload, HiUserCircle } from 'react-icons/hi';
 
 function Component() {
@@ -59,7 +59,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Button, ButtonGroup } from 'flowbite-react';
+import { Button, ButtonGroup } from 'pol-ui';
 import { HiAdjustments, HiCloudDownload, HiUserCircle } from 'react-icons/hi';
 
 function Component() {

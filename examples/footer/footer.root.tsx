@@ -4,7 +4,7 @@ import { Footer, FooterCopyright, FooterLink, FooterLinkGroup } from '~/src';
 const code = `
 'use client';
 
-import { Footer } from 'flowbite-react';
+import { Footer } from 'pol-ui';
 
 function Component() {
   return (
@@ -22,7 +22,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Footer, FooterCopyright, FooterLink, FooterLinkGroup } from 'flowbite-react';
+import { Footer, FooterCopyright, FooterLink, FooterLinkGroup } from 'pol-ui';
 
 function Component() {
   return (

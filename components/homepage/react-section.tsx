@@ -78,7 +78,7 @@ export const ReactSection: FC = () => {
                 <Button href="/docs/getting-started/quickstart">
                   Start building <HiOutlineArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-                <Button href="https://github.com/themesberg/flowbite-react" color="gray">
+                <Button href="https://github.com/polgubau/pol-ui" color="gray">
                   View on GitHub
                 </Button>
               </div>

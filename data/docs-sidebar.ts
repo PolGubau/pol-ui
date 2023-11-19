@@ -22,7 +22,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
       { title: 'Server Components', href: '/docs/getting-started/server-components', isNew: true },
       { title: 'TypeScript', href: '/docs/getting-started/typescript' },
       { title: 'License', href: '/docs/getting-started/license' },
-      { title: 'Changelog', href: 'https://github.com/themesberg/flowbite-react/releases', isExternal: true },
+      { title: 'Changelog', href: 'https://github.com/polgubau/pol-ui/releases', isExternal: true },
       { title: 'Contributing', href: '/docs/getting-started/contributing' },
     ],
   },

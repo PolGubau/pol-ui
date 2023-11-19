@@ -5,7 +5,7 @@ import { Button, Toast, ToastToggle } from '~/src';
 const code = `
 'use client';
 
-import { Button, Toast } from 'flowbite-react';
+import { Button, Toast } from 'pol-ui';
 import { MdLoop } from 'react-icons/md';
 
 function Component() {
@@ -37,7 +37,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Button, Toast, ToastToggle } from 'flowbite-react';
+import { Button, Toast, ToastToggle } from 'pol-ui';
 import { MdLoop } from 'react-icons/md';
 
 function Component() {

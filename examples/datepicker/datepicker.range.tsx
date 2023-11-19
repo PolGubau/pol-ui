@@ -4,7 +4,7 @@ import { Datepicker } from '~/src';
 const code = `
 'use client';
 
-import { Datepicker } from 'flowbite-react';
+import { Datepicker } from 'pol-ui';
 
 function Component() {
   return <Datepicker minDate={new Date(2023, 0, 1)} maxDate={new Date(2023, 3, 30)} />;
@@ -12,7 +12,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Datepicker } from 'flowbite-react';
+import { Datepicker } from 'pol-ui';
 
 function Component() {
   return <Datepicker minDate={new Date(2023, 0, 1)} maxDate={new Date(2023, 3, 30)} />;

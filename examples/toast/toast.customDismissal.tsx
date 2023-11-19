@@ -8,7 +8,7 @@ import { Button, Toast } from '~/src';
 const code = `
 'use client';
 
-import { Button, Toast } from 'flowbite-react';
+import { Button, Toast } from 'pol-ui';
 import { useState } from 'react';
 import { HiFire } from 'react-icons/hi';
 

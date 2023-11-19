@@ -5,7 +5,7 @@ import { ListGroup, ListGroupItem } from '~/src';
 const code = `
 'use client';
 
-import { ListGroup } from 'flowbite-react';
+import { ListGroup } from 'pol-ui';
 import { HiCloudDownload, HiInbox, HiOutlineAdjustments, HiUserCircle } from 'react-icons/hi';
 
 function Component() {
@@ -25,7 +25,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { ListGroup, ListGroupItem } from 'flowbite-react';
+import { ListGroup, ListGroupItem } from 'pol-ui';
 import { HiCloudDownload, HiInbox, HiOutlineAdjustments, HiUserCircle } from 'react-icons/hi';
 
 function Component() {

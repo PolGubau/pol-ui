@@ -24,7 +24,7 @@ export const CarbonAds: FC = () => {
       const script = document.createElement('script');
       script.async = true;
       script.id = '_carbonads_js';
-      script.src = '//cdn.carbonads.com/carbon.js?serve=CEAIC53L&placement=flowbite-reactcom';
+      script.src = '//cdn.carbonads.com/carbon.js?serve=CEAIC53L&placement=pol-uicom';
 
       const container = document.querySelector('#carbon-container');
       if (container) {

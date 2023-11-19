@@ -6,7 +6,7 @@ const code = `
 'use client';
 
 import Image from 'next/image';
-import { Avatar } from 'flowbite-react';
+import { Avatar } from 'pol-ui';
 
 function Component() {
   return (
@@ -39,7 +39,7 @@ function Component() {
 
 const codeRSC = `
 import Image from 'next/image';
-import { Avatar } from 'flowbite-react';
+import { Avatar } from 'pol-ui';
 
 function Component() {
   return (

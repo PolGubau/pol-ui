@@ -4,7 +4,7 @@ import { Rating, RatingAdvanced, RatingStar } from '~/src';
 const code = `
 'use client';
 
-import { Rating } from 'flowbite-react';
+import { Rating } from 'pol-ui';
 
 function Component() {
   return (
@@ -37,7 +37,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Rating, RatingAdvanced, RatingStar } from 'flowbite-react';
+import { Rating, RatingAdvanced, RatingStar } from 'pol-ui';
 
 function Component() {
   return (

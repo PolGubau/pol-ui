@@ -33,13 +33,13 @@ export function generateMetadata({ params }: Props): Metadata {
       type: 'article',
       title: doc.title,
       description: doc.description,
-      images: 'https://flowbite.s3.amazonaws.com/github/flowbite-react.png',
+      images: 'https://flowbite.s3.amazonaws.com/github/pol-ui.png',
     },
     twitter: {
       card: 'summary_large_image',
       title: doc.title,
       description: doc.description,
-      images: ['https://flowbite.s3.amazonaws.com/github/flowbite-react.png'],
+      images: ['https://flowbite.s3.amazonaws.com/github/pol-ui.png'],
     },
   };
 }
@@ -167,7 +167,7 @@ function DocFooter() {
             <p className="mb-3 mt-4 max-w-sm text-gray-600 dark:text-gray-400">
               Code licensed{' '}
               <a
-                href="https://github.com/themesberg/flowbite-react/blob/main/LICENSE"
+                href="https://github.com/polgubau/pol-ui/blob/main/LICENSE"
                 className="text-cyan-600 hover:underline"
               >
                 MIT
@@ -189,7 +189,7 @@ function DocFooter() {
                 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white"
               />
               <Footer.LinkGroup col className="text-gray-600 dark:text-gray-400">
-                <Footer.Link href="https://github.com/themesberg/flowbite-react" className="text-base">
+                <Footer.Link href="https://github.com/polgubau/pol-ui" className="text-base">
                   GitHub
                 </Footer.Link>
                 <Footer.Link href="https://flowbite.com/" className="text-base">
@@ -212,7 +212,7 @@ function DocFooter() {
                 <Footer.Link href="https://discord.gg/4eeurUVvTy" className="text-base">
                   Discord
                 </Footer.Link>
-                <Footer.Link href="https://github.com/themesberg/flowbite-react/discussions" className="text-base">
+                <Footer.Link href="https://github.com/polgubau/pol-ui/discussions" className="text-base">
                   Github Discussions
                 </Footer.Link>
               </Footer.LinkGroup>

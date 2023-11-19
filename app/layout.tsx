@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     description:
       'Flowbite React is an open-source UI component library built with React components, Tailwind CSS utility classes and based on the Flowbite design system and components.',
-    images: 'https://flowbite.s3.amazonaws.com/github/flowbite-react.png',
+    images: 'https://flowbite.s3.amazonaws.com/github/pol-ui.png',
     title: 'Flowbite React - UI Component Library',
   },
   twitter: {
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     description:
       'Flowbite React is an open-source UI component library built with React components, Tailwind CSS utility classes and based on the Flowbite design system and components.',
     creator: '@zoltanszogyenyi',
-    images: ['https://flowbite.s3.amazonaws.com/github/flowbite-react.png'],
+    images: ['https://flowbite.s3.amazonaws.com/github/pol-ui.png'],
   },
 };
 

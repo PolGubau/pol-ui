@@ -49,7 +49,7 @@ WithHeader.args = {
     <>
       <Dropdown.Header>
         <span className="block text-sm">Bonnie Green</span>
-        <span className="block truncate text-sm font-medium">name@flowbite.com</span>
+        <span className="block truncate text-sm font-medium">name@polgubau.com</span>
       </Dropdown.Header>
       <Dropdown.Item>Dashboard</Dropdown.Item>
       <Dropdown.Item>Settings</Dropdown.Item>
@@ -93,7 +93,7 @@ CustomItem.args = {
       <Dropdown.Item>Default button</Dropdown.Item>
       <Dropdown.Item as="span">As span</Dropdown.Item>
       <Dropdown.Divider />
-      <Dropdown.Item as="a" href="https://flowbite.com/" target="_blank">
+      <Dropdown.Item as="a" href="https://polgubau.com/" target="_blank">
         As link
       </Dropdown.Item>
     </>

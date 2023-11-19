@@ -4,7 +4,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from 
 const code = `
 'use client';
 
-import { Table } from 'flowbite-react';
+import { Table } from 'pol-ui';
 
 function Component() {
   return (
@@ -63,7 +63,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from 'flowbite-react';
+import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from 'pol-ui';
 
 function Component() {
   return (

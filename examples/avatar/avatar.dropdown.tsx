@@ -4,7 +4,7 @@ import { Avatar, Dropdown, DropdownDivider, DropdownHeader, DropdownItem } from 
 const code = `
 'use client';
 
-import { Avatar, Dropdown } from 'flowbite-react';
+import { Avatar, Dropdown } from 'pol-ui';
 
 function Component() {
   return (
@@ -28,7 +28,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Avatar, Dropdown, DropdownDivider, DropdownHeader, DropdownItem } from 'flowbite-react';
+import { Avatar, Dropdown, DropdownDivider, DropdownHeader, DropdownItem } from 'pol-ui';
 
 function Component() {
   return (

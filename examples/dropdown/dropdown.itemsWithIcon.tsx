@@ -7,7 +7,7 @@ import { Dropdown } from '~/src';
 const code = `
 'use client';
 
-import { Dropdown } from 'flowbite-react';
+import { Dropdown } from 'pol-ui';
 import { HiCog, HiCurrencyDollar, HiLogout, HiViewGrid } from 'react-icons/hi';
 
 function Component() {

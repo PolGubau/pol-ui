@@ -13,7 +13,7 @@ description: Copy the starter or follow the steps below to get started with Flow
 1. Install dependencies:
 
 ```bash
-npm install --save autoprefixer postcss tailwindcss flowbite flowbite-react
+npm install --save autoprefixer postcss tailwindcss flowbite pol-ui
 ```
 
 2. Create `postcss.config.js`:
@@ -34,7 +34,7 @@ module.exports = {
  * @type {import('@types/tailwindcss/tailwind-config').TailwindConfig}
  */
 module.exports = {
-  content: ['./node_modules/flowbite-react/**/*.js', './pages/**/*.{ts,tsx}', './public/**/*.html'],
+  content: ['./node_modules/pol-ui/**/*.js', './pages/**/*.{ts,tsx}', './public/**/*.html'],
   plugins: [require('flowbite/plugin')],
   theme: {},
 };
@@ -48,10 +48,10 @@ module.exports = {
 @tailwind utilities;
 ```
 
-5. Start using `flowbite-react`!
+5. Start using `pol-ui`!
 
 ```jsx
-import { Alert } from 'flowbite-react';
+import { Alert } from 'pol-ui';
 
 export default function MyPage() {
   return <Alert color="info">Alert!</Alert>;

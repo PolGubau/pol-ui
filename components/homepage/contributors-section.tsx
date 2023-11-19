@@ -13,7 +13,7 @@ interface Contributor {
 
 async function fetchContributors(): Promise<Contributor[]> {
   try {
-    const result = await fetch('https://api.github.com/repos/themesberg/flowbite-react/contributors?per_page=21');
+    const result = await fetch('https://api.github.com/repos/polgubau/pol-ui/contributors?per_page=21');
 
     return safeResJson(result);
   } catch (error) {
@@ -71,7 +71,7 @@ export const ContributorsSection: FC = async () => {
                 <p>Become a member of a community of developers by supporting Flowbite</p>
               </div>
               <Link
-                href="https://github.com/themesberg/flowbite-react"
+                href="https://github.com/polgubau/pol-ui"
                 className="flex items-center gap-2 whitespace-nowrap text-base font-medium text-cyan-700 hover:underline"
               >
                 See our repository{' '}

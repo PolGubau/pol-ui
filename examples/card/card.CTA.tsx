@@ -4,7 +4,7 @@ import { Card } from '~/src';
 const code = `
 'use client';
 
-import { Card } from 'flowbite-react';
+import { Card } from 'pol-ui';
 
 function Component() {
   return (
@@ -69,7 +69,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Card } from 'flowbite-react';
+import { Card } from 'pol-ui';
 
 function Component() {
   return (

@@ -4,7 +4,7 @@ import { Checkbox, Label } from '~/src';
 const code = `
 'use client';
 
-import { Checkbox, Label } from 'flowbite-react';
+import { Checkbox, Label } from 'pol-ui';
 
 function Component() {
   return (
@@ -52,7 +52,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Checkbox, Label } from 'flowbite-react';
+import { Checkbox, Label } from 'pol-ui';
 
 function Component() {
   return (

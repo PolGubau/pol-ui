@@ -3,7 +3,7 @@ name: Bug report
 about: Report a bug in Flowbite React
 ---
 
-- [ ] I have searched the [Issues](https://github.com/themesberg/flowbite-react/issues) to see if this bug has already been reported
+- [ ] I have searched the [Issues](https://github.com/polgubau/pol-ui/issues) to see if this bug has already been reported
 - [ ] I have tested the latest version
 
 ## Steps to reproduce

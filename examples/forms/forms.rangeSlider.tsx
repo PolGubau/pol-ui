@@ -4,7 +4,7 @@ import { Label, RangeSlider } from '~/src';
 const code = `
 'use client';
 
-import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
+import { Button, Checkbox, Label, TextInput } from 'pol-ui';
 
 function Component() {
   return (
@@ -45,7 +45,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
+import { Button, Checkbox, Label, TextInput } from 'pol-ui';
 
 function Component() {
   return (

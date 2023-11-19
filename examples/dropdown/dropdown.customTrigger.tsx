@@ -6,7 +6,7 @@ import { Dropdown } from '~/src';
 const code = `
 'use client';
 
-import { Dropdown } from 'flowbite-react';
+import { Dropdown } from 'pol-ui';
 
 function Component() {
   return (

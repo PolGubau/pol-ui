@@ -7,7 +7,7 @@ import { ToggleSwitch } from '~/src';
 const code = `
 'use client';
 
-import { ToggleSwitch } from 'flowbite-react';
+import { ToggleSwitch } from 'pol-ui';
 import { useState } from 'react';
 
 function Component() {

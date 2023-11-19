@@ -6,7 +6,7 @@ import { Alert } from '~/src';
 
 const code = `
 import { HiEye, HiInformationCircle } from 'react-icons/hi';
-import { Alert } from 'flowbite-react';
+import { Alert } from 'pol-ui';
 
 function Component() {
   return (

@@ -4,7 +4,7 @@ import { Label, TextInput } from '~/src';
 const code = `
 'use client';
 
-import { Label, TextInput } from 'flowbite-react';
+import { Label, TextInput } from 'pol-ui';
 
 function Component() {
   return (
@@ -19,7 +19,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Label, TextInput } from 'flowbite-react';
+import { Label, TextInput } from 'pol-ui';
 
 function Component() {
   return (

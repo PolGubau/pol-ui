@@ -9,7 +9,7 @@ async function fetchSafe<T>(endpoint: string): Promise<T> {
 async function fetchStargazers(): Promise<string> {
   try {
     const result = await fetchSafe<{ stargazers_count: string }>(
-      'https://api.github.com/repos/themesberg/flowbite-react',
+      'https://api.github.com/repos/polgubau/pol-ui',
     );
 
     return result.stargazers_count;
@@ -21,7 +21,7 @@ async function fetchStargazers(): Promise<string> {
 async function fetchNpmDownloads(): Promise<string> {
   try {
     const result = await fetchSafe<{ downloads: string }>(
-      'https://api.npmjs.org/downloads/point/2021-01-01:2100-01-01/flowbite-react',
+      'https://api.npmjs.org/downloads/point/2021-01-01:2100-01-01/pol-ui',
     );
 
     return result.downloads;
@@ -95,7 +95,7 @@ export const SocialProofSection: FC = async () => {
           <div className="flex w-full flex-col items-start gap-6 md:gap-3">
             <div className="flex flex-row items-start gap-2 self-stretch md:justify-between md:gap-2 md:pr-16 lg:justify-end lg:gap-2 lg:pr-0">
               <a
-                href="https://github.com/themesberg/flowbite-react"
+                href="https://github.com/polgubau/pol-ui"
                 className="flex w-full max-w-[272px] flex-col items-start gap-4 rounded-lg px-4 py-2 text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 lg:px-8 lg:py-6"
               >
                 <svg
@@ -119,7 +119,7 @@ export const SocialProofSection: FC = async () => {
                 </div>
               </a>
               <a
-                href="https://www.npmjs.com/package/flowbite-react"
+                href="https://www.npmjs.com/package/pol-ui"
                 className="flex w-full max-w-[272px] flex-col items-start gap-4 rounded-lg px-4 py-2 text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 lg:px-8 lg:py-6"
               >
                 <svg width="18" height="18" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">

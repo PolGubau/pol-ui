@@ -7,7 +7,7 @@ import { Button, Modal, Select } from '~/src';
 const code = `
 'use client';
 
-import { Button, Modal, Select } from 'flowbite-react';
+import { Button, Modal, Select } from 'pol-ui';
 import { useState } from 'react';
 
 function Component() {

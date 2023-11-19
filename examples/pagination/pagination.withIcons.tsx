@@ -7,7 +7,7 @@ import { Pagination } from '~/src';
 const code = `
 'use client';
 
-import { Pagination } from 'flowbite-react';
+import { Pagination } from 'pol-ui';
 import { useState } from 'react';
 
 function Component() {
