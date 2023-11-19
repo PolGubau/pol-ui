@@ -24,10 +24,10 @@ export interface TextInputTheme {
       base: string;
       sizes: TextInputSizes;
       colors: TextInputColors;
-      withIcon: boolean;
-      withRightIcon: boolean;
-      withAddon: boolean;
-      withShadow: boolean;
+      withIcon: IBoolean;
+      withRightIcon: IBoolean;
+      withAddon: IBoolean;
+      withShadow: IBoolean;
     };
   };
 }

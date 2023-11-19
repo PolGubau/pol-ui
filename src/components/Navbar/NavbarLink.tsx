@@ -9,8 +9,8 @@ import { useNavbarContext } from './NavbarContext';
 
 export interface NavbarLinkTheme {
   base: string;
-  active: boolean;
-  disabled: boolean;
+  active: IBoolean;
+  disabled: IBoolean;
 }
 
 export interface NavbarLinkProps extends ComponentProps<'a'>, Record<string, unknown> {

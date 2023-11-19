@@ -10,7 +10,7 @@ import { useNavbarContext } from './NavbarContext';
 export interface NavbarCollapseTheme {
   base: string;
   list: string;
-  hidden: boolean;
+  hidden: IBoolean;
 }
 
 export interface NavbarCollapseProps extends ComponentProps<'div'> {

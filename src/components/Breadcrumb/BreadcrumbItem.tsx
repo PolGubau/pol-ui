@@ -10,7 +10,7 @@ import type { IBoolean } from '../PoluiProvider';
 export interface BreadcrumbItemTheme {
   base: string;
   chevron: string;
-  href: boolean;
+  href: IBoolean;
   icon: string;
 }
 

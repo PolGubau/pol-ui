@@ -37,7 +37,7 @@ export interface TabStyles {
 
 export interface TabStyleItemProps {
   base: string;
-  active: boolean;
+  active: IBoolean;
 }
 
 export type TabStyleItem<Type> = {

@@ -27,11 +27,11 @@ export interface NavbarTheme {
 
 export interface NavbarRootTheme {
   base: string;
-  rounded: boolean;
-  bordered: boolean;
+  rounded: IBoolean;
+  bordered: IBoolean;
   inner: {
     base: string;
-    fluid: boolean;
+    fluid: IBoolean;
   };
 }
 
