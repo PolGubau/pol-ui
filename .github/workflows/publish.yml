@@ -1,0 +1,48 @@
+name: CI
+
+on: push
+concurrency: ${{ github.ref }}
+
+jobs:
+  test:
+    name: 🧪 Lint and test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 👍 Checkout
+        uses: actions/checkout@v3
+
+      - name: ❇️ Setup node.js LTS
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          registry-url: https://registry.npmjs.org
+          cache: 'yarn'
+
+      - name: 📥 Install Dependencies
+        run: yarn install --immutable
+
+      - name: 💅 Lint
+        run: yarn lint
+
+      - name: 🧪 Unit Tests and coverage
+        run: yarn test:coverage
+  build:
+    name: 🏗 Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: 'https://npm.pkg.github.com'
+      - run: yarn install --frozen-lockfile
+      - run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: actions/setup-node@v4
+        with:
+          registry-url: 'https://npm.pkg.github.com'
+      - run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
