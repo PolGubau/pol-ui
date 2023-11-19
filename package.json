@@ -1,18 +1,18 @@
 {
-  "name": "flowbite-react",
-  "version": "0.6.4",
-  "description": "Official React components built for Flowbite and Tailwind CSS",
+  "name": "pol-ui",
+  "version": "2.0.8",
+  "description": "Official React components built for Pol Gubau Amores' apps",
   "keywords": [
     "design-system",
-    "flowbite",
-    "flowbite-react",
+    "pol gubau amores",
+    "react",
     "react",
     "tailwind",
     "tailwindcss",
-    "tailwind-css"
+    "ui"
   ],
-  "homepage": "https://flowbite-react.com",
-  "bugs": "https://github.com/themesberg/flowbite-react/issues",
+  "homepage": "https://ui.polgubau.com",
+  "bugs": "https://github.com/PolGubau/pol-ui/issues",
   "license": "MIT",
   "files": [
     "./lib/"
@@ -22,7 +22,7 @@
   "types": "./lib/esm/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/themesberg/flowbite-react"
+    "url": "https://github.com/PolGubau/pol-ui"
   },
   "scripts": {
     "build": "next build",
@@ -191,6 +191,6 @@
     }
   },
   "engines": {
-    "node": ">=20.9.0"
+    "node": ">=18.12.1"
   }
 }
