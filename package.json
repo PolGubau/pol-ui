@@ -189,5 +189,8 @@
       "jsx-a11y/anchor-is-valid": "off",
       "react/no-unescaped-entities": "off"
     }
+  },
+  "engines": {
+    "node": ">=20.9.0"
   }
 }
