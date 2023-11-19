@@ -147,12 +147,12 @@ describe('Components / Accordion', () => {
         expect(accordion()).toHaveClass('text-4xl');
       });
 
-      it('should use custom `flush` classes', () => {
+      it('should use custom `bordered` classes', () => {
         const theme: CustomPoluiTheme = {
           accordion: {
             root: {
               bordered: {
-                off: 'text-4xl',
+                off: 'text-3xl',
                 on: 'text-3xl',
               },
             },
@@ -168,10 +168,10 @@ describe('Components / Accordion', () => {
 
         const accordions = screen.getAllByTestId('ui-accordion');
         const normal = accordions[0];
-        const flush = accordions[1];
+        const bordered = accordions[1];
 
-        expect(normal).toHaveClass('text-4xl');
-        expect(flush).toHaveClass('text-3xl');
+        expect(normal).toHaveClass('text-3xl');
+        expect(bordered).toHaveClass('text-3xl');
       });
     });
 
@@ -230,7 +230,7 @@ describe('Components / Accordion', () => {
         );
 
         const normalTitles = [titles()[0], titles()[1]];
-        const flushTitles = [titles()[2], titles()[3]];
+        const borderedTitles = [titles()[2], titles()[3]];
         const openTitles = [titles()[0], titles()[2]];
         const closedTitles = [titles()[1], titles()[3]];
 
@@ -238,9 +238,9 @@ describe('Components / Accordion', () => {
           expect(title).toHaveClass('p-3');
         });
         normalTitles.forEach((title) => {
-          expect(title).toHaveClass('text-4xl');
+          expect(title).toHaveClass('text-3xl');
         });
-        flushTitles.forEach((title) => {
+        borderedTitles.forEach((title) => {
           expect(title).toHaveClass('text-3xl');
         });
         openTitles.forEach((title) => {

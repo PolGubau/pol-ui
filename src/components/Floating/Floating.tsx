@@ -45,9 +45,6 @@ export interface FloatingProps extends Omit<ComponentProps<'div'>, 'content' | '
   minWidth?: number;
 }
 
-/**
- * @see https://floating-ui.com/docs/react-dom-interactions
- */
 export const Floating: FC<FloatingProps> = ({
   animation = 'duration-300',
   arrow = true,
@@ -129,7 +126,7 @@ export const Floating: FC<FloatingProps> = ({
               style === 'light' && theme.arrow.style.light,
               style === 'auto' && theme.arrow.style.auto,
             )}
-            data-testid="ui-ui-arrow"
+            data-testid="ui-arrow"
             ref={arrowRef}
             style={{
               top: arrowY ?? ' ',

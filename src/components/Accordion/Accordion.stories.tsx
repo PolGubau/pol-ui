@@ -9,7 +9,7 @@ export default {
   component: Accordion,
   args: {
     alwaysOpen: false,
-    flush: false,
+    bordered: true,
   },
 } as Meta;
 

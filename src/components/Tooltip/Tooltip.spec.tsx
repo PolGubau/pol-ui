@@ -73,8 +73,8 @@ const TooltipTests = (): JSX.Element => {
   );
 };
 
-const arrows = () => screen.getAllByTestId('ui-ui-arrow');
+const arrows = () => screen.getAllByTestId('ui-arrow');
 
-const targets = () => screen.getAllByTestId('ui-ui-target');
+const targets = () => screen.getAllByTestId('ui-target');
 
-const tooltips = () => screen.getAllByTestId('ui-ui');
+const tooltips = () => screen.getAllByTestId('ui-target');

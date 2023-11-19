@@ -17,9 +17,6 @@ export interface TooltipProps extends Omit<ComponentProps<'div'>, 'content' | 's
   trigger?: 'hover' | 'click';
 }
 
-/**
- * @see https://floating-ui.com/docs/react-dom-interactions
- */
 export const Tooltip: FC<TooltipProps> = ({
   animation = 'duration-300',
   arrow = true,

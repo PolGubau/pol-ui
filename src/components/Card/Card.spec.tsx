@@ -7,15 +7,15 @@ describe('Components / Card', () => {
   describe('Functionality', () => {
     it('should render an image when `imgSrc` is provided', () => {
       render(<Card imgSrc="https://polgubau.com/_next/image?url=%2Fimages%2Fme.png&w=256&q=75" />);
-      expect(screen.queryAllByTestId('PoluiProvider-card-image')).toHaveLength(1);
-      expect(screen.queryByTestId('PoluiProvider-card-image')).toHaveAttribute(
+      expect(screen.queryAllByTestId('ui-card-image')).toHaveLength(1);
+      expect(screen.queryByTestId('ui-card-image')).toHaveAttribute(
         'src',
         'https://polgubau.com/_next/image?url=%2Fimages%2Fme.png&w=256&q=75',
       );
     });
     it('should not render an `<img>` given an undefined `imgSrc`', () => {
       render(<Card imgSrc={undefined} />);
-      expect(screen.queryAllByTestId('PoluiProvider-card-image')).toHaveLength(0);
+      expect(screen.queryAllByTestId('ui-card-image')).toHaveLength(0);
     });
 
     it('should render the image from the `renderImage` prop', () => {
@@ -32,7 +32,7 @@ describe('Components / Card', () => {
         />,
       );
       expect(screen.queryAllByTestId('dummy-div2')).toHaveLength(1);
-      expect(screen.queryAllByTestId('PoluiProvider-card-image')).toHaveLength(0);
+      expect(screen.queryAllByTestId('ui-card-image')).toHaveLength(0);
     });
     it('should provide the theme and horizontal flag to the `renderImage` function', () => {
       const spy = vi.fn(() => <div data-testid="dummy-div2" />);
@@ -185,6 +185,6 @@ describe('Components / Card', () => {
   });
 });
 
-const card = () => screen.getByTestId('PoluiProvider-card');
+const card = () => screen.getByTestId('ui-card');
 
-const cards = () => screen.getAllByTestId('PoluiProvider-card');
+const cards = () => screen.getAllByTestId('ui-card');

@@ -77,7 +77,7 @@ describe('Components / Badge', () => {
         </PoluiProvider>,
       );
 
-      const badges = screen.getAllByTestId('PoluiProvider-badge');
+      const badges = screen.getAllByTestId('ui-badge');
       const regularBadge = badges[0];
       const emptyBadge = badges[1];
 
@@ -89,8 +89,8 @@ describe('Components / Badge', () => {
   });
 });
 
-const badge = () => screen.getByTestId('PoluiProvider-badge');
+const badge = () => screen.getByTestId('ui-badge');
 
-const icon = () => screen.getByTestId('PoluiProvider-badge-icon');
+const icon = () => screen.getByTestId('ui-badge-icon');
 
 const link = () => screen.getByRole('link');
