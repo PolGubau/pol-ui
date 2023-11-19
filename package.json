@@ -1,6 +1,6 @@
 {
   "name": "pol-ui",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "description": "Official React components built for Pol Gubau Amores' apps",
   "keywords": [
     "design-system",
@@ -10,6 +10,9 @@
     "tailwind",
     "tailwindcss",
     "ui"
+  ],
+  "contributors": [
+    "Pol Gubau Amores <gubaupol@gmail.com> (https://polgubau.com)"
   ],
   "homepage": "https://ui.polgubau.com",
   "bugs": "https://github.com/PolGubau/pol-ui/issues",
