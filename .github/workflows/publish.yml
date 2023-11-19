@@ -39,11 +39,10 @@ jobs:
       - name: ❇️ Setup node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
           cache: 'yarn'
 
       - name: 📥 Install Dependencies
-        run: yarn install
+        run: yarn install --ignore-engines
 
       - name: 🛠️ Build
         run: yarn build

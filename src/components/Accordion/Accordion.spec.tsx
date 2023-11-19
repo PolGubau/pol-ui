@@ -93,7 +93,7 @@ describe('Components / Accordion', () => {
         <>
           <TestAccordion />
           {/* eslint-disable-next-line jsx-a11y/role-has-required-aria-props */}
-          <button role="checkbox">Outside button</button>
+          <button>Outside button</button>
         </>,
       );
 
