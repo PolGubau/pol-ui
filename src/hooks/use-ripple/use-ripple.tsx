@@ -1,13 +1,14 @@
 'use client';
+import type { RefObject, CSSProperties } from 'react';
 import { useEffect, useState } from 'react';
 import { useDebounce } from '../use-debounce/use-debounce';
 
 /**
  * This hook accepts a ref to any element and adds a click event handler that creates ripples when click
  */
-const useRipple = <T extends HTMLElement>(ref: React.RefObject<T>) => {
+const useRipple = <T extends HTMLElement>(ref: RefObject<T>) => {
   //ripples are just styles that we attach to span elements
-  const [ripples, setRipples] = useState<React.CSSProperties[]>([]);
+  const [ripples, setRipples] = useState<CSSProperties[]>([]);
 
   useEffect(() => {
     //check if there's a ref
