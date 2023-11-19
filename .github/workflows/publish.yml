@@ -28,7 +28,7 @@ jobs:
       - name: 🧪 Unit Tests and coverage
         run: yarn test:coverage
   build:
-    name: 🏗 Build
+    name: 🏗 Build and publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
