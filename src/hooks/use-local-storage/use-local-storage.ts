@@ -1,3 +1,4 @@
+'use client';
 import type { Dispatch, SetStateAction } from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import { useEventListener } from '../use-event-listener/use-event-listener';

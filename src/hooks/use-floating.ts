@@ -1,3 +1,4 @@
+'use client';
 import type { ElementProps, Placement, ReferenceType, UseRoleProps } from '@floating-ui/react';
 import {
   autoUpdate,
