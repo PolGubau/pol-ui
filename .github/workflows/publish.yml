@@ -26,31 +26,18 @@ jobs:
 
       - name: 🧪 Unit Tests and coverage
         run: yarn test:coverage
-
-  publish:
-    name: 🚀 Publish
+  build:
     runs-on: ubuntu-latest
-    needs: test
-    if: github.ref == 'refs/heads/main'
-
     steps:
-      - name: 👍 Checkout
-        uses: actions/checkout@v3
-
-      - name: ❇️ Setup node.js LTS
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v3
         with:
-          node-version: lts/*
-          registry-url: https://registry.npmjs.org
-          cache: 'yarn'
-
-      - name: 📥 Install Dependencies
-        run: yarn install --immutable
-
-      - name: 🛠️ Build
-        run: yarn build
-
-      - name: 🚀 Publish to npm
-        run: yarn publish
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+          # Defaults to the user or organization that owns the workflow file
+          scope: '@octocat'
+      - run: yarn
+      - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
