@@ -21,4 +21,4 @@ For all contributions, please respect the following guidelines:
 - Be aware that the pull request review process is not immediate, and is generally proportional to the size of the pull request.
 - If your pull request is merged, please do not ask for an immediate release of the gem. There are many factors contributing to when releases occur (remember that they affect thousands of apps with Pol-ui in their Gemfiles). If necessary, please install from the Github source until the next official release.
 
-Copyright :copyright: 2023 Pol Gubau Amores, released under the MIT license.
+Copyright :copyright: 2023 Pol Gubau Amoeres, released under the MIT license.

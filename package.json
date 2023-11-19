@@ -49,7 +49,8 @@
     "test:open": "vitest --ui",
     "test:e2e": "start-test 3000 cypress:run",
     "test:e2e:open": "start-test 3000 cypress:open",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "publish": "yarn prepublishOnly && yarn release && yarn publish:lib"
   },
   "config": {
     "commitizen": {

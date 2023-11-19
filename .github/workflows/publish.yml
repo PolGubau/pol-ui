@@ -51,6 +51,4 @@ jobs:
         run: yarn build
 
       - name: 🚀 Publish to npm
-        uses: simenandre/publish-with-yarn@v1
-        with:
-          npm-auth-token: ${{ secrets.NPM_TOKEN }}
+        run: yarn publish --access public --new-version ${{ github.ref }}
