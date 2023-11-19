@@ -6,7 +6,6 @@ import { CodeDemo, type CodeData } from './code-demo';
 import { CodeHighlight } from './code-highlight';
 
 const components: MDXComponents = {
-  // TODO: revisit
   h2: (props) => (
     <h2 className="group relative z-20 scroll-mt-20 text-2xl font-bold text-gray-900" {...props}>
       {props.children}
@@ -19,7 +18,6 @@ const components: MDXComponents = {
       </a>
     </h2>
   ),
-  // TODO: revisit
   h3: (props) => (
     <h3 className="group relative z-10 scroll-mt-20 text-2xl font-bold text-gray-900" {...props}>
       {props.children}
