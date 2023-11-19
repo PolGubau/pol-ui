@@ -1,27 +1,16 @@
-# Dependency directories
-node_modules/
-
-# Optional npm cache directory
-.npm
-
-# dotenv environment variables file
-.env
-.env.test
-
-# Build output
+.next
+.vercel
+build
+coverage
+cypress/screenshots
+cypress/videos
+lib
+node_modules
+storybook-static
+.DS_Store
+npm-debug.log*
+tsconfig.tsbuildinfo
+yarn-debug.log*
+yarn-error.log*
 dist
-
-coverage/
-
-.swc/
-
-
-.storybook-static/
-
-old.txt
-
-
-
-.env.local
-
-storybook-static/*
+.contentlayer
