@@ -1,14 +1,14 @@
 import { renderHook, act } from '@testing-library/react';
-import { describe, expect } from 'vitest';
+import { describe, expect, test } from 'vitest';
 import { useLocalStorage } from './use-local-storage';
 
 describe('useLocalStorage hook', () => {
-  it('should initialize with the correct value', () => {
+  test('should initialize with the correct value', () => {
     const { result } = renderHook(() => useLocalStorage('testKey', 'initialValue'));
     expect(result.current[0]).toBe('initialValue');
   });
 
-  it('should update the value and localStorage on setValue', () => {
+  test('should update the value and localStorage on setValue', () => {
     const { result } = renderHook(() => useLocalStorage('testKey', 'initialValue'));
     act(() => {
       result.current[1]('updatedValue');
@@ -17,7 +17,7 @@ describe('useLocalStorage hook', () => {
     expect(window.localStorage.getItem('testKey')).toBe(JSON.stringify('updatedValue'));
   });
 
-  it('should handle localStorage changes', () => {
+  test('should handle localStorage changes', () => {
     const { result } = renderHook(() => useLocalStorage('testKey', 'initialValue'));
     act(() => {
       window.localStorage.setItem('testKey', JSON.stringify('newValue'));
@@ -26,7 +26,7 @@ describe('useLocalStorage hook', () => {
     expect(result.current[0]).toBe('newValue');
   });
 
-  it('should handle custom "local-storage" events', () => {
+  test('should handle custom "local-storage" events', () => {
     const { result } = renderHook(() => useLocalStorage('testKey', 'initialValue'));
     act(() => {
       window.localStorage.setItem('testKey', JSON.stringify('customValue'));
