@@ -68,14 +68,18 @@ export const buttonTheme: ButtonTheme = {
     },
     off: '',
     on: 'flex justify-center bg-white text-gray-900 transition-all duration-75 ease-in group-enabled:group-hover:bg-opacity-0 group-enabled:group-hover:text-inherit dark:bg-gray-900 dark:text-white w-full',
-    pill: {
-      off: 'rounded-md',
-      on: 'rounded-full',
-    },
   },
-  pill: {
-    off: 'rounded-lg',
-    on: 'rounded-full',
+
+  rounded: {
+    xs: 'rounded-sm',
+    sm: 'rounded',
+    md: 'rounded-md',
+    lg: 'rounded-lg',
+    xl: 'rounded-xl',
+    '2xl': 'rounded-2xl',
+    '3xl': 'rounded-3xl',
+    full: 'rounded-full',
+    none: 'rounded-none',
   },
   size: {
     xs: 'text-xs px-2 py-1',

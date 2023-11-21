@@ -150,6 +150,14 @@ export interface Sizes extends MainSizes {
   '7xl': string;
 }
 
+export interface RoundedSizes extends MainSizes {
+  '2xl': string;
+  '3xl': string;
+  full: string;
+  none: string;
+  [key: string]: string;
+}
+
 export interface ContentPositions {
   center: string;
 }

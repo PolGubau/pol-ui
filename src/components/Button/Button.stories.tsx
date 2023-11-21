@@ -15,10 +15,16 @@ export default {
       options: ['xs', 'sm', 'md', 'lg', 'xl'],
       control: { type: 'inline-radio' },
     },
+    rounded: {
+      options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', 'full', 'none'],
+      control: { type: 'inline-radio' },
+    },
   },
   args: {
     disabled: false,
     isProcessing: false,
+    processingLabel: 'Processing',
+    rounded: 'md',
   },
 } as Meta;
 

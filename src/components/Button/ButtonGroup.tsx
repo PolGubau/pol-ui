@@ -18,7 +18,7 @@ export interface PositionInButtonGroup {
   end: string;
 }
 
-export interface ButtonGroupProps extends ComponentProps<'div'>, Pick<ButtonProps, 'outline' | 'pill'> {
+export interface ButtonGroupProps extends ComponentProps<'div'>, Pick<ButtonProps, 'outline'> {
   theme?: DeepPartial<ButtonGroupTheme>;
 }
 
@@ -26,7 +26,6 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
   children,
   className,
   outline,
-  pill,
   theme: customTheme = {},
   ...props
 }: ButtonGroupProps) => {
@@ -35,12 +34,11 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
       Children.map(children as ReactElement<ButtonProps>[], (child, index) =>
         cloneElement(child, {
           outline,
-          pill,
           positionInGroup:
             index === 0 ? 'start' : index === (children as ReactElement<ButtonProps>[]).length - 1 ? 'end' : 'middle',
         }),
       ),
-    [children, outline, pill],
+    [children, outline],
   );
   const theme = mergeDeep(getTheme().buttonGroup, customTheme);
 

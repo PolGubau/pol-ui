@@ -5,11 +5,13 @@ import genericForwardRef from '../../helpers/generic-forward-ref';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
-import type { IBoolean, Colors, Sizes } from '../PoluiProvider';
+import type { IBoolean, Colors } from '../PoluiProvider';
 import { Spinner } from '../Spinner';
 import { ButtonBase, type ButtonBaseProps } from './ButtonBase';
 import type { PositionInButtonGroup } from './ButtonGroup';
 import { ButtonGroup } from './ButtonGroup';
+import type { MainSizes, RoundedSizes } from '../PoluiProvider/PoluiTheme';
+import { MainSizesEnum, RoundedSizesEnum } from '../PoluiProvider/enums';
 
 export interface ButtonTheme {
   base: string;
@@ -22,7 +24,7 @@ export interface ButtonTheme {
   inner: ButtonInnerTheme;
   label: string;
   outline: ButtonOutlineTheme;
-  pill: IBoolean;
+  rounded: RoundedSizes;
   size: ButtonSizes;
 }
 
@@ -35,7 +37,6 @@ export interface ButtonInnerTheme {
 
 export interface ButtonOutlineTheme extends IBoolean {
   color: ButtonOutlineColors;
-  pill: IBoolean;
 }
 
 export interface ButtonColors
@@ -47,7 +48,7 @@ export interface ButtonOutlineColors extends Pick<Colors, 'gray'> {
   [key: string]: string;
 }
 
-export interface ButtonSizes extends Pick<Sizes, 'xs' | 'sm' | 'lg' | 'xl'> {
+export interface ButtonSizes extends MainSizes {
   [key: string]: string;
 }
 
@@ -62,7 +63,7 @@ export type ButtonProps<T extends ElementType = 'button'> = {
   processingSpinner?: ReactNode;
   label?: ReactNode;
   outline?: boolean;
-  pill?: boolean;
+  rounded?: keyof RoundedSizes;
   positionInGroup?: keyof PositionInButtonGroup;
   size?: keyof ButtonSizes;
   theme?: DeepPartial<ButtonTheme>;
@@ -78,12 +79,11 @@ const ButtonComponentFn = <T extends ElementType = 'button'>(
     isProcessing = false,
     processingLabel = 'Loading...',
     processingSpinner,
-
     label,
     outline = false,
-    pill = false,
+    rounded = RoundedSizesEnum.md,
     positionInGroup = 'none',
-    size = 'md',
+    size = MainSizesEnum.md,
     theme: customTheme = {},
     ...props
   }: ButtonProps<T>,
@@ -102,7 +102,7 @@ const ButtonComponentFn = <T extends ElementType = 'button'>(
         theme.base,
         disabled && theme.disabled,
         outline && (theme.outline.color[color] ?? theme.outline.color.default),
-        theme.pill[pill ? 'on' : 'off'],
+        theme.rounded[rounded],
         fullSized && theme.fullSized,
         groupTheme.position[positionInGroup],
         className,
@@ -113,7 +113,6 @@ const ButtonComponentFn = <T extends ElementType = 'button'>(
         className={twMerge(
           theme.inner.base,
           theme.outline[outline ? 'on' : 'off'],
-          theme.outline.pill[outline && pill ? 'on' : 'off'],
           theme.size[size],
           outline && !theme.outline.color[color] && theme.inner.outline,
           isProcessing && theme.isProcessing,
