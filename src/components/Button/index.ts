@@ -1,8 +1,6 @@
 export { Button } from './Button';
 export type {
   ButtonColors,
-  ButtonGradientColors,
-  ButtonGradientDuoToneColors,
   ButtonOutlineColors,
   ButtonProps,
   ButtonSizes,
@@ -10,5 +8,5 @@ export type {
   ButtonOutlineTheme,
   ButtonTheme,
 } from './Button';
-export { ButtonGroup } from './ButtonGroup';
-export type { ButtonGroupProps, ButtonGroupTheme, PositionInButtonGroup } from './ButtonGroup';
+export { ButtonGroup } from './ButtonGroup/ButtonGroup';
+export type { ButtonGroupProps, ButtonGroupTheme, PositionInButtonGroup } from './ButtonGroup/ButtonGroup';

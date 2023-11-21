@@ -11,7 +11,6 @@ const ButtonBaseComponent = <T extends ElementType = 'button'>(
   ref: ForwardedRef<T>,
 ) => {
   const BaseComponent = Component ?? (href ? 'a' : 'button');
-
   return createElement(BaseComponent, { ref, href, type, ...props }, children);
 };
 

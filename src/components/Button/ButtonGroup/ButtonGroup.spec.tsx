@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
-import { theme } from '../../theme';
-import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider';
-import { Button } from './Button';
+import { theme } from '../../../theme';
+import { PoluiProvider, type CustomPoluiTheme } from '../../PoluiProvider';
+import { Button } from '..';
 
 describe('Components / Button group', () => {
   describe('A11y', () => {

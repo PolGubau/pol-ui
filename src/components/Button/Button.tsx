@@ -8,10 +8,11 @@ import type { DeepPartial } from '../../types';
 import type { IBoolean, Colors } from '../PoluiProvider';
 import { Spinner } from '../Spinner';
 import { ButtonBase, type ButtonBaseProps } from './ButtonBase';
-import type { PositionInButtonGroup } from './ButtonGroup';
-import { ButtonGroup } from './ButtonGroup';
+import type { PositionInButtonGroup } from './ButtonGroup/ButtonGroup';
+import { ButtonGroup } from './ButtonGroup/ButtonGroup';
 import type { MainSizes, RoundedSizes } from '../PoluiProvider/PoluiTheme';
 import { MainSizesEnum, RoundedSizesEnum } from '../PoluiProvider/enums';
+import useRipple from '~/src/hooks/use-ripple/use-ripple';
 
 export interface ButtonTheme {
   base: string;
@@ -85,6 +86,7 @@ const ButtonComponentFn = <T extends ElementType = 'button'>(
     positionInGroup = 'none',
     size = MainSizesEnum.md,
     theme: customTheme = {},
+
     ...props
   }: ButtonProps<T>,
   ref: ForwardedRef<T>,
@@ -94,6 +96,9 @@ const ButtonComponentFn = <T extends ElementType = 'button'>(
 
   const theirProps = props as ButtonBaseProps<T>;
 
+  // const ripples = useRipple(ref as RefObject<HTMLElement>);
+
+  console.log('ref', ref);
   return (
     <ButtonBase
       ref={ref}
@@ -101,7 +106,8 @@ const ButtonComponentFn = <T extends ElementType = 'button'>(
       className={twMerge(
         theme.base,
         disabled && theme.disabled,
-        outline && (theme.outline.color[color] ?? theme.outline.color.default),
+        outline ? theme.outline.color[color] : theme.color[color],
+
         theme.rounded[rounded],
         fullSized && theme.fullSized,
         groupTheme.position[positionInGroup],

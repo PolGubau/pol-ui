@@ -1,5 +1,5 @@
 import type { ButtonTheme } from './Button';
-import type { ButtonGroupTheme } from './ButtonGroup';
+import type { ButtonGroupTheme } from './ButtonGroup/ButtonGroup';
 
 export const buttonTheme: ButtonTheme = {
   base: 'group flex items-stretch items-center justify-center p-0.5 text-center font-medium relative focus:z-10 focus:outline-none',
