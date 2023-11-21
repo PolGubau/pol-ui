@@ -5,7 +5,7 @@ import genericForwardRef from '../../helpers/generic-forward-ref';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
-import type { IBoolean, Colors, GradientColors, GradientDuoToneColors, Sizes } from '../PoluiProvider';
+import type { IBoolean, Colors, Sizes } from '../PoluiProvider';
 import { Spinner } from '../Spinner';
 import { ButtonBase, type ButtonBaseProps } from './ButtonBase';
 import type { PositionInButtonGroup } from './ButtonGroup';
@@ -19,8 +19,6 @@ export interface ButtonTheme {
   isProcessing: string;
   spinnerSlot: string;
   spinnerLeftPosition: ButtonSizes;
-  gradient: ButtonGradientColors;
-  gradientDuoTone: ButtonGradientDuoToneColors;
   inner: ButtonInnerTheme;
   label: string;
   outline: ButtonOutlineTheme;
@@ -45,14 +43,6 @@ export interface ButtonColors
   [key: string]: string;
 }
 
-export interface ButtonGradientColors extends GradientColors {
-  [key: string]: string;
-}
-
-export interface ButtonGradientDuoToneColors extends GradientDuoToneColors {
-  [key: string]: string;
-}
-
 export interface ButtonOutlineColors extends Pick<Colors, 'gray'> {
   [key: string]: string;
 }
@@ -66,8 +56,6 @@ export type ButtonProps<T extends ElementType = 'button'> = {
   href?: string;
   color?: keyof Colors;
   fullSized?: boolean;
-  gradientDuoTone?: keyof ButtonGradientDuoToneColors;
-  gradientMonochrome?: keyof ButtonGradientColors;
   target?: string;
   isProcessing?: boolean;
   processingLabel?: string;
@@ -90,8 +78,7 @@ const ButtonComponentFn = <T extends ElementType = 'button'>(
     isProcessing = false,
     processingLabel = 'Loading...',
     processingSpinner,
-    gradientDuoTone,
-    gradientMonochrome,
+
     label,
     outline = false,
     pill = false,
@@ -114,9 +101,6 @@ const ButtonComponentFn = <T extends ElementType = 'button'>(
       className={twMerge(
         theme.base,
         disabled && theme.disabled,
-        !gradientDuoTone && !gradientMonochrome && theme.color[color],
-        gradientDuoTone && !gradientMonochrome && theme.gradientDuoTone[gradientDuoTone],
-        !gradientDuoTone && gradientMonochrome && theme.gradient[gradientMonochrome],
         outline && (theme.outline.color[color] ?? theme.outline.color.default),
         theme.pill[pill ? 'on' : 'off'],
         fullSized && theme.fullSized,

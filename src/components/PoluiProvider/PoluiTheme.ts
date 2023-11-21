@@ -119,25 +119,6 @@ export interface Colors extends StateColors {
   yellow: string;
 }
 
-export interface GradientColors extends Omit<StateColors, 'warning'> {
-  [key: string]: string;
-  cyan: string;
-  lime: string;
-  pink: string;
-  purple: string;
-  teal: string;
-}
-
-export interface GradientDuoToneColors {
-  cyanToBlue: string;
-  greenToBlue: string;
-  pinkToOrange: string;
-  purpleToBlue: string;
-  purpleToPink: string;
-  redToYellow: string;
-  tealToLime: string;
-}
-
 export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 export interface Positions {

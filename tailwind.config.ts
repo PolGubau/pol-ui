@@ -8,7 +8,7 @@ const config: Config = {
     './examples/**/*.{js,jsx,ts,tsx}',
     './src/**/*.{js,jsx,ts,tsx}',
   ],
-  plugins: [require('flowbite/plugin')],
+  plugins: [],
   theme: {
     extend: {
       colors: {

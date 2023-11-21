@@ -5,8 +5,6 @@ export type {
   IBoolean,
   Colors,
   ContentPositions,
-  GradientColors,
-  GradientDuoToneColors,
   HeadingLevel,
   Positions,
   Sizes,
