@@ -231,42 +231,6 @@ describe('Components / Button', () => {
       expect(button()).toHaveClass('opacity-10');
     });
 
-    it('should use `gradient` classes', () => {
-      const theme: CustomPoluiTheme = {
-        button: {
-          gradient: {
-            yellowToPink: 'font-extralight',
-          },
-        },
-      };
-
-      render(
-        <PoluiProvider theme={{ theme }}>
-          <Button gradientMonochrome="yellowToPink" />
-        </PoluiProvider>,
-      );
-
-      expect(button()).toHaveClass('font-extralight');
-    });
-
-    it('should use `gradientDuoTone` classes', () => {
-      const theme: CustomPoluiTheme = {
-        button: {
-          gradientDuoTone: {
-            yellowToPink: 'font-extralight',
-          },
-        },
-      };
-
-      render(
-        <PoluiProvider theme={{ theme }}>
-          <Button gradientDuoTone="yellowToPink" />
-        </PoluiProvider>,
-      );
-
-      expect(button()).toHaveClass('font-extralight');
-    });
-
     it('should use `inner` classes', () => {
       const theme: CustomPoluiTheme = {
         button: {
@@ -305,45 +269,11 @@ describe('Components / Button', () => {
       expect(buttonLabel).toHaveClass('font-extralight');
     });
 
-    it('should use `outline` classes', () => {
+    it('should use `rounded` classes', () => {
       const theme: CustomPoluiTheme = {
         button: {
-          outline: {
-            off: 'font-extralight',
-            on: 'font-extrabold',
-            pill: {
-              off: 'text-purple-300',
-              on: 'text-purple-600',
-            },
-          },
-        },
-      };
-
-      render(
-        <PoluiProvider theme={{ theme }}>
-          <Button>Normal button</Button>
-          <Button outline>Outline button</Button>
-          <Button outline pill>
-            Outline pill button
-          </Button>
-        </PoluiProvider>,
-      );
-
-      const normalButton = screen.getByText('Normal button');
-      const outlineButton = screen.getByText('Outline button');
-      const outlinePillButton = screen.getByText('Outline pill button');
-
-      expect(normalButton).toHaveClass('font-extralight text-purple-300');
-      expect(outlineButton).toHaveClass('font-extrabold text-purple-300');
-      expect(outlinePillButton).toHaveClass('font-extrabold text-purple-600');
-    });
-
-    it('should use `pill` classes', () => {
-      const theme: CustomPoluiTheme = {
-        button: {
-          pill: {
-            off: 'font-extralight',
-            on: 'font-extrabold',
+          rounded: {
+            xs: 'rounded-sm',
           },
         },
       };
@@ -351,15 +281,15 @@ describe('Components / Button', () => {
       render(
         <PoluiProvider theme={{ theme }}>
           <Button label="Normal button" />
-          <Button label="Pill" pill />
+          <Button label="full" rounded="full" />
         </PoluiProvider>,
       );
 
       const normalButton = buttons()[0];
-      const pill = buttons()[1];
+      const full = buttons()[1];
 
-      expect(normalButton).toHaveClass('font-extralight');
-      expect(pill).toHaveClass('font-extrabold');
+      expect(normalButton).toHaveClass('rounded-md');
+      expect(full).toHaveClass('rounded-full');
     });
 
     it('should use `size` classes', () => {

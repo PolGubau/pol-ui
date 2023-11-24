@@ -1,4 +1,6 @@
-import type { ComponentPropsWithoutRef, ElementType, ForwardedRef } from 'react';
+'use client';
+
+import type { ComponentPropsWithoutRef, ElementType } from 'react';
 import { type ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 import genericForwardRef from '../../helpers/generic-forward-ref';
@@ -37,15 +39,12 @@ export interface ButtonInnerTheme {
 }
 
 export interface ButtonOutlineTheme extends IBoolean {
-  color: ButtonOutlineColors;
+  outlineBase: string;
+  color: Colors;
 }
 
 export interface ButtonColors
   extends Pick<Colors, 'dark' | 'failure' | 'gray' | 'info' | 'light' | 'purple' | 'success' | 'warning'> {
-  [key: string]: string;
-}
-
-export interface ButtonOutlineColors extends Pick<Colors, 'gray'> {
   [key: string]: string;
 }
 
@@ -68,46 +67,46 @@ export type ButtonProps<T extends ElementType = 'button'> = {
   positionInGroup?: keyof PositionInButtonGroup;
   size?: keyof ButtonSizes;
   theme?: DeepPartial<ButtonTheme>;
+  innerClassname?: string;
 } & ComponentPropsWithoutRef<T>;
 
-const ButtonComponentFn = <T extends ElementType = 'button'>(
-  {
-    children,
-    className,
-    color = 'info',
-    disabled,
-    fullSized,
-    isProcessing = false,
-    processingLabel = 'Loading...',
-    processingSpinner,
-    label,
-    outline = false,
-    rounded = RoundedSizesEnum.md,
-    positionInGroup = 'none',
-    size = MainSizesEnum.md,
-    theme: customTheme = {},
-
-    ...props
-  }: ButtonProps<T>,
-  ref: ForwardedRef<T>,
-) => {
+const ButtonComponentFn = <T extends ElementType = 'button'>({
+  children,
+  className,
+  color = 'primary',
+  disabled,
+  fullSized,
+  isProcessing = false,
+  processingLabel = 'Loading...',
+  processingSpinner,
+  label,
+  outline = false,
+  rounded = RoundedSizesEnum.md,
+  positionInGroup = 'none',
+  size = MainSizesEnum.md,
+  theme: customTheme = {},
+  innerClassname = '',
+  ...props
+}: ButtonProps<T>) => {
   const { buttonGroup: groupTheme, button: buttonTheme } = getTheme();
   const theme = mergeDeep(buttonTheme, customTheme);
 
   const theirProps = props as ButtonBaseProps<T>;
 
   // const ripples = useRipple(ref as RefObject<HTMLElement>);
-
-  console.log('ref', ref);
+  const [ripple, event] = useRipple({
+    disabled,
+  });
   return (
     <ButtonBase
-      ref={ref}
+      ref={ripple}
+      onPointerUp={event}
       disabled={disabled}
       className={twMerge(
         theme.base,
         disabled && theme.disabled,
+        outline && theme.outline.outlineBase,
         outline ? theme.outline.color[color] : theme.color[color],
-
         theme.rounded[rounded],
         fullSized && theme.fullSized,
         groupTheme.position[positionInGroup],
@@ -124,6 +123,7 @@ const ButtonComponentFn = <T extends ElementType = 'button'>(
           isProcessing && theme.isProcessing,
           isProcessing && theme.inner.isProcessingPadding[size],
           theme.inner.position[positionInGroup],
+          innerClassname,
         )}
       >
         {isProcessing && (
@@ -142,8 +142,6 @@ const ButtonComponentFn = <T extends ElementType = 'button'>(
     </ButtonBase>
   );
 };
-
-ButtonComponentFn.displayName = 'Button';
 
 const ButtonComponent = genericForwardRef(ButtonComponentFn);
 

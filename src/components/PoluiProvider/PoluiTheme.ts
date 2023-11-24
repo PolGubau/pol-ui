@@ -104,19 +104,8 @@ export interface StateColors {
 
 export interface Colors extends StateColors {
   [key: string]: string;
-  blue: string;
-  cyan: string;
-  dark: string;
-  gray: string;
-  green: string;
-  indigo: string;
-  light: string;
-  lime: string;
-  pink: string;
-  purple: string;
-  red: string;
-  teal: string;
-  yellow: string;
+  primary: string;
+  secondary: string;
 }
 
 export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
