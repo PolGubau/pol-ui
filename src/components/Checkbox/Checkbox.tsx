@@ -20,7 +20,7 @@ export interface CheckboxProps extends Omit<ComponentProps<'input'>, 'type' | 'r
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, color = 'default', theme: customTheme = {}, ...props }, ref) => {
+  ({ className, color = 'primary', theme: customTheme = {}, ...props }, ref) => {
     const theme = mergeDeep(getTheme().checkbox, customTheme);
 
     return (
