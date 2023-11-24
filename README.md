@@ -11,10 +11,15 @@ A complete UI solution for React projects, based on <a href="https://storybook.j
 
 ## 🏎️ Using this package
 
-1. Install the package
+1. Install the package with npm
 
 ```bash
 npm install pol-ui
+```
+
+You can also use yarn
+```bash
+yarn add pol-ui
 ```
 
 2. Import the components you want to use
