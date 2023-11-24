@@ -141,17 +141,6 @@ describe('Components / Dropdown', () => {
 
       expect(dropdown()).toBeInTheDocument();
     });
-
-    // it('should open on hover when `trigger="hover"`', async () => {
-    //   const user = userEvent.setup();
-    //   render(<TestDropdown trigger="hover" />);
-
-    //   expect(dropdown()).not.toBeInTheDocument();
-
-    //   await act(() => user.hover(button()));
-
-    //   expect(dropdown()).toBeInTheDocument();
-    // });
   });
 
   describe('Type of button', async () => {
