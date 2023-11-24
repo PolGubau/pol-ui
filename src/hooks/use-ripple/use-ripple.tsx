@@ -42,8 +42,8 @@ export type MinimalEvent = {
 
 const self = () => document;
 const completedFactor = 0.4;
-const className = '__useRipple--ripple';
-const containerClassName = '__useRipple--ripple-container';
+const className = 'useRipple--ripple';
+const containerClassName = 'ripple--container';
 
 /**
  * useRipple - Pol-ui ripple effect React hook

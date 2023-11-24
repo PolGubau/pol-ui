@@ -36,7 +36,7 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "dev": "next dev",
-    "lint": "eslint --color .",
+    "lint": "eslint .",
     "prepublishOnly": "yarn build:lib",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
@@ -44,7 +44,7 @@
     "start": "next start",
     "storybook": "storybook dev -p 3001",
     "storybook:build": "storybook build",
-    "test": "vitest",
+    "test": "vitest --ui",
     "test:coverage": "vitest run --coverage",
     "test:open": "vitest --ui",
     "test:e2e": "start-test 3000 cypress:run",
@@ -141,7 +141,6 @@
     "react-dom": "^18",
     "tailwindcss": "^3"
   },
-
   "private": false,
   "eslintConfig": {
     "extends": [
@@ -185,5 +184,5 @@
       "jsx-a11y/anchor-is-valid": "off",
       "react/no-unescaped-entities": "off"
     }
-  }}
-
+  }
+}

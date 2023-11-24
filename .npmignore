@@ -2,14 +2,13 @@
 .vercel
 .vscode
 build
-pages
-public
 storybook-static
 styles
 .gitignore
 .prettierrc
 CNAME
 CODE_OF_CONDUCT.md
+CONTRIBUTING.md
 codecov.yaml
 cypress.json
 LICENSE
@@ -20,3 +19,4 @@ README.md
 tsconfig.json
 tsconfig.tsbuildinfo
 vite.config.ts
+vitest.config.ts
