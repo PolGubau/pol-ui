@@ -4,6 +4,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { theme } from '../../../theme';
 import { PoluiProvider, type CustomPoluiTheme } from '../../PoluiProvider';
 import { Button } from '..';
+import React from 'react';
 
 describe('Components / Button group', () => {
   describe('A11y', () => {

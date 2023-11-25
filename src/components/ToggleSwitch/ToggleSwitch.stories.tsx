@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import type { Meta, StoryFn } from '@storybook/react';
 import React, { useState } from 'react';
 import { theme } from '../../theme';

@@ -3,6 +3,7 @@ import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../../helpers/merge-deep';
 import { useDatePickerContext } from '../DatepickerContext';
 import { Views, addYears, isDateInDecade, isDateInRange, startOfYearPeriod } from '../helpers';
+import React from 'react';
 
 export interface DatepickerViewsDecadesTheme {
   items: {

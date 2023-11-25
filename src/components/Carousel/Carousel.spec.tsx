@@ -1,9 +1,9 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
-import Image from 'next/image';
 import type { FC } from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { CarouselProps } from './Carousel';
 import { Carousel } from './Carousel';
+import React from 'react';
 
 beforeEach(() => {
   vi.useFakeTimers();
@@ -134,11 +134,11 @@ const nonActiveIndicatorClasses = 'bg-white/50 hover:bg-white dark:bg-gray-800/5
 
 const TestCarousel: FC<CarouselProps> = (props) => (
   <Carousel {...props}>
-    <Image alt="" src="https://polgubau.com/docs/images/carousel/carousel-1.svg" height="100" width="100" />
-    <Image alt="" src="https://polgubau.com/docs/images/carousel/carousel-2.svg" height="100" width="100" />
-    <Image alt="" src="https://polgubau.com/docs/images/carousel/carousel-3.svg" height="100" width="100" />
-    <Image alt="" src="https://polgubau.com/docs/images/carousel/carousel-4.svg" height="100" width="100" />
-    <Image alt="" src="https://polgubau.com/docs/images/carousel/carousel-5.svg" height="100" width="100" />
+    <img alt="" src="https://polgubau.com/docs/images/carousel/carousel-1.svg" height="100" width="100" />
+    <img alt="" src="https://polgubau.com/docs/images/carousel/carousel-2.svg" height="100" width="100" />
+    <img alt="" src="https://polgubau.com/docs/images/carousel/carousel-3.svg" height="100" width="100" />
+    <img alt="" src="https://polgubau.com/docs/images/carousel/carousel-4.svg" height="100" width="100" />
+    <img alt="" src="https://polgubau.com/docs/images/carousel/carousel-5.svg" height="100" width="100" />
   </Carousel>
 );
 

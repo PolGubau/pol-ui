@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider';
 import { Blockquote } from './Blockquote';
+import React from 'react';
 
 describe('Components / Blockquote', () => {
   describe('Theme', () => {

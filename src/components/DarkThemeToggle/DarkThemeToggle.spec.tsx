@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 import { PoluiProvider } from '../PoluiProvider';
 import { DarkThemeToggle } from './DarkThemeToggle';
+import React from 'react';
 
 describe('Dark theme toggle', () => {
   it('should toggle the theme when `Space` is pressed', async () => {

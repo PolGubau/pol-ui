@@ -3,6 +3,7 @@ import { HiEye, HiInformationCircle } from 'react-icons/hi';
 import { theme } from '../../theme';
 import type { AlertProps } from './Alert';
 import { Alert } from './Alert';
+import React from 'react';
 
 export default {
   title: 'Components/Alert',

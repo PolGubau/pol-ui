@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { Avatar } from '.';
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider';
-
+import React from 'react';
 describe('Components / Avatar', () => {
   describe('Theme', () => {
     it('should use custom sizes', () => {

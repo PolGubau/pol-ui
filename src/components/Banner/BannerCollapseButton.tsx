@@ -3,6 +3,7 @@
 import type { FC, MouseEventHandler } from 'react';
 import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
+import React from 'react';
 
 export type BannerCollapseButtonProps = ButtonProps;
 

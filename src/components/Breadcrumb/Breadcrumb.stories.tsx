@@ -2,6 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { HiHome } from 'react-icons/hi';
 import type { BreadcrumbComponentProps } from './Breadcrumb';
 import { Breadcrumb } from './Breadcrumb';
+import React from 'react';
 
 export default {
   title: 'Components/Breadcrumb',

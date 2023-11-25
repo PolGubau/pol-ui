@@ -4,6 +4,7 @@ import { mergeDeep } from '../../../helpers/merge-deep';
 import type { DeepPartial } from '../../../types';
 import { useDatePickerContext } from '../DatepickerContext';
 import { addDays, getFirstDayOfTheMonth, getFormattedDate, getWeekDays, isDateEqual, isDateInRange } from '../helpers';
+import React from 'react';
 
 export interface DatepickerViewsDaysTheme {
   header: {

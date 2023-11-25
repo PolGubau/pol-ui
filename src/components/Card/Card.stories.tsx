@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import Image from 'next/image';
 import type { CardProps } from './Card';
 import { Card } from './Card';
+import React from 'react';
 
 export default {
   title: 'Components/Card',
@@ -44,14 +44,5 @@ WithDecorativeImage.args = {
 export const WithNextImage = Template.bind({});
 WithNextImage.storyName = 'With Next.js Image component';
 WithNextImage.args = {
-  renderImage: () => (
-    <Image
-      alt="Meaningful alt text for an image that is not purely decorative"
-      // a loader is necessary to make `Image` render a React Node
-      loader={({ src }) => src}
-      width={1200}
-      height={800}
-      src={'https://polgubau.com/docs/images/blog/image-1.jpg'}
-    />
-  ),
+  renderImage: () => <img alt="Example" src={'https://polgubau.com/docs/images/blog/image-1.jpg'} />,
 };

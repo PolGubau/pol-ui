@@ -3,6 +3,7 @@ import { HiCheck } from 'react-icons/hi';
 import { theme } from '../../theme';
 import type { BadgeProps } from './Badge';
 import { Badge } from './Badge';
+import React from 'react';
 
 export default {
   title: 'Components/Badge',

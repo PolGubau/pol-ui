@@ -1,4 +1,5 @@
 'use client';
+import React from 'react';
 
 import type { ExtendedRefs } from '@floating-ui/react';
 import { FloatingFocusManager, FloatingList, useListNavigation, useTypeahead } from '@floating-ui/react';

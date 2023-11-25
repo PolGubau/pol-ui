@@ -2,6 +2,7 @@ import { action } from '@storybook/addon-actions';
 import type { Meta, StoryFn } from '@storybook/react';
 import type { DropdownProps } from './Dropdown';
 import { Dropdown } from './Dropdown';
+import React from 'react';
 
 export default {
   title: 'Components/Dropdown',

@@ -6,6 +6,7 @@ import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
 import { useAccordionContext } from './AccordionPanelContext';
+import React from 'react';
 
 export interface AccordionComponentTheme {
   base: string;

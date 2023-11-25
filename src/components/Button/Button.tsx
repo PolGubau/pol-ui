@@ -15,6 +15,7 @@ import { ButtonGroup } from './ButtonGroup/ButtonGroup';
 import type { MainSizes, RoundedSizes } from '../PoluiProvider/PoluiTheme';
 import { MainSizesEnum, RoundedSizesEnum } from '../PoluiProvider/enums';
 import useRipple from '~/src/hooks/use-ripple/use-ripple';
+import React from 'react';
 
 export interface ButtonTheme {
   base: string;

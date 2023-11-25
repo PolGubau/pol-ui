@@ -5,6 +5,7 @@ import { AiOutlineLoading } from 'react-icons/ai';
 import { describe, expect, it, vi } from 'vitest';
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider';
 import { Button } from './Button';
+import React from 'react';
 
 describe('Components / Button', () => {
   describe('A11y', () => {

@@ -8,6 +8,7 @@ import type { AvatarGroupTheme } from './AvatarGroup';
 import { AvatarGroup } from './AvatarGroup';
 import type { AvatarGroupCounterTheme } from './AvatarGroupCounter';
 import { AvatarGroupCounter } from './AvatarGroupCounter';
+import React from 'react';
 
 export interface AvatarTheme {
   root: AvatarRootTheme;

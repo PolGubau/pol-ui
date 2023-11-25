@@ -5,6 +5,7 @@ import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
 import type { BreadcrumbItemTheme } from './BreadcrumbItem';
 import { BreadcrumbItem } from './BreadcrumbItem';
+import React from 'react';
 
 export interface BreadcrumbTheme {
   root: BreadcrumbRootTheme;

@@ -4,6 +4,7 @@ import type { FC } from 'react';
 import { useState } from 'react';
 import type { AccordionProps } from './Accordion';
 import { AccordionPanelContext } from './AccordionPanelContext';
+import React from 'react';
 
 export interface PanelProps extends AccordionProps {
   isOpen?: boolean;

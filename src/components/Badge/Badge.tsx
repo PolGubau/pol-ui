@@ -4,6 +4,7 @@ import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
 import type { IBoolean, Colors, Sizes } from '../PoluiProvider';
+import React from 'react';
 
 export interface BadgeTheme {
   root: BadgeRootTheme;

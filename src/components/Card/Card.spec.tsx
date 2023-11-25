@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider';
 import { Card } from './Card';
+import React from 'react';
 
 describe('Components / Card', () => {
   describe('Functionality', () => {

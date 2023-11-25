@@ -1,6 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { Avatar } from './Avatar';
 import type { AvatarGroupProps } from './AvatarGroup';
+import React from 'react';
 
 export default {
   title: 'Components/Avatar',

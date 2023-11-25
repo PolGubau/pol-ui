@@ -4,6 +4,7 @@ import type { FC, PropsWithChildren } from 'react';
 import { describe, expect, it } from 'vitest';
 import type { DropdownProps } from './Dropdown';
 import { Dropdown } from './Dropdown';
+import React from 'react';
 
 const delay = async (delayTime: number) => await new Promise((r) => setTimeout(r, delayTime));
 

@@ -14,6 +14,7 @@ import { AccordionPanel } from './AccordionPanel';
 import type { AccordionTitleTheme } from './AccordionTitle';
 import { AccordionTitle } from './AccordionTitle';
 import type { IBoolean } from '../PoluiProvider';
+import React from 'react';
 
 export interface AccordionTheme {
   root: AccordionRootTheme;

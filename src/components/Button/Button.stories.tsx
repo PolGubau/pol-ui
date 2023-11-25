@@ -3,6 +3,7 @@ import { theme } from '../../theme';
 import type { ButtonProps } from './Button';
 import { Button } from './Button';
 import { BsHandThumbsUpFill } from 'react-icons/bs';
+import React from 'react';
 
 export default {
   title: 'Components/Button',

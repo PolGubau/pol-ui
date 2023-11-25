@@ -3,6 +3,7 @@ import { HiCheck } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider';
 import { Badge } from './Badge';
+import React from 'react';
 
 describe('Components / Badge', () => {
   describe('Rendering', () => {
