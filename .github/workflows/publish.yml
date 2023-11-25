@@ -17,7 +17,6 @@ jobs:
         with:
           node-version: lts/*
           cache: 'yarn'
-          always-auth: true
 
       - name: 📥 Install Dependencies
         run: yarn install --immutable
@@ -38,6 +37,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          always-auth: true
 
       - name: 📥 Install Dependencies
         run: yarn install --immutable
