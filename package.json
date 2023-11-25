@@ -28,20 +28,17 @@
     "url": "https://github.com/PolGubau/pol-ui"
   },
   "scripts": {
-    "build": "next build",
     "build:lib": "rm -rf ./lib/ && yarn build:lib:esm && yarn build:lib:cjs",
     "build:lib:cjs": "tsc -p tsconfig.lib.json",
     "build:lib:esm": "tsc -p tsconfig.lib.json --module esnext --declaration --outDir ./lib/esm",
     "commit": "cz",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "dev": "next dev",
     "lint": "eslint .",
     "prepublishOnly": "yarn build:lib",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "release": "standard-version -a",
-    "start": "next start",
     "storybook": "storybook dev -p 3001",
     "storybook:build": "storybook build",
     "test": "vitest --ui",
@@ -56,7 +53,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },"resolutions": {
+  },
+  "resolutions": {
     "jackspeak": "2.1.1"
   },
   "dependencies": {
@@ -92,8 +90,7 @@
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.5.1",
-    "@types/node": "^20.9.2",
-    "@types/prismjs": "^1.26.3",
+    "@types/node": "^20.10.0",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@types/react-syntax-highlighter": "^15.5.10",
@@ -108,13 +105,11 @@
     "cypress-axe": "^1.5.0",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^8.54.0",
-    "eslint-config-next": "^14.0.3",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.15",
     "jsdom": "^22.1.0",
-    "next": "^14.0.0",
     "postcss": "^8.4.31",
     "prettier": "^3.1.0",
     "prettier-plugin-organize-imports": "^3.2.4",
@@ -148,8 +143,7 @@
       "plugin:jsx-a11y/recommended",
       "plugin:react/recommended",
       "plugin:react-hooks/recommended",
-      "plugin:storybook/recommended",
-      "next"
+      "plugin:storybook/recommended"
     ],
     "ignorePatterns": [
       "/build/",
@@ -179,7 +173,6 @@
     "root": true,
     "rules": {
       "@typescript-eslint/consistent-type-imports": "warn",
-      "@next/next/no-img-element": "off",
       "jsx-a11y/anchor-is-valid": "off",
       "react/no-unescaped-entities": "off"
     }
