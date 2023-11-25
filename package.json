@@ -68,16 +68,15 @@
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.2",
-    "@typescript-eslint/typescript-estree": "^6.12.0",
-    "chromatic": "^9.1.0",
     "markdown-toc": "^1.2.0",
-    "next": "^14.0.3",
-    "react-icons": "^4.12.0",
     "react-indiana-drag-scroll": "^2.2.0",
     "react-markdown": "^9.0.1",
     "tailwind-merge": "^2.0.0"
   },
-  "devDependencies": {
+  "devDependencies": {    "@typescript-eslint/typescript-estree": "^6.12.0",
+    "react-icons": "^4.12.0",
+    "next": "^14.0.3",
+    "chromatic": "^9.1.0",
     "@storybook/addon-a11y": "^7.5.3",
     "@storybook/addon-actions": "^7.5.3",
     "@storybook/addon-docs": "^7.5.3",
