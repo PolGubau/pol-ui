@@ -26,6 +26,7 @@ jobs:
 
       - name: 🧪 Unit Tests and coverage
         run: yarn test:coverage
+
   publish:
     name: 🚀 Publish
     runs-on: ubuntu-latest
@@ -48,7 +49,14 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
 
+      - id: check-version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          IS_NEW_VERSION=$(npm view . versions --json | jq -e --arg VERSION "$VERSION" 'index($VERSION) == null')
+          echo "::set-output name=isNewVersion::$IS_NEW_VERSION"
+
       - name: 🍀 Publish to NPM
+        if: steps.check-version.outputs.isNewVersion == 'true'
         run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc && yarn publish
 
         env:
