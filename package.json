@@ -36,7 +36,7 @@
     "build:lib:cjs": "tsc -p tsconfig.lib.json",
     "build:lib:esm": "tsc -p tsconfig.lib.json --module esnext --declaration --outDir ./lib/esm",
     "commit": "cz",
-    "lint": "eslint .",
+    "lint": "eslint ",
     "prepublishOnly": "yarn build:lib",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
@@ -52,8 +52,7 @@
     "typecheck": "tsc --noEmit",
     "publish": "yarn prepublishOnly && yarn release && yarn publish:lib",
     "publish:lib": " npm publish --access public",
-    "publish:chromatic": "npx chromatic --project-token=${ENV.CHROMATIC_TOKEN}",
-    "chromatic": "npx chromatic --project-token=chpt_6ddbf96c158af5a"
+    "publish:chromatic": "npx chromatic --project-token=${ENV.CHROMATIC_TOKEN}"
   },
   "config": {
     "commitizen": {
@@ -62,6 +61,7 @@
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.2",
+    "eslint": "^8.54.0",
     "markdown-toc": "^1.2.0",
     "react-indiana-drag-scroll": "^2.2.0",
     "react-markdown": "^9.0.1",
@@ -105,9 +105,12 @@
     "axe-core": "^4.8.2",
     "chromatic": "^9.1.0",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "^8.54.0",
+    "eslint-config-semistandard": "^17.0.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.15",
     "jsdom": "^22.1.0",
