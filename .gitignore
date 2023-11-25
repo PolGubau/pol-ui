@@ -2,7 +2,7 @@
 .vercel
 build
 coverage
- lib
+lib
 node_modules
 storybook-static
 .DS_Store
@@ -14,3 +14,14 @@ dist
 .contentlayer
 lib/
 .env*
+public
+
+examples
+
+data
+
+content
+
+
+
+build-storybook.log

@@ -2,8 +2,7 @@ import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 
 const config = {
   framework: {
-    // name: '@storybook/react-webpack5', // Remove this
-    name: '@storybook/nextjs', // Add this
+    name: '@storybook/nextjs',
     options: {},
   },
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
