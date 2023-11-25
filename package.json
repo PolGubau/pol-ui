@@ -12,10 +12,16 @@
     "ui"
   ],
   "contributors": [
-    "Pol Gubau Amores <gubaupol@gmail.com> (https://polgubau.com)"
+    {
+      "name": "Pol Gubau Amores",
+      "email": "gubaupol@gmail.com",
+      "url": "https://polgubau.com"
+    }
   ],
   "homepage": "https://ui.polgubau.com",
-  "bugs": "https://github.com/PolGubau/pol-ui/issues",
+  "bugs": {
+    "url": "https://github.com/PolGubau/pol-ui/issues"
+  },
   "license": "MIT",
   "files": [
     "./lib/"
@@ -25,7 +31,7 @@
   "types": "./lib/esm/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PolGubau/pol-ui"
+    "url": "git+https://github.com/PolGubau/pol-ui.git"
   },
   "scripts": {
     "build": "yarn build:lib:esm",
@@ -49,7 +55,8 @@
     "typecheck": "tsc --noEmit",
     "publish": "yarn prepublishOnly && yarn release && yarn publish:lib",
     "publish:lib": " npm publish --access public",
-    "chromatic": "chromatic --exit-zero-on-changes"
+    "publish:chromatic": "npx chromatic --project-token=${ENV.CHROMATIC_TOKEN}",
+    "chromatic": "npx chromatic --project-token=chpt_6ddbf96c158af5a"
   },
   "publishConfig": {
     "access": "public"
@@ -179,5 +186,7 @@
       "jsx-a11y/anchor-is-valid": "off",
       "react/no-unescaped-entities": "off"
     }
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "pol-ui@2.0.12"
 }
