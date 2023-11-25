@@ -68,6 +68,7 @@
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.2",
+    "@typescript-eslint/typescript-estree": "^6.12.0",
     "chromatic": "^9.1.0",
     "markdown-toc": "^1.2.0",
     "next": "^14.0.3",
