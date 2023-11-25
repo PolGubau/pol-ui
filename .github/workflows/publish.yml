@@ -48,7 +48,8 @@ jobs:
           git config user.email "<>"
 
       - name: 🍀 Publish to NPM
-        run: yarn publish
+        run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc && yarn publish
+
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
