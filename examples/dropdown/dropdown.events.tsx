@@ -1,7 +1,6 @@
 'use client';
 
 import { Dropdown } from '~/src';
-import React from 'react';
 
 const code = `
 'use client';

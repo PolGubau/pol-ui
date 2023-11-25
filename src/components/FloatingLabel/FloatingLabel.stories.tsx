@@ -1,6 +1,5 @@
 import type { Meta, Story } from '@storybook/react';
 import { FloatingLabel, type FloatingLabelProps } from './FloatingLabel';
-import React from 'react';
 
 export default {
   title: 'Components/FloatingLabel',

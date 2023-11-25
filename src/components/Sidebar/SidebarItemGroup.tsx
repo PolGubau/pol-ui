@@ -6,7 +6,7 @@ import { mergeDeep } from '../../helpers/merge-deep';
 import type { DeepPartial } from '../../types';
 import { useSidebarContext } from './SidebarContext';
 import { SidebarItemContext } from './SidebarItemContext';
-import React from 'react';
+
 export interface SidebarItemGroupTheme {
   base: string;
 }

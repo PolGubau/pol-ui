@@ -4,7 +4,7 @@ import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, Hi
 import { Badge } from '../Badge';
 import { Button } from '../Button';
 import { Sidebar } from './Sidebar';
-import React from 'react';
+
 export default {
   title: 'Components/Sidebar',
   component: Sidebar,

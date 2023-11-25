@@ -3,7 +3,7 @@ import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';
 import type { TabsProps } from './Tabs';
 import { Tabs } from './Tabs';
-import React from 'react';
+
 export default {
   title: 'Components/Tabs',
   component: Tabs,

@@ -3,7 +3,6 @@ import type { FC } from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { CarouselProps } from './Carousel';
 import { Carousel } from './Carousel';
-import React from 'react';
 
 beforeEach(() => {
   vi.useFakeTimers();

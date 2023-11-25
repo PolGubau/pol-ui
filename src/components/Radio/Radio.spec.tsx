@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider';
 import { Radio } from './Radio';
-import React from 'react';
+
 describe.concurrent('Components / Radio', () => {
   describe.concurrent('A11y', () => {
     it('should have role="radio" by default', () => {

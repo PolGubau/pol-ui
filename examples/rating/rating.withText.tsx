@@ -1,4 +1,3 @@
-import React from 'react';
 import { Rating, RatingStar } from '~/src';
 
 const code = `

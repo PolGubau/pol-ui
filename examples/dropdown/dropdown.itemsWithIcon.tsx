@@ -1,5 +1,4 @@
 'use client';
-import React from 'react';
 
 import { HiCog, HiCurrencyDollar, HiLogout, HiViewGrid } from 'react-icons/hi';
 import { Dropdown } from '~/src';

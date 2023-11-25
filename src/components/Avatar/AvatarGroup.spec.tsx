@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { AvatarGroup } from './AvatarGroup';
-import React from 'react';
 
 describe('Components / Avatar.Group', () => {
   it('renders the avatar group element with the correct classname', () => {

@@ -5,7 +5,7 @@ import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
 import type { TextInputSizes } from '../TextInput';
-import React from 'react';
+
 export interface RangeSliderTheme {
   root: RangeSliderRootTheme;
   field: RangeSliderFieldTheme;

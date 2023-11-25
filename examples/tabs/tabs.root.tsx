@@ -2,7 +2,7 @@
 
 import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';
-import React from 'react';
+
 import { Tabs } from '~/src';
 
 const code = `

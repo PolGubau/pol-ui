@@ -1,6 +1,5 @@
 import { HiCheck, HiExclamation, HiX } from 'react-icons/hi';
 import { Toast, ToastToggle } from '~/src';
-import React from 'react';
 
 const code = `
 'use client';

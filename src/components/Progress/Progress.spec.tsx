@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { Progress } from './Progress';
-import React from 'react';
+
 describe.concurrent('Components / Progress', () => {
   describe.concurrent('A11y', () => {
     it('should have `role="progressbar"`', () => {

@@ -10,7 +10,7 @@ import type { Colors } from '../PoluiProvider';
 import { Tooltip } from '../Tooltip';
 import { useSidebarContext } from './SidebarContext';
 import { useSidebarItemContext } from './SidebarItemContext';
-import React from 'react';
+
 export interface SidebarItemTheme {
   active: string;
   base: string;

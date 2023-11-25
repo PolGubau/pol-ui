@@ -1,6 +1,5 @@
 import { HiX } from 'react-icons/hi';
 import { Banner, BannerCollapseButton, Button, Label, TextInput } from '~/src';
-import React from 'react';
 
 const code = `
 'use client';

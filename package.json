@@ -167,6 +167,7 @@
     ],
     "root": true,
     "rules": {
+      "react/react-in-jsx-scope": "off",
       "@typescript-eslint/consistent-type-imports": "warn",
       "jsx-a11y/anchor-is-valid": "off",
       "react/no-unescaped-entities": "off"

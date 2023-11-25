@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { HiEye, HiHeart, HiInformationCircle } from 'react-icons/hi';
 import { describe, expect, it, vi } from 'vitest';
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider';
-import React from 'react';
 
 import type { AlertProps } from './Alert';
 import { Alert } from './Alert';

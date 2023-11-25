@@ -11,7 +11,7 @@ import {
   HiUser,
 } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
-import React from 'react';
+
 import { Sidebar } from '~/src';
 
 const code = `

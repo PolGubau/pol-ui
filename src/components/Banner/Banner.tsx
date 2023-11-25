@@ -1,6 +1,5 @@
 import type { ComponentProps, FC } from 'react';
 import { BannerCollapseButton } from './BannerCollapseButton';
-import React from 'react';
 
 export type BannerComponentProps = ComponentProps<'div'>;
 

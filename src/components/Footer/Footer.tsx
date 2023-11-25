@@ -16,7 +16,7 @@ import type { FooterLinkGroupTheme } from './FooterLinkGroup';
 import { FooterLinkGroup } from './FooterLinkGroup';
 import type { FooterTitleTheme } from './FooterTitle';
 import { FooterTitle } from './FooterTitle';
-import React from 'react';
+
 export interface FooterTheme {
   brand: FooterBrandTheme;
   copyright: FooterCopyrightTheme;

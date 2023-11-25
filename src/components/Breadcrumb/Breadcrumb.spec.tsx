@@ -4,7 +4,6 @@ import { HiHome } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider';
 import { Breadcrumb } from './Breadcrumb';
-import React from 'react';
 
 describe('Components / Breadcrumb', () => {
   it('should have `role="navigation"`', () => {

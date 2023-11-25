@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { AvatarGroupCounter } from './AvatarGroupCounter';
-import React from 'react';
 
 describe('AvatarGroupCounter', () => {
   it('renders the counter element with the correct classname', () => {

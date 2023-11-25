@@ -1,7 +1,6 @@
 import { HiArrowRight, HiX } from 'react-icons/hi';
 import { MdPercent } from 'react-icons/md';
 import { Banner, BannerCollapseButton } from '~/src';
-import React from 'react';
 
 const code = `
 'use client';

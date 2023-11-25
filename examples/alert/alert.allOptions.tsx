@@ -1,5 +1,4 @@
 'use client';
-import React from 'react';
 
 import { HiEye, HiInformationCircle } from 'react-icons/hi';
 import { Alert } from '~/src';

@@ -8,7 +8,7 @@ import { MdDashboard } from 'react-icons/md';
 import { describe, expect, it, vi } from 'vitest';
 import type { TabsRef } from './Tabs';
 import { Tabs } from './Tabs';
-import React from 'react';
+
 describe('Components / Tabs', () => {
   it('should open tab when clicked', async () => {
     const user = userEvent.setup();

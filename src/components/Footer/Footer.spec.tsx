@@ -4,7 +4,6 @@ import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-
 import { describe, expect, it } from 'vitest';
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider';
 import { Footer } from './Footer';
-import React from 'react';
 
 describe('Components / Footer', () => {
   describe('Rendering', () => {

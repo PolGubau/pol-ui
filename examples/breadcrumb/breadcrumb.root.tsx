@@ -1,6 +1,5 @@
 import { HiHome } from 'react-icons/hi';
 import { Breadcrumb, BreadcrumbItem } from '~/src';
-import React from 'react';
 
 const code = `
 'use client';

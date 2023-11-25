@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import type { TimelineProps } from './Timeline';
 import { Timeline } from './Timeline';
-import React from 'react';
+
 export default {
   title: 'Components/Timeline',
   component: Timeline,

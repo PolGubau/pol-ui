@@ -1,5 +1,4 @@
 import { Dropdown, DropdownDivider, DropdownHeader, DropdownItem } from '~/src';
-import React from 'react';
 
 const code = `
 'use client';

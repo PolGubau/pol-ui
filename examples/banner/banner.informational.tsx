@@ -1,7 +1,6 @@
 import { FaBookOpen } from 'react-icons/fa';
 import { HiArrowRight, HiX } from 'react-icons/hi';
 import { Banner, BannerCollapseButton } from '~/src';
-import React from 'react';
 
 const code = `
 'use client';

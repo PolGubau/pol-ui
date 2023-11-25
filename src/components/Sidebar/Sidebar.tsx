@@ -13,7 +13,7 @@ import { SidebarItem, type SidebarItemTheme } from './SidebarItem';
 import { SidebarItemGroup, type SidebarItemGroupTheme } from './SidebarItemGroup';
 import { SidebarItems, type SidebarItemsTheme } from './SidebarItems';
 import { SidebarLogo, type SidebarLogoTheme } from './SidebarLogo';
-import React from 'react';
+
 export interface SidebarTheme {
   root: {
     base: string;

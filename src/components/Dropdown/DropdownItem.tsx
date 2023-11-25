@@ -1,5 +1,4 @@
 'use client';
-import React from 'react';
 
 import { useListItem } from '@floating-ui/react';
 import type { ComponentProps, ComponentPropsWithoutRef, ElementType, FC, RefCallback } from 'react';

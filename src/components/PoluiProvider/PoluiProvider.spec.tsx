@@ -4,7 +4,7 @@ import { mergeDeep } from '../../helpers/merge-deep';
 import { useThemeMode } from '../../hooks/use-theme-mode';
 import { getTheme } from '../../theme-store';
 import { PoluiProvider } from '.';
-import React from 'react';
+
 describe('Components / PoluiProvider', () => {
   describe('PoluiProvider', () => {
     it('should return default values', () => {

@@ -1,5 +1,4 @@
 import { Button } from '~/src';
-import React from 'react';
 
 const code = `
 'use client';
@@ -12,13 +11,13 @@ function Component() {
       <Button size="xs" isProcessing>
         Click me!
       </Button>
-      <Button size="sm" isProcessing gradientDuoTone="purpleToBlue">
+      <Button size="sm" isProcessing >
         Click me!
       </Button>
       <Button size="md" isProcessing color="red">
         Click me!
       </Button>
-      <Button size="lg" isProcessing pill>
+      <Button size="lg" isProcessing rounded='full'>
         Click me!
       </Button>
       <Button size="xl" isProcessing outline>
@@ -38,13 +37,13 @@ function Component() {
       <Button size="xs" isProcessing>
         Click me!
       </Button>
-      <Button size="sm" isProcessing gradientDuoTone="purpleToBlue">
+      <Button size="sm" isProcessing >
         Click me!
       </Button>
       <Button size="md" isProcessing color="red">
         Click me!
       </Button>
-      <Button size="lg" isProcessing pill>
+      <Button size="lg" isProcessing rounded='full'>
         Click me!
       </Button>
       <Button size="xl" isProcessing outline>
@@ -61,13 +60,13 @@ function Component() {
       <Button size="xs" isProcessing>
         Click me!
       </Button>
-      <Button size="sm" isProcessing gradientDuoTone="purpleToBlue">
+      <Button size="sm" isProcessing>
         Click me!
       </Button>
       <Button size="md" isProcessing color="red">
         Click me!
       </Button>
-      <Button size="lg" isProcessing pill>
+      <Button size="lg" isProcessing rounded='full'>
         Click me!
       </Button>
       <Button size="xl" isProcessing outline>

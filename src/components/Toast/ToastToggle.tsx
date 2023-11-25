@@ -6,7 +6,7 @@ import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { DeepPartial } from '../../types';
 import { useToastContext } from './ToastContext';
-import React from 'react';
+
 export interface ToastToggleTheme {
   base: string;
   icon: string;

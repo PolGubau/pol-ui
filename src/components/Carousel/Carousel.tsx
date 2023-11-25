@@ -3,7 +3,6 @@
 import type { ComponentProps, FC, ReactElement, ReactNode } from 'react';
 import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
-import React from 'react';
 
 import ScrollContainer from 'react-indiana-drag-scroll';
 import { twMerge } from 'tailwind-merge';

@@ -3,7 +3,6 @@ import { HiX } from 'react-icons/hi';
 import { MdAnnouncement } from 'react-icons/md';
 import type { BannerComponentProps } from './Banner';
 import { Banner } from './Banner';
-import React from 'react';
 
 export default {
   title: 'Components/Banner',

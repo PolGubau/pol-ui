@@ -1,5 +1,4 @@
 'use client';
-import React from 'react';
 
 import { useRef, useState } from 'react';
 import { Button, Checkbox, Label, Modal, TextInput } from '~/src';

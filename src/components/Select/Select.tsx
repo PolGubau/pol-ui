@@ -6,7 +6,7 @@ import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
 import type { Colors, IBoolean, Sizes } from '../PoluiProvider';
 import { HelperText } from '../HelperText';
-import React from 'react';
+
 export interface SelectTheme {
   base: string;
   addon: string;

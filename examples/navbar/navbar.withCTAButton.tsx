@@ -1,5 +1,4 @@
 import { Button, Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from '~/src';
-import React from 'react';
 
 const code = `
 'use client';

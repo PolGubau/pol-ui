@@ -5,7 +5,7 @@ import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
 import type { ListGroupItemTheme } from './ListGroupItem';
 import { ListGroupItem } from './ListGroupItem';
-import React from 'react';
+
 export interface ListGroupTheme {
   root: ListGroupRootTheme;
   item: ListGroupItemTheme;

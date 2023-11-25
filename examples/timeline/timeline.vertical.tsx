@@ -1,5 +1,4 @@
 'use client';
-import React from 'react';
 
 import { HiArrowNarrowRight, HiCalendar } from 'react-icons/hi';
 import {

@@ -1,7 +1,6 @@
 import { HiX } from 'react-icons/hi';
 import { MdAnnouncement } from 'react-icons/md';
 import { Banner, BannerCollapseButton } from '~/src';
-import React from 'react';
 
 const code = `
 'use client';

@@ -9,7 +9,7 @@ import { Label } from '../Label';
 import { TextInput } from '../TextInput';
 import type { ModalProps } from './Modal';
 import { Modal } from './Modal';
-import React from 'react';
+
 export default {
   title: 'Components/Modal',
   component: Modal,

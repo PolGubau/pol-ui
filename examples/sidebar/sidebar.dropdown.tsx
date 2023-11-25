@@ -1,5 +1,4 @@
 'use client';
-import React from 'react';
 
 import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser } from 'react-icons/hi';
 import { Sidebar } from '~/src';

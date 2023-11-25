@@ -1,5 +1,4 @@
 import { Footer, FooterCopyright, FooterLink, FooterLinkGroup } from '~/src';
-import React from 'react';
 
 const code = `
 'use client';

@@ -1,6 +1,5 @@
 import { MdKeyboardArrowDown, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowUp } from 'react-icons/md';
 import { Kbd } from '~/src';
-import React from 'react';
 
 const code = `
 'use client';

@@ -4,7 +4,7 @@ import { createRef } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider';
 import { RangeSlider } from './RangeSlider';
-import React from 'react';
+
 describe('Components / Button', () => {
   describe('A11y', () => {
     it('should have `role="progressbar"` by default', () => {

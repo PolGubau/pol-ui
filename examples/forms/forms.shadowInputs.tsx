@@ -1,6 +1,4 @@
-import Link from 'next/link';
 import { Button, Checkbox, Label, TextInput } from '~/src';
-import React from 'react';
 
 const code = `
 'use client';
@@ -108,11 +106,8 @@ function Component() {
       <div className="flex items-center gap-2">
         <Checkbox id="agree" />
         <Label htmlFor="agree" className="flex">
-          I agree with the&nbsp;
-          <Link href="#" className="text-cyan-600 hover:underline dark:text-cyan-500">
-            terms and conditions
-          </Link>
-        </Label>
+          I agree with the terms and conditions
+         </Label>
       </div>
       <Button type="submit">Register new account</Button>
     </form>

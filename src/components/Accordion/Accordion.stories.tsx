@@ -3,7 +3,6 @@ import type { ComponentProps, FC } from 'react';
 import { HiChevronDown, HiOutlineArrowCircleDown } from 'react-icons/hi';
 import type { AccordionProps } from './Accordion';
 import { Accordion } from './Accordion';
-import React from 'react';
 
 export default {
   title: 'Components/Accordion',

@@ -1,4 +1,3 @@
-import React from 'react';
 import type { ThemeMode } from '../../hooks/use-theme-mode';
 
 export interface ThemeModeScriptProps extends React.ComponentPropsWithoutRef<'script'> {

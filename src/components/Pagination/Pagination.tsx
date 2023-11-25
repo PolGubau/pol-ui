@@ -7,7 +7,7 @@ import type { DeepPartial } from '../../types';
 import type { PaginationButtonTheme, PaginationButtonProps } from './PaginationButton';
 import { PaginationButton, PaginationNavigation } from './PaginationButton';
 import { range } from './helpers';
-import React from 'react';
+
 export interface PaginationTheme {
   base: string;
   layout: PaginationLayoutTheme;

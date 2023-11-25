@@ -1,5 +1,4 @@
 'use client';
-import React from 'react';
 
 import type { ComponentProps, FC } from 'react';
 import { HiMoon, HiSun } from 'react-icons/hi';

@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider';
 import { Spinner } from './Spinner';
-import React from 'react';
+
 describe('Components / Spinner', () => {
   describe('A11y', () => {
     it('should have `role="status"` by default', () => {

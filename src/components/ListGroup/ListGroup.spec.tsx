@@ -6,7 +6,7 @@ import { describe, expect, it } from 'vitest';
 import type { CustomPoluiTheme } from '../PoluiProvider';
 import { PoluiProvider } from '../PoluiProvider';
 import { ListGroup } from './ListGroup';
-import React from 'react';
+
 describe('Components / List group', () => {
   describe('Keyboard interactions', () => {
     it('should trigger `onClick` when `Enter` is pressed on a `ListGroup.Item`', async () => {

@@ -6,7 +6,7 @@ import { describe, expect, it } from 'vitest';
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider';
 import type { SidebarProps } from './Sidebar';
 import { Sidebar } from './Sidebar';
-import React from 'react';
+
 describe('Components / Sidebar', () => {
   describe('A11y', () => {
     it('should use `aria-label` if provided', () => {

@@ -6,7 +6,6 @@ import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
 import { HelperText } from '../HelperText';
 import type { TextInputColors, TextInputSizes } from '../TextInput';
-import React from 'react';
 
 export interface FileInputTheme {
   root: FileInputRootTheme;

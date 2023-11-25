@@ -1,6 +1,5 @@
 import { MdLoop } from 'react-icons/md';
 import { Button, Toast, ToastToggle } from '~/src';
-import React from 'react';
 
 const code = `
 'use client';

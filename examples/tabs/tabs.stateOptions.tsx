@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';
-import React from 'react';
+
 import { Button, Tabs, type TabsRef } from '~/src';
 
 const code = `

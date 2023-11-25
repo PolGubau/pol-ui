@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { Rating } from './Rating';
-import React from 'react';
+
 describe.concurrent('Components / Rating', () => {
   describe.concurrent('Rendering', () => {
     it('should fill each bar by the specified percentaged when using `Rating.Advanced`', () => {

@@ -1,7 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import type { BlockquoteProps } from './Blockquote';
 import { Blockquote } from './Blockquote';
-import React from 'react';
 
 export default {
   title: 'Components/Blockquote',

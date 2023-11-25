@@ -1,4 +1,3 @@
-import React from 'react';
 import { Checkbox, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from '~/src';
 
 const code = `

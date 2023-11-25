@@ -1,6 +1,5 @@
 import { HiAdjustments, HiCloudDownload, HiUserCircle } from 'react-icons/hi';
 import { Button, ButtonGroup } from '~/src';
-import React from 'react';
 
 const code = `
 'use client';

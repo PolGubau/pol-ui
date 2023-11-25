@@ -5,7 +5,6 @@ import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
 import type { FloatingLabelTheme } from './theme';
-import React from 'react';
 
 export type FloatingLabelColor = 'default' | 'success' | 'error';
 export type FloatingLabelSizing = 'sm' | 'md';

@@ -7,7 +7,6 @@ import type { DeepPartial } from '../../types';
 import { useTableContext } from './TableContext';
 import type { TableHeadCellTheme } from './TableHeadCell';
 import { TableHeadContext } from './TableHeadContext';
-import React from 'react'
 export interface TableHeadTheme {
   base: string;
   cell: TableHeadCellTheme;

@@ -6,7 +6,6 @@ import { describe, expect, it, beforeEach } from 'vitest';
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider';
 import type { AccordionProps } from './Accordion';
 import { Accordion } from './Accordion';
-import React from 'react';
 
 describe('Components / Accordion', () => {
   describe('A11y', () => {

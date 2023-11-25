@@ -12,7 +12,7 @@ import { TimelineItem, type TimelineItemTheme } from './TimelineItem';
 import { TimelinePoint } from './TimelinePoint';
 import { TimelineTime } from './TimelineTime';
 import { TimelineTitle } from './TimelineTitle';
-import React from 'react';
+
 export interface TimelineTheme {
   root: {
     direction: {

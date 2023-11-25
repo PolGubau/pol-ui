@@ -2,7 +2,7 @@
 
 import { BiBuoy } from 'react-icons/bi';
 import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
-import React from 'react';
+
 import { Sidebar } from '~/src';
 
 const code = `

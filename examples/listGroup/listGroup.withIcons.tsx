@@ -1,6 +1,5 @@
 import { HiCloudDownload, HiInbox, HiOutlineAdjustments, HiUserCircle } from 'react-icons/hi';
 import { ListGroup, ListGroupItem } from '~/src';
-import React from 'react';
 
 const code = `
 'use client';

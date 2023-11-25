@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider';
 import { Checkbox } from './Checkbox';
-import React from 'react';
 
 describe.concurrent('Components / Checkbox', () => {
   describe.concurrent('A11y', () => {

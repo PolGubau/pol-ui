@@ -1,5 +1,5 @@
 'use client';
-import React, { useId, useLayoutEffect, type ComponentProps, type ElementType, type FC } from 'react';
+import { useId, useLayoutEffect, type ComponentProps, type ElementType, type FC } from 'react';
 import { HiOutlineX } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';

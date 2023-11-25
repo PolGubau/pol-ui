@@ -4,7 +4,7 @@ import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
 import { Floating, type FloatingTheme } from '../Floating';
-import React from 'react';
+ 
 export type TooltipTheme = FloatingTheme;
 
 export interface TooltipProps extends Omit<ComponentProps<'div'>, 'content' | 'style'> {

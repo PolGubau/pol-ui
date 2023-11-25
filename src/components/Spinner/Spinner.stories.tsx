@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from '../Button';
 import { Spinner } from './Spinner';
-import React from 'react';
+
 export default {
   title: 'Components/Spinner',
   component: Spinner,

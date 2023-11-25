@@ -1,6 +1,5 @@
 import { HiOutlineArrowRight, HiShoppingCart } from 'react-icons/hi';
 import { Button } from '~/src';
-import React from 'react';
 
 const code = `
 'use client';

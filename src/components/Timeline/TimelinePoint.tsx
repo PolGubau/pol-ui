@@ -6,7 +6,7 @@ import { mergeDeep } from '../../helpers/merge-deep';
 import type { DeepPartial } from '../../types';
 import { useTimelineContext } from './TimelineContext';
 import { useTimelineItemContext } from './TimelineItemContext';
-import React from 'react';
+
 export interface TimelinePointTheme {
   horizontal: string;
   line: string;

@@ -1,6 +1,5 @@
 import { AiOutlineLoading } from 'react-icons/ai';
 import { Button } from '~/src';
-import React from 'react';
 
 const code = `
 'use client';

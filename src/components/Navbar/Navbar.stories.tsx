@@ -3,7 +3,7 @@ import { Avatar } from '../Avatar';
 import { Button } from '../Button';
 import { Dropdown } from '../Dropdown';
 import { Navbar, type NavbarComponentProps } from './Navbar';
-import React from 'react';
+
 export default {
   title: 'Components/Navbar',
   component: Navbar,

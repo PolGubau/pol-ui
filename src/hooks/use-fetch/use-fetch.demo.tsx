@@ -1,5 +1,5 @@
 import { useFetch } from './use-fetch';
-import React from 'react';
+ 
 const url = `http://jsonplaceholder.typicode.com/posts`;
 
 interface Post {

@@ -2,7 +2,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
 import { Footer } from './Footer';
-import React from 'react';
 
 export default {
   title: 'Components/Footer',

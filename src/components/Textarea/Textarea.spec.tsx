@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { Textarea } from './Textarea';
-import React from 'react';
+
 describe.concurrent('Components / Textarea', () => {
   describe.concurrent('A11y', () => {
     it('should have role="textbox" by default', () => {

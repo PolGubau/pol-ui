@@ -1,6 +1,5 @@
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
 import { Footer, FooterCopyright, FooterIcon, FooterLink, FooterLinkGroup, FooterTitle } from '~/src';
-import React from 'react';
 
 const code = `
 'use client';

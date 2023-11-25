@@ -7,7 +7,7 @@ import { Button } from '../Button';
 import { TextInput } from '../TextInput';
 import type { ModalProps } from './Modal';
 import { Modal } from './Modal';
-import React from 'react';
+
 describe('Components / Modal', () => {
   it('should be closed by clicking outside if the "dismissible" prop is passed.', async () => {
     const user = userEvent.setup();

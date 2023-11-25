@@ -1,5 +1,4 @@
 'use client';
-import React from 'react';
 
 import { useState } from 'react';
 import { HiFire } from 'react-icons/hi';
