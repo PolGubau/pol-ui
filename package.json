@@ -1,6 +1,6 @@
 {
   "name": "pol-ui",
-  "version": "2.0.12",
+  "version": "2.0.13",
   "description": "Official React components built for Pol Gubau Amores' apps",
   "keywords": [
     "design-system",
@@ -12,16 +12,10 @@
     "ui"
   ],
   "contributors": [
-    {
-      "name": "Pol Gubau Amores",
-      "email": "gubaupol@gmail.com",
-      "url": "https://polgubau.com"
-    }
+    "Pol Gubau Amores <gubaupol@gmail.com> (https://polgubau.com)"
   ],
   "homepage": "https://ui.polgubau.com",
-  "bugs": {
-    "url": "https://github.com/PolGubau/pol-ui/issues"
-  },
+  "bugs": "https://github.com/PolGubau/pol-ui/issues",
   "license": "MIT",
   "files": [
     "./lib/"
@@ -29,21 +23,22 @@
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
   "types": "./lib/esm/index.d.ts",
-  "repository": "git+https://github.com/PolGubau/pol-ui.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PolGubau/pol-ui"
+  },
   "scripts": {
-    "build": "yarn build:lib:esm",
     "build:lib": "rm -rf ./lib/ && yarn build:lib:esm && yarn build:lib:cjs",
     "build:lib:cjs": "tsc -p tsconfig.lib.json",
     "build:lib:esm": "tsc -p tsconfig.lib.json --module esnext --declaration --outDir ./lib/esm",
     "commit": "cz",
-    "lint": "eslint ",
+    "lint": "eslint .",
     "prepublishOnly": "yarn build:lib",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "release": "standard-version -a",
     "storybook": "storybook dev -p 3001",
     "storybook:build": "storybook build",
-    "build-storybook": "storybook build",
     "test": "vitest --ui",
     "test:coverage": "vitest run --coverage",
     "test:open": "vitest --ui",
@@ -51,20 +46,23 @@
     "test:e2e:open": "start-test 3000 ",
     "typecheck": "tsc --noEmit",
     "publish": "yarn prepublishOnly && yarn release && yarn publish:lib",
-    "publish:lib": " npm publish --access public",
-    "publish:chromatic": "npx chromatic --project-token=${ENV.CHROMATIC_TOKEN}"
+    "publish:lib": "cd ./lib && npm publish --access public"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
+  "resolutions": {
+    "jackspeak": "2.1.1"
+  },
   "dependencies": {
     "@floating-ui/react": "^0.26.2",
-    "eslint": "^8.54.0",
     "markdown-toc": "^1.2.0",
+    "react-icons": "^4.12.0",
     "react-indiana-drag-scroll": "^2.2.0",
     "react-markdown": "^9.0.1",
+    "sharp": "^0.32.6",
     "tailwind-merge": "^2.0.0"
   },
   "devDependencies": {
@@ -97,24 +95,18 @@
     "@types/react-syntax-highlighter": "^15.5.10",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
-    "@typescript-eslint/typescript-estree": "^6.12.0",
     "@vitejs/plugin-react": "^4.2.0",
     "@vitest/coverage-v8": "^0.34.6",
     "@vitest/ui": "^0.34.7",
     "autoprefixer": "^10.4.16",
     "axe-core": "^4.8.2",
-    "chromatic": "^9.1.0",
     "cz-conventional-changelog": "3.3.0",
-    "eslint-config-semistandard": "^17.0.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.26.0",
+    "eslint": "^8.54.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-n": "^15.0.0",
-    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.15",
     "jsdom": "^22.1.0",
-    "next": "^14.0.3",
     "postcss": "^8.4.31",
     "prettier": "^3.1.0",
     "prettier-plugin-organize-imports": "^3.2.4",
@@ -122,7 +114,6 @@
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.12.0",
     "resize-observer-polyfill": "^1.5.1",
     "standard-version": "^9.5.0",
     "start-server-and-test": "^2.0.3",
@@ -131,7 +122,7 @@
     "tailwindcss": "^3.3.5",
     "terser-webpack-plugin": "^5.3.9",
     "tsconfig-paths-webpack-plugin": "^4.1.0",
-    "typescript": "4.3.5",
+    "typescript": "^5.3.2",
     "vite": "^5.0.0",
     "vite-tsconfig-paths": "^4.2.1",
     "vitest": "^0.34.6"
@@ -142,7 +133,46 @@
     "tailwindcss": "^3"
   },
   "private": false,
-  "readme": "./README.md",
-  "_id": "pol-ui@2.0.12",
-  "author": "Pol Gubau <gubaupol@gmail.com>"
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:jsx-a11y/recommended",
+      "plugin:react/recommended",
+      "plugin:react-hooks/recommended",
+      "plugin:storybook/recommended"
+    ],
+    "ignorePatterns": [
+      "/build/",
+      "/coverage/",
+      "/docs/",
+      "/lib/",
+      "/postcss.config.js",
+      "/tailwind.config.js"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "project": [
+        "./tsconfig.json"
+      ]
+    },
+    "plugins": [
+      "@typescript-eslint",
+      "jsx-a11y",
+      "react",
+      "react-hooks",
+      "storybook"
+    ],
+    "root": true,
+    "rules": {
+      "react/prop-types": "off",
+      "react/react-in-jsx-scope": "off",
+      "@typescript-eslint/consistent-type-imports": "warn",
+      "jsx-a11y/anchor-is-valid": "off",
+      "react/no-unescaped-entities": "off"
+    }
+  }
 }
