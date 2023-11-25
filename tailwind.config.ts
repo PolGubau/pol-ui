@@ -1,13 +1,7 @@
-import { type Config } from 'tailwindcss';
+import { type Config } from 'tailwindcss'
 
 const config: Config = {
-  content: [
-    './app/**/*.{js,jsx,md,mdx,ts,tsx}',
-    './components/**/*.{js,jsx,md,mdx,ts,tsx}',
-    './data/**/*.{js,jsx,ts,tsx}',
-    './examples/**/*.{js,jsx,ts,tsx}',
-    './src/**/*.{js,jsx,ts,tsx}',
-  ],
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
   plugins: [],
   darkMode: 'class',
   theme: {
@@ -106,6 +100,6 @@ const config: Config = {
       'fade-in': 'fadeIn 200ms ease-in-out',
     },
   },
-};
+}
 
-export default config;
+export default config
