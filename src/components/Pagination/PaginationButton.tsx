@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
-import useRipple from '~/src/hooks/use-ripple/use-ripple';
+import { useRipple } from '../../hooks';
 
 export interface PaginationButtonTheme {
   base: string;
