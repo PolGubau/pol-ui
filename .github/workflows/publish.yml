@@ -17,6 +17,7 @@ jobs:
         with:
           node-version: lts/*
           cache: 'yarn'
+          always-auth: true
 
       - name: 📥 Install Dependencies
         run: yarn install --immutable
