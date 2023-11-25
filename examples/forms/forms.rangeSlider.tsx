@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Label, RangeSlider } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -122,7 +122,7 @@ function Component() {
   );
 }
 
-export const rangeSlider: CodeData = {
+export const rangeSlider = {
   type: 'single',
   code: [
     {

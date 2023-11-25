@@ -1,7 +1,7 @@
 'use client';
+import React from 'react';
 
 import { useState } from 'react';
-import { type CodeData } from '~/components/code-demo';
 import { ToggleSwitch } from '~/src';
 
 const code = `
@@ -43,7 +43,7 @@ function Component() {
   );
 }
 
-export const toggleSwitch: CodeData = {
+export const toggleSwitch = {
   type: 'single',
   code: {
     fileName: 'client',

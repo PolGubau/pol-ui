@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Kbd } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -35,7 +35,7 @@ function Component() {
   );
 }
 
-export const insideText: CodeData = {
+export const insideText = {
   type: 'single',
   code: [
     {

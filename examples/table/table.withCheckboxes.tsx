@@ -1,4 +1,4 @@
-import { type CodeData } from '~/components/code-demo';
+import React from 'react';
 import { Checkbox, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from '~/src';
 
 const code = `
@@ -212,7 +212,7 @@ function Component() {
   );
 }
 
-export const withCheckboxes: CodeData = {
+export const withCheckboxes = {
   type: 'single',
   code: [
     {

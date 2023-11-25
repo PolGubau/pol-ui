@@ -1,8 +1,8 @@
 'use client';
+import React from 'react';
 
 import { useState } from 'react';
 import { HiFire } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
 import { Button, Toast } from '~/src';
 
 const code = `
@@ -51,7 +51,7 @@ function Component() {
   );
 }
 
-export const customDismissal: CodeData = {
+export const customDismissal = {
   type: 'single',
   code: {
     fileName: 'client',

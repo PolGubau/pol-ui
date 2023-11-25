@@ -1,7 +1,7 @@
 'use client';
+import React from 'react';
 
 import { HiCog, HiCurrencyDollar, HiLogout, HiViewGrid } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
 import { Dropdown } from '~/src';
 
 const code = `
@@ -43,7 +43,7 @@ function Component() {
   );
 }
 
-export const itemsWithIcon: CodeData = {
+export const itemsWithIcon = {
   type: 'single',
   code: {
     fileName: 'client',

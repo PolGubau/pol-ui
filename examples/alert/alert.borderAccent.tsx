@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Alert } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -39,7 +39,7 @@ function Component() {
   );
 }
 
-export const borderAccent: CodeData = {
+export const borderAccent = {
   type: 'single',
   code: [
     {

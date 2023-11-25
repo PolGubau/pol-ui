@@ -1,4 +1,4 @@
-import { type CodeData } from '~/components/code-demo';
+import React from 'react';
 import { Button, Spinner } from '~/src';
 
 const code = `
@@ -56,7 +56,7 @@ function Component() {
   );
 }
 
-export const loadingButtons: CodeData = {
+export const loadingButtons = {
   type: 'single',
   code: [
     {

@@ -1,6 +1,5 @@
-import Link from 'next/link';
-import { type CodeData } from '~/components/code-demo';
 import { Dropdown, DropdownItem } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -41,18 +40,13 @@ function Component() {
 function Component() {
   return (
     <Dropdown dismissOnClick={false} label="My custom item">
-      {/* @ts-expect-error TODO: fix `as` inference */}
-      <DropdownItem as={Link} href="#">
-        Home
-      </DropdownItem>
-      <DropdownItem as="a" href="https://flowbite.com/" target="_blank">
-        External link
-      </DropdownItem>
+      <DropdownItem>Home</DropdownItem>
+      <DropdownItem>External link</DropdownItem>
     </Dropdown>
   );
 }
 
-export const customItem: CodeData = {
+export const customItem = {
   type: 'single',
   code: [
     {

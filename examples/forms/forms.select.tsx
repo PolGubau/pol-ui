@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Label, Select } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -59,7 +59,7 @@ function Component() {
   );
 }
 
-export const select: CodeData = {
+export const select = {
   type: 'single',
   code: [
     {

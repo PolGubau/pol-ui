@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Checkbox, Label } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -143,7 +143,7 @@ function Component() {
   );
 }
 
-export const checkbox: CodeData = {
+export const checkbox = {
   type: 'single',
   code: [
     {

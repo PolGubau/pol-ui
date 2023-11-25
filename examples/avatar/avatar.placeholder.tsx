@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Avatar } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -38,7 +38,7 @@ function Component() {
   );
 }
 
-export const placeholder: CodeData = {
+export const placeholder = {
   type: 'single',
   code: [
     {

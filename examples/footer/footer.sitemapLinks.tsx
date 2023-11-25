@@ -1,6 +1,6 @@
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
-import { type CodeData } from '~/components/code-demo';
 import { Footer, FooterCopyright, FooterIcon, FooterLink, FooterLinkGroup, FooterTitle } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -182,7 +182,7 @@ function Component() {
   );
 }
 
-export const sitemapLinks: CodeData = {
+export const sitemapLinks = {
   type: 'single',
   code: [
     {

@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Badge } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -44,7 +44,7 @@ function Component() {
   );
 }
 
-export const asLink: CodeData = {
+export const asLink = {
   type: 'single',
   code: [
     {

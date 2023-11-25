@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { FloatingLabel } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -62,7 +62,7 @@ function Component() {
   );
 }
 
-export const validation: CodeData = {
+export const validation = {
   type: 'single',
   code: [
     {

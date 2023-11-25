@@ -1,6 +1,5 @@
-import Image from 'next/image';
-import { type CodeData } from '~/components/code-demo';
 import { Card } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -48,10 +47,7 @@ function Component() {
 
 function Component() {
   return (
-    <Card
-      className="max-w-sm"
-      renderImage={() => <Image width={500} height={500} src="/images/blog/image-1.jpg" alt="image 1" />}
-    >
+    <Card className="max-w-sm" renderImage={() => <img src="/images/blog/image-1.jpg" alt="1" />}>
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         Noteworthy technology acquisitions 2021
       </h5>
@@ -62,7 +58,7 @@ function Component() {
   );
 }
 
-export const renderImage: CodeData = {
+export const renderImage = {
   type: 'single',
   code: [
     {

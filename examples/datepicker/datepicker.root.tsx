@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Datepicker } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -23,7 +23,7 @@ function Component() {
   return <Datepicker />;
 }
 
-export const root: CodeData = {
+export const root = {
   type: 'single',
   code: [
     {

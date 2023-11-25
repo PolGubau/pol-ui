@@ -1,6 +1,6 @@
 'use client';
+import React from 'react';
 
-import { type CodeData } from '~/components/code-demo';
 import { Dropdown } from '~/src';
 
 const code = `
@@ -31,7 +31,7 @@ function Component() {
   );
 }
 
-export const customTrigger: CodeData = {
+export const customTrigger = {
   type: 'single',
   code: {
     fileName: 'client',

@@ -1,6 +1,6 @@
 import { HiHome } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
 import { Breadcrumb, BreadcrumbItem } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -50,7 +50,7 @@ function Component() {
   );
 }
 
-export const backgroundColor: CodeData = {
+export const backgroundColor = {
   type: 'single',
   code: [
     {

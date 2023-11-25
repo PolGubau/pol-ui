@@ -1,4 +1,4 @@
-import { type CodeData } from '~/components/code-demo';
+import React from 'react';
 import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from '~/src';
 
 const code = `
@@ -224,7 +224,7 @@ function Component() {
   );
 }
 
-export const striped: CodeData = {
+export const striped = {
   type: 'single',
   code: [
     {

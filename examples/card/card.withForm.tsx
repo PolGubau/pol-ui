@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Button, Card, Checkbox, Label, TextInput } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -89,7 +89,7 @@ function Component() {
   );
 }
 
-export const withForm: CodeData = {
+export const withForm = {
   type: 'single',
   code: [
     {

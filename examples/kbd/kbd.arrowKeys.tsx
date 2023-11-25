@@ -1,6 +1,6 @@
 import { MdKeyboardArrowDown, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowUp } from 'react-icons/md';
-import { type CodeData } from '~/components/code-demo';
 import { Kbd } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -47,7 +47,7 @@ function Component() {
   );
 }
 
-export const arrowKeys: CodeData = {
+export const arrowKeys = {
   type: 'single',
   code: [
     {

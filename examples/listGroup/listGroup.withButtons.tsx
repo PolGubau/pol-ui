@@ -1,6 +1,6 @@
 'use client';
+import React from 'react';
 
-import { type CodeData } from '~/components/code-demo';
 import { ListGroup } from '~/src';
 
 const code = `
@@ -39,7 +39,7 @@ function Component() {
   );
 }
 
-export const withButtons: CodeData = {
+export const withButtons = {
   type: 'single',
   code: {
     fileName: 'client',

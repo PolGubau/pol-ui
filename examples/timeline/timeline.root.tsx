@@ -1,5 +1,5 @@
 import { HiArrowNarrowRight } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
+import React from 'react';
 import {
   Button,
   Timeline,
@@ -161,7 +161,7 @@ function Component() {
   );
 }
 
-export const root: CodeData = {
+export const root = {
   type: 'single',
   code: [
     {

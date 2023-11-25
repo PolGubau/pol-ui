@@ -1,7 +1,7 @@
 import { FaBookOpen } from 'react-icons/fa';
 import { HiArrowRight, HiX } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
 import { Banner, BannerCollapseButton } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -122,7 +122,7 @@ function Component() {
   );
 }
 
-export const informational: CodeData = {
+export const informational = {
   type: 'single',
   code: [
     {

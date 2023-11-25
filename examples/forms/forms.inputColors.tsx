@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Label, TextInput } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -122,7 +122,7 @@ function Component() {
   );
 }
 
-export const inputColors: CodeData = {
+export const inputColors = {
   type: 'single',
   code: [
     {

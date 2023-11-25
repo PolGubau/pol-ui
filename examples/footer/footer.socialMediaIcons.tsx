@@ -1,5 +1,4 @@
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
-import { type CodeData } from '~/components/code-demo';
 import {
   Footer,
   FooterBrand,
@@ -10,6 +9,7 @@ import {
   FooterLinkGroup,
   FooterTitle,
 } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -191,7 +191,7 @@ function Component() {
   );
 }
 
-export const socialMediaIcons: CodeData = {
+export const socialMediaIcons = {
   type: 'single',
   code: [
     {

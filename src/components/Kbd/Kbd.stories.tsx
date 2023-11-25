@@ -2,7 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { MdKeyboardArrowDown, MdKeyboardCommandKey } from 'react-icons/md';
 import type { KbdProps } from './Kbd';
 import { Kbd } from './Kbd';
-
+import React from 'react'
 export default {
   title: 'Components/Kbd',
   component: Kbd,

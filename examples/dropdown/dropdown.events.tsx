@@ -1,7 +1,7 @@
 'use client';
 
-import { type CodeData } from '~/components/code-demo';
 import { Dropdown } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -31,7 +31,7 @@ function Component() {
   );
 }
 
-export const events: CodeData = {
+export const events = {
   type: 'single',
   code: {
     fileName: 'client',

@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Button } from '~/src';
+import React from 'react'
 
 const code = `
 'use client';
@@ -47,7 +47,7 @@ function Component() {
   );
 }
 
-export const sizes: CodeData = {
+export const sizes = {
   type: 'single',
   code: [
     {

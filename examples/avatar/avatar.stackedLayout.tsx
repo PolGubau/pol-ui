@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Avatar, AvatarGroup } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -74,7 +74,7 @@ function Component() {
   );
 }
 
-export const stackedLayout: CodeData = {
+export const stackedLayout = {
   type: 'single',
   code: [
     {

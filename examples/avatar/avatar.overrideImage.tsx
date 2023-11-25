@@ -1,6 +1,5 @@
-import Image from 'next/image';
-import { type CodeData } from '~/components/code-demo';
 import { Avatar } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -75,7 +74,7 @@ function Component() {
     <div className="flex flex-wrap gap-2">
       <Avatar
         img={(props) => (
-          <Image
+          <img
             alt=""
             height="48"
             referrerPolicy="no-referrer"
@@ -90,7 +89,7 @@ function Component() {
           <picture>
             <source media="(min-width: 900px)" srcSet="/images/people/profile-picture-3.jpg" />
             <source media="(min-width: 480px)" srcSet="/images/people/profile-picture-4.jpg" />
-            <Image alt="" height="48" src="/images/people/profile-picture-5.jpg" width="48" {...props} />
+            <img alt="" height="48" src="/images/people/profile-picture-5.jpg" width="48" {...props} />
           </picture>
         )}
       />
@@ -98,7 +97,7 @@ function Component() {
   );
 }
 
-export const overrideImage: CodeData = {
+export const overrideImage = {
   type: 'single',
   code: [
     {

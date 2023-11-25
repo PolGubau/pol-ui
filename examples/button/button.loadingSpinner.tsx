@@ -1,6 +1,6 @@
 import { AiOutlineLoading } from 'react-icons/ai';
-import { type CodeData } from '~/components/code-demo';
 import { Button } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -38,7 +38,7 @@ function Component() {
   );
 }
 
-export const loadingSpinner: CodeData = {
+export const loadingSpinner = {
   type: 'single',
   code: [
     {

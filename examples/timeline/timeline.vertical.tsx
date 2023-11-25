@@ -1,9 +1,7 @@
-// TODO: try to make it RSC - failing because of `<TimelinePoint icon={HiCalendar} />` icon prop
-
 'use client';
+import React from 'react';
 
 import { HiArrowNarrowRight, HiCalendar } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
 import {
   Button,
   Timeline,
@@ -165,7 +163,7 @@ function Component() {
   );
 }
 
-export const vertical: CodeData = {
+export const vertical = {
   type: 'single',
   code: [
     {

@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Rating, RatingStar } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -50,7 +50,7 @@ function Component() {
   );
 }
 
-export const count: CodeData = {
+export const count = {
   type: 'single',
   code: [
     {

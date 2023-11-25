@@ -1,4 +1,4 @@
-import { type CodeData } from '~/components/code-demo';
+import React from 'react';
 import { Rating, RatingStar } from '~/src';
 
 const code = `
@@ -50,7 +50,7 @@ function Component() {
   );
 }
 
-export const withText: CodeData = {
+export const withText = {
   type: 'single',
   code: [
     {

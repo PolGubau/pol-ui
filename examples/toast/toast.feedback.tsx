@@ -1,6 +1,6 @@
 import { FaTelegramPlane } from 'react-icons/fa';
-import { type CodeData } from '~/components/code-demo';
 import { Toast } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -41,7 +41,7 @@ function Component() {
   );
 }
 
-export const feedback: CodeData = {
+export const feedback = {
   type: 'single',
   code: [
     {

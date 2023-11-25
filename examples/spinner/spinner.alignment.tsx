@@ -1,4 +1,4 @@
-import { type CodeData } from '~/components/code-demo';
+import React from 'react';
 import { Spinner } from '~/src';
 
 const code = `
@@ -59,7 +59,7 @@ function Component() {
   );
 }
 
-export const alignment: CodeData = {
+export const alignment = {
   type: 'single',
   code: [
     {

@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Label, Radio } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -101,7 +101,7 @@ function Component() {
   );
 }
 
-export const radioButton: CodeData = {
+export const radioButton = {
   type: 'single',
   code: [
     {

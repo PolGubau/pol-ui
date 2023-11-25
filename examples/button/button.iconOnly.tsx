@@ -1,6 +1,6 @@
 import { HiOutlineArrowRight } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
 import { Button } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -58,20 +58,20 @@ function Component() {
       <Button>
         <HiOutlineArrowRight className="h-6 w-6" />
       </Button>
-      <Button pill>
+      <Button>
         <HiOutlineArrowRight className="h-6 w-6" />
       </Button>
       <Button outline>
         <HiOutlineArrowRight className="h-6 w-6" />
       </Button>
-      <Button outline pill>
+      <Button outline>
         <HiOutlineArrowRight className="h-6 w-6" />
       </Button>
     </div>
   );
 }
 
-export const iconOnly: CodeData = {
+export const iconOnly = {
   type: 'single',
   code: [
     {

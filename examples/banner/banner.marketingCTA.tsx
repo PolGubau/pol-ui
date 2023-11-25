@@ -1,6 +1,6 @@
 import { HiX } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
 import { Banner, BannerCollapseButton, Button } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -101,7 +101,7 @@ function Component() {
   );
 }
 
-export const marketingCTA: CodeData = {
+export const marketingCTA = {
   type: 'single',
   code: [
     {

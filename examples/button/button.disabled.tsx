@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Button } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -23,7 +23,7 @@ function Component() {
   return <Button disabled>Disabled button</Button>;
 }
 
-export const disabled: CodeData = {
+export const disabled = {
   type: 'single',
   code: [
     {

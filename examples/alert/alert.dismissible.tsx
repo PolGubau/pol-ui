@@ -1,6 +1,6 @@
 'use client';
+import React from 'react';
 
-import { type CodeData } from '~/components/code-demo';
 import { Alert } from '~/src';
 
 const code = `
@@ -25,7 +25,7 @@ function Component() {
   );
 }
 
-export const dismissible: CodeData = {
+export const dismissible = {
   type: 'single',
   code: {
     fileName: 'client',

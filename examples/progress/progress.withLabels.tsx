@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Progress } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -23,7 +23,7 @@ function Component() {
   return <Progress progress={50} textLabel="Flowbite" size="lg" labelProgress labelText />;
 }
 
-export const withLabels: CodeData = {
+export const withLabels = {
   type: 'single',
   code: [
     {

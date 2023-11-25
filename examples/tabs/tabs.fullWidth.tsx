@@ -1,8 +1,8 @@
 'use client';
+import React from 'react';
 
 import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';
-import { type CodeData } from '~/components/code-demo';
 import { Tabs } from '~/src';
 
 const code = `
@@ -71,7 +71,7 @@ function Component() {
   );
 }
 
-export const fullWidth: CodeData = {
+export const fullWidth = {
   type: 'single',
   code: {
     fileName: 'client',

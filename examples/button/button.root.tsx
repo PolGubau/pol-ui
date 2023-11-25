@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Button } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -59,7 +59,7 @@ function Component() {
   );
 }
 
-export const root: CodeData = {
+export const root = {
   type: 'single',
   code: [
     {

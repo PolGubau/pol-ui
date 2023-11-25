@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Card } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -151,7 +151,6 @@ function Component() {
             focusable="false"
             data-prefix="fab"
             data-icon="apple"
-            role="img"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 384 512"
           >
@@ -175,7 +174,6 @@ function Component() {
             focusable="false"
             data-prefix="fab"
             data-icon="google-play"
-            role="img"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
           >
@@ -194,7 +192,7 @@ function Component() {
   );
 }
 
-export const CTA: CodeData = {
+export const CTA = {
   type: 'single',
   code: [
     {

@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Kbd } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -62,7 +62,7 @@ function Component() {
   );
 }
 
-export const numberKeys: CodeData = {
+export const numberKeys = {
   type: 'single',
   code: [
     {

@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { FileInput, Label } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -44,7 +44,7 @@ function Component() {
   );
 }
 
-export const fileInput: CodeData = {
+export const fileInput = {
   type: 'single',
   code: [
     {

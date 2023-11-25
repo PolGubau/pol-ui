@@ -1,6 +1,6 @@
 import { HiCheck } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
 import { Badge } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -47,7 +47,7 @@ function Component() {
   );
 }
 
-export const withIconOnly: CodeData = {
+export const withIconOnly = {
   type: 'single',
   code: [
     {

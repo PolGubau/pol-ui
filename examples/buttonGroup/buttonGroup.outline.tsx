@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Button, ButtonGroup } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -15,14 +15,14 @@ function Component() {
         <Button color="gray">Messages</Button>
       </Button.Group>
       <Button.Group outline>
-        <Button gradientMonochrome="info">Profile</Button>
-        <Button gradientMonochrome="info">Settings</Button>
-        <Button gradientMonochrome="info">Messages</Button>
+        <Button >Profile</Button>
+        <Button >Settings</Button>
+        <Button >Messages</Button>
       </Button.Group>
       <Button.Group outline>
-        <Button gradientDuoTone="cyanToBlue">Profile</Button>
-        <Button gradientDuoTone="cyanToBlue">Settings</Button>
-        <Button gradientDuoTone="cyanToBlue">Messages</Button>
+        <Button>Profile</Button>
+        <Button>Settings</Button>
+        <Button>Messages</Button>
       </Button.Group>
     </div>
   );
@@ -41,14 +41,14 @@ function Component() {
         <Button color="gray">Messages</Button>
       </ButtonGroup>
       <ButtonGroup outline>
-        <Button gradientMonochrome="info">Profile</Button>
-        <Button gradientMonochrome="info">Settings</Button>
-        <Button gradientMonochrome="info">Messages</Button>
+        <Button >Profile</Button>
+        <Button >Settings</Button>
+        <Button >Messages</Button>
       </ButtonGroup>
       <ButtonGroup outline>
-        <Button gradientDuoTone="cyanToBlue">Profile</Button>
-        <Button gradientDuoTone="cyanToBlue">Settings</Button>
-        <Button gradientDuoTone="cyanToBlue">Messages</Button>
+        <Button>Profile</Button>
+        <Button>Settings</Button>
+        <Button>Messages</Button>
       </ButtonGroup>
     </div>
   );
@@ -64,20 +64,20 @@ function Component() {
         <Button color="gray">Messages</Button>
       </ButtonGroup>
       <ButtonGroup outline>
-        <Button gradientMonochrome="info">Profile</Button>
-        <Button gradientMonochrome="info">Settings</Button>
-        <Button gradientMonochrome="info">Messages</Button>
+        <Button>Profile</Button>
+        <Button>Settings</Button>
+        <Button>Messages</Button>
       </ButtonGroup>
       <ButtonGroup outline>
-        <Button gradientDuoTone="cyanToBlue">Profile</Button>
-        <Button gradientDuoTone="cyanToBlue">Settings</Button>
-        <Button gradientDuoTone="cyanToBlue">Messages</Button>
+        <Button>Profile</Button>
+        <Button>Settings</Button>
+        <Button>Messages</Button>
       </ButtonGroup>
     </div>
   );
 }
 
-export const outline: CodeData = {
+export const outline = {
   type: 'single',
   code: [
     {

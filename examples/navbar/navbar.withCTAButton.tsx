@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Button, Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -83,7 +83,7 @@ function Component() {
   );
 }
 
-export const withCTAButton: CodeData = {
+export const withCTAButton = {
   type: 'single',
   code: [
     {

@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Blockquote } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -65,7 +65,7 @@ function Component() {
   );
 }
 
-export const icon: CodeData = {
+export const icon = {
   type: 'single',
   code: [
     {

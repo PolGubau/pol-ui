@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Carousel } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -53,7 +53,7 @@ function Component() {
   );
 }
 
-export const controls: CodeData = {
+export const controls = {
   type: 'single',
   code: [
     {

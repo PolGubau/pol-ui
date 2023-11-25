@@ -1,6 +1,6 @@
 import { HiAdjustments, HiCloudDownload, HiUserCircle } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
 import { Button, ButtonGroup } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -71,7 +71,7 @@ function Component() {
   );
 }
 
-export const withIcons: CodeData = {
+export const withIcons = {
   type: 'single',
   code: [
     {

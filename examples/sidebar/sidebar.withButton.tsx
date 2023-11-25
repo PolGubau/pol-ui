@@ -1,9 +1,7 @@
-// TODO: try to make it RSC - failing because of `<SidebarItem />` icon prop
-
 'use client';
 
 import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
+import React from 'react';
 import { Badge, Sidebar } from '~/src';
 
 const code = `
@@ -145,7 +143,7 @@ function Component() {
   );
 }
 
-export const withButton: CodeData = {
+export const withButton = {
   type: 'single',
   code: {
     fileName: 'client',

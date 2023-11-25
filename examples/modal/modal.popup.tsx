@@ -1,8 +1,8 @@
 'use client';
+import React from 'react';
 
 import { useState } from 'react';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
 import { Button, Modal } from '~/src';
 
 const code = `
@@ -71,7 +71,7 @@ function Component() {
   );
 }
 
-export const popup: CodeData = {
+export const popup = {
   type: 'single',
   code: {
     fileName: 'client',

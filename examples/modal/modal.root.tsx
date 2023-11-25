@@ -1,7 +1,7 @@
 'use client';
+import React from 'react';
 
 import { useState } from 'react';
-import { type CodeData } from '~/components/code-demo';
 import { Button, Modal } from '~/src';
 
 const code = `
@@ -75,7 +75,7 @@ function Component() {
   );
 }
 
-export const root: CodeData = {
+export const root = {
   type: 'single',
   code: {
     fileName: 'client',

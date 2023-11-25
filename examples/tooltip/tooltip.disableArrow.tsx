@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Button, Tooltip } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -35,7 +35,7 @@ function Component() {
   );
 }
 
-export const disableArrow: CodeData = {
+export const disableArrow = {
   type: 'single',
   code: [
     {

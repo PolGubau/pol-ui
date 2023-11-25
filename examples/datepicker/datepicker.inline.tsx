@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Datepicker } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -23,7 +23,7 @@ function Component() {
   return <Datepicker inline />;
 }
 
-export const inline: CodeData = {
+export const inline = {
   type: 'single',
   code: [
     {

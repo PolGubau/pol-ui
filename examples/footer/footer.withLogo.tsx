@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Footer, FooterBrand, FooterCopyright, FooterDivider, FooterLink, FooterLinkGroup } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -86,7 +86,7 @@ function Component() {
   );
 }
 
-export const withLogo: CodeData = {
+export const withLogo = {
   type: 'single',
   code: [
     {

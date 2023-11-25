@@ -1,6 +1,6 @@
 'use client';
+import React from 'react';
 
-import { type CodeData } from '~/components/code-demo';
 import { Tabs } from '~/src';
 
 const code = `
@@ -51,7 +51,7 @@ function Component() {
   );
 }
 
-export const withPills: CodeData = {
+export const withPills = {
   type: 'single',
   code: {
     fileName: 'client',

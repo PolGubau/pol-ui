@@ -1,6 +1,6 @@
 'use client';
+import React from 'react';
 
-import { type CodeData } from '~/components/code-demo';
 import { Carousel } from '~/src';
 
 const code = `
@@ -45,7 +45,7 @@ function Component() {
   );
 }
 
-export const events: CodeData = {
+export const events = {
   type: 'single',
   code: {
     fileName: 'client',

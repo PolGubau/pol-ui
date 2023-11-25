@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Button } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -23,7 +23,7 @@ function Component() {
   return <Button label="2">Messages</Button>;
 }
 
-export const withLabel: CodeData = {
+export const withLabel = {
   type: 'single',
   code: [
     {

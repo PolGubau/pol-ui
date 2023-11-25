@@ -1,4 +1,4 @@
-import { type CodeData } from '~/components/code-demo';
+import React from 'react';
 import { Spinner } from '~/src';
 
 const code = `
@@ -50,7 +50,7 @@ function Component() {
   );
 }
 
-export const colors: CodeData = {
+export const colors = {
   type: 'single',
   code: [
     {

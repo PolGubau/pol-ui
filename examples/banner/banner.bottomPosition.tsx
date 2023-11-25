@@ -1,7 +1,7 @@
 import { HiArrowRight, HiX } from 'react-icons/hi';
 import { MdPercent } from 'react-icons/md';
-import { type CodeData } from '~/components/code-demo';
 import { Banner, BannerCollapseButton } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -104,7 +104,7 @@ function Component() {
   );
 }
 
-export const bottomPosition: CodeData = {
+export const bottomPosition = {
   type: 'single',
   code: [
     {

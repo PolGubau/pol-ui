@@ -1,6 +1,6 @@
 import { HiCheck, HiExclamation, HiX } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
 import { Toast, ToastToggle } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -98,7 +98,7 @@ function Component() {
   );
 }
 
-export const colors: CodeData = {
+export const colors = {
   type: 'single',
   code: [
     {

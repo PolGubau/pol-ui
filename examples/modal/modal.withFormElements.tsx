@@ -1,7 +1,7 @@
 'use client';
+import React from 'react';
 
 import { useState } from 'react';
-import { type CodeData } from '~/components/code-demo';
 import { Button, Checkbox, Label, Modal, TextInput } from '~/src';
 
 const code = `
@@ -131,7 +131,7 @@ function Component() {
   );
 }
 
-export const withFormElements: CodeData = {
+export const withFormElements = {
   type: 'single',
   code: {
     fileName: 'client',

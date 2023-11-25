@@ -1,6 +1,6 @@
 import { HiCloudDownload, HiInbox, HiOutlineAdjustments, HiUserCircle } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
 import { ListGroup, ListGroupItem } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -59,7 +59,7 @@ function Component() {
   );
 }
 
-export const withIcons: CodeData = {
+export const withIcons = {
   type: 'single',
   code: [
     {

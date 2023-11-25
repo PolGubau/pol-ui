@@ -1,6 +1,5 @@
-import Image from 'next/image';
-import { type CodeData } from '~/components/code-demo';
 import { Card, Dropdown, DropdownItem } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -40,7 +39,7 @@ function Component() {
         </Dropdown>
       </div>
       <div className="flex flex-col items-center pb-10">
-        <Image
+        <img
           alt="Bonnie image"
           height="96"
           src="/images/people/profile-picture-3.jpg"
@@ -105,7 +104,7 @@ function Component() {
         </Dropdown>
       </div>
       <div className="flex flex-col items-center pb-10">
-        <Image
+        <img
           alt="Bonnie image"
           height="96"
           src="/images/people/profile-picture-3.jpg"
@@ -166,8 +165,8 @@ function Component() {
         </Dropdown>
       </div>
       <div className="flex flex-col items-center pb-10">
-        <Image
-          alt="Bonnie image"
+        <img
+          alt="Bonnie "
           height="96"
           src="/images/people/profile-picture-3.jpg"
           width="96"
@@ -194,7 +193,7 @@ function Component() {
   );
 }
 
-export const userProfile: CodeData = {
+export const userProfile = {
   type: 'single',
   code: [
     {

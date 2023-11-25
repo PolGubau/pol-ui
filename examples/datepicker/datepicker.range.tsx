@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Datepicker } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -23,7 +23,7 @@ function Component() {
   return <Datepicker minDate={new Date(2023, 0, 1)} maxDate={new Date(2023, 3, 30)} />;
 }
 
-export const range: CodeData = {
+export const range = {
   type: 'single',
   code: [
     {

@@ -1,6 +1,6 @@
 import { HiMail } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
 import { Label, TextInput } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -47,7 +47,7 @@ function Component() {
   );
 }
 
-export const inputLeftIcon: CodeData = {
+export const inputLeftIcon = {
   type: 'single',
   code: [
     {

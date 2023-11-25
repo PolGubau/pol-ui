@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { type CodeData } from '~/components/code-demo';
 import { Button, Checkbox, Label, TextInput } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -119,7 +119,7 @@ function Component() {
   );
 }
 
-export const shadowInputs: CodeData = {
+export const shadowInputs = {
   type: 'single',
   code: [
     {

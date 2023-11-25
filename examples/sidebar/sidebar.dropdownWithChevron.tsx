@@ -1,5 +1,3 @@
-// TODO: try to make it RSC - failing because of `<SidebarItem />` icon prop
-
 'use client';
 
 import {
@@ -13,7 +11,7 @@ import {
   HiUser,
 } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
-import { type CodeData } from '~/components/code-demo';
+import React from 'react';
 import { Sidebar } from '~/src';
 
 const code = `
@@ -119,7 +117,7 @@ function Component() {
   );
 }
 
-export const dropdownWithChevron: CodeData = {
+export const dropdownWithChevron = {
   type: 'single',
   code: {
     fileName: 'client',

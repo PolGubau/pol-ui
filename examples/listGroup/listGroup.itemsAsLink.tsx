@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { ListGroup, ListGroupItem } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -56,7 +56,7 @@ function Component() {
   );
 }
 
-export const itemsAsLink: CodeData = {
+export const itemsAsLink = {
   type: 'single',
   code: [
     {

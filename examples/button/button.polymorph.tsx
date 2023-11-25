@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import { type CodeData } from '~/components/code-demo';
+import React from 'react';
 import { Button } from '~/src';
 
 const code = `
@@ -42,19 +41,13 @@ function Component() {
 
 function Component() {
   return (
-    <div className="flex flex-wrap gap-2">
-      <Button as="span" className="cursor-pointer">
-        Span Button
-      </Button>
-      {/* @ts-expect-error TODO: fix `as` inference */}
-      <Button as={Link} href="#">
-        Next Link Button
-      </Button>
-    </div>
+    <Button as="span" className="cursor-pointer">
+      Span Button
+    </Button>
   );
 }
 
-export const polymorph: CodeData = {
+export const polymorph = {
   type: 'single',
   code: [
     {

@@ -1,6 +1,6 @@
 import { MdKeyboardArrowDown, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowUp } from 'react-icons/md';
-import { type CodeData } from '~/components/code-demo';
 import { Kbd, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -131,7 +131,7 @@ function Component() {
   );
 }
 
-export const insideTable: CodeData = {
+export const insideTable = {
   type: 'single',
   code: [
     {

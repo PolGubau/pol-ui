@@ -1,7 +1,7 @@
 'use client';
+import React from 'react';
 
 import { useState } from 'react';
-import { type CodeData } from '~/components/code-demo';
 import { Pagination } from '~/src';
 
 const code = `
@@ -51,7 +51,7 @@ function Component() {
   );
 }
 
-export const controlButtonText: CodeData = {
+export const controlButtonText = {
   type: 'single',
   code: {
     fileName: 'client',

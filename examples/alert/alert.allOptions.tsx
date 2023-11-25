@@ -1,7 +1,7 @@
 'use client';
+import React from 'react';
 
 import { HiEye, HiInformationCircle } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
 import { Alert } from '~/src';
 
 const code = `
@@ -63,7 +63,7 @@ function ExampleAdditionalContent() {
   );
 }
 
-export const allOptions: CodeData = {
+export const allOptions = {
   type: 'single',
   code: {
     fileName: 'client',

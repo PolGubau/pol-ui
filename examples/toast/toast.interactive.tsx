@@ -1,6 +1,6 @@
 import { MdLoop } from 'react-icons/md';
-import { type CodeData } from '~/components/code-demo';
 import { Button, Toast, ToastToggle } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -95,7 +95,7 @@ function Component() {
   );
 }
 
-export const interactive: CodeData = {
+export const interactive = {
   type: 'single',
   code: [
     {

@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Button, ButtonGroup } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -15,14 +15,14 @@ function Component() {
         <Button color="info">Messages</Button>
       </Button.Group>
       <Button.Group>
-        <Button gradientMonochrome="info">Profile</Button>
-        <Button gradientMonochrome="info">Settings</Button>
-        <Button gradientMonochrome="info">Messages</Button>
+        <Button >Profile</Button>
+        <Button >Settings</Button>
+        <Button >Messages</Button>
       </Button.Group>
       <Button.Group>
-        <Button gradientDuoTone="greenToBlue">Profile</Button>
-        <Button gradientDuoTone="greenToBlue">Settings</Button>
-        <Button gradientDuoTone="greenToBlue">Messages</Button>
+        <Button >Profile</Button>
+        <Button >Settings</Button>
+        <Button >Messages</Button>
       </Button.Group>
     </div>
   );
@@ -41,14 +41,14 @@ function Component() {
         <Button color="info">Messages</Button>
       </ButtonGroup>
       <ButtonGroup>
-        <Button gradientMonochrome="info">Profile</Button>
-        <Button gradientMonochrome="info">Settings</Button>
-        <Button gradientMonochrome="info">Messages</Button>
+        <Button >Profile</Button>
+        <Button >Settings</Button>
+        <Button >Messages</Button>
       </ButtonGroup>
       <ButtonGroup>
-        <Button gradientDuoTone="greenToBlue">Profile</Button>
-        <Button gradientDuoTone="greenToBlue">Settings</Button>
-        <Button gradientDuoTone="greenToBlue">Messages</Button>
+        <Button >Profile</Button>
+        <Button >Settings</Button>
+        <Button >Messages</Button>
       </ButtonGroup>
     </div>
   );
@@ -64,20 +64,20 @@ function Component() {
         <Button color="info">Messages</Button>
       </ButtonGroup>
       <ButtonGroup>
-        <Button gradientMonochrome="info">Profile</Button>
-        <Button gradientMonochrome="info">Settings</Button>
-        <Button gradientMonochrome="info">Messages</Button>
+        <Button>Profile</Button>
+        <Button>Settings</Button>
+        <Button>Messages</Button>
       </ButtonGroup>
       <ButtonGroup>
-        <Button gradientDuoTone="greenToBlue">Profile</Button>
-        <Button gradientDuoTone="greenToBlue">Settings</Button>
-        <Button gradientDuoTone="greenToBlue">Messages</Button>
+        <Button>Profile</Button>
+        <Button>Settings</Button>
+        <Button>Messages</Button>
       </ButtonGroup>
     </div>
   );
 }
 
-export const colorOptions: CodeData = {
+export const colorOptions = {
   type: 'single',
   code: [
     {

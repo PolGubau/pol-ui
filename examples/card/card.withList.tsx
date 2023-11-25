@@ -1,6 +1,5 @@
-import Image from 'next/image';
-import { type CodeData } from '~/components/code-demo';
 import { Card } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -22,7 +21,7 @@ function Component() {
           <li className="py-3 sm:py-4">
             <div className="flex items-center space-x-4">
               <div className="shrink-0">
-                <Image
+                <img
                   alt="Neil image"
                   height="32"
                   src="/images/people/profile-picture-1.jpg"
@@ -40,7 +39,7 @@ function Component() {
           <li className="py-3 sm:py-4">
             <div className="flex items-center space-x-4">
               <div className="shrink-0">
-                <Image
+                <img
                   alt="Bonnie image"
                   height="32"
                   src="/images/people/profile-picture-3.jpg"
@@ -60,7 +59,7 @@ function Component() {
           <li className="py-3 sm:py-4">
             <div className="flex items-center space-x-4">
               <div className="shrink-0">
-                <Image
+                <img
                   alt="Michael image"
                   height="32"
                   src="/images/people/profile-picture-2.jpg"
@@ -78,7 +77,7 @@ function Component() {
           <li className="py-3 sm:py-4">
             <div className="flex items-center space-x-4">
               <div className="shrink-0">
-                <Image
+                <img
                   alt="Lana image"
                   height="32"
                   src="/images/people/profile-picture-4.jpg"
@@ -96,7 +95,7 @@ function Component() {
           <li className="pb-0 pt-3 sm:pt-4">
             <div className="flex items-center space-x-4">
               <div className="shrink-0">
-                <Image
+                <img
                   alt="Thomas image"
                   height="32"
                   src="/images/people/profile-picture-5.jpg"
@@ -138,7 +137,7 @@ function Component() {
           <li className="py-3 sm:py-4">
             <div className="flex items-center space-x-4">
               <div className="shrink-0">
-                <Image
+                <img
                   alt="Neil image"
                   height="32"
                   src="/images/people/profile-picture-1.jpg"
@@ -156,7 +155,7 @@ function Component() {
           <li className="py-3 sm:py-4">
             <div className="flex items-center space-x-4">
               <div className="shrink-0">
-                <Image
+                <img
                   alt="Bonnie image"
                   height="32"
                   src="/images/people/profile-picture-3.jpg"
@@ -176,7 +175,7 @@ function Component() {
           <li className="py-3 sm:py-4">
             <div className="flex items-center space-x-4">
               <div className="shrink-0">
-                <Image
+                <img
                   alt="Michael image"
                   height="32"
                   src="/images/people/profile-picture-2.jpg"
@@ -194,7 +193,7 @@ function Component() {
           <li className="py-3 sm:py-4">
             <div className="flex items-center space-x-4">
               <div className="shrink-0">
-                <Image
+                <img
                   alt="Lana image"
                   height="32"
                   src="/images/people/profile-picture-4.jpg"
@@ -212,7 +211,7 @@ function Component() {
           <li className="pb-0 pt-3 sm:pt-4">
             <div className="flex items-center space-x-4">
               <div className="shrink-0">
-                <Image
+                <img
                   alt="Thomas image"
                   height="32"
                   src="/images/people/profile-picture-5.jpg"
@@ -250,8 +249,8 @@ function Component() {
           <li className="py-3 sm:py-4">
             <div className="flex items-center space-x-4">
               <div className="shrink-0">
-                <Image
-                  alt="Neil image"
+                <img
+                  alt="Neil. Neil Sims"
                   height="32"
                   src="/images/people/profile-picture-1.jpg"
                   width="32"
@@ -268,8 +267,8 @@ function Component() {
           <li className="py-3 sm:py-4">
             <div className="flex items-center space-x-4">
               <div className="shrink-0">
-                <Image
-                  alt="Bonnie image"
+                <img
+                  alt="Bonnie "
                   height="32"
                   src="/images/people/profile-picture-3.jpg"
                   width="32"
@@ -288,8 +287,8 @@ function Component() {
           <li className="py-3 sm:py-4">
             <div className="flex items-center space-x-4">
               <div className="shrink-0">
-                <Image
-                  alt="Michael image"
+                <img
+                  alt="Michael "
                   height="32"
                   src="/images/people/profile-picture-2.jpg"
                   width="32"
@@ -306,8 +305,8 @@ function Component() {
           <li className="py-3 sm:py-4">
             <div className="flex items-center space-x-4">
               <div className="shrink-0">
-                <Image
-                  alt="Lana image"
+                <img
+                  alt="Lana "
                   height="32"
                   src="/images/people/profile-picture-4.jpg"
                   width="32"
@@ -324,8 +323,8 @@ function Component() {
           <li className="pb-0 pt-3 sm:pt-4">
             <div className="flex items-center space-x-4">
               <div className="shrink-0">
-                <Image
-                  alt="Thomas image"
+                <img
+                  alt="Thomas "
                   height="32"
                   src="/images/people/profile-picture-5.jpg"
                   width="32"
@@ -347,7 +346,7 @@ function Component() {
   );
 }
 
-export const withList: CodeData = {
+export const withList = {
   type: 'single',
   code: [
     {

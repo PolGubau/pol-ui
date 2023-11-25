@@ -2,7 +2,7 @@
 
 import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';
-import { type CodeData } from '~/components/code-demo';
+import React from 'react';
 import { Tabs } from '~/src';
 
 const code = `
@@ -71,7 +71,7 @@ function Component() {
   );
 }
 
-export const root: CodeData = {
+export const root = {
   type: 'single',
   code: {
     fileName: 'client',

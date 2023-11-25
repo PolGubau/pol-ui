@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
 import { Avatar, Dropdown, DropdownDivider, DropdownHeader, DropdownItem } from '~/src';
+import React from 'react';
 
 const code = `
 'use client';
@@ -71,7 +71,7 @@ function Component() {
   );
 }
 
-export const dropdown: CodeData = {
+export const dropdown = {
   type: 'single',
   code: [
     {
