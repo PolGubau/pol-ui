@@ -1,5 +1,5 @@
 <h1 align="center">
-  Pol's UI
+  Pol-ui
 </h1>
 
 <p align="center">
@@ -14,10 +14,11 @@ A complete UI solution for React projects, based on <a href="https://storybook.j
 1. Install the package with npm
 
 ```bash
-npm install pol-ui
+npm i pol-ui
 ```
 
 You can also use yarn
+
 ```bash
 yarn add pol-ui
 ```

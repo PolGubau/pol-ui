@@ -1,12 +1,17 @@
-import type { StorybookConfig } from '@storybook/nextjs';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 
-const config: StorybookConfig = {
+const config = {
+  framework: {
+    // name: '@storybook/react-webpack5', // Remove this
+    name: '@storybook/nextjs', // Add this
+    options: {},
+  },
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
+
     {
       name: '@storybook/addon-styling',
       options: {
@@ -14,10 +19,7 @@ const config: StorybookConfig = {
       },
     },
   ],
-  framework: {
-    name: '@storybook/nextjs',
-    options: {},
-  },
+
   docs: {
     autodocs: 'tag',
   },

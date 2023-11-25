@@ -46,7 +46,8 @@
     "test:e2e:open": "start-test 3000 ",
     "typecheck": "tsc --noEmit",
     "publish": "yarn prepublishOnly && yarn release && yarn publish:lib",
-    "publish:lib": " npm publish --access public"
+    "publish:lib": " npm publish --access public",
+    "publish:chromatic": "npx chromatic --project-token=${ENV.CHROMATIC_TOKEN}"
   },
   "publishConfig": {
     "access": "public"
@@ -56,11 +57,9 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "resolutions": {
-    "jackspeak": "2.1.1"
-  },
   "dependencies": {
     "@floating-ui/react": "^0.26.2",
+    "chromatic": "^9.1.0",
     "markdown-toc": "^1.2.0",
     "react-icons": "^4.12.0",
     "react-indiana-drag-scroll": "^2.2.0",
