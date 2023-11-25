@@ -32,8 +32,6 @@
     "build:lib:cjs": "tsc -p tsconfig.lib.json",
     "build:lib:esm": "tsc -p tsconfig.lib.json --module esnext --declaration --outDir ./lib/esm",
     "commit": "cz",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
     "lint": "eslint .",
     "prepublishOnly": "yarn build:lib",
     "prettier": "prettier --check .",
@@ -44,8 +42,8 @@
     "test": "vitest --ui",
     "test:coverage": "vitest run --coverage",
     "test:open": "vitest --ui",
-    "test:e2e": "start-test 3000 cypress:run",
-    "test:e2e:open": "start-test 3000 cypress:open",
+    "test:e2e": "start-test 3000 ",
+    "test:e2e:open": "start-test 3000 ",
     "typecheck": "tsc --noEmit",
     "publish": "yarn prepublishOnly && yarn release && yarn publish:lib"
   },
@@ -101,8 +99,6 @@
     "@vitest/ui": "^0.34.7",
     "autoprefixer": "^10.4.16",
     "axe-core": "^4.8.2",
-    "cypress": "^13.5.1",
-    "cypress-axe": "^1.5.0",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^8.54.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
@@ -159,8 +155,7 @@
         "jsx": true
       },
       "project": [
-        "./tsconfig.json",
-        "./cypress/tsconfig.json"
+        "./tsconfig.json"
       ]
     },
     "plugins": [

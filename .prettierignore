@@ -6,9 +6,7 @@ CHANGELOG.md
 .vercel
 build
 coverage
-cypress/screenshots
-cypress/videos
-lib
+ lib
 node_modules
 storybook-static
 .DS_Store
