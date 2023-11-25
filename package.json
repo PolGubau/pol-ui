@@ -46,7 +46,10 @@
     "test:e2e:open": "start-test 3000 ",
     "typecheck": "tsc --noEmit",
     "publish": "yarn prepublishOnly && yarn release && yarn publish:lib",
-    "publish:lib": "cd ./lib && npm publish --access public"
+    "publish:lib": " npm publish --access public"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "config": {
     "commitizen": {
