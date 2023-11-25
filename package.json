@@ -74,7 +74,6 @@
     "react-icons": "^4.12.0",
     "react-indiana-drag-scroll": "^2.2.0",
     "react-markdown": "^9.0.1",
-    "sharp": "^0.32.6",
     "tailwind-merge": "^2.0.0"
   },
   "devDependencies": {
@@ -145,48 +144,6 @@
     "tailwindcss": "^3"
   },
   "private": false,
-  "eslintConfig": {
-    "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:jsx-a11y/recommended",
-      "plugin:react/recommended",
-      "plugin:react-hooks/recommended",
-      "plugin:storybook/recommended"
-    ],
-    "ignorePatterns": [
-      "/build/",
-      "/coverage/",
-      "/docs/",
-      "/lib/",
-      "/postcss.config.js",
-      "/tailwind.config.js"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "ecmaFeatures": {
-        "jsx": true
-      },
-      "project": [
-        "./tsconfig.json"
-      ]
-    },
-    "plugins": [
-      "@typescript-eslint",
-      "jsx-a11y",
-      "react",
-      "react-hooks",
-      "storybook"
-    ],
-    "root": true,
-    "rules": {
-      "react/prop-types": "off",
-      "react/react-in-jsx-scope": "off",
-      "@typescript-eslint/consistent-type-imports": "warn",
-      "jsx-a11y/anchor-is-valid": "off",
-      "react/no-unescaped-entities": "off"
-    }
-  },
-  "readme": "ERROR: No README data found!",
+  "readme": "./README.md",
   "_id": "pol-ui@2.0.12"
 }
