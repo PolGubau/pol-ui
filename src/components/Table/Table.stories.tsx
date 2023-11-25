@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import type { TableProps } from './Table';
 import { Table } from './Table';
-
+import React from 'react';
 export default {
   title: 'Components/Tables',
   component: Table,

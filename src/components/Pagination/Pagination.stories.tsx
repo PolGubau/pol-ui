@@ -1,8 +1,8 @@
+/* eslint-disable react/prop-types */
 import type { Meta, StoryFn } from '@storybook/react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { PaginationProps } from './Pagination';
 import { Pagination } from './Pagination';
-
 export default {
   title: 'Components/Pagination',
   component: Pagination,

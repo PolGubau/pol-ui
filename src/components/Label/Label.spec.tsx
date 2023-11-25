@@ -12,7 +12,7 @@ import { TextInput } from '../TextInput';
 import { Textarea } from '../Textarea';
 import { ToggleSwitch } from '../ToggleSwitch';
 import { Label } from './Label';
-
+import React from 'react';
 describe.concurrent('Components / Label', () => {
   describe.concurrent('A11y', () => {
     it('should provide accessible name to any form control associated by `htmlFor`', () => {

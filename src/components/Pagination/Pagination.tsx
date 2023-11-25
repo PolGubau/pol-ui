@@ -7,7 +7,7 @@ import type { DeepPartial } from '../../types';
 import type { PaginationButtonTheme, PaginationButtonProps } from './PaginationButton';
 import { PaginationButton, PaginationNavigation } from './PaginationButton';
 import { range } from './helpers';
-
+import React from 'react';
 export interface PaginationTheme {
   base: string;
   layout: PaginationLayoutTheme;
@@ -81,7 +81,7 @@ const PaginationComponent: FC<PaginationProps> = ({
       {layout === 'table' && (
         <div className={theme.layout.table.base}>
           Showing <span className={theme.layout.table.span}>{firstPage}</span> to&nbsp;
-          <span className={theme.layout.table.span}>{lastPage}</span> of&nbsp;
+          <span className={theme.layout.table.span}>{lastPage}</span> of {` `}
           <span className={theme.layout.table.span}>{totalPages}</span> Entries
         </div>
       )}

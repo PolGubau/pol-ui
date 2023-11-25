@@ -3,7 +3,7 @@ import { Avatar } from '../Avatar';
 import { Button } from '../Button';
 import { Dropdown } from '../Dropdown';
 import { Navbar, type NavbarComponentProps } from './Navbar';
-
+import React from 'react';
 export default {
   title: 'Components/Navbar',
   component: Navbar,
@@ -21,7 +21,11 @@ DefaultNavbar.args = {
   children: (
     <>
       <Navbar.Brand href="https://Pol-ui.com/">
-        <img src="https://polgubau.com/_next/image?url=%2Fimages%2Fme.png&w=256&q=75" className="mr-3 h-6 sm:h-9" alt="Pol-ui Logo" />
+        <img
+          src="https://polgubau.com/_next/image?url=%2Fimages%2Fme.png&w=256&q=75"
+          className="mr-3 h-6 sm:h-9"
+          alt="Pol-ui Logo"
+        />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Pol-ui</span>
       </Navbar.Brand>
       <Navbar.Toggle />
@@ -43,7 +47,11 @@ WithCTA.args = {
   children: (
     <>
       <Navbar.Brand href="https://Pol-ui.com/">
-        <img src="https://polgubau.com/_next/image?url=%2Fimages%2Fme.png&w=256&q=75" className="mr-3 h-6 sm:h-9" alt="Pol-ui Logo" />
+        <img
+          src="https://polgubau.com/_next/image?url=%2Fimages%2Fme.png&w=256&q=75"
+          className="mr-3 h-6 sm:h-9"
+          alt="Pol-ui Logo"
+        />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Pol-ui</span>
       </Navbar.Brand>
       <div className="flex gap-3 md:order-2">
@@ -69,7 +77,11 @@ WithDropdown.args = {
   children: (
     <>
       <Navbar.Brand href="https://Pol-ui.com/">
-        <img src="https://polgubau.com/_next/image?url=%2Fimages%2Fme.png&w=256&q=75" className="mr-3 h-6 sm:h-9" alt="Pol-ui Logo" />
+        <img
+          src="https://polgubau.com/_next/image?url=%2Fimages%2Fme.png&w=256&q=75"
+          className="mr-3 h-6 sm:h-9"
+          alt="Pol-ui Logo"
+        />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Pol-ui</span>
       </Navbar.Brand>
       <div className="flex gap-3 md:order-2">

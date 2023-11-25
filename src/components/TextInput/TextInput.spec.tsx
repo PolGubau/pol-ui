@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import { HiEye } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
 import { TextInput } from './TextInput';
-
+import React from 'react';
 describe.concurrent('Components / Text input', () => {
   describe.concurrent('A11y', () => {
     it('should have `role="textbox"` by default', () => {

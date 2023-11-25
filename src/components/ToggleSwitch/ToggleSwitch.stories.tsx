@@ -1,9 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { theme } from '../../theme';
 import type { ToggleSwitchProps } from './ToggleSwitch';
 import { ToggleSwitch } from './ToggleSwitch';
-
 const colors = Object.keys(theme.toggleSwitch.toggle.checked.color);
 
 export default {

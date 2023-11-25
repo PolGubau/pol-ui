@@ -9,7 +9,7 @@ import type { DeepPartial } from '../../types';
 import type { Duration } from './ToastContext';
 import { ToastContext } from './ToastContext';
 import { ToastToggle } from './ToastToggle';
-
+import React from 'react';
 export interface ToastTheme {
   root: {
     base: string;

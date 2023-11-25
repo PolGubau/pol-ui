@@ -1,7 +1,7 @@
 'use client';
 
 import type { ComponentProps, FC, ReactNode } from 'react';
-
+import React from 'react';
 export interface TabItemProps extends Omit<ComponentProps<'div'>, 'title'> {
   active?: boolean;
   disabled?: boolean;

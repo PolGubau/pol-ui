@@ -2,7 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { BsFlagFill } from 'react-icons/bs';
 import type { SelectProps } from './Select';
 import { Select } from './Select';
-
+import React from 'react';
 export default {
   title: 'Components/Select',
   component: Select,

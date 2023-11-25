@@ -2,7 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { HiFire } from 'react-icons/hi';
 import type { ToastProps } from './Toast';
 import { Toast } from './Toast';
-
+import React from 'react';
 export default {
   title: 'Components/Toast',
   component: Toast,

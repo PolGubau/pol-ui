@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import { describe, expect, it } from 'vitest';
 import type { TableProps } from './Table';
 import { Table } from './Table';
-
+import React from 'react';
 describe.concurrent('Components / Table', () => {
   it('should be able to render a table', () => {
     render(<TestTable />);

@@ -6,7 +6,7 @@ import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
 import type { IBoolean, Colors } from '../PoluiProvider';
 import { HelperText } from '../HelperText';
-
+import React from 'react';
 export interface TextareaTheme {
   base: string;
   colors: TextareaColors;

@@ -2,7 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { theme } from '../../theme';
 import type { RangeSliderProps } from './RangeSlider';
 import { RangeSlider } from './RangeSlider';
-
+import React from 'react';
 export default {
   title: 'Components/RangeSlider',
   component: RangeSlider,

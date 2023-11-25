@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import type { FC } from 'react';
 import { describe, expect, it } from 'vitest';
 import { Navbar } from './Navbar';
-
+import React from 'react';
 describe.concurrent('Navbar', () => {
   describe.concurrent('A11y', () => {
     it('should have `role="navigation"`', () => {

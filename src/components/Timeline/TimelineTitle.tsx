@@ -6,7 +6,7 @@ import { mergeDeep } from '../../helpers/merge-deep';
 import type { DeepPartial } from '../../types';
 import type { HeadingLevel } from '../PoluiProvider';
 import { useTimelineContentContext } from './TimelineContentContext';
-
+import React from 'react';
 export interface TimelineTitleTheme {
   base: string;
 }

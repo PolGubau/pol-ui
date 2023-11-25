@@ -5,7 +5,7 @@ import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
 import type { Colors, Sizes } from '../PoluiProvider';
-
+import React from 'react';
 export interface ProgressTheme {
   base: string;
   label: string;
@@ -54,32 +54,30 @@ export const Progress: FC<ProgressProps> = ({
   const theme = mergeDeep(getTheme().progress, customTheme);
 
   return (
-    <>
-      <div id={id} aria-label={textLabel} aria-valuenow={progress} role="progressbar" {...props}>
-        {((textLabel && labelText && textLabelPosition === 'outside') ||
-          (progress > 0 && labelProgress && progressLabelPosition === 'outside')) && (
-          <div className={theme.label} data-testid="ui-progress-outer-label-container">
-            {textLabel && labelText && textLabelPosition === 'outside' && (
-              <span data-testid="ui-progress-outer-text-label">{textLabel}</span>
-            )}
-            {labelProgress && progressLabelPosition === 'outside' && (
-              <span data-testid="ui-progress-outer-progress-label">{progress}%</span>
-            )}
-          </div>
-        )}
+    <div id={id} aria-label={textLabel} aria-valuenow={progress} role="progressbar" {...props}>
+      {((textLabel && labelText && textLabelPosition === 'outside') ||
+        (progress > 0 && labelProgress && progressLabelPosition === 'outside')) && (
+        <div className={theme.label} data-testid="ui-progress-outer-label-container">
+          {textLabel && labelText && textLabelPosition === 'outside' && (
+            <span data-testid="ui-progress-outer-text-label">{textLabel}</span>
+          )}
+          {labelProgress && progressLabelPosition === 'outside' && (
+            <span data-testid="ui-progress-outer-progress-label">{progress}%</span>
+          )}
+        </div>
+      )}
 
-        <div className={twMerge(theme.base, theme.size[size], className)}>
-          <div style={{ width: `${progress}%` }} className={twMerge(theme.bar, theme.color[color], theme.size[size])}>
-            {textLabel && labelText && textLabelPosition === 'inside' && (
-              <span data-testid="ui-progress-inner-text-label">{textLabel}</span>
-            )}
-            {progress > 0 && labelProgress && progressLabelPosition === 'inside' && (
-              <span data-testid="ui-progress-inner-progress-label">{progress}%</span>
-            )}
-          </div>
+      <div className={twMerge(theme.base, theme.size[size], className)}>
+        <div style={{ width: `${progress}%` }} className={twMerge(theme.bar, theme.color[color], theme.size[size])}>
+          {textLabel && labelText && textLabelPosition === 'inside' && (
+            <span data-testid="ui-progress-inner-text-label">{textLabel}</span>
+          )}
+          {progress > 0 && labelProgress && progressLabelPosition === 'inside' && (
+            <span data-testid="ui-progress-inner-progress-label">{progress}%</span>
+          )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

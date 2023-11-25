@@ -1,12 +1,11 @@
 import type { ComponentProps, FC, KeyboardEvent } from 'react';
-import { useId } from 'react';
+import React, { useId } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
 import type { IBoolean, Colors } from '../PoluiProvider';
 import type { TextInputSizes } from '../TextInput';
-
 export interface ToggleSwitchTheme {
   root: ToggleSwitchRootTheme;
   toggle: ToggleSwitchToggleTheme;

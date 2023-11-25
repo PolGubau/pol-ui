@@ -1,5 +1,5 @@
 'use client';
-
+import React from 'react';
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
 import { useEffect, useId, useState } from 'react';
 import { HiChevronDown } from 'react-icons/hi';

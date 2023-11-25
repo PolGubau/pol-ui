@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import { describe, expect, it } from 'vitest';
 import type { TimelineProps } from './Timeline';
 import { Timeline } from './Timeline';
-
+import React from 'react';
 describe.concurrent('Components / Timeline', () => {
   describe('Rendering horizontal mode', () => {
     it('should have className items-base', () => {

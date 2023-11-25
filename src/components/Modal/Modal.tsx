@@ -12,7 +12,7 @@ import {
   useRole,
 } from '@floating-ui/react';
 import type { MutableRefObject } from 'react';
-import { forwardRef, useState, type ComponentPropsWithoutRef } from 'react';
+import React, { forwardRef, useState, type ComponentPropsWithoutRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
@@ -89,7 +89,7 @@ const ModalComponent = forwardRef<HTMLDivElement, ModalProps>(
 
     const { context } = useFloating({
       open: show,
-      onOpenChange: () => onClose && onClose(),
+      onOpenChange: () => onClose?.(),
     });
 
     const ref = useMergeRefs([context.refs.setFloating, theirRef]);

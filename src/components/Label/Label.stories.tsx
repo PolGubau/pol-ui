@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import type { LabelProps } from './Label';
 import { Label } from './Label';
-
+import React from 'react';
 export default {
   title: 'Components/Label',
   component: Label,

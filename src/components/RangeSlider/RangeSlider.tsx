@@ -5,7 +5,7 @@ import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
 import type { TextInputSizes } from '../TextInput';
-
+import React from 'react';
 export interface RangeSliderTheme {
   root: RangeSliderRootTheme;
   field: RangeSliderFieldTheme;
@@ -33,18 +33,16 @@ export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
     const theme = mergeDeep(getTheme().rangeSlider, customTheme);
 
     return (
-      <>
-        <div data-testid="ui-range-slider" className={twMerge(theme.root.base, className)}>
-          <div className={theme.field.base}>
-            <input
-              ref={ref}
-              type="range"
-              className={twMerge(theme.field.input.base, theme.field.input.sizes[sizing])}
-              {...props}
-            />
-          </div>
+      <div data-testid="ui-range-slider" className={twMerge(theme.root.base, className)}>
+        <div className={theme.field.base}>
+          <input
+            ref={ref}
+            type="range"
+            className={twMerge(theme.field.input.base, theme.field.input.sizes[sizing])}
+            {...props}
+          />
         </div>
-      </>
+      </div>
     );
   },
 );

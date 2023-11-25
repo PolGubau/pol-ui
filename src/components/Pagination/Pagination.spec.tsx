@@ -1,10 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import type { FC } from 'react';
-import { useEffect, useState } from 'react';
-import { describe, expect } from 'vitest';
+import React, { useEffect, useState } from 'react';
+import { describe, expect, it } from 'vitest';
 import { Pagination } from './Pagination';
-
 describe('Pagination', () => {
   describe('Keyboard interactions', () => {
     it('should do nothing when `Space` is pressed while Previous button is focused on 1st page', async () => {

@@ -3,7 +3,7 @@ import { MdKeyboardArrowLeft, MdKeyboardCommandKey } from 'react-icons/md';
 import { describe, expect, it } from 'vitest';
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider';
 import { Kbd } from './Kbd';
-
+import React from 'react';
 describe('Components / Kbd', () => {
   describe('Theme', () => {
     it('should use custom `base` classes', () => {

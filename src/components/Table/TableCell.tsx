@@ -5,7 +5,7 @@ import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { DeepPartial } from '../../types';
 import { useTableBodyContext } from './TableBodyContext';
-
+import React from 'react'
 export interface TableCellTheme {
   base: string;
 }

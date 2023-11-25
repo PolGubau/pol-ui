@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import type { TextInputProps } from './TextInput';
 import { TextInput } from './TextInput';
-
+import React from 'react';
 export default {
   title: 'Components/TextInput',
   component: TextInput,

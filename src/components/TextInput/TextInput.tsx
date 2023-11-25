@@ -6,7 +6,7 @@ import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
 import type { IBoolean, Colors, Sizes } from '../PoluiProvider';
 import { HelperText } from '../HelperText';
-
+import React from 'react';
 export interface TextInputTheme {
   base: string;
   addon: string;

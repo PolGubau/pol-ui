@@ -3,7 +3,7 @@ import type { ThemeMode } from '../../hooks/use-theme-mode';
 import { ThemeClientInit } from './client';
 import { ThemeModeInit } from './mode';
 import { ThemeServerInit } from './server';
-
+import React from 'react';
 interface Props {
   mode?: ThemeMode;
   theme?: CustomPoluiTheme;

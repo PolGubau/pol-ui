@@ -9,7 +9,7 @@ import type { DeepPartial } from '../../types';
 import type { IBoolean } from '../PoluiProvider';
 import type { TabItemProps } from './TabItem';
 import { TabItem } from './TabItem';
-
+import React from 'react';
 export interface TabsTheme {
   base: string;
   tablist: {

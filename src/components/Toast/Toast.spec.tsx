@@ -1,8 +1,8 @@
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
+import { afterAll, beforeEach, beforeAll, describe, expect, it, vi } from 'vitest';
 import { Toast } from './Toast';
-
+import React from 'react';
 describe('Components / Toast', () => {
   beforeAll(() => {
     vi.useFakeTimers({ shouldAdvanceTime: true });

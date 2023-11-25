@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import type { RatingProps } from './Rating';
 import { Rating } from './Rating';
-
+import React from 'react';
 export default {
   title: 'Components/Rating',
   component: Rating,

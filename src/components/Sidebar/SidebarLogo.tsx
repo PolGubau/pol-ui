@@ -7,7 +7,7 @@ import { mergeDeep } from '../../helpers/merge-deep';
 import type { DeepPartial } from '../../types';
 import type { IBoolean } from '../PoluiProvider';
 import { useSidebarContext } from './SidebarContext';
-
+import React from 'react';
 export interface SidebarLogoTheme {
   base: string;
   collapsed: IBoolean;

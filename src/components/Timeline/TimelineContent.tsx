@@ -10,7 +10,7 @@ import { useTimelineContext } from './TimelineContext';
 import { useTimelineItemContext } from './TimelineItemContext';
 import type { TimelineTimeTheme } from './TimelineTime';
 import type { TimelineTitleTheme } from './TimelineTitle';
-
+import React from 'react';
 export interface TimelineContentTheme {
   root: {
     base: string;

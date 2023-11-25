@@ -1,5 +1,5 @@
 'use client';
-
+import React from 'react';
 import type { ComponentProps, FC } from 'react';
 import { HiStar } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
