@@ -15,7 +15,7 @@ export const toggleSwitchTheme: ToggleSwitchTheme = {
       on: 'after:translate-x-full after:border-white',
       off: 'border-gray-200 bg-gray-200 dark:border-gray-600 dark:bg-gray-700',
       color: {
-        failure: 'bg-red-700 border-red-900',
+        error: 'bg-red-700 border-red-900',
         success: 'bg-green-500 border-green-500',
         warning: 'bg-yellow-600 border-yellow-600',
         info: 'bg-cyan-600 border-cyan-600',

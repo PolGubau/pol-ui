@@ -3,7 +3,11 @@ import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 const config = {
   framework: {
     name: '@storybook/nextjs',
-    options: {},
+    options: {
+      builder: {
+        useSWC: true,  
+      },
+    },
   },
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [

@@ -27,7 +27,7 @@ export interface SelectTheme {
   };
 }
 
-export interface SelectColors extends Pick<Colors, 'gray' | 'info' | 'failure' | 'warning' | 'success'> {
+export interface SelectColors extends Pick<Colors, 'gray' | 'info' | 'error' | 'warning' | 'success'> {
   [key: string]: string;
 }
 

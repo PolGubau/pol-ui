@@ -9,7 +9,7 @@ export const checkboxTheme: CheckboxTheme = {
       secondary: 'focus:ring-gray-600 dark:ring-offset-gray-600 dark:focus:ring-gray-600 text-gray-600',
       
      
-      failure: 'focus:ring-red-900 dark:ring-offset-red-900 dark:focus:ring-red-900 text-red-900',
+      error: 'focus:ring-red-900 dark:ring-offset-red-900 dark:focus:ring-red-900 text-red-900',
      
       info: 'focus:ring-cyan-800 dark:ring-offset-gray-800 dark:focus:ring-cyan-800 text-cyan-800',
      

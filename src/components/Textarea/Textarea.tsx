@@ -13,7 +13,7 @@ export interface TextareaTheme {
   withShadow: IBoolean;
 }
 
-export interface TextareaColors extends Pick<Colors, 'gray' | 'info' | 'failure' | 'warning' | 'success'> {
+export interface TextareaColors extends Pick<Colors, 'gray' | 'info' | 'error' | 'warning' | 'success'> {
   [key: string]: string;
 }
 

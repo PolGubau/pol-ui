@@ -44,7 +44,7 @@ export interface ButtonOutlineTheme extends IBoolean {
 }
 
 export interface ButtonColors
-  extends Pick<Colors, 'dark' | 'failure' | 'gray' | 'info' | 'light' | 'purple' | 'success' | 'warning'> {
+  extends Pick<Colors, 'dark' | 'error' | 'gray' | 'info' | 'light' | 'purple' | 'success' | 'warning'> {
   [key: string]: string;
 }
 

@@ -14,7 +14,7 @@ export interface HelperTextRootTheme {
   colors: HelperColors;
 }
 
-export interface HelperColors extends Pick<Colors, 'gray' | 'info' | 'failure' | 'warning' | 'success'> {
+export interface HelperColors extends Pick<Colors, 'gray' | 'info' | 'error' | 'warning' | 'success'> {
   [key: string]: string;
 }
 

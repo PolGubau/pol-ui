@@ -33,7 +33,7 @@ const config: Config = {
           800: '#747474',
           900: '#5B5B5B',
         },
-        failure: {
+        error: {
           DEFAULT: '#F44336',
           50: '#FEF5F5',
           100: '#FEEEEE',

@@ -81,7 +81,7 @@
     "@storybook/builder-vite": "^7.5.3",
     "@storybook/components": "^7.5.3",
     "@storybook/core-events": "^7.5.3",
-    "@storybook/nextjs": "^7.5.3",
+    "@storybook/nextjs": "^7.6.4",
     "@storybook/react": "^7.5.3",
     "@storybook/testing-library": "^0.2.2",
     "@storybook/theming": "^7.5.3",

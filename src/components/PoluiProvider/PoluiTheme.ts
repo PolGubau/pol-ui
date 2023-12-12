@@ -97,7 +97,7 @@ export enum BooleanEnum {
 
 export interface StateColors {
   info: string;
-  failure: string;
+  error: string;
   success: string;
   warning: string;
 }
