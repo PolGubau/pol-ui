@@ -7,7 +7,7 @@ export const avatarTheme: AvatarTheme = {
     rounded: 'rounded-full',
     color: {
       dark: 'ring-gray-800 dark:ring-gray-800',
-      failure: 'ring-red-500 dark:ring-red-700',
+      error: 'ring-red-500 dark:ring-red-700',
       gray: 'ring-gray-500 dark:ring-gray-400',
       info: 'ring-cyan-400 dark:ring-cyan-800',
       light: 'ring-gray-300 dark:ring-gray-500',

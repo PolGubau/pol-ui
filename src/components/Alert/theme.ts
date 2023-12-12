@@ -9,8 +9,8 @@ export const alertTheme: AlertTheme = {
     color: {
       info: 'bg-info-100 text-info-500 hover:bg-info-200 focus:ring-info-400 dark:bg-info-200 dark:text-info-600 dark:hover:bg-info-300',
 
-      failure:
-        'bg-failure-100 text-failure-500 hover:bg-failure-200 focus:ring-failure-400 dark:bg-failure-200 dark:text-failure-600 dark:hover:bg-failure-300',
+      error:
+        'bg-error-100 text-error-500 hover:bg-error-200 focus:ring-error-400 dark:bg-error-200 dark:text-error-600 dark:hover:bg-error-300',
       success:
         'bg-dsuccess-100 text-dsuccess-500 hover:bg-dsuccess-200 focus:ring-dsuccess-400 dark:bg-dsuccess-200 dark:text-dsuccess-600 dark:hover:bg-dsuccess-300',
       warning:
@@ -24,7 +24,7 @@ export const alertTheme: AlertTheme = {
   color: {
     info: 'text-info-700 bg-info-100 border-info-500 dark:bg-info-200 dark:text-info-800',
     gray: 'text-gray-700 bg-gray-100 border-gray-500 dark:bg-gray-700 dark:text-gray-300',
-    failure: 'text-failure-700 bg-failure-100 border-failure-500 dark:bg-failure-200 dark:text-failure-800',
+    error: 'text-error-700 bg-error-100 border-error-500 dark:bg-error-200 dark:text-error-800',
     success: 'text-dsuccess-700 bg-dsuccess-100 border-dsuccess-500 dark:bg-dsuccess-200 dark:text-dsuccess-800',
     warning: 'text-warning-700 bg-warning-100 border-warning-500 dark:bg-warning-200 dark:text-warning-800',
     primary: 'text-primary-700 bg-primary-100 border-primary-500 dark:bg-primary-200 dark:text-primary-800',

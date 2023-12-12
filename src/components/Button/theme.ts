@@ -6,7 +6,7 @@ export const buttonTheme: ButtonTheme = {
   fullSized: 'w-full',
   color: {
     // State colors
-    failure: 'text-failure-50 dark:text-failure-900 bg-failure   enabled:hover:brightness-90  focus:ring-failure ',
+    error: 'text-error-50 dark:text-error-900 bg-error   enabled:hover:brightness-90  focus:ring-error ',
     info: 'text-info-50 dark:text-info-900 bg-info   enabled:hover:brightness-90  focus:ring-info  ',
     success: 'text-success-50 dark:text-success-900 bg-success  enabled:hover:brightness-90  focus:ring-success  ',
     warning: 'text-warning-50 dark:text-warning-900 bg-warning enabled:hover:brightness-90  focus:ring-warning',
@@ -47,7 +47,7 @@ export const buttonTheme: ButtonTheme = {
     outlineBase:
       'enabled:hover:brightness-90  dark:enabled:hover:brightness-125 ring ring-1 focus:ring-4 focus:ring-offset-2',
     color: {
-      failure: 'text-failure-900 dark:text-failure-50  ring-failure',
+      error: 'text-error-900 dark:text-error-50  ring-error',
 
       info: 'text-info-900 dark:text-info-50  ring-info',
 

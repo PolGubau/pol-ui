@@ -47,7 +47,7 @@ export interface AvatarInitialsTheme {
 }
 
 export interface AvatarColors
-  extends Pick<Colors, 'failure' | 'gray' | 'info' | 'pink' | 'purple' | 'success' | 'warning'> {
+  extends Pick<Colors, 'error' | 'gray' | 'info' | 'pink' | 'purple' | 'success' | 'warning'> {
   [key: string]: string;
 }
 

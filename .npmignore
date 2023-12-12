@@ -10,7 +10,7 @@ CNAME
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
 codecov.yaml
- LICENSE
+LICENSE
 next-env.d.ts
 next.config.mjs
 node_modules

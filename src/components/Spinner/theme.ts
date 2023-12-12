@@ -3,7 +3,7 @@ import type { SpinnerTheme } from './Spinner';
 export const spinnerTheme: SpinnerTheme = {
   base: 'inline animate-spin text-gray-200',
   color: {
-    failure: 'fill-red-600',
+    error: 'fill-red-600',
     gray: 'fill-gray-600',
     info: 'fill-cyan-600',
     pink: 'fill-pink-600',
@@ -15,7 +15,7 @@ export const spinnerTheme: SpinnerTheme = {
     off: {
       base: 'dark:text-gray-600',
       color: {
-        failure: '',
+        error: '',
         gray: 'dark:fill-gray-300',
         info: '',
         pink: '',
@@ -27,7 +27,7 @@ export const spinnerTheme: SpinnerTheme = {
     on: {
       base: '',
       color: {
-        failure: '',
+        error: '',
         gray: '',
         info: '',
         pink: '',

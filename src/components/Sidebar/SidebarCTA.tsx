@@ -20,7 +20,7 @@ export interface SidebarCTAProps extends Omit<ComponentProps<'div'>, 'color'> {
 export interface SidebarCTAColors
   extends Pick<
     Colors,
-    'blue' | 'dark' | 'failure' | 'gray' | 'green' | 'light' | 'purple' | 'red' | 'success' | 'warning' | 'yellow'
+    'blue' | 'dark' | 'error' | 'gray' | 'green' | 'light' | 'purple' | 'red' | 'success' | 'warning' | 'yellow'
   > {
   [key: string]: string;
 }

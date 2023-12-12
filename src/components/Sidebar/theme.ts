@@ -36,7 +36,7 @@ export const sidebarTheme: SidebarTheme = {
     color: {
       blue: 'bg-cyan-50 dark:bg-cyan-900',
       dark: 'bg-dark-50 dark:bg-dark-900',
-      failure: 'bg-red-50 dark:bg-red-900',
+      error: 'bg-red-50 dark:bg-red-900',
       gray: 'bg-alternative-50 dark:bg-alternative-900',
       green: 'bg-green-50 dark:bg-green-900',
       light: 'bg-light-50 dark:bg-light-900',

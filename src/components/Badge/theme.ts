@@ -6,8 +6,8 @@ export const badgeTheme: BadgeTheme = {
     color: {
       info: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-200 dark:text-cyan-800 group-hover:bg-cyan-200 dark:group-hover:bg-cyan-300',
 
-      failure:
-        'bg-failure-100 text-failure-800 dark:bg-failure-200 dark:text-failure-900 group-hover:bg-failure-200 dark:group-hover:bg-failure-300',
+      error:
+        'bg-error-100 text-error-800 dark:bg-error-200 dark:text-error-900 group-hover:bg-error-200 dark:group-hover:bg-error-300',
       success:
         'bg-success-100 text-success-800 dark:bg-success-200 dark:text-success-900 group-hover:bg-success-200 dark:group-hover:bg-success-300',
       warning:
