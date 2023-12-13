@@ -12,8 +12,8 @@ import { Spinner } from '../Spinner';
 import { ButtonBase, type ButtonBaseProps } from './ButtonBase';
 import type { PositionInButtonGroup } from './ButtonGroup/ButtonGroup';
 import { ButtonGroup } from './ButtonGroup/ButtonGroup';
-import { ColorsEnum, type MainSizes, type RoundedSizes } from '../PoluiProvider/PoluiTheme';
-import { MainSizesEnum, RoundedSizesEnum } from '../PoluiProvider/enums';
+import { type MainSizes, type RoundedSizes } from '../PoluiProvider/PoluiTheme';
+import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../PoluiProvider/enums';
 import { useRipple } from '../../hooks';
 
 export interface ButtonTheme {
@@ -74,7 +74,7 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
   className,
   color = ColorsEnum.primary,
   disabled,
-  fullSized,
+  fullSized = false,
   isProcessing = false,
   processingLabel = 'Loading...',
   processingSpinner,
@@ -89,10 +89,7 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
 }: ButtonProps<T>) => {
   const { buttonGroup: groupTheme, button: buttonTheme } = getTheme();
   const theme = mergeDeep(buttonTheme, customTheme);
-
   const theirProps = props as ButtonBaseProps<T>;
-
-  // const ripples = useRipple(ref as RefObject<HTMLElement>);
   const [ripple, event] = useRipple({
     disabled,
   });

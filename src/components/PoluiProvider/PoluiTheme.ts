@@ -170,8 +170,9 @@ export type MainSizes = Record<MainSizesEnum, string>;
  * @see SizesEnum for the different sizes
  * @author Pol Gubau - https://github.com/polgubau
  */
-export type Sizes = keyof typeof SizesEnum;
+export type Sizes = typeof SizesEnum;
 
+ 
 
 
 
