@@ -37,7 +37,7 @@
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "release": "standard-version -a",
-    "storybook": "storybook dev -p 3001",
+    "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "test": "vitest --ui",
     "test:coverage": "vitest run --coverage",
@@ -46,7 +46,8 @@
     "test:e2e:open": "start-test 3000 ",
     "typecheck": "tsc --noEmit",
     "publish": "yarn prepublishOnly && yarn release && yarn publish:lib",
-    "publish:lib": "npm publish --access public"
+    "publish:lib": "npm publish --access public",
+    "build-storybook": "storybook build"
   },
   "config": {
     "commitizen": {
@@ -73,6 +74,7 @@
     "@storybook/addon-interactions": "^7.5.3",
     "@storybook/addon-links": "^7.5.3",
     "@storybook/addon-mdx-gfm": "^7.5.3",
+    "@storybook/addon-onboarding": "1.0.10",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addon-styling": "^2.0.0",
     "@storybook/addons": "^7.5.3",
@@ -83,6 +85,8 @@
     "@storybook/core-events": "^7.5.3",
     "@storybook/nextjs": "^7.6.4",
     "@storybook/react": "^7.5.3",
+    "@storybook/react-vite": "7.6.4",
+    "@storybook/test": "7.6.4",
     "@storybook/testing-library": "^0.2.2",
     "@storybook/theming": "^7.5.3",
     "@testing-library/dom": "^9.3.3",
