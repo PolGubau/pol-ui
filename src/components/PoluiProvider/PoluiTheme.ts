@@ -38,7 +38,7 @@ import type { TimelineTheme } from '../Timeline';
 import type { ToastTheme } from '../Toast';
 import type { ToggleSwitchTheme } from '../ToggleSwitch';
 import type { TooltipTheme } from '../Tooltip';
-import { BrandColorsEnum, HeadingLevelEnum, StateColorsEnum } from './enums';
+import { BooleanEnum, BrandColorsEnum, HeadingLevelEnum, StateColorsEnum } from './enums';
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>;
 
@@ -88,17 +88,27 @@ export interface PoluiTheme {
 
 
 /**
- * @description Enum for booleans, on and off states
- * @author Pol Gubau Amores 
+ * @name IBoolean
+ * @description Type for booleans, on and off states
+ * @author Pol Gubau - https://github.com/polgubau
  */
-export interface IBoolean {
-  off: string;
-  on: string;
-}
+export type IBoolean = Record<BooleanEnum, string>;
 
 
-
+/**
+ * @name StateColors
+ * @description Enum for the different brand colors
+ * @property {string} primary - Primary color
+ * @property {string} secondary - Secondary color
+ * @example 
+ * <Button color={BrandColorsEnum.primary} /> // Primary color
+ * <Button color={BrandColorsEnum.secondary} /> // Secondary color
+ * @author Pol Gubau - https://github.com/polgubau
+ */
 export type StateColors = Record<StateColorsEnum, string>;
+
+
+
 export type BrandColors = Record<BrandColorsEnum, string>;
  
 export const ColorsEnum = { ...StateColorsEnum, ...BrandColorsEnum };
