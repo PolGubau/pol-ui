@@ -72,4 +72,6 @@ export const Spinner: FC<SpinnerProps> = ({
   );
 };
 
+
+// The name of the component will be Spinner
 Spinner.displayName = 'Spinner';
