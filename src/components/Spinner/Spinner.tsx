@@ -46,7 +46,7 @@ export const Spinner: FC<SpinnerProps> = ({
   const theme = mergeDeep(getTheme().spinner, customTheme);
 
   return (
-    <span role="status" {...props}>
+    <span {...props}>
       <svg
         fill="none"
         viewBox="0 0 100 101"
