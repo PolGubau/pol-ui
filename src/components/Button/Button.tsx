@@ -12,7 +12,7 @@ import { Spinner } from '../Spinner';
 import { ButtonBase, type ButtonBaseProps } from './ButtonBase';
 import type { PositionInButtonGroup } from './ButtonGroup/ButtonGroup';
 import { ButtonGroup } from './ButtonGroup/ButtonGroup';
-import type { MainSizes, RoundedSizes } from '../PoluiProvider/PoluiTheme';
+import { ColorsEnum, type MainSizes, type RoundedSizes } from '../PoluiProvider/PoluiTheme';
 import { MainSizesEnum, RoundedSizesEnum } from '../PoluiProvider/enums';
 import { useRipple } from '../../hooks';
 
@@ -43,8 +43,7 @@ export interface ButtonOutlineTheme extends IBoolean {
   color: Colors;
 }
 
-export interface ButtonColors
-  extends Pick<Colors, 'dark' | 'error' | 'gray' | 'info' | 'light' | 'purple' | 'success' | 'warning'> {
+export interface ButtonColors extends Colors {
   [key: string]: string;
 }
 
@@ -73,7 +72,7 @@ export type ButtonProps<T extends ElementType = 'button'> = {
 const ButtonComponentFn = <T extends ElementType = 'button'>({
   children,
   className,
-  color = 'primary',
+  color = ColorsEnum.primary,
   disabled,
   fullSized,
   isProcessing = false,

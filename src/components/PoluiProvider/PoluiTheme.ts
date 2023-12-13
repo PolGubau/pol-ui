@@ -38,6 +38,7 @@ import type { TimelineTheme } from '../Timeline';
 import type { ToastTheme } from '../Toast';
 import type { ToggleSwitchTheme } from '../ToggleSwitch';
 import type { TooltipTheme } from '../Tooltip';
+import { BrandColorsEnum, HeadingLevelEnum, StateColorsEnum } from './enums';
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>;
 
@@ -85,30 +86,39 @@ export interface PoluiTheme {
   timeline: TimelineTheme;
 }
 
+
+/**
+ * @description Enum for booleans, on and off states
+ * @author Pol Gubau Amores 
+ */
 export interface IBoolean {
   off: string;
   on: string;
 }
 
-export enum BooleanEnum {
-  off = 'off',
-  on = 'on',
-}
 
-export interface StateColors {
-  info: string;
-  error: string;
-  success: string;
-  warning: string;
-}
 
-export interface Colors extends StateColors {
+export type StateColors = Record<StateColorsEnum, string>;
+export type BrandColors = Record<BrandColorsEnum, string>;
+ 
+export const ColorsEnum = { ...StateColorsEnum, ...BrandColorsEnum };
+
+
+ 
+export type ColorsType = typeof ColorsEnum; 
+
+
+
+/**
+ * @description Colors
+ * 
+ */
+export interface Colors extends ColorsType{
   [key: string]: string;
-  primary: string;
-  secondary: string;
 }
 
-export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+export type HeadingLevel = Record<HeadingLevelEnum, string>;
+
 
 export interface Positions {
   'bottom-left': string;
