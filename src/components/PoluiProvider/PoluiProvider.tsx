@@ -3,6 +3,9 @@ import type { ThemeMode } from '../../hooks/use-theme-mode';
 import { ThemeInit } from '../../theme-store/init';
 import type { CustomPoluiTheme } from './PoluiTheme';
 
+
+
+
 export interface ThemeProps {
   mode?: ThemeMode;
   theme?: CustomPoluiTheme;

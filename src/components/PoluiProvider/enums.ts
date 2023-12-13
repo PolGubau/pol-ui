@@ -161,3 +161,11 @@ export enum HeadingLevelEnum {
   h5 = 'h5',
   h6 = 'h6',
 } 
+
+
+/**
+ * @name ColorsEnum
+ * @description Enum for the different colors, merging state and brand colors
+ * @author Pol Gubau - https://github.com/polgubau
+ */
+export const ColorsEnum = { ...StateColorsEnum, ...BrandColorsEnum };
