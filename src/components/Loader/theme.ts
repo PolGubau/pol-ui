@@ -8,26 +8,7 @@ export const loaderTheme: LoaderTheme = {
     success: 'fill-success-500',
     warning: 'fill-warning-400',
   },
-  light: {
-    off: {
-      base: 'dark:text-gray-600',
-      color: {
-        error: '',
-         info: '',
-         success: '',
-        warning: '',
-      },
-    },
-    on: {
-      base: '',
-      color: {
-        error: '',
-         info: '',
-          success: '',
-        warning: '',
-      },
-    },
-  },
+ 
   size: {
     xs: 'w-3 h-3',
     sm: 'w-4 h-4',

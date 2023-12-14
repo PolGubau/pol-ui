@@ -4,32 +4,32 @@ import { describe, expect, it } from 'vitest';
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider';
 import { Loader } from './Loader';
 
-describe('Components / Spinner', () => {
+describe('Components / Loader', () => {
   describe('A11y', () => {
     it('should have `role="status"` by default', () => {
-      const spinner = getSpinner(render(<Loader aria-label="My spinner" />));
+      const loader = getloader(render(<Loader aria-label="My loader" />));
 
-      expect(spinner).toHaveAccessibleName('My spinner');
+      expect(loader).toHaveAccessibleName('My loader');
     });
 
     it('should be able to set no `role`', () => {
-      const { getByLabelText } = render(<Loader aria-label="My spinner" role={undefined} />);
+      const { getByLabelText } = render(<Loader aria-label="My loader" role={undefined} />);
 
-      const spinner = getByLabelText('My spinner');
+      const loader = getByLabelText('My loader');
 
-      expect(spinner).not.toHaveAttribute('role');
+      expect(loader).not.toHaveAttribute('role');
     });
   });
 
   describe('Theme', () => {
     it('should use `base` classes', () => {
       const theme: CustomPoluiTheme = {
-        spinner: {
+        loader: {
           base: 'text-gray-100',
         },
       };
 
-      const spinner = getSpinner(
+      const loader = getloader(
         render(
           <PoluiProvider theme={{ theme }}>
             <Loader />
@@ -37,19 +37,19 @@ describe('Components / Spinner', () => {
         ),
       );
 
-      expect(spinner.firstElementChild).toHaveClass('text-gray-100');
+      expect(loader.firstElementChild).toHaveClass('text-gray-100');
     });
 
     it('should use `color` classes', () => {
       const theme: CustomPoluiTheme = {
-        spinner: {
+        loader: {
           color: {
             primary: 'text-gray-200',
           },
         },
       };
 
-      const spinner = getSpinner(
+      const loader = getloader(
         render(
           <PoluiProvider theme={{ theme }}>
             <Loader color="primary" />
@@ -57,33 +57,11 @@ describe('Components / Spinner', () => {
         ),
       );
 
-      expect(spinner.firstElementChild).toHaveClass('text-gray-200');
+      expect(loader.firstElementChild).toHaveClass('text-gray-200');
     });
 
-    it('should use `light` classes', () => {
-      const theme: CustomPoluiTheme = {
-        spinner: {
-          light: {
-            on: {
-              color: {
-                success: 'text-gray-300',
-              },
-            },
-          },
-        },
-      };
-
-      const spinner = getSpinner(
-        render(
-          <PoluiProvider theme={{ theme }}>
-            <Loader color="success" light />
-          </PoluiProvider>,
-        ),
-      );
-
-      expect(spinner.firstElementChild).toHaveClass('text-gray-300');
-    });
+   
   });
 });
 
-const getSpinner = ({ getByRole }: Pick<RenderResult, 'getByRole'>): HTMLElement => getByRole('status');
+const getloader = ({ getByRole }: Pick<RenderResult, 'getByRole'>): HTMLElement => getByRole('status');

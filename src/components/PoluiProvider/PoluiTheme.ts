@@ -29,7 +29,7 @@ import type { RangeSliderTheme } from '../RangeSlider';
 import type { RatingAdvancedTheme, RatingTheme } from '../Rating';
 import type { SelectTheme } from '../Select';
 import type { SidebarTheme } from '../Sidebar';
-import type { SpinnerTheme } from '../Loader';
+import type { LoaderTheme } from '../Loader';
 import type { TableTheme } from '../Table';
 import type { TabsTheme } from '../Tabs';
 import type { TextInputTheme } from '../TextInput';
@@ -38,7 +38,7 @@ import type { TimelineTheme } from '../Timeline';
 import type { ToastTheme } from '../Toast';
 import type { ToggleSwitchTheme } from '../ToggleSwitch';
 import type { TooltipTheme } from '../Tooltip';
-import { BooleanEnum, BrandColorsEnum, ColorsEnum, HeadingLevelEnum, MainSizesEnum, StateColorsEnum,SizesEnum, RoundedSizesEnum, GetValuesEnum } from './enums';
+import { BooleanEnum, BrandColorsEnum,  HeadingLevelEnum, MainSizesEnum, StateColorsEnum,SizesEnum, RoundedSizesEnum, GetValuesEnum } from './enums';
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>;
 
@@ -66,7 +66,7 @@ export interface PoluiTheme {
   pagination: PaginationTheme;
   sidebar: SidebarTheme;
   progress: ProgressTheme;
-  spinner: SpinnerTheme;
+  loader: LoaderTheme;
   tabs: TabsTheme;
   toast: ToastTheme;
   tooltip: TooltipTheme;

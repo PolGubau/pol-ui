@@ -9,27 +9,15 @@ import { ColorsEnum, SizesEnum } from '../PoluiProvider/enums';
 export interface LoaderTheme {
   base: string;
   color: Colors;
-  light: {
-    off: {
-      base: string;
-      color: Colors;
-    };
-    on: {
-      base: string;
-      color: Colors;
-    };
-  };
   size: SpinnerSizes;
 }
 
- 
 export interface SpinnerSizes extends Sizes{
   [key: string]: string;
 }
 
 export interface LoaderProps extends Omit<ComponentProps<'span'>, 'color'> {
   color?: keyof Colors;
-  light?: boolean;
   size?: keyof SpinnerSizes;
   theme?: DeepPartial<LoaderTheme>;
 }
@@ -37,23 +25,21 @@ export interface LoaderProps extends Omit<ComponentProps<'span'>, 'color'> {
 export const Loader: FC<LoaderProps> = ({
   className,
   color = ColorsEnum.info,
-  light,
   size = SizesEnum.md,
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().spinner, customTheme);
+  const theme = mergeDeep(getTheme().loader, customTheme);
 
   return (
-    <span {...props} className='rotate-360'>
+    <span { ...props } className='rotate-360'>
+      
       <svg
         fill="none"
         viewBox="0 0 100 101"
         className={twMerge(
           theme.base,
           theme.color[color],
-          theme.light[light ? 'on' : 'off'].base,
-          theme.light[light ? 'on' : 'off'].color[color],
           theme.size[size],
           className,
         )}
