@@ -38,6 +38,7 @@ import type { TimelineTheme } from '../Timeline';
 import type { ToastTheme } from '../Toast';
 import type { ToggleSwitchTheme } from '../ToggleSwitch';
 import type { TooltipTheme } from '../Tooltip';
+import { BooleanEnum, BrandColorsEnum, ColorsEnum, HeadingLevelEnum, MainSizesEnum, StateColorsEnum,SizesEnum, RoundedSizesEnum, GetValuesEnum } from './enums';
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>;
 
@@ -85,30 +86,63 @@ export interface PoluiTheme {
   timeline: TimelineTheme;
 }
 
-export interface IBoolean {
-  off: string;
-  on: string;
-}
 
-export enum BooleanEnum {
-  off = 'off',
-  on = 'on',
-}
+/**
+ * @name IBoolean
+ * @description Type for booleans, on and off states
+ * @author Pol Gubau - https://github.com/polgubau
+ */
+export type IBoolean = Record<BooleanEnum, string>;
 
-export interface StateColors {
-  info: string;
-  error: string;
-  success: string;
-  warning: string;
-}
 
-export interface Colors extends StateColors {
+/**
+ * @name StateColors
+ * @description Type for the different state colors
+ * @author Pol Gubau - https://github.com/polgubau
+ */
+export type StateColors = Record<StateColorsEnum, string>;
+
+
+/**
+ * @name BrandColors
+ * @description Type for the different brand colors
+ * @author Pol Gubau - https://github.com/polgubau
+ */
+export type BrandColors = Record<BrandColorsEnum, string>;
+ 
+
+
+
+ /**
+ * @name ColorsType
+ * @description Type for the different colors, including state and brand colors
+ * @author Pol Gubau - https://github.com/polgubau
+ */
+
+ export type ColorsType = Record<GetValuesEnum<typeof StateColorsEnum>, string>;
+
+// export type ColorsEnum =  typeof ColorsEnum; 
+
+
+
+ /**
+ * @name Colors
+ * @description Type for the different colors, including state and brand colors, and custom colors if provided by the user
+ * @author Pol Gubau - https://github.com/polgubau
+ */
+export interface Colors extends ColorsType{
+  
   [key: string]: string;
-  primary: string;
-  secondary: string;
 }
 
-export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+ /**
+ * @name HeadingLevel
+ * @description Type for the different heading levels, from h1 to h6
+ * @author Pol Gubau - https://github.com/polgubau
+ */
+export type HeadingLevel = Record<HeadingLevelEnum, string>;
+
 
 export interface Positions {
   'bottom-left': string;
@@ -122,31 +156,57 @@ export interface Positions {
   'center-right': string;
 }
 
-export interface MainSizes {
-  xs: string;
-  sm: string;
-  md: string;
-  lg: string;
-  xl: string;
-}
 
-export interface Sizes extends MainSizes {
-  '2xl': string;
-  '3xl': string;
-  '4xl': string;
-  '5xl': string;
-  '6xl': string;
-  '7xl': string;
-}
+ /**
+ * @name MainSizes
+ * @description Type for the main different sizes, from xs to xl
+ * @author Pol Gubau - https://github.com/polgubau
+ * @see MainSizesEnum for the different sizes
+ */
+ 
+export type MainSizes = Record<GetValuesEnum<typeof MainSizesEnum>, string>;
 
-export interface RoundedSizes extends MainSizes {
-  '2xl': string;
-  '3xl': string;
-  full: string;
-  none: string;
+
+ /**
+ * @name Sizes
+ * @description Type for the different sizes, from xs to 7xl, dynamic from the SizesEnum enum
+ * @see SizesEnum for the different sizes
+ * @author Pol Gubau - https://github.com/polgubau
+ */
+ export type Sizes = Record<GetValuesEnum<typeof SizesEnum>, string>;
+ 
+
+
+
+
+ /**
+ * @name RoundedSizesType
+ * @description Type for the different rounded sizes, from xs to 7xl, dynamic from the RoundedSizesEnum enum
+ * @see RoundedSizesEnum for the different sizes
+ * @author Pol Gubau - https://github.com/polgubau
+ */
+export type RoundedSizesType = typeof RoundedSizesEnum;
+
+
+
+ /**
+ * @name RoundedSizes
+ * @description Type for the different rounded sizes, from xs to 7xl, dynamic from the RoundedSizesEnum enum, it also includes any value provided by the user
+ * @see RoundedSizesEnum for the different sizes
+ * @extends RoundedSizesType
+ * @author Pol Gubau - https://github.com/polgubau
+ */
+export interface RoundedSizes extends RoundedSizesType {
   [key: string]: string;
 }
 
+
+
+ /**
+ * @name ContentPositions
+ * @description Interface for the different content positions
+ * @author Pol Gubau - https://github.com/polgubau
+ */
 export interface ContentPositions {
   center: string;
 }
