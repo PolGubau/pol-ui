@@ -8,7 +8,7 @@ import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
 import type { IBoolean, Colors } from '../PoluiProvider';
-import { Spinner } from '../Spinner';
+import { Spinner } from '../Loader';
 import { ButtonBase, type ButtonBaseProps } from './ButtonBase';
 import type { PositionInButtonGroup } from './ButtonGroup/ButtonGroup';
 import { ButtonGroup } from './ButtonGroup/ButtonGroup';

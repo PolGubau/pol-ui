@@ -1,6 +1,6 @@
-import type { SpinnerTheme } from './Spinner';
+import type { LoaderTheme } from './Loader';
 
-export const spinnerTheme: SpinnerTheme = {
+export const loaderTheme: LoaderTheme = {
   base: 'inline animate-spin text-gray-200',
   color: {
     error: 'fill-error-600',

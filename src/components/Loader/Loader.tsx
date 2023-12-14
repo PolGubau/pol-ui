@@ -6,36 +6,35 @@ import type { DeepPartial } from '../../types';
 import type { Colors, Sizes } from '../PoluiProvider';
 import { ColorsEnum, SizesEnum } from '../PoluiProvider/enums';
 
-export interface SpinnerTheme {
+export interface LoaderTheme {
   base: string;
-  color: SpinnerColors;
+  color: Colors;
   light: {
     off: {
       base: string;
-      color: SpinnerColors;
+      color: Colors;
     };
     on: {
       base: string;
-      color: SpinnerColors;
+      color: Colors;
     };
   };
   size: SpinnerSizes;
 }
 
-export interface SpinnerColors extends Colors {}
-
+ 
 export interface SpinnerSizes extends Sizes{
   [key: string]: string;
 }
 
-export interface SpinnerProps extends Omit<ComponentProps<'span'>, 'color'> {
-  color?: keyof SpinnerColors;
+export interface LoaderProps extends Omit<ComponentProps<'span'>, 'color'> {
+  color?: keyof Colors;
   light?: boolean;
   size?: keyof SpinnerSizes;
-  theme?: DeepPartial<SpinnerTheme>;
+  theme?: DeepPartial<LoaderTheme>;
 }
 
-export const Spinner: FC<SpinnerProps> = ({
+export const Loader: FC<LoaderProps> = ({
   className,
   color = ColorsEnum.info,
   light,
@@ -74,4 +73,4 @@ export const Spinner: FC<SpinnerProps> = ({
 
 
 // The name of the component will be Spinner
-Spinner.displayName = 'Spinner';
+Loader.displayName = 'Loader';

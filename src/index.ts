@@ -31,7 +31,7 @@ export * from './components/RangeSlider';
 export * from './components/Rating';
 export * from './components/Select';
 export * from './components/Sidebar';
-export * from './components/Spinner';
+export * from './components/Loader';
 export * from './components/Table';
 export * from './components/Tabs';
 export * from './components/TextInput';

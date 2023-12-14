@@ -29,7 +29,7 @@ import type { RangeSliderTheme } from '../RangeSlider';
 import type { RatingAdvancedTheme, RatingTheme } from '../Rating';
 import type { SelectTheme } from '../Select';
 import type { SidebarTheme } from '../Sidebar';
-import type { SpinnerTheme } from '../Spinner';
+import type { SpinnerTheme } from '../Loader';
 import type { TableTheme } from '../Table';
 import type { TabsTheme } from '../Tabs';
 import type { TextInputTheme } from '../TextInput';
@@ -131,7 +131,6 @@ export type BrandColors = Record<BrandColorsEnum, string>;
  * @author Pol Gubau - https://github.com/polgubau
  */
 export interface Colors extends ColorsType{
-  
   [key: string]: string;
 }
 
