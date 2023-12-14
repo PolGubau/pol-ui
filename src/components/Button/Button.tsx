@@ -8,7 +8,7 @@ import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
 import type { IBoolean, Colors } from '../PoluiProvider';
-import { Spinner } from '../Loader';
+import { Loader } from '../Loader';
 import { ButtonBase, type ButtonBaseProps } from './ButtonBase';
 import type { PositionInButtonGroup } from './ButtonGroup/ButtonGroup';
 import { ButtonGroup } from './ButtonGroup/ButtonGroup';
@@ -22,8 +22,8 @@ export interface ButtonTheme {
   color: Colors;
   disabled: string;
   isProcessing: string;
-  spinnerSlot: string;
-  spinnerLeftPosition: ButtonSizes;
+  loaderSlot: string;
+  loaderLeftPosition: ButtonSizes;
   inner: ButtonInnerTheme;
   label: string;
   outline: ButtonOutlineTheme;
@@ -59,7 +59,7 @@ export type ButtonProps<T extends ElementType = 'button'> = {
   target?: string;
   isProcessing?: boolean;
   processingLabel?: string;
-  processingSpinner?: ReactNode;
+  processingLoader?: ReactNode;
   label?: ReactNode;
   outline?: boolean;
   rounded?: keyof RoundedSizes;
@@ -77,7 +77,7 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
   fullSized = false,
   isProcessing = false,
   processingLabel = 'Loading...',
-  processingSpinner,
+  processingLoader,
   label,
   outline = false,
   rounded = RoundedSizesEnum.md,
@@ -123,8 +123,8 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
         )}
       >
         {isProcessing && (
-          <span className={twMerge(theme.spinnerSlot, theme.spinnerLeftPosition[size])}>
-            {processingSpinner ?? <Spinner size={size} />}
+          <span className={twMerge(theme.loaderSlot, theme.loaderLeftPosition[size])}>
+            {processingLoader ?? <Loader size={size} />}
           </span>
         )}
         {typeof children !== 'undefined' ? (

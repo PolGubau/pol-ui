@@ -1,12 +1,12 @@
 import type { LoaderTheme } from './Loader';
 
 export const loaderTheme: LoaderTheme = {
-  base: 'inline animate-spin text-gray-200',
+  base: 'inline animate-spin text-gray-200 rotate-360',
   color: {
-    error: 'fill-error-600',
-    info: 'fill-info-600',
-    success: 'fill-success-500',
-    warning: 'fill-warning-400',
+    error: 'fill-error',
+    info: 'fill-info',
+    success: 'fill-success',
+    warning: 'fill-warning',
   },
  
   size: {

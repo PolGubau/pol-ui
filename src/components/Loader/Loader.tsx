@@ -9,16 +9,16 @@ import { ColorsEnum, SizesEnum } from '../PoluiProvider/enums';
 export interface LoaderTheme {
   base: string;
   color: Colors;
-  size: SpinnerSizes;
+  size: LoaderSizes;
 }
 
-export interface SpinnerSizes extends Sizes{
+export interface LoaderSizes extends Sizes{
   [key: string]: string;
 }
 
 export interface LoaderProps extends Omit<ComponentProps<'span'>, 'color'> {
   color?: keyof Colors;
-  size?: keyof SpinnerSizes;
+  size?: keyof LoaderSizes;
   theme?: DeepPartial<LoaderTheme>;
 }
 
@@ -58,5 +58,5 @@ export const Loader: FC<LoaderProps> = ({
 };
 
 
-// The name of the component will be Spinner
+// The name of the component will be Loader
 Loader.displayName = 'Loader';

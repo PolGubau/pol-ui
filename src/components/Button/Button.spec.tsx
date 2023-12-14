@@ -86,22 +86,22 @@ describe('Components / Button', () => {
       expect(button()).toBeDisabled();
     });
 
-    it('should show <Spinner /> when `isProcessing={true}`', () => {
+    it('should show <Loader /> when `isProcessing={true}`', () => {
       render(<Button isProcessing>Hi there</Button>);
 
       expect(screen.getByText(/Hi there/)).toBeInTheDocument();
       expect(screen.getByRole('status')).toBeInTheDocument();
     });
 
-    it('should show custom spinner when `isProcessing={true}` and `processingSpinner` is present', () => {
+    it('should show custom Loader when `isProcessing={true}` and `processingLoader` is present', () => {
       render(
-        <Button isProcessing processingSpinner={<AiOutlineLoading data-testid="spinner" />}>
+        <Button isProcessing processingLoader={<AiOutlineLoading data-testid="Loader" />}>
           Hi there
         </Button>,
       );
 
       expect(screen.getByText(/Hi there/)).toBeInTheDocument();
-      expect(screen.getByTestId('spinner')).toBeInTheDocument();
+      expect(screen.getByTestId('Loader')).toBeInTheDocument();
     });
   });
 

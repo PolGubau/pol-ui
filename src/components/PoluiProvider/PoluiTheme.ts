@@ -121,8 +121,6 @@ export type BrandColors = Record<BrandColorsEnum, string>;
 
  export type ColorsType = Record<GetValuesEnum<typeof StateColorsEnum>, string>;
 
-// export type ColorsEnum =  typeof ColorsEnum; 
-
 
 
  /**
@@ -140,7 +138,7 @@ export interface Colors extends ColorsType{
  * @description Type for the different heading levels, from h1 to h6
  * @author Pol Gubau - https://github.com/polgubau
  */
-export type HeadingLevel = Record<HeadingLevelEnum, string>;
+ export type HeadingLevel = Record<GetValuesEnum<typeof HeadingLevelEnum>, string>;
 
 
 export interface Positions {
@@ -184,8 +182,7 @@ export type MainSizes = Record<GetValuesEnum<typeof MainSizesEnum>, string>;
  * @see RoundedSizesEnum for the different sizes
  * @author Pol Gubau - https://github.com/polgubau
  */
-export type RoundedSizesType = typeof RoundedSizesEnum;
-
+ export type RoundedSizes = Record<GetValuesEnum<typeof RoundedSizesEnum>, string>;
 
 
  /**
@@ -195,7 +192,7 @@ export type RoundedSizesType = typeof RoundedSizesEnum;
  * @extends RoundedSizesType
  * @author Pol Gubau - https://github.com/polgubau
  */
-export interface RoundedSizes extends RoundedSizesType {
+export interface RoundedSizesElastic extends RoundedSizes {
   [key: string]: string;
 }
 

@@ -75,7 +75,7 @@ export const theme: PoluiTheme = {
   textarea: textareaTheme,
   toggleSwitch: toggleSwitchTheme,
   sidebar: sidebarTheme,
-  spinner: loaderTheme,
+  loader: loaderTheme,
   table: tableTheme,
   tabs: tabTheme,
   timeline: timelineTheme,

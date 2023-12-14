@@ -7,6 +7,7 @@ import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
 import type { HeadingLevel, IBoolean } from '../PoluiProvider';
 import { useAccordionContext } from './AccordionPanelContext';
+import { HeadingLevelEnum } from '../PoluiProvider/enums';
 export interface AccordionTitleTheme {
   arrow: {
     base: string;
@@ -25,7 +26,7 @@ export interface AccordionTitleProps extends ComponentProps<'button'> {
 }
 
 export const AccordionTitle: FC<AccordionTitleProps> = ({
-  as: Heading = 'h2',
+  as: Heading =  HeadingLevelEnum.h2,
   children,
   className,
   theme: customTheme = {},
