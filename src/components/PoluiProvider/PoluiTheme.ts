@@ -29,7 +29,7 @@ import type { RangeSliderTheme } from '../RangeSlider';
 import type { RatingAdvancedTheme, RatingTheme } from '../Rating';
 import type { SelectTheme } from '../Select';
 import type { SidebarTheme } from '../Sidebar';
-import type { SpinnerTheme } from '../Spinner';
+import type { LoaderTheme } from '../Loader';
 import type { TableTheme } from '../Table';
 import type { TabsTheme } from '../Tabs';
 import type { TextInputTheme } from '../TextInput';
@@ -38,7 +38,7 @@ import type { TimelineTheme } from '../Timeline';
 import type { ToastTheme } from '../Toast';
 import type { ToggleSwitchTheme } from '../ToggleSwitch';
 import type { TooltipTheme } from '../Tooltip';
-import { BooleanEnum, BrandColorsEnum, ColorsEnum, HeadingLevelEnum, MainSizesEnum, StateColorsEnum,SizesEnum, RoundedSizesEnum, GetValuesEnum } from './enums';
+import { BooleanEnum, BrandColorsEnum,  HeadingLevelEnum, MainSizesEnum, StateColorsEnum,SizesEnum, RoundedSizesEnum, GetValuesEnum } from './enums';
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>;
 
@@ -66,7 +66,7 @@ export interface PoluiTheme {
   pagination: PaginationTheme;
   sidebar: SidebarTheme;
   progress: ProgressTheme;
-  spinner: SpinnerTheme;
+  loader: LoaderTheme;
   tabs: TabsTheme;
   toast: ToastTheme;
   tooltip: TooltipTheme;
@@ -121,8 +121,6 @@ export type BrandColors = Record<BrandColorsEnum, string>;
 
  export type ColorsType = Record<GetValuesEnum<typeof StateColorsEnum>, string>;
 
-// export type ColorsEnum =  typeof ColorsEnum; 
-
 
 
  /**
@@ -131,7 +129,6 @@ export type BrandColors = Record<BrandColorsEnum, string>;
  * @author Pol Gubau - https://github.com/polgubau
  */
 export interface Colors extends ColorsType{
-  
   [key: string]: string;
 }
 
@@ -141,7 +138,14 @@ export interface Colors extends ColorsType{
  * @description Type for the different heading levels, from h1 to h6
  * @author Pol Gubau - https://github.com/polgubau
  */
-export type HeadingLevel = Record<HeadingLevelEnum, string>;
+
+ 
+export type HeadingLevel = keyof typeof HeadingLevelEnum;
+
+
+
+
+
 
 
 export interface Positions {
@@ -185,8 +189,7 @@ export type MainSizes = Record<GetValuesEnum<typeof MainSizesEnum>, string>;
  * @see RoundedSizesEnum for the different sizes
  * @author Pol Gubau - https://github.com/polgubau
  */
-export type RoundedSizesType = typeof RoundedSizesEnum;
-
+ export type RoundedSizes = Record<GetValuesEnum<typeof RoundedSizesEnum>, string>;
 
 
  /**
@@ -196,7 +199,7 @@ export type RoundedSizesType = typeof RoundedSizesEnum;
  * @extends RoundedSizesType
  * @author Pol Gubau - https://github.com/polgubau
  */
-export interface RoundedSizes extends RoundedSizesType {
+export interface RoundedSizesElastic extends RoundedSizes {
   [key: string]: string;
 }
 

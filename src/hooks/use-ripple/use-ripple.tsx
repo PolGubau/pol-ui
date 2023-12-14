@@ -5,10 +5,11 @@ import { useCallback, useRef } from 'react';
 
 export type Options<T extends HTMLElement = any> = {
   duration: number;
-  color: string;
+  // color: string;
   timingFunction: string;
   disabled?: boolean;
   className: string;
+  opacity: number;
   containerClassName: string;
   ignoreNonLeftClick: boolean;
   onSpawn?: (ctx: {
@@ -34,6 +35,7 @@ export type Options<T extends HTMLElement = any> = {
 export type MinimalEvent = {
   clientX: number;
   clientY: number;
+
   nativeEvent?: {
     which?: number;
     type?: string;
@@ -42,24 +44,30 @@ export type MinimalEvent = {
 
 const self = () => document;
 const completedFactor = 0.4;
-const className = 'useRipple--ripple';
+const className = 'bg-[#fff]';
 const containerClassName = 'ripple--container';
 
 /**
- * useRipple - Pol-ui ripple effect React hook
- * @author Jonathan Asplund <gubaupol@gmail.com>
- * @param inputOptions Ripple options
- * @returns Tuple `[ref, event]`.
+ * @name useRipple
+ * @description Creates a ripple hook with the specified options
+ * @param inputOptions The options to use for the ripple
+ * @returns A tuple containing the ref and the event handler
+ * @example
+ * const [ref, event] = useRipple();
+ * const [ref, event] = useRipple({color: 'blue'});
  */
+
+
 export default function useRipple<T extends HTMLElement = any>(inputOptions?: Partial<Options<T>>) {
+
   const internalRef = useRef<T>(null);
 
   const { ref, ...options }: Options = {
     duration: 450,
-    color: 'rgba(255, 255, 255, .3)',
-    cancelAutomatically: false,
+     cancelAutomatically: false,
     timingFunction: 'cubic-bezier(.42,.36,.28,.88)',
     disabled: false,
+    opacity: 0.1,
     className,
     containerClassName,
     ignoreNonLeftClick: true,
@@ -119,18 +127,23 @@ export default function useRipple<T extends HTMLElement = any>(inputOptions?: Pa
     },
     [ref, options],
   );
-
   return [ref, event] as const;
 }
 
 /**
- * HOF useRipple - Generate a custom ripple hook with predefined options
- *
- * After generating a HOF useRipple you can then override some or all predefined options by passing a new option object.
- * @author Jonathan Asplund <jonathan@asplund.net>
- * @param inputOptions ripple options
- * @returns Custom HOC useRipple hook
+ * @name customRipple
+ * @description Creates a custom ripple hook with the specified options
+ * @param inputOptions The options to use for the ripple
+ * @returns A function that takes override options and returns a ripple hook
+ * @example
+ * const useCustomRipple = customRipple({color: 'red'});
+ * const [ref, event] = useCustomRipple({color: 'blue'});
+ * const [ref, event] = useCustomRipple();
+ * const [ref, event] = useCustomRipple({color: 'blue', duration: 1000});
+ * const [ref, event] = useCustomRipple({color: 'blue', duration: 1000, opacity: 0.5});
+ * const [ref, event] = useCustomRipple({color: 'blue', duration: 1000, opacity: 0.5, className: 'my-ripple'});
  */
+
 export function customRipple<T extends HTMLElement = any>(inputOptions?: Partial<Omit<Options<T>, 'ref'>>) {
   return (overrideOptions?: Partial<Options<T>>) =>
     useRipple({
@@ -153,7 +166,7 @@ function px(arg: string | number) {
 function createRipple<T extends HTMLElement>(
   ref: T,
   event: MinimalEvent,
-  { duration, color, timingFunction, className }: Omit<Options, 'ref'>,
+  { duration,  timingFunction, className,opacity }: Omit<Options, 'ref'>,
   ctx = document,
 ): HTMLDivElement {
   const element = ctx.createElement('div');
@@ -169,18 +182,17 @@ function createRipple<T extends HTMLElement>(
     ['transform', 'translate(-50%, -50%) scale(0)'],
     ['pointer-events', 'none'],
     ['border-radius', '50%'],
-    ['opacity', '.6'],
-    ['background', color],
+    ['opacity', opacity.toString()],
     [
       'transition',
       `transform ${duration * 0.6}ms ${timingFunction}, opacity ${Math.max(duration * 0.05, 140)}ms ease-out`,
     ],
   ];
 
-  void element.classList.add(className);
+  element.classList.add(className);
 
-  void window.requestAnimationFrame(() => {
-    void applyStyles([['transform', 'translate(-50%, -50%) scale(1)']], element);
+  window.requestAnimationFrame(() => {
+    applyStyles([['transform', 'translate(-50%, -50%) scale(1)']], element);
   });
 
   return applyStyles(styles, element);
@@ -190,7 +202,7 @@ function applyStyles<T extends HTMLElement>(styles: string[][], target: T): T {
   if (!target) return target;
 
   for (const [property, value] of styles) {
-    void target.style.setProperty(property, value);
+    target.style.setProperty(property, value);
   }
   return target;
 }
@@ -200,7 +212,7 @@ function cancelRippleAnimation<T extends HTMLElement>(
   options: Omit<Options<T>, 'color' | 'ref' | 'onSpawn' | 'cancelAutomatically'>,
 ) {
   const { duration, timingFunction } = options;
-  void applyStyles(
+  applyStyles(
     [
       ['opacity', '0'],
       [
@@ -212,8 +224,8 @@ function cancelRippleAnimation<T extends HTMLElement>(
     ],
     element,
   );
-  void window.requestAnimationFrame(() => {
-    void element.addEventListener('transitionend', (e) => {
+  window.requestAnimationFrame(() => {
+    element.addEventListener('transitionend', (e) => {
       if (e.propertyName === 'opacity') void element.remove();
     });
   });
@@ -221,7 +233,7 @@ function cancelRippleAnimation<T extends HTMLElement>(
 
 function createRippleContainer(className: string) {
   const container = self().createElement('div');
-  void container.classList.add(className);
+  container.classList.add(className);
 
   return applyStyles(
     [

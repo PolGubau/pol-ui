@@ -87,7 +87,7 @@ This template comes with a GitHub Actions workflow to automatically publish on a
    - ✅ Badge
    - ✅ Tooltip
    - ✅ Progress Bar
-   - ✅ Loaders (Spinner, Bars, Dots, Pulse)
+   - ✅ Loaders (Loader, Bars, Dots, Pulse)
    - ✅ Divider
    - ✅ Datacard
 4. **Layout Components:**

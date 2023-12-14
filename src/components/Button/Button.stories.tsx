@@ -25,6 +25,10 @@ export default {
       options: ['xs', 'sm', 'md', 'lg', 'xl'],
       control: { type: 'inline-radio' },
     },
+    fullSized: {
+      control: { type: 'boolean' },
+      defaultValue: false,
+    },
     rounded: {
       options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', 'full', 'none'],
       control: { type: 'inline-radio' },

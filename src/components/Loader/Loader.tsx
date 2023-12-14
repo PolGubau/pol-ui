@@ -6,55 +6,40 @@ import type { DeepPartial } from '../../types';
 import type { Colors, Sizes } from '../PoluiProvider';
 import { ColorsEnum, SizesEnum } from '../PoluiProvider/enums';
 
-export interface SpinnerTheme {
+export interface LoaderTheme {
   base: string;
-  color: SpinnerColors;
-  light: {
-    off: {
-      base: string;
-      color: SpinnerColors;
-    };
-    on: {
-      base: string;
-      color: SpinnerColors;
-    };
-  };
-  size: SpinnerSizes;
+  color: Colors;
+  size: LoaderSizes;
 }
 
-export interface SpinnerColors extends Colors {}
-
-export interface SpinnerSizes extends Sizes{
+export interface LoaderSizes extends Sizes{
   [key: string]: string;
 }
 
-export interface SpinnerProps extends Omit<ComponentProps<'span'>, 'color'> {
-  color?: keyof SpinnerColors;
-  light?: boolean;
-  size?: keyof SpinnerSizes;
-  theme?: DeepPartial<SpinnerTheme>;
+export interface LoaderProps extends Omit<ComponentProps<'span'>, 'color'> {
+  color?: keyof Colors;
+  size?: keyof LoaderSizes;
+  theme?: DeepPartial<LoaderTheme>;
 }
 
-export const Spinner: FC<SpinnerProps> = ({
+export const Loader: FC<LoaderProps> = ({
   className,
   color = ColorsEnum.info,
-  light,
   size = SizesEnum.md,
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().spinner, customTheme);
+  const theme = mergeDeep(getTheme().loader, customTheme);
 
   return (
-    <span {...props} className='rotate-360'>
+    <span { ...props } className='rotate-360'>
+      
       <svg
         fill="none"
         viewBox="0 0 100 101"
         className={twMerge(
           theme.base,
           theme.color[color],
-          theme.light[light ? 'on' : 'off'].base,
-          theme.light[light ? 'on' : 'off'].color[color],
           theme.size[size],
           className,
         )}
@@ -73,5 +58,5 @@ export const Spinner: FC<SpinnerProps> = ({
 };
 
 
-// The name of the component will be Spinner
-Spinner.displayName = 'Spinner';
+// The name of the component will be Loader
+Loader.displayName = 'Loader';

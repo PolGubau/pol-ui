@@ -29,7 +29,7 @@ import { rangeSliderTheme } from './components/RangeSlider/theme';
 import { ratingAdvancedTheme, ratingTheme } from './components/Rating/theme';
 import { selectTheme } from './components/Select/theme';
 import { sidebarTheme } from './components/Sidebar/theme';
-import { spinnerTheme } from './components/Spinner/theme';
+import { loaderTheme } from './components/Loader/theme';
 import { tableTheme } from './components/Table/theme';
 import { tabTheme } from './components/Tabs/theme';
 import { textInputTheme } from './components/TextInput/theme';
@@ -75,7 +75,7 @@ export const theme: PoluiTheme = {
   textarea: textareaTheme,
   toggleSwitch: toggleSwitchTheme,
   sidebar: sidebarTheme,
-  spinner: spinnerTheme,
+  loader: loaderTheme,
   table: tableTheme,
   tabs: tabTheme,
   timeline: timelineTheme,

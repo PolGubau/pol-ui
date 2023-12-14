@@ -16,8 +16,8 @@ export const buttonTheme: ButtonTheme = {
   },
   disabled: 'cursor-not-allowed opacity-50',
   isProcessing: 'cursor-wait',
-  spinnerSlot: 'absolute h-full top-0 flex items-center animate-fade-in',
-  spinnerLeftPosition: {
+  loaderSlot: 'absolute h-full top-0 flex items-center animate-fade-in',
+  loaderLeftPosition: {
     xs: 'left-2',
     sm: 'left-3',
     md: 'left-4',

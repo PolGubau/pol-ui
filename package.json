@@ -28,12 +28,12 @@
     "url": "https://github.com/PolGubau/pol-ui"
   },
   "scripts": {
-    "build:lib": "rm -rf ./lib/ && yarn build:lib:esm && yarn build:lib:cjs",
-    "build:lib:cjs": "tsc -p tsconfig.lib.json",
-    "build:lib:esm": "tsc -p tsconfig.lib.json --module esnext --declaration --outDir ./lib/esm",
+    "build": "rm -rf ./lib/ && yarn build:esm && yarn build:cjs",
+    "build:cjs": "tsc -p tsconfig.lib.json",
+    "build:esm": "tsc -p tsconfig.lib.json --module esnext --declaration --outDir ./lib/esm",
     "commit": "cz",
     "lint": "eslint .",
-    "prepublishOnly": "yarn build:lib",
+    "prepublishOnly": "yarn build",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "release": "standard-version -a",

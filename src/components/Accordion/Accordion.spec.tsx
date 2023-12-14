@@ -147,11 +147,11 @@ describe('Components / Accordion', () => {
         expect(accordion()).toHaveClass('text-4xl');
       });
 
-      it('should use custom `bordered` classes', () => {
+      it('should use custom `isBordered` classes', () => {
         const theme: CustomPoluiTheme = {
           accordion: {
             root: {
-              bordered: {
+              isBordered: {
                 off: 'text-3xl',
                 on: 'text-3xl',
               },
@@ -162,16 +162,16 @@ describe('Components / Accordion', () => {
         render(
           <PoluiProvider theme={{ theme }}>
             <TestAccordion />
-            <TestAccordion bordered />
+            <TestAccordion isBordered />
           </PoluiProvider>,
         );
 
         const accordions = screen.getAllByTestId('ui-accordion');
         const normal = accordions[0];
-        const bordered = accordions[1];
+        const isBordered = accordions[1];
 
         expect(normal).toHaveClass('text-3xl');
-        expect(bordered).toHaveClass('text-3xl');
+        expect(isBordered).toHaveClass('text-3xl');
       });
     });
 
@@ -210,7 +210,7 @@ describe('Components / Accordion', () => {
                 },
               },
               base: 'p-3',
-              bordered: {
+              isBordered: {
                 off: 'text-4xl',
                 on: 'text-3xl',
               },
@@ -225,12 +225,12 @@ describe('Components / Accordion', () => {
         render(
           <PoluiProvider theme={{ theme }}>
             <TestAccordion alwaysOpen />
-            <TestAccordion alwaysOpen bordered />
+            <TestAccordion alwaysOpen isBordered />
           </PoluiProvider>,
         );
 
         const normalTitles = [titles()[0], titles()[1]];
-        const borderedTitles = [titles()[2], titles()[3]];
+        const isBorderedTitles = [titles()[2], titles()[3]];
         const openTitles = [titles()[0], titles()[2]];
         const closedTitles = [titles()[1], titles()[3]];
 
@@ -240,7 +240,7 @@ describe('Components / Accordion', () => {
         normalTitles.forEach((title) => {
           expect(title).toHaveClass('text-3xl');
         });
-        borderedTitles.forEach((title) => {
+        isBorderedTitles.forEach((title) => {
           expect(title).toHaveClass('text-3xl');
         });
         openTitles.forEach((title) => {
