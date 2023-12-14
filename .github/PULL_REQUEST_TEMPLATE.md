@@ -1,4 +1,5 @@
-- [ ] I have followed the [Your First Code Contribution section of the Contributing guide](https://github.com/polgubau/pol-ui/blob/main/CONTRIBUTING.md#your-first-code-contribution)
+- [ ] I have followed the [Contributing to Pol-ui
+guide](https://github.com/polgubau/pol-ui/blob/main/CONTRIBUTING.md#your-first-code-contribution)
 
 Summarize the changes made and the motivation behind them.
 

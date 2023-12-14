@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Report a bug in Flowbite React
+about: Reporting bug to Pol-UI
 ---
 
 - [ ] I have searched the [Issues](https://github.com/polgubau/pol-ui/issues) to see if this bug has already been reported

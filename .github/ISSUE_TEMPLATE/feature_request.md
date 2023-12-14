@@ -1,6 +1,6 @@
 ---
-name: Feature request
-about: Suggest an idea for Flowbite React
+name: Feature creation
+about: New feature for Pol-ui
 ---
 
 - [ ] I have searched the [Issues](https://github.com/polgubau/pol-ui/issues) to see if this bug has already been reported
