@@ -38,7 +38,7 @@ import type { TimelineTheme } from '../Timeline';
 import type { ToastTheme } from '../Toast';
 import type { ToggleSwitchTheme } from '../ToggleSwitch';
 import type { TooltipTheme } from '../Tooltip';
-import { BooleanEnum, BrandColorsEnum, ColorsEnum, HeadingLevelEnum, MainSizesEnum, StateColorsEnum,SizesEnum, RoundedSizesEnum } from './enums';
+import { BooleanEnum, BrandColorsEnum, ColorsEnum, HeadingLevelEnum, MainSizesEnum, StateColorsEnum,SizesEnum, RoundedSizesEnum, GetValuesEnum } from './enums';
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>;
 
@@ -118,7 +118,10 @@ export type BrandColors = Record<BrandColorsEnum, string>;
  * @description Type for the different colors, including state and brand colors
  * @author Pol Gubau - https://github.com/polgubau
  */
-export type ColorsType = typeof ColorsEnum; 
+
+ export type ColorsType = Record<GetValuesEnum<typeof StateColorsEnum>, string>;
+
+// export type ColorsEnum =  typeof ColorsEnum; 
 
 
 
@@ -128,6 +131,7 @@ export type ColorsType = typeof ColorsEnum;
  * @author Pol Gubau - https://github.com/polgubau
  */
 export interface Colors extends ColorsType{
+  
   [key: string]: string;
 }
 
@@ -159,9 +163,8 @@ export interface Positions {
  * @author Pol Gubau - https://github.com/polgubau
  * @see MainSizesEnum for the different sizes
  */
-export type MainSizes = Record<MainSizesEnum, string>;
-
-
+ 
+export type MainSizes = Record<GetValuesEnum<typeof MainSizesEnum>, string>;
 
 
  /**
@@ -170,8 +173,7 @@ export type MainSizes = Record<MainSizesEnum, string>;
  * @see SizesEnum for the different sizes
  * @author Pol Gubau - https://github.com/polgubau
  */
-export type Sizes = typeof SizesEnum;
-
+ export type Sizes = Record<GetValuesEnum<typeof SizesEnum>, string>;
  
 
 

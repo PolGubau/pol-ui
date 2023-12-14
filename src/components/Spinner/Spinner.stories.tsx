@@ -1,6 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from '../Button';
 import { Spinner } from './Spinner';
+import { ColorsEnum, SizesEnum } from '../PoluiProvider/enums';
 
 export default {
   title: 'Components/Spinner',
@@ -11,8 +12,8 @@ const Template: StoryFn = (args) => <Spinner {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  color: 'info',
-  size: 'md',
+  color: ColorsEnum.info,
+  size: SizesEnum.md,
   title: 'Default spinner example',
 };
 

@@ -2,6 +2,15 @@
 THIS FILE LIST ALL THE ENUMS USED IN THE BASE POL-UI THEME
 */
 
+
+/**
+ * @name GetValuesEnum
+ * @description Helper type to get the values of an enum dynamically
+ * @author Pol Gubau - https://github.com/polgubau
+ */
+export type GetValuesEnum<T> = T[keyof T];
+
+
 /**
  * @name MainSizesEnum
  * @description Enum for the different sizes of the components
