@@ -4,6 +4,7 @@ import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
 import type { Colors, Sizes } from '../PoluiProvider';
+import { ColorsEnum, SizesEnum } from '../PoluiProvider/enums';
 
 export interface SpinnerTheme {
   base: string;
@@ -21,12 +22,9 @@ export interface SpinnerTheme {
   size: SpinnerSizes;
 }
 
-export interface SpinnerColors
-  extends Pick<Colors, 'error' | 'gray' | 'info' | 'pink' | 'purple' | 'success' | 'warning'> {
-  [key: string]: string;
-}
+export interface SpinnerColors extends Colors {}
 
-export interface SpinnerSizes extends Pick<Sizes, 'xs' | 'sm' | 'md' | 'lg' | 'xl'> {
+export interface SpinnerSizes extends Sizes{
   [key: string]: string;
 }
 
@@ -39,16 +37,16 @@ export interface SpinnerProps extends Omit<ComponentProps<'span'>, 'color'> {
 
 export const Spinner: FC<SpinnerProps> = ({
   className,
-  color = 'info',
+  color = ColorsEnum.info,
   light,
-  size = 'md',
+  size = SizesEnum.md,
   theme: customTheme = {},
   ...props
 }) => {
   const theme = mergeDeep(getTheme().spinner, customTheme);
 
   return (
-    <span role="status" {...props}>
+    <span {...props} className='rotate-360'>
       <svg
         fill="none"
         viewBox="0 0 100 101"
@@ -74,4 +72,6 @@ export const Spinner: FC<SpinnerProps> = ({
   );
 };
 
+
+// The name of the component will be Spinner
 Spinner.displayName = 'Spinner';

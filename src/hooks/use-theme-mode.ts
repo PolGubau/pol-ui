@@ -9,7 +9,31 @@ const DEFAULT_MODE: ThemeMode = 'light';
 const LS_THEME_MODE = 'ui-theme-mode';
 const SYNC_THEME_MODE = 'ui-theme-mode-sync';
 
-export type ThemeMode = 'light' | 'dark' | 'auto';
+
+
+/**
+ * @name ThemeModeEnum
+ * @description Enum for the different theme modes
+ * @property {string} light - Light mode
+ * @property {string} dark - Dark mode
+ * @property {string} auto - Auto mode
+ * @author Pol Gubau - https://github.com/polgubau
+ */
+export enum ThemeModeEnum {
+  light = 'light',
+  dark = 'dark',
+  auto = 'auto',
+}
+
+
+/**
+ * @name ThemeMode
+ * @description Type for the different theme modes
+ * @see ThemeModeEnum for the different theme modes
+ * @author Pol Gubau - https://github.com/polgubau
+ */
+export type ThemeMode = keyof typeof ThemeModeEnum;
+
 
 export const useThemeMode = () => {
   const [mode, setMode] = useState<ThemeMode>(getInitialMode(getThemeMode()));
