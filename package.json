@@ -55,7 +55,7 @@
     }
   },
   "resolutions": {
-    "jackspeak": "2.1.1"
+    "jackspeak": "2.3.5"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.2",
