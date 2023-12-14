@@ -138,7 +138,14 @@ export interface Colors extends ColorsType{
  * @description Type for the different heading levels, from h1 to h6
  * @author Pol Gubau - https://github.com/polgubau
  */
- export type HeadingLevel = Record<GetValuesEnum<typeof HeadingLevelEnum>, string>;
+
+ 
+export type HeadingLevel = keyof typeof HeadingLevelEnum;
+
+
+
+
+
 
 
 export interface Positions {

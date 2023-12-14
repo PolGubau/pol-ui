@@ -3,6 +3,7 @@ import type { ComponentProps, FC } from 'react';
 import { HiChevronDown, HiOutlineArrowCircleDown } from 'react-icons/hi';
 import type { AccordionProps } from './Accordion';
 import { Accordion } from './Accordion';
+import { HeadingLevelEnum } from '../PoluiProvider/enums';
 
 export default {
   title: 'Components/Accordion',
@@ -18,56 +19,57 @@ const icon: FC<ComponentProps<'svg'>> = HiChevronDown;
 const Template: StoryFn<AccordionProps> = (args) => (
   <Accordion arrowIcon={icon} {...args}>
     <Accordion.Panel>
-      <Accordion.Title>What is Pol-ui?</Accordion.Title>
+      <Accordion.Title>This is our most basic accordion</Accordion.Title>
       <Accordion.Content>
-        <p className="mb-2 text-gray-500 dark:text-gray-400">
-          Pol-ui is an open-source library of interactive components built on top of Tailwind CSS including buttons,
-          dropdowns, modals, navbars, and more.
+        <p>
+          This content is a div by default, but you can place inside any other component you like, for example, this {`<p>`} tag.
         </p>
-        <p className="text-gray-500 dark:text-gray-400">
-          Check out this guide to learn how to&nbsp; &nbsp;and start developing websites even faster with components on
-          top of Tailwind CSS.
+        <p>
+          As we use tailwind, you can style this accordion however you like. For example, you can add a border to the content.
         </p>
+        <p className='border border-green-400 px-2 py-1 w-fit rounded-xl bg-green-200 mt-2'>
+          You see :)
+        </p>
+
+      
       </Accordion.Content>
     </Accordion.Panel>
     <Accordion.Panel>
-      <Accordion.Title>Is there a Figma file available?</Accordion.Title>
-      <Accordion.Content>
-        <p className="mb-2 text-gray-500 dark:text-gray-400">
-          Pol-ui is first conceptualized and designed using the Figma software so everything you see in the library has
-          a design equivalent in our Figma file.
+      <Accordion.Title as={ HeadingLevelEnum.h3}>What if I don't like classes in my html</Accordion.Title >
+      <Accordion.Content theme={ {
+        base: 'bg-red-200 border border-red-400 px-2 py-1 w-fit rounded-xl mt-2',
+      }}>
+        <p>
+          No problem, you can use the theme prop to style the accordion. You can also use the theme prop to override the default classes.
         </p>
+        <p className='bg-blue-200 border border-blue-400 px-2 py-1 w-fit rounded-xl mt-2'>
+          This text is blue but the main content is red.
+          </p>
       </Accordion.Content>
     </Accordion.Panel>
     <Accordion.Panel>
-      <Accordion.Title>What are the differences between Pol-ui and Tailwind UI?</Accordion.Title>
+      <Accordion.Title>What can I change by props</Accordion.Title>
       <Accordion.Content>
-        <p className="mb-2 text-gray-500 dark:text-gray-400">
-          The main difference is that the core components from Pol-ui are open source under the MIT license, whereas
-          Tailwind UI is a paid product. Another difference is that Pol-ui relies on smaller and standalone components,
-          whereas Tailwind UI offers sections of pages.
-        </p>
-        <p className="mb-2 text-gray-500 dark:text-gray-400">
-          However, we actually recommend using both Pol-ui, Pol-ui Pro, and even Tailwind UI as there is no technical
-          reason stopping you from using the best of two worlds.
-        </p>
-        <p className="mb-2 text-gray-500 dark:text-gray-400">Learn more about these technologies:</p>
-        <ul className="list-disc pl-5 text-gray-500 dark:text-gray-400">
+        <h3 className='mb-4 text-lg first-letter:uppercase'>
+          The main props for the accordion are:
+        </h3>
+        <ol className='flex flex-col gap-2 divide-y w-fit'>
           <li>
-            <a href="https://Pol-ui.com/pro/" className="text-cyan-600 hover:underline dark:text-cyan-500">
-              Pol-ui Pro
-            </a>
+            <strong>alwaysOpen</strong> - if true, the accordion will always be open
           </li>
           <li>
-            <a
-              href="https://tailwindui.com/"
-              rel="nofollow"
-              className="text-cyan-600 hover:underline dark:text-cyan-500"
-            >
-              Tailwind UI
-            </a>
+            <strong>bordered</strong> - if true, the accordion will have a border
           </li>
-        </ul>
+          <li>
+            <strong>arrowIcon</strong> - the icon to use for the arrow
+          </li>
+          <li>
+            <strong>collapseAll</strong> - if true, all panels will be closed
+          </li>
+          <li>
+            <strong>theme</strong> - the theme to use for the accordion as we did above
+          </li>
+        </ol>
       </Accordion.Content>
     </Accordion.Panel>
   </Accordion>
@@ -83,7 +85,7 @@ export const Default = Template.bind({});
 
 export const Bordered = Template.bind({});
 Bordered.args = {
-  bordered: false,
+  isBordered: false,
 };
 
 export const WithArrowIcon = Template.bind({});

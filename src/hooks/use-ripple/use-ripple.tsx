@@ -56,7 +56,7 @@ export default function useRipple<T extends HTMLElement = any>(inputOptions?: Pa
 
   const { ref, ...options }: Options = {
     duration: 450,
-    color: 'rgba(255, 255, 255, .3)',
+    color: 'currentColor',
     cancelAutomatically: false,
     timingFunction: 'cubic-bezier(.42,.36,.28,.88)',
     disabled: false,
@@ -169,7 +169,7 @@ function createRipple<T extends HTMLElement>(
     ['transform', 'translate(-50%, -50%) scale(0)'],
     ['pointer-events', 'none'],
     ['border-radius', '50%'],
-    ['opacity', '.6'],
+    ['opacity', '.1'],
     ['background', color],
     [
       'transition',
@@ -177,10 +177,10 @@ function createRipple<T extends HTMLElement>(
     ],
   ];
 
-  void element.classList.add(className);
+  element.classList.add(className);
 
-  void window.requestAnimationFrame(() => {
-    void applyStyles([['transform', 'translate(-50%, -50%) scale(1)']], element);
+  window.requestAnimationFrame(() => {
+    applyStyles([['transform', 'translate(-50%, -50%) scale(1)']], element);
   });
 
   return applyStyles(styles, element);
@@ -190,7 +190,7 @@ function applyStyles<T extends HTMLElement>(styles: string[][], target: T): T {
   if (!target) return target;
 
   for (const [property, value] of styles) {
-    void target.style.setProperty(property, value);
+    target.style.setProperty(property, value);
   }
   return target;
 }
@@ -200,7 +200,7 @@ function cancelRippleAnimation<T extends HTMLElement>(
   options: Omit<Options<T>, 'color' | 'ref' | 'onSpawn' | 'cancelAutomatically'>,
 ) {
   const { duration, timingFunction } = options;
-  void applyStyles(
+  applyStyles(
     [
       ['opacity', '0'],
       [
@@ -212,8 +212,8 @@ function cancelRippleAnimation<T extends HTMLElement>(
     ],
     element,
   );
-  void window.requestAnimationFrame(() => {
-    void element.addEventListener('transitionend', (e) => {
+  window.requestAnimationFrame(() => {
+    element.addEventListener('transitionend', (e) => {
       if (e.propertyName === 'opacity') void element.remove();
     });
   });
@@ -221,7 +221,7 @@ function cancelRippleAnimation<T extends HTMLElement>(
 
 function createRippleContainer(className: string) {
   const container = self().createElement('div');
-  void container.classList.add(className);
+  container.classList.add(className);
 
   return applyStyles(
     [

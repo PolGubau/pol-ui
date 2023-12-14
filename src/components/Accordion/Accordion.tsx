@@ -23,33 +23,88 @@ export interface AccordionTheme {
 
 export interface AccordionRootTheme {
   base: string;
-  bordered: IBoolean;
+  isBordered: IBoolean;
 }
 
 export interface AccordionProps extends ComponentProps<'div'> {
-  /*
-  Always keep one panel open at a time
+  /**
+  * @name alwaysOpen
+  * @description Always keep one panel open at a time
+  * @default false
+  * @type boolean
+  * @example
+  * <Accordion alwaysOpen>
+  *   ...
+  * </Accordion>
   */
   alwaysOpen?: boolean;
 
-  /*
-  Custom arrow icon, by default it's HiChevronDown
-  */
 
+/**
+ * @name arrowIcon
+ * @description The icon that will be used for the arrow
+ * @default HiChevronDown (from react-icons/hi)
+ * @type React.FC
+ * @link https://react-icons.github.io/react-icons/search/#q=HiChevronDown
+ * @example
+ * <Accordion arrowIcon={HiOutlineArrowCircleDown}>
+ *  ...
+ * </Accordion>
+ * 
+ */
   arrowIcon?: FC<ComponentProps<'svg'>>;
 
-  /*
-  The content of the accordion
-  */
+
+  /**
+   * @name children
+   * @description The content of the accordion
+   * @type ReactElement<PanelProps> | ReactElement<PanelProps>[]
+   * @example
+   * <Accordion>
+   * <Accordion.Panel>
+   *  <Accordion.Title>...</Accordion.Title>
+   * <Accordion.Content>...</Accordion.Content>
+   * </Accordion.Panel>
+   * </Accordion>
+   */
 
   children: ReactElement<PanelProps> | ReactElement<PanelProps>[];
 
-  /* 
-  Remove the default border
-  */
+  /**
+   * @name isBordered
+   * @description If true, the accordion will have a border
+   * @default true
+   * @type boolean
+   * 
+   *  @example
+   * <Accordion isBordered>
+   * ...
+   * </Accordion>
+   */
+  isBordered?: boolean;
 
-  bordered?: boolean;
+  /**
+   * @name collapseAll
+   * @description If true, all the panels will be closed by default. If false, the first panel will be open by default. If undefined, the first panel will be open by default.
+   * @default false
+   * @type boolean
+   * @example
+   * <Accordion collapseAll>
+   * ...
+   * </Accordion>
+   */
   collapseAll?: boolean;
+
+
+  /**
+   * @name theme
+   * @description The theme of the accordion
+   * @type DeepPartial<AccordionTheme>
+   * @example
+   * <Accordion theme={{root: {base: 'bg-red-200'}}}>
+   * ...
+   * </Accordion>
+   */
   theme?: DeepPartial<AccordionTheme>;
 }
 
@@ -57,7 +112,7 @@ const AccordionComponent: FC<AccordionProps> = ({
   alwaysOpen = false,
   arrowIcon = HiChevronDown,
   children,
-  bordered = true,
+  isBordered = true,
   collapseAll = false,
   className,
   theme: customTheme = {},
@@ -71,19 +126,19 @@ const AccordionComponent: FC<AccordionProps> = ({
         cloneElement(child, {
           alwaysOpen,
           arrowIcon,
-          bordered,
+          isBordered: isBordered,
           isOpen: isOpen === i,
           setOpen: () => setIsOpen(isOpen === i ? -1 : i),
         }),
       ),
-    [alwaysOpen, arrowIcon, children, bordered, isOpen],
+    [alwaysOpen, arrowIcon, children, isBordered, isOpen],
   );
 
   const theme = mergeDeep(getTheme().accordion.root, customTheme);
 
   return (
     <div
-      className={twMerge(theme.base, theme.bordered[bordered ? 'on' : 'off'], className)}
+      className={twMerge(theme.base, theme.isBordered[isBordered ? 'on' : 'off'], className)}
       data-testid="ui-accordion"
       {...props}
     >

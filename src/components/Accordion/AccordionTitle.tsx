@@ -8,40 +8,51 @@ import type { DeepPartial } from '../../types';
 import type { HeadingLevel, IBoolean } from '../PoluiProvider';
 import { useAccordionContext } from './AccordionPanelContext';
 import { HeadingLevelEnum } from '../PoluiProvider/enums';
-export interface AccordionTitleTheme {
+import DynamicHeading from '../Text/DynamicHeading/DynamicHeading';
+import { useRipple } from '../../hooks';
+  export interface AccordionTitleTheme {
   arrow: {
     base: string;
     open: IBoolean;
   };
   base: string;
-  bordered: IBoolean;
+  isBordered: IBoolean;
   heading: string;
   open: IBoolean;
 }
 
 export interface AccordionTitleProps extends ComponentProps<'button'> {
   arrowIcon?: FC<ComponentProps<'svg'>>;
-  as?: HeadingLevel;
+  as?: HeadingLevel
   theme?: DeepPartial<AccordionTitleTheme>;
 }
 
 export const AccordionTitle: FC<AccordionTitleProps> = ({
-  as: Heading =  HeadingLevelEnum.h2,
+  as: Component =  HeadingLevelEnum.h2,
   children,
   className,
   theme: customTheme = {},
   ...props
 }) => {
-  const { arrowIcon: ArrowIcon, bordered, isOpen, setOpen } = useAccordionContext();
+
+ 
+
+  const { arrowIcon: ArrowIcon, isBordered: bordered, isOpen, setOpen } = useAccordionContext();
   const onClick = () => typeof setOpen !== 'undefined' && setOpen();
 
   const theme = mergeDeep(getTheme().accordion.title, customTheme);
-
+  const [ripple, event] = useRipple({
+    disabled: !setOpen,
+    className: "bg-red-500",
+  });
   return (
+   
     <button
+    ref={ripple}
+    onPointerUp={event}
       className={twMerge(
         theme.base,
-        theme.bordered[bordered ? 'on' : 'off'],
+        theme.isBordered[bordered ? 'on' : 'off'],
         theme.open[isOpen ? 'on' : 'off'],
         className,
       )}
@@ -49,9 +60,10 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
       type="button"
       {...props}
     >
-      <Heading className={theme.heading} data-testid="ui-accordion-heading">
+       <DynamicHeading as={Component} className={theme.heading} data-testid="ui-accordion-heading">
         {children}
-      </Heading>
+      </DynamicHeading>
+     
       {ArrowIcon && (
         <ArrowIcon
           aria-hidden
@@ -59,6 +71,6 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
           data-testid="ui-accordion-arrow"
         />
       )}
-    </button>
+    </button> 
   );
 };
