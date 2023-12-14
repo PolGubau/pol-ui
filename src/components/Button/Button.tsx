@@ -88,15 +88,25 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
   ...props
 }: ButtonProps<T>) => {
   const { buttonGroup: groupTheme, button: buttonTheme } = getTheme();
+
+
+  
+
   const theme = mergeDeep(buttonTheme, customTheme);
   const theirProps = props as ButtonBaseProps<T>;
   const [ripple, event] = useRipple({
-    disabled,
+    disabled: disabled || isProcessing,
+    opacity: 0.2,
+    className: "bg-secondary-100",
+      
+    
   });
   return (
     <ButtonBase
       ref={ripple}
-      onPointerUp={event}
+      onPointerDown={ event }
+      onKeyPress={ event }
+      
       disabled={disabled}
       className={twMerge(
         theme.base,
