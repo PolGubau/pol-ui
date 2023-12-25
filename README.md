@@ -10,7 +10,6 @@ A complete UI solution for React projects, based on <a href="https://storybook.j
   <a href="https://github.com/PolGubau/ui">Stars are welcome 😊</a>
 </p>
 
-
 ## 🏎️ Using this package
 
 1. Install the package with npm
