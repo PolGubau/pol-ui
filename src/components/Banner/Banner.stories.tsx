@@ -1,38 +1,57 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { HiX } from 'react-icons/hi';
-import { MdAnnouncement } from 'react-icons/md';
-import type { BannerComponentProps } from './Banner';
-import { Banner } from './Banner';
+import type { Meta, StoryFn } from '@storybook/react'
+import { HiX } from 'react-icons/hi'
+import type { BannerComponentProps } from './Banner'
+import { Banner } from './Banner'
 
 export default {
   title: 'Components/Banner',
   component: Banner,
-} as Meta;
+} as Meta
 
-const Template: StoryFn<BannerComponentProps> = (args) => <Banner {...args} />;
+const Template: StoryFn<BannerComponentProps> = args => <Banner {...args} />
 
-export const DefaultBanner = Template.bind({});
-DefaultBanner.storyName = 'Default';
+export const DefaultBanner = Template.bind({})
+DefaultBanner.storyName = 'Default'
 DefaultBanner.args = {
   children: (
-    <div className="fixed left-0 top-0 z-50 flex w-full justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
-      <div className="mx-auto flex items-center">
-        <p className="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">
-          <MdAnnouncement />
-          <span>
-            New components has been launched for the{' '}
-            <a
-              href="https://ui.polgubau.com"
-              className="decoration-600 dark:decoration-500 inline font-medium text-cyan-600 underline decoration-solid underline-offset-2 hover:no-underline dark:text-cyan-500"
-            >
-              Pol-ui UI Kit
-            </a>
-          </span>
-        </p>
-      </div>
-      <Banner.CollapseButton color="gray" className="border-0 bg-transparent px-0">
+    <>
+      <span>Welcome back to Pol-ui</span>
+      <Banner.CloseButton>
         <HiX className="h-4 w-4" />
-      </Banner.CollapseButton>
-    </div>
+      </Banner.CloseButton>
+    </>
   ),
-};
+}
+
+export const BorderedBanner = Template.bind({})
+BorderedBanner.storyName = 'With border'
+BorderedBanner.args = {
+  bordered: true,
+  children: <span>Welcome back to Pol-ui</span>,
+}
+export const CustomBanner = Template.bind({})
+CustomBanner.storyName = 'Custom styles'
+CustomBanner.args = {
+  className: 'bg-success-300 py-4 px-6 rounded-b-3xl',
+  children: (
+    <>
+      <span>Welcome back to Pol-ui</span>
+      <Banner.CloseButton>
+        <HiX className="h-4 w-4" />
+      </Banner.CloseButton>
+    </>
+  ),
+}
+export const CustomCloseButton = Template.bind({})
+CustomCloseButton.storyName = 'Custom Close Button'
+CustomCloseButton.args = {
+  className: 'bg-info-300 py-4 px-6 rounded-3xl',
+  children: (
+    <>
+      <span>Welcome back to Pol-ui, check our blog!</span>
+      <Banner.CloseButton className="rounded-lg">
+        <HiX className="h-4 w-4" /> Close
+      </Banner.CloseButton>
+    </>
+  ),
+}

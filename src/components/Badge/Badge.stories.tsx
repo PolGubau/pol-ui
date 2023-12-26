@@ -1,8 +1,9 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { HiCheck } from 'react-icons/hi';
-import { theme } from '../../theme';
-import type { BadgeProps } from './Badge';
-import { Badge } from './Badge';
+import type { Meta, StoryFn } from '@storybook/react'
+import { HiCheck } from 'react-icons/hi'
+import { theme } from '../../theme'
+import type { BadgeProps } from './Badge'
+import { Badge } from './Badge'
+import { ColorsEnum } from '../PoluiProvider/enums'
 
 export default {
   title: 'Components/Badge',
@@ -17,38 +18,45 @@ export default {
       control: { type: 'inline-radio' },
     },
   },
-} as Meta;
+} as Meta
 
-const Template: StoryFn<BadgeProps> = (args) => (
+const Template: StoryFn<BadgeProps> = args => (
   <div className="flex items-center">
     <Badge {...args} />
   </div>
-);
+)
 
-export const DefaultBadge = Template.bind({});
-DefaultBadge.storyName = 'Default';
+export const DefaultBadge = Template.bind({})
+DefaultBadge.storyName = 'Default'
 DefaultBadge.args = {
   children: 'Default',
-};
+}
 
-export const BadgeWithIcon = Template.bind({});
-BadgeWithIcon.storyName = 'With icon';
+export const BadgeWithIcon = Template.bind({})
+BadgeWithIcon.storyName = 'With icon'
 BadgeWithIcon.args = {
-  color: 'indigo',
+  color: ColorsEnum.error,
   icon: HiCheck,
   children: '2 minutes ago',
-};
+}
 
-export const BadgeOnlyIcon = Template.bind({});
-BadgeOnlyIcon.storyName = 'Only icon';
+export const BadgeOnlyIcon = Template.bind({})
+BadgeOnlyIcon.storyName = 'Only icon'
 BadgeOnlyIcon.args = {
-  color: 'green',
+  color: ColorsEnum.success,
   icon: HiCheck,
-};
+}
 
-export const BadgeAsLink = Template.bind({});
-BadgeAsLink.storyName = 'As link';
+export const BadgeAsLink = Template.bind({})
+BadgeAsLink.storyName = 'As link'
 BadgeAsLink.args = {
   href: '/badges',
   children: 'Read more →',
-};
+}
+export const SmallRounded = Template.bind({})
+SmallRounded.storyName = 'Small Rounded'
+SmallRounded.args = {
+  size: 'lg',
+  rounded: 'sm',
+  children: 'Read more →',
+}

@@ -1,18 +1,49 @@
-import type { ComponentProps, FC } from 'react';
-import { BannerCollapseButton } from './BannerCollapseButton';
+import type { ComponentProps, FC } from 'react'
+import { CloseButton } from './CloseBannerButton'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers/merge-deep'
+import { getTheme } from '../../theme-store'
+import { IBoolean } from '../PoluiProvider'
+import type { DeepPartial } from '../../types'
 
-export type BannerComponentProps = ComponentProps<'div'>;
+interface BannerRootTheme {
+  base: string
+  bordered: IBoolean
+}
 
-const BannerComponent: FC<BannerComponentProps> = ({ children, ...props }) => {
+export interface BannerTheme {
+  root: BannerRootTheme
+}
+export interface BannerComponentProps extends ComponentProps<'header'> {
+  className: string
+  bordered: boolean
+  theme?: DeepPartial<BannerTheme>
+}
+
+const BannerComponent: FC<BannerComponentProps> = ({
+  children,
+  bordered = false,
+  theme: customTheme = {},
+  className,
+  ...props
+}) => {
+  const theme = mergeDeep(getTheme().banner, customTheme)
+
   return (
-    <div data-testid="ui-banner" role="banner" tabIndex={-1} {...props}>
+    <header
+      data-testid="pol-ui-banner"
+      role="banner"
+      tabIndex={-1}
+      className={twMerge(theme.root.base, theme.root.bordered[bordered ? 'on' : 'off'], className)}
+      {...props}
+    >
       {children}
-    </div>
-  );
-};
+    </header>
+  )
+}
 
-BannerComponent.displayName = 'Banner';
+BannerComponent.displayName = 'Banner'
 
 export const Banner = Object.assign(BannerComponent, {
-  CollapseButton: BannerCollapseButton,
-});
+  CloseButton: CloseButton,
+})

@@ -1,8 +1,19 @@
-import type { BadgeTheme } from './Badge';
+import type { BadgeTheme } from './Badge'
 
 export const badgeTheme: BadgeTheme = {
   root: {
     base: 'flex h-fit items-center gap-1 font-semibold',
+    rounded: {
+      xs: 'rounded-xs',
+      sm: 'rounded-sm',
+      md: 'rounded-md',
+      lg: 'rounded-lg',
+      xl: 'rounded-xl',
+      '2xl': 'rounded-2xl',
+      '3xl': 'rounded-3xl',
+      none: 'rounded-none',
+      full: 'rounded-full',
+    },
     color: {
       info: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-200 dark:text-cyan-800 group-hover:bg-cyan-200 dark:group-hover:bg-cyan-300',
 
@@ -21,14 +32,21 @@ export const badgeTheme: BadgeTheme = {
     size: {
       xs: 'p-1 text-xs',
       sm: 'p-1.5 text-sm',
+      md: 'p-2 text-md',
+      lg: 'p-2.5 text-lg',
+      xl: 'p-3 text-xl',
     },
   },
+
   icon: {
-    off: 'rounded px-2 py-0.5',
-    on: 'rounded-full p-1.5',
+    off: 'px-2 py-0.5',
+    on: 'p-1.5',
     size: {
       xs: 'w-3 h-3',
       sm: 'w-3.5 h-3.5',
+      md: 'w-4 h-4',
+      lg: 'w-4.5 w-4.5',
+      xl: 'w-5 h-5',
     },
   },
-};
+}

@@ -1,4 +1,4 @@
-import type { AlertTheme } from './Alert';
+import type { AlertTheme } from './Alert'
 
 export const alertTheme: AlertTheme = {
   base: 'flex flex-col gap-2 p-4 text-sm',
@@ -12,7 +12,7 @@ export const alertTheme: AlertTheme = {
       error:
         'bg-error-100 text-error-500 hover:bg-error-200 focus:ring-error-400 dark:bg-error-200 dark:text-error-600 dark:hover:bg-error-300',
       success:
-        'bg-dsuccess-100 text-dsuccess-500 hover:bg-dsuccess-200 focus:ring-dsuccess-400 dark:bg-dsuccess-200 dark:text-dsuccess-600 dark:hover:bg-dsuccess-300',
+        'bg-success-100 text-success-500 hover:bg-success-200 focus:ring-success-400 dark:bg-success-200 dark:text-success-600 dark:hover:bg-success-300',
       warning:
         'bg-warning-100 text-warning-500 hover:bg-warning-200 focus:ring-warning-400 dark:bg-warning-200 dark:text-warning-600 dark:hover:bg-warning-300',
       primary:
@@ -25,7 +25,7 @@ export const alertTheme: AlertTheme = {
     info: 'text-info-700 bg-info-100 border-info-500 dark:bg-info-200 dark:text-info-800',
     gray: 'text-gray-700 bg-gray-100 border-gray-500 dark:bg-gray-700 dark:text-gray-300',
     error: 'text-error-700 bg-error-100 border-error-500 dark:bg-error-200 dark:text-error-800',
-    success: 'text-dsuccess-700 bg-dsuccess-100 border-dsuccess-500 dark:bg-dsuccess-200 dark:text-dsuccess-800',
+    success: 'text-success-700 bg-success-100 border-success-500 dark:bg-success-200 dark:text-success-800',
     warning: 'text-warning-700 bg-warning-100 border-warning-500 dark:bg-warning-200 dark:text-warning-800',
     primary: 'text-primary-700 bg-primary-100 border-primary-500 dark:bg-primary-200 dark:text-primary-800',
     secondary: 'text-secondary-700 bg-secondary-100 border-secondary-500 dark:bg-secondary-200 dark:text-secondary-800',
@@ -33,4 +33,4 @@ export const alertTheme: AlertTheme = {
   icon: 'mr-3 inline h-5 w-5 flex-shrink-0',
   rounded: 'rounded-lg',
   wrapper: 'flex items-center',
-};
+}

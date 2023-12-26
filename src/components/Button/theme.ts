@@ -1,12 +1,11 @@
-import type { ButtonTheme } from './Button';
-import type { ButtonGroupTheme } from './ButtonGroup/ButtonGroup';
+import type { ButtonTheme } from './Button'
+import type { ButtonGroupTheme } from './ButtonGroup/ButtonGroup'
 
 export const buttonTheme: ButtonTheme = {
-  base: 'group flex items-stretch items-center justify-center text-center w-auto relative focus:z-10 focus:outline-none transition-all focus:ring-offset-secondary-50 dark:focus:ring-offset-secondary-900 focus:ring-offset-2 focus:ring-4',
+  base: 'group flex items-stretch items-center justify-center text-center w-auto relative focus:z-10 focus:outline-none transition-all focus:ring-offset-2 focus:ring-offset-secondary-50 dark:focus:ring-offset-secondary-900 focus:ring-4 focus:ring-primary',
   fullSized: 'w-full',
   color: {
-    // State colors
-    error: 'text-error-50 dark:text-error-900 bg-error   enabled:hover:brightness-90  focus:ring-error ',
+    error: 'text-error-50 dark:text-error-900 bg-error enabled:hover:brightness-90  focus:ring-error ',
     info: 'text-info-50 dark:text-info-900 bg-info   enabled:hover:brightness-90  focus:ring-info  ',
     success: 'text-success-50 dark:text-success-900 bg-success  enabled:hover:brightness-90  focus:ring-success  ',
     warning: 'text-warning-50 dark:text-warning-900 bg-warning enabled:hover:brightness-90  focus:ring-warning',
@@ -48,9 +47,7 @@ export const buttonTheme: ButtonTheme = {
       'enabled:hover:brightness-90  dark:enabled:hover:brightness-125 ring ring-1 focus:ring-4 focus:ring-offset-2',
     color: {
       error: 'text-error-900 dark:text-error-50  ring-error',
-
       info: 'text-info-900 dark:text-info-50  ring-info',
-
       success: 'text-success-900 dark:text-success-50  ring-success',
       warning: 'text-warning-900 dark:text-warning-50  ring-warning',
       primary: 'text-primary-900 dark:text-primary-50  ring-primary',
@@ -78,7 +75,7 @@ export const buttonTheme: ButtonTheme = {
     lg: 'text-base px-4 py-2.5',
     xl: 'text-base px-6 py-3.5',
   },
-};
+}
 
 export const buttonGroupTheme: ButtonGroupTheme = {
   base: 'inline-flex',
@@ -88,4 +85,4 @@ export const buttonGroupTheme: ButtonGroupTheme = {
     middle: 'rounded-none border-l-0 pl-0',
     end: 'rounded-l-none border-l-0 pl-0',
   },
-};
+}

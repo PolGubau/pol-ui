@@ -1,59 +1,57 @@
-'use client';
+'use client'
 
-import type { ComponentProps, FC, ReactElement } from 'react';
-import { Children, cloneElement, useMemo, useState } from 'react';
-import { HiChevronDown } from 'react-icons/hi';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { AccordionComponentTheme } from './AccordionContent';
-import { AccordionContent } from './AccordionContent';
-import type { PanelProps } from './AccordionPanel';
-import { AccordionPanel } from './AccordionPanel';
-import type { AccordionTitleTheme } from './AccordionTitle';
-import { AccordionTitle } from './AccordionTitle';
-import type { IBoolean } from '../PoluiProvider';
+import type { ComponentProps, FC, ReactElement } from 'react'
+import { Children, cloneElement, useMemo, useState } from 'react'
+import { HiChevronDown } from 'react-icons/hi'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers/merge-deep'
+import { getTheme } from '../../theme-store'
+import type { DeepPartial } from '../../types'
+import type { AccordionComponentTheme } from './AccordionContent'
+import { AccordionContent } from './AccordionContent'
+import type { PanelProps } from './AccordionPanel'
+import { AccordionPanel } from './AccordionPanel'
+import type { AccordionTitleTheme } from './AccordionTitle'
+import { AccordionTitle } from './AccordionTitle'
+import type { IBoolean } from '../PoluiProvider'
 
 export interface AccordionTheme {
-  root: AccordionRootTheme;
-  content: AccordionComponentTheme;
-  title: AccordionTitleTheme;
+  root: AccordionRootTheme
+  content: AccordionComponentTheme
+  title: AccordionTitleTheme
 }
 
 export interface AccordionRootTheme {
-  base: string;
-  isBordered: IBoolean;
+  base: string
+  isBordered: IBoolean
 }
 
 export interface AccordionProps extends ComponentProps<'div'> {
   /**
-  * @name alwaysOpen
-  * @description Always keep one panel open at a time
-  * @default false
-  * @type boolean
-  * @example
-  * <Accordion alwaysOpen>
-  *   ...
-  * </Accordion>
-  */
-  alwaysOpen?: boolean;
+   * @name alwaysOpen
+   * @description Always keep one panel open at a time
+   * @default false
+   * @type boolean
+   * @example
+   * <Accordion alwaysOpen>
+   *   ...
+   * </Accordion>
+   */
+  alwaysOpen?: boolean
 
-
-/**
- * @name arrowIcon
- * @description The icon that will be used for the arrow
- * @default HiChevronDown (from react-icons/hi)
- * @type React.FC
- * @link https://react-icons.github.io/react-icons/search/#q=HiChevronDown
- * @example
- * <Accordion arrowIcon={HiOutlineArrowCircleDown}>
- *  ...
- * </Accordion>
- * 
- */
-  arrowIcon?: FC<ComponentProps<'svg'>>;
-
+  /**
+   * @name arrowIcon
+   * @description The icon that will be used for the arrow
+   * @default HiChevronDown (from react-icons/hi)
+   * @type React.FC
+   * @link https://react-icons.github.io/react-icons/search/#q=HiChevronDown
+   * @example
+   * <Accordion arrowIcon={HiOutlineArrowCircleDown}>
+   *  ...
+   * </Accordion>
+   *
+   */
+  arrowIcon?: FC<ComponentProps<'svg'>>
 
   /**
    * @name children
@@ -68,20 +66,20 @@ export interface AccordionProps extends ComponentProps<'div'> {
    * </Accordion>
    */
 
-  children: ReactElement<PanelProps> | ReactElement<PanelProps>[];
+  children: ReactElement<PanelProps> | ReactElement<PanelProps>[]
 
   /**
    * @name isBordered
    * @description If true, the accordion will have a border
    * @default true
    * @type boolean
-   * 
+   *
    *  @example
    * <Accordion isBordered>
    * ...
    * </Accordion>
    */
-  isBordered?: boolean;
+  isBordered?: boolean
 
   /**
    * @name collapseAll
@@ -93,8 +91,7 @@ export interface AccordionProps extends ComponentProps<'div'> {
    * ...
    * </Accordion>
    */
-  collapseAll?: boolean;
-
+  collapseAll?: boolean
 
   /**
    * @name theme
@@ -105,7 +102,7 @@ export interface AccordionProps extends ComponentProps<'div'> {
    * ...
    * </Accordion>
    */
-  theme?: DeepPartial<AccordionTheme>;
+  theme?: DeepPartial<AccordionTheme>
 }
 
 const AccordionComponent: FC<AccordionProps> = ({
@@ -118,7 +115,7 @@ const AccordionComponent: FC<AccordionProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const [isOpen, setIsOpen] = useState<number>(collapseAll ? -1 : 0);
+  const [isOpen, setIsOpen] = useState<number>(collapseAll ? -1 : 0)
 
   const panels = useMemo(
     () =>
@@ -132,9 +129,9 @@ const AccordionComponent: FC<AccordionProps> = ({
         }),
       ),
     [alwaysOpen, arrowIcon, children, isBordered, isOpen],
-  );
+  )
 
-  const theme = mergeDeep(getTheme().accordion.root, customTheme);
+  const theme = mergeDeep(getTheme().accordion.root, customTheme)
 
   return (
     <div
@@ -144,16 +141,16 @@ const AccordionComponent: FC<AccordionProps> = ({
     >
       {panels}
     </div>
-  );
-};
+  )
+}
 
-AccordionComponent.displayName = 'Accordion';
-AccordionPanel.displayName = 'Accordion.Panel';
-AccordionTitle.displayName = 'Accordion.Title';
-AccordionContent.displayName = 'Accordion.Content';
+AccordionComponent.displayName = 'Accordion'
+AccordionPanel.displayName = 'Accordion.Panel'
+AccordionTitle.displayName = 'Accordion.Title'
+AccordionContent.displayName = 'Accordion.Content'
 
 export const Accordion = Object.assign(AccordionComponent, {
   Panel: AccordionPanel,
   Title: AccordionTitle,
   Content: AccordionContent,
-});
+})
