@@ -1,4 +1,4 @@
-import { BannerTheme } from './Banner'
+import type { BannerTheme } from './Banner'
 
 export const bannerTheme: BannerTheme = {
   root: {

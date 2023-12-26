@@ -38,7 +38,7 @@ import type { TimelineTheme } from '../Timeline'
 import type { ToastTheme } from '../Toast'
 import type { ToggleSwitchTheme } from '../ToggleSwitch'
 import type { TooltipTheme } from '../Tooltip'
-import {
+import type {
   BooleanEnum,
   BrandColorsEnum,
   HeadingLevelEnum,
@@ -48,7 +48,7 @@ import {
   RoundedSizesEnum,
   GetValuesEnum,
 } from './enums'
-import { BannerTheme } from '../Banner/Banner'
+import type { BannerTheme } from '../Banner/Banner'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 

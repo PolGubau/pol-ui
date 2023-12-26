@@ -3,7 +3,7 @@ import { CloseButton } from './CloseBannerButton'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import { IBoolean } from '../PoluiProvider'
+import type { IBoolean } from '../PoluiProvider'
 import type { DeepPartial } from '../../types'
 
 interface BannerRootTheme {

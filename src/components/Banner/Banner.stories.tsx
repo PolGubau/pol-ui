@@ -11,7 +11,6 @@ export default {
 const Template: StoryFn<BannerComponentProps> = args => <Banner {...args} />
 
 export const DefaultBanner = Template.bind({})
-DefaultBanner.storyName = 'Default'
 DefaultBanner.args = {
   children: (
     <>
@@ -43,7 +42,6 @@ CustomBanner.args = {
   ),
 }
 export const CustomCloseButton = Template.bind({})
-CustomCloseButton.storyName = 'Custom Close Button'
 CustomCloseButton.args = {
   className: 'bg-info-300 py-4 px-6 rounded-3xl',
   children: (

@@ -27,13 +27,11 @@ const Template: StoryFn<BadgeProps> = args => (
 )
 
 export const DefaultBadge = Template.bind({})
-DefaultBadge.storyName = 'Default'
 DefaultBadge.args = {
   children: 'Default',
 }
 
 export const BadgeWithIcon = Template.bind({})
-BadgeWithIcon.storyName = 'With icon'
 BadgeWithIcon.args = {
   color: ColorsEnum.error,
   icon: HiCheck,
@@ -41,7 +39,6 @@ BadgeWithIcon.args = {
 }
 
 export const BadgeOnlyIcon = Template.bind({})
-BadgeOnlyIcon.storyName = 'Only icon'
 BadgeOnlyIcon.args = {
   color: ColorsEnum.success,
   icon: HiCheck,
@@ -54,7 +51,6 @@ BadgeAsLink.args = {
   children: 'Read more →',
 }
 export const SmallRounded = Template.bind({})
-SmallRounded.storyName = 'Small Rounded'
 SmallRounded.args = {
   size: 'lg',
   rounded: 'sm',
