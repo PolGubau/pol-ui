@@ -80,7 +80,7 @@ const AvatarComponent: FC<AvatarProps> = ({
   color = ColorsEnum.primary,
   img,
   placeholderInitials = '',
-  rounded = false,
+  rounded = true,
   size = MainSizesEnum.md,
   stacked = false,
   status,

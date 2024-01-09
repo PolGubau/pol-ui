@@ -6,9 +6,9 @@ export const avatarTheme: AvatarTheme = {
     bordered: 'p-1 ring-2',
     rounded: 'rounded-full',
     color: {
-      primary: 'bg-primary-500 dark:bg-primary-600',
-      secondary: 'bg-secondary-500 dark:bg-secondary-600',
-      error: 'ring-red-500 dark:ring-red-700',
+      primary: 'ring-primary dark:bg-primary-600',
+      secondary: 'ring-secondary dark:bg-secondary-600',
+      error: 'ring-error dark:ring-red-700',
       info: 'ring-cyan-400 dark:ring-cyan-800',
       success: 'ring-green-500 dark:ring-green-500',
       warning: 'ring-yellow-300 dark:ring-yellow-500',
