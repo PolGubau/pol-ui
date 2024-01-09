@@ -1,4 +1,4 @@
-import type { AvatarTheme } from './Avatar';
+import type { AvatarTheme } from './Avatar'
 
 export const avatarTheme: AvatarTheme = {
   root: {
@@ -6,15 +6,12 @@ export const avatarTheme: AvatarTheme = {
     bordered: 'p-1 ring-2',
     rounded: 'rounded-full',
     color: {
-      dark: 'ring-gray-800 dark:ring-gray-800',
+      primary: 'bg-primary-500 dark:bg-primary-600',
+      secondary: 'bg-secondary-500 dark:bg-secondary-600',
       error: 'ring-red-500 dark:ring-red-700',
-      gray: 'ring-gray-500 dark:ring-gray-400',
       info: 'ring-cyan-400 dark:ring-cyan-800',
-      light: 'ring-gray-300 dark:ring-gray-500',
-      purple: 'ring-purple-500 dark:ring-purple-600',
       success: 'ring-green-500 dark:ring-green-500',
       warning: 'ring-yellow-300 dark:ring-yellow-500',
-      pink: 'ring-pink-500 dark:ring-pink-500',
     },
     img: {
       base: 'rounded',
@@ -59,4 +56,4 @@ export const avatarTheme: AvatarTheme = {
   groupCounter: {
     base: 'relative flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 rounded-full ring-2 ring-gray-300 hover:bg-gray-600 dark:ring-gray-500',
   },
-};
+}

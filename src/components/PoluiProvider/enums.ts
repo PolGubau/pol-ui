@@ -2,14 +2,12 @@
 THIS FILE LIST ALL THE ENUMS USED IN THE BASE POL-UI THEME
 */
 
-
 /**
  * @name GetValuesEnum
  * @description Helper type to get the values of an enum dynamically
  * @author Pol Gubau - https://github.com/polgubau
  */
-export type GetValuesEnum<T> = T[keyof T];
-
+export type GetValuesEnum<T> = T[keyof T]
 
 /**
  * @name MainSizesEnum
@@ -19,12 +17,11 @@ export type GetValuesEnum<T> = T[keyof T];
  * @property {string} md - Medium
  * @property {string} lg - Large
  * @property {string} xl - Extra large
- * @example 
+ * @example
  * <Button size={MainSizesEnum.xs} />
  * @author Pol Gubau - https://github.com/polgubau
  */
 export enum MainSizesEnum {
-
   /**
    * @name ExtraSmall
    * @description Extra small size for the components
@@ -66,7 +63,6 @@ export enum MainSizesEnum {
   xl = 'xl',
 }
 
-
 /**
  * @name SizesEnum
  * @description Enum for the different sizes of the components including the main sizes
@@ -81,7 +77,7 @@ export enum MainSizesEnum {
  * @property {string} 5xl - 5 extra large
  * @property {string} 6xl - 6 extra large
  * @property {string} 7xl - 7 extra large
- * @example 
+ * @example
  * <Button size={SizesEnum.5xl} />
  * @author Pol Gubau - https://github.com/polgubau
  */
@@ -89,7 +85,7 @@ export const SizesEnum = {
   ...MainSizesEnum,
 
   /**
-   * @name 2xl 
+   * @name 2xl
    * @description 2 extra large size for the components
    * @example
    * <Button size={SizesEnum.2xl} />
@@ -97,7 +93,7 @@ export const SizesEnum = {
   '2xl': '2xl',
 
   /**
-   * @name 3xl 
+   * @name 3xl
    * @description 3 extra large size for the components
    * @example
    * <Button size={SizesEnum.3xl} />
@@ -105,7 +101,7 @@ export const SizesEnum = {
   '3xl': '3xl',
 
   /**
-   * @name 4xl 
+   * @name 4xl
    * @description 4 extra large size for the components
    * @example
    * <Button size={SizesEnum.4xl} />
@@ -113,7 +109,7 @@ export const SizesEnum = {
   '4xl': '4xl',
 
   /**
-   * @name 5xl 
+   * @name 5xl
    * @description 5 extra large size for the components
    * @example
    * <Button size={SizesEnum.5xl} />
@@ -121,7 +117,7 @@ export const SizesEnum = {
   '5xl': '5xl',
 
   /**
-   * @name 6xl 
+   * @name 6xl
    * @description 6 extra large size for the components
    * @example
    * <Button size={SizesEnum.6xl} />
@@ -129,21 +125,18 @@ export const SizesEnum = {
   '6xl': '6xl',
 
   /**
-   * @name 7xl 
+   * @name 7xl
    * @description 7 extra large size for the components
    * @example
    * <Button size={SizesEnum.7xl} />
    */
   '7xl': '7xl',
-};
-
-
-
+}
 
 /**
  * @name RoundedSizesEnum
  * @description Enum for the different rounded sizes of the components including full and none
- * @example 
+ * @example
  * <Button rounded={RoundedSizesEnum.full} /> // Full rounded
  * <Button rounded={RoundedSizesEnum.none} /> // No rounded
  * <Button rounded={RoundedSizesEnum.md} /> // Medium rounded
@@ -152,8 +145,7 @@ export const SizesEnum = {
 export const RoundedSizesEnum = {
   ...MainSizesEnum,
 
-
-  /** 
+  /**
    * @name 2xl
    * @description 2 extra large rounded size for the components
    * @example
@@ -161,7 +153,7 @@ export const RoundedSizesEnum = {
    */
   '2xl': '2xl',
 
-  /** 
+  /**
    * @name 3xl
    * @description 3 extra large rounded size for the components
    * @example
@@ -184,16 +176,12 @@ export const RoundedSizesEnum = {
    * <Button rounded={RoundedSizesEnum.none} /> // No rounded
    */
   none: 'none',
-};
-
-
-
-
+}
 
 /**
  * @name BooleanEnum
  * @description Enum for booleans, on and off states
- * @example 
+ * @example
  * <Button isProcessing={BooleanEnum.on} /> // Processing button
  * <Button isProcessing={BooleanEnum.off} /> // Not processing button
  * @author Pol Gubau - https://github.com/polgubau
@@ -203,9 +191,6 @@ export enum BooleanEnum {
   on = 'on',
 }
 
-
-
-
 /**
  * @name StateColorsEnum
  * @description Enum for the different state colors
@@ -213,7 +198,7 @@ export enum BooleanEnum {
  * @property {string} error - Error color
  * @property {string} success - Success color
  * @property {string} warning - Warning color
- * @example 
+ * @example
  * <Button color={StateColorsEnum.info} /> // Info color
  * <Button color={StateColorsEnum.error} /> // Error color
  * <Button color={StateColorsEnum.success} /> // Success color
@@ -229,7 +214,7 @@ export enum StateColorsEnum {
    */
   info = 'info',
 
-    /**
+  /**
    * Error color
    * @description Color for expressing error states
    * @example
@@ -237,7 +222,7 @@ export enum StateColorsEnum {
    */
   error = 'error',
 
-    /**
+  /**
    * Success color
    * @description Color for expressing success states
    * @example
@@ -245,7 +230,7 @@ export enum StateColorsEnum {
    */
   success = 'success',
 
-    /**
+  /**
    * Warning color
    * @description Color for expressing warning states
    * @example
@@ -254,20 +239,17 @@ export enum StateColorsEnum {
   warning = 'warning',
 }
 
-
-
 /**
  * @name BrandColorsEnum
  * @description Enum for the different brand colors
  * @property {string} primary - Primary color
  * @property {string} secondary - Secondary color
- * @example 
+ * @example
  * <Button color={BrandColorsEnum.primary} /> // Primary color
  * <Button color={BrandColorsEnum.secondary} /> // Secondary color
  * @author Pol Gubau - https://github.com/polgubau
  */
 export enum BrandColorsEnum {
-
   /**
    * Primary color
    * @description Primary color for the brand
@@ -285,11 +267,6 @@ export enum BrandColorsEnum {
   secondary = 'secondary',
 }
 
-
-
-
-
-
 /**
  * @name HeadingLevelEnum
  * @description Enum for the different heading levels
@@ -306,17 +283,16 @@ export enum BrandColorsEnum {
  * <Heading level={HeadingLevelEnum.h4} /> // Heading level 4
  * <Heading level={HeadingLevelEnum.h5} /> // Heading level 5
  * <Heading level={HeadingLevelEnum.h6} /> // Heading level 6
- * 
+ *
  * @author Pol Gubau - https://github.com/polgubau
  */
 export enum HeadingLevelEnum {
-
   /**
    * Heading level 1
    * @description The master title of the page, maximum one per page and 150 characters maximum to avoid SEO problems
    * @example
    * <Heading level={HeadingLevelEnum.h1} /> // Heading level 1
-   * 
+   *
    */
   h1 = 'h1',
 
@@ -325,7 +301,7 @@ export enum HeadingLevelEnum {
    * @description Main titles of the page, multiple but not too many to avoid SEO problems
    * @example
    * <Heading level={HeadingLevelEnum.h2} /> // Heading level 2
-   * 
+   *
    */
   h2 = 'h2',
 
@@ -334,7 +310,7 @@ export enum HeadingLevelEnum {
    * @description Subtitles of the page, you can use some to structure the content
    * @example
    * <Heading level={HeadingLevelEnum.h3} /> // Heading level 3
-   * 
+   *
    */
   h3 = 'h3',
 
@@ -343,7 +319,7 @@ export enum HeadingLevelEnum {
    * @description Subtitles of the page, usable to structure the content and to separate sections
    * @example
    * <Heading level={HeadingLevelEnum.h4} /> // Heading level 4
-   * 
+   *
    */
   h4 = 'h4',
 
@@ -352,24 +328,23 @@ export enum HeadingLevelEnum {
    * @description Subtitles of the page, usable to structure the content and to separate small sections
    * @example
    * <Heading level={HeadingLevelEnum.h5} /> // Heading level 5
-   * 
+   *
    */
   h5 = 'h5',
 
   /**
    * Heading level 6
-   * @description Small subtitles, usable to structure the content and to separate small sections under a h5 
+   * @description Small subtitles, usable to structure the content and to separate small sections under a h5
    * @example
    * <Heading level={HeadingLevelEnum.h6} /> // Heading level 6
-   * 
+   *
    */
   h6 = 'h6',
-} 
-
+}
 
 /**
  * @name ColorsEnum
  * @description Enum for the different colors, merging state and brand colors
  * @author Pol Gubau - https://github.com/polgubau
  */
-export const ColorsEnum = { ...StateColorsEnum, ...BrandColorsEnum };
+export const ColorsEnum = { ...StateColorsEnum, ...BrandColorsEnum }

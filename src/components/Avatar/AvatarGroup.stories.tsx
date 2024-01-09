@@ -1,22 +1,22 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { Avatar } from './Avatar';
-import type { AvatarGroupProps } from './AvatarGroup';
+import type { Meta, StoryFn } from '@storybook/react'
+import { Avatar } from './Avatar'
+import type { AvatarGroupProps } from './AvatarGroup'
 
 export default {
   title: 'Components/Avatar',
   component: Avatar.Group,
-} as Meta;
+} as Meta
 
-const Template: StoryFn<AvatarGroupProps> = (args) => (
+const Template: StoryFn<AvatarGroupProps> = args => (
   <Avatar.Group {...args}>
-    <Avatar img="https://polgubau.com/docs/images/people/profile-picture-1.jpg" rounded stacked />
-    <Avatar img="https://polgubau.com/docs/images/people/profile-picture-2.jpg" rounded stacked />
-    <Avatar img="https://polgubau.com/docs/images/people/profile-picture-3.jpg" rounded stacked />
-    <Avatar img="https://polgubau.com/docs/images/people/profile-picture-4.jpg" rounded stacked />
+    <Avatar img="https://avatars.githubusercontent.com/u/63197171?v=4" rounded stacked />
+    <Avatar img="https://avatars.githubusercontent.com/u/104431726?s=80&v=4" rounded stacked />
+    <Avatar img="https://avatars.githubusercontent.com/u/94074414?s=80&v=4" rounded stacked />
+    <Avatar img="https://avatars.githubusercontent.com/u/78301921?s=80&v=4" rounded stacked />
     <Avatar.Counter total={99} href="#" />
   </Avatar.Group>
-);
+)
 
-export const DefaultAvatarGroup = Template.bind({});
-DefaultAvatarGroup.storyName = 'Grouped';
-DefaultAvatarGroup.args = {};
+export const DefaultAvatarGroup = Template.bind({})
+DefaultAvatarGroup.storyName = 'Grouped'
+DefaultAvatarGroup.args = {}

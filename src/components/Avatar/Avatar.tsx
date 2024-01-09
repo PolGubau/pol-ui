@@ -1,78 +1,75 @@
-import type { ComponentProps, FC, ReactElement } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { IBoolean, Colors, Positions, Sizes } from '../PoluiProvider';
-import type { AvatarGroupTheme } from './AvatarGroup';
-import { AvatarGroup } from './AvatarGroup';
-import type { AvatarGroupCounterTheme } from './AvatarGroupCounter';
-import { AvatarGroupCounter } from './AvatarGroupCounter';
+import type { ComponentProps, FC, ReactElement } from 'react'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers/merge-deep'
+import { getTheme } from '../../theme-store'
+import type { DeepPartial } from '../../types'
+import type { IBoolean, Colors, Positions } from '../PoluiProvider'
+import type { AvatarGroupTheme } from './AvatarGroup'
+import { AvatarGroup } from './AvatarGroup'
+import type { AvatarGroupCounterTheme } from './AvatarGroupCounter'
+import { AvatarGroupCounter } from './AvatarGroupCounter'
+import { MainSizes } from '../PoluiProvider/PoluiTheme'
+import { ColorsEnum, MainSizesEnum } from '../PoluiProvider/enums'
 
 export interface AvatarTheme {
-  root: AvatarRootTheme;
-  group: AvatarGroupTheme;
-  groupCounter: AvatarGroupCounterTheme;
+  root: AvatarRootTheme
+  group: AvatarGroupTheme
+  groupCounter: AvatarGroupCounterTheme
 }
 
 export interface AvatarRootTheme {
-  base: string;
-  bordered: string;
-  color: AvatarColors;
-  img: AvatarImageTheme;
-  initials: AvatarInitialsTheme;
-  rounded: string;
-  size: AvatarSizes;
-  stacked: string;
-  status: AvatarStatusTheme;
-  statusPosition: Positions;
+  base: string
+  bordered: string
+  color: Colors
+  img: AvatarImageTheme
+  initials: AvatarInitialsTheme
+  rounded: string
+  size: AvatarSizes
+  stacked: string
+  status: AvatarStatusTheme
+  statusPosition: Positions
 }
 
 export interface AvatarImageTheme extends IBoolean {
-  base: string;
-  placeholder: string;
+  base: string
+  placeholder: string
 }
 
 export interface AvatarStatusTheme {
-  away: string;
-  base: string;
-  busy: string;
-  offline: string;
-  online: string;
+  away: string
+  base: string
+  busy: string
+  offline: string
+  online: string
 }
 
 export interface AvatarInitialsTheme {
-  base: string;
-  text: string;
+  base: string
+  text: string
 }
 
-export interface AvatarColors
-  extends Pick<Colors, 'error' | 'gray' | 'info' | 'pink' | 'purple' | 'success' | 'warning'> {
-  [key: string]: string;
-}
-
-export interface AvatarSizes extends Pick<Sizes, 'xs' | 'sm' | 'md' | 'lg' | 'xl'> {
-  [key: string]: string;
+export interface AvatarSizes extends MainSizes {
+  [key: string]: string
 }
 
 export interface AvatarImageProps {
-  alt?: string;
-  className: string;
-  'data-testid': string;
+  alt?: string
+  className: string
+  'data-testid': string
 }
 
 export interface AvatarProps extends Omit<ComponentProps<'div'>, 'color'> {
-  alt?: string;
-  bordered?: boolean;
-  img?: string | ((props: AvatarImageProps) => ReactElement);
-  color?: keyof AvatarColors;
-  rounded?: boolean;
-  size?: keyof AvatarSizes;
-  stacked?: boolean;
-  status?: 'away' | 'busy' | 'offline' | 'online';
-  statusPosition?: keyof Positions;
-  placeholderInitials?: string;
-  theme?: DeepPartial<AvatarTheme>;
+  alt?: string
+  bordered?: boolean
+  img?: string | ((props: AvatarImageProps) => ReactElement)
+  color?: Colors
+  rounded?: boolean
+  size?: keyof AvatarSizes
+  stacked?: boolean
+  status?: 'away' | 'busy' | 'offline' | 'online'
+  statusPosition?: keyof Positions
+  placeholderInitials?: string
+  theme?: DeepPartial<AvatarTheme>
 }
 
 const AvatarComponent: FC<AvatarProps> = ({
@@ -80,33 +77,33 @@ const AvatarComponent: FC<AvatarProps> = ({
   bordered = false,
   children,
   className,
-  color = 'light',
+  color = ColorsEnum.primary,
   img,
   placeholderInitials = '',
   rounded = false,
-  size = 'md',
+  size = MainSizesEnum.md,
   stacked = false,
   status,
   statusPosition = 'top-left',
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().avatar, customTheme);
+  const theme = mergeDeep(getTheme().avatar, customTheme)
 
   const imgClassName = twMerge(
     theme.root.img.base,
     bordered && theme.root.bordered,
-    bordered && theme.root.color[color],
+    bordered && theme.root.color[color as keyof Colors],
     rounded && theme.root.rounded,
     stacked && theme.root.stacked,
     theme.root.img.on,
     theme.root.size[size],
-  );
+  )
 
   const imgProps = {
     className: twMerge(imgClassName, theme.root.img.on),
     'data-testid': 'ui-avatar-img',
-  };
+  }
   return (
     <div className={twMerge(theme.root.base, className)} data-testid="ui-avatar" {...props}>
       <div className="relative">
@@ -123,7 +120,7 @@ const AvatarComponent: FC<AvatarProps> = ({
               theme.root.initials.base,
               stacked && theme.root.stacked,
               bordered && theme.root.bordered,
-              bordered && theme.root.color[color],
+              bordered && theme.root.color[color as keyof Colors],
               theme.root.size[size],
               rounded && theme.root.rounded,
             )}
@@ -158,12 +155,12 @@ const AvatarComponent: FC<AvatarProps> = ({
       </div>
       {children && <div>{children}</div>}
     </div>
-  );
-};
+  )
+}
 
-AvatarComponent.displayName = 'Avatar';
+AvatarComponent.displayName = 'Avatar'
 
 export const Avatar = Object.assign(AvatarComponent, {
   Group: AvatarGroup,
   Counter: AvatarGroupCounter,
-});
+})

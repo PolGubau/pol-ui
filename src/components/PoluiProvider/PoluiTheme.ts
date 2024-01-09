@@ -47,6 +47,7 @@ import type {
   SizesEnum,
   RoundedSizesEnum,
   GetValuesEnum,
+  ColorsEnum,
 } from './enums'
 import type { BannerTheme } from '../Banner/Banner'
 
@@ -124,7 +125,7 @@ export type BrandColors = Record<BrandColorsEnum, string>
  * @author Pol Gubau - https://github.com/polgubau
  */
 
-export type ColorsType = Record<GetValuesEnum<typeof StateColorsEnum>, string>
+export type ColorsType = Record<GetValuesEnum<typeof ColorsEnum>, string>
 
 /**
  * @name Colors
