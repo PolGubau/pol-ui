@@ -1,10 +1,9 @@
-'use client';
+'use client'
 
-import type { FC } from 'react';
-import { useMemo, useState } from 'react';
-import type { AccordionProps } from './Accordion';
-import { AccordionPanelContext } from './AccordionPanelContext';
-
+import type { FC } from 'react'
+import { useMemo, useState } from 'react'
+import type { AccordionProps } from './Accordion'
+import { AccordionPanelContext } from './AccordionPanelContext'
 
 /**
  * @name PanelProps
@@ -29,30 +28,28 @@ import { AccordionPanelContext } from './AccordionPanelContext';
 
  */
 export interface PanelProps extends AccordionProps {
-
   /**
    * @name isOpen
    * @description If true, the accordion will be open by default. If false, it will be closed by default. If undefined, it will be closed by default.
    */
-  isOpen?: boolean;
+  isOpen?: boolean
 
   /**
    * @name alwaysOpen
    * @description If true, the accordion will be always open. If false, the accordion will be closed by default. If undefined, the accordion will be closed by default.
    */
-  setOpen?: () => void;
+  setOpen?: () => void
 }
 
 export const AccordionPanel: FC<PanelProps> = ({ children, ...props }) => {
-  const { alwaysOpen } = props;
-  const [isOpen, setIsOpen] = useState(props.isOpen);
+  const { alwaysOpen } = props
+  const [isOpen, setIsOpen] = useState(props.isOpen)
 
- 
   /**
    * @name provider
    * @description The provider is the object that will be passed to the context.
    * It will be the props if the accordion is not always open, or the props plus the isOpen and setOpen if the accordion is always open.
-   * @author @PolGubau - http://github.com/polgubau
+   * @author @PolGubau - http://polgubau.com
    */
   const provider = useMemo(() => {
     if (alwaysOpen) {
@@ -60,12 +57,10 @@ export const AccordionPanel: FC<PanelProps> = ({ children, ...props }) => {
         ...props,
         isOpen,
         setOpen: () => setIsOpen(!isOpen),
-      };
+      }
     }
-    return props;
-  }, [alwaysOpen, isOpen, props]);
-  
-  
+    return props
+  }, [alwaysOpen, isOpen, props])
 
-  return <AccordionPanelContext.Provider value={provider}>{children}</AccordionPanelContext.Provider>;
-};
+  return <AccordionPanelContext.Provider value={provider}>{children}</AccordionPanelContext.Provider>
+}

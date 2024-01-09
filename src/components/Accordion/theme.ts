@@ -1,8 +1,8 @@
-import type { AccordionTheme } from './Accordion';
+import type { AccordionTheme } from './Accordion'
 
 export const accordionTheme: AccordionTheme = {
   root: {
-    base: 'divide-y divide-secondary-200 border-secondary-200 dark:divide-secondary-700 dark:border-secondary-700',
+    base: 'divide-y divide-secondary-200 border-secondary-200 dark:divide-secondary-700 dark:border-secondary-700 transition-all ',
     isBordered: {
       off: 'rounded-lg border',
       on: 'border-b',
@@ -13,7 +13,7 @@ export const accordionTheme: AccordionTheme = {
   },
   title: {
     arrow: {
-      base: 'h-6 w-6 shrink-0',
+      base: 'h-6 w-6 shrink-0 rotate-0 transition-all ',
       open: {
         off: '',
         on: 'rotate-180',
@@ -30,4 +30,4 @@ export const accordionTheme: AccordionTheme = {
       on: 'text-secondary-900 bg-secondary-100 dark:bg-secondary-800 dark:text-white',
     },
   },
-};
+}
