@@ -3,6 +3,7 @@ import type { AvatarProps } from './Avatar'
 import { Avatar } from './Avatar'
 import React from 'react'
 import { MainSizesEnum } from '../PoluiProvider/enums'
+import { AvatarStatusEnum } from './AvatarTypes'
 export default {
   title: 'Components/Avatar',
   component: Avatar,
@@ -74,3 +75,14 @@ export const AllSizes = (): JSX.Element => (
   </div>
 )
 AllSizes.storyName = 'All Sizes'
+
+export const AllStatus = (): JSX.Element => (
+  <div className="flex flex-wrap gap-6">
+    {Object.keys(AvatarStatusEnum).map(status => (
+      <div key={status} className="flex flex-col items-center justify-center">
+        <Avatar alt="Your avatar" img="/images/people/me.png" status={status} className="mb-2" />
+        <span className="text-gray-500">{status}</span>
+      </div>
+    ))}
+  </div>
+)

@@ -10,6 +10,7 @@ import type { AvatarGroupCounterTheme } from './AvatarGroupCounter'
 import { AvatarGroupCounter } from './AvatarGroupCounter'
 import { MainSizes } from '../PoluiProvider/PoluiTheme'
 import { ColorsEnum, MainSizesEnum } from '../PoluiProvider/enums'
+import { AvatarStatus } from './AvatarTypes'
 
 export interface AvatarTheme {
   root: AvatarRootTheme
@@ -26,21 +27,15 @@ export interface AvatarRootTheme {
   rounded: string
   size: AvatarSizes
   stacked: string
-  status: AvatarStatusTheme
+  status: AvatarStatus & {
+    base: string
+  }
   statusPosition: Positions
 }
 
 export interface AvatarImageTheme extends IBoolean {
   base: string
   placeholder: string
-}
-
-export interface AvatarStatusTheme {
-  away: string
-  base: string
-  busy: string
-  offline: string
-  online: string
 }
 
 export interface AvatarInitialsTheme {
@@ -66,7 +61,7 @@ export interface AvatarProps extends Omit<ComponentProps<'div'>, 'color'> {
   rounded?: boolean
   size?: keyof AvatarSizes
   stacked?: boolean
-  status?: 'away' | 'busy' | 'offline' | 'online'
+  status?: keyof AvatarStatus
   statusPosition?: keyof Positions
   placeholderInitials?: string
   theme?: DeepPartial<AvatarTheme>
@@ -147,7 +142,7 @@ const AvatarComponent: FC<AvatarProps> = ({
             data-testid="ui-avatar-status"
             className={twMerge(
               theme.root.status.base,
-              theme.root.status[status],
+              theme.root.status[status as keyof AvatarStatus],
               theme.root.statusPosition[statusPosition],
             )}
           />

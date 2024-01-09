@@ -39,21 +39,21 @@ export const avatarTheme: AvatarTheme = {
       'center-left': 'center -left-1',
     },
     status: {
-      away: 'bg-yellow-400',
-      base: 'absolute h-3.5 w-3.5 rounded-full border-2 border-white dark:border-gray-800',
-      busy: 'bg-red-400',
-      offline: 'bg-gray-400',
-      online: 'bg-green-400',
+      away: 'bg-yellow',
+      base: 'absolute h-3.5 w-3.5 rounded-full border-2 border-white dark:border-secondary-800',
+      busy: 'bg-error',
+      offline: 'bg-secondary',
+      online: 'bg-success',
     },
     initials: {
-      text: 'font-medium text-gray-600 dark:text-gray-300',
-      base: 'inline-flex overflow-hidden relative justify-center items-center bg-gray-100 dark:bg-gray-600',
+      text: 'font-medium text-secondary-600 dark:text-secondary-300',
+      base: 'inline-flex overflow-hidden relative justify-center items-center bg-secondary-100 dark:bg-secondary-600',
     },
   },
   group: {
     base: 'flex -space-x-4',
   },
   groupCounter: {
-    base: 'relative flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 rounded-full ring-2 ring-gray-300 hover:bg-gray-600 dark:ring-gray-500',
+    base: 'relative flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-secondary-700 rounded-full ring-2 ring-secondary-300 hover:bg-secondary-600 dark:ring-secondary-500',
   },
 }
