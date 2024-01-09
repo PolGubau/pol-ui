@@ -32,7 +32,7 @@
     "build:cjs": "tsc -p tsconfig.lib.json",
     "build:esm": "tsc -p tsconfig.lib.json --module esnext --declaration --outDir ./lib/esm",
     "commit": "cz",
-    "lint": "eslint ./src",
+    "lint": "eslint  ",
     "prepublishOnly": "yarn build",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
