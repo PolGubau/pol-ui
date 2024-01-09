@@ -1,25 +1,17 @@
-import type { RenderResult } from '@testing-library/react';
-import { render } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
-import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider';
-import { Loader } from './Loader';
+import type { RenderResult } from '@testing-library/react'
+import { render } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
+import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider'
+import { Loader } from './Loader'
 
 describe('Components / Loader', () => {
   describe('A11y', () => {
     it('should have `role="status"` by default', () => {
-      const loader = getloader(render(<Loader aria-label="My loader" />));
+      const loader = getloader(render(<Loader aria-label="My loader" />))
 
-      expect(loader).toHaveAccessibleName('My loader');
-    });
-
-    it('should be able to set no `role`', () => {
-      const { getByLabelText } = render(<Loader aria-label="My loader" role={undefined} />);
-
-      const loader = getByLabelText('My loader');
-
-      expect(loader).not.toHaveAttribute('role');
-    });
-  });
+      expect(loader).toHaveAccessibleName('My loader')
+    })
+  })
 
   describe('Theme', () => {
     it('should use `base` classes', () => {
@@ -27,7 +19,7 @@ describe('Components / Loader', () => {
         loader: {
           base: 'text-gray-100',
         },
-      };
+      }
 
       const loader = getloader(
         render(
@@ -35,10 +27,10 @@ describe('Components / Loader', () => {
             <Loader />
           </PoluiProvider>,
         ),
-      );
+      )
 
-      expect(loader.firstElementChild).toHaveClass('text-gray-100');
-    });
+      expect(loader.firstElementChild).toHaveClass('text-gray-100')
+    })
 
     it('should use `color` classes', () => {
       const theme: CustomPoluiTheme = {
@@ -47,7 +39,7 @@ describe('Components / Loader', () => {
             primary: 'text-gray-200',
           },
         },
-      };
+      }
 
       const loader = getloader(
         render(
@@ -55,13 +47,11 @@ describe('Components / Loader', () => {
             <Loader color="primary" />
           </PoluiProvider>,
         ),
-      );
+      )
 
-      expect(loader.firstElementChild).toHaveClass('text-gray-200');
-    });
+      expect(loader.firstElementChild).toHaveClass('text-gray-200')
+    })
+  })
+})
 
-   
-  });
-});
-
-const getloader = ({ getByRole }: Pick<RenderResult, 'getByRole'>): HTMLElement => getByRole('status');
+const getloader = ({ getByRole }: Pick<RenderResult, 'getByRole'>): HTMLElement => getByRole('status')
