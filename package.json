@@ -56,7 +56,8 @@
   },
   "resolutions": {
     "jackspeak": "2.3.5",
-    "strip-ansi": "6.0.1"
+    "strip-ansi": "6.0.1",
+    "string-width": "7.0.0"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.2",
