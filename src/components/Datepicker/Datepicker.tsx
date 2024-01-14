@@ -256,7 +256,7 @@ export const Datepicker: FC<DatepickerProps> = ({
           )}
           {(isOpen || inline) && (
             <motion.div
-              initial={{ opacity: 0.5, y: -10, scale: 0.97 }}
+              initial={!inline && { opacity: 0.5, y: -10, scale: 0.97 }}
               animate={{ opacity: 1, y: 0, scale: 1, transition: { duration: 0.1 } }}
               exit={{ opacity: 0, y: -10, scale: 0.9 }}
               ref={datepickerRef}

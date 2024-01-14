@@ -71,3 +71,13 @@ export const AutoHideDisabled = (): JSX.Element => (
     <Datepicker autoHide={false} />
   </div>
 )
+export const Inline = (): JSX.Element => (
+  <div className="flex flex-wrap gap-6">
+    <Datepicker inline />
+  </div>
+)
+export const RangedDates = (): JSX.Element => (
+  <div className="flex flex-wrap gap-6">
+    <Datepicker minDate={new Date('2021-01-01')} maxDate={new Date('2021-12-31')} />
+  </div>
+)
