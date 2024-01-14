@@ -22,6 +22,7 @@ export interface CarouselTheme {
 
 export interface CarouselRootTheme {
   base: string
+  controlsBase: string
   leftControl: string
   rightControl: string
 }
@@ -145,6 +146,7 @@ export const Carousel: FC<CarouselProps> = ({
       case 'ArrowLeft':
         // code to scroll the carousel to the left
         navigateTo(activeItem - 1)
+
         break
       default:
         return
@@ -191,6 +193,7 @@ export const Carousel: FC<CarouselProps> = ({
               key={index}
               className={twMerge(theme.indicators.base, theme.indicators.active[index === activeItem ? 'on' : 'off'])}
               onClick={navigateTo(index)}
+              title={`Slide ${index + 1}`}
               data-testid="carousel-indicator"
               aria-label={`Slide ${index + 1}`}
             />
@@ -200,23 +203,23 @@ export const Carousel: FC<CarouselProps> = ({
 
       {items && (
         <>
-          <div className={theme.root.leftControl}>
+          <div className={twMerge(theme.root.controlsBase, theme.root.leftControl)}>
             <button
-              className="group"
               data-testid="carousel-left-control"
               onClick={navigateTo(activeItem - 1)}
               type="button"
+              className="group"
               aria-label="Previous slide"
             >
               {leftControl ?? <DefaultLeftControl theme={customTheme} />}
             </button>
           </div>
-          <div className={theme.root.rightControl}>
+          <div className={twMerge(theme.root.controlsBase, theme.root.rightControl)}>
             <button
-              className="group"
               data-testid="carousel-right-control"
               onClick={navigateTo(activeItem + 1)}
               type="button"
+              className="group"
               aria-label="Next slide"
             >
               {rightControl ?? <DefaultRightControl theme={customTheme} />}

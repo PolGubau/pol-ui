@@ -1,6 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import type { CarouselProps } from './Carousel'
 import { Carousel } from './Carousel'
+import { Button } from '../Button'
 
 export default {
   title: 'Components/Carousel',
@@ -14,6 +15,10 @@ const Template: StoryFn<CarouselProps> = args => (
         src="https://images.pexels.com/photos/10917649/pexels-photo-10917649.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         alt="..."
       />
+      <div className="flex flex-col items-center justify-center">
+        <h1 className="text-3xl font-bold">This is a slide</h1>
+        <p className="text-lg">With some content</p> <Button>Button</Button>
+      </div>
       <img
         src="https://images.pexels.com/photos/12244662/pexels-photo-12244662.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
         alt="..."
