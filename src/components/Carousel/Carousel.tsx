@@ -10,43 +10,7 @@ import { isClient } from '../../helpers/is-client'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
-import type { IBoolean } from '../PoluiProvider'
-
-export interface CarouselTheme {
-  root: CarouselRootTheme
-  indicators: CarouselIndicatorsTheme
-  item: CarouselItemTheme
-  control: CarouselControlTheme
-  scrollContainer: CarouselScrollContainer
-}
-
-export interface CarouselRootTheme {
-  base: string
-  controlsBase: string
-  leftControl: string
-  rightControl: string
-}
-
-export interface CarouselIndicatorsTheme {
-  active: IBoolean
-  base: string
-  wrapper: string
-}
-
-export interface CarouselItemTheme {
-  base: string
-  wrapper: IBoolean
-}
-
-export interface CarouselControlTheme {
-  base: string
-  icon: string
-}
-
-export interface CarouselScrollContainer {
-  base: string
-  snap: string
-}
+import { CarouselTheme } from './theme'
 
 export interface CarouselProps extends ComponentProps<'div'> {
   indicators?: boolean
@@ -58,10 +22,6 @@ export interface CarouselProps extends ComponentProps<'div'> {
   theme?: DeepPartial<CarouselTheme>
   onSlideChange?: (slide: number) => void
   pauseOnHover?: boolean
-}
-
-export interface DefaultLeftRightControlProps extends ComponentProps<'div'> {
-  theme?: DeepPartial<CarouselTheme>
 }
 
 export const Carousel: FC<CarouselProps> = ({
@@ -231,7 +191,11 @@ export const Carousel: FC<CarouselProps> = ({
   )
 }
 
-const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme = {} }) => {
+export interface DefaultLateralControlProps extends ComponentProps<'div'> {
+  theme?: DeepPartial<CarouselTheme>
+}
+
+const DefaultLeftControl: FC<DefaultLateralControlProps> = ({ theme: customTheme = {} }) => {
   const theme = mergeDeep(getTheme().carousel, customTheme)
   return (
     <span className={theme.control.base}>
@@ -240,7 +204,7 @@ const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customThe
   )
 }
 
-const DefaultRightControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme = {} }) => {
+const DefaultRightControl: FC<DefaultLateralControlProps> = ({ theme: customTheme = {} }) => {
   const theme = mergeDeep(getTheme().carousel, customTheme)
   return (
     <span className={theme.control.base}>

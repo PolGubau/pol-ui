@@ -43,9 +43,9 @@ export const Default = Template.bind({})
 Default.args = {}
 
 export const SlideInterval = Template.bind({})
-SlideInterval.storyName = 'Slide interval'
+SlideInterval.storyName = 'Fast interval'
 SlideInterval.args = {
-  slideInterval: 5000,
+  slideInterval: 200,
 }
 
 export const Static = Template.bind({})
@@ -56,8 +56,8 @@ Static.args = {
 export const CustomControls = Template.bind({})
 CustomControls.storyName = 'With custom controls'
 CustomControls.args = {
-  leftControl: '<',
-  rightControl: '>',
+  leftControl: <div className="bg-green-200 p-3 rounded-xl">LAST</div>,
+  rightControl: <div className="bg-blue-200 p-3 rounded-xl">NEXT</div>,
 }
 
 export const WithNoIndicators = Template.bind({})

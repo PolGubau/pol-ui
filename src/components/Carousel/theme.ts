@@ -1,5 +1,40 @@
-import type { CarouselTheme } from './Carousel'
+import { IBoolean } from '../PoluiProvider'
 
+export interface CarouselTheme {
+  root: CarouselRootTheme
+  indicators: CarouselIndicatorsTheme
+  item: CarouselItemTheme
+  control: CarouselControlTheme
+  scrollContainer: CarouselScrollContainer
+}
+
+export interface CarouselRootTheme {
+  base: string
+  controlsBase: string
+  leftControl: string
+  rightControl: string
+}
+
+export interface CarouselIndicatorsTheme {
+  active: IBoolean
+  base: string
+  wrapper: string
+}
+
+export interface CarouselItemTheme {
+  base: string
+  wrapper: IBoolean
+}
+
+export interface CarouselControlTheme {
+  base: string
+  icon: string
+}
+
+export interface CarouselScrollContainer {
+  base: string
+  snap: string
+}
 export const carouselTheme: CarouselTheme = {
   root: {
     base: 'relative h-full w-full',
@@ -11,8 +46,8 @@ export const carouselTheme: CarouselTheme = {
   },
   indicators: {
     active: {
-      off: 'bg-primary/50 hover:bg-primary dark:bg-gray-800/50 dark:hover:bg-gray-800',
-      on: 'bg-primary-100 dark:bg-primary-500',
+      off: 'bg-primary-300 hover:bg-primary-400 dark:bg-primary-800 dark:hover:bg-primary-800',
+      on: 'bg-primary dark:bg-primary-500',
     },
     base: 'h-3 w-3 rounded-full focus:outline-none transition-all focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-600 shadow-lg',
     wrapper: 'absolute bottom-5 left-1/2 flex -translate-x-1/2 space-x-3',

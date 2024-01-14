@@ -1,2 +1,3 @@
-export { Card } from './Card';
-export type { CardProps, CardImageTheme, CardRootTheme, CardTheme } from './Card';
+export { Card } from './Card'
+export type { CardProps } from './Card'
+export type { CardImageTheme, CardRootTheme, CardTheme } from './theme'

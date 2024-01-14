@@ -1,11 +1,10 @@
-export { Carousel } from './Carousel';
+export { Carousel } from './Carousel'
+export type { CarouselProps, DefaultLateralControlProps } from './Carousel'
 export type {
-  CarouselProps,
-  DefaultLeftRightControlProps,
   CarouselControlTheme,
   CarouselIndicatorsTheme,
   CarouselItemTheme,
   CarouselRootTheme,
   CarouselScrollContainer,
   CarouselTheme,
-} from './Carousel';
+} from './theme'
