@@ -33,6 +33,7 @@
     "build:esm": "tsc -p tsconfig.lib.json --module esnext --declaration --outDir ./lib/esm",
     "commit": "cz",
     "lint": "eslint  ",
+    "lint-fix": "eslint --fix",
     "prepublishOnly": "yarn build",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
