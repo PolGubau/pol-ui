@@ -1,26 +1,20 @@
-'use client';
+'use client'
 
-import type { ComponentProps, FC } from 'react';
-import { HiMoon, HiSun } from 'react-icons/hi';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { useThemeMode } from '../../hooks/use-theme-mode';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-
-export interface DarkThemeToggleTheme {
-  root: DarkThemeToggleRootTheme;
-}
-
-export interface DarkThemeToggleRootTheme {
-  base: string;
-  icon: string;
-}
+import type { ComponentProps, FC } from 'react'
+import { HiMoon, HiSun } from 'react-icons/hi'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers/merge-deep'
+import { useThemeMode } from '../../hooks/use-theme-mode'
+import { getTheme } from '../../theme-store'
+import type { DeepPartial } from '../../types'
+import { DarkThemeToggleTheme } from './theme'
+import { Button } from '../Button'
 
 export interface DarkThemeToggleProps extends ComponentProps<'button'> {
-  iconDark?: string;
-  iconLight?: string;
-  theme?: DeepPartial<DarkThemeToggleTheme>;
+  iconDark?: string
+  iconLight?: string
+  theme?: DeepPartial<DarkThemeToggleTheme>
+  ref?: any
 }
 
 export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
@@ -28,15 +22,15 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
   theme: customTheme = {},
   iconDark: IconDark = HiSun,
   iconLight: IconLight = HiMoon,
+  ref,
   ...props
 }) => {
-  const { computedMode, toggleMode } = useThemeMode();
+  const { computedMode, toggleMode } = useThemeMode()
 
-  const theme = mergeDeep(getTheme().darkThemeToggle, customTheme);
+  const theme = mergeDeep(getTheme().darkThemeToggle, customTheme)
 
   return (
-    <button
-      type="button"
+    <Button
       aria-label="Toggle dark mode"
       data-testid="dark-theme-toggle"
       className={twMerge(theme.root.base, className)}
@@ -53,8 +47,8 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
         data-active={computedMode === 'light'}
         className={twMerge(theme.root.icon, 'dark:hidden')}
       />
-    </button>
-  );
-};
+    </Button>
+  )
+}
 
-DarkThemeToggle.displayName = 'DarkThemeToggle';
+DarkThemeToggle.displayName = 'DarkThemeToggle'

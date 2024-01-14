@@ -1,22 +1,24 @@
-import type { FC } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../../helpers/merge-deep';
-import { useDatePickerContext } from '../DatepickerContext';
-import { Views, getFormattedDate, isDateEqual, isDateInRange } from '../helpers';
+import type { FC } from 'react'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../../helpers/merge-deep'
+import { useDatePickerContext } from '../DatepickerContext'
+import { Views, getFormattedDate, isDateEqual, isDateInRange } from '../helpers'
+import { IBoolean } from '../../PoluiProvider'
+import { Button } from '../../Button'
 
 export interface DatepickerViewsMonthsTheme {
   items: {
-    base: string;
+    base: string
     item: {
-      base: string;
-      selected: string;
-      disabled: string;
-    };
-  };
+      base: string
+      selected: IBoolean
+      disabled: string
+    }
+  }
 }
 
 export interface DatepickerViewsMonthsProps {
-  theme?: DatepickerViewsMonthsTheme;
+  theme?: DatepickerViewsMonthsTheme
 }
 
 export const DatepickerViewsMonth: FC<DatepickerViewsMonthsProps> = ({ theme: customTheme = {} }) => {
@@ -29,41 +31,42 @@ export const DatepickerViewsMonth: FC<DatepickerViewsMonthsProps> = ({ theme: cu
     language,
     setViewDate,
     setView,
-  } = useDatePickerContext();
+  } = useDatePickerContext()
 
-  const theme = mergeDeep(rootTheme.views.months, customTheme);
+  const theme = mergeDeep(rootTheme.views.months, customTheme)
 
   return (
     <div className={theme.items.base}>
       {[...Array(12)].map((_month, index) => {
-        const newDate = new Date(viewDate.getTime());
-        newDate.setMonth(index);
-        const month = getFormattedDate(language, newDate, { month: 'short' });
+        const newDate = new Date(viewDate.getTime())
+        newDate.setMonth(index)
+        const month = getFormattedDate(language, newDate, { month: 'short' })
 
-        const isSelected = isDateEqual(selectedDate, newDate);
-        const isDisabled = !isDateInRange(newDate, minDate, maxDate);
+        const isSelected = isDateEqual(selectedDate, newDate)
+        const isDisabled = !isDateInRange(newDate, minDate, maxDate)
 
         return (
-          <button
+          <Button
             disabled={isDisabled}
             key={index}
             type="button"
             className={twMerge(
               theme.items.item.base,
-              isSelected && theme.items.item.selected,
+              theme.items.item.selected[isSelected ? 'on' : 'off'],
+
               isDisabled && theme.items.item.disabled,
             )}
             onClick={() => {
-              if (isDisabled) return;
+              if (isDisabled) return
 
-              setViewDate(newDate);
-              setView(Views.Days);
+              setViewDate(newDate)
+              setView(Views.Days)
             }}
           >
             {month}
-          </button>
-        );
+          </Button>
+        )
       })}
     </div>
-  );
-};
+  )
+}

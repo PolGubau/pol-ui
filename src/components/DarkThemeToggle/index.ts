@@ -1,2 +1,4 @@
-export { DarkThemeToggle } from './DarkThemeToggle';
-export type { DarkThemeToggleProps, DarkThemeToggleRootTheme, DarkThemeToggleTheme } from './DarkThemeToggle';
+export { DarkThemeToggle } from './DarkThemeToggle'
+export type { DarkThemeToggleProps } from './DarkThemeToggle'
+
+export type { DarkThemeToggleRootTheme, DarkThemeToggleTheme } from './theme'

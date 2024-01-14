@@ -1,27 +1,29 @@
-import type { FC } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../../helpers/merge-deep';
-import type { DeepPartial } from '../../../types';
-import { useDatePickerContext } from '../DatepickerContext';
-import { addDays, getFirstDayOfTheMonth, getFormattedDate, getWeekDays, isDateEqual, isDateInRange } from '../helpers';
+import type { FC } from 'react'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../../helpers/merge-deep'
+import type { DeepPartial } from '../../../types'
+import { useDatePickerContext } from '../DatepickerContext'
+import { addDays, getFirstDayOfTheMonth, getFormattedDate, getWeekDays, isDateEqual, isDateInRange } from '../helpers'
+import { Button } from '../../Button'
+import { IBoolean } from '../../PoluiProvider'
 
 export interface DatepickerViewsDaysTheme {
   header: {
-    base: string;
-    title: string;
-  };
+    base: string
+    title: string
+  }
   items: {
-    base: string;
+    base: string
     item: {
-      base: string;
-      selected: string;
-      disabled: string;
-    };
-  };
+      base: string
+      selected: IBoolean
+      disabled: string
+    }
+  }
 }
 
 export interface DatepickerViewsDaysProps {
-  theme?: DeepPartial<DatepickerViewsDaysTheme>;
+  theme?: DeepPartial<DatepickerViewsDaysTheme>
 }
 
 export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({ theme: customTheme = {} }) => {
@@ -34,12 +36,12 @@ export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({ theme: custo
     selectedDate,
     changeSelectedDate,
     language,
-  } = useDatePickerContext();
+  } = useDatePickerContext()
 
-  const theme = mergeDeep(rootTheme.views.days, customTheme);
+  const theme = mergeDeep(rootTheme.views.days, customTheme)
 
-  const weekDays = getWeekDays(language, weekStart);
-  const startDate = getFirstDayOfTheMonth(viewDate, weekStart);
+  const weekDays = getWeekDays(language, weekStart)
+  const startDate = getFirstDayOfTheMonth(viewDate, weekStart)
 
   return (
     <>
@@ -52,33 +54,33 @@ export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({ theme: custo
       </div>
       <div className={theme.items.base}>
         {[...Array(42)].map((_date, index) => {
-          const currentDate = addDays(startDate, index - 1);
-          const day = getFormattedDate(language, currentDate, { day: 'numeric' });
+          const currentDate = addDays(startDate, index - 1)
+          const day = getFormattedDate(language, currentDate, { day: 'numeric' })
 
-          const isSelected = isDateEqual(selectedDate, currentDate);
-          const isDisabled = !isDateInRange(currentDate, minDate, maxDate);
+          const isSelected = isDateEqual(selectedDate, currentDate)
+          const isDisabled = !isDateInRange(currentDate, minDate, maxDate)
 
           return (
-            <button
+            <Button
               disabled={isDisabled}
               key={index}
               type="button"
               className={twMerge(
                 theme.items.item.base,
-                isSelected && theme.items.item.selected,
+                theme.items.item.selected[isSelected ? 'on' : 'off'],
                 isDisabled && theme.items.item.disabled,
               )}
               onClick={() => {
-                if (isDisabled) return;
+                if (isDisabled) return
 
-                changeSelectedDate(currentDate, true);
+                changeSelectedDate(currentDate, true)
               }}
             >
               {day}
-            </button>
-          );
+            </Button>
+          )
         })}
       </div>
     </>
-  );
-};
+  )
+}
