@@ -1,66 +1,66 @@
-'use client';
+'use client'
 
-import type { ComponentProps, FC, ReactElement, ReactNode } from 'react';
-import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
+import type { ComponentProps, FC, ReactElement, ReactNode } from 'react'
+import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
 
-import ScrollContainer from 'react-indiana-drag-scroll';
-import { twMerge } from 'tailwind-merge';
-import { isClient } from '../../helpers/is-client';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { IBoolean } from '../PoluiProvider';
+import ScrollContainer from 'react-indiana-drag-scroll'
+import { twMerge } from 'tailwind-merge'
+import { isClient } from '../../helpers/is-client'
+import { mergeDeep } from '../../helpers/merge-deep'
+import { getTheme } from '../../theme-store'
+import type { DeepPartial } from '../../types'
+import type { IBoolean } from '../PoluiProvider'
 
 export interface CarouselTheme {
-  root: CarouselRootTheme;
-  indicators: CarouselIndicatorsTheme;
-  item: CarouselItemTheme;
-  control: CarouselControlTheme;
-  scrollContainer: CarouselScrollContainer;
+  root: CarouselRootTheme
+  indicators: CarouselIndicatorsTheme
+  item: CarouselItemTheme
+  control: CarouselControlTheme
+  scrollContainer: CarouselScrollContainer
 }
 
 export interface CarouselRootTheme {
-  base: string;
-  leftControl: string;
-  rightControl: string;
+  base: string
+  leftControl: string
+  rightControl: string
 }
 
 export interface CarouselIndicatorsTheme {
-  active: IBoolean;
-  base: string;
-  wrapper: string;
+  active: IBoolean
+  base: string
+  wrapper: string
 }
 
 export interface CarouselItemTheme {
-  base: string;
-  wrapper: IBoolean;
+  base: string
+  wrapper: IBoolean
 }
 
 export interface CarouselControlTheme {
-  base: string;
-  icon: string;
+  base: string
+  icon: string
 }
 
 export interface CarouselScrollContainer {
-  base: string;
-  snap: string;
+  base: string
+  snap: string
 }
 
 export interface CarouselProps extends ComponentProps<'div'> {
-  indicators?: boolean;
-  leftControl?: ReactNode;
-  rightControl?: ReactNode;
-  draggable?: boolean;
-  slide?: boolean;
-  slideInterval?: number;
-  theme?: DeepPartial<CarouselTheme>;
-  onSlideChange?: (slide: number) => void;
-  pauseOnHover?: boolean;
+  indicators?: boolean
+  leftControl?: ReactNode
+  rightControl?: ReactNode
+  draggable?: boolean
+  slide?: boolean
+  slideInterval?: number
+  theme?: DeepPartial<CarouselTheme>
+  onSlideChange?: (slide: number) => void
+  pauseOnHover?: boolean
 }
 
 export interface DefaultLeftRightControlProps extends ComponentProps<'div'> {
-  theme?: DeepPartial<CarouselTheme>;
+  theme?: DeepPartial<CarouselTheme>
 }
 
 export const Carousel: FC<CarouselProps> = ({
@@ -77,15 +77,15 @@ export const Carousel: FC<CarouselProps> = ({
   pauseOnHover = false,
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().carousel, customTheme);
+  const theme = mergeDeep(getTheme().carousel, customTheme)
 
-  const isDeviceMobile = isClient() && navigator.userAgent.indexOf('IEMobile') !== -1;
-  const carouselContainer = useRef<HTMLDivElement>(null);
-  const [activeItem, setActiveItem] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const [isHovering, setIsHovering] = useState(false);
+  const isDeviceMobile = isClient() && navigator.userAgent.indexOf('IEMobile') !== -1
+  const carouselContainer = useRef<HTMLDivElement>(null)
+  const [activeItem, setActiveItem] = useState(0)
+  const [isDragging, setIsDragging] = useState(false)
+  const [isHovering, setIsHovering] = useState(false)
 
-  const didMountRef = useRef(false);
+  const didMountRef = useRef(false)
 
   const items = useMemo(
     () =>
@@ -95,46 +95,61 @@ export const Carousel: FC<CarouselProps> = ({
         }),
       ),
     [children, theme.item.base],
-  );
+  )
 
   const navigateTo = useCallback(
     (item: number) => () => {
-      if (!items) return;
-      item = (item + items.length) % items.length;
+      if (!items) return
+      item = (item + items.length) % items.length
       if (carouselContainer.current) {
-        carouselContainer.current.scrollLeft = carouselContainer.current.clientWidth * item;
+        carouselContainer.current.scrollLeft = carouselContainer.current.clientWidth * item
       }
-      setActiveItem(item);
+      setActiveItem(item)
     },
     [items],
-  );
+  )
 
   useEffect(() => {
     if (carouselContainer.current && !isDragging && carouselContainer.current.scrollLeft !== 0) {
-      setActiveItem(Math.round(carouselContainer.current.scrollLeft / carouselContainer.current.clientWidth));
+      setActiveItem(Math.round(carouselContainer.current.scrollLeft / carouselContainer.current.clientWidth))
     }
-  }, [isDragging]);
+  }, [isDragging])
 
   useEffect(() => {
     if (slide && !(pauseOnHover && isHovering)) {
-      const intervalId = setInterval(() => !isDragging && navigateTo(activeItem + 1)(), slideInterval ?? 3000);
+      const intervalId = setInterval(() => !isDragging && navigateTo(activeItem + 1)(), slideInterval ?? 3000)
 
-      return () => clearInterval(intervalId);
+      return () => clearInterval(intervalId)
     }
-  }, [activeItem, isDragging, navigateTo, slide, slideInterval, pauseOnHover, isHovering]);
+  }, [activeItem, isDragging, navigateTo, slide, slideInterval, pauseOnHover, isHovering])
 
   useEffect(() => {
     if (didMountRef.current) {
-      onSlideChange && onSlideChange(activeItem);
+      onSlideChange?.(activeItem)
     } else {
-      didMountRef.current = true;
+      didMountRef.current = true
     }
-  }, [onSlideChange, activeItem]);
+  }, [onSlideChange, activeItem])
 
-  const handleDragging = (dragging: boolean) => () => setIsDragging(dragging);
+  const handleDragging = (dragging: boolean) => () => setIsDragging(dragging)
 
-  const setHoveringTrue = useCallback(() => setIsHovering(true), [setIsHovering]);
-  const setHoveringFalse = useCallback(() => setIsHovering(false), [setIsHovering]);
+  const setHoveringTrue = useCallback(() => setIsHovering(true), [setIsHovering])
+  const setHoveringFalse = useCallback(() => setIsHovering(false), [setIsHovering])
+
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    switch (event.key) {
+      case 'ArrowRight':
+        // code to scroll the carousel to the right
+        navigateTo(activeItem + 1)
+        break
+      case 'ArrowLeft':
+        // code to scroll the carousel to the left
+        navigateTo(activeItem - 1)
+        break
+      default:
+        return
+    }
+  }
 
   return (
     <div
@@ -143,7 +158,10 @@ export const Carousel: FC<CarouselProps> = ({
       onMouseEnter={setHoveringTrue}
       onMouseLeave={setHoveringFalse}
       onTouchStart={setHoveringTrue}
-      onTouchEnd={setHoveringFalse}
+      onTouchEnd={setHoveringFalse} // new event handler for keyboard interactions
+      onKeyDown={handleKeyDown} // Capture the keydown event
+      role="region" // new role attribute
+      tabIndex={0} // new attribute to make the div focusable
       {...props}
     >
       <ScrollContainer
@@ -207,25 +225,25 @@ export const Carousel: FC<CarouselProps> = ({
         </>
       )}
     </div>
-  );
-};
+  )
+}
 
 const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme = {} }) => {
-  const theme = mergeDeep(getTheme().carousel, customTheme);
+  const theme = mergeDeep(getTheme().carousel, customTheme)
   return (
     <span className={theme.control.base}>
       <HiOutlineChevronLeft className={theme.control.icon} />
     </span>
-  );
-};
+  )
+}
 
 const DefaultRightControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme = {} }) => {
-  const theme = mergeDeep(getTheme().carousel, customTheme);
+  const theme = mergeDeep(getTheme().carousel, customTheme)
   return (
     <span className={theme.control.base}>
       <HiOutlineChevronRight className={theme.control.icon} />
     </span>
-  );
-};
+  )
+}
 
-Carousel.displayName = 'Carousel';
+Carousel.displayName = 'Carousel'

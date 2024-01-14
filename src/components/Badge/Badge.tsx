@@ -43,7 +43,7 @@ export interface BadgeProps extends Omit<ComponentProps<'span'>, 'color'> {
  */
 export const Badge: FC<BadgeProps> = ({
   children,
-  color = ColorsEnum.info,
+  color = ColorsEnum.primary,
   href,
   icon: Icon,
   size = SizesEnum.xs,

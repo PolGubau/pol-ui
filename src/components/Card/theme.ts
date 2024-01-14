@@ -1,9 +1,25 @@
-import type { CardTheme } from './Card'
+import { IBoolean } from '../PoluiProvider'
 
+export interface CardTheme {
+  root: CardRootTheme
+  img: CardImageTheme
+}
+
+export interface CardRootTheme {
+  base: string
+  children: string
+  horizontal: IBoolean
+  href: string
+}
+
+export interface CardImageTheme {
+  base: string
+  horizontal: IBoolean
+}
 export const cardTheme: CardTheme = {
   root: {
-    base: 'flex rounded-lg border border-secondary-200 bg-white shadow-md dark:border-secondary-700 dark:bg-secondary-800',
-    children: 'flex h-full flex-col justify-center gap-4 p-4',
+    base: 'flex rounded-xl border border-secondary-200 bg-secondary/10 shadow-md dark:border-secondary-700 dark:bg-secondary-800',
+    children: 'flex h-full flex-col justify-center gap-2 p-4',
     horizontal: {
       off: 'flex-col',
       on: 'flex-col md:max-w-xl md:flex-row',
@@ -13,7 +29,7 @@ export const cardTheme: CardTheme = {
   img: {
     base: '',
     horizontal: {
-      off: 'rounded-t-lg',
+      off: 'rounded-t-xl',
       on: 'h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg',
     },
   },

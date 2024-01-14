@@ -15,7 +15,7 @@ export const badgeTheme: BadgeTheme = {
       full: 'rounded-full',
     },
     color: {
-      info: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-200 dark:text-cyan-800 group-hover:bg-cyan-200 dark:group-hover:bg-cyan-300',
+      info: 'bg-info-100 text-info-800 dark:bg-info-200 dark:text-info-800 group-hover:bg-info-200 dark:group-hover:bg-info-300',
 
       error:
         'bg-error-100 text-error-800 dark:bg-error-200 dark:text-error-900 group-hover:bg-error-200 dark:group-hover:bg-error-300',

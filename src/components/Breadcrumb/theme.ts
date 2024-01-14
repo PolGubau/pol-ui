@@ -1,4 +1,4 @@
-import type { BreadcrumbTheme } from './Breadcrumb';
+import type { BreadcrumbTheme } from './Breadcrumb'
 
 export const breadcrumbTheme: BreadcrumbTheme = {
   root: {
@@ -14,4 +14,4 @@ export const breadcrumbTheme: BreadcrumbTheme = {
     },
     icon: 'mr-2 h-4 w-4',
   },
-};
+}
