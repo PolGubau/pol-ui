@@ -1,4 +1,4 @@
-import type { LoaderTheme } from './Loader';
+import type { LoaderTheme } from './Loader'
 
 export const loaderTheme: LoaderTheme = {
   base: 'inline animate-spin text-gray-200 rotate-360',
@@ -7,8 +7,10 @@ export const loaderTheme: LoaderTheme = {
     info: 'fill-info',
     success: 'fill-success',
     warning: 'fill-warning',
+    primary: 'fil-primary',
+    secondary: 'fill-secondary',
   },
- 
+
   size: {
     xs: 'w-3 h-3',
     sm: 'w-4 h-4',
@@ -16,4 +18,4 @@ export const loaderTheme: LoaderTheme = {
     lg: 'w-8 h-8',
     xl: 'w-10 h-10',
   },
-};
+}
