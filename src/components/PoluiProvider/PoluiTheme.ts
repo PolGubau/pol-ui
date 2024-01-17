@@ -36,7 +36,6 @@ import type { TextInputTheme } from '../TextInput'
 import type { TextareaTheme } from '../Textarea'
 import type { TimelineTheme } from '../Timeline'
 import type { ToastTheme } from '../Toast'
-import type { ToggleSwitchTheme } from '../ToggleSwitch'
 import type { TooltipTheme } from '../Tooltip'
 import type {
   BooleanEnum,
@@ -50,6 +49,7 @@ import type {
   ColorsEnum,
 } from './enums'
 import type { BannerTheme } from '../Banner/Banner'
+import { SwitchTheme } from '../Switch/Switch'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -92,7 +92,7 @@ export interface PoluiTheme {
   select: SelectTheme
   textInput: TextInputTheme
   textarea: TextareaTheme
-  toggleSwitch: ToggleSwitchTheme
+  switch: SwitchTheme
   helperText: HelperTextTheme
   table: TableTheme
   timeline: TimelineTheme
@@ -164,7 +164,9 @@ export interface Positions {
  */
 
 export type MainSizes = Record<GetValuesEnum<typeof MainSizesEnum>, string>
-
+export interface MainSizesElastic extends MainSizes {
+  [key: string]: string
+}
 /**
  * @name Sizes
  * @description Type for the different sizes, from xs to 7xl, dynamic from the SizesEnum enum

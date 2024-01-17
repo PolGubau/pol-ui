@@ -36,9 +36,9 @@ import { textInputTheme } from './components/TextInput/theme'
 import { textareaTheme } from './components/Textarea/theme'
 import { timelineTheme } from './components/Timeline/theme'
 import { toastTheme } from './components/Toast/theme'
-import { toggleSwitchTheme } from './components/ToggleSwitch/theme'
 import { tooltipTheme } from './components/Tooltip/theme'
 import { bannerTheme } from './components/Banner/theme'
+import { switchTheme } from './components/Switch/theme'
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,
@@ -75,7 +75,7 @@ export const theme: PoluiTheme = {
   select: selectTheme,
   textInput: textInputTheme,
   textarea: textareaTheme,
-  toggleSwitch: toggleSwitchTheme,
+  switch: switchTheme,
   sidebar: sidebarTheme,
   loader: loaderTheme,
   table: tableTheme,
