@@ -30,7 +30,7 @@ export const switchTheme: SwitchTheme = {
     label: 'ml-3 text-sm font-medium text-secondary-900 dark:text-secondary-300',
   },
   toggle: {
-    base: 'bg-blue-800 rounded-full border group-focus:ring-4 group-focus:ring-primary-500/25 after:rounded-full',
+    base: 'rounded-full border group-focus:ring-2 group-focus:ring-primary/25 after:rounded-full',
     checked: {
       on: 'after:translate-x-full after:border-primary ',
       off: 'border-secondary-800 bg-transparent dark:border-secondary-600 after:bg-secondary-500',
