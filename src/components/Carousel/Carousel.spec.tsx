@@ -1,8 +1,8 @@
 import { act, fireEvent, render, screen } from '@testing-library/react'
 import type { FC } from 'react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import type { CarouselProps } from './Carousel'
-import { Carousel } from './Carousel'
+import type { CarouselProps } from './Carousel2'
+import { Carousel } from './Carousel2'
 
 beforeEach(() => {
   vi.useFakeTimers()
