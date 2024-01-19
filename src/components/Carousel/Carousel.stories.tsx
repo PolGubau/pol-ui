@@ -35,11 +35,21 @@ const Template: StoryFn<CarouselProps> = args => (
 export const Default = Template.bind({})
 Default.args = {}
 
-// export const SlideInterval = Template.bind({})
-// SlideInterval.storyName = 'Fast interval'
-// SlideInterval.args = {
-//   slideInterval: 200,
-// }
+export const SlideInterval = Template.bind({})
+SlideInterval.storyName = 'Loop'
+SlideInterval.args = {
+  options: {
+    loop: true,
+  },
+}
+
+export const CusotmStartIndex = Template.bind({})
+CusotmStartIndex.storyName = 'Custom Start Index'
+CusotmStartIndex.args = {
+  options: {
+    startIndex: 3,
+  },
+}
 
 // export const Static = Template.bind({})
 // Static.args = {
