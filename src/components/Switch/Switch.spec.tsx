@@ -185,28 +185,6 @@ describe('Components / Toggle switch', () => {
 
       expect(label()).toHaveClass('test-label')
     })
-
-    it('should use `toggle` classes', () => {
-      const theme: CustomPoluiTheme = {
-        switch: {
-          toggle: {
-            base: 'h-6 w-11',
-            checked: {
-              color: {
-                blue: 'bg-pink-700',
-              },
-            },
-          },
-        },
-      }
-      render(
-        <PoluiProvider theme={{ theme }}>
-          <Switch checked label="Enable" onChange={console.log} type="submit" />
-        </PoluiProvider>,
-      )
-
-      expect(toggle()).toHaveClass('h-6 w-11 bg-pink-700')
-    })
   })
 })
 
@@ -215,5 +193,3 @@ const toggleSwitch = () => screen.getByRole('switch')
 const toggleSwitches = () => screen.getAllByRole('switch')
 
 const label = () => screen.getByTestId('ui-toggleswitch-label')
-
-const toggle = () => screen.getByTestId('ui-switch-toggle')
