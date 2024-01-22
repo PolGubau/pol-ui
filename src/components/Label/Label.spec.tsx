@@ -1,17 +1,17 @@
-import { render, screen } from '@testing-library/react';
-import { HiGlobe, HiLockClosed } from 'react-icons/hi';
-import { describe, expect, it } from 'vitest';
-import { Button } from '../Button';
-import { Checkbox } from '../Checkbox';
-import { FileInput } from '../FileInput';
-import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider';
-import { Radio } from '../Radio';
-import { RangeSlider } from '../RangeSlider';
-import { Select } from '../Select';
-import { TextInput } from '../TextInput';
-import { Textarea } from '../Textarea';
-import { ToggleSwitch } from '../ToggleSwitch';
-import { Label } from './Label';
+import { render, screen } from '@testing-library/react'
+import { HiGlobe, HiLockClosed } from 'react-icons/hi'
+import { describe, expect, it } from 'vitest'
+import { Button } from '../Button'
+import { Checkbox } from '../Checkbox'
+import { FileInput } from '../FileInput'
+import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider'
+import { Radio } from '../Radio'
+import { RangeSlider } from '../RangeSlider'
+import { Select } from '../Select'
+import { TextInput } from '../TextInput'
+import { Textarea } from '../Textarea'
+import { Switch } from '../Switch'
+import { Label } from './Label'
 
 describe.concurrent('Components / Label', () => {
   describe.concurrent('A11y', () => {
@@ -25,12 +25,12 @@ describe.concurrent('Components / Label', () => {
         'United States',
         'Your message',
         'Price',
-      ];
+      ]
 
-      const { getByLabelText } = render(<TestForm />);
+      const { getByLabelText } = render(<TestForm />)
 
-      inputLabels.forEach((label) => expect(getByLabelText(label)).toHaveAccessibleName(label));
-    });
+      inputLabels.forEach(label => expect(getByLabelText(label)).toHaveAccessibleName(label))
+    })
 
     describe('Theme', () => {
       it('should use `disabled` classes', () => {
@@ -40,26 +40,26 @@ describe.concurrent('Components / Label', () => {
               disabled: 'opacity-50',
             },
           },
-        };
+        }
 
         render(
           <PoluiProvider theme={{ theme }}>
             <Label disabled />
           </PoluiProvider>,
-        );
+        )
 
-        expect(label()).toHaveClass('opacity-50');
-      });
-    });
-  });
-});
+        expect(label()).toHaveClass('opacity-50')
+      })
+    })
+  })
+})
 
-const label = () => screen.getByTestId('ui-label');
+const label = () => screen.getByTestId('ui-label')
 
 const TestForm = (): JSX.Element => (
   <form>
     <div>
-      <ToggleSwitch checked={false} label="Enable notifications" onChange={console.log} />
+      <Switch checked={false} label="Enable notifications" onChange={console.log} />
     </div>
     <div>
       <Label htmlFor="email">Your email</Label>
@@ -130,4 +130,4 @@ const TestForm = (): JSX.Element => (
     </fieldset>
     <Button type="submit">Submit</Button>
   </form>
-);
+)

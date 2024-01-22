@@ -63,7 +63,7 @@ describe('Components / Toggle switch', () => {
       const handleChange = vi.fn()
       const user = userEvent.setup()
 
-      const TestToggleSwitch: FC = () => {
+      const TestSwitch: FC = () => {
         const [state, setState] = useState(false)
 
         return (
@@ -78,7 +78,7 @@ describe('Components / Toggle switch', () => {
           />
         )
       }
-      render(<TestToggleSwitch />)
+      render(<TestSwitch />)
 
       await user.tab()
 
@@ -162,11 +162,11 @@ describe('Components / Toggle switch', () => {
           <Switch disabled checked={false} label="Enable" onChange={console.log} type="submit" />
         </PoluiProvider>,
       )
-      const activeToggleSwitch = toggleSwitches()[0]
-      const disabledToggleSwitch = toggleSwitches()[1]
+      const activeSwitch = toggleSwitches()[0]
+      const disabledSwitch = toggleSwitches()[1]
 
-      expect(activeToggleSwitch).toHaveClass('text-cyan-300')
-      expect(disabledToggleSwitch).toHaveClass('text-cyan-200')
+      expect(activeSwitch).toHaveClass('text-cyan-300')
+      expect(disabledSwitch).toHaveClass('text-cyan-200')
     })
 
     it('should use `label` classes', () => {
@@ -192,4 +192,4 @@ const toggleSwitch = () => screen.getByRole('switch')
 
 const toggleSwitches = () => screen.getAllByRole('switch')
 
-const label = () => screen.getByTestId('ui-toggleswitch-label')
+const label = () => screen.getByTestId('ui-switch-label')

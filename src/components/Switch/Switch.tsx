@@ -4,12 +4,12 @@ import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
-import type { IBoolean, Colors } from '../PoluiProvider'
-import type { TextInputSizes } from '../TextInput'
+import type { Colors } from '../PoluiProvider'
 import { ColorsEnum, MainSizesEnum } from '../PoluiProvider/enums'
-import { MainSizes, MainSizesElastic } from '../PoluiProvider/PoluiTheme'
+import { MainSizesElastic } from '../PoluiProvider/PoluiTheme'
 import { SwitchTheme } from './theme'
-
+import { motion } from 'framer-motion'
+import { Label } from '../Label'
 export type SwitchProps = Omit<ComponentProps<'button'>, 'onChange'> & {
   checked: boolean
   color?: keyof Colors
@@ -36,14 +36,24 @@ export const Switch: FC<SwitchProps> = ({
 
   const toggle = (): void => onChange(!checked)
 
-  const handleClick = (): void => {
-    toggle()
-  }
-
   const handleOnKeyDown = (event: KeyboardEvent<HTMLButtonElement>): void => {
-    if (event.code == 'Enter') {
+    if (event.code == 'Space' || event.code == 'Enter') {
       event.preventDefault()
+      toggle()
     }
+    if (event.code == 'ArrowLeft') {
+      event.preventDefault()
+      onChange(false)
+    }
+    if (event.code == 'ArrowRight') {
+      event.preventDefault()
+      onChange(true)
+    }
+  }
+  const spring = {
+    type: 'spring',
+    stiffness: 700,
+    damping: 30,
   }
 
   return (
@@ -53,10 +63,10 @@ export const Switch: FC<SwitchProps> = ({
       ) : null}
       <button
         aria-checked={checked}
-        aria-labelledby={`${id}-ui-toggleswitch-label`}
+        aria-labelledby={`${id}-switch-label`}
         disabled={disabled}
-        id={`${id}-ui-toggleswitch`}
-        onClick={handleClick}
+        id={`${id}-ui-switch`}
+        onClick={toggle}
         onKeyDown={handleOnKeyDown}
         role="switch"
         tabIndex={0}
@@ -64,23 +74,26 @@ export const Switch: FC<SwitchProps> = ({
         className={twMerge(theme.root.base, theme.root.active[disabled ? 'off' : 'on'], className)}
         {...props}
       >
-        <div
+        <motion.div
           data-testid="ui-switch-toggle"
           className={twMerge(
             theme.toggle.base,
             theme.toggle.checked[checked ? 'on' : 'off'],
-            checked && theme.toggle.checked.color[color],
+            theme.toggle.color[color],
             theme.toggle.sizes[size],
           )}
-        />
+        >
+          <motion.div layout transition={spring} className={twMerge(theme.toggle.handler.base)} />
+        </motion.div>
+
         {label?.length ? (
-          <span data-testid="ui-toggleswitch-label" id={`${id}-ui-toggleswitch-label`} className={theme.root.label}>
+          <Label data-testid="switch-label" id={`${id}-switch-label`} className={theme.root.label} disabled={disabled}>
             {label}
-          </span>
+          </Label>
         ) : null}
       </button>
     </>
   )
 }
 
-Switch.displayName = 'ToggleSwitch'
+Switch.displayName = 'Switch'

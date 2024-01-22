@@ -50,21 +50,3 @@ CusotmStartIndex.args = {
     startIndex: 3,
   },
 }
-
-// export const Static = Template.bind({})
-// Static.args = {
-//   slide: false,
-// }
-
-// export const CustomControls = Template.bind({})
-// CustomControls.storyName = 'With custom controls'
-// CustomControls.args = {
-//   leftControl: <div className="bg-green-200 p-3 rounded-xl">LAST</div>,
-//   rightControl: <div className="bg-blue-200 p-3 rounded-xl">NEXT</div>,
-// }
-
-// export const WithNoIndicators = Template.bind({})
-// WithNoIndicators.storyName = 'With no indicators'
-// WithNoIndicators.args = {
-//   indicators: false,
-// }
