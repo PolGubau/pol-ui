@@ -14,6 +14,7 @@ import { AccordionPanel } from './AccordionPanel'
 import type { AccordionTitleTheme } from './AccordionTitle'
 import { AccordionTitle } from './AccordionTitle'
 import type { IBoolean } from '../PoluiProvider'
+import { AnimatePresence } from 'framer-motion'
 
 export interface AccordionTheme {
   root: AccordionRootTheme
@@ -123,7 +124,7 @@ const AccordionComponent: FC<AccordionProps> = ({
         cloneElement(child, {
           alwaysOpen,
           arrowIcon,
-          isBordered: isBordered,
+          isBordered,
           isOpen: isOpen === i,
           setOpen: () => setIsOpen(isOpen === i ? -1 : i),
         }),
@@ -134,13 +135,15 @@ const AccordionComponent: FC<AccordionProps> = ({
   const theme = mergeDeep(getTheme().accordion.root, customTheme)
 
   return (
-    <div
-      className={twMerge(theme.base, theme.isBordered[isBordered ? 'on' : 'off'], className)}
-      data-testid="ui-accordion"
-      {...props}
-    >
-      {panels}
-    </div>
+    <AnimatePresence mode="wait">
+      <div
+        className={twMerge(theme.base, theme.isBordered[isBordered ? 'on' : 'off'], className)}
+        data-testid="ui-accordion"
+        {...props}
+      >
+        {panels}
+      </div>
+    </AnimatePresence>
   )
 }
 

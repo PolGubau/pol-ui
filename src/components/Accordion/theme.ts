@@ -10,13 +10,14 @@ export const accordionTheme: AccordionTheme = {
   },
   content: {
     base: 'py-5 px-5 last:rounded-b-lg dark:bg-secondary-900 first:rounded-t-lg',
+    
   },
   title: {
     arrow: {
-      base: 'h-6 w-6 shrink-0 rotate-0 transition-all ',
+      base: 'h-6 w-6 shrink-0 rotate-0 transition-all transform origin-center',
       open: {
         off: '',
-        on: 'rotate-180',
+        on: 'rotate-180 ',
       },
     },
     base: 'flex w-full items-center justify-between first:rounded-t-lg last:rounded-b-lg py-5 px-5 text-left font-medium text-secondary-500 dark:text-secondary-400',

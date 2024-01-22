@@ -1852,12 +1852,12 @@
   resolved "https://registry.npmjs.org/@sinclair/typebox/-/typebox-0.27.8.tgz"
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
-"@storybook/addon-a11y@^7.5.3":
-  version "7.6.4"
-  resolved "https://registry.npmjs.org/@storybook/addon-a11y/-/addon-a11y-7.6.4.tgz"
-  integrity sha512-NwROJMes3D1WVPSmASVnHtDCIFQCF3DoPJEpzpnUYFxCR2IQzqPSlf9jptRkot6XjL5XwVX5mV2KxC2lKA1cfg==
+"@storybook/addon-a11y@^7.6.10":
+  version "7.6.10"
+  resolved "https://registry.npmjs.org/@storybook/addon-a11y/-/addon-a11y-7.6.10.tgz"
+  integrity sha512-TP17m4TAWLSSd2x9cWNg7d0MCZZCojYIG83RZMXAb55jt8gKJBMDbupOoDLydBsABQa5Uk9ZP0D/CvumMon8RA==
   dependencies:
-    "@storybook/addon-highlight" "7.6.4"
+    "@storybook/addon-highlight" "7.6.10"
     axe-core "^4.2.0"
 
 "@storybook/addon-actions@^7.5.3", "@storybook/addon-actions@7.6.4":
@@ -1934,6 +1934,13 @@
     "@storybook/node-logger" "7.6.4"
     "@storybook/preview-api" "7.6.4"
     ts-dedent "^2.0.0"
+
+"@storybook/addon-highlight@7.6.10":
+  version "7.6.10"
+  resolved "https://registry.npmjs.org/@storybook/addon-highlight/-/addon-highlight-7.6.10.tgz"
+  integrity sha512-dIuS5QmoT1R+gFOcf6CoBa6D9UR5/wHCfPqPRH8dNNcCLtIGSHWQ4v964mS5OCq1Huj7CghmR15lOUk7SaYwUA==
+  dependencies:
+    "@storybook/global" "^5.0.0"
 
 "@storybook/addon-highlight@7.6.4":
   version "7.6.4"

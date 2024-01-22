@@ -1,5 +1,4 @@
 'use client'
-
 import type { ComponentProps, FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
@@ -26,7 +25,7 @@ export const AccordionContent: FC<AccordionContentProps> = ({
   const theme = mergeDeep(getTheme().accordion.content, customTheme)
 
   return (
-    <div className={twMerge(theme.base, className)} data-testid="ui-accordion-content" hidden={!isOpen} {...props}>
+    <div className={twMerge(theme.base, className)} data-testid="ui-accordion-content" hidden={!isOpen} {...props} >
       {children}
     </div>
   )
