@@ -83,7 +83,11 @@ export const Switch: FC<SwitchProps> = ({
             theme.toggle.sizes[size],
           )}
         >
-          <motion.div layout transition={spring} className={twMerge(theme.toggle.handler.base)} />
+          <motion.div
+            layout
+            transition={spring}
+            className={twMerge(theme.toggle.handler.base, theme.toggle.handler.sizes[size])}
+          />
         </motion.div>
 
         {label?.length ? (
