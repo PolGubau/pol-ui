@@ -5,9 +5,11 @@ import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
 import { useAccordionContext } from './AccordionPanelContext'
+import { IBoolean } from '../PoluiProvider'
 
 export interface AccordionComponentTheme {
   base: string
+  open: IBoolean
 }
 
 export interface AccordionContentProps extends ComponentProps<'div'> {
@@ -25,7 +27,7 @@ export const AccordionContent: FC<AccordionContentProps> = ({
   const theme = mergeDeep(getTheme().accordion.content, customTheme)
 
   return (
-    <div className={twMerge(theme.base, className)} data-testid="ui-accordion-content" hidden={!isOpen} {...props} >
+    <div className={twMerge(theme.base, className)} data-testid="ui-accordion-content" hidden={!isOpen} {...props}>
       {children}
     </div>
   )

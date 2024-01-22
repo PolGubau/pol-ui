@@ -10,7 +10,10 @@ export const accordionTheme: AccordionTheme = {
   },
   content: {
     base: 'py-5 px-5 last:rounded-b-lg dark:bg-secondary-900 first:rounded-t-lg',
-    
+    open: {
+      off: 'hidden',
+      on: 'block',
+    },
   },
   title: {
     arrow: {
