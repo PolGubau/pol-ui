@@ -42,7 +42,7 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
   const theme = mergeDeep(getTheme().accordion.title, customTheme)
   const [ripple, event] = useRipple({
     disabled: !setOpen,
-    className: twMerge('bg-secondary', rippleClassName),
+    className: twMerge('bg-secondary-700', rippleClassName),
   })
   return (
     <button

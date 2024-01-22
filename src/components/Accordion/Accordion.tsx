@@ -135,15 +135,13 @@ const AccordionComponent: FC<AccordionProps> = ({
   const theme = mergeDeep(getTheme().accordion.root, customTheme)
 
   return (
-    <AnimatePresence mode="wait">
-      <div
-        className={twMerge(theme.base, theme.isBordered[isBordered ? 'on' : 'off'], className)}
-        data-testid="ui-accordion"
-        {...props}
-      >
-        {panels}
-      </div>
-    </AnimatePresence>
+    <div
+      className={twMerge(theme.base, theme.isBordered[isBordered ? 'on' : 'off'], className)}
+      data-testid="ui-accordion"
+      {...props}
+    >
+      {panels}
+    </div>
   )
 }
 
