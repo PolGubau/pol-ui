@@ -9,10 +9,10 @@ export const accordionTheme: AccordionTheme = {
     },
   },
   content: {
-    base: 'py-5 px-5 last:rounded-b-lg dark:bg-secondary-900 first:rounded-t-lg',
+    base: 'py-4 px-4 rounded-xl last:rounded-b-lg dark:bg-secondary-900 first:rounded-t-lg',
     open: {
-      off: 'hidden',
-      on: 'block',
+      off: 'grid-rows-[0fr] opacity-0',
+      on: 'grid-rows-[1fr] opacity-100',
     },
   },
   title: {
@@ -30,7 +30,7 @@ export const accordionTheme: AccordionTheme = {
     },
     heading: '',
     open: {
-      off: '',
+      off: 'text-secondary-800',
       on: 'text-secondary-900 bg-secondary-100 dark:bg-secondary-800 dark:text-white',
     },
   },

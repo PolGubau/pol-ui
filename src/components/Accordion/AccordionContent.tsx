@@ -27,7 +27,12 @@ export const AccordionContent: FC<AccordionContentProps> = ({
   const theme = mergeDeep(getTheme().accordion.content, customTheme)
 
   return (
-    <div className={twMerge(theme.base, className)} data-testid="ui-accordion-content" hidden={!isOpen} {...props}>
+    <div
+      className={twMerge(theme.base, theme.open[isOpen ? 'on' : 'off'], className)}
+      data-testid="ui-accordion-content"
+      hidden={!isOpen}
+      {...props}
+    >
       {children}
     </div>
   )
