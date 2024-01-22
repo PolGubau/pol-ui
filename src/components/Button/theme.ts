@@ -24,7 +24,7 @@ export const buttonTheme: ButtonTheme = {
     xl: 'left-6',
   },
   inner: {
-    base: 'flex gap-2 items-stretch items-center transition-all duration-200',
+    base: 'flex gap-1 items-stretch items-center transition-all duration-200',
     position: {
       none: '',
       start: 'rounded-r-none',

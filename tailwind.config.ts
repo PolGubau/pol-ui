@@ -86,23 +86,21 @@ const config: Config = {
           900: '#0F4251',
         },
       },
-    },
-    maxWidth: {
-      '8xl': '90rem',
-    },
-    keyframes: {
-      fadeIn: {
-        '0%': { opacity: '0' },
-        '100%': { opacity: '1' },
+
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        rotate360: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
       },
-      rotate360: {
-        '0%': { transform: 'rotate(0deg)' },
-        '100%': { transform: 'rotate(360deg)' },
+      animation: {
+        'fade-in': 'fadeIn 200ms ease-in-out',
+        'rotate-360': 'rotate360 1s linear infinite',
       },
-    },
-    animation: {
-      'fade-in': 'fadeIn 200ms ease-in-out',
-      'rotate-360': 'rotate360 1s linear infinite',
     },
   },
 }

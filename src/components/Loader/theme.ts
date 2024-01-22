@@ -1,14 +1,15 @@
 import type { LoaderTheme } from './Loader'
 
 export const loaderTheme: LoaderTheme = {
-  base: 'inline animate-spin text-gray-200 rotate-360',
+  base: 'inline-flex animate-spin rounded-full border-4 border-solid border-current border-r-transparent motion-reduce:animate-[spin_1.5s_linear_infinite] object-center',
+
   color: {
-    error: 'fill-error',
-    info: 'fill-info',
-    success: 'fill-success',
-    warning: 'fill-warning',
-    primary: 'fil-primary',
-    secondary: 'fill-secondary',
+    error: 'fill-error text-error',
+    info: 'fill-info text-info',
+    success: 'fill-success text-success',
+    warning: 'fill-warning text-warning',
+    primary: 'fill-primary text-primary',
+    secondary: 'fill-secondary text-secondary',
   },
 
   size: {

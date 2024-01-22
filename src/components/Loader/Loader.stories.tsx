@@ -1,21 +1,21 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { Button } from '../Button';
-import { Loader } from './Loader';
-import { ColorsEnum, SizesEnum } from '../PoluiProvider/enums';
+import type { Meta, StoryFn } from '@storybook/react'
+import { Button } from '../Button'
+import { Loader } from './Loader'
+import { ColorsEnum, MainSizesEnum, SizesEnum } from '../PoluiProvider/enums'
 
 export default {
   title: 'Components/Loader',
   component: Loader,
-} as Meta;
+} as Meta
 
-const Template: StoryFn = (args) => <Loader {...args} />;
+const Template: StoryFn = args => <Loader {...args} />
 
-export const Default = Template.bind({});
+export const Default = Template.bind({})
 Default.args = {
-  color: ColorsEnum.info,
+  color: ColorsEnum.secondary,
   size: SizesEnum.md,
   title: 'Default loader example',
-};
+}
 
 export const Alignment = (): JSX.Element => (
   <div className="flex w-1/3 flex-col gap-3 p-6">
@@ -29,33 +29,33 @@ export const Alignment = (): JSX.Element => (
       <Loader aria-label="Right-aligned loader example" />
     </div>
   </div>
-);
+)
 
 export const Colors = (): JSX.Element => (
   <div className="flex flex-row gap-3">
-    <Loader color="info" aria-label="Info loader example" />
-    <Loader color="success" aria-label="Success loader example" />
-    <Loader color="error" aria-label="error loader example" />
-    <Loader color="warning" aria-label="Warning loader example" />
-    <Loader color="pink" aria-label="Pink loader example" />
-    <Loader color="purple" aria-label="Purple loader example" />
+    {Object.keys(ColorsEnum).map(color => (
+      <Loader
+        color={color as keyof typeof ColorsEnum}
+        aria-label={`${color} loader example`}
+        key={color}
+        title={`${color} loader example`}
+      />
+    ))}
   </div>
-);
+)
 
 export const Sizes = (): JSX.Element => (
   <div className="flex flex-row gap-3">
-    <Loader aria-label="Extra small loader example" size="xs" />
-    <Loader aria-label="Small loader example" size="sm" />
-    <Loader aria-label="Medium sized loader example" size="md" />
-    <Loader aria-label="Large loader example" size="lg" />
-    <Loader aria-label="Extra large loader example" size="xl" />
+    {Object.keys(MainSizesEnum).map(v => (
+      <Loader size={v} aria-label={`${v} loader example`} key={v} title={`${v} loader example`} />
+    ))}
   </div>
-);
+)
 
 export const Buttons = (): JSX.Element => (
   <div className="flex flex-row gap-3">
-    <Button>
-      <Loader aria-label="Loader button example" />
+    <Button rounded="full">
+      <Loader aria-label="Loader button example" className="text-secondary-50" />
       <span className="pl-3">Loading...</span>
     </Button>
     <Button color="gray">
@@ -63,4 +63,4 @@ export const Buttons = (): JSX.Element => (
       <span className="pl-3">Loading...</span>
     </Button>
   </div>
-);
+)
