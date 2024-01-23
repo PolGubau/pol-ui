@@ -12,7 +12,7 @@ export type AvatarStatusType = Record<GetValuesEnum<typeof AvatarStatusEnum>, st
 /**
  * @name AvatarStatus
  * @description Avatar status types for indicating user status
- * @author Pol Gubau - https://github.com/polgubau
+ * @author Pol Gubau - https://polgubau.com
  */
 export interface AvatarStatus extends AvatarStatusType {
   [key: string]: string

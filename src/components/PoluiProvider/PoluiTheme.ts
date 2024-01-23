@@ -47,12 +47,71 @@ import type {
   RoundedSizesEnum,
   GetValuesEnum,
   ColorsEnum,
+  TriggerReasonEnum,
 } from './enums'
 import type { BannerTheme } from '../Banner/Banner'
 import { SwitchTheme } from '../Switch'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
+/**
+ * @name PoluiTheme
+ * @description Interface for the PoluiTheme, it includes all the different components themes, and the different colors, sizes, etc. that are used in the library
+ * @author Pol Gubau Amores - https://polgubau.com
+ * @see AccordionTheme for the Accordion theme
+ * @see AlertTheme for the Alert theme
+ * @see AvatarTheme for the Avatar theme
+ * @see BadgeTheme for the Badge theme
+ * @see BlockquoteTheme for the Blockquote theme
+ * @see BreadcrumbTheme for the Breadcrumb theme
+ * @see ButtonGroupTheme for the ButtonGroup theme
+ * @see ButtonTheme for the Button theme
+ * @see CardTheme for the Card theme
+ * @see CarouselTheme for the Carousel theme
+ * @see CheckboxTheme for the Checkbox theme
+ * @see DarkThemeToggleTheme for the DarkThemeToggle theme
+ * @see DatepickerTheme for the Datepicker theme
+ * @see DropdownTheme for the Dropdown theme
+ * @see FileInputTheme for the FileInput theme
+ * @see FloatingLabelTheme for the FloatingLabel theme
+ * @see FooterTheme for the Footer theme
+ * @see HelperTextTheme for the HelperText theme
+ * @see KbdTheme for the Kbd theme
+ * @see LabelTheme for the Label theme
+ * @see ListGroupTheme for the ListGroup theme
+ * @see ListTheme for the List theme
+ * @see ModalTheme for the Modal theme
+ * @see NavbarTheme for the Navbar theme
+ * @see PaginationTheme for the Pagination theme
+ * @see ProgressTheme for the Progress theme
+ * @see RadioTheme for the Radio theme
+ * @see RangeSliderTheme for the RangeSlider theme
+ * @see RatingAdvancedTheme for the RatingAdvanced theme
+ * @see RatingTheme for the Rating theme
+ * @see SelectTheme for the Select theme
+ * @see SidebarTheme for the Sidebar theme
+ * @see LoaderTheme for the Loader theme
+ * @see TableTheme for the Table theme
+ * @see TabsTheme for the Tabs theme
+ * @see TextInputTheme for the TextInput theme
+ * @see TextareaTheme for the Textarea theme
+ * @see TimelineTheme for the Timeline theme
+ * @see ToastTheme for the Toast theme
+ * @see TooltipTheme for the Tooltip theme
+ * @see DropdownTheme for the Dropdown theme
+ * @see CheckboxTheme for the Checkbox theme
+ * @see FileInputTheme for the FileInput theme
+ * @see FloatingLabelTheme for the FloatingLabel theme
+ * @see LabelTheme for the Label theme
+ * @see RadioTheme for the Radio theme
+ * @see RangeSliderTheme for the RangeSlider theme
+ * @see SelectTheme for the Select theme
+ * @see SwitchTheme for the Switch theme
+ * @see TextInputTheme for the TextInput theme
+ * @see TextareaTheme for the Textarea theme
+ * @see TimelineTheme for the Timeline theme
+ *
+ */
 export interface PoluiTheme {
   accordion: AccordionTheme
   alert: AlertTheme
@@ -101,36 +160,35 @@ export interface PoluiTheme {
 /**
  * @name IBoolean
  * @description Type for booleans, on and off states
- * @author Pol Gubau - https://github.com/polgubau
+ * @author Pol Gubau Amores - https://polgubau.com
  */
 export type IBoolean = Record<BooleanEnum, string>
 
 /**
  * @name StateColors
  * @description Type for the different state colors
- * @author Pol Gubau - https://github.com/polgubau
+ * @author Pol Gubau Amores - https://polgubau.com
  */
 export type StateColors = Record<StateColorsEnum, string>
 
 /**
  * @name BrandColors
  * @description Type for the different brand colors
- * @author Pol Gubau - https://github.com/polgubau
+ * @author Pol Gubau Amores - https://polgubau.com
  */
 export type BrandColors = Record<BrandColorsEnum, string>
 
 /**
  * @name ColorsType
  * @description Type for the different colors, including state and brand colors
- * @author Pol Gubau - https://github.com/polgubau
+ * @author Pol Gubau Amores - https://polgubau.com
  */
-
 export type ColorsType = Record<GetValuesEnum<typeof ColorsEnum>, string>
 
 /**
  * @name Colors
  * @description Type for the different colors, including state and brand colors, and custom colors if provided by the user
- * @author Pol Gubau - https://github.com/polgubau
+ * @author Pol Gubau Amores - https://polgubau.com
  */
 export interface Colors extends ColorsType {
   [key: string]: string
@@ -139,11 +197,18 @@ export interface Colors extends ColorsType {
 /**
  * @name HeadingLevel
  * @description Type for the different heading levels, from h1 to h6
- * @author Pol Gubau - https://github.com/polgubau
+ * @author Pol Gubau Amores - https://polgubau.com
  */
-
 export type HeadingLevel = keyof typeof HeadingLevelEnum
 
+/**
+ * @name Positions
+ * @description Type for the different positions, from top-left to bottom-right, and center, center-left, center-right, top-center and bottom-center
+ * @see PositionsEnum for the different positions
+ * @alias PositionsEnum
+ * @author Pol Gubau Amores - https://polgubau.com
+ *
+ */
 export interface Positions {
   'bottom-left': string
   'bottom-right': string
@@ -159,8 +224,8 @@ export interface Positions {
 /**
  * @name MainSizes
  * @description Type for the main different sizes, from xs to xl
- * @author Pol Gubau - https://github.com/polgubau
  * @see MainSizesEnum for the different sizes
+ * @author Pol Gubau Amores - https://polgubau.com
  */
 
 export type MainSizes = Record<GetValuesEnum<typeof MainSizesEnum>, string>
@@ -171,7 +236,7 @@ export interface MainSizesElastic extends MainSizes {
  * @name Sizes
  * @description Type for the different sizes, from xs to 7xl, dynamic from the SizesEnum enum
  * @see SizesEnum for the different sizes
- * @author Pol Gubau - https://github.com/polgubau
+ * @author Pol Gubau Amores - https://polgubau.com
  */
 export type Sizes = Record<GetValuesEnum<typeof SizesEnum>, string>
 
@@ -179,7 +244,7 @@ export type Sizes = Record<GetValuesEnum<typeof SizesEnum>, string>
  * @name RoundedSizesType
  * @description Type for the different rounded sizes, from xs to 7xl, dynamic from the RoundedSizesEnum enum
  * @see RoundedSizesEnum for the different sizes
- * @author Pol Gubau - https://github.com/polgubau
+ * @author Pol Gubau Amores - https://polgubau.com
  */
 export type RoundedSizes = Record<GetValuesEnum<typeof RoundedSizesEnum>, string>
 
@@ -188,7 +253,7 @@ export type RoundedSizes = Record<GetValuesEnum<typeof RoundedSizesEnum>, string
  * @description Type for the different rounded sizes, from xs to 7xl, dynamic from the RoundedSizesEnum enum, it also includes any value provided by the user
  * @see RoundedSizesEnum for the different sizes
  * @extends RoundedSizesType
- * @author Pol Gubau - https://github.com/polgubau
+ * @author Pol Gubau Amores - https://polgubau.com
  */
 export interface RoundedSizesElastic extends RoundedSizes {
   [key: string]: string
@@ -197,8 +262,16 @@ export interface RoundedSizesElastic extends RoundedSizes {
 /**
  * @name ContentPositions
  * @description Interface for the different content positions
- * @author Pol Gubau - https://github.com/polgubau
+ * @author Pol Gubau Amores - https://polgubau.com
  */
 export interface ContentPositions {
   center: string
 }
+
+/**
+ * @name TriggerReason
+ * @description Type for the different trigger reasons, from click to hover, dynamic from the TriggerReasonEnum enum
+ * @see TriggerReasonEnum for the different trigger reasons
+ * @author Pol Gubau Amores - https://polgubau.com
+ */
+export type TriggerReason = `${TriggerReasonEnum}`

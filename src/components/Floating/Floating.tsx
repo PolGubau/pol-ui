@@ -1,48 +1,48 @@
-'use client';
+'use client'
 
-import type { Placement } from '@floating-ui/core';
-import { autoUpdate, useFocus } from '@floating-ui/react';
-import type { ComponentProps, FC, ReactNode } from 'react';
-import { useEffect, useRef, useState } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { useBaseFLoating, useFloatingInteractions } from '../../hooks/use-floating';
-import { getArrowPlacement } from './helpers';
+import type { Placement } from '@floating-ui/core'
+import { autoUpdate, useFocus } from '@floating-ui/react'
+import type { ComponentProps, FC, ReactNode } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { twMerge } from 'tailwind-merge'
+import { useBaseFLoating, useFloatingInteractions } from '../../hooks/use-floating'
+import { getArrowPlacement } from './helpers'
 
 export interface FloatingTheme {
-  arrow: FloatingArrowTheme;
-  animation: string;
-  base: string;
-  content: string;
-  hidden: string;
+  arrow: FloatingArrowTheme
+  animation: string
+  base: string
+  content: string
+  hidden: string
   style: {
-    auto: string;
-    dark: string;
-    light: string;
-  };
-  target: string;
+    auto: string
+    dark: string
+    light: string
+  }
+  target: string
 }
 
 export interface FloatingArrowTheme {
-  base: string;
-  placement: string;
+  base: string
+  placement: string
   style: {
-    dark: string;
-    light: string;
-    auto: string;
-  };
+    dark: string
+    light: string
+    auto: string
+  }
 }
 
-export type FloatingStyle = 'dark' | 'light' | 'auto';
+export type FloatingStyle = 'dark' | 'light' | 'auto'
 
 export interface FloatingProps extends Omit<ComponentProps<'div'>, 'content' | 'style'> {
-  animation?: false | `duration-${number}`;
-  arrow?: boolean;
-  content: ReactNode;
-  placement?: 'auto' | Placement;
-  style?: FloatingStyle;
-  theme: FloatingTheme;
-  trigger?: 'hover' | 'click';
-  minWidth?: number;
+  animation?: false | `duration-${number}`
+  arrow?: boolean
+  content: ReactNode
+  placement?: 'auto' | Placement
+  style?: FloatingStyle
+  theme: FloatingTheme
+  trigger?: 'hover' | 'click'
+  minWidth?: number
 }
 
 export const Floating: FC<FloatingProps> = ({
@@ -58,15 +58,15 @@ export const Floating: FC<FloatingProps> = ({
   minWidth,
   ...props
 }) => {
-  const arrowRef = useRef<HTMLDivElement>(null);
-  const [open, setOpen] = useState(false);
+  const arrowRef = useRef<HTMLDivElement>(null)
+  const [open, setOpen] = useState(false)
 
   const floatingProperties = useBaseFLoating({
     open,
     placement,
     arrowRef,
     setOpen,
-  });
+  })
 
   const {
     context,
@@ -76,21 +76,21 @@ export const Floating: FC<FloatingProps> = ({
     update,
     x,
     y,
-  } = floatingProperties;
+  } = floatingProperties
 
-  const focus = useFocus(context);
+  const focus = useFocus(context)
   const { getFloatingProps, getReferenceProps } = useFloatingInteractions({
     context,
     role: 'tooltip',
     trigger,
     interactions: [focus],
-  });
+  })
 
   useEffect(() => {
     if (refs.reference.current && refs.floating.current && open) {
-      return autoUpdate(refs.reference.current, refs.floating.current, update);
+      return autoUpdate(refs.reference.current, refs.floating.current, update)
     }
-  }, [open, refs.floating, refs.reference, update]);
+  }, [open, refs.floating, refs.reference, update])
 
   return (
     <>
@@ -141,5 +141,5 @@ export const Floating: FC<FloatingProps> = ({
         )}
       </div>
     </>
-  );
-};
+  )
+}

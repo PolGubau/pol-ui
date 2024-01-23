@@ -1,20 +1,20 @@
-import type { Placement } from '@floating-ui/core';
-import type { ComponentProps, FC, ReactNode } from 'react';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import { Floating, type FloatingTheme } from '../Floating';
- 
-export type TooltipTheme = FloatingTheme;
+import type { Placement } from '@floating-ui/core'
+import type { ComponentProps, FC, ReactNode } from 'react'
+import { mergeDeep } from '../../helpers/merge-deep'
+import { getTheme } from '../../theme-store'
+import type { DeepPartial } from '../../types'
+import { Floating, type FloatingTheme } from '../Floating'
+
+export type TooltipTheme = FloatingTheme
 
 export interface TooltipProps extends Omit<ComponentProps<'div'>, 'content' | 'style'> {
-  animation?: false | `duration-${number}`;
-  arrow?: boolean;
-  content: ReactNode;
-  placement?: 'auto' | Placement;
-  style?: 'dark' | 'light' | 'auto';
-  theme?: DeepPartial<TooltipTheme>;
-  trigger?: 'hover' | 'click';
+  animation?: false | `duration-${number}`
+  arrow?: boolean
+  content: ReactNode
+  placement?: 'auto' | Placement
+  style?: 'dark' | 'light' | 'auto'
+  theme?: DeepPartial<TooltipTheme>
+  trigger?: TriggerReason
 }
 
 export const Tooltip: FC<TooltipProps> = ({
@@ -26,10 +26,10 @@ export const Tooltip: FC<TooltipProps> = ({
   placement = 'top',
   style = 'dark',
   theme: customTheme = {},
-  trigger = 'hover',
+  trigger = TriggerReasonEnum.hover,
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().tooltip, customTheme);
+  const theme = mergeDeep(getTheme().tooltip, customTheme)
 
   return (
     <Floating
@@ -45,7 +45,7 @@ export const Tooltip: FC<TooltipProps> = ({
     >
       {children}
     </Floating>
-  );
-};
+  )
+}
 
-Tooltip.displayName = 'Tooltip';
+Tooltip.displayName = 'Tooltip'
