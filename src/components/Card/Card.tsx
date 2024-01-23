@@ -55,7 +55,16 @@ export type CardProps = (
  * 
  */
 export const Card: FC<CardProps> = props => {
-  const { children, className, horizontal, href, theme: customTheme = {}, childrenClass = '', imageClass = '' } = props
+  const {
+    children,
+    className,
+    horizontal = false,
+    href,
+    theme: customTheme = {},
+    childrenClass = '',
+    imageClass = '',
+    renderImage,
+  } = props
 
   // Card component will be an Anchor link if href prop is passed.
 
@@ -75,7 +84,10 @@ export const Card: FC<CardProps> = props => {
       )}
       {...externalProps}
     >
-      <img src={props.imgSrc} alt={props.imgAlt} className={imageClass} />
+      {!renderImage && props.imgSrc && (
+        <img src={props.imgSrc} alt={props.imgAlt} className={imageClass} data-testid="ui-card-image" />
+      )}
+      {renderImage && renderImage(theme, horizontal)}
       {/* <Image {...props} className={imageClass} /> */}
       <div className={twMerge(theme.root.children, childrenClass)}>{children}</div>
     </Component>
