@@ -1,5 +1,3 @@
-export * from './Dropdown'
-export * from './DropdownComponent'
-export * from './DropdownContext'
-export * from './DropdownItem'
-export * from './theme'
+export { Dropdown, type DropdownProps } from './Dropdown'
+export { DropdownItem, type DropdownItemProps } from './DropdownItem'
+export { type DropdownTheme, dropdownTheme } from './theme'

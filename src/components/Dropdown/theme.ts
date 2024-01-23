@@ -1,5 +1,5 @@
 import { Colors } from '../PoluiProvider'
-import { MainSizes, MainSizesElastic, RoundedSizes } from '../PoluiProvider/PoluiTheme'
+import { MainSizesElastic, RoundedSizes } from '../PoluiProvider/PoluiTheme'
 
 export interface DropdownTheme {
   root: {

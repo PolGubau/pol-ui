@@ -22,7 +22,7 @@ export interface DropdownProps extends BaseButtonProps {
   color?: keyof Colors
   size?: keyof MainSizesElastic
   rounded?: keyof RoundedSizes
-  trigger?: React.ReactNode
+  trigger?: React.JSX.Element
 }
 
 export const Dropdown = React.forwardRef<HTMLButtonElement, DropdownProps & BaseButtonProps>((props, ref) => {

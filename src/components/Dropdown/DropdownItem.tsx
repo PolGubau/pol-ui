@@ -5,9 +5,8 @@ import { twMerge } from 'tailwind-merge'
 import { getTheme } from '../../theme-store'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { DropdownTheme } from './theme'
-import { motion } from 'framer-motion'
 import { Kbd } from '../Kbd'
-interface DropdownItemProps extends ComponentProps<'button'> {
+export interface DropdownItemProps extends ComponentProps<'button'> {
   label: string
   disabled?: boolean
   customTheme?: Partial<DropdownTheme>
@@ -52,13 +51,6 @@ export const DropdownItem = React.forwardRef<HTMLButtonElement, DropdownItemProp
           {label}
           {shortcut && <Kbd className="text-xs p-1">{shortcut}</Kbd>}
         </button>
-
-        {/* {isActive && (
-          <motion.div
-            className="absolute top-0 inset-0 left-0 bg-primary/20 w-full h-full"
-            layoutId="dropdown-item"
-          ></motion.div>
-        )} */}
       </div>
     )
   },

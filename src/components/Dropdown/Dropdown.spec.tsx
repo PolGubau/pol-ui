@@ -1,212 +1,146 @@
-import { act, fireEvent, render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import type { FC, PropsWithChildren } from 'react';
-import { describe, expect, it } from 'vitest';
-import type { DropdownProps } from './Dropdown';
-import { Dropdown } from './Dropdown';
+import { act, fireEvent, render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import type { FC } from 'react'
+import { describe, expect, it } from 'vitest'
+import type { DropdownProps } from './Dropdown'
+import { Dropdown, DropdownItem } from './'
 
-const delay = async (delayTime: number) => await new Promise((r) => setTimeout(r, delayTime));
+const delay = async (delayTime: number) => await new Promise(r => setTimeout(r, delayTime))
 
 describe('Components / Dropdown', () => {
   describe('A11y', async () => {
     it('should use `role="menu"` in menu container', async () => {
-      const user = userEvent.setup();
-      render(<TestDropdown />);
+      const user = userEvent.setup()
+      render(<TestDropdown />)
 
-      await act(() => user.click(button()));
+      await act(() => user.click(button()))
 
-      expect(screen.getByRole('menu')).toBe(dropdown());
-    });
+      expect(screen.getByRole('menu')).toBe(dropdown())
+    })
 
     it('should use `role="menuitem"` in dropdown items', async () => {
-      const user = userEvent.setup();
-      render(<TestDropdown />);
+      const user = userEvent.setup()
+      render(<TestDropdown />)
 
-      await act(() => user.click(button()));
+      await act(() => user.click(button()))
 
-      expect(screen.getAllByRole('menuitem')).toHaveLength(4);
-    });
+      expect(screen.getAllByRole('menuitem')).toHaveLength(4)
+    })
 
     it('should not open when `disabled={true}`', async () => {
-      const user = userEvent.setup();
-      const { rerender } = render(<TestDropdown disabled />);
+      const user = userEvent.setup()
+      render(<TestDropdown disabled />)
 
-      expect(button()).toBeDisabled();
+      expect(button()).toBeDisabled()
 
-      await act(() => user.click(button()));
-      expect(dropdown()).not.toBeInTheDocument();
-
-      rerender(<TestDropdown disabled trigger="hover" />);
-
-      await act(() => user.hover(button()));
-      expect(dropdown()).not.toBeInTheDocument();
-    });
-  });
+      await act(() => user.click(button()))
+      expect(dropdown()).not.toBeInTheDocument()
+    })
+  })
 
   describe('Keyboard interactions', () => {
     it('should collapse if expanded when `Space` is pressed', async () => {
-      const user = userEvent.setup();
-      render(<TestDropdown />);
-      expect(dropdown()).not.toBeInTheDocument();
+      const user = userEvent.setup()
+      render(<TestDropdown />)
+      expect(dropdown()).not.toBeInTheDocument()
 
-      await act(() => user.click(button()));
+      await act(() => user.click(button()))
 
-      expect(dropdown()).toBeInTheDocument();
-    });
+      expect(dropdown()).toBeInTheDocument()
+    })
 
     it('should expand if collapsed when `Space` is pressed', async () => {
-      const user = userEvent.setup();
-      render(<TestDropdown />);
+      const user = userEvent.setup()
+      render(<TestDropdown />)
 
-      await act(() => user.click(button()));
-      await act(() => user.click(button()));
+      await act(() => user.click(button()))
+      await act(() => user.click(button()))
 
-      expect(dropdown()).not.toBeInTheDocument();
-    });
+      expect(dropdown()).not.toBeInTheDocument()
+    })
 
     it('should expand when focus button and press arrow down key', async () => {
-      const user = userEvent.setup();
-      render(<TestDropdown />);
+      const user = userEvent.setup()
+      render(<TestDropdown />)
 
-      await act(() => user.tab());
-      expect(button()).toHaveFocus();
-      expect(dropdown()).not.toBeInTheDocument();
+      await act(() => user.tab())
+      expect(button()).toHaveFocus()
+      expect(dropdown()).not.toBeInTheDocument()
 
-      await act(() => fireEvent.keyDown(button(), { key: 'ArrowDown', code: 'ArrowDown' }));
-      expect(dropdown()).toBeInTheDocument();
-    });
+      await act(() => fireEvent.keyDown(button(), { key: 'ArrowDown', code: 'ArrowDown' }))
+      expect(dropdown()).toBeInTheDocument()
+    })
 
     it('should focus matching item when user types the first option char and dropdown is open', async () => {
-      const user = userEvent.setup();
-      render(<TestDropdown />);
+      const user = userEvent.setup()
+      render(<TestDropdown />)
 
-      await act(() => user.click(button()));
-      expect(dropdown()).toBeInTheDocument();
+      await act(() => user.click(button()))
+      expect(dropdown()).toBeInTheDocument()
 
-      await act(() => fireEvent.keyDown(button(), { key: 'S', code: 'KeyS' }));
-      await delay(20);
+      await act(() => fireEvent.keyDown(button(), { key: 'S', code: 'KeyS' }))
+      await delay(20)
 
-      const item = screen.getByText('Settings');
-      expect(item).toHaveFocus();
-    });
-  });
+      const item = screen.getByText('Share')
+      expect(item).toHaveFocus()
+    })
+  })
 
   describe('Mouse interactions', () => {
     it('should collapse if item is clicked', async () => {
-      const user = userEvent.setup();
-      render(<TestDropdown />);
+      const user = userEvent.setup()
+      render(<TestDropdown />)
 
-      await act(() => user.click(button()));
-      await act(() => userEvent.click(dropdownItem()));
+      await act(() => user.click(button()))
+      await act(() => userEvent.click(dropdownItem()))
 
-      expect(dropdown()).not.toBeInTheDocument();
-    });
+      expect(dropdown()).not.toBeInTheDocument()
+    })
 
     it('should collapse if CustomTriggerItem is clicked', async () => {
-      const user = userEvent.setup();
-      render(<TestDropdown renderTrigger={() => <button type="button"></button>} />);
-
-      await act(() => user.click(screen.getByRole('button')));
-      await act(() => userEvent.click(dropdownItem()));
-
-      expect(dropdown()).not.toBeInTheDocument();
-    });
+      const user = userEvent.setup()
+      render(<TestDropdown trigger={<button type="button">A</button>} />)
+      await act(() => user.click(screen.getAllByRole('button')[0]))
+      await act(() => userEvent.click(dropdownItem()))
+      expect(dropdown()).not.toBeInTheDocument()
+    })
 
     it('should always collapse when item is clicked', async () => {
-      const user = userEvent.setup();
-      render(<TestDropdown />);
+      const user = userEvent.setup()
+      render(<TestDropdown />)
 
-      await act(() => user.click(button()));
-      await act(() => userEvent.click(dropdownItem()));
+      await act(() => user.click(button()))
+      await act(() => userEvent.click(dropdownItem()))
 
-      expect(dropdown()).not.toBeInTheDocument();
+      expect(dropdown()).not.toBeInTheDocument()
 
-      await act(() => user.click(button()));
-      await act(() => userEvent.click(dropdownItem()));
+      await act(() => user.click(button()))
+      await act(() => userEvent.click(dropdownItem()))
 
-      expect(dropdown()).not.toBeInTheDocument();
-    });
+      expect(dropdown()).not.toBeInTheDocument()
+    })
 
-    it('should not collapse in case item is clicked if dismissOnClick = false', async () => {
-      const user = userEvent.setup();
-      render(<TestDropdown dismissOnClick={false} />);
+    describe('Type of button', async () => {
+      it('should be of type `button`', async () => {
+        render(<TestDropdown />)
+        expect(button()).toHaveAttribute('type', 'button')
+      })
+    })
+  })
+  const TestDropdown: FC<Partial<DropdownProps>> = ({ disabled, trigger }) => (
+    <div>
+      <Dropdown label="Dropdown button" trigger={trigger} disabled={disabled}>
+        <DropdownItem label="Undo" onClick={() => console.log('Undo')} shortcut="Ctrl+Z" />
+        <DropdownItem label="Redo" disabled />
+        <DropdownItem label="Cut" />
+        <DropdownItem label="Share" />
+      </Dropdown>
+    </div>
+  )
 
-      expect(dropdown()).not.toBeInTheDocument();
+  const button = () => screen.getByRole('button', { name: /Dropdown button/i })
 
-      await act(() => user.click(button()));
+  const dropdown = () => screen.queryByTestId('ui-dropdown')
 
-      expect(dropdown()).toBeInTheDocument();
-
-      await act(() => userEvent.click(dropdownItem()));
-
-      expect(dropdown()).toBeInTheDocument();
-    });
-  });
-
-  describe('Type of button', async () => {
-    it('should be of type `button`', async () => {
-      render(<TestDropdown />);
-      expect(button()).toHaveAttribute('type', 'button');
-    });
-
-    it('should be of type `button` with inline', async () => {
-      render(<TestDropdown inline />);
-      expect(button()).toHaveAttribute('type', 'button');
-    });
-  });
-
-  describe('Dropdown item render', async () => {
-    it('should override Dropdownn.Item base component when using `as` prop', async () => {
-      const user = userEvent.setup();
-
-      const CustomBaseItem = ({ children }: PropsWithChildren) => {
-        return <a href="#">{children}</a>;
-      };
-
-      render(
-        <Dropdown label="Dropdown button" placement="right">
-          <Dropdown.Item as={CustomBaseItem}>Settings</Dropdown.Item>
-        </Dropdown>,
-      );
-
-      await act(() => user.click(button()));
-
-      const item = screen.getByText('Settings');
-      expect(screen.getByRole('link')).toBe(item);
-    });
-  });
-});
-
-const TestDropdown: FC<Partial<DropdownProps>> = ({
-  dismissOnClick = true,
-  inline = false,
-  disabled,
-  trigger,
-  renderTrigger,
-}) => (
-  <Dropdown
-    label="Dropdown button"
-    placement="right"
-    dismissOnClick={dismissOnClick}
-    inline={inline}
-    trigger={trigger}
-    disabled={disabled}
-    renderTrigger={renderTrigger}
-  >
-    <Dropdown.Header>
-      <span className="block text-sm">Bonnie Green</span>
-      <span className="block truncate text-sm font-medium">name@polgubau.com</span>
-    </Dropdown.Header>
-    <Dropdown.Item>Dashboard</Dropdown.Item>
-    <Dropdown.Item>Settings</Dropdown.Item>
-    <Dropdown.Item>Earnings</Dropdown.Item>
-    <Dropdown.Divider />
-    <Dropdown.Item>Sign out</Dropdown.Item>
-  </Dropdown>
-);
-
-const button = () => screen.getByRole('button', { name: /Dropdown button/i });
-
-const dropdown = () => screen.queryByTestId('ui-dropdown');
-
-const dropdownItem = () => screen.getByText('Dashboard');
+  const dropdownItem = () => screen.getByText('Undo')
+})

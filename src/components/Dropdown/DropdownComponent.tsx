@@ -175,6 +175,8 @@ export const DropdownComponent = React.forwardRef<HTMLButtonElement, DropdownPro
             <div className="relative">
               <button
                 ref={mergeRefs}
+                disabled={disabled}
+                type="button"
                 role={'menuitem'}
                 data-open={isOpen ? '' : undefined}
                 data-nested={''}
@@ -193,6 +195,8 @@ export const DropdownComponent = React.forwardRef<HTMLButtonElement, DropdownPro
               // tabIndex={tabIndexIfNested}
               data-open={isOpen ? '' : undefined}
               {...commonButtonData}
+              disabled={disabled}
+              type="button"
               className={twMerge(
                 '',
                 !trigger && theme.root.base,
@@ -218,6 +222,8 @@ export const DropdownComponent = React.forwardRef<HTMLButtonElement, DropdownPro
                     returnFocus={!isNested}
                   >
                     <div
+                      data-testid="ui-dropdown"
+                      role="menu"
                       ref={refs.setFloating}
                       className={twMerge(theme.floating.base)}
                       style={floatingStyles}
