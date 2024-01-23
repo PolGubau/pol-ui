@@ -1,35 +1,49 @@
-import type { DropdownTheme } from './Dropdown';
+import { ButtonSizes } from '../Button'
+import { Colors } from '../PoluiProvider'
+import { RoundedSizes } from '../PoluiProvider/PoluiTheme'
+
+export interface DropdownTheme {
+  root: {
+    icon: string
+    disabled: string
+    base: string
+    color: Colors
+  }
+  rounded: RoundedSizes
+  size: ButtonSizes
+}
 
 export const dropdownTheme: DropdownTheme = {
-  arrowIcon: 'ml-2 h-4 w-4',
-  content: 'py-1 focus:outline-none',
-  floating: {
-    animation: 'transition-opacity',
-    arrow: {
-      base: 'absolute z-10 h-2 w-2 rotate-45',
-      style: {
-        dark: 'bg-gray-900 dark:bg-gray-700',
-        light: 'bg-white',
-        auto: 'bg-white dark:bg-gray-700',
-      },
-      placement: '-4px',
+  root: {
+    icon: 'ml-2 h-4 w-4',
+    disabled: 'opacity-50 cursor-not-allowed',
+    base: 'group flex items-stretch items-center justify-center text-center w-auto relative focus:z-10 focus:outline-none transition-all focus:ring-offset-2 focus:ring-offset-secondary-50 dark:focus:ring-offset-secondary-900 focus:ring-2 focus:ring-primary',
+    color: {
+      error: 'text-error-50 dark:text-error-900 bg-error enabled:hover:brightness-90  focus:ring-error ',
+      info: 'text-info-50 dark:text-info-900 bg-info   enabled:hover:brightness-90  focus:ring-info  ',
+      success: 'text-success-50 dark:text-success-900 bg-success  enabled:hover:brightness-90  focus:ring-success  ',
+      warning: 'text-warning-50 dark:text-warning-900 bg-warning enabled:hover:brightness-90  focus:ring-warning',
+      primary: 'text-primary-50 dark:text-primary-900 bg-primary enabled:hover:brightness-90  focus:ring-primary',
+      secondary:
+        'text-secondary-50 dark:text-secondary-900 bg-secondary enabled:hover:brightness-90  focus:ring-secondary',
     },
-    base: 'z-10 w-fit rounded divide-y divide-gray-100 shadow focus:outline-none',
-    content: 'py-1 text-sm text-gray-700 dark:text-gray-200',
-    divider: 'my-1 h-px bg-gray-100 dark:bg-gray-600',
-    header: 'block py-2 px-4 text-sm text-gray-700 dark:text-gray-200',
-    hidden: 'invisible opacity-0',
-    item: {
-      container: '',
-      base: 'flex items-center justify-start py-2 px-4 text-sm text-gray-700 cursor-pointer w-full hover:bg-gray-100 focus:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 focus:outline-none dark:hover:text-white dark:focus:bg-gray-600 dark:focus:text-white',
-      icon: 'mr-2 h-4 w-4',
-    },
-    style: {
-      dark: 'bg-gray-900 text-white dark:bg-gray-700',
-      light: 'border border-gray-200 bg-white text-gray-900',
-      auto: 'border border-gray-200 bg-white text-gray-900 dark:border-none dark:bg-gray-700 dark:text-white',
-    },
-    target: 'w-fit',
   },
-  inlineWrapper: 'flex items-center',
-};
+  rounded: {
+    xs: 'rounded-sm',
+    sm: 'rounded',
+    md: 'rounded-md',
+    lg: 'rounded-lg',
+    xl: 'rounded-xl',
+    '2xl': 'rounded-2xl',
+    '3xl': 'rounded-3xl',
+    full: 'rounded-full',
+    none: 'rounded-none',
+  },
+  size: {
+    xs: 'text-xs px-1.5 py-0.5',
+    sm: 'text-sm px-2 py-1',
+    md: 'text-sm px-3 py-2',
+    lg: 'text-base px-4 py-2.5',
+    xl: 'text-base px-6 py-3.5',
+  },
+}

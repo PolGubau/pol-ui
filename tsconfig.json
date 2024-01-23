@@ -15,9 +15,7 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "paths": {
-      "~/*": ["./*"]
-    },
+
     "plugins": [
       {
         "name": "next"
@@ -30,5 +28,14 @@
     "types": ["@testing-library/jest-dom", "node", "vitest"]
   },
   "exclude": ["./build/", "./lib/", "./.next/"],
-  "include": [".next/types/**/*.ts", "**/*.js", "**/*.mdx", "**/*.mjs", "**/*.ts", "**/*.tsx", "postcss.config.js", "tailwind.config.js"]
+  "include": [
+    ".next/types/**/*.ts",
+    "**/*.js",
+    "**/*.mdx",
+    "**/*.mjs",
+    "**/*.ts",
+    "**/*.tsx",
+    "postcss.config.js",
+    "tailwind.config.js"
+  ]
 }

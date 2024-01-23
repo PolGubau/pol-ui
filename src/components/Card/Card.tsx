@@ -75,33 +75,11 @@ export const Card: FC<CardProps> = props => {
       )}
       {...externalProps}
     >
-      <Image {...props} className={imageClass} />
+      <img src={props.imgSrc} alt={props.imgAlt} className={imageClass} />
+      {/* <Image {...props} className={imageClass} /> */}
       <div className={twMerge(theme.root.children, childrenClass)}>{children}</div>
     </Component>
   )
-}
-
-const Image: FC<CardProps> = ({ theme: customTheme = {}, className, ...props }) => {
-  const theme = mergeDeep(getTheme().card, customTheme)
-
-  // If a custom render function is provided, use it.
-  if (props.renderImage) {
-    return props.renderImage(theme, props.horizontal ?? false)
-  }
-
-  // If an image source is provided, render it.
-  if (props.imgSrc) {
-    return (
-      <img
-        data-testid="ui-card-image"
-        alt={props.imgAlt ?? ''}
-        src={props.imgSrc}
-        className={twMerge(theme.img.base, theme.img.horizontal[props.horizontal ? 'on' : 'off'], className)}
-      />
-    )
-  }
-  // If no image is provided, return null.
-  return null
 }
 
 const removeCustomProps = omit([

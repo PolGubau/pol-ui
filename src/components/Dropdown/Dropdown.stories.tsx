@@ -1,14 +1,16 @@
 import type { Meta } from '@storybook/react'
-import { Dropdown, DropdownItem, DropdownProps } from './Dropdown'
+import { Dropdown, DropdownProps } from './Dropdown'
+import { DropdownItem } from './DropdownItem'
 
 export default {
   title: 'Components/Dropdown',
   component: Dropdown,
+  tags: ['autodocs'],
   args: {
     title: 'Dropdown example',
-    label: 'Dropdown button',
     placement: 'auto',
     disabled: false,
+    label: 'Dropdown',
   },
   decorators: [
     Story => (
@@ -17,19 +19,27 @@ export default {
       </div>
     ),
   ],
+  parameters: {
+    layout: 'fullscreen',
+  },
 } as Meta
 
-// const Template: StoryFn<DropdownProps> = args => <Dropdown {...args} />
-export const Default = (args: DropdownProps) => (
+const Template = (args: DropdownProps) => (
   <div className="flex gap-3 flex-wrap">
-    <Dropdown label="Edit">
+    <Dropdown
+      {...args}
+      color="primary"
+      ref={el => {
+        console.log(el)
+      }}
+    >
       <DropdownItem label="Undo" onClick={() => console.log('Undo')} />
       <DropdownItem label="Redo" disabled />
       <DropdownItem label="Cut" />
-      <Dropdown label="Copy as">
+      <Dropdown label="Copy as" nestingIcon="📋">
         <DropdownItem label="Text" />
         <DropdownItem label="Video" />
-        <Dropdown label="Image">
+        <Dropdown label="Image" nestingIcon="🎞️">
           <DropdownItem label=".png" />
           <DropdownItem label=".jpg" />
           <DropdownItem label=".svg" />
@@ -45,63 +55,55 @@ export const Default = (args: DropdownProps) => (
   </div>
 )
 
-// export const WithDivider = Template.bind({})
-// WithDivider.storyName = 'With divider'
-// WithDivider.args = {
-//   children: (
-//     <>
-//       <Dropdown.Item>Dashboard</Dropdown.Item>
-//       <Dropdown.Item>Settings</Dropdown.Item>
-//       <Dropdown.Item>Earnings</Dropdown.Item>
-//       <Dropdown.Divider />
-//       <Dropdown.Item>Separated link</Dropdown.Item>
-//     </>
-//   ),
-// }
+export const Default = () => (
+  <div className="flex gap-3 flex-wrap">
+    <Dropdown label="Dropdown">
+      <DropdownItem label="Undo" onClick={() => console.log('Undo')} />
+      <DropdownItem label="Redo" disabled />
+      <DropdownItem label="Cut" />
+      <Dropdown label="Copy as" nestingIcon="📋">
+        <DropdownItem label="Text" />
+        <DropdownItem label="Video" />
+        <Dropdown label="Image" nestingIcon="🎞️">
+          <DropdownItem label=".png" />
+          <DropdownItem label=".jpg" />
+          <DropdownItem label=".svg" />
+          <DropdownItem label=".gif" />
+        </Dropdown>
+        <DropdownItem label="Audio" />
+      </Dropdown>
+      <Dropdown label="Share">
+        <DropdownItem label="Mail" />
+        <DropdownItem label="Instagram" />
+      </Dropdown>
+    </Dropdown>
+  </div>
+)
 
-// export const WithHeader = Template.bind({})
-// WithHeader.storyName = 'With header'
-// WithHeader.args = {
-//   children: (
-//     <>
-//       <Dropdown.Header>
-//         <span className="block text-sm">Bonnie Green</span>
-//         <span className="block truncate text-sm font-medium">name@polgubau.com</span>
-//       </Dropdown.Header>
-//       <Dropdown.Item>Dashboard</Dropdown.Item>
-//       <Dropdown.Item>Settings</Dropdown.Item>
-//       <Dropdown.Item>Earnings</Dropdown.Item>
-//       <Dropdown.Divider />
-//       <Dropdown.Item>Sign out</Dropdown.Item>
-//     </>
-//   ),
-// }
-
-// export const Inline = Template.bind({})
-// Inline.args = {
-//   inline: true,
-//   children: (
-//     <>
-//       <Dropdown.Item>Dashboard</Dropdown.Item>
-//       <Dropdown.Item>Settings</Dropdown.Item>
-//       <Dropdown.Item>Earnings</Dropdown.Item>
-//       <Dropdown.Item>Sign out</Dropdown.Item>
-//     </>
-//   ),
-// }
-
-// export const CustomTrigger = Template.bind({})
-// CustomTrigger.args = {
-//   renderTrigger: () => <button>Custom button</button>,
-//   children: (
-//     <>
-//       <Dropdown.Item>Dashboard</Dropdown.Item>
-//       <Dropdown.Item>Settings</Dropdown.Item>
-//       <Dropdown.Item>Earnings</Dropdown.Item>
-//       <Dropdown.Item>Sign out</Dropdown.Item>
-//     </>
-//   ),
-// }
+export const Colors = () => (
+  <div className="flex gap-3 flex-wrap">
+    <Dropdown label="Dropdown">
+      <DropdownItem label="Undo" onClick={() => console.log('Undo')} />
+      <DropdownItem label="Redo" disabled />
+      <DropdownItem label="Cut" />
+      <Dropdown label="Copy as" nestingIcon="📋">
+        <DropdownItem label="Text" />
+        <DropdownItem label="Video" />
+        <Dropdown label="Image" nestingIcon="🎞️">
+          <DropdownItem label=".png" />
+          <DropdownItem label=".jpg" />
+          <DropdownItem label=".svg" />
+          <DropdownItem label=".gif" />
+        </Dropdown>
+        <DropdownItem label="Audio" />
+      </Dropdown>
+      <Dropdown label="Share">
+        <DropdownItem label="Mail" />
+        <DropdownItem label="Instagram" />
+      </Dropdown>
+    </Dropdown>
+  </div>
+)
 
 // export const CustomItem = Template.bind({})
 // CustomItem.args = {
@@ -113,19 +115,6 @@ export const Default = (args: DropdownProps) => (
 //       <Dropdown.Item as="a" href="https://polgubau.com/" target="_blank">
 //         As link
 //       </Dropdown.Item>
-//     </>
-//   ),
-// }
-
-// export const ItemClickHandler = Template.bind({})
-// ItemClickHandler.storyName = 'Item click handlers'
-// ItemClickHandler.args = {
-//   children: (
-//     <>
-//       <Dropdown.Item onClick={action('Dashboard!')}>Dashboard</Dropdown.Item>
-//       <Dropdown.Item onClick={action('Settings!')}>Settings</Dropdown.Item>
-//       <Dropdown.Item onClick={action('Earnings!')}>Earnings</Dropdown.Item>
-//       <Dropdown.Item onClick={action('Sign out!')}>Sign out</Dropdown.Item>
 //     </>
 //   ),
 // }
