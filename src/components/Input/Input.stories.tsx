@@ -1,6 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react'
-import type { InputProps } from './Input'
-import { Input } from './Input'
+import { Input, type InputProps } from './Input'
 import { TbAt, TbUser } from 'react-icons/tb'
 import { ColorsEnum } from '../PoluiProvider/enums'
 
