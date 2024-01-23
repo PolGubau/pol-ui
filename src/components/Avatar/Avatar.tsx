@@ -8,7 +8,7 @@ import type { AvatarGroupTheme } from './AvatarGroup'
 import { AvatarGroup } from './AvatarGroup'
 import type { AvatarGroupCounterTheme } from './AvatarGroupCounter'
 import { AvatarGroupCounter } from './AvatarGroupCounter'
-import { MainSizes } from '../PoluiProvider/PoluiTheme'
+import { MainSizesElastic } from '../PoluiProvider/PoluiTheme'
 import { ColorsEnum, MainSizesEnum } from '../PoluiProvider/enums'
 import { AvatarStatus } from './AvatarTypes'
 
@@ -25,7 +25,7 @@ export interface AvatarRootTheme {
   img: AvatarImageTheme
   initials: AvatarInitialsTheme
   rounded: string
-  size: AvatarSizes
+  size: MainSizesElastic
   stacked: string
   status: AvatarStatus & {
     base: string
@@ -43,10 +43,6 @@ export interface AvatarInitialsTheme {
   text: string
 }
 
-export interface AvatarSizes extends MainSizes {
-  [key: string]: string
-}
-
 export interface AvatarImageProps {
   alt?: string
   className: string
@@ -59,7 +55,7 @@ export interface AvatarProps extends Omit<ComponentProps<'div'>, 'color'> {
   img?: string | ((props: AvatarImageProps) => ReactElement)
   color?: keyof Colors
   rounded?: boolean
-  size?: keyof AvatarSizes
+  size?: keyof MainSizesElastic
   stacked?: boolean
   status?: keyof AvatarStatus
   statusPosition?: keyof Positions

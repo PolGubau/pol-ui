@@ -1,6 +1,5 @@
-import { ButtonSizes } from '../Button'
 import { Colors } from '../PoluiProvider'
-import { RoundedSizes } from '../PoluiProvider/PoluiTheme'
+import { MainSizes, MainSizesElastic, RoundedSizes } from '../PoluiProvider/PoluiTheme'
 
 export interface DropdownTheme {
   root: {
@@ -10,7 +9,7 @@ export interface DropdownTheme {
     color: Colors
   }
   rounded: RoundedSizes
-  size: ButtonSizes
+  size: MainSizesElastic
 }
 
 export const dropdownTheme: DropdownTheme = {

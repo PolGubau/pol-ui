@@ -10,7 +10,6 @@ export default {
   decorators: [
     Story => (
       <div className="bg-background">
-        {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
         <Story />
       </div>
     ),
