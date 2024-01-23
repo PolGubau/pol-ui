@@ -1,6 +1,6 @@
 import React from 'react'
 import { DropdownProps } from './Dropdown'
-import { TbChevronDown, TbChevronRight } from 'react-icons/tb'
+import { TbChevronRight } from 'react-icons/tb'
 import { twMerge } from 'tailwind-merge'
 import { getTheme } from '../../theme-store'
 import { DropdownContext } from './DropdownContext'
@@ -39,9 +39,11 @@ export const DropdownComponent = React.forwardRef<HTMLButtonElement, DropdownPro
       nestingIcon = <TbChevronRight />,
       icon: Icon,
       theme: customTheme = {},
-      color = ColorsEnum.primary,
+      color: ColorProps = ColorsEnum.primary,
       size = MainSizesEnum.md,
       rounded = RoundedSizesEnum.md,
+      disabled = false,
+      trigger = null,
 
       ...props
     },
@@ -134,13 +136,9 @@ export const DropdownComponent = React.forwardRef<HTMLButtonElement, DropdownPro
         tree.events.emit('menuopen', { parentId, nodeId })
       }
     }, [tree, isOpen, nodeId, parentId])
+
     const { dropdown: dropdownTheme } = getTheme()
-
     const theme: DropdownTheme = mergeDeep(dropdownTheme, customTheme)
-
-    // const theme = mergeDeep(buttonTheme)
-
-    // const tabIndexIfNested = parent.activeIndex === item.index ? 0 : -1
 
     const providerValue = React.useMemo(
       () => ({
@@ -149,6 +147,7 @@ export const DropdownComponent = React.forwardRef<HTMLButtonElement, DropdownPro
         getItemProps,
         setHasFocusInside,
         isOpen,
+        color: ColorProps,
       }),
       [activeIndex, setActiveIndex, getItemProps, setHasFocusInside, isOpen],
     )
@@ -170,66 +169,69 @@ export const DropdownComponent = React.forwardRef<HTMLButtonElement, DropdownPro
 
     return (
       <FloatingNode id={nodeId}>
-        {isNested ? (
-          // Each nested button, the submenus triggers
-
-          <button
-            ref={mergeRefs}
-            role={'menuitem'}
-            data-open={isOpen ? '' : undefined}
-            data-nested={''}
-            data-focus-inside={hasFocusInside ? '' : undefined}
-            {...commonButtonData}
-            className={twMerge('MenuItem', props.className)}
-          >
-            {label}
-            <span>{nestingIcon}</span>
-          </button>
-        ) : (
-          // Not nested, just the Root main Button
-          <button
-            ref={mergeRefs}
-            // tabIndex={tabIndexIfNested}
-            data-open={isOpen ? '' : undefined}
-            {...commonButtonData}
-            className={twMerge(
-              '',
-              theme.root.base,
-              props.disabled && theme.root.disabled,
-              theme.root.color[color],
-              theme.rounded[rounded],
-              theme.size[size],
-              props.className,
-            )}
-          >
-            {label}
-            {Icon && <Icon className={twMerge(theme.root.icon)} data-testid="ui-alert-icon" />}
-          </button>
-        )}
         <DropdownContext.Provider value={providerValue}>
-          <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
-            {isOpen && (
-              <FloatingPortal>
-                <FloatingFocusManager
-                  context={context}
-                  modal={false}
-                  initialFocus={isNested ? -1 : 0}
-                  returnFocus={!isNested}
-                >
-                  <div
-                    ref={refs.setFloating}
-                    className="Menu"
-                    style={floatingStyles}
-                    {...getFloatingProps({
-                      onMouseEnter: () => setHoverEnabled(false),
-                    })}
+          {isNested ? (
+            // Each nested button, the submenus triggers
+            <div className="relative">
+              <button
+                ref={mergeRefs}
+                role={'menuitem'}
+                data-open={isOpen ? '' : undefined}
+                data-nested={''}
+                data-focus-inside={hasFocusInside ? '' : undefined}
+                {...commonButtonData}
+                className={twMerge(theme.item.base, theme.item.color[providerValue.color], props.className)}
+              >
+                {label}
+                <span>{nestingIcon}</span>
+              </button>
+            </div>
+          ) : (
+            // Not nested, just the Root main Button
+            <button
+              ref={mergeRefs}
+              // tabIndex={tabIndexIfNested}
+              data-open={isOpen ? '' : undefined}
+              {...commonButtonData}
+              className={twMerge(
+                '',
+                !trigger && theme.root.base,
+                disabled && theme.root.disabled,
+                !trigger && theme.root.color[providerValue.color],
+                !trigger && theme.rounded[rounded],
+                !trigger && theme.size[size],
+                props.className,
+              )}
+            >
+              {trigger ?? label}
+              {!trigger && Icon && <Icon className={twMerge(theme.root.icon)} data-testid="ui-alert-icon" />}
+            </button>
+          )}
+          {!disabled && (
+            <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
+              {isOpen && (
+                <FloatingPortal>
+                  <FloatingFocusManager
+                    context={context}
+                    modal={false}
+                    initialFocus={isNested ? -1 : 0}
+                    returnFocus={!isNested}
                   >
-                    {children}
-                  </div>
-                </FloatingFocusManager>
-              </FloatingPortal>
-            )}
-          </FloatingList>
+                    <div
+                      ref={refs.setFloating}
+                      className={twMerge(theme.floating.base)}
+                      style={floatingStyles}
+                      {...getFloatingProps({
+                        onMouseEnter: () => setHoverEnabled(false),
+                      })}
+                    >
+                      {children}
+                    </div>
+                  </FloatingFocusManager>
+                </FloatingPortal>
+              )}
+            </FloatingList>
+          )}
         </DropdownContext.Provider>
       </FloatingNode>
     )

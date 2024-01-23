@@ -10,6 +10,13 @@ export interface DropdownTheme {
   }
   rounded: RoundedSizes
   size: MainSizesElastic
+  item: {
+    base: string
+    color: Colors
+  }
+  floating: {
+    base: string
+  }
 }
 
 export const dropdownTheme: DropdownTheme = {
@@ -44,5 +51,19 @@ export const dropdownTheme: DropdownTheme = {
     md: 'text-sm px-3 py-2',
     lg: 'text-base px-4 py-2.5',
     xl: 'text-base px-6 py-3.5',
+  },
+  item: {
+    base: 'group z-10 flex items-center w-full px-2 py-1.5 text-sm text-left text-gray-700 outline-none focus:outline-none justify-between gap-6',
+    color: {
+      error: 'focus:bg-error/20 focus:text-error-900',
+      info: 'focus:bg-info/20 focus:text-info-900',
+      success: 'focus:bg-success/20 focus:text-success-900',
+      warning: 'focus:bg-warning/20 focus:text-warning-900',
+      primary: 'focus:bg-primary/20 focus:text-primary-900',
+      secondary: 'focus:bg-secondary/20 focus:text-secondary-900',
+    },
+  },
+  floating: {
+    base: 'bg-secondary-50/70 min-w-[100px] overflow-hidden rounded-md shadow-lg outline-none focus:outline-none backdrop-filter backdrop-blur-md',
   },
 }

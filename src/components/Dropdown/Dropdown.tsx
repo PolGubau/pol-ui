@@ -1,6 +1,5 @@
 import { FloatingTree, useFloatingParentNodeId } from '@floating-ui/react'
 import * as React from 'react'
-import './dropdown.css'
 import { DeepPartial } from 'src/types'
 import { DropdownTheme } from './theme'
 import { DropdownComponent } from './DropdownComponent'
@@ -23,6 +22,7 @@ export interface DropdownProps extends BaseButtonProps {
   color?: keyof Colors
   size?: keyof MainSizesElastic
   rounded?: keyof RoundedSizes
+  trigger?: React.ReactNode
 }
 
 export const Dropdown = React.forwardRef<HTMLButtonElement, DropdownProps & BaseButtonProps>((props, ref) => {

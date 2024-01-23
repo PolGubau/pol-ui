@@ -3,6 +3,7 @@ import { Dropdown } from './Dropdown'
 import { DropdownItem } from './DropdownItem'
 import { theme } from '../../theme'
 import { MainSizesEnum } from '../PoluiProvider/enums'
+import { Avatar } from '../Avatar'
 
 export default {
   title: 'Components/Dropdown',
@@ -16,7 +17,7 @@ export default {
   },
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col items-center pt-20 min-h-[400px]  bg-secondary-50">
+      <div className="flex p-6 flex-col items-center pt-20 min-h-[400px] bg-secondary-50">
         <Story />
       </div>
     ),
@@ -29,10 +30,10 @@ export default {
 const Example = () => {
   return (
     <>
-      <DropdownItem label="Undo" onClick={() => console.log('Undo')} />
+      <DropdownItem label="Undo" onClick={() => console.log('Undo')} shortcut="Ctrl+Z" />
       <DropdownItem label="Redo" disabled />
       <DropdownItem label="Cut" />
-      <Dropdown label="Copy as" nestingIcon="📋">
+      <Dropdown label="Copy as">
         <DropdownItem label="Text" />
         <DropdownItem label="Video" />
         <Dropdown label="Image" nestingIcon="🎞️">
@@ -51,12 +52,29 @@ const Example = () => {
   )
 }
 
+const SimpleComponent = () => {
+  return (
+    <>
+      <DropdownItem label="Undo" onClick={() => console.log('Undo')} />
+      <DropdownItem label="Redo" disabled />
+      <DropdownItem label="Cut text " shortcut="⌘Z" />
+      <Dropdown label="Share">
+        <DropdownItem label="Mail" />
+        <DropdownItem label="Instagram" />
+      </Dropdown>
+    </>
+  )
+}
+
 export const Default = () => (
-  <div className="flex gap-3 flex-wrap">
-    <Dropdown label="Dropdown">
-      <Example />
-    </Dropdown>
-  </div>
+  <Dropdown label="Dropdown">
+    <Example />
+  </Dropdown>
+)
+export const SimpleExample = () => (
+  <Dropdown label="Dropdown">
+    <SimpleComponent />
+  </Dropdown>
 )
 
 export const Colors = () => (
@@ -85,4 +103,27 @@ export const Sizes = () => (
       </Dropdown>
     ))}
   </div>
+)
+export const Disabled = () => (
+  <Dropdown disabled label={`I'm disabled 🥲`}>
+    <Example />
+  </Dropdown>
+)
+export const CustomTrigger = () => (
+  <Dropdown
+    label="Dropdown with custom trigger"
+    trigger={
+      <div className="flex items-center gap-2 rounded-full border p-3 hover:bg-secondary-200 transition-all">
+        <span>Name</span>
+        <Avatar
+          size="sm"
+          img="https://polgubau.com/_next/image?url=%2Fimages%2Fme.png&w=256&q=75"
+          status="online"
+          rounded
+        />
+      </div>
+    }
+  >
+    <Example />
+  </Dropdown>
 )
