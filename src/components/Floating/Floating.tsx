@@ -7,6 +7,8 @@ import { useEffect, useRef, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { useBaseFLoating, useFloatingInteractions } from '../../hooks/use-floating'
 import { getArrowPlacement } from './helpers'
+import { TriggerReason } from '../PoluiProvider/PoluiTheme'
+import { TriggerReasonEnum } from '../PoluiProvider/enums'
 
 export interface FloatingTheme {
   arrow: FloatingArrowTheme
@@ -41,7 +43,7 @@ export interface FloatingProps extends Omit<ComponentProps<'div'>, 'content' | '
   placement?: 'auto' | Placement
   style?: FloatingStyle
   theme: FloatingTheme
-  trigger?: 'hover' | 'click'
+  trigger?: TriggerReason
   minWidth?: number
 }
 
@@ -54,7 +56,7 @@ export const Floating: FC<FloatingProps> = ({
   placement = 'top',
   style = 'dark',
   theme,
-  trigger = 'hover',
+  trigger = TriggerReasonEnum.hover,
   minWidth,
   ...props
 }) => {

@@ -4,6 +4,8 @@ import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
 import { Floating, type FloatingTheme } from '../Floating'
+import { TriggerReason } from '../PoluiProvider/PoluiTheme'
+import { TriggerReasonEnum } from '../PoluiProvider/enums'
 
 export type TooltipTheme = FloatingTheme
 
@@ -24,7 +26,7 @@ export const Tooltip: FC<TooltipProps> = ({
   className,
   content,
   placement = 'top',
-  style = 'dark',
+  style = 'auto',
   theme: customTheme = {},
   trigger = TriggerReasonEnum.hover,
   ...props

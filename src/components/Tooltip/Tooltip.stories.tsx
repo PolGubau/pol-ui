@@ -3,10 +3,21 @@ import { Button } from '../Button'
 import type { TooltipProps } from './Tooltip'
 import { Tooltip } from './Tooltip'
 import { TextInput } from '../TextInput'
+import { TbAB, TbFile } from 'react-icons/tb'
 
 export default {
   title: 'Components/Tooltip',
   component: Tooltip,
+  decorators: [
+    Story => (
+      <div className="flex p-6 flex-col items-center pt-20 min-h-[400px] bg-secondary-50">
+        <Story />
+      </div>
+    ),
+  ],
+  parameters: {
+    layout: 'fullscreen',
+  },
 } as Meta
 
 const Template: StoryFn<TooltipProps> = args => <Tooltip {...args} />
@@ -60,3 +71,30 @@ SlowAnimation.args = {
   placement: 'bottom',
   children: <Button>Tooltip with slow animation</Button>,
 }
+
+export const IconUseCase = Template.bind({})
+DefaultTooltip.storyName = 'Default'
+DefaultTooltip.args = {
+  content: 'Upload a file',
+  placement: 'bottom',
+  children: (
+    <Button outline>
+      <TbFile size={20} />
+    </Button>
+  ),
+}
+
+export const DarkMode = () => (
+  <div className=" grid grid-cols-2 border border-secondary rounded-2xl overflow-hidden">
+    <div className="flex p-8 ">
+      <Tooltip content="Tooltip content" placement="bottom">
+        <Button>Default tooltip</Button>
+      </Tooltip>
+    </div>
+    <div className="flex p-8 bg-secondary-900 dark">
+      <Tooltip content="Tooltip content" placement="bottom">
+        <Button>Default tooltip</Button>
+      </Tooltip>
+    </div>
+  </div>
+)
