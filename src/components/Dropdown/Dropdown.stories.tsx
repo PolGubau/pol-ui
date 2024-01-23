@@ -1,9 +1,9 @@
 import type { Meta } from '@storybook/react'
-import { Menu, MenuItem, MenuProps } from './DropdownTest'
+import { Dropdown, DropdownItem, DropdownProps } from './Dropdown'
 
 export default {
   title: 'Components/Dropdown',
-  component: Menu,
+  component: Dropdown,
   args: {
     title: 'Dropdown example',
     label: 'Dropdown button',
@@ -20,28 +20,28 @@ export default {
 } as Meta
 
 // const Template: StoryFn<DropdownProps> = args => <Dropdown {...args} />
-export const Default = (args: MenuProps) => (
+export const Default = (args: DropdownProps) => (
   <div className="flex gap-3 flex-wrap">
-    <Menu label="Edit">
-      <MenuItem label="Undo" onClick={() => console.log('Undo')} />
-      <MenuItem label="Redo" disabled />
-      <MenuItem label="Cut" />
-      <Menu label="Copy as">
-        <MenuItem label="Text" />
-        <MenuItem label="Video" />
-        <Menu label="Image">
-          <MenuItem label=".png" />
-          <MenuItem label=".jpg" />
-          <MenuItem label=".svg" />
-          <MenuItem label=".gif" />
-        </Menu>
-        <MenuItem label="Audio" />
-      </Menu>
-      <Menu label="Share">
-        <MenuItem label="Mail" />
-        <MenuItem label="Instagram" />
-      </Menu>
-    </Menu>
+    <Dropdown label="Edit">
+      <DropdownItem label="Undo" onClick={() => console.log('Undo')} />
+      <DropdownItem label="Redo" disabled />
+      <DropdownItem label="Cut" />
+      <Dropdown label="Copy as">
+        <DropdownItem label="Text" />
+        <DropdownItem label="Video" />
+        <Dropdown label="Image">
+          <DropdownItem label=".png" />
+          <DropdownItem label=".jpg" />
+          <DropdownItem label=".svg" />
+          <DropdownItem label=".gif" />
+        </Dropdown>
+        <DropdownItem label="Audio" />
+      </Dropdown>
+      <Dropdown label="Share">
+        <DropdownItem label="Mail" />
+        <DropdownItem label="Instagram" />
+      </Dropdown>
+    </Dropdown>
   </div>
 )
 

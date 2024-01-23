@@ -1,241 +1,298 @@
-'use client'
-
-import type { ExtendedRefs } from '@floating-ui/react'
-import { FloatingFocusManager, FloatingList, useListNavigation, useTypeahead } from '@floating-ui/react'
-import type {
-  ComponentProps,
-  Dispatch,
-  FC,
-  HTMLProps,
-  MutableRefObject,
-  ReactElement,
-  ReactNode,
-  RefCallback,
-  SetStateAction,
-} from 'react'
-import { cloneElement, useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi'
+import {
+  autoUpdate,
+  flip,
+  FloatingFocusManager,
+  FloatingList,
+  FloatingNode,
+  FloatingPortal,
+  FloatingTree,
+  offset,
+  safePolygon,
+  shift,
+  useClick,
+  useDismiss,
+  useFloating,
+  useFloatingNodeId,
+  useFloatingParentNodeId,
+  useFloatingTree,
+  useHover,
+  useInteractions,
+  useListItem,
+  useListNavigation,
+  useMergeRefs,
+  useRole,
+  useTypeahead,
+} from '@floating-ui/react'
+import * as React from 'react'
+import './dropdown.css'
+import { TbChevronRight } from 'react-icons/tb'
+import { getTheme } from '~/src/theme-store'
+import { mergeDeep } from '~/src/helpers/merge-deep'
+import { ButtonTheme } from '../Button'
 import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep'
-import { useBaseFLoating, useFloatingInteractions } from '../../hooks/use-floating'
-import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
-import { Button, type ButtonProps } from '../Button'
-import type { FloatingProps, FloatingTheme } from '../Floating'
-import { DropdownContext } from './DropdownContext'
-import { DropdownDivider, type DropdownDividerTheme } from './DropdownDivider'
-import { DropdownHeader, type DropdownHeaderTheme } from './DropdownHeader'
-import { DropdownItem, type DropdownItemTheme } from './DropdownItem'
 
-export interface DropdownFloatingTheme extends FloatingTheme, DropdownDividerTheme, DropdownHeaderTheme {
-  item: DropdownItemTheme
+const DropdownContext = React.createContext<{
+  getItemProps: (userProps?: React.HTMLProps<HTMLElement>) => Record<string, unknown>
+  activeIndex: number | null
+  setActiveIndex: React.Dispatch<React.SetStateAction<number | null>>
+  setHasFocusInside: React.Dispatch<React.SetStateAction<boolean>>
+  isOpen: boolean
+}>({
+  getItemProps: () => ({}),
+  activeIndex: null,
+  setActiveIndex: () => {},
+  setHasFocusInside: () => {},
+  isOpen: false,
+})
+
+export interface DropdownProps {
+  label: string
+  nested?: boolean
+  children?: React.ReactNode
+  theme?: ButtonTheme
 }
 
-export interface DropdownTheme {
-  floating: DropdownFloatingTheme
-  content: string
-  inlineWrapper: string
-  arrowIcon: string
-}
+export const DropdownComponent = React.forwardRef<
+  HTMLButtonElement,
+  DropdownProps & React.HTMLProps<HTMLButtonElement>
+>(({ children, label, theme: customTheme, ...props }, forwardedRef) => {
+  const [isOpen, setIsOpen] = React.useState(false)
+  const [hasFocusInside, setHasFocusInside] = React.useState(false)
+  const [activeIndex, setActiveIndex] = React.useState<number | null>(null)
 
-export interface DropdownProps extends Pick<FloatingProps, 'placement' | 'trigger'>, Omit<ButtonProps, 'theme'> {
-  arrowIcon?: boolean
-  dismissOnClick?: boolean
-  floatingArrow?: boolean
-  inline?: boolean
-  label: ReactNode
-  theme?: DeepPartial<DropdownTheme>
-  renderTrigger?: (theme: DropdownTheme) => ReactElement
-  'data-testid'?: string
-}
+  const elementsRef = React.useRef<Array<HTMLButtonElement | null>>([])
+  const labelsRef = React.useRef<Array<string | null>>([])
+  const parent = React.useContext(DropdownContext)
 
-const icons: Record<string, FC<ComponentProps<'svg'>>> = {
-  top: HiOutlineChevronUp,
-  right: HiOutlineChevronRight,
-  bottom: HiOutlineChevronDown,
-  left: HiOutlineChevronLeft,
-}
+  const tree = useFloatingTree()
+  const nodeId = useFloatingNodeId()
+  const parentId = useFloatingParentNodeId()
+  const item = useListItem()
 
-export interface TriggerProps extends Omit<ButtonProps, 'theme'> {
-  refs: ExtendedRefs<HTMLElement>
-  inline?: boolean
-  theme: DropdownTheme
-  setButtonWidth?: Dispatch<SetStateAction<number | undefined>>
-  getReferenceProps: (userProps?: HTMLProps<Element> | undefined) => Record<string, unknown>
-  renderTrigger?: (theme: DropdownTheme) => ReactElement
-}
+  const isNested = parentId != null
 
-const Trigger = ({
-  refs,
-  children,
-  inline,
-  theme,
-  disabled,
-  setButtonWidth,
-  getReferenceProps,
-  renderTrigger,
-  ...buttonProps
-}: TriggerProps) => {
-  const ref = refs.reference as MutableRefObject<HTMLElement>
-  const a11yProps = getReferenceProps()
-
-  useEffect(() => {
-    if (ref.current) {
-      setButtonWidth?.(ref.current.clientWidth)
-    }
-  }, [ref, setButtonWidth])
-
-  if (renderTrigger) {
-    const triggerElement = renderTrigger(theme)
-    return cloneElement(triggerElement, { ref: refs.setReference, disabled, ...a11yProps, ...triggerElement.props })
-  }
-
-  return inline ? (
-    <button type="button" ref={refs.setReference} className={theme?.inlineWrapper} disabled={disabled} {...a11yProps}>
-      {children}
-    </button>
-  ) : (
-    <Button
-      {...buttonProps}
-      disabled={disabled}
-      type="button"
-      ref={refs.setReference as RefCallback<'button'>}
-      {...a11yProps}
-    >
-      {children}
-    </Button>
-  )
-}
-
-const DropdownComponent: FC<DropdownProps> = ({
-  children,
-  className,
-  dismissOnClick = true,
-  theme: customTheme = {},
-  renderTrigger,
-  ...props
-}) => {
-  const [open, setOpen] = useState(false)
-  const [activeIndex, setActiveIndex] = useState<number | null>(null)
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
-  const [buttonWidth, setButtonWidth] = useState<number | undefined>(undefined)
-  const elementsRef = useRef<Array<HTMLElement | null>>([])
-  const labelsRef = useRef<Array<string | null>>([])
-
-  const theme = mergeDeep(getTheme().dropdown, customTheme)
-  const theirProps = props as Omit<DropdownProps, 'theme'>
-  const dataTestId = props['data-testid'] ?? 'ui-dropdown-target'
-  const {
-    placement = props.inline ? 'bottom-start' : 'bottom',
-    trigger = 'click',
-    label,
-    inline,
-    arrowIcon = true,
-    ...buttonProps
-  } = theirProps
-
-  const handleSelect = useCallback((index: number | null) => {
-    setSelectedIndex(index)
-    setOpen(false)
-  }, [])
-
-  const handleTypeaheadMatch = useCallback(
-    (index: number | null) => {
-      if (open) {
-        setActiveIndex(index)
-      } else {
-        handleSelect(index)
-      }
-    },
-    [open, handleSelect],
-  )
-
-  const { context, floatingStyles, refs } = useBaseFLoating<HTMLButtonElement>({
-    open,
-    setOpen,
-    placement,
+  const { floatingStyles, refs, context } = useFloating<HTMLButtonElement>({
+    nodeId,
+    open: isOpen,
+    onOpenChange: setIsOpen,
+    placement: isNested ? 'right-start' : 'bottom-start',
+    middleware: [offset({ mainAxis: isNested ? 0 : 4, alignmentAxis: isNested ? -4 : 0 }), flip(), shift()],
+    whileElementsMounted: autoUpdate,
   })
 
-  const listNav = useListNavigation(context, {
+  const [hoverEnabled, setHoverEnabled] = React.useState(false)
+
+  const hover = useHover(context, {
+    enabled: hoverEnabled,
+    delay: { open: 75 },
+    handleClose: safePolygon({ blockPointerEvents: true }),
+  })
+  const click = useClick(context, {
+    event: 'mousedown',
+    toggle: !isNested,
+    ignoreMouse: isNested,
+  })
+  const role = useRole(context, { role: 'menu' })
+  const dismiss = useDismiss(context, { bubbles: true })
+  const listNavigation = useListNavigation(context, {
     listRef: elementsRef,
     activeIndex,
-    selectedIndex,
+    nested: isNested,
     onNavigate: setActiveIndex,
   })
-
   const typeahead = useTypeahead(context, {
     listRef: labelsRef,
+    onMatch: isOpen ? setActiveIndex : undefined,
     activeIndex,
-    selectedIndex,
-    onMatch: handleTypeaheadMatch,
   })
 
-  const { getReferenceProps, getFloatingProps, getItemProps } = useFloatingInteractions({
-    context,
-    role: 'menu',
-    trigger,
-    interactions: [listNav, typeahead],
-  })
+  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([
+    hover,
+    click,
+    role,
+    dismiss,
+    listNavigation,
+    typeahead,
+  ])
 
-  const Icon = useMemo(() => {
-    const [p] = placement.split('-')
-    return icons[p] ?? HiOutlineChevronDown
-  }, [placement])
+  // Event emitter allows you to communicate across tree components.
+  // This effect closes all menus when an item gets clicked anywhere
+  // in the tree.
+  React.useEffect(() => {
+    if (!tree) return
+
+    function handleTreeClick() {
+      setIsOpen(false)
+    }
+
+    function onSubDropdownOpen(event: { nodeId: string; parentId: string }) {
+      if (event.nodeId !== nodeId && event.parentId === parentId) {
+        setIsOpen(false)
+      }
+    }
+
+    tree.events.on('click', handleTreeClick)
+    tree.events.on('menuopen', onSubDropdownOpen)
+
+    return () => {
+      tree.events.off('click', handleTreeClick)
+      tree.events.off('menuopen', onSubDropdownOpen)
+    }
+  }, [tree, nodeId, parentId])
+
+  React.useEffect(() => {
+    if (isOpen && tree) {
+      tree.events.emit('menuopen', { parentId, nodeId })
+    }
+  }, [tree, isOpen, nodeId, parentId])
+
+  const { button: buttonTheme } = getTheme()
+
+  const theme = mergeDeep(buttonTheme, customTheme ?? {})
 
   return (
-    <DropdownContext.Provider value={{ theme, activeIndex, dismissOnClick, getItemProps, handleSelect }}>
-      <div className="flex relative">
-        <Trigger
-          {...buttonProps}
-          refs={refs}
-          inline={inline}
-          theme={theme}
-          data-testid={dataTestId}
-          className={twMerge(theme.floating.target, buttonProps.className)}
-          setButtonWidth={setButtonWidth}
-          getReferenceProps={getReferenceProps}
-          renderTrigger={renderTrigger}
-        >
-          {label}
-          {arrowIcon && <Icon className={theme.arrowIcon} />}
-        </Trigger>
-        {open && (
-          <FloatingFocusManager context={context} modal={false}>
-            <div
-              ref={refs.setFloating}
-              style={{ ...floatingStyles, minWidth: buttonWidth }}
-              data-testid="ui-dropdown"
-              aria-expanded={open}
-              {...getFloatingProps({
-                className: twMerge(
-                  theme.floating.base,
-                  theme.floating.animation,
-                  'duration-100',
-                  !open && theme.floating.hidden,
-                  theme.floating.style.auto,
-                  className,
-                ),
-              })}
-            >
-              <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
-                <ul className={theme.content} tabIndex={-1}>
-                  {children}
-                </ul>
-              </FloatingList>
-            </div>
-          </FloatingFocusManager>
+    <FloatingNode id={nodeId}>
+      <button
+        ref={useMergeRefs([refs.setReference, item.ref, forwardedRef])}
+        tabIndex={!isNested ? undefined : parent.activeIndex === item.index ? 0 : -1}
+        role={isNested ? 'menuitem' : undefined}
+        data-open={isOpen ? '' : undefined}
+        data-nested={isNested ? '' : undefined}
+        data-focus-inside={hasFocusInside ? '' : undefined}
+        {...getReferenceProps(
+          parent.getItemProps({
+            ...props,
+            onFocus(event: React.FocusEvent<HTMLButtonElement>) {
+              props.onFocus?.(event)
+              setHasFocusInside(false)
+              parent.setHasFocusInside(true)
+            },
+            onMouseEnter: () => setHoverEnabled(true),
+          }),
         )}
-      </div>
-    </DropdownContext.Provider>
+        className={twMerge(
+          isNested ? 'MenuItem' : 'RootMenu bg-red-300',
+          theme.base,
+
+          props.className,
+        )}
+      >
+        {label}
+        {isNested && (
+          <span>
+            <TbChevronRight />
+          </span>
+        )}
+      </button>
+      <DropdownContext.Provider
+        value={{
+          activeIndex,
+          setActiveIndex,
+          getItemProps,
+          setHasFocusInside,
+          isOpen,
+        }}
+      >
+        <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
+          {isOpen && (
+            <FloatingPortal>
+              <FloatingFocusManager
+                context={context}
+                modal={false}
+                initialFocus={isNested ? -1 : 0}
+                returnFocus={!isNested}
+              >
+                <div
+                  ref={refs.setFloating}
+                  className="Menu"
+                  style={floatingStyles}
+                  {...getFloatingProps({
+                    onMouseEnter: () => setHoverEnabled(false),
+                  })}
+                >
+                  {children}
+                </div>
+              </FloatingFocusManager>
+            </FloatingPortal>
+          )}
+        </FloatingList>
+      </DropdownContext.Provider>
+    </FloatingNode>
   )
+})
+
+interface DropdownItemProps {
+  label: string
+  disabled?: boolean
 }
 
-DropdownComponent.displayName = 'Dropdown'
-DropdownHeader.displayName = 'Dropdown.Header'
-DropdownDivider.displayName = 'Dropdown.Divider'
+export const DropdownItem = React.forwardRef<
+  HTMLButtonElement,
+  DropdownItemProps & React.ButtonHTMLAttributes<HTMLButtonElement>
+>(({ label, disabled, ...props }, forwardedRef) => {
+  const menu = React.useContext(DropdownContext)
+  const item = useListItem({ label: disabled ? null : label })
+  const tree = useFloatingTree()
+  const isActive = item.index === menu.activeIndex
 
-export const Dropdown = Object.assign(DropdownComponent, {
-  Item: DropdownItem,
-  Header: DropdownHeader,
-  Divider: DropdownDivider,
+  return (
+    <button
+      {...props}
+      ref={useMergeRefs([item.ref, forwardedRef])}
+      type="button"
+      role="menuitem"
+      className="MenuItem"
+      tabIndex={isActive ? 0 : -1}
+      disabled={disabled}
+      {...menu.getItemProps({
+        onClick(event: React.MouseEvent<HTMLButtonElement>) {
+          props.onClick?.(event)
+          tree?.events.emit('click')
+        },
+        onFocus(event: React.FocusEvent<HTMLButtonElement>) {
+          props.onFocus?.(event)
+          menu.setHasFocusInside(true)
+        },
+      })}
+    >
+      {label}
+    </button>
+  )
 })
+
+/**
+ * @name Dropdown
+ * @description A dropdown menu component.
+ * @see DropdownComponent for more details, Dropdown is just a wrapper around it, in case of useFloatingParentNodeId beign null it will be surrounded by a <FloatingTree> component from @floating-ui/react.
+
+  * @param {string} label - The label of the dropdown button.
+  * @param {boolean} nested - Whether the dropdown is nested or not.
+  * @param {React.ReactNode} children - The children of the dropdown.
+  * @param {React.HTMLProps<HTMLButtonElement>} props - The props of the dropdown button
+  * @returns {React.ReactElement} A React component
+  * @constructor
+  * @memberof Components
+  * @extends {React.FC<DropdownProps & React.HTMLProps<HTMLButtonElement>>}
+  * @example 
+  * <Dropdown label="Edit">
+      <DropdownItem label="Undo" onClick={() => console.log('Undo')} />
+      <Dropdown label="Copy as">
+        <DropdownItem label="Text" />
+      </Dropdown>
+    </Dropdown>  * 
+ */
+export const Dropdown = React.forwardRef<HTMLButtonElement, DropdownProps & React.HTMLProps<HTMLButtonElement>>(
+  (props, ref) => {
+    const parentId = useFloatingParentNodeId()
+
+    if (parentId === null) {
+      return (
+        <FloatingTree>
+          <DropdownComponent {...props} ref={ref} />
+        </FloatingTree>
+      )
+    }
+
+    return <DropdownComponent {...props} ref={ref} />
+  },
+)
