@@ -6,10 +6,11 @@ import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
 import type { Colors } from '../PoluiProvider'
 import { ColorsEnum, MainSizesEnum } from '../PoluiProvider/enums'
-import { MainSizesElastic } from '../PoluiProvider/PoluiTheme'
 import { SwitchTheme } from './theme'
 import { motion } from 'framer-motion'
 import { Label } from '../Label'
+import { MainSizesElastic } from '../PoluiProvider/PoluiTheme'
+
 export type SwitchProps = Omit<ComponentProps<'button'>, 'onChange'> & {
   checked: boolean
   color?: keyof Colors
@@ -56,19 +57,26 @@ export const Switch: FC<SwitchProps> = ({
     damping: 30,
   }
 
+  const isSizeAMainSize = Object.keys(theme.toggle.sizes).includes(size as string)
+  if (!isSizeAMainSize) throw new Error(`Size ${size} is not a valid size - ${Object.keys(MainSizesEnum)}`)
+
   return (
     <>
       {name && checked ? (
         <input checked={checked} hidden name={name} readOnly type="checkbox" className="sr-only" />
       ) : null}
       <button
+        data-testid="ui-switch"
         aria-checked={checked}
         aria-labelledby={`${id}-switch-label`}
         disabled={disabled}
+        aria-label={label}
         id={`${id}-ui-switch`}
+        name={`${id}-ui-switch`}
         onClick={toggle}
         onKeyDown={handleOnKeyDown}
         role="switch"
+        title={label}
         tabIndex={0}
         type="button"
         className={twMerge(theme.root.base, theme.root.active[disabled ? 'off' : 'on'], className)}
@@ -80,18 +88,27 @@ export const Switch: FC<SwitchProps> = ({
             theme.toggle.base,
             theme.toggle.checked[checked ? 'on' : 'off'],
             theme.toggle.color[color],
-            theme.toggle.sizes[size],
+            theme.toggle.sizes[size as keyof typeof theme.toggle.sizes],
           )}
         >
           <motion.div
             layout
             transition={spring}
-            className={twMerge(theme.toggle.handler.base, theme.toggle.handler.sizes[size])}
+            className={twMerge(
+              theme.toggle.handler.base,
+              theme.toggle.handler.sizes[size as keyof typeof theme.toggle.handler.sizes],
+            )}
           />
         </motion.div>
 
         {label?.length ? (
-          <Label data-testid="switch-label" id={`${id}-switch-label`} className={theme.root.label} disabled={disabled}>
+          <Label
+            htmlFor={`${id}-ui-switch`}
+            data-testid="ui-switch-label"
+            id={`${id}-ui-switch-label`}
+            className={theme.root.label}
+            disabled={disabled}
+          >
             {label}
           </Label>
         ) : null}

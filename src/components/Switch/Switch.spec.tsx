@@ -22,7 +22,7 @@ describe('Components / Toggle switch', () => {
   })
 
   describe('Keyboard interaction', () => {
-    it("shouldn't toggle when `Enter` is pressed", async () => {
+    it('should toggle when `Enter` is pressed', async () => {
       const user = userEvent.setup()
       const handleChange = vi.fn()
       render(<Switch checked={false} label="Enable notifications" name="notifications" onChange={handleChange} />)
@@ -32,8 +32,31 @@ describe('Components / Toggle switch', () => {
       expect(toggleSwitch()).toHaveFocus()
 
       await user.keyboard('[Enter]')
+      expect(handleChange).toHaveBeenCalled()
+    })
+    it('should toggle true when the right arrow is pressed', async () => {
+      const user = userEvent.setup()
+      const handleChange = vi.fn()
+      render(<Switch checked={false} label="Enable notifications" name="notifications" onChange={handleChange} />)
 
-      expect(handleChange).not.toHaveBeenCalled()
+      await user.tab()
+
+      expect(toggleSwitch()).toHaveFocus()
+
+      await user.keyboard('[ArrowRight]')
+      expect(handleChange).toHaveBeenCalled()
+    })
+    it('should false true when the left arrow is pressed', async () => {
+      const user = userEvent.setup()
+      const handleChange = vi.fn()
+      render(<Switch checked={false} label="Enable notifications" name="notifications" onChange={handleChange} />)
+
+      await user.tab()
+
+      expect(toggleSwitch()).toHaveFocus()
+
+      await user.keyboard('[ArrowLeft]')
+      expect(handleChange).toHaveBeenCalled()
     })
 
     it("shouldn't submit surrounding form when `Enter` is pressed", async () => {

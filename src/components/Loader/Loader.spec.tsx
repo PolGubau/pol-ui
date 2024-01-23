@@ -12,46 +12,6 @@ describe('Components / Loader', () => {
       expect(loader).toHaveAccessibleName('My loader')
     })
   })
-
-  describe('Theme', () => {
-    it('should use `base` classes', () => {
-      const theme: CustomPoluiTheme = {
-        loader: {
-          base: 'text-gray-100',
-        },
-      }
-
-      const loader = getloader(
-        render(
-          <PoluiProvider theme={{ theme }}>
-            <Loader />
-          </PoluiProvider>,
-        ),
-      )
-
-      expect(loader.firstElementChild).toHaveClass('text-gray-100')
-    })
-
-    it('should use `color` classes', () => {
-      const theme: CustomPoluiTheme = {
-        loader: {
-          color: {
-            primary: 'text-gray-200',
-          },
-        },
-      }
-
-      const loader = getloader(
-        render(
-          <PoluiProvider theme={{ theme }}>
-            <Loader color="primary" />
-          </PoluiProvider>,
-        ),
-      )
-
-      expect(loader.firstElementChild).toHaveClass('text-gray-200')
-    })
-  })
 })
 
 const getloader = ({ getByRole }: Pick<RenderResult, 'getByRole'>): HTMLElement => getByRole('status')

@@ -49,7 +49,7 @@ import type {
   ColorsEnum,
 } from './enums'
 import type { BannerTheme } from '../Banner/Banner'
-import { SwitchTheme } from '../Switch/Switch'
+import { SwitchTheme } from '../Switch'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
