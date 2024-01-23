@@ -2,7 +2,6 @@ export { Avatar } from './Avatar'
 export type {
   AvatarImageProps,
   AvatarProps,
-  AvatarSizes,
   AvatarImageTheme,
   AvatarInitialsTheme,
   AvatarRootTheme,

@@ -14,7 +14,6 @@ import { AccordionPanel } from './AccordionPanel'
 import type { AccordionTitleTheme } from './AccordionTitle'
 import { AccordionTitle } from './AccordionTitle'
 import type { IBoolean } from '../PoluiProvider'
-import { AnimatePresence } from 'framer-motion'
 
 export interface AccordionTheme {
   root: AccordionRootTheme
