@@ -7,7 +7,7 @@ import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
-import { TextInput, type TextInputTheme, type TextInputProps } from '../TextInput'
+import { Input, type InputTheme, type InputProps } from '../Input'
 import { DatepickerContext } from './DatepickerContext'
 import type { DatepickerViewsDaysTheme } from './Views/Days'
 import { DatepickerViewsDays } from './Views/Days'
@@ -30,7 +30,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 export interface DatepickerTheme {
   root: {
     base: string
-    input?: TextInputTheme
+    input?: InputTheme
   }
   popup: DatepickerPopupTheme
   views: {
@@ -73,7 +73,7 @@ export interface DatepickerPopupTheme {
   }
 }
 
-export interface DatepickerProps extends Omit<TextInputProps, 'theme'> {
+export interface DatepickerProps extends Omit<InputProps, 'theme'> {
   open?: boolean
   inline?: boolean
   autoHide?: boolean
@@ -239,7 +239,7 @@ export const Datepicker: FC<DatepickerProps> = ({
       >
         <motion.div className={twMerge(theme.root.base, className)}>
           {!inline && (
-            <TextInput
+            <Input
               theme={theme.root.input}
               icon={TbCalendar}
               ref={inputRef}

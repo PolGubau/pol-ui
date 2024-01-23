@@ -1,14 +1,12 @@
-/* eslint-disable react/prop-types */
-
-import { action } from '@storybook/addon-actions';
-import type { Meta, StoryFn } from '@storybook/react';
-import { HiOutlineExclamationCircle } from 'react-icons/hi';
-import { Button } from '../Button';
-import { Checkbox } from '../Checkbox';
-import { Label } from '../Label';
-import { TextInput } from '../TextInput';
-import type { ModalProps } from './Modal';
-import { Modal } from './Modal';
+import { action } from '@storybook/addon-actions'
+import type { Meta, StoryFn } from '@storybook/react'
+import { HiOutlineExclamationCircle } from 'react-icons/hi'
+import { Button } from '../Button'
+import { Checkbox } from '../Checkbox'
+import { Label } from '../Label'
+import { Input } from '../Input'
+import type { ModalProps } from './Modal'
+import { Modal } from './Modal'
 
 export default {
   title: 'Components/Modal',
@@ -16,7 +14,7 @@ export default {
   args: {
     show: false,
   },
-} as Meta;
+} as Meta
 
 const Template: StoryFn<ModalProps> = ({ children, ...rest }): JSX.Element => {
   return (
@@ -26,10 +24,10 @@ const Template: StoryFn<ModalProps> = ({ children, ...rest }): JSX.Element => {
         {children}
       </Modal>
     </>
-  );
-};
+  )
+}
 
-export const Default = Template.bind({});
+export const Default = Template.bind({})
 Default.args = {
   children: (
     <>
@@ -55,10 +53,10 @@ Default.args = {
       </Modal.Footer>
     </>
   ),
-};
+}
 
-export const PopUp = Template.bind({});
-PopUp.storyName = 'Pop-up modal';
+export const PopUp = Template.bind({})
+PopUp.storyName = 'Pop-up modal'
 PopUp.args = {
   children: (
     <Modal.Body>
@@ -78,10 +76,10 @@ PopUp.args = {
       </div>
     </Modal.Body>
   ),
-};
+}
 
-export const FormElements = Template.bind({});
-FormElements.storyName = 'Form elements';
+export const FormElements = Template.bind({})
+FormElements.storyName = 'Form elements'
 FormElements.args = {
   children: (
     <>
@@ -93,13 +91,13 @@ FormElements.args = {
             <div className="mb-2 block">
               <Label htmlFor="email" value="Your email" />
             </div>
-            <TextInput id="email" placeholder="name@company.com" required />
+            <Input id="email" placeholder="name@company.com" required />
           </div>
           <div>
             <div className="mb-2 block">
               <Label htmlFor="password" value="Your password" />
             </div>
-            <TextInput id="password" type="password" required />
+            <Input id="password" type="password" required />
           </div>
           <div className="flex justify-between">
             <div className="flex items-center gap-2">
@@ -115,4 +113,4 @@ FormElements.args = {
       </Modal.Body>
     </>
   ),
-};
+}

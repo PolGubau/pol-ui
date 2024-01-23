@@ -1,36 +1,36 @@
-import type { ComponentProps } from 'react';
-import { forwardRef } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { TextInputSizes } from '../TextInput';
+import type { ComponentProps } from 'react'
+import { forwardRef } from 'react'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers/merge-deep'
+import { getTheme } from '../../theme-store'
+import type { DeepPartial } from '../../types'
+import type { InputSizes } from '../Input'
 
 export interface RangeSliderTheme {
-  root: RangeSliderRootTheme;
-  field: RangeSliderFieldTheme;
+  root: RangeSliderRootTheme
+  field: RangeSliderFieldTheme
 }
 
 export interface RangeSliderRootTheme {
-  base: string;
+  base: string
 }
 
 export interface RangeSliderFieldTheme {
-  base: string;
+  base: string
   input: {
-    base: string;
-    sizes: TextInputSizes;
-  };
+    base: string
+    sizes: InputSizes
+  }
 }
 
 export interface RangeSliderProps extends Omit<ComponentProps<'input'>, 'ref' | 'type'> {
-  sizing?: keyof TextInputSizes;
-  theme?: DeepPartial<RangeSliderTheme>;
+  sizing?: keyof InputSizes
+  theme?: DeepPartial<RangeSliderTheme>
 }
 
 export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
   ({ className, sizing = 'md', theme: customTheme = {}, ...props }, ref) => {
-    const theme = mergeDeep(getTheme().rangeSlider, customTheme);
+    const theme = mergeDeep(getTheme().rangeSlider, customTheme)
 
     return (
       <div data-testid="ui-range-slider" className={twMerge(theme.root.base, className)}>
@@ -43,8 +43,8 @@ export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
           />
         </div>
       </div>
-    );
+    )
   },
-);
+)
 
-RangeSlider.displayName = 'RangeSlider';
+RangeSlider.displayName = 'RangeSlider'

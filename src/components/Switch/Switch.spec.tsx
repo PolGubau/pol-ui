@@ -4,7 +4,7 @@ import type { FC } from 'react'
 import React, { useState } from 'react'
 import { describe, expect, it, vi } from 'vitest'
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider'
-import { TextInput } from '../TextInput'
+import { Input } from '../Input'
 import { Switch } from './Switch'
 describe('Components / Toggle switch', () => {
   describe('A11y', () => {
@@ -130,7 +130,7 @@ describe('Components / Toggle switch', () => {
       render(
         <form>
           <Switch checked={false} label="Enable notifications" name="notifications" onChange={console.log} />
-          <TextInput type="text" />
+          <Input type="text" />
         </form>,
       )
 

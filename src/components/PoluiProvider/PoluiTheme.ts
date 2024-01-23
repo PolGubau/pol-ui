@@ -32,7 +32,7 @@ import type { SidebarTheme } from '../Sidebar'
 import type { LoaderTheme } from '../Loader'
 import type { TableTheme } from '../Table'
 import type { TabsTheme } from '../Tabs'
-import type { TextInputTheme } from '../TextInput'
+import type { InputTheme } from '../Input'
 import type { TextareaTheme } from '../Textarea'
 import type { TimelineTheme } from '../Timeline'
 import type { ToastTheme } from '../Toast'
@@ -93,7 +93,7 @@ export type CustomPoluiTheme = DeepPartial<PoluiTheme>
  * @see LoaderTheme for the Loader theme
  * @see TableTheme for the Table theme
  * @see TabsTheme for the Tabs theme
- * @see TextInputTheme for the TextInput theme
+ * @see InputTheme for the Input theme
  * @see TextareaTheme for the Textarea theme
  * @see TimelineTheme for the Timeline theme
  * @see ToastTheme for the Toast theme
@@ -107,7 +107,7 @@ export type CustomPoluiTheme = DeepPartial<PoluiTheme>
  * @see RangeSliderTheme for the RangeSlider theme
  * @see SelectTheme for the Select theme
  * @see SwitchTheme for the Switch theme
- * @see TextInputTheme for the TextInput theme
+ * @see InputTheme for the Input theme
  * @see TextareaTheme for the Textarea theme
  * @see TimelineTheme for the Timeline theme
  *
@@ -149,7 +149,7 @@ export interface PoluiTheme {
   radio: RadioTheme
   rangeSlider: RangeSliderTheme
   select: SelectTheme
-  textInput: TextInputTheme
+  textInput: InputTheme
   textarea: TextareaTheme
   switch: SwitchTheme
   helperText: HelperTextTheme

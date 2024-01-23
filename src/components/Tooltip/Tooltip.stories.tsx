@@ -2,7 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react'
 import { Button } from '../Button'
 import type { TooltipProps } from './Tooltip'
 import { Tooltip } from './Tooltip'
-import { TextInput } from '../TextInput'
+import { Input } from '../Input'
 import { TbAB, TbFile } from 'react-icons/tb'
 
 export default {
@@ -44,8 +44,8 @@ Popover.args = {
   content: (
     <div className="flex flex-col gap-2 items-center p-2">
       <h2 className="text-white">Your Profile</h2>
-      <TextInput type="text" placeholder="Name" />
-      <TextInput type="email" placeholder="Email" />
+      <Input type="text" placeholder="Name" />
+      <Input type="email" placeholder="Email" />
       <Button type="submit">Send</Button>
     </div>
   ),

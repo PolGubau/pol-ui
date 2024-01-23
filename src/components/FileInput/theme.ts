@@ -1,4 +1,19 @@
-import type { FileInputTheme } from './FileInput';
+import { Colors } from '../PoluiProvider'
+import { MainSizes } from '../PoluiProvider/PoluiTheme'
+
+export interface FileInputTheme {
+  root: {
+    base: string
+  }
+  field: {
+    base: string
+    input: {
+      base: string
+      colors: Colors
+      size: MainSizes
+    }
+  }
+}
 
 export const fileInputTheme: FileInputTheme = {
   root: {
@@ -7,22 +22,22 @@ export const fileInputTheme: FileInputTheme = {
   field: {
     base: 'relative w-full',
     input: {
-      base: 'rounded-lg overflow-hidden block w-full border disabled:cursor-not-allowed disabled:opacity-50',
-      sizes: {
-        sm: 'sm:text-xs',
-        md: 'text-sm',
-        lg: 'sm:text-md',
+      base: 'rounded-lg  file:rounded-lg overflow-hidden flex w-full disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer file:cursor-pointer file:z-50 file:border-none file:px-4 file:py-2 focus:ring-2 focus:ring-offset-2 focus:ring-offset-secondary-50 outline-none focus:outline-none transition-all',
+      size: {
+        xs: 'sm:text-xs',
+        sm: 'sm:text-sm',
+        md: 'sm:text-md',
+        lg: 'sm:text-lg',
+        xl: 'sm:text-xl',
       },
       colors: {
-        gray: 'bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500',
-        info: 'border-cyan-500 bg-cyan-50 text-cyan-900 placeholder-cyan-700 focus:border-cyan-500 focus:ring-cyan-500 dark:border-cyan-400 dark:bg-cyan-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500',
-        error:
-          'border-red-500 bg-red-50 text-red-900 placeholder-red-700 focus:border-red-500 focus:ring-red-500 dark:border-red-400 dark:bg-red-100 dark:focus:border-red-500 dark:focus:ring-red-500',
-        warning:
-          'border-yellow-500 bg-yellow-50 text-yellow-900 placeholder-yellow-700 focus:border-yellow-500 focus:ring-yellow-500 dark:border-yellow-400 dark:bg-yellow-100 dark:focus:border-yellow-500 dark:focus:ring-yellow-500',
-        success:
-          'border-green-500 bg-green-50 text-green-900 placeholder-green-700 focus:border-green-500 focus:ring-green-500 dark:border-green-400 dark:bg-green-100 dark:focus:border-green-500 dark:focus:ring-green-500',
+        info: 'file:bg-info/60 file:text-info-900 file:placeholder-info-800 focus:ring-info',
+        error: 'file:bg-error/60 file:text-error-900 file:placeholder-error-800  focus:ring-error',
+        success: 'file:bg-success/60 file:text-success-900 file:placeholder-success-800  focus:ring-success',
+        warning: 'file:bg-warning/60 file:text-warning-900 file:placeholder-warning-800  focus:ring-warning',
+        primary: 'file:bg-primary/60 file:text-primary-900 file:placeholder-primary-800  focus:ring-primary',
+        secondary: 'file:bg-secondary/60 file:text-secondary-900 file:placeholder-secondary-800  focus:ring-secondary',
       },
     },
   },
-};
+}

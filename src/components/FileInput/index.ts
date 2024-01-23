@@ -1,8 +1,3 @@
-export { FileInput } from './FileInput';
-export type {
-  FileInputProps,
-  FileInputFieldInputTheme,
-  FileInputFieldTheme,
-  FileInputRootTheme,
-  FileInputTheme,
-} from './FileInput';
+export { FileInput } from './FileInput'
+export type { FileInputProps } from './FileInput'
+export type { FileInputTheme } from './theme'

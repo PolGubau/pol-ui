@@ -8,7 +8,7 @@ import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider'
 import { Radio } from '../Radio'
 import { RangeSlider } from '../RangeSlider'
 import { Select } from '../Select'
-import { TextInput } from '../TextInput'
+import { Input } from '../Input'
 import { Textarea } from '../Textarea'
 import { Switch } from '../Switch'
 import { Label } from './Label'
@@ -63,11 +63,11 @@ const TestForm = (): JSX.Element => (
     </div>
     <div>
       <Label htmlFor="email">Your email</Label>
-      <TextInput id="email" type="email" placeholder="name@PoluiProvider.com" required />
+      <Input id="email" type="email" placeholder="name@PoluiProvider.com" required />
     </div>
     <div>
       <Label htmlFor="password">Your password</Label>
-      <TextInput
+      <Input
         addon="Make sure it is at least 12 characters!"
         icon={HiLockClosed}
         id="password"
