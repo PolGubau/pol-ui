@@ -41,7 +41,7 @@
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "test": "vitest --ui",
-    "test:coverage": "vitest run --coverage",
+    "test:coverage": "vitest run --coverage --ui",
     "test:open": "vitest --ui",
     "test:e2e": "start-test 3000 ",
     "test:e2e:open": "start-test 3000 ",
