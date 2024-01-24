@@ -1,3 +1,5 @@
+import { IBoolean } from '../PoluiProvider'
+
 /**
  * @name InputProps
  * @description Interface for the icons of the Input component
@@ -32,6 +34,7 @@ export interface InputInputTheme {
   label: {
     base: string
   }
+  border: IBoolean
   withIcon: IBoolean
   withRightIcon: IBoolean
   withAddon: IBoolean

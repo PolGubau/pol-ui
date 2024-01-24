@@ -51,6 +51,7 @@ import type {
 } from './enums'
 import type { BannerTheme } from '../Banner/Banner'
 import { SwitchTheme } from '../Switch'
+import { IconButtonTheme } from '../IconButton'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -122,6 +123,7 @@ export interface PoluiTheme {
   breadcrumb: BreadcrumbTheme
   button: ButtonTheme
   buttonGroup: ButtonGroupTheme
+  iconButton: IconButtonTheme
   card: CardTheme
   carousel: CarouselTheme
   datepicker: DatepickerTheme

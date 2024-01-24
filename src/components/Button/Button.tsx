@@ -50,7 +50,24 @@ export interface ButtonColors extends Colors {
 export interface ButtonSizes extends MainSizes {
   [key: string]: string
 }
-
+export const rippleClass = (color: keyof Colors) => {
+  switch (color) {
+    case ColorsEnum.primary:
+      return 'bg-primary-600'
+    case ColorsEnum.secondary:
+      return 'bg-secondary-600'
+    case ColorsEnum.success:
+      return 'bg-success-600'
+    case ColorsEnum.warning:
+      return 'bg-warning-600'
+    case ColorsEnum.error:
+      return 'bg-error-600'
+    case ColorsEnum.info:
+      return 'bg-info-600'
+    default:
+      return 'bg-primary-600'
+  }
+}
 export type ButtonProps<T extends ElementType = 'button'> = {
   as?: T | null
   href?: string
@@ -91,10 +108,11 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
 
   const theme = mergeDeep(buttonTheme, customTheme)
   const theirProps = props as ButtonBaseProps<T>
+
   const [ripple, event] = useRipple({
     disabled: disabled || isProcessing,
     opacity: 0.2,
-    className: 'bg-secondary-100',
+    className: rippleClass(color),
   })
   return (
     <ButtonBase

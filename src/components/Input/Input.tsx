@@ -15,10 +15,11 @@ export interface InputProps extends Omit<ComponentProps<'input'>, 'ref' | 'color
   color?: keyof Colors
   helperText?: ReactNode
   icon?: FC<ComponentProps<'svg'>>
-  rightIcon?: FC<ComponentProps<'svg'>>
+  rightIcon?: ReactNode
   shadow?: boolean
   sizing?: keyof MainSizes
   theme?: DeepPartial<InputTheme>
+  border?: boolean
   label?: string
 }
 
@@ -35,6 +36,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       sizing = MainSizesEnum.md,
       theme: customTheme = {},
       label,
+      border = false,
       ...props
     },
     ref,
@@ -44,23 +46,30 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <>
+        <label htmlFor={randomId}>{label}</label>
         <div className={twMerge(theme.base, className)}>
           {addon && <span className={theme.addon}>{addon}</span>}
 
-          <div className={theme.field.base}>
+          <div className={twMerge(theme.field.base)}>
             {Icon && (
               <div className={twMerge(theme.field.icons.base, theme.field.icons.left)}>
                 <Icon className={theme.field.icons.svg} />
               </div>
             )}
             {RightIcon && (
-              <div data-testid="right-icon" className={twMerge(theme.field.icons.base, theme.field.icons.right)}>
-                <RightIcon className={theme.field.icons.svg} />
+              <div
+                data-testid="right-icon"
+                className={twMerge(theme.field.icons.base, theme.field.icons.svg, theme.field.icons.right)}
+              >
+                {RightIcon}
               </div>
             )}
             <input
+              name={randomId}
+              id={randomId}
               className={twMerge(
                 theme.field.input.base,
+                theme.field.input.border[border ? 'on' : 'off'],
                 theme.field.input.colors[color],
                 theme.field.input.sizes[sizing],
                 theme.field.input.withIcon[Icon ? 'on' : 'off'],
@@ -71,12 +80,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               {...props}
               ref={ref}
             />
-            <label
-              htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-              className={twMerge(theme.field.input.label.base, className)}
-            >
-              {label}
-            </label>
           </div>
         </div>
         {helperText && <HelperText color={color}>{helperText}</HelperText>}
