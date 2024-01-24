@@ -231,6 +231,14 @@ export interface Positions {
  */
 
 export type MainSizes = Record<GetValuesEnum<typeof MainSizesEnum>, string>
+
+/**
+ * @name MainSizesElastic
+ * @description Type for the main different sizes, from xs to xl, it also includes any value provided by the user
+ * @see MainSizesEnum for the different sizes of the library
+ * @property {string} [key] - Any value provided by the user
+ * @author Pol Gubau Amores - https://polgubau.com
+ */
 export interface MainSizesElastic extends MainSizes {
   [key: string]: string
 }
@@ -243,7 +251,7 @@ export interface MainSizesElastic extends MainSizes {
 export type Sizes = Record<GetValuesEnum<typeof SizesEnum>, string>
 
 /**
- * @name RoundedSizesType
+ * @name RoundedSizes
  * @description Type for the different rounded sizes, from xs to 7xl, dynamic from the RoundedSizesEnum enum
  * @see RoundedSizesEnum for the different sizes
  * @author Pol Gubau Amores - https://polgubau.com
@@ -251,7 +259,7 @@ export type Sizes = Record<GetValuesEnum<typeof SizesEnum>, string>
 export type RoundedSizes = Record<GetValuesEnum<typeof RoundedSizesEnum>, string>
 
 /**
- * @name RoundedSizes
+ * @name RoundedSizesElastic
  * @description Type for the different rounded sizes, from xs to 7xl, dynamic from the RoundedSizesEnum enum, it also includes any value provided by the user
  * @see RoundedSizesEnum for the different sizes
  * @extends RoundedSizesType

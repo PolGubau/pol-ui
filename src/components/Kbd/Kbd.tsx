@@ -3,15 +3,7 @@ import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
-
-export interface KbdTheme {
-  root: KbdRootTheme
-}
-
-export interface KbdRootTheme {
-  base: string
-  icon: string
-}
+import { KbdTheme } from './theme'
 
 export interface KbdProps extends ComponentProps<'span'> {
   icon?: FC<ComponentProps<'svg'>>

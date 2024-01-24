@@ -11,12 +11,10 @@ export interface IconButtonTheme {
   rounded: RoundedSizes
   size: MainSizes
 }
-
 export interface ButtonInnerTheme {
   base: string
   outline: string
 }
-
 export const iconButtonTheme: IconButtonTheme = {
   base: 'group flex items-center justify-center text-center relative focus:z-10 focus:outline-none transition-all focus:ring-offset-2 focus:ring-offset-secondary-50 dark:focus:ring-offset-secondary-900 aspect-square transition-all h-fit w-fit',
   color: {
@@ -55,7 +53,6 @@ export const iconButtonTheme: IconButtonTheme = {
     xl: 'text-xl p-6 h-16',
   },
 }
-
 export const buttonGroupTheme: ButtonGroupTheme = {
   base: 'inline-flex',
   position: {
