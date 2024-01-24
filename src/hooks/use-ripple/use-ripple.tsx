@@ -152,8 +152,8 @@ export function customRipple<T extends HTMLElement = any>(inputOptions?: Partial
 
 function centerElementToPointer<T extends HTMLElement>(event: MinimalEvent, ref: HTMLElement, element: T): T {
   const { top, left } = ref.getBoundingClientRect()
-  void element.style.setProperty('top', px(event.clientY - top))
-  void element.style.setProperty('left', px(event.clientX - left))
+  element.style.setProperty('top', px(event.clientY - top))
+  element.style.setProperty('left', px(event.clientX - left))
   return element
 }
 

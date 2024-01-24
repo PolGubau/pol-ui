@@ -17,6 +17,7 @@ import { ButtonBase, ButtonBaseProps } from '../Button/ButtonBase'
 import { IconButtonTheme } from './theme'
 import { rippleClass } from '../Button/Button'
 import { Tooltip } from '../Tooltip'
+import { motion } from 'framer-motion'
 
 export type IconButtonProps<T extends ElementType = 'button'> = {
   as?: T | null
@@ -29,6 +30,7 @@ export type IconButtonProps<T extends ElementType = 'button'> = {
   outline?: boolean
   rounded?: keyof RoundedSizes
   size?: keyof MainSizesElastic
+  hasMotion: boolean
   theme?: DeepPartial<IconButtonTheme>
   innerClassname?: string
 } & ComponentPropsWithoutRef<T>
@@ -41,6 +43,7 @@ const IconButtonFn = <T extends ElementType = 'button'>({
   isLoading = false,
   loader = null,
   label = '',
+  hasMotion = true,
   outline = false,
   rounded = RoundedSizesEnum.full,
   size = MainSizesEnum.md,
@@ -58,9 +61,15 @@ const IconButtonFn = <T extends ElementType = 'button'>({
     opacity: 0.2,
     className: rippleClass(color),
   })
+
+  const MotionBase = motion(ButtonBase)
   return (
-    <ButtonBase
+    <MotionBase
       ref={ripple}
+      transition={hasMotion && { duration: 0.1, type: 'spring' }}
+      whileTap={hasMotion && { scale: 0.95 }}
+      whileHover={hasMotion && { scale: 1.05 }}
+      whileFocus={hasMotion && { scale: 1.1 }}
       onPointerDown={event}
       onKeyPress={event}
       title={label}
@@ -83,7 +92,7 @@ const IconButtonFn = <T extends ElementType = 'button'>({
         {isLoading && <span className={twMerge(theme.loading)}>{loader ?? <Loader size={size} />}</span>}
         {children}
       </span>
-    </ButtonBase>
+    </MotionBase>
   )
 }
 
@@ -93,16 +102,16 @@ const IconButtonFn = <T extends ElementType = 'button'>({
  * @param props IconButtonProps extends ButtonBaseProps
  * @returns React.FC IconButton component
  * @example
- * <IconButton label="Search" color="primary" size="md" rounded="full" isLoading={false} outline={false}> 
- *    <TbSearch /> 
+ * <IconButton label="Search" color="primary" size="md" rounded="full" isLoading={false} outline={false}>
+ *    <TbSearch />
  * </IconButton>
- * 
- * <IconButton> 
- *    <MdFilter /> 
+ *
+ * <IconButton>
+ *    <MdFilter />
  * </IconButton>
- * 
- * <IconButton color="info" size="xl" rounded="none"> 
- *    <LogoIcon /> 
+ *
+ * <IconButton color="info" size="xl" rounded="none">
+ *    <LogoIcon />
  * </IconButton>
  *
  * @see https://github.com/PolGubau/pol-ui/tree/main/src/components/IconButton

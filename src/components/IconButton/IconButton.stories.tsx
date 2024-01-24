@@ -56,6 +56,20 @@ DefaultButton.args = {
   children: <TbSearch />,
   label: 'Search',
 }
+export const WithoutMotion = Template.bind({})
+WithoutMotion.storyName = 'Without Motion'
+WithoutMotion.parameters = {
+  docs: {
+    description: {
+      story: 'The default for displaying icons as button',
+    },
+  },
+}
+WithoutMotion.args = {
+  children: <TbSearch />,
+  hasMotion: false,
+  label: 'Search',
+}
 
 export const OutlineButton = Template.bind({})
 OutlineButton.storyName = 'Outline'
