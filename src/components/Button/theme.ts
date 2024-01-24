@@ -1,5 +1,36 @@
-import type { ButtonTheme } from '../Button/Button'
-import type { ButtonGroupTheme } from '../Button/ButtonGroup/ButtonGroup'
+import type { ButtonGroupTheme, PositionInButtonGroup } from '../Button/ButtonGroup/ButtonGroup'
+import { Colors, IBoolean } from '../PoluiProvider'
+import { MainSizesElastic, RoundedSizes } from '../PoluiProvider/PoluiTheme'
+
+export interface ButtonTheme {
+  base: string
+  fullSized: string
+  color: Colors
+  disabled: string
+  isProcessing: string
+  loaderSlot: string
+  loaderLeftPosition: MainSizesElastic
+  inner: ButtonInnerTheme
+  label: string
+  outline: ButtonOutlineTheme
+  rounded: RoundedSizes
+  size: MainSizesElastic
+}
+export interface ButtonColors extends Colors {
+  [key: string]: string
+}
+
+export interface ButtonInnerTheme {
+  base: string
+  position: PositionInButtonGroup
+  outline: string
+  isProcessingPadding: MainSizesElastic
+}
+
+export interface ButtonOutlineTheme extends IBoolean {
+  outlineBase: string
+  color: Colors
+}
 
 export const buttonTheme: ButtonTheme = {
   base: 'group flex items-stretch items-center justify-center text-center w-auto relative focus:z-10 focus:outline-none transition-all focus:ring-offset-2 focus:ring-offset-secondary-50 dark:focus:ring-offset-secondary-900 focus:ring-4 focus:ring-primary',

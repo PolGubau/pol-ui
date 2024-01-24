@@ -7,49 +7,17 @@ import genericForwardRef from '../../helpers/generic-forward-ref'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
-import type { IBoolean, Colors } from '../PoluiProvider'
+import type { Colors } from '../PoluiProvider'
 import { Loader } from '../Loader'
 import { ButtonBase, type ButtonBaseProps } from './ButtonBase'
 import type { PositionInButtonGroup } from './ButtonGroup/ButtonGroup'
 import { ButtonGroup } from './ButtonGroup/ButtonGroup'
-import { type MainSizes, type RoundedSizes } from '../PoluiProvider/PoluiTheme'
+import { MainSizesElastic, type RoundedSizes } from '../PoluiProvider/PoluiTheme'
 import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../PoluiProvider/enums'
 import { useRipple } from '../../hooks'
+import { ButtonTheme } from './theme'
+import { motion } from 'framer-motion'
 
-export interface ButtonTheme {
-  base: string
-  fullSized: string
-  color: Colors
-  disabled: string
-  isProcessing: string
-  loaderSlot: string
-  loaderLeftPosition: ButtonSizes
-  inner: ButtonInnerTheme
-  label: string
-  outline: ButtonOutlineTheme
-  rounded: RoundedSizes
-  size: ButtonSizes
-}
-
-export interface ButtonInnerTheme {
-  base: string
-  position: PositionInButtonGroup
-  outline: string
-  isProcessingPadding: ButtonSizes
-}
-
-export interface ButtonOutlineTheme extends IBoolean {
-  outlineBase: string
-  color: Colors
-}
-
-export interface ButtonColors extends Colors {
-  [key: string]: string
-}
-
-export interface ButtonSizes extends MainSizes {
-  [key: string]: string
-}
 export const rippleClass = (color: keyof Colors) => {
   switch (color) {
     case ColorsEnum.primary:
@@ -76,12 +44,13 @@ export type ButtonProps<T extends ElementType = 'button'> = {
   target?: string
   isProcessing?: boolean
   processingLabel?: string
+  hasMotion?: boolean
   processingLoader?: ReactNode
   label?: ReactNode
   outline?: boolean
   rounded?: keyof RoundedSizes
   positionInGroup?: keyof PositionInButtonGroup
-  size?: keyof ButtonSizes
+  size?: keyof MainSizesElastic
   theme?: DeepPartial<ButtonTheme>
   innerClassname?: string
 } & ComponentPropsWithoutRef<T>
@@ -91,6 +60,7 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
   className,
   color = ColorsEnum.primary,
   disabled,
+  hasMotion = true,
   fullSized = false,
   isProcessing = false,
   processingLabel = 'Loading...',
@@ -114,8 +84,15 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
     opacity: 0.2,
     className: rippleClass(color),
   })
+
+  const MotionButtonBase = motion(ButtonBase)
+
   return (
-    <ButtonBase
+    <MotionButtonBase
+      transition={hasMotion && { duration: 0.1, type: 'spring' }}
+      whileTap={hasMotion && { scale: 0.95 }}
+      whileHover={hasMotion && { scale: 1.02 }}
+      whileFocus={hasMotion && { scale: 1.1 }}
       ref={ripple}
       onPointerDown={event}
       onKeyPress={event}
@@ -157,7 +134,7 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
           </span>
         )}
       </span>
-    </ButtonBase>
+    </MotionButtonBase>
   )
 }
 

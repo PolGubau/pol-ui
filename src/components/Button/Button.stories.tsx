@@ -83,6 +83,11 @@ Link.args = {
   href: 'https://www.polgubau.com',
   target: '_blank',
 }
+export const WithoutMotion = Template.bind({})
+WithoutMotion.args = {
+  ...DefaultButton.args,
+  hasMotion: false,
+}
 
 export const Rounded = (args: ButtonProps) => (
   <div className="flex gap-3 flex-wrap">
