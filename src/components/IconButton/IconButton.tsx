@@ -91,13 +91,23 @@ const IconButtonFn = <T extends ElementType = 'button'>({
  * @name IconButton
  * @description Base component for displaying icons as button with ripple effect, tooltip, and loading state
  * @param props IconButtonProps extends ButtonBaseProps
- * @returns React.FC IconButton component 
+ * @returns React.FC IconButton component
  * @example
- * <IconButton label="Search" color="primary" size="md" rounded="full" isLoading={false} outline={false} />
- * <IconButton label="Search" color="primary" size="md" rounded="full" isLoading={false} outline={false} />
- * <IconButton label="Search" color="primary" size="md" rounded="full" isLoading={false} outline={false} />
+ * <IconButton label="Search" color="primary" size="md" rounded="full" isLoading={false} outline={false}> 
+ *    <TbSearch /> 
+ * </IconButton>
  * 
- * @
+ * <IconButton> 
+ *    <MdFilter /> 
+ * </IconButton>
+ * 
+ * <IconButton color="info" size="xl" rounded="none"> 
+ *    <LogoIcon /> 
+ * </IconButton>
+ *
+ * @see https://github.com/PolGubau/pol-ui/tree/main/src/components/IconButton
+ *
+ * @author Pol Gubau Amores - https://polgubau.com
  */
 export const IconButton = <T extends ElementType = 'button'>(props: IconButtonProps<T>) => {
   const { label } = props
