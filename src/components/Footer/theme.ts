@@ -1,4 +1,4 @@
-import type { FooterTheme } from './Footer';
+import type { FooterTheme } from '../Footer/Footer'
 
 export const footerTheme: FooterTheme = {
   root: {
@@ -7,9 +7,9 @@ export const footerTheme: FooterTheme = {
     bgDark: 'bg-gray-800',
   },
   groupLink: {
-    base: 'flex flex-wrap text-sm text-gray-500 dark:text-white',
+    base: 'flex flex-wrap text-sm text-gray-500 dark:text-white gap-6 items-center',
     link: {
-      base: 'last:mr-0 md:mr-6',
+      base: '',
       href: 'hover:underline',
     },
     col: 'flex-col space-y-4',
@@ -34,4 +34,4 @@ export const footerTheme: FooterTheme = {
     img: 'mr-3 h-8',
     span: 'self-center whitespace-nowrap text-2xl font-semibold text-gray-800 dark:text-white',
   },
-};
+}

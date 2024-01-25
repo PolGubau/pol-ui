@@ -1,43 +1,52 @@
 /* eslint-disable react/prop-types */
-import type { Meta, StoryFn } from '@storybook/react';
-import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
-import { Footer } from './Footer';
+import type { Meta, StoryFn } from '@storybook/react'
+import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs'
+import { Footer } from './Footer'
+import { Link } from '../Button/Button.stories'
+import { Button } from '../Button'
 
 export default {
   title: 'Components/Footer',
   component: Footer,
-} as Meta;
+  tags: ['Footer', 'autodocs'],
+  decorators: [
+    Story => (
+      <div className="flex p-6 flex-col items-end justify-end py-20 min-h-[400px] h-full bg-secondary-50">
+        <Story />
+      </div>
+    ),
+  ],
+  parameters: {
+    layout: 'fullscreen',
+  },
+} as Meta
 
-const Template: StoryFn = ({ children }) => <Footer>{children}</Footer>;
-
-export const DefaultFooter = Template.bind({});
-DefaultFooter.storyName = 'Default';
+const Template: StoryFn = ({ children }) => <Footer>{children}</Footer>
+const thisYear = new Date().getFullYear()
+export const DefaultFooter = Template.bind({})
+DefaultFooter.storyName = 'Default'
 DefaultFooter.args = {
   children: (
     <div className="flex w-full justify-between p-6">
-      <Footer.Copyright href="#" by="Pol-ui" year={2022} />
+      <Footer.Copyright href="#" by="Pol-ui" year={thisYear} />
       <Footer.LinkGroup>
         <Footer.Link href="#">About</Footer.Link>
         <Footer.Link href="#">Privacy Policy</Footer.Link>
         <Footer.Link href="#">Licensing</Footer.Link>
         <Footer.Link href="#">Contact</Footer.Link>
+        <Button size="sm">Get Started</Button>
       </Footer.LinkGroup>
     </div>
   ),
-};
+}
 
-export const WithLogoFooter = Template.bind({});
-WithLogoFooter.storyName = 'With Logo';
+export const WithLogoFooter = Template.bind({})
+WithLogoFooter.storyName = 'With Logo'
 WithLogoFooter.args = {
   children: (
     <div className="w-full p-6 text-center">
       <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
-        <Footer.Brand
-          href="https://ui.polgubau.com"
-          src="https://ui.polgubau.com/docs/images/logo.svg"
-          alt="Pol-ui Logo"
-          name="Pol-ui"
-        />
+        <Footer.Brand href="https://ui.polgubau.com" src="/images/logo.png" alt="Pol-ui Logo" name="Pol-ui" />
         <Footer.LinkGroup>
           <Footer.Link href="#">About</Footer.Link>
           <Footer.Link href="#">Privacy Policy</Footer.Link>
@@ -49,22 +58,17 @@ WithLogoFooter.args = {
       <Footer.Copyright href="#" by="Pol-ui™" year={2022} />
     </div>
   ),
-};
+}
 
-export const WithSocialMediaFooter = Template.bind({});
-WithSocialMediaFooter.storyName = 'Social Media Icons';
+export const WithSocialMediaFooter = Template.bind({})
+WithSocialMediaFooter.storyName = 'Social Media Icons'
 WithSocialMediaFooter.args = {
   container: true,
   children: (
     <div className="w-full p-6">
       <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
         <div>
-          <Footer.Brand
-            href="https://ui.polgubau.com"
-            src="https://ui.polgubau.com/docs/images/logo.svg"
-            alt="Pol-ui Logo"
-            name="Pol-ui"
-          />
+          <Footer.Brand href="https://ui.polgubau.com" src="/images/logo.png" alt="Pol-ui Logo" name="Pol-ui" />
         </div>
         <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
           <div>
@@ -103,10 +107,10 @@ WithSocialMediaFooter.args = {
       </div>
     </div>
   ),
-};
+}
 
-export const SitemapLinksFooter = Template.bind({});
-SitemapLinksFooter.storyName = 'Sitemap Links';
+export const SitemapLinksFooter = Template.bind({})
+SitemapLinksFooter.storyName = 'Sitemap Links'
 SitemapLinksFooter.args = {
   children: (
     <div className="w-full bg-gray-800">
@@ -159,4 +163,4 @@ SitemapLinksFooter.args = {
       </div>
     </div>
   ),
-};
+}
