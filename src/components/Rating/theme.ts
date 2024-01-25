@@ -1,15 +1,14 @@
-import { MainSizesElastic } from '../PoluiProvider/PoluiTheme'
+import { MainSizes } from '../PoluiProvider/PoluiTheme'
 import type { RatingAdvancedTheme } from './RatingAdvanced'
 export interface RatingTheme {
   root: {
     base: string
   }
-  star: RatingStarTheme
-}
-export interface RatingStarTheme {
-  empty: string
-  filled: string
-  sizes: MainSizesElastic
+  star: {
+    empty: string
+    filled: string
+    size: MainSizes
+  }
 }
 
 export const ratingTheme: RatingTheme = {
@@ -17,9 +16,9 @@ export const ratingTheme: RatingTheme = {
     base: 'flex items-center',
   },
   star: {
-    empty: 'text-gray-300 dark:text-gray-500',
-    filled: 'text-yellow-400',
-    sizes: {
+    empty: 'text-secondary-300 dark:text-secondary-500',
+    filled: 'text-yellow-400 fill-current',
+    size: {
       xs: 'w-3 h-3',
       sm: 'w-5 h-5',
       md: 'w-7 h-7',
