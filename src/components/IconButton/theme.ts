@@ -18,11 +18,12 @@ export interface ButtonInnerTheme {
 export const iconButtonTheme: IconButtonTheme = {
   base: 'group flex items-center justify-center text-center relative focus:z-10 focus:outline-none transition-all focus:ring-offset-2 focus:ring-offset-secondary-50 dark:focus:ring-offset-secondary-900 aspect-square transition-all h-fit w-fit',
   color: {
-    error: 'text-error enabled:hover:brightness-90  enabled:hover:bg-error/20  enabled:focus:bg-error/40',
-    info: 'text-info enabled:hover:brightness-90 enabled:hover:bg-info/20  enabled:focus:bg-info/40',
-    success: 'text-success  enabled:hover:brightness-90  enabled:hover:bg-success/20  enabled:focus:bg-success/40 ',
-    warning: 'text-warning enabled:hover:brightness-90   enabled:hover:bg-warning/20  enabled:focus:bg-warning/40',
-    primary: 'text-primary enabled:hover:brightness-90 enabled:hover:bg-primary/20  enabled:focus:bg-primary/40  ',
+    error: 'text-error-700 enabled:hover:brightness-90  enabled:hover:bg-error/20  enabled:focus:bg-error/40',
+    info: 'text-info-700  enabled:hover:brightness-90 enabled:hover:bg-info/20  enabled:focus:bg-info/40',
+    success:
+      'text-success-700   enabled:hover:brightness-90  enabled:hover:bg-success/20  enabled:focus:bg-success/40 ',
+    warning: 'text-warning-700  enabled:hover:brightness-90   enabled:hover:bg-warning/20  enabled:focus:bg-warning/40',
+    primary: 'text-primary-700  enabled:hover:brightness-90 enabled:hover:bg-primary/20  enabled:focus:bg-primary/40  ',
     secondary:
       'text-secondary  enabled:hover:brightness-90  enabled:hover:bg-secondary/20  enabled:focus:bg-secondary/40',
   },

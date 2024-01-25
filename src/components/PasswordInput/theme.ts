@@ -7,10 +7,10 @@ export const inputTheme: InputTheme = {
   field: {
     base: 'relative w-full',
     icons: {
-      base: ' absolute inset-y-0 flex items-center z-10',
-      svg: 'text-secondary-800 dark:text-secondary-100 fill-secondary-800 dark:fill-secondary-100 z-10',
-      left: 'left-0 pl-2',
-      right: 'right-0 pr-2',
+      base: 'pointer-events-none absolute inset-y-0 flex items-center z-10',
+      svg: 'text-secondary-800 dark:text-secondary-100 fill-secondary-800 dark:fill-secondary-100',
+      left: 'left-0 pl-3',
+      right: 'right-0 pr-3',
     },
 
     input: {

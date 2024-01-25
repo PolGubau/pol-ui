@@ -4,10 +4,10 @@ import { TbAt, TbEye, TbUser } from 'react-icons/tb'
 import { ColorsEnum } from '../PoluiProvider/enums'
 
 import { Dropdown, DropdownItem } from '../Dropdown'
-import { Button } from '../Button'
+import { IconButton } from '../IconButton'
 
 export default {
-  title: 'Components/Input',
+  title: 'Components/Inputs/Input',
   component: Input,
   tags: ['autodocs'],
   decorators: [
@@ -140,9 +140,9 @@ export const AllColorsWithBorder = () => (
           placeholder={color}
           color={color as any}
           rightIcon={
-            <Button size="sm" outline color="secondary">
-              <TbEye />
-            </Button>
+            <IconButton size="sm" outline color={color} onClick={() => alert(color)}>
+              <TbEye size={18} />
+            </IconButton>
           }
           defaultValue="I am in light mode"
         />

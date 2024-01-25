@@ -1,14 +1,22 @@
-import type { HelperTextTheme } from './HelperText';
+import { Colors } from '../PoluiProvider'
+
+export interface HelperTextTheme {
+  root: {
+    base: string
+    colors: Colors
+  }
+}
 
 export const helperTextTheme: HelperTextTheme = {
   root: {
-    base: 'mt-2 text-sm',
+    base: 'mt-1 ml-2 text-xs',
     colors: {
-      gray: 'text-gray-500 dark:text-gray-400',
-      info: 'text-cyan-700 dark:text-cyan-800',
-      success: 'text-green-600 dark:text-green-500',
-      error: 'text-red-600 dark:text-red-500',
-      warning: 'text-yellow-500 dark:text-yellow-600',
+      primary: 'text-primary-700 dark:text-primary-400',
+      secondary: 'text-secondary-700 dark:text-secondary-400',
+      info: 'text-info-700 dark:text-info-800',
+      success: 'text-success-600 dark:text-success-500',
+      error: 'text-error-600 dark:text-error-500',
+      warning: 'text-warning-500 dark:text-warning-600',
     },
   },
-};
+}

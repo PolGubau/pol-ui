@@ -1,5 +1,5 @@
 import type { ComponentProps, FC, ReactNode } from 'react'
-import { forwardRef, useId } from 'react'
+import { forwardRef, useId, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
@@ -9,6 +9,7 @@ import { HelperText } from '../HelperText'
 import { ColorsEnum, MainSizesEnum } from '../PoluiProvider/enums'
 import { MainSizes } from '../PoluiProvider/PoluiTheme'
 import { InputTheme } from './InputTypes'
+import { Label } from '../Label'
 
 export interface InputProps extends Omit<ComponentProps<'input'>, 'ref' | 'color'> {
   addon?: ReactNode
@@ -46,7 +47,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <>
-        <label htmlFor={randomId}>{label}</label>
+        {label && <Label htmlFor={randomId}>{label}</Label>}
         <div className={twMerge(theme.base, className)}>
           {addon && <span className={theme.addon}>{addon}</span>}
 

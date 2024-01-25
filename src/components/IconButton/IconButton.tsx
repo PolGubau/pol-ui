@@ -30,7 +30,7 @@ export type IconButtonProps<T extends ElementType = 'button'> = {
   outline?: boolean
   rounded?: keyof RoundedSizes
   size?: keyof MainSizesElastic
-  hasMotion: boolean
+  hasMotion?: boolean
   theme?: DeepPartial<IconButtonTheme>
   innerClassname?: string
 } & ComponentPropsWithoutRef<T>

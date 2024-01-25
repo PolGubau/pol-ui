@@ -1,10 +1,9 @@
 import type { Meta, StoryFn } from '@storybook/react'
-import type { LabelProps } from './Label'
-import { Label } from './Label'
+import { HelperText, HelperTextProps } from './HelperText'
 
 export default {
-  title: 'Components/Texts/Label',
-  component: Label,
+  title: 'Components/Texts/HelperText',
+  component: HelperText,
   tags: ['autodocs'],
   decorators: [
     Story => (
@@ -17,10 +16,10 @@ export default {
   ],
 } as Meta
 
-const Template: StoryFn<LabelProps> = args => <Label {...args} />
+const Template: StoryFn<HelperTextProps> = args => <HelperText {...args} />
 
 export const DefaultLabel = Template.bind({})
-DefaultLabel.storyName = 'Label'
+DefaultLabel.storyName = 'HelperText'
 DefaultLabel.args = {
-  children: 'Label',
+  children: 'HelperText',
 }
