@@ -37,7 +37,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
         {...props}
         ref={ref}
         type={showPassword ? 'text' : 'password'}
-        rightIcon={
+        rightComponent={
           <EyeButton
             showPassword={showPassword}
             setShowPassword={setShowPassword}

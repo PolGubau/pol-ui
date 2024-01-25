@@ -69,7 +69,7 @@ const TestForm = (): JSX.Element => (
       <Label htmlFor="password">Your password</Label>
       <Input
         addon="Make sure it is at least 12 characters!"
-        icon={HiLockClosed}
+        leftComponent={HiLockClosed}
         id="password"
         type="password"
         required

@@ -15,7 +15,6 @@ import type { DropdownTheme } from '../Dropdown'
 import type { FileInputTheme } from '../FileInput'
 import type { FloatingLabelTheme } from '../FloatingLabel'
 import type { FooterTheme } from '../Footer'
-import type { HelperTextTheme } from '../HelperText'
 import type { KbdTheme } from '../Kbd'
 import type { LabelTheme } from '../Label'
 import type { ListGroupTheme } from '../ListGroup'
@@ -52,6 +51,7 @@ import type {
 import type { BannerTheme } from '../Banner/Banner'
 import { SwitchTheme } from '../Switch'
 import { IconButtonTheme } from '../IconButton'
+import { HelperTextTheme } from '../HelperText/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 

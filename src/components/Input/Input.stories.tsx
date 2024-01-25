@@ -28,7 +28,10 @@ const Template: StoryFn<InputProps> = args => <Input {...args} />
 
 export const Default = Template.bind({})
 Default.storyName = 'Text input'
-Default.args = {}
+Default.args = {
+  label: 'Email',
+  placeholder: 'pol@ui.com',
+}
 
 export const WithPlaceholder = Template.bind({})
 WithPlaceholder.args = {
@@ -38,6 +41,12 @@ export const WithPlaceholderAndLabel = Template.bind({})
 WithPlaceholderAndLabel.args = {
   placeholder: 'pol@ui.com',
   label: 'Email',
+}
+export const LeftLabel = Template.bind({})
+LeftLabel.args = {
+  placeholder: 'pol@ui.com',
+  label: 'Email',
+  labelPosition: 'left',
 }
 
 export const WithAddon = Template.bind({})
@@ -70,12 +79,12 @@ WithAddon.args = {
 export const WithIcon = Template.bind({})
 WithIcon.args = {
   placeholder: 'Username',
-  icon: TbUser,
+  leftComponent: <TbUser className="ml-1" />,
 }
 export const WithRightIcon = Template.bind({})
 WithRightIcon.args = {
   placeholder: 'Email',
-  rightIcon: <TbAt />,
+  rightComponent: <TbAt />,
 }
 export const WithHelperText = Template.bind({})
 WithHelperText.args = {
@@ -94,12 +103,12 @@ export const AllColors = () => (
   <div className="grid grid-cols-2">
     <div className="flex flex-col gap-4 p-4 bg-secondary-50">
       {Object.keys(ColorsEnum).map(color => (
-        <Input key={color} placeholder={color} color={color as any} rightIcon={<TbAt />} />
+        <Input key={color} placeholder={color} color={color as any} rightComponent={<TbAt />} />
       ))}
     </div>
     <div className="dark flex flex-col gap-4 p-4 rounded-xl bg-secondary-900">
       {Object.keys(ColorsEnum).map(color => (
-        <Input key={color} placeholder={color} color={color as any} rightIcon={<TbAt />} />
+        <Input key={color} placeholder={color} color={color as any} rightComponent={<TbAt />} />
       ))}
     </div>
   </div>
@@ -112,7 +121,7 @@ export const AllColorsFilled = () => (
           key={color}
           placeholder={color}
           color={color as any}
-          rightIcon={<TbAt />}
+          rightComponent={<TbAt />}
           defaultValue="I am in light mode"
         />
       ))}
@@ -123,7 +132,7 @@ export const AllColorsFilled = () => (
           key={color}
           placeholder={color}
           color={color as any}
-          rightIcon={<TbAt />}
+          rightComponent={<TbAt />}
           defaultValue="I am in dark mode"
         />
       ))}
@@ -139,7 +148,7 @@ export const AllColorsWithBorder = () => (
           key={color}
           placeholder={color}
           color={color as any}
-          rightIcon={
+          rightComponent={
             <IconButton size="sm" outline color={color} onClick={() => alert(color)}>
               <TbEye size={18} />
             </IconButton>
@@ -155,7 +164,7 @@ export const AllColorsWithBorder = () => (
           key={color}
           placeholder={color}
           color={color as any}
-          rightIcon={<TbAt />}
+          rightComponent={<TbAt />}
           defaultValue="I am in dark mode"
         />
       ))}

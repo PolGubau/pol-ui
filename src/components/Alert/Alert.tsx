@@ -6,22 +6,9 @@ import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
 import type { Colors } from '../PoluiProvider'
 import { ColorsEnum } from '../PoluiProvider/enums'
-
-export interface AlertTheme {
-  base: string
-  borderAccent: string
-  closeButton: AlertCloseButtonTheme
-  color: Colors
-  icon: string
-  rounded: string
-  wrapper: string
-}
-
-export interface AlertCloseButtonTheme {
-  base: AlertTheme['base']
-  color: AlertTheme['color']
-  icon: AlertTheme['icon']
-}
+import { AlertTheme } from './theme'
+import { IconButton } from '../IconButton'
+import { ColorsType } from '../PoluiProvider/PoluiTheme'
 
 export interface AlertProps extends Omit<ComponentProps<'div'>, 'color'> {
   additionalContent?: ReactNode
@@ -39,13 +26,15 @@ export const Alert: FC<AlertProps> = ({
   className,
   color = ColorsEnum.info,
   icon: Icon,
-  onDismiss,
+  onDismiss = false,
   rounded = true,
   theme: customTheme = {},
   withBorderAccent,
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().alert, customTheme)
+  const theme: AlertTheme = mergeDeep(getTheme().alert, customTheme)
+
+  const colorChosen = color as keyof ColorsType
 
   return (
     <div
@@ -63,14 +52,9 @@ export const Alert: FC<AlertProps> = ({
         {Icon && <Icon className={theme.icon} data-testid="ui-alert-icon" />}
         <div>{children}</div>
         {typeof onDismiss === 'function' && (
-          <button
-            aria-label="Dismiss"
-            className={twMerge(theme.closeButton.base, theme.closeButton.color[color])}
-            onClick={onDismiss}
-            type="button"
-          >
-            <HiX aria-hidden className={theme.closeButton.icon} />
-          </button>
+          <IconButton label="Dismiss" type="button" onClick={onDismiss} color={colorChosen}>
+            <HiX aria-hidden />
+          </IconButton>
         )}
       </div>
       {additionalContent && <div>{additionalContent}</div>}

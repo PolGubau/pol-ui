@@ -2,6 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react'
 import { IconButton, type IconButtonProps } from './IconButton'
 import { theme } from '../../theme'
 import { TbSearch, TbTrash } from 'react-icons/tb'
+import { ColorsEnum } from '../PoluiProvider/enums'
 
 export default {
   title: 'Components/Buttons/IconButton',
@@ -141,7 +142,7 @@ export const Colors = (args: IconButtonProps) => (
     <div className="flex gap-3 flex-col bg-secondary-50 p-4 rounded-xl">
       <h3 className="text-black text-xl">Light Mode</h3>
       <div className="flex gap-3 flex-wrap">
-        {Object.keys(theme.button.color).map(v => (
+        {Object.keys(ColorsEnum).map(v => (
           <div className="flex flex-col gap-4" key={v}>
             <span>{v}</span>
             <IconButton {...args} color={v}>
@@ -154,7 +155,7 @@ export const Colors = (args: IconButtonProps) => (
     <div className="flex gap-3 flex-col bg-secondary-900 p-4 rounded-xl">
       <h3 className="text-white text-xl">Dark Mode</h3>
       <div className="flex gap-3 flex-wrap">
-        {Object.keys(theme.button.color).map(v => (
+        {Object.keys(ColorsEnum).map(v => (
           <div className="flex flex-col gap-4" key={v}>
             <span className="text-secondary-200">{v}</span>
             <IconButton {...args} color={v}>

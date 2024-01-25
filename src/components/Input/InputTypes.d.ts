@@ -62,7 +62,15 @@ export interface InputFieldTheme {
  * @author Pol Gubau Amores - https://polgubau.com
  */
 export interface InputTheme {
+  root: {
+    base: string
+    labelPosition: {
+      left: string
+      top: string
+    }
+  }
   base: string
   addon: string
+  label: string
   field: InputFieldTheme
 }

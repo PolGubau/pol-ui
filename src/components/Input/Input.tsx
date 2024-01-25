@@ -1,5 +1,5 @@
-import type { ComponentProps, FC, ReactNode } from 'react'
-import { forwardRef, useId, useState } from 'react'
+import type { ComponentProps, ReactNode } from 'react'
+import { forwardRef, useId } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
@@ -11,17 +11,24 @@ import { MainSizes } from '../PoluiProvider/PoluiTheme'
 import { InputTheme } from './InputTypes'
 import { Label } from '../Label'
 
+export enum InputLabelPositionsEnum {
+  top = 'top',
+  left = 'left',
+}
+export type InputLabelPositions = keyof typeof InputLabelPositionsEnum
 export interface InputProps extends Omit<ComponentProps<'input'>, 'ref' | 'color'> {
   addon?: ReactNode
   color?: keyof Colors
   helperText?: ReactNode
-  icon?: FC<ComponentProps<'svg'>>
-  rightIcon?: ReactNode
+  leftComponent?: ReactNode
+  rightComponent?: ReactNode
   shadow?: boolean
   sizing?: keyof MainSizes
   theme?: DeepPartial<InputTheme>
   border?: boolean
   label?: string
+  labelPosition?: InputLabelPositions
+  labelClassName?: string
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -31,13 +38,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       className,
       color = ColorsEnum.primary,
       helperText,
-      icon: Icon,
-      rightIcon: RightIcon,
+      leftComponent,
+      rightComponent,
       shadow,
       sizing = MainSizesEnum.md,
       theme: customTheme = {},
       label,
+      labelPosition = 'top',
       border = false,
+      labelClassName = '',
       ...props
     },
     ref,
@@ -46,23 +55,29 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const randomId = useId()
 
     return (
-      <>
-        {label && <Label htmlFor={randomId}>{label}</Label>}
+      <div className={twMerge(theme.root.base, theme.root.labelPosition[labelPosition])}>
+        {label && (
+          <Label className={twMerge(theme.label, labelClassName)} htmlFor={randomId}>
+            {label}
+          </Label>
+        )}
         <div className={twMerge(theme.base, className)}>
           {addon && <span className={theme.addon}>{addon}</span>}
-
           <div className={twMerge(theme.field.base)}>
-            {Icon && (
-              <div className={twMerge(theme.field.icons.base, theme.field.icons.left)}>
-                <Icon className={theme.field.icons.svg} />
+            {leftComponent && (
+              <div
+                data-testid="left-icon"
+                className={twMerge(theme.field.icons.base, theme.field.icons.svg, theme.field.icons.left)}
+              >
+                {leftComponent}
               </div>
             )}
-            {RightIcon && (
+            {rightComponent && (
               <div
                 data-testid="right-icon"
                 className={twMerge(theme.field.icons.base, theme.field.icons.svg, theme.field.icons.right)}
               >
-                {RightIcon}
+                {rightComponent}
               </div>
             )}
             <input
@@ -73,18 +88,18 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 theme.field.input.border[border ? 'on' : 'off'],
                 theme.field.input.colors[color],
                 theme.field.input.sizes[sizing],
-                theme.field.input.withIcon[Icon ? 'on' : 'off'],
-                theme.field.input.withRightIcon[RightIcon ? 'on' : 'off'],
+                theme.field.input.withIcon[leftComponent ? 'on' : 'off'],
+                theme.field.input.withRightIcon[rightComponent ? 'on' : 'off'],
                 theme.field.input.withAddon[addon ? 'on' : 'off'],
                 theme.field.input.withShadow[shadow ? 'on' : 'off'],
               )}
               {...props}
               ref={ref}
-            />
+            />{' '}
+            {helperText && <HelperText color={color}>{helperText}</HelperText>}
           </div>
         </div>
-        {helperText && <HelperText color={color}>{helperText}</HelperText>}
-      </>
+      </div>
     )
   },
 )

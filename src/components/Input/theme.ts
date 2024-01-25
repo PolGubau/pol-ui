@@ -1,7 +1,17 @@
 import { InputTheme } from './InputTypes'
 
 export const inputTheme: InputTheme = {
+  root: {
+    base: 'flex ',
+    labelPosition: {
+      left: 'flex-row items-center gap-3',
+      top: 'flex-col gap-1',
+    },
+  },
   base: 'flex',
+
+  label: 'ml-2',
+
   addon:
     'inline-flex items-center rounded-l-md border-none border-secondary-300 bg-secondary-200 text-sm text-secondary-900 dark:border-secondary-600 dark:bg-secondary-600 dark:text-secondary-400',
   field: {
