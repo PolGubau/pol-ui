@@ -1,27 +1,41 @@
-import type { ProgressTheme } from './Progress';
+import { Colors } from '../PoluiProvider'
+import { MainSizesElastic, RoundedSizes } from '../PoluiProvider/PoluiTheme'
 
+export interface ProgressTheme {
+  base: string
+  label: string
+  bar: string
+  color: Colors
+  size: MainSizesElastic
+  rounded: RoundedSizes
+}
 export const progressTheme: ProgressTheme = {
-  base: 'w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700',
+  base: 'w-full overflow-hidden bg-secondary-200 dark:bg-secondary-700 min-w-[40px] flex flex-1 relative',
   label: 'mb-1 flex justify-between font-medium dark:text-white',
-  bar: 'rounded-full text-center font-medium leading-none text-cyan-300 dark:text-cyan-100 space-x-2',
+  bar: 'space-x-2 ',
   color: {
-    dark: 'bg-gray-600 dark:bg-gray-300',
-    blue: 'bg-blue-600',
-    red: 'bg-red-600 dark:bg-red-500',
-    green: 'bg-green-600 dark:bg-green-500',
-    yellow: 'bg-yellow-400',
-    indigo: 'bg-indigo-600 dark:bg-indigo-500',
-    purple: 'bg-purple-600 dark:bg-purple-500',
-    cyan: 'bg-cyan-600',
-    gray: 'bg-gray-500',
-    lime: 'bg-lime-600',
-    pink: 'bg-pink-500',
-    teal: 'bg-teal-600',
+    info: 'bg-info dark:bg-info-500',
+    success: 'bg-success dark:bg-success-500',
+    warning: 'bg-warning dark:bg-warning-500',
+    error: 'bg-error dark:bg-error-500',
+    primary: 'bg-primary dark:bg-primary-500',
+    secondary: 'bg-secondary dark:bg-secondary-500',
   },
   size: {
+    xs: 'h-0.5',
     sm: 'h-1.5',
     md: 'h-2.5',
     lg: 'h-4',
     xl: 'h-6',
   },
-};
+  rounded: {
+    none: 'rounded-none',
+    sm: 'rounded-sm',
+    md: 'rounded-md',
+    lg: 'rounded-lg',
+    xl: 'rounded-xl',
+    full: 'rounded-full',
+    '2xl': 'rounded-2xl',
+    '3xl': 'rounded-3xl',
+  },
+}

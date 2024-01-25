@@ -26,7 +26,7 @@ import type { PaginationTheme } from '../Pagination'
 import type { ProgressTheme } from '../Progress'
 import type { RadioTheme } from '../Radio'
 import type { RangeSliderTheme } from '../RangeSlider'
-import type { RatingAdvancedTheme, RatingTheme } from '../Rating'
+import type { RatingTheme } from '../Rating'
 import type { SelectTheme } from '../Select'
 import type { SidebarTheme } from '../Sidebar'
 import type { LoaderTheme } from '../Loader'
@@ -135,7 +135,6 @@ export interface PoluiTheme {
   modal: ModalTheme
   navbar: NavbarTheme
   rating: RatingTheme
-  ratingAdvanced: RatingAdvancedTheme
   pagination: PaginationTheme
   sidebar: SidebarTheme
   progress: ProgressTheme

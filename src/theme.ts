@@ -26,7 +26,7 @@ import { paginationTheme } from './components/Pagination/theme'
 import { progressTheme } from './components/Progress/theme'
 import { radioTheme } from './components/Radio/theme'
 import { rangeSliderTheme } from './components/RangeSlider/theme'
-import { ratingAdvancedTheme, ratingTheme } from './components/Rating/theme'
+import { ratingTheme } from './components/Rating/theme'
 import { selectTheme } from './components/Select/theme'
 import { sidebarTheme } from './components/Sidebar/theme'
 import { loaderTheme } from './components/Loader/theme'
@@ -73,7 +73,6 @@ export const theme: PoluiTheme = {
   radio: radioTheme,
   rangeSlider: rangeSliderTheme,
   rating: ratingTheme,
-  ratingAdvanced: ratingAdvancedTheme,
   select: selectTheme,
   textInput: inputTheme,
   textarea: textareaTheme,

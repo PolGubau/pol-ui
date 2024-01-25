@@ -5,9 +5,8 @@ import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
-import { RatingAdvanced } from './RatingAdvanced'
 import { RatingTheme } from './theme'
-import { MainSizes, MainSizesElastic } from '../PoluiProvider/PoluiTheme'
+import { MainSizesElastic } from '../PoluiProvider/PoluiTheme'
 import { MainSizesEnum } from '../PoluiProvider/enums'
 import { TbStar } from 'react-icons/tb'
 
@@ -19,7 +18,7 @@ export interface RatingProps extends ComponentProps<'div'> {
   starIcon?: FC<ComponentProps<'svg'>>
 }
 
-const RatingComponent: FC<RatingProps> = ({
+export const Rating: FC<RatingProps> = ({
   className,
   stars = 5,
   filled = 4,
@@ -48,9 +47,4 @@ const RatingComponent: FC<RatingProps> = ({
   )
 }
 
-RatingComponent.displayName = 'Rating'
-RatingAdvanced.displayName = 'Rating.Advanced'
-
-export const Rating = Object.assign(RatingComponent, {
-  Advanced: RatingAdvanced,
-})
+Rating.displayName = 'Rating'

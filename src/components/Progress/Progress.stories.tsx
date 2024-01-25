@@ -1,76 +1,66 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import type { ProgressProps } from './Progress';
-import { Progress } from './Progress';
+import type { Meta, StoryFn } from '@storybook/react'
+import type { ProgressProps } from './Progress'
+import { Progress } from './Progress'
+import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../PoluiProvider/enums'
 
 export default {
   title: 'Components/Progress',
   component: Progress,
+  tags: ['Progress', 'autodocs'],
   decorators: [
-    (Story): JSX.Element => (
-      <div className="flex w-1/2 flex-col">
+    Story => (
+      <div className="flex p-6 flex-col pt-20 min-h-[400px] bg-secondary-50">
         <Story />
       </div>
     ),
   ],
-} as Meta;
+} as Meta
 
-const Template: StoryFn<ProgressProps> = (args) => <Progress {...args} />;
+const Template: StoryFn<ProgressProps> = args => <Progress {...args} />
 
-export const Default = Template.bind({});
+export const Default = Template.bind({})
 Default.args = {
   progress: 45,
-};
-
-export const Sizes = (): JSX.Element => (
-  <>
-    <div className="text-base font-medium dark:text-white">Small</div>
-    <Progress progress={45} size="sm" />
-    <div className="mt-3 text-base font-medium dark:text-white">Default</div>
-    <Progress progress={45} size="md" />
-    <div className="mt-3 text-lg font-medium dark:text-white">Large</div>
-    <Progress progress={45} size="lg" />
-    <div className="mt-3 text-lg font-medium dark:text-white">Extra Large</div>
-    <Progress progress={45} size="xl" />
-  </>
-);
+}
 
 export const Colors = (): JSX.Element => (
-  <>
-    <div className="text-base font-medium">Dark</div>
-    <Progress progress={45} color="dark" />
-    <div className="mt-3 text-base font-medium text-cyan-700">Blue</div>
-    <Progress progress={45} color="info" />
-    <div className="mt-3 text-base font-medium text-red-700">Red</div>
-    <Progress progress={45} color="red" />
-    <div className="mt-3 text-base font-medium text-green-700">Green</div>
-    <Progress progress={45} color="green" />
-    <div className="mt-3 text-base font-medium text-yellow-700">Yellow</div>
-    <Progress progress={45} color="yellow" />
-    <div className="mt-3 text-base font-medium text-indigo-700">Indigo</div>
-    <Progress progress={45} color="indigo" />
-    <div className="mt-3 text-base font-medium text-purple-700">Purple</div>
-    <Progress progress={45} color="purple" />
-  </>
-);
+  <div className="flex gap-4 flex-col">
+    {Object.keys(ColorsEnum).map(color => (
+      <Progress progress={45} color={color} label={color} key={color} />
+    ))}
+  </div>
+)
+export const Sizes = (): JSX.Element => (
+  <div className="flex gap-4 flex-col">
+    {Object.keys(MainSizesEnum).map(v => (
+      <Progress progress={45} size={v} label={v} key={v} />
+    ))}
+  </div>
+)
+export const Roundness = (): JSX.Element => (
+  <div className="flex gap-4 flex-col">
+    {Object.keys(RoundedSizesEnum).map(r => (
+      <Progress progress={45} rounded={r} label={r} key={r} size={'lg'} />
+    ))}
+  </div>
+)
 
-export const WithLabelInside = Template.bind({});
-WithLabelInside.storyName = 'With labels';
-WithLabelInside.args = {
-  textLabel: 'Pol-ui',
-  labelText: true,
+export const CustomClassNames = Template.bind({})
+CustomClassNames.storyName = 'Custom ClassNames'
+CustomClassNames.args = {
   progress: 45,
-  labelProgress: true,
-  size: 'lg',
-};
+  className: 'bg-orange-100 text-white rounded-sm ',
+}
+export const WithoutMotion = Template.bind({})
+WithoutMotion.args = {
+  hasMotion: false,
+  progress: 45,
+  label: 'This progress bar has no motion',
+}
 
-export const WithLabelOutside = Template.bind({});
-WithLabelOutside.storyName = 'Label positions';
+export const WithLabelOutside = Template.bind({})
+WithLabelOutside.storyName = 'Label positions'
 WithLabelOutside.args = {
-  textLabel: 'Pol-ui',
-  labelText: true,
-  textLabelPosition: 'outside',
+  label: 'Label of the progress bar',
   progress: 45,
-  labelProgress: true,
-  progressLabelPosition: 'inside',
-  size: 'lg',
-};
+}

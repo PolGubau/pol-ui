@@ -1,5 +1,4 @@
 import { MainSizes } from '../PoluiProvider/PoluiTheme'
-import type { RatingAdvancedTheme } from './RatingAdvanced'
 export interface RatingTheme {
   root: {
     base: string
@@ -25,15 +24,5 @@ export const ratingTheme: RatingTheme = {
       lg: 'w-10 h-10',
       xl: 'w-14 h-14',
     },
-  },
-}
-
-export const ratingAdvancedTheme: RatingAdvancedTheme = {
-  base: 'flex items-center',
-  label: 'text-sm font-medium text-cyan-600 dark:text-cyan-500',
-  progress: {
-    base: 'mx-4 h-5 w-2/4 rounded bg-gray-200 dark:bg-gray-700',
-    fill: 'h-5 rounded bg-yellow-400',
-    label: 'text-sm font-medium text-cyan-600 dark:text-cyan-500',
   },
 }
