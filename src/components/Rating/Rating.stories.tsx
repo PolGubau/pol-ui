@@ -3,7 +3,7 @@ import type { RatingProps } from './Rating'
 import { Rating } from './Rating'
 import { theme } from '../../theme'
 import { RatingTheme } from './theme'
-import { TbAdjustmentsBolt, TbAlien, TbCactus, TbLayout, TbPhoneCheck, TbPhotoFilled } from 'react-icons/tb'
+import { TbAdjustmentsBolt, TbCactus, TbLayout, TbPhoneCheck, TbPhotoFilled } from 'react-icons/tb'
 
 export default {
   title: 'Components/Rating',
@@ -62,11 +62,11 @@ export const CustomIcon = (): JSX.Element => (
 
 export const Advanced = (): JSX.Element => (
   <div className="flex flex-col gap-4 w-full">
-    <div className="flex gap-1 items-center">
+    <div className="flex gap-2 items-center">
       <Rating />
-      <p className="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">4.95 out of 5</p>
+      <p className="text-sm">4 points out of 5</p>
     </div>
-    <p className="pb-3 text-sm font-medium text-gray-500 dark:text-gray-400">1,745 global ratings</p>
+    <p className="pb-3 text-sm font-medium text-secondary dark:text-secondary">Of 100 reviews</p>
     <Rating.Advanced percentFilled={70}>5 star</Rating.Advanced>
     <Rating.Advanced percentFilled={17}>4 star</Rating.Advanced>
     <Rating.Advanced percentFilled={8}>3 star</Rating.Advanced>
