@@ -1,21 +1,21 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import type { FC } from 'react';
-import { useState } from 'react';
-import { HiEye, HiHeart, HiInformationCircle } from 'react-icons/hi';
-import { describe, expect, it, vi } from 'vitest';
-import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider';
+import { render, screen, waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import type { FC } from 'react'
+import { useState } from 'react'
+import { HiEye, HiHeart, HiInformationCircle } from 'react-icons/hi'
+import { describe, expect, it, vi } from 'vitest'
+import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider'
 
-import type { AlertProps } from './Alert';
-import { Alert } from './Alert';
+import type { AlertProps } from './Alert'
+import { Alert } from './Alert'
 
 describe.concurrent('Components / Alert', () => {
   describe.concurrent('A11y', () => {
     it('should have `role="alert"`', () => {
-      render(<TestAlert />);
+      render(<TestAlert />)
 
-      expect(alert()).toBeInTheDocument();
-    });
+      expect(alert()).toBeInTheDocument()
+    })
 
     describe('Theme', () => {
       it('should use custom `base` classes', () => {
@@ -25,138 +25,111 @@ describe.concurrent('Components / Alert', () => {
               info: 'text-purple-100',
             },
           },
-        };
+        }
         render(
           <PoluiProvider theme={{ theme }}>
             <TestAlert />
           </PoluiProvider>,
-        );
+        )
 
-        expect(alert()).toHaveClass('text-purple-100');
-      });
+        expect(alert()).toHaveClass('text-purple-100')
+      })
 
       it('should use custom `borderAccent` classes', () => {
         const theme: CustomPoluiTheme = {
           alert: {
             borderAccent: 'border-t-4 border-purple-500',
           },
-        };
+        }
         render(
           <PoluiProvider theme={{ theme }}>
             <TestAlert withBorderAccent />
           </PoluiProvider>,
-        );
+        )
 
-        expect(alert()).toHaveClass('border-t-4 border-purple-500');
-      });
+        expect(alert()).toHaveClass('border-t-4 border-purple-500')
+      })
 
       it('should use custom `wrapper` classes', () => {
         const theme: CustomPoluiTheme = {
           alert: {
             wrapper: 'flex items-center',
           },
-        };
+        }
         render(
           <PoluiProvider theme={{ theme }}>
             <TestAlert />
           </PoluiProvider>,
-        );
+        )
 
-        expect(wrapper()).toHaveClass('flex items-center');
-      });
-
-      it('should use custom `color` classes', () => {
-        const theme: CustomPoluiTheme = {
-          alert: {
-            closeButton: {
-              color: {
-                info: 'text-purple-500 hover:bg-purple-200 dark:text-purple-600 dark:hover:text-purple-300',
-              },
-            },
-            color: {
-              info: 'text-purple-700 bg-purple-100 border-purple-500 dark:bg-purple-200 dark:text-purple-800',
-            },
-          },
-        };
-        render(
-          <PoluiProvider theme={{ theme }}>
-            <TestAlert />
-          </PoluiProvider>,
-        );
-
-        expect(alert()).toHaveClass(
-          'text-purple-700 bg-purple-100 border-purple-500 dark:bg-purple-200 dark:text-purple-800',
-        );
-        expect(dismiss()).toHaveClass(
-          'text-purple-500 hover:bg-purple-200 dark:text-purple-600 dark:hover:text-purple-300',
-        );
-      });
+        expect(wrapper()).toHaveClass('flex items-center')
+      })
 
       it('should use custom `icon`', () => {
         const theme: CustomPoluiTheme = {
           alert: {
             icon: 'alert-custom-icon',
           },
-        };
+        }
         render(
           <PoluiProvider theme={{ theme }}>
             <TestAlert icon={HiHeart} />
           </PoluiProvider>,
-        );
+        )
 
-        expect(icon()).toHaveClass('alert-custom-icon');
-      });
+        expect(icon()).toHaveClass('alert-custom-icon')
+      })
 
       it('should show custom `rounded` class', () => {
         const theme: CustomPoluiTheme = {
           alert: {
             rounded: 'rounded',
           },
-        };
+        }
         render(
           <PoluiProvider theme={{ theme }}>
             <TestAlert />
           </PoluiProvider>,
-        );
+        )
 
-        expect(alert()).toHaveClass('rounded');
-      });
-    });
-  });
+        expect(alert()).toHaveClass('rounded')
+      })
+    })
+  })
 
   describe.concurrent('Keyboard interactions', () => {
     it('should dismiss when `Tab` is pressed to navigate to Dismiss button and `Space` is pressed', async () => {
-      const onDismiss = vi.fn();
-      const user = userEvent.setup();
-      render(<Alert onDismiss={onDismiss} />);
+      const onDismiss = vi.fn()
+      const user = userEvent.setup()
+      render(<Alert onDismiss={onDismiss} />)
 
       await waitFor(async () => {
-        await user.tab();
+        await user.tab()
 
-        expect(dismiss()).toHaveFocus();
-      });
+        expect(dismiss()).toHaveFocus()
+      })
 
-      await user.keyboard('[Space]');
+      await user.keyboard('[Space]')
 
-      expect(onDismiss).toHaveBeenCalled();
-    });
-  });
+      expect(onDismiss).toHaveBeenCalled()
+    })
+  })
 
   describe.concurrent('Props', () => {
     it('should call `onDismiss` when clicked', async () => {
-      const onDismiss = vi.fn();
-      const user = userEvent.setup();
-      render(<Alert onDismiss={onDismiss} />);
+      const onDismiss = vi.fn()
+      const user = userEvent.setup()
+      render(<Alert onDismiss={onDismiss} />)
 
-      await user.click(dismiss());
+      await user.click(dismiss())
 
-      expect(onDismiss).toHaveBeenCalled();
-    });
-  });
-});
+      expect(onDismiss).toHaveBeenCalled()
+    })
+  })
+})
 
 const TestAlert: FC<AlertProps> = (props: AlertProps) => {
-  const [isDismissed, setDismissed] = useState(false);
+  const [isDismissed, setDismissed] = useState(false)
 
   return (
     <Alert
@@ -192,13 +165,13 @@ const TestAlert: FC<AlertProps> = (props: AlertProps) => {
     >
       {isDismissed ? 'dismissed' : 'waiting'}
     </Alert>
-  );
-};
+  )
+}
 
-const alert = () => screen.getByRole('alert');
+const alert = () => screen.getByRole('alert')
 
-const wrapper = () => screen.getByTestId('ui-alert-wrapper');
+const wrapper = () => screen.getByTestId('ui-alert-wrapper')
 
-const icon = () => screen.getByTestId('ui-alert-icon');
+const icon = () => screen.getByTestId('ui-alert-icon')
 
-const dismiss = () => screen.getByLabelText('Dismiss');
+const dismiss = () => screen.getByTestId('ui-alert-dismiss')

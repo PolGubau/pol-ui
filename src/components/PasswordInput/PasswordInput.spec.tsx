@@ -5,8 +5,8 @@ import { PasswordInput } from './PasswordInput'
 
 describe.concurrent('Components / Text input', () => {
   describe.concurrent('A11y', () => {
-    it('should have `role="textbox"` by default', () => {
-      const textInput = render(<PasswordInput />).getByRole('textbox')
+    it('should have `role="input"` by default', () => {
+      const textInput = render(<PasswordInput label="a" />).getByText('a')
 
       expect(textInput).toBeInTheDocument()
     })

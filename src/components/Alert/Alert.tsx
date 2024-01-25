@@ -52,8 +52,15 @@ export const Alert: FC<AlertProps> = ({
         {Icon && <Icon className={theme.icon} data-testid="ui-alert-icon" />}
         <div>{children}</div>
         {typeof onDismiss === 'function' && (
-          <IconButton label="Dismiss" type="button" onClick={onDismiss} color={colorChosen}>
-            <HiX aria-hidden />
+          <IconButton
+            label="Dismiss"
+            title="Dismiss"
+            data-testid="ui-alert-dismiss"
+            type="button"
+            onClick={onDismiss}
+            color={colorChosen}
+          >
+            <HiX aria-hidden title="Dismiss" />
           </IconButton>
         )}
       </div>

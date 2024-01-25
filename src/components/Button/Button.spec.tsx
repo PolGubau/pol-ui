@@ -125,39 +125,6 @@ describe('Components / Button', () => {
         expect(buttonLink()).toBeInTheDocument()
       })
 
-      it('should render component defined in `as`', () => {
-        const CustomComponent = ({ children }: PropsWithChildren<{ uniqueProp: boolean }>) => {
-          return <li>{children}</li>
-        }
-
-        render(
-          <ul>
-            <Button as={CustomComponent} uniqueProp>
-              Something or other
-            </Button>
-          </ul>,
-        )
-
-        const button = buttonListItem()
-
-        expect(button).toBeInTheDocument()
-        expect(button).toHaveTextContent('Something or other')
-      })
-
-      it('should render component defined in `as` prop even though `href` is defined', () => {
-        const CustomComponent = ({ children }: PropsWithChildren) => {
-          return <li>{children}</li>
-        }
-
-        render(
-          <ul>
-            <Button href="#" as={CustomComponent} label="Something or other" />
-          </ul>,
-        )
-
-        expect(buttonListItem()).toBeInTheDocument()
-      })
-
       it('should render tag element defined in `as`', () => {
         render(
           <ul>

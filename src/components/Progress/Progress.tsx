@@ -8,7 +8,6 @@ import { MainSizesElastic, RoundedSizesElastic } from '../PoluiProvider/PoluiThe
 import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../PoluiProvider/enums'
 import { ProgressTheme } from './theme'
 import { motion } from 'framer-motion'
-import { Tooltip } from '../Tooltip'
 export interface ProgressProps extends ComponentProps<'div'> {
   progress?: number
   size?: keyof MainSizesElastic
@@ -37,14 +36,13 @@ export const Progress: FC<ProgressProps> = ({
   const theme = mergeDeep(getTheme().progress, customTheme)
 
   return (
-    <div id={id} aria-label={label} {...props}>
+    <div id={id} aria-label={label} role="progressbar" {...props} aria-valuenow={progress}>
       <label className={theme.label} data-testid="ui-progress-label-container">
         {label && <span data-testid="ui-progress-label">{label}</span>}
       </label>
       <div className={twMerge(theme.base, theme.size[size], theme.rounded[rounded], className)}>
         <motion.div
           initial={hasMotion ? { width: 0 } : false}
-          aria-valuenow={progress}
           animate={{ width: `${progress}%` }}
           exit={{ width: 0 }}
           transition={{ ease: 'easeOut', duration: 0.5 }}

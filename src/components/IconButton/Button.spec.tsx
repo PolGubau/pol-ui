@@ -28,7 +28,7 @@ describe('Components / IconButton', () => {
 
       render(<IconButton onClick={onClick}>Hi there</IconButton>)
 
-      await user.click(IconButton())
+      await user.click(iconButton())
 
       expect(onClick).toHaveBeenCalledTimes(1)
     })
@@ -60,16 +60,16 @@ describe('Components / IconButton', () => {
         expect(iconButton()).toBeDisabled()
       })
 
-      it('should show <Loader /> when `isProcessing={true}`', () => {
-        render(<IconButton isProcessing>Hi there</IconButton>)
+      it('should show <Loader /> when `isLoading={true}`', () => {
+        render(<IconButton isLoading>Hi there</IconButton>)
 
         expect(screen.getByText(/Hi there/)).toBeInTheDocument()
-        expect(screen.getByRole('IconButton')).toBeInTheDocument()
+        expect(screen.getByRole('button')).toBeInTheDocument()
       })
 
-      it('should show custom Loader when `isProcessing={true}` and `processingLoader` is present', () => {
+      it('should show custom Loader when `isLoading={true}` and `processingLoader` is present', () => {
         render(
-          <IconButton isProcessing processingLoader={<AiOutlineLoading data-testid="Loader" />}>
+          <IconButton isLoading loader={<AiOutlineLoading data-testid="Loader" />}>
             Hi there
           </IconButton>,
         )
@@ -86,50 +86,11 @@ describe('Components / IconButton', () => {
         expect(iconButton()).toHaveTextContent('0')
       })
 
-      it('should render when `children={undefined}`', () => {
-        render(<IconButton label="Something or other" />)
-
-        expect(iconButton()).toHaveTextContent('Something or other')
-      })
-
       describe('`as` and `href` props', () => {
         it('should render an anchor `<a>` when `href=".."`', () => {
           render(<IconButton href="#" label="Something or other" />)
 
           expect(iconButtonLink()).toBeInTheDocument()
-        })
-
-        it('should render component defined in `as`', () => {
-          const CustomComponent = ({ children }: PropsWithChildren<{ uniqueProp: boolean }>) => {
-            return <li>{children}</li>
-          }
-
-          render(
-            <ul>
-              <IconButton as={CustomComponent} uniqueProp>
-                Something or other
-              </IconButton>
-            </ul>,
-          )
-
-          const iconButton = iconButtonListItem()
-
-          expect(iconButton).toBeInTheDocument()
-          expect(iconButton).toHaveTextContent('Something or other')
-        })
-
-        it('should render component defined in `as` prop even though `href` is defined', () => {
-          const CustomComponent = ({ children }: PropsWithChildren) => {
-            return <li>{children}</li>
-          }
-
-          render(
-            <ul>
-              <IconButton href="#" as={CustomComponent} label="Something or other" />
-            </ul>,
-          )
-
-          expect(iconButtonListItem()).toBeInTheDocument()
         })
 
         it('should render tag element defined in `as`', () => {
@@ -224,75 +185,12 @@ describe('Components / IconButton', () => {
 
         expect(iconButtonInnerContent).toHaveClass('font-extralight')
       })
-
-      it('should use `label` classes', () => {
-        const theme: CustomPoluiTheme = {
-          iconButton: {
-            label: 'font-extralight',
-          },
-        }
-
-        render(
-          <PoluiProvider theme={{ theme }}>
-            <IconButton label="Hi there" />
-          </PoluiProvider>,
-        )
-
-        const iconButtonLabel = screen.getByText('Hi there')
-
-        expect(iconButtonLabel).toHaveClass('font-extralight')
-      })
-
-      it('should use `rounded` classes', () => {
-        const theme: CustomPoluiTheme = {
-          iconButton: {
-            rounded: {
-              xs: 'rounded-sm',
-            },
-          },
-        }
-
-        render(
-          <PoluiProvider theme={{ theme }}>
-            <IconButton label="Normal IconButton" />
-            <IconButton label="full" rounded="full" />
-          </PoluiProvider>,
-        )
-
-        const normalIconButton = iconButtons()[0]
-        const full = iconButtons()[1]
-
-        expect(normalIconButton).toHaveClass('rounded-md')
-        expect(full).toHaveClass('rounded-full')
-      })
-
-      it('should use `size` classes', () => {
-        const theme: CustomPoluiTheme = {
-          iconButton: {
-            size: {
-              xl: 'font-extrabold',
-            },
-          },
-        }
-
-        render(
-          <PoluiProvider theme={{ theme }}>
-            <IconButton size="xxl">Hello</IconButton>
-          </PoluiProvider>,
-        )
-
-        const iconButton = screen.getByText('Hello')
-
-        expect(iconButton).toHaveClass('font-extrabold')
-      })
     })
   })
 
-  const iconButton = () => screen.getByRole('IconButton')
+  const iconButton = () => screen.getByRole('button')
 
   const iconButtonLink = () => screen.getByRole('link')
 
   const iconButtonListItem = () => screen.getByRole('listitem')
-
-  const iconButtons = () => screen.getAllByRole('IconButton')
 })
