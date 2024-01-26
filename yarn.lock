@@ -12862,6 +12862,7 @@ __metadata:
     react-dom: "npm:^18.2.0"
     react-icons: "npm:^4.12.0"
     storybook: "npm:^7.5.3"
+    string-width: "npm:^7.1.0"
     tailwind-merge: "npm:^2.0.0"
     tailwindcss: "npm:^3.3.5"
     tsconfig-paths-webpack-plugin: "npm:^4.1.0"
