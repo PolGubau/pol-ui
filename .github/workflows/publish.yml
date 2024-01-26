@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: 👍 Checkout
         uses: actions/checkout@v3
+        with:
+          node-version: '20.x'
 
       - name: ❇️ Setup node.js LTS
         uses: actions/setup-node@v3

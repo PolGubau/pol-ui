@@ -21,11 +21,12 @@ jobs:
     steps:
       # Manual Checkout
       - uses: actions/checkout@v3
-
+        with:
+          node-version: '20.x'
       # Set up Node
       - uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: '20.x'
 
       #👇 Add Storybook build and deploy to GitHub Pages as a step in the workflow
       - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.1
