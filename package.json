@@ -30,7 +30,8 @@
   },
   "workspaces": {
     "nohoist": [
-      "**/cli-table3"
+      "**/cli-table3",
+      "**/string-width"
     ]
   },
   "scripts": {
