@@ -52,7 +52,8 @@
     "build-storybook": "storybook build"
   },
   "resolutions": {
-    "jackspeak": "2.3.5"
+    "jackspeak": "2.3.5",
+    "string-width": "7.1.0"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.2",
