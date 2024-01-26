@@ -4749,6 +4749,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/esm@npm:^3":
+  version: 3.2.2
+  resolution: "@types/esm@npm:3.2.2"
+  dependencies:
+    "@types/node": "npm:*"
+  checksum: 4285ec39ab1d4b674145415f0a74badc6231452f1ae9a36df05d2f6f8f25256ceb4d3e1efca6812533cee68349d57fe5b1bf2d29c4519c095dc226b34ad9370a
+  languageName: node
+  linkType: hard
+
 "@types/estree@npm:*, @types/estree@npm:1.0.5, @types/estree@npm:^1.0.0, @types/estree@npm:^1.0.5":
   version: 1.0.5
   resolution: "@types/estree@npm:1.0.5"
@@ -8875,6 +8884,13 @@ __metadata:
   bin:
     eslint: bin/eslint.js
   checksum: 2be598f7da1339d045ad933ffd3d4742bee610515cd2b0d9a2b8b729395a01d4e913552fff555b559fccaefd89d7b37632825789d1b06470608737ae69ab43fb
+  languageName: node
+  linkType: hard
+
+"esm@npm:^3.2.25":
+  version: 3.2.25
+  resolution: "esm@npm:3.2.25"
+  checksum: 8e60e8075506a7ce28681c30c8f54623fe18a251c364cd481d86719fc77f58aa055b293d80632d9686d5408aaf865ffa434897dc9fd9153c8b3f469fad23f094
   languageName: node
   linkType: hard
 
@@ -13474,6 +13490,7 @@ __metadata:
     "@testing-library/jest-dom": "npm:^6.1.4"
     "@testing-library/react": "npm:^14.1.2"
     "@testing-library/user-event": "npm:^14.5.1"
+    "@types/esm": "npm:^3"
     "@types/node": "npm:^20.10.0"
     "@types/react": "npm:^18.2.37"
     "@types/react-dom": "npm:^18.2.15"
@@ -13492,6 +13509,7 @@ __metadata:
     eslint-plugin-react: "npm:^7.33.2"
     eslint-plugin-react-hooks: "npm:^4.6.0"
     eslint-plugin-storybook: "npm:^0.6.15"
+    esm: "npm:^3.2.25"
     framer-motion: "npm:^10.18.0"
     jsdom: "npm:^22.1.0"
     postcss: "npm:^8.4.31"
