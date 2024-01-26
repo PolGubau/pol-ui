@@ -170,5 +170,6 @@
       "jsx-a11y/anchor-is-valid": "off",
       "react/no-unescaped-entities": "off"
     }
-  }
+  },
+  "packageManager": "yarn@4.0.2"
 }
