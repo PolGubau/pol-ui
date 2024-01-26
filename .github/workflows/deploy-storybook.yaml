@@ -15,6 +15,7 @@ permissions:
 # List of jobs
 jobs:
   deploy:
+    name: 🤘 Publish Storybook to GitHub Pages
     runs-on: ubuntu-latest
     # Job steps
     steps:
