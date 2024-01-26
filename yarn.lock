@@ -6857,7 +6857,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cli-table3@npm:^0.6.1":
+"cli-table3@npm:^0.6.1, cli-table3@npm:^0.6.3":
   version: 0.6.3
   resolution: "cli-table3@npm:0.6.3"
   dependencies:
@@ -12846,6 +12846,7 @@ __metadata:
     "@vitest/ui": "npm:^0.34.7"
     autoprefixer: "npm:^10.4.16"
     axe-core: "npm:^4.8.2"
+    cli-table3: "npm:^0.6.3"
     embla-carousel-react: "npm:^8.0.0-rc19"
     eslint: "npm:^8.54.0"
     eslint-plugin-jsx-a11y: "npm:^6.8.0"
