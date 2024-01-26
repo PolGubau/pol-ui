@@ -15,6 +15,7 @@
     "Pol Gubau Amores <gubaupol@gmail.com> (https://polgubau.com)"
   ],
   "homepage": "https://ui.polgubau.com",
+  "author": "Pol Gubau Amores <gubaupol@gmail.com> (https://polgubau.com)",
   "bugs": "https://github.com/PolGubau/pol-ui/issues",
   "license": "MIT",
   "files": [
@@ -127,7 +128,6 @@
     "react-dom": "^18",
     "tailwindcss": "^3"
   },
-  "private": false,
   "eslintConfig": {
     "settings": {
       "react": {
