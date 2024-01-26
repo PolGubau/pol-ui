@@ -49,10 +49,10 @@ import type {
   TriggerReasonEnum,
 } from './enums'
 import type { BannerTheme } from '../Banner/Banner'
-import { SwitchTheme } from '../Switch'
-import { IconButtonTheme } from '../IconButton'
-import { HelperTextTheme } from '../HelperText/theme'
-import { CopyrightTheme } from '../Copyright/theme'
+import type { SwitchTheme } from '../Switch'
+import type { IconButtonTheme } from '../IconButton'
+import type { HelperTextTheme } from '../HelperText/theme'
+import type { CopyrightTheme } from '../Copyright/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 

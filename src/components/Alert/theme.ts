@@ -1,4 +1,4 @@
-import { Colors } from '../PoluiProvider'
+import type { Colors } from '../PoluiProvider'
 
 export interface AlertTheme {
   base: string

@@ -6,9 +6,9 @@ import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
 import type { Colors } from '../PoluiProvider'
 import { ColorsEnum } from '../PoluiProvider/enums'
-import { AlertTheme } from './theme'
+import type { AlertTheme } from './theme'
 import { IconButton } from '../IconButton'
-import { ColorsType } from '../PoluiProvider/PoluiTheme'
+import type { ColorsType } from '../PoluiProvider/PoluiTheme'
 
 export interface AlertProps extends Omit<ComponentProps<'div'>, 'color'> {
   additionalContent?: ReactNode
