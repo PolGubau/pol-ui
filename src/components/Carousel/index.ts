@@ -1,5 +1,3 @@
-export { Carousel } from './Carousel2'
-export type { CarouselProps, DefaultLateralControlProps } from './Carousel2'
 export type {
   CarouselControlTheme,
   CarouselIndicatorsTheme,
@@ -8,3 +6,6 @@ export type {
   CarouselScrollContainer,
   CarouselTheme,
 } from './theme'
+
+export { carouselTheme } from './theme'
+export { Carousel } from './Carousel'

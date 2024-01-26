@@ -1,4 +1,4 @@
-import { IBoolean } from '../PoluiProvider'
+import type { IBoolean } from '../PoluiProvider'
 
 export interface CarouselTheme {
   root: CarouselRootTheme
