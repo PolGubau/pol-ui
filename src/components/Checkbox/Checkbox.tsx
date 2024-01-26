@@ -5,6 +5,7 @@ import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
 import type { Colors } from '../PoluiProvider'
+import { ColorsEnum } from '../PoluiProvider/enums'
 
 export interface CheckboxTheme {
   root: CheckboxRootTheme
@@ -20,7 +21,7 @@ export interface CheckboxProps extends Omit<ComponentProps<'input'>, 'type' | 'r
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, color = 'primary', theme: customTheme = {}, ...props }, ref) => {
+  ({ className, color = ColorsEnum.primary, theme: customTheme = {}, ...props }, ref) => {
     const theme = mergeDeep(getTheme().checkbox, customTheme)
 
     return (
