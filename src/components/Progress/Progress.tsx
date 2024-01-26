@@ -4,9 +4,9 @@ import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
-import { MainSizesElastic, RoundedSizesElastic } from '../PoluiProvider/PoluiTheme'
+import type { MainSizesElastic, RoundedSizesElastic } from '../PoluiProvider/PoluiTheme'
 import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../PoluiProvider/enums'
-import { ProgressTheme } from './theme'
+import type { ProgressTheme } from './theme'
 import { motion } from 'framer-motion'
 export interface ProgressProps extends ComponentProps<'div'> {
   progress?: number
@@ -16,7 +16,6 @@ export interface ProgressProps extends ComponentProps<'div'> {
   hasMotion?: boolean
   rounded?: keyof RoundedSizesElastic
   barClassName?: string
-  loading?: boolean
 }
 
 export const Progress: FC<ProgressProps> = ({
@@ -29,7 +28,6 @@ export const Progress: FC<ProgressProps> = ({
   rounded = RoundedSizesEnum.full,
   theme: customTheme = {},
   barClassName,
-  loading,
   ...props
 }) => {
   const id = useId()

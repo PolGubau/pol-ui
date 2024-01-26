@@ -1,2 +1,4 @@
-export { Progress } from './Progress';
-export type { ProgressTheme, ProgressColor, ProgressProps, ProgressSizes } from './Progress';
+export { Progress } from './Progress'
+export type { ProgressProps } from './Progress'
+export type { ProgressTheme } from './theme'
+export { progressTheme } from './theme'

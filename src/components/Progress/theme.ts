@@ -1,5 +1,5 @@
-import { Colors } from '../PoluiProvider'
-import { MainSizesElastic, RoundedSizes } from '../PoluiProvider/PoluiTheme'
+import type { Colors } from '../PoluiProvider'
+import type { MainSizesElastic, RoundedSizes } from '../PoluiProvider/PoluiTheme'
 
 export interface ProgressTheme {
   base: string

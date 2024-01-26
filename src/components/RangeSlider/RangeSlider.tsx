@@ -4,33 +4,18 @@ import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
-import type { InputSizes } from '../Input'
+import type { MainSizesElastic } from '../PoluiProvider/PoluiTheme'
+import type { RangeSliderTheme } from './theme'
+import { MainSizesEnum } from '../PoluiProvider/enums'
 
-export interface RangeSliderTheme {
-  root: RangeSliderRootTheme
-  field: RangeSliderFieldTheme
-}
-
-export interface RangeSliderRootTheme {
-  base: string
-}
-
-export interface RangeSliderFieldTheme {
-  base: string
-  input: {
-    base: string
-    sizes: InputSizes
-  }
-}
-
-export interface RangeSliderProps extends Omit<ComponentProps<'input'>, 'ref' | 'type'> {
-  sizing?: keyof InputSizes
+export interface RangeSliderProps extends Omit<ComponentProps<'input'>, 'ref' | 'type' | 'size'> {
+  size?: keyof MainSizesElastic
   theme?: DeepPartial<RangeSliderTheme>
 }
 
 export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
-  ({ className, sizing = 'md', theme: customTheme = {}, ...props }, ref) => {
-    const theme = mergeDeep(getTheme().rangeSlider, customTheme)
+  ({ className, size = MainSizesEnum.md, theme: customTheme = {}, ...props }, ref) => {
+    const theme: RangeSliderTheme = mergeDeep(getTheme().rangeSlider, customTheme)
 
     return (
       <div data-testid="ui-range-slider" className={twMerge(theme.root.base, className)}>
@@ -38,7 +23,7 @@ export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
           <input
             ref={ref}
             type="range"
-            className={twMerge(theme.field.input.base, theme.field.input.sizes[sizing])}
+            className={twMerge(theme.field.input.base, theme.field.input.sizes[size])}
             {...props}
           />
         </div>
