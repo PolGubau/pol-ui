@@ -52,6 +52,7 @@ import type { BannerTheme } from '../Banner/Banner'
 import { SwitchTheme } from '../Switch'
 import { IconButtonTheme } from '../IconButton'
 import { HelperTextTheme } from '../HelperText/theme'
+import { CopyrightTheme } from '../Copyright/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -125,6 +126,7 @@ export interface PoluiTheme {
   buttonGroup: ButtonGroupTheme
   iconButton: IconButtonTheme
   card: CardTheme
+  copyright: CopyrightTheme
   carousel: CarouselTheme
   datepicker: DatepickerTheme
   darkThemeToggle: DarkThemeToggleTheme

@@ -14,7 +14,6 @@ import { datePickerTheme } from './components/Datepicker/theme'
 import { dropdownTheme } from './components/Dropdown/theme'
 import { fileInputTheme } from './components/FileInput/theme'
 import { floatingLabelTheme } from './components/FloatingLabel/theme'
-import { footerTheme } from './components/Copyright/theme'
 import { helperTextTheme } from './components/HelperText/theme'
 import { kbdTheme } from './components/Kbd/theme'
 import { labelTheme } from './components/Label/theme'
@@ -40,6 +39,8 @@ import { tooltipTheme } from './components/Tooltip/theme'
 import { bannerTheme } from './components/Banner/theme'
 import { switchTheme } from './components/Switch/theme'
 import { buttonTheme } from './components/Button/theme'
+import { footerTheme } from './components/Footer/theme'
+import { copyrightTheme } from './components/Copyright/theme'
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,
@@ -54,6 +55,7 @@ export const theme: PoluiTheme = {
   buttonGroup: buttonGroupTheme,
   card: cardTheme,
   carousel: carouselTheme,
+  copyright: copyrightTheme,
   checkbox: checkboxTheme,
   datepicker: datePickerTheme,
   darkThemeToggle: darkThemeToggleTheme,
