@@ -5,7 +5,6 @@ import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
 import type { FloatingLabelTheme } from './theme'
-import { MainSizesEnum } from '../PoluiProvider/enums'
 
 export type FloatingLabelColor = 'default' | 'success' | 'error'
 export type FloatingLabelSizing = 'sm' | 'md'
@@ -27,7 +26,7 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
       label,
       helperText,
       color = 'default',
-      sizing = MainSizesEnum.md,
+      // sizing = MainSizesEnum.md,
       variant,
       disabled = false,
       theme: customTheme = {},
@@ -46,7 +45,7 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
             type="text"
             id={props.id ? props.id : 'floatingLabel' + randomId}
             aria-describedby="outlined_success_help"
-            className={twMerge(theme.input[variant][sizing], className)}
+            // className={twMerge(theme.input[variant][sizing], className)}
             placeholder=" "
             data-testid="floating-label"
             disabled={disabled}
@@ -55,7 +54,7 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
           />
           <label
             htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-            className={twMerge(theme.label[color][variant][sizing], className)}
+            // className={twMerge(theme.label[color][variant][sizing], className)}
           >
             {label}
           </label>

@@ -5,13 +5,12 @@ import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
 import { HelperText } from '../HelperText'
-import type { InputColors } from '../Input'
-import { FileInputTheme } from './theme'
+import type { FileInputTheme } from './theme'
 import { ColorsEnum, MainSizesEnum } from '../PoluiProvider/enums'
-import { MainSizes } from '../PoluiProvider/PoluiTheme'
+import type { Colors, MainSizes } from '../PoluiProvider/PoluiTheme'
 
 export interface FileInputProps extends Omit<ComponentProps<'input'>, 'type' | 'ref' | 'color' | 'size'> {
-  color?: keyof InputColors
+  color?: keyof Colors
   helperText?: ReactNode
   size?: keyof MainSizes
   theme?: DeepPartial<FileInputTheme>

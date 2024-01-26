@@ -7,8 +7,8 @@ import type { DeepPartial } from '../../types'
 import type { Colors } from '../PoluiProvider'
 import { HelperText } from '../HelperText'
 import { ColorsEnum, MainSizesEnum } from '../PoluiProvider/enums'
-import { MainSizes } from '../PoluiProvider/PoluiTheme'
-import { InputTheme } from './InputTypes'
+import type { MainSizes } from '../PoluiProvider/PoluiTheme'
+import type { InputTheme } from './InputTypes'
 import { Label } from '../Label'
 
 export enum InputLabelPositionsEnum {

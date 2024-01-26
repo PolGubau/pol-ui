@@ -12,10 +12,11 @@ import { Loader } from '../Loader'
 import { ButtonBase, type ButtonBaseProps } from './ButtonBase'
 import type { PositionInButtonGroup } from './ButtonGroup/ButtonGroup'
 import { ButtonGroup } from './ButtonGroup/ButtonGroup'
-import { MainSizesElastic, type RoundedSizes } from '../PoluiProvider/PoluiTheme'
+import type { MainSizesElastic } from '../PoluiProvider/PoluiTheme'
+import { type RoundedSizes } from '../PoluiProvider/PoluiTheme'
 import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../PoluiProvider/enums'
 import { useRipple } from '../../hooks'
-import { ButtonTheme } from './theme'
+import type { ButtonTheme } from './theme'
 import { motion } from 'framer-motion'
 
 export const rippleClass = (color: keyof Colors) => {

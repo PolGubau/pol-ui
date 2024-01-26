@@ -1,10 +1,10 @@
 import { FloatingTree, useFloatingParentNodeId } from '@floating-ui/react'
 import * as React from 'react'
-import { DeepPartial } from 'src/types'
-import { DropdownTheme } from './theme'
+import type { DropdownTheme } from './theme'
 import { DropdownComponent } from './DropdownComponent'
 import { TbChevronDown } from 'react-icons/tb'
-import { Colors, MainSizesElastic, RoundedSizes } from '../PoluiProvider/PoluiTheme'
+import type { Colors, MainSizesElastic, RoundedSizes } from '../PoluiProvider/PoluiTheme'
+import type { DeepPartial } from '../../types'
 
 /**
  * We need to omit color and size from the base button props because we want to use the color and size from the dropdown theme.
@@ -38,3 +38,5 @@ export const Dropdown = React.forwardRef<HTMLButtonElement, DropdownProps & Base
 
   return <DropdownComponent {...props} ref={ref} />
 })
+
+Dropdown.displayName = 'Dropdown'

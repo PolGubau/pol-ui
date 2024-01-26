@@ -1,6 +1,6 @@
 import type { ButtonGroupTheme, PositionInButtonGroup } from '../Button/ButtonGroup/ButtonGroup'
-import { Colors, IBoolean } from '../PoluiProvider'
-import { MainSizesElastic, RoundedSizes } from '../PoluiProvider/PoluiTheme'
+import type { Colors, IBoolean } from '../PoluiProvider'
+import type { MainSizesElastic, RoundedSizes } from '../PoluiProvider/PoluiTheme'
 
 export interface ButtonTheme {
   base: string

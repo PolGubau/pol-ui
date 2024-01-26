@@ -1,6 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react'
 
-import { PasswordInput, PasswordInputProps } from './PasswordInput'
+import type { PasswordInputProps } from './PasswordInput'
+import { PasswordInput } from './PasswordInput'
 
 export default {
   title: 'Components/Inputs/PasswordInput',

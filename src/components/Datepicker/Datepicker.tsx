@@ -241,7 +241,7 @@ export const Datepicker: FC<DatepickerProps> = ({
           {!inline && (
             <Input
               theme={theme.root.input}
-              leftComponent={TbCalendar}
+              leftComponent={<TbCalendar />}
               ref={inputRef}
               onFocus={() => {
                 if (!isDateEqual(viewDate, selectedDate)) {

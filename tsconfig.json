@@ -17,14 +17,14 @@
 
     "plugins": [
       {
-        "name": "next"
-      }
+        "name": "next",
+      },
     ],
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
     "target": "ESNext",
-    "types": ["@testing-library/jest-dom", "node", "vitest"]
+    "types": ["@testing-library/jest-dom", "node", "vitest"],
   },
   "exclude": ["./build/", "./lib/", "./.next/"],
   "include": [
@@ -35,6 +35,6 @@
     "**/*.ts",
     "**/*.tsx",
     "postcss.config.js",
-    "tailwind.config.js"
-  ]
+    "tailwind.config.js",
+  ],
 }

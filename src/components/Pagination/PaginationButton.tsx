@@ -1,26 +1,26 @@
-import type { ComponentProps, FC, ReactEventHandler, ReactNode } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import { useRipple } from '../../hooks';
+import type { ComponentProps, FC, ReactEventHandler, ReactNode } from 'react'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers/merge-deep'
+import { getTheme } from '../../theme-store'
+import type { DeepPartial } from '../../types'
+import { useRipple } from '../../hooks'
 
 export interface PaginationButtonTheme {
-  base: string;
-  active: string;
-  disabled: string;
+  base: string
+  active: string
+  disabled: string
 }
 
 export interface PaginationButtonProps extends ComponentProps<'button'> {
-  active?: boolean;
-  children?: ReactNode;
-  className?: string;
-  onClick?: ReactEventHandler<HTMLButtonElement>;
-  theme?: DeepPartial<PaginationButtonTheme>;
+  active?: boolean
+  children?: ReactNode
+  className?: string
+  onClick?: ReactEventHandler<HTMLButtonElement>
+  theme?: DeepPartial<PaginationButtonTheme>
 }
 
 export interface PaginationPrevButtonProps extends Omit<PaginationButtonProps, 'active'> {
-  disabled?: boolean;
+  disabled?: boolean
 }
 
 export const PaginationButton: FC<PaginationButtonProps> = ({
@@ -31,9 +31,9 @@ export const PaginationButton: FC<PaginationButtonProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().pagination, customTheme);
+  const theme = mergeDeep(getTheme().pagination, customTheme)
 
-  const [ripple, event] = useRipple();
+  const [ripple, event] = useRipple()
 
   return (
     <button
@@ -46,10 +46,10 @@ export const PaginationButton: FC<PaginationButtonProps> = ({
     >
       {children}
     </button>
-  );
-};
+  )
+}
 
-PaginationButton.displayName = 'Pagination.Button';
+PaginationButton.displayName = 'Pagination.Button'
 
 export const PaginationNavigation: FC<PaginationPrevButtonProps> = ({
   children,
@@ -59,8 +59,8 @@ export const PaginationNavigation: FC<PaginationPrevButtonProps> = ({
   disabled = false,
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().pagination, customTheme);
-  const [ripple, event] = useRipple();
+  const theme = mergeDeep(getTheme().pagination, customTheme)
+  const [ripple, event] = useRipple()
 
   return (
     <button
@@ -74,7 +74,7 @@ export const PaginationNavigation: FC<PaginationPrevButtonProps> = ({
     >
       {children}
     </button>
-  );
-};
+  )
+}
 
-PaginationNavigation.displayName = 'Pagination.Navigation';
+PaginationNavigation.displayName = 'Pagination.Navigation'

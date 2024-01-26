@@ -3,21 +3,22 @@
 import type { ComponentPropsWithoutRef, ElementType } from 'react'
 import { type ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
-import genericForwardRef from '../../helpers/generic-forward-ref'
-import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
 import type { Colors } from '../PoluiProvider'
 import { Loader } from '../Loader'
 
-import { MainSizesElastic, type RoundedSizes } from '../PoluiProvider/PoluiTheme'
+import type { MainSizesElastic } from '../PoluiProvider/PoluiTheme'
+import { type RoundedSizes } from '../PoluiProvider/PoluiTheme'
 import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../PoluiProvider/enums'
 import { useRipple } from '../../hooks'
-import { ButtonBase, ButtonBaseProps } from '../Button/ButtonBase'
-import { IconButtonTheme } from './theme'
+import type { ButtonBaseProps } from '../Button/ButtonBase'
+import { ButtonBase } from '../Button/ButtonBase'
+import type { IconButtonTheme } from './theme'
 import { rippleClass } from '../Button/Button'
 import { Tooltip } from '../Tooltip'
 import { motion } from 'framer-motion'
+import { mergeDeep } from '../../helpers/merge-deep'
 
 export type IconButtonProps<T extends ElementType = 'button'> = {
   as?: T | null

@@ -1,11 +1,5 @@
-export { Button } from './Button';
-export type {
-  ButtonColors,
-  ButtonProps,
-  ButtonSizes,
-  ButtonInnerTheme,
-  ButtonOutlineTheme,
-  ButtonTheme,
-} from './Button';
-export { ButtonGroup } from './ButtonGroup/ButtonGroup';
-export type { ButtonGroupProps, ButtonGroupTheme, PositionInButtonGroup } from './ButtonGroup/ButtonGroup';
+export { Button } from './Button'
+export type { ButtonProps } from './Button'
+export { ButtonGroup } from './ButtonGroup/ButtonGroup'
+export type { ButtonGroupProps, ButtonGroupTheme, PositionInButtonGroup } from './ButtonGroup/ButtonGroup'
+export { buttonTheme, type ButtonTheme } from './theme'
