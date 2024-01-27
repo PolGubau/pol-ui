@@ -2,7 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react'
 import type { AvatarProps } from './Avatar'
 import { Avatar } from './Avatar'
 import React from 'react'
-import { MainSizesEnum } from '../PoluiProvider/enums'
+import { MainSizesEnum } from '../../types/enums'
 import { AvatarStatusEnum } from './AvatarTypes'
 export default {
   title: 'Components/Avatar',
@@ -34,7 +34,6 @@ DefaultAvatar.args = {
   img: '/images/people/me.png',
 }
 export const WrongImage = Template.bind({})
-WrongImage.storyName = 'Wrong Image'
 WrongImage.args = {
   alt: 'Your avatar',
   img: '/images/people/.png',
@@ -73,7 +72,6 @@ export const AllSizes = (): JSX.Element => (
     ))}
   </div>
 )
-AllSizes.storyName = 'All Sizes'
 
 export const AllStatus = (): JSX.Element => (
   <div className="flex flex-wrap gap-6">

@@ -4,7 +4,7 @@ import { theme } from '../../theme'
 import type { AlertProps } from './Alert'
 import { Alert } from './Alert'
 import { MdLightbulb } from 'react-icons/md'
-import { ColorsEnum } from '../PoluiProvider/enums'
+import { ColorsEnum } from '../../types/enums'
 import { Button } from '../Button'
 import { BiCheck, BiTrash } from 'react-icons/bi'
 

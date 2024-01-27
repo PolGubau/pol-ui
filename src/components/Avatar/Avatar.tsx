@@ -9,7 +9,7 @@ import { AvatarGroup } from './AvatarGroup'
 import type { AvatarGroupCounterTheme } from './AvatarGroupCounter'
 import { AvatarGroupCounter } from './AvatarGroupCounter'
 import { MainSizesElastic } from '../PoluiProvider/PoluiTheme'
-import { ColorsEnum, MainSizesEnum } from '../PoluiProvider/enums'
+import { ColorsEnum, MainSizesEnum } from '../../types/enums'
 import { AvatarStatus } from './AvatarTypes'
 
 export interface AvatarTheme {

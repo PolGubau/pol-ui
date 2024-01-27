@@ -1,14 +1,14 @@
 'use client';
 
 import type { ComponentProps, FC } from 'react';
-import { useState } from 'react';
-import { twMerge } from 'tailwind-merge';
+ import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
 import type { Duration } from './ToastContext';
 import { ToastContext } from './ToastContext';
 import { ToastToggle } from './ToastToggle';
+import { useBoolean } from '../../hooks';
 
 export interface ToastTheme {
   root: {
@@ -38,9 +38,9 @@ const durationClasses: Record<Duration, string> = {
 };
 
 const ToastComponent: FC<ToastProps> = ({ children, className, duration = 300, theme: customTheme = {}, ...props }) => {
-  const [isClosed, setIsClosed] = useState(false);
-  const [isRemoved, setIsRemoved] = useState(false);
-
+  const { value: isClosed, setValue: setIsClosed } = useBoolean(false);
+  const { value: isRemoved, setValue: setIsRemoved } = useBoolean(false);
+ 
   const theme = mergeDeep(getTheme().toast, customTheme);
 
   if (isRemoved) {

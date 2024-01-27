@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import type { FileInputProps } from './FileInput'
 import { FileInput } from './FileInput'
-import { ColorsEnum } from '../PoluiProvider/enums'
+import { ColorsEnum } from '../../types/enums'
 
 export default {
   title: 'Components/FileInput',

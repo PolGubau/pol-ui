@@ -4,7 +4,7 @@ import type { Meta, StoryFn } from '@storybook/react'
 import React, { useState } from 'react'
 import type { SwitchProps } from './Switch'
 import { Switch } from './Switch'
-import { ColorsEnum, MainSizesEnum } from '../PoluiProvider/enums'
+import { ColorsEnum, MainSizesEnum } from '../../types/enums'
 
 export default {
   title: 'Components/Switch',

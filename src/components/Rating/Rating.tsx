@@ -7,7 +7,7 @@ import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
 import { RatingTheme } from './theme'
 import { MainSizesElastic } from '../PoluiProvider/PoluiTheme'
-import { MainSizesEnum } from '../PoluiProvider/enums'
+import { MainSizesEnum } from '../../types/enums'
 import { TbStar } from 'react-icons/tb'
 
 export interface RatingProps extends ComponentProps<'div'> {

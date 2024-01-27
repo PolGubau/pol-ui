@@ -3,7 +3,7 @@ import type { ComponentProps, FC } from 'react'
 import { HiChevronDown, HiOutlineArrowCircleDown } from 'react-icons/hi'
 import type { AccordionProps } from './Accordion'
 import { Accordion } from './Accordion'
-import { HeadingLevelEnum } from '../PoluiProvider/enums'
+import { HeadingLevelEnum } from '../../types/enums'
 
 export default {
   title: 'Components/Accordion',

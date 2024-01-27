@@ -1,6 +1,6 @@
 import React from 'react'
 import { Colors } from '../PoluiProvider'
-import { ColorsEnum } from '../PoluiProvider/enums'
+import { ColorsEnum } from '../../types/enums'
 
 export const DropdownContext = React.createContext<{
   getItemProps: (userProps?: React.HTMLProps<HTMLElement>) => Record<string, unknown>

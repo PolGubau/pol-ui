@@ -10,7 +10,7 @@ import { Loader } from '../Loader'
 
 import type { MainSizesElastic } from '../PoluiProvider/PoluiTheme'
 import { type RoundedSizes } from '../PoluiProvider/PoluiTheme'
-import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../PoluiProvider/enums'
+import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../../types/enums'
 import { useRipple } from '../../hooks'
 import type { ButtonBaseProps } from '../Button/ButtonBase'
 import { ButtonBase } from '../Button/ButtonBase'

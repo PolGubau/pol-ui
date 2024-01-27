@@ -47,7 +47,7 @@ import type {
   GetValuesEnum,
   ColorsEnum,
   TriggerReasonEnum,
-} from './enums'
+} from '../../types/enums'
 import type { BannerTheme } from '../Banner/Banner'
 import type { SwitchTheme } from '../Switch'
 import type { IconButtonTheme } from '../IconButton'

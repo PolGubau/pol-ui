@@ -6,7 +6,7 @@ import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
 import { HelperText } from '../HelperText'
 import type { FileInputTheme } from './theme'
-import { ColorsEnum, MainSizesEnum } from '../PoluiProvider/enums'
+import { ColorsEnum, MainSizesEnum } from '../../types/enums'
 import type { Colors, MainSizes } from '../PoluiProvider/PoluiTheme'
 
 export interface FileInputProps extends Omit<ComponentProps<'input'>, 'type' | 'ref' | 'color' | 'size'> {

@@ -3,12 +3,13 @@
 import type { Placement } from '@floating-ui/core'
 import { autoUpdate, useFocus } from '@floating-ui/react'
 import type { ComponentProps, FC, ReactNode } from 'react'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef  } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { useBaseFLoating, useFloatingInteractions } from '../../hooks/use-floating'
 import { getArrowPlacement } from './helpers'
-import { TriggerReason } from '../PoluiProvider/PoluiTheme'
-import { TriggerReasonEnum } from '../PoluiProvider/enums'
+import type { TriggerReason } from '../PoluiProvider/PoluiTheme'
+import { TriggerReasonEnum } from '../../types/enums'
+import { useBoolean } from '../../hooks'
 
 export interface FloatingTheme {
   arrow: FloatingArrowTheme
@@ -61,7 +62,7 @@ export const Floating: FC<FloatingProps> = ({
   ...props
 }) => {
   const arrowRef = useRef<HTMLDivElement>(null)
-  const [open, setOpen] = useState(false)
+   const {value:open, setValue:setOpen} = useBoolean(false)
 
   const floatingProperties = useBaseFLoating({
     open,

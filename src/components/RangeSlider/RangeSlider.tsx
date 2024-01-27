@@ -6,7 +6,7 @@ import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
 import type { MainSizesElastic } from '../PoluiProvider/PoluiTheme'
 import type { RangeSliderTheme } from './theme'
-import { MainSizesEnum } from '../PoluiProvider/enums'
+import { MainSizesEnum } from '../../types/enums'
 
 export interface RangeSliderProps extends Omit<ComponentProps<'input'>, 'ref' | 'type' | 'size'> {
   size?: keyof MainSizesElastic

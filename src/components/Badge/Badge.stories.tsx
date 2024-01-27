@@ -3,7 +3,7 @@ import { HiCheck } from 'react-icons/hi'
 import { theme } from '../../theme'
 import type { BadgeProps } from './Badge'
 import { Badge } from './Badge'
-import { ColorsEnum } from '../PoluiProvider/enums'
+import { ColorsEnum } from '../../types/enums'
 
 export default {
   title: 'Components/Badge',

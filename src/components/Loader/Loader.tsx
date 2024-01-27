@@ -4,7 +4,7 @@ import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
 import type { Colors, Sizes } from '../PoluiProvider'
-import { ColorsEnum, SizesEnum } from '../PoluiProvider/enums'
+import { ColorsEnum, SizesEnum } from '../../types/enums'
 
 export interface LoaderTheme {
   base: string

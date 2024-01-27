@@ -1,4 +1,4 @@
-import { GetValuesEnum } from '../PoluiProvider/enums'
+import { GetValuesEnum } from '../../types/enums'
 
 export enum AvatarStatusEnum {
   away = 'away',

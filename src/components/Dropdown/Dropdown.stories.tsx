@@ -2,7 +2,7 @@ import type { Meta } from '@storybook/react'
 import { Dropdown } from './Dropdown'
 import { DropdownItem } from './DropdownItem'
 import { theme } from '../../theme'
-import { MainSizesEnum } from '../PoluiProvider/enums'
+import { MainSizesEnum } from '../../types/enums'
 import { Avatar } from '../Avatar'
 
 export default {

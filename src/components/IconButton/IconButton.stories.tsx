@@ -2,7 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react'
 import { IconButton, type IconButtonProps } from './IconButton'
 import { theme } from '../../theme'
 import { TbSearch, TbTrash } from 'react-icons/tb'
-import { ColorsEnum } from '../PoluiProvider/enums'
+import { ColorsEnum } from '../../types/enums'
 
 export default {
   title: 'Components/Buttons/IconButton',

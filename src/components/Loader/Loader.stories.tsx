@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import { Button } from '../Button'
 import { Loader } from './Loader'
-import { ColorsEnum, MainSizesEnum, SizesEnum } from '../PoluiProvider/enums'
+import { ColorsEnum, MainSizesEnum, SizesEnum } from '../../types/enums'
 
 export default {
   title: 'Components/Loader',

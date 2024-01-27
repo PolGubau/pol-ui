@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import type { CheckboxProps } from './Checkbox'
 import { Checkbox } from './Checkbox'
-import { ColorsEnum } from '../PoluiProvider/enums'
+import { ColorsEnum } from '../../types/enums'
 
 export default {
   title: 'Components/Checkbox',

@@ -5,7 +5,7 @@ import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
 import type { Colors } from '../PoluiProvider'
-import { ColorsEnum } from '../PoluiProvider/enums'
+import { ColorsEnum } from '../../types/enums'
 
 export interface CheckboxTheme {
   root: CheckboxRootTheme

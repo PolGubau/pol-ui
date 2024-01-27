@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import { Input, type InputProps } from './Input'
 import { TbAt, TbEye, TbUser } from 'react-icons/tb'
-import { ColorsEnum } from '../PoluiProvider/enums'
+import { ColorsEnum } from '../../types/enums'
 
 import { Dropdown, DropdownItem } from '../Dropdown'
 import { IconButton } from '../IconButton'
@@ -103,12 +103,12 @@ export const AllColors = () => (
   <div className="grid grid-cols-2">
     <div className="flex flex-col gap-4 p-4 bg-secondary-50">
       {Object.keys(ColorsEnum).map(color => (
-        <Input key={color} placeholder={color} color={color as any} rightComponent={<TbAt />} />
+        <Input key={color} placeholder={color} color={color} rightComponent={<TbAt />} />
       ))}
     </div>
     <div className="dark flex flex-col gap-4 p-4 rounded-xl bg-secondary-900">
       {Object.keys(ColorsEnum).map(color => (
-        <Input key={color} placeholder={color} color={color as any} rightComponent={<TbAt />} />
+        <Input key={color} placeholder={color} color={color} rightComponent={<TbAt />} />
       ))}
     </div>
   </div>
@@ -120,7 +120,7 @@ export const AllColorsFilled = () => (
         <Input
           key={color}
           placeholder={color}
-          color={color as any}
+          color={color}
           rightComponent={<TbAt />}
           defaultValue="I am in light mode"
         />
@@ -131,7 +131,7 @@ export const AllColorsFilled = () => (
         <Input
           key={color}
           placeholder={color}
-          color={color as any}
+          color={color}
           rightComponent={<TbAt />}
           defaultValue="I am in dark mode"
         />
@@ -147,7 +147,7 @@ export const AllColorsWithBorder = () => (
           border
           key={color}
           placeholder={color}
-          color={color as any}
+          color={color}
           rightComponent={
             <IconButton size="sm" outline color={color} onClick={() => alert(color)}>
               <TbEye size={18} />
@@ -163,7 +163,7 @@ export const AllColorsWithBorder = () => (
           border
           key={color}
           placeholder={color}
-          color={color as any}
+          color={color}
           rightComponent={<TbAt />}
           defaultValue="I am in dark mode"
         />

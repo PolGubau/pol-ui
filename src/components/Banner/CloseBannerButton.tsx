@@ -3,7 +3,7 @@
 import type { FC, MouseEventHandler } from 'react'
 import type { ButtonProps } from '../Button'
 import { Button } from '../Button'
-import { ColorsEnum } from '../PoluiProvider/enums'
+import { ColorsEnum } from '../../types/enums'
 import { twMerge } from 'tailwind-merge'
 export type CloseBannerButtonProps = ButtonProps
 

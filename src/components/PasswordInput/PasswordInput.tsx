@@ -5,7 +5,7 @@ import type { InputProps } from '../Input'
 import { Input } from '../Input'
 import { TbEye, TbEyeOff } from 'react-icons/tb'
 import { IconButton } from '../IconButton'
-import { MainSizesEnum } from '../PoluiProvider/enums'
+import { MainSizesEnum } from '../../types/enums'
 
 export interface PasswordInputProps extends Omit<InputProps, 'type'> {
   showIcon?: FC<ComponentProps<'svg'>>

@@ -7,7 +7,7 @@ import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
 import type { HeadingLevel, IBoolean } from '../PoluiProvider'
 import { useAccordionContext } from './AccordionPanelContext'
-import { HeadingLevelEnum } from '../PoluiProvider/enums'
+import { HeadingLevelEnum } from '../../types/enums'
 import DynamicHeading from '../Text/DynamicHeading/DynamicHeading'
 import { useRipple } from '../../hooks'
 export interface AccordionTitleTheme {

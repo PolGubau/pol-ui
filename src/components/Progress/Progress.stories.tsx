@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import type { ProgressProps } from './Progress'
 import { Progress } from './Progress'
-import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../PoluiProvider/enums'
+import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../../types/enums'
 
 export default {
   title: 'Components/Progress',

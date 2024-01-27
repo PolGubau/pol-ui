@@ -5,7 +5,7 @@ import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
 import type { Colors } from '../PoluiProvider'
 import { HelperTextTheme } from './theme'
-import { ColorsEnum } from '../PoluiProvider/enums'
+import { ColorsEnum } from '../../types/enums'
 
 export interface HelperTextProps extends Omit<ComponentProps<'p'>, 'color'> {
   color?: keyof Colors

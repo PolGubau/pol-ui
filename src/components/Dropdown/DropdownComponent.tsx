@@ -29,7 +29,7 @@ import {
   useRole,
   useTypeahead,
 } from '@floating-ui/react'
-import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../PoluiProvider/enums'
+import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../../types/enums'
 import { DropdownTheme } from './theme'
 export const DropdownComponent = React.forwardRef<HTMLButtonElement, DropdownProps>(
   (

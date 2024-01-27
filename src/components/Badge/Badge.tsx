@@ -4,7 +4,7 @@ import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
 import type { IBoolean, Colors } from '../PoluiProvider'
-import { ColorsEnum, RoundedSizesEnum, SizesEnum } from '../PoluiProvider/enums'
+import { ColorsEnum, RoundedSizesEnum, SizesEnum } from '../../types/enums'
 import type { MainSizes, RoundedSizes } from '../PoluiProvider/PoluiTheme'
 
 export interface BadgeTheme {

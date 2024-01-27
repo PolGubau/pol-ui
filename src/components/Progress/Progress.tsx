@@ -5,7 +5,7 @@ import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
 import type { MainSizesElastic, RoundedSizesElastic } from '../PoluiProvider/PoluiTheme'
-import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../PoluiProvider/enums'
+import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../../types/enums'
 import type { ProgressTheme } from './theme'
 import { motion } from 'framer-motion'
 export interface ProgressProps extends ComponentProps<'div'> {
