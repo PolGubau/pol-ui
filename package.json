@@ -67,7 +67,6 @@
     "framer-motion": "^10.18.0",
     "react-icons": "^4.12.0",
     "standard-version": "^9.5.0",
-    "string-width": "^7.1.0",
     "tailwind-merge": "^2.0.0"
   },
   "devDependencies": {
