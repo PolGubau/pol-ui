@@ -43,6 +43,13 @@ jobs:
       - name: 📥 Install Dependencies
         run: yarn install --immutable
 
+      - name: 🐞 Debug
+        run: |
+          echo "Current branch: $GITHUB_REF"
+          echo "GitHub event name: $GITHUB_EVENT_NAME"
+          echo "GitHub actor: $GITHUB_ACTOR"
+          echo "GitHub repository: $GITHUB_REPOSITORY"
+
       - name: setup git config
         run: |
           git config user.name "GitHub Actions Bot"
