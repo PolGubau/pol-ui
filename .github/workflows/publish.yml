@@ -34,20 +34,10 @@ jobs:
     needs: test
     if: github.ref == 'refs/heads/main'
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-      - name: Check if version has changed
-        id: check-version
-        run: |
-          git fetch
-          VERSION_CHANGED=$(git diff --name-only HEAD^ HEAD | grep -c 'package.json' || true)
-          echo "::set-output name=version_changed::$VERSION_CHANGED"
-      - name: Publish
-      if: steps.check-version.outputs.version_changed == '1'
+      - name: 👍 Checkout
+        uses: actions/checkout@v3
         with:
-          node-version: lts/*
-          always-auth: true
-          registry-url: 'https://registry.npmjs.org'
+          node-version: '20.x'
 
       - name: 📥 Install Dependencies
         run: yarn install --immutable
