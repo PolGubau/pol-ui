@@ -1,5 +1,5 @@
 {
-  "name": "pol-ui",
+  "name": "@pol/ui",
   "version": "2.1.1",
   "description": "Official React components built for Pol Gubau Amores' apps",
   "keywords": [
