@@ -25,6 +25,6 @@ jobs:
       - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.1
         with:
           install_command: yarn install # default: npm ci
-          build_command: storybook:build # default: npm run build-storybook
+          build_command: build-storybook # default: npm run build-storybook
           path: storybook-static # default: dist/storybook
           checkout: false # default: true
