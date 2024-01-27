@@ -1,11 +1,11 @@
 # Name for the github action
-name: Push to Master
+name: Push to Main
 
 # Trigger this action when we push to master or merge a pull-request to master
 on:
   push:
     branches:
-      - master
+      - main
 
 # runs the jobs
 jobs:
