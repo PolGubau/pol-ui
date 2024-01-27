@@ -155,7 +155,7 @@ const CarouselItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLD
     return (
       <div
         ref={ref}
-        data-testid="carousel-item"
+        role="group"
         aria-roledescription="slide"
         className={twMerge(
           'min-w-0 shrink-0 grow-0 basis-full',
@@ -174,7 +174,6 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
 
     return (
       <Button
-        data-testid="carousel-left-control"
         ref={ref}
         variant={variant}
         size={size}
@@ -204,7 +203,6 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
       <Button
         ref={ref}
         variant={variant}
-        data-testid="carousel-right-control"
         size={size}
         className={twMerge(
           'absolute h-8 w-8 rounded-full',

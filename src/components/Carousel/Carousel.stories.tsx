@@ -1,6 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react'
-import type { CarouselProps } from './Carousel'
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './Carousel'
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, CarouselProps } from './Carousel'
 import { Card } from '../Card'
 
 export default {
@@ -15,7 +14,7 @@ export default {
   ],
 } as Meta
 
-export const CarouselTemplate: StoryFn<CarouselProps> = args => (
+const Template: StoryFn<CarouselProps> = args => (
   <Carousel {...args}>
     <CarouselContent>
       {Array.from({ length: 5 }).map((_, index) => (
@@ -33,10 +32,10 @@ export const CarouselTemplate: StoryFn<CarouselProps> = args => (
   </Carousel>
 )
 
-export const Default = CarouselTemplate.bind({})
+export const Default = Template.bind({})
 Default.args = {}
 
-export const SlideInterval = CarouselTemplate.bind({})
+export const SlideInterval = Template.bind({})
 SlideInterval.storyName = 'Loop'
 SlideInterval.args = {
   options: {
@@ -44,7 +43,7 @@ SlideInterval.args = {
   },
 }
 
-export const CusotmStartIndex = CarouselTemplate.bind({})
+export const CusotmStartIndex = Template.bind({})
 CusotmStartIndex.storyName = 'Custom Start Index'
 CusotmStartIndex.args = {
   options: {
