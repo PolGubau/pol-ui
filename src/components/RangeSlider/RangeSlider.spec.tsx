@@ -9,14 +9,12 @@ describe('Components / Button', () => {
   describe('A11y', () => {
     it('should have `role="progressbar"` by default', () => {
       render(<RangeSlider />)
-
       expect(rangeSlider()).toBeInTheDocument()
     })
 
     it('should be able to use any other role permitted for `RangeSlider`', () => {
       // eslint-disable-next-line jsx-a11y/aria-role
       render(<RangeSlider role="rangeinput" />)
-
       expect(rangeSlider('rangeinput')).toBeInTheDocument()
     })
   })
@@ -25,9 +23,7 @@ describe('Components / Button', () => {
     it('should focus when `Tab` is pressed', async () => {
       const user = userEvent.setup()
       render(<RangeSlider />)
-
       await user.tab()
-
       expect(rangeSlider()).toHaveFocus()
     })
 
@@ -40,65 +36,34 @@ describe('Components / Button', () => {
           <RangeSlider />
         </>,
       )
-
       const rangeSliderElements = rangeSliders()
-
       await user.tab()
-
       expect(rangeSliderElements[0]).toHaveFocus()
-
       await user.tab()
-
       expect(rangeSliderElements[1]).toHaveFocus()
-
       await user.tab()
-
       expect(rangeSliderElements[2]).toHaveFocus()
     })
 
     it('should not trigger `onChange` when `Space` is pressed', async () => {
       const user = userEvent.setup()
       const handleChange = vi.fn()
-
       render(<RangeSlider onChange={handleChange} />)
-
       await user.tab()
-
       expect(rangeSlider()).toHaveFocus()
-
       await user.keyboard('[Space]')
-
       expect(handleChange).not.toHaveBeenCalled()
     })
 
     it('should not trigger `onChange` when `Enter` is pressed', async () => {
       const user = userEvent.setup()
       const handleChange = vi.fn()
-
       render(<RangeSlider onChange={handleChange} />)
-
       await user.tab()
-
       expect(rangeSlider()).toHaveFocus()
-
       await user.keyboard('[Enter]')
-
       expect(handleChange).not.toHaveBeenCalled()
     })
-
-    /**
-     * Test Name: Should trigger `onChange` when `Arrow` key pressed
-     *
-     * This test is not testable because there is no support for
-     * input[type="range"] in the user-event library.
-     *
-     * Issues:
-     * https://github.com/testing-library/user-event/issues/1067
-     * https://github.com/testing-library/user-event/issues/871
-     *
-     * TODO: Once these issues get fixed, we will add this test case.
-     *
-     */
   })
 
   describe('Props', () => {
