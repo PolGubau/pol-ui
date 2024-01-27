@@ -41,7 +41,6 @@ export * from './components/Timeline'
 export * from './components/Toast'
 export * from './components/Switch'
 export * from './components/Tooltip'
-
 export * from './hooks/use-theme-mode'
 export * from './hooks/use-boolean/use-boolean'
 export * from './hooks/use-debounce/use-debounce'
@@ -53,6 +52,5 @@ export * from './hooks/use-isomorphic-layout-effect/use-isomorphic-layout-effect
 export * from './hooks/use-local-storage/use-local-storage'
 export * from './hooks/use-ripple/use-ripple'
 export * from './hooks/use-copy-to-clipboard/use-copy-to-clipboard'
-
 export * from './theme'
- export { getTheme, getThemeMode } from './theme-store'
+export { getTheme, getThemeMode } from './theme-store'
