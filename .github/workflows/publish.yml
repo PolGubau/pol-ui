@@ -1,10 +1,9 @@
-name: CI/CD
+name: CI
 
 on:
   push:
     branches:
       - main
-
 jobs:
   test:
     name: 🧪 Lint and test
@@ -40,7 +39,12 @@ jobs:
       - name: 👍 Checkout
         uses: actions/checkout@v3
         with:
-          node-version: lts/*
+          node-version: '20.x'
+
+      - name: 🐞 Debug
+        run:
+          echo "Current branch: $GITHUB_REF"
+          echo "GitHub event name: $GITHUB_EVENT_NAME"
 
       - name: 📥 Install Dependencies
         run: yarn install --immutable
