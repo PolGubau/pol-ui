@@ -19,3 +19,5 @@ tsconfig.json
 tsconfig.tsbuildinfo
 vite.config.ts
 vitest.config.ts
+
+.env
