@@ -1,4 +1,4 @@
-name: CI
+name: CI / CD 🚀
 
 on: push
 
@@ -57,7 +57,7 @@ jobs:
 
       - name: 🍀 Publish to NPM
         run: yarn
-        run: yarn npm publish // for Yarn version 1, use `yarn publish` instead
+        run: yarn npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
  
