@@ -48,7 +48,7 @@ jobs:
 
       - name: 📥 Install Dependencies
         run: yarn install --immutable
-
+        
       - name: 🐞 Debug
         run: |
           echo "Current branch: $GITHUB_REF"
