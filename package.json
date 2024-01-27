@@ -28,12 +28,6 @@
     "type": "git",
     "url": "https://github.com/PolGubau/pol-ui"
   },
-  "workspaces": {
-    "nohoist": [
-      "**/cli-table3",
-      "**/string-width"
-    ]
-  },
   "scripts": {
     "build": "rm -rf ./lib/ && yarn build:esm && yarn build:cjs",
     "build:cjs": "tsc -p tsconfig.lib.json",
@@ -54,43 +48,25 @@
     "test:e2e:open": "start-test 3000 ",
     "typecheck": "tsc --noEmit",
     "publish": "yarn prepublishOnly && yarn release && yarn publish:lib",
-    "publish:lib": "npm publish --access public"
-  },
-  "resolutions": {
-    "jackspeak": "2.3.5",
-    "string-width": "7.1.0"
+    "publish:lib": "npm publish --access public",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.2",
-    "cli-table3": "^0.6.3",
     "embla-carousel-react": "^8.0.0-rc19",
     "framer-motion": "^10.18.0",
     "react-icons": "^4.12.0",
-    "standard-version": "^9.5.0",
     "tailwind-merge": "^2.0.0"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^7.6.10",
-    "@storybook/addon-actions": "^7.5.3",
-    "@storybook/addon-docs": "^7.5.3",
-    "@storybook/addon-essentials": "^7.5.3",
-    "@storybook/addon-interactions": "^7.5.3",
-    "@storybook/addon-links": "^7.5.3",
-    "@storybook/addon-mdx-gfm": "^7.5.3",
-    "@storybook/addon-onboarding": "1.0.10",
-    "@storybook/addon-postcss": "^2.0.0",
-    "@storybook/addon-styling": "^2.0.0",
-    "@storybook/addons": "^7.5.3",
-    "@storybook/blocks": "^7.5.3",
-    "@storybook/builder-vite": "^7.5.3",
-    "@storybook/components": "^7.5.3",
-    "@storybook/core-events": "^7.5.3",
-    "@storybook/nextjs": "^7.6.4",
-    "@storybook/react": "^7.5.3",
-    "@storybook/react-vite": "7.6.4",
-    "@storybook/test": "7.6.4",
-    "@storybook/testing-library": "^0.2.2",
-    "@storybook/theming": "^7.5.3",
+    "@storybook/addon-essentials": "^7.6.10",
+    "@storybook/addon-interactions": "^7.6.10",
+    "@storybook/addon-links": "^7.6.10",
+    "@storybook/addon-onboarding": "1.0.11",
+    "@storybook/blocks": "^7.6.10",
+    "@storybook/react": "^7.6.10",
+    "@storybook/react-vite": "^7.6.10",
+    "@storybook/test": "^7.6.10",
     "@testing-library/dom": "^9.3.3",
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.1.2",
@@ -120,7 +96,7 @@
     "prettier-plugin-tailwindcss": "^0.5.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "storybook": "^7.5.3",
+    "storybook": "^7.6.10",
     "tailwindcss": "^3.3.5",
     "tsconfig-paths-webpack-plugin": "^4.1.0",
     "typescript": "^5.3.2",
