@@ -1,14 +1,79 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import type { RadioProps } from './Radio';
-import { Radio } from './Radio';
+import type { Meta } from '@storybook/react'
+import { Radio } from './Radio'
+import React from 'react'
 
 export default {
   title: 'Components/Radio',
   component: Radio,
-} as Meta;
+  tags: ['autodocs'],
+  decorators: [
+    Story => (
+      <div className="flex p-6 flex-col  min-h-[400px] justify-center items-center bg-secondary-50">
+        <div className="max-w-xl">
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
+  parameters: {
+    layout: 'fullscreen',
+  },
+  argTypes: {
+    // controlled value prop
+    value: {
+      control: {
+        disable: true,
+      },
+    },
+  },
+} as Meta
 
-const Template: StoryFn<RadioProps> = (args) => <Radio {...args} />;
+export const Default = (): JSX.Element => {
+  const options = ['Option 1', 'Option 2', 'Option 3']
+  const [value, setValue] = React.useState(options[0])
+  return (
+    <div className="flex flex-col gap-2 p-4 rounded-xl">
+      {options.map(option => {
+        return (
+          <>
+            <Radio
+              key={option}
+              layoutId="4"
+              // id={option}
+              checked={value === option}
+              onClick={() => setValue(option)}
+              value={option}
+              label={option}
+            />
+            {/* <Label value={option} htmlFor={option} /> */}
+          </>
+        )
+      })}
+    </div>
+  )
+}
 
-export const DefaultRadio = Template.bind({});
-DefaultRadio.storyName = 'Radio';
-DefaultRadio.args = {};
+export const DarkMode = (): JSX.Element => {
+  const options = ['Option 1', 'Option 2', 'Option 3']
+  const [value, setValue] = React.useState(options[0])
+  return (
+    <div className="dark flex flex-col gap-2 bg-secondary-900 p-4 rounded-xl">
+      {options.map(option => {
+        return (
+          <>
+            <Radio
+              key={option}
+              layoutId="4"
+              // id={option}
+              checked={value === option}
+              onClick={() => setValue(option)}
+              value={option}
+              label={option}
+            />
+            {/* <Label value={option} htmlFor={option} /> */}
+          </>
+        )
+      })}
+    </div>
+  )
+}

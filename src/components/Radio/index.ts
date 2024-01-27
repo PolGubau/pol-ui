@@ -1,2 +1,4 @@
-export { Radio } from './Radio';
-export type { RadioRootTheme, RadioTheme, RadioProps } from './Radio';
+export type { RadioProps } from './Radio'
+export type { RadioTheme } from './theme'
+export { radioTheme } from './theme'
+export { Radio } from './Radio'

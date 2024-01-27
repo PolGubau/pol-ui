@@ -32,7 +32,7 @@ import { loaderTheme } from './components/Loader/theme'
 import { tableTheme } from './components/Table/theme'
 import { tabTheme } from './components/Tabs/theme'
 import { inputTheme } from './components/Input/theme'
- import { timelineTheme } from './components/Timeline/theme'
+import { timelineTheme } from './components/Timeline/theme'
 import { toastTheme } from './components/Toast/theme'
 import { tooltipTheme } from './components/Tooltip/theme'
 import { bannerTheme } from './components/Banner/theme'
@@ -40,6 +40,7 @@ import { switchTheme } from './components/Switch/theme'
 import { buttonTheme } from './components/Button/theme'
 import { footerTheme } from './components/Footer/theme'
 import { copyrightTheme } from './components/Copyright/theme'
+import { directionHoverTheme } from './components/DirectionHover/theme'
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,
@@ -76,7 +77,7 @@ export const theme: PoluiTheme = {
   rating: ratingTheme,
   select: selectTheme,
   textInput: inputTheme,
-   switch: switchTheme,
+  switch: switchTheme,
   sidebar: sidebarTheme,
   loader: loaderTheme,
   table: tableTheme,
@@ -84,4 +85,5 @@ export const theme: PoluiTheme = {
   timeline: timelineTheme,
   toast: toastTheme,
   tooltip: tooltipTheme,
+  directionHover: directionHoverTheme,
 }

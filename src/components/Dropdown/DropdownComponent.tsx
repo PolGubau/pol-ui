@@ -1,5 +1,5 @@
 import React from 'react'
-import { DropdownProps } from './Dropdown'
+import type { DropdownProps } from './Dropdown'
 import { TbChevronRight } from 'react-icons/tb'
 import { twMerge } from 'tailwind-merge'
 import { getTheme } from '../../theme-store'
@@ -30,7 +30,7 @@ import {
   useTypeahead,
 } from '@floating-ui/react'
 import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../../types/enums'
-import { DropdownTheme } from './theme'
+import type { DropdownTheme } from './theme'
 export const DropdownComponent = React.forwardRef<HTMLButtonElement, DropdownProps>(
   (
     {
@@ -149,7 +149,7 @@ export const DropdownComponent = React.forwardRef<HTMLButtonElement, DropdownPro
         isOpen,
         color: ColorProps,
       }),
-      [activeIndex, setActiveIndex, getItemProps, setHasFocusInside, isOpen],
+      [activeIndex, getItemProps, isOpen, ColorProps],
     )
     const commonButtonData = {
       ...getReferenceProps(
@@ -243,3 +243,5 @@ export const DropdownComponent = React.forwardRef<HTMLButtonElement, DropdownPro
     )
   },
 )
+
+DropdownComponent.displayName = 'Dropdown'

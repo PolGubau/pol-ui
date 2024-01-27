@@ -1,5 +1,5 @@
 import React from 'react'
-import { type HeadingLevel } from '../../PoluiProvider'
+import { type HeadingLevel } from '../PoluiProvider'
 
 interface DynamicHeadingProps extends React.HTMLAttributes<HTMLElement> {
   as: HeadingLevel

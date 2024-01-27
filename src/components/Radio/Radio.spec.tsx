@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider';
-import { Radio } from './Radio';
+import { RadioGroup } from './Radio';
 
 describe.concurrent('Components / Radio', () => {
   describe.concurrent('A11y', () => {
     it('should have role="radio" by default', () => {
-      const radio = render(<Radio />).getByRole('radio');
+      const radio = render(<RadioGroup />).getByRole('radio');
 
       expect(radio).toBeInTheDocument();
     });
@@ -23,7 +23,7 @@ describe.concurrent('Components / Radio', () => {
       };
       render(
         <PoluiProvider theme={{ theme }}>
-          <Radio />
+          <RadioGroup />
         </PoluiProvider>,
       );
 

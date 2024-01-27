@@ -54,7 +54,6 @@ export const AllColors = (): JSX.Element => (
     </div>
   </div>
 )
-AllColors.storyName = 'All Colors'
 
 export const AllSizes = (): JSX.Element => (
   <div className="flex flex-wrap gap-6">

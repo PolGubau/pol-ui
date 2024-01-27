@@ -32,7 +32,7 @@ import type { LoaderTheme } from '../Loader'
 import type { TableTheme } from '../Table'
 import type { TabsTheme } from '../Tabs'
 import type { InputTheme } from '../Input'
- import type { TimelineTheme } from '../Timeline'
+import type { TimelineTheme } from '../Timeline'
 import type { ToastTheme } from '../Toast'
 import type { TooltipTheme } from '../Tooltip'
 import type {
@@ -52,6 +52,7 @@ import type { SwitchTheme } from '../Switch'
 import type { IconButtonTheme } from '../IconButton'
 import type { HelperTextTheme } from '../HelperText/theme'
 import type { CopyrightTheme } from '../Copyright/theme'
+import type { DirectionHoverTheme } from '../DirectionHover/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -59,55 +60,6 @@ export type CustomPoluiTheme = DeepPartial<PoluiTheme>
  * @name PoluiTheme
  * @description Interface for the PoluiTheme, it includes all the different components themes, and the different colors, sizes, etc. that are used in the library
  * @author Pol Gubau Amores - https://polgubau.com
- * @see AccordionTheme for the Accordion theme
- * @see AlertTheme for the Alert theme
- * @see AvatarTheme for the Avatar theme
- * @see BadgeTheme for the Badge theme
- * @see BlockquoteTheme for the Blockquote theme
- * @see BreadcrumbTheme for the Breadcrumb theme
- * @see ButtonGroupTheme for the ButtonGroup theme
- * @see ButtonTheme for the Button theme
- * @see CardTheme for the Card theme
- * @see CarouselTheme for the Carousel theme
- * @see CheckboxTheme for the Checkbox theme
- * @see DarkThemeToggleTheme for the DarkThemeToggle theme
- * @see DatepickerTheme for the Datepicker theme
- * @see DropdownTheme for the Dropdown theme
- * @see FileInputTheme for the FileInput theme
- * @see FloatingLabelTheme for the FloatingLabel theme
- * @see FooterTheme for the Footer theme
- * @see HelperTextTheme for the HelperText theme
- * @see KbdTheme for the Kbd theme
- * @see LabelTheme for the Label theme
- * @see ListGroupTheme for the ListGroup theme
- * @see ListTheme for the List theme
- * @see ModalTheme for the Modal theme
- * @see NavbarTheme for the Navbar theme
- * @see PaginationTheme for the Pagination theme
- * @see ProgressTheme for the Progress theme
- * @see RadioTheme for the Radio theme
- * @see RangeSliderTheme for the RangeSlider theme
- * @see RatingAdvancedTheme for the RatingAdvanced theme
- * @see RatingTheme for the Rating theme
- * @see SelectTheme for the Select theme
- * @see SidebarTheme for the Sidebar theme
- * @see LoaderTheme for the Loader theme
- * @see TableTheme for the Table theme
- * @see TabsTheme for the Tabs theme
- * @see InputTheme for the Input theme
-  * @see TimelineTheme for the Timeline theme
- * @see ToastTheme for the Toast theme
- * @see TooltipTheme for the Tooltip theme
- * @see DropdownTheme for the Dropdown theme
- * @see CheckboxTheme for the Checkbox theme
- * @see FileInputTheme for the FileInput theme
- * @see FloatingLabelTheme for the FloatingLabel theme
- * @see LabelTheme for the Label theme
- * @see RadioTheme for the Radio theme
- * @see RangeSliderTheme for the RangeSlider theme
- * @see SelectTheme for the Select theme
- * @see SwitchTheme for the Switch theme
-   *
  */
 export interface PoluiTheme {
   accordion: AccordionTheme
@@ -138,6 +90,7 @@ export interface PoluiTheme {
   loader: LoaderTheme
   tabs: TabsTheme
   toast: ToastTheme
+  directionHover: DirectionHoverTheme
   tooltip: TooltipTheme
   dropdown: DropdownTheme
   checkbox: CheckboxTheme

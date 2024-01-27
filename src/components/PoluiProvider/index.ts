@@ -1,5 +1,5 @@
-export { PoluiProvider } from './PoluiProvider';
-export type { ThemeProps } from './PoluiProvider';
+export { PoluiProvider } from './PoluiProvider'
+export type { ThemeProps } from './PoluiProvider'
 export type {
   CustomPoluiTheme,
   IBoolean,
@@ -10,4 +10,4 @@ export type {
   Sizes,
   StateColors,
   PoluiTheme,
-} from './PoluiTheme';
+} from './PoluiTheme'

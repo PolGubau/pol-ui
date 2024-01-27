@@ -1,28 +1,49 @@
-import type { ComponentProps } from 'react';
-import { forwardRef } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
+import type { ComponentProps } from 'react'
+import React, { forwardRef, useId } from 'react'
+import { motion } from 'framer-motion'
+import { Label } from '../Label'
+import type { DeepPartial } from '../../types'
+import type { RadioTheme } from './theme'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers/merge-deep'
+import { getTheme } from '../../theme-store'
 
-export interface RadioTheme {
-  root: RadioRootTheme;
-}
-
-export interface RadioRootTheme {
-  base: string;
-}
-
-export interface RadioProps extends Omit<ComponentProps<'input'>, 'ref' | 'type'> {
-  theme?: DeepPartial<RadioTheme>;
+export interface RadioProps extends Omit<ComponentProps<'input'>, 'ref' | 'type' | 'checked' | 'onClick'> {
+  theme?: DeepPartial<RadioTheme>
+  label?: string
+  layoutId?: string
+  checked: boolean
+  inputClassNames?: string
+  onClick: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void
 }
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  ({ className, theme: customTheme = {}, ...props }, ref) => {
-    const theme = mergeDeep(getTheme().radio, customTheme);
+  (
+    { className, theme: customTheme = {}, inputClassNames, layoutId = 'radio_layout_id', label, onClick, ...props },
+    ref,
+  ) => {
+    const theme: RadioTheme = mergeDeep(getTheme().radio, customTheme)
 
-    return <input ref={ref} type="radio" className={twMerge(theme.root.base, className)} {...props} />;
+    const randomId = useId()
+
+    return (
+      <li className={twMerge(theme.root, className)}>
+        <div className={twMerge(theme.input.base)}>
+          <input
+            ref={ref}
+            type="radio"
+            onClick={onClick}
+            id={randomId}
+            className={twMerge(theme.input.input, inputClassNames)}
+            {...props}
+          />
+          <div className={twMerge(theme.input.fakeInput)} />
+          {props.checked && <motion.div className={twMerge(theme.input.marker)} layoutId={layoutId} />}
+        </div>
+        {label && <Label className={twMerge(theme.label)} htmlFor={randomId} value={label} />}
+      </li>
+    )
   },
-);
+)
 
-Radio.displayName = 'Radio';
+Radio.displayName = 'Radio'

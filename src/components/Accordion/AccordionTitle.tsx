@@ -8,7 +8,7 @@ import type { DeepPartial } from '../../types'
 import type { HeadingLevel, IBoolean } from '../PoluiProvider'
 import { useAccordionContext } from './AccordionPanelContext'
 import { HeadingLevelEnum } from '../../types/enums'
-import DynamicHeading from '../Text/DynamicHeading/DynamicHeading'
+import DynamicHeading from '../DynamicHeading/DynamicHeading'
 import { useRipple } from '../../hooks'
 
 export interface AccordionTitleTheme {
@@ -51,14 +51,13 @@ export interface AccordionTitleProps extends ComponentProps<'button'> {
  * @author Pol Gubau Amores - https://polgubau.com
  */
 export const AccordionTitle: FC<AccordionTitleProps> = ({
-    as: Component = HeadingLevelEnum.h2,
-    children,
-    className,
-    rippleClassName,
-    theme: customTheme = {},
-    ...props
-  }: AccordionTitleProps): JSX.Element => {
-  
+  as: Component = HeadingLevelEnum.h2,
+  children,
+  className,
+  rippleClassName,
+  theme: customTheme = {},
+  ...props
+}: AccordionTitleProps): JSX.Element => {
   const { arrowIcon: ArrowIcon, isBordered: bordered, isOpen, setOpen } = useAccordionContext()
   const onClick = () => typeof setOpen !== 'undefined' && setOpen()
 

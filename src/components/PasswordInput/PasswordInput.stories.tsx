@@ -7,6 +7,7 @@ export default {
   title: 'Components/Inputs/PasswordInput',
   component: PasswordInput,
   tags: ['autodocs'],
+
   decorators: [
     Story => (
       <div className="flex p-6 flex-col  min-h-[400px] justify-center items-center bg-secondary-50">
