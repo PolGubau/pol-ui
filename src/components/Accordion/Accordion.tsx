@@ -26,6 +26,10 @@ export interface AccordionRootTheme {
   isBordered: IBoolean
 }
 
+/**
+ * @name AccordionProps
+ * @description The props of the Accordion component
+ */
 export interface AccordionProps extends ComponentProps<'div'> {
   /**
    * @name alwaysOpen

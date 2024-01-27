@@ -2,7 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import type { FC } from 'react'
 import { HiOutlineArrowCircleDown } from 'react-icons/hi'
-import { describe, expect, it, beforeEach } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider'
 import type { AccordionProps } from './Accordion'
 import { Accordion } from './Accordion'
@@ -11,20 +11,17 @@ describe('Components / Accordion', () => {
   describe('A11y', () => {
     it('should use `aria-label` if provided', () => {
       render(<TestAccordion aria-label="My accordion" />)
-
       expect(accordion()).toHaveAccessibleName('My accordion')
     })
 
     it('should use `aria-labelledby=""` in `Accordion.Content` if provided', () => {
       render(<TestAccordion />)
-
       expect(content()[0]).toHaveAccessibleName('Title')
       expect(content()[0]).toHaveAttribute('aria-labelledby', 'accordion-title')
     })
 
     it('should use `role="button"` in `Accordion.Title`', () => {
       render(<TestAccordion />)
-
       titles().forEach(title => {
         expect(title).toBeInTheDocument()
       })
@@ -32,17 +29,14 @@ describe('Components / Accordion', () => {
 
     it('should use `id=""` if provided in `Accordion.Title`', () => {
       render(<TestAccordion aria-label="My accordion" />)
-
       expect(accordion()).toHaveAccessibleName('My accordion')
     })
 
     it("shouldn't include `arrowIcon` in `Accordion.Title` label", () => {
       render(<TestAccordion />)
-
       titles().forEach(title => expect(title).toHaveAccessibleName('Title'))
     })
   })
-
   describe('Keyboard interactions', () => {
     it('should open focused panel without closing others on an `Accordion.Panel` with `alwaysOpen={true}`', async () => {
       const user = userEvent.setup()
@@ -54,7 +48,6 @@ describe('Components / Accordion', () => {
       }
 
       await user.keyboard('[Space]')
-
       expect(titles()[0]).toBeVisible()
       expect(titles()[1]).toBeVisible()
     })
@@ -64,7 +57,6 @@ describe('Components / Accordion', () => {
       render(
         <>
           <TestAccordion />
-          {/* eslint-disable-next-line jsx-a11y/role-has-required-aria-props */}
           <button>Outside button</button>
         </>,
       )
@@ -89,7 +81,6 @@ describe('Components / Accordion', () => {
       }
     })
   })
-
   describe('Props', () => {
     it('should use any HTML heading element in `Accordion.Title as=".."`', () => {
       render(<TestAccordion />)
@@ -98,7 +89,6 @@ describe('Components / Accordion', () => {
       expect(headings()[1].tagName.toLocaleLowerCase()).toEqual('h2')
     })
   })
-
   describe('Theme', () => {
     describe('`Accordion`', () => {
       it('should use custom `base` classes', () => {
@@ -245,11 +235,7 @@ const TestAccordion: FC<Omit<AccordionProps, 'children'>> = props => (
     </Accordion.Panel>
   </Accordion>
 )
-
 const accordion = () => screen.getByTestId('ui-accordion')
-
 const content = () => screen.getAllByTestId('ui-accordion-content')
-
 const headings = () => screen.getAllByTestId('ui-accordion-heading')
-
 const titles = () => screen.getAllByRole('button')

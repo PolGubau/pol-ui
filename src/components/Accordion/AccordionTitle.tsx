@@ -10,6 +10,7 @@ import { useAccordionContext } from './AccordionPanelContext'
 import { HeadingLevelEnum } from '../../types/enums'
 import DynamicHeading from '../Text/DynamicHeading/DynamicHeading'
 import { useRipple } from '../../hooks'
+
 export interface AccordionTitleTheme {
   arrow: {
     base: string

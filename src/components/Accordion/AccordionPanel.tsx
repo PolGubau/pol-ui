@@ -25,7 +25,7 @@ import { AccordionPanelContext } from './AccordionPanelContext'
  * ...
  * </Accordion.Panel>
  * </Accordion>
-
+ * @name Pol Gubau Amores - https://polgubau.com
  */
 export interface PanelProps extends AccordionProps {
   /**

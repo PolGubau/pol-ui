@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import type { Meta, StoryFn } from '@storybook/react'
 import { Copyright } from './Copyright'
 

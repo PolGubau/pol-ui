@@ -4,7 +4,7 @@ import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
 import { Floating, type FloatingTheme } from '../Floating'
-import { TriggerReason } from '../PoluiProvider/PoluiTheme'
+import type { TriggerReason } from '../PoluiProvider/PoluiTheme'
 import { TriggerReasonEnum } from '../../types/enums'
 
 export type TooltipTheme = FloatingTheme

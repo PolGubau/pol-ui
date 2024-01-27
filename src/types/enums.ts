@@ -5,7 +5,7 @@ THIS FILE LIST ALL THE ENUMS USED IN THE BASE POL-UI THEME
 /**
  * @name GetValuesEnum
  * @description Helper type to get the values of an enum dynamically
- * @author Pol Gubau - https://polgubau.com
+ * @author Pol Gubau Amores - https://polgubau.com
  */
 export type GetValuesEnum<T> = T[keyof T]
 
@@ -19,7 +19,7 @@ export type GetValuesEnum<T> = T[keyof T]
  * @property {string} xl - Extra large
  * @example
  * <Button size={MainSizesEnum.xs} />
- * @author Pol Gubau - https://polgubau.com
+ * @author Pol Gubau Amores - https://polgubau.com
  */
 export enum MainSizesEnum {
   /**
@@ -79,7 +79,7 @@ export enum MainSizesEnum {
  * @property {string} 7xl - 7 extra large
  * @example
  * <Button size={SizesEnum.5xl} />
- * @author Pol Gubau - https://polgubau.com
+ * @author Pol Gubau Amores - https://polgubau.com
  */
 export const SizesEnum = {
   ...MainSizesEnum,
@@ -140,7 +140,7 @@ export const SizesEnum = {
  * <Button rounded={RoundedSizesEnum.full} /> // Full rounded
  * <Button rounded={RoundedSizesEnum.none} /> // No rounded
  * <Button rounded={RoundedSizesEnum.md} /> // Medium rounded
- * @author Pol Gubau - https://polgubau.com
+ * @author Pol Gubau Amores - https://polgubau.com
  */
 export const RoundedSizesEnum = {
   ...MainSizesEnum,
@@ -184,7 +184,7 @@ export const RoundedSizesEnum = {
  * @example
  * <Button isProcessing={BooleanEnum.on} /> // Processing button
  * <Button isProcessing={BooleanEnum.off} /> // Not processing button
- * @author Pol Gubau - https://polgubau.com
+ * @author Pol Gubau Amores - https://polgubau.com
  */
 export enum BooleanEnum {
   off = 'off',
@@ -203,7 +203,7 @@ export enum BooleanEnum {
  * <Button color={StateColorsEnum.error} /> // Error color
  * <Button color={StateColorsEnum.success} /> // Success color
  * <Button color={StateColorsEnum.warning} /> // Warning color
- * @author Pol Gubau - https://polgubau.com
+ * @author Pol Gubau Amores - https://polgubau.com
  */
 export enum StateColorsEnum {
   /**
@@ -247,7 +247,7 @@ export enum StateColorsEnum {
  * @example
  * <Button color={BrandColorsEnum.primary} /> // Primary color
  * <Button color={BrandColorsEnum.secondary} /> // Secondary color
- * @author Pol Gubau - https://polgubau.com
+ * @author Pol Gubau Amores - https://polgubau.com
  */
 export enum BrandColorsEnum {
   /**
@@ -284,7 +284,7 @@ export enum BrandColorsEnum {
  * <Heading level={HeadingLevelEnum.h5} /> // Heading level 5
  * <Heading level={HeadingLevelEnum.h6} /> // Heading level 6
  *
- * @author Pol Gubau - https://polgubau.com
+ * @author Pol Gubau Amores - https://polgubau.com
  */
 export enum HeadingLevelEnum {
   /**
@@ -345,7 +345,7 @@ export enum HeadingLevelEnum {
 /**
  * @name ColorsEnum
  * @description Enum for the different colors, merging state and brand colors
- * @author Pol Gubau - https://polgubau.com
+ * @author Pol Gubau Amores - https://polgubau.com
  */
 export const ColorsEnum = { ...StateColorsEnum, ...BrandColorsEnum }
 
@@ -357,7 +357,7 @@ export const ColorsEnum = { ...StateColorsEnum, ...BrandColorsEnum }
  * @example
  * <Tooltip trigger={TriggerReasonEnum.hover} ... // Hover trigger
  * <Tooltip trigger={TriggerReasonEnum.click} ... // Hover trigger
- * @author Pol Gubau - https://polgubau.com
+ * @author Pol Gubau Amores - https://polgubau.com
  */
 export enum TriggerReasonEnum {
   /**
