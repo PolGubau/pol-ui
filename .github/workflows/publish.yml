@@ -1,6 +1,9 @@
-name: CI
+name: CI/CD
 
-on: push
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   test:
@@ -11,7 +14,7 @@ jobs:
       - name: 👍 Checkout
         uses: actions/checkout@v3
         with:
-          node-version: '20.x'
+          node-version: '14'
 
       - name: ❇️ Setup node.js LTS
         uses: actions/setup-node@v3
@@ -37,15 +40,17 @@ jobs:
       - name: 👍 Checkout
         uses: actions/checkout@v3
         with:
-          node-version: '20.x'
-
-      - name: 🐞 Debug
-        run:
-          echo "Current branch: $GITHUB_REF"
-          echo "GitHub event name: $GITHUB_EVENT_NAME"
+          node-version: '14'
 
       - name: 📥 Install Dependencies
         run: yarn install --immutable
+
+      - name: 🐞 Debug
+        run: |
+          echo "Current branch: $GITHUB_REF"
+          echo "GitHub event name: $GITHUB_EVENT_NAME"
+          echo "GitHub actor: $GITHUB_ACTOR"
+          echo "GitHub repository: $GITHUB_REPOSITORY"
 
       - name: setup git config
         run: |
