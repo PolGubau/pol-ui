@@ -3,6 +3,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useRef } from 'react'
 
+
+/**
+ * @name Options
+ * @description The options to use for the ripple
+ * @param duration <number> The duration of the ripple animation
+ * @param timingFunction <string> The timing function of the ripple animation
+ * @param disabled <boolean> Whether the ripple is disabled
+ * @param className <string> The class name to apply to the ripple
+ * @param opacity <number> The opacity of the ripple
+ * @param containerClassName <string> The class name to apply to the ripple container
+ * @param ignoreNonLeftClick <boolean> Whether to ignore non left clicks
+ * @param onSpawn <function> A function that is called when the ripple is spawned
+ * @param cancelAutomatically <boolean> Whether to cancel the ripple automatically
+ * @param ref <React.RefObject<T>> The ref to the ripple host element
+ * @returns <Options> The options to use for the ripple
+ * @author Pol Gubau Amores - https://polgubau.com
+ */
 export type Options<T extends HTMLElement = any> = {
   duration: number
   // color: string;
@@ -55,6 +72,8 @@ const containerClassName = 'ripple--container'
  * @example
  * const [ref, event] = useRipple();
  * const [ref, event] = useRipple({color: 'blue'});
+ * 
+ * @author Pol Gubau Amores - https://polgubau.com
  */
 
 export default function useRipple<T extends HTMLElement = any>(inputOptions?: Partial<Options<T>>) {
@@ -140,6 +159,8 @@ export default function useRipple<T extends HTMLElement = any>(inputOptions?: Pa
  * const [ref, event] = useCustomRipple({color: 'blue', duration: 1000});
  * const [ref, event] = useCustomRipple({color: 'blue', duration: 1000, opacity: 0.5});
  * const [ref, event] = useCustomRipple({color: 'blue', duration: 1000, opacity: 0.5, className: 'my-ripple'});
+ * 
+ * @author Pol Gubau Amores - https://polgubau.com
  */
 
 export function customRipple<T extends HTMLElement = any>(inputOptions?: Partial<Omit<Options<T>, 'ref'>>) {
@@ -150,6 +171,23 @@ export function customRipple<T extends HTMLElement = any>(inputOptions?: Partial
     })
 }
 
+
+/**
+ * @name centerElementToPointer
+ * @param event <MinimalEvent> The event that triggered the ripple (ts: casting required)
+ * @param ref <HTMLElement> The ref to the ripple host element
+ * @param element <T extends HTMLElement> The element to center
+ * @returns <T extends HTMLElement> The centered element
+ * @description Centers the specified element to the pointer
+ * @example
+ * const element = document.createElement('div');
+ * const event = {clientX: 0, clientY: 0};
+ * const ref = document.createElement('div');
+ * const centeredElement = centerElementToPointer(event, ref, element);
+ * console.log(centeredElement.style.top); // 0px
+ * 
+ * @author Pol Gubau Amores - https://polgubau.com
+ */
 function centerElementToPointer<T extends HTMLElement>(event: MinimalEvent, ref: HTMLElement, element: T): T {
   const { top, left } = ref.getBoundingClientRect()
   element.style.setProperty('top', px(event.clientY - top))
@@ -157,10 +195,43 @@ function centerElementToPointer<T extends HTMLElement>(event: MinimalEvent, ref:
   return element
 }
 
+
+/**
+ * @name px
+ * @description Converts the specified number to a pixel string
+ * @param arg <string | number> The number to convert
+ * @returns <string> The pixel string
+ * @example
+ * const pxString = px(10);
+ * console.log(pxString); // 10px
+ * const pxString = px('10'); // 10px
+ * 
+ * @author Pol Gubau Amores - https://polgubau.com
+ */
 function px(arg: string | number) {
   return `${arg}px`
 }
 
+
+/**
+ * @name createRipple
+ * @param ref <T extends HTMLElement> The ref to the ripple host element
+ * @param event <MinimalEvent> The event that triggered the ripple (ts: casting required)
+ * @param param2 <Omit<Options<T>, 'ref'>> The options to use for the ripple
+ * @param ctx <Document> The context to use for the ripple
+ * @returns <HTMLDivElement> The ripple element
+ * @description Creates a ripple element
+ * @example
+ * const element = document.createElement('div');
+ * const event = {clientX: 0, clientY: 0};
+ * const options = {duration: 1000, timingFunction: 'ease-in-out', className: 'my-ripple', opacity: 0.5};
+ * const ripple = createRipple(element, event, options);
+ * console.log(ripple.style.opacity); // 0.5
+ * console.log(ripple.style.transition); // transform 600ms ease-in-out, opacity 650ms ease-in-out 130ms
+ * console.log(ripple.style.transform); // translate(-50%, -50%) scale(1)
+ * 
+ * @author Pol Gubau Amores - https://polgubau.com
+ */
 function createRipple<T extends HTMLElement>(
   ref: T,
   event: MinimalEvent,
@@ -196,6 +267,20 @@ function createRipple<T extends HTMLElement>(
   return applyStyles(styles, element)
 }
 
+/**
+ * @name applyStyles
+ * @param styles <string[][]> The styles to apply
+ * @param target <T extends HTMLElement> The target element
+ * @returns <T extends HTMLElement> The target element
+ * @description Applies the specified styles to the target element
+ * @example
+ * const element = document.createElement('div');
+ * const styles = [['color', 'red'], ['background-color', 'blue']];
+ * const styledElement = applyStyles(styles, element);
+ * console.log(styledElement.style.color); // red
+ * 
+ * @author Pol Gubau Amores - https://polgubau.com
+ */
 function applyStyles<T extends HTMLElement>(styles: string[][], target: T): T {
   if (!target) return target
 
@@ -205,6 +290,18 @@ function applyStyles<T extends HTMLElement>(styles: string[][], target: T): T {
   return target
 }
 
+/**
+ * @name cancelRippleAnimation
+ * @param element <T> The ripple element
+ * @param options <Omit<Options<T>, 'color' | 'ref' | 'onSpawn' | 'cancelAutomatically'>> The options to use for the ripple
+ * @description Cancels the ripple animation
+ * @example
+ * const [ref, event] = useRipple();
+ * const [ref, event] = useRipple({color: 'blue'});
+ * const [ref, event] = useRipple({color: 'blue', duration: 1000});
+ * const [ref, event] = useRipple({color: 'blue', duration: 1000, opacity: 0.5});
+ * @author Pol Gubau Amores - https://polgubau.com
+ */
 function cancelRippleAnimation<T extends HTMLElement>(
   element: T,
   options: Omit<Options<T>, 'color' | 'ref' | 'onSpawn' | 'cancelAutomatically'>,
@@ -229,7 +326,15 @@ function cancelRippleAnimation<T extends HTMLElement>(
   })
 }
 
-function createRippleContainer(className: string) {
+/**
+ * @name createRippleContainer
+ * @description Creates a ripple container
+ * @param className string - The class name to apply to the container
+ * @returns HTMLDivElement - The ripple container 
+ * 
+ * @author Pol Gubau Amores - https://polgubau.com
+ */
+function createRippleContainer(className: string): HTMLDivElement {
   const container = self().createElement('div')
   container.classList.add(className)
 
@@ -248,7 +353,17 @@ function createRippleContainer(className: string) {
   )
 }
 
-/** taken from https://stackoverflow.com/a/4819886/13188385 */
+/**
+ * @name isTouchDevice
+ * @description Checks if the current device is a touch device
+ * @returns A boolean indicating if the current device is a touch device
+ * @example
+ * const isTouch = isTouchDevice();
+ * if (isTouch) {
+ *  // do something
+ * }
+ *  @see https://stackoverflow.com/a/4819886/13188385 - source
+ */ 
 function isTouchDevice(): boolean {
   return 'ontouchstart' in window || navigator.maxTouchPoints > 0 || ((navigator as any)?.msMaxTouchPoints ?? 0 > 0)
 }

@@ -22,6 +22,16 @@ export interface AccordionTitleTheme {
   open: IBoolean
 }
 
+/**
+ * @name AccordionTitleProps
+ * @description Props for the AccordionTitle component.
+ * @property {React.ReactNode} children
+ * @property {string} className
+ * @property {string} rippleClassName
+ * @property {DeepPartial<AccordionTitleTheme>} theme
+ * @property {HeadingLevel} as
+ * @property {FC<ComponentProps<'svg'>>} arrowIcon
+ */
 export interface AccordionTitleProps extends ComponentProps<'button'> {
   arrowIcon?: FC<ComponentProps<'svg'>>
   as?: HeadingLevel
@@ -29,14 +39,26 @@ export interface AccordionTitleProps extends ComponentProps<'button'> {
   rippleClassName?: string
 }
 
+/**
+ * @name AccordionTitle
+ * @param {AccordionTitleProps} props
+ * @description AccordionTitle is the title of the accordion panel that is shown when the panel is closed.
+ * @example
+ * <AccordionTitle>
+ *   <p>Content</p>
+ * </AccordionTitle>
+ * @returns {JSX.Element}
+ * @author Pol Gubau Amores - https://polgubau.com
+ */
 export const AccordionTitle: FC<AccordionTitleProps> = ({
-  as: Component = HeadingLevelEnum.h2,
-  children,
-  className,
-  rippleClassName,
-  theme: customTheme = {},
-  ...props
-}) => {
+    as: Component = HeadingLevelEnum.h2,
+    children,
+    className,
+    rippleClassName,
+    theme: customTheme = {},
+    ...props
+  }: AccordionTitleProps): JSX.Element => {
+  
   const { arrowIcon: ArrowIcon, isBordered: bordered, isOpen, setOpen } = useAccordionContext()
   const onClick = () => typeof setOpen !== 'undefined' && setOpen()
 
