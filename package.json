@@ -38,7 +38,6 @@
     "prepublishOnly": "yarn build",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
-    "release": "standard-version -a",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "test": "vitest --ui",
@@ -47,7 +46,7 @@
     "test:e2e": "start-test 3000 ",
     "test:e2e:open": "start-test 3000 ",
     "typecheck": "tsc --noEmit",
-    "publish": "yarn prepublishOnly && yarn release && yarn publish:lib",
+    "publish": "yarn prepublishOnly && yarn publish:lib",
     "publish:lib": "npm publish --access public",
     "build-storybook": "storybook build"
   },
@@ -56,7 +55,6 @@
     "embla-carousel-react": "^8.0.0-rc19",
     "framer-motion": "^10.18.0",
     "react-icons": "^4.12.0",
-    "standard-version": "^9.5.0",
     "tailwind-merge": "^2.0.0"
   },
   "devDependencies": {
