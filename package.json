@@ -54,8 +54,7 @@
     "test:e2e:open": "start-test 3000 ",
     "typecheck": "tsc --noEmit",
     "publish": "yarn prepublishOnly && yarn release && yarn publish:lib",
-    "publish:lib": "npm publish --access public",
-    "build-storybook": "storybook build"
+    "publish:lib": "npm publish --access public"
   },
   "resolutions": {
     "jackspeak": "2.3.5",
