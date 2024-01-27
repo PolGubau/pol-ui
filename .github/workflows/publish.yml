@@ -1,9 +1,7 @@
 name: CI
 
-on:
-  push:
-    branches:
-      - main
+on: push
+
 jobs:
   test:
     name: 🧪 Lint and test
@@ -12,8 +10,6 @@ jobs:
     steps:
       - name: 👍 Checkout
         uses: actions/checkout@v3
-        with:
-          node-version: lts/*
 
       - name: ❇️ Setup node.js LTS
         uses: actions/setup-node@v3
@@ -35,26 +31,17 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     if: github.ref == 'refs/heads/main'
-    steps:
-      - name: 👍 Checkout
-        uses: actions/checkout@v3
-        with:
-          node-version: '20.x'
 
-      - name: 🐞 Debug
-        run:
-          echo "Current branch: $GITHUB_REF"
-          echo "GitHub event name: $GITHUB_EVENT_NAME"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          always-auth: true
+          registry-url: 'https://registry.npmjs.org'
 
       - name: 📥 Install Dependencies
         run: yarn install --immutable
-        
-      - name: 🐞 Debug
-        run: |
-          echo "Current branch: $GITHUB_REF"
-          echo "GitHub event name: $GITHUB_EVENT_NAME"
-          echo "GitHub actor: $GITHUB_ACTOR"
-          echo "GitHub repository: $GITHUB_REPOSITORY"
 
       - name: setup git config
         run: |
