@@ -1,4 +1,4 @@
-import { InputTheme } from './InputTypes'
+import type { InputTheme } from './InputTypes'
 
 export const inputTheme: InputTheme = {
   root: {
@@ -8,7 +8,7 @@ export const inputTheme: InputTheme = {
       top: 'flex-col gap-1',
     },
   },
-  base: 'flex',
+  base: 'flex rounded-lg',
 
   label: 'ml-2',
 
@@ -24,7 +24,7 @@ export const inputTheme: InputTheme = {
     },
 
     input: {
-      base: 'block w-full group  disabled:cursor-not-allowed disabled:opacity-50 outline-none focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-opacity-50   focus:ring-offset-2 focus:ring-offset-secondary-50 dark:focus:ring-offset-secondary-900 transition-all',
+      base: 'block w-full group  disabled:cursor-not-allowed disabled:opacity-50 outline-none focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-opacity-50   focus:ring-offset-2 focus:ring-offset-secondary-50 dark:focus:ring-offset-secondary-900 transition resize-none rounded-lg',
       border: {
         on: 'border-2 border-opacity-30 group-focus:border-opacity-100',
         off: '',
@@ -64,10 +64,11 @@ export const inputTheme: InputTheme = {
         on: 'rounded-r-lg',
         off: 'rounded-lg',
       },
-      withShadow: {
-        on: 'shadow-sm dark:shadow-sm-light',
+      multiline: {
+        on: 'resize-none h-full',
         off: '',
       },
+
     },
   },
 }

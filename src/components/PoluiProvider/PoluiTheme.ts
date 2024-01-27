@@ -32,8 +32,7 @@ import type { LoaderTheme } from '../Loader'
 import type { TableTheme } from '../Table'
 import type { TabsTheme } from '../Tabs'
 import type { InputTheme } from '../Input'
-import type { TextareaTheme } from '../Textarea'
-import type { TimelineTheme } from '../Timeline'
+ import type { TimelineTheme } from '../Timeline'
 import type { ToastTheme } from '../Toast'
 import type { TooltipTheme } from '../Tooltip'
 import type {
@@ -96,8 +95,7 @@ export type CustomPoluiTheme = DeepPartial<PoluiTheme>
  * @see TableTheme for the Table theme
  * @see TabsTheme for the Tabs theme
  * @see InputTheme for the Input theme
- * @see TextareaTheme for the Textarea theme
- * @see TimelineTheme for the Timeline theme
+  * @see TimelineTheme for the Timeline theme
  * @see ToastTheme for the Toast theme
  * @see TooltipTheme for the Tooltip theme
  * @see DropdownTheme for the Dropdown theme
@@ -109,10 +107,7 @@ export type CustomPoluiTheme = DeepPartial<PoluiTheme>
  * @see RangeSliderTheme for the RangeSlider theme
  * @see SelectTheme for the Select theme
  * @see SwitchTheme for the Switch theme
- * @see InputTheme for the Input theme
- * @see TextareaTheme for the Textarea theme
- * @see TimelineTheme for the Timeline theme
- *
+   *
  */
 export interface PoluiTheme {
   accordion: AccordionTheme
@@ -153,7 +148,6 @@ export interface PoluiTheme {
   rangeSlider: RangeSliderTheme
   select: SelectTheme
   textInput: InputTheme
-  textarea: TextareaTheme
   switch: SwitchTheme
   helperText: HelperTextTheme
   table: TableTheme

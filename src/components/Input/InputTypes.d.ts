@@ -38,7 +38,8 @@ export interface InputInputTheme {
   withIcon: IBoolean
   withRightIcon: IBoolean
   withAddon: IBoolean
-  withShadow: IBoolean
+  multiline: IBoolean
+
 }
 /**
  * @name InputFieldTheme

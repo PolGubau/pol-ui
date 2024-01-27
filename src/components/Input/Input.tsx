@@ -16,19 +16,22 @@ export enum InputLabelPositionsEnum {
   left = 'left',
 }
 export type InputLabelPositions = keyof typeof InputLabelPositionsEnum
-export interface InputProps extends Omit<ComponentProps<'input'>, 'ref' | 'color'> {
-  addon?: ReactNode
+export interface BaseInputsProps {
   color?: keyof Colors
   helperText?: ReactNode
   leftComponent?: ReactNode
   rightComponent?: ReactNode
-  shadow?: boolean
-  sizing?: keyof MainSizes
+  size?: keyof MainSizes
   theme?: DeepPartial<InputTheme>
   border?: boolean
   label?: string
   labelPosition?: InputLabelPositions
   labelClassName?: string
+  innerClassName?: string
+}
+
+export interface InputProps extends Omit<ComponentProps<'input'>, 'ref' | 'color'|'size'> ,BaseInputsProps{
+    addon?: ReactNode
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -40,11 +43,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       helperText,
       leftComponent,
       rightComponent,
-      shadow,
-      sizing = MainSizesEnum.md,
+      size = MainSizesEnum.md,
       theme: customTheme = {},
       label,
       labelPosition = 'top',
+      innerClassName,
       border = false,
       labelClassName = '',
       ...props
@@ -85,13 +88,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               id={randomId}
               className={twMerge(
                 theme.field.input.base,
+                theme.field.input.multiline.off,
                 theme.field.input.border[border ? 'on' : 'off'],
                 theme.field.input.colors[color],
-                theme.field.input.sizes[sizing],
+                theme.field.input.sizes[size],
                 theme.field.input.withIcon[leftComponent ? 'on' : 'off'],
                 theme.field.input.withRightIcon[rightComponent ? 'on' : 'off'],
                 theme.field.input.withAddon[addon ? 'on' : 'off'],
-                theme.field.input.withShadow[shadow ? 'on' : 'off'],
+                innerClassName
               )}
               {...props}
               ref={ref}

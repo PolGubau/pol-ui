@@ -29,7 +29,6 @@ const Template: StoryFn<InputProps> = args => <Input {...args} />
 export const Default = Template.bind({})
 Default.storyName = 'Text input'
 Default.args = {
-  label: 'Email',
   placeholder: 'pol@ui.com',
 }
 

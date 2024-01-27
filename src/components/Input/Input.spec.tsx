@@ -11,7 +11,7 @@ describe.concurrent('Components / Text input', () => {
       expect(textInput).toBeInTheDocument()
     })
     it('should have Icon if selected ', () => {
-      const page = render(<Input rightComponent={HiEye} />).getByTestId('right-icon')
+      const page = render(<Input rightComponent={<HiEye/>} />).getByTestId('right-icon')
 
       expect(page).toBeInTheDocument()
     })
