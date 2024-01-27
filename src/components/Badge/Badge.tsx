@@ -3,37 +3,18 @@ import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
-import type { IBoolean, Colors } from '../PoluiProvider'
+import type { Colors } from '../PoluiProvider'
 import { ColorsEnum, RoundedSizesEnum, SizesEnum } from '../../types/enums'
-import type { MainSizes, RoundedSizes } from '../PoluiProvider/PoluiTheme'
-
-export interface BadgeTheme {
-  root: BadgeRootTheme
-  icon: BadgeIconTheme
-}
-
-export interface BadgeRootTheme {
-  base: string
-  color: Colors
-  rounded: RoundedSizes
-  href: string
-  size: BadgeSizes
-}
-
-export interface BadgeIconTheme extends IBoolean {
-  size: BadgeSizes
-}
-
-export interface BadgeSizes extends MainSizes {
-  [key: string]: string
-}
+import type { MainSizesElastic, RoundedSizes } from '../PoluiProvider/PoluiTheme'
+import type { BadgeTheme } from './theme'
+ 
 
 export interface BadgeProps extends Omit<ComponentProps<'span'>, 'color'> {
   color?: keyof Colors
   href?: string
   rounded?: keyof RoundedSizes
   icon?: FC<ComponentProps<'svg'>>
-  size?: keyof BadgeSizes
+  size?: keyof MainSizesElastic
   theme?: DeepPartial<BadgeTheme>
 }
 

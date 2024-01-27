@@ -1,4 +1,22 @@
-import type { BadgeTheme } from './Badge'
+import type { Colors, IBoolean } from "../PoluiProvider"
+import type { MainSizesElastic, RoundedSizes } from "../PoluiProvider/PoluiTheme"
+ 
+export interface BadgeTheme {
+  root: BadgeRootTheme
+  icon: BadgeIconTheme
+}
+
+export interface BadgeRootTheme {
+  base: string
+  color: Colors
+  rounded: RoundedSizes
+  href: string
+  size: MainSizesElastic
+}
+
+export interface BadgeIconTheme extends IBoolean {
+  size: MainSizesElastic
+}
 
 export const badgeTheme: BadgeTheme = {
   root: {
