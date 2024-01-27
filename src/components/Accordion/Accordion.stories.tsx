@@ -36,7 +36,7 @@ const Template: StoryFn<AccordionProps> = args => (
       <Accordion.Title as={HeadingLevelEnum.h3}>What if I don't like classes in my html</Accordion.Title>
       <Accordion.Content
         theme={{
-          base: 'bg-red-200 border border-red-400 w-fit p-6',
+          base: 'bg-red-200 border border-red-400 p-6',
         }}
       >
         <p>

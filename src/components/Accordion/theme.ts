@@ -9,7 +9,7 @@ export const accordionTheme: AccordionTheme = {
     },
   },
   content: {
-    base: 'py-4 px-4  last:rounded-b-xl dark:bg-secondary-900 first:rounded-t-xl',
+    base: 'py-4 px-4 last:rounded-b-xl dark:bg-secondary-900 first:rounded-t-xl',
   },
   title: {
     arrow: {
