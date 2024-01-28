@@ -35,18 +35,15 @@ export const Default = (): JSX.Element => {
     <div className="flex flex-col gap-2 p-4 rounded-xl">
       {options.map(option => {
         return (
-          <>
-            <Radio
-              key={option}
-              layoutId="4"
-              // id={option}
-              checked={value === option}
-              onClick={() => setValue(option)}
-              value={option}
-              label={option}
-            />
-            {/* <Label value={option} htmlFor={option} /> */}
-          </>
+          <Radio
+            key={option}
+            layoutId="1"
+            // id={option}
+            checked={value === option}
+            onClick={() => setValue(option)}
+            value={option}
+            label={option}
+          />
         )
       })}
     </div>
@@ -60,18 +57,14 @@ export const DarkMode = (): JSX.Element => {
     <div className="dark flex flex-col gap-2 bg-secondary-900 p-4 rounded-xl">
       {options.map(option => {
         return (
-          <>
-            <Radio
-              key={option}
-              layoutId="4"
-              // id={option}
-              checked={value === option}
-              onClick={() => setValue(option)}
-              value={option}
-              label={option}
-            />
-            {/* <Label value={option} htmlFor={option} /> */}
-          </>
+          <Radio
+            key={option}
+            layoutId="2"
+            checked={value === option}
+            onClick={() => setValue(option)}
+            value={option}
+            label={option}
+          />
         )
       })}
     </div>

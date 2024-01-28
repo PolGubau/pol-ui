@@ -1,3 +1,4 @@
+'use client'
 import type { ComponentProps } from 'react'
 import React, { forwardRef, useId } from 'react'
 import { motion } from 'framer-motion'
@@ -14,12 +15,21 @@ export interface RadioProps extends Omit<ComponentProps<'input'>, 'ref' | 'type'
   layoutId?: string
   checked: boolean
   inputClassNames?: string
-  onClick: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void
+  onClick?: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void
 }
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   (
-    { className, theme: customTheme = {}, inputClassNames, layoutId = 'radio_layout_id', label, onClick, ...props },
+    {
+      className,
+      theme: customTheme = {},
+      inputClassNames,
+      layoutId = 'radio_layout_id',
+      label,
+      onClick,
+      checked,
+      ...props
+    },
     ref,
   ) => {
     const theme: RadioTheme = mergeDeep(getTheme().radio, customTheme)
@@ -38,7 +48,13 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
             {...props}
           />
           <div className={twMerge(theme.input.fakeInput)} />
-          {props.checked && <motion.div className={twMerge(theme.input.marker)} layoutId={layoutId} />}
+          {checked && (
+            <motion.div
+              className={twMerge(theme.input.marker)}
+              layoutId={layoutId}
+              transition={{ type: 'spring', bounce: 0.3, duration: 0.6 }}
+            />
+          )}
         </div>
         {label && <Label className={twMerge(theme.label)} htmlFor={randomId} value={label} />}
       </li>

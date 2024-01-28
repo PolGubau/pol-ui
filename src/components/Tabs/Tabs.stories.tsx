@@ -1,15 +1,12 @@
-import type { Meta } from '@storybook/react';
-import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
-import { MdDashboard } from 'react-icons/md';
-import type { TabsProps } from './Tabs';
-import { Tabs } from './Tabs';
+import type { Meta } from '@storybook/react'
+import type { TabsProps } from './Tabs'
+import { Tabs } from './Tabs'
 
 export default {
   title: 'Components/Tabs',
+  tags: ['Tabs', 'autodocs'],
   component: Tabs,
-  args: {
-    className: 'bg-white rounded-lg dark:bg-gray-800 dark:text-white',
-  },
+
   argTypes: {
     className: {
       control: 'text',
@@ -19,87 +16,124 @@ export default {
       options: ['default', 'underline', 'pills', 'fullWidth'],
     },
   },
-} as Meta;
+  decorators: [
+    Story => (
+      <div className="flex p-6 flex-col min-h-[400px] bg-secondary-50">
+        <Story />
+      </div>
+    ),
+  ],
+  parameters: {
+    layout: 'fullscreen',
+  },
+} as Meta
 
+const tabs = [
+  {
+    name: 'Product',
+    content: (
+      <div className="bg-secondary-200 p-6 rounded-2xl">
+        <h2 className="text-3xl text-secondary-900 font-bold">Product Tab</h2>
+        <p>
+          Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur
+          adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem
+          ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur
+        </p>
+      </div>
+    ),
+  },
+  {
+    name: 'Features',
+    content: (
+      <div className="bg-secondary-200 p-6 rounded-2xl">
+        <h2 className="text-3xl text-secondary-900 font-bold">Features Tab</h2>
+        <p>
+          Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur
+          adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem
+        </p>
+      </div>
+    ),
+  },
+  {
+    name: 'Reviews',
+    content: (
+      <div className="bg-secondary-200 p-6 rounded-2xl">
+        <h2 className="text-3xl text-secondary-900 font-bold">Reviews Tab</h2>
+        <p>
+          Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur
+          adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem
+          ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur
+        </p>
+      </div>
+    ),
+  },
+  {
+    name: 'Customers',
+    content: (
+      <div className="bg-secondary-200 p-6 rounded-2xl">
+        <h2 className="text-3xl text-secondary-900 font-bold">Customers Tab</h2>
+        <p>
+          Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur
+          adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem
+          ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur
+          adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem
+          ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas.
+        </p>
+      </div>
+    ),
+  },
+]
 export const Default = (args: TabsProps): JSX.Element => (
-  <Tabs {...args}>
-    <Tabs.Item title="Profile">Profile content</Tabs.Item>
-    <Tabs.Item title="Dashboard">Dashboard content</Tabs.Item>
-    <Tabs.Item title="Settings">Settings content</Tabs.Item>
-    <Tabs.Item title="Contacts">Contacts content</Tabs.Item>
-    <Tabs.Item disabled title="Disabled">
-      Disabled content
-    </Tabs.Item>
-  </Tabs>
-);
-
-export const WithUnderline = (args: TabsProps): JSX.Element => (
-  <Tabs {...args}>
-    <Tabs.Item title="Profile">Profile content</Tabs.Item>
-    <Tabs.Item title="Dashboard">Dashboard content</Tabs.Item>
-    <Tabs.Item title="Settings">Settings content</Tabs.Item>
-    <Tabs.Item title="Contacts">Contacts content</Tabs.Item>
-    <Tabs.Item disabled title="Disabled">
-      Disabled content
-    </Tabs.Item>
-  </Tabs>
-);
-WithUnderline.args = {
-  style: 'underline',
-};
-WithUnderline.storyName = 'With underline';
-
-export const WithIcons = (args: TabsProps): JSX.Element => (
-  <Tabs {...args}>
-    <Tabs.Item title="Profile" icon={HiUserCircle}>
-      Profile content
-    </Tabs.Item>
-    <Tabs.Item active={true} title="Dashboard" icon={MdDashboard}>
-      Dashboard content
-    </Tabs.Item>
-    <Tabs.Item title="Settings" icon={HiAdjustments}>
-      Settings content
-    </Tabs.Item>
-    <Tabs.Item title="Contacts" icon={HiClipboardList}>
-      Contacts content
-    </Tabs.Item>
-    <Tabs.Item disabled={true} title="Disabled">
-      Disabled content
-    </Tabs.Item>
-  </Tabs>
-);
-WithIcons.args = {
-  style: 'underline',
-};
-WithIcons.storyName = 'With icons';
-
-export const Pills = (args: TabsProps): JSX.Element => (
-  <Tabs {...args}>
-    <Tabs.Item title="Profile">Profile content</Tabs.Item>
-    <Tabs.Item title="Dashboard">Dashboard content</Tabs.Item>
-    <Tabs.Item title="Settings">Settings content</Tabs.Item>
-    <Tabs.Item title="Contacts">Contacts content</Tabs.Item>
-    <Tabs.Item disabled title="Disabled">
-      Disabled content
-    </Tabs.Item>
-  </Tabs>
-);
-Pills.args = {
-  style: 'pills',
-};
-
-export const FullWidth = (args: TabsProps): JSX.Element => (
-  <Tabs {...args}>
-    <Tabs.Item title="Profile">Profile content</Tabs.Item>
-    <Tabs.Item title="Dashboard">Dashboard content</Tabs.Item>
-    <Tabs.Item title="Settings">Settings content</Tabs.Item>
-    <Tabs.Item title="Contacts">Contacts content</Tabs.Item>
-    <Tabs.Item disabled title="Disabled">
-      Disabled content
-    </Tabs.Item>
-  </Tabs>
-);
-FullWidth.args = {
-  style: 'fullWidth',
-};
-FullWidth.storyName = 'Full width';
+  <div className=" relative flex flex-col mx-auto w-full  items-start justify-start">
+    <Tabs {...args} />
+  </div>
+)
+Default.args = {
+  tabs: tabs,
+}
+export const WithoutMotion = (args: TabsProps): JSX.Element => Default.bind({})(args)
+WithoutMotion.args = {
+  tabs: tabs,
+  hasMotion: false,
+}
+export const WithoutAnyMotion = (args: TabsProps): JSX.Element => Default.bind({})(args)
+WithoutAnyMotion.args = {
+  tabs: tabs,
+  hasNavMotion: false,
+  hasMotion: false,
+}
+export const Disabled = (args: TabsProps): JSX.Element => Default.bind({})(args)
+Disabled.args = {
+  tabs: [
+    {
+      name: 'Enabled',
+      content: (
+        <div className="bg-secondary-200 p-6 rounded-2xl">
+          <h2 className="text-3xl text-secondary-900 font-bold">Enabled Tab</h2>
+          <p>
+            Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte
+            tur adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas.
+            Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte
+            tur
+          </p>
+        </div>
+      ),
+    },
+    {
+      name: 'Disabled',
+      disabled: true,
+      content: (
+        <div className="bg-secondary-200 p-6 rounded-2xl">
+          <h2 className="text-3xl text-secondary-900 font-bold">Disabled Tab</h2>
+          <p>
+            Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte
+            tur adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas.
+            Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte
+            tur
+          </p>
+        </div>
+      ),
+    },
+  ],
+}
+Disabled.displayName = 'Disabled'

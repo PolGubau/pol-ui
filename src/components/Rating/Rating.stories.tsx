@@ -1,9 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import type { RatingProps } from './Rating'
 import { theme } from '../../theme'
-import { RatingTheme } from './theme'
 import { TbAdjustmentsBolt, TbCactus, TbLayout, TbPhoneCheck, TbPhotoFilled } from 'react-icons/tb'
-import { Rating } from '.'
+import { Rating, RatingTheme } from '.'
 import { Progress } from '../Progress'
 
 export default {

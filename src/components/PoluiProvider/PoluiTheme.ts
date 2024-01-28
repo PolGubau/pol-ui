@@ -54,7 +54,7 @@ import type { IconButtonTheme } from '../IconButton'
 import type { HelperTextTheme } from '../HelperText/theme'
 import type { CopyrightTheme } from '../Copyright/theme'
 import type { DirectionHoverTheme } from '../DirectionHover/theme'
-import type { ConveyorTheme } from '../ImageConveyor/theme'
+import type { ConveyorTheme } from '../Conveyor/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
