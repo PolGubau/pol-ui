@@ -10,7 +10,7 @@ import { getTheme } from '../../theme-store'
 import type { ConveyorTheme } from './theme'
 
 export type ConveyorProps<T extends ElementType = 'div'> = {
-  children: React.ReactNode[]
+  children?: React.ReactNode[]
   direction?: ConveyorDirection
   speed?: ConveyorSpeed
   pauseOnHover?: boolean
@@ -71,13 +71,16 @@ export const Conveyor = <T extends ElementType = 'div'>({
   const [start, setStart] = useState(false)
 
   return (
-    <div ref={containerRef} {...props} className={twMerge(theme.scroller, className)}>
+    <div ref={containerRef} {...props} className={twMerge(theme.scroller, className)} data-testid="conveyor-scroller">
       <ul
+        data-testid="conveyor-list"
         ref={scrollerRef}
         className={twMerge(theme.list, start && theme.animation, pauseOnHover && theme.pauseAnimation)}
       >
-        {children.map((item, i) => (
-          <li key={i}>{item}</li>
+        {children?.map((item, i) => (
+          <li data-testid="conveyor-item" key={i}>
+            {item}
+          </li>
         ))}
       </ul>
     </div>

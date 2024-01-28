@@ -1,5 +1,29 @@
-import type { TabsTheme } from './Tabs';
+import type { TabStyleItem } from './Tabs'
 
+export interface TabsTheme {
+  base: string
+  tablist: {
+    base: string
+    styles: TabStyles
+    tabitem: {
+      base: string
+      styles: TabStyleItem<TabStyles>
+      icon: string
+    }
+  }
+  tabitemcontainer: {
+    base: string
+    styles: TabStyles
+  }
+  tabpanel: string
+}
+
+export interface TabStyles {
+  default: string
+  fullWidth: string
+  pills: string
+  underline: string
+}
 export const tabTheme: TabsTheme = {
   base: 'flex flex-col gap-2',
   tablist: {
@@ -56,4 +80,4 @@ export const tabTheme: TabsTheme = {
     },
   },
   tabpanel: 'py-3',
-};
+}

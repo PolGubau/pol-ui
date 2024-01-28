@@ -1,67 +1,43 @@
-'use client';
+'use client'
 
-import type { ComponentProps, ForwardedRef, KeyboardEvent, PropsWithChildren, ReactElement } from 'react';
-import { Children, forwardRef, useEffect, useId, useImperativeHandle, useMemo, useRef, useState } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { IBoolean } from '../PoluiProvider';
-import type { TabItemProps } from './TabItem';
-import { TabItem } from './TabItem';
-
-export interface TabsTheme {
-  base: string;
-  tablist: {
-    base: string;
-    styles: TabStyles;
-    tabitem: {
-      base: string;
-      styles: TabStyleItem<TabStyles>;
-      icon: string;
-    };
-  };
-  tabitemcontainer: {
-    base: string;
-    styles: TabStyles;
-  };
-  tabpanel: string;
-}
-
-export interface TabStyles {
-  default: string;
-  fullWidth: string;
-  pills: string;
-  underline: string;
-}
+import type { ComponentProps, ForwardedRef, KeyboardEvent, PropsWithChildren, ReactElement } from 'react'
+import { Children, forwardRef, useEffect, useId, useImperativeHandle, useMemo, useRef, useState } from 'react'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers/merge-deep'
+import { getTheme } from '../../theme-store'
+import type { DeepPartial } from '../../types'
+import type { IBoolean } from '../PoluiProvider'
+import type { TabItemProps } from './TabItem'
+import { TabItem } from './TabItem'
+import type { TabStyles, TabsTheme } from './theme'
 
 export interface TabStyleItemProps {
-  base: string;
-  active: IBoolean;
+  base: string
+  active: IBoolean
 }
 
 export type TabStyleItem<Type> = {
-  [K in keyof Type]: TabStyleItemProps;
-};
+  [K in keyof Type]: TabStyleItemProps
+}
 
-export type TabItemStatus = 'active' | 'notActive';
+export type TabItemStatus = 'active' | 'notActive'
 
 interface TabEventProps {
-  target: number;
+  target: number
 }
 
 interface TabKeyboardEventProps extends TabEventProps {
-  event: KeyboardEvent<HTMLButtonElement>;
+  event: KeyboardEvent<HTMLButtonElement>
 }
 
 export interface TabsProps extends Omit<ComponentProps<'div'>, 'ref' | 'style'> {
-  onActiveTabChange?: (activeTab: number) => void;
-  style?: keyof TabStyles;
-  theme?: DeepPartial<TabsTheme>;
+  onActiveTabChange?: (activeTab: number) => void
+  style?: keyof TabStyles
+  theme?: DeepPartial<TabsTheme>
 }
 
 export interface TabsRef {
-  setActiveTab: (activeTab: number) => void;
+  setActiveTab: (activeTab: number) => void
 }
 
 const TabsComponent = forwardRef<TabsRef, TabsProps>(
@@ -69,9 +45,9 @@ const TabsComponent = forwardRef<TabsRef, TabsProps>(
     { children, className, onActiveTabChange, style = 'default', theme: customTheme = {}, ...props },
     ref: ForwardedRef<TabsRef>,
   ) => {
-    const theme = mergeDeep(getTheme().tabs, customTheme);
+    const theme = mergeDeep(getTheme().tabs, customTheme)
 
-    const id = useId();
+    const id = useId()
     const tabs = useMemo(
       () =>
         Children.map(
@@ -79,51 +55,51 @@ const TabsComponent = forwardRef<TabsRef, TabsProps>(
           ({ props }) => props,
         ),
       [children],
-    );
-    const tabRefs = useRef<HTMLButtonElement[]>([]);
+    )
+    const tabRefs = useRef<HTMLButtonElement[]>([])
     const [activeTab, setActiveTab] = useState(
       Math.max(
         0,
-        tabs.findIndex((tab) => tab.active),
+        tabs.findIndex(tab => tab.active),
       ),
-    );
-    const [focusedTab, setFocusedTab] = useState(-1);
+    )
+    const [focusedTab, setFocusedTab] = useState(-1)
 
     const setActiveTabWithCallback = (activeTab: number) => {
-      setActiveTab(activeTab);
-      if (onActiveTabChange) onActiveTabChange(activeTab);
-    };
+      setActiveTab(activeTab)
+      if (onActiveTabChange) onActiveTabChange(activeTab)
+    }
 
     const handleClick = ({ target }: TabEventProps): void => {
-      setActiveTabWithCallback(target);
-      setFocusedTab(target);
-    };
+      setActiveTabWithCallback(target)
+      setFocusedTab(target)
+    }
 
     const handleKeyboard = ({ event, target }: TabKeyboardEventProps): void => {
       if (event.key === 'ArrowLeft') {
-        setFocusedTab(Math.max(0, focusedTab - 1));
+        setFocusedTab(Math.max(0, focusedTab - 1))
       }
 
       if (event.key === 'ArrowRight') {
-        setFocusedTab(Math.min(tabs.length - 1, focusedTab + 1));
+        setFocusedTab(Math.min(tabs.length - 1, focusedTab + 1))
       }
 
       if (event.key === 'Enter') {
-        setActiveTabWithCallback(target);
-        setFocusedTab(target);
+        setActiveTabWithCallback(target)
+        setFocusedTab(target)
       }
-    };
+    }
 
-    const tabItemStyle = theme.tablist.tabitem.styles[style];
-    const tabItemContainerStyle = theme.tabitemcontainer.styles[style];
+    const tabItemStyle = theme.tablist.tabitem.styles[style]
+    const tabItemContainerStyle = theme.tabitemcontainer.styles[style]
 
     useEffect(() => {
-      tabRefs.current[focusedTab]?.focus();
-    }, [focusedTab]);
+      tabRefs.current[focusedTab]?.focus()
+    }, [focusedTab])
 
     useImperativeHandle(ref, () => ({
       setActiveTab: setActiveTabWithCallback,
-    }));
+    }))
 
     return (
       <div className={twMerge(theme.base, className)}>
@@ -148,8 +124,8 @@ const TabsComponent = forwardRef<TabsRef, TabsProps>(
               disabled={tab.disabled}
               id={`${id}-tab-${index}`}
               onClick={() => handleClick({ target: index })}
-              onKeyDown={(event) => handleKeyboard({ event, target: index })}
-              ref={(element) => (tabRefs.current[index] = element as HTMLButtonElement)}
+              onKeyDown={event => handleKeyboard({ event, target: index })}
+              ref={element => (tabRefs.current[index] = element as HTMLButtonElement)}
               role="tab"
               tabIndex={index === focusedTab ? 0 : -1}
               style={{ zIndex: index === focusedTab ? 2 : 1 }}
@@ -175,12 +151,12 @@ const TabsComponent = forwardRef<TabsRef, TabsProps>(
           ))}
         </div>
       </div>
-    );
+    )
   },
-);
+)
 
-TabsComponent.displayName = 'Tabs';
+TabsComponent.displayName = 'Tabs'
 
 export const Tabs = Object.assign(TabsComponent, {
   Item: TabItem,
-});
+})
