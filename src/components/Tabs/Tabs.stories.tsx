@@ -83,26 +83,26 @@ const tabs = [
     ),
   },
 ]
-export const Default = (args: TabsProps): JSX.Element => (
+export const TabsExample = (args: TabsProps): JSX.Element => (
   <div className=" relative flex flex-col mx-auto w-full  items-start justify-start">
     <Tabs {...args} />
   </div>
 )
-Default.args = {
+TabsExample.args = {
   tabs: tabs,
 }
-export const WithoutMotion = (args: TabsProps): JSX.Element => Default.bind({})(args)
+export const WithoutMotion = (args: TabsProps): JSX.Element => TabsExample.bind({})(args)
 WithoutMotion.args = {
   tabs: tabs,
   hasMotion: false,
 }
-export const WithoutAnyMotion = (args: TabsProps): JSX.Element => Default.bind({})(args)
+export const WithoutAnyMotion = (args: TabsProps): JSX.Element => TabsExample.bind({})(args)
 WithoutAnyMotion.args = {
   tabs: tabs,
   hasNavMotion: false,
   hasMotion: false,
 }
-export const Disabled = (args: TabsProps): JSX.Element => Default.bind({})(args)
+export const Disabled = (args: TabsProps): JSX.Element => TabsExample.bind({})(args)
 Disabled.args = {
   tabs: [
     {

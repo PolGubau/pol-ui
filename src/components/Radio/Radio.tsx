@@ -13,7 +13,7 @@ export interface RadioProps extends Omit<ComponentProps<'input'>, 'ref' | 'type'
   theme?: DeepPartial<RadioTheme>
   label?: string
   layoutId?: string
-  checked: boolean
+  checked?: boolean
   inputClassNames?: string
   onClick?: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void
 }
@@ -27,7 +27,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       layoutId = 'radio_layout_id',
       label,
       onClick,
-      checked,
+      checked = false,
       ...props
     },
     ref,

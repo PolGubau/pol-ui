@@ -34,6 +34,8 @@ export const Tabs: React.FC<TabsProps> = ({
   hasNavMotion = true,
   theme: customTheme = {},
 }: TabsProps) => {
+  if (propTabs.length === 0) throw new Error('Tabs must have at least one tab')
+
   const [active, setActive] = useState<Tab>(propTabs[0])
   const [tabs, setTabs] = useState<Tab[]>(propTabs)
 
@@ -56,6 +58,8 @@ export const Tabs: React.FC<TabsProps> = ({
           <button
             disabled={tab.disabled}
             key={tab.name}
+            role="tab"
+            aria-selected={active.name === tab.name}
             onClick={() => {
               moveSelectedTabToTop(idx)
             }}
