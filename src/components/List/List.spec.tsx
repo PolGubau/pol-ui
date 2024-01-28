@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
-import { PoluiProvider } from '../../';
-import { List } from './List';
+import { render, screen } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
+import { PoluiProvider } from '../../'
+import { List } from './List'
 
 describe('Components / List group', () => {
   describe('Theme', () => {
@@ -12,17 +12,17 @@ describe('Components / List group', () => {
             base: 'asd',
           },
         },
-      };
+      }
 
       render(
         <PoluiProvider theme={{ theme }}>
           <TestList />
         </PoluiProvider>,
       ),
-        expect(listGroup()).toHaveClass('asd');
-    });
-  });
-});
+        expect(listGroup()).toHaveClass('asd')
+    })
+  })
+})
 
 const TestList = (): JSX.Element => {
   return (
@@ -31,7 +31,7 @@ const TestList = (): JSX.Element => {
       <List.Item>Messages</List.Item>
       <List.Item>Download</List.Item>
     </List>
-  );
-};
+  )
+}
 
-const listGroup = () => screen.getByRole('list');
+const listGroup = () => screen.getByRole('list')

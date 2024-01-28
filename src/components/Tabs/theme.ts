@@ -13,7 +13,7 @@ export interface TabsTheme {
   }
 }
 
-export const tabTheme: TabsTheme = {
+export const tabsTheme: TabsTheme = {
   base: 'flex flex-row items-center justify-start relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full [perspective:1000px]',
 
   disabled: 'opacity-50 cursor-not-allowed',
