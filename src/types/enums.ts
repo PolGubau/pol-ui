@@ -375,3 +375,25 @@ export enum TriggerReasonEnum {
    */
   click = 'click',
 }
+
+/**
+ * @name DirectionEnum
+ * @description Enum for the different directions, top, right, bottom and left
+ * @property {string} top - Top direction
+ * @property {string} right - Right direction
+ * @property {string} bottom - Bottom direction
+ * @property {string} left - Left direction
+ * @example
+ * <Tooltip direction={DirectionEnum.top} ... // Top direction
+ * <Tooltip direction={DirectionEnum.right} ... // Right direction
+ * <Tooltip direction={DirectionEnum.bottom} ... // Bottom direction
+ * <Tooltip direction={DirectionEnum.left} ... // Left direction
+ *
+ * @author Pol Gubau Amores - https://polgubau.com
+ */
+export enum DirectionEnum {
+  top = 'top',
+  right = 'right',
+  bottom = 'bottom',
+  left = 'left',
+}

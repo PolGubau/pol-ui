@@ -46,6 +46,7 @@ import type {
   GetValuesEnum,
   ColorsEnum,
   TriggerReasonEnum,
+  DirectionEnum,
 } from '../../types/enums'
 import type { BannerTheme } from '../Banner/Banner'
 import type { SwitchTheme } from '../Switch'
@@ -53,6 +54,7 @@ import type { IconButtonTheme } from '../IconButton'
 import type { HelperTextTheme } from '../HelperText/theme'
 import type { CopyrightTheme } from '../Copyright/theme'
 import type { DirectionHoverTheme } from '../DirectionHover/theme'
+import type { ConveyorTheme } from '../ImageConveyor/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -105,6 +107,7 @@ export interface PoluiTheme {
   helperText: HelperTextTheme
   table: TableTheme
   timeline: TimelineTheme
+  conveyor: ConveyorTheme
 }
 
 /**
@@ -233,3 +236,11 @@ export interface ContentPositions {
  * @author Pol Gubau Amores - https://polgubau.com
  */
 export type TriggerReason = `${TriggerReasonEnum}`
+
+/**
+ * @name Direction
+ * @description Type for the different directions, from top to bottom, dynamic from the DirectionEnum enum
+ * @see DirectionEnum for the different directions
+ * @author Pol Gubau Amores - https://polgubau.com
+ */
+export type Direction = `${DirectionEnum}`

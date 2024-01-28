@@ -14,13 +14,13 @@ export interface DirectionHoverTheme {
 }
 
 export const directionHoverTheme: DirectionHoverTheme = {
-  base: 'md:h-96 w-60 h-60 md:w-96 bg-transparent rounded-lg overflow-hidden group/card relative',
-  overlay: 'group-hover/card:flex hidden absolute inset-0 w-full h-full bg-black/40 z-[1] transition duration-500',
+  base: 'md:h-96 w-60 h-60 md:w-96 rounded-lg overflow-hidden group/card relative bg-primary/70 dark:bg-primary/70 ',
+  overlay: 'group-hover/card:flex hidden absolute inset-0 w-full h-full bg-black/50 z-[1] transition duration-500',
   background: {
-    wrapper: 'h-full w-full flex relative bg-primary/60 dark:bg-primary/60',
+    wrapper: 'h-full w-full flex relative ',
     image: 'h-full w-full object-cover scale-[1.15]',
   },
-  children: 'text-white absolute bottom-4 left-4 z-[2]',
+  children: 'text-white absolute bottom-6 left-6 z-[2]',
   rounded: {
     xs: 'rounded-xs',
     sm: 'rounded-sm',

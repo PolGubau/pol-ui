@@ -41,6 +41,7 @@ import { buttonTheme } from './components/Button/theme'
 import { footerTheme } from './components/Footer/theme'
 import { copyrightTheme } from './components/Copyright/theme'
 import { directionHoverTheme } from './components/DirectionHover/theme'
+import { conveyorTheme } from './components/ImageConveyor/theme'
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,
@@ -65,6 +66,7 @@ export const theme: PoluiTheme = {
   footer: footerTheme,
   helperText: helperTextTheme,
   kbd: kbdTheme,
+  conveyor: conveyorTheme,
   label: labelTheme,
   listGroup: listGroupTheme,
   list: listTheme,
