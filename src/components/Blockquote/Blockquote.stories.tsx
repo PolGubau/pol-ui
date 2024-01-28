@@ -1,14 +1,24 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import type { BlockquoteProps } from './Blockquote';
-import { Blockquote } from './Blockquote';
+import type { Meta, StoryFn } from '@storybook/react'
+import type { BlockquoteProps } from './Blockquote'
+import { Blockquote } from './Blockquote'
 
 export default {
   title: 'Components/Blockquote',
   component: Blockquote,
-} as Meta;
+  decorators: [
+    Story => (
+      <div className="flex p-6 flex-col  min-h-[400px]  bg-secondary-50">
+        <Story />
+      </div>
+    ),
+  ],
+  parameters: {
+    layout: 'fullscreen',
+  },
+} as Meta
 
-const Template: StoryFn<BlockquoteProps> = (args) => <Blockquote {...args} />;
-export const Default = Template.bind({});
+const Template: StoryFn<BlockquoteProps> = args => <Blockquote {...args} />
+export const Default = Template.bind({})
 Default.args = {
   children: (
     <>
@@ -18,4 +28,4 @@ Default.args = {
       </p>
     </>
   ),
-};
+}

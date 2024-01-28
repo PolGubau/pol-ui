@@ -5,7 +5,8 @@ import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-reac
 
 import { twMerge } from 'tailwind-merge'
 import { TbArrowLeft, TbArrowRight } from 'react-icons/tb'
-import { Button } from '../Button'
+import type { Button } from '../Button'
+import { IconButton } from '../IconButton'
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -173,7 +174,8 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
     const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
     return (
-      <Button
+      <IconButton
+        hasMotion={false}
         data-testid="carousel-left-control"
         ref={ref}
         variant={variant}
@@ -191,7 +193,7 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
       >
         <TbArrowLeft className="h-4 w-4" />
         <span className="sr-only">Previous slide</span>
-      </Button>
+      </IconButton>
     )
   },
 )
@@ -201,7 +203,8 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
     const { orientation, scrollNext, canScrollNext } = useCarousel()
 
     return (
-      <Button
+      <IconButton
+        hasMotion={false}
         ref={ref}
         variant={variant}
         data-testid="carousel-right-control"
@@ -219,7 +222,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
       >
         <TbArrowRight className="h-4 w-4" />
         <span className="sr-only">Next slide</span>
-      </Button>
+      </IconButton>
     )
   },
 )

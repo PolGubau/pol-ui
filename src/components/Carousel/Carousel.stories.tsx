@@ -21,7 +21,7 @@ export const CarouselTemplate: StoryFn<CarouselProps> = args => (
       {Array.from({ length: 5 }).map((_, index) => (
         <CarouselItem key={index}>
           <div className="p-1">
-            <Card className="flex aspect-square items-center justify-center p-6">
+            <Card className="flex aspect-video items-center justify-center p-6">
               <span className="text-4xl font-semibold">{index + 1}</span>
             </Card>
           </div>

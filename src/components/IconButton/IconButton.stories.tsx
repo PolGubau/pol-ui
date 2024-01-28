@@ -8,11 +8,14 @@ export default {
   title: 'Components/Buttons/IconButton',
   decorators: [
     Story => (
-      <div className="flex flex-wrap gap-3   p-4 bg-secondary-50">
+      <div className="flex p-6 flex-col justify-center items-center min-h-40  bg-secondary-50">
         <Story />
       </div>
     ),
   ],
+  parameters: {
+    layout: 'fullscreen',
+  },
 
   component: IconButton,
   tags: ['button', 'autodocs'],
@@ -79,7 +82,6 @@ OutlineButton.args = {
   outline: true,
 }
 export const WithTooltip = Template.bind({})
-WithTooltip.storyName = 'With Tooltip'
 WithTooltip.parameters = {
   docs: {
     description: {
@@ -118,10 +120,13 @@ Link.args = {
 
 export const Rounded = (args: IconButtonProps) => (
   <div className="flex gap-3 flex-wrap">
-    {Object.keys(theme.button.rounded).map(rounded => (
-      <IconButton key={rounded} {...args} rounded={rounded}>
-        {rounded}
-      </IconButton>
+    {Object.keys(theme.button.rounded).map(v => (
+      <div className="flex flex-col gap-4" key={v}>
+        <span>{v}</span>
+        <IconButton {...args} rounded={v}>
+          <TbTrash />
+        </IconButton>
+      </div>
     ))}
   </div>
 )

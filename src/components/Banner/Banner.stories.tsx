@@ -6,6 +6,17 @@ import { Banner } from './Banner'
 export default {
   title: 'Components/Banner',
   component: Banner,
+  tags: ['autodocs'],
+  decorators: [
+    Story => (
+      <div className="flex p-6 flex-col  min-h-[400px]  bg-secondary-50">
+        <Story />
+      </div>
+    ),
+  ],
+  parameters: {
+    layout: 'fullscreen',
+  },
 } as Meta
 
 const Template: StoryFn<BannerComponentProps> = args => <Banner {...args} />

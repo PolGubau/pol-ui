@@ -7,21 +7,19 @@ import { AvatarStatusEnum } from './AvatarTypes'
 export default {
   title: 'Components/Avatar',
   component: Avatar,
+
+  tags: ['autodocs'],
   decorators: [
     Story => (
-      <div className="bg-background">
-        <Story />
+      <div className="flex p-6 flex-col  min-h-[400px] justify-center items-center bg-secondary-50">
+        <div className="max-w-xl">
+          <Story />
+        </div>
       </div>
     ),
   ],
-  tags: ['autodocs'],
   parameters: {
-    docs: {
-      description: {
-        component:
-          'The Avatar component is used to represent a user or entity. Also it can be used to group multiple avatars.',
-      },
-    },
+    layout: 'fullscreen',
   },
 } as Meta
 

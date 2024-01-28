@@ -8,11 +8,14 @@ export default {
   title: 'Components/Buttons/Button',
   decorators: [
     Story => (
-      <div className="flex flex-wrap gap-3   p-4 bg-secondary-50">
+      <div className="flex p-6 flex-col justify-center items-center min-h-20  bg-secondary-50">
         <Story />
       </div>
     ),
   ],
+  parameters: {
+    layout: 'fullscreen',
+  },
 
   component: Button,
   tags: ['button', 'autodocs'],
@@ -109,7 +112,7 @@ export const Sizes = (args: ButtonProps) => (
 )
 
 export const Colors = (args: ButtonProps) => (
-  <section className="flex gap-12 flex-wrap">
+  <section className="flex gap-12 flex-wrap justify-center items-center">
     <div className="flex gap-3 flex-wrap p-4 rounded-xl">
       {Object.keys(theme.button.color).map(color => (
         <Button key={color} {...args} color={color}>
@@ -129,7 +132,7 @@ export const Colors = (args: ButtonProps) => (
   </section>
 )
 export const OutlineColors = (args: ButtonProps) => (
-  <section className="flex gap-12 flex-wrap">
+  <section className="flex gap-4 flex-wrap justify-center items-center">
     <div className="flex gap-3 flex-wrap p-4 rounded-xl">
       {Object.keys(theme.button.color).map(color => (
         <Button key={color} {...args} color={color} outline>

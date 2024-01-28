@@ -1,6 +1,6 @@
 import type { ButtonGroupTheme } from '../Button/ButtonGroup/ButtonGroup'
-import { Colors } from '../PoluiProvider'
-import { MainSizes, RoundedSizes } from '../PoluiProvider/PoluiTheme'
+import type { Colors } from '../PoluiProvider'
+import type { MainSizes, RoundedSizes } from '../PoluiProvider/PoluiTheme'
 
 export interface IconButtonTheme {
   base: string
@@ -28,7 +28,7 @@ export const iconButtonTheme: IconButtonTheme = {
       'text-secondary  enabled:hover:brightness-90  enabled:hover:bg-secondary/20  enabled:focus:bg-secondary/40',
   },
   disabled: 'cursor-not-allowed opacity-50',
-  loading: 'cursor-wait',
+  loading: 'cursor-wait flex items-center justify-center',
 
   inner: {
     base: 'flex gap-1 items-stretch items-center transition-all duration-200',

@@ -90,8 +90,11 @@ const IconButtonFn = <T extends ElementType = 'button'>({
           innerClassname,
         )}
       >
-        {isLoading && <span className={twMerge(theme.loading)}>{loader ?? <Loader size={size} />}</span>}
-        {children}
+        {isLoading ? (
+          <span className={twMerge(theme.loading)}>{loader ?? <Loader size={size} color={color} />}</span>
+        ) : (
+          children
+        )}
       </span>
     </MotionBase>
   )

@@ -12,15 +12,15 @@ export default create({
   brandTarget: '_self',
 
   //
-  // colorPrimary: '#B49CFF',
+  colorPrimary: '#B49CFF',
   // colorSecondary: '#BFBFBF',
 
   // // UI
-  // appBg: '#F3F0FD',
-  // appContentBg: '#F6F6F6',
-  // appPreviewBg: '#F6F6F6',
-  // appBorderColor: '#585C6D',
-  // appBorderRadius: 4,
+  appBg: '#F3F0FD',
+  appContentBg: '#F6F6F6',
+  appPreviewBg: '#F6F6F6',
+  appBorderColor: '#585C6D',
+  appBorderRadius: 4,
 
   // // Text colors
   // textColor: '#747474',

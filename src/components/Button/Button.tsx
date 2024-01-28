@@ -92,7 +92,7 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
     <MotionButtonBase
       transition={hasMotion && { duration: 0.1, type: 'spring' }}
       whileTap={hasMotion && { scale: 0.95 }}
-      whileHover={hasMotion && { scale: 1.02 }}
+      whileHover={hasMotion && { scale: 0.98 }}
       whileFocus={hasMotion && { scale: 1.1 }}
       ref={ripple}
       onPointerDown={event}

@@ -7,6 +7,16 @@ import { MdTableRestaurant } from 'react-icons/md'
 export default {
   title: 'Components/Breadcrumb',
   component: Breadcrumb,
+  decorators: [
+    Story => (
+      <div className="flex p-6 flex-col  min-h-[400px]  bg-secondary-50">
+        <Story />
+      </div>
+    ),
+  ],
+  parameters: {
+    layout: 'fullscreen',
+  },
 } as Meta
 
 const Template: StoryFn<BreadcrumbComponentProps> = args => (

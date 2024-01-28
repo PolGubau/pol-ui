@@ -23,13 +23,13 @@ Default.args = {}
 export const Horizontal = Template.bind({})
 Horizontal.args = {
   horizontal: true,
-  imgSrc: '/images/logo.png',
+  imgSrc: '/images/isotype.png',
 }
 
 export const WithDecorativeImage = Template.bind({})
 WithDecorativeImage.storyName = 'With decorative image'
 WithDecorativeImage.args = {
-  imgSrc: '/images/logo.png',
+  imgSrc: '/images/isotype.png',
   imageClass: 'w-24',
 }
 
