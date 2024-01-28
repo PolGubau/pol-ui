@@ -38,7 +38,6 @@
     "prepublishOnly": "yarn build",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
-    "storybook": "storybook dev -p 6006",
     "test": "vitest --ui",
     "test:coverage": "vitest run --coverage --ui",
     "test:open": "vitest --ui",
@@ -47,7 +46,10 @@
     "typecheck": "tsc --noEmit",
     "publish": "yarn prepublishOnly && yarn publish:lib",
     "publish:lib": "npm publish --access public",
-    "build-storybook": "storybook build"
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "serve-storybook": "serve storybook-static",
+    "vercel": "vercel --prod"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.2",
@@ -62,9 +64,11 @@
     "@storybook/addon-links": "^7.6.10",
     "@storybook/addon-onboarding": "1.0.11",
     "@storybook/blocks": "^7.6.10",
+    "@storybook/manager-api": "^7.6.10",
     "@storybook/react": "^7.6.10",
     "@storybook/react-vite": "^7.6.10",
     "@storybook/test": "^7.6.10",
+    "@storybook/theming": "^7.6.10",
     "@testing-library/dom": "^9.3.3",
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.1.2",

@@ -8,6 +8,7 @@ import { HeadingLevelEnum } from '../../types/enums'
 export default {
   title: 'Components/Accordion',
   component: Accordion,
+  tags: ['autodocs'],
   args: {
     alwaysOpen: false,
     bordered: true,
