@@ -6,6 +6,7 @@ export interface CheckboxTheme {
   before: string
   floating: {
     base: string
+    svg: string
   }
   check: {
     base: string
@@ -14,7 +15,7 @@ export interface CheckboxTheme {
 }
 
 export const checkboxTheme: CheckboxTheme = {
-  base: ' peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border transition-all ',
+  base: 'peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-secondary transition-all ',
   before:
     "before:content[''] before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-secondary-500 before:opacity-0 before:transition-opacity hover:before:opacity-10",
   color: {
@@ -26,10 +27,11 @@ export const checkboxTheme: CheckboxTheme = {
     warning: 'checked:bg-warning-700 hover:before:bg-warning',
   },
   floating: {
-    base: 'h-5 w-5 absolute flex justify-center items-center ',
+    base: ' w-5 h-5 absolute z-10 pointer-events-none  text-white p-1',
+    svg: 'w-full h-full',
   },
   check: {
-    base: 'absolute transition-opacity opacity-0 pointer-events-none top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 peer-checked:opacity-100',
+    base: 'absolute h-5 w-5 p-[2px] transition-opacity opacity-0 pointer-events-none  peer-checked:opacity-100',
     color: {
       primary: 'text-primary-50',
       secondary: 'text-secondary-50',

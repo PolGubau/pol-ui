@@ -19,39 +19,46 @@ export interface CheckboxProps extends Omit<ComponentProps<'input'>, 'type' | 'r
 
 const AnimatedCheckIcon = ({
   initial = true,
-  isVisible,
-  className,
+  isVisible = false,
+  theme: customTheme = {},
+  color = ColorsEnum.primary,
 }: {
   initial?: boolean
-  isVisible: boolean
-  className: string
+  isVisible?: boolean
+  theme?: DeepPartial<CheckboxTheme>
+  color?: CheckboxProps['color']
 }) => {
+  const theme = mergeDeep(getTheme().checkbox, customTheme)
+
+  console.log('isVisible', isVisible)
   return (
-    <AnimatePresence initial={initial}>
+    <AnimatePresence initial={initial} mode="wait">
       {isVisible && (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          color="currentColor"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          className={(twMerge('top-[5px] left-1 w-[60%] h-[60%] text-white z-[1]'), className)}
-        >
-          <motion.path
-            d="M2.5 9.5L8.5 15.5L21.5 2.5"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            exit={{ pathLength: 0 }}
-            strokeWidth="4"
-            transition={{
-              type: 'tween',
-              duration: 0.3,
-              ease: isVisible ? 'easeOut' : 'easeIn',
-            }}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <div className={twMerge(theme.floating.base)}>
+          <svg
+            width="24"
+            height="18"
+            viewBox="0 0 24 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className={twMerge(theme.floating.svg, theme.check.color[color], 'stroke-current')}
+          >
+            <motion.path
+              d="M2.5 9.5L8.5 15.5L21.5 2.5"
+              animate={{ pathLength: 1 }}
+              initial={{ pathLength: 0 }}
+              exit={{ pathLength: 0 }}
+              strokeWidth="5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              transition={{
+                type: 'tween',
+                duration: 0.3,
+                ease: isVisible ? 'easeOut' : 'easeIn',
+              }}
+            />
+          </svg>
+        </div>
       )}
     </AnimatePresence>
   )
@@ -62,32 +69,23 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
     return (
       <>
-        <div className="inline-flex items-center">
-          <label
-            className="relative flex items-center p-3 rounded-full cursor-pointer"
-            htmlFor="ripple-on"
-            data-ripple-dark="true"
-          >
-            <input
-              id="ripple-on"
-              {...props}
-              className={twMerge(theme.base, theme.before, theme.color[color], className)}
-              ref={ref}
-              type="checkbox"
-            />
+        <div className="inline-flex items-center gap-3 relative">
+          <input
+            id={props.id ?? label}
+            {...props}
+            className={twMerge(theme.base, theme.before, theme.color[color], className)}
+            ref={ref}
+            type="checkbox"
+          />
 
-            {typeof props.checked === 'undefined' ? (
-              <span className={twMerge(theme.check.base, theme.check.color[color])}>
-                <TbCheck />
-              </span>
-            ) : (
-              <AnimatedCheckIcon
-                isVisible={props.checked ?? false}
-                className={twMerge(theme.floating.base, theme.check.color[color])}
-              />
-            )}
-          </label>
-          {label && <Label htmlFor="ripple-on">{label}</Label>}{' '}
+          {typeof props.checked === 'undefined' ? (
+            <span className={twMerge(theme.check.base, theme.check.color[color])}>
+              <TbCheck />
+            </span>
+          ) : (
+            <AnimatedCheckIcon isVisible={props.checked ?? false} color={color} />
+          )}
+          {label && <Label htmlFor={props.id ?? label}>{label}</Label>}
         </div>
       </>
     )
