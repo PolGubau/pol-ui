@@ -36,6 +36,7 @@ export const Loader: FC<LoaderProps> = ({
       role={props.role ?? 'status'}
       className={twMerge(theme.base, theme.color[color], theme.size[size], className)}
       aria-live="polite"
+      data-testid="loader"
       {...props}
     >
       <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">

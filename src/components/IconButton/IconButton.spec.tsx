@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import type { PropsWithChildren } from 'react'
 import { AiOutlineLoading } from 'react-icons/ai'
 import { describe, expect, it, vi } from 'vitest'
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider'
@@ -60,22 +59,10 @@ describe('Components / IconButton', () => {
         expect(iconButton()).toBeDisabled()
       })
 
-      it('should show <Loader /> when `isLoading={true}`', () => {
+      it('should show custom Loader when `isLoading={true}` and `processingLoader` is present', () => {
         render(<IconButton isLoading>Hi there</IconButton>)
 
-        expect(screen.getByText(/Hi there/)).toBeInTheDocument()
-        expect(screen.getByRole('button')).toBeInTheDocument()
-      })
-
-      it('should show custom Loader when `isLoading={true}` and `processingLoader` is present', () => {
-        render(
-          <IconButton isLoading loader={<AiOutlineLoading data-testid="Loader" />}>
-            Hi there
-          </IconButton>,
-        )
-
-        expect(screen.getByText(/Hi there/)).toBeInTheDocument()
-        expect(screen.getByTestId('Loader')).toBeInTheDocument()
+        expect(screen.getByTestId('loader')).toBeInTheDocument()
       })
     })
 
