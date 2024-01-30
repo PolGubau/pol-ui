@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { AiOutlineLoading } from 'react-icons/ai'
 import { describe, expect, it, vi } from 'vitest'
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider'
 import { IconButton } from './IconButton'
