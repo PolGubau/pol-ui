@@ -30,8 +30,8 @@ export interface BaseInputsProps {
   innerClassName?: string
 }
 
-export interface InputProps extends Omit<ComponentProps<'input'>, 'ref' | 'color'|'size'> ,BaseInputsProps{
-    addon?: ReactNode
+export interface InputProps extends Omit<ComponentProps<'input'>, 'ref' | 'color' | 'size'>, BaseInputsProps {
+  addon?: ReactNode
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -95,7 +95,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 theme.field.input.withIcon[leftComponent ? 'on' : 'off'],
                 theme.field.input.withRightIcon[rightComponent ? 'on' : 'off'],
                 theme.field.input.withAddon[addon ? 'on' : 'off'],
-                innerClassName
+                innerClassName,
               )}
               {...props}
               ref={ref}

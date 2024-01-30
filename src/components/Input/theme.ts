@@ -2,10 +2,10 @@ import type { InputTheme } from './InputTypes'
 
 export const inputTheme: InputTheme = {
   root: {
-    base: 'flex ',
+    base: 'flex  w-full',
     labelPosition: {
       left: 'flex-row items-center gap-3',
-      top: 'flex-col gap-1',
+      top: 'flex-col gap-1 w-full',
     },
   },
   base: 'flex rounded-lg',
@@ -68,7 +68,6 @@ export const inputTheme: InputTheme = {
         on: 'resize-none h-full',
         off: '',
       },
-
     },
   },
 }

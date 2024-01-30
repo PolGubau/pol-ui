@@ -5,6 +5,7 @@ import { ColorsEnum } from '../../types/enums'
 
 import { Dropdown, DropdownItem } from '../Dropdown'
 import { IconButton } from '../IconButton'
+import { Button } from '../Button'
 
 export default {
   title: 'Components/Inputs/Input',
@@ -12,7 +13,7 @@ export default {
   tags: ['autodocs'],
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col  min-h-[400px] justify-center items-center bg-secondary-50">
+      <div className="flex p-6 flex-col w-full bg-secondary-50">
         <div className="max-w-xl">
           <Story />
         </div>
@@ -168,5 +169,12 @@ export const AllColorsWithBorder = () => (
         />
       ))}
     </div>
+  </div>
+)
+
+export const FullSize = () => (
+  <div className="flex justify-between items-center w-full gap-3">
+    <Input label="Tu email" placeholder={'placeholder'} rightComponent={<TbAt />} />
+    <Button>Button</Button>
   </div>
 )
