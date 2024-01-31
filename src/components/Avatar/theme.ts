@@ -1,4 +1,38 @@
-import type { AvatarTheme } from './Avatar'
+import type { ColorsType, IBoolean, MainSizesType, Positions } from '../../types'
+import type { AvatarGroupTheme } from './AvatarGroup'
+import type { AvatarGroupCounterTheme } from './AvatarGroupCounter'
+import type { AvatarStatus } from './AvatarTypes'
+
+export interface AvatarTheme {
+  root: AvatarRootTheme
+  group: AvatarGroupTheme
+  groupCounter: AvatarGroupCounterTheme
+}
+
+export interface AvatarRootTheme {
+  base: string
+  bordered: string
+  color: ColorsType
+  img: AvatarImageTheme
+  initials: AvatarInitialsTheme
+  rounded: string
+  size: MainSizesType
+  stacked: string
+  status: AvatarStatus & {
+    base: string
+  }
+  statusPosition: Positions
+}
+
+export interface AvatarImageTheme extends IBoolean {
+  base: string
+  placeholder: string
+}
+
+export interface AvatarInitialsTheme {
+  base: string
+  text: string
+}
 
 export const avatarTheme: AvatarTheme = {
   root: {

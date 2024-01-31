@@ -1,20 +1,20 @@
-import type { FC, PropsWithChildren } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
+import type { FC, PropsWithChildren } from 'react'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers/merge-deep'
+import { getTheme } from '../../theme-store'
+import type { DeepPartial } from '../../types/types'
 
 export interface ListItemTheme {
-  base: string;
+  base: string
 }
 
 export interface ListItemProps extends PropsWithChildren {
-  theme?: DeepPartial<ListItemTheme>;
-  className?: string;
+  theme?: DeepPartial<ListItemTheme>
+  className?: string
 }
 
 export const ListItem: FC<ListItemProps> = ({ children, className, theme: customTheme = {} }) => {
-  const theme = mergeDeep(getTheme().listGroup.item, customTheme);
+  const theme = mergeDeep(getTheme().listGroup.item, customTheme)
 
-  return <li className={twMerge(theme.base, className)}>{children}</li>;
-};
+  return <li className={twMerge(theme.base, className)}>{children}</li>
+}

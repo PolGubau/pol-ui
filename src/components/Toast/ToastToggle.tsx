@@ -1,21 +1,21 @@
-'use client';
+'use client'
 
-import type { ComponentProps, FC, MouseEvent } from 'react';
-import { HiX } from 'react-icons/hi';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import type { DeepPartial } from '../../types';
-import { useToastContext } from './ToastContext';
+import type { ComponentProps, FC, MouseEvent } from 'react'
+import { HiX } from 'react-icons/hi'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers/merge-deep'
+import type { DeepPartial } from '../../types/types'
+import { useToastContext } from './ToastContext'
 
 export interface ToastToggleTheme {
-  base: string;
-  icon: string;
+  base: string
+  icon: string
 }
 
 export interface ToastToggleProps extends ComponentProps<'button'> {
-  theme?: DeepPartial<ToastToggleTheme>;
-  xIcon?: FC<ComponentProps<'svg'>>;
-  onDismiss?: () => void;
+  theme?: DeepPartial<ToastToggleTheme>
+  xIcon?: FC<ComponentProps<'svg'>>
+  onDismiss?: () => void
 }
 
 export const ToastToggle: FC<ToastToggleProps> = ({
@@ -26,21 +26,21 @@ export const ToastToggle: FC<ToastToggleProps> = ({
   onDismiss,
   ...props
 }) => {
-  const { theme: rootTheme, duration, isClosed, isRemoved, setIsClosed, setIsRemoved } = useToastContext();
+  const { theme: rootTheme, duration, isClosed, isRemoved, setIsClosed, setIsRemoved } = useToastContext()
 
-  const theme = mergeDeep(rootTheme.toggle, customTheme);
+  const theme = mergeDeep(rootTheme.toggle, customTheme)
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
-    if (onClick) onClick(e);
+    if (onClick) onClick(e)
 
     if (onDismiss) {
-      onDismiss();
-      return;
+      onDismiss()
+      return
     }
 
-    setIsClosed(!isClosed);
-    setTimeout(() => setIsRemoved(!isRemoved), duration);
-  };
+    setIsClosed(!isClosed)
+    setTimeout(() => setIsRemoved(!isRemoved), duration)
+  }
 
   return (
     <button
@@ -52,5 +52,5 @@ export const ToastToggle: FC<ToastToggleProps> = ({
     >
       <XIcon aria-hidden className={theme.icon} />
     </button>
-  );
-};
+  )
+}

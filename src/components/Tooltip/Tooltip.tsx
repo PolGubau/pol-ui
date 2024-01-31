@@ -2,9 +2,8 @@ import type { Placement } from '@floating-ui/core'
 import type { ComponentProps, FC, ReactNode } from 'react'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
+import type { DeepPartial, TriggerReason } from '../../types/types'
 import { Floating, type FloatingTheme } from '../Floating'
-import type { TriggerReason } from '../PoluiProvider/PoluiTheme'
 import { TriggerReasonEnum } from '../../types/enums'
 
 export type TooltipTheme = FloatingTheme

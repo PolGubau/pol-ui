@@ -58,7 +58,7 @@ export const Buttons = (): JSX.Element => (
       <Loader aria-label="Loader button example" className="text-secondary-50" />
       <span className="pl-3">Loading...</span>
     </Button>
-    <Button color="gray">
+    <Button color="secondary">
       <Loader aria-label="Alternate loader button example" />
       <span className="pl-3">Loading...</span>
     </Button>

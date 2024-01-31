@@ -1,8 +1,8 @@
-import type { Colors } from '../PoluiProvider'
+import type { ColorsType } from '../../types'
 
 export interface LabelTheme {
   base: string
-  colors: Colors
+  colors: ColorsType
   disabled: string
 }
 

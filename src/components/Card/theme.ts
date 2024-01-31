@@ -1,4 +1,4 @@
-import { IBoolean } from '../PoluiProvider'
+import type { IBoolean } from '../../types'
 
 export interface CardTheme {
   root: CardRootTheme

@@ -1,26 +1,25 @@
-'use client';
+'use client'
 
-import type { ComponentProps, FC } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import type { DeepPartial } from '../../types';
-import type { IBoolean } from '../PoluiProvider';
-import { useNavbarContext } from './NavbarContext';
+import type { ComponentProps, FC } from 'react'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers/merge-deep'
+import type { DeepPartial, IBoolean } from '../../types/types'
+import { useNavbarContext } from './NavbarContext'
 
 export interface NavbarCollapseTheme {
-  base: string;
-  list: string;
-  hidden: IBoolean;
+  base: string
+  list: string
+  hidden: IBoolean
 }
 
 export interface NavbarCollapseProps extends ComponentProps<'div'> {
-  theme?: DeepPartial<NavbarCollapseTheme>;
+  theme?: DeepPartial<NavbarCollapseTheme>
 }
 
 export const NavbarCollapse: FC<NavbarCollapseProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
-  const { theme: rootTheme, isOpen } = useNavbarContext();
+  const { theme: rootTheme, isOpen } = useNavbarContext()
 
-  const theme = mergeDeep(rootTheme.collapse, customTheme);
+  const theme = mergeDeep(rootTheme.collapse, customTheme)
 
   return (
     <div
@@ -30,5 +29,5 @@ export const NavbarCollapse: FC<NavbarCollapseProps> = ({ children, className, t
     >
       <ul className={theme.list}>{children}</ul>
     </div>
-  );
-};
+  )
+}

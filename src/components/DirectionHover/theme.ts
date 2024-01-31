@@ -1,4 +1,4 @@
-import type { RoundedSizesElastic } from '../PoluiProvider/PoluiTheme'
+import type { RoundedSizesElastic } from '../../types'
 
 export interface DirectionHoverTheme {
   base: string

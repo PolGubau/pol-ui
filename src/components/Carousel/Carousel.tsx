@@ -7,6 +7,7 @@ import { twMerge } from 'tailwind-merge'
 import { TbArrowLeft, TbArrowRight } from 'react-icons/tb'
 import type { Button } from '../Button'
 import { IconButton } from '../IconButton'
+import { MainSizesEnum } from '../../types'
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -170,7 +171,7 @@ const CarouselItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLD
 )
 
 const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProps<typeof Button>>(
-  ({ className, variant = 'outline', size = 'icon', ...props }, ref) => {
+  ({ className, variant = 'outline', size = MainSizesEnum.md, ...props }, ref) => {
     const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
     return (
@@ -199,7 +200,7 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
 )
 
 const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<typeof Button>>(
-  ({ className, variant = 'outline', size = 'icon', ...props }, ref) => {
+  ({ className, variant = 'outline', size = MainSizesEnum.md, ...props }, ref) => {
     const { orientation, scrollNext, canScrollNext } = useCarousel()
 
     return (

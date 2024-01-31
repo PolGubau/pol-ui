@@ -1,4 +1,4 @@
-import { GetValuesEnum } from '../../types/enums'
+import type { GetValuesEnum } from '../../types/enums'
 
 export enum AvatarStatusEnum {
   away = 'away',

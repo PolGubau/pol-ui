@@ -1,4 +1,4 @@
-import type { SidebarTheme } from './Sidebar';
+import type { SidebarTheme } from './Sidebar'
 
 export const sidebarTheme: SidebarTheme = {
   root: {
@@ -34,16 +34,11 @@ export const sidebarTheme: SidebarTheme = {
   cta: {
     base: 'mt-6 rounded-lg p-4 bg-gray-100 dark:bg-gray-700',
     color: {
-      blue: 'bg-cyan-50 dark:bg-cyan-900',
-      dark: 'bg-dark-50 dark:bg-dark-900',
-      error: 'bg-red-50 dark:bg-red-900',
-      gray: 'bg-alternative-50 dark:bg-alternative-900',
-      green: 'bg-green-50 dark:bg-green-900',
-      light: 'bg-light-50 dark:bg-light-900',
-      red: 'bg-red-50 dark:bg-red-900',
-      purple: 'bg-purple-50 dark:bg-purple-900',
+      primary: 'bg-primary-50 dark:bg-primary-900',
+      secondary: 'bg-secondary-50 dark:bg-secondary-900',
+      info: 'bg-info-50 dark:bg-info-900',
+      error: 'bg-error-50 dark:bg-error-900',
       success: 'bg-green-50 dark:bg-green-900',
-      yellow: 'bg-yellow-50 dark:bg-yellow-900',
       warning: 'bg-yellow-50 dark:bg-yellow-900',
     },
   },
@@ -78,4 +73,4 @@ export const sidebarTheme: SidebarTheme = {
     },
     img: 'mr-3 h-6 sm:h-7',
   },
-};
+}

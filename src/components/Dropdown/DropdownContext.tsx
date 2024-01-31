@@ -1,5 +1,5 @@
 import React from 'react'
-import { Colors } from '../PoluiProvider'
+import type { Colors } from '../../types/types'
 import { ColorsEnum } from '../../types/enums'
 
 export const DropdownContext = React.createContext<{
@@ -8,7 +8,7 @@ export const DropdownContext = React.createContext<{
   setActiveIndex: React.Dispatch<React.SetStateAction<number | null>>
   setHasFocusInside: React.Dispatch<React.SetStateAction<boolean>>
   isOpen: boolean
-  color: keyof Colors
+  color: Colors
 }>({
   getItemProps: () => ({}),
   activeIndex: null,

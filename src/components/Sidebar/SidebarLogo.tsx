@@ -1,24 +1,23 @@
-'use client';
+'use client'
 
-import type { ComponentProps, FC } from 'react';
-import { useId } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import type { DeepPartial } from '../../types';
-import type { IBoolean } from '../PoluiProvider';
-import { useSidebarContext } from './SidebarContext';
+import type { ComponentProps, FC } from 'react'
+import { useId } from 'react'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers/merge-deep'
+import type { DeepPartial, IBoolean } from '../../types/types'
+import { useSidebarContext } from './SidebarContext'
 
 export interface SidebarLogoTheme {
-  base: string;
-  collapsed: IBoolean;
-  img: string;
+  base: string
+  collapsed: IBoolean
+  img: string
 }
 
 export interface SidebarLogoProps extends ComponentProps<'a'> {
-  href: string;
-  img: string;
-  imgAlt?: string;
-  theme?: DeepPartial<SidebarLogoTheme>;
+  href: string
+  img: string
+  imgAlt?: string
+  theme?: DeepPartial<SidebarLogoTheme>
 }
 
 export const SidebarLogo: FC<SidebarLogoProps> = ({
@@ -30,10 +29,10 @@ export const SidebarLogo: FC<SidebarLogoProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const id = useId();
-  const { theme: rootTheme, isCollapsed } = useSidebarContext();
+  const id = useId()
+  const { theme: rootTheme, isCollapsed } = useSidebarContext()
 
-  const theme = mergeDeep(rootTheme.logo, customTheme);
+  const theme = mergeDeep(rootTheme.logo, customTheme)
 
   return (
     <a aria-labelledby={`ui-sidebar-logo-${id}`} href={href} className={twMerge(theme.base, className)} {...props}>
@@ -42,7 +41,7 @@ export const SidebarLogo: FC<SidebarLogoProps> = ({
         {children}
       </span>
     </a>
-  );
-};
+  )
+}
 
-SidebarLogo.displayName = 'Sidebar.Logo';
+SidebarLogo.displayName = 'Sidebar.Logo'

@@ -3,18 +3,16 @@ import { useId } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
-import type { Colors } from '../PoluiProvider'
+import type { Colors, DeepPartial, MainSizes } from '../../types/types'
 import { ColorsEnum, MainSizesEnum } from '../../types/enums'
-import { SwitchTheme } from './theme'
+import type { SwitchTheme } from './theme'
 import { motion } from 'framer-motion'
 import { Label } from '../Label'
-import { MainSizesElastic } from '../PoluiProvider/PoluiTheme'
 
 export type SwitchProps = Omit<ComponentProps<'button'>, 'onChange'> & {
   checked: boolean
-  color?: keyof Colors
-  size?: keyof MainSizesElastic
+  color?: Colors
+  size?: MainSizes
   label?: string
   onChange: (checked: boolean) => void
   theme?: DeepPartial<SwitchTheme>

@@ -3,8 +3,8 @@ import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../../helpers/merge-deep'
 import { useDatePickerContext } from '../DatepickerContext'
 import { Views, getFormattedDate, isDateEqual, isDateInRange } from '../helpers'
-import { IBoolean } from '../../PoluiProvider'
 import { Button } from '../../Button'
+import type { IBoolean } from '../../../types'
 
 export interface DatepickerViewsMonthsTheme {
   items: {

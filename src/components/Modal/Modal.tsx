@@ -16,41 +16,14 @@ import { forwardRef, useState, type ComponentPropsWithoutRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
-import type { IBoolean, Positions, Sizes } from '../PoluiProvider'
-import type { ModalBodyTheme } from './ModalBody'
+import type { DeepPartial, MainSizes, Positions } from '../../types/types'
 import { ModalBody } from './ModalBody'
 import { ModalContext } from './ModalContext'
-import type { ModalFooterTheme } from './ModalFooter'
 import { ModalFooter } from './ModalFooter'
-import type { ModalHeaderTheme } from './ModalHeader'
 import { ModalHeader } from './ModalHeader'
-
-export interface ModalTheme {
-  root: ModalRootTheme
-  content: ModalContentTheme
-  body: ModalBodyTheme
-  header: ModalHeaderTheme
-  footer: ModalFooterTheme
-}
-
-export interface ModalRootTheme {
-  base: string
-  show: IBoolean
-  sizes: ModalSizes
-  positions: ModalPositions
-}
-
-export interface ModalContentTheme {
-  base: string
-  inner: string
-}
+import type { ModalTheme } from './theme'
 
 export interface ModalPositions extends Positions {
-  [key: string]: string
-}
-
-export interface ModalSizes extends Omit<Sizes, 'xs'> {
   [key: string]: string
 }
 
@@ -60,7 +33,7 @@ export interface ModalProps extends ComponentPropsWithoutRef<'div'> {
   popup?: boolean
   root?: HTMLElement
   show?: boolean
-  size?: keyof ModalSizes
+  size?: MainSizes
   dismissible?: boolean
   theme?: DeepPartial<ModalTheme>
   initialFocus?: number | MutableRefObject<HTMLElement | null>

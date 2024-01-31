@@ -3,8 +3,8 @@ import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { omit } from '../../helpers/omit'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
-import { CardTheme } from './theme'
+import type { DeepPartial } from '../../types/types'
+import type { CardTheme } from './theme'
 
 interface CommonCardProps extends ComponentProps<'div'> {
   horizontal?: boolean
@@ -87,7 +87,7 @@ export const Card: FC<CardProps> = props => {
       {!renderImage && props.imgSrc && (
         <img src={props.imgSrc} alt={props.imgAlt} className={imageClass} data-testid="ui-card-image" />
       )}
-      {renderImage && renderImage(theme, horizontal)}
+      {renderImage?.(theme, horizontal)}
       {/* <Image {...props} className={imageClass} /> */}
       <div className={twMerge(theme.root.children, childrenClass)}>{children}</div>
     </Component>

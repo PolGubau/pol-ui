@@ -1,31 +1,31 @@
-'use client';
+'use client'
 
-import type { ComponentProps, FC } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import type { DeepPartial } from '../../types';
-import { useTimelineContext } from './TimelineContext';
-import { useTimelineItemContext } from './TimelineItemContext';
+import type { ComponentProps, FC } from 'react'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers/merge-deep'
+import type { DeepPartial } from '../../types/types'
+import { useTimelineContext } from './TimelineContext'
+import { useTimelineItemContext } from './TimelineItemContext'
 
 export interface TimelinePointTheme {
-  horizontal: string;
-  line: string;
+  horizontal: string
+  line: string
   marker: {
     base: {
-      horizontal: string;
-      vertical: string;
-    };
+      horizontal: string
+      vertical: string
+    }
     icon: {
-      base: string;
-      wrapper: string;
-    };
-  };
-  vertical: string;
+      base: string
+      wrapper: string
+    }
+  }
+  vertical: string
 }
 
 export interface TimelnePointProps extends ComponentProps<'div'> {
-  icon?: FC<ComponentProps<'svg'>>;
-  theme?: DeepPartial<TimelinePointTheme>;
+  icon?: FC<ComponentProps<'svg'>>
+  theme?: DeepPartial<TimelinePointTheme>
 }
 
 export const TimelinePoint: FC<TimelnePointProps> = ({
@@ -35,10 +35,10 @@ export const TimelinePoint: FC<TimelnePointProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const { horizontal } = useTimelineContext();
-  const { theme: itemTheme } = useTimelineItemContext();
+  const { horizontal } = useTimelineContext()
+  const { theme: itemTheme } = useTimelineItemContext()
 
-  const theme = mergeDeep(itemTheme.point, customTheme);
+  const theme = mergeDeep(itemTheme.point, customTheme)
 
   return (
     <div
@@ -58,5 +58,5 @@ export const TimelinePoint: FC<TimelnePointProps> = ({
       )}
       {horizontal && <div className={twMerge(theme.line)} />}
     </div>
-  );
-};
+  )
+}

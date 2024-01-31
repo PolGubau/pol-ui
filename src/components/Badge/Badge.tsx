@@ -2,19 +2,16 @@ import type { ComponentProps, FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
-import type { Colors } from '../PoluiProvider'
+import type { Colors, DeepPartial, MainSizes, RoundedSizes } from '../../types/types'
 import { ColorsEnum, RoundedSizesEnum, SizesEnum } from '../../types/enums'
-import type { MainSizesElastic, RoundedSizes } from '../PoluiProvider/PoluiTheme'
 import type { BadgeTheme } from './theme'
- 
 
 export interface BadgeProps extends Omit<ComponentProps<'span'>, 'color'> {
-  color?: keyof Colors
+  color?: Colors
   href?: string
   rounded?: keyof RoundedSizes
   icon?: FC<ComponentProps<'svg'>>
-  size?: keyof MainSizesElastic
+  size?: MainSizes
   theme?: DeepPartial<BadgeTheme>
 }
 

@@ -1,10 +1,11 @@
-import React, { ComponentProps } from 'react'
+import type { ComponentProps } from 'react'
+import React from 'react'
 import { DropdownContext } from './DropdownContext'
 import { useFloatingTree, useListItem, useMergeRefs } from '@floating-ui/react'
 import { twMerge } from 'tailwind-merge'
 import { getTheme } from '../../theme-store'
 import { mergeDeep } from '../../helpers/merge-deep'
-import { DropdownTheme } from './theme'
+import type { DropdownTheme } from './theme'
 import { Kbd } from '../Kbd'
 export interface DropdownItemProps extends ComponentProps<'button'> {
   label: string
@@ -55,3 +56,5 @@ export const DropdownItem = React.forwardRef<HTMLButtonElement, DropdownItemProp
     )
   },
 )
+
+DropdownItem.displayName = 'DropdownItem'

@@ -1,41 +1,40 @@
-'use client';
+'use client'
 
-import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
-import { useEffect, useId, useState } from 'react';
-import { HiChevronDown } from 'react-icons/hi';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import type { DeepPartial } from '../../types';
-import type { IBoolean } from '../PoluiProvider';
-import { Tooltip } from '../Tooltip';
-import { useSidebarContext } from './SidebarContext';
-import type { SidebarItemProps } from './SidebarItem';
-import { SidebarItemContext } from './SidebarItemContext';
+import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react'
+import { useEffect, useId, useState } from 'react'
+import { HiChevronDown } from 'react-icons/hi'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers/merge-deep'
+import type { DeepPartial, IBoolean } from '../../types/types'
+import { Tooltip } from '../Tooltip'
+import { useSidebarContext } from './SidebarContext'
+import type { SidebarItemProps } from './SidebarItem'
+import { SidebarItemContext } from './SidebarItemContext'
 
 export interface SidebarCollapseTheme {
-  button: string;
+  button: string
   icon: {
-    base: string;
-    open: IBoolean;
-  };
+    base: string
+    open: IBoolean
+  }
   label: {
-    base: string;
+    base: string
     icon: {
-      base: string;
-      open: IBoolean;
-    };
-  };
-  list: string;
+      base: string
+      open: IBoolean
+    }
+  }
+  list: string
 }
 
 export interface SidebarCollapseProps
   extends Pick<SidebarItemProps, 'active' | 'as' | 'href' | 'icon' | 'label' | 'labelColor'>,
     ComponentProps<'button'> {
-  onClick?: ComponentProps<'button'>['onClick'];
-  open?: boolean;
-  chevronIcon?: FC<ComponentProps<'svg'>>;
-  renderChevronIcon?: (theme: SidebarCollapseTheme, open: boolean) => ReactElement;
-  theme?: DeepPartial<SidebarCollapseTheme>;
+  onClick?: ComponentProps<'button'>['onClick']
+  open?: boolean
+  chevronIcon?: FC<ComponentProps<'svg'>>
+  renderChevronIcon?: (theme: SidebarCollapseTheme, open: boolean) => ReactElement
+  theme?: DeepPartial<SidebarCollapseTheme>
 }
 
 export const SidebarCollapse: FC<SidebarCollapseProps> = ({
@@ -49,13 +48,13 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const id = useId();
-  const [isOpen, setOpen] = useState(open);
-  const { theme: rootTheme, isCollapsed } = useSidebarContext();
+  const id = useId()
+  const [isOpen, setOpen] = useState(open)
+  const { theme: rootTheme, isCollapsed } = useSidebarContext()
 
-  const theme = mergeDeep(rootTheme.collapse, customTheme);
+  const theme = mergeDeep(rootTheme.collapse, customTheme)
 
-  useEffect(() => setOpen(open), [open]);
+  useEffect(() => setOpen(open), [open])
 
   const Wrapper: FC<PropsWithChildren> = ({ children }) => (
     <li>
@@ -67,7 +66,7 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
         children
       )}
     </li>
-  );
+  )
 
   return (
     <Wrapper>
@@ -108,7 +107,7 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
         <SidebarItemContext.Provider value={{ isInsideCollapse: true }}>{children}</SidebarItemContext.Provider>
       </ul>
     </Wrapper>
-  );
-};
+  )
+}
 
-SidebarCollapse.displayName = 'Sidebar.Collapse';
+SidebarCollapse.displayName = 'Sidebar.Collapse'

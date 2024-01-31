@@ -6,20 +6,17 @@ import { twMerge } from 'tailwind-merge'
 import genericForwardRef from '../../helpers/generic-forward-ref'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
-import type { Colors } from '../PoluiProvider'
+import type { Colors, DeepPartial, MainSizes, RoundedSizes } from '../../types/types'
 import { Loader } from '../Loader'
 import { ButtonBase, type ButtonBaseProps } from './ButtonBase'
 import type { PositionInButtonGroup } from './ButtonGroup/ButtonGroup'
 import { ButtonGroup } from './ButtonGroup/ButtonGroup'
-import type { MainSizesElastic } from '../PoluiProvider/PoluiTheme'
-import { type RoundedSizes } from '../PoluiProvider/PoluiTheme'
 import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../../types/enums'
 import { useRipple } from '../../hooks'
 import type { ButtonTheme } from './theme'
 import { motion } from 'framer-motion'
 
-export const rippleClass = (color: keyof Colors) => {
+export const rippleClass = (color: Colors) => {
   switch (color) {
     case ColorsEnum.primary:
       return 'bg-primary-600'
@@ -40,7 +37,7 @@ export const rippleClass = (color: keyof Colors) => {
 export type ButtonProps<T extends ElementType = 'button'> = {
   as?: T | null
   href?: string
-  color?: keyof Colors
+  color?: Colors
   fullSized?: boolean
   target?: string
   isProcessing?: boolean
@@ -51,7 +48,7 @@ export type ButtonProps<T extends ElementType = 'button'> = {
   outline?: boolean
   rounded?: keyof RoundedSizes
   positionInGroup?: keyof PositionInButtonGroup
-  size?: keyof MainSizesElastic
+  size?: MainSizes
   theme?: DeepPartial<ButtonTheme>
   innerClassname?: string
 } & ComponentPropsWithoutRef<T>
@@ -61,7 +58,7 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
   className,
   color = ColorsEnum.primary,
   disabled,
-  hasMotion = true,
+  hasMotion = false,
   fullSized = false,
   isProcessing = false,
   processingLabel = 'Loading...',

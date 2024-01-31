@@ -2,13 +2,12 @@ import type { ComponentProps, FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
-import type { Colors } from '../PoluiProvider'
-import { HelperTextTheme } from './theme'
+import type { Colors, DeepPartial } from '../../types/types'
+import type { HelperTextTheme } from './theme'
 import { ColorsEnum } from '../../types/enums'
 
 export interface HelperTextProps extends Omit<ComponentProps<'p'>, 'color'> {
-  color?: keyof Colors
+  color?: Colors
   theme?: DeepPartial<HelperTextTheme>
   value?: string
 }

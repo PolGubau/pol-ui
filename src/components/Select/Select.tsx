@@ -1,48 +1,40 @@
-import type { ComponentProps, FC, ReactNode } from 'react';
-import { forwardRef } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { Colors, IBoolean, Sizes } from '../PoluiProvider';
-import { HelperText } from '../HelperText';
+import type { ComponentProps, FC, ReactNode } from 'react'
+import { forwardRef } from 'react'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers/merge-deep'
+import { getTheme } from '../../theme-store'
+import type { Colors, ColorsType, DeepPartial, IBoolean, MainSizes, MainSizesType } from '../../types/types'
+import { HelperText } from '../HelperText'
+import { ColorsEnum, MainSizesEnum } from '../../types'
 
 export interface SelectTheme {
-  base: string;
-  addon: string;
+  base: string
+  addon: string
   field: {
-    base: string;
+    base: string
     icon: {
-      base: string;
-      svg: string;
-    };
+      base: string
+      svg: string
+    }
     select: {
-      base: string;
-      withIcon: IBoolean;
-      withAddon: IBoolean;
-      withShadow: IBoolean;
-      sizes: SelectSizes;
-      colors: SelectColors;
-    };
-  };
-}
-
-export interface SelectColors extends Pick<Colors, 'gray' | 'info' | 'error' | 'warning' | 'success'> {
-  [key: string]: string;
-}
-
-export interface SelectSizes extends Pick<Sizes, 'sm' | 'md' | 'lg'> {
-  [key: string]: string;
+      base: string
+      withIcon: IBoolean
+      withAddon: IBoolean
+      withShadow: IBoolean
+      sizes: MainSizesType
+      colors: ColorsType
+    }
+  }
 }
 
 export interface SelectProps extends Omit<ComponentProps<'select'>, 'color' | 'ref'> {
-  addon?: ReactNode;
-  color?: keyof SelectColors;
-  helperText?: ReactNode;
-  icon?: FC<ComponentProps<'svg'>>;
-  shadow?: boolean;
-  sizing?: keyof SelectSizes;
-  theme?: DeepPartial<SelectTheme>;
+  addon?: ReactNode
+  color?: Colors
+  helperText?: ReactNode
+  icon?: FC<ComponentProps<'svg'>>
+  shadow?: boolean
+  sizing?: MainSizes
+  theme?: DeepPartial<SelectTheme>
 }
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
@@ -51,17 +43,17 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
       addon,
       children,
       className,
-      color = 'gray',
+      color = ColorsEnum.primary,
       helperText,
       icon: Icon,
       shadow,
-      sizing = 'md',
+      sizing = MainSizesEnum.md,
       theme: customTheme = {},
       ...props
     },
     ref,
   ) => {
-    const theme = mergeDeep(getTheme().select, customTheme);
+    const theme = mergeDeep(getTheme().select, customTheme)
 
     return (
       <div className={twMerge(theme.base, className)}>
@@ -89,8 +81,8 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           {helperText && <HelperText color={color}>{helperText}</HelperText>}
         </div>
       </div>
-    );
+    )
   },
-);
+)
 
-Select.displayName = 'Select';
+Select.displayName = 'Select'

@@ -1,15 +1,14 @@
+import type { ColorsType, MainSizesType, RoundedSizes } from '../../types'
 import type { ButtonGroupTheme } from '../Button/ButtonGroup/ButtonGroup'
-import type { Colors } from '../PoluiProvider'
-import type { MainSizes, RoundedSizes } from '../PoluiProvider/PoluiTheme'
 
 export interface IconButtonTheme {
   base: string
-  color: Colors
+  color: ColorsType
   disabled: string
   loading: string
   inner: ButtonInnerTheme
   rounded: RoundedSizes
-  size: MainSizes
+  size: MainSizesType
 }
 export interface ButtonInnerTheme {
   base: string

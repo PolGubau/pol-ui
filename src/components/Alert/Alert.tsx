@@ -3,16 +3,14 @@ import { HiX } from 'react-icons/hi'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
-import type { Colors } from '../PoluiProvider'
 import { ColorsEnum } from '../../types/enums'
 import type { AlertTheme } from './theme'
 import { IconButton } from '../IconButton'
-import type { ColorsType } from '../PoluiProvider/PoluiTheme'
+import type { Colors, DeepPartial } from '../../types/types'
 
 export interface AlertProps extends Omit<ComponentProps<'div'>, 'color'> {
   additionalContent?: ReactNode
-  color?: keyof Colors
+  color?: Colors
   icon?: FC<ComponentProps<'svg'>>
   onDismiss?: boolean | (() => void)
   rounded?: boolean
@@ -33,8 +31,6 @@ export const Alert: FC<AlertProps> = ({
   ...props
 }) => {
   const theme: AlertTheme = mergeDeep(getTheme().alert, customTheme)
-
-  const colorChosen = color as keyof ColorsType
 
   return (
     <div
@@ -58,7 +54,7 @@ export const Alert: FC<AlertProps> = ({
             data-testid="ui-alert-dismiss"
             type="button"
             onClick={onDismiss}
-            color={colorChosen}
+            color={color}
           >
             <HiX aria-hidden title="Dismiss" />
           </IconButton>

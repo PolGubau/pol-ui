@@ -3,7 +3,7 @@ import { forwardRef, useId } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
+import type { DeepPartial } from '../../types/types'
 import type { FloatingLabelTheme } from './theme'
 
 export type FloatingLabelColor = 'default' | 'success' | 'error'

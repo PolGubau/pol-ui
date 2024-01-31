@@ -4,14 +4,13 @@ import { type ComponentProps, type FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
-import { RatingTheme } from './theme'
-import { MainSizesElastic } from '../PoluiProvider/PoluiTheme'
+import type { DeepPartial, MainSizes } from '../../types/types'
+import type { RatingTheme } from './theme'
 import { MainSizesEnum } from '../../types/enums'
 import { TbStar } from 'react-icons/tb'
 
 export interface RatingProps extends ComponentProps<'div'> {
-  size?: keyof MainSizesElastic
+  size?: MainSizes
   theme?: DeepPartial<RatingTheme>
   stars?: number
   filled?: number

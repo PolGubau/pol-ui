@@ -1,24 +1,24 @@
-'use client';
-import { useId, useLayoutEffect, type ComponentProps, type ElementType, type FC } from 'react';
-import { HiOutlineX } from 'react-icons/hi';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import type { DeepPartial } from '../../types';
-import { useModalContext } from './ModalContext';
+'use client'
+import { useId, useLayoutEffect, type ComponentProps, type ElementType, type FC } from 'react'
+import { HiOutlineX } from 'react-icons/hi'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers/merge-deep'
+import type { DeepPartial } from '../../types/types'
+import { useModalContext } from './ModalContext'
 
 export interface ModalHeaderTheme {
-  base: string;
-  popup: string;
-  title: string;
+  base: string
+  popup: string
+  title: string
   close: {
-    base: string;
-    icon: string;
-  };
+    base: string
+    icon: string
+  }
 }
 
 export interface ModalHeaderProps extends ComponentProps<'div'> {
-  as?: ElementType;
-  theme?: DeepPartial<ModalHeaderTheme>;
+  as?: ElementType
+  theme?: DeepPartial<ModalHeaderTheme>
 }
 
 export const ModalHeader: FC<ModalHeaderProps> = ({
@@ -29,18 +29,18 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
   id,
   ...props
 }) => {
-  const innerHeaderId = useId();
-  const headerId = id ?? innerHeaderId;
+  const innerHeaderId = useId()
+  const headerId = id ?? innerHeaderId
 
-  const { theme: rootTheme, popup, onClose, setHeaderId } = useModalContext();
+  const { theme: rootTheme, popup, onClose, setHeaderId } = useModalContext()
 
-  const theme = mergeDeep(rootTheme.header, customTheme);
+  const theme = mergeDeep(rootTheme.header, customTheme)
 
   useLayoutEffect(() => {
-    setHeaderId(headerId);
+    setHeaderId(headerId)
 
-    return () => setHeaderId(undefined);
-  }, [headerId, setHeaderId]);
+    return () => setHeaderId(undefined)
+  }, [headerId, setHeaderId])
 
   return (
     <div className={twMerge(theme.base, popup && theme.popup, className)} {...props}>
@@ -51,5 +51,5 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
         <HiOutlineX aria-hidden className={theme.close.icon} />
       </button>
     </div>
-  );
-};
+  )
+}

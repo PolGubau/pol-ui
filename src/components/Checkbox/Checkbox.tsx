@@ -3,8 +3,7 @@ import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
-import type { Colors } from '../PoluiProvider'
+import type { Colors, DeepPartial } from '../../types/types'
 import { ColorsEnum } from '../../types/enums'
 import { Label } from '../Label'
 import { TbCheck } from 'react-icons/tb'
@@ -13,7 +12,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 
 export interface CheckboxProps extends Omit<ComponentProps<'input'>, 'type' | 'ref' | 'color'> {
   theme?: DeepPartial<CheckboxTheme>
-  color?: keyof Colors
+  color?: Colors
   label?: string
 }
 
@@ -30,7 +29,6 @@ const AnimatedCheckIcon = ({
 }) => {
   const theme = mergeDeep(getTheme().checkbox, customTheme)
 
-  console.log('isVisible', isVisible)
   return (
     <AnimatePresence initial={initial} mode="wait">
       {isVisible && (

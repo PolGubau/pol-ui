@@ -1,4 +1,5 @@
-import { MainSizes } from '../PoluiProvider/PoluiTheme'
+import type { MainSizesType } from '../../types'
+
 export interface RatingTheme {
   root: {
     base: string
@@ -6,7 +7,7 @@ export interface RatingTheme {
   star: {
     empty: string
     filled: string
-    size: MainSizes
+    size: MainSizesType
   }
 }
 

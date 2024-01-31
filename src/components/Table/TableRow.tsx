@@ -1,25 +1,25 @@
-'use client';
+'use client'
 
-import type { ComponentProps, FC } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import type { DeepPartial } from '../../types';
-import { useTableContext } from './TableContext';
+import type { ComponentProps, FC } from 'react'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers/merge-deep'
+import type { DeepPartial } from '../../types/types'
+import { useTableContext } from './TableContext'
 
 export interface TableRowTheme {
-  base: string;
-  hovered: string;
-  striped: string;
+  base: string
+  hovered: string
+  striped: string
 }
 
 export interface TableRowProps extends ComponentProps<'tr'> {
-  theme?: DeepPartial<TableRowTheme>;
+  theme?: DeepPartial<TableRowTheme>
 }
 
 export const TableRow: FC<TableRowProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
-  const { theme: rootTheme, hoverable, striped } = useTableContext();
+  const { theme: rootTheme, hoverable, striped } = useTableContext()
 
-  const theme = mergeDeep(rootTheme.row, customTheme);
+  const theme = mergeDeep(rootTheme.row, customTheme)
 
   return (
     <tr
@@ -29,5 +29,5 @@ export const TableRow: FC<TableRowProps> = ({ children, className, theme: custom
     >
       {children}
     </tr>
-  );
-};
+  )
+}

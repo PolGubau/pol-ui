@@ -6,14 +6,13 @@ import { HiChevronDown } from 'react-icons/hi'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
+import type { DeepPartial, IBoolean } from '../../types/types'
 import type { AccordionComponentTheme } from './AccordionContent'
 import { AccordionContent } from './AccordionContent'
 import type { PanelProps } from './AccordionPanel'
 import { AccordionPanel } from './AccordionPanel'
 import type { AccordionTitleTheme } from './AccordionTitle'
 import { AccordionTitle } from './AccordionTitle'
-import type { IBoolean } from '../PoluiProvider'
 
 export interface AccordionTheme {
   root: AccordionRootTheme

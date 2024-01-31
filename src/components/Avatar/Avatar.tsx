@@ -2,46 +2,12 @@ import type { ComponentProps, FC, ReactElement } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
-import type { IBoolean, Colors, Positions } from '../PoluiProvider'
-import type { AvatarGroupTheme } from './AvatarGroup'
+import type { Colors, DeepPartial, MainSizes, Positions } from '../../types/types'
 import { AvatarGroup } from './AvatarGroup'
-import type { AvatarGroupCounterTheme } from './AvatarGroupCounter'
 import { AvatarGroupCounter } from './AvatarGroupCounter'
-import { MainSizesElastic } from '../PoluiProvider/PoluiTheme'
 import { ColorsEnum, MainSizesEnum } from '../../types/enums'
-import { AvatarStatus } from './AvatarTypes'
-
-export interface AvatarTheme {
-  root: AvatarRootTheme
-  group: AvatarGroupTheme
-  groupCounter: AvatarGroupCounterTheme
-}
-
-export interface AvatarRootTheme {
-  base: string
-  bordered: string
-  color: Colors
-  img: AvatarImageTheme
-  initials: AvatarInitialsTheme
-  rounded: string
-  size: MainSizesElastic
-  stacked: string
-  status: AvatarStatus & {
-    base: string
-  }
-  statusPosition: Positions
-}
-
-export interface AvatarImageTheme extends IBoolean {
-  base: string
-  placeholder: string
-}
-
-export interface AvatarInitialsTheme {
-  base: string
-  text: string
-}
+import type { AvatarStatus } from './AvatarTypes'
+import type { AvatarTheme } from './theme'
 
 export interface AvatarImageProps {
   alt?: string
@@ -53,9 +19,9 @@ export interface AvatarProps extends Omit<ComponentProps<'div'>, 'color'> {
   alt?: string
   bordered?: boolean
   img?: string | ((props: AvatarImageProps) => ReactElement)
-  color?: keyof Colors
+  color?: Colors
   rounded?: boolean
-  size?: keyof MainSizesElastic
+  size?: MainSizes
   stacked?: boolean
   status?: keyof AvatarStatus
   statusPosition?: keyof Positions
@@ -84,7 +50,7 @@ const AvatarComponent: FC<AvatarProps> = ({
   const imgClassName = twMerge(
     theme.root.img.base,
     bordered && theme.root.bordered,
-    bordered && theme.root.color[color as keyof Colors],
+    bordered && theme.root.color[color],
     rounded && theme.root.rounded,
     stacked && theme.root.stacked,
     theme.root.img.on,
@@ -111,7 +77,7 @@ const AvatarComponent: FC<AvatarProps> = ({
               theme.root.initials.base,
               stacked && theme.root.stacked,
               bordered && theme.root.bordered,
-              bordered && theme.root.color[color as keyof Colors],
+              bordered && theme.root.color[color],
               theme.root.size[size],
               rounded && theme.root.rounded,
             )}

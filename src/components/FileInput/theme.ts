@@ -1,5 +1,4 @@
-import { Colors } from '../PoluiProvider'
-import { MainSizes } from '../PoluiProvider/PoluiTheme'
+import type { ColorsType, MainSizesType } from '../../types'
 
 export interface FileInputTheme {
   root: {
@@ -9,8 +8,8 @@ export interface FileInputTheme {
     base: string
     input: {
       base: string
-      colors: Colors
-      size: MainSizes
+      colors: ColorsType
+      size: MainSizesType
     }
   }
 }

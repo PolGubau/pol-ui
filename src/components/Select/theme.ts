@@ -1,4 +1,4 @@
-import type { SelectTheme } from './Select';
+import type { SelectTheme } from './Select'
 
 export const selectTheme: SelectTheme = {
   base: 'flex',
@@ -25,12 +25,17 @@ export const selectTheme: SelectTheme = {
         off: '',
       },
       sizes: {
+        xs: 'p-1.5 text-xs',
         sm: 'p-2 sm:text-xs',
         md: 'p-2.5 text-sm',
         lg: 'sm:text-md p-4',
+        xl: 'p-5 text-lg',
       },
       colors: {
-        gray: 'bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500',
+        secondary:
+          'border-secondary-500 bg-secondary-50 text-secondary-900 placeholder-secondary-700 focus:border-secondary-500 focus:ring-secondary-500 dark:border-secondary-400 dark:bg-secondary-100 dark:focus:border-secondary-500 dark:focus:ring-secondary-500',
+        primary:
+          'border-primary-500 bg-primary-50 text-primary-900 placeholder-primary-700 focus:border-primary-500 focus:ring-primary-500 dark:border-primary-400 dark:bg-primary-100 dark:focus:border-primary-500 dark:focus:ring-primary-500',
         info: 'border-cyan-500 bg-cyan-50 text-cyan-900 placeholder-cyan-700 focus:border-cyan-500 focus:ring-cyan-500 dark:border-cyan-400 dark:bg-cyan-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500',
         error:
           'border-red-500 bg-red-50 text-red-900 placeholder-red-700 focus:border-red-500 focus:ring-red-500 dark:border-red-400 dark:bg-red-100 dark:focus:border-red-500 dark:focus:ring-red-500',
@@ -41,4 +46,4 @@ export const selectTheme: SelectTheme = {
       },
     },
   },
-};
+}

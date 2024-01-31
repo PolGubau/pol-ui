@@ -2,23 +2,13 @@ import type { ComponentProps, FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
-import type { Colors, Sizes } from '../PoluiProvider'
+import type { Colors, DeepPartial, MainSizes } from '../../types/types'
 import { ColorsEnum, SizesEnum } from '../../types/enums'
-
-export interface LoaderTheme {
-  base: string
-  color: Colors
-  size: LoaderSizes
-}
-
-export interface LoaderSizes extends Sizes {
-  [key: string]: string
-}
+import type { LoaderTheme } from './theme'
 
 export interface LoaderProps extends Omit<ComponentProps<'span'>, 'color'> {
-  color?: keyof Colors
-  size?: keyof LoaderSizes
+  color?: Colors
+  size?: MainSizes
   theme?: DeepPartial<LoaderTheme>
 }
 

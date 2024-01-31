@@ -1,5 +1,28 @@
-import type { ModalTheme } from './Modal';
+import type { IBoolean, Sizes } from '../../types'
+import type { ModalPositions } from './Modal'
+import type { ModalBodyTheme } from './ModalBody'
+import type { ModalFooterTheme } from './ModalFooter'
+import type { ModalHeaderTheme } from './ModalHeader'
 
+export interface ModalTheme {
+  root: ModalRootTheme
+  content: ModalContentTheme
+  body: ModalBodyTheme
+  header: ModalHeaderTheme
+  footer: ModalFooterTheme
+}
+
+export interface ModalRootTheme {
+  base: string
+  show: IBoolean
+  sizes: Sizes
+  positions: ModalPositions
+}
+
+export interface ModalContentTheme {
+  base: string
+  inner: string
+}
 export const modalTheme: ModalTheme = {
   root: {
     base: 'fixed top-0 right-0 left-0 z-50 h-modal h-screen overflow-y-auto overflow-x-hidden md:inset-0 md:h-full',
@@ -52,4 +75,4 @@ export const modalTheme: ModalTheme = {
     base: 'flex items-center space-x-2 rounded-b border-gray-200 p-6 dark:border-gray-600',
     popup: 'border-t',
   },
-};
+}

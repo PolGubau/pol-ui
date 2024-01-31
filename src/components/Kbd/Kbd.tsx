@@ -2,7 +2,7 @@ import type { ComponentProps, FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
+import type { DeepPartial } from '../../types/types'
 import { KbdTheme } from './theme'
 
 export interface KbdProps extends ComponentProps<'span'> {

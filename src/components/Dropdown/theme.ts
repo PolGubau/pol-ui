@@ -1,18 +1,17 @@
-import { Colors } from '../PoluiProvider'
-import { MainSizesElastic, RoundedSizes } from '../PoluiProvider/PoluiTheme'
+import type { ColorsType, MainSizesType, RoundedSizes } from '../../types'
 
 export interface DropdownTheme {
   root: {
     icon: string
     disabled: string
     base: string
-    color: Colors
+    color: ColorsType
   }
   rounded: RoundedSizes
-  size: MainSizesElastic
+  size: MainSizesType
   item: {
     base: string
-    color: Colors
+    color: ColorsType
   }
   floating: {
     base: string

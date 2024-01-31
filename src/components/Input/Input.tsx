@@ -3,11 +3,9 @@ import { forwardRef, useId } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
-import type { Colors } from '../PoluiProvider'
+import type { Colors, DeepPartial, MainSizes } from '../../types/types'
 import { HelperText } from '../HelperText'
 import { ColorsEnum, MainSizesEnum } from '../../types/enums'
-import type { MainSizes } from '../PoluiProvider/PoluiTheme'
 import type { InputTheme } from './InputTypes'
 import { Label } from '../Label'
 
@@ -17,7 +15,7 @@ export enum InputLabelPositionsEnum {
 }
 export type InputLabelPositions = keyof typeof InputLabelPositionsEnum
 export interface BaseInputsProps {
-  color?: keyof Colors
+  color?: Colors
   helperText?: ReactNode
   leftComponent?: ReactNode
   rightComponent?: ReactNode

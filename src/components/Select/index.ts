@@ -1,2 +1,2 @@
-export { Select } from './Select';
-export type { SelectTheme, SelectColors, SelectProps, SelectSizes } from './Select';
+export { Select } from './Select'
+export type { SelectTheme, SelectProps } from './Select'

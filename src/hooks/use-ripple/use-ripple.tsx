@@ -3,7 +3,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useRef } from 'react'
 
-
 /**
  * @name Options
  * @description The options to use for the ripple
@@ -72,7 +71,7 @@ const containerClassName = 'ripple--container'
  * @example
  * const [ref, event] = useRipple();
  * const [ref, event] = useRipple({color: 'blue'});
- * 
+ *
  * @author Pol Gubau Amores - https://polgubau.com
  */
 
@@ -159,7 +158,7 @@ export default function useRipple<T extends HTMLElement = any>(inputOptions?: Pa
  * const [ref, event] = useCustomRipple({color: 'blue', duration: 1000});
  * const [ref, event] = useCustomRipple({color: 'blue', duration: 1000, opacity: 0.5});
  * const [ref, event] = useCustomRipple({color: 'blue', duration: 1000, opacity: 0.5, className: 'my-ripple'});
- * 
+ *
  * @author Pol Gubau Amores - https://polgubau.com
  */
 
@@ -170,7 +169,6 @@ export function customRipple<T extends HTMLElement = any>(inputOptions?: Partial
       ...overrideOptions,
     })
 }
-
 
 /**
  * @name centerElementToPointer
@@ -185,7 +183,7 @@ export function customRipple<T extends HTMLElement = any>(inputOptions?: Partial
  * const ref = document.createElement('div');
  * const centeredElement = centerElementToPointer(event, ref, element);
  * console.log(centeredElement.style.top); // 0px
- * 
+ *
  * @author Pol Gubau Amores - https://polgubau.com
  */
 function centerElementToPointer<T extends HTMLElement>(event: MinimalEvent, ref: HTMLElement, element: T): T {
@@ -194,7 +192,6 @@ function centerElementToPointer<T extends HTMLElement>(event: MinimalEvent, ref:
   element.style.setProperty('left', px(event.clientX - left))
   return element
 }
-
 
 /**
  * @name px
@@ -205,13 +202,12 @@ function centerElementToPointer<T extends HTMLElement>(event: MinimalEvent, ref:
  * const pxString = px(10);
  * console.log(pxString); // 10px
  * const pxString = px('10'); // 10px
- * 
+ *
  * @author Pol Gubau Amores - https://polgubau.com
  */
 function px(arg: string | number) {
   return `${arg}px`
 }
-
 
 /**
  * @name createRipple
@@ -229,7 +225,7 @@ function px(arg: string | number) {
  * console.log(ripple.style.opacity); // 0.5
  * console.log(ripple.style.transition); // transform 600ms ease-in-out, opacity 650ms ease-in-out 130ms
  * console.log(ripple.style.transform); // translate(-50%, -50%) scale(1)
- * 
+ *
  * @author Pol Gubau Amores - https://polgubau.com
  */
 function createRipple<T extends HTMLElement>(
@@ -278,7 +274,7 @@ function createRipple<T extends HTMLElement>(
  * const styles = [['color', 'red'], ['background-color', 'blue']];
  * const styledElement = applyStyles(styles, element);
  * console.log(styledElement.style.color); // red
- * 
+ *
  * @author Pol Gubau Amores - https://polgubau.com
  */
 function applyStyles<T extends HTMLElement>(styles: string[][], target: T): T {
@@ -330,8 +326,8 @@ function cancelRippleAnimation<T extends HTMLElement>(
  * @name createRippleContainer
  * @description Creates a ripple container
  * @param className string - The class name to apply to the container
- * @returns HTMLDivElement - The ripple container 
- * 
+ * @returns HTMLDivElement - The ripple container
+ *
  * @author Pol Gubau Amores - https://polgubau.com
  */
 function createRippleContainer(className: string): HTMLDivElement {
@@ -363,7 +359,7 @@ function createRippleContainer(className: string): HTMLDivElement {
  *  // do something
  * }
  *  @see https://stackoverflow.com/a/4819886/13188385 - source
- */ 
+ */
 function isTouchDevice(): boolean {
   return 'ontouchstart' in window || navigator.maxTouchPoints > 0 || ((navigator as any)?.msMaxTouchPoints ?? 0 > 0)
 }

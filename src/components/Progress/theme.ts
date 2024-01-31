@@ -1,12 +1,11 @@
-import type { Colors } from '../PoluiProvider'
-import type { MainSizesElastic, RoundedSizes } from '../PoluiProvider/PoluiTheme'
+import type { ColorsType, MainSizesType, RoundedSizes } from '../../types'
 
 export interface ProgressTheme {
   base: string
   label: string
   bar: string
-  color: Colors
-  size: MainSizesElastic
+  color: ColorsType
+  size: MainSizesType
   rounded: RoundedSizes
 }
 export const progressTheme: ProgressTheme = {

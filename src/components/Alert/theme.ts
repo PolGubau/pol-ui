@@ -1,9 +1,9 @@
-import type { Colors } from '../PoluiProvider'
+import type { ColorsType } from '../../types'
 
 export interface AlertTheme {
   base: string
   borderAccent: string
-  color: Colors
+  color: ColorsType
   icon: string
   rounded: string
   wrapper: string
@@ -15,7 +15,6 @@ export const alertTheme: AlertTheme = {
 
   color: {
     info: 'text-info-700 bg-info-100 border-info-500 dark:bg-info-200 dark:text-info-800',
-    gray: 'text-gray-700 bg-gray-100 border-gray-500 dark:bg-gray-700 dark:text-gray-300',
     error: 'text-error-700 bg-error-100 border-error-500 dark:bg-error-200 dark:text-error-800',
     success: 'text-success-700 bg-success-100 border-success-500 dark:bg-success-200 dark:text-success-800',
     warning: 'text-warning-700 bg-warning-100 border-warning-500 dark:bg-warning-200 dark:text-warning-800',

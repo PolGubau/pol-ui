@@ -6,15 +6,17 @@ import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { useThemeMode } from '../../hooks/use-theme-mode'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
-import { DarkThemeToggleTheme } from './theme'
+import type { Colors, DeepPartial } from '../../types/types'
+import type { DarkThemeToggleTheme } from './theme'
 import { Button } from '../Button'
+import { ColorsEnum } from '../../types'
 
-export interface DarkThemeToggleProps extends ComponentProps<'button'> {
+export interface DarkThemeToggleProps extends Omit<ComponentProps<'button'>, 'color'> {
   iconDark?: string
   iconLight?: string
   theme?: DeepPartial<DarkThemeToggleTheme>
-  ref?: any
+  ref?: React.Ref<HTMLButtonElement>
+  color?: Colors
 }
 
 export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
@@ -23,6 +25,7 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
   iconDark: IconDark = HiSun,
   iconLight: IconLight = HiMoon,
   ref,
+  color = ColorsEnum.primary,
   ...props
 }) => {
   const { computedMode, toggleMode } = useThemeMode()
@@ -31,10 +34,12 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
 
   return (
     <Button
+      ref={ref}
       aria-label="Toggle dark mode"
       data-testid="dark-theme-toggle"
       className={twMerge(theme.root.base, className)}
       onClick={toggleMode}
+      color={color}
       {...props}
     >
       <IconDark

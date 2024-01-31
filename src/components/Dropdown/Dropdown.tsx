@@ -3,8 +3,7 @@ import * as React from 'react'
 import type { DropdownTheme } from './theme'
 import { DropdownComponent } from './DropdownComponent'
 import { TbChevronDown } from 'react-icons/tb'
-import type { Colors, MainSizesElastic, RoundedSizes } from '../PoluiProvider/PoluiTheme'
-import type { DeepPartial } from '../../types'
+import type { Colors, DeepPartial, MainSizes, RoundedSizes } from '../../types/types'
 
 /**
  * We need to omit color and size from the base button props because we want to use the color and size from the dropdown theme.
@@ -19,8 +18,8 @@ export interface DropdownProps extends BaseButtonProps {
   nestingIcon?: React.ReactNode
   theme?: DeepPartial<DropdownTheme>
   disabled?: boolean
-  color?: keyof Colors
-  size?: keyof MainSizesElastic
+  color?: Colors
+  size?: MainSizes
   rounded?: keyof RoundedSizes
   trigger?: React.JSX.Element
 }

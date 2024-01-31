@@ -4,12 +4,9 @@ import type { ComponentPropsWithoutRef, ElementType } from 'react'
 import { type ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
-import type { Colors } from '../PoluiProvider'
+import type { Colors, DeepPartial, MainSizes, RoundedSizes } from '../../types/types'
 import { Loader } from '../Loader'
 
-import type { MainSizesElastic } from '../PoluiProvider/PoluiTheme'
-import { type RoundedSizes } from '../PoluiProvider/PoluiTheme'
 import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../../types/enums'
 import { useRipple } from '../../hooks'
 import type { ButtonBaseProps } from '../Button/ButtonBase'
@@ -23,14 +20,14 @@ import { mergeDeep } from '../../helpers/merge-deep'
 export type IconButtonProps<T extends ElementType = 'button'> = {
   as?: T | null
   href?: string
-  color?: keyof Colors
+  color?: Colors
   target?: string
   isLoading?: boolean
   loader?: ReactNode
   label?: ReactNode
   outline?: boolean
   rounded?: keyof RoundedSizes
-  size?: keyof MainSizesElastic
+  size?: MainSizes
   hasMotion?: boolean
   theme?: DeepPartial<IconButtonTheme>
   innerClassname?: string

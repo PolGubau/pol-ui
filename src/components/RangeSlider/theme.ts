@@ -1,4 +1,4 @@
-import type { MainSizesElastic } from '../PoluiProvider/PoluiTheme'
+import type { MainSizesType } from '../../types'
 
 export interface RangeSliderTheme {
   root: { base: string }
@@ -6,7 +6,7 @@ export interface RangeSliderTheme {
     base: string
     input: {
       base: string
-      sizes: MainSizesElastic
+      sizes: MainSizesType
     }
   }
 }

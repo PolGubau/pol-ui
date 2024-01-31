@@ -1,29 +1,29 @@
-'use client';
+'use client'
 
-import type { ComponentProps, FC } from 'react';
- import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { Duration } from './ToastContext';
-import { ToastContext } from './ToastContext';
-import { ToastToggle } from './ToastToggle';
-import { useBoolean } from '../../hooks';
+import type { ComponentProps, FC } from 'react'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers/merge-deep'
+import { getTheme } from '../../theme-store'
+import type { DeepPartial } from '../../types/types'
+import type { Duration } from './ToastContext'
+import { ToastContext } from './ToastContext'
+import { ToastToggle } from './ToastToggle'
+import { useBoolean } from '../../hooks'
 
 export interface ToastTheme {
   root: {
-    base: string;
-    closed: string;
-  };
+    base: string
+    closed: string
+  }
   toggle: {
-    base: string;
-    icon: string;
-  };
+    base: string
+    icon: string
+  }
 }
 
 export interface ToastProps extends ComponentProps<'div'> {
-  duration?: Duration;
-  theme?: DeepPartial<ToastTheme>;
+  duration?: Duration
+  theme?: DeepPartial<ToastTheme>
 }
 
 const durationClasses: Record<Duration, string> = {
@@ -35,16 +35,16 @@ const durationClasses: Record<Duration, string> = {
   500: 'duration-500',
   700: 'duration-700',
   1000: 'duration-1000',
-};
+}
 
 const ToastComponent: FC<ToastProps> = ({ children, className, duration = 300, theme: customTheme = {}, ...props }) => {
-  const { value: isClosed, setValue: setIsClosed } = useBoolean(false);
-  const { value: isRemoved, setValue: setIsRemoved } = useBoolean(false);
- 
-  const theme = mergeDeep(getTheme().toast, customTheme);
+  const { value: isClosed, setValue: setIsClosed } = useBoolean(false)
+  const { value: isRemoved, setValue: setIsRemoved } = useBoolean(false)
+
+  const theme = mergeDeep(getTheme().toast, customTheme)
 
   if (isRemoved) {
-    return null;
+    return null
   }
 
   return (
@@ -58,12 +58,12 @@ const ToastComponent: FC<ToastProps> = ({ children, className, duration = 300, t
         {children}
       </div>
     </ToastContext.Provider>
-  );
-};
+  )
+}
 
-ToastComponent.displayName = 'Toast';
-ToastToggle.displayName = 'Toast.Toggle';
+ToastComponent.displayName = 'Toast'
+ToastToggle.displayName = 'Toast.Toggle'
 
 export const Toast = Object.assign(ToastComponent, {
   Toggle: ToastToggle,
-});
+})

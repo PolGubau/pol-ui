@@ -1,9 +1,9 @@
-import { Colors } from '../PoluiProvider'
+import type { ColorsType } from '../../types'
 
 export interface HelperTextTheme {
   root: {
     base: string
-    colors: Colors
+    colors: ColorsType
   }
 }
 

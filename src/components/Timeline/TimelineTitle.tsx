@@ -1,19 +1,18 @@
-'use client';
+'use client'
 
-import type { ComponentProps, FC } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import type { DeepPartial } from '../../types';
-import type { HeadingLevel } from '../PoluiProvider';
-import { useTimelineContentContext } from './TimelineContentContext';
+import type { ComponentProps, FC } from 'react'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers/merge-deep'
+import type { DeepPartial, HeadingLevel } from '../../types/types'
+import { useTimelineContentContext } from './TimelineContentContext'
 
 export interface TimelineTitleTheme {
-  base: string;
+  base: string
 }
 
 export interface TimelineTitleProps extends ComponentProps<'h1'> {
-  as?: HeadingLevel;
-  theme?: DeepPartial<TimelineTitleTheme>;
+  as?: HeadingLevel
+  theme?: DeepPartial<TimelineTitleTheme>
 }
 
 export const TimelineTitle: FC<TimelineTitleProps> = ({
@@ -23,13 +22,13 @@ export const TimelineTitle: FC<TimelineTitleProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const { theme: contentTheme } = useTimelineContentContext();
+  const { theme: contentTheme } = useTimelineContentContext()
 
-  const theme = mergeDeep(contentTheme.title, customTheme);
+  const theme = mergeDeep(contentTheme.title, customTheme)
 
   return (
     <Tag className={twMerge(theme.base, className)} {...props}>
       {children}
     </Tag>
-  );
-};
+  )
+}

@@ -1,8 +1,8 @@
-import type { Colors } from '../PoluiProvider'
+import type { ColorsType } from '../../types'
 
 export interface CheckboxTheme {
   base: string
-  color: Colors
+  color: ColorsType
   before: string
   floating: {
     base: string
@@ -10,7 +10,7 @@ export interface CheckboxTheme {
   }
   check: {
     base: string
-    color: Colors
+    color: ColorsType
   }
 }
 

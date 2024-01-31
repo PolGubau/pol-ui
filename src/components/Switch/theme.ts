@@ -1,5 +1,4 @@
-import { IBoolean } from '../PoluiProvider'
-import { Colors, MainSizes } from '../PoluiProvider/PoluiTheme'
+import type { ColorsType, IBoolean, MainSizesType } from '../../types'
 
 export interface SwitchTheme {
   root: SwitchRootTheme
@@ -14,15 +13,15 @@ export interface SwitchRootTheme {
 
 export interface SwitchToggleTheme {
   base: string
-  sizes: MainSizes
-  color: Colors
+  sizes: MainSizesType
+  color: ColorsType
   checked: IBoolean
   handler: SwitchHandlerTheme
 }
 
 export interface SwitchHandlerTheme {
   base: string
-  sizes: MainSizes
+  sizes: MainSizesType
 }
 
 export const switchTheme: SwitchTheme = {

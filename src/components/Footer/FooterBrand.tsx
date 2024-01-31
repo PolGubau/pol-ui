@@ -1,21 +1,21 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
+import type { ComponentProps, FC, PropsWithChildren } from 'react'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers/merge-deep'
+import { getTheme } from '../../theme-store'
+import type { DeepPartial } from '../../types/types'
 export interface FooterBrandTheme {
-  base: string;
-  img: string;
-  span: string;
+  base: string
+  img: string
+  span: string
 }
 
 export interface FooterBrandProps extends PropsWithChildren {
-  alt?: string;
-  className?: string;
-  href?: string;
-  name?: string;
-  src: string;
-  theme?: DeepPartial<FooterBrandTheme>;
+  alt?: string
+  className?: string
+  href?: string
+  name?: string
+  src: string
+  theme?: DeepPartial<FooterBrandTheme>
 }
 
 export const FooterBrand: FC<FooterBrandProps & ComponentProps<'a'> & ComponentProps<'img'>> = ({
@@ -28,7 +28,7 @@ export const FooterBrand: FC<FooterBrandProps & ComponentProps<'a'> & ComponentP
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().footer.brand, customTheme);
+  const theme = mergeDeep(getTheme().footer.brand, customTheme)
 
   return (
     <div>
@@ -44,5 +44,5 @@ export const FooterBrand: FC<FooterBrandProps & ComponentProps<'a'> & ComponentP
         <img alt={alt} data-testid="ui-footer-brand" src={src} className={twMerge(theme.img, className)} {...props} />
       )}
     </div>
-  );
-};
+  )
+}

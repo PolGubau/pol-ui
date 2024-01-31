@@ -7,10 +7,10 @@ import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DirectionHoverTheme } from './theme'
-import type { Direction } from '../PoluiProvider/PoluiTheme'
 import { DirectionEnum, RoundedSizesEnum } from '../../types/enums'
 import type { DirectionHoverProps } from './types'
 import { directionHoverTextVariants, directionHoverVariants, getDirection } from './types'
+import type { Direction } from '../../types'
 
 export const DirectionHover = <T extends ElementType = 'button'>({
   imageUrl,

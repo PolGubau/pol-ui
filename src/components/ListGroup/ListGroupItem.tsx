@@ -1,28 +1,27 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { IBoolean } from '../PoluiProvider';
+import type { ComponentProps, FC, PropsWithChildren } from 'react'
+import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers/merge-deep'
+import { getTheme } from '../../theme-store'
+import type { DeepPartial, IBoolean } from '../../types/types'
 
 export interface ListGroupItemTheme {
-  base: string;
+  base: string
   link: {
-    base: string;
-    active: IBoolean;
-    disabled: IBoolean;
-    href: IBoolean;
-    icon: string;
-  };
+    base: string
+    active: IBoolean
+    disabled: IBoolean
+    href: IBoolean
+    icon: string
+  }
 }
 
 export interface ListGroupItemProps extends PropsWithChildren {
-  active?: boolean;
-  disabled?: boolean;
-  href?: string;
-  icon?: FC<ComponentProps<'svg'>>;
-  onClick?: () => void;
-  theme?: DeepPartial<ListGroupItemTheme>;
+  active?: boolean
+  disabled?: boolean
+  href?: string
+  icon?: FC<ComponentProps<'svg'>>
+  onClick?: () => void
+  theme?: DeepPartial<ListGroupItemTheme>
 }
 
 export const ListGroupItem: FC<ListGroupItemProps & ComponentProps<'a'> & ComponentProps<'button'>> = ({
@@ -36,10 +35,10 @@ export const ListGroupItem: FC<ListGroupItemProps & ComponentProps<'a'> & Compon
   disabled,
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().listGroup.item, customTheme);
+  const theme = mergeDeep(getTheme().listGroup.item, customTheme)
 
-  const isLink = typeof href !== 'undefined';
-  const Component = isLink ? 'a' : 'button';
+  const isLink = typeof href !== 'undefined'
+  const Component = isLink ? 'a' : 'button'
 
   return (
     <li className={twMerge(theme.base, className)}>
@@ -60,5 +59,5 @@ export const ListGroupItem: FC<ListGroupItemProps & ComponentProps<'a'> & Compon
         {children}
       </Component>
     </li>
-  );
-};
+  )
+}

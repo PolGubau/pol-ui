@@ -1,4 +1,4 @@
-import type { IBoolean } from '../PoluiProvider'
+import type { IBoolean } from '../../types'
 
 export interface TabsTheme {
   base: string

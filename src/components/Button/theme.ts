@@ -1,35 +1,31 @@
+import type { ColorsType, IBoolean, MainSizesType, RoundedSizes } from '../../types'
 import type { ButtonGroupTheme, PositionInButtonGroup } from '../Button/ButtonGroup/ButtonGroup'
-import type { Colors, IBoolean } from '../PoluiProvider'
-import type { MainSizesElastic, RoundedSizes } from '../PoluiProvider/PoluiTheme'
 
 export interface ButtonTheme {
   base: string
   fullSized: string
-  color: Colors
+  color: ColorsType
   disabled: string
   isProcessing: string
   loaderSlot: string
-  loaderLeftPosition: MainSizesElastic
+  loaderLeftPosition: MainSizesType
   inner: ButtonInnerTheme
   label: string
   outline: ButtonOutlineTheme
   rounded: RoundedSizes
-  size: MainSizesElastic
-}
-export interface ButtonColors extends Colors {
-  [key: string]: string
+  size: MainSizesType
 }
 
 export interface ButtonInnerTheme {
   base: string
   position: PositionInButtonGroup
   outline: string
-  isProcessingPadding: MainSizesElastic
+  isProcessingPadding: MainSizesType
 }
 
 export interface ButtonOutlineTheme extends IBoolean {
   outlineBase: string
-  color: Colors
+  color: ColorsType
 }
 
 export const buttonTheme: ButtonTheme = {

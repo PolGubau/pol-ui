@@ -1,11 +1,10 @@
 import type { FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../../helpers/merge-deep'
-import type { DeepPartial } from '../../../types'
+import type { DeepPartial, IBoolean } from '../../../types/types'
 import { useDatePickerContext } from '../DatepickerContext'
 import { addDays, getFirstDayOfTheMonth, getFormattedDate, getWeekDays, isDateEqual, isDateInRange } from '../helpers'
 import { Button } from '../../Button'
-import { IBoolean } from '../../PoluiProvider'
 
 export interface DatepickerViewsDaysTheme {
   header: {

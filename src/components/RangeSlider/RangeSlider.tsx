@@ -3,13 +3,12 @@ import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
-import type { MainSizesElastic } from '../PoluiProvider/PoluiTheme'
+import type { DeepPartial, MainSizes } from '../../types/types'
 import type { RangeSliderTheme } from './theme'
 import { MainSizesEnum } from '../../types/enums'
 
 export interface RangeSliderProps extends Omit<ComponentProps<'input'>, 'ref' | 'type' | 'size'> {
-  size?: keyof MainSizesElastic
+  size?: MainSizes
   theme?: DeepPartial<RangeSliderTheme>
 }
 

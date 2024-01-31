@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef, ElementType } from 'react'
-import type { RoundedSizesElastic } from '../PoluiProvider/PoluiTheme'
 import type { DirectionHoverTheme } from './theme'
+import type { RoundedSizesElastic } from '../../types'
 
 export type DirectionHoverProps<T extends ElementType = 'button'> = {
   imageUrl: string

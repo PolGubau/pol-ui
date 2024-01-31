@@ -3,17 +3,17 @@ import { useId } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
-import type { MainSizesElastic, RoundedSizesElastic } from '../PoluiProvider/PoluiTheme'
+import type { Colors, DeepPartial, MainSizes, RoundedSizesElastic } from '../../types/types'
 import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../../types/enums'
 import type { ProgressTheme } from './theme'
 import { motion } from 'framer-motion'
-export interface ProgressProps extends ComponentProps<'div'> {
+export interface ProgressProps extends Omit<ComponentProps<'div'>, 'color'> {
   progress?: number
-  size?: keyof MainSizesElastic
+  size?: MainSizes
   label?: string
   theme?: DeepPartial<ProgressTheme>
   hasMotion?: boolean
+  color?: Colors
   rounded?: keyof RoundedSizesElastic
   barClassName?: string
 }

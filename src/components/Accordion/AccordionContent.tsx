@@ -3,7 +3,7 @@ import type { ComponentProps, FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
+import type { DeepPartial } from '../../types/types'
 import { useAccordionContext } from './AccordionPanelContext'
 import { AnimatePresence, motion } from 'framer-motion'
 export interface AccordionComponentTheme {
@@ -15,7 +15,6 @@ export interface AccordionContentProps extends ComponentProps<'div'> {
   hasMotion?: boolean
 }
 
-
 /**
  * @name AccordionContent
  * @description AccordionContent is the content of the accordion panel that is shown when the panel is open.
@@ -25,7 +24,7 @@ export interface AccordionContentProps extends ComponentProps<'div'> {
  * <AccordionContent>
  *  <p>Content</p>
  * </AccordionContent>
- * 
+ *
  * @example
  * <AccordionContent theme={{base: 'bg-red-500'}}>
  *  <p>Content</p>
@@ -47,10 +46,10 @@ export const AccordionContent: FC<AccordionContentProps> = ({
       {isOpen && (
         <div className={twMerge(theme.base, className)} data-testid="ui-accordion-content" hidden={!isOpen} {...props}>
           <motion.div
-            initial={hasMotion?{ opacity: 0, height: 0, scale: 0.99 }:undefined}
-            animate={hasMotion?{ opacity: 1, height: 'auto', scale: 1 }:undefined}
-            exit={hasMotion?{ opacity: 0, height: 0, scale: 0.99 }:undefined}
-            transition={hasMotion?{ ease: 'linear', duration: 0.2 }:undefined}
+            initial={hasMotion ? { opacity: 0, height: 0, scale: 0.99 } : undefined}
+            animate={hasMotion ? { opacity: 1, height: 'auto', scale: 1 } : undefined}
+            exit={hasMotion ? { opacity: 0, height: 0, scale: 0.99 } : undefined}
+            transition={hasMotion ? { ease: 'linear', duration: 0.2 } : undefined}
           >
             {children}
           </motion.div>

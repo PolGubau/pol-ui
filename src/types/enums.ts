@@ -347,7 +347,7 @@ export enum HeadingLevelEnum {
  * @description Enum for the different colors, merging state and brand colors
  * @author Pol Gubau Amores - https://polgubau.com
  */
-export const ColorsEnum = { ...StateColorsEnum, ...BrandColorsEnum }
+export const ColorsEnum = { ...StateColorsEnum, ...BrandColorsEnum } as const
 
 /**
  * @name TriggerReasonEnum

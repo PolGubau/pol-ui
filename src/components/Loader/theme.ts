@@ -1,4 +1,10 @@
-import type { LoaderTheme } from './Loader'
+import type { ColorsType, MainSizesType } from '../../types'
+
+export interface LoaderTheme {
+  base: string
+  color: ColorsType
+  size: MainSizesType
+}
 
 export const loaderTheme: LoaderTheme = {
   base: 'inline-flex animate-spin rounded-full border-4 border-solid border-current border-r-transparent motion-reduce:animate-[spin_1.5s_linear_infinite] object-center',
