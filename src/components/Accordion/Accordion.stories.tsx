@@ -12,7 +12,7 @@ export default {
   decorators: [
     Story => (
       <div className="flex p-6 flex-col  min-h-[400px] justify-center items-center bg-secondary-50">
-        <div className="max-w-xl">
+        <div className="max-w-2xl w-full">
           <Story />
         </div>
       </div>

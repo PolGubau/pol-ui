@@ -2,14 +2,14 @@ import type { AccordionTheme } from './Accordion'
 
 export const accordionTheme: AccordionTheme = {
   root: {
-    base: 'divide-y divide-secondary-200 border-secondary-200 dark:divide-secondary-700 dark:border-secondary-700 transition-all ',
+    base: 'divide-y divide-secondary-200 border-secondary-200 dark:divide-secondary-700 dark:border-secondary-700 transition-all w-full',
     isBordered: {
       off: 'rounded-xl border',
       on: 'border-b',
     },
   },
   content: {
-    base: 'py-4 px-4 last:rounded-b-xl dark:bg-secondary-900 first:rounded-t-xl',
+    base: 'py-4 px-4 last:rounded-b-xl dark:bg-secondary-900 first:rounded-t-xl w-full',
   },
   title: {
     arrow: {
