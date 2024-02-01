@@ -63,7 +63,7 @@ export const modalTheme: ModalTheme = {
     popup: 'pt-0',
   },
   header: {
-    base: 'flex items-start justify-between rounded-t dark:border-gray-600 border-b p-5',
+    base: 'flex items-center justify-between rounded-t dark:border-gray-600 border-b pl-5 py-3 pr-3',
     popup: 'p-2 border-b-0',
     title: 'text-xl font-medium text-gray-900 dark:text-white',
     close: {

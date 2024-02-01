@@ -13,7 +13,6 @@ import type { DarkThemeToggleTheme } from '../DarkThemeToggle'
 import type { DatepickerTheme } from '../Datepicker'
 import type { DropdownTheme } from '../Dropdown'
 import type { FileInputTheme } from '../FileInput'
-import type { FloatingLabelTheme } from '../FloatingLabel'
 import type { FooterTheme } from '../Footer'
 import type { KbdTheme } from '../Kbd'
 import type { LabelTheme } from '../Label'
@@ -84,7 +83,6 @@ export interface PoluiTheme {
   dropdown: DropdownTheme
   checkbox: CheckboxTheme
   fileInput: FileInputTheme
-  floatingLabel: FloatingLabelTheme
   label: LabelTheme
   radio: RadioTheme
   rangeSlider: RangeSliderTheme

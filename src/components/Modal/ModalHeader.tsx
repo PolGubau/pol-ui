@@ -5,6 +5,7 @@ import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import type { DeepPartial } from '../../types/types'
 import { useModalContext } from './ModalContext'
+import { IconButton } from '../IconButton'
 
 export interface ModalHeaderTheme {
   base: string
@@ -47,9 +48,9 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
       <Component id={headerId} className={theme.title}>
         {children}
       </Component>
-      <button aria-label="Close" className={theme.close.base} type="button" onClick={onClose}>
+      <IconButton aria-label="Close" type="button" onClick={onClose}>
         <HiOutlineX aria-hidden className={theme.close.icon} />
-      </button>
+      </IconButton>
     </div>
   )
 }
