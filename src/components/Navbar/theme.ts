@@ -1,8 +1,8 @@
-import type { NavbarTheme } from './Navbar';
+import type { NavbarTheme } from './Navbar'
 
 export const navbarTheme: NavbarTheme = {
   root: {
-    base: 'bg-white px-2 py-2.5 dark:border-gray-700 dark:bg-gray-800 sm:px-4',
+    base: 'px-2 py-2.5 dark:border-secondary-700 sm:px-4 w-full',
     rounded: {
       on: 'rounded',
       off: '',
@@ -42,7 +42,7 @@ export const navbarTheme: NavbarTheme = {
     },
   },
   toggle: {
-    base: 'inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden',
+    base: ' text-sm md:hidden',
     icon: 'h-6 w-6 shrink-0',
   },
-};
+}

@@ -15,9 +15,7 @@ export default {
   decorators: [
     Story => (
       <div className="flex p-6 flex-col w-full bg-secondary-50">
-        <div className="max-w-xl">
-          <Story />
-        </div>
+        <Story />
       </div>
     ),
   ],

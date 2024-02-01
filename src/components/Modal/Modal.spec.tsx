@@ -179,9 +179,7 @@ const TestModal = ({
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={() => setOpen(false)}>I accept</Button>
-          <Button color="gray" onClick={() => setOpen(false)}>
-            Decline
-          </Button>
+          <Button onClick={() => setOpen(false)}>Decline</Button>
         </Modal.Footer>
       </Modal>
     </>
