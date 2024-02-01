@@ -25,9 +25,9 @@ export interface ModalContentTheme {
 }
 export const modalTheme: ModalTheme = {
   root: {
-    base: 'fixed top-0 right-0 left-0 z-50 h-modal h-screen overflow-y-auto overflow-x-hidden md:inset-0 md:h-full cursor-pointer',
+    base: 'fixed top-0 right-0 left-0 z-50 h-modal h-screen overflow-y-auto overflow-x-hidden md:inset-0 md:h-full cursor-pointer transition-all',
     show: {
-      on: 'flex bg-gray-900 bg-opacity-50 dark:bg-opacity-80',
+      on: 'flex bg-secondary-900 bg-opacity-50 dark:bg-opacity-80',
       off: 'hidden',
     },
     sizes: {
