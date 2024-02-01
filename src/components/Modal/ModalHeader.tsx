@@ -11,10 +11,6 @@ export interface ModalHeaderTheme {
   base: string
   popup: string
   title: string
-  close: {
-    base: string
-    icon: string
-  }
 }
 
 export interface ModalHeaderProps extends ComponentProps<'div'> {
@@ -49,7 +45,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
         {children}
       </Component>
       <IconButton aria-label="Close" type="button" onClick={onClose}>
-        <HiOutlineX aria-hidden className={theme.close.icon} />
+        <HiOutlineX aria-hidden size={20} />
       </IconButton>
     </div>
   )

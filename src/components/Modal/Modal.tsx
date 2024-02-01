@@ -11,8 +11,7 @@ import {
   useMergeRefs,
   useRole,
 } from '@floating-ui/react'
-import type { MutableRefObject } from 'react'
-import { forwardRef, useState, type ComponentPropsWithoutRef } from 'react'
+import { forwardRef, useState, type ComponentPropsWithoutRef, type MutableRefObject, useMemo } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
@@ -44,7 +43,7 @@ const ModalComponent = forwardRef<HTMLDivElement, ModalProps>(
     {
       children,
       className,
-      dismissible = false,
+      dismissible = true,
       onClose,
       popup,
       position = 'center',
@@ -72,13 +71,13 @@ const ModalComponent = forwardRef<HTMLDivElement, ModalProps>(
     const role = useRole(context)
 
     const { getFloatingProps } = useInteractions([click, dismiss, role])
-
+    const value = useMemo(() => ({ theme, popup, onClose, setHeaderId }), [theme, popup, onClose, setHeaderId])
     if (!show) {
       return null
     }
 
     return (
-      <ModalContext.Provider value={{ theme, popup, onClose, setHeaderId }}>
+      <ModalContext.Provider value={value}>
         <FloatingPortal root={root}>
           <FloatingOverlay
             lockScroll

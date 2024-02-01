@@ -6,7 +6,7 @@ import type { Colors, DeepPartial, MainSizes } from '../../types/types'
 import { ColorsEnum, SizesEnum } from '../../types/enums'
 import type { LoaderTheme } from './theme'
 
-export interface LoaderProps extends Omit<ComponentProps<'span'>, 'color'> {
+export interface LoaderProps extends Omit<ComponentProps<'span'>, 'color' | 'size'> {
   color?: Colors
   size?: MainSizes
   theme?: DeepPartial<LoaderTheme>

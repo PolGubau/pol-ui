@@ -25,7 +25,7 @@ export interface ModalContentTheme {
 }
 export const modalTheme: ModalTheme = {
   root: {
-    base: 'fixed top-0 right-0 left-0 z-50 h-modal h-screen overflow-y-auto overflow-x-hidden md:inset-0 md:h-full',
+    base: 'fixed top-0 right-0 left-0 z-50 h-modal h-screen overflow-y-auto overflow-x-hidden md:inset-0 md:h-full cursor-pointer',
     show: {
       on: 'flex bg-gray-900 bg-opacity-50 dark:bg-opacity-80',
       off: 'hidden',
@@ -66,10 +66,6 @@ export const modalTheme: ModalTheme = {
     base: 'flex items-center justify-between rounded-t dark:border-gray-600 border-b pl-5 py-3 pr-3',
     popup: 'p-2 border-b-0',
     title: 'text-xl font-medium text-gray-900 dark:text-white',
-    close: {
-      base: 'ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white',
-      icon: 'h-5 w-5',
-    },
   },
   footer: {
     base: 'flex items-center space-x-2 rounded-b border-gray-200 p-6 dark:border-gray-600',

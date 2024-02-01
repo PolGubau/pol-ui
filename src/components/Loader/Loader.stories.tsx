@@ -1,11 +1,24 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import { Button } from '../Button'
 import { Loader } from './Loader'
-import { ColorsEnum, MainSizesEnum, SizesEnum } from '../../types/enums'
+import { ColorsEnum, SizesEnum } from '../../types/enums'
 
 export default {
   title: 'Components/Loader',
   component: Loader,
+  tags: ['autodocs'],
+  decorators: [
+    Story => (
+      <div className="flex p-6 flex-col w-full bg-secondary-50">
+        <div className="max-w-xl">
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
+  parameters: {
+    layout: 'fullscreen',
+  },
 } as Meta
 
 const Template: StoryFn = args => <Loader {...args} />
@@ -44,13 +57,13 @@ export const Colors = (): JSX.Element => (
   </div>
 )
 
-export const Sizes = (): JSX.Element => (
-  <div className="flex flex-row gap-3">
-    {Object.keys(MainSizesEnum).map(v => (
-      <Loader size={v} aria-label={`${v} loader example`} key={v} title={`${v} loader example`} />
-    ))}
-  </div>
-)
+// export const Sizes = (): JSX.Element => (
+//   <div className="flex flex-row gap-3">
+//     {Object.keys(MainSizesEnum).map(v => (
+//       <Loader size={v} aria-label={`${v} loader example`} key={v} title={`${v} loader example`} />
+//     ))}
+//   </div>
+// )
 
 export const Buttons = (): JSX.Element => (
   <div className="flex flex-row gap-3">
