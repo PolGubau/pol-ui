@@ -21,7 +21,7 @@ export const sidebarTheme: SidebarTheme = {
   root: {
     base: 'h-full w-fit bg-secondary-50 dark:bg-secondary-900 transition-all',
     collapsed: {
-      on: 'w-fit',
+      on: 'w-16',
       off: 'w-64',
     },
     inner: 'h-full overflow-y-auto overflow-x-hidden py-4 px-3 flex flex-col justify-between gap-6',

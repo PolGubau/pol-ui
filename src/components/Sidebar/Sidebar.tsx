@@ -44,7 +44,7 @@ const SidebarComponent: FC<SidebarProps> = ({
 
   return (
     <SidebarContext.Provider value={value}>
-      <motion.div {...framerSidebarPanel} className="flex flex-col h-auto ">
+      <motion.div layout {...framerSidebarPanel} className="flex flex-col h-auto ">
         {shouldHaveContent && (
           <Component
             aria-label="Sidebar"
