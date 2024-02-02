@@ -1,74 +1,114 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import { BiBuoy } from 'react-icons/bi';
-import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
-import { Badge } from '../Badge';
-import { Button } from '../Button';
-import { Sidebar } from './Sidebar';
+import type { Meta, StoryFn } from '@storybook/react'
+import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi'
+import type { SidebarProps } from './Sidebar'
+import { Sidebar } from './Sidebar'
+import React from 'react'
+import { Navbar } from '../Navbar'
+import { Button } from '../Button'
+import { useBoolean } from '../../hooks'
+import { TbArrowAutofitUp, TbAt, TbCoin, TbHelp, TbLayout, TbLayoutKanban, TbPaperBag, TbUser } from 'react-icons/tb'
 
 export default {
   title: 'Components/Sidebar',
   component: Sidebar,
-} as ComponentMeta<typeof Sidebar>;
+  tags: ['autodocs'],
+  decorators: [
+    Story => (
+      <div className="flex overflow-hidden  h-full min-h-[400px] bg-secondary-100 ">
+        <Story />
+      </div>
+    ),
+  ],
+  parameters: {
+    layout: 'fullscreen',
+  },
+} as Meta
+const Template: StoryFn<SidebarProps> = args => {
+  const { value, toggle } = useBoolean(false)
+  return <Sidebar {...args} collapsed={value} toggle={toggle} />
+}
 
-const Template: ComponentStory<typeof Sidebar> = (args) => <Sidebar {...args} />;
-
-export const Default = Template.bind({});
+export const Default = Template.bind({})
 Default.args = {
   children: (
     <Sidebar.Items>
       <Sidebar.ItemGroup>
-        <Sidebar.Item href="#" icon={HiChartPie}>
+        <Sidebar.Item href="#" icon={TbLayout}>
           Dashboard
         </Sidebar.Item>
-        <Sidebar.Item href="#" icon={HiViewBoards} label="Pro" labelColor="gray">
+        <Sidebar.Item href="#" icon={TbLayoutKanban}>
           Kanban
         </Sidebar.Item>
-        <Sidebar.Item href="#" icon={HiInbox} label="3">
+        <Sidebar.Item href="#" icon={TbAt} label="3">
           Inbox
         </Sidebar.Item>
-        <Sidebar.Item href="#" icon={HiUser}>
+        <Sidebar.Item href="#" icon={TbUser}>
           Users
         </Sidebar.Item>
-        <Sidebar.Item href="#" icon={HiShoppingBag}>
+        <Sidebar.Item href="#" icon={TbCoin} label="Premium">
           Products
-        </Sidebar.Item>
-        <Sidebar.Item href="#" icon={HiArrowSmRight}>
-          Sign In
-        </Sidebar.Item>
-        <Sidebar.Item href="#" icon={HiTable}>
-          Sign Up
         </Sidebar.Item>
       </Sidebar.ItemGroup>
     </Sidebar.Items>
   ),
-  collapsed: false,
-};
+}
 
-export const WithoutIcons = Template.bind({});
-WithoutIcons.storyName = 'No icons';
+export const WithoutIcons = Template.bind({})
+WithoutIcons.storyName = 'No icons'
 WithoutIcons.args = {
   children: (
     <Sidebar.Items>
       <Sidebar.ItemGroup>
         <Sidebar.Item href="#">Dashboard</Sidebar.Item>
-        <Sidebar.Item href="#" label="Pro" labelColor="alternative">
+        <Sidebar.Item href="#" labelColor="alternative">
           Kanban
         </Sidebar.Item>
-        <Sidebar.Item href="#" label="3">
-          Inbox
-        </Sidebar.Item>
+        <Sidebar.Item href="#">Inbox</Sidebar.Item>
         <Sidebar.Item href="#">Users</Sidebar.Item>
-        <Sidebar.Item href="#">Products</Sidebar.Item>
-        <Sidebar.Item href="#">Sign In</Sidebar.Item>
-        <Sidebar.Item href="#">Sign Up</Sidebar.Item>
+        <Sidebar.Item href="#">Notifications</Sidebar.Item>
+        <Sidebar.Item href="#">Settings</Sidebar.Item>
       </Sidebar.ItemGroup>
     </Sidebar.Items>
   ),
-  collapsed: false,
-};
+}
+export const HidingCollapse = () => {
+  const { value, toggle } = useBoolean(false)
 
-export const MultiLevelDropdown = Template.bind({});
-MultiLevelDropdown.storyName = 'Multi-level dropdown';
+  return (
+    <div className="flex gap-4 items-start">
+      {' '}
+      <Sidebar collapseMode="hide" collapsed={value} toggle={toggle}>
+        <Sidebar.Items>
+          <Sidebar.ItemGroup>
+            <Sidebar.Item href="#" icon={TbLayout}>
+              Dashboard
+            </Sidebar.Item>
+            <Sidebar.Item href="#" icon={TbLayoutKanban}>
+              Kanban
+            </Sidebar.Item>
+            <Sidebar.Item href="#" icon={TbAt} label="3">
+              Inbox
+            </Sidebar.Item>
+            <Sidebar.Item href="#" icon={TbUser}>
+              Users
+            </Sidebar.Item>
+            <Sidebar.Item href="#" icon={TbCoin} label="Premium">
+              Products
+            </Sidebar.Item>
+          </Sidebar.ItemGroup>
+        </Sidebar.Items>
+      </Sidebar>{' '}
+      <div className="flex m-4">
+        <Button onClick={toggle}>
+          <HiArrowSmRight />
+        </Button>
+      </div>
+    </div>
+  )
+}
+
+export const MultiLevelDropdown = Template.bind({})
+MultiLevelDropdown.storyName = 'Multi-level dropdown'
 MultiLevelDropdown.args = {
   children: (
     <Sidebar.Items>
@@ -97,10 +137,9 @@ MultiLevelDropdown.args = {
       </Sidebar.ItemGroup>
     </Sidebar.Items>
   ),
-  collapsed: false,
-};
+}
 
-export const DefaultExpandedDropdown = Template.bind({});
+export const DefaultExpandedDropdown = Template.bind({})
 DefaultExpandedDropdown.args = {
   children: (
     <Sidebar.Items>
@@ -132,116 +171,46 @@ DefaultExpandedDropdown.args = {
       </Sidebar.ItemGroup>
     </Sidebar.Items>
   ),
-  collapsed: false,
-};
+}
 
-export const ContentSeparator = Template.bind({});
-ContentSeparator.storyName = 'Content separator';
+export const ContentSeparator = Template.bind({})
+ContentSeparator.storyName = 'Content separator'
 ContentSeparator.args = {
   children: (
     <Sidebar.Items>
       <Sidebar.ItemGroup>
-        <Sidebar.Item href="#" icon={HiChartPie}>
+        <Sidebar.Item href="#" icon={TbLayout}>
           Dashboard
         </Sidebar.Item>
-        <Sidebar.Item href="#" icon={HiViewBoards}>
+        <Sidebar.Item href="#" icon={TbLayoutKanban}>
           Kanban
         </Sidebar.Item>
-        <Sidebar.Item href="#" icon={HiInbox}>
+        <Sidebar.Item href="#" icon={TbAt} label="3">
           Inbox
         </Sidebar.Item>
-        <Sidebar.Item href="#" icon={HiUser}>
+        <Sidebar.Item href="#" icon={TbUser}>
           Users
         </Sidebar.Item>
-        <Sidebar.Item href="#" icon={HiShoppingBag}>
+        <Sidebar.Item href="#" icon={TbCoin}>
           Products
-        </Sidebar.Item>
-        <Sidebar.Item href="#" icon={HiArrowSmRight}>
-          Sign In
-        </Sidebar.Item>
-        <Sidebar.Item href="#" icon={HiTable}>
-          Sign Up
         </Sidebar.Item>
       </Sidebar.ItemGroup>
       <Sidebar.ItemGroup>
-        <Sidebar.Item href="#" icon={HiChartPie}>
-          Upgrade to Pro
+        <Sidebar.Item href="#" icon={TbArrowAutofitUp} label="Premium">
+          Upgrade
         </Sidebar.Item>
-        <Sidebar.Item href="#" icon={HiViewBoards}>
-          Documentation
+        <Sidebar.Item href="#" icon={TbPaperBag} label="Premium">
+          Docs
         </Sidebar.Item>
-        <Sidebar.Item href="#" icon={BiBuoy}>
+        <Sidebar.Item href="#" icon={TbHelp} label="Premium">
           Help
         </Sidebar.Item>
       </Sidebar.ItemGroup>
     </Sidebar.Items>
   ),
-  collapsed: false,
-};
-
-export const CTAButton = Template.bind({});
-CTAButton.storyName = 'CTA button';
-CTAButton.args = {
-  children: (
-    <>
-      <Sidebar.Items>
-        <Sidebar.ItemGroup>
-          <Sidebar.Item href="#" icon={HiChartPie}>
-            Dashboard
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiViewBoards}>
-            Kanban
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiInbox}>
-            Inbox
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiUser}>
-            Users
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiShoppingBag}>
-            Products
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiArrowSmRight}>
-            Sign In
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiTable}>
-            Sign Up
-          </Sidebar.Item>
-        </Sidebar.ItemGroup>
-      </Sidebar.Items>
-      <Sidebar.CTA>
-        <div className="mb-3 flex items-center">
-          <Badge color="warning">Beta</Badge>
-          <div className="-m-1.5 ml-auto">
-            <Button aria-label="Close" outline>
-              <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  clipRule="evenodd"
-                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                  fillRule="evenodd"
-                />
-              </svg>
-            </Button>
-          </div>
-        </div>
-        <p className="mb-3 text-sm text-cyan-900 dark:text-cyan-400">
-          Preview the new Pol-ui dashboard navigation! You can turn the new navigation off for a limited time in your
-          profile.
-        </p>
-        <a
-          href="#"
-          className="text-sm text-cyan-900 underline hover:text-cyan-800 dark:text-cyan-400 dark:hover:text-cyan-300"
-        >
-          Turn new navigation off
-        </a>
-      </Sidebar.CTA>
-    </>
-  ),
-  collapsed: false,
-};
-
-export const LogoBranding = Template.bind({});
-LogoBranding.storyName = 'Logo branding';
+}
+export const LogoBranding = Template.bind({})
+LogoBranding.storyName = 'Logo branding'
 LogoBranding.args = {
   children: (
     <>
@@ -275,5 +244,66 @@ LogoBranding.args = {
       </Sidebar.Items>
     </>
   ),
-  collapsed: false,
-};
+}
+export const CompleteExample = () => {
+  const { value, toggle } = useBoolean(true)
+
+  return (
+    <div className="flex w-full m-6 rounded-xl overflow-hidden border border-secondary-800 min-h-[400px] bg-primary-100 flex-col">
+      <Navbar className="bg-primary-50 shadow-md">
+        <Navbar.Brand>
+          <img src="/images/logo.png" className="mr-3 h-6 sm:h-6" alt="Pol-ui Logo" />
+        </Navbar.Brand>
+        <Navbar.Toggle />
+        <Navbar.Collapse>
+          <Navbar.Link href="/navbars" active>
+            Home
+          </Navbar.Link>
+          <Navbar.Link href="/navbars">About</Navbar.Link>
+          <Navbar.Link href="/navbars">Login</Navbar.Link>
+        </Navbar.Collapse>
+      </Navbar>
+      <section className="flex h-full">
+        <div className="bg-primary-50 w-fit  shadow-lg h-full">
+          <Sidebar collapsed={value} toggle={toggle}>
+            <Sidebar.Items>
+              <Sidebar.ItemGroup>
+                <Sidebar.Item href="#" icon={HiChartPie} active>
+                  Dashboard
+                </Sidebar.Item>
+                <Sidebar.Item href="#" icon={HiViewBoards} label="Pro" labelColor="gray">
+                  Kanban
+                </Sidebar.Item>
+                <Sidebar.Item href="#" icon={HiInbox} label="3">
+                  Inbox
+                </Sidebar.Item>
+                <Sidebar.Item href="#" icon={HiUser}>
+                  Users
+                </Sidebar.Item>
+                <Sidebar.Item href="#" icon={HiShoppingBag}>
+                  Products
+                </Sidebar.Item>
+                <Sidebar.Item href="#" icon={HiArrowSmRight}>
+                  Sign In
+                </Sidebar.Item>
+                <Sidebar.Item href="#" icon={HiTable}>
+                  Sign Up
+                </Sidebar.Item>
+              </Sidebar.ItemGroup>
+            </Sidebar.Items>
+          </Sidebar>
+        </div>
+        <div className="flex flex-col gap-5 p-8 w-full bg-primary-200 m-4 rounded-xl">
+          <h2>Content</h2>
+          <div className="bg-primary-400 rounded-2xl w-full h-20"></div>
+          <div className="bg-primary-400 rounded-2xl w-full h-10"></div>
+          <div className="bg-primary-300 rounded-2xl w-full h-14"></div>
+          <div className="w-full h-20 flex gap-5">
+            <div className="bg-primary-300 rounded-2xl w-full h-14"></div>
+            <div className="bg-primary-300 rounded-2xl w-full h-14"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}

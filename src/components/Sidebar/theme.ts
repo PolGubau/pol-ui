@@ -1,13 +1,30 @@
-import type { SidebarTheme } from './Sidebar'
+import type { IBoolean } from '../../types'
+import type { SidebarCollapseTheme } from './SidebarCollapse'
+import type { SidebarItemTheme } from './SidebarItem'
+import type { SidebarItemGroupTheme } from './SidebarItemGroup'
+import type { SidebarItemsTheme } from './SidebarItems'
+import type { SidebarLogoTheme } from './SidebarLogo'
 
+export interface SidebarTheme {
+  root: {
+    base: string
+    collapsed: IBoolean
+    inner: string
+  }
+  collapse: SidebarCollapseTheme
+  item: SidebarItemTheme
+  items: SidebarItemsTheme
+  itemGroup: SidebarItemGroupTheme
+  logo: SidebarLogoTheme
+}
 export const sidebarTheme: SidebarTheme = {
   root: {
-    base: 'h-full',
+    base: 'h-full w-fit bg-secondary-50 dark:bg-secondary-900 transition-all',
     collapsed: {
-      on: 'w-16',
+      on: 'w-fit',
       off: 'w-64',
     },
-    inner: 'h-full overflow-y-auto overflow-x-hidden rounded bg-gray-50 py-4 px-3 dark:bg-gray-800',
+    inner: 'h-full overflow-y-auto overflow-x-hidden py-4 px-3 flex flex-col justify-between gap-6',
   },
   collapse: {
     button:
@@ -31,20 +48,10 @@ export const sidebarTheme: SidebarTheme = {
     },
     list: 'space-y-2 py-2',
   },
-  cta: {
-    base: 'mt-6 rounded-lg p-4 bg-gray-100 dark:bg-gray-700',
-    color: {
-      primary: 'bg-primary-50 dark:bg-primary-900',
-      secondary: 'bg-secondary-50 dark:bg-secondary-900',
-      info: 'bg-info-50 dark:bg-info-900',
-      error: 'bg-error-50 dark:bg-error-900',
-      success: 'bg-green-50 dark:bg-green-900',
-      warning: 'bg-yellow-50 dark:bg-yellow-900',
-    },
-  },
+
   item: {
-    base: 'flex items-center justify-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700',
-    active: 'bg-gray-100 dark:bg-gray-700',
+    base: 'flex bg-secondary-50 dark:bg-secondary-900 items-center justify-center rounded-lg p-2 text-base font-normal text-gray-900 hover:brightness-90 dark:text-white dark:hover:bg-gray-700',
+    active: 'bg-primary-200 dark:bg-primary-700',
     collapsed: {
       insideCollapse: 'group w-full pl-8 transition duration-75',
       noIcon: 'font-bold',

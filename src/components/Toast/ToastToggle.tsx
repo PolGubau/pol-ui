@@ -6,13 +6,14 @@ import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import type { DeepPartial } from '../../types/types'
 import { useToastContext } from './ToastContext'
+import { IconButton } from '../IconButton'
 
 export interface ToastToggleTheme {
   base: string
   icon: string
 }
 
-export interface ToastToggleProps extends ComponentProps<'button'> {
+export interface ToastToggleProps extends Omit<ComponentProps<'button'>, 'color'> {
   theme?: DeepPartial<ToastToggleTheme>
   xIcon?: FC<ComponentProps<'svg'>>
   onDismiss?: () => void
@@ -43,7 +44,7 @@ export const ToastToggle: FC<ToastToggleProps> = ({
   }
 
   return (
-    <button
+    <IconButton
       aria-label="Close"
       onClick={handleClick}
       type="button"
@@ -51,6 +52,6 @@ export const ToastToggle: FC<ToastToggleProps> = ({
       {...props}
     >
       <XIcon aria-hidden className={theme.icon} />
-    </button>
+    </IconButton>
   )
 }

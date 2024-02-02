@@ -50,7 +50,7 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
 }) => {
   const id = useId()
   const [isOpen, setOpen] = useState(open)
-  const { theme: rootTheme, isCollapsed } = useSidebarContext()
+  const { theme: rootTheme, collapsed } = useSidebarContext()
 
   const theme = mergeDeep(rootTheme.collapse, customTheme)
 
@@ -58,7 +58,7 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
 
   const Wrapper: FC<PropsWithChildren> = ({ children }) => (
     <li>
-      {isCollapsed && !isOpen ? (
+      {collapsed && !isOpen ? (
         <Tooltip content={label} placement="right">
           {children}
         </Tooltip>
@@ -85,7 +85,7 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
             className={twMerge(theme.icon.base, theme.icon.open[isOpen ? 'on' : 'off'])}
           />
         )}
-        {isCollapsed ? (
+        {collapsed ? (
           <span className="sr-only">{label}</span>
         ) : (
           <>

@@ -1,125 +1,125 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import type { FC } from 'react';
-import { HiChartPie, HiInbox, HiShoppingBag } from 'react-icons/hi';
-import { describe, expect, it } from 'vitest';
-import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider';
-import type { SidebarProps } from './Sidebar';
-import { Sidebar } from './Sidebar';
+import { render, screen, waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import type { FC } from 'react'
+import { HiChartPie, HiInbox, HiShoppingBag } from 'react-icons/hi'
+import { describe, expect, it } from 'vitest'
+import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider'
+import type { SidebarProps } from './Sidebar'
+import { Sidebar } from './Sidebar'
 
 describe('Components / Sidebar', () => {
   describe('A11y', () => {
     it('should use `aria-label` if provided', () => {
-      render(<TestSidebar aria-label="My differently labelled sidebar" />);
+      render(<TestSidebar aria-label="My differently labelled sidebar" />)
 
-      const sidebar = screen.getByLabelText('My differently labelled sidebar');
+      const sidebar = screen.getByLabelText('My differently labelled sidebar')
 
-      expect(sidebar).toHaveAccessibleName('My differently labelled sidebar');
-    });
+      expect(sidebar).toHaveAccessibleName('My differently labelled sidebar')
+    })
 
     it('should use text content as accessible name in `Sidebar.Collapse` and `Sidebar.Item`', async () => {
-      const user = userEvent.setup();
-      const itemLabels = ['Dashboard', 'E-commerce', 'Products', 'Services', 'Inbox', 'My heading'];
+      const user = userEvent.setup()
+      const itemLabels = ['Dashboard', 'E-commerce', 'Products', 'Services', 'Inbox', 'My heading']
 
-      render(<TestSidebar />);
+      render(<TestSidebar />)
 
       for (const collapse of collapseButtons()) {
-        await user.click(collapse);
+        await user.click(collapse)
       }
 
       items().forEach((item, i) => {
-        expect(item.firstElementChild).toHaveAccessibleName(itemLabels[i]);
-      });
-    });
+        expect(item.firstElementChild).toHaveAccessibleName(itemLabels[i])
+      })
+    })
 
     it('should use text content as accessible name in `Sidebar.Logo`', () => {
-      render(<TestSidebar />);
+      render(<TestSidebar />)
 
-      expect(logo()).toHaveAccessibleName('PoluiProvider');
-    });
+      expect(logo()).toHaveAccessibleName('PoluiProvider')
+    })
 
     it('should use `imgAlt` as alternative text for image in `Sidebar.Logo` given `img=".." and imgAlt=".."`', () => {
-      render(<TestSidebar />);
+      render(<TestSidebar />)
 
-      const logoImg = screen.getByAltText('PoluiProvider logo');
+      const logoImg = screen.getByAltText('PoluiProvider logo')
 
-      expect(logoImg).toHaveAccessibleName('PoluiProvider logo');
-    });
-  });
-});
+      expect(logoImg).toHaveAccessibleName('PoluiProvider logo')
+    })
+  })
+})
 
 describe('Keyboard interactions', () => {
   it('should expand/collapse when `Space` is pressed on a `Sidebar.Collapse`', async () => {
-    const user = userEvent.setup();
-    render(<TestSidebar />);
+    const user = userEvent.setup()
+    render(<TestSidebar />)
 
-    const collapseButton = collapseButtons()[0];
+    const collapseButton = collapseButtons()[0]
 
-    await user.click(collapseButton);
+    await user.click(collapseButton)
 
-    const collapse = collapses()[0];
+    const collapse = collapses()[0]
 
-    expect(collapse).toBeVisible();
-  });
+    expect(collapse).toBeVisible()
+  })
 
   it('should follow link when `Space` is pressed on `Sidebar.Item` with `href=".."`', () => {
-    render(<TestSidebar />);
+    render(<TestSidebar />)
 
-    const link = screen.getAllByRole('link')[1];
+    const link = screen.getAllByRole('link')[1]
 
-    expect(link).toHaveAccessibleName('Dashboard');
-    expect(link).toHaveAttribute('href', '#');
-  });
+    expect(link).toHaveAccessibleName('Dashboard')
+    expect(link).toHaveAttribute('href', '#')
+  })
 
   it('should be possible to `Tab` out', async () => {
-    const user = userEvent.setup();
+    const user = userEvent.setup()
     render(
       <>
         <TestSidebar />
         {/* eslint-disable-next-line jsx-a11y/role-has-required-aria-props */}
         <button role="checkbox">Outside</button>
       </>,
-    );
+    )
 
-    const outside = screen.getByText('Outside');
+    const outside = screen.getByText('Outside')
 
     await waitFor(async () => {
-      await user.tab();
+      await user.tab()
 
-      expect(outside).toHaveFocus();
-    });
-  });
-});
+      expect(outside).toHaveFocus()
+    })
+  })
+})
 
 describe('Props', () => {
-  it('shouldn\'t display anything when `collapseBehavior="hide"`', () => {
-    render(<TestSidebar collapseBehavior="hide" collapsed />);
+  it('shouldn\'t display anything when `collapseMode="hide"`', () => {
+    render(<TestSidebar collapseMode="hide" collapsed />)
 
-    const sidebar = screen.queryByLabelText('Sidebar');
+    const sidebar = screen.queryByLabelText('Sidebar')
 
-    expect(sidebar).not.toBeVisible();
-  });
+    expect(sidebar).not.toBeVisible()
+  })
 
   it("shouldn't display `Sidebar.CTA` when `collapsed={true}`", () => {
-    render(<TestSidebar collapsed />);
+    render(<TestSidebar collapsed />)
 
-    expect(cta()).not.toBeVisible();
-  });
+    expect(cta()).not.toBeVisible()
+  })
 
   it("shouldn't display text content in `Sidebar.Logo` when `collapsed={true}`", () => {
-    render(<TestSidebar collapsed />);
+    render(<TestSidebar collapsed />)
 
-    expect(logo().lastElementChild).toHaveClass('hidden');
-  });
+    expect(logo().lastElementChild).toHaveClass('hidden')
+  })
 
   it('should use the HTML element provided in `Sidebar.Item as=".."`', () => {
-    render(<TestSidebar />);
+    render(<TestSidebar />)
 
-    const asItem = screen.getByLabelText('My heading');
+    const asItem = screen.getByLabelText('My heading')
 
-    expect(asItem.tagName.toLocaleLowerCase()).toEqual('h3');
-  });
-});
+    expect(asItem.tagName.toLocaleLowerCase()).toEqual('h3')
+  })
+})
 
 describe('Theme', () => {
   it('should use custom classes', () => {
@@ -134,27 +134,27 @@ describe('Theme', () => {
           inner: 'bg-gray-200',
         },
       },
-    };
+    }
 
     const { getByLabelText } = render(
       <PoluiProvider theme={{ theme }}>
         <TestSidebar aria-label="not-collapsed" />
         <TestSidebar aria-label="collapsed" collapsed />
       </PoluiProvider>,
-    );
-    const sidebar = getByLabelText('not-collapsed');
-    const inner = sidebar.firstElementChild;
-    const collapsedSidebar = getByLabelText('collapsed');
+    )
+    const sidebar = getByLabelText('not-collapsed')
+    const inner = sidebar.firstElementChild
+    const collapsedSidebar = getByLabelText('collapsed')
 
-    expect(sidebar).toHaveClass('bg-gray-100');
-    expect(sidebar).toHaveClass('text-gray-200');
-    expect(inner).toHaveClass('bg-gray-200');
-    expect(collapsedSidebar).toHaveClass('text-gray-300');
-  });
+    expect(sidebar).toHaveClass('bg-gray-100')
+    expect(sidebar).toHaveClass('text-gray-200')
+    expect(inner).toHaveClass('bg-gray-200')
+    expect(collapsedSidebar).toHaveClass('text-gray-300')
+  })
 
   describe('`Sidebar.Collapse`', () => {
     it('should use custom classes', async () => {
-      const user = userEvent.setup();
+      const user = userEvent.setup()
       const theme: CustomPoluiTheme = {
         sidebar: {
           collapse: {
@@ -179,27 +179,27 @@ describe('Theme', () => {
             list: 'bg-gray-300',
           },
         },
-      };
+      }
 
       render(
         <PoluiProvider theme={{ theme }}>
           <TestSidebar />
         </PoluiProvider>,
-      );
-      const labelIcons = collapseLabels().map((label) => label.nextElementSibling);
+      )
+      const labelIcons = collapseLabels().map(label => label.nextElementSibling)
 
-      collapseButtons().forEach((button) => expect(button).toHaveClass('text-gray-100'));
-      collapseIcons().forEach((icon) => expect(icon).toHaveClass('text-gray-200 bg-gray-100'));
-      collapseLabels().forEach((label) => expect(label).toHaveClass('text-gray-300'));
-      labelIcons.forEach((labelicon) => expect(labelicon).toHaveClass('text-gray-400'));
+      collapseButtons().forEach(button => expect(button).toHaveClass('text-gray-100'))
+      collapseIcons().forEach(icon => expect(icon).toHaveClass('text-gray-200 bg-gray-100'))
+      collapseLabels().forEach(label => expect(label).toHaveClass('text-gray-300'))
+      labelIcons.forEach(labelicon => expect(labelicon).toHaveClass('text-gray-400'))
 
       for (const button of collapseButtons()) {
-        await user.click(button);
+        await user.click(button)
       }
 
-      collapseIcons().forEach((icon) => expect(icon).toHaveClass('bg-gray-200'));
-    });
-  });
+      collapseIcons().forEach(icon => expect(icon).toHaveClass('bg-gray-200'))
+    })
+  })
 
   describe('`Sidebar.CTA`', () => {
     it('should use custom classes', () => {
@@ -212,17 +212,17 @@ describe('Theme', () => {
             },
           },
         },
-      };
+      }
 
       render(
         <PoluiProvider theme={{ theme }}>
           <TestSidebar />
         </PoluiProvider>,
-      );
+      )
 
-      expect(cta()).toHaveClass('bg-gray-100 text-gray-100');
-    });
-  });
+      expect(cta()).toHaveClass('bg-gray-100 text-gray-100')
+    })
+  })
 
   describe('`Sidebar.Item`', () => {
     it('should use custom classes', () => {
@@ -243,31 +243,31 @@ describe('Theme', () => {
             },
           },
         },
-      };
+      }
 
       render(
         <PoluiProvider theme={{ theme }}>
           <TestSidebar collapsed />
         </PoluiProvider>,
-      );
+      )
       const theItems = items()
-        .map((item) => item.firstElementChild)
-        .map((item) => item?.firstElementChild)
-        .filter((item) => item?.tagName.toLocaleLowerCase() !== 'button') as HTMLElement[];
-      const activeItems = screen.getAllByTestId('active-item');
-      const activeIcons = activeItems.map((item) => item.firstElementChild);
-      const inactiveIcons = [...collapseIcons().filter((icon) => !activeIcons.includes(icon))];
-      const inactiveItems = [...theItems.filter((item) => item !== null && !activeItems.includes(item))];
+        .map(item => item.firstElementChild)
+        .map(item => item?.firstElementChild)
+        .filter(item => item?.tagName.toLocaleLowerCase() !== 'button') as HTMLElement[]
+      const activeItems = screen.getAllByTestId('active-item')
+      const activeIcons = activeItems.map(item => item.firstElementChild)
+      const inactiveIcons = [...collapseIcons().filter(icon => !activeIcons.includes(icon))]
+      const inactiveItems = [...theItems.filter(item => item !== null && !activeItems.includes(item))]
 
-      activeIcons.forEach((icon) => expect(icon).toHaveClass('bg-gray-300'));
-      activeItems.forEach((item) => expect(item).toHaveClass('text-gray-100'));
-      itemContents().forEach((content) => expect(content).toHaveClass('bg-gray-200'));
-      inactiveIcons.forEach((icon) => expect(icon).not.toHaveClass('bg-gray-300'));
-      inactiveItems.forEach((item) => expect(item).not.toHaveClass('text-gray-100'));
-      icons().forEach((icon) => expect(icon).toHaveClass('text-gray-400'));
-      theItems.forEach((item) => expect(item).toHaveClass('bg-gray-100'));
-    });
-  });
+      activeIcons.forEach(icon => expect(icon).toHaveClass('bg-gray-300'))
+      activeItems.forEach(item => expect(item).toHaveClass('text-gray-100'))
+      itemContents().forEach(content => expect(content).toHaveClass('bg-gray-200'))
+      inactiveIcons.forEach(icon => expect(icon).not.toHaveClass('bg-gray-300'))
+      inactiveItems.forEach(item => expect(item).not.toHaveClass('text-gray-100'))
+      icons().forEach(icon => expect(icon).toHaveClass('text-gray-400'))
+      theItems.forEach(item => expect(item).toHaveClass('bg-gray-100'))
+    })
+  })
 
   describe('`Sidebar.Items`', () => {
     it('should use custom classes', () => {
@@ -277,17 +277,17 @@ describe('Theme', () => {
             base: 'text-gray-100',
           },
         },
-      };
+      }
 
       render(
         <PoluiProvider theme={{ theme }}>
           <TestSidebar />
         </PoluiProvider>,
-      );
+      )
 
-      itemsContainers().forEach((container) => expect(container).toHaveClass('text-gray-100'));
-    });
-  });
+      itemsContainers().forEach(container => expect(container).toHaveClass('text-gray-100'))
+    })
+  })
 
   describe('`Sidebar.ItemGroup`', () => {
     it('should use custom classes', () => {
@@ -297,16 +297,16 @@ describe('Theme', () => {
             base: 'text-gray-100',
           },
         },
-      };
+      }
 
       render(
         <PoluiProvider theme={{ theme }}>
           <TestSidebar />
         </PoluiProvider>,
       ),
-        itemGroups().forEach((group) => expect(group).toHaveClass('text-gray-100'));
-    });
-  });
+        itemGroups().forEach(group => expect(group).toHaveClass('text-gray-100'))
+    })
+  })
 
   describe('`Sidebar.Logo`', () => {
     it('should use custom classes', () => {
@@ -321,17 +321,17 @@ describe('Theme', () => {
             img: 'text-gray-200',
           },
         },
-      };
+      }
 
       render(
         <PoluiProvider theme={{ theme }}>
           <TestSidebar />
         </PoluiProvider>,
       ),
-        expect(logo()).toHaveClass('text-gray-100');
-    });
-  });
-});
+        expect(logo()).toHaveClass('text-gray-100')
+    })
+  })
+})
 
 const TestSidebar: FC<SidebarProps> = ({ ...props }) => (
   <Sidebar {...props}>
@@ -355,26 +355,26 @@ const TestSidebar: FC<SidebarProps> = ({ ...props }) => (
     </Sidebar.Items>
     <Sidebar.CTA color="primary">Some content</Sidebar.CTA>
   </Sidebar>
-);
+)
 
-const collapseButtons = () => screen.getAllByRole('button');
+const collapseButtons = () => screen.getAllByRole('button')
 
-const collapses = () => screen.getAllByRole('list').slice(1);
+const collapses = () => screen.getAllByRole('list').slice(1)
 
-const collapseIcons = () => screen.getAllByTestId('ui-sidebar-collapse-icon');
+const collapseIcons = () => screen.getAllByTestId('ui-sidebar-collapse-icon')
 
-const collapseLabels = () => screen.getAllByTestId('ui-sidebar-collapse-label');
+const collapseLabels = () => screen.getAllByTestId('ui-sidebar-collapse-label')
 
-const cta = () => screen.getByText('Some content');
+const cta = () => screen.getByText('Some content')
 
-const itemContents = () => screen.getAllByTestId('ui-sidebar-item-content');
+const itemContents = () => screen.getAllByTestId('ui-sidebar-item-content')
 
-const itemGroups = () => screen.getAllByTestId('ui-sidebar-item-group');
+const itemGroups = () => screen.getAllByTestId('ui-sidebar-item-group')
 
-const icons = () => screen.getAllByTestId('ui-sidebar-item-icon');
+const icons = () => screen.getAllByTestId('ui-sidebar-item-icon')
 
-const items = () => screen.getAllByRole('listitem');
+const items = () => screen.getAllByRole('listitem')
 
-const itemsContainers = () => screen.getAllByTestId('ui-sidebar-items');
+const itemsContainers = () => screen.getAllByTestId('ui-sidebar-items')
 
-const logo = () => screen.getByLabelText('PoluiProvider');
+const logo = () => screen.getByLabelText('PoluiProvider')

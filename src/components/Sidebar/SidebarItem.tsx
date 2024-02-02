@@ -9,7 +9,9 @@ import { Badge } from '../Badge'
 import { Tooltip } from '../Tooltip'
 import { useSidebarContext } from './SidebarContext'
 import { useSidebarItemContext } from './SidebarItemContext'
-
+import { motion } from 'framer-motion'
+import { ColorsEnum } from '../../types'
+import { useRipple } from '../../hooks'
 export interface SidebarItemTheme {
   active: string
   base: string
@@ -42,28 +44,35 @@ const ListItem: FC<
   PropsWithChildren<{
     id: string
     theme: SidebarItemTheme
-    isCollapsed: boolean
+    collapsed: boolean
     tooltipChildren: ReactNode | undefined
     className?: string
   }>
-> = ({ id, theme, isCollapsed, tooltipChildren, children: wrapperChildren, ...props }) => (
-  <li {...props}>
-    {isCollapsed ? (
-      <Tooltip
-        content={
-          <Children id={id} theme={theme}>
-            {tooltipChildren}
-          </Children>
-        }
-        placement="right"
-      >
-        {wrapperChildren}
-      </Tooltip>
-    ) : (
-      wrapperChildren
-    )}
-  </li>
-)
+> = ({ id, theme, collapsed, tooltipChildren, children: wrapperChildren, ...props }) => {
+  const [ripple, event] = useRipple({
+    // disabled: disabled || isProcessing,
+    opacity: 0.2,
+    // className: rippleClass(color),
+  })
+  return (
+    <motion.li {...props} ref={ripple} onPointerDown={event}>
+      {collapsed ? (
+        <Tooltip
+          content={
+            <Children id={id} theme={theme}>
+              {tooltipChildren}
+            </Children>
+          }
+          placement="right"
+        >
+          {wrapperChildren}
+        </Tooltip>
+      ) : (
+        wrapperChildren
+      )}
+    </motion.li>
+  )
+}
 
 const Children: FC<PropsWithChildren<{ id: string; theme: SidebarItemTheme }>> = ({ id, theme, children }) => {
   return (
@@ -82,52 +91,61 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
       className,
       icon: Icon,
       label,
-      labelColor = 'info',
+      labelColor = ColorsEnum.secondary,
       theme: customTheme = {},
       ...props
     },
     ref,
   ) => {
     const id = useId()
-    const { theme: rootTheme, isCollapsed } = useSidebarContext()
+    const { theme: rootTheme, collapsed } = useSidebarContext()
     const { isInsideCollapse } = useSidebarItemContext()
 
     const theme = mergeDeep(rootTheme.item, customTheme)
-
+    const itemVariants = {
+      closed: {
+        opacity: 0,
+      },
+      open: { opacity: 1 },
+    }
     return (
-      <ListItem theme={theme} className={theme.listItem} id={id} isCollapsed={isCollapsed} tooltipChildren={children}>
-        <Component
-          aria-labelledby={`ui-sidebar-item-${id}`}
-          ref={ref}
-          className={twMerge(
-            theme.base,
-            isActive && theme.active,
-            !isCollapsed && isInsideCollapse && theme.collapsed?.insideCollapse,
-            className,
-          )}
-          {...props}
-        >
-          {Icon && (
-            <Icon
-              aria-hidden
-              data-testid="ui-sidebar-item-icon"
-              className={twMerge(theme.icon?.base, isActive && theme.icon?.active)}
-            />
-          )}
-          {isCollapsed && !Icon && (
-            <span className={theme.collapsed?.noIcon}>{(children as string).charAt(0).toLocaleUpperCase() ?? '?'}</span>
-          )}
-          {!isCollapsed && (
-            <Children id={id} theme={theme}>
-              {children}
-            </Children>
-          )}
-          {!isCollapsed && label && (
-            <Badge color={labelColor} data-testid="ui-sidebar-label" hidden={isCollapsed} className={theme.label}>
-              {label}
-            </Badge>
-          )}
-        </Component>
+      <ListItem theme={theme} className={theme.listItem} id={id} collapsed={collapsed} tooltipChildren={children}>
+        <motion.div variants={itemVariants}>
+          <Component
+            aria-labelledby={`ui-sidebar-item-${id}`}
+            ref={ref}
+            className={twMerge(
+              theme.base,
+              isActive && theme.active,
+              !collapsed && isInsideCollapse && theme.collapsed?.insideCollapse,
+              className,
+            )}
+            {...props}
+          >
+            {Icon && (
+              <Icon
+                aria-hidden
+                data-testid="ui-sidebar-item-icon"
+                className={twMerge(theme.icon?.base, isActive && theme.icon?.active)}
+              />
+            )}
+            {collapsed && !Icon && (
+              <span className={theme.collapsed?.noIcon}>
+                {(children as string).charAt(0).toLocaleUpperCase() ?? '?'}
+              </span>
+            )}
+            {!collapsed && (
+              <Children id={id} theme={theme}>
+                {children}
+              </Children>
+            )}
+            {!collapsed && label && (
+              <Badge color={labelColor} data-testid="ui-sidebar-label" hidden={collapsed} className={theme.label}>
+                {label}
+              </Badge>
+            )}
+          </Component>
+        </motion.div>
       </ListItem>
     )
   },
