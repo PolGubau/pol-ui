@@ -1,12 +1,32 @@
 import type { Meta, StoryFn } from '@storybook/react'
-import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi'
 import type { SidebarProps } from './Sidebar'
 import { Sidebar } from './Sidebar'
 import React from 'react'
 import { Navbar } from '../Navbar'
 import { Button } from '../Button'
 import { useBoolean } from '../../hooks'
-import { TbArrowAutofitUp, TbAt, TbCoin, TbHelp, TbLayout, TbLayoutKanban, TbPaperBag, TbUser } from 'react-icons/tb'
+import {
+  TbArrowAutofitUp,
+  TbArrowLeft,
+  TbArrowRight,
+  TbAt,
+  TbCoin,
+  TbDashboard,
+  TbDatabaseSearch,
+  TbGraph,
+  TbHelp,
+  TbHome,
+  TbLayout,
+  TbLayoutKanban,
+  TbMail,
+  TbMoneybag,
+  TbPaperBag,
+  TbPlus,
+  TbShare,
+  TbShoppingBag,
+  TbSignRight,
+  TbUser,
+} from 'react-icons/tb'
 import { ColorsEnum } from '../../types'
 
 export default {
@@ -41,7 +61,7 @@ Default.args = {
           Kanban
         </Sidebar.Item>
         <Sidebar.Item href="#" icon={TbAt} label="3">
-          Inbox
+          At
         </Sidebar.Item>
         <Sidebar.Item href="#" icon={TbUser}>
           Users
@@ -64,7 +84,7 @@ WithoutIcons.args = {
         <Sidebar.Item href="#" labelColor="alternative">
           Kanban
         </Sidebar.Item>
-        <Sidebar.Item href="#">Inbox</Sidebar.Item>
+        <Sidebar.Item href="#">At</Sidebar.Item>
         <Sidebar.Item href="#">Users</Sidebar.Item>
         <Sidebar.Item href="#">Notifications</Sidebar.Item>
         <Sidebar.Item href="#">Settings</Sidebar.Item>
@@ -88,7 +108,7 @@ export const HidingCollapse = () => {
               Kanban
             </Sidebar.Item>
             <Sidebar.Item href="#" icon={TbAt} label="3">
-              Inbox
+              At
             </Sidebar.Item>
             <Sidebar.Item href="#" icon={TbUser}>
               Users
@@ -100,9 +120,7 @@ export const HidingCollapse = () => {
         </Sidebar.Items>
       </Sidebar>{' '}
       <div className="flex m-4">
-        <Button onClick={toggle}>
-          <HiArrowSmRight />
-        </Button>
+        <Button onClick={toggle}>{value ? <TbArrowRight /> : <TbArrowLeft />} </Button>
       </div>
     </div>
   )
@@ -114,25 +132,23 @@ MultiLevelDropdown.args = {
   children: (
     <Sidebar.Items>
       <Sidebar.ItemGroup>
-        <Sidebar.Item href="#" icon={HiChartPie}>
-          Dashboard
+        <Sidebar.Item href="#" icon={TbHome}>
+          Home
         </Sidebar.Item>
-        <Sidebar.Collapse icon={HiShoppingBag} label="E-commerce">
-          <Sidebar.Item href="#">Products</Sidebar.Item>
+        <Sidebar.Collapse icon={TbShoppingBag} label="E-commerce">
+          <Sidebar.Item href="#">Shop</Sidebar.Item>
         </Sidebar.Collapse>
-        <Sidebar.Item href="#" icon={HiInbox}>
-          Inbox
+        <Sidebar.Item href="#" icon={TbAt}>
+          Email
         </Sidebar.Item>
-        <Sidebar.Item href="#" icon={HiUser}>
+        <Sidebar.Item href="#" icon={TbUser}>
           Users
         </Sidebar.Item>
-        <Sidebar.Item href="#" icon={HiShoppingBag}>
-          Products
-        </Sidebar.Item>
-        <Sidebar.Item href="#" icon={HiArrowSmRight}>
+
+        <Sidebar.Item href="#" icon={TbSignRight}>
           Sign In
         </Sidebar.Item>
-        <Sidebar.Item href="#" icon={HiTable}>
+        <Sidebar.Item href="#" icon={TbPlus}>
           Sign Up
         </Sidebar.Item>
       </Sidebar.ItemGroup>
@@ -145,29 +161,25 @@ DefaultExpandedDropdown.args = {
   children: (
     <Sidebar.Items>
       <Sidebar.ItemGroup>
-        <Sidebar.Item href="#" icon={HiChartPie}>
+        <Sidebar.Item href="#" icon={TbGraph}>
           Dashboard
         </Sidebar.Item>
-        <Sidebar.Collapse icon={HiShoppingBag} label="E-commerce">
-          <Sidebar.Item href="#">Products</Sidebar.Item>
+        <Sidebar.Collapse icon={TbCoin} label="Shop">
+          <Sidebar.Item icon={TbMoneybag} href="#">
+            Products
+          </Sidebar.Item>
         </Sidebar.Collapse>
-        <Sidebar.Collapse icon={HiShoppingBag} label="Billing" open>
+        <Sidebar.Collapse icon={TbShare} label="Share" open>
           <Sidebar.Item href="#">Usage Summary</Sidebar.Item>
         </Sidebar.Collapse>
-        <Sidebar.Item href="#" icon={HiInbox}>
-          Inbox
+        <Sidebar.Item href="#" icon={TbMail}>
+          Mail
         </Sidebar.Item>
-        <Sidebar.Item href="#" icon={HiUser}>
+        <Sidebar.Item href="#" icon={TbUser}>
           Users
         </Sidebar.Item>
-        <Sidebar.Item href="#" icon={HiShoppingBag}>
-          Products
-        </Sidebar.Item>
-        <Sidebar.Item href="#" icon={HiArrowSmRight}>
-          Sign In
-        </Sidebar.Item>
-        <Sidebar.Item href="#" icon={HiTable}>
-          Sign Up
+        <Sidebar.Item href="#" icon={TbCoin}>
+          Coin
         </Sidebar.Item>
       </Sidebar.ItemGroup>
     </Sidebar.Items>
@@ -187,7 +199,7 @@ ContentSeparator.args = {
           Kanban
         </Sidebar.Item>
         <Sidebar.Item href="#" icon={TbAt} label="3">
-          Inbox
+          At
         </Sidebar.Item>
         <Sidebar.Item href="#" icon={TbUser}>
           Users
@@ -220,26 +232,17 @@ LogoBranding.args = {
       </Sidebar.Logo>
       <Sidebar.Items>
         <Sidebar.ItemGroup>
-          <Sidebar.Item href="#" icon={HiChartPie}>
-            Dashboard
+          <Sidebar.Item href="#" icon={TbGraph}>
+            Home
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiViewBoards}>
+          <Sidebar.Item href="#" icon={TbDashboard}>
             Kanban
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiInbox}>
-            Inbox
+          <Sidebar.Item href="#" icon={TbMail}>
+            At
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiUser}>
+          <Sidebar.Item href="#" icon={TbUser}>
             Users
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiShoppingBag}>
-            Products
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiArrowSmRight}>
-            Sign In
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiTable}>
-            Sign Up
           </Sidebar.Item>
         </Sidebar.ItemGroup>
       </Sidebar.Items>
@@ -269,26 +272,23 @@ export const CompleteExample = () => {
           <Sidebar collapsed={value} toggle={toggle}>
             <Sidebar.Items>
               <Sidebar.ItemGroup>
-                <Sidebar.Item href="#" icon={HiChartPie} active rounded="full">
-                  Dashboard
+                <Sidebar.Item href="#" icon={TbDatabaseSearch} active rounded="full">
+                  Home
                 </Sidebar.Item>
-                <Sidebar.Item href="#" icon={HiViewBoards} label="Empty" labelColor={ColorsEnum.primary} rounded="full">
-                  Kanban
+                <Sidebar.Item
+                  href="#"
+                  icon={TbLayoutKanban}
+                  label="Empty"
+                  labelColor={ColorsEnum.primary}
+                  rounded="full"
+                >
+                  Menus
                 </Sidebar.Item>
-                <Sidebar.Item href="#" icon={HiInbox} label="3" rounded="full">
-                  Inbox
+                <Sidebar.Item href="#" icon={TbAt} label="3" rounded="full">
+                  Mail
                 </Sidebar.Item>
-                <Sidebar.Item href="#" icon={HiUser} rounded="full">
-                  Users
-                </Sidebar.Item>
-                <Sidebar.Item href="#" icon={HiShoppingBag} rounded="full">
-                  Products
-                </Sidebar.Item>
-                <Sidebar.Item href="#" icon={HiArrowSmRight} rounded="full">
-                  Sign In
-                </Sidebar.Item>
-                <Sidebar.Item href="#" icon={HiTable} rounded="full">
-                  Sign Up
+                <Sidebar.Item href="#" icon={TbUser} rounded="full">
+                  Accounts
                 </Sidebar.Item>
               </Sidebar.ItemGroup>
             </Sidebar.Items>

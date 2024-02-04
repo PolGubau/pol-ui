@@ -1,5 +1,24 @@
-import type { SelectTheme } from './Select'
+import type { ColorsType, IBoolean, MainSizesType } from '../../types'
 
+export interface SelectTheme {
+  base: string
+  addon: string
+  field: {
+    base: string
+    icon: {
+      base: string
+      svg: string
+    }
+    select: {
+      base: string
+      withIcon: IBoolean
+      withAddon: IBoolean
+      withShadow: IBoolean
+      sizes: MainSizesType
+      colors: ColorsType
+    }
+  }
+}
 export const selectTheme: SelectTheme = {
   base: 'flex',
   addon:

@@ -53,6 +53,7 @@
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.2",
+    "@radix-ui/react-navigation-menu": "^1.1.4",
     "embla-carousel-react": "^8.0.0-rc19",
     "framer-motion": "^10.18.0",
     "react-icons": "^4.12.0",

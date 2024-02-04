@@ -3,29 +3,10 @@ import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { Colors, ColorsType, DeepPartial, IBoolean, MainSizes, MainSizesType } from '../../types/types'
+import type { Colors, DeepPartial, MainSizes } from '../../types/types'
 import { HelperText } from '../HelperText'
 import { ColorsEnum, MainSizesEnum } from '../../types'
-
-export interface SelectTheme {
-  base: string
-  addon: string
-  field: {
-    base: string
-    icon: {
-      base: string
-      svg: string
-    }
-    select: {
-      base: string
-      withIcon: IBoolean
-      withAddon: IBoolean
-      withShadow: IBoolean
-      sizes: MainSizesType
-      colors: ColorsType
-    }
-  }
-}
+import type { SelectTheme } from './theme'
 
 export interface SelectProps extends Omit<ComponentProps<'select'>, 'color' | 'ref'> {
   addon?: ReactNode

@@ -1,4 +1,4 @@
-import type { ColorsType, IBoolean, MainSizesType, RoundedSizes } from '../../types'
+import type { ColorsType, IBoolean, MainSizesType, RoundedSizesTypes } from '../../types'
 
 export interface BadgeTheme {
   root: BadgeRootTheme
@@ -8,7 +8,7 @@ export interface BadgeTheme {
 export interface BadgeRootTheme {
   base: string
   color: ColorsType
-  rounded: RoundedSizes
+  rounded: RoundedSizesTypes
   href: string
   size: MainSizesType
 }
