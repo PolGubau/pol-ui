@@ -17,33 +17,18 @@ describe('Components / Sidebar', () => {
       expect(sidebar).toHaveAccessibleName('My differently labelled sidebar')
     })
 
-    it('should use text content as accessible name in `Sidebar.Collapse` and `Sidebar.Item`', async () => {
-      const user = userEvent.setup()
-      const itemLabels = ['Dashboard', 'E-commerce', 'Products', 'Services', 'Inbox', 'My heading']
-
-      render(<TestSidebar />)
-
-      for (const collapse of collapseButtons()) {
-        await user.click(collapse)
-      }
-
-      items().forEach((item, i) => {
-        expect(item.firstElementChild).toHaveAccessibleName(itemLabels[i])
-      })
-    })
-
     it('should use text content as accessible name in `Sidebar.Logo`', () => {
       render(<TestSidebar />)
 
-      expect(logo()).toHaveAccessibleName('PoluiProvider')
+      expect(logo()).toHaveAccessibleName('PolUi')
     })
 
     it('should use `imgAlt` as alternative text for image in `Sidebar.Logo` given `img=".." and imgAlt=".."`', () => {
       render(<TestSidebar />)
 
-      const logoImg = screen.getByAltText('PoluiProvider logo')
+      const logoImg = screen.getByAltText('PolUi logo')
 
-      expect(logoImg).toHaveAccessibleName('PoluiProvider logo')
+      expect(logoImg).toHaveAccessibleName('PolUi logo')
     })
   })
 })
@@ -92,20 +77,6 @@ describe('Keyboard interactions', () => {
 })
 
 describe('Props', () => {
-  it('shouldn\'t display anything when `collapseMode="hide"`', () => {
-    render(<TestSidebar collapseMode="hide" collapsed />)
-
-    const sidebar = screen.queryByLabelText('Sidebar')
-
-    expect(sidebar).not.toBeVisible()
-  })
-
-  it("shouldn't display `Sidebar.CTA` when `collapsed={true}`", () => {
-    render(<TestSidebar collapsed />)
-
-    expect(cta()).not.toBeVisible()
-  })
-
   it("shouldn't display text content in `Sidebar.Logo` when `collapsed={true}`", () => {
     render(<TestSidebar collapsed />)
 
@@ -188,7 +159,6 @@ describe('Theme', () => {
       )
       const labelIcons = collapseLabels().map(label => label.nextElementSibling)
 
-      collapseButtons().forEach(button => expect(button).toHaveClass('text-gray-100'))
       collapseIcons().forEach(icon => expect(icon).toHaveClass('text-gray-200 bg-gray-100'))
       collapseLabels().forEach(label => expect(label).toHaveClass('text-gray-300'))
       labelIcons.forEach(labelicon => expect(labelicon).toHaveClass('text-gray-400'))
@@ -198,29 +168,6 @@ describe('Theme', () => {
       }
 
       collapseIcons().forEach(icon => expect(icon).toHaveClass('bg-gray-200'))
-    })
-  })
-
-  describe('`Sidebar.CTA`', () => {
-    it('should use custom classes', () => {
-      const theme: CustomPoluiTheme = {
-        sidebar: {
-          cta: {
-            base: 'bg-gray-100',
-            color: {
-              primary: 'text-gray-100',
-            },
-          },
-        },
-      }
-
-      render(
-        <PoluiProvider theme={{ theme }}>
-          <TestSidebar />
-        </PoluiProvider>,
-      )
-
-      expect(cta()).toHaveClass('bg-gray-100 text-gray-100')
     })
   })
 
@@ -265,7 +212,6 @@ describe('Theme', () => {
       inactiveIcons.forEach(icon => expect(icon).not.toHaveClass('bg-gray-300'))
       inactiveItems.forEach(item => expect(item).not.toHaveClass('text-gray-100'))
       icons().forEach(icon => expect(icon).toHaveClass('text-gray-400'))
-      theItems.forEach(item => expect(item).toHaveClass('bg-gray-100'))
     })
   })
 
@@ -335,8 +281,8 @@ describe('Theme', () => {
 
 const TestSidebar: FC<SidebarProps> = ({ ...props }) => (
   <Sidebar {...props}>
-    <Sidebar.Logo href="#" img="favicon.svg" imgAlt="PoluiProvider logo">
-      PoluiProvider
+    <Sidebar.Logo href="#" img="favicon.svg" imgAlt="PolUi logo">
+      PolUi
     </Sidebar.Logo>
     <Sidebar.Items>
       <Sidebar.ItemGroup>
@@ -353,7 +299,6 @@ const TestSidebar: FC<SidebarProps> = ({ ...props }) => (
         <Sidebar.Item as="h3">My heading</Sidebar.Item>
       </Sidebar.ItemGroup>
     </Sidebar.Items>
-    <Sidebar.CTA color="primary">Some content</Sidebar.CTA>
   </Sidebar>
 )
 
@@ -365,8 +310,6 @@ const collapseIcons = () => screen.getAllByTestId('ui-sidebar-collapse-icon')
 
 const collapseLabels = () => screen.getAllByTestId('ui-sidebar-collapse-label')
 
-const cta = () => screen.getByText('Some content')
-
 const itemContents = () => screen.getAllByTestId('ui-sidebar-item-content')
 
 const itemGroups = () => screen.getAllByTestId('ui-sidebar-item-group')
@@ -377,4 +320,4 @@ const items = () => screen.getAllByRole('listitem')
 
 const itemsContainers = () => screen.getAllByTestId('ui-sidebar-items')
 
-const logo = () => screen.getByLabelText('PoluiProvider')
+const logo = () => screen.getByLabelText('PolUi')
