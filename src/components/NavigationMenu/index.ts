@@ -3,3 +3,5 @@ export { NavigationMenuTrigger, type NavigationMenuTriggerProps } from './naviga
 export { NavigationMenuLink, NavigationMenuItem } from './navigation-menu-extras'
 export { NavigationMenuViewport } from './navigation-menu-viewport'
 export { NavigationMenuIndicator } from './navigation-menu-indicator'
+export { NavigationMenu, type NavigationMenuProps } from './navigation-menu'
+export { NavigationMenuContent, type NavigationMenuContentProps } from './navigation-menu-content'

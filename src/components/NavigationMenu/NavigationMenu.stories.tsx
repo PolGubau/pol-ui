@@ -1,12 +1,13 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import type { NavigationMenuProps } from './navigation-menu'
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem } from './navigation-menu'
+import { NavigationMenu } from './navigation-menu'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
-import NavigationMenuDemo from './native'
-import { NavigationMenuTrigger, navigationMenuTriggerStyle } from './navigation-menu-trigger'
-import { NavigationMenuList } from './navigation-menu-list'
-import { NavigationMenuLink } from './navigation-menu-extras'
+import { NavigationMenuTrigger } from './navigation-menu-trigger'
+import { NavigationMenuItem, NavigationMenuLink } from './navigation-menu-extras'
+import { Input } from '../Input'
+import { Checkbox } from '../Checkbox'
+import { NavigationMenuContent } from './navigation-menu-content'
 
 export default {
   title: 'Components/NavigationMenu',
@@ -15,8 +16,8 @@ export default {
 
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col  min-h-[400px] bg-secondary-200">
-        <div className="max-w-xl">
+      <div className="flex p-6 flex-col w-full min-h-[400px] bg-secondary-200">
+        <div className="">
           <Story />
         </div>
       </div>
@@ -28,40 +29,7 @@ export default {
 } as Meta
 
 const Template: StoryFn<NavigationMenuProps> = args => <NavigationMenu {...args} />
-const components: { title: string; href: string; description: string }[] = [
-  {
-    title: 'Alert Dialog',
-    href: '/docs/primitives/alert-dialog',
-    description: 'A modal dialog that interrupts the user with important content and expects a response.',
-  },
-  {
-    title: 'Hover Card',
-    href: '/docs/primitives/hover-card',
-    description: 'For sighted users to preview content available behind a link.',
-  },
-  {
-    title: 'Progress',
-    href: '/docs/primitives/progress',
-    description:
-      'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
-  },
-  {
-    title: 'Scroll-area',
-    href: '/docs/primitives/scroll-area',
-    description: 'Visually or semantically separates content.',
-  },
-  {
-    title: 'Tabs',
-    href: '/docs/primitives/tabs',
-    description: 'A set of layered sections of content—known as tab panels—that are displayed one at a time.',
-  },
-  {
-    title: 'Tooltip',
-    href: '/docs/primitives/tooltip',
-    description:
-      'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.',
-  },
-]
+
 const ListItem = React.forwardRef<React.ElementRef<'a'>, React.ComponentPropsWithoutRef<'a'>>(
   ({ className, title, children, ...props }, ref) => {
     return (
@@ -86,60 +54,92 @@ const ListItem = React.forwardRef<React.ElementRef<'a'>, React.ComponentPropsWit
 export const Default = Template.bind({})
 Default.args = {
   children: (
-    <NavigationMenuList>
+    <>
       <NavigationMenuItem>
-        <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+        <NavigationMenuTrigger>Learn</NavigationMenuTrigger>
+
         <NavigationMenuContent>
-          <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-            <li className="row-span-3">
+          <ul className="one m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[500px] sm:grid-cols-[0.75fr_1fr]">
+            <li className="row-span-3 grid">
               <NavigationMenuLink asChild>
                 <a
-                  className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                  className="focus:shadow-md from-purple-500 to-indigo-300 flex
+            h-full w-full select-none flex-col justify-end rounded-[6px] bg-gradient-to-b p-[25px] no-underline outline-none"
                   href="/"
                 >
-                  <img src="/images/logo.png" alt="Logo" className="h-12 w-auto" />
-                  <div className="mb-2 mt-4 text-lg font-medium">shadcn/ui</div>
-                  <p className="text-sm leading-tight text-muted-foreground">
-                    Beautifully designed components built with Radix UI and Tailwind CSS.
-                  </p>
+                  <div className="mt-4 mb-[7px] text-[18px] font-medium leading-[1.2] text-white">Radix Primitives</div>
+                  <p className="text-mauve4 text-[14px] leading-[1.3]">Unstyled, accessible components for React.</p>
                 </a>
               </NavigationMenuLink>
             </li>
-            <ListItem href="/docs" title="Introduction">
-              Re-usable components built using Radix UI and Tailwind CSS.
+
+            <ListItem href="https://stitches.dev/" title="Stitches">
+              CSS-in-JS with best-in-class developer experience.
             </ListItem>
-            <ListItem href="/docs/installation" title="Installation">
-              How to install dependencies and structure your app.
+            <ListItem href="/colors" title="Colors">
+              Beautiful, thought-out palettes with auto dark mode.
             </ListItem>
-            <ListItem href="/docs/primitives/typography" title="Typography">
-              Styles for headings, paragraphs, lists...etc
+            <ListItem href="https://icons.radix-ui.com/" title="Icons">
+              A crisp set of 15x15 icons, balanced and consistent.
             </ListItem>
           </ul>
         </NavigationMenuContent>
       </NavigationMenuItem>
+
       <NavigationMenuItem>
-        <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+        <NavigationMenuTrigger>Overview</NavigationMenuTrigger>
+
         <NavigationMenuContent>
-          <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-            {components.map(component => (
-              <ListItem key={component.title} title={component.title} href={component.href}>
-                {component.description}
-              </ListItem>
-            ))}
+          <ul className="m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[600px] sm:grid-flow-col sm:grid-rows-3">
+            <ListItem title="Introduction" href="/primitives/docs/overview/introduction">
+              Build high-quality, accessible design systems and web apps.
+            </ListItem>
+            <ListItem title="Getting started" href="/primitives/docs/overview/getting-started">
+              A quick tutorial to get you up and running with Radix Primitives.
+            </ListItem>
+            <ListItem title="Styling" href="/primitives/docs/guides/styling">
+              Unstyled and compatible with any styling solution.
+            </ListItem>
+            <ListItem title="Animation" href="/primitives/docs/guides/animation">
+              Use CSS keyframes or any animation library of your choice.
+            </ListItem>
+            <ListItem title="Accessibility" href="/primitives/docs/overview/accessibility">
+              Tested in a range of browsers and assistive technologies.
+            </ListItem>
+            <ListItem title="Releases" href="/primitives/docs/overview/releases">
+              Radix Primitives releases and their changelogs.
+            </ListItem>
           </ul>
         </NavigationMenuContent>
       </NavigationMenuItem>
       <NavigationMenuItem>
-        <a href="/docs">
-          <NavigationMenuLink className={navigationMenuTriggerStyle}>Documentation</NavigationMenuLink>
-        </a>
+        <NavigationMenuTrigger>Account</NavigationMenuTrigger>
+
+        <NavigationMenuContent>
+          <ul className="grid p-6 sm:w-[500px] sm:grid-cols-[0.50fr_1fr] gap-6">
+            <h3>Login</h3>
+            <div className="flex flex-col gap-2">
+              <Input placeholder="Your name" defaultValue={'polui'} label="Your name" />
+              <Input placeholder="Your email" defaultValue={'pol@ui.com'} label="Your email" />
+            </div>
+            <h3>Security</h3>
+            <div className="flex flex-col gap-2">
+              <Checkbox defaultChecked label="Sell my data please" />
+            </div>
+          </ul>
+        </NavigationMenuContent>
       </NavigationMenuItem>
-    </NavigationMenuList>
+
+      <NavigationMenuItem>
+        <NavigationMenuLink
+          className="text-violet11 hover:bg-violet3 focus:shadow-violet7 block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none focus:shadow-[0_0_0_2px]"
+          href="https://github.com/radix-ui"
+        >
+          Github
+        </NavigationMenuLink>
+      </NavigationMenuItem>
+    </>
   ),
 }
 
 ListItem.displayName = 'ListItem'
-
-export const Native = () => {
-  return <NavigationMenuDemo />
-}
