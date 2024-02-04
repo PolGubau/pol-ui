@@ -1,7 +1,5 @@
 export { Sidebar } from './Sidebar'
-export type { SidebarTheme, SidebarProps } from './Sidebar'
-export { SidebarCTA } from './SidebarCTA'
-export type { SidebarCTATheme, SidebarCTAProps } from './SidebarCTA'
+export type { SidebarProps } from './Sidebar'
 export { SidebarCollapse } from './SidebarCollapse'
 export type { SidebarCollapseTheme, SidebarCollapseProps } from './SidebarCollapse'
 export { SidebarItem } from './SidebarItem'
