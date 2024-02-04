@@ -113,7 +113,16 @@ export type Sizes = Record<GetValuesEnum<typeof SizesEnum>, string>
  * @see RoundedSizesEnum for the different sizes
  * @author Pol Gubau Amores - https://polgubau.com
  */
-export type RoundedSizes = Record<GetValuesEnum<typeof RoundedSizesEnum>, string>
+export type RoundedSizes = keyof typeof RoundedSizesEnum
+
+/**
+ * @name RoundedSizesTypes
+ * @description Type for the different rounded sizes, from xs to 7xl, dynamic from the RoundedSizesEnum enum
+ * @see RoundedSizesEnum for the different sizes
+ * @extends RoundedSizesType
+ * @author Pol Gubau Amores - https://polgubau.com
+ */
+export type RoundedSizesTypes = Record<GetValuesEnum<typeof RoundedSizesEnum>, string>
 
 /**
  * @name RoundedSizesElastic
@@ -122,7 +131,7 @@ export type RoundedSizes = Record<GetValuesEnum<typeof RoundedSizesEnum>, string
  * @extends RoundedSizesType
  * @author Pol Gubau Amores - https://polgubau.com
  */
-export interface RoundedSizesElastic extends RoundedSizes {
+export interface RoundedSizesElastic extends RoundedSizesTypes {
   [key: string]: string
 }
 

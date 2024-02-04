@@ -4,17 +4,18 @@ import type { ComponentProps, ElementType, FC, PropsWithChildren, ReactNode } fr
 import { forwardRef, useId } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
-import type { Colors, DeepPartial } from '../../types/types'
+import type { Colors, DeepPartial, RoundedSizes, RoundedSizesTypes } from '../../types/types'
 import { Badge } from '../Badge'
 import { Tooltip } from '../Tooltip'
 import { useSidebarContext } from './SidebarContext'
 import { useSidebarItemContext } from './SidebarItemContext'
 import { motion } from 'framer-motion'
-import { ColorsEnum } from '../../types'
+import { ColorsEnum, RoundedSizesEnum } from '../../types'
 import { useRipple } from '../../hooks'
 export interface SidebarItemTheme {
   active: string
   base: string
+  rounded: RoundedSizesTypes
   collapsed: {
     insideCollapse: string
     noIcon: string
@@ -36,6 +37,7 @@ export interface SidebarItemProps extends Omit<ComponentProps<'div'>, 'ref'>, Re
   href?: string
   icon?: FC<ComponentProps<'svg'>>
   label?: string
+  rounded?: RoundedSizes
   labelColor?: Colors
   theme?: DeepPartial<SidebarItemTheme>
 }
@@ -45,6 +47,7 @@ const ListItem: FC<
     id: string
     theme: SidebarItemTheme
     collapsed: boolean
+    rounded: RoundedSizes
     tooltipChildren: ReactNode | undefined
     className?: string
   }>
@@ -89,6 +92,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
       as: Component = 'a',
       children,
       className,
+      rounded = RoundedSizesEnum.md,
       icon: Icon,
       label,
       labelColor = ColorsEnum.secondary,
@@ -109,13 +113,21 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
       open: { opacity: 1 },
     }
     return (
-      <ListItem theme={theme} className={theme.listItem} id={id} collapsed={collapsed} tooltipChildren={children}>
+      <ListItem
+        theme={theme}
+        className={theme.listItem}
+        id={id}
+        rounded={rounded}
+        collapsed={collapsed}
+        tooltipChildren={children}
+      >
         <motion.div variants={itemVariants}>
           <Component
             aria-labelledby={`ui-sidebar-item-${id}`}
             ref={ref}
             className={twMerge(
               theme.base,
+              theme.rounded[rounded],
               isActive && theme.active,
               !collapsed && isInsideCollapse && theme.collapsed?.insideCollapse,
               className,

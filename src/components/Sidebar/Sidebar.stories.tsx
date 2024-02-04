@@ -7,6 +7,7 @@ import { Navbar } from '../Navbar'
 import { Button } from '../Button'
 import { useBoolean } from '../../hooks'
 import { TbArrowAutofitUp, TbAt, TbCoin, TbHelp, TbLayout, TbLayoutKanban, TbPaperBag, TbUser } from 'react-icons/tb'
+import { ColorsEnum } from '../../types'
 
 export default {
   title: 'Components/Sidebar',
@@ -36,7 +37,7 @@ Default.args = {
         <Sidebar.Item href="#" icon={TbLayout}>
           Dashboard
         </Sidebar.Item>
-        <Sidebar.Item href="#" icon={TbLayoutKanban}>
+        <Sidebar.Item href="#" icon={TbLayoutKanban} active>
           Kanban
         </Sidebar.Item>
         <Sidebar.Item href="#" icon={TbAt} label="3">
@@ -268,25 +269,25 @@ export const CompleteExample = () => {
           <Sidebar collapsed={value} toggle={toggle}>
             <Sidebar.Items>
               <Sidebar.ItemGroup>
-                <Sidebar.Item href="#" icon={HiChartPie} active>
+                <Sidebar.Item href="#" icon={HiChartPie} active rounded="full">
                   Dashboard
                 </Sidebar.Item>
-                <Sidebar.Item href="#" icon={HiViewBoards} label="Pro" labelColor="gray">
+                <Sidebar.Item href="#" icon={HiViewBoards} label="Empty" labelColor={ColorsEnum.primary} rounded="full">
                   Kanban
                 </Sidebar.Item>
-                <Sidebar.Item href="#" icon={HiInbox} label="3">
+                <Sidebar.Item href="#" icon={HiInbox} label="3" rounded="full">
                   Inbox
                 </Sidebar.Item>
-                <Sidebar.Item href="#" icon={HiUser}>
+                <Sidebar.Item href="#" icon={HiUser} rounded="full">
                   Users
                 </Sidebar.Item>
-                <Sidebar.Item href="#" icon={HiShoppingBag}>
+                <Sidebar.Item href="#" icon={HiShoppingBag} rounded="full">
                   Products
                 </Sidebar.Item>
-                <Sidebar.Item href="#" icon={HiArrowSmRight}>
+                <Sidebar.Item href="#" icon={HiArrowSmRight} rounded="full">
                   Sign In
                 </Sidebar.Item>
-                <Sidebar.Item href="#" icon={HiTable}>
+                <Sidebar.Item href="#" icon={HiTable} rounded="full">
                   Sign Up
                 </Sidebar.Item>
               </Sidebar.ItemGroup>

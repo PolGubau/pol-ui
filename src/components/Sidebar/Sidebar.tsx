@@ -36,7 +36,7 @@ const SidebarComponent: FC<SidebarProps> = ({
   className,
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().sidebar, customTheme)
+  const theme: SidebarTheme = mergeDeep(getTheme().sidebar, customTheme)
 
   const value = useMemo(() => ({ theme, collapsed }), [theme, collapsed])
 
@@ -55,7 +55,9 @@ const SidebarComponent: FC<SidebarProps> = ({
             <div className={theme.root.inner}>
               {children}
               {collapsable && (
-                <div className={twMerge('flex h-fit w-full', `${collapsed ? ' justify-center' : ' justify-end'} `)}>
+                <div
+                  className={twMerge(theme.closeButton.base, theme.closeButton[collapsed ? 'collapsed' : 'expanded'])}
+                >
                   <IconButton onClick={toggle}>{collapsed ? <TbChevronsRight /> : <TbChevronsLeft />}</IconButton>
                 </div>
               )}

@@ -16,6 +16,11 @@ export interface SidebarTheme {
   items: SidebarItemsTheme
   itemGroup: SidebarItemGroupTheme
   logo: SidebarLogoTheme
+  closeButton: {
+    base: string
+    collapsed: string
+    expanded: string
+  }
 }
 export const sidebarTheme: SidebarTheme = {
   root: {
@@ -50,18 +55,31 @@ export const sidebarTheme: SidebarTheme = {
   },
 
   item: {
-    base: 'flex bg-secondary-50 dark:bg-secondary-900 items-center justify-center rounded-lg p-2 text-base font-normal text-gray-900 hover:brightness-90 dark:text-white dark:hover:bg-gray-700',
+    base: 'flex bg-secondary-50 dark:bg-secondary-900 items-center justify-center rounded-md p-2 text-base font-normal text-gray-900 hover:brightness-90 dark:text-white dark:hover:bg-secondary-700',
+
+    rounded: {
+      xs: 'rounded-xs',
+      sm: 'rounded-sm',
+      md: 'rounded-md',
+      lg: 'rounded-lg',
+      xl: 'rounded-xl',
+      '2xl': 'rounded-2xl',
+      '3xl': 'rounded-3xl',
+      none: '',
+      full: 'rounded-full',
+    },
+
     active: 'bg-primary-200 dark:bg-primary-700',
     collapsed: {
       insideCollapse: 'group w-full pl-8 transition duration-75',
-      noIcon: 'font-bold',
+      noIcon: 'font-bold aspect-square flex justify-center items-center h-6',
     },
     content: {
       base: 'px-3 flex-1 whitespace-nowrap',
     },
     icon: {
       base: 'h-6 w-6 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white',
-      active: 'text-gray-700 dark:text-gray-100',
+      active: 'text-secondary-700 dark:text-secondary-100',
     },
     label: '',
     listItem: '',
@@ -70,7 +88,7 @@ export const sidebarTheme: SidebarTheme = {
     base: '',
   },
   itemGroup: {
-    base: 'mt-4 space-y-2 border-t border-gray-200 pt-4 first:mt-0 first:border-t-0 first:pt-0 dark:border-gray-700',
+    base: 'mt-4 space-y-2 border-t border-secondary-200 pt-4 first:mt-0 first:border-t-0 first:pt-0 dark:border-secondary-700',
   },
   logo: {
     base: 'mb-5 flex items-center pl-2.5',
@@ -79,5 +97,10 @@ export const sidebarTheme: SidebarTheme = {
       off: 'self-center whitespace-nowrap text-xl font-semibold dark:text-white',
     },
     img: 'mr-3 h-6 sm:h-7',
+  },
+  closeButton: {
+    base: 'flex h-fit w-full',
+    collapsed: 'justify-center',
+    expanded: 'justify-end',
   },
 }
