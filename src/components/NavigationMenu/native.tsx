@@ -1,11 +1,12 @@
 import React from 'react'
-import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import { NavigationMenuContent, NavigationMenuIndicator, NavigationMenuLink } from './navigation-menu'
+import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu'
+import { NavigationMenuContent, NavigationMenuViewport } from './navigation-menu'
 import { twMerge } from 'tailwind-merge'
 import { NavigationMenuTrigger } from './navigation-menu-trigger'
 import { NavigationMenuList } from './navigation-menu-list'
 import { Input } from '../Input'
 import { Checkbox } from '../Checkbox'
+import { NavigationMenuLink } from './navigation-menu-extras'
 
 const ListItem = React.forwardRef<React.ElementRef<'a'>, React.ComponentPropsWithoutRef<'a'>>(
   ({ className, title, children, ...props }, ref) => {
@@ -32,9 +33,9 @@ ListItem.displayName = 'NavigationMenuListItem'
 
 const NavigationMenuDemo = () => {
   return (
-    <NavigationMenu.Root className="relative z-[1] flex w-screen justify-center">
+    <NavigationMenuPrimitive.Root className="relative z-[1] flex w-screen justify-center">
       <NavigationMenuList>
-        <NavigationMenu.Item>
+        <NavigationMenuPrimitive.Item>
           <NavigationMenuTrigger>Learn</NavigationMenuTrigger>
 
           <NavigationMenuContent>
@@ -65,9 +66,9 @@ const NavigationMenuDemo = () => {
               </ListItem>
             </ul>
           </NavigationMenuContent>
-        </NavigationMenu.Item>
+        </NavigationMenuPrimitive.Item>
 
-        <NavigationMenu.Item>
+        <NavigationMenuPrimitive.Item>
           <NavigationMenuTrigger>Overview</NavigationMenuTrigger>
 
           <NavigationMenuContent>
@@ -92,8 +93,8 @@ const NavigationMenuDemo = () => {
               </ListItem>
             </ul>
           </NavigationMenuContent>
-        </NavigationMenu.Item>
-        <NavigationMenu.Item>
+        </NavigationMenuPrimitive.Item>
+        <NavigationMenuPrimitive.Item>
           <NavigationMenuTrigger>Account</NavigationMenuTrigger>
 
           <NavigationMenuContent>
@@ -109,27 +110,20 @@ const NavigationMenuDemo = () => {
               </div>
             </ul>
           </NavigationMenuContent>
-        </NavigationMenu.Item>
+        </NavigationMenuPrimitive.Item>
 
-        <NavigationMenu.Item>
+        <NavigationMenuPrimitive.Item>
           <NavigationMenuLink
             className="text-violet11 hover:bg-violet3 focus:shadow-violet7 block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none focus:shadow-[0_0_0_2px]"
             href="https://github.com/radix-ui"
           >
             Github
           </NavigationMenuLink>
-        </NavigationMenu.Item>
-
-        {/* <NavigationMenu.Indicator className="data-[state=visible]:animate-fadeIn data-[state=hidden]:animate-fadeOut top-full z-[1] flex h-[10px] items-end justify-center overflow-hidden transition-[width,transform_250ms_ease]">
-          <div className="relative top-[70%] h-[10px] w-[10px] rotate-[45deg] rounded-tl-[2px] bg-white" />
-        </NavigationMenu.Indicator> */}
-        <NavigationMenuIndicator />
+        </NavigationMenuPrimitive.Item>
       </NavigationMenuList>
 
-      <div className="perspective-[2000px] absolute top-full left-0 flex w-full justify-center">
-        <NavigationMenu.Viewport className="data-[state=open]:animate-scaleIn data-[state=closed]:animate-scaleOut relative mt-[10px] h-[var(--radix-navigation-menu-viewport-height)] w-full origin-[top_center] overflow-hidden rounded-[6px] bg-white transition-[width,_height] duration-300 sm:w-[var(--radix-navigation-menu-viewport-width)]" />
-      </div>
-    </NavigationMenu.Root>
+      <NavigationMenuViewport />
+    </NavigationMenuPrimitive.Root>
   )
 }
 

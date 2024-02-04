@@ -1,11 +1,12 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import type { NavigationMenuProps } from './navigation-menu'
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink } from './navigation-menu'
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem } from './navigation-menu'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 import NavigationMenuDemo from './native'
 import { NavigationMenuTrigger, navigationMenuTriggerStyle } from './navigation-menu-trigger'
 import { NavigationMenuList } from './navigation-menu-list'
+import { NavigationMenuLink } from './navigation-menu-extras'
 
 export default {
   title: 'Components/NavigationMenu',
@@ -14,7 +15,7 @@ export default {
 
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col  min-h-[400px]  bg-secondary-50">
+      <div className="flex p-6 flex-col  min-h-[400px] bg-secondary-200">
         <div className="max-w-xl">
           <Story />
         </div>
