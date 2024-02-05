@@ -1,4 +1,4 @@
-import type { ColorsType, IBoolean, MainSizesType, RoundedSizes } from '../../types'
+import type { ColorsType, IBoolean, MainSizesType, RoundedSizesTypes } from '../../types'
 import type { ButtonGroupTheme, PositionInButtonGroup } from '../Button/ButtonGroup/ButtonGroup'
 
 export interface ButtonTheme {
@@ -12,7 +12,7 @@ export interface ButtonTheme {
   inner: ButtonInnerTheme
   label: string
   outline: ButtonOutlineTheme
-  rounded: RoundedSizes
+  rounded: RoundedSizesTypes
   size: MainSizesType
 }
 

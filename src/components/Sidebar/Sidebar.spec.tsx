@@ -6,6 +6,7 @@ import { describe, expect, it } from 'vitest'
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider'
 import type { SidebarProps } from './Sidebar'
 import { Sidebar } from './Sidebar'
+import { SidebarItem } from './SidebarItem'
 
 describe('Components / Sidebar', () => {
   describe('A11y', () => {
@@ -284,21 +285,18 @@ const TestSidebar: FC<SidebarProps> = ({ ...props }) => (
     <Sidebar.Logo href="#" img="favicon.svg" imgAlt="PolUi logo">
       PolUi
     </Sidebar.Logo>
-    <SidebarItems>
-      <SidebarItemGroup>
-        <SidebarItem active data-testid="active-item" href="#" icon={HiChartPie} label="3" labelColor="success">
-          Dashboard
-        </SidebarItem>
-        <Sidebar.Collapse aria-label="E-commerce" icon={HiShoppingBag}>
-          <SidebarItem href="#">Products</SidebarItem>
-          <SidebarItem href="#">Services</SidebarItem>
-        </Sidebar.Collapse>
-        <SidebarItem href="#" icon={HiInbox}>
-          Inbox
-        </SidebarItem>
-        <SidebarItem as="h3">My heading</SidebarItem>
-      </SidebarItemGroup>
-    </SidebarItems>
+
+    <SidebarItem active data-testid="active-item" href="#" icon={HiChartPie} label="3" labelColor="success">
+      Dashboard
+    </SidebarItem>
+    <Sidebar.Collapse aria-label="E-commerce" icon={HiShoppingBag}>
+      <SidebarItem href="#">Products</SidebarItem>
+      <SidebarItem href="#">Services</SidebarItem>
+    </Sidebar.Collapse>
+    <SidebarItem href="#" icon={HiInbox}>
+      Inbox
+    </SidebarItem>
+    <SidebarItem as="h3">My heading</SidebarItem>
   </Sidebar>
 )
 

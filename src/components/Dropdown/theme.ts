@@ -1,4 +1,4 @@
-import type { ColorsType, MainSizesType, RoundedSizes } from '../../types'
+import type { ColorsType, MainSizesType, RoundedSizesTypes } from '../../types'
 
 export interface DropdownTheme {
   root: {
@@ -7,7 +7,7 @@ export interface DropdownTheme {
     base: string
     color: ColorsType
   }
-  rounded: RoundedSizes
+  rounded: RoundedSizesTypes
   size: MainSizesType
   item: {
     base: string

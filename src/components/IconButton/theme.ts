@@ -1,4 +1,4 @@
-import type { ColorsType, MainSizesType, RoundedSizes } from '../../types'
+import type { ColorsType, MainSizesType, RoundedSizesTypes } from '../../types'
 import type { ButtonGroupTheme } from '../Button/ButtonGroup/ButtonGroup'
 
 export interface IconButtonTheme {
@@ -7,7 +7,7 @@ export interface IconButtonTheme {
   disabled: string
   loading: string
   inner: ButtonInnerTheme
-  rounded: RoundedSizes
+  rounded: RoundedSizesTypes
   size: MainSizesType
 }
 export interface ButtonInnerTheme {

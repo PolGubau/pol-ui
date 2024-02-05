@@ -1,4 +1,4 @@
-import type { ColorsType, MainSizesType, RoundedSizes } from '../../types'
+import type { ColorsType, MainSizesType, RoundedSizesTypes } from '../../types'
 
 export interface ProgressTheme {
   base: string
@@ -6,7 +6,7 @@ export interface ProgressTheme {
   bar: string
   color: ColorsType
   size: MainSizesType
-  rounded: RoundedSizes
+  rounded: RoundedSizesTypes
 }
 export const progressTheme: ProgressTheme = {
   base: 'w-full overflow-hidden bg-secondary-200 dark:bg-secondary-700 min-w-[40px] flex flex-1 relative',

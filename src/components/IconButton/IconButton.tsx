@@ -26,7 +26,7 @@ export type IconButtonProps<T extends ElementType = 'button'> = {
   loader?: ReactNode
   label?: ReactNode
   outline?: boolean
-  rounded?: keyof RoundedSizes
+  rounded?: RoundedSizes
   size?: MainSizes
   hasMotion?: boolean
   theme?: DeepPartial<IconButtonTheme>
@@ -43,7 +43,7 @@ const IconButtonFn = <T extends ElementType = 'button'>({
   label = '',
   hasMotion = true,
   outline = false,
-  rounded = RoundedSizesEnum.full,
+  rounded = RoundedSizesEnum.full as RoundedSizes,
   size = MainSizesEnum.md,
   theme: customTheme = {},
   innerClassname = '',

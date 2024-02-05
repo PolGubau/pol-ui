@@ -7,9 +7,8 @@ import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import type { DeepPartial, IBoolean } from '../../types/types'
 import { Tooltip } from '../Tooltip'
-import { useSidebarContext } from './SidebarContext'
+import { SidebarItemContext, useSidebarContext } from './SidebarContext'
 import type { SidebarItemProps } from './SidebarItem'
-import { SidebarItemContext } from './SidebarItemContext'
 
 export interface SidebarCollapseTheme {
   button: string

@@ -20,7 +20,7 @@ export interface DropdownProps extends BaseButtonProps {
   disabled?: boolean
   color?: Colors
   size?: MainSizes
-  rounded?: keyof RoundedSizes
+  rounded?: RoundedSizes
   trigger?: React.JSX.Element
 }
 

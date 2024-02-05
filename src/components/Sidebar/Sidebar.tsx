@@ -54,13 +54,11 @@ const SidebarComponent: FC<SidebarProps> = ({
             {...props}
           >
             <div className={theme.root.inner}>
-              <div className={twMerge(theme.items.base, className)} data-testid="ui-sidebar-items">
-                <ul data-testid="ui-sidebar-item-group" className={twMerge(theme.itemGroup.base, className)}>
-                  <SidebarItemContext.Provider value={{ isInsideCollapse: false }}>
-                    {children}
-                  </SidebarItemContext.Provider>
-                </ul>
-              </div>
+              <ul data-testid="ui-sidebar-item-group" className={twMerge(theme.itemGroup, className)}>
+                <SidebarItemContext.Provider value={{ isInsideCollapse: false }}>
+                  {children}
+                </SidebarItemContext.Provider>
+              </ul>
               {collapsable && (
                 <div
                   className={twMerge(theme.closeButton.base, theme.closeButton[collapsed ? 'collapsed' : 'expanded'])}

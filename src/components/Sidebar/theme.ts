@@ -3,12 +3,6 @@ import type { SidebarCollapseTheme } from './SidebarCollapse'
 import type { SidebarItemTheme } from './SidebarItem'
 import type { SidebarLogoTheme } from './SidebarLogo'
 
-export interface SidebarItemGroupTheme {
-  base: string
-}
-export interface SidebarItemsTheme {
-  base: string
-}
 export interface SidebarTheme {
   root: {
     base: string
@@ -17,8 +11,7 @@ export interface SidebarTheme {
   }
   collapse: SidebarCollapseTheme
   item: SidebarItemTheme
-  items: SidebarItemsTheme
-  itemGroup: SidebarItemGroupTheme
+  itemGroup: string
   logo: SidebarLogoTheme
   closeButton: {
     base: string
@@ -88,12 +81,10 @@ export const sidebarTheme: SidebarTheme = {
     label: '',
     listItem: '',
   },
-  items: {
-    base: '',
-  },
-  itemGroup: {
-    base: 'mt-4 space-y-2 border-t border-secondary-200 pt-4 first:mt-0 first:border-t-0 first:pt-0 dark:border-secondary-700',
-  },
+
+  itemGroup:
+    'mt-4 space-y-2 border-t border-secondary-200 pt-4 first:mt-0 first:border-t-0 first:pt-0 dark:border-secondary-700',
+
   logo: {
     base: 'mb-5 flex items-center pl-2.5',
     collapsed: {
