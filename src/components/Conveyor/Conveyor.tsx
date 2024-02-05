@@ -3,8 +3,8 @@
 import type { ComponentPropsWithoutRef, ElementType } from 'react'
 import React, { useEffect, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
-import type { ConveyorDirection } from './ConveyorTypes'
-import { ConveyorSpeedEnum, type ConveyorSpeed, ConveyorDirectionEnum } from './ConveyorTypes'
+import type { ConveyorDirection, ConveyorSpeed } from './ConveyorTypes'
+import { ConveyorSpeedEnum, ConveyorDirectionEnum } from './ConveyorTypes'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { ConveyorTheme } from './theme'
@@ -34,11 +34,11 @@ export const Conveyor = <T extends ElementType = 'div'>({
   const getSpeed = () => {
     if (containerRef.current) {
       if (speed === ConveyorSpeedEnum.fast) {
-        containerRef.current.style.setProperty('--animation-duration', '20s')
+        containerRef.current.style.setProperty('--animation-duration', '30s')
       } else if (speed === ConveyorSpeedEnum.normal) {
-        containerRef.current.style.setProperty('--animation-duration', '40s')
+        containerRef.current.style.setProperty('--animation-duration', '50s')
       } else {
-        containerRef.current.style.setProperty('--animation-duration', '80s')
+        containerRef.current.style.setProperty('--animation-duration', '100s')
       }
     }
   }
