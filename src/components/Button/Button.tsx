@@ -6,7 +6,7 @@ import { twMerge } from 'tailwind-merge'
 import genericForwardRef from '../../helpers/generic-forward-ref'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { Colors, DeepPartial, MainSizes, RoundedSizes } from '../../types/types'
+import type { Colors, DeepPartial, MainSizes, RoundedSizesTypes } from '../../types/types'
 import { Loader } from '../Loader'
 import { ButtonBase, type ButtonBaseProps } from './ButtonBase'
 import type { PositionInButtonGroup } from './ButtonGroup/ButtonGroup'
@@ -46,7 +46,7 @@ export type ButtonProps<T extends ElementType = 'button'> = {
   processingLoader?: ReactNode
   label?: ReactNode
   outline?: boolean
-  rounded?: keyof RoundedSizes
+  rounded?: keyof RoundedSizesTypes
   positionInGroup?: keyof PositionInButtonGroup
   size?: MainSizes
   theme?: DeepPartial<ButtonTheme>
