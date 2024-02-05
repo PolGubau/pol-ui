@@ -32,7 +32,7 @@ const AnimatedCheckIcon = ({
   return (
     <AnimatePresence initial={initial} mode="wait">
       {isVisible && (
-        <div className={twMerge(theme.floating.base)}>
+        <div className={twMerge('hidden peer-checked:flex', theme.floating.base)}>
           <svg
             width="24"
             height="18"
@@ -66,10 +66,11 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
     const theme: RadioTheme = mergeDeep(getTheme().radio, customTheme)
 
     const id = useId()
+
     return (
-      <li className="inline-flex items-center gap-3 relative">
+      <li className="inline-flex items-center gap-2 relative">
         <input
-          id={props.id ?? id}
+          id={props.id ?? label + id}
           {...props}
           className={twMerge(theme.base, theme.before, theme.color[color], className)}
           ref={ref}
@@ -83,7 +84,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         ) : (
           <AnimatedCheckIcon isVisible={props.checked ?? false} color={color} />
         )}
-        {label && <Label htmlFor={props.id ?? id}>{label}</Label>}
+        {label && <Label htmlFor={props.id ?? label + id}>{label}</Label>}
       </li>
     )
   },

@@ -38,11 +38,30 @@ export const Default = (): JSX.Element => {
       {options.map(option => {
         return (
           <Radio
-            name="radio"
             key={option}
-            // id={option}
             checked={value === option}
-            onClick={() => setValue(option)}
+            onChange={() => setValue(option)}
+            value={option}
+            label={option}
+          />
+        )
+      })}
+    </div>
+  )
+}
+
+export const WithIds = (): JSX.Element => {
+  const options = ['Option 1', 'Option 2', 'Option 3']
+  const [value, setValue] = React.useState(options[0])
+  return (
+    <div className="flex flex-col gap-2 p-4 rounded-xl">
+      {options.map(option => {
+        return (
+          <Radio
+            id={option}
+            key={option}
+            checked={value === option}
+            onChange={() => setValue(option)}
             value={option}
             label={option}
           />
@@ -57,7 +76,7 @@ export const UnControlled = (): JSX.Element => {
   return (
     <ul className="flex gap-2">
       {options.map(option => {
-        return <Radio name="radio" key={option} value={option} label={option} />
+        return <Radio name="2" key={option} value={option} label={option} defaultChecked={option === options[1]} />
       })}
     </ul>
   )
