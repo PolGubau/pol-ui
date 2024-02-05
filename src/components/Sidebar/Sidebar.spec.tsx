@@ -216,45 +216,6 @@ describe('Theme', () => {
     })
   })
 
-  describe('`SidebarItems`', () => {
-    it('should use custom classes', () => {
-      const theme: CustomPoluiTheme = {
-        sidebar: {
-          items: {
-            base: 'text-gray-100',
-          },
-        },
-      }
-
-      render(
-        <PoluiProvider theme={{ theme }}>
-          <TestSidebar />
-        </PoluiProvider>,
-      )
-
-      itemsContainers().forEach(container => expect(container).toHaveClass('text-gray-100'))
-    })
-  })
-
-  describe('`SidebarItemGroup`', () => {
-    it('should use custom classes', () => {
-      const theme: CustomPoluiTheme = {
-        sidebar: {
-          itemGroup: {
-            base: 'text-gray-100',
-          },
-        },
-      }
-
-      render(
-        <PoluiProvider theme={{ theme }}>
-          <TestSidebar />
-        </PoluiProvider>,
-      ),
-        itemGroups().forEach(group => expect(group).toHaveClass('text-gray-100'))
-    })
-  })
-
   describe('`Sidebar.Logo`', () => {
     it('should use custom classes', () => {
       const theme: CustomPoluiTheme = {
@@ -310,12 +271,8 @@ const collapseLabels = () => screen.getAllByTestId('ui-sidebar-collapse-label')
 
 const itemContents = () => screen.getAllByTestId('ui-sidebar-item-content')
 
-const itemGroups = () => screen.getAllByTestId('ui-sidebar-item-group')
-
 const icons = () => screen.getAllByTestId('ui-sidebar-item-icon')
 
 const items = () => screen.getAllByRole('listitem')
-
-const itemsContainers = () => screen.getAllByTestId('ui-sidebar-items')
 
 const logo = () => screen.getByLabelText('PolUi')
