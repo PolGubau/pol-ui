@@ -36,7 +36,9 @@ export default {
   decorators: [
     Story => (
       <div className="flex overflow-hidden  h-full min-h-[400px] bg-secondary-100 ">
-        <Story />
+        <div className="bg-secondary-50">
+          <Story />
+        </div>
       </div>
     ),
   ],

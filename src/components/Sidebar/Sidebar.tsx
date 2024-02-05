@@ -23,6 +23,7 @@ export interface SidebarProps extends ComponentProps<'div'> {
   theme?: DeepPartial<SidebarTheme>
   collapsed?: boolean
   toggle?: () => void
+  color?: string
 }
 
 const SidebarComponent: FC<SidebarProps> = ({
@@ -33,12 +34,13 @@ const SidebarComponent: FC<SidebarProps> = ({
   theme: customTheme = {},
   collapsed = false,
   toggle,
+  color,
   className,
   ...props
 }) => {
   const theme: SidebarTheme = mergeDeep(getTheme().sidebar, customTheme)
 
-  const value = useMemo(() => ({ theme, collapsed }), [theme, collapsed])
+  const value = useMemo(() => ({ theme, collapsed, color }), [theme, collapsed, color])
 
   const shouldHaveContent = !collapsed || collapseMode === 'collapse'
 
