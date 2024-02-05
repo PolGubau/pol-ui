@@ -1,13 +1,46 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import type { TableProps } from './Table';
-import { Table } from './Table';
+import type { Meta, StoryFn } from '@storybook/react'
+import type { TableProps } from './Table'
+import { Table } from './Table'
+import { IconButton } from '../IconButton'
+import { TbEdit, TbEye } from 'react-icons/tb'
 
 export default {
   title: 'Components/Tables',
   component: Table,
-} as Meta;
+} as Meta
 
-const Template: StoryFn<TableProps> = (args) => (
+const mockUsers = [
+  {
+    id: 1,
+    name: 'Albert Arrebola',
+    username: 'arrebolsillo',
+    email: 'bolarre@polui.com',
+    address: 'Calle Eucalipto 66',
+  },
+  {
+    id: 2,
+    name: 'Cristina Llull',
+    username: 'cristinallull',
+    email: 'cristinallull@polui.com',
+    address: 'Calle 123',
+  },
+  {
+    id: 3,
+    name: 'Berta Pasamontes',
+    username: 'donutconchocolate',
+    email: 'donutconchocolate@polui.com',
+    address: 'Avenida 123',
+  },
+  {
+    id: 4,
+    name: 'Pepito Grillo',
+    username: 'PepeGrillo',
+    email: 'PepeGrillo@polui.com',
+    address: 'Pasillo 4',
+  },
+]
+
+const Template: StoryFn<TableProps> = args => (
   <Table {...args}>
     <Table.Head>
       <Table.HeadCell>Product name</Table.HeadCell>
@@ -18,71 +51,29 @@ const Template: StoryFn<TableProps> = (args) => (
         <span className="sr-only">Edit</span>
       </Table.HeadCell>
     </Table.Head>
+
     <Table.Body className="divide-y">
-      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-          {'Apple MacBook Pro 17"'}
-        </Table.Cell>
-        <Table.Cell>Sliver</Table.Cell>
-        <Table.Cell>Laptop</Table.Cell>
-        <Table.Cell>$2999</Table.Cell>
-        <Table.Cell>
-          <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
-            Edit
-          </a>
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-          Microsoft Surface Pro
-        </Table.Cell>
-        <Table.Cell>White</Table.Cell>
-        <Table.Cell>Laptop PC</Table.Cell>
-        <Table.Cell>$1999</Table.Cell>
-        <Table.Cell>
-          <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
-            Edit
-          </a>
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">Magic Mouse 2</Table.Cell>
-        <Table.Cell>Black</Table.Cell>
-        <Table.Cell>Accessories</Table.Cell>
-        <Table.Cell>$99</Table.Cell>
-        <Table.Cell>
-          <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
-            Edit
-          </a>
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-          Google Pixel Phone
-        </Table.Cell>
-        <Table.Cell>Gray</Table.Cell>
-        <Table.Cell>Phone</Table.Cell>
-        <Table.Cell>$799</Table.Cell>
-        <Table.Cell>
-          <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
-            Edit
-          </a>
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">Apple Watch 5</Table.Cell>
-        <Table.Cell>Red</Table.Cell>
-        <Table.Cell>Wearables</Table.Cell>
-        <Table.Cell>$999</Table.Cell>
-        <Table.Cell>
-          <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
-            Edit
-          </a>
-        </Table.Cell>
-      </Table.Row>
+      {mockUsers.map(user => (
+        <Table.Row key={user.id}>
+          <Table.Cell>{user.name}</Table.Cell>
+          <Table.Cell>{user.username}</Table.Cell>
+          <Table.Cell>{user.name}</Table.Cell>
+          <Table.Cell>{user.address}</Table.Cell>
+          <Table.Cell>
+            <div className="flex gap-1">
+              <IconButton title="Edit">
+                <TbEdit />
+              </IconButton>
+              <IconButton title="Edit" color="info">
+                <TbEye />
+              </IconButton>
+            </div>
+          </Table.Cell>
+        </Table.Row>
+      ))}
     </Table.Body>
   </Table>
-);
+)
 
-export const DefaultTable = Template.bind({});
-DefaultTable.storyName = 'Default';
+export const DefaultTable = Template.bind({})
+DefaultTable.storyName = 'Default'

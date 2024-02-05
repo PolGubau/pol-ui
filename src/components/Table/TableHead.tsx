@@ -1,11 +1,11 @@
 'use client'
 
-import type { ComponentProps, FC } from 'react'
+import { useMemo, type ComponentProps, type FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import type { DeepPartial } from '../../types/types'
 import { useTableContext } from './TableContext'
-import type { TableHeadCellTheme } from './TableHeadCell'
+import { type TableHeadCellTheme } from './TableHeadCell'
 import { TableHeadContext } from './TableHeadContext'
 export interface TableHeadTheme {
   base: string
@@ -21,8 +21,10 @@ export const TableHead: FC<TableHeadProps> = ({ children, className, theme: cust
 
   const theme = mergeDeep(rootTheme.head, customTheme)
 
+  const value = useMemo(() => ({ theme }), [theme])
+
   return (
-    <TableHeadContext.Provider value={{ theme }}>
+    <TableHeadContext.Provider value={value}>
       <thead className={twMerge(theme.base, className)} {...props}>
         <tr>{children}</tr>
       </thead>

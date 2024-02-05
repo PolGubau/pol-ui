@@ -1,34 +1,23 @@
 'use client'
 
-import type { ComponentProps, FC } from 'react'
+import { useMemo, type ComponentProps, type FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types/types'
-import { TableBody, type TableBodyTheme } from './TableBody'
+import { TableBody } from './TableBody'
 import { TableCell } from './TableCell'
 import { TableContext } from './TableContext'
-import { TableHead, type TableHeadTheme } from './TableHead'
+import { TableHead } from './TableHead'
 import { TableHeadCell } from './TableHeadCell'
-import { TableRow, type TableRowTheme } from './TableRow'
-
-export interface TableTheme {
-  root: TableRootTheme
-  head: TableHeadTheme
-  row: TableRowTheme
-  body: TableBodyTheme
-}
-
-export interface TableRootTheme {
-  base: string
-  shadow: string
-  wrapper: string
-}
+import { TableRow } from './TableRow'
+import type { TableTheme } from './theme'
 
 export interface TableProps extends ComponentProps<'table'> {
   striped?: boolean
   hoverable?: boolean
   theme?: DeepPartial<TableTheme>
+  hasShadow?: boolean
 }
 
 const TableComponent: FC<TableProps> = ({
@@ -36,15 +25,18 @@ const TableComponent: FC<TableProps> = ({
   className,
   striped,
   hoverable,
+  hasShadow = true,
   theme: customTheme = {},
   ...props
 }) => {
   const theme = mergeDeep(getTheme().table, customTheme)
 
+  const value = useMemo(() => ({ theme, striped, hoverable }), [theme, striped, hoverable])
+
   return (
     <div data-testid="table-element" className={twMerge(theme.root.wrapper)}>
-      <TableContext.Provider value={{ theme, striped, hoverable }}>
-        <div className={twMerge(theme.root.shadow, className)}></div>
+      <TableContext.Provider value={value}>
+        <div className={twMerge(hasShadow && theme.root.shadow, className)}></div>
         <table className={twMerge(theme.root.base, className)} {...props}>
           {children}
         </table>
