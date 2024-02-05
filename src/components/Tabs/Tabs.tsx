@@ -56,6 +56,7 @@ export const Tabs: React.FC<TabsProps> = ({
       <div className={twMerge(theme.base, containerClassName)}>
         {propTabs.map((tab, idx) => (
           <button
+            type="button"
             disabled={tab.disabled}
             key={tab.name}
             role="tab"
