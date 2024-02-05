@@ -47,7 +47,7 @@ describe('Keyboard interactions', () => {
     expect(collapse).toBeVisible()
   })
 
-  it('should follow link when `Space` is pressed on `Sidebar.Item` with `href=".."`', () => {
+  it('should follow link when `Space` is pressed on `SidebarItem` with `href=".."`', () => {
     render(<TestSidebar />)
 
     const link = screen.getAllByRole('link')[1]
@@ -83,7 +83,7 @@ describe('Props', () => {
     expect(logo().lastElementChild).toHaveClass('hidden')
   })
 
-  it('should use the HTML element provided in `Sidebar.Item as=".."`', () => {
+  it('should use the HTML element provided in `SidebarItem as=".."`', () => {
     render(<TestSidebar />)
 
     const asItem = screen.getByLabelText('My heading')
@@ -171,7 +171,7 @@ describe('Theme', () => {
     })
   })
 
-  describe('`Sidebar.Item`', () => {
+  describe('`SidebarItem`', () => {
     it('should use custom classes', () => {
       const theme: CustomPoluiTheme = {
         sidebar: {
@@ -215,7 +215,7 @@ describe('Theme', () => {
     })
   })
 
-  describe('`Sidebar.Items`', () => {
+  describe('`SidebarItems`', () => {
     it('should use custom classes', () => {
       const theme: CustomPoluiTheme = {
         sidebar: {
@@ -235,7 +235,7 @@ describe('Theme', () => {
     })
   })
 
-  describe('`Sidebar.ItemGroup`', () => {
+  describe('`SidebarItemGroup`', () => {
     it('should use custom classes', () => {
       const theme: CustomPoluiTheme = {
         sidebar: {
@@ -284,21 +284,21 @@ const TestSidebar: FC<SidebarProps> = ({ ...props }) => (
     <Sidebar.Logo href="#" img="favicon.svg" imgAlt="PolUi logo">
       PolUi
     </Sidebar.Logo>
-    <Sidebar.Items>
-      <Sidebar.ItemGroup>
-        <Sidebar.Item active data-testid="active-item" href="#" icon={HiChartPie} label="3" labelColor="success">
+    <SidebarItems>
+      <SidebarItemGroup>
+        <SidebarItem active data-testid="active-item" href="#" icon={HiChartPie} label="3" labelColor="success">
           Dashboard
-        </Sidebar.Item>
+        </SidebarItem>
         <Sidebar.Collapse aria-label="E-commerce" icon={HiShoppingBag}>
-          <Sidebar.Item href="#">Products</Sidebar.Item>
-          <Sidebar.Item href="#">Services</Sidebar.Item>
+          <SidebarItem href="#">Products</SidebarItem>
+          <SidebarItem href="#">Services</SidebarItem>
         </Sidebar.Collapse>
-        <Sidebar.Item href="#" icon={HiInbox}>
+        <SidebarItem href="#" icon={HiInbox}>
           Inbox
-        </Sidebar.Item>
-        <Sidebar.Item as="h3">My heading</Sidebar.Item>
-      </Sidebar.ItemGroup>
-    </Sidebar.Items>
+        </SidebarItem>
+        <SidebarItem as="h3">My heading</SidebarItem>
+      </SidebarItemGroup>
+    </SidebarItems>
   </Sidebar>
 )
 

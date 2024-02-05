@@ -7,8 +7,7 @@ import { mergeDeep } from '../../helpers/merge-deep'
 import type { Colors, DeepPartial, RoundedSizes, RoundedSizesTypes } from '../../types/types'
 import { Badge } from '../Badge'
 import { Tooltip } from '../Tooltip'
-import { useSidebarContext } from './SidebarContext'
-import { useSidebarItemContext } from './SidebarItemContext'
+import { useSidebarContext, useSidebarItemContext } from './SidebarContext'
 import { motion } from 'framer-motion'
 import { ColorsEnum, RoundedSizesEnum } from '../../types'
 import { useRipple } from '../../hooks'
@@ -164,4 +163,4 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
   },
 )
 
-SidebarItem.displayName = 'Sidebar.Item'
+SidebarItem.displayName = 'SidebarItem'

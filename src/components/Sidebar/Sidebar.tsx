@@ -6,10 +6,8 @@ import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types/types'
 import { SidebarCollapse } from './SidebarCollapse'
-import { SidebarContext } from './SidebarContext'
+import { SidebarContext, SidebarItemContext } from './SidebarContext'
 import { SidebarItem } from './SidebarItem'
-import { SidebarItemGroup } from './SidebarItemGroup'
-import { SidebarItems } from './SidebarItems'
 import { SidebarLogo } from './SidebarLogo'
 import type { SidebarTheme } from './theme'
 import { motion } from 'framer-motion'
@@ -46,7 +44,7 @@ const SidebarComponent: FC<SidebarProps> = ({
 
   return (
     <SidebarContext.Provider value={value}>
-      <motion.div layout {...framerSidebarPanel} className="flex flex-col h-auto ">
+      <motion.div layout {...framerSidebarPanel} className="flex flex-col h-full ">
         {shouldHaveContent && (
           <Component
             aria-label="Sidebar"
@@ -56,7 +54,13 @@ const SidebarComponent: FC<SidebarProps> = ({
             {...props}
           >
             <div className={theme.root.inner}>
-              {children}
+              <div className={twMerge(theme.items.base, className)} data-testid="ui-sidebar-items">
+                <ul data-testid="ui-sidebar-item-group" className={twMerge(theme.itemGroup.base, className)}>
+                  <SidebarItemContext.Provider value={{ isInsideCollapse: false }}>
+                    {children}
+                  </SidebarItemContext.Provider>
+                </ul>
+              </div>
               {collapsable && (
                 <div
                   className={twMerge(theme.closeButton.base, theme.closeButton[collapsed ? 'collapsed' : 'expanded'])}
@@ -77,8 +81,6 @@ SidebarComponent.displayName = 'Sidebar'
 export const Sidebar = Object.assign(SidebarComponent, {
   Collapse: SidebarCollapse,
   Item: SidebarItem,
-  Items: SidebarItems,
-  ItemGroup: SidebarItemGroup,
   Logo: SidebarLogo,
 })
 

@@ -28,6 +28,7 @@ import {
   TbUser,
 } from 'react-icons/tb'
 import { ColorsEnum } from '../../types'
+import { SidebarItem } from './SidebarItem'
 
 export default {
   title: 'Components/Sidebar',
@@ -35,10 +36,8 @@ export default {
   tags: ['autodocs'],
   decorators: [
     Story => (
-      <div className="flex overflow-hidden  h-full min-h-[400px] bg-secondary-100 ">
-        <div className="bg-secondary-50">
-          <Story />
-        </div>
+      <div className="flex overflow-hidden  min-h-[500px] h-[500px] bg-secondary-100 ">
+        <Story />
       </div>
     ),
   ],
@@ -54,25 +53,23 @@ const Template: StoryFn<SidebarProps> = args => {
 export const Default = Template.bind({})
 Default.args = {
   children: (
-    <Sidebar.Items>
-      <Sidebar.ItemGroup>
-        <Sidebar.Item href="#" icon={TbLayout}>
-          Dashboard
-        </Sidebar.Item>
-        <Sidebar.Item href="#" icon={TbLayoutKanban} active>
-          Kanban
-        </Sidebar.Item>
-        <Sidebar.Item href="#" icon={TbAt} label="3">
-          At
-        </Sidebar.Item>
-        <Sidebar.Item href="#" icon={TbUser}>
-          Users
-        </Sidebar.Item>
-        <Sidebar.Item href="#" icon={TbCoin} label="Premium">
-          Products
-        </Sidebar.Item>
-      </Sidebar.ItemGroup>
-    </Sidebar.Items>
+    <>
+      <SidebarItem href="#" icon={TbLayout}>
+        Dashboard
+      </SidebarItem>
+      <SidebarItem href="#" icon={TbLayoutKanban} active>
+        Kanban
+      </SidebarItem>
+      <SidebarItem href="#" icon={TbAt} label="3">
+        At
+      </SidebarItem>
+      <SidebarItem href="#" icon={TbUser}>
+        Users
+      </SidebarItem>
+      <SidebarItem href="#" icon={TbCoin} label="Premium">
+        Products
+      </SidebarItem>
+    </>
   ),
 }
 
@@ -80,18 +77,16 @@ export const WithoutIcons = Template.bind({})
 WithoutIcons.storyName = 'No icons'
 WithoutIcons.args = {
   children: (
-    <Sidebar.Items>
-      <Sidebar.ItemGroup>
-        <Sidebar.Item href="#">Dashboard</Sidebar.Item>
-        <Sidebar.Item href="#" labelColor="alternative">
-          Kanban
-        </Sidebar.Item>
-        <Sidebar.Item href="#">At</Sidebar.Item>
-        <Sidebar.Item href="#">Users</Sidebar.Item>
-        <Sidebar.Item href="#">Notifications</Sidebar.Item>
-        <Sidebar.Item href="#">Settings</Sidebar.Item>
-      </Sidebar.ItemGroup>
-    </Sidebar.Items>
+    <>
+      <SidebarItem href="#">Dashboard</SidebarItem>
+      <SidebarItem href="#" labelColor="alternative">
+        Kanban
+      </SidebarItem>
+      <SidebarItem href="#">At</SidebarItem>
+      <SidebarItem href="#">Users</SidebarItem>
+      <SidebarItem href="#">Notifications</SidebarItem>
+      <SidebarItem href="#">Settings</SidebarItem>
+    </>
   ),
 }
 export const HidingCollapse = () => {
@@ -99,28 +94,23 @@ export const HidingCollapse = () => {
 
   return (
     <div className="flex gap-4 items-start">
-      {' '}
       <Sidebar collapseMode="hide" collapsed={value} toggle={toggle}>
-        <Sidebar.Items>
-          <Sidebar.ItemGroup>
-            <Sidebar.Item href="#" icon={TbLayout}>
-              Dashboard
-            </Sidebar.Item>
-            <Sidebar.Item href="#" icon={TbLayoutKanban}>
-              Kanban
-            </Sidebar.Item>
-            <Sidebar.Item href="#" icon={TbAt} label="3">
-              At
-            </Sidebar.Item>
-            <Sidebar.Item href="#" icon={TbUser}>
-              Users
-            </Sidebar.Item>
-            <Sidebar.Item href="#" icon={TbCoin} label="Premium">
-              Products
-            </Sidebar.Item>
-          </Sidebar.ItemGroup>
-        </Sidebar.Items>
-      </Sidebar>{' '}
+        <SidebarItem href="#" icon={TbLayout}>
+          Dashboard
+        </SidebarItem>
+        <SidebarItem href="#" icon={TbLayoutKanban}>
+          Kanban
+        </SidebarItem>
+        <SidebarItem href="#" icon={TbAt} label="3">
+          At
+        </SidebarItem>
+        <SidebarItem href="#" icon={TbUser}>
+          Users
+        </SidebarItem>
+        <SidebarItem href="#" icon={TbCoin} label="Premium">
+          Products
+        </SidebarItem>
+      </Sidebar>
       <div className="flex m-4">
         <Button onClick={toggle}>{value ? <TbArrowRight /> : <TbArrowLeft />} </Button>
       </div>
@@ -132,59 +122,55 @@ export const MultiLevelDropdown = Template.bind({})
 MultiLevelDropdown.storyName = 'Multi-level dropdown'
 MultiLevelDropdown.args = {
   children: (
-    <Sidebar.Items>
-      <Sidebar.ItemGroup>
-        <Sidebar.Item href="#" icon={TbHome}>
-          Home
-        </Sidebar.Item>
-        <Sidebar.Collapse icon={TbShoppingBag} label="E-commerce">
-          <Sidebar.Item href="#">Shop</Sidebar.Item>
-        </Sidebar.Collapse>
-        <Sidebar.Item href="#" icon={TbAt}>
-          Email
-        </Sidebar.Item>
-        <Sidebar.Item href="#" icon={TbUser}>
-          Users
-        </Sidebar.Item>
+    <>
+      <SidebarItem href="#" icon={TbHome}>
+        Home
+      </SidebarItem>
+      <Sidebar.Collapse icon={TbShoppingBag} label="E-commerce">
+        <SidebarItem href="#">Shop</SidebarItem>
+      </Sidebar.Collapse>
+      <SidebarItem href="#" icon={TbAt}>
+        Email
+      </SidebarItem>
+      <SidebarItem href="#" icon={TbUser}>
+        Users
+      </SidebarItem>
 
-        <Sidebar.Item href="#" icon={TbSignRight}>
-          Sign In
-        </Sidebar.Item>
-        <Sidebar.Item href="#" icon={TbPlus}>
-          Sign Up
-        </Sidebar.Item>
-      </Sidebar.ItemGroup>
-    </Sidebar.Items>
+      <SidebarItem href="#" icon={TbSignRight}>
+        Sign In
+      </SidebarItem>
+      <SidebarItem href="#" icon={TbPlus}>
+        Sign Up
+      </SidebarItem>
+    </>
   ),
 }
 
 export const DefaultExpandedDropdown = Template.bind({})
 DefaultExpandedDropdown.args = {
   children: (
-    <Sidebar.Items>
-      <Sidebar.ItemGroup>
-        <Sidebar.Item href="#" icon={TbGraph}>
-          Dashboard
-        </Sidebar.Item>
-        <Sidebar.Collapse icon={TbCoin} label="Shop">
-          <Sidebar.Item icon={TbMoneybag} href="#">
-            Products
-          </Sidebar.Item>
-        </Sidebar.Collapse>
-        <Sidebar.Collapse icon={TbShare} label="Share" open>
-          <Sidebar.Item href="#">Usage Summary</Sidebar.Item>
-        </Sidebar.Collapse>
-        <Sidebar.Item href="#" icon={TbMail}>
-          Mail
-        </Sidebar.Item>
-        <Sidebar.Item href="#" icon={TbUser}>
-          Users
-        </Sidebar.Item>
-        <Sidebar.Item href="#" icon={TbCoin}>
-          Coin
-        </Sidebar.Item>
-      </Sidebar.ItemGroup>
-    </Sidebar.Items>
+    <>
+      <SidebarItem href="#" icon={TbGraph}>
+        Dashboard
+      </SidebarItem>
+      <Sidebar.Collapse icon={TbCoin} label="Shop">
+        <SidebarItem icon={TbMoneybag} href="#">
+          Products
+        </SidebarItem>
+      </Sidebar.Collapse>
+      <Sidebar.Collapse icon={TbShare} label="Share" open>
+        <SidebarItem href="#">Usage Summary</SidebarItem>
+      </Sidebar.Collapse>
+      <SidebarItem href="#" icon={TbMail}>
+        Mail
+      </SidebarItem>
+      <SidebarItem href="#" icon={TbUser}>
+        Users
+      </SidebarItem>
+      <SidebarItem href="#" icon={TbCoin}>
+        Coin
+      </SidebarItem>
+    </>
   ),
 }
 
@@ -192,36 +178,33 @@ export const ContentSeparator = Template.bind({})
 ContentSeparator.storyName = 'Content separator'
 ContentSeparator.args = {
   children: (
-    <Sidebar.Items>
-      <Sidebar.ItemGroup>
-        <Sidebar.Item href="#" icon={TbLayout}>
-          Dashboard
-        </Sidebar.Item>
-        <Sidebar.Item href="#" icon={TbLayoutKanban}>
-          Kanban
-        </Sidebar.Item>
-        <Sidebar.Item href="#" icon={TbAt} label="3">
-          At
-        </Sidebar.Item>
-        <Sidebar.Item href="#" icon={TbUser}>
-          Users
-        </Sidebar.Item>
-        <Sidebar.Item href="#" icon={TbCoin}>
-          Products
-        </Sidebar.Item>
-      </Sidebar.ItemGroup>
-      <Sidebar.ItemGroup>
-        <Sidebar.Item href="#" icon={TbArrowAutofitUp} label="Premium">
-          Upgrade
-        </Sidebar.Item>
-        <Sidebar.Item href="#" icon={TbPaperBag} label="Premium">
-          Docs
-        </Sidebar.Item>
-        <Sidebar.Item href="#" icon={TbHelp} label="Premium">
-          Help
-        </Sidebar.Item>
-      </Sidebar.ItemGroup>
-    </Sidebar.Items>
+    <>
+      <SidebarItem href="#" icon={TbLayout}>
+        Dashboard
+      </SidebarItem>
+      <SidebarItem href="#" icon={TbLayoutKanban}>
+        Kanban
+      </SidebarItem>
+      <SidebarItem href="#" icon={TbAt} label="3">
+        At
+      </SidebarItem>
+      <SidebarItem href="#" icon={TbUser}>
+        Users
+      </SidebarItem>
+      <SidebarItem href="#" icon={TbCoin}>
+        Products
+      </SidebarItem>
+
+      <SidebarItem href="#" icon={TbArrowAutofitUp} label="Premium">
+        Upgrade
+      </SidebarItem>
+      <SidebarItem href="#" icon={TbPaperBag} label="Premium">
+        Docs
+      </SidebarItem>
+      <SidebarItem href="#" icon={TbHelp} label="Premium">
+        Help
+      </SidebarItem>
+    </>
   ),
 }
 export const LogoBranding = Template.bind({})
@@ -232,22 +215,18 @@ LogoBranding.args = {
       <Sidebar.Logo href="#" img="favicon.svg" imgAlt="Pol-ui logo">
         Pol-ui
       </Sidebar.Logo>
-      <Sidebar.Items>
-        <Sidebar.ItemGroup>
-          <Sidebar.Item href="#" icon={TbGraph}>
-            Home
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={TbDashboard}>
-            Kanban
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={TbMail}>
-            At
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={TbUser}>
-            Users
-          </Sidebar.Item>
-        </Sidebar.ItemGroup>
-      </Sidebar.Items>
+      <SidebarItem href="#" icon={TbGraph}>
+        Home
+      </SidebarItem>
+      <SidebarItem href="#" icon={TbDashboard}>
+        Kanban
+      </SidebarItem>
+      <SidebarItem href="#" icon={TbMail}>
+        At
+      </SidebarItem>
+      <SidebarItem href="#" icon={TbUser}>
+        Users
+      </SidebarItem>
     </>
   ),
 }
@@ -255,7 +234,7 @@ export const CompleteExample = () => {
   const { value, toggle } = useBoolean(true)
 
   return (
-    <div className="flex w-full m-6 rounded-xl overflow-hidden border border-secondary-800 min-h-[400px] bg-primary-100 flex-col">
+    <div className="flex w-full rounded-xl overflow-hidden border border-secondary-800 min-h-[400px]  bg-primary-100 flex-col">
       <Navbar className="bg-primary-50 shadow-md">
         <Navbar.Brand>
           <img src="/images/logo.png" className="mr-3 h-6 sm:h-6" alt="Pol-ui Logo" />
@@ -270,30 +249,20 @@ export const CompleteExample = () => {
         </Navbar.Collapse>
       </Navbar>
       <section className="flex h-full">
-        <div className="bg-primary-50 w-fit  shadow-lg h-full">
+        <div className="bg-primary-50 w-fit  shadow-lg">
           <Sidebar collapsed={value} toggle={toggle}>
-            <Sidebar.Items>
-              <Sidebar.ItemGroup>
-                <Sidebar.Item href="#" icon={TbDatabaseSearch} active rounded="full">
-                  Home
-                </Sidebar.Item>
-                <Sidebar.Item
-                  href="#"
-                  icon={TbLayoutKanban}
-                  label="Empty"
-                  labelColor={ColorsEnum.primary}
-                  rounded="full"
-                >
-                  Menus
-                </Sidebar.Item>
-                <Sidebar.Item href="#" icon={TbAt} label="3" rounded="full">
-                  Mail
-                </Sidebar.Item>
-                <Sidebar.Item href="#" icon={TbUser} rounded="full">
-                  Accounts
-                </Sidebar.Item>
-              </Sidebar.ItemGroup>
-            </Sidebar.Items>
+            <SidebarItem href="#" icon={TbDatabaseSearch} active rounded="full">
+              Home
+            </SidebarItem>
+            <SidebarItem href="#" icon={TbLayoutKanban} label="Empty" labelColor={ColorsEnum.primary} rounded="full">
+              Menus
+            </SidebarItem>
+            <SidebarItem href="#" icon={TbAt} label="3" rounded="full">
+              Mail
+            </SidebarItem>
+            <SidebarItem href="#" icon={TbUser} rounded="full">
+              Accounts
+            </SidebarItem>
           </Sidebar>
         </div>
         <div className="flex flex-col gap-5 p-8 w-full bg-primary-200 m-4 rounded-xl">

@@ -1,10 +1,14 @@
 import type { IBoolean } from '../../types'
 import type { SidebarCollapseTheme } from './SidebarCollapse'
 import type { SidebarItemTheme } from './SidebarItem'
-import type { SidebarItemGroupTheme } from './SidebarItemGroup'
-import type { SidebarItemsTheme } from './SidebarItems'
 import type { SidebarLogoTheme } from './SidebarLogo'
 
+export interface SidebarItemGroupTheme {
+  base: string
+}
+export interface SidebarItemsTheme {
+  base: string
+}
 export interface SidebarTheme {
   root: {
     base: string
@@ -24,7 +28,7 @@ export interface SidebarTheme {
 }
 export const sidebarTheme: SidebarTheme = {
   root: {
-    base: 'h-full w-fit bg-transparent transition-all',
+    base: 'h-full w-fit bg-secondary-50 dark:secondary-900 transition-all',
     collapsed: {
       on: 'w-16',
       off: 'w-64',
@@ -55,7 +59,7 @@ export const sidebarTheme: SidebarTheme = {
   },
 
   item: {
-    base: 'flex bg-transparent items-center justify-center rounded-md p-2 text-base font-normal text-gray-900 hover:brightness-90 dark:text-white',
+    base: 'flex bg-secondary-50 dark:secondary-900 items-center justify-center p-2 text-base font-normal text-secondary-900 hover:brightness-90 dark:text-secondary-50',
 
     rounded: {
       xs: 'rounded-xs',
