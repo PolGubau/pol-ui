@@ -4,10 +4,10 @@ import type { ComponentPropsWithoutRef, ElementType } from 'react'
 import { type ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { getTheme } from '../../theme-store'
-import type { Colors, DeepPartial, MainSizes, RoundedSizes } from '../../types/types'
+import type { Colors, DeepPartial, MainSizes, RoundedSizesTypes } from '../../types/types'
 import { Loader } from '../Loader'
 
-import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../../types/enums'
+import { ColorsEnum, MainSizesEnum } from '../../types/enums'
 import { useRipple } from '../../hooks'
 import type { ButtonBaseProps } from '../Button/ButtonBase'
 import { ButtonBase } from '../Button/ButtonBase'
@@ -26,7 +26,7 @@ export type IconButtonProps<T extends ElementType = 'button'> = {
   loader?: ReactNode
   label?: ReactNode
   outline?: boolean
-  rounded?: RoundedSizes
+  rounded?: keyof RoundedSizesTypes
   size?: MainSizes
   hasMotion?: boolean
   theme?: DeepPartial<IconButtonTheme>
@@ -43,7 +43,7 @@ const IconButtonFn = <T extends ElementType = 'button'>({
   label = '',
   hasMotion = true,
   outline = false,
-  rounded = RoundedSizesEnum.full as RoundedSizes,
+  rounded = 'full',
   size = MainSizesEnum.md,
   theme: customTheme = {},
   innerClassname = '',
@@ -129,5 +129,3 @@ export const IconButton = <T extends ElementType = 'button'>(props: IconButtonPr
     <IconButtonFn {...props} />
   )
 }
-
-IconButton.displayName = 'IconButton'

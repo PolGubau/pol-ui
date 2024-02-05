@@ -3,6 +3,8 @@ import { IconButton, type IconButtonProps } from './IconButton'
 import { theme } from '../../theme'
 import { TbSearch, TbTrash } from 'react-icons/tb'
 import { ColorsEnum } from '../../types/enums'
+import type { Colors } from '../../types'
+import type { MainSizes } from '../../types'
 
 export default {
   title: 'Components/Buttons/IconButton',
@@ -135,14 +137,14 @@ export const Sizes = (args: IconButtonProps) => (
     {Object.keys(theme.button.size).map(size => (
       <div className="flex flex-col gap-4" key={size}>
         <span>{size}</span>
-        <IconButton {...args} size={size}>
+        <IconButton {...args} size={size as MainSizes}>
           <TbTrash />
         </IconButton>
       </div>
     ))}
   </div>
 )
-export const Colors = (args: IconButtonProps) => (
+export const AllColors = (args: IconButtonProps) => (
   <section className="flex gap-12 flex-wrap">
     <div className="flex gap-3 flex-col bg-secondary-50 p-4 rounded-xl">
       <h3 className="text-black text-xl">Light Mode</h3>
@@ -150,7 +152,7 @@ export const Colors = (args: IconButtonProps) => (
         {Object.keys(ColorsEnum).map(v => (
           <div className="flex flex-col gap-4" key={v}>
             <span>{v}</span>
-            <IconButton {...args} color={v}>
+            <IconButton {...args} color={v as Colors}>
               <TbTrash />
             </IconButton>
           </div>
@@ -163,7 +165,7 @@ export const Colors = (args: IconButtonProps) => (
         {Object.keys(ColorsEnum).map(v => (
           <div className="flex flex-col gap-4" key={v}>
             <span className="text-secondary-200">{v}</span>
-            <IconButton {...args} color={v}>
+            <IconButton {...args} color={v as Colors}>
               <TbTrash size={20} />
             </IconButton>
           </div>

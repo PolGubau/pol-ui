@@ -9,7 +9,7 @@ import type { BadgeTheme } from './theme'
 export interface BadgeProps extends Omit<ComponentProps<'span'>, 'color'> {
   color?: Colors
   href?: string
-  rounded?: keyof RoundedSizes
+  rounded?: RoundedSizes
   icon?: FC<ComponentProps<'svg'>>
   size?: MainSizes
   theme?: DeepPartial<BadgeTheme>

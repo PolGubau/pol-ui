@@ -5,9 +5,8 @@ import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-reac
 
 import { twMerge } from 'tailwind-merge'
 import { TbArrowLeft, TbArrowRight } from 'react-icons/tb'
-import type { Button } from '../Button'
-import { IconButton } from '../IconButton'
 import { MainSizesEnum } from '../../types'
+import { Button } from '../Button'
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -175,7 +174,7 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
     const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
     return (
-      <IconButton
+      <Button
         hasMotion={false}
         data-testid="carousel-left-control"
         ref={ref}
@@ -194,7 +193,7 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
       >
         <TbArrowLeft className="h-4 w-4" />
         <span className="sr-only">Previous slide</span>
-      </IconButton>
+      </Button>
     )
   },
 )
@@ -204,14 +203,14 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
     const { orientation, scrollNext, canScrollNext } = useCarousel()
 
     return (
-      <IconButton
+      <Button
         hasMotion={false}
         ref={ref}
         variant={variant}
         data-testid="carousel-right-control"
         size={size}
         className={twMerge(
-          'absolute h-8 w-8 rounded-full',
+          'absolute h-8 w-8',
           orientation === 'horizontal'
             ? '-right-12 top-1/2 -translate-y-1/2'
             : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
@@ -223,7 +222,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
       >
         <TbArrowRight className="h-4 w-4" />
         <span className="sr-only">Next slide</span>
-      </IconButton>
+      </Button>
     )
   },
 )
