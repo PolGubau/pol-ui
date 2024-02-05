@@ -91,10 +91,15 @@ export const TabsExample = (args: TabsProps): JSX.Element => (
 TabsExample.args = {
   tabs: tabs,
 }
-export const WithoutMotion = (args: TabsProps): JSX.Element => TabsExample.bind({})(args)
-WithoutMotion.args = {
+export const ContainedMode = (args: TabsProps): JSX.Element => TabsExample.bind({})(args)
+ContainedMode.args = {
   tabs: tabs,
-  hasMotion: false,
+  mode: 'contained',
+}
+export const WithMotion = (args: TabsProps): JSX.Element => TabsExample.bind({})(args)
+WithMotion.args = {
+  tabs: tabs,
+  hasMotion: true,
 }
 export const WithoutAnyMotion = (args: TabsProps): JSX.Element => TabsExample.bind({})(args)
 WithoutAnyMotion.args = {

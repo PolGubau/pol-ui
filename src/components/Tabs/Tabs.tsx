@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import { motion } from 'framer-motion'
 import { twMerge } from 'tailwind-merge'
 import { getTheme } from '../../theme-store'
@@ -13,13 +13,21 @@ type Tab = {
   disabled?: boolean
 }
 
+export enum TabMode {
+  underlined = 'underlined',
+  contained = 'contained',
+}
+export type TabModeType = keyof typeof TabMode
+
 export interface TabsProps {
   tabs: Tab[]
   containerClassName?: string
   activeTabClassName?: string
   tabClassName?: string
   contentClassName?: string
+  hasMotion?: boolean
   hasNavMotion?: boolean
+  mode: TabModeType
   theme?: Partial<TabsTheme>
 }
 
@@ -29,7 +37,9 @@ export const Tabs: React.FC<TabsProps> = ({
   activeTabClassName,
   tabClassName,
   contentClassName,
+  hasMotion = false,
   hasNavMotion = true,
+  mode = TabMode.underlined,
   theme: customTheme = {},
 }: TabsProps) => {
   if (propTabs.length === 0) throw new Error('Tabs must have at least one tab')
@@ -43,7 +53,7 @@ export const Tabs: React.FC<TabsProps> = ({
   const { tabs: baseTheme } = getTheme()
   const theme: TabsTheme = mergeDeep(baseTheme, customTheme)
   const [hovering, setHovering] = useState(false)
-
+  const id = useId()
   return (
     <>
       <div className={twMerge(theme.base, containerClassName)}>
@@ -58,15 +68,16 @@ export const Tabs: React.FC<TabsProps> = ({
               handleClickTab(tab)
             }}
             onFocus={() => {
-              // moveSelectedTabToTop(idx)
               setHovering(true)
+            }}
+            onBlur={() => {
+              setHovering(false)
             }}
             onMouseEnter={() => setHovering(true)}
             onMouseLeave={() => setHovering(false)}
             className={twMerge(
               theme.navItem.base,
               tab.disabled && theme.disabled,
-              !hasNavMotion && active.name === tab.name && theme.navItem.marker.active.on,
 
               tabClassName,
             )}
@@ -74,11 +85,16 @@ export const Tabs: React.FC<TabsProps> = ({
               transformStyle: 'preserve-3d',
             }}
           >
-            {hasNavMotion && active.name === tab.name && (
+            {active.name === tab.name && (
               <motion.div
-                layoutId="clickedbutton"
+                layoutId={hasNavMotion ? id : undefined}
                 transition={{ type: 'spring', bounce: 0.3, duration: 0.6 }}
-                className={twMerge(theme.navItem.marker.base, theme.navItem.marker.active.on, activeTabClassName)}
+                className={twMerge(
+                  theme.navItem.marker.base,
+                  theme.navItem.marker.active.on,
+                  theme.navItem.marker.mode[mode],
+                  activeTabClassName,
+                )}
               />
             )}
 
@@ -89,6 +105,7 @@ export const Tabs: React.FC<TabsProps> = ({
       <TabContent
         content={active.content}
         key={active.name}
+        hasMotion={hasMotion}
         hovering={hovering}
         className={twMerge('mt-8', contentClassName)}
       />
@@ -100,14 +117,20 @@ export const TabContent = ({
   className,
   content,
   hovering,
+  hasMotion = false,
 }: {
   className?: string
   content: Tab['content']
   hovering?: boolean
+  hasMotion?: boolean
 }) => {
   return (
     <motion.div
-      className={twMerge('relative w-full h-full transition-all ', hovering && 'opacity-75 scale-90', className)}
+      className={twMerge(
+        'relative w-full h-full transition-all ',
+        hovering && hasMotion && 'opacity-90 scale-95',
+        className,
+      )}
     >
       {content}
     </motion.div>
