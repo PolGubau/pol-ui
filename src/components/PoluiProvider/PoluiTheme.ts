@@ -17,7 +17,6 @@ import type { FooterTheme } from '../Footer'
 import type { KbdTheme } from '../Kbd'
 import type { LabelTheme } from '../Label'
 import type { ListGroupTheme } from '../ListGroup'
-import type { ListTheme } from '../List'
 import type { ModalTheme } from '../Modal'
 import type { NavbarTheme } from '../Navbar'
 import type { PaginationTheme } from '../Pagination'
@@ -68,7 +67,6 @@ export interface PoluiTheme {
   footer: FooterTheme
   kbd: KbdTheme
   listGroup: ListGroupTheme
-  list: ListTheme
   modal: ModalTheme
   navbar: NavbarTheme
   rating: RatingTheme
