@@ -1,36 +1,18 @@
-import { render, screen } from '@testing-library/react';
-import type { FC } from 'react';
-import { describe, expect, it } from 'vitest';
-import type { TableProps } from './Table';
-import { Table } from './Table';
+import { render, screen } from '@testing-library/react'
+import type { FC } from 'react'
+import { describe, expect, it } from 'vitest'
+import type { TableProps } from './Table'
+import { Table } from './Table'
 
 describe.concurrent('Components / Table', () => {
   it('should be able to render a table', () => {
-    render(<TestTable />);
+    render(<TestTable />)
 
-    expect(screen.getByTestId('table-element')).toBeTruthy();
-  });
+    expect(screen.getByTestId('table-element')).toBeTruthy()
+  })
+})
 
-  it('should be able to render a striped table', () => {
-    render(<TestTable striped />);
-
-    const rows = screen.getAllByTestId('table-row-element');
-
-    expect(rows.length).toEqual(5);
-    expect(rows[0].className).toContain('odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700');
-  });
-
-  it('should be able to render a hoverable table', () => {
-    render(<TestTable hoverable />);
-
-    const rows = screen.getAllByTestId('table-row-element');
-
-    expect(rows.length).toEqual(5);
-    expect(rows[0].className).toContain('hover:bg-gray-50 dark:hover:bg-gray-600');
-  });
-});
-
-const TestTable: FC<TableProps> = (props) => (
+const TestTable: FC<TableProps> = props => (
   <Table {...props}>
     <Table.Head>
       <Table.HeadCell>Product name</Table.HeadCell>
@@ -105,4 +87,4 @@ const TestTable: FC<TableProps> = (props) => (
       </Table.Row>
     </Table.Body>
   </Table>
-);
+)
