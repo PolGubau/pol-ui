@@ -17,7 +17,7 @@ export interface TableRootTheme {
 export const tableTheme: TableTheme = {
   root: {
     base: 'w-full text-left text-sm text-secondary-500 dark:text-secondary-400',
-    shadow: 'absolute bg-white dark:bg-black w-full h-full top-0 left-0 rounded-lg drop-shadow-md -z-10',
+    shadow: 'shadow-xl-z-10',
     wrapper: 'relative',
   },
   body: {

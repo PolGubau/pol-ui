@@ -43,10 +43,10 @@ const mockUsers = [
 const Template: StoryFn<TableProps> = args => (
   <Table {...args}>
     <Table.Head>
-      <Table.HeadCell>Product name</Table.HeadCell>
-      <Table.HeadCell>Color</Table.HeadCell>
-      <Table.HeadCell>Category</Table.HeadCell>
-      <Table.HeadCell>Price</Table.HeadCell>
+      <Table.HeadCell>Name</Table.HeadCell>
+      <Table.HeadCell>Username</Table.HeadCell>
+      <Table.HeadCell>Email</Table.HeadCell>
+      <Table.HeadCell>Address</Table.HeadCell>
       <Table.HeadCell>
         <span className="sr-only">Edit</span>
       </Table.HeadCell>
@@ -57,7 +57,7 @@ const Template: StoryFn<TableProps> = args => (
         <Table.Row key={user.id}>
           <Table.Cell>{user.name}</Table.Cell>
           <Table.Cell>{user.username}</Table.Cell>
-          <Table.Cell>{user.name}</Table.Cell>
+          <Table.Cell>{user.email}</Table.Cell>
           <Table.Cell>{user.address}</Table.Cell>
           <Table.Cell>
             <div className="flex gap-1">

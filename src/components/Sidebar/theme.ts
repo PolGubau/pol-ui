@@ -24,7 +24,7 @@ export interface SidebarTheme {
 }
 export const sidebarTheme: SidebarTheme = {
   root: {
-    base: 'h-full w-fit bg-secondary-50 dark:bg-secondary-900 transition-all',
+    base: 'h-full w-fit bg-transparent transition-all',
     collapsed: {
       on: 'w-16',
       off: 'w-64',
@@ -55,7 +55,7 @@ export const sidebarTheme: SidebarTheme = {
   },
 
   item: {
-    base: 'flex bg-secondary-50 dark:bg-secondary-900 items-center justify-center rounded-md p-2 text-base font-normal text-gray-900 hover:brightness-90 dark:text-white dark:hover:bg-secondary-700',
+    base: 'flex bg-transparent items-center justify-center rounded-md p-2 text-base font-normal text-gray-900 hover:brightness-90 dark:text-white',
 
     rounded: {
       xs: 'rounded-xs',
