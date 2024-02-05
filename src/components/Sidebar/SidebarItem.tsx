@@ -102,7 +102,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
     ref,
   ) => {
     const id = useId()
-    const { theme: rootTheme, collapsed } = useSidebarContext()
+    const { theme: rootTheme, collapsed, color } = useSidebarContext()
     const { isInsideCollapse } = useSidebarItemContext()
 
     const theme = mergeDeep(rootTheme.item, customTheme)
@@ -132,6 +132,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
               !collapsed && isInsideCollapse && theme.collapsed?.insideCollapse,
               className,
             )}
+            style={{ backgroundColor: !isActive && color }}
             {...props}
           >
             {Icon && (
