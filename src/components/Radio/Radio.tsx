@@ -1,6 +1,6 @@
 'use client'
 import type { ComponentProps } from 'react'
-import React, { forwardRef, useId } from 'react'
+import { forwardRef, useId } from 'react'
 import { Label } from '../Label'
 import type { Colors, DeepPartial } from '../../types/types'
 import type { RadioTheme } from './theme'
