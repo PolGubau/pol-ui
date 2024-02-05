@@ -3,6 +3,8 @@ import { theme } from '../../theme'
 import type { ButtonProps } from './Button'
 import { Button } from './Button'
 import { BsHandThumbsUpFill } from 'react-icons/bs'
+import type { Colors } from '../../types'
+import type { MainSizes } from '../../types'
 
 export default {
   title: 'Components/Buttons/Button',
@@ -104,18 +106,18 @@ export const Rounded = (args: ButtonProps) => (
 export const Sizes = (args: ButtonProps) => (
   <div className="flex gap-3 flex-wrap items-center">
     {Object.keys(theme.button.size).map(size => (
-      <Button key={size} {...args} size={size}>
+      <Button key={size} {...args} size={size as MainSizes}>
         {size}
       </Button>
     ))}
   </div>
 )
 
-export const Colors = (args: ButtonProps) => (
+export const AllColors = (args: ButtonProps) => (
   <section className="flex gap-12 flex-wrap justify-center items-center">
     <div className="flex gap-3 flex-wrap p-4 rounded-xl">
       {Object.keys(theme.button.color).map(color => (
-        <Button key={color} {...args} color={color}>
+        <Button key={color} {...args} color={color as Colors}>
           {color}
         </Button>
       ))}
@@ -123,7 +125,7 @@ export const Colors = (args: ButtonProps) => (
     <div className="dark">
       <div className="flex gap-3 flex-wrap bg-secondary-900 p-4 rounded-xl">
         {Object.keys(theme.button.color).map(color => (
-          <Button key={color} {...args} color={color}>
+          <Button key={color} {...args} color={color as Colors}>
             {color}
           </Button>
         ))}
@@ -135,7 +137,7 @@ export const OutlineColors = (args: ButtonProps) => (
   <section className="flex gap-4 flex-wrap justify-center items-center">
     <div className="flex gap-3 flex-wrap p-4 rounded-xl">
       {Object.keys(theme.button.color).map(color => (
-        <Button key={color} {...args} color={color} outline>
+        <Button key={color} {...args} color={color as Colors} outline>
           {color}
         </Button>
       ))}
@@ -143,7 +145,7 @@ export const OutlineColors = (args: ButtonProps) => (
     <div className="dark">
       <div className="flex gap-3 flex-wrap bg-secondary-900 p-4 rounded-xl">
         {Object.keys(theme.button.color).map(color => (
-          <Button key={color} {...args} color={color} outline>
+          <Button key={color} {...args} color={color as Colors} outline>
             {color}
           </Button>
         ))}

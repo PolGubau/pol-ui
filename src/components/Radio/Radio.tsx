@@ -1,62 +1,89 @@
 'use client'
 import type { ComponentProps } from 'react'
 import React, { forwardRef, useId } from 'react'
-import { motion } from 'framer-motion'
 import { Label } from '../Label'
-import type { DeepPartial } from '../../types/types'
+import type { Colors, DeepPartial } from '../../types/types'
 import type { RadioTheme } from './theme'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
+import { ColorsEnum } from '../../types'
+import { TbCheck } from 'react-icons/tb'
+import { AnimatePresence, motion } from 'framer-motion'
 
-export interface RadioProps extends Omit<ComponentProps<'input'>, 'ref' | 'type' | 'checked' | 'onClick'> {
+export interface RadioProps extends Omit<ComponentProps<'input'>, 'type' | 'ref' | 'color'> {
   theme?: DeepPartial<RadioTheme>
+  color?: Colors
   label?: string
-  layoutId?: string
-  checked?: boolean
-  inputClassNames?: string
-  onClick?: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void
 }
+const AnimatedCheckIcon = ({
+  initial = true,
+  isVisible = false,
+  theme: customTheme = {},
+  color = ColorsEnum.primary,
+}: {
+  initial?: boolean
+  isVisible?: boolean
+  theme?: DeepPartial<RadioTheme>
+  color?: RadioProps['color']
+}) => {
+  const theme = mergeDeep(getTheme().checkbox, customTheme)
 
+  return (
+    <AnimatePresence initial={initial} mode="wait">
+      {isVisible && (
+        <div className={twMerge(theme.floating.base)}>
+          <svg
+            width="24"
+            height="18"
+            viewBox="0 0 24 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className={twMerge(theme.floating.svg, theme.check.color[color], 'stroke-current')}
+          >
+            <motion.path
+              d="M2.5 9.5L8.5 15.5L21.5 2.5"
+              animate={{ pathLength: 1 }}
+              initial={{ pathLength: 0 }}
+              exit={{ pathLength: 0 }}
+              strokeWidth="5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              transition={{
+                type: 'tween',
+                duration: 0.3,
+                ease: isVisible ? 'easeOut' : 'easeIn',
+              }}
+            />
+          </svg>
+        </div>
+      )}
+    </AnimatePresence>
+  )
+}
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  (
-    {
-      className,
-      theme: customTheme = {},
-      inputClassNames,
-      layoutId = 'radio_layout_id',
-      label,
-      onClick,
-      checked = false,
-      ...props
-    },
-    ref,
-  ) => {
+  ({ className, label, color = ColorsEnum.primary, theme: customTheme = {}, ...props }, ref) => {
     const theme: RadioTheme = mergeDeep(getTheme().radio, customTheme)
 
-    const randomId = useId()
-
+    const id = useId()
     return (
-      <li className={twMerge(theme.root, className)}>
-        <div className={twMerge(theme.input.base)}>
-          <input
-            ref={ref}
-            type="radio"
-            onClick={onClick}
-            id={randomId}
-            className={twMerge(theme.input.input, inputClassNames)}
-            {...props}
-          />
-          <div className={twMerge(theme.input.fakeInput)} />
-          {checked && (
-            <motion.div
-              className={twMerge(theme.input.marker)}
-              layoutId={layoutId}
-              transition={{ type: 'spring', bounce: 0.3, duration: 0.6 }}
-            />
-          )}
-        </div>
-        {label && <Label className={twMerge(theme.label)} htmlFor={randomId} value={label} />}
+      <li className="inline-flex items-center gap-3 relative">
+        <input
+          id={props.id ?? id}
+          {...props}
+          className={twMerge(theme.base, theme.before, theme.color[color], className)}
+          ref={ref}
+          type="radio"
+        />
+
+        {typeof props.checked === 'undefined' ? (
+          <span className={twMerge(theme.check.base, theme.check.color[color])}>
+            <TbCheck />
+          </span>
+        ) : (
+          <AnimatedCheckIcon isVisible={props.checked ?? false} color={color} />
+        )}
+        {label && <Label htmlFor={props.id ?? id}>{label}</Label>}
       </li>
     )
   },
