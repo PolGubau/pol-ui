@@ -18,7 +18,6 @@ export interface TabsProps {
   containerClassName?: string
   activeTabClassName?: string
   tabClassName?: string
-  hasMotion?: boolean
   contentClassName?: string
   hasNavMotion?: boolean
   theme?: Partial<TabsTheme>
@@ -29,7 +28,6 @@ export const Tabs: React.FC<TabsProps> = ({
   containerClassName,
   activeTabClassName,
   tabClassName,
-  hasMotion = true,
   contentClassName,
   hasNavMotion = true,
   theme: customTheme = {},
@@ -37,14 +35,9 @@ export const Tabs: React.FC<TabsProps> = ({
   if (propTabs.length === 0) throw new Error('Tabs must have at least one tab')
 
   const [active, setActive] = useState<Tab>(propTabs[0])
-  const [tabs, setTabs] = useState<Tab[]>(propTabs)
 
-  const moveSelectedTabToTop = (idx: number) => {
-    const newTabs = [...propTabs]
-    const selectedTab = newTabs.splice(idx, 1)
-    newTabs.unshift(selectedTab[0])
-    setTabs(newTabs)
-    setActive(newTabs[0])
+  const handleClickTab = (tab: Tab) => {
+    setActive(tab)
   }
 
   const { tabs: baseTheme } = getTheme()
@@ -54,7 +47,7 @@ export const Tabs: React.FC<TabsProps> = ({
   return (
     <>
       <div className={twMerge(theme.base, containerClassName)}>
-        {propTabs.map((tab, idx) => (
+        {propTabs.map(tab => (
           <button
             type="button"
             disabled={tab.disabled}
@@ -62,7 +55,7 @@ export const Tabs: React.FC<TabsProps> = ({
             role="tab"
             aria-selected={active.name === tab.name}
             onClick={() => {
-              moveSelectedTabToTop(idx)
+              handleClickTab(tab)
             }}
             onFocus={() => {
               // moveSelectedTabToTop(idx)
@@ -94,11 +87,10 @@ export const Tabs: React.FC<TabsProps> = ({
         ))}
       </div>
       <TabContent
-        tabs={tabs}
+        content={active.content}
         key={active.name}
         hovering={hovering}
         className={twMerge('mt-8', contentClassName)}
-        hasMotion={hasMotion}
       />
     </>
   )
@@ -106,47 +98,18 @@ export const Tabs: React.FC<TabsProps> = ({
 
 export const TabContent = ({
   className,
-  tabs,
+  content,
   hovering,
-  hasMotion,
 }: {
   className?: string
-  tabs: Tab[]
+  content: Tab['content']
   hovering?: boolean
-  hasMotion: boolean
 }) => {
-  const isActive = (tab: Tab) => {
-    return tab.name === tabs[0].name
-  }
-
   return (
-    <div className="relative w-full h-full ">
-      {tabs.map((tab, i) => (
-        <motion.div
-          key={tab.name}
-          layoutId={hasMotion ? tab.name : undefined}
-          style={{
-            scale: hasMotion ? 1 - i * 0.03 : 1,
-            top: hasMotion ? (hovering ? i * -8 : 0) : 0,
-            zIndex: tabs.length - i,
-            opacity: hasMotion ? (i < 3 ? 1 - i * 0.4 : 0) : i === 0 ? 1 : 0,
-          }}
-          animate={
-            hasMotion
-              ? {
-                  y: isActive(tab) ? [0, 20, 0] : 0,
-                }
-              : {}
-          }
-          className={twMerge(
-            isActive(tab) ? 'relative flex' : 'absolute',
-            'w-full h-full top-0 left-0 bg-secondary-50',
-            className,
-          )}
-        >
-          {tab.content}
-        </motion.div>
-      ))}
-    </div>
+    <motion.div
+      className={twMerge('relative w-full h-full transition-all ', hovering && 'opacity-75 scale-90', className)}
+    >
+      {content}
+    </motion.div>
   )
 }
