@@ -7,7 +7,6 @@ import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import { Loader } from '../Loader'
 import { ButtonBase, type ButtonBaseProps } from './ButtonBase'
-import { ButtonGroup } from './ButtonGroup/ButtonGroup'
 import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../../types/enums'
 import { useRipple } from '../../hooks'
 import { motion } from 'framer-motion'
@@ -33,7 +32,8 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
   innerClassname = '',
   ...props
 }: ButtonProps<T>) => {
-  const { buttonGroup: groupTheme, button: buttonTheme } = getTheme()
+  const themeObject = getTheme() ?? {}
+  const { buttonGroup: groupTheme, button: buttonTheme } = themeObject
 
   const theme = mergeDeep(buttonTheme, customTheme)
   const theirProps = props as ButtonBaseProps<T>
@@ -97,8 +97,4 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
   )
 }
 
-const ButtonComponent = genericForwardRef(ButtonComponentFn)
-
-export const Button = Object.assign(ButtonComponent, {
-  Group: ButtonGroup,
-})
+export const Button = genericForwardRef(ButtonComponentFn)

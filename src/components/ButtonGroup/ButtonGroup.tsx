@@ -1,13 +1,13 @@
 import type { ComponentProps, FC, ReactElement } from 'react'
 import { Children, cloneElement, useMemo } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../../helpers/merge-deep'
-import { getTheme } from '../../../theme-store'
-import type { DeepPartial } from '../../../types/types'
-import type { ButtonProps } from '..'
+import { mergeDeep } from '../../helpers/merge-deep'
+import { getTheme } from '../../theme-store'
+import type { DeepPartial } from '../../types/types'
+import type { ButtonProps } from '../Button'
 import type { ButtonGroupTheme } from './theme'
 
-export interface ButtonGroupProps extends ComponentProps<'div'>, Pick<ButtonProps, 'outline'> {
+export interface ButtonGroupProps extends ComponentProps<'div'>, Pick<ButtonProps, 'outline' | 'theme'> {
   theme?: DeepPartial<ButtonGroupTheme>
 }
 
@@ -29,7 +29,12 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
       ),
     [children, outline],
   )
-  const theme = mergeDeep(getTheme().buttonGroup, customTheme)
+
+  const themeObject = getTheme()
+  const buttonGroupTheme = themeObject?.buttonGroup ?? {}
+
+  const theme = mergeDeep(buttonGroupTheme, customTheme)
+  // const theme = mergeDeep(getTheme().badge, customTheme)
 
   return (
     <div className={twMerge(theme.base, className)} role="group" {...props}>
@@ -38,4 +43,4 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
   )
 }
 
-ButtonGroup.displayName = 'Button.Group'
+ButtonGroup.displayName = 'ButtonGroup'

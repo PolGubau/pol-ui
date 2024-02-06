@@ -5,7 +5,7 @@ import type { AvatarTheme } from '../Avatar'
 import type { BadgeTheme } from '../Badge'
 import type { BlockquoteTheme } from '../Blockquote'
 import type { BreadcrumbTheme } from '../Breadcrumb'
-import type { ButtonGroupTheme, ButtonTheme } from '../Button'
+import type { ButtonTheme } from '../Button'
 import type { CardTheme } from '../Card'
 import type { CarouselTheme } from '../Carousel'
 import type { CheckboxTheme } from '../Checkbox'
@@ -41,6 +41,7 @@ import type { CopyrightTheme } from '../Copyright/theme'
 import type { DirectionHoverTheme } from '../DirectionHover/theme'
 import type { ConveyorTheme } from '../Conveyor/theme'
 import type { PopoverTheme } from '../Popover'
+import type { ButtonGroupTheme } from '../ButtonGroup'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 

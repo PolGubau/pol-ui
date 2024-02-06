@@ -1,5 +1,5 @@
 import type { ColorsType, IBoolean, MainSizesType, RoundedSizesTypes } from '../../types'
-import type { ButtonGroupTheme, PositionInButtonGroup } from '../Button/ButtonGroup/ButtonGroup'
+import type { PositionInButtonGroup } from '../ButtonGroup'
 
 export interface ButtonTheme {
   base: string
@@ -101,15 +101,5 @@ export const buttonTheme: ButtonTheme = {
     md: 'text-sm px-3 py-2',
     lg: 'text-base px-4 py-2.5',
     xl: 'text-base px-6 py-3.5',
-  },
-}
-
-export const buttonGroupTheme: ButtonGroupTheme = {
-  base: 'inline-flex',
-  position: {
-    none: 'focus:ring-2',
-    start: 'rounded-r-none',
-    middle: 'rounded-none border-l-0 pl-0',
-    end: 'rounded-l-none border-l-0 pl-0',
   },
 }

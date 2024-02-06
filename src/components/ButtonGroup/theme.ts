@@ -1,4 +1,3 @@
- 
 export interface ButtonGroupTheme {
   base: string
   position: PositionInButtonGroup

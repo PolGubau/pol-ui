@@ -6,7 +6,7 @@ import type { MainSizes, Colors, RoundedSizes } from '../../types'
 import type { ButtonProps } from '.'
 
 export default {
-  title: 'Components/Buttons/Button',
+  title: 'Components/Button',
   decorators: [
     Story => (
       <div className="flex p-6 flex-col justify-center items-center min-h-20  bg-secondary-50">

@@ -1,19 +1,20 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
-import { theme } from '../../../theme'
-import { PoluiProvider, type CustomPoluiTheme } from '../../PoluiProvider'
-import { Button } from '..'
+import { theme } from '../../theme'
+import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider'
+import { Button } from '../Button/Button'
+import { ButtonGroup } from './ButtonGroup'
 
 describe('Components / Button group', () => {
   describe('A11y', () => {
     it('should have `role="group"` by default', () => {
       render(
-        <Button.Group>
+        <ButtonGroup>
           <Button>One</Button>
           <Button>Two</Button>
           <Button>Three</Button>
-        </Button.Group>,
+        </ButtonGroup>,
       )
 
       expect(group()).toBeInTheDocument()
@@ -21,13 +22,13 @@ describe('Components / Button group', () => {
 
     it('should allow `aria-label`', () => {
       render(
-        <Button.Group aria-label="My group">
+        <ButtonGroup aria-label="My group">
           <Button>One</Button>
           <Button>Two</Button>
           <Button>Three</Button>
-        </Button.Group>,
-      ),
-        expect(group()).toHaveAccessibleName('My group')
+        </ButtonGroup>,
+      )
+      expect(group()).toHaveAccessibleName('My group')
     })
   })
 
@@ -37,11 +38,11 @@ describe('Components / Button group', () => {
       const onClick = vi.fn()
 
       render(
-        <Button.Group>
+        <ButtonGroup>
           <Button onClick={onClick}>One</Button>
           <Button>Two</Button>
           <Button>Three</Button>
-        </Button.Group>,
+        </ButtonGroup>,
       )
 
       const firstButton = buttons()[0]
@@ -56,13 +57,13 @@ describe('Components / Button group', () => {
       const user = userEvent.setup()
       render(
         <>
-          <Button.Group>
+          <ButtonGroup>
             <Button>Inside</Button>
-          </Button.Group>
+          </ButtonGroup>
           <Button>Outside</Button>
         </>,
-      ),
-        await user.tab()
+      )
+      await user.tab()
 
       expect(buttons()[0]).toHaveFocus()
 
@@ -75,11 +76,11 @@ describe('Components / Button group', () => {
   describe('Rendering', () => {
     it("should correctly set each `Button`'s position", () => {
       render(
-        <Button.Group>
+        <ButtonGroup>
           <Button>One</Button>
           <Button>Two</Button>
           <Button>Three</Button>
-        </Button.Group>,
+        </ButtonGroup>,
       )
 
       const positionClasses = theme.buttonGroup.position
@@ -100,11 +101,11 @@ describe('Components / Button group', () => {
 
       render(
         <PoluiProvider theme={{ theme }}>
-          <Button.Group>
+          <ButtonGroup>
             <Button>One</Button>
             <Button>Two</Button>
             <Button>Three</Button>
-          </Button.Group>
+          </ButtonGroup>
         </PoluiProvider>,
       )
 
@@ -120,11 +121,11 @@ describe('Components / Button group', () => {
 
       render(
         <PoluiProvider theme={{ theme }}>
-          <Button.Group>
+          <ButtonGroup>
             <Button>One</Button>
             <Button>Two</Button>
             <Button>Three</Button>
-          </Button.Group>
+          </ButtonGroup>
         </PoluiProvider>,
       )
 

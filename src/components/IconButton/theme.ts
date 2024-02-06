@@ -1,5 +1,5 @@
 import type { ColorsType, MainSizesType, RoundedSizesTypes } from '../../types'
-import type { ButtonGroupTheme } from '../Button/ButtonGroup/ButtonGroup'
+import type { ButtonGroupTheme } from '../ButtonGroup'
 
 export interface IconButtonTheme {
   base: string

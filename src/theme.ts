@@ -5,7 +5,7 @@ import { avatarTheme } from './components/Avatar/theme'
 import { badgeTheme } from './components/Badge/theme'
 import { blockquoteTheme } from './components/Blockquote/theme'
 import { breadcrumbTheme } from './components/Breadcrumb/theme'
-import { buttonGroupTheme, iconButtonTheme } from './components/IconButton/theme'
+import { iconButtonTheme } from './components/IconButton/theme'
 import { cardTheme } from './components/Card/theme'
 import { carouselTheme } from './components/Carousel/theme'
 import { checkboxTheme } from './components/Checkbox/theme'
@@ -41,6 +41,7 @@ import { copyrightTheme } from './components/Copyright/theme'
 import { directionHoverTheme } from './components/DirectionHover/theme'
 import { conveyorTheme } from './components/Conveyor/theme'
 import { popoverTheme } from './components/Popover'
+import { buttonGroupTheme } from './components/ButtonGroup'
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,

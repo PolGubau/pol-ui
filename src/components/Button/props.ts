@@ -1,6 +1,7 @@
 import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react'
 import type { Colors, DeepPartial, MainSizes, RoundedSizes } from '../../types'
-import type { ButtonTheme, PositionInButtonGroup } from '.'
+import type { ButtonTheme } from '.'
+import type { PositionInButtonGroup } from '../ButtonGroup'
 
 export type ButtonProps<T extends ElementType = 'button'> = {
   as?: T | null
