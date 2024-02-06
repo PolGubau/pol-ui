@@ -45,7 +45,7 @@ export const AllRounded = () => (
     {Object.keys(theme.popover.rounded).map(rounded => (
       <Popover key={rounded}>
         <PopoverTrigger>
-          <Button>Open Popover</Button>
+          <Button>{rounded} Popover content</Button>
         </PopoverTrigger>
         <PopoverContent rounded={rounded as RoundedSizes}>Content of the popover</PopoverContent>
       </Popover>
