@@ -5,7 +5,7 @@
   "tasks": [
     {
       "type": "npm",
-      "script": "yarn storybook",
+      "script": "storybook",
       "runOptions": {
         "runOn": "folderOpen"
       }

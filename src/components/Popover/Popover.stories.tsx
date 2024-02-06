@@ -3,6 +3,8 @@ import { Popover, PopoverContent, PopoverTrigger } from './Popover'
 import React from 'react'
 import { Button } from '../Button'
 import { Avatar } from '../Avatar'
+import type { RoundedSizes } from '../../types'
+import { theme } from '../../theme'
 
 export default {
   title: 'Components/Popover',
@@ -38,6 +40,19 @@ export const Default = (): JSX.Element => {
     </Popover>
   )
 }
+export const AllRounded = () => (
+  <div className="flex gap-3 flex-wrap">
+    {Object.keys(theme.popover.rounded).map(rounded => (
+      <Popover key={rounded}>
+        <PopoverTrigger>
+          <Button>Open Popover</Button>
+        </PopoverTrigger>
+        <PopoverContent rounded={rounded as RoundedSizes}>Content of the popover</PopoverContent>
+      </Popover>
+    ))}
+  </div>
+)
+
 export const RealExample = (): JSX.Element => {
   return (
     <Popover>

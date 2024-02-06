@@ -397,3 +397,18 @@ export enum DirectionEnum {
   bottom = 'bottom',
   left = 'left',
 }
+
+/**
+ * @name AlignEnum
+ * @description Enum for the different alignments, start, center and end
+ * @property {string} start - Start alignment
+ * @property {string} center - Center alignment
+ * @property {string} end - End alignment
+ *
+ * @author Pol Gubau Amores - https://polgubau.com
+ */
+export enum AlignEnum {
+  start = 'start',
+  center = 'center',
+  end = 'end',
+}

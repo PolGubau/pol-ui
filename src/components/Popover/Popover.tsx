@@ -4,6 +4,11 @@ import * as React from 'react'
 import * as Primitive from '@radix-ui/react-popover'
 import { twMerge } from 'tailwind-merge'
 import { AnimatePresence } from 'framer-motion'
+import type { Align, DeepPartial, RoundedSizes } from '../../types'
+import { AlignEnum, RoundedSizesEnum } from '../../types'
+import { mergeDeep } from '../../helpers/merge-deep'
+import { getTheme } from '../../theme-store'
+import type { PopoverTheme } from './theme'
 
 /**
  * @name Popover
@@ -33,27 +38,43 @@ const PopoverTrigger = Primitive.Trigger
 
 const PopoverAnchor = Primitive.Anchor
 
-const base = 'z-50 min-w-72 rounded-md border bg-secondary-50 p-4 text-secondary-900 shadow-md outline-none '
-const animation =
-  ' will-change-[transform,opacity] data-[state=open]:data-[side=top]:animate-slideDownAndFade data-[state=open]:data-[side=right]:animate-slideLeftAndFade data-[state=open]:data-[side=bottom]:animate-slideUpAndFade data-[state=open]:data-[side=left]:animate-slideRightAndFade'
+export interface PopoverProps extends React.ComponentPropsWithoutRef<typeof Primitive.Root> {
+  children: React.ReactNode
+  align?: Align
+  sideOffset?: number
+  className?: string
+  theme?: DeepPartial<PopoverTheme>
+  rounded?: RoundedSizes
+}
 
-const PopoverContent = React.forwardRef<
-  React.ElementRef<typeof Primitive.Content>,
-  React.ComponentPropsWithoutRef<typeof Primitive.Content>
->(({ className, align = 'center', sideOffset = 4, ...props }, ref) => {
-  return (
-    <AnimatePresence mode="wait">
-      <Primitive.Portal>
-        <Primitive.Content
-          ref={ref}
-          align={align}
-          sideOffset={sideOffset}
-          className={twMerge(base, animation, className)}
-          {...props}
-        />
-      </Primitive.Portal>
-    </AnimatePresence>
-  )
-})
+const PopoverContent = React.forwardRef<React.ElementRef<typeof Primitive.Content>, PopoverProps>(
+  (
+    {
+      className,
+      align = AlignEnum.center,
+      sideOffset = 4,
+      rounded = RoundedSizesEnum.md,
+      theme: customTheme = {},
+      ...props
+    },
+    ref,
+  ) => {
+    const theme = mergeDeep(getTheme().popover, customTheme)
+
+    return (
+      <AnimatePresence mode="wait">
+        <Primitive.Portal>
+          <Primitive.Content
+            ref={ref}
+            align={align}
+            sideOffset={sideOffset}
+            className={twMerge(theme.base, theme.animation, theme.rounded[rounded], className)}
+            {...props}
+          />
+        </Primitive.Portal>
+      </AnimatePresence>
+    )
+  },
+)
 PopoverContent.displayName = 'PopoverContent'
 export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor }

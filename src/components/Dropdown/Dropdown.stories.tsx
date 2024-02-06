@@ -2,8 +2,8 @@ import type { Meta } from '@storybook/react'
 import { Dropdown } from './Dropdown'
 import { DropdownItem } from './DropdownItem'
 import { theme } from '../../theme'
-import { MainSizesEnum } from '../../types/enums'
 import { Avatar } from '../Avatar'
+import type { RoundedSizes } from '../../types'
 
 export default {
   title: 'Components/Dropdown',
@@ -80,7 +80,7 @@ export const SimpleExample = () => (
 export const Colors = () => (
   <div className="flex gap-3 flex-wrap">
     {Object.keys(theme.dropdown.root.color).map(c => (
-      <Dropdown label={c} color={c} key={c}>
+      <Dropdown label={c} color={c as keyof typeof theme.dropdown.root.color} key={c}>
         <Example />
       </Dropdown>
     ))}
@@ -88,17 +88,19 @@ export const Colors = () => (
 )
 export const Roundness = () => (
   <div className="flex gap-3 flex-wrap">
-    {Object.keys(theme.dropdown.rounded).map(c => (
-      <Dropdown label={c} rounded={c} key={c}>
-        <Example />
-      </Dropdown>
-    ))}
+    {Object.keys(theme.dropdown.rounded).map(c => {
+      return (
+        <Dropdown label={c} rounded={c as RoundedSizes} key={c}>
+          <Example />
+        </Dropdown>
+      )
+    })}
   </div>
 )
 export const Sizes = () => (
   <div className="flex gap-3 flex-wrap items-center">
-    {Object.keys(MainSizesEnum).map(c => (
-      <Dropdown label={c} size={c} key={c}>
+    {Object.keys(theme.dropdown.size).map(c => (
+      <Dropdown label={c} size={c as keyof typeof theme.dropdown.size} key={c}>
         <Example />
       </Dropdown>
     ))}

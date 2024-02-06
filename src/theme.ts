@@ -40,6 +40,7 @@ import { footerTheme } from './components/Footer/theme'
 import { copyrightTheme } from './components/Copyright/theme'
 import { directionHoverTheme } from './components/DirectionHover/theme'
 import { conveyorTheme } from './components/Conveyor/theme'
+import { popoverTheme } from './components/Popover'
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,
@@ -84,4 +85,5 @@ export const theme: PoluiTheme = {
   toast: toastTheme,
   tooltip: tooltipTheme,
   directionHover: directionHoverTheme,
+  popover: popoverTheme,
 }

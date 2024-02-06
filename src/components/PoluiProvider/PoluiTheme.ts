@@ -40,6 +40,7 @@ import type { HelperTextTheme } from '../HelperText/theme'
 import type { CopyrightTheme } from '../Copyright/theme'
 import type { DirectionHoverTheme } from '../DirectionHover/theme'
 import type { ConveyorTheme } from '../Conveyor/theme'
+import type { PopoverTheme } from '../Popover'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -53,6 +54,7 @@ export interface PoluiTheme {
   alert: AlertTheme
   avatar: AvatarTheme
   badge: BadgeTheme
+  popover: PopoverTheme
   banner: BannerTheme
   blockquote: BlockquoteTheme
   breadcrumb: BreadcrumbTheme

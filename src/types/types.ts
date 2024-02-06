@@ -10,6 +10,7 @@ import type {
   RoundedSizesEnum,
   TriggerReasonEnum,
   DirectionEnum,
+  AlignEnum,
 } from './enums'
 
 export type DeepPartial<T> = T extends object
@@ -159,3 +160,5 @@ export type TriggerReason = `${TriggerReasonEnum}`
  * @author Pol Gubau Amores - https://polgubau.com
  */
 export type Direction = `${DirectionEnum}`
+
+export type Align = `${AlignEnum}`
