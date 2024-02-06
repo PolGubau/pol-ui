@@ -1,5 +1,4 @@
 export { Button } from './Button'
 export type { ButtonProps } from './props'
-export { ButtonGroup } from './ButtonGroup/ButtonGroup'
-export type { ButtonGroupProps, ButtonGroupTheme, PositionInButtonGroup } from './ButtonGroup/ButtonGroup'
 export { buttonTheme, type ButtonTheme } from './theme'
+export { ButtonGroup, type ButtonGroupTheme, type ButtonGroupProps, type PositionInButtonGroup } from './ButtonGroup'

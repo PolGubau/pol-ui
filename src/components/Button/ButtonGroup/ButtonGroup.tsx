@@ -5,18 +5,7 @@ import { mergeDeep } from '../../../helpers/merge-deep'
 import { getTheme } from '../../../theme-store'
 import type { DeepPartial } from '../../../types/types'
 import type { ButtonProps } from '..'
-
-export interface ButtonGroupTheme {
-  base: string
-  position: PositionInButtonGroup
-}
-
-export interface PositionInButtonGroup {
-  none: string
-  start: string
-  middle: string
-  end: string
-}
+import type { ButtonGroupTheme } from './theme'
 
 export interface ButtonGroupProps extends ComponentProps<'div'>, Pick<ButtonProps, 'outline'> {
   theme?: DeepPartial<ButtonGroupTheme>

@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import type { PropsWithChildren } from 'react'
 import { AiOutlineLoading } from 'react-icons/ai'
 import { describe, expect, it, vi } from 'vitest'
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider'
@@ -263,14 +262,14 @@ describe('Components / Button', () => {
       const theme: CustomPoluiTheme = {
         button: {
           size: {
-            xxl: 'font-extrabold',
+            xl: 'font-extrabold',
           },
         },
       }
 
       render(
         <PoluiProvider theme={{ theme }}>
-          <Button size="xxl">Hello</Button>
+          <Button size="xl">Hello</Button>
         </PoluiProvider>,
       )
 
