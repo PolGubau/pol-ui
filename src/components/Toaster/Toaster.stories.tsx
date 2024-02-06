@@ -115,16 +115,7 @@ export const Examples: StoryFn<ToasterProps> = args => {
       >
         Action on close Toast
       </Button>
-      <Button
-        color="error"
-        onClick={() =>
-          toast({
-            delete: true,
-          })
-        }
-      >
-        Kill all toasts
-      </Button>
+
       <Toaster {...args} />
     </div>
   )
