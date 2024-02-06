@@ -32,10 +32,8 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
   innerClassname = '',
   ...props
 }: ButtonProps<T>) => {
-  const themeObject = getTheme() ?? {}
-  const { buttonGroup: groupTheme, button: buttonTheme } = themeObject
+  const theme = mergeDeep(getTheme().button, customTheme)
 
-  const theme = mergeDeep(buttonTheme, customTheme)
   const theirProps = props as ButtonBaseProps<T>
 
   const [ripple, event] = useRipple({
@@ -63,7 +61,6 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
         outline ? theme.outline.color[color] : theme.color[color],
         theme.rounded[rounded],
         fullSized && theme.fullSized,
-        groupTheme.position[positionInGroup],
         className,
       )}
       {...theirProps}
