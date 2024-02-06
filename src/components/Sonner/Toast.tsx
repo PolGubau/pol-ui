@@ -265,7 +265,7 @@ export const Toast = ({
         const velocity = Math.abs(swipeAmount) / timeTaken
 
         // Remove only if threshold is met
-        if (Math.abs(swipeAmount) >= TOAST_SWIPE_THRESHOLD ?? velocity > 0.11) {
+        if (Math.abs(swipeAmount) >= TOAST_SWIPE_THRESHOLD || velocity > 0.11) {
           setOffsetBeforeRemove(offset.current)
           toast.onDismiss?.(toast)
           deleteToast()
