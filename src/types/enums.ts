@@ -182,8 +182,8 @@ export const RoundedSizesEnum = {
  * @name BooleanEnum
  * @description Enum for booleans, on and off states
  * @example
- * <Button isProcessing={BooleanEnum.on} /> // Processing button
- * <Button isProcessing={BooleanEnum.off} /> // Not processing button
+ * <Button loading={BooleanEnum.on} /> // Processing button
+ * <Button loading={BooleanEnum.off} /> // Not processing button
  * @author Pol Gubau Amores - https://polgubau.com
  */
 export enum BooleanEnum {

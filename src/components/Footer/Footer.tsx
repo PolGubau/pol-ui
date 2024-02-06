@@ -5,7 +5,6 @@ import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types/types'
 import type { FooterBrandTheme } from './FooterBrand'
 import { FooterBrand } from './FooterBrand'
-import type { FooterCopyrightTheme } from '../Copyright/Copyright'
 import { Copyright } from '../Copyright/Copyright'
 import type { FooterDividerTheme } from './FooterDivider'
 import { FooterDivider } from './FooterDivider'
@@ -16,10 +15,11 @@ import type { FooterLinkGroupTheme } from './FooterLinkGroup'
 import { FooterLinkGroup } from './FooterLinkGroup'
 import type { FooterTitleTheme } from './FooterTitle'
 import { FooterTitle } from './FooterTitle'
+import type { CopyrightTheme } from '../Copyright'
 
 export interface FooterTheme {
   brand: FooterBrandTheme
-  copyright: FooterCopyrightTheme
+  copyright: CopyrightTheme
   divider: FooterDividerTheme
   groupLink: FooterLinkGroupTheme
   icon: FooterIconTheme

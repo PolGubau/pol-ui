@@ -1,57 +1,18 @@
 'use client'
 
-import type { ComponentPropsWithoutRef, ElementType } from 'react'
-import { type ReactNode } from 'react'
+import type { ElementType } from 'react'
 import { twMerge } from 'tailwind-merge'
 import genericForwardRef from '../../helpers/generic-forward-ref'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { Colors, DeepPartial, MainSizes, RoundedSizesTypes } from '../../types/types'
 import { Loader } from '../Loader'
 import { ButtonBase, type ButtonBaseProps } from './ButtonBase'
-import type { PositionInButtonGroup } from './ButtonGroup/ButtonGroup'
 import { ButtonGroup } from './ButtonGroup/ButtonGroup'
 import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../../types/enums'
 import { useRipple } from '../../hooks'
-import type { ButtonTheme } from './theme'
 import { motion } from 'framer-motion'
-
-export const rippleClass = (color: Colors) => {
-  switch (color) {
-    case ColorsEnum.primary:
-      return 'bg-primary-600'
-    case ColorsEnum.secondary:
-      return 'bg-secondary-600'
-    case ColorsEnum.success:
-      return 'bg-success-600'
-    case ColorsEnum.warning:
-      return 'bg-warning-600'
-    case ColorsEnum.error:
-      return 'bg-error-600'
-    case ColorsEnum.info:
-      return 'bg-info-600'
-    default:
-      return 'bg-primary-600'
-  }
-}
-export type ButtonProps<T extends ElementType = 'button'> = {
-  as?: T | null
-  href?: string
-  color?: Colors
-  fullSized?: boolean
-  target?: string
-  isProcessing?: boolean
-  processingLabel?: string
-  hasMotion?: boolean
-  processingLoader?: ReactNode
-  label?: ReactNode
-  outline?: boolean
-  rounded?: keyof RoundedSizesTypes
-  positionInGroup?: keyof PositionInButtonGroup
-  size?: MainSizes
-  theme?: DeepPartial<ButtonTheme>
-  innerClassname?: string
-} & ComponentPropsWithoutRef<T>
+import type { ButtonProps } from './props'
+import { rippleClass } from '../../helpers/rippleClass'
 
 const ButtonComponentFn = <T extends ElementType = 'button'>({
   children,
@@ -60,9 +21,9 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
   disabled,
   hasMotion = false,
   fullSized = false,
-  isProcessing = false,
-  processingLabel = 'Loading...',
-  processingLoader,
+  loading = false,
+  loadingLabel = 'Loading...',
+  loader,
   label,
   outline = false,
   rounded = RoundedSizesEnum.md,
@@ -78,7 +39,7 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
   const theirProps = props as ButtonBaseProps<T>
 
   const [ripple, event] = useRipple({
-    disabled: disabled || isProcessing,
+    disabled: disabled || loading,
     opacity: 0.2,
     className: rippleClass(color),
   })
@@ -113,22 +74,22 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
           theme.outline[outline ? 'on' : 'off'],
           theme.size[size],
           outline && !theme.outline.color[color] && theme.inner.outline,
-          isProcessing && theme.isProcessing,
-          isProcessing && theme.inner.isProcessingPadding[size],
+          loading && theme.loading,
+          loading && theme.inner.loadingPadding[size],
           theme.inner.position[positionInGroup],
           innerClassname,
         )}
       >
-        {isProcessing && (
+        {loading && (
           <span className={twMerge(theme.loaderSlot, theme.loaderLeftPosition[size])}>
-            {processingLoader ?? <Loader size={size} />}
+            {loader ?? <Loader size={size} />}
           </span>
         )}
         {typeof children !== 'undefined' ? (
           children
         ) : (
           <span data-testid="ui-button-label" className={twMerge(theme.label)}>
-            {isProcessing ? processingLabel : label}
+            {loading ? loadingLabel : label}
           </span>
         )}
       </span>

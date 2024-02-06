@@ -5,6 +5,7 @@ import { Button } from '../Button'
 import { Avatar } from '../Avatar'
 import type { RoundedSizes } from '../../types'
 import { theme } from '../../theme'
+import { useBoolean } from '../../hooks'
 
 export default {
   title: 'Components/Popover',
@@ -52,6 +53,42 @@ export const AllRounded = () => (
     ))}
   </div>
 )
+export const DefaultOpen = () => (
+  <div className="flex gap-3 flex-wrap">
+    <Popover defaultOpen>
+      <PopoverTrigger>
+        <Button>Main popover</Button>
+      </PopoverTrigger>
+      <PopoverContent>Content of the popover</PopoverContent>
+    </Popover>
+  </div>
+)
+
+export const Controlled = (): JSX.Element => {
+  const { value, toggle } = useBoolean(false)
+  return (
+    <>
+      Open state is {value.toString()}
+      <Popover open={value} onOpenChange={toggle}>
+        <PopoverTrigger>
+          <Button>Open Popover</Button>
+        </PopoverTrigger>
+        <PopoverContent className="flex flex-col items-center rounded-2xl">
+          <Avatar size="lg" img={'./images/people/me.png'} />
+          <h2 className="text-lg font-bold mt-2">Pol Gubau Amores</h2>
+          <p className="text-sm text-secondary-500">Software Engineer at Pol-ui</p>
+
+          <div className="mt-4 flex items-center">
+            <Button color="secondary">View Profile</Button>
+            <Button color="primary" className="ml-2">
+              Follow
+            </Button>
+          </div>
+        </PopoverContent>
+      </Popover>
+    </>
+  )
+}
 
 export const RealExample = (): JSX.Element => {
   return (

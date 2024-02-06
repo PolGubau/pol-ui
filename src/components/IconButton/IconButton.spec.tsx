@@ -58,7 +58,7 @@ describe('Components / IconButton', () => {
         expect(iconButton()).toBeDisabled()
       })
 
-      it('should show custom Loader when `isLoading={true}` and `processingLoader` is present', () => {
+      it('should show custom Loader when `isLoading={true}` and `loader` is present', () => {
         render(<IconButton isLoading>Hi there</IconButton>)
 
         expect(screen.getByTestId('loader')).toBeInTheDocument()

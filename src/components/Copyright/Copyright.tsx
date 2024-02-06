@@ -1,22 +1,16 @@
-import type { ComponentProps, FC } from 'react'
+import type { FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types/types'
+import type { CopyrightProps } from './props'
 
-export interface FooterCopyrightTheme {
-  base: string
-  href: string
-  span: string
-}
-
-export interface CopyrightProps extends ComponentProps<'div'> {
-  by?: string
-  href?: string
-  theme?: DeepPartial<FooterCopyrightTheme>
-  year?: number
-}
-
+/**
+ * @name Copyright
+ * @description Functional component for rendering copyright information.
+ * @param {CopyrightProps} props - Props for the Copyright component.
+ * @returns {JSX.Element}
+ * @author Pol Gubau Amores - https://polgubau.com
+ */
 export const Copyright: FC<CopyrightProps> = ({
   by,
   className,

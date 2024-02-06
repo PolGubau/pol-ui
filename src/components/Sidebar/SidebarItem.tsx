@@ -52,7 +52,7 @@ const ListItem: FC<
   }>
 > = ({ id, theme, collapsed, tooltipChildren, children: wrapperChildren, ...props }) => {
   const [ripple, event] = useRipple({
-    // disabled: disabled || isProcessing,
+    // disabled: disabled || loading,
     opacity: 0.2,
     // className: rippleClass(color),
   })

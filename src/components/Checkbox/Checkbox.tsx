@@ -1,21 +1,25 @@
-import type { ComponentProps } from 'react'
 import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { Colors, DeepPartial } from '../../types/types'
+import type { DeepPartial } from '../../types/types'
 import { ColorsEnum } from '../../types/enums'
 import { Label } from '../Label'
 import { TbCheck } from 'react-icons/tb'
 import type { CheckboxTheme } from './theme'
 import { AnimatePresence, motion } from 'framer-motion'
+import { CheckboxProps } from './props'
 
-export interface CheckboxProps extends Omit<ComponentProps<'input'>, 'type' | 'ref' | 'color'> {
-  theme?: DeepPartial<CheckboxTheme>
-  color?: Colors
-  label?: string
-}
-
+/**
+ * @name AnimatedCheckIcon
+ * @description Animated check icon for the Checkbox component.
+ * @param {object} props - Props for the AnimatedCheckIcon component.
+ * @param {boolean} props.initial - Initial visibility state.
+ * @param {boolean} props.isVisible - Visibility state.
+ * @param {DeepPartial<CheckboxTheme>} props.theme - Custom theme for the icon.
+ * @param {Colors} props.color - Color of the icon.
+ * @returns {JSX.Element}
+ */
 const AnimatedCheckIcon = ({
   initial = true,
   isVisible = false,
@@ -26,7 +30,7 @@ const AnimatedCheckIcon = ({
   isVisible?: boolean
   theme?: DeepPartial<CheckboxTheme>
   color?: CheckboxProps['color']
-}) => {
+}): JSX.Element => {
   const theme = mergeDeep(getTheme().checkbox, customTheme)
 
   return (
@@ -61,31 +65,41 @@ const AnimatedCheckIcon = ({
     </AnimatePresence>
   )
 }
+
+/**
+ * @name Checkbox
+ * @description Checkbox component for user input.
+ * @param {CheckboxProps} props - Props for the Checkbox component.
+ * @param {string} props.className - Additional class names for styling.
+ * @param {string} props.label - Label text for the checkbox.
+ * @param {Colors} props.color - Color of the checkbox.
+ * @param {DeepPartial<CheckboxTheme>} props.theme - Custom theme for the checkbox.
+ * @author Pol Gubau Amores - https://polgubau.com
+ * @returns {JSX.Element}
+ */
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   ({ className, label, color = ColorsEnum.primary, theme: customTheme = {}, ...props }, ref) => {
     const theme = mergeDeep(getTheme().checkbox, customTheme)
 
     return (
-      <>
-        <div className="inline-flex items-center gap-3 relative">
-          <input
-            id={props.id ?? label}
-            {...props}
-            className={twMerge(theme.base, theme.before, theme.color[color], className)}
-            ref={ref}
-            type="checkbox"
-          />
+      <div className="inline-flex items-center gap-3 relative">
+        <input
+          id={props.id ?? label}
+          {...props}
+          className={twMerge(theme.base, theme.before, theme.color[color], className)}
+          ref={ref}
+          type="checkbox"
+        />
 
-          {typeof props.checked === 'undefined' ? (
-            <span className={twMerge(theme.check.base, theme.check.color[color])}>
-              <TbCheck />
-            </span>
-          ) : (
-            <AnimatedCheckIcon isVisible={props.checked ?? false} color={color} />
-          )}
-          {label && <Label htmlFor={props.id ?? label}>{label}</Label>}
-        </div>
-      </>
+        {typeof props.checked === 'undefined' ? (
+          <span className={twMerge(theme.check.base, theme.check.color[color])}>
+            <TbCheck />
+          </span>
+        ) : (
+          <AnimatedCheckIcon isVisible={props.checked ?? false} color={color} />
+        )}
+        {label && <Label htmlFor={props.id ?? label}>{label}</Label>}
+      </div>
     )
   },
 )

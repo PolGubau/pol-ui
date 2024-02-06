@@ -86,16 +86,16 @@ describe('Components / Button', () => {
       expect(button()).toBeDisabled()
     })
 
-    it('should show <Loader /> when `isProcessing={true}`', () => {
-      render(<Button isProcessing>Hi there</Button>)
+    it('should show <Loader /> when `loading={true}`', () => {
+      render(<Button loading>Hi there</Button>)
 
       expect(screen.getByText(/Hi there/)).toBeInTheDocument()
       expect(screen.getByRole('button')).toBeInTheDocument()
     })
 
-    it('should show custom Loader when `isProcessing={true}` and `processingLoader` is present', () => {
+    it('should show custom Loader when `loading={true}` and `loader` is present', () => {
       render(
-        <Button isProcessing processingLoader={<AiOutlineLoading data-testid="Loader" />}>
+        <Button loading loader={<AiOutlineLoading data-testid="Loader" />}>
           Hi there
         </Button>,
       )

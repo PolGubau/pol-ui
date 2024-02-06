@@ -1,10 +1,9 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import { theme } from '../../theme'
-import type { ButtonProps } from './Button'
-import { Button } from './Button'
+import { Button } from '.'
 import { BsHandThumbsUpFill } from 'react-icons/bs'
-import type { Colors } from '../../types'
-import type { MainSizes } from '../../types'
+import type { MainSizes, Colors, RoundedSizes } from '../../types'
+import type { ButtonProps } from '.'
 
 export default {
   title: 'Components/Buttons/Button',
@@ -64,7 +63,7 @@ OutlineButton.args = {
 export const Processing = Template.bind({})
 Processing.args = {
   ...DefaultButton.args,
-  isProcessing: true,
+  loading: true,
 }
 export const Disabled = Template.bind({})
 Disabled.args = {
@@ -97,7 +96,7 @@ WithoutMotion.args = {
 export const Rounded = (args: ButtonProps) => (
   <div className="flex gap-3 flex-wrap">
     {Object.keys(theme.button.rounded).map(rounded => (
-      <Button key={rounded} {...args} rounded={rounded}>
+      <Button key={rounded} {...args} rounded={rounded as RoundedSizes}>
         {rounded}
       </Button>
     ))}

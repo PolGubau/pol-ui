@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react'
-import type { CheckboxProps } from './Checkbox'
+import type { CheckboxProps } from './props'
 import { Checkbox } from './Checkbox'
 import { ColorsEnum } from '../../types/enums'
 import { useState } from 'react'

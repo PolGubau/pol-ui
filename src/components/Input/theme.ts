@@ -1,4 +1,4 @@
-import type { InputTheme } from './InputTypes'
+import type { InputTheme } from './themeTypes'
 
 export const inputTheme: InputTheme = {
   root: {

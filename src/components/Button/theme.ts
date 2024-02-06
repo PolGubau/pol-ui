@@ -6,7 +6,7 @@ export interface ButtonTheme {
   fullSized: string
   color: ColorsType
   disabled: string
-  isProcessing: string
+  loading: string
   loaderSlot: string
   loaderLeftPosition: MainSizesType
   inner: ButtonInnerTheme
@@ -20,7 +20,7 @@ export interface ButtonInnerTheme {
   base: string
   position: PositionInButtonGroup
   outline: string
-  isProcessingPadding: MainSizesType
+  loadingPadding: MainSizesType
 }
 
 export interface ButtonOutlineTheme extends IBoolean {
@@ -41,7 +41,7 @@ export const buttonTheme: ButtonTheme = {
       'text-secondary-50 dark:text-secondary-900 bg-secondary enabled:hover:brightness-90  focus:ring-secondary',
   },
   disabled: 'cursor-not-allowed opacity-50',
-  isProcessing: 'cursor-wait',
+  loading: 'cursor-wait',
   loaderSlot: 'absolute h-full top-0 flex items-center animate-fade-in',
   loaderLeftPosition: {
     xs: 'left-2',
@@ -59,7 +59,7 @@ export const buttonTheme: ButtonTheme = {
       end: 'rounded-l-none',
     },
     outline: 'border border-transparent',
-    isProcessingPadding: {
+    loadingPadding: {
       xs: 'pl-8',
       sm: 'pl-10',
       md: 'pl-12',

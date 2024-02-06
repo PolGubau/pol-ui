@@ -1,7 +1,6 @@
 'use client'
 
-import type { ComponentPropsWithoutRef, ElementType } from 'react'
-import { type ReactNode } from 'react'
+import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { getTheme } from '../../theme-store'
 import type { Colors, DeepPartial, MainSizes, RoundedSizesTypes } from '../../types/types'
@@ -12,10 +11,10 @@ import { useRipple } from '../../hooks'
 import type { ButtonBaseProps } from '../Button/ButtonBase'
 import { ButtonBase } from '../Button/ButtonBase'
 import type { IconButtonTheme } from './theme'
-import { rippleClass } from '../Button/Button'
 import { Tooltip } from '../Tooltip'
 import { motion } from 'framer-motion'
 import { mergeDeep } from '../../helpers/merge-deep'
+import { rippleClass } from '../../helpers/rippleClass'
 
 export type IconButtonProps<T extends ElementType = 'button'> = {
   as?: T | null

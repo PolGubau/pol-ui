@@ -1,4 +1,4 @@
-import type { IBoolean } from '../PoluiProvider'
+import type { ColorsType, IBoolean, MainSizesType } from '../../types'
 
 /**
  * @name InputProps
@@ -29,8 +29,8 @@ export interface InputFieldIconTheme {
  */
 export interface InputInputTheme {
   base: string
-  sizes: MainSizes
-  colors: Colors
+  sizes: MainSizesType
+  colors: ColorsType
   label: {
     base: string
   }
@@ -39,7 +39,6 @@ export interface InputInputTheme {
   withRightIcon: IBoolean
   withAddon: IBoolean
   multiline: IBoolean
-
 }
 /**
  * @name InputFieldTheme

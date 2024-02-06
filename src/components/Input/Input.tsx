@@ -1,36 +1,11 @@
-import type { ComponentProps, ReactNode } from 'react'
 import { forwardRef, useId } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { Colors, DeepPartial, MainSizes } from '../../types/types'
 import { HelperText } from '../HelperText'
 import { ColorsEnum, MainSizesEnum } from '../../types/enums'
-import type { InputTheme } from './InputTypes'
 import { Label } from '../Label'
-
-export enum InputLabelPositionsEnum {
-  top = 'top',
-  left = 'left',
-}
-export type InputLabelPositions = keyof typeof InputLabelPositionsEnum
-export interface BaseInputsProps {
-  color?: Colors
-  helperText?: ReactNode
-  leftComponent?: ReactNode
-  rightComponent?: ReactNode
-  size?: keyof MainSizes
-  theme?: DeepPartial<InputTheme>
-  border?: boolean
-  label?: string
-  labelPosition?: InputLabelPositions
-  labelClassName?: string
-  innerClassName?: string
-}
-
-export interface InputProps extends Omit<ComponentProps<'input'>, 'ref' | 'color' | 'size'>, BaseInputsProps {
-  addon?: ReactNode
-}
+import type { InputProps } from './props'
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
