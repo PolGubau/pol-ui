@@ -1,16 +1,17 @@
-import type {
-  BooleanEnum,
-  StateColorsEnum,
-  BrandColorsEnum,
-  GetValuesEnum,
-  ColorsEnum,
-  HeadingLevelEnum,
-  MainSizesEnum,
-  SizesEnum,
-  RoundedSizesEnum,
-  TriggerReasonEnum,
-  DirectionEnum,
-  AlignEnum,
+import type { DirEnum } from './enums'
+import {
+  type BooleanEnum,
+  type StateColorsEnum,
+  type BrandColorsEnum,
+  type GetValuesEnum,
+  type ColorsEnum,
+  type HeadingLevelEnum,
+  type MainSizesEnum,
+  type SizesEnum,
+  type RoundedSizesEnum,
+  type TriggerReasonEnum,
+  type DirectionEnum,
+  type AlignEnum,
 } from './enums'
 
 export type DeepPartial<T> = T extends object
@@ -162,3 +163,5 @@ export type TriggerReason = `${TriggerReasonEnum}`
 export type Direction = `${DirectionEnum}`
 
 export type Align = `${AlignEnum}`
+
+export type Dir = `${DirEnum}`

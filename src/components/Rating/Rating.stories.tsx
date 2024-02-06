@@ -5,6 +5,7 @@ import { TbAdjustmentsBolt, TbCactus, TbLayout, TbPhoneCheck, TbPhotoFilled } fr
 import type { RatingTheme } from '.'
 import { Rating } from '.'
 import { Progress } from '../Progress'
+import type { MainSizes } from '../../types'
 
 export default {
   title: 'Components/Rating',
@@ -47,7 +48,7 @@ export const CustomFilledAmount = (): JSX.Element => (
 export const CustomSize = (): JSX.Element => (
   <div className="flex flex-col gap-4 w-full">
     {Object.keys(ratingTheme.star.size).map(size => (
-      <Rating key={size} size={size} />
+      <Rating key={size} size={size as MainSizes} />
     ))}
   </div>
 )

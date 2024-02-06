@@ -1,10 +1,9 @@
-/* eslint-disable react/prop-types */
-
 import type { Meta, StoryFn } from '@storybook/react'
 import React, { useState } from 'react'
 import type { SwitchProps } from './Switch'
 import { Switch } from './Switch'
 import { ColorsEnum, MainSizesEnum } from '../../types/enums'
+import type { Colors, MainSizes } from '../../types'
 
 export default {
   title: 'Components/Switch',
@@ -39,7 +38,7 @@ export const AllColors = (): JSX.Element => (
   <div className="flex flex-wrap gap-6">
     {Object.keys(ColorsEnum).map(v => (
       <div key={v} className="flex flex-col items-center justify-center">
-        <Template color={v} checked={true} onChange={() => {}} label={v} />
+        <Template color={v as Colors} checked={true} onChange={() => {}} label={v} />
       </div>
     ))}
     <div className="flex flex-wrap gap-6 dark pt-10">
@@ -47,7 +46,7 @@ export const AllColors = (): JSX.Element => (
       <div className="bg-secondary-900 text-secondary-50 flex gap-2 flex-wrap p-4">
         {Object.keys(ColorsEnum).map(v => (
           <div key={v} className="flex flex-col items-center justify-center">
-            <Template color={v} checked={true} onChange={() => {}} label={v} />
+            <Template color={v as Colors} checked={true} onChange={() => {}} label={v} />
           </div>
         ))}
       </div>
@@ -59,16 +58,8 @@ export const AllSizes = (): JSX.Element => (
   <div className="flex flex-wrap gap-6">
     {Object.keys(MainSizesEnum).map(v => (
       <div key={v} className="flex flex-col items-center justify-center">
-        <Template size={v} checked={true} onChange={() => {}} label={v} />
+        <Template size={v as MainSizes} checked={true} onChange={() => {}} label={v} />
       </div>
     ))}
   </div>
 )
-AllSizes.storyName = 'All Sizes'
-
-// export const SmallSwitch = Template.bind({})
-// SmallSwitch.storyName = 'Small  switch'
-// SmallSwitch.args = {
-//   sizing: 'sm',
-//   label: 'small  switch',
-// }
