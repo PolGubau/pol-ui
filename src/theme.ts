@@ -31,7 +31,6 @@ import { tableTheme } from './components/Table/theme'
 import { tabsTheme } from './components/Tabs/theme'
 import { inputTheme } from './components/Input/theme'
 import { timelineTheme } from './components/Timeline/theme'
-import { toastTheme } from './components/Toast/theme'
 import { tooltipTheme } from './components/Tooltip/theme'
 import { bannerTheme } from './components/Banner/theme'
 import { switchTheme } from './components/Switch/theme'
@@ -42,6 +41,7 @@ import { directionHoverTheme } from './components/DirectionHover/theme'
 import { conveyorTheme } from './components/Conveyor/theme'
 import { popoverTheme } from './components/Popover'
 import { buttonGroupTheme } from './components/ButtonGroup'
+import { toastTheme } from './components/Toaster/theme'
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,

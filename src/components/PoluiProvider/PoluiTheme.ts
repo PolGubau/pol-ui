@@ -31,7 +31,6 @@ import type { TableTheme } from '../Table'
 import type { TabsTheme } from '../Tabs'
 import type { InputTheme } from '../Input'
 import type { TimelineTheme } from '../Timeline'
-import type { ToastTheme } from '../Toast'
 import type { TooltipTheme } from '../Tooltip'
 import type { BannerTheme } from '../Banner/Banner'
 import type { SwitchTheme } from '../Switch'
@@ -42,6 +41,7 @@ import type { DirectionHoverTheme } from '../DirectionHover/theme'
 import type { ConveyorTheme } from '../Conveyor/theme'
 import type { PopoverTheme } from '../Popover'
 import type { ButtonGroupTheme } from '../ButtonGroup'
+import { ToastTheme } from '../Toaster/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
