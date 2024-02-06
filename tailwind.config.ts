@@ -97,30 +97,43 @@ const config: Config = {
       },
 
       keyframes: {
-        rotate360: {
-          '0%': { transform: 'rotate(0deg)' },
-          '100%': { transform: 'rotate(360deg)' },
+        slideUpAndFade: {
+          from: { opacity: '0', transform: 'translateY(var(--smallSlideDistance))' },
+          to: { opacity: '1', transform: 'translateY(0)' },
         },
+        slideRightAndFade: {
+          from: { opacity: '0', transform: 'translateX(-translateY(var(--smallSlideDistance)))' },
+          to: { opacity: '1', transform: 'translateX(0)' },
+        },
+        slideDownAndFade: {
+          from: { opacity: '0', transform: 'translateY(-translateY(var(--smallSlideDistance)))' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
+        slideLeftAndFade: {
+          from: { opacity: '0', transform: 'translateY(var(--smallSlideDistance))' },
+          to: { opacity: '1', transform: 'translateX(0)' },
+        },
+
         scroll: {
           to: {
             transform: 'translate(calc(-50% - 0.5rem))',
           },
         },
         enterFromRight: {
-          from: { opacity: '0', transform: 'translateX(200px)' },
+          from: { opacity: '0', transform: 'translateX(var(--longSlideDistance))' },
           to: { opacity: '1', transform: 'translateX(0)' },
         },
         enterFromLeft: {
-          from: { opacity: '0', transform: 'translateX(-200px)' },
+          from: { opacity: '0', transform: 'translateX(-var(--longSlideDistance))' },
           to: { opacity: '1', transform: 'translateX(0)' },
         },
         exitToRight: {
           from: { opacity: '1', transform: 'translateX(0)' },
-          to: { opacity: '0', transform: 'translateX(200px)' },
+          to: { opacity: '0', transform: 'translateX(var(--longSlideDistance))' },
         },
         exitToLeft: {
           from: { opacity: '1', transform: 'translateX(0)' },
-          to: { opacity: '0', transform: 'translateX(-200px)' },
+          to: { opacity: '0', transform: 'translateX(-var(--longSlideDistance))' },
         },
         scaleIn: {
           from: { opacity: '0', transform: 'rotateX(-10deg) scale(0.9)' },
@@ -142,7 +155,6 @@ const config: Config = {
       animation: {
         scroll: 'scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite',
         'fade-in': 'fadeIn 200ms ease-in-out',
-        'rotate-360': 'rotate360 1s linear infinite',
         scaleIn: 'scaleIn 200ms ease',
         scaleOut: 'scaleOut 200ms ease',
         fadeIn: 'fadeIn 200ms ease',
@@ -151,6 +163,10 @@ const config: Config = {
         enterFromRight: 'enterFromRight 250ms ease',
         exitToLeft: 'exitToLeft 250ms ease',
         exitToRight: 'exitToRight 250ms ease',
+        slideUpAndFade: 'slideUpAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+        slideRightAndFade: 'slideRightAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+        slideDownAndFade: 'slideDownAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+        slideLeftAndFade: 'slideLeftAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
       },
     },
   },
