@@ -1,34 +1,39 @@
-import type { FooterTheme } from '../Footer/Footer'
+import type { ElementType } from 'react'
+
+export interface FooterTheme {
+  brand: FooterBrandTheme
+  groupLink: FooterLinkGroupTheme
+  root: FooterRootTheme
+}
+export interface FooterLinkGroupTheme {
+  title: string
+  base: string
+  col: string
+  titleAs?: ElementType
+}
+
+export interface FooterBrandTheme {
+  base: string
+  img: string
+  span: string
+}
+
+export interface FooterRootTheme {
+  base: string
+  container: string
+}
 
 export const footerTheme: FooterTheme = {
   root: {
-    base: 'w-full rounded-lg bg-white shadow dark:bg-gray-800 md:flex md:items-center md:justify-between',
+    base: 'w-full rounded-lg bg-secondary-50 shadow dark:bg-gray-800 md:flex md:items-center md:justify-between',
     container: 'w-full p-6',
-    bgDark: 'bg-gray-800',
   },
   groupLink: {
-    base: 'flex flex-wrap text-sm text-gray-500 dark:text-white gap-6 items-center',
-    link: {
-      base: '',
-      href: 'hover:underline',
-    },
-    col: 'flex-col space-y-4',
+    title: 'text-md pb-2 font-semibold text-gray-800 dark:text-secondary-100',
+    base: 'flex flex-wrap text-sm text-gray-500 dark:text-secondary-300 gap-x-6 gap-y-4 items-center',
+    col: 'flex-col',
   },
-  icon: {
-    base: 'text-gray-500 dark:hover:text-white',
-    size: 'h-5 w-5',
-  },
-  title: {
-    base: 'mb-6 text-sm font-semibold uppercase text-gray-500 dark:text-white',
-  },
-  divider: {
-    base: 'w-full my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8',
-  },
-  copyright: {
-    base: 'text-sm text-gray-500 dark:text-gray-400 sm:text-center',
-    href: 'ml-1 hover:underline',
-    span: 'ml-1',
-  },
+
   brand: {
     base: 'mb-4 flex items-center sm:mb-0',
     img: 'mr-3 h-8',

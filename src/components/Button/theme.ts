@@ -5,6 +5,10 @@ export interface ButtonTheme {
   base: string
   fullSized: string
   color: ColorsType
+  ring: {
+    base: string
+    colors: ColorsType
+  }
   disabled: string
   loading: string
   loaderSlot: string
@@ -29,20 +33,26 @@ export interface ButtonOutlineTheme extends IBoolean {
 }
 
 export const buttonTheme: ButtonTheme = {
-  base: 'group flex items-stretch outline-none items-center justify-center text-center w-auto relative focus:z-10 focus:outline-none transition-all focus:ring-offset-0 focus:ring-2 ',
+  base: 'group flex items-stretch outline-none items-center justify-center text-center w-auto relative focus:z-10 focus:outline-none transition-all focus:ring-2	enabled:hover:brightness-90 ',
   fullSized: 'w-full',
   color: {
-    error:
-      'text-error-50 dark:text-error-900 bg-error enabled:hover:brightness-90  enabled:focus:ring-error-700 focus:bg-error-600',
-    info: 'text-info-50 dark:text-info-900 bg-info   enabled:hover:brightness-90  enabled:focus:ring-info-700  ',
-    success:
-      'text-success-50 dark:text-success-900 bg-success  enabled:hover:brightness-90  enabled:focus:ring-success-700  ',
-    warning:
-      'text-warning-50 dark:text-warning-900 bg-warning enabled:hover:brightness-90  enabled:focus:ring-warning-700',
-    primary:
-      'text-primary-50 dark:text-primary-900 bg-primary enabled:hover:brightness-90  enabled:focus:ring-primary-700',
-    secondary:
-      'text-secondary-50 dark:text-secondary-900 bg-secondary enabled:hover:brightness-90  focus:ring-secondary',
+    error: 'text-error-50 dark:text-error-900 bg-error ',
+    info: 'text-info-50 dark:text-info-900 bg-info   ',
+    success: 'text-success-50 dark:text-success-900 bg-success',
+    warning: 'text-warning-50 dark:text-warning-900 bg-warning',
+    primary: 'text-primary-50 dark:text-primary-900 bg-primary',
+    secondary: 'text-secondary-50 dark:text-secondary-900 bg-secondary  focus:ring-secondary',
+  },
+  ring: {
+    base: 'enabled:focus:ring-2',
+    colors: {
+      error: 'ring-error-700 dark:ring-error-400',
+      info: 'ring-info-700 dark:ring-info-400',
+      success: 'ring-success-700 dark:ring-success-400',
+      warning: 'ring-warning-700 dark:ring-warning-400',
+      primary: 'ring-primary-700 dark:ring-primary-400',
+      secondary: 'ring-secondary-700 dark:ring-secondary-400',
+    },
   },
   disabled: 'cursor-not-allowed opacity-50',
   loading: 'cursor-wait',
@@ -71,8 +81,7 @@ export const buttonTheme: ButtonTheme = {
       xl: 'pl-20',
     },
   },
-  label:
-    'ml-2 inline-flex h-4 w-4 items-center justify-center rounded-full bg-cyan-200 text-xs font-semibold text-cyan-800',
+  label: 'ml-2 inline-flex h-4 w-4 items-center justify-center rounded-full text-xs font-semibold',
   outline: {
     outlineBase: 'enabled:hover:brightness-90  dark:enabled:hover:brightness-125 ring ring-1 focus:ring-[3px]',
     color: {

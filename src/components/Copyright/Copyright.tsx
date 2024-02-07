@@ -19,7 +19,7 @@ export const Copyright: FC<CopyrightProps> = ({
   year = new Date().getFullYear(),
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().footer.copyright, customTheme)
+  const theme = mergeDeep(getTheme().copyright, customTheme)
 
   return (
     <div data-testid="ui-footer-copyright" className={twMerge(theme.base, className)} {...props}>

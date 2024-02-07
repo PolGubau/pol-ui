@@ -41,7 +41,9 @@ import type { DirectionHoverTheme } from '../DirectionHover/theme'
 import type { ConveyorTheme } from '../Conveyor/theme'
 import type { PopoverTheme } from '../Popover'
 import type { ButtonGroupTheme } from '../ButtonGroup'
-import { ToastTheme } from '../Toaster/theme'
+import type { ToastTheme } from '../Toaster/theme'
+import type { DividerTheme } from '../Divider'
+import type { LinkTheme } from '../Link/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -77,12 +79,14 @@ export interface PoluiTheme {
   sidebar: SidebarTheme
   progress: ProgressTheme
   loader: LoaderTheme
+  link: LinkTheme
   tabs: TabsTheme
   toast: ToastTheme
   directionHover: DirectionHoverTheme
   tooltip: TooltipTheme
   dropdown: DropdownTheme
   checkbox: CheckboxTheme
+  divider: DividerTheme
   fileInput: FileInputTheme
   label: LabelTheme
   radio: RadioTheme

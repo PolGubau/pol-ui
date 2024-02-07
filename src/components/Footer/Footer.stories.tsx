@@ -1,9 +1,13 @@
-/* eslint-disable react/prop-types */
 import type { Meta, StoryFn } from '@storybook/react'
-import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs'
+import { BsDribbble, BsGithub, BsInstagram } from 'react-icons/bs'
 import { Footer } from './Footer'
-import { Link } from '../Button/Button.stories'
 import { Button } from '../Button'
+import { Divider } from '../Divider'
+import { IconButton } from '../IconButton'
+import { Copyright } from '../Copyright'
+import { Link } from '../Link'
+import { FooterBrand } from './FooterBrand'
+import { FooterLinkGroup } from './FooterLinkGroup'
 
 export default {
   title: 'Components/Footer',
@@ -11,7 +15,7 @@ export default {
   tags: ['Footer', 'autodocs'],
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col items-end justify-end py-20 min-h-[400px] h-full bg-secondary-50">
+      <div className="flex p-6 flex-col items-end justify-end py-20 h-full ">
         <Story />
       </div>
     ),
@@ -28,14 +32,14 @@ DefaultFooter.storyName = 'Default'
 DefaultFooter.args = {
   children: (
     <div className="flex w-full justify-between p-6">
-      <Footer.Copyright href="#" by="Pol-ui" year={thisYear} />
-      <Footer.LinkGroup>
-        <Footer.Link href="#">About</Footer.Link>
-        <Footer.Link href="#">Privacy Policy</Footer.Link>
-        <Footer.Link href="#">Licensing</Footer.Link>
-        <Footer.Link href="#">Contact</Footer.Link>
+      <Copyright href="#" by="Pol-ui" year={thisYear} />
+      <FooterLinkGroup>
+        <Link href="#">About</Link>
+        <Link href="#">Privacy Policy</Link>
+        <Link href="#">Licensing</Link>
+        <Link href="#">Contact</Link>
         <Button size="sm">Get Started</Button>
-      </Footer.LinkGroup>
+      </FooterLinkGroup>
     </div>
   ),
 }
@@ -46,16 +50,16 @@ WithLogoFooter.args = {
   children: (
     <div className="w-full p-6 text-center">
       <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
-        <Footer.Brand href="https://ui.polgubau.com" src="/images/logo.png" alt="Pol-ui Logo" name="Pol-ui" />
-        <Footer.LinkGroup>
-          <Footer.Link href="#">About</Footer.Link>
-          <Footer.Link href="#">Privacy Policy</Footer.Link>
-          <Footer.Link href="#">Licensing</Footer.Link>
-          <Footer.Link href="#">Contact</Footer.Link>
-        </Footer.LinkGroup>
+        <FooterBrand href="https://ui.polgubau.com" src="/images/logo.png" alt="Pol-ui Logo" />
+        <FooterLinkGroup>
+          <Link href="#">About</Link>
+          <Link href="#">Privacy Policy</Link>
+          <Link href="#">Licensing</Link>
+          <Link href="#">Contact</Link>
+        </FooterLinkGroup>
       </div>
-      <Footer.Divider />
-      <Footer.Copyright href="#" by="Pol-ui™" year={2022} />
+      <Divider />
+      <Copyright href="#" by="Pol-ui™" year={2022} />
     </div>
   ),
 }
@@ -68,41 +72,45 @@ WithSocialMediaFooter.args = {
     <div className="w-full p-6">
       <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
         <div>
-          <Footer.Brand href="https://ui.polgubau.com" src="/images/logo.png" alt="Pol-ui Logo" name="Pol-ui" />
+          <FooterBrand href="https://ui.polgubau.com" src="/images/logo.png" alt="Pol-ui Logo" />
         </div>
         <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
           <div>
-            <Footer.Title title="about" />
-            <Footer.LinkGroup col>
-              <Footer.Link href="#">Pol-ui</Footer.Link>
-              <Footer.Link href="#">Tailwind CSS</Footer.Link>
-            </Footer.LinkGroup>
+            <FooterLinkGroup col title="about">
+              <Link href="#">Pol-ui</Link>
+              <Link href="#">Tailwind CSS</Link>
+            </FooterLinkGroup>
           </div>
           <div>
-            <Footer.Title title="Follow us" />
-            <Footer.LinkGroup col>
-              <Footer.Link href="#">Github</Footer.Link>
-              <Footer.Link href="#">Discord</Footer.Link>
-            </Footer.LinkGroup>
+            <FooterLinkGroup col title="Follow us">
+              <Link href="#">Github</Link>
+              <Link href="#">Discord</Link>
+            </FooterLinkGroup>
           </div>
           <div>
-            <Footer.Title title="Legal" />
-            <Footer.LinkGroup col>
-              <Footer.Link href="#">Privacy Policy</Footer.Link>
-              <Footer.Link href="#">Terms &amp; Conditions</Footer.Link>
-            </Footer.LinkGroup>
+            <FooterLinkGroup col title="Legal">
+              <Link href="#">Privacy Policy</Link>
+              <Link href="#">Terms &amp; Conditions</Link>
+            </FooterLinkGroup>
           </div>
         </div>
       </div>
-      <Footer.Divider />
+      <Divider />
       <div className="w-full sm:flex sm:items-center sm:justify-between">
-        <Footer.Copyright href="#" by="Pol-ui™" year={2022} />
-        <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-          <Footer.Icon href="#" icon={BsFacebook} />
-          <Footer.Icon href="#" icon={BsInstagram} />
-          <Footer.Icon href="#" icon={BsTwitter} />
-          <Footer.Icon href="#" icon={BsGithub} />
-          <Footer.Icon href="#" icon={BsDribbble} />
+        <Copyright href="#" by="Pol-ui™" year={2022} />
+        <div className="mt-4 flex space-x-2 sm:mt-0 sm:justify-center">
+          <IconButton href="#">
+            <BsDribbble size={20} />
+          </IconButton>
+          <IconButton href="#">
+            <BsInstagram size={20} />
+          </IconButton>
+          <IconButton href="#">
+            <BsGithub size={20} />
+          </IconButton>
+          <IconButton href="#">
+            <BsDribbble size={20} />
+          </IconButton>
         </div>
       </div>
     </div>
@@ -113,52 +121,55 @@ export const SitemapLinksFooter = Template.bind({})
 SitemapLinksFooter.storyName = 'Sitemap Links'
 SitemapLinksFooter.args = {
   children: (
-    <div className="w-full bg-gray-800">
+    <div className="w-full bg-gray-800 dark">
       <div className="grid w-full grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">
         <div>
-          <Footer.Title title="Company" />
-          <Footer.LinkGroup col>
-            <Footer.Link href="#">About</Footer.Link>
-            <Footer.Link href="#">Careers</Footer.Link>
-            <Footer.Link href="#">Brand Center</Footer.Link>
-            <Footer.Link href="#">Blog</Footer.Link>
-          </Footer.LinkGroup>
+          <FooterLinkGroup col title="Company">
+            <Link href="#">About</Link>
+            <Link href="#">Careers</Link>
+            <Link href="#">Brand Center</Link>
+            <Link href="#">Blog</Link>
+          </FooterLinkGroup>
         </div>
         <div>
-          <Footer.Title title="help center" />
-          <Footer.LinkGroup col>
-            <Footer.Link href="#">Discord Server</Footer.Link>
-            <Footer.Link href="#">Twitter</Footer.Link>
-            <Footer.Link href="#">Facebook</Footer.Link>
-            <Footer.Link href="#">Contact Us</Footer.Link>
-          </Footer.LinkGroup>
+          <FooterLinkGroup col title="help center">
+            <Link href="#">Discord Server</Link>
+            <Link href="#">Twitter</Link>
+            <Link href="#">Facebook</Link>
+            <Link href="#">Contact Us</Link>
+          </FooterLinkGroup>
         </div>
         <div>
-          <Footer.Title title="legal" />
-          <Footer.LinkGroup col>
-            <Footer.Link href="#">Privacy Policy</Footer.Link>
-            <Footer.Link href="#">Licensing</Footer.Link>
-            <Footer.Link href="#">Terms &amp; Conditions</Footer.Link>
-          </Footer.LinkGroup>
+          <FooterLinkGroup col title="legal">
+            <Link href="#">Privacy Policy</Link>
+            <Link href="#">Licensing</Link>
+            <Link href="#">Terms &amp; Conditions</Link>
+          </FooterLinkGroup>
         </div>
         <div>
-          <Footer.Title title="download" />
-          <Footer.LinkGroup col>
-            <Footer.Link href="#">iOS</Footer.Link>
-            <Footer.Link href="#">Android</Footer.Link>
-            <Footer.Link href="#">Windows</Footer.Link>
-            <Footer.Link href="#">MacOS</Footer.Link>
-          </Footer.LinkGroup>
+          <FooterLinkGroup col title="download">
+            <Link href="#">iOS</Link>
+            <Link href="#">Android</Link>
+            <Link href="#">Windows</Link>
+            <Link href="#">MacOS</Link>
+          </FooterLinkGroup>
         </div>
       </div>
-      <div className="w-full bg-gray-700 px-4 py-6 sm:flex sm:items-center sm:justify-between">
-        <Footer.Copyright href="#" by="Pol-ui™" year={2022} />
-        <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-          <Footer.Icon href="#" icon={BsFacebook} />
-          <Footer.Icon href="#" icon={BsInstagram} />
-          <Footer.Icon href="#" icon={BsTwitter} />
-          <Footer.Icon href="#" icon={BsGithub} />
-          <Footer.Icon href="#" icon={BsDribbble} />
+      <div className="w-full bg-gray-700 px-4 py-6 sm:flex sm:items-center sm:justify-between sm:px-10">
+        <Copyright href="#" by="Pol-ui™" year={2022} />
+        <div className="mt-4 flex space-x-2 sm:mt-0 sm:justify-center">
+          <IconButton href="#">
+            <BsDribbble size={20} />
+          </IconButton>
+          <IconButton href="#">
+            <BsInstagram size={20} />
+          </IconButton>
+          <IconButton href="#">
+            <BsGithub size={20} />
+          </IconButton>
+          <IconButton href="#">
+            <BsDribbble size={20} />
+          </IconButton>
         </div>
       </div>
     </div>

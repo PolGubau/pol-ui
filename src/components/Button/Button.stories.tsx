@@ -79,7 +79,7 @@ export const Transparent = Template.bind({})
 Transparent.args = {
   ...DefaultButton.args,
   rounded: 'xl',
-  className: 'bg-secondary-50 text-black dark:text-white',
+  hasBackground: false,
 }
 export const Link = Template.bind({})
 Link.args = {
@@ -87,10 +87,10 @@ Link.args = {
   href: 'https://www.polgubau.com',
   target: '_blank',
 }
-export const WithoutMotion = Template.bind({})
-WithoutMotion.args = {
+export const WithMotion = Template.bind({})
+WithMotion.args = {
   ...DefaultButton.args,
-  hasMotion: false,
+  hasMotion: true,
 }
 
 export const Rounded = (args: ButtonProps) => (

@@ -3,11 +3,7 @@ import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types/types'
-export interface FooterBrandTheme {
-  base: string
-  img: string
-  span: string
-}
+import type { FooterBrandTheme } from './theme'
 
 export interface FooterBrandProps extends PropsWithChildren {
   alt?: string

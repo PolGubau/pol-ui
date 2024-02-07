@@ -60,6 +60,8 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
         disabled && theme.disabled,
         outline && theme.outline.outlineBase,
         outline && theme.outline.color[color],
+        !outline && theme.ring.base,
+        !outline && theme.ring.colors[color],
         !outline && hasBackground && theme.color[color],
         theme.rounded[rounded],
         fullSized && theme.fullSized,

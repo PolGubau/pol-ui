@@ -4,18 +4,18 @@ import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types/types'
 
-export interface FooterLinkTheme {
+export interface LinkTheme {
   base: string
   href: string
 }
 
-export interface FooterLinkProps extends ComponentProps<'a'> {
+export interface LinkProps extends ComponentProps<'a'> {
   as?: ElementType
   href: string
-  theme?: DeepPartial<FooterLinkTheme>
+  theme?: DeepPartial<LinkTheme>
 }
 
-export const FooterLink: FC<FooterLinkProps> = ({
+export const Link: FC<LinkProps> = ({
   as: Component = 'a',
   children,
   className,
@@ -23,13 +23,11 @@ export const FooterLink: FC<FooterLinkProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().footer.groupLink.link, customTheme)
+  const theme = mergeDeep(getTheme().link, customTheme)
 
   return (
-    <li className={twMerge(theme.base, className)}>
-      <Component href={href} className={theme.href} {...props}>
-        {children}
-      </Component>
-    </li>
+    <Component href={href} className={twMerge(theme.base, theme.href, className)} {...props}>
+      {children}
+    </Component>
   )
 }
