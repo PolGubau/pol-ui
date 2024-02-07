@@ -120,7 +120,7 @@ const IconButtonFn = <T extends ElementType = 'button'>({
  */
 export const IconButton = <T extends ElementType = 'button'>(props: IconButtonProps<T>) => {
   const { label } = props
-  return label ? (
+  return label && !props.disabled ? (
     <Tooltip content={label}>
       <IconButtonFn {...props} />
     </Tooltip>
