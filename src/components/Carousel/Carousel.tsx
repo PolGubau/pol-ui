@@ -210,7 +210,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
         data-testid="carousel-right-control"
         size={size}
         className={twMerge(
-          'absolute h-8 w-8',
+          'absolute h-8 w-8 rounded-full',
           orientation === 'horizontal'
             ? '-right-12 top-1/2 -translate-y-1/2'
             : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
