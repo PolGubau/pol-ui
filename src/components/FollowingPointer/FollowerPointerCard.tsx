@@ -6,11 +6,16 @@ import React, { useEffect, useState } from 'react'
 import type { MotionValue } from 'framer-motion'
 import { motion, AnimatePresence, useMotionValue } from 'framer-motion'
 import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers'
+import { getTheme } from '../../theme-store'
+import type { DeepPartial } from '../../types'
+import type { FollowerPointerCardTheme } from './theme'
 
 export interface FollowerPointerCardProps extends React.PropsWithChildren {
   className?: string
   title?: string | React.ReactNode
   icon?: React.ReactNode | undefined
+  theme?: DeepPartial<FollowerPointerCardTheme>
 }
 
 export const FollowerPointerCard = ({
@@ -18,6 +23,7 @@ export const FollowerPointerCard = ({
   className,
   title,
   icon,
+  theme: customTheme = {},
 }: PropsWithChildren<FollowerPointerCardProps>) => {
   const x = useMotionValue(0)
   const y = useMotionValue(0)
@@ -46,19 +52,18 @@ export const FollowerPointerCard = ({
   const handleMouseEnter = () => {
     setIsInside(true)
   }
+  const theme = mergeDeep(getTheme().followerPointerCard, customTheme)
+
   return (
     <div
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
-      style={{
-        cursor: 'none',
-      }}
       ref={ref}
-      className={twMerge('relative', className)}
+      className={twMerge(theme.base, className)}
     >
       <AnimatePresence mode="wait">
-        {isInside && <FollowPointer x={x} y={y} title={title} icon={icon} />}
+        {isInside && <FollowPointer x={x} y={y} title={title} icon={icon} theme={theme} />}
       </AnimatePresence>
       {children}
     </div>
@@ -70,11 +75,13 @@ export const FollowPointer = ({
   y,
   title,
   icon,
+  theme,
 }: {
   x: MotionValue<number>
   y: MotionValue<number>
   title: string | React.ReactNode
   icon?: React.ReactNode
+  theme: DeepPartial<FollowerPointerCardTheme>
 }) => {
   const defaultIcon = icon ?? (
     <svg
@@ -82,7 +89,7 @@ export const FollowPointer = ({
       fill="currentColor"
       strokeWidth="1"
       viewBox="0 0 16 16"
-      className="h-6 w-6 text-primary transform -rotate-[70deg] -translate-x-[8px] -translate-y-[6px] stroke-primary-600"
+      className={theme.icon}
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +100,7 @@ export const FollowPointer = ({
 
   return (
     <motion.div
-      className="h-4 w-4 rounded-full absolute z-50"
+      className={theme.pointerWrapper}
       style={{
         top: y,
         left: x,
@@ -127,7 +134,7 @@ export const FollowPointer = ({
           scale: 0.5,
           opacity: 0,
         }}
-        className={'whitespace-nowrap min-w-max text-xs rounded-full'}
+        className={theme.pointer}
       >
         {title}
       </motion.div>

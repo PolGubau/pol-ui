@@ -45,6 +45,7 @@ import { buttonGroupTheme } from './components/ButtonGroup'
 import { toastTheme } from './components/Toaster/theme'
 import { dividerTheme } from './components/Divider'
 import { linkTheme } from './components/Link/theme'
+import { followerPointerCardTheme } from './components/FollowingPointer/theme'
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,
@@ -56,7 +57,7 @@ export const theme: PoluiTheme = {
   breadcrumb: breadcrumbTheme,
   button: buttonTheme,
   iconButton: iconButtonTheme,
-  link:linkTheme,
+  link: linkTheme,
   buttonGroup: buttonGroupTheme,
   card: cardTheme,
   carousel: carouselTheme,
@@ -92,4 +93,5 @@ export const theme: PoluiTheme = {
   tooltip: tooltipTheme,
   directionHover: directionHoverTheme,
   popover: popoverTheme,
+  followerPointerCard: followerPointerCardTheme,
 }

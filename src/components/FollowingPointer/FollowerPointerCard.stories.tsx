@@ -7,6 +7,14 @@ import { TbSearch } from 'react-icons/tb'
 export default {
   title: 'Components/FollowerPointerCard',
   component: FollowerPointerCard,
+  tags: ['autodocs'],
+  decorators: [
+    Story => (
+      <div className="flex p-6 flex-col py-20 max-w-xl bg-secondary-50">
+        <Story />
+      </div>
+    ),
+  ],
 } as Meta
 
 const Template: StoryFn<FollowerPointerCardProps> = args => <FollowerPointerCard {...args} />

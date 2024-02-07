@@ -14,8 +14,9 @@ export interface DirectionHoverTheme {
 }
 
 export const directionHoverTheme: DirectionHoverTheme = {
-  base: 'md:h-96 w-60 h-60 md:w-96 rounded-lg overflow-hidden group/card relative bg-primary/70 dark:bg-primary/70 ',
-  overlay: 'group-hover/card:flex hidden absolute inset-0 w-full h-full bg-black/50 z-[1] transition duration-500',
+  base: 'md:h-96 w-60 h-60 md:w-96 rounded-lg overflow-hidden group/card relative bg-secondary/50 dark:bg-secondary/50 ',
+  overlay:
+    'group-hover/card:flex hidden absolute inset-0 w-full h-full bg-secondary-900/40 z-[1] transition duration-500',
   background: {
     wrapper: 'h-full w-full flex relative ',
     image: 'h-full w-full object-cover scale-[1.15]',

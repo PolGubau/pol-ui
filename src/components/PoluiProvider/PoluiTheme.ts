@@ -44,6 +44,7 @@ import type { ButtonGroupTheme } from '../ButtonGroup'
 import type { ToastTheme } from '../Toaster/theme'
 import type { DividerTheme } from '../Divider'
 import type { LinkTheme } from '../Link/theme'
+import type { FollowerPointerCardTheme } from '../FollowingPointer/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -89,6 +90,7 @@ export interface PoluiTheme {
   divider: DividerTheme
   fileInput: FileInputTheme
   label: LabelTheme
+  followerPointerCard: FollowerPointerCardTheme
   radio: RadioTheme
   rangeSlider: RangeSliderTheme
   select: SelectTheme

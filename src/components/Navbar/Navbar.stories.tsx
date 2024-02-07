@@ -7,6 +7,7 @@ import { Navbar, type NavbarComponentProps } from './Navbar'
 export default {
   title: 'Components/Navbar',
   component: Navbar,
+  tags: ['autodocs'],
 } as Meta
 
 const Template: StoryFn<NavbarComponentProps> = args => <Navbar {...args} />

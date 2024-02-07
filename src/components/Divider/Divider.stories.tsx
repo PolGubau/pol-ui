@@ -1,9 +1,9 @@
 import type { Meta, StoryFn } from '@storybook/react'
-import { Copyright } from './Copyright'
+import { Divider } from './Divider'
 
 export default {
-  title: 'Components/Texts/Copyright',
-  component: Copyright,
+  title: 'Components/Divider',
+  component: Divider,
   tags: ['autodocs'],
   decorators: [
     Story => (
@@ -17,6 +17,10 @@ export default {
   },
 } as Meta
 
-const Template: StoryFn = ({ children }) => <Copyright>{children}</Copyright>
-export const DefaultFooter = Template.bind({})
-DefaultFooter.storyName = 'Default'
+export const Default: StoryFn = () => (
+  <>
+    Texts 1
+    <Divider />
+    Texts 2
+  </>
+)
