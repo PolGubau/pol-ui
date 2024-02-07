@@ -10,14 +10,14 @@ import { twMerge } from 'tailwind-merge'
 export interface FollowerPointerCardProps extends React.PropsWithChildren {
   className?: string
   title?: string | React.ReactNode
-  cursorIcon?: React.ReactNode
+  icon?: React.ReactNode | undefined
 }
 
 export const FollowerPointerCard = ({
   children,
   className,
   title,
-  cursorIcon: CursorIcon,
+  icon,
 }: PropsWithChildren<FollowerPointerCardProps>) => {
   const x = useMotionValue(0)
   const y = useMotionValue(0)
@@ -58,7 +58,7 @@ export const FollowerPointerCard = ({
       className={twMerge('relative', className)}
     >
       <AnimatePresence mode="wait">
-        {isInside && <FollowPointer x={x} y={y} title={title} customIcon={CursorIcon} />}
+        {isInside && <FollowPointer x={x} y={y} title={title} icon={icon} />}
       </AnimatePresence>
       {children}
     </div>
@@ -69,13 +69,28 @@ export const FollowPointer = ({
   x,
   y,
   title,
-  customIcon: CustomIcon,
+  icon,
 }: {
   x: MotionValue<number>
   y: MotionValue<number>
   title: string | React.ReactNode
-  customIcon?: React.ReactNode
+  icon?: React.ReactNode
 }) => {
+  const defaultIcon = icon ?? (
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      strokeWidth="1"
+      viewBox="0 0 16 16"
+      className="h-6 w-6 text-primary transform -rotate-[70deg] -translate-x-[8px] -translate-y-[6px] stroke-primary-600"
+      height="1em"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z"></path>
+    </svg>
+  )
+
   return (
     <motion.div
       className="h-4 w-4 rounded-full absolute z-50"
@@ -97,20 +112,7 @@ export const FollowPointer = ({
         opacity: 0,
       }}
     >
-      {CustomIcon ?? (
-        <svg
-          stroke="currentColor"
-          fill="currentColor"
-          strokeWidth="1"
-          viewBox="0 0 16 16"
-          className="h-6 w-6 text-primary transform -rotate-[70deg] -translate-x-[8px] -translate-y-[6px] stroke-primary-600"
-          height="1em"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z"></path>
-        </svg>
-      )}
+      {defaultIcon}
 
       <motion.div
         initial={{
