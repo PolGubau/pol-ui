@@ -29,14 +29,18 @@ export interface ButtonOutlineTheme extends IBoolean {
 }
 
 export const buttonTheme: ButtonTheme = {
-  base: 'group flex items-stretch items-center justify-center text-center w-auto relative focus:z-10 focus:outline-none transition-all focus:ring-offset-2 focus:ring-offset-secondary-50 dark:focus:ring-offset-secondary-900 focus:ring-4 focus:ring-primary',
+  base: 'group flex items-stretch outline-none items-center justify-center text-center w-auto relative focus:z-10 focus:outline-none transition-all focus:ring-offset-0 focus:ring-2 ',
   fullSized: 'w-full',
   color: {
-    error: 'text-error-50 dark:text-error-900 bg-error enabled:hover:brightness-90  focus:ring-error ',
-    info: 'text-info-50 dark:text-info-900 bg-info   enabled:hover:brightness-90  focus:ring-info  ',
-    success: 'text-success-50 dark:text-success-900 bg-success  enabled:hover:brightness-90  focus:ring-success  ',
-    warning: 'text-warning-50 dark:text-warning-900 bg-warning enabled:hover:brightness-90  focus:ring-warning',
-    primary: 'text-primary-50 dark:text-primary-900 bg-primary enabled:hover:brightness-90  focus:ring-primary',
+    error:
+      'text-error-50 dark:text-error-900 bg-error enabled:hover:brightness-90  enabled:focus:ring-error-700 focus:bg-error-600',
+    info: 'text-info-50 dark:text-info-900 bg-info   enabled:hover:brightness-90  enabled:focus:ring-info-700  ',
+    success:
+      'text-success-50 dark:text-success-900 bg-success  enabled:hover:brightness-90  enabled:focus:ring-success-700  ',
+    warning:
+      'text-warning-50 dark:text-warning-900 bg-warning enabled:hover:brightness-90  enabled:focus:ring-warning-700',
+    primary:
+      'text-primary-50 dark:text-primary-900 bg-primary enabled:hover:brightness-90  enabled:focus:ring-primary-700',
     secondary:
       'text-secondary-50 dark:text-secondary-900 bg-secondary enabled:hover:brightness-90  focus:ring-secondary',
   },

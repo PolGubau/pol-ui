@@ -29,8 +29,8 @@ export const listGroupTheme: ListGroupTheme = {
     link: {
       base: 'flex items-center w-full border-b border-secondary-200 py-2 px-4 dark:border-secondary-600',
       active: {
-        off: 'hover:bg-secondary-100 hover:text-cyan-700 focus:text-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-700 dark:border-secondary-600 dark:hover:bg-secondary-600 dark:hover:text-white dark:focus:text-white dark:focus:ring-secondary-500',
-        on: 'bg-cyan-700 text-white dark:bg-secondary-800',
+        off: 'hover:bg-secondary-100 hover:text-primary-700 focus:text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 dark:border-secondary-600 dark:hover:bg-secondary-600 dark:hover:text-white dark:focus:text-white dark:focus:ring-secondary-500',
+        on: 'bg-primary-700 text-white dark:bg-secondary-800',
       },
       disabled: {
         off: '',

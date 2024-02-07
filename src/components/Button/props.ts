@@ -72,6 +72,19 @@ export type ButtonProps<T extends ElementType = 'button'> = {
   hasMotion?: boolean
 
   /**
+   * @name hasBackground
+   * @description Optional prop to remove the background of the button.
+   * @default true
+   * @type boolean
+   * @example
+   * ```tsx
+   * <Button hasBackground={false}>Primary</Button>
+   * ```
+   *
+   */
+
+  hasBackground?: boolean
+  /**
    * @name loader
    * @description Optional prop to change the loader of the button.
    * @default null
