@@ -46,6 +46,7 @@ import { toastTheme } from './components/Toaster/theme'
 import { dividerTheme } from './components/Divider'
 import { linkTheme } from './components/Link/theme'
 import { followerPointerCardTheme } from './components/FollowingPointer/theme'
+import { stickyScrollTheme } from './components/StickyScroll/theme'
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,
@@ -68,6 +69,7 @@ export const theme: PoluiTheme = {
   dropdown: dropdownTheme,
   fileInput: fileInputTheme,
   footer: footerTheme,
+  stickyScroll: stickyScrollTheme,
   helperText: helperTextTheme,
   kbd: kbdTheme,
   conveyor: conveyorTheme,

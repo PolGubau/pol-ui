@@ -45,6 +45,7 @@ import type { ToastTheme } from '../Toaster/theme'
 import type { DividerTheme } from '../Divider'
 import type { LinkTheme } from '../Link/theme'
 import type { FollowerPointerCardTheme } from '../FollowingPointer/theme'
+import type { StickyScrollTheme } from '../StickyScroll/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -90,6 +91,7 @@ export interface PoluiTheme {
   divider: DividerTheme
   fileInput: FileInputTheme
   label: LabelTheme
+  stickyScroll: StickyScrollTheme
   followerPointerCard: FollowerPointerCardTheme
   radio: RadioTheme
   rangeSlider: RangeSliderTheme
