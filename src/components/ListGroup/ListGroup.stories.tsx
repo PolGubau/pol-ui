@@ -1,69 +1,70 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { HiCloudDownload, HiInbox, HiOutlineAdjustments, HiUserCircle } from 'react-icons/hi';
-import type { ListGroupProps } from './ListGroup';
-import { ListGroup } from './ListGroup';
+import type { Meta, StoryFn } from '@storybook/react'
+import { HiCloudDownload, HiInbox, HiOutlineAdjustments, HiUserCircle } from 'react-icons/hi'
+import type { ListGroupProps } from './ListGroup'
+import { ListGroup } from './ListGroup'
+import { ListItem } from './ListItem'
 
 export default {
   title: 'Components/ListGroup',
   component: ListGroup,
-} as Meta;
+} as Meta
 
-const Template: StoryFn<ListGroupProps> = (args) => <ListGroup {...args} />;
+const Template: StoryFn<ListGroupProps> = args => <ListGroup {...args} />
 
-export const DefaultListGroup = Template.bind({});
-DefaultListGroup.storyName = 'Default';
+export const DefaultListGroup = Template.bind({})
+DefaultListGroup.storyName = 'Default'
 DefaultListGroup.args = {
   children: (
     <>
-      <ListGroup.Item>Profile</ListGroup.Item>
-      <ListGroup.Item>Settings</ListGroup.Item>
-      <ListGroup.Item>Messages</ListGroup.Item>
-      <ListGroup.Item>Download</ListGroup.Item>
+      <ListItem>Profile</ListItem>
+      <ListItem>Settings</ListItem>
+      <ListItem>Messages</ListItem>
+      <ListItem>Download</ListItem>
     </>
   ),
-};
+}
 
-export const WithLinks = Template.bind({});
-WithLinks.storyName = 'With links';
+export const WithLinks = Template.bind({})
+WithLinks.storyName = 'With links'
 WithLinks.args = {
   children: (
     <>
-      <ListGroup.Item active href="#">
+      <ListItem active href="#">
         Profile
-      </ListGroup.Item>
-      <ListGroup.Item href="#">Settings</ListGroup.Item>
-      <ListGroup.Item href="#">Messages</ListGroup.Item>
-      <ListGroup.Item href="#">Download</ListGroup.Item>
+      </ListItem>
+      <ListItem href="#">Settings</ListItem>
+      <ListItem href="#">Messages</ListItem>
+      <ListItem href="#">Download</ListItem>
     </>
   ),
-};
+}
 
-export const WithButtons = Template.bind({});
-WithButtons.storyName = 'With buttons';
+export const WithButtons = Template.bind({})
+WithButtons.storyName = 'With buttons'
 WithButtons.args = {
   children: (
     <>
-      <ListGroup.Item active onClick={() => alert('Profile clicked!')}>
+      <ListItem active onClick={() => alert('Profile clicked!')}>
         Profile
-      </ListGroup.Item>
-      <ListGroup.Item>Settings</ListGroup.Item>
-      <ListGroup.Item>Messages</ListGroup.Item>
-      <ListGroup.Item>Download</ListGroup.Item>
+      </ListItem>
+      <ListItem>Settings</ListItem>
+      <ListItem>Messages</ListItem>
+      <ListItem>Download</ListItem>
     </>
   ),
-};
+}
 
-export const WithIcons = Template.bind({});
-WithIcons.storyName = 'With icons';
+export const WithIcons = Template.bind({})
+WithIcons.storyName = 'With icons'
 WithIcons.args = {
   children: (
     <>
-      <ListGroup.Item active icon={HiUserCircle}>
+      <ListItem active icon={HiUserCircle}>
         Profile
-      </ListGroup.Item>
-      <ListGroup.Item icon={HiOutlineAdjustments}>Settings</ListGroup.Item>
-      <ListGroup.Item icon={HiInbox}>Messages</ListGroup.Item>
-      <ListGroup.Item icon={HiCloudDownload}>Download</ListGroup.Item>
+      </ListItem>
+      <ListItem icon={HiOutlineAdjustments}>Settings</ListItem>
+      <ListItem icon={HiInbox}>Messages</ListItem>
+      <ListItem icon={HiCloudDownload}>Download</ListItem>
     </>
   ),
-};
+}
