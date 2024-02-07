@@ -3,11 +3,10 @@ import { IconButton, type IconButtonProps } from './IconButton'
 import { theme } from '../../theme'
 import { TbSearch, TbTrash } from 'react-icons/tb'
 import { ColorsEnum } from '../../types/enums'
-import type { Colors } from '../../types'
-import type { MainSizes } from '../../types'
+import type { MainSizes, Colors } from '../../types'
 
 export default {
-  title: 'Components/Buttons/IconButton',
+  title: 'Components/IconButton',
   decorators: [
     Story => (
       <div className="flex p-6 flex-col justify-center items-center min-h-40  bg-secondary-50">
