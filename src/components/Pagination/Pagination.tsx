@@ -4,39 +4,10 @@ import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types/types'
-import type { PaginationButtonTheme, PaginationButtonProps } from './PaginationButton'
+import type { PaginationButtonProps } from './PaginationButton'
 import { PaginationButton, PaginationNavigation } from './PaginationButton'
 import { range } from './helpers'
-
-export interface PaginationTheme {
-  base: string
-  layout: PaginationLayoutTheme
-  pages: PaginationPagesTheme
-}
-
-export interface PaginationRootTheme {
-  base: string
-}
-
-export interface PaginationLayoutTheme {
-  table: {
-    base: string
-    span: string
-  }
-}
-
-export interface PaginationPagesTheme {
-  base: string
-  showIcon: string
-  previous: PaginationNavigationTheme
-  next: PaginationNavigationTheme
-  selector: PaginationButtonTheme
-}
-
-export interface PaginationNavigationTheme {
-  base: string
-  icon: string
-}
+import type { PaginationTheme } from './theme'
 
 export interface PaginationProps extends ComponentProps<'nav'> {
   currentPage: number
@@ -50,7 +21,7 @@ export interface PaginationProps extends ComponentProps<'nav'> {
   totalPages: number
 }
 
-const PaginationComponent: FC<PaginationProps> = ({
+export const Pagination: FC<PaginationProps> = ({
   className,
   currentPage,
   layout = 'pagination',
@@ -121,9 +92,3 @@ const PaginationComponent: FC<PaginationProps> = ({
     </nav>
   )
 }
-
-PaginationComponent.displayName = 'Pagination'
-
-export const Pagination = Object.assign(PaginationComponent, {
-  Button: PaginationButton,
-})

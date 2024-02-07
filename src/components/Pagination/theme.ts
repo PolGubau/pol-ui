@@ -1,5 +1,37 @@
-import type { PaginationTheme } from './Pagination';
+export interface PaginationTheme {
+  base: string
+  layout: PaginationLayoutTheme
+  pages: PaginationPagesTheme
+}
 
+export interface PaginationRootTheme {
+  base: string
+}
+
+export interface PaginationLayoutTheme {
+  table: {
+    base: string
+    span: string
+  }
+}
+
+export interface PaginationPagesTheme {
+  base: string
+  showIcon: string
+  previous: PaginationNavigationTheme
+  next: PaginationNavigationTheme
+  selector: PaginationButtonTheme
+}
+export interface PaginationButtonTheme {
+  base: string
+  active: string
+  disabled: string
+}
+
+export interface PaginationNavigationTheme {
+  base: string
+  icon: string
+}
 export const paginationTheme: PaginationTheme = {
   base: '',
   layout: {
@@ -26,4 +58,4 @@ export const paginationTheme: PaginationTheme = {
       disabled: 'opacity-50 cursor-normal',
     },
   },
-};
+}

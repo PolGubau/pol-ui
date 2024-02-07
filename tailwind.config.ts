@@ -1,17 +1,8 @@
 import { type Config } from 'tailwindcss'
-import plugin from 'tailwindcss/plugin'
 
 const config: Config = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
-  plugins: [
-    plugin(({ matchUtilities }) => {
-      matchUtilities({
-        perspective: value => ({
-          perspective: value,
-        }),
-      })
-    }),
-  ],
+  plugins: [],
   darkMode: 'class',
   theme: {
     extend: {
