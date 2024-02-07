@@ -74,8 +74,7 @@ export const buttonTheme: ButtonTheme = {
   label:
     'ml-2 inline-flex h-4 w-4 items-center justify-center rounded-full bg-cyan-200 text-xs font-semibold text-cyan-800',
   outline: {
-    outlineBase:
-      'enabled:hover:brightness-90  dark:enabled:hover:brightness-125 ring ring-1 focus:ring-4 focus:ring-offset-2',
+    outlineBase: 'enabled:hover:brightness-90  dark:enabled:hover:brightness-125 ring ring-1 focus:ring-[3px]',
     color: {
       error: 'text-error-900 dark:text-error-50  ring-error',
       info: 'text-info-900 dark:text-info-50  ring-info',
