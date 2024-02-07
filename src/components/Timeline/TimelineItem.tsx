@@ -6,16 +6,8 @@ import { mergeDeep } from '../../helpers/merge-deep'
 import type { DeepPartial } from '../../types/types'
 import { useTimelineContext } from './TimelineContext'
 import type { TimelnePointProps } from './TimelinePoint'
-import { TimelinePoint, type TimelinePointTheme } from './TimelinePoint'
-
-export interface TimelineItemTheme {
-  root: {
-    horizontal: string
-    vertical: string
-  }
-  content: string
-  point: TimelinePointTheme
-}
+import { TimelinePoint } from './TimelinePoint'
+import type { TimelineItemTheme } from './theme'
 
 export interface TimelineItemProps extends ComponentProps<'li'> {
   theme?: DeepPartial<TimelineItemTheme>

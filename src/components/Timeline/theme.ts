@@ -1,4 +1,36 @@
-import type { TimelineTheme } from './Timeline'
+export interface TimelineTheme {
+  root: {
+    direction: {
+      horizontal: string
+      vertical: string
+    }
+  }
+  item: TimelineItemTheme
+}
+export interface TimelineItemTheme {
+  root: {
+    horizontal: string
+    vertical: string
+  }
+  content: string
+  point: TimelinePointTheme
+}
+
+export interface TimelinePointTheme {
+  horizontal: string
+  line: string
+  marker: {
+    base: {
+      horizontal: string
+      vertical: string
+    }
+    icon: {
+      base: string
+      wrapper: string
+    }
+  }
+  vertical: string
+}
 
 export const timelineTheme: TimelineTheme = {
   root: {
@@ -23,7 +55,7 @@ export const timelineTheme: TimelineTheme = {
           vertical: 'absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full   bg-secondary-400 dark:bg-secondary-700',
         },
         icon: {
-          base: 'h-3 w-3 text-cyan-600 dark:text-cyan-300',
+          base: 'h-3 w-3 text-primary-600 dark:text-primary-400',
           wrapper:
             'absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary-200 dark:bg-primary-800',
         },

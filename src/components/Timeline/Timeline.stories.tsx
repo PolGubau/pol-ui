@@ -1,6 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import type { TimelineProps } from './Timeline'
-import { Timeline } from './Timeline'
+import { TimelineItem } from './TimelineItem'
+import { Timeline } from '.'
+import { TbStarFilled } from 'react-icons/tb'
 
 export default {
   title: 'Components/Timeline',
@@ -11,23 +13,21 @@ const Template: StoryFn<TimelineProps> = args => <Timeline {...args} />
 
 const Example = () => (
   <>
-    <Timeline.Item>
-      February 2022
-      <h2 className="text-black font-bold">Application UI code in Tailwind CSS</h2>
-      Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order
-      E-commerce & Marketing pages.
-    </Timeline.Item>
-    <Timeline.Item>
-      March 2022
-      <h2 className="text-black font-bold">Application UI code in Tailwind CSS</h2>
-      All of the pages and components are first designed in Figma and we keep a parity between the two versions even as
-      we update the project.
-    </Timeline.Item>
-    <Timeline.Item>
-      April 2022
-      <h2 className="text-black font-bold">Application UI code in Tailwind CSS</h2>
-      Get started with dozens of web components and interactive elements built on top of Tailwind CSS.
-    </Timeline.Item>
+    <TimelineItem>
+      April 2023
+      <h2 className="text-black font-bold">Pol-ui is released</h2>
+      Our first major release of Pol-ui is out. We have a lot of features and components to help you build your
+    </TimelineItem>
+    <TimelineItem>
+      October 2023
+      <h2 className="text-black font-bold">We now support Tailwind CSS</h2>
+      To make it easier to customize the look and feel of Pol-ui, we now support Tailwind CSS out of the box.
+    </TimelineItem>
+    <TimelineItem icon={TbStarFilled}>
+      February 2024
+      <h2 className="text-black font-bold">Our base components are now ready</h2>
+      We have a lot of base components to help you build your application faster.
+    </TimelineItem>
   </>
 )
 export const Default = Template.bind({})

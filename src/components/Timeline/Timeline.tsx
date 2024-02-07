@@ -6,31 +6,14 @@ import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types/types'
 import { TimelineContext } from './TimelineContext'
-import { TimelineItem, type TimelineItemTheme } from './TimelineItem'
-import { TimelinePoint } from './TimelinePoint'
-
-export interface TimelineTheme {
-  root: {
-    direction: {
-      horizontal: string
-      vertical: string
-    }
-  }
-  item: TimelineItemTheme
-}
+import type { TimelineTheme } from './theme'
 
 export interface TimelineProps extends ComponentProps<'ol'> {
   horizontal?: boolean
   theme?: DeepPartial<TimelineTheme>
 }
 
-const TimelineComponent: FC<TimelineProps> = ({
-  children,
-  className,
-  horizontal,
-  theme: customTheme = {},
-  ...props
-}) => {
+export const Timeline: FC<TimelineProps> = ({ children, className, horizontal, theme: customTheme = {}, ...props }) => {
   const theme = mergeDeep(getTheme().timeline, customTheme)
   const value = useMemo(() => {
     return { theme, horizontal }
@@ -51,12 +34,3 @@ const TimelineComponent: FC<TimelineProps> = ({
     </TimelineContext.Provider>
   )
 }
-
-TimelineComponent.displayName = 'Timeline'
-TimelineItem.displayName = 'TimelineItem'
-TimelinePoint.displayName = 'TimelinePoint'
-
-export const Timeline = Object.assign(TimelineComponent, {
-  Item: TimelineItem,
-  Point: TimelinePoint,
-})

@@ -5,22 +5,7 @@ import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import type { DeepPartial } from '../../types/types'
 import { useTimelineContext } from './TimelineContext'
-
-export interface TimelinePointTheme {
-  horizontal: string
-  line: string
-  marker: {
-    base: {
-      horizontal: string
-      vertical: string
-    }
-    icon: {
-      base: string
-      wrapper: string
-    }
-  }
-  vertical: string
-}
+import type { TimelinePointTheme } from './theme'
 
 export interface TimelnePointProps extends ComponentProps<'div'> {
   icon?: FC<ComponentProps<'svg'>>
