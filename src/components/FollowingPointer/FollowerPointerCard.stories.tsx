@@ -19,7 +19,7 @@ const blogContent = {
 }
 
 const TitleComponent = ({ title, avatar }: { title: string; avatar: string }) => (
-  <div className="flex space-x-2 items-center bg-primary p-1 rounded-full pr-3">
+  <div className="flex space-x-2 items-center text-primary-50 bg-primary p-1 rounded-full pr-3">
     <img src={avatar} height="30" width="30" alt="thumbnail" className="rounded-full" />
     <p>{title}</p>
   </div>
