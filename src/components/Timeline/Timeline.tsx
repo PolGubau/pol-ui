@@ -1,17 +1,13 @@
 'use client'
 
-import type { ComponentProps, FC } from 'react'
+import { useMemo, type ComponentProps, type FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types/types'
-import { TimelineBody } from './TimelineBody'
-import { TimelineContent } from './TimelineContent'
 import { TimelineContext } from './TimelineContext'
 import { TimelineItem, type TimelineItemTheme } from './TimelineItem'
 import { TimelinePoint } from './TimelinePoint'
-import { TimelineTime } from './TimelineTime'
-import { TimelineTitle } from './TimelineTitle'
 
 export interface TimelineTheme {
   root: {
@@ -36,9 +32,11 @@ const TimelineComponent: FC<TimelineProps> = ({
   ...props
 }) => {
   const theme = mergeDeep(getTheme().timeline, customTheme)
-
+  const value = useMemo(() => {
+    return { theme, horizontal }
+  }, [theme, horizontal])
   return (
-    <TimelineContext.Provider value={{ theme, horizontal }}>
+    <TimelineContext.Provider value={value}>
       <ol
         data-testid="timeline-component"
         className={twMerge(
@@ -55,18 +53,10 @@ const TimelineComponent: FC<TimelineProps> = ({
 }
 
 TimelineComponent.displayName = 'Timeline'
-TimelineItem.displayName = 'Timeline.Item'
-TimelinePoint.displayName = 'Timeline.Point'
-TimelineContent.displayName = 'Timeline.Content'
-TimelineTime.displayName = 'Timeline.Time'
-TimelineTitle.displayName = 'Timeline.Title'
-TimelineBody.displayName = 'Timeline.Body'
+TimelineItem.displayName = 'TimelineItem'
+TimelinePoint.displayName = 'TimelinePoint'
 
 export const Timeline = Object.assign(TimelineComponent, {
   Item: TimelineItem,
   Point: TimelinePoint,
-  Content: TimelineContent,
-  Time: TimelineTime,
-  Title: TimelineTitle,
-  Body: TimelineBody,
 })

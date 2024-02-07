@@ -12,7 +12,7 @@ export interface ToastTheme {
 
 export const toastTheme: ToastTheme = {
   base: 'rounded-xl shadow-md w-full p-4 flex items-center bg-primary-50 ',
-  title: 'text-sm font-bold ml-2',
+  title: 'text-sm font-bold ml-2 flex flex-1',
   description: 'text-xs ml-2',
 
   success: 'bg-success-50 text-success-500',

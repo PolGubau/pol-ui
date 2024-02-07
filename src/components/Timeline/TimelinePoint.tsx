@@ -5,7 +5,6 @@ import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import type { DeepPartial } from '../../types/types'
 import { useTimelineContext } from './TimelineContext'
-import { useTimelineItemContext } from './TimelineItemContext'
 
 export interface TimelinePointTheme {
   horizontal: string
@@ -36,9 +35,9 @@ export const TimelinePoint: FC<TimelnePointProps> = ({
   ...props
 }) => {
   const { horizontal } = useTimelineContext()
-  const { theme: itemTheme } = useTimelineItemContext()
+  const { theme: itemTheme } = useTimelineContext()
 
-  const theme = mergeDeep(itemTheme.point, customTheme)
+  const theme = mergeDeep(itemTheme.item.point, customTheme)
 
   return (
     <div

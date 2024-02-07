@@ -29,13 +29,7 @@ export const Default: StoryFn<ToasterProps> = args => {
       action: {
         label: 'Undo',
         onClick: () => {
-          console.log('Undo')
-        },
-      },
-      cancel: {
-        label: 'cancel',
-        onClick: () => {
-          console.log('cancel')
+          alert('Undo')
         },
       },
     })
