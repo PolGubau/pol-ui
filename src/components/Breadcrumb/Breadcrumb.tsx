@@ -4,7 +4,6 @@ import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types/types'
 import type { BreadcrumbItemTheme } from './BreadcrumbItem'
-import { BreadcrumbItem } from './BreadcrumbItem'
 
 export interface BreadcrumbTheme {
   root: BreadcrumbRootTheme
@@ -20,7 +19,7 @@ export interface BreadcrumbComponentProps extends ComponentProps<'nav'> {
   theme?: DeepPartial<BreadcrumbRootTheme>
 }
 
-const BreadcrumbComponent: FC<BreadcrumbComponentProps> = ({
+export const Breadcrumb: FC<BreadcrumbComponentProps> = ({
   children,
   className,
   theme: customTheme = {},
@@ -34,9 +33,3 @@ const BreadcrumbComponent: FC<BreadcrumbComponentProps> = ({
     </nav>
   )
 }
-
-BreadcrumbComponent.displayName = 'Breadcrumb'
-
-export const Breadcrumb = Object.assign(BreadcrumbComponent, {
-  Item: BreadcrumbItem,
-})
