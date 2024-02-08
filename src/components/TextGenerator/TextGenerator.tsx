@@ -54,6 +54,7 @@ export const TextGenerator = ({
         return (
           <motion.span key={word + idx} className={twMerge(theme.base, className)}>
             {word}
+            {` `}
           </motion.span>
         )
       })}
