@@ -7,13 +7,11 @@ import type { DeepPartial } from '../../types/types'
 import type { FooterTheme } from './theme'
 
 export interface FooterProps extends ComponentProps<'footer'> {
-  bgDark?: boolean
   container?: boolean
   theme?: DeepPartial<FooterTheme>
 }
 
 export const Footer: FC<FooterProps> = ({
-  bgDark = false,
   children,
   className,
   container = false,
@@ -25,7 +23,7 @@ export const Footer: FC<FooterProps> = ({
   return (
     <footer
       data-testid="ui-footer"
-      className={twMerge(theme.root.base, bgDark && theme.root.bgDark, container && theme.root.container, className)}
+      className={twMerge(theme.root.base, container && theme.root.container, className)}
       {...props}
     >
       {children}
