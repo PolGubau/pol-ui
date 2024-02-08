@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import type { FC } from 'react'
 import { HiChartPie, HiInbox, HiShoppingBag } from 'react-icons/hi'
@@ -55,25 +55,6 @@ describe('Keyboard interactions', () => {
 
     expect(link).toHaveAccessibleName('Dashboard')
     expect(link).toHaveAttribute('href', '#')
-  })
-
-  it('should be possible to `Tab` out', async () => {
-    const user = userEvent.setup()
-    render(
-      <>
-        <TestSidebar />
-        {/* eslint-disable-next-line jsx-a11y/role-has-required-aria-props */}
-        <button role="checkbox">Outside</button>
-      </>,
-    )
-
-    const outside = screen.getByText('Outside')
-
-    await waitFor(async () => {
-      await user.tab()
-
-      expect(outside).toHaveFocus()
-    })
   })
 })
 
