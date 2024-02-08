@@ -61,3 +61,35 @@ export const CustomProps = () => {
     </div>
   )
 }
+export const MultipleElements = () => {
+  return (
+    <div className="w-full min-h-screen rounded-3xl border bg-primary-200">
+      <PerspectiveCard className="flex gap-2">
+        <div className="w-[150px] h-[150px] rounded-3xl bg-primary grid place-items-center"> Hello there </div>{' '}
+        <div className="w-[150px] h-[150px] rounded-3xl bg-primary grid place-items-center"> Hello there </div>
+      </PerspectiveCard>
+    </div>
+  )
+}
+export const Uncentered = () => {
+  return (
+    <div className="w-full flex p-10 gap-10 rounded-3xl border justify-center bg-primary-200">
+      <div className="w-[200px] h-[200px] mx-10 rounded-3xl bg-error grid place-items-center"> Just annoying </div>
+      <PerspectiveCard className="flex gap-2">
+        <div className="w-[150px] h-[150px] rounded-3xl bg-primary grid place-items-center"> Hello there </div>
+      </PerspectiveCard>
+    </div>
+  )
+}
+export const TwoCards = () => {
+  return (
+    <div className="w-full flex p-10 gap-10 rounded-3xl border justify-center bg-primary-200">
+      <PerspectiveCard className="flex gap-2">
+        <div className="w-[150px] h-[150px] rounded-3xl bg-primary grid place-items-center"> Hello there </div>
+      </PerspectiveCard>
+      <PerspectiveCard className="flex gap-2">
+        <div className="w-[150px] h-[150px] rounded-3xl bg-primary grid place-items-center"> Hello there </div>
+      </PerspectiveCard>
+    </div>
+  )
+}

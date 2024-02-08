@@ -58,7 +58,7 @@ export const PerspectiveCard = ({
         {...props}
       >
         {children}
-      </motion.div>{' '}
+      </motion.div>
     </motion.div>
   )
 }
