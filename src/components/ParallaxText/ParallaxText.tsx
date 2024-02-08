@@ -10,6 +10,10 @@ import {
   useAnimationFrame,
 } from 'framer-motion'
 import { twMerge } from 'tailwind-merge'
+import { mergeDeep } from '../../helpers'
+import { getTheme } from '../../theme-store'
+import type { DeepPartial } from '../../types'
+import type { ParallaxTextTheme } from './theme'
 export const wrap = (min: number, max: number, v: number) => {
   const rangeSize = max - min
   return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min
@@ -35,6 +39,8 @@ export type ParallaxTextProps<T extends ElementType = 'span'> = {
    * ```
    */
   renderedElements?: number
+
+  theme?: DeepPartial<ParallaxTextTheme>
 }
 
 export const ParallaxText = <T extends ElementType = 'span'>({
@@ -43,6 +49,7 @@ export const ParallaxText = <T extends ElementType = 'span'>({
   acceleration = 1000,
   as: BaseComponent,
   className,
+  theme: customTheme = {},
   renderedElements = Math.ceil(100 / children.length) ?? 10,
   ...props
 }: ParallaxTextProps<T>) => {
@@ -84,13 +91,10 @@ export const ParallaxText = <T extends ElementType = 'span'>({
 
     baseX.set(baseX.get() + moveBy)
   })
+  const theme = mergeDeep(getTheme().parallaxText, customTheme)
 
   return (
-    <motion.div
-      className={twMerge('text-6xl whitespace-nowrap flex gap-[30px] flex-nowrap uppercase font-semibold', className)}
-      style={{ x }}
-      {...props}
-    >
+    <motion.div className={twMerge(theme.base, className)} style={{ x }} {...props}>
       {Array.from({ length: renderedElements }).map((_, i) => (
         <Component key={i}>{children}</Component>
       ))}

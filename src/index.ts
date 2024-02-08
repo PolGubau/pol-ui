@@ -57,6 +57,7 @@ export * from './hooks/use-isomorphic-layout-effect/use-isomorphic-layout-effect
 export * from './hooks/use-local-storage/use-local-storage'
 export * from './hooks/use-ripple/use-ripple'
 export * from './hooks/use-sticky-scroll'
+export * from './hooks/use-perspective'
 export * from './hooks/use-copy-to-clipboard/use-copy-to-clipboard'
 export * from './theme'
 export * from './types'

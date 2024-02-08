@@ -47,6 +47,9 @@ import { dividerTheme } from './components/Divider'
 import { linkTheme } from './components/Link/theme'
 import { followerPointerCardTheme } from './components/FollowingPointer/theme'
 import { stickyScrollTheme } from './components/StickyScroll/theme'
+import { parallaxTextTheme } from './components/ParallaxText'
+import { textGeneratorTheme } from './components/TextGenerator/theme'
+import { perspectiveCardTheme } from './components/PerspectiveCard/theme'
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,
@@ -96,4 +99,7 @@ export const theme: PoluiTheme = {
   directionHover: directionHoverTheme,
   popover: popoverTheme,
   followerPointerCard: followerPointerCardTheme,
+  parallaxText: parallaxTextTheme,
+  textGenerator: textGeneratorTheme,
+  perspectiveCard: perspectiveCardTheme,
 }

@@ -3,5 +3,5 @@ export interface ParallaxTextTheme {
 }
 
 export const parallaxTextTheme: ParallaxTextTheme = {
-  base: '',
+  base: 'text-6xl whitespace-nowrap flex gap-[30px] flex-nowrap uppercase font-semibold',
 }

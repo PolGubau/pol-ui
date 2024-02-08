@@ -46,6 +46,9 @@ import type { DividerTheme } from '../Divider'
 import type { LinkTheme } from '../Link/theme'
 import type { FollowerPointerCardTheme } from '../FollowingPointer/theme'
 import type { StickyScrollTheme } from '../StickyScroll/theme'
+import type { ParallaxTextTheme } from '../ParallaxText'
+import type { TextGeneratorTheme } from '../TextGenerator/theme'
+import type { PerspectiveCardTheme } from '../PerspectiveCard/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -102,4 +105,7 @@ export interface PoluiTheme {
   table: TableTheme
   timeline: TimelineTheme
   conveyor: ConveyorTheme
+  parallaxText: ParallaxTextTheme
+  textGenerator: TextGeneratorTheme
+  perspectiveCard: PerspectiveCardTheme
 }
