@@ -22,7 +22,6 @@ export const useBgColorTransition = (colors: string[]) => {
     const amountColors = colors.length
     const step = ref.current!.offsetHeight / amountColors
 
-    console.log('step', step)
 
     const index = Math.floor(latest / step)
 

@@ -29,7 +29,6 @@ export const CardStackItem = ({
   const rotate = useTransform(x, [-150, 0, 150], [-45, 0, 45], {
     clamp: false,
   })
-  console.log(`${children?.toString()} ` + position)
   const variantsFrontCard = {
     animate: { scale: 1, y: 0, opacity: 1 },
     exit: (custom: number) => ({
