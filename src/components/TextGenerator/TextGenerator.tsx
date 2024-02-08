@@ -35,19 +35,15 @@ export const TextGenerator = ({ text, speed = 1, delay = 0.2, className }: TextG
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scope.current])
 
-  const renderWords = () => {
-    return (
-      <motion.div ref={scope}>
-        {wordsArray.map((word, idx) => {
-          return (
-            <motion.span key={word + idx} className={twMerge('opacity-0', className)}>
-              {word}{' '}
-            </motion.span>
-          )
-        })}
-      </motion.div>
-    )
-  }
-
-  return renderWords()
+  return (
+    <motion.div ref={scope}>
+      {wordsArray.map((word, idx) => {
+        return (
+          <motion.span key={word + idx} className={twMerge('opacity-0', className)}>
+            {word}{' '}
+          </motion.span>
+        )
+      })}
+    </motion.div>
+  )
 }

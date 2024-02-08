@@ -41,4 +41,4 @@ export const Delay = Template.bind({})
 Delay.args = { text: words, delay: 0.5 }
 
 export const CustomClass = Template.bind({})
-CustomClass.args = { text: words, className: 'text-4xl' }
+CustomClass.args = { text: words, className: 'text-4xl text-error' }
