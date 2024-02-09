@@ -30,8 +30,8 @@ const Template: StoryFn<AccordionProps> = args => (
       <Accordion.Title>This is our most basic accordion</Accordion.Title>
       <Accordion.Content>
         <p>
-          This content is a div by default, but you can place inside any other component you like, for example, this{' '}
-          {`<p>`} tag.
+          This content is a div by default, but you can place inside any other component you like, for example, this p
+          tag.
         </p>
         <p>
           As we use tailwind, you can style this accordion however you like. For example, you can add a border to the
