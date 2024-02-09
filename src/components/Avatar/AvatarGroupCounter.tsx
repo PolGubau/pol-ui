@@ -20,10 +20,10 @@ export const AvatarGroupCounter: FC<AvatarGroupCounterProps> = ({
   total,
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().avatar.groupCounter, customTheme)
+  const theme = mergeDeep(getTheme().avatar, customTheme)
 
   return (
-    <a href={href} className={twMerge(theme.base, className)} {...props}>
+    <a href={href} className={twMerge(theme.groupCounter, className)} {...props}>
       +{total}
     </a>
   )

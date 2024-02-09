@@ -1,12 +1,10 @@
 import type { ColorsType, IBoolean, MainSizesType, Positions } from '../../types'
-import type { AvatarGroupTheme } from './AvatarGroup'
-import type { AvatarGroupCounterTheme } from './AvatarGroupCounter'
 import type { AvatarStatus } from './AvatarTypes'
 
 export interface AvatarTheme {
   root: AvatarRootTheme
-  group: AvatarGroupTheme
-  groupCounter: AvatarGroupCounterTheme
+  group: string
+  groupCounter: string
 }
 
 export interface AvatarRootTheme {
@@ -84,10 +82,7 @@ export const avatarTheme: AvatarTheme = {
       base: 'inline-flex overflow-hidden relative justify-center items-center bg-secondary-100 dark:bg-secondary-600',
     },
   },
-  group: {
-    base: 'flex -space-x-4',
-  },
-  groupCounter: {
-    base: 'relative flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-secondary-700 rounded-full ring-2 ring-secondary-300 hover:bg-secondary-600 dark:ring-secondary-500',
-  },
+  group: 'flex -space-x-4',
+  groupCounter:
+    'relative flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-secondary-700 rounded-full ring-2 ring-secondary-300 hover:bg-secondary-600 dark:ring-secondary-500',
 }

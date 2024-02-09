@@ -3,20 +3,17 @@ import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types/types'
-
-export interface AvatarGroupTheme {
-  base: string
-}
+import type { AvatarTheme } from './theme'
 
 export interface AvatarGroupProps extends ComponentProps<'div'> {
-  theme?: DeepPartial<AvatarGroupTheme>
+  theme?: DeepPartial<AvatarTheme>
 }
 
 export const AvatarGroup: React.FC<AvatarGroupProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
-  const theme = mergeDeep(getTheme().avatar.group, customTheme)
+  const theme = mergeDeep(getTheme().avatar, customTheme)
 
   return (
-    <div data-testid="avatar-group-element" className={twMerge(theme.base, className)} {...props}>
+    <div data-testid="avatar-group-element" className={twMerge(theme.groupCounter, className)} {...props}>
       {children}
     </div>
   )

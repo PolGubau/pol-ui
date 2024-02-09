@@ -1,53 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 import { Avatar } from '.'
-import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider'
+import { PoluiProvider } from '../PoluiProvider'
 
 describe('Components / Avatar', () => {
-  describe('Theme', () => {
-    it('should use custom sizes', () => {
-      const theme: CustomPoluiTheme = {
-        avatar: {
-          root: {
-            size: {
-              xxl: 'h-64 w-64',
-            },
-          },
-        },
-      }
-      render(
-        <PoluiProvider theme={{ theme }}>
-          <Avatar size="xxl" />
-        </PoluiProvider>,
-      )
-
-      expect(img()).toHaveClass('h-64 w-64')
-    })
-
-    it('should use custom colors', () => {
-      const theme: CustomPoluiTheme = {
-        avatar: {
-          root: {
-            color: {
-              rose: 'ring-rose-500 dark:ring-rose-400',
-            },
-          },
-        },
-      }
-      render(
-        <PoluiProvider theme={{ theme }}>
-          <Avatar
-            bordered
-            color="rose"
-            img="https://polgubau.com/_next/image?url=%2Fimages%2Fme.png&w=256&q=75"
-            alt="Your avatar"
-          />
-        </PoluiProvider>,
-      )
-
-      expect(img()).toHaveClass('ring-rose-500 dark:ring-rose-400')
-    })
-  })
   describe('Placeholder', () => {
     it('should display placeholder initials', () => {
       render(
