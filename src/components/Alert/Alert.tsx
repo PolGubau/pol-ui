@@ -3,17 +3,17 @@ import { HiX } from 'react-icons/hi'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import { ColorsEnum } from '../../types/enums'
+import { ColorsEnum, RoundedSizesEnum } from '../../types/enums'
 import type { AlertTheme } from './theme'
 import { IconButton } from '../IconButton'
-import type { Colors, DeepPartial } from '../../types/types'
+import type { Colors, DeepPartial, RoundedSizes } from '../../types/types'
 
 export interface AlertProps extends Omit<ComponentProps<'div'>, 'color'> {
   additionalContent?: ReactNode
   color?: Colors
   icon?: FC<ComponentProps<'svg'>>
   onDismiss?: boolean | (() => void)
-  rounded?: boolean
+  rounded?: RoundedSizes
   theme?: DeepPartial<AlertTheme>
   withBorderAccent?: boolean
 }
@@ -25,7 +25,7 @@ export const Alert: FC<AlertProps> = ({
   color = ColorsEnum.secondary,
   icon: Icon,
   onDismiss = false,
-  rounded = true,
+  rounded = RoundedSizesEnum.md,
   theme: customTheme = {},
   withBorderAccent,
   ...props
@@ -37,7 +37,7 @@ export const Alert: FC<AlertProps> = ({
       className={twMerge(
         theme.base,
         theme.color[color],
-        rounded && theme.rounded,
+        theme.rounded[rounded],
         withBorderAccent && theme.borderAccent,
         className,
       )}

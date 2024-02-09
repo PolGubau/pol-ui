@@ -74,10 +74,9 @@ AlertDismissible.args = {
 }
 
 export const AlertRounded = Template.bind({})
-AlertRounded.storyName = 'Not rounded'
 AlertRounded.args = {
   color: ColorsEnum.warning,
-  rounded: false,
+  rounded: 'none',
   onDismiss: false,
   children: <>Warning alert! This alert is trying to advice you, be carefully that this actions is not undonable.</>,
 }
@@ -94,7 +93,6 @@ AlertWithBorderAccent.args = {
 }
 
 export const AlertWithAdditionalContent = Template.bind({})
-AlertWithAdditionalContent.storyName = 'Additional content'
 AlertWithAdditionalContent.args = {
   color: 'info',
   icon: TbInfoCircle,
@@ -125,10 +123,9 @@ AlertWithAdditionalContent.args = {
 }
 
 export const AlertWithAllOptions = Template.bind({})
-AlertWithAllOptions.storyName = 'Complexe Error Example'
 AlertWithAllOptions.args = {
   color: ColorsEnum.error,
-  rounded: false,
+  rounded: 'none',
   withBorderAccent: true,
   onDismiss: () => alert('Alert dismissed!'),
   icon: BiTrash,
