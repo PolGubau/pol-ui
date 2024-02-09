@@ -1,4 +1,4 @@
-import type { ColorsType, IBoolean, MainSizesType, Positions } from '../../types'
+import type { ColorsType, IBoolean, MainSizesType, Positions, RoundedSizesTypes } from '../../types'
 import type { AvatarStatus } from './AvatarTypes'
 
 export interface AvatarTheme {
@@ -13,7 +13,7 @@ export interface AvatarRootTheme {
   color: ColorsType
   img: AvatarImageTheme
   initials: AvatarInitialsTheme
-  rounded: string
+  rounded: RoundedSizesTypes
   size: MainSizesType
   stacked: string
   status: AvatarStatus & {
@@ -36,7 +36,17 @@ export const avatarTheme: AvatarTheme = {
   root: {
     base: 'flex justify-center items-center space-x-4 rounded',
     bordered: 'p-1 ring-2',
-    rounded: 'rounded-full',
+    rounded: {
+      xs: 'rounded-xs',
+      sm: 'rounded-sm',
+      md: 'rounded-md',
+      lg: 'rounded-lg',
+      xl: 'rounded-xl',
+      '2xl': 'rounded-2xl',
+      '3xl': 'rounded-3xl',
+      full: 'rounded-full',
+      none: 'rounded-none',
+    },
     color: {
       primary: 'ring-primary dark:bg-primary-600',
       secondary: 'ring-secondary dark:bg-secondary-600',

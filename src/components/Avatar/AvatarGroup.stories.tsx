@@ -20,10 +20,10 @@ export default {
 
 const Template: StoryFn<AvatarGroupProps> = args => (
   <Avatar.Group {...args}>
-    <Avatar img="/images/people/me.png" rounded stacked />
-    <Avatar img="https://avatars.githubusercontent.com/u/104431726?s=80&v=4" rounded stacked />
-    <Avatar img="https://avatars.githubusercontent.com/u/94074414?s=80&v=4" rounded stacked />
-    <Avatar img="https://avatars.githubusercontent.com/u/78301921?s=80&v=4" rounded stacked />
+    <Avatar img="/images/people/me.png" stacked />
+    <Avatar img="https://avatars.githubusercontent.com/u/104431726?s=80&v=4" stacked />
+    <Avatar img="https://avatars.githubusercontent.com/u/94074414?s=80&v=4" stacked />
+    <Avatar img="https://avatars.githubusercontent.com/u/78301921?s=80&v=4" stacked />
     <Avatar.Counter total={99} href="#" />
   </Avatar.Group>
 )

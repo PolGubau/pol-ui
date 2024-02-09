@@ -2,10 +2,10 @@ import type { ComponentProps, FC, ReactElement } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { Colors, DeepPartial, MainSizes, Positions } from '../../types/types'
+import type { Colors, DeepPartial, MainSizes, Positions, RoundedSizes } from '../../types/types'
 import { AvatarGroup } from './AvatarGroup'
 import { AvatarGroupCounter } from './AvatarGroupCounter'
-import { ColorsEnum, MainSizesEnum } from '../../types/enums'
+import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../../types/enums'
 import type { AvatarStatus } from './AvatarTypes'
 import type { AvatarTheme } from './theme'
 
@@ -20,7 +20,7 @@ export interface AvatarProps extends Omit<ComponentProps<'div'>, 'color'> {
   bordered?: boolean
   img?: string | ((props: AvatarImageProps) => ReactElement)
   color?: Colors
-  rounded?: boolean
+  rounded?: RoundedSizes
   size?: MainSizes
   stacked?: boolean
   status?: keyof AvatarStatus
@@ -37,7 +37,7 @@ const AvatarComponent: FC<AvatarProps> = ({
   color = ColorsEnum.primary,
   img,
   placeholderInitials = '',
-  rounded = true,
+  rounded = RoundedSizesEnum.full,
   size = MainSizesEnum.md,
   stacked = false,
   status,
@@ -51,7 +51,7 @@ const AvatarComponent: FC<AvatarProps> = ({
     theme.root.img.base,
     bordered && theme.root.bordered,
     bordered && theme.root.color[color],
-    rounded && theme.root.rounded,
+    theme.root.rounded[rounded],
     stacked && theme.root.stacked,
     theme.root.img.on,
     theme.root.size[size],
@@ -79,7 +79,7 @@ const AvatarComponent: FC<AvatarProps> = ({
               bordered && theme.root.bordered,
               bordered && theme.root.color[color],
               theme.root.size[size],
-              rounded && theme.root.rounded,
+              theme.root.rounded[rounded],
             )}
             data-testid="ui-avatar-initials-placeholder"
           >
