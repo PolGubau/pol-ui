@@ -24,7 +24,6 @@ export default {
 } as Meta
 
 const icon: FC<ComponentProps<'svg'>> = HiChevronDown
-
 const Template: StoryFn<AccordionProps> = args => (
   <Accordion arrowIcon={icon} {...args}>
     <Accordion.Panel>
