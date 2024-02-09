@@ -43,7 +43,7 @@ describe.concurrent('Components / Alert', () => {
         }
         render(
           <PoluiProvider theme={{ theme }}>
-            <TestAlert withBorderAccent />
+            <TestAlert bordered />
           </PoluiProvider>,
         )
 
@@ -78,21 +78,6 @@ describe.concurrent('Components / Alert', () => {
         )
 
         expect(icon()).toHaveClass('alert-custom-icon')
-      })
-
-      it('should show custom `rounded` class', () => {
-        const theme: CustomPoluiTheme = {
-          alert: {
-            rounded: 'rounded',
-          },
-        }
-        render(
-          <PoluiProvider theme={{ theme }}>
-            <TestAlert />
-          </PoluiProvider>,
-        )
-
-        expect(alert()).toHaveClass('rounded')
       })
     })
   })
@@ -160,8 +145,7 @@ const TestAlert: FC<AlertProps> = (props: AlertProps) => {
       color="info"
       icon={HiInformationCircle}
       onDismiss={() => setDismissed(!isDismissed)}
-      rounded
-      withBorderAccent
+      bordered
     >
       {isDismissed ? 'dismissed' : 'waiting'}
     </Alert>

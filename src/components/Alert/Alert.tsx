@@ -12,10 +12,10 @@ export interface AlertProps extends Omit<ComponentProps<'div'>, 'color'> {
   additionalContent?: ReactNode
   color?: Colors
   icon?: FC<ComponentProps<'svg'>>
-  onDismiss?: boolean | (() => void)
+  onDismiss?: () => void
   rounded?: RoundedSizes
   theme?: DeepPartial<AlertTheme>
-  withBorderAccent?: boolean
+  bordered?: boolean
 }
 
 export const Alert: FC<AlertProps> = ({
@@ -24,13 +24,17 @@ export const Alert: FC<AlertProps> = ({
   className,
   color = ColorsEnum.secondary,
   icon: Icon,
-  onDismiss = false,
+  onDismiss,
   rounded = RoundedSizesEnum.md,
   theme: customTheme = {},
-  withBorderAccent,
+  bordered,
   ...props
 }) => {
   const theme: AlertTheme = mergeDeep(getTheme().alert, customTheme)
+
+  const handleOnDismiss = () => {
+    onDismiss?.()
+  }
 
   return (
     <div
@@ -38,7 +42,7 @@ export const Alert: FC<AlertProps> = ({
         theme.base,
         theme.color[color],
         theme.rounded[rounded],
-        withBorderAccent && theme.borderAccent,
+        bordered && theme.borderAccent,
         className,
       )}
       role="alert"
@@ -53,7 +57,7 @@ export const Alert: FC<AlertProps> = ({
             title="Dismiss"
             data-testid="ui-alert-dismiss"
             type="button"
-            onClick={onDismiss}
+            onClick={handleOnDismiss}
             color={color}
           >
             <HiX aria-hidden title="Dismiss" />
@@ -64,6 +68,3 @@ export const Alert: FC<AlertProps> = ({
     </div>
   )
 }
-
-// Component name = Alert
-Alert.displayName = 'Alert'

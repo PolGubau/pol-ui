@@ -3,11 +3,10 @@ import { HiX } from 'react-icons/hi'
 import { theme } from '../../theme'
 import type { AlertProps } from './Alert'
 import { Alert } from './Alert'
-import { MdLightbulb } from 'react-icons/md'
 import { ColorsEnum } from '../../types/enums'
 import { Button } from '../Button'
 import { BiCheck, BiTrash } from 'react-icons/bi'
-import { TbInfoCircle } from 'react-icons/tb'
+import { TbInfoCircle, TbBulb } from 'react-icons/tb'
 
 export default {
   title: 'Components/Alert',
@@ -35,10 +34,9 @@ export default {
 
 const Template: StoryFn<AlertProps> = props => <Alert {...props} />
 
-export const DefaultAlert = Template.bind({})
-DefaultAlert.storyName = 'Default'
-DefaultAlert.args = {
-  onDismiss: false,
+export const Default = Template.bind({})
+Default.args = {
+  onDismiss: undefined,
   children: (
     <>
       An alert could be an incredible useful component when showing an important advice is needed. You can easily
@@ -50,8 +48,8 @@ DefaultAlert.args = {
 export const AlertWithIcons = Template.bind({})
 AlertWithIcons.storyName = 'With Icon'
 AlertWithIcons.args = {
-  icon: MdLightbulb,
-  onDismiss: false,
+  icon: TbBulb,
+  onDismiss: undefined,
   children: (
     <>
       Our recommendation is to use a descriptible icon with the content so the user will know faster what the context or
@@ -77,16 +75,16 @@ export const AlertRounded = Template.bind({})
 AlertRounded.args = {
   color: ColorsEnum.warning,
   rounded: 'none',
-  onDismiss: false,
+  onDismiss: undefined,
   children: <>Warning alert! This alert is trying to advice you, be carefully that this actions is not undonable.</>,
 }
 
-export const AlertWithBorderAccent = Template.bind({})
-AlertWithBorderAccent.storyName = 'Bordered'
-AlertWithBorderAccent.args = {
+export const Alertbordered = Template.bind({})
+Alertbordered.storyName = 'Bordered'
+Alertbordered.args = {
   color: ColorsEnum.warning,
-  onDismiss: false,
-  withBorderAccent: true,
+  onDismiss: undefined,
+  bordered: true,
   children: (
     <>Easier to see, right? Use this border when you have complexe contrast to increase the Alert visual importance</>
   ),
@@ -96,8 +94,8 @@ export const AlertWithAdditionalContent = Template.bind({})
 AlertWithAdditionalContent.args = {
   color: 'info',
   icon: TbInfoCircle,
-  onDismiss: false,
-  withBorderAccent: true,
+  onDismiss: undefined,
+  bordered: true,
   additionalContent: (
     <>
       <div className="mb-4 mt-2 text-sm text-info-700 dark:text-info-800">
@@ -126,7 +124,7 @@ export const AlertWithAllOptions = Template.bind({})
 AlertWithAllOptions.args = {
   color: ColorsEnum.error,
   rounded: 'none',
-  withBorderAccent: true,
+  bordered: true,
   onDismiss: () => alert('Alert dismissed!'),
   icon: BiTrash,
   additionalContent: (
