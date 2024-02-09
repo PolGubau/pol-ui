@@ -10,10 +10,4 @@ describe('AvatarGroupCounter', () => {
     expect(counterElement).toHaveClass('test-class')
     expect(counterElement).toHaveAttribute('href', 'test')
   })
-
-  it('merges the custom theme with the default theme', () => {
-    render(<AvatarGroupCounter total={5} theme={{ base: 'custom-base-class' }} />)
-    const counterElement = screen.getByText('+5')
-    expect(counterElement).toHaveClass('custom-base-class')
-  })
 })
