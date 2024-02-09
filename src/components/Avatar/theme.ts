@@ -81,7 +81,7 @@ export const avatarTheme: AvatarTheme = {
       'center-left': 'center -left-1',
     },
     status: {
-      away: 'bg-yellow',
+      away: 'bg-warning',
       base: 'absolute h-3.5 w-3.5 rounded-full border-2 border-white dark:border-secondary-800',
       busy: 'bg-error',
       offline: 'bg-secondary',
