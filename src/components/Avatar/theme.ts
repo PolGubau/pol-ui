@@ -94,5 +94,5 @@ export const avatarTheme: AvatarTheme = {
   },
   group: 'flex -space-x-4',
   groupCounter:
-    'relative flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-secondary-700 rounded-full ring-2 ring-secondary-300 hover:bg-secondary-600 dark:ring-secondary-500',
+    'relative grid place-content-center aspect-square h-10 text-xs font-medium text-white bg-secondary-700 rounded-full ring-2 ring-secondary-300 hover:bg-secondary-600 dark:ring-secondary-500',
 }

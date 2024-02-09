@@ -13,7 +13,7 @@ export const AvatarGroup: React.FC<AvatarGroupProps> = ({ children, className, t
   const theme = mergeDeep(getTheme().avatar, customTheme)
 
   return (
-    <div data-testid="avatar-group-element" className={twMerge(theme.groupCounter, className)} {...props}>
+    <div data-testid="avatar-group-element" className={twMerge(theme.group, className)} {...props}>
       {children}
     </div>
   )
