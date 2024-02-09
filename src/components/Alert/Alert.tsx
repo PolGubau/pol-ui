@@ -22,7 +22,7 @@ export const Alert: FC<AlertProps> = ({
   additionalContent,
   children,
   className,
-  color = ColorsEnum.info,
+  color = ColorsEnum.secondary,
   icon: Icon,
   onDismiss = false,
   rounded = true,

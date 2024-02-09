@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react'
-import { HiInformationCircle, HiX } from 'react-icons/hi'
+import { HiX } from 'react-icons/hi'
 import { theme } from '../../theme'
 import type { AlertProps } from './Alert'
 import { Alert } from './Alert'
@@ -7,6 +7,7 @@ import { MdLightbulb } from 'react-icons/md'
 import { ColorsEnum } from '../../types/enums'
 import { Button } from '../Button'
 import { BiCheck, BiTrash } from 'react-icons/bi'
+import { TbInfoCircle } from 'react-icons/tb'
 
 export default {
   title: 'Components/Alert',
@@ -96,7 +97,7 @@ export const AlertWithAdditionalContent = Template.bind({})
 AlertWithAdditionalContent.storyName = 'Additional content'
 AlertWithAdditionalContent.args = {
   color: 'info',
-  icon: HiInformationCircle,
+  icon: TbInfoCircle,
   onDismiss: false,
   withBorderAccent: true,
   additionalContent: (
