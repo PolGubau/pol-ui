@@ -2,9 +2,9 @@ import type { Meta, StoryFn } from '@storybook/react'
 import type { AvatarProps } from './Avatar'
 import { Avatar } from './Avatar'
 import React from 'react'
-import { MainSizesEnum } from '../../types/enums'
+import { MainSizesEnum, RoundedSizesEnum } from '../../types/enums'
 import { AvatarStatusEnum } from './AvatarTypes'
-import type { MainSizes } from '../../types'
+import type { MainSizes, RoundedSizes } from '../../types'
 export default {
   title: 'Components/Avatar',
   component: Avatar,
@@ -86,6 +86,21 @@ export const AllStatus = (): JSX.Element => (
           className="mb-2"
         />
         <span className="text-gray-500">{status}</span>
+      </div>
+    ))}
+  </div>
+)
+export const AllRounded = (): JSX.Element => (
+  <div className="flex flex-wrap gap-6">
+    {Object.keys(RoundedSizesEnum).map(v => (
+      <div key={v} className="flex flex-col items-center justify-center">
+        <Avatar
+          alt="Your avatar"
+          img="https://avatars.githubusercontent.com/u/63197171?v=4"
+          rounded={v as RoundedSizes}
+          className="mb-2"
+        />
+        <span className="text-gray-500">{v}</span>
       </div>
     ))}
   </div>
