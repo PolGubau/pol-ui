@@ -1,7 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react'
-import { HiX } from 'react-icons/hi'
-import type { BannerComponentProps } from './Banner'
-import { Banner } from './Banner'
+import { Banner, type BannerComponentProps } from './Banner'
 
 export default {
   title: 'Components/Banner',
@@ -9,7 +7,7 @@ export default {
   tags: ['autodocs'],
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col  min-h-[400px]  bg-secondary-50">
+      <div className="flex p-6 flex-col">
         <Story />
       </div>
     ),
@@ -23,14 +21,7 @@ const Template: StoryFn<BannerComponentProps> = args => <Banner {...args} />
 
 export const DefaultBanner = Template.bind({})
 DefaultBanner.args = {
-  children: (
-    <>
-      <span>Welcome back to Pol-ui</span>
-      <Banner.CloseButton>
-        <HiX className="h-4 w-4" />
-      </Banner.CloseButton>
-    </>
-  ),
+  children: <span>Welcome back to Pol-ui</span>,
 }
 
 export const BorderedBanner = Template.bind({})
@@ -42,25 +33,34 @@ BorderedBanner.args = {
 export const CustomBanner = Template.bind({})
 CustomBanner.storyName = 'Custom styles'
 CustomBanner.args = {
-  className: 'bg-success-300 py-4 px-6 rounded-b-3xl',
-  children: (
-    <>
-      <span>Welcome back to Pol-ui</span>
-      <Banner.CloseButton>
-        <HiX className="h-4 w-4" />
-      </Banner.CloseButton>
-    </>
-  ),
+  closable: false,
+  color: 'success',
+  className: 'py-4 px-6 rounded-b-3xl',
+  children: <span>Welcome back to Pol-ui</span>,
 }
 export const CustomCloseButton = Template.bind({})
 CustomCloseButton.args = {
   className: 'bg-info-300 py-4 px-6 rounded-3xl',
-  children: (
-    <>
-      <span>Welcome back to Pol-ui, check our blog!</span>
-      <Banner.CloseButton className="rounded-lg">
-        <HiX className="h-4 w-4" /> Close
-      </Banner.CloseButton>
-    </>
-  ),
+  children: <span>Welcome back to Pol-ui, check our blog!</span>,
 }
+
+export const AllColors = () => (
+  <div className="flex flex-col gap-4">
+    <Banner color="error">Error</Banner>
+    <Banner color="info">Info</Banner>
+    <Banner color="success">Success</Banner>
+    <Banner color="warning">Warning</Banner>
+    <Banner color="secondary">Secondary</Banner>
+    <Banner color="primary">Primary</Banner>
+  </div>
+)
+export const AllColorsDarkMode = () => (
+  <div className="flex flex-col gap-4 dark bg-secondary-900 p-4 rounded-3xl">
+    <Banner color="error">Error</Banner>
+    <Banner color="info">Info</Banner>
+    <Banner color="success">Success</Banner>
+    <Banner color="warning">Warning</Banner>
+    <Banner color="secondary">Secondary</Banner>
+    <Banner color="primary">Primary</Banner>
+  </div>
+)
