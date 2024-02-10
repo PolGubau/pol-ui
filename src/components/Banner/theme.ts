@@ -1,12 +1,13 @@
-import type { ColorsType, IBoolean } from '../../types'
+import type { ColorsType, IBoolean, RoundedSizesTypes } from '../../types'
 
 export interface BannerTheme {
   base: string
   bordered: IBoolean
   color: ColorsType
+  rounded: RoundedSizesTypes
 }
 export const bannerTheme: BannerTheme = {
-  base: 'flex w-full gap-2 items-center justify-between py-2 px-4 rounded-2xl',
+  base: 'flex w-full gap-2 items-center justify-between py-2 px-4',
   bordered: {
     on: 'border-b border-b-secondary',
     off: '',
@@ -18,5 +19,16 @@ export const bannerTheme: BannerTheme = {
     warning: 'text-warning-900  bg-warning-200 dark:text-warning-50 dark:bg-warning-800',
     secondary: 'text-secondary-900 bg-secondary-200 dark:text-secondary-50 dark:bg-secondary-800',
     primary: 'text-primary-900 bg-primary-200 dark:text-primary-50 dark:bg-primary-800',
+  },
+  rounded: {
+    xs: 'rounded-xs',
+    sm: 'rounded-sm',
+    md: 'rounded-md',
+    lg: 'rounded-lg',
+    xl: 'rounded-xl',
+    '2xl': 'rounded-2xl',
+    '3xl': 'rounded-3xl',
+    full: 'rounded-full',
+    none: 'rounded-none',
   },
 }

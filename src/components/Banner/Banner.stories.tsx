@@ -1,5 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import { Banner, type BannerComponentProps } from './Banner'
+import type { RoundedSizes } from '../../types'
+import { RoundedSizesEnum } from '../../types'
 
 export default {
   title: 'Components/Banner',
@@ -62,5 +64,15 @@ export const AllColorsDarkMode = () => (
     <Banner color="warning">Warning</Banner>
     <Banner color="secondary">Secondary</Banner>
     <Banner color="primary">Primary</Banner>
+  </div>
+)
+
+export const AllRounded = () => (
+  <div className="flex flex-col gap-4">
+    {Object.keys(RoundedSizesEnum).map((rounded, index) => (
+      <Banner key={index} rounded={rounded as RoundedSizes}>
+        {rounded}
+      </Banner>
+    ))}
   </div>
 )

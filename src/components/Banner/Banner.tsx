@@ -2,8 +2,8 @@ import { useState, type ComponentProps, type FC, type MouseEventHandler } from '
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { Colors, DeepPartial } from '../../types/types'
-import { ColorsEnum } from '../../types'
+import type { Colors, DeepPartial, RoundedSizes } from '../../types/types'
+import { ColorsEnum, RoundedSizesEnum } from '../../types'
 import { IconButton } from '../IconButton'
 import { TbX } from 'react-icons/tb'
 import type { BannerTheme } from './theme'
@@ -18,6 +18,7 @@ export interface BannerComponentProps extends ComponentProps<'header'> {
   buttonClassName?: string
   hasMotion?: boolean
   motionDistance?: number
+  rounded?: RoundedSizes
 }
 
 export const Banner: FC<BannerComponentProps> = ({
@@ -31,6 +32,7 @@ export const Banner: FC<BannerComponentProps> = ({
   buttonClassName,
   hasMotion = true,
   motionDistance = 50,
+  rounded = RoundedSizesEnum['2xl'],
   ...props
 }) => {
   const theme = mergeDeep(getTheme().banner, customTheme)
@@ -55,7 +57,13 @@ export const Banner: FC<BannerComponentProps> = ({
             data-testid="pol-ui-banner"
             role="banner"
             tabIndex={-1}
-            className={twMerge(theme.base, theme.bordered[bordered ? 'on' : 'off'], theme.color[color], className)}
+            className={twMerge(
+              theme.base,
+              theme.bordered[bordered ? 'on' : 'off'],
+              theme.color[color],
+              theme.rounded[rounded],
+              className,
+            )}
             {...props}
           >
             {children}
