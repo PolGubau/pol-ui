@@ -3,7 +3,6 @@ import { accordionTheme } from './components/Accordion/theme'
 import { alertTheme } from './components/Alert/theme'
 import { avatarTheme } from './components/Avatar/theme'
 import { badgeTheme } from './components/Badge/theme'
-import { blockquoteTheme } from './components/Blockquote/theme'
 import { breadcrumbTheme } from './components/Breadcrumb/theme'
 import { iconButtonTheme } from './components/IconButton/theme'
 import { cardTheme } from './components/Card/theme'
@@ -57,7 +56,6 @@ export const theme: PoluiTheme = {
   avatar: avatarTheme,
   badge: badgeTheme,
   banner: bannerTheme,
-  blockquote: blockquoteTheme,
   breadcrumb: breadcrumbTheme,
   button: buttonTheme,
   iconButton: iconButtonTheme,

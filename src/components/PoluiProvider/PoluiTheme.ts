@@ -3,7 +3,6 @@ import type { AccordionTheme } from '../Accordion'
 import type { AlertTheme } from '../Alert'
 import type { AvatarTheme } from '../Avatar'
 import type { BadgeTheme } from '../Badge'
-import type { BlockquoteTheme } from '../Blockquote'
 import type { BreadcrumbTheme } from '../Breadcrumb'
 import type { ButtonTheme } from '../Button'
 import type { CardTheme } from '../Card'
@@ -32,7 +31,7 @@ import type { TabsTheme } from '../Tabs'
 import type { InputTheme } from '../Input'
 import type { TimelineTheme } from '../Timeline'
 import type { TooltipTheme } from '../Tooltip'
-import type { BannerTheme } from '../Banner/Banner'
+import type { BannerTheme } from '../Banner'
 import type { SwitchTheme } from '../Switch'
 import type { IconButtonTheme } from '../IconButton'
 import type { HelperTextTheme } from '../HelperText/theme'
@@ -64,7 +63,6 @@ export interface PoluiTheme {
   badge: BadgeTheme
   popover: PopoverTheme
   banner: BannerTheme
-  blockquote: BlockquoteTheme
   breadcrumb: BreadcrumbTheme
   button: ButtonTheme
   buttonGroup: ButtonGroupTheme

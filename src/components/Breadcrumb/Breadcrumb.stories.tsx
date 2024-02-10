@@ -1,9 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/react'
-import { HiHome } from 'react-icons/hi'
 import type { BreadcrumbComponentProps } from './Breadcrumb'
 import { Breadcrumb } from './Breadcrumb'
-import { MdTableRestaurant } from 'react-icons/md'
 import { BreadcrumbItem } from './BreadcrumbItem'
+import { TbHome, TbUser } from 'react-icons/tb'
 
 export default {
   title: 'Components/Breadcrumb',
@@ -11,7 +10,7 @@ export default {
   tags: ['autodocs'],
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col  min-h-[400px]  bg-secondary-50">
+      <div className="flex p-6 flex-col ">
         <Story />
       </div>
     ),
@@ -23,10 +22,10 @@ export default {
 
 const Template: StoryFn<BreadcrumbComponentProps> = args => (
   <Breadcrumb {...args}>
-    <BreadcrumbItem href="https://polgubau.com/" icon={HiHome}>
+    <BreadcrumbItem href="https://polgubau.com/" icon={TbHome}>
       Home
     </BreadcrumbItem>
-    <BreadcrumbItem href="https://polgubau.com/" icon={MdTableRestaurant}>
+    <BreadcrumbItem href="https://polgubau.com/" icon={TbUser}>
       Authors
     </BreadcrumbItem>
     <BreadcrumbItem>Pol Gubau Amores</BreadcrumbItem>
