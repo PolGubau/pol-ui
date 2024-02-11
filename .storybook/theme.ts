@@ -8,7 +8,7 @@ export default create({
 
   brandTitle: 'Pol-ui Storybook',
   brandUrl: '/',
-  brandImage: '/images/logo.png',
+  brandImage: 'https://ui.polgubau.com/logo.png',
   brandTarget: '_self',
 
   //
