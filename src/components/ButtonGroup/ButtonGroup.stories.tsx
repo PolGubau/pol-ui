@@ -9,9 +9,9 @@ export default {
 
 const Template: StoryFn<ButtonGroupProps> = args => (
   <ButtonGroup {...args}>
-    <Button>Profile</Button>
-    <Button>Settings</Button>
-    <Button>Messages</Button>
+    <Button className="rounded-r-none">Profile</Button>
+    <Button rounded="none">Settings</Button>
+    <Button className="rounded-l-none">Messages</Button>
   </ButtonGroup>
 )
 

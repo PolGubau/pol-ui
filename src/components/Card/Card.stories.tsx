@@ -10,7 +10,7 @@ export default {
 
 const Template: StoryFn<CardProps> = (args: CardProps) => (
   <Card {...args}>
-    <h5 className="text-2xl font-bold tracking-tight text-secondary-900 dark:text-white">Check this Card title!</h5>
+    <h5 className="text-2xl font-bold tracking-tight text-black dark:text-white">Check this Card title!</h5>
     <p className="font-normal text-secondary-700 dark:text-secondary-400">
       This components is quite flexible and can be used in many ways. Customize it to your needs!
     </p>
@@ -23,13 +23,13 @@ Default.args = {}
 export const Horizontal = Template.bind({})
 Horizontal.args = {
   horizontal: true,
-  imgSrc: '/images/isotype.png',
+  imgSrc: 'https://ui.polgubau.com/logo.png',
 }
 
 export const WithDecorativeImage = Template.bind({})
 WithDecorativeImage.storyName = 'With decorative image'
 WithDecorativeImage.args = {
-  imgSrc: '/images/isotype.png',
+  imgSrc: 'https://ui.polgubau.com/logo.png',
   imageClass: 'w-24',
 }
 
