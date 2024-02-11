@@ -54,7 +54,7 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
       ref={ripple}
       onPointerDown={event}
       onKeyPress={event}
-      disabled={disabled}
+      disabled={loader ?? disabled}
       className={twMerge(
         theme.base,
         disabled && theme.disabled,

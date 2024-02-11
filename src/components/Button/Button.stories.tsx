@@ -1,15 +1,15 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import { theme } from '../../theme'
 import { Button } from '.'
-import { BsHandThumbsUpFill } from 'react-icons/bs'
 import type { MainSizes, Colors, RoundedSizes } from '../../types'
 import type { ButtonProps } from '.'
+import { TbStarFilled } from 'react-icons/tb'
 
 export default {
   title: 'Components/Button',
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col justify-center items-center min-h-20  bg-secondary-50">
+      <div className="flex p-6 flex-col justify-center items-center">
         <Story />
       </div>
     ),
@@ -60,8 +60,8 @@ OutlineButton.args = {
   ...DefaultButton.args,
   outline: true,
 }
-export const Processing = Template.bind({})
-Processing.args = {
+export const Loading = Template.bind({})
+Loading.args = {
   ...DefaultButton.args,
   loading: true,
 }
@@ -155,7 +155,7 @@ export const OutlineColors = (args: ButtonProps) => (
 
 export const WithIcon = (args: ButtonProps) => (
   <Button {...args}>
-    <BsHandThumbsUpFill />
+    <TbStarFilled />
     Button
   </Button>
 )
