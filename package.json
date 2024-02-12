@@ -1,6 +1,11 @@
 {
   "name": "pol-ui",
   "version": "2.1.11",
+  "private": false,
+  "categories": [
+    "Snippets"
+  ],
+  "displayName": "Pol-ui CLI",
   "description": "Official React components built for Pol Gubau Amores' apps",
   "keywords": [
     "design-system",
