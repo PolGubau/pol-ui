@@ -45,6 +45,10 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
 
   const MotionButtonBase = motion(ButtonBase)
 
+  /** If the button is loading or disabled, we should disable the button
+   */
+  const shouldButtonBeDisabled = loading || disabled
+
   return (
     <MotionButtonBase
       transition={hasMotion && { duration: 0.1, type: 'spring' }}
@@ -54,7 +58,7 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
       ref={ripple}
       onPointerDown={event}
       onKeyPress={event}
-      disabled={loading ?? disabled}
+      disabled={shouldButtonBeDisabled}
       className={twMerge(
         theme.base,
         disabled && theme.disabled,
