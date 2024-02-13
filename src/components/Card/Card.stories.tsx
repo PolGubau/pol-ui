@@ -36,5 +36,5 @@ WithDecorativeImage.args = {
 export const WithNextImage = Template.bind({})
 WithNextImage.storyName = 'Custom img Component (Next.js...)'
 WithNextImage.args = {
-  renderImage: () => <img alt="Example" src={'/images/logo.png'} className="w-24" />,
+  renderImage: () => <img alt="Example" src={'https://ui.polgubau.com/logo.png'} className="w-24" />,
 }
