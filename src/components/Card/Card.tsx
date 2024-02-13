@@ -1,10 +1,10 @@
 import type { ComponentProps, FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
-import { omit } from '../../helpers/omit'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types/types'
 import type { CardTheme } from './theme'
+import { omit } from '../../helpers'
 
 interface CommonCardProps extends ComponentProps<'div'> {
   horizontal?: boolean
@@ -12,17 +12,15 @@ interface CommonCardProps extends ComponentProps<'div'> {
   href?: string
   imageClass?: string
   theme?: DeepPartial<CardTheme>
+  className?: string
 }
 
 export type CardProps = (
-  | { imgAlt?: string; imgSrc?: string; renderImage?: never; className?: string }
+  | { imgAlt?: string; imgSrc?: string; renderImage?: never }
   | {
-      /** Allows to provide a custom render function for the image component. Useful in Next.JS and Gatsby. **Setting this will disable `imgSrc` and `imgAlt`**.
-       */
       renderImage?: (theme: DeepPartial<CardTheme>, horizontal: boolean) => JSX.Element
       imgAlt?: never
       imgSrc?: never
-      className?: string
     }
 ) &
   CommonCardProps
@@ -54,7 +52,7 @@ export type CardProps = (
  * </Card>
  * 
  */
-export const Card: FC<CardProps> = props => {
+export const Card: FC<CardProps> = (props): React.ReactNode => {
   const {
     children,
     className,
@@ -69,9 +67,18 @@ export const Card: FC<CardProps> = props => {
   // Card component will be an Anchor link if href prop is passed.
 
   const Component = typeof href === 'undefined' ? 'div' : 'a'
-  const externalProps = removeCustomProps(props)
-  const theme = mergeDeep(getTheme().card, customTheme)
 
+  const theme = mergeDeep(getTheme().card, customTheme)
+  const externalProps = omit([
+    'children',
+    'className',
+    'horizontal',
+    'href',
+    'theme',
+    'childrenClass',
+    'imageClass',
+    'renderImage',
+  ])(props)
   return (
     <Component
       data-testid="ui-card"
@@ -88,19 +95,7 @@ export const Card: FC<CardProps> = props => {
         <img src={props.imgSrc} alt={props.imgAlt} className={imageClass} data-testid="ui-card-image" />
       )}
       {renderImage?.(theme, horizontal)}
-      {/* <Image {...props} className={imageClass} /> */}
       <div className={twMerge(theme.root.children, childrenClass)}>{children}</div>
     </Component>
   )
 }
-
-const removeCustomProps = omit([
-  'renderImage',
-  'imgSrc',
-  'imgAlt',
-  'children',
-  'className',
-  'horizontal',
-  'href',
-  'theme',
-])

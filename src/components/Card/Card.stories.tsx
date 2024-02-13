@@ -5,6 +5,7 @@ import { Card } from './Card'
 export default {
   title: 'Components/Card',
   component: Card,
+  tags: ['autodocs'],
   decorators: [(Story): JSX.Element => <div className="h-1/2 w-1/2">{Story()}</div>],
 } as Meta
 
