@@ -49,6 +49,7 @@ import { stickyScrollTheme } from './components/StickyScroll/theme'
 import { parallaxTextTheme } from './components/ParallaxText'
 import { textGeneratorTheme } from './components/TextGenerator/theme'
 import { perspectiveCardTheme } from './components/PerspectiveCard/theme'
+import { kanbanTheme } from './components/Kanban/theme'
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,
@@ -100,4 +101,5 @@ export const theme: PoluiTheme = {
   parallaxText: parallaxTextTheme,
   textGenerator: textGeneratorTheme,
   perspectiveCard: perspectiveCardTheme,
+  kanban: kanbanTheme,
 }

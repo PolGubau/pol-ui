@@ -1,8 +1,15 @@
-export type DropIndicatorProps = {
+import { twMerge } from 'tailwind-merge'
+import type { KanbanTheme } from './theme'
+
+export type KanbanIndicatorProps = {
   beforeId: string | null
   column: string
+  className?: string
+  theme: KanbanTheme
 }
 
-export const KanbanDropIndicator = ({ beforeId, column }: DropIndicatorProps) => {
-  return <div data-before={beforeId ?? '-1'} data-column={column} className="my-0.5 h-1 w-full bg-primary opacity-0" />
+export const KanbanIndicator = ({ beforeId, column, className, theme }: KanbanIndicatorProps) => {
+  return (
+    <div data-before={beforeId ?? '-1'} data-column={column} className={twMerge(theme.indicator.base, className)} />
+  )
 }

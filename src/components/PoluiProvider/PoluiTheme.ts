@@ -48,6 +48,7 @@ import type { StickyScrollTheme } from '../StickyScroll/theme'
 import type { ParallaxTextTheme } from '../ParallaxText'
 import type { TextGeneratorTheme } from '../TextGenerator/theme'
 import type { PerspectiveCardTheme } from '../PerspectiveCard/theme'
+import type { KanbanTheme } from '../Kanban/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -106,4 +107,5 @@ export interface PoluiTheme {
   parallaxText: ParallaxTextTheme
   textGenerator: TextGeneratorTheme
   perspectiveCard: PerspectiveCardTheme
+  kanban: KanbanTheme
 }

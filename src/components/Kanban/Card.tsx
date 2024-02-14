@@ -1,6 +1,7 @@
 import { twMerge } from 'tailwind-merge'
 import { motion } from 'framer-motion'
-import { KanbanDropIndicator } from './KanbanDropIndicator'
+import { KanbanIndicator } from './KanbanDropIndicator'
+import type { KanbanTheme } from './theme'
 
 export type CompleteKanbanCardProps = {
   // eslint-disable-next-line @typescript-eslint/ban-types
@@ -8,6 +9,8 @@ export type CompleteKanbanCardProps = {
   setDragging: (value: boolean) => void
   dragable?: boolean
   card: KanbanCardProps
+  indicatorClassName?: string
+  theme: KanbanTheme
 }
 export type KanbanCardProps = {
   title: string
@@ -16,11 +19,18 @@ export type KanbanCardProps = {
   onClick?: () => void
 }
 
-export const KanbanCard = ({ handleDragStart, card, dragable, setDragging }: CompleteKanbanCardProps) => {
+export const KanbanCard = ({
+  handleDragStart,
+  card,
+  dragable,
+  setDragging,
+  indicatorClassName,
+  theme,
+}: CompleteKanbanCardProps) => {
   const { title, id, column } = card
   return (
     <>
-      <KanbanDropIndicator beforeId={id} column={column} />
+      <KanbanIndicator beforeId={id} column={column} className={indicatorClassName} theme={theme} />
       <motion.button
         layout
         onClick={card.onClick}
@@ -28,12 +38,9 @@ export const KanbanCard = ({ handleDragStart, card, dragable, setDragging }: Com
         draggable={dragable}
         onDragStart={e => handleDragStart(e, { title, id, column })}
         onDragEnd={() => setDragging(false)}
-        className={twMerge(
-          'w-full rounded border border-secondary-600 bg-secondary-50 dark:bg-secondary-900 dark:border-secondary-100 hover:brightness-90 p-3',
-          dragable ? 'cursor-grab active:cursor-grabbing ' : '',
-        )}
+        className={twMerge(theme.card.base, dragable && theme.card.dragable)}
       >
-        <p className="text-sm text-left text-secondary-900 dark:text-secondary-100">{title}</p>
+        {title}
       </motion.button>
     </>
   )

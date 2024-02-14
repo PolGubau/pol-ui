@@ -1,20 +1,27 @@
-import type { Dispatch, FormEvent, SetStateAction } from 'react'
+import type { FormEvent } from 'react'
 import { useState } from 'react'
-import type { KanbanCardProps } from './Card'
+import type {} from './Card'
 import { motion } from 'framer-motion'
 import { TbPlus } from 'react-icons/tb'
 import { Textarea } from '../Textarea'
 import { Button } from '../Button'
 import { ColorsEnum } from '../../types'
+import type { KanbanProps } from './Kanban'
 
-type AddCardProps = {
+export type AddCardProps = {
   column: string
-  setCards: Dispatch<SetStateAction<KanbanCardProps[]>>
-  addLabel?: string
-  cancelLabel?: string
+  labels: KanbanProps['labels']
+  onCreate?: ({ column, title }: { column: string; title: string }) => void
+  theme: KanbanProps['theme']
 }
 
-export const AddKanbanCard = ({ column, setCards, addLabel = 'new', cancelLabel = 'close' }: AddCardProps) => {
+export const AddKanbanCard = ({
+  column,
+  onCreate,
+  labels = { add: 'Add', cancel: 'Cancel' },
+
+  theme = {},
+}: AddCardProps) => {
   const [text, setText] = useState('')
   const [adding, setAdding] = useState(false)
 
@@ -23,15 +30,10 @@ export const AddKanbanCard = ({ column, setCards, addLabel = 'new', cancelLabel 
 
     if (!text.trim().length) return
 
-    const newCard = {
-      column,
-      title: text.trim(),
-      id: Math.random().toString(),
-    }
-
-    setCards(pv => [...pv, newCard])
+    onCreate?.({ column, title: text.trim() })
 
     setAdding(false)
+    setText('')
   }
 
   const MotionButton = motion(Button)
@@ -39,18 +41,18 @@ export const AddKanbanCard = ({ column, setCards, addLabel = 'new', cancelLabel 
   return (
     <>
       {adding ? (
-        <motion.form layout onSubmit={handleSubmit} className="flex w-full flex-col">
+        <motion.form layout onSubmit={handleSubmit} className={theme.add?.form}>
           <Textarea
             onChange={e => setText(e.target.value)}
-            placeholder="Add new task..."
-            className="flex flex-1 w-full"
+            placeholder={labels.placeholder}
+            className={theme.add?.textarea}
           />
-          <div className="mt-1.5 flex items-center justify-end gap-1.5">
+          <div className={theme.add?.buttonGroup}>
             <Button color={ColorsEnum.secondary} type="button" onClick={() => setAdding(false)} size="sm">
-              <span className="first-letter:uppercase">{cancelLabel}</span>
+              <span className="first-letter:uppercase">{labels.cancel}</span>
             </Button>
-            <Button color={ColorsEnum.primary} type="submit" size="sm">
-              <span className="first-letter:uppercase">{addLabel}</span>
+            <Button color={ColorsEnum.primary} type="submit" size="sm" disabled={!text.trim().length}>
+              <span className="first-letter:uppercase">{labels.add}</span>
               <TbPlus />
             </Button>
           </div>
@@ -64,7 +66,7 @@ export const AddKanbanCard = ({ column, setCards, addLabel = 'new', cancelLabel 
           onClick={() => setAdding(true)}
           hasBackground={false}
         >
-          <span className="first-letter:uppercase">{addLabel}</span>
+          <span className="first-letter:uppercase">{labels.add}</span>
           <TbPlus />
         </MotionButton>
       )}

@@ -5,8 +5,9 @@ import { toast } from '../Toaster'
 import { KanbanCard, type KanbanCardProps } from './Card'
 import { motion } from 'framer-motion'
 import { AddKanbanCard } from './AddCard'
-import { KanbanDropIndicator } from './KanbanDropIndicator'
+import { KanbanIndicator } from './KanbanDropIndicator'
 import type { KanbanProps } from './Kanban'
+import type { KanbanTheme } from './theme'
 export type KanbanColumnProps = {
   title: string
   cards: KanbanCardProps[]
@@ -17,6 +18,11 @@ export type KanbanColumnProps = {
   className?: string
   onReorder: KanbanProps['onReorder']
   columnClassName?: string
+  onCreate?: KanbanProps['onCreate']
+  indicatorClassName?: string
+  titleClass?: string
+  labels: KanbanProps['labels']
+  theme: KanbanTheme
 }
 /**
  * KanbanColumn component for displaying a column in a kanban board.
@@ -42,6 +48,11 @@ export const KanbanColumn = ({
   columnClassName,
   dragable: dragableCards,
   onReorder,
+  onCreate,
+  indicatorClassName,
+  titleClass,
+  theme,
+  labels,
 }: KanbanColumnProps): JSX.Element => {
   const { value: active, setFalse, setTrue } = useBoolean(false)
 
@@ -57,7 +68,6 @@ export const KanbanColumn = ({
       setDragging(true)
     }
   }
-
   const reorderCards = (cards: KanbanCardProps[], cardId: string, before: string) => {
     // Create a shallow copy of the cards array.
     let copy = [...cards]
@@ -102,7 +112,6 @@ export const KanbanColumn = ({
       onReorder?.({ cards: copy, cardId, before, isSameColumn: false, newColumn: column })
     }
   }
-
   /**
    * Handles the end of dragging a card.
    * @param {DragEvent} e - The drag event.
@@ -222,10 +231,10 @@ export const KanbanColumn = ({
   // Render the KanbanColumn component.
 
   return (
-    <div className={twMerge('w-64 flex flex-col gap-4', className)}>
-      <header className="flex items-center justify-between">
-        <h3 className={`font-medium`}>{title}</h3>
-        <span className="rounded text-sm text-neutral-400">{filteredCards.length}</span>
+    <div className={twMerge(theme.column.base, className)}>
+      <header className={theme.column.header}>
+        <h3 className={twMerge(theme.column.title, titleClass)}>{title}</h3>
+        <span className={theme.column.length}>{filteredCards.length}</span>
       </header>
       <motion.button
         onDrop={e => handleDragEnd(e as unknown as DragEvent)}
@@ -234,11 +243,7 @@ export const KanbanColumn = ({
         onDragEnd={() => {
           setDragging(false)
         }}
-        className={twMerge(
-          `h-full w-full flex flex-col justify-start items-start transition-all rounded-lg bg-secondary-50 pb-2 p-1`,
-          columnClassName,
-          active && 'brightness-95',
-        )}
+        className={twMerge(theme.column.column, columnClassName, active && theme.column.active)}
       >
         {filteredCards.map(c => {
           return (
@@ -248,11 +253,13 @@ export const KanbanColumn = ({
               handleDragStart={handleDragStart}
               dragable={dragableCards}
               setDragging={setDragging}
+              indicatorClassName={indicatorClassName}
+              theme={theme}
             />
           )
         })}
-        <KanbanDropIndicator beforeId={null} column={column} />
-        <AddKanbanCard column={column} setCards={setCards} />
+        <KanbanIndicator beforeId={null} column={column} className={indicatorClassName} theme={theme} />
+        {onCreate && <AddKanbanCard column={column} onCreate={onCreate} theme={theme} labels={labels} />}
       </motion.button>
     </div>
   )
