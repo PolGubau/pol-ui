@@ -8,10 +8,8 @@ export default {
   tags: ['autodocs'],
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col  min-h-[300px] justify-center items-center bg-secondary-50">
-        Before
+      <div className="flex p-6 justify-center items-center">
         <Story />
-        After
       </div>
     ),
   ],
