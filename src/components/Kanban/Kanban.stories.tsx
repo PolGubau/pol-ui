@@ -22,28 +22,32 @@ export default {
 
 const DEFAULT_CARDS: KanbanCardProps[] = [
   // BACKLOG
-  { title: 'Look into render bug in dashboard', id: '1', column: 'backlog' },
-  { title: 'SOX compliance checklist', id: '2', column: 'backlog' },
-  { title: '[SPIKE] Migrate to Azure', id: '3', column: 'backlog' },
-  { title: 'Document Notifications service', id: '4', column: 'backlog' },
+  { title: 'Welcome to the kanban', id: '1', column: 'backlog' },
+  { title: 'You can create new cards', id: '2', column: 'backlog' },
+  { title: 'And delete them', id: '3', column: 'backlog' },
+  { title: 'You can also drag them', id: '4', column: 'backlog' },
   {
-    title: 'Research DB options for new microservice',
+    title: 'Is not this cool?',
     id: '5',
     column: 'todo',
   },
   { title: 'I have an action!!!', id: '6', column: 'todo', onClick: () => alert('I have been clicked') },
-  { title: 'Sync with product on Q3 roadmap', id: '7', column: 'todo' },
+  {
+    title: 'I am a card with a long long long long long long long long long long long long title',
+    id: '7',
+    column: 'todo',
+  },
 
   // DOING
   {
-    title: 'Refactor context providers to use Zustand',
+    title: 'Here is another card',
     id: '8',
     column: 'doing',
   },
-  { title: 'Add logging to daily CRON', id: '9', column: 'doing' },
+  { title: '🦆 quack!', id: '9', column: 'doing' },
   // DONE
   {
-    title: 'Set up DD dashboards for Lambda listener',
+    title: 'Quite a complete component, right?',
     id: '10',
     column: 'done',
   },
