@@ -2,34 +2,28 @@ import { twMerge } from 'tailwind-merge'
 import { motion } from 'framer-motion'
 import { KanbanDropIndicator } from './KanbanDropIndicator'
 
-export type CompleteKanbanCardProps = KanbanCardProps & {
+export type CompleteKanbanCardProps = {
   // eslint-disable-next-line @typescript-eslint/ban-types
   handleDragStart: Function
   setDragging: (value: boolean) => void
+  dragable?: boolean
+  card: KanbanCardProps
 }
 export type KanbanCardProps = {
   title: string
   id: string
-  dragable?: boolean
   column: string
   onClick?: () => void
 }
 
-export const KanbanCard = ({
-  title,
-  id,
-  column,
-  handleDragStart,
-  onClick,
-  dragable,
-  setDragging,
-}: CompleteKanbanCardProps) => {
+export const KanbanCard = ({ handleDragStart, card, dragable, setDragging }: CompleteKanbanCardProps) => {
+  const { title, id, column } = card
   return (
     <>
       <KanbanDropIndicator beforeId={id} column={column} />
       <motion.button
         layout
-        onClick={onClick}
+        onClick={card.onClick}
         layoutId={id}
         draggable={dragable}
         onDragStart={e => handleDragStart(e, { title, id, column })}

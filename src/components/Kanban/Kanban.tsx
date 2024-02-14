@@ -11,6 +11,9 @@ export interface KanbanProps {
   setCards: Dispatch<SetStateAction<KanbanCardProps[]>>
   deleteable?: boolean
   deleteButton?: React.ReactNode
+  deletePositionY?: 'top' | 'bottom'
+  deletePositionX?: 'left' | 'right' | 'center'
+  deleteDelay?: number
 }
 
 export const Kanban: React.FC<KanbanProps> = ({
@@ -19,14 +22,17 @@ export const Kanban: React.FC<KanbanProps> = ({
   setCards,
   deleteButton,
   deleteable = true,
+  deletePositionY,
+  deletePositionX,
+  deleteDelay = 300,
   columns = [...new Set(cards.map(card => card.column))],
 }: KanbanProps) => {
   const { value: dragging, setValue: setDragging } = useBoolean(false)
-  const debouncedDragging = useDebounce(dragging, 300)
+  const debouncedDragging = useDebounce(dragging, deleteDelay)
   const shouldRenderDeleteButton = deleteable && debouncedDragging
   return (
     <AnimatePresence mode="wait">
-      <div className="flex h-full w-full gap-2 overflow-auto">
+      <div className="flex w-full gap-2 overflow-x-auto">
         {columns.map(column => {
           return (
             <KanbanColumn
@@ -42,7 +48,12 @@ export const Kanban: React.FC<KanbanProps> = ({
         })}
 
         {shouldRenderDeleteButton && (
-          <KanbanDeleteCardsButton setCards={setCards} setDragging={setDragging}>
+          <KanbanDeleteCardsButton
+            setCards={setCards}
+            setDragging={setDragging}
+            positionX={deletePositionX}
+            positionY={deletePositionY}
+          >
             {deleteButton}
           </KanbanDeleteCardsButton>
         )}
