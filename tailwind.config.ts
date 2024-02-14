@@ -9,11 +9,11 @@ const config: Config = {
       colors: {
         primary: {
           DEFAULT: '#B49CFF',
-          50: '#F9F7FE',
-          100: '#F3F0FD',
-          200: '#EAE4FC',
-          300: '#E0D8FB',
-          400: '#D7CCFA',
+          50: '#E0D8FB',
+          100: '#D5CFF9',
+          200: '#BFB2F5',
+          300: '#ba9cff',
+          400: '#A78DF0',
           500: '#B49CFF',
           600: '#9B7DE6',
           700: '#816ECB',
@@ -31,7 +31,7 @@ const config: Config = {
           600: '#A6A6A6',
           700: '#8D8D8D',
           800: '#747474',
-          900: '#5B5B5B',
+          900: '#171717',
         },
         error: {
           DEFAULT: '#F44336',

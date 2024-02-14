@@ -1,4 +1,5 @@
 export * from './clone-deep'
+export * from './cn/cn'
 export { default as genericForwardRef } from './generic-forward-ref'
 export * from './getDocumentDirection'
 export * from './http'
