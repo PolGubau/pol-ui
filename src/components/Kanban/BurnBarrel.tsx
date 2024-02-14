@@ -1,16 +1,24 @@
-import { useState, type Dispatch, type SetStateAction } from 'react'
+import type { Dispatch, PropsWithChildren, SetStateAction } from 'react'
+import { useState } from 'react'
 import type { KanbanCardProps } from './Card'
 import { TbTrash } from 'react-icons/tb'
 import { motion } from 'framer-motion'
 import { twMerge } from 'tailwind-merge'
 
-export const KanbanDeleteCardsButton = ({
-  setCards,
-  setDragging,
-}: {
+interface KanbanDeleteCardsButtonProps extends PropsWithChildren {
   setCards: Dispatch<SetStateAction<KanbanCardProps[]>>
   setDragging: Dispatch<SetStateAction<boolean>>
-}) => {
+  positionY?: 'top' | 'bottom'
+  positionX?: 'left' | 'right' | 'center'
+}
+
+export const KanbanDeleteCardsButton: React.FC<KanbanDeleteCardsButtonProps> = ({
+  setCards,
+  setDragging,
+  children,
+  positionY = 'bottom',
+  positionX = 'center',
+}: KanbanDeleteCardsButtonProps): JSX.Element => {
   const [active, setActive] = useState(false)
   const handleDragOver = (e: { preventDefault: () => void }) => {
     e.preventDefault()
@@ -36,13 +44,21 @@ export const KanbanDeleteCardsButton = ({
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       className={twMerge(
-        'fixed flex items-center gap-2 truncate py-3 px-6 rounded-2xl text-xl bottom-6 inset-x-0 max-w-max mx-auto text-bold  backdrop-blur-md bg-error-200 text-error-900 transition-shadow shadow-md z-50 shadow-error-900/20 ',
-
-        active && 'brightness-95 shadow-lg shadow-error-900/20 ',
+        'fixed flex items-center gap-2 truncate py-3 px-6 rounded-2xl text-xl inset-x-0 max-w-max  backdrop-blur-md bg-error-200 text-error-900 transition-shadow shadow-md z-50 shadow-error-900/20 hover:shadow-lg',
+        active && 'brightness-95  ',
+        positionY === 'top' && 'top-6',
+        positionY === 'bottom' && 'bottom-6',
+        positionX === 'left' && 'left-6',
+        positionX === 'right' && 'right-6',
+        positionX === 'center' && 'mx-auto',
       )}
     >
-      <TbTrash />
-      Delete Card
+      {children ?? (
+        <>
+          <TbTrash />
+          Delete Card
+        </>
+      )}
     </motion.div>
   )
 }

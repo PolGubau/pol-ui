@@ -10,12 +10,14 @@ export interface KanbanProps {
   cards: KanbanCardProps[]
   setCards: Dispatch<SetStateAction<KanbanCardProps[]>>
   deleteable?: boolean
+  deleteButton?: React.ReactNode
 }
 
 export const Kanban: React.FC<KanbanProps> = ({
   dragable = true,
   cards,
   setCards,
+  deleteButton,
   deleteable = true,
   columns = [...new Set(cards.map(card => card.column))],
 }: KanbanProps) => {
@@ -39,7 +41,11 @@ export const Kanban: React.FC<KanbanProps> = ({
           )
         })}
 
-        {shouldRenderDeleteButton && <KanbanDeleteCardsButton setCards={setCards} setDragging={setDragging} />}
+        {shouldRenderDeleteButton && (
+          <KanbanDeleteCardsButton setCards={setCards} setDragging={setDragging}>
+            {deleteButton}
+          </KanbanDeleteCardsButton>
+        )}
       </div>
     </AnimatePresence>
   )
