@@ -2,12 +2,14 @@ import type { Meta } from '@storybook/react'
 import type { KanbanCardProps } from './'
 import { Kanban } from './Kanban'
 import React from 'react'
+import { Toaster, toast } from '../Toaster'
 export default {
   title: 'Components/Kanban',
   component: Kanban,
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col items-center pt-10">
+      <div className="flex  h-[600px] p-6">
+        <Toaster />
         <Story />
       </div>
     ),
@@ -79,4 +81,21 @@ export const DeleteableDisabled = () => {
 export const DragableDisabled = () => {
   const [cards, setCards] = React.useState(DEFAULT_CARDS)
   return <Kanban dragable={false} cards={cards} setCards={setCards} columns={columns} />
+}
+
+export const EventOnReorder = () => {
+  const [cards, setCards] = React.useState(DEFAULT_CARDS)
+  return (
+    <Kanban
+      onReorder={({ cardId, before, newColumn, isSameColumn }) => {
+        toast({
+          title: 'Card moved in same column',
+          description: `Card ${cardId} moved before ${before}, new column: ${newColumn}, isSameColumn: ${isSameColumn}`,
+        })
+      }}
+      cards={cards}
+      setCards={setCards}
+      columns={columns}
+    />
+  )
 }

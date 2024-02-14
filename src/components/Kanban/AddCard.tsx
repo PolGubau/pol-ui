@@ -3,13 +3,18 @@ import { useState } from 'react'
 import type { KanbanCardProps } from './Card'
 import { motion } from 'framer-motion'
 import { TbPlus } from 'react-icons/tb'
+import { Textarea } from '../Textarea'
+import { Button } from '../Button'
+import { ColorsEnum } from '../../types'
 
 type AddCardProps = {
   column: string
   setCards: Dispatch<SetStateAction<KanbanCardProps[]>>
+  addLabel?: string
+  cancelLabel?: string
 }
 
-export const AddKanbanCard = ({ column, setCards }: AddCardProps) => {
+export const AddKanbanCard = ({ column, setCards, addLabel = 'new', cancelLabel = 'close' }: AddCardProps) => {
   const [text, setText] = useState('')
   const [adding, setAdding] = useState(false)
 
@@ -29,40 +34,39 @@ export const AddKanbanCard = ({ column, setCards }: AddCardProps) => {
     setAdding(false)
   }
 
+  const MotionButton = motion(Button)
+
   return (
     <>
       {adding ? (
-        <motion.form layout onSubmit={handleSubmit}>
-          <textarea
+        <motion.form layout onSubmit={handleSubmit} className="flex w-full flex-col">
+          <Textarea
             onChange={e => setText(e.target.value)}
             placeholder="Add new task..."
-            className="w-full rounded border border-violet-400 bg-violet-400/20 p-3 text-sm text-neutral-50 placeholder-violet-300 focus:outline-0"
+            className="flex flex-1 w-full"
           />
           <div className="mt-1.5 flex items-center justify-end gap-1.5">
-            <button
-              onClick={() => setAdding(false)}
-              className="px-3 py-1.5 text-xs text-neutral-400 transition-colors hover:text-neutral-50"
-            >
-              Close
-            </button>
-            <button
-              type="submit"
-              className="flex items-center gap-1.5 rounded bg-neutral-50 px-3 py-1.5 text-xs text-neutral-950 transition-colors hover:bg-neutral-300"
-            >
-              <span>Add</span>
+            <Button color={ColorsEnum.secondary} type="button" onClick={() => setAdding(false)} size="sm">
+              <span className="first-letter:uppercase">{cancelLabel}</span>
+            </Button>
+            <Button color={ColorsEnum.primary} type="submit" size="sm">
+              <span className="first-letter:uppercase">{addLabel}</span>
               <TbPlus />
-            </button>
+            </Button>
           </div>
         </motion.form>
       ) : (
-        <motion.button
+        <MotionButton
           layout
+          color={ColorsEnum.primary}
+          type="submit"
+          size="sm"
           onClick={() => setAdding(true)}
-          className="flex w-full items-center gap-1.5 px-3 py-1.5 text-xs text-neutral-400 transition-colors hover:text-neutral-50"
+          hasBackground={false}
         >
-          <span>Add card</span>
+          <span className="first-letter:uppercase">{addLabel}</span>
           <TbPlus />
-        </motion.button>
+        </MotionButton>
       )}
     </>
   )

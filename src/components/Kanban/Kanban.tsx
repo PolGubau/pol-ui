@@ -4,6 +4,14 @@ import { useBoolean, useDebounce } from '../../hooks'
 import { KanbanColumn } from './Column'
 import type { KanbanCardProps } from './Card'
 import { KanbanDeleteCardsButton } from './BurnBarrel'
+
+interface OnReorder {
+  cards: KanbanCardProps[]
+  cardId: KanbanCardProps['id']
+  before: KanbanCardProps['id']
+  newColumn: KanbanCardProps['column']
+  isSameColumn: boolean
+}
 export interface KanbanProps {
   dragable?: boolean
   columns?: string[]
@@ -14,6 +22,7 @@ export interface KanbanProps {
   deletePositionY?: 'top' | 'bottom'
   deletePositionX?: 'left' | 'right' | 'center'
   deleteDelay?: number
+  onReorder?: ({ cards, cardId, before, newColumn, isSameColumn }: OnReorder) => void
 }
 
 export const Kanban: React.FC<KanbanProps> = ({
@@ -24,6 +33,7 @@ export const Kanban: React.FC<KanbanProps> = ({
   deleteable = true,
   deletePositionY,
   deletePositionX,
+  onReorder,
   deleteDelay = 300,
   columns = [...new Set(cards.map(card => card.column))],
 }: KanbanProps) => {
@@ -32,7 +42,7 @@ export const Kanban: React.FC<KanbanProps> = ({
   const shouldRenderDeleteButton = deleteable && debouncedDragging
   return (
     <AnimatePresence mode="wait">
-      <div className="flex w-full gap-2 overflow-x-auto">
+      <div className="flex w-full gap-2 overflow-x-auto h-fit">
         {columns.map(column => {
           return (
             <KanbanColumn
@@ -43,6 +53,7 @@ export const Kanban: React.FC<KanbanProps> = ({
               setDragging={setDragging}
               setCards={setCards}
               dragable={dragable}
+              onReorder={onReorder}
             />
           )
         })}

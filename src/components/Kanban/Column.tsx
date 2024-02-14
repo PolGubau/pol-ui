@@ -6,16 +6,16 @@ import { KanbanCard, type KanbanCardProps } from './Card'
 import { motion } from 'framer-motion'
 import { AddKanbanCard } from './AddCard'
 import { KanbanDropIndicator } from './KanbanDropIndicator'
+import type { KanbanProps } from './Kanban'
 export type KanbanColumnProps = {
   title: string
   cards: KanbanCardProps[]
   column: string
   setDragging: Dispatch<SetStateAction<boolean>>
-  dragable: boolean
+  dragable: KanbanProps['dragable']
   setCards: Dispatch<SetStateAction<KanbanCardProps[]>>
   className?: string
-  onReorderSameColumn: (cards: KanbanCardProps[], cardId: string, before: string) => void
-  onReorderDifferentColumn: (cards: KanbanCardProps[], cardId: string, before: string) => void
+  onReorder: KanbanProps['onReorder']
   columnClassName?: string
 }
 /**
@@ -41,8 +41,7 @@ export const KanbanColumn = ({
   className,
   columnClassName,
   dragable: dragableCards,
-  onReorderSameColumn,
-  onReorderDifferentColumn,
+  onReorder,
 }: KanbanColumnProps): JSX.Element => {
   const { value: active, setFalse, setTrue } = useBoolean(false)
 
@@ -97,10 +96,10 @@ export const KanbanColumn = ({
 
     // If the card is being moved within the same column, call the onReorderSameColumn function.
     if (isTheSameColumn) {
-      onReorderSameColumn(copy, cardId, before)
+      onReorder?.({ cards: copy, cardId, before, isSameColumn: true, newColumn: column })
     } else {
       // If the card is being moved to a different column, call the onReorderDifferentColumn function.
-      onReorderDifferentColumn(copy, cardId, before)
+      onReorder?.({ cards: copy, cardId, before, isSameColumn: false, newColumn: column })
     }
   }
 
@@ -223,8 +222,8 @@ export const KanbanColumn = ({
   // Render the KanbanColumn component.
 
   return (
-    <div className={twMerge('w-64 h-full shrink-0', className)}>
-      <header className="mb-3 flex items-center justify-between">
+    <div className={twMerge('w-64 flex flex-col gap-4', className)}>
+      <header className="flex items-center justify-between">
         <h3 className={`font-medium`}>{title}</h3>
         <span className="rounded text-sm text-neutral-400">{filteredCards.length}</span>
       </header>
@@ -236,7 +235,7 @@ export const KanbanColumn = ({
           setDragging(false)
         }}
         className={twMerge(
-          `h-full w-full flex flex-col justify-start items-start transition-all rounded-lg bg-secondary-50 px-1`,
+          `h-full w-full flex flex-col justify-start items-start transition-all rounded-lg bg-secondary-50 pb-2 p-1`,
           columnClassName,
           active && 'brightness-95',
         )}
