@@ -50,6 +50,7 @@ import type { TextGeneratorTheme } from '../TextGenerator/theme'
 import type { PerspectiveCardTheme } from '../PerspectiveCard/theme'
 import type { KanbanTheme } from '../Kanban/theme'
 import type { BubbleHeadingTheme } from '../BubbleHeading/theme'
+import type { ImageTrailTheme } from '../ImageTrail/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -110,4 +111,5 @@ export interface PoluiTheme {
   perspectiveCard: PerspectiveCardTheme
   kanban: KanbanTheme
   bubbleHeading: BubbleHeadingTheme
+  imageTrail: ImageTrailTheme
 }

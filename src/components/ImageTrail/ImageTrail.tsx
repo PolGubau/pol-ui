@@ -1,7 +1,10 @@
 import { useAnimate } from 'framer-motion'
 import type { MouseEventHandler } from 'react'
 import React, { useRef } from 'react'
-import { cn } from '../../helpers'
+import { cn, mergeDeep } from '../../helpers'
+import { getTheme } from '../../theme-store'
+import type { DeepPartial } from '../../types'
+import type { ImageTrailTheme } from './theme'
 export interface ImageTrailProps extends React.ComponentProps<'div'> {
   images: string[]
   renderImageBuffer?: number
@@ -9,6 +12,7 @@ export interface ImageTrailProps extends React.ComponentProps<'div'> {
   className?: string
   imageClassName?: string
   disapearDelay?: number
+  theme?: DeepPartial<ImageTrailTheme>
 }
 
 export const ImageTrail = ({
@@ -23,6 +27,7 @@ export const ImageTrail = ({
   disapearDelay = 1,
   className = '',
   imageClassName = '',
+  theme: customTheme = {},
   ...props
 }: ImageTrailProps) => {
   const [scope, animate] = useAnimate()
@@ -89,22 +94,15 @@ export const ImageTrail = ({
     imageRenderCount.current = imageRenderCount.current + 1
   }
 
+  const theme = mergeDeep(getTheme().imageTrail, customTheme)
+
   return (
-    <div
-      ref={scope}
-      className={cn('relative overflow-hidden w-full', className)}
-      onMouseMove={handleMouseMove}
-      role="presentation"
-      {...props}
-    >
+    <div ref={scope} className={cn(theme.base, className)} onMouseMove={handleMouseMove} role="presentation" {...props}>
       {children}
 
       {images.map((img, index) => (
         <img
-          className={cn(
-            'pointer-events-none absolute left-0 top-0 h-48 w-auto rounded-xl object-cover opacity-0',
-            imageClassName,
-          )}
+          className={cn(theme.image, imageClassName)}
           src={img}
           alt={`Mouse move ${index}`}
           key={index}

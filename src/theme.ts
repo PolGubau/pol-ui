@@ -51,6 +51,7 @@ import { textGeneratorTheme } from './components/TextGenerator/theme'
 import { perspectiveCardTheme } from './components/PerspectiveCard/theme'
 import { kanbanTheme } from './components/Kanban/theme'
 import { bubbleHeadingTheme } from './components/BubbleHeading/theme'
+import { imageTrailTheme } from './components/ImageTrail/theme'
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,
@@ -104,4 +105,5 @@ export const theme: PoluiTheme = {
   perspectiveCard: perspectiveCardTheme,
   kanban: kanbanTheme,
   bubbleHeading: bubbleHeadingTheme,
+  imageTrail: imageTrailTheme,
 }
