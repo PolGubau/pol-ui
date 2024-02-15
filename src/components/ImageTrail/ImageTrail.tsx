@@ -1,9 +1,8 @@
 import { useAnimate } from 'framer-motion'
-import type { MouseEventHandler, PropsWithChildren } from 'react'
+import type { MouseEventHandler } from 'react'
 import React, { useRef } from 'react'
 import { cn } from '../../helpers'
-
-export interface ImageTrailProps extends PropsWithChildren {
+export interface ImageTrailProps extends React.ComponentProps<'div'> {
   images: string[]
   renderImageBuffer?: number
   rotationRange?: number
@@ -24,6 +23,7 @@ export const ImageTrail = ({
   disapearDelay = 1,
   className = '',
   imageClassName = '',
+  ...props
 }: ImageTrailProps) => {
   const [scope, animate] = useAnimate()
 
@@ -95,6 +95,7 @@ export const ImageTrail = ({
       className={cn('relative overflow-hidden w-full', className)}
       onMouseMove={handleMouseMove}
       role="presentation"
+      {...props}
     >
       {children}
 
