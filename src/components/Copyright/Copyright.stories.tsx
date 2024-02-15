@@ -7,7 +7,7 @@ export default {
   tags: ['autodocs'],
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col py-20 min-h-[400px] h-full bg-secondary-50">
+      <div className="flex p-6 flex-col h-full">
         <Story />
       </div>
     ),
@@ -17,6 +17,12 @@ export default {
   },
 } as Meta
 
-const Template: StoryFn = ({ children }) => <Copyright>{children}</Copyright>
-export const DefaultFooter = Template.bind({})
-DefaultFooter.storyName = 'Default'
+const Template: StoryFn = ({ ...args }) => <Copyright {...args} />
+export const Default = Template.bind({})
+
+export const WithValues = Template.bind({})
+WithValues.args = {
+  by: 'Pol Gubau Amores',
+  href: 'https://polgubau.com',
+  year: new Date().getFullYear(),
+}

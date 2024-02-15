@@ -1,6 +1,5 @@
 'use client'
 
-import type { ComponentPropsWithoutRef, ElementType } from 'react'
 import React, { useEffect, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 import type { ConveyorDirection, ConveyorSpeed } from './ConveyorTypes'
@@ -9,16 +8,16 @@ import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { ConveyorTheme } from './theme'
 
-export type ConveyorProps<T extends ElementType = 'div'> = {
+export type ConveyorProps = {
   children?: React.ReactNode[]
   direction?: ConveyorDirection
   speed?: ConveyorSpeed
   pauseOnHover?: boolean
   theme?: Partial<ConveyorTheme>
   className?: string
-} & ComponentPropsWithoutRef<T>
+}
 
-export const Conveyor = <T extends ElementType = 'div'>({
+export const Conveyor = ({
   direction = ConveyorDirectionEnum.right,
   speed = ConveyorSpeedEnum.fast,
   pauseOnHover = true,
@@ -26,7 +25,7 @@ export const Conveyor = <T extends ElementType = 'div'>({
   theme: customTheme = {},
   className,
   ...props
-}: ConveyorProps<T>) => {
+}: ConveyorProps) => {
   const containerRef = React.useRef<HTMLDivElement>(null)
   const scrollerRef = React.useRef<HTMLUListElement>(null)
   const theme: ConveyorTheme = mergeDeep(getTheme().conveyor, customTheme)
