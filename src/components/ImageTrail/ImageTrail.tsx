@@ -1,57 +1,30 @@
 import { useAnimate } from 'framer-motion'
-import type { MouseEventHandler, ReactNode } from 'react'
+import type { MouseEventHandler, PropsWithChildren } from 'react'
 import React, { useRef } from 'react'
-import { FiMousePointer } from 'react-icons/fi'
+import { cn } from '../../helpers'
 
-export const Example = () => {
-  return (
-    <MouseImageTrail
-      renderImageBuffer={50}
-      rotationRange={25}
-      images={[
-        '/imgs/active/1.jpg',
-        '/imgs/active/2.jpg',
-        '/imgs/active/3.jpg',
-        '/imgs/active/4.jpg',
-        '/imgs/active/5.jpg',
-        '/imgs/active/6.jpg',
-        '/imgs/active/7.jpg',
-        '/imgs/active/8.jpg',
-        '/imgs/active/9.jpg',
-        '/imgs/active/10.jpg',
-        '/imgs/active/11.jpg',
-        '/imgs/active/12.jpg',
-        '/imgs/active/13.jpg',
-        '/imgs/active/14.jpg',
-        '/imgs/active/15.jpg',
-        '/imgs/active/16.jpg',
-      ]}
-    >
-      <section className="grid h-screen w-full place-content-center bg-white">
-        <p className="flex items-center gap-2 text-3xl font-bold uppercase text-black">
-          <FiMousePointer />
-          <span>Hover me</span>
-        </p>
-      </section>
-    </MouseImageTrail>
-  )
+export interface ImageTrailProps extends PropsWithChildren {
+  images: string[]
+  renderImageBuffer?: number
+  rotationRange?: number
+  className?: string
+  imageClassName?: string
+  disapearDelay?: number
 }
 
-const MouseImageTrail = ({
+export const ImageTrail = ({
   children,
   // List of image sources
-  images,
+  images = [],
   // Will render a new image every X pixels between mouse moves
-  renderImageBuffer,
+  renderImageBuffer = 50,
   // images will be rotated at a random number between zero and rotationRange,
   // alternating between a positive and negative rotation
-  rotationRange,
-}: {
-  children: ReactNode
-  images: string[]
-  renderImageBuffer: number
-  rotationRange: number
-}) => {
+  rotationRange = 20,
+  disapearDelay = 1,
+  className = '',
+  imageClassName = '',
+}: ImageTrailProps) => {
   const [scope, animate] = useAnimate()
 
   const lastRenderPosition = useRef({ x: 0, y: 0 })
@@ -94,11 +67,12 @@ const MouseImageTrail = ({
 
     animate(
       selector,
+
       {
         opacity: [0, 1],
         transform: [
-          `translate(-50%, -25%) scale(0.5) ${imageIndex % 2 ? `rotate(${rotation}deg)` : `rotate(-${rotation}deg)`}`,
-          `translate(-50%, -50%) scale(1) ${imageIndex % 2 ? `rotate(-${rotation}deg)` : `rotate(${rotation}deg)`}`,
+          `translate(-50%, -25%) scale(0.5) rotate( ${imageIndex % 2 ? '' : '-'}${rotation}deg)`,
+          `translate(-50%, -25%) scale(1) rotate( ${imageIndex % 2 ? '-' : ''}${rotation}deg)`,
         ],
       },
       { type: 'spring', damping: 15, stiffness: 200 },
@@ -109,21 +83,29 @@ const MouseImageTrail = ({
       {
         opacity: [1, 0],
       },
-      { ease: 'linear', duration: 0.5, delay: 5 },
+      { ease: 'linear', duration: 0.5, delay: disapearDelay },
     )
 
     imageRenderCount.current = imageRenderCount.current + 1
   }
 
   return (
-    <div ref={scope} className="relative overflow-hidden" onMouseMove={handleMouseMove}>
+    <div
+      ref={scope}
+      className={cn('relative overflow-hidden w-full', className)}
+      onMouseMove={handleMouseMove}
+      role="presentation"
+    >
       {children}
 
       {images.map((img, index) => (
         <img
-          className="pointer-events-none absolute left-0 top-0 h-48 w-auto rounded-xl border-2 border-black bg-neutral-900 object-cover opacity-0"
+          className={cn(
+            'pointer-events-none absolute left-0 top-0 h-48 w-auto rounded-xl object-cover opacity-0',
+            imageClassName,
+          )}
           src={img}
-          alt={`Mouse move ${index} `}
+          alt={`Mouse move ${index}`}
           key={index}
           data-mouse-move-index={index}
         />

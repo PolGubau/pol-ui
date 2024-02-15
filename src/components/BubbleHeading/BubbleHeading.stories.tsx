@@ -1,9 +1,9 @@
 import type { Meta, StoryFn } from '@storybook/react'
-import type { BubbleTextProps } from './BubbleHeading'
+import type { BubbleHeadingProps } from './BubbleHeading'
 import { BubbleHeading } from './BubbleHeading'
 
 export default {
-  title: 'Components/BubbleText',
+  title: 'Components/BubbleHeading',
   component: BubbleHeading,
   tags: ['autodocs'],
   decorators: [
@@ -18,7 +18,7 @@ export default {
   },
 } as Meta
 
-const Template: StoryFn<BubbleTextProps> = args => <BubbleHeading {...args} />
+const Template: StoryFn<BubbleHeadingProps> = args => <BubbleHeading {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

@@ -4,7 +4,7 @@ import type { DeepPartial, HeadingLevel } from '../../types'
 import { cn, mergeDeep } from '../../helpers'
 import { getTheme } from '../../theme-store'
 import type { BubbleHeadingTheme } from './theme'
-export interface BubbleTextProps {
+export interface BubbleHeadingProps {
   children: string
   minWeight?: number
   maxWeight?: number
@@ -20,7 +20,7 @@ export interface BubbleTextProps {
   transitionDuration?: number
 }
 
-export const BubbleHeading: React.FC<BubbleTextProps> = ({
+export const BubbleHeading: React.FC<BubbleHeadingProps> = ({
   children,
   minWeight = 100,
   maxWeight = 900,
@@ -30,7 +30,7 @@ export const BubbleHeading: React.FC<BubbleTextProps> = ({
   transitionDuration = 0.25,
   className,
   theme: customTheme = {},
-}: BubbleTextProps) => {
+}: BubbleHeadingProps) => {
   const theme = mergeDeep(getTheme().bubbleHeading, customTheme)
 
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null)

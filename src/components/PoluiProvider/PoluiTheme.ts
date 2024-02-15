@@ -49,7 +49,7 @@ import type { ParallaxTextTheme } from '../ParallaxText'
 import type { TextGeneratorTheme } from '../TextGenerator/theme'
 import type { PerspectiveCardTheme } from '../PerspectiveCard/theme'
 import type { KanbanTheme } from '../Kanban/theme'
-import type { BubbleHeadingTheme } from '../BubbleText/theme'
+import type { BubbleHeadingTheme } from '../BubbleHeading/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
