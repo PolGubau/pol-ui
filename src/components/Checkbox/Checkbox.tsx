@@ -8,7 +8,7 @@ import { Label } from '../Label'
 import { TbCheck } from 'react-icons/tb'
 import type { CheckboxTheme } from './theme'
 import { AnimatePresence, motion } from 'framer-motion'
-import { CheckboxProps } from './props'
+import type { CheckboxProps } from './props'
 
 /**
  * @name AnimatedCheckIcon

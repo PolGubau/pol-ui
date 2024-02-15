@@ -9,7 +9,7 @@ export default {
   component: Checkbox,
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col justify-center items-center min-h-20  bg-secondary-50">
+      <div className="flex p-6 flex-col justify-center items-center">
         <Story />
       </div>
     ),
