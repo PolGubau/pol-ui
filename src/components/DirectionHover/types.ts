@@ -1,13 +1,13 @@
 import type { ComponentPropsWithoutRef, ElementType } from 'react'
 import type { DirectionHoverTheme } from './theme'
-import type { RoundedSizesElastic } from '../../types'
+import type { RoundedSizes } from '../../types'
 
 export type DirectionHoverProps<T extends ElementType = 'button'> = {
   imageUrl: string
   children: React.ReactNode | string
   childrenClassName?: string
   imageClassName?: string
-  rounded?: keyof RoundedSizesElastic
+  rounded?: RoundedSizes
   alt?: string
   className?: string
   theme?: Partial<DirectionHoverTheme>

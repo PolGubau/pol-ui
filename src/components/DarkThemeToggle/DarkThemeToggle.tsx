@@ -1,7 +1,6 @@
 'use client'
 
 import type { ComponentProps, FC } from 'react'
-import { HiMoon, HiSun } from 'react-icons/hi'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { useThemeMode } from '../../hooks/use-theme-mode'
@@ -10,6 +9,7 @@ import type { Colors, DeepPartial } from '../../types/types'
 import type { DarkThemeToggleTheme } from './theme'
 import { Button } from '../Button'
 import { ColorsEnum } from '../../types'
+import { TbMoon, TbSun } from 'react-icons/tb'
 
 export interface DarkThemeToggleProps extends Omit<ComponentProps<'button'>, 'color'> {
   iconDark?: string
@@ -22,8 +22,8 @@ export interface DarkThemeToggleProps extends Omit<ComponentProps<'button'>, 'co
 export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
   className,
   theme: customTheme = {},
-  iconDark: IconDark = HiSun,
-  iconLight: IconLight = HiMoon,
+  iconDark: IconDark = TbSun,
+  iconLight: IconLight = TbMoon,
   ref,
   color = ColorsEnum.primary,
   ...props
