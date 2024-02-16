@@ -17,7 +17,7 @@ export default {
   },
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col items-center pt-20 min-h-[400px] bg-secondary-50">
+      <div className="flex p-6 flex-col items-center">
         <Story />
       </div>
     ),
@@ -117,12 +117,7 @@ export const CustomTrigger = () => (
     trigger={
       <div className="flex items-center gap-2 rounded-full border p-3 hover:bg-secondary-200 transition-all">
         <span>Name</span>
-        <Avatar
-          size="sm"
-          img="https://polgubau.com/_next/image?url=%2Fimages%2Fme.png&w=256&q=75"
-          status="online"
-          rounded
-        />
+        <Avatar size="sm" img="https://polgubau.com/_next/image?url=%2Fimages%2Fme.png&w=256&q=75" status="online" />
       </div>
     }
   >
