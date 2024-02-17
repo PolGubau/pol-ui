@@ -3,6 +3,7 @@ import type { FollowerPointerProps } from './FollowerPointer'
 import { FollowerPointer } from './FollowerPointer'
 import { Card } from '../Card'
 import { TbSearch } from 'react-icons/tb'
+import { HelperText } from '../HelperText'
 
 export default {
   title: 'Components/FollowerPointer',
@@ -27,60 +28,42 @@ const blogContent = {
   authorAvatar: 'https://polgubau.com/_next/image?url=%2Fimages%2Fme.png&w=256&q=75',
 }
 
-const TitleComponent = ({ title, avatar }: { title: string; avatar: string }) => (
+const TitleComponent = ({ content, avatar }: { content: string; avatar: string }) => (
   <div className="flex space-x-2 items-center text-primary-50 bg-primary p-1 rounded-full pr-3">
     <img src={avatar} height="30" width="30" alt="thumbnail" className="rounded-full" />
-    <p>{title}</p>
+    <p>{content}</p>
   </div>
 )
+const CompleteCard = () => {
+  return (
+    <Card className="max-w-xl">
+      <HelperText>{blogContent.date}</HelperText>
+      <h2 className="font-bold my-4 -mt-1 text-lg text-zinc-700">{blogContent.title}</h2>
+      <p className="font-normal text-sm text-zinc-500">{blogContent.description}</p>
+    </Card>
+  )
+}
 
 export const Default = Template.bind({})
 Default.args = {
-  title: <TitleComponent title={blogContent.author} avatar={blogContent.authorAvatar} />,
-  children: (
-    <Card className="max-w-xl">
-      <h2 className="font-bold my-4 text-lg text-zinc-700">{blogContent.title}</h2>
-      <h2 className="font-normal text-sm text-zinc-500">{blogContent.description}</h2>
-      <div className="flex flex-row justify-between items-center">
-        <span className="text-sm text-gray-500">{blogContent.date}</span>
-        <div className="relative z-10 px-6 py-2 bg-black text-white font-bold rounded-xl block text-xs">Read More</div>
-      </div>
-    </Card>
-  ),
+  content: <TitleComponent content={blogContent.author} avatar={blogContent.authorAvatar} />,
+  children: <CompleteCard />,
 }
 
 export const CustomIcon = Template.bind({})
 CustomIcon.args = {
-  title: <TitleComponent title={blogContent.author} avatar={blogContent.authorAvatar} />,
+  content: <TitleComponent content={blogContent.author} avatar={blogContent.authorAvatar} />,
   icon: (
     <div className="bg-primary-700 rounded-full   w-5 h-5 flex justify-center items-center">
       <TbSearch className="text-primary-50 " size={10} />
     </div>
   ),
-  children: (
-    <Card className="max-w-xl">
-      <h2 className="font-bold my-4 text-lg text-zinc-700">{blogContent.title}</h2>
-      <h2 className="font-normal text-sm text-zinc-500">{blogContent.description}</h2>
-      <div className="flex flex-row justify-between items-center">
-        <span className="text-sm text-gray-500">{blogContent.date}</span>
-        <div className="relative z-10 px-6 py-2 bg-black text-white font-bold rounded-xl block text-xs">Read More</div>
-      </div>
-    </Card>
-  ),
+  children: <CompleteCard />,
 }
 
 export const CustomElement = Template.bind({})
 CustomElement.args = {
-  title: <div className="bg-info p-2 rounded-md">🚀🚀🚀🔥🔥🔥</div>,
+  content: <div className="bg-info p-2 rounded-md">🚀🚀🚀🔥🔥🔥</div>,
   icon: <div className="bg-info-700 rounded-full w-5 h-5 mb-2 flex justify-center items-center"></div>,
-  children: (
-    <Card className="max-w-xl">
-      <h2 className="font-bold my-4 text-lg text-zinc-700">{blogContent.title}</h2>
-      <h2 className="font-normal text-sm text-zinc-500">{blogContent.description}</h2>
-      <div className="flex flex-row justify-between items-center">
-        <span className="text-sm text-gray-500">{blogContent.date}</span>
-        <div className="relative z-10 px-6 py-2 bg-black text-white font-bold rounded-xl block text-xs">Read More</div>
-      </div>
-    </Card>
-  ),
+  children: <CompleteCard />,
 }

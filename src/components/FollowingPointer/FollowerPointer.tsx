@@ -13,15 +13,15 @@ import type { FollowerPointerTheme } from './theme'
 
 export interface FollowerPointerProps extends React.PropsWithChildren {
   className?: string
-  title?: string | React.ReactNode
-  icon?: React.ReactNode | undefined
+  content?: string | React.ReactNode
+  icon?: React.ReactNode
   theme?: DeepPartial<FollowerPointerTheme>
 }
 
 export const FollowerPointer = ({
   children,
   className,
-  title,
+  content,
   icon,
   theme: customTheme = {},
 }: PropsWithChildren<FollowerPointerProps>) => {
@@ -63,7 +63,7 @@ export const FollowerPointer = ({
       className={twMerge(theme.base, className)}
     >
       <AnimatePresence mode="wait">
-        {isInside && <FollowPointer x={x} y={y} title={title} icon={icon} theme={theme} />}
+        {isInside && <FollowPointer x={x} y={y} content={content} icon={icon} theme={theme} />}
       </AnimatePresence>
       {children}
     </div>
@@ -73,13 +73,13 @@ export const FollowerPointer = ({
 export const FollowPointer = ({
   x,
   y,
-  title,
+  content,
   icon,
   theme,
 }: {
   x: MotionValue<number>
   y: MotionValue<number>
-  title: string | React.ReactNode
+  content: string | React.ReactNode
   icon?: React.ReactNode
   theme: DeepPartial<FollowerPointerTheme>
 }) => {
@@ -136,7 +136,7 @@ export const FollowPointer = ({
         }}
         className={theme.pointer}
       >
-        {title}
+        {content}
       </motion.div>
     </motion.div>
   )

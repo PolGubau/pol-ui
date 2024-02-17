@@ -9,7 +9,7 @@ export interface HelperTextTheme {
 
 export const helperTextTheme: HelperTextTheme = {
   root: {
-    base: 'mt-1 ml-2 text-xs',
+    base: 'text-xs',
     colors: {
       primary: 'text-primary-700 dark:text-primary-400',
       secondary: 'text-secondary-700 dark:text-secondary-400',
