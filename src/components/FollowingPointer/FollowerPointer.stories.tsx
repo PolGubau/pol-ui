@@ -1,12 +1,12 @@
 import type { Meta, StoryFn } from '@storybook/react'
-import type { FollowerPointerCardProps } from './FollowerPointerCard'
-import { FollowerPointerCard } from './FollowerPointerCard'
+import type { FollowerPointerProps } from './FollowerPointer'
+import { FollowerPointer } from './FollowerPointer'
 import { Card } from '../Card'
 import { TbSearch } from 'react-icons/tb'
 
 export default {
-  title: 'Components/FollowerPointerCard',
-  component: FollowerPointerCard,
+  title: 'Components/FollowerPointer',
+  component: FollowerPointer,
   tags: ['autodocs'],
   decorators: [
     Story => (
@@ -17,7 +17,7 @@ export default {
   ],
 } as Meta
 
-const Template: StoryFn<FollowerPointerCardProps> = args => <FollowerPointerCard {...args} />
+const Template: StoryFn<FollowerPointerProps> = args => <FollowerPointer {...args} />
 const blogContent = {
   author: 'Pol Gubau',
   date: '19th March, 2024',

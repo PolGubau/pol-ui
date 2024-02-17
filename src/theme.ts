@@ -44,7 +44,7 @@ import { buttonGroupTheme } from './components/ButtonGroup'
 import { toastTheme } from './components/Toaster/theme'
 import { dividerTheme } from './components/Divider'
 import { linkTheme } from './components/Link/theme'
-import { followerPointerCardTheme } from './components/FollowingPointer/theme'
+import { followerPointerTheme } from './components/FollowingPointer/theme'
 import { stickyScrollTheme } from './components/StickyScroll/theme'
 import { parallaxTextTheme } from './components/ParallaxText'
 import { textGeneratorTheme } from './components/TextGenerator/theme'
@@ -99,7 +99,7 @@ export const theme: PoluiTheme = {
   tooltip: tooltipTheme,
   directionHover: directionHoverTheme,
   popover: popoverTheme,
-  followerPointerCard: followerPointerCardTheme,
+  followerPointer: followerPointerTheme,
   parallaxText: parallaxTextTheme,
   textGenerator: textGeneratorTheme,
   perspectiveCard: perspectiveCardTheme,

@@ -9,22 +9,22 @@ import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
-import type { FollowerPointerCardTheme } from './theme'
+import type { FollowerPointerTheme } from './theme'
 
-export interface FollowerPointerCardProps extends React.PropsWithChildren {
+export interface FollowerPointerProps extends React.PropsWithChildren {
   className?: string
   title?: string | React.ReactNode
   icon?: React.ReactNode | undefined
-  theme?: DeepPartial<FollowerPointerCardTheme>
+  theme?: DeepPartial<FollowerPointerTheme>
 }
 
-export const FollowerPointerCard = ({
+export const FollowerPointer = ({
   children,
   className,
   title,
   icon,
   theme: customTheme = {},
-}: PropsWithChildren<FollowerPointerCardProps>) => {
+}: PropsWithChildren<FollowerPointerProps>) => {
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const ref = React.useRef<HTMLDivElement>(null)
@@ -52,7 +52,7 @@ export const FollowerPointerCard = ({
   const handleMouseEnter = () => {
     setIsInside(true)
   }
-  const theme = mergeDeep(getTheme().followerPointerCard, customTheme)
+  const theme = mergeDeep(getTheme().followerPointer, customTheme)
 
   return (
     <div
@@ -81,7 +81,7 @@ export const FollowPointer = ({
   y: MotionValue<number>
   title: string | React.ReactNode
   icon?: React.ReactNode
-  theme: DeepPartial<FollowerPointerCardTheme>
+  theme: DeepPartial<FollowerPointerTheme>
 }) => {
   const defaultIcon = icon ?? (
     <svg

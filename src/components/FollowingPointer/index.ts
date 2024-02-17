@@ -1,3 +1,3 @@
-export { FollowerPointerCard } from './FollowerPointerCard'
-export { followerPointerCardTheme } from './theme'
-export type { FollowerPointerCardTheme } from './theme'
+export { FollowerPointer } from './FollowerPointer'
+export { followerPointerTheme } from './theme'
+export type { FollowerPointerTheme } from './theme'

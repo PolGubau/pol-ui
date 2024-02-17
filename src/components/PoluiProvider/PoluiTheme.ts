@@ -43,7 +43,7 @@ import type { ButtonGroupTheme } from '../ButtonGroup'
 import type { ToastTheme } from '../Toaster/theme'
 import type { DividerTheme } from '../Divider'
 import type { LinkTheme } from '../Link/theme'
-import type { FollowerPointerCardTheme } from '../FollowingPointer/theme'
+import type { FollowerPointerTheme } from '../FollowingPointer/theme'
 import type { StickyScrollTheme } from '../StickyScroll/theme'
 import type { ParallaxTextTheme } from '../ParallaxText'
 import type { TextGeneratorTheme } from '../TextGenerator/theme'
@@ -96,7 +96,7 @@ export interface PoluiTheme {
   fileInput: FileInputTheme
   label: LabelTheme
   stickyScroll: StickyScrollTheme
-  followerPointerCard: FollowerPointerCardTheme
+  followerPointer: FollowerPointerTheme
   radio: RadioTheme
   rangeSlider: RangeSliderTheme
   select: SelectTheme
