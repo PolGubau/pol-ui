@@ -1,7 +1,7 @@
 import React from 'react'
 import type { HeadingLevel } from '../../types'
 
-interface DynamicHeadingProps extends React.HTMLAttributes<HTMLElement> {
+export interface DynamicHeadingProps extends React.HTMLAttributes<HTMLElement> {
   as: HeadingLevel
   children: React.ReactNode
 }

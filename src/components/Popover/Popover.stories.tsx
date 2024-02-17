@@ -13,7 +13,7 @@ export default {
   tags: ['autodocs'],
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col justify-center items-center bg-secondary-50">
+      <div className="flex p-6 flex-col justify-center items-center">
         <Story />
       </div>
     ),

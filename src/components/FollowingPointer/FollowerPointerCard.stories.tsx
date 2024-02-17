@@ -10,7 +10,7 @@ export default {
   tags: ['autodocs'],
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col py-20 max-w-xl bg-secondary-50">
+      <div className="flex p-6 flex-col  max-w-xl ">
         <Story />
       </div>
     ),
@@ -24,7 +24,7 @@ const blogContent = {
   title: 'Mastering UI Design in React: A Comprehensive Guide',
   description:
     'Explore the intricate world of User Interface (UI) design in React with our insightful blog. From essential principles to advanced techniques, discover how to create stunning, responsive, and user-friendly interfaces that elevate your React applications to the next level. ',
-  authorAvatar: '/images/people/me.png',
+  authorAvatar: 'https://polgubau.com/_next/image?url=%2Fimages%2Fme.png&w=256&q=75',
 }
 
 const TitleComponent = ({ title, avatar }: { title: string; avatar: string }) => (
