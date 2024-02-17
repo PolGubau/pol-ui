@@ -2,6 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react'
 import type { FileInputProps } from './FileInput'
 import { FileInput } from './FileInput'
 import { ColorsEnum } from '../../types/enums'
+import type { Colors } from '../../types'
 
 export default {
   title: 'Components/FileInput',
@@ -9,7 +10,7 @@ export default {
   component: FileInput,
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col items-center py-20 min-h-[400px] h-full bg-secondary-50">
+      <div className="flex p-6 flex-col items-center h-full">
         <Story />
       </div>
     ),
@@ -36,7 +37,7 @@ HelperText.args = {
 export const AllColors = (args: FileInputProps) => (
   <div className="flex flex-wrap items-center gap-3 ">
     {Object.keys(ColorsEnum).map(color => (
-      <FileInput {...args} color={color} />
+      <FileInput {...args} color={color as Colors} key={color} />
     ))}
   </div>
 )
