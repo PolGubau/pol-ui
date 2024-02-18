@@ -1,11 +1,10 @@
 'use client'
 
-import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react'
+import type { ComponentPropsWithoutRef, ElementType } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { getTheme } from '../../theme-store'
-import type { Colors, DeepPartial, MainSizes, RoundedSizesTypes } from '../../types/types'
+import type { DeepPartial } from '../../types/types'
 import { Loader } from '../Loader'
-
 import { ColorsEnum, MainSizesEnum } from '../../types/enums'
 import { useRipple } from '../../hooks'
 import type { ButtonBaseProps } from '../Button/ButtonBase'
@@ -15,32 +14,22 @@ import { Tooltip } from '../Tooltip'
 import { motion } from 'framer-motion'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { rippleClass } from '../../helpers/rippleClass'
+import type { ButtonProps } from '../Button'
 
 export type IconButtonProps<T extends ElementType = 'button'> = {
-  as?: T | null
-  href?: string
-  color?: Colors
-  target?: string
-  isLoading?: boolean
-  loader?: ReactNode
-  label?: ReactNode
-  outline?: boolean
-  rounded?: keyof RoundedSizesTypes
-  size?: MainSizes
-  hasMotion?: boolean
   theme?: DeepPartial<IconButtonTheme>
-  innerClassname?: string
-} & ComponentPropsWithoutRef<T>
+} & ComponentPropsWithoutRef<T> &
+  Omit<ButtonProps, 'theme' | 'loadingLabel'>
 
 const IconButtonFn = <T extends ElementType = 'button'>({
   children = null,
   className = '',
   color = ColorsEnum.primary,
   disabled = false,
-  isLoading = false,
+  hasMotion = false,
+  loading = false,
   loader = null,
   label = '',
-  hasMotion = true,
   outline = false,
   rounded = 'full',
   size = MainSizesEnum.md,
@@ -54,7 +43,7 @@ const IconButtonFn = <T extends ElementType = 'button'>({
   const theirProps = props as ButtonBaseProps<T>
 
   const [ripple, event] = useRipple({
-    disabled: disabled || isLoading,
+    disabled: disabled || loading,
     opacity: 0.2,
     className: rippleClass(color),
   })
@@ -74,19 +63,26 @@ const IconButtonFn = <T extends ElementType = 'button'>({
       data-label={label}
       data-title={label}
       disabled={disabled}
-      className={twMerge(theme.base, disabled && theme.disabled, theme.rounded[rounded], theme.color[color], className)}
+      className={twMerge(
+        theme.base,
+        disabled && theme.disabled,
+        theme.rounded[rounded],
+        theme.color[color],
+        outline && theme.inner.outline,
+        outline && theme.inner.color[color],
+        className,
+      )}
       {...theirProps}
     >
       <span
         className={twMerge(
           theme.inner.base,
           theme.size[size as keyof typeof theme.size],
-          outline && theme.inner.outline,
-          isLoading && theme.loading,
+          loading && theme.loading,
           innerClassname,
         )}
       >
-        {isLoading ? (
+        {loading ? (
           <span className={twMerge(theme.loading)}>{loader ?? <Loader size={size} color={color} />}</span>
         ) : (
           children

@@ -12,6 +12,7 @@ export interface IconButtonTheme {
 export interface ButtonInnerTheme {
   base: string
   outline: string
+  color: ColorsType
 }
 export const iconButtonTheme: IconButtonTheme = {
   base: 'group flex items-center justify-center text-center relative focus:z-10 outline-none transition-all aspect-square h-fit w-fit',
@@ -28,7 +29,15 @@ export const iconButtonTheme: IconButtonTheme = {
 
   inner: {
     base: 'flex gap-1 items-stretch items-center transition-all duration-200',
-    outline: 'border border-transparent',
+    outline: 'border border-primary',
+    color: {
+      error: 'border-error',
+      info: 'border-info',
+      success: 'border-success',
+      warning: 'border-warning',
+      primary: 'border-primary',
+      secondary: 'border-secondary',
+    },
   },
   rounded: {
     xs: 'rounded-sm',

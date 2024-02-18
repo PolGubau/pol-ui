@@ -3,7 +3,7 @@ import { IconButton, type IconButtonProps } from './IconButton'
 import { theme } from '../../theme'
 import { TbSearch, TbTrash } from 'react-icons/tb'
 import { ColorsEnum } from '../../types/enums'
-import type { MainSizes, Colors } from '../../types'
+import type { MainSizes, Colors, RoundedSizes } from '../../types'
 
 export default {
   title: 'Components/IconButton',
@@ -81,23 +81,22 @@ OutlineButton.args = {
   ...DefaultButton.args,
   outline: true,
 }
-export const WithTooltip = Template.bind({})
-WithTooltip.parameters = {
+export const WithoutTooltip = Template.bind({})
+WithoutTooltip.parameters = {
   docs: {
     description: {
       story: 'You can add a tooltip to the button by adding a `label` prop',
     },
   },
 }
-
-WithTooltip.args = {
+WithoutTooltip.args = {
   ...DefaultButton.args,
-  label: 'Search',
+  label: undefined,
 }
 export const Processing = Template.bind({})
 Processing.args = {
   ...DefaultButton.args,
-  isLoading: true,
+  loading: true,
 }
 export const Disabled = Template.bind({})
 Disabled.args = {
@@ -123,7 +122,7 @@ export const Rounded = (args: IconButtonProps) => (
     {Object.keys(theme.button.rounded).map(v => (
       <div className="flex flex-col gap-4" key={v}>
         <span>{v}</span>
-        <IconButton {...args} rounded={v}>
+        <IconButton {...args} rounded={v as RoundedSizes}>
           <TbTrash />
         </IconButton>
       </div>
