@@ -61,18 +61,17 @@ DefaultButton.args = {
   children: <TbSearch />,
   label: 'Search',
 }
-export const WithoutMotion = Template.bind({})
-WithoutMotion.storyName = 'Without Motion'
-WithoutMotion.parameters = {
+export const WithMotion = Template.bind({})
+WithMotion.parameters = {
   docs: {
     description: {
       story: 'The default for displaying icons as button',
     },
   },
 }
-WithoutMotion.args = {
+WithMotion.args = {
   children: <TbSearch />,
-  hasMotion: false,
+  hasMotion: true,
   label: 'Search',
 }
 
