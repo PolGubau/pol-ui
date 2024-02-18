@@ -1,5 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react'
-import { HelperText, HelperTextProps } from './HelperText'
+import type { HelperTextProps } from './HelperText'
+import { HelperText } from './HelperText'
 
 export default {
   title: 'Components/Texts/HelperText',
