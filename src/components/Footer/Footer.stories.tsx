@@ -15,7 +15,7 @@ export default {
   tags: ['Footer', 'autodocs'],
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col items-end justify-end h-full ">
+      <div className="flex p-6 flex-col items-end justify-end h-full">
         <Story />
       </div>
     ),
