@@ -29,7 +29,7 @@ export const footerTheme: FooterTheme = {
     container: 'w-full p-6',
   },
   groupLink: {
-    title: 'text-md pb-2 font-semibold text-gray-800 dark:text-secondary-100',
+    title: 'text-md pb-2 font-semibold text-gray-800 first-letter:uppercase dark:text-secondary-100',
     base: 'flex flex-wrap text-sm text-gray-500 dark:text-secondary-300 gap-x-6 gap-y-4 items-center',
     col: 'flex-col',
   },
