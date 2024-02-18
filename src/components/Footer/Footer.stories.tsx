@@ -155,7 +155,7 @@ SitemapLinksFooter.args = {
           </FooterLinkGroup>
         </div>
       </div>
-      <div className="w-full bg-gray-700 px-4 py-6 sm:flex sm:items-center sm:justify-between sm:px-10">
+      <div className="w-full px-4 py-6 sm:flex sm:items-center sm:justify-between sm:px-10">
         <Copyright href="#" by="Pol-ui" year={2022} />
         <div className="mt-4 flex space-x-2 sm:mt-0 sm:justify-center">
           <IconButton href="#">
