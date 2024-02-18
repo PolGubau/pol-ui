@@ -12,7 +12,7 @@ import { motion } from 'framer-motion'
 import type { ButtonProps } from './props'
 import { rippleClass } from '../../helpers/rippleClass'
 
-export const ButtonComponentFn = <T extends ElementType = 'button'>({
+export const Button = <T extends ElementType = 'button'>({
   children,
   className,
   color = ColorsEnum.primary,
