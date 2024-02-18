@@ -93,8 +93,8 @@ WithoutTooltip.args = {
   ...DefaultButton.args,
   label: undefined,
 }
-export const Processing = Template.bind({})
-Processing.args = {
+export const Loading = Template.bind({})
+Loading.args = {
   ...DefaultButton.args,
   loading: true,
 }
