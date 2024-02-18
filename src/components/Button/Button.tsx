@@ -2,7 +2,6 @@
 
 import type { ElementType } from 'react'
 import { twMerge } from 'tailwind-merge'
-import genericForwardRef from '../../helpers/generic-forward-ref'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import { Loader } from '../Loader'
@@ -13,7 +12,7 @@ import { motion } from 'framer-motion'
 import type { ButtonProps } from './props'
 import { rippleClass } from '../../helpers/rippleClass'
 
-const ButtonComponentFn = <T extends ElementType = 'button'>({
+export const ButtonComponentFn = <T extends ElementType = 'button'>({
   children,
   className,
   color = ColorsEnum.primary,
@@ -97,5 +96,3 @@ const ButtonComponentFn = <T extends ElementType = 'button'>({
     </MotionButtonBase>
   )
 }
-
-export const Button = genericForwardRef(ButtonComponentFn)

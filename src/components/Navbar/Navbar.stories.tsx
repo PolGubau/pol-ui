@@ -18,7 +18,7 @@ DefaultNavbar.args = {
   children: (
     <>
       <Navbar.Brand href="https://Pol-ui.com/">
-        <img src="/images/logo.png" className="mr-3 h-6 sm:h-9" alt="Pol-ui Logo" />
+        <img src="https://ui.polgubau.com/logo.png" className="mr-3 h-6 sm:h-9" alt="Pol-ui Logo" />
       </Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse>
@@ -39,7 +39,7 @@ WithCTA.args = {
   children: (
     <>
       <Navbar.Brand href="https://Pol-ui.com/">
-        <img src="/images/logo.png" className="mr-3 h-6 sm:h-9" alt="Pol-ui Logo" />
+        <img src="https://ui.polgubau.com/logo.png" className="mr-3 h-6 sm:h-9" alt="Pol-ui Logo" />
       </Navbar.Brand>
       <div className="flex gap-3 md:order-2">
         <Button>Get started</Button>
@@ -64,7 +64,7 @@ WithDropdown.args = {
   children: (
     <>
       <Navbar.Brand href="https://ui.polgubau.com/">
-        <img src="/images/logo.png" className="mr-3 h-6 sm:h-9" alt="Pol-ui Logo" />
+        <img src="https://ui.polgubau.com/logo.png" className="mr-3 h-6 sm:h-9" alt="Pol-ui Logo" />
       </Navbar.Brand>
       <div className="flex gap-3 md:order-2">
         <Dropdown

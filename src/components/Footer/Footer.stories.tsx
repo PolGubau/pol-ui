@@ -15,7 +15,7 @@ export default {
   tags: ['Footer', 'autodocs'],
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col items-end justify-end py-20 h-full ">
+      <div className="flex p-6 flex-col items-end justify-end h-full ">
         <Story />
       </div>
     ),
@@ -50,7 +50,7 @@ WithLogoFooter.args = {
   children: (
     <div className="w-full p-6 text-center">
       <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
-        <FooterBrand href="https://ui.polgubau.com" src="/images/logo.png" alt="Pol-ui Logo" />
+        <FooterBrand href="https://ui.polgubau.com" src="https://ui.polgubau.com/logo.png" alt="Pol-ui Logo" />
         <FooterLinkGroup>
           <Link href="#">About</Link>
           <Link href="#">Privacy Policy</Link>
@@ -72,7 +72,7 @@ WithSocialMediaFooter.args = {
     <div className="w-full p-6">
       <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
         <div>
-          <FooterBrand href="https://ui.polgubau.com" src="/images/logo.png" alt="Pol-ui Logo" />
+          <FooterBrand href="https://ui.polgubau.com" src="https://ui.polgubau.com/logo.png" alt="Pol-ui Logo" />
         </div>
         <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
           <div>

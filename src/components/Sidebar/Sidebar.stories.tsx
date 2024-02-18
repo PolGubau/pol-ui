@@ -237,7 +237,7 @@ export const CompleteExample = () => {
     <div className="flex w-full rounded-xl overflow-hidden border border-secondary-800 min-h-[400px]  bg-primary-100 flex-col">
       <Navbar className="bg-primary-50 shadow-md">
         <Navbar.Brand>
-          <img src="/images/logo.png" className="mr-3 h-6 sm:h-6" alt="Pol-ui Logo" />
+          <img src="https://ui.polgubau.com/logo.png" className="mr-3 h-6 sm:h-6" alt="Pol-ui Logo" />
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
