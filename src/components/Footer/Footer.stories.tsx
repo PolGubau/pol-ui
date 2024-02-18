@@ -121,7 +121,7 @@ export const SitemapLinksFooter = Template.bind({})
 SitemapLinksFooter.storyName = 'Sitemap Links'
 SitemapLinksFooter.args = {
   children: (
-    <div className="w-full bg-gray-800 dark">
+    <div className="w-full ">
       <div className="grid w-full grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">
         <div>
           <FooterLinkGroup col title="Company">
