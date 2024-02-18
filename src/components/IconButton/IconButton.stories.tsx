@@ -9,7 +9,7 @@ export default {
   title: 'Components/IconButton',
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col justify-center items-center min-h-40  bg-secondary-50">
+      <div className="flex p-6 flex-col justify-center items-center min-h-40 bg-secondary-50 dark: dark:bg-secondary-900">
         <Story />
       </div>
     ),
