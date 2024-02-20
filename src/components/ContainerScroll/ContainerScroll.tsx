@@ -5,8 +5,10 @@ import React, { useRef } from 'react'
 import { useScroll, useTransform, motion } from 'framer-motion'
 export interface ContainerScrollProps extends PropsWithChildren {
   titleComponent: string | React.ReactNode
+  top?: boolean
+  bottom?: boolean
 }
-export const ContainerScroll = ({ titleComponent, children }: ContainerScrollProps) => {
+export const ContainerScroll = ({ titleComponent, children, top = false, bottom = true }: ContainerScrollProps) => {
   const containerRef = useRef<any>(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -28,7 +30,54 @@ export const ContainerScroll = ({ titleComponent, children }: ContainerScrollPro
     return isMobile ? [0.7, 0.9] : [1.05, 1]
   }
 
-  const rotate = useTransform(scrollYProgress, [0, 1], [20, 0])
+  const animations = () => {
+    // we need to create the 0-1 range and the -20 0 20 range px scale
+    // if 'top' is true, we need to add a 3rd point to the range (the last one)
+    /*
+    Case 1: 
+    Both top and bottom are true -> 
+      {endpoints:[0,0.5,1],rotations:[20,0,-20]}
+
+    Case 2:
+    Only top is true -> 
+      {endpoints:[0,1],rotations:[0,-20]}
+
+    Case 3:
+    Only bottom is true -> 
+      {endpoints:[0,1],rotations:[20,0]}
+
+    Case 4:
+    None is true -> 
+      {endpoints:[0],rotations:[0]}
+
+     */
+
+    const checkpoints = () => {
+      if (top && bottom) {
+        return [0, 0.5, 1]
+      } else if (top) {
+        return [0, 1]
+      } else if (bottom) {
+        return [0, 1]
+      } else {
+        return [0]
+      }
+    }
+    const rotations = () => {
+      if (top && bottom) {
+        return [20, 0, -20]
+      } else if (top) {
+        return [0, -20]
+      } else if (bottom) {
+        return [20, 0]
+      } else {
+        return [0]
+      }
+    }
+    return { checkpoints: checkpoints(), rotations: rotations() }
+  }
+
+  const rotate = useTransform(scrollYProgress, animations().checkpoints, animations().rotations)
   const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions())
   const translate = useTransform(scrollYProgress, [0, 1], [0, -100])
 
