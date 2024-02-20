@@ -1,9 +1,9 @@
+import type { PropsWithChildren } from 'react'
 import React from 'react'
 import type { HeadingLevel } from '../../types'
 
-export interface DynamicHeadingProps extends React.HTMLAttributes<HTMLElement> {
+export interface DynamicHeadingProps extends PropsWithChildren, React.HTMLAttributes<HTMLElement> {
   as: HeadingLevel
-  children: React.ReactNode
 }
 
 /**
@@ -15,7 +15,7 @@ export interface DynamicHeadingProps extends React.HTMLAttributes<HTMLElement> {
  * @param {HeadingLevel} as The heading level that will be rendered
  * @param {React.ReactNode} children The content of the heading
  *
- * @returns {React.FC<DynamicHeadingProps>}
+ * @returns {React.ReactElement} The rendered heading
  *
  * @example
  * <DynamicHeading as={HeadingLevelEnum.h1}>...</DynamicHeading>
@@ -25,10 +25,7 @@ const DynamicHeading: React.FC<DynamicHeadingProps> = ({
   as,
   children,
   ...props
-}: {
-  as: HeadingLevel
-  children: React.ReactNode
-}) => {
+}: DynamicHeadingProps): React.ReactElement => {
   const Heading = as ?? 'h2'
 
   return <Heading {...props}>{children}</Heading>
