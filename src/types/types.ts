@@ -165,3 +165,8 @@ export type Direction = `${DirectionEnum}`
 export type Align = `${AlignEnum}`
 
 export type Dir = `${DirEnum}`
+
+export type ClassName = string
+export interface WithClassName {
+  className?: ClassName
+}

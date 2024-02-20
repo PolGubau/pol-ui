@@ -1,13 +1,22 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import type { PropsWithChildren } from 'react'
 import React, { useRef } from 'react'
+import type { MotionValue } from 'framer-motion'
 import { useScroll, useTransform, motion } from 'framer-motion'
-export interface ContainerScrollProps extends PropsWithChildren {
-  titleComponent: string | React.ReactNode
+import { cn, mergeDeep } from '../../helpers'
+import { getTheme } from '../../theme-store'
+import type { ClassName, DeepPartial, WithClassName } from '../../types'
+import type { ContainerScrollTheme } from './theme'
+export interface ContainerScrollProps extends PropsWithChildren, WithClassName {
+  titleComponent?: string | React.ReactNode
   top?: boolean
   bottom?: boolean
   rotation?: number
+  theme?: DeepPartial<ContainerScrollTheme>
+  perspective?: number
+  headerClassName?: ClassName
+  deviceWrapper?: boolean
+  deviceClassName?: ClassName
 }
 export const ContainerScroll = ({
   titleComponent,
@@ -15,12 +24,20 @@ export const ContainerScroll = ({
   top = false,
   bottom = true,
   rotation = 20,
+  perspective = 1000,
+  theme: customTheme = {},
+  className,
+  headerClassName,
+  deviceWrapper = true,
+  deviceClassName,
 }: ContainerScrollProps) => {
-  const containerRef = useRef<any>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
   })
   const [isMobile, setIsMobile] = React.useState(false)
+
+  const theme = mergeDeep(getTheme().containerScroll, customTheme)
 
   React.useEffect(() => {
     const checkMobile = () => {
@@ -65,7 +82,7 @@ export const ContainerScroll = ({
       } else if (top) {
         return [0, 1]
       } else if (bottom) {
-        return [0, 1]
+        return [0, 0.5]
       } else {
         return [0]
       }
@@ -88,16 +105,28 @@ export const ContainerScroll = ({
   const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions())
   const translate = useTransform(scrollYProgress, [0, 1], [0, -100])
 
+  const titleStyles = { translateY: translate }
   return (
-    <div className="h-[80rem] flex items-center justify-center relative p-20" ref={containerRef}>
+    <div className={cn(theme.base, className)} ref={containerRef}>
       <div
-        className="py-40 w-full relative"
+        className={theme.container}
         style={{
-          perspective: '1000px',
+          perspective: `${perspective}px`,
         }}
       >
-        <Header translate={translate} titleComponent={titleComponent} />
-        <Card rotate={rotate} translate={translate} scale={scale}>
+        {titleComponent && (
+          <motion.div style={titleStyles} className={cn(theme.header, headerClassName)}>
+            {titleComponent}
+          </motion.div>
+        )}
+        <Card
+          rotate={rotate}
+          translate={translate}
+          scale={scale}
+          theme={theme}
+          deviceWrapper={deviceWrapper}
+          deviceClassName={deviceClassName}
+        >
           {children}
         </Card>
       </div>
@@ -105,43 +134,38 @@ export const ContainerScroll = ({
   )
 }
 
-export const Header = ({ translate, titleComponent }: any) => {
-  return (
-    <motion.div
-      style={{
-        translateY: translate,
-      }}
-      className="max-w-5xl mx-auto text-center"
-    >
-      {titleComponent}
-    </motion.div>
-  )
+interface CardProps extends PropsWithChildren {
+  rotate: MotionValue<number>
+  scale: MotionValue<number>
+  translate: MotionValue<number>
+  theme: ContainerScrollTheme
+  deviceWrapper: ContainerScrollProps['deviceWrapper']
+  deviceClassName?: ClassName
 }
-
 export const Card = ({
   rotate,
   scale,
   translate,
   children,
-}: {
-  children: React.ReactNode
-  rotate: any
-  scale: any
-  translate: any
-}) => {
+  theme,
+  deviceWrapper = true,
+  deviceClassName = '',
+}: CardProps) => {
   return (
     <motion.div
       style={{
         rotateX: rotate,
         scale,
-        boxShadow:
-          '0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003',
       }}
-      className="max-w-5xl -mt-12 mx-auto h-[30rem] md:h-[40rem] w-full border-4 border-secondary-700 p-4 bg-secondary-900 rounded-[30px] shadow-2xl"
+      className={cn(deviceWrapper && theme.device, deviceClassName)}
     >
-      <div className="bg-gray-100 h-full w-full rounded-2xl gap-4 overflow-hidden p-4">
-        <motion.div style={{ translateY: translate }}>{children}</motion.div>
-      </div>
+      {deviceWrapper ? (
+        <div className={theme.screen}>
+          <motion.div style={{ translateY: translate }}>{children}</motion.div>
+        </div>
+      ) : (
+        children
+      )}
     </motion.div>
   )
 }

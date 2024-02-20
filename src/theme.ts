@@ -52,6 +52,7 @@ import { perspectiveCardTheme } from './components/PerspectiveCard/theme'
 import { kanbanTheme } from './components/Kanban/theme'
 import { bubbleHeadingTheme } from './components/BubbleHeading/theme'
 import { imageTrailTheme } from './components/ImageTrail/theme'
+import { containerScrollTheme } from './components/ContainerScroll/theme'
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,
@@ -106,4 +107,5 @@ export const theme: PoluiTheme = {
   kanban: kanbanTheme,
   bubbleHeading: bubbleHeadingTheme,
   imageTrail: imageTrailTheme,
+  containerScroll: containerScrollTheme,
 }

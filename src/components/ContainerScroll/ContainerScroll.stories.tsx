@@ -19,7 +19,7 @@ const titleComponent = (
 )
 const cards = (
   <div className="flex items-center gap-4 flex-col justify-center w-full ">
-    {[1, 2, 3].map(n => {
+    {[1, 2, 3, 4, 5, 6].map(n => {
       return (
         <div className="w-fit h-fit bg-gray-300 dark:bg-gray-800 rounded-lg shadow-lg" key={n}>
           <div className="p-4">
@@ -41,14 +41,50 @@ Default.args = {
 }
 export const AnimationInTop = Template.bind({})
 AnimationInTop.args = {
-  titleComponent,
-  children: cards,
+  ...Default.args,
+
   top: true,
 }
 export const AnimationJustInTop = Template.bind({})
 AnimationJustInTop.args = {
-  titleComponent,
-  children: cards,
+  ...Default.args,
+
   top: true,
   bottom: false,
+}
+export const CustomRotation = Template.bind({})
+CustomRotation.args = {
+  ...Default.args,
+  rotation: 40,
+  top: true,
+}
+export const WithoutDevice = Template.bind({})
+WithoutDevice.args = {
+  ...Default.args,
+  deviceWrapper: false,
+  children: (
+    <div className="flex items-center gap-4 flex-col justify-center w-full ">
+      {[1, 2, 3].map(n => {
+        return (
+          <div className="w-fit h-fit bg-gray-300 dark:bg-gray-800 rounded-lg shadow-lg" key={n}>
+            <div className="p-4">
+              <h2 className="text-2xl font-semibold text-black dark:text-white">Card {n}</h2>
+              <p className="text-gray-500 dark:text-gray-400">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vehicula, nisl et aliquam cursus, ligula
+                ante auctor nulla, at accumsan ex leo in enim.
+              </p>
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  ),
+}
+
+export const DarkMode = () => {
+  return (
+    <div className="dark bg-secondary-900">
+      <ContainerScroll {...Default.args} />
+    </div>
+  )
 }
