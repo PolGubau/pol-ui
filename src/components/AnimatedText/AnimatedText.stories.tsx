@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import type { AnimatedTextProps } from './AnimatedText'
-import { AnimatedText } from './AnimatedText'
+import { AnimatedText, AnimatedTextAnimationsEnum } from './AnimatedText'
 
 export default {
   title: 'Components/AnimatedText',
@@ -43,4 +43,24 @@ export const Blur = Template.bind({})
 Blur.args = {
   ...Default.args,
   animation: 'blur',
+}
+export const PullUp = Template.bind({})
+PullUp.args = {
+  ...Default.args,
+  animation: 'pull-up',
+}
+export const StaggeredFadeIn = Template.bind({})
+StaggeredFadeIn.args = {
+  ...Default.args,
+  animation: 'staggered-fade-in',
+}
+export const Gradual = Template.bind({})
+Gradual.args = {
+  ...Default.args,
+  animation: 'gradual',
+}
+export const LetterPullUp = Template.bind({})
+LetterPullUp.args = {
+  ...Default.args,
+  animation: AnimatedTextAnimationsEnum['letter-pull-up'],
 }
