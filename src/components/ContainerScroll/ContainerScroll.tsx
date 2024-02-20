@@ -7,6 +7,7 @@ export interface ContainerScrollProps extends PropsWithChildren {
   titleComponent: string | React.ReactNode
   top?: boolean
   bottom?: boolean
+  
 }
 export const ContainerScroll = ({ titleComponent, children, top = false, bottom = true }: ContainerScrollProps) => {
   const containerRef = useRef<any>(null)
