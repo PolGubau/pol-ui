@@ -65,7 +65,7 @@ MoreRotation.args = {
 }
 export const MoreRenderBuffer = Template.bind({})
 MoreRenderBuffer.args = {
-  renderImageBuffer: 400,
+  renderImageBuffer: 300,
   rotationRange: 20,
   children: (
     <section className="flex h-[400px] w-full place-content-center bg-primary-200">

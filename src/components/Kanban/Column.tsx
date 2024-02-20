@@ -7,22 +7,18 @@ import { motion } from 'framer-motion'
 import { AddKanbanCard } from './AddCard'
 import { KanbanIndicator } from './KanbanDropIndicator'
 import type { KanbanProps } from './Kanban'
+import { mergeDeep } from '../../helpers'
+import { getTheme } from '../../theme-store'
 import type { KanbanTheme } from './theme'
-export type KanbanColumnProps = {
+export interface KanbanColumnProps
+  extends Pick<KanbanProps, 'cards' | 'setCards' | 'labels' | 'onCreate' | 'onReorder' | 'theme' | 'dragable'> {
   title: string
-  cards: KanbanCardProps[]
   column: string
   setDragging: Dispatch<SetStateAction<boolean>>
-  dragable: KanbanProps['dragable']
-  setCards: Dispatch<SetStateAction<KanbanCardProps[]>>
   className?: string
-  onReorder: KanbanProps['onReorder']
   columnClassName?: string
-  onCreate?: KanbanProps['onCreate']
   indicatorClassName?: string
   titleClass?: string
-  labels: KanbanProps['labels']
-  theme: KanbanTheme
 }
 /**
  * KanbanColumn component for displaying a column in a kanban board.
@@ -51,10 +47,11 @@ export const KanbanColumn = ({
   onCreate,
   indicatorClassName,
   titleClass,
-  theme,
+  theme: customTheme = {},
   labels,
 }: KanbanColumnProps): JSX.Element => {
   const { value: active, setFalse, setTrue } = useBoolean(false)
+  const theme: KanbanTheme = mergeDeep(getTheme().kanban, customTheme)
 
   /**
    * Handles the start of dragging a card.

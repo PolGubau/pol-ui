@@ -1,4 +1,3 @@
-import { type Dispatch, type SetStateAction } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { useBoolean, useDebounce } from '../../hooks'
 import { KanbanColumn } from './Column'
@@ -21,7 +20,7 @@ export interface KanbanProps {
   dragable?: boolean
   columns?: string[]
   cards: KanbanCardProps[]
-  setCards: Dispatch<SetStateAction<KanbanCardProps[]>>
+  setCards: (value: KanbanCardProps[]) => void
   deleteButton?: (dragging: boolean) => React.ReactNode
   deletePositionY?: 'top' | 'bottom'
   deletePositionX?: 'left' | 'right' | 'center'
