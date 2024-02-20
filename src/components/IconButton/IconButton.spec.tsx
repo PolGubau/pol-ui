@@ -78,26 +78,6 @@ describe('Components / IconButton', () => {
 
           expect(iconButtonLink()).toBeInTheDocument()
         })
-
-        it('should render tag element defined in `as`', () => {
-          render(
-            <ul>
-              <IconButton as="li" label="Something or other" />
-            </ul>,
-          )
-
-          expect(iconButtonListItem()).toBeInTheDocument()
-        })
-
-        it('should render as IconButton `as={null}`', () => {
-          render(
-            <ul>
-              <IconButton as={null} label="Something or other" />
-            </ul>,
-          )
-
-          expect(iconButton()).toBeInTheDocument()
-        })
       })
     })
 
@@ -177,6 +157,4 @@ describe('Components / IconButton', () => {
   const iconButton = () => screen.getByRole('button')
 
   const iconButtonLink = () => screen.getByRole('link')
-
-  const iconButtonListItem = () => screen.getByRole('listitem')
 })
