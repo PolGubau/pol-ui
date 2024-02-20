@@ -7,9 +7,15 @@ export interface ContainerScrollProps extends PropsWithChildren {
   titleComponent: string | React.ReactNode
   top?: boolean
   bottom?: boolean
-  
+  rotation?: number
 }
-export const ContainerScroll = ({ titleComponent, children, top = false, bottom = true }: ContainerScrollProps) => {
+export const ContainerScroll = ({
+  titleComponent,
+  children,
+  top = false,
+  bottom = true,
+  rotation = 20,
+}: ContainerScrollProps) => {
   const containerRef = useRef<any>(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -31,7 +37,7 @@ export const ContainerScroll = ({ titleComponent, children, top = false, bottom 
     return isMobile ? [0.7, 0.9] : [1.05, 1]
   }
 
-  const animations = () => {
+  const animations = (rotation: number) => {
     // we need to create the 0-1 range and the -20 0 20 range px scale
     // if 'top' is true, we need to add a 3rd point to the range (the last one)
     /*
@@ -66,11 +72,11 @@ export const ContainerScroll = ({ titleComponent, children, top = false, bottom 
     }
     const rotations = () => {
       if (top && bottom) {
-        return [20, 0, -20]
+        return [rotation, 0, -rotation]
       } else if (top) {
-        return [0, -20]
+        return [0, -rotation]
       } else if (bottom) {
-        return [20, 0]
+        return [rotation, 0]
       } else {
         return [0]
       }
@@ -78,7 +84,7 @@ export const ContainerScroll = ({ titleComponent, children, top = false, bottom 
     return { checkpoints: checkpoints(), rotations: rotations() }
   }
 
-  const rotate = useTransform(scrollYProgress, animations().checkpoints, animations().rotations)
+  const rotate = useTransform(scrollYProgress, animations(rotation).checkpoints, animations(rotation).rotations)
   const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions())
   const translate = useTransform(scrollYProgress, [0, 1], [0, -100])
 
