@@ -59,7 +59,7 @@ describe('Components / IconButton', () => {
       })
 
       it('should show custom Loader when `isLoading={true}` and `loader` is present', () => {
-        render(<IconButton isLoading>Hi there</IconButton>)
+        render(<IconButton loading>Hi there</IconButton>)
 
         expect(screen.getByTestId('loader')).toBeInTheDocument()
       })

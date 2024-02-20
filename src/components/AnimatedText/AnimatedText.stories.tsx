@@ -1,14 +1,14 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import type { AnimatedTextProps } from './AnimatedText'
-import { AnimatedText, AnimatedTextAnimationsEnum } from './AnimatedText'
+import { AnimatedHeading } from './AnimatedText'
+import { AnimatedHeadingAnimationsEnum } from './types'
 
 export default {
   title: 'Components/AnimatedText',
-  component: AnimatedText,
-  tags: ['autodocs'],
+  component: AnimatedHeading,
   decorators: [
     Story => (
-      <div className="flex p-6 text-center w-full   justify-center">
+      <div className="flex p-6 text-center w-full justify-center">
         <Story />
       </div>
     ),
@@ -18,7 +18,7 @@ export default {
   },
 } as Meta
 
-const Template: StoryFn<AnimatedTextProps> = args => <AnimatedText {...args} />
+const Template: StoryFn<AnimatedTextProps> = args => <AnimatedHeading {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
@@ -27,40 +27,40 @@ Default.args = {
 export const FadeLeft = Template.bind({})
 FadeLeft.args = {
   ...Default.args,
-  animation: 'fade-left',
+  animation: AnimatedHeadingAnimationsEnum['fade-left'],
 }
 export const FadeRight = Template.bind({})
 FadeRight.args = {
   ...Default.args,
-  animation: 'fade-right',
+  animation: AnimatedHeadingAnimationsEnum['fade-right'],
 }
 export const FadeBottom = Template.bind({})
 FadeBottom.args = {
   ...Default.args,
-  animation: 'fade-up',
+  animation: AnimatedHeadingAnimationsEnum['fade-up'],
 }
 export const Blur = Template.bind({})
 Blur.args = {
   ...Default.args,
-  animation: 'blur',
+  animation: AnimatedHeadingAnimationsEnum.blur,
 }
 export const PullUp = Template.bind({})
 PullUp.args = {
   ...Default.args,
-  animation: 'pull-up',
+  animation: AnimatedHeadingAnimationsEnum['pull-up'],
 }
 export const StaggeredFadeIn = Template.bind({})
 StaggeredFadeIn.args = {
   ...Default.args,
-  animation: 'staggered-fade-in',
+  animation: AnimatedHeadingAnimationsEnum['staggered-fade-in'],
 }
 export const Gradual = Template.bind({})
 Gradual.args = {
   ...Default.args,
-  animation: 'gradual',
+  animation: AnimatedHeadingAnimationsEnum['gradual'],
 }
 export const LetterPullUp = Template.bind({})
 LetterPullUp.args = {
   ...Default.args,
-  animation: AnimatedTextAnimationsEnum['letter-pull-up'],
+  animation: AnimatedHeadingAnimationsEnum['letter-pull-up'],
 }

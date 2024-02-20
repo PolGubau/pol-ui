@@ -1,129 +1,49 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { type HeadingLevel } from '../../types'
-export interface AnimatedTextProps {
-  as: HeadingLevel | 'p' | 'span'
-  animation: AnimatedTextAnimations
+import type { DeepPartial, WithClassName } from '../../types'
+import { cn, mergeDeep } from '../../helpers'
+import { getTheme } from '../../theme-store'
+import type { AnimatedTextTheme } from './theme'
+import type { DynamicHeadingProps } from '../DynamicHeading'
+import { DynamicHeading } from '../DynamicHeading'
+import {
+  AnimatedHeadingAnimationsEnum,
+  wholeSenteceAnimations,
+  type AnimatedHeadingsAnimations,
+  wordsAnimations,
+  lettersAnimations,
+  animations,
+} from './types'
+
+export interface AnimatedTextProps extends WithClassName, Pick<DynamicHeadingProps, 'as'> {
+  animation: AnimatedHeadingsAnimations
   children: string
+  theme?: DeepPartial<AnimatedTextTheme>
 }
 
-export enum AnimatedTextAnimationsEnum {
-  'fade-down' = 'fade-down',
-  'fade-up' = 'fade-up',
-  'fade-left' = 'fade-left',
-  'fade-right' = 'fade-right',
-  'blur' = 'blur',
-  'pull-up' = 'pull-up',
-  'staggered-fade-in' = 'staggered-fade-in',
-  'gradual' = 'gradual',
-  'letter-pull-up' = 'letter-pull-up',
-}
-export type AnimatedTextAnimations = `${AnimatedTextAnimationsEnum}`
-
-export const AnimatedText = ({
+export const AnimatedHeading = ({
   as,
   children,
-  animation = AnimatedTextAnimationsEnum['fade-down'],
+  className,
+  theme: customTheme = {},
+  animation = AnimatedHeadingAnimationsEnum['fade-down'],
 }: AnimatedTextProps) => {
-  const animations = {
-    'fade-down': {
-      hidden: { opacity: 0, y: -10 },
-      show: { opacity: 1, y: 0, transition: { type: 'spring' } },
-    },
-    'fade-up': {
-      hidden: { opacity: 0, y: 10 },
-      show: { opacity: 1, y: 0, transition: { type: 'spring' } },
-    },
-    'fade-left': {
-      hidden: { opacity: 0, x: -10 },
-      show: { opacity: 1, x: 0, transition: { type: 'spring' } },
-    },
-    'fade-right': {
-      hidden: { opacity: 0, x: 10 },
-      show: { opacity: 1, x: 0, transition: { type: 'spring' } },
-    },
-    blur: {
-      hidden: { filter: 'blur(10px)', opacity: 0 },
-      show: { filter: 'blur(0px)', opacity: 1 },
-    },
-    'pull-up': {
-      container: {
-        hidden: { opacity: 0 },
-        show: {
-          opacity: 1,
-          transition: {
-            staggerChildren: 0.2,
-          },
-        },
-      },
-      item: {
-        hidden: { y: 20, opacity: 0 },
-        show: { y: 0, opacity: 1 },
-      },
-    },
-    'staggered-fade-in': {
-      container: {
-        hidden: { opacity: 0 },
-        show: {
-          opacity: 1,
-          transition: {
-            staggerChildren: 0.2,
-          },
-        },
-      },
-      item: {
-        hidden: { opacity: 0 },
-        show: { opacity: 1 },
-      },
-    },
-    gradual: {
-      hidden: { opacity: 0, x: -20 },
-      visible: { opacity: 1, x: 0 },
-    },
-    'letter-pull-up': {
-      hidden: {
-        y: 20,
-        opacity: 0,
-        transition: {
-          staggerChildren: 0.1,
-        },
-      },
-      visible: {
-        y: 0,
-        opacity: 1,
-      },
-    },
-  }
-
-  const wholeSenteceAnimations: string[] = [
-    AnimatedTextAnimationsEnum.blur,
-    AnimatedTextAnimationsEnum['fade-down'],
-    AnimatedTextAnimationsEnum['fade-left'],
-    AnimatedTextAnimationsEnum['fade-right'],
-    AnimatedTextAnimationsEnum['fade-up'],
-  ]
-  const wordsAnimations: string[] = [
-    AnimatedTextAnimationsEnum['pull-up'],
-    AnimatedTextAnimationsEnum['staggered-fade-in'],
-  ]
-  const lettersAnimations: string[] = [AnimatedTextAnimationsEnum.gradual, AnimatedTextAnimationsEnum['letter-pull-up']]
-
-  const Text = as ?? 'p'
+  const theme = mergeDeep(getTheme().animatedText, customTheme)
 
   if (wholeSenteceAnimations.includes(animation)) {
     return (
-      <AnimationsForWholeSentence animation={animations[animation]} TextComponents={Text}>
+      <AnimationsForWholeSentence className={className} animation={animations[animation]} as={as} theme={theme}>
         {children}
       </AnimationsForWholeSentence>
     )
   } else if (wordsAnimations.includes(animation)) {
     return (
-      <AnimationsForWords animation={animations[animation]} TextComponents={Text}>
+      <AnimationsForWords animation={animations[animation]} as={as} theme={theme}>
         {children}
       </AnimationsForWords>
     )
   } else if (lettersAnimations.includes(animation)) {
     return (
-      <AnimationsForLetters animation={animations[animation]} TextComponents={Text}>
+      <AnimationsForLetters animation={animations[animation]} as={as} theme={theme}>
         {children}
       </AnimationsForLetters>
     )
@@ -132,12 +52,11 @@ export const AnimatedText = ({
   return 'not implemented'
 }
 
-interface AnimationsItemProps {
-  animation: (typeof AnimatedText.prototype.animations)[0]
-  TextComponents: HeadingLevel | 'p' | 'span'
-  children: string
+interface AnimationsItemProps extends WithClassName, Pick<AnimatedTextProps, 'as' | 'children'> {
+  animation: (typeof AnimatedHeading.prototype.animations)[0]
+  theme: AnimatedTextTheme
 }
-export const AnimationsForWholeSentence = ({ animation, children, TextComponents }: AnimationsItemProps) => {
+export const AnimationsForWholeSentence = ({ animation, children, as, className, theme }: AnimationsItemProps) => {
   return (
     <motion.div
       initial="hidden"
@@ -152,30 +71,29 @@ export const AnimationsForWholeSentence = ({ animation, children, TextComponents
         },
       }}
     >
-      <motion.div
-        className="text-center font-display text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]"
-        variants={animation}
-      >
-        <TextComponents>{children}</TextComponents>
+      <motion.div className={cn(theme.base, className)} variants={animation}>
+        <DynamicHeading as={as}>{children}</DynamicHeading>
       </motion.div>
     </motion.div>
   )
 }
 
-export const AnimationsForWords = ({ animation, children, TextComponents }: AnimationsItemProps) => {
-  const MotionText = motion(TextComponents)
+export const AnimationsForWords = ({ animation, children, className, theme, as }: AnimationsItemProps) => {
+  const MotionHeading = motion(DynamicHeading)
   return (
-    <motion.h1 variants={animation.container} initial="hidden" animate="show" className="flex flex-wrap gap-1">
-      {children.split(' ').map((word, i) => (
-        <MotionText key={i} variants={animation.item}>
-          {word === '' ? <span>&nbsp;</span> : word}
-        </MotionText>
-      ))}
-    </motion.h1>
+    <MotionHeading as={as}>
+      <motion.div variants={animation.container} initial="hidden" animate="show" className={cn(theme.base,theme.word, className)}>
+        {children.split(' ').map((word, i) => (
+          <motion.span key={i} variants={animation.item} className={cn(theme.word, theme.base, className)}>
+            {word === '' ? <span>&nbsp;</span> : word}
+          </motion.span>
+        ))}
+      </motion.div>
+    </MotionHeading>
   )
 }
 
-export const AnimationsForLetters = ({ animation, children }: AnimationsItemProps) => {
+export const AnimationsForLetters = ({ animation, children, className, theme }: AnimationsItemProps) => {
   return (
     <div className="flex flex-wrap">
       <AnimatePresence>
@@ -187,7 +105,7 @@ export const AnimationsForLetters = ({ animation, children }: AnimationsItemProp
             exit="hidden"
             variants={animation}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className=""
+            className={cn(theme.base, className)}
           >
             {char === ' ' ? <span>&nbsp;</span> : char}
           </motion.p>
