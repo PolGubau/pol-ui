@@ -8,4 +8,4 @@ export type {
 } from './theme'
 
 export { carouselTheme } from './theme'
-export { Carousel } from './Carousel'
+export { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from './Carousel'
