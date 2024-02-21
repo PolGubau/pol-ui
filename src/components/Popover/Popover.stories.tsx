@@ -74,7 +74,7 @@ export const Controlled = (): JSX.Element => {
           <Button>Open Popover</Button>
         </PopoverTrigger>
         <PopoverContent className="flex flex-col items-center rounded-2xl">
-          <Avatar size="lg" img={'./images/people/me.png'} />
+          <Avatar size="lg" img={'https://avatars.githubusercontent.com/u/63197171?v=4'} />
           <h2 className="text-lg font-bold mt-2">Pol Gubau Amores</h2>
           <p className="text-sm text-secondary-500">Software Engineer at Pol-ui</p>
 
@@ -97,7 +97,7 @@ export const RealExample = (): JSX.Element => {
         <Button>Open Popover</Button>
       </PopoverTrigger>
       <PopoverContent className="flex flex-col items-center rounded-2xl">
-        <Avatar size="lg" img={'./images/people/me.png'} />
+        <Avatar size="lg" img={'https://avatars.githubusercontent.com/u/63197171?v=4'} />
         <h2 className="text-lg font-bold mt-2">Pol Gubau Amores</h2>
         <p className="text-sm text-secondary-500">Software Engineer at Pol-ui</p>
 

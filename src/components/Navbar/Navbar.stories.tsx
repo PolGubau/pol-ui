@@ -17,7 +17,7 @@ DefaultNavbar.storyName = 'Default'
 DefaultNavbar.args = {
   children: (
     <>
-      <Navbar.Brand href="https://Pol-ui.com/">
+      <Navbar.Brand href="https://ui.polgubau.com/">
         <img src="https://ui.polgubau.com/logo.png" className="mr-3 h-6 sm:h-9" alt="Pol-ui Logo" />
       </Navbar.Brand>
       <Navbar.Toggle />
@@ -69,9 +69,7 @@ WithDropdown.args = {
       <div className="flex gap-3 md:order-2">
         <Dropdown
           label="User settings"
-          trigger={
-            <Avatar alt="User settings" img="https://Pol-ui.com/docs/images/people/profile-picture-5.jpg" rounded />
-          }
+          trigger={<Avatar alt="User settings" img="https://avatars.githubusercontent.com/u/63197171?v=4" />}
         >
           <DropdownItem label="Profile" />
           <DropdownItem label="Settings" />
