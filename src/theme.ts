@@ -53,7 +53,7 @@ import { kanbanTheme } from './components/Kanban/theme'
 import { bubbleHeadingTheme } from './components/BubbleHeading/theme'
 import { imageTrailTheme } from './components/ImageTrail/theme'
 import { containerScrollTheme } from './components/ContainerScroll/theme'
-import { animatedTextTheme } from './components/AnimatedText/theme'
+import { animatedHeadingTheme } from './components/AnimatedText/theme'
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,
@@ -109,5 +109,5 @@ export const theme: PoluiTheme = {
   bubbleHeading: bubbleHeadingTheme,
   imageTrail: imageTrailTheme,
   containerScroll: containerScrollTheme,
-  animatedText: animatedTextTheme,
+  animatedText: animatedHeadingTheme,
 }

@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react'
-import type { AnimatedTextProps } from './AnimatedText'
-import { AnimatedHeading } from './AnimatedText'
+import type { AnimatedHeadingProps } from './AnimatedHeading'
+import { AnimatedHeading } from './AnimatedHeading'
 import { AnimatedHeadingAnimationsEnum } from './types'
 
 export default {
@@ -18,7 +18,7 @@ export default {
   },
 } as Meta
 
-const Template: StoryFn<AnimatedTextProps> = args => <AnimatedHeading {...args} />
+const Template: StoryFn<AnimatedHeadingProps> = args => <AnimatedHeading {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

@@ -52,7 +52,7 @@ import type { KanbanTheme } from '../Kanban/theme'
 import type { BubbleHeadingTheme } from '../BubbleHeading/theme'
 import type { ImageTrailTheme } from '../ImageTrail/theme'
 import type { ContainerScrollTheme } from '../ContainerScroll/theme'
-import type { AnimatedTextTheme } from '../AnimatedText/theme'
+import type { AnimateHeadingTheme } from '../AnimatedText/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -115,5 +115,5 @@ export interface PoluiTheme {
   bubbleHeading: BubbleHeadingTheme
   imageTrail: ImageTrailTheme
   containerScroll: ContainerScrollTheme
-  animatedText: AnimatedTextTheme
+  animatedText: AnimateHeadingTheme
 }

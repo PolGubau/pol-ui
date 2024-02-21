@@ -24,7 +24,7 @@ export const lettersAnimations: string[] = [
   AnimatedHeadingAnimationsEnum.gradual,
   AnimatedHeadingAnimationsEnum['letter-pull-up'],
 ]
-export const animations = {
+export const animatedHeadinganimations = {
   'fade-down': {
     hidden: { opacity: 0, y: -10 },
     show: { opacity: 1, y: 0, transition: { type: 'spring' } },
@@ -93,4 +93,4 @@ export const animations = {
     },
   },
 }
-export type AnimatedHeadingsAnimations = `${AnimatedHeadingAnimationsEnum}`
+export type AnimatedHeadingsAnimation = `${AnimatedHeadingAnimationsEnum}`
