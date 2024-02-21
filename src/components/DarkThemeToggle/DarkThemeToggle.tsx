@@ -19,6 +19,7 @@ export interface DarkThemeToggleProps extends Omit<ComponentProps<'button'>, 'co
   ref?: React.Ref<HTMLButtonElement>
   color?: Colors
   hasMotion?: boolean
+  label?: string
 }
 
 export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
@@ -27,6 +28,7 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
   iconDark: IconDark = TbSun,
   iconLight: IconLight = TbMoon,
   hasMotion = true,
+  label = 'Toggle dark mode',
   color = ColorsEnum.primary,
   ...props
 }) => {
@@ -42,7 +44,8 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
 
   return (
     <IconButton
-      aria-label="Toggle dark mode"
+      label={label}
+      aria-label={label}
       data-testid="dark-theme-toggle"
       className={twMerge(theme.root.base, className)}
       onClick={toggleMode}
