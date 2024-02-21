@@ -33,15 +33,15 @@ export interface ButtonOutlineTheme extends IBoolean {
 }
 
 export const buttonTheme: ButtonTheme = {
-  base: 'group flex items-stretch outline-none items-center justify-center text-center w-auto relative focus:z-10 focus:outline-none transition-all focus:ring-2	enabled:hover:brightness-90 ',
+  base: 'group flex items-stretch outline-none items-center justify-center text-center w-auto relative focus:z-10 focus:outline-none transition-all focus:ring-2	enabled:hover:brightness-90 text-white dark:text-black',
   fullSized: 'w-full',
   color: {
-    error: 'text-error-50 dark:text-error-900 bg-error ',
-    info: 'text-info-50 dark:text-info-900 bg-info   ',
-    success: 'text-success-50 dark:text-success-900 bg-success',
-    warning: 'text-warning-50 dark:text-warning-900 bg-warning',
-    primary: 'text-primary-50 dark:text-primary-900 bg-primary',
-    secondary: 'text-secondary-50 dark:text-secondary-900 bg-secondary  focus:ring-secondary',
+    error: 'bg-error ',
+    info: 'bg-info   ',
+    success: 'bg-success',
+    warning: 'bg-warning',
+    primary: 'bg-primary',
+    secondary: 'bg-secondary',
   },
   ring: {
     base: 'enabled:focus:ring-2',
