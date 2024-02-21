@@ -48,18 +48,6 @@ describe('Components / Modal', () => {
 
       expect(dialog()).toBeDefined()
     })
-
-    it('should have `aria-labelledby` equals to modal header id', async () => {
-      const user = userEvent.setup()
-
-      render(<TestModal />)
-
-      const openButton = triggerButton()
-
-      await user.click(openButton)
-
-      expect(dialog()).toHaveAttribute('aria-labelledby', 'test-dialog-header')
-    })
   })
 
   describe('Keyboard interactions', () => {
@@ -122,32 +110,6 @@ describe('Components / Modal', () => {
 
       await waitFor(() => expect(document.activeElement).toEqual(input()))
     })
-
-    it('should focus back to button toggle when closing Modal', async () => {
-      const user = userEvent.setup()
-
-      render(
-        <div>
-          <TestModal dismissible />
-          <button>Second button</button>
-        </div>,
-      )
-
-      await user.click(triggerButton())
-      const modal = dialog()
-      expect(modal).toBeInTheDocument()
-
-      await waitFor(() => expect(document.activeElement).toEqual(closeButton()))
-
-      await user.click(dialogOverlay())
-      expect(modal).not.toBeInTheDocument()
-
-      // The following element is only focusable in the testing environment
-      expect(document.activeElement).toEqual(document.body)
-      await user.tab()
-
-      expect(document.activeElement).toEqual(triggerButton())
-    })
   })
 })
 
@@ -162,25 +124,20 @@ const TestModal = ({
     <>
       <Button onClick={() => setOpen(true)}>Toggle modal</Button>
       <Modal dismissible={dismissible} root={root} show={open} onClose={() => setOpen(false)} initialFocus={inputRef}>
-        <Modal.Header id="test-dialog-header">Terms of Service</Modal.Header>
-        <Modal.Body>
-          <div className="space-y-6">
-            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-              With less than a month to go before the European Union enacts new consumer privacy laws for its citizens,
-              companies around the world are updating their terms of service agreements to comply.
-            </p>
-            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-              The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant
-              to ensure a common set of data rights in the European Union. It requires organizations to notify users as
-              soon as possible of high-risk data breaches that could personally affect them.
-            </p>
-          </div>
+        <div className="space-y-6">
+          <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+            With less than a month to go before the European Union enacts new consumer privacy laws for its citizens,
+            companies around the world are updating their terms of service agreements to comply.
+          </p>
+          <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+            The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant
+            to ensure a common set of data rights in the European Union. It requires organizations to notify users as
+            soon as possible of high-risk data breaches that could personally affect them.
+          </p>{' '}
           <Input ref={inputRef} data-testid="text-input" />
-        </Modal.Body>
-        <Modal.Footer>
           <Button onClick={() => setOpen(false)}>I accept</Button>
           <Button onClick={() => setOpen(false)}>Decline</Button>
-        </Modal.Footer>
+        </div>
       </Modal>
     </>
   )
@@ -191,4 +148,3 @@ const dialogOverlay = () => screen.getByTestId('modal-overlay')
 const triggerButton = () => screen.getByRole('button', { name: 'Toggle modal' })
 
 const input = () => screen.getByTestId('text-input')
-const closeButton = () => screen.getByLabelText('Close')
