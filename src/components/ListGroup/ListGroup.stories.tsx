@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/react'
-import { HiCloudDownload, HiInbox, HiOutlineAdjustments, HiUserCircle } from 'react-icons/hi'
 import type { ListGroupProps } from './ListGroup'
 import { ListGroup } from './ListGroup'
 import { ListItem } from './ListItem'
+import { TbAt, TbDownload, TbSettings, TbUser } from 'react-icons/tb'
 
 export default {
   title: 'Components/ListGroup',
@@ -47,9 +47,9 @@ WithButtons.args = {
       <ListItem active onClick={() => alert('Profile clicked!')}>
         Profile
       </ListItem>
-      <ListItem>Settings</ListItem>
-      <ListItem>Messages</ListItem>
-      <ListItem>Download</ListItem>
+      <ListItem onClick={() => alert('Settings clicked!')}>Settings</ListItem>
+      <ListItem onClick={() => alert('Messages clicked!')}>Messages</ListItem>
+      <ListItem onClick={() => alert('Download clicked!')}>Download</ListItem>
     </>
   ),
 }
@@ -59,12 +59,12 @@ WithIcons.storyName = 'With icons'
 WithIcons.args = {
   children: (
     <>
-      <ListItem active icon={HiUserCircle}>
+      <ListItem active icon={TbUser}>
         Profile
       </ListItem>
-      <ListItem icon={HiOutlineAdjustments}>Settings</ListItem>
-      <ListItem icon={HiInbox}>Messages</ListItem>
-      <ListItem icon={HiCloudDownload}>Download</ListItem>
+      <ListItem icon={TbSettings}>Settings</ListItem>
+      <ListItem icon={TbAt}>Messages</ListItem>
+      <ListItem icon={TbDownload}>Download</ListItem>
     </>
   ),
 }
