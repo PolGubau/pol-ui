@@ -1,22 +1,36 @@
-import type { Transition, SVGMotionProps } from 'framer-motion'
+import type { SVGMotionProps } from 'framer-motion'
 import { motion } from 'framer-motion'
+import type { Colors, RoundedSizes, DeepPartial } from '../../types'
+import { ColorsEnum } from '../../types'
+import type { IconButtonTheme } from '../IconButton'
+import { cn, mergeDeep, rippleClass } from '../../helpers'
+import { getTheme } from '../../theme-store'
+import { useRipple } from '../../hooks'
 
-export interface HamburguerProps extends SVGMotionProps<SVGSVGElement> {
+export interface HamburguerProps extends Omit<SVGMotionProps<SVGSVGElement>, 'color'> {
   open?: boolean
-  color?: string
+  color?: Colors
   strokeWidth?: string | number
-  transition?: Transition
   lineProps?: SVGMotionProps<SVGLineElement>
+  theme?: DeepPartial<IconButtonTheme>
+  disabled?: boolean
+  rounded?: RoundedSizes
+  outline?: boolean
 }
 
 export const Hamburguer = ({
   open = false,
-  width = 36,
-  height = 36,
-  strokeWidth = 5,
-  color = 'currentColor',
-  transition = { type: 'spring', stiffness: 260, damping: 20 },
+  width = 24,
+  height = 24,
+  strokeWidth = 3,
+  color = ColorsEnum.primary,
   lineProps = {},
+  theme: customTheme = {},
+  disabled = false,
+  rounded = 'full',
+  outline = false,
+  className = '',
+
   ...props
 }: HamburguerProps) => {
   const variant = open ? 'opened' : 'closed'
@@ -49,29 +63,45 @@ export const Hamburguer = ({
     },
   }
   lineProps = {
-    stroke: color,
+    stroke: 'currentColor',
     strokeWidth: strokeWidth as number,
     vectorEffect: 'non-scaling-stroke',
     initial: 'closed',
     animate: variant,
-    transition,
+    transition: { type: 'spring', stiffness: 260, damping: 20 },
     strokeLinecap: 'round',
     ...lineProps,
   }
   const unitHeight = 4
   const unitWidth = (unitHeight * (width as number)) / (height as number)
 
+  const theme = mergeDeep(getTheme().iconButton, customTheme)
+  const [ripple, event] = useRipple({
+    opacity: 0.2,
+    className: rippleClass(color),
+  })
+
   return (
     <motion.svg
+      ref={ripple}
+      onPointerDown={event}
       viewBox={`0 0 ${unitWidth} ${unitHeight}`}
       overflow="visible"
-      className="text-red-600 cursor-pointer"
-      preserveAspectRatio="none"
+      className={cn(
+        theme.base,
+        disabled && theme.disabled,
+        theme.rounded[rounded],
+        theme.color[color],
+        theme.inner.base,
+        outline && theme.inner.outline,
+        outline && theme.inner.color[color],
+        className,
+      )}
       width={width}
       height={height}
       {...props}
     >
-      <motion.line className={'text-blue-400'} x1="0" x2={unitWidth} y1="0" y2="0" variants={top} {...lineProps} />
+      <motion.line x1="0" x2={unitWidth} y1="0" y2="0" variants={top} {...lineProps} />
       <motion.line x1="0" x2={unitWidth} y1={unitHeight / 2} y2={unitHeight / 2} variants={center} {...lineProps} />
       <motion.line x1="0" x2={unitWidth} y1={unitHeight} y2={unitHeight} variants={bottom} {...lineProps} />
     </motion.svg>

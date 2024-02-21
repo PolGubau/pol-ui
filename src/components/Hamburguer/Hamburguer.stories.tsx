@@ -22,3 +22,9 @@ export const Default = () => {
 
   return <Hamburguer onClick={toggle} open={value} />
 }
+
+export const Outline = () => {
+  const { value, toggle } = useBoolean(false)
+
+  return <Hamburguer outline onClick={toggle} open={value} />
+}
