@@ -20,7 +20,14 @@ export default {
 export const Default = () => {
   const { value, toggle } = useBoolean(false)
 
-  return <Hamburguer onClick={toggle} open={value} />
+  return (
+    <Hamburguer
+      onClick={() => {
+        toggle()
+      }}
+      open={value}
+    />
+  )
 }
 
 export const Outline = () => {

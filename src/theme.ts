@@ -1,4 +1,4 @@
-import type { PoluiTheme, RoundedSizesTypes } from '.'
+import type { PoluiTheme } from '.'
 import { accordionTheme } from './components/Accordion/theme'
 import { alertTheme } from './components/Alert/theme'
 import { avatarTheme } from './components/Avatar/theme'
@@ -55,6 +55,7 @@ import { imageTrailTheme } from './components/ImageTrail/theme'
 import { containerScrollTheme } from './components/ContainerScroll/theme'
 import { animatedHeadingTheme } from './components/AnimatedText/theme'
 import { toggleTheme } from './components/Toggle/theme'
+import { hamburguerTheme } from './components/Hamburguer/theme'
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,
@@ -112,6 +113,5 @@ export const theme: PoluiTheme = {
   containerScroll: containerScrollTheme,
   animatedText: animatedHeadingTheme,
   toggle: toggleTheme,
+  hamburguer: hamburguerTheme,
 }
-
- 

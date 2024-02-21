@@ -1,11 +1,10 @@
 import type { SVGMotionProps } from 'framer-motion'
 import { motion } from 'framer-motion'
-import type { Colors, RoundedSizes, DeepPartial } from '../../types'
-import { ColorsEnum } from '../../types'
+import { type Colors, type RoundedSizes, type DeepPartial, ColorsEnum } from '../../types'
 import type { IconButtonTheme } from '../IconButton'
-import { cn, mergeDeep, rippleClass } from '../../helpers'
+import { Toggle } from '../Toggle'
 import { getTheme } from '../../theme-store'
-import { useRipple } from '../../hooks'
+import { cn, mergeDeep } from '../../helpers'
 
 export interface HamburguerProps extends Omit<SVGMotionProps<SVGSVGElement>, 'color'> {
   open?: boolean
@@ -16,21 +15,18 @@ export interface HamburguerProps extends Omit<SVGMotionProps<SVGSVGElement>, 'co
   disabled?: boolean
   rounded?: RoundedSizes
   outline?: boolean
+  onClick?: () => void
 }
 
 export const Hamburguer = ({
   open = false,
-  width = 24,
-  height = 24,
+  width = 16,
+  height = 16,
   strokeWidth = 3,
-  color = ColorsEnum.primary,
   lineProps = {},
+  onClick,
+  color = ColorsEnum.primary,
   theme: customTheme = {},
-  disabled = false,
-  rounded = 'full',
-  outline = false,
-  className = '',
-
   ...props
 }: HamburguerProps) => {
   const variant = open ? 'opened' : 'closed'
@@ -74,36 +70,23 @@ export const Hamburguer = ({
   }
   const unitHeight = 4
   const unitWidth = (unitHeight * (width as number)) / (height as number)
-
-  const theme = mergeDeep(getTheme().iconButton, customTheme)
-  const [ripple, event] = useRipple({
-    opacity: 0.2,
-    className: rippleClass(color),
-  })
+  const theme = mergeDeep(getTheme().hamburguer, customTheme)
 
   return (
-    <motion.svg
-      ref={ripple}
-      onPointerDown={event}
-      viewBox={`0 0 ${unitWidth} ${unitHeight}`}
-      overflow="visible"
-      className={cn(
-        theme.base,
-        disabled && theme.disabled,
-        theme.rounded[rounded],
-        theme.color[color],
-        theme.inner.base,
-        outline && theme.inner.outline,
-        outline && theme.inner.color[color],
-        className,
-      )}
-      width={width}
-      height={height}
-      {...props}
-    >
-      <motion.line x1="0" x2={unitWidth} y1="0" y2="0" variants={top} {...lineProps} />
-      <motion.line x1="0" x2={unitWidth} y1={unitHeight / 2} y2={unitHeight / 2} variants={center} {...lineProps} />
-      <motion.line x1="0" x2={unitWidth} y1={unitHeight} y2={unitHeight} variants={bottom} {...lineProps} />
-    </motion.svg>
+    <Toggle onClick={onClick} active={open}>
+      <motion.svg
+        viewBox={`0 0 ${unitWidth} ${unitHeight}`}
+        overflow="visible"
+        width={width}
+        height={height}
+        fill="none"
+        className={cn(theme.base, theme.color[color])}
+        {...props}
+      >
+        <motion.line x1="0" x2={unitWidth} y1="0" y2="0" variants={top} {...lineProps} />
+        <motion.line x1="0" x2={unitWidth} y1={unitHeight / 2} y2={unitHeight / 2} variants={center} {...lineProps} />
+        <motion.line x1="0" x2={unitWidth} y1={unitHeight} y2={unitHeight} variants={bottom} {...lineProps} />
+      </motion.svg>{' '}
+    </Toggle>
   )
 }
