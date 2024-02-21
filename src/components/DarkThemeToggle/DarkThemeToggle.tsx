@@ -46,6 +46,7 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
     <IconButton
       label={label}
       aria-label={label}
+      data-active={computedMode === 'dark'}
       data-testid="dark-theme-toggle"
       className={twMerge(theme.root.base, className)}
       onClick={toggleMode}
