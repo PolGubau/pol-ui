@@ -53,6 +53,7 @@ import type { BubbleHeadingTheme } from '../BubbleHeading/theme'
 import type { ImageTrailTheme } from '../ImageTrail/theme'
 import type { ContainerScrollTheme } from '../ContainerScroll/theme'
 import type { AnimateHeadingTheme } from '../AnimatedText/theme'
+import { ToggleTheme } from '../Toggle/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -116,4 +117,5 @@ export interface PoluiTheme {
   imageTrail: ImageTrailTheme
   containerScroll: ContainerScrollTheme
   animatedText: AnimateHeadingTheme
+  toggle: ToggleTheme
 }

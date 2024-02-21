@@ -43,7 +43,7 @@ export const Outline = () => {
   const { value, toggle } = useBoolean(false)
 
   return (
-    <Toggle outline onClick={toggle} active={value}>
+    <Toggle onClick={toggle} active={value}>
       <TbItalic />
     </Toggle>
   )

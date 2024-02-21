@@ -1,23 +1,33 @@
 import React from 'react'
-import { type IconButtonProps } from '../IconButton'
-import { cn } from '../../helpers'
-import type { RoundedSizes } from '../../types'
-export interface ToggleProps extends IconButtonProps {
+import { cn, mergeDeep } from '../../helpers'
+import { ColorsEnum, type Colors, type DeepPartial, type RoundedSizes } from '../../types'
+import { getTheme } from '../../theme-store'
+import type { ToggleTheme } from './theme'
+export interface ToggleProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   active?: boolean
   children: React.ReactNode
   rounded?: RoundedSizes
+  theme?: DeepPartial<ToggleTheme>
+  color?: Colors
 }
-export const Toggle: React.FC<ToggleProps> = ({ active = false, children, ...props }: ToggleProps) => {
+export const Toggle: React.FC<ToggleProps> = ({
+  active = false,
+  children,
+  color = ColorsEnum.primary,
+  rounded = 'xl',
+  theme: customTheme = {},
+  ...props
+}: ToggleProps) => {
+  const theme = mergeDeep(getTheme().toggle, customTheme)
+
   return (
     <button
       className={cn(
-        'flex items-center justify-center aspect-square h-10',
-        'rounded-full',
-        active ? 'bg-primary' : 'bg-gray-300',
+        theme.base,
+        theme.rounded[rounded],
 
-        'transition-colors duration-300',
-        'focus:outline-none',
-        'hover:bg-primary-dark',
+        active ? theme.active.on.base : theme.active.off.base,
+        active ? theme.active.on.colors[color] : theme.active.off.colors[color],
       )}
       {...props}
     >
