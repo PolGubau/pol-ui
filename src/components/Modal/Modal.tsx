@@ -11,16 +11,15 @@ import {
   useMergeRefs,
   useRole,
 } from '@floating-ui/react'
-import { forwardRef, useState, type ComponentPropsWithoutRef, type MutableRefObject, useMemo } from 'react'
+import { forwardRef, type ComponentPropsWithoutRef, type MutableRefObject } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial, MainSizes, Positions } from '../../types/types'
-import { ModalBody } from './ModalBody'
-import { ModalContext } from './ModalContext'
-import { ModalFooter } from './ModalFooter'
-import { ModalHeader } from './ModalHeader'
 import type { ModalTheme } from './theme'
+import { AnimatePresence, motion } from 'framer-motion'
+import { IconButton } from '../IconButton'
+import { TbX } from 'react-icons/tb'
 
 export interface ModalPositions extends Positions {
   [key: string]: string
@@ -34,29 +33,31 @@ export interface ModalProps extends ComponentPropsWithoutRef<'div'> {
   show?: boolean
   size?: MainSizes
   dismissible?: boolean
+  deleteButton?: boolean
+  lockScroll?: boolean
   theme?: DeepPartial<ModalTheme>
   initialFocus?: number | MutableRefObject<HTMLElement | null>
 }
 
-const ModalComponent = forwardRef<HTMLDivElement, ModalProps>(
+export const Modal = forwardRef<HTMLDivElement, ModalProps>(
   (
     {
       children,
       className,
       dismissible = true,
       onClose,
-      popup,
       position = 'center',
       root,
       show,
       size = '2xl',
       theme: customTheme = {},
       initialFocus,
+      lockScroll = true,
+      deleteButton = false,
       ...props
     },
-    theirRef,
+    theirRef = null,
   ) => {
-    const [headerId, setHeaderId] = useState<string | undefined>(undefined)
     const theme = mergeDeep(getTheme().modal, customTheme)
 
     const { context } = useFloating({
@@ -71,49 +72,52 @@ const ModalComponent = forwardRef<HTMLDivElement, ModalProps>(
     const role = useRole(context)
 
     const { getFloatingProps } = useInteractions([click, dismiss, role])
-    const value = useMemo(() => ({ theme, popup, onClose, setHeaderId }), [theme, popup, onClose, setHeaderId])
     if (!show) {
       return null
     }
 
     return (
-      <ModalContext.Provider value={value}>
-        <FloatingPortal root={root}>
-          <FloatingOverlay
-            lockScroll
-            data-testid="modal-overlay"
-            className={twMerge(
-              theme.root.base,
-              theme.root.positions[position],
-              show ? theme.root.show.on : theme.root.show.off,
-              className,
-            )}
-            {...props}
-          >
-            <FloatingFocusManager context={context} initialFocus={initialFocus}>
-              <div
-                ref={ref}
-                {...getFloatingProps(props)}
-                aria-labelledby={headerId}
-                className={twMerge(theme.content.base, theme.root.sizes[size])}
-              >
-                <div className={theme.content.inner}>{children}</div>
-              </div>
-            </FloatingFocusManager>
-          </FloatingOverlay>
-        </FloatingPortal>
-      </ModalContext.Provider>
+      <AnimatePresence mode="wait">
+        {show && (
+          <FloatingPortal root={root}>
+            <FloatingOverlay
+              lockScroll={lockScroll}
+              data-testid="modal-overlay"
+              className={twMerge(theme.base, theme.positions[position], show && theme.show, className)}
+              {...props}
+            >
+              <FloatingFocusManager context={context} initialFocus={initialFocus}>
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0, transition: { duration: 0.2 } }}
+                  exit={{ opacity: 0, y: 20, transition: { duration: 0.2 } }}
+                  ref={ref}
+                  {...getFloatingProps(props)}
+                  className={twMerge(theme.content, theme.sizes[size])}
+                >
+                  {deleteButton && (
+                    <div className={twMerge(theme.closeButton)}>
+                      <IconButton
+                        aria-label="Close"
+                        type="button"
+                        onClick={onClose}
+                        style={{
+                          zIndex: 1000,
+                        }}
+                      >
+                        <TbX aria-hidden size={20} />
+                      </IconButton>
+                    </div>
+                  )}
+                  {children}
+                </motion.div>
+              </FloatingFocusManager>
+            </FloatingOverlay>
+          </FloatingPortal>
+        )}
+      </AnimatePresence>
     )
   },
 )
-
-ModalComponent.displayName = 'Modal'
-ModalHeader.displayName = 'Modal.Header'
-ModalBody.displayName = 'Modal.Body'
-ModalFooter.displayName = 'Modal.Footer'
-
-export const Modal = Object.assign(ModalComponent, {
-  Header: ModalHeader,
-  Body: ModalBody,
-  Footer: ModalFooter,
-})
+Modal.displayName = 'Modal'
