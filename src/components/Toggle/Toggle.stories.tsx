@@ -39,15 +39,6 @@ export const Default = () => {
   )
 }
 
-export const Outline = () => {
-  const { value, toggle } = useBoolean(false)
-
-  return (
-    <Toggle onClick={toggle} active={value}>
-      <TbItalic />
-    </Toggle>
-  )
-}
 export const AllColors = () => {
   const { value: v1, toggle: t1 } = useBoolean(false)
   const { value: v2, toggle: t2 } = useBoolean(false)

@@ -12,6 +12,25 @@ export interface ToggleProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   color?: Colors
   disabled?: boolean
 }
+
+/**
+ * @name Toggle
+ * @description A simple toggle component that can be used to switch between two states as a button
+ * @param {boolean} [active] - The state of the toggle
+ * @param {React.ReactNode} children - The content of the toggle
+ * @param {RoundedSizes} [rounded] - The rounded size of the toggle
+ * @param {DeepPartial<ToggleTheme>} [theme] - The theme of the toggle
+ * @param {Colors} [color] - The color of the toggle
+ * @param {boolean} [disabled] - The state of the toggle
+ * @param {React.ButtonHTMLAttributes<HTMLButtonElement>} [props] - The props of the button
+ * @returns {React.FC<ToggleProps>}
+ * @example
+ * <Toggle onClick={toggle} active={value}>
+ *  <TbItalic />
+ * </Toggle>
+ *
+ * @returns {JSX.Element}
+ */
 export const Toggle: React.FC<ToggleProps> = ({
   active = false,
   children,
@@ -20,7 +39,7 @@ export const Toggle: React.FC<ToggleProps> = ({
   theme: customTheme = {},
   disabled = false,
   ...props
-}: ToggleProps) => {
+}: ToggleProps): JSX.Element => {
   const theme = mergeDeep(getTheme().toggle, customTheme)
   const [ripple, event] = useRipple({
     disabled: disabled,
