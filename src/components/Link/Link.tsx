@@ -11,7 +11,6 @@ export interface LinkTheme {
 
 export interface LinkProps extends ComponentProps<'a'> {
   as?: ElementType
-  href: string
   theme?: DeepPartial<LinkTheme>
 }
 
@@ -19,14 +18,13 @@ export const Link: FC<LinkProps> = ({
   as: Component = 'a',
   children,
   className,
-  href,
   theme: customTheme = {},
   ...props
 }) => {
   const theme = mergeDeep(getTheme().link, customTheme)
 
   return (
-    <Component href={href} className={twMerge(theme.base, theme.href, className)} {...props}>
+    <Component className={twMerge(theme.base, theme.href, className)} {...props}>
       {children}
     </Component>
   )
