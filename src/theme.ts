@@ -56,6 +56,7 @@ import { containerScrollTheme } from './components/ContainerScroll/theme'
 import { animatedHeadingTheme } from './components/AnimatedText/theme'
 import { toggleTheme } from './components/Toggle/theme'
 import { hamburguerTheme } from './components/Hamburguer/theme'
+import { navigationMenuTheme } from './components/NavigationMenu/theme'
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,
@@ -114,4 +115,5 @@ export const theme: PoluiTheme = {
   animatedText: animatedHeadingTheme,
   toggle: toggleTheme,
   hamburguer: hamburguerTheme,
+  navigationMenu: navigationMenuTheme,
 }

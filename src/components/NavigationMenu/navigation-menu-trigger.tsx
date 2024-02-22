@@ -2,26 +2,29 @@ import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu'
 import type { ComponentProps, FC } from 'react'
 import { forwardRef } from 'react'
 import { TbChevronDown } from 'react-icons/tb'
-import { twMerge } from 'tailwind-merge'
+import { cn, mergeDeep } from '../../helpers'
+import { getTheme } from '../../theme-store'
+import type { DeepPartial } from '../../types'
+import type { NavigationMenuTriggerTheme } from './theme'
 
-export const navigationMenuTriggerStyle =
-  'group inline-flex text-secondary-900 dark:text-secondary-50 gap-px h-9 w-max items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-colors hover:bg-primary/40 hover:text-primary-900 dark:hover:text-primary-50 focus:bg-primary/40 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50'
+type RefElement = React.ElementRef<typeof NavigationMenuPrimitive.Trigger>
 
 export interface NavigationMenuTriggerProps
   extends React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Trigger> {
+  theme?: DeepPartial<NavigationMenuTriggerTheme>
   icon?: FC<ComponentProps<'svg'>>
 }
 
-export const NavigationMenuTrigger = forwardRef<
-  React.ElementRef<typeof NavigationMenuPrimitive.Trigger>,
-  NavigationMenuTriggerProps
->(({ className, children, icon: Icon = TbChevronDown, ...props }, ref) => (
-  <NavigationMenuPrimitive.Trigger ref={ref} className={twMerge(navigationMenuTriggerStyle, className)} {...props}>
-    {children}
-    <Icon
-      className="relative top-[1px] ml-1 h-3 w-3 transition group-data-[state=open]:rotate-180"
-      aria-hidden="true"
-    />
-  </NavigationMenuPrimitive.Trigger>
-))
+export const NavigationMenuTrigger = forwardRef<RefElement, NavigationMenuTriggerProps>(
+  ({ className, children, icon: Icon = TbChevronDown, theme: customTheme = {}, ...props }, ref) => {
+    const theme = mergeDeep(getTheme().navigationMenu.trigger, customTheme)
+
+    return (
+      <NavigationMenuPrimitive.Trigger ref={ref} className={cn(theme.base, className)} {...props}>
+        {children}
+        <Icon className={theme.icon} aria-hidden="true" />
+      </NavigationMenuPrimitive.Trigger>
+    )
+  },
+)
 NavigationMenuTrigger.displayName = NavigationMenuPrimitive.Trigger.displayName

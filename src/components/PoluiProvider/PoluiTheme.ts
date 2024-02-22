@@ -55,6 +55,7 @@ import type { ContainerScrollTheme } from '../ContainerScroll/theme'
 import type { AnimateHeadingTheme } from '../AnimatedText/theme'
 import type { ToggleTheme } from '../Toggle/theme'
 import type { HamburguerTheme } from '../Hamburguer/theme'
+import type { NavigationMenuTheme } from '../NavigationMenu/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -120,4 +121,5 @@ export interface PoluiTheme {
   animatedText: AnimateHeadingTheme
   toggle: ToggleTheme
   hamburguer: HamburguerTheme
+  navigationMenu: NavigationMenuTheme
 }

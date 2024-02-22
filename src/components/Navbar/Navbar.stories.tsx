@@ -97,3 +97,26 @@ DarkMode.args = {
     </div>
   ),
 }
+export const CustomClasses = Template.bind({})
+CustomClasses.args = {
+  className: 'bg-primary-900 rounded-full max-w-[800px] mx-auto top-5',
+  links: [
+    { href: '#', label: 'Home' },
+    { href: '#', label: 'About', content: <Tab /> },
+    { href: '#', label: 'Services', content: <Tab /> },
+    { href: '#', label: 'Pricing' },
+    { href: '#', label: 'Contact' },
+  ],
+  rightContent: (
+    <div className="flex gap-3 md:order-2">
+      <Dropdown
+        label="User settings"
+        trigger={<Avatar alt="User settings" img="https://avatars.githubusercontent.com/u/63197171?v=4" />}
+      >
+        <DropdownItem label="Profile" />
+        <DropdownItem label="Settings" />
+        <DropdownItem label="Logout" />
+      </Dropdown>
+    </div>
+  ),
+}

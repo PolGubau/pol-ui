@@ -17,7 +17,7 @@ export interface NavbarRootTheme {
 }
 export const navbarTheme: NavbarTheme = {
   root: {
-    base: 'px-2 py-2.5 flex gap-4 justify-between sm:px-3 w-full sticky top-0 bg-secondary-50/80 dark:secondary-900/80 min-h-[60px] backdrop-filter backdrop-blur-md z-50',
+    base: 'px-2 py-2.5 flex gap-4 justify-between sm:px-3 w-full sticky top-0 bg-secondary-50/80 dark:secondary-900/80   backdrop-filter backdrop-blur-md z-50',
 
     inner: {
       base: 'mx-auto flex flex-wrap items-center justify-between',
