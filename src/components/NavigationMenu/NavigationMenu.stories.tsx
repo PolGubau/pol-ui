@@ -131,7 +131,7 @@ Default.args = {
       </NavigationMenuItem>
 
       <NavigationMenuItem>
-        <NavigationMenuLink active href="https://github.com/radix-ui">
+        <NavigationMenuLink active href="https://ui.polgubau.com">
           Github
         </NavigationMenuLink>
       </NavigationMenuItem>

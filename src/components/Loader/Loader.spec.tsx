@@ -1,7 +1,6 @@
 import type { RenderResult } from '@testing-library/react'
 import { render } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider'
 import { Loader } from './Loader'
 
 describe('Components / Loader', () => {

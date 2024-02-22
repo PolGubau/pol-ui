@@ -1,8 +1,13 @@
+import type { IBoolean } from '../../types'
+
 export interface LinkTheme {
   base: string
-  href: string
+  underline: IBoolean
 }
 export const linkTheme: LinkTheme = {
   base: '',
-  href: 'hover:underline',
+  underline: {
+    off: 'no-underline',
+    on: 'underline',
+  },
 }

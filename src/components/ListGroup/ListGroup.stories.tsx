@@ -68,3 +68,18 @@ WithIcons.args = {
     </>
   ),
 }
+export const Row = Template.bind({})
+Row.storyName = 'Row direction'
+Row.args = {
+  direction: 'row',
+  children: (
+    <>
+      <ListItem active href="#">
+        Profile
+      </ListItem>
+      <ListItem href="#">Settings</ListItem>
+      <ListItem href="#">Messages</ListItem>
+      <ListItem href="#">Download</ListItem>
+    </>
+  ),
+}

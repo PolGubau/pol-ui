@@ -1,87 +1,57 @@
 'use client'
 
 import type { ComponentProps, FC } from 'react'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial, IBoolean } from '../../types/types'
-import type { NavbarBrandTheme } from './NavbarBrand'
-import { NavbarBrand } from './NavbarBrand'
-import type { NavbarCollapseTheme } from './NavbarCollapse'
-import { NavbarCollapse } from './NavbarCollapse'
-import { NavbarContext } from './NavbarContext'
-import type { NavbarLinkTheme } from './NavbarLink'
-import { NavbarLink } from './NavbarLink'
-import type { NavbarToggleTheme } from './NavbarToggle'
-import { NavbarToggle } from './NavbarToggle'
-
-export interface NavbarTheme {
-  root: NavbarRootTheme
-  brand: NavbarBrandTheme
-  collapse: NavbarCollapseTheme
-  link: NavbarLinkTheme
-  toggle: NavbarToggleTheme
+import type { DeepPartial } from '../../types/types'
+import { NavbarContext } from './navbar-context'
+import type { NavbarTheme } from './theme'
+import { Hamburguer } from '../Hamburguer'
+import { NavbarCollapse } from './navbar-collapse'
+export interface NavbarLink extends Omit<ComponentProps<'a'>, 'content'> {
+  href: string
+  label: string
+  content?: React.ReactNode
+  active?: boolean
 }
-
-export interface NavbarRootTheme {
-  base: string
-  rounded: IBoolean
-  bordered: IBoolean
-  inner: {
-    base: string
-    fluid: IBoolean
-  }
-}
-
-export interface NavbarComponentProps extends ComponentProps<'nav'> {
+export interface NavbarProps extends Omit<ComponentProps<'nav'>, 'children'> {
   menuOpen?: boolean
-  fluid?: boolean
-  rounded?: boolean
-  border?: boolean
   theme?: DeepPartial<NavbarTheme>
+  rightContent?: React.ReactNode
+  leftContent?: React.ReactNode
+  links?: NavbarLink[]
 }
 
-const NavbarComponent: FC<NavbarComponentProps> = ({
-  border,
-  children,
+export const Navbar: FC<NavbarProps> = ({
   className,
-  fluid = false,
-  menuOpen,
-  rounded,
+  menuOpen = false,
   theme: customTheme = {},
+  rightContent,
+  leftContent,
+  links,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(menuOpen)
 
   const theme = mergeDeep(getTheme().navbar, customTheme)
-
+  const value = useMemo(() => ({ theme, isOpen, setIsOpen }), [theme, isOpen, setIsOpen])
   return (
-    <NavbarContext.Provider value={{ theme, isOpen, setIsOpen }}>
-      <nav
-        className={twMerge(
-          theme.root.base,
-          theme.root.bordered[border ? 'on' : 'off'],
-          theme.root.rounded[rounded ? 'on' : 'off'],
-          className,
-        )}
-        {...props}
-      >
-        <div className={twMerge(theme.root.inner.base, theme.root.inner.fluid[fluid ? 'on' : 'off'])}>{children}</div>
+    <NavbarContext.Provider value={value}>
+      <nav className={twMerge(theme.root.base, className)} {...props}>
+        {leftContent}
+        <NavbarCollapse links={links} />
+        {rightContent}
+
+        <Hamburguer
+          open={isOpen}
+          data-testid="ui-navbar-toggle"
+          aria-label="Toggle navigation"
+          onClick={() => setIsOpen(!isOpen)}
+          className={twMerge(theme.toggle.base, className)}
+        />
       </nav>
     </NavbarContext.Provider>
   )
 }
-
-NavbarComponent.displayName = 'Navbar'
-NavbarBrand.displayName = 'Navbar.Brand'
-NavbarCollapse.displayName = 'Navbar.Collapse'
-NavbarLink.displayName = 'Navbar.Link'
-NavbarToggle.displayName = 'Navbar.Toggle'
-
-export const Navbar = Object.assign(NavbarComponent, {
-  Brand: NavbarBrand,
-  Collapse: NavbarCollapse,
-  Link: NavbarLink,
-  Toggle: NavbarToggle,
-})

@@ -6,8 +6,8 @@ import { Toggle } from '../Toggle'
 import { getTheme } from '../../theme-store'
 import { cn, mergeDeep } from '../../helpers'
 
-export interface HamburguerProps extends Omit<SVGMotionProps<SVGSVGElement>, 'color'> {
-  open?: boolean
+export interface HamburguerProps extends Omit<React.ComponentProps<'button'>, 'color' | 'onClick'> {
+  open: boolean
   color?: Colors
   strokeWidth?: string | number
   lineProps?: SVGMotionProps<SVGLineElement>
@@ -15,7 +15,16 @@ export interface HamburguerProps extends Omit<SVGMotionProps<SVGSVGElement>, 'co
   disabled?: boolean
   rounded?: RoundedSizes
   outline?: boolean
-  onClick?: () => void
+  width?: number
+  height?: number
+  className?: string
+  iconClassName?: string
+  /**
+   * onClick event, the emitted event is the click event
+   * @param e - the click event from the button
+   * @returns  void
+   */
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 export const Hamburguer = ({
@@ -27,6 +36,8 @@ export const Hamburguer = ({
   onClick,
   color = ColorsEnum.primary,
   theme: customTheme = {},
+  className,
+  iconClassName,
   ...props
 }: HamburguerProps) => {
   const variant = open ? 'opened' : 'closed'
@@ -73,15 +84,14 @@ export const Hamburguer = ({
   const theme = mergeDeep(getTheme().hamburguer, customTheme)
 
   return (
-    <Toggle onClick={onClick} active={open}>
+    <Toggle onClick={onClick} active={open} {...props} className={className}>
       <motion.svg
         viewBox={`0 0 ${unitWidth} ${unitHeight}`}
         overflow="visible"
         width={width}
         height={height}
         fill="none"
-        className={cn(theme.base, theme.color[color])}
-        {...props}
+        className={cn(theme.base, theme.color[color], iconClassName)}
       >
         <motion.line x1="0" x2={unitWidth} y1="0" y2="0" variants={top} {...lineProps} />
         <motion.line x1="0" x2={unitWidth} y1={unitHeight / 2} y2={unitHeight / 2} variants={center} {...lineProps} />

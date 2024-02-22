@@ -4,13 +4,15 @@ import { ColorsEnum, type Colors, type DeepPartial, type RoundedSizes } from '..
 import { getTheme } from '../../theme-store'
 import type { ToggleTheme } from './theme'
 import { useRipple } from '../../hooks'
-export interface ToggleProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+
+export interface ToggleProps extends Omit<React.ComponentProps<'button'>, 'color' | 'onClick'> {
   active?: boolean
   children: React.ReactNode
   rounded?: RoundedSizes
   theme?: DeepPartial<ToggleTheme>
   color?: Colors
   disabled?: boolean
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 /**
@@ -38,6 +40,8 @@ export const Toggle: React.FC<ToggleProps> = ({
   rounded = 'xl',
   theme: customTheme = {},
   disabled = false,
+  className,
+  onClick,
   ...props
 }: ToggleProps): JSX.Element => {
   const theme = mergeDeep(getTheme().toggle, customTheme)
@@ -48,6 +52,7 @@ export const Toggle: React.FC<ToggleProps> = ({
   })
   return (
     <button
+      onClick={onClick}
       disabled={disabled}
       onPointerDown={event}
       ref={ripple}
@@ -57,6 +62,7 @@ export const Toggle: React.FC<ToggleProps> = ({
 
         active ? theme.active.on.base : theme.active.off.base,
         active ? theme.active.on.colors[color] : theme.active.off.colors[color],
+        className,
       )}
       {...props}
     >

@@ -5,7 +5,7 @@ import { TbChevronDown } from 'react-icons/tb'
 import { twMerge } from 'tailwind-merge'
 
 export const navigationMenuTriggerStyle =
-  'group inline-flex gap-px h-9 w-max items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-colors hover:bg-primary/40 hover:text-primary-900 focus:bg-primary/40 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50'
+  'group inline-flex text-secondary-900 dark:text-secondary-50 gap-px h-9 w-max items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-colors hover:bg-primary/40 hover:text-primary-900 dark:hover:text-primary-50 focus:bg-primary/40 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50'
 
 export interface NavigationMenuTriggerProps
   extends React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Trigger> {

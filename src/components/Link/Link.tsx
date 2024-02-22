@@ -1,8 +1,8 @@
 import type { ComponentProps, ElementType, FC } from 'react'
-import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types/types'
+import { cn } from '../../helpers'
 
 export interface LinkTheme {
   base: string
@@ -12,19 +12,29 @@ export interface LinkTheme {
 export interface LinkProps extends ComponentProps<'a'> {
   as?: ElementType
   theme?: DeepPartial<LinkTheme>
+  underline?: boolean
 }
 
 export const Link: FC<LinkProps> = ({
   as: Component = 'a',
   children,
   className,
+  underline = true,
   theme: customTheme = {},
   ...props
 }) => {
   const theme = mergeDeep(getTheme().link, customTheme)
 
   return (
-    <Component className={twMerge(theme.base, theme.href, className)} {...props}>
+    <Component
+      className={cn(
+        theme.base,
+        theme.underline[underline ? 'on' : 'off'],
+
+        className,
+      )}
+      {...props}
+    >
       {children}
     </Component>
   )

@@ -13,7 +13,7 @@ export const NavigationMenuIndicator = forwardRef<
     {...props}
     ref={ref}
   >
-    <div className="relative top-[70%] h-[10px] w-[10px] rotate-[45deg] rounded-tl-[2px] bg-white" />
+    <div className="relative top-[70%] h-[10px] w-[10px] rotate-[45deg] rounded-tl-[2px] bg-white dark:bg-black" />
   </NavigationMenuPrimitive.Indicator>
 ))
 NavigationMenuIndicator.displayName = 'NavigationMenuIndicator'
