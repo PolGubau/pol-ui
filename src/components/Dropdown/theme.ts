@@ -22,15 +22,14 @@ export const dropdownTheme: DropdownTheme = {
   root: {
     icon: 'ml-2 h-4 w-4',
     disabled: 'opacity-50 cursor-not-allowed',
-    base: 'group flex items-stretch items-center justify-center text-center w-auto relative focus:z-10 focus:outline-none transition-all focus:ring-offset-2 focus:ring-offset-secondary-50 dark:focus:ring-offset-secondary-900 focus:ring-2 focus:ring-primary',
+    base: 'group flex items-stretch items-center justify-center text-center w-auto relative focus:z-10 focus:outline-none transition-all focus:ring-2 focus:ring-primary-800',
     color: {
-      error: 'text-error-50 dark:text-error-900 bg-error enabled:hover:brightness-90  focus:ring-error ',
-      info: 'text-info-50 dark:text-info-900 bg-info   enabled:hover:brightness-90  focus:ring-info  ',
-      success: 'text-success-50 dark:text-success-900 bg-success  enabled:hover:brightness-90  focus:ring-success  ',
-      warning: 'text-warning-50 dark:text-warning-900 bg-warning enabled:hover:brightness-90  focus:ring-warning',
-      primary: 'text-primary-50 dark:text-primary-900 bg-primary enabled:hover:brightness-90  focus:ring-primary',
-      secondary:
-        'text-secondary-50 dark:text-secondary-900 bg-secondary enabled:hover:brightness-90  focus:ring-secondary',
+      error: 'text-white dark:text-black bg-error enabled:hover:brightness-90  focus:ring-error ',
+      info: 'text-white dark:text-black bg-info enabled:hover:brightness-90  focus:ring-info  ',
+      success: 'text-white dark:text-black bg-success  enabled:hover:brightness-90  focus:ring-success  ',
+      warning: 'text-white dark:text-black bg-warning enabled:hover:brightness-90  focus:ring-warning',
+      primary: 'text-white dark:text-black bg-primary enabled:hover:brightness-90  focus:ring-primary',
+      secondary: 'text-white dark:text-black bg-secondary enabled:hover:brightness-90  focus:ring-secondary',
     },
   },
   rounded: {
@@ -63,6 +62,6 @@ export const dropdownTheme: DropdownTheme = {
     },
   },
   floating: {
-    base: 'bg-secondary-50/70 min-w-[100px] overflow-hidden rounded-md shadow-lg outline-none focus:outline-none backdrop-filter backdrop-blur-md',
+    base: 'bg-white min-w-[100px] overflow-hidden rounded-md shadow-lg outline-none focus:outline-none',
   },
 }

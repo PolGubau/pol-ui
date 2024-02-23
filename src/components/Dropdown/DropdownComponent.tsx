@@ -1,7 +1,6 @@
 import React from 'react'
 import type { DropdownProps } from './Dropdown'
 import { TbChevronRight } from 'react-icons/tb'
-import { twMerge } from 'tailwind-merge'
 import { getTheme } from '../../theme-store'
 import { DropdownContext } from './DropdownContext'
 import { mergeDeep } from '../../helpers/merge-deep'
@@ -31,6 +30,8 @@ import {
 } from '@floating-ui/react'
 import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../../types/enums'
 import type { DropdownTheme } from './theme'
+import { cn } from '../../helpers'
+
 export const DropdownComponent = React.forwardRef<HTMLButtonElement, DropdownProps>(
   (
     {
@@ -166,7 +167,6 @@ export const DropdownComponent = React.forwardRef<HTMLButtonElement, DropdownPro
     }
 
     const mergeRefs = useMergeRefs([refs.setReference, item.ref, forwardedRef])
-
     return (
       <FloatingNode id={nodeId}>
         <DropdownContext.Provider value={providerValue}>
@@ -182,7 +182,7 @@ export const DropdownComponent = React.forwardRef<HTMLButtonElement, DropdownPro
                 data-nested={''}
                 data-focus-inside={hasFocusInside ? '' : undefined}
                 {...commonButtonData}
-                className={twMerge(theme.item.base, theme.item.color[providerValue.color], props.className)}
+                className={cn(theme.item.base, theme.item.color[providerValue.color], props.className)}
               >
                 {label}
                 <span>{nestingIcon}</span>
@@ -192,12 +192,11 @@ export const DropdownComponent = React.forwardRef<HTMLButtonElement, DropdownPro
             // Not nested, just the Root main Button
             <button
               ref={mergeRefs}
-              // tabIndex={tabIndexIfNested}
               data-open={isOpen ? '' : undefined}
               {...commonButtonData}
               disabled={disabled}
               type="button"
-              className={twMerge(
+              className={cn(
                 '',
                 !trigger && theme.root.base,
                 disabled && theme.root.disabled,
@@ -208,7 +207,7 @@ export const DropdownComponent = React.forwardRef<HTMLButtonElement, DropdownPro
               )}
             >
               {trigger ?? label}
-              {!trigger && Icon && <Icon className={twMerge(theme.root.icon)} data-testid="ui-alert-icon" />}
+              {!trigger && Icon && <Icon className={cn(theme.root.icon)} data-testid="ui-alert-icon" />}
             </button>
           )}
           {!disabled && (
@@ -224,8 +223,10 @@ export const DropdownComponent = React.forwardRef<HTMLButtonElement, DropdownPro
                     <div
                       data-testid="ui-dropdown"
                       role="menu"
+                      data-state={isOpen ? 'open' : 'closed'}
+                      data-side={'top'}
                       ref={refs.setFloating}
-                      className={twMerge(theme.floating.base)}
+                      className={cn(theme.floating.base)}
                       style={floatingStyles}
                       {...getFloatingProps({
                         onMouseEnter: () => setHoverEnabled(false),
