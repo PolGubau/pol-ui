@@ -3,5 +3,5 @@ export interface DividerTheme {
 }
 
 export const dividerTheme: DividerTheme = {
-  base: 'w-full my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8',
+  base: 'w-full border-secondary-200 sm:mx-auto dark:border-gray-700 lg:my-8',
 }

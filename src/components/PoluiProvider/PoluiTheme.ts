@@ -56,6 +56,7 @@ import type { AnimateHeadingTheme } from '../AnimatedText/theme'
 import type { ToggleTheme } from '../Toggle/theme'
 import type { HamburguerTheme } from '../Hamburguer/theme'
 import type { NavigationMenuTheme } from '../NavigationMenu/theme'
+import type { ChipTheme } from '../Chip/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -122,4 +123,5 @@ export interface PoluiTheme {
   toggle: ToggleTheme
   hamburguer: HamburguerTheme
   navigationMenu: NavigationMenuTheme
+  chip: ChipTheme
 }
