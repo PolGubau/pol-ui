@@ -10,8 +10,8 @@ export default {
 
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col  min-h-[400px] justify-center items-center bg-secondary-50">
-        <div className="max-w-xl">
+      <div className="flex p-6 flex-col justify-center items-center ">
+        <div className="max-w-md w-full">
           <Story />
         </div>
       </div>
@@ -27,6 +27,6 @@ const Template: StoryFn<PasswordInputProps> = args => <PasswordInput {...args} /
 export const Default = Template.bind({})
 Default.storyName = 'Password input'
 Default.args = {
-  placeholder: '············',
+  placeholder: '*********',
   label: 'Password',
 }
