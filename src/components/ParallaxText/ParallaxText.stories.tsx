@@ -109,7 +109,7 @@ export function CustomElements() {
 export function Resistence() {
   return (
     <section>
-      <ParallaxText resistence={6000}>I'm a H1</ParallaxText>
+      <ParallaxText resistance={6000}>I'm a H1</ParallaxText>
     </section>
   )
 }
