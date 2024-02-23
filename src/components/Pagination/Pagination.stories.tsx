@@ -57,6 +57,18 @@ export const Table = Template.bind({})
 Table.args = {
   layout: 'table',
 }
+export const Labels = Template.bind({})
+Labels.args = {
+  layout: 'table',
+  labels: {
+    entries: 'dades',
+    of: 'de',
+    showing: 'Mostrant',
+    to: 'de',
+    next: 'Següent',
+    previous: 'Anterior',
+  },
+}
 
 export const TableWithIcons = Template.bind({})
 TableWithIcons.storyName = 'Table with icons'

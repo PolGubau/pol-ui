@@ -19,12 +19,12 @@ export interface PaginationProps extends ComponentProps<'nav'> {
   totalPages: number
   outline?: boolean
   labels?: {
-    next?: string
-    previous?: string
-    of?: string
-    to?: string
-    showing?: string
-    entries?: string
+    next: string
+    previous: string
+    of: string
+    to: string
+    showing: string
+    entries: string
   }
 }
 
