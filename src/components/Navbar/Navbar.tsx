@@ -14,7 +14,7 @@ export interface NavbarLink extends Omit<ComponentProps<'a'>, 'content'> {
   active?: boolean
 }
 export interface NavbarProps extends Omit<ComponentProps<'nav'>, 'children'> {
-  menuOpen?: boolean
+  defaultOpen?: boolean
   theme?: DeepPartial<NavbarTheme>
   rightContent?: React.ReactNode
   leftContent?: React.ReactNode
@@ -25,7 +25,7 @@ export interface NavbarProps extends Omit<ComponentProps<'nav'>, 'children'> {
 
 export const Navbar: FC<NavbarProps> = ({
   className,
-  menuOpen = false,
+  defaultOpen = false,
   theme: customTheme = {},
   rightContent,
   leftContent,
@@ -38,7 +38,12 @@ export const Navbar: FC<NavbarProps> = ({
   return (
     <nav className={twMerge(theme.root.base, className)} {...props}>
       {leftContent}
-      <NavbarCollapse links={links} linkClassName={linkClassName} defaultOpen={menuOpen} hasHambuguer={hasHambuguer} />
+      <NavbarCollapse
+        links={links}
+        linkClassName={linkClassName}
+        defaultOpen={defaultOpen}
+        hasHambuguer={hasHambuguer}
+      />
       {rightContent}
     </nav>
   )
