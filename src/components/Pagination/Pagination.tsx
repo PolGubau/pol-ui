@@ -32,7 +32,7 @@ export interface PaginationProps extends ComponentProps<'nav'> {
 
 export const Pagination: FC<PaginationProps> = ({
   className,
-  currentPage,
+  currentPage = 1,
   hasRange = true,
   hasLabels = false,
   labels = {

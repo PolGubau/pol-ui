@@ -106,10 +106,10 @@ export function CustomElements() {
     </section>
   )
 }
-export function NoAcceleration() {
+export function Resistence() {
   return (
     <section>
-      <ParallaxText acceleration={6000}>I'm a H1</ParallaxText>
+      <ParallaxText resistence={6000}>I'm a H1</ParallaxText>
     </section>
   )
 }

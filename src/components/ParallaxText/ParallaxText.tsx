@@ -24,7 +24,7 @@ export type ParallaxTextProps<T extends ElementType = 'span'> = {
   className?: string
   as?: T | null
 
-  acceleration?: number
+  resistence?: number
 
   /**
    * @name renderedElements
@@ -46,7 +46,7 @@ export type ParallaxTextProps<T extends ElementType = 'span'> = {
 export const ParallaxText = <T extends ElementType = 'span'>({
   children,
   velocity = 5,
-  acceleration = 1000,
+  resistence = 1000,
   as: BaseComponent,
   className,
   theme: customTheme = {},
@@ -60,7 +60,7 @@ export const ParallaxText = <T extends ElementType = 'span'>({
     damping: 50,
     stiffness: 400,
   })
-  const velocityFactor = useTransform(smoothVelocity, [0, acceleration], [0, 5], {
+  const velocityFactor = useTransform(smoothVelocity, [0, resistence], [0, 5], {
     clamp: false,
   })
 
@@ -75,7 +75,7 @@ export const ParallaxText = <T extends ElementType = 'span'>({
 
   const directionFactor = useRef<number>(1)
   useAnimationFrame((_t, delta) => {
-    let moveBy = directionFactor.current * (velocity / 2) * (delta / -acceleration)
+    let moveBy = directionFactor.current * (velocity / 2) * (delta / -resistence)
 
     /**
      * This is what changes the direction of the scroll once we
