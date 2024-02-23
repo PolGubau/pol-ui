@@ -41,5 +41,5 @@ export const modalTheme: ModalTheme = {
     'bottom-left': 'items-end justify-start',
   },
   content:
-    'relative h-full w-full p-6 md:h-auto rounded-lg bg-secondary-50 shadow dark:bg-secondary-900 flex flex-col h-fit max-h-[90vh]',
+    'relative h-full w-[90vw] md:w-full  p-2 md:h-auto rounded-lg bg-secondary-50 shadow dark:bg-secondary-900 flex flex-col h-fit max-h-[90vh]',
 }

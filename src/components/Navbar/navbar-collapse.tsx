@@ -21,20 +21,31 @@ export interface NavbarCollapseProps extends ComponentProps<'div'> {
   theme?: DeepPartial<NavbarCollapseTheme>
   links?: NavbarProps['links']
   linkClassName?: string
+  defaultOpen?: boolean
+  hasHambuguer?: boolean
 }
 
-export const NavbarCollapse: FC<NavbarCollapseProps> = ({ links = [], linkClassName, className, ...props }) => {
-  const { value, toggle } = useBoolean(false)
+export const NavbarCollapse: FC<NavbarCollapseProps> = ({
+  links = [],
+  linkClassName,
+  className,
+  defaultOpen = false,
+  hasHambuguer = true,
+  ...props
+}) => {
+  const { value, toggle } = useBoolean(defaultOpen)
   return (
     <>
       <div className="md:hidden">
-        <Hamburguer
-          open={value}
-          data-testid="ui-navbar-toggle"
-          aria-label="Toggle navigation"
-          onClick={() => toggle()}
-          className={cn(theme.toggle.base, className)}
-        />
+        {hasHambuguer && (
+          <Hamburguer
+            open={value}
+            data-testid="ui-navbar-toggle"
+            aria-label="Toggle navigation"
+            onClick={() => toggle()}
+            className={cn(theme.toggle.base, className)}
+          />
+        )}
         <Modal show={value} onClose={toggle}>
           {links.map((link, index) => {
             return (
