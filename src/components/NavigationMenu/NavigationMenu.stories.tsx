@@ -63,24 +63,24 @@ Default.args = {
             <li className="row-span-3 grid">
               <NavigationMenuLink asChild>
                 <a
-                  className="focus:shadow-md from-purple-500 to-indigo-300 flex
-            h-full w-full select-none flex-col justify-end rounded-[6px] bg-gradient-to-b p-[25px] no-underline outline-none"
+                  className="focus:shadow-md from-primary to-primary/20 flex
+            h-full w-full select-none flex-col justify-end rounded-[6px] bg-gradient-to-br p-[25px] no-underline outline-none"
                   href="/"
                 >
-                  <div className="mt-4 mb-[7px] text-[18px] font-medium leading-[1.2] text-white">Radix Primitives</div>
-                  <p className="text-mauve4 text-[14px] leading-[1.3]">Unstyled, accessible components for React.</p>
+                  <div className="mt-4 text-3xl font-medium leading-[1.2] text-black dark:text-white">Pol-ui</div>
+                  <p className="text-mauve4 text-[14px] leading-[1.3]">A styled wrapper for your navigation</p>
                 </a>
               </NavigationMenuLink>
             </li>
 
-            <ListItem href="https://stitches.dev/" title="Stitches">
-              CSS-in-JS with best-in-class developer experience.
+            <ListItem href="#" title="Styled">
+              Powered with Tailwind CSS and Radix.
             </ListItem>
-            <ListItem href="/colors" title="Colors">
-              Beautiful, thought-out palettes with auto dark mode.
+            <ListItem href="#" title="Composable">
+              A detail component, already included in the navbar.
             </ListItem>
-            <ListItem href="https://icons.radix-ui.com/" title="Icons">
-              A crisp set of 15x15 icons, balanced and consistent.
+            <ListItem href="#" title="Animation">
+              All animations are running in css, quite smooth.
             </ListItem>
           </ul>
         </NavigationMenuContent>
@@ -91,24 +91,28 @@ Default.args = {
 
         <NavigationMenuContent>
           <ul className="m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[600px] sm:grid-flow-col sm:grid-rows-3">
-            <ListItem title="Introduction" href="/primitives/docs/overview/introduction">
-              Build high-quality, accessible design systems and web apps.
+            <ListItem title="Introduction" href="#">
+              A component ready for your exigences.
             </ListItem>
-            <ListItem title="Getting started" href="/primitives/docs/overview/getting-started">
-              A quick tutorial to get you up and running with Radix Primitives.
+            <ListItem title="Features" href="#">
+              This is a children, you can put anything here.
             </ListItem>
-            <ListItem title="Styling" href="/primitives/docs/guides/styling">
-              Unstyled and compatible with any styling solution.
+            <ListItem title="Usage" href="#">
+              The component is fully customizable.
             </ListItem>
-            <ListItem title="Animation" href="/primitives/docs/guides/animation">
-              Use CSS keyframes or any animation library of your choice.
-            </ListItem>
-            <ListItem title="Accessibility" href="/primitives/docs/overview/accessibility">
-              Tested in a range of browsers and assistive technologies.
-            </ListItem>
-            <ListItem title="Releases" href="/primitives/docs/overview/releases">
-              Radix Primitives releases and their changelogs.
-            </ListItem>
+
+            <li className="row-span-3 grid">
+              <NavigationMenuLink asChild>
+                <a
+                  className="focus:shadow-md from-primary to-primary/20 flex
+            h-full w-full select-none flex-col justify-end rounded-[6px] bg-gradient-to-br p-[25px] no-underline outline-none"
+                  href="/"
+                >
+                  <div className="mt-4 text-3xl font-medium leading-[1.2] text-black dark:text-white">Pol-ui</div>
+                  <p className="text-mauve4 text-[14px] leading-[1.3]">A styled wrapper for your navigation</p>
+                </a>
+              </NavigationMenuLink>
+            </li>
           </ul>
         </NavigationMenuContent>
       </NavigationMenuItem>
@@ -131,7 +135,7 @@ Default.args = {
       </NavigationMenuItem>
 
       <NavigationMenuItem>
-        <NavigationMenuLink active href="https://ui.polgubau.com">
+        <NavigationMenuLink active href="#">
           Github
         </NavigationMenuLink>
       </NavigationMenuItem>

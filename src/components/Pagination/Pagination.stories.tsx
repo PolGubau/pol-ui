@@ -41,6 +41,10 @@ export const Nav = Template.bind({})
 Nav.args = {
   layout: 'navigation',
 }
+export const Outline = Template.bind({})
+Outline.args = {
+  outline: true,
+}
 
 export const NavWithIcons = Template.bind({})
 NavWithIcons.storyName = 'Nav with icons'

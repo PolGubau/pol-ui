@@ -8,6 +8,7 @@ import { ColorsEnum } from '../../types'
 export interface PaginationButtonProps extends Omit<ComponentProps<'button'>, 'color' | 'ref'> {
   active?: boolean
   children?: ReactNode
+  outline?: boolean
   onClick?: ReactEventHandler<HTMLButtonElement>
   theme?: DeepPartial<PaginationButtonTheme>
 }
@@ -16,12 +17,12 @@ export interface PaginationPrevButtonProps extends Omit<PaginationButtonProps, '
   disabled?: boolean
 }
 
-export const PaginationButton: FC<PaginationButtonProps> = ({ active, children, onClick, ...props }) => {
+export const PaginationButton: FC<PaginationButtonProps> = ({ active, children, onClick, outline, ...props }) => {
   return (
     <Button
+      outline={outline}
       rounded="none"
       type="button"
-      size="sm"
       color={active ? ColorsEnum.primary : ColorsEnum.secondary}
       onClick={onClick}
       {...props}
@@ -42,7 +43,6 @@ export const PaginationNavigation: FC<PaginationPrevButtonProps> = ({
   return (
     <Button
       type="button"
-      size="sm"
       color={ColorsEnum.secondary}
       theme={theme}
       className={className}
