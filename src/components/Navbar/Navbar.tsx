@@ -8,7 +8,6 @@ import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types/types'
 import { NavbarContext } from './navbar-context'
 import type { NavbarTheme } from './theme'
-import { Hamburguer } from '../Hamburguer'
 import { NavbarCollapse } from './navbar-collapse'
 export interface NavbarLink extends Omit<ComponentProps<'a'>, 'content'> {
   href: string
@@ -45,14 +44,6 @@ export const Navbar: FC<NavbarProps> = ({
         {leftContent}
         <NavbarCollapse links={links} linkClassName={linkClassName} />
         {rightContent}
-
-        <Hamburguer
-          open={isOpen}
-          data-testid="ui-navbar-toggle"
-          aria-label="Toggle navigation"
-          onClick={() => setIsOpen(!isOpen)}
-          className={twMerge(theme.toggle.base, className)}
-        />
       </nav>
     </NavbarContext.Provider>
   )
