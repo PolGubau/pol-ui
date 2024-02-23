@@ -22,6 +22,7 @@ export interface NavbarProps extends Omit<ComponentProps<'nav'>, 'children'> {
   rightContent?: React.ReactNode
   leftContent?: React.ReactNode
   links?: NavbarLink[]
+  linkClassName?: string
 }
 
 export const Navbar: FC<NavbarProps> = ({
@@ -30,6 +31,7 @@ export const Navbar: FC<NavbarProps> = ({
   theme: customTheme = {},
   rightContent,
   leftContent,
+  linkClassName,
   links,
   ...props
 }) => {
@@ -41,7 +43,7 @@ export const Navbar: FC<NavbarProps> = ({
     <NavbarContext.Provider value={value}>
       <nav className={twMerge(theme.root.base, className)} {...props}>
         {leftContent}
-        <NavbarCollapse links={links} />
+        <NavbarCollapse links={links} linkClassName={linkClassName} />
         {rightContent}
 
         <Hamburguer

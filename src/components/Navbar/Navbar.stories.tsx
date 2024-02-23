@@ -120,3 +120,8 @@ CustomClasses.args = {
     </div>
   ),
 }
+export const CustomLinkClass = Template.bind({})
+CustomLinkClass.args = {
+  ...Default.args,
+  linkClassName: 'text-primary-100 bg-primary-800 w-[150px]',
+}
