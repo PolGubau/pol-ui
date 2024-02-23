@@ -116,8 +116,14 @@ describe('Pagination', () => {
           layout="navigation"
           onPageChange={() => undefined}
           totalPages={5}
-          previousLabel="Go back"
-          nextLabel="Go forward"
+          labels={{
+            next: 'Go forward',
+            previous: 'Go back',
+            of: 'of',
+            to: 'to',
+            showing: 'Showing',
+            entries: 'Entries',
+          }}
         ></Pagination>,
       )
 

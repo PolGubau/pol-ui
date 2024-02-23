@@ -20,7 +20,7 @@ export interface PaginationPrevButtonProps extends Omit<PaginationButtonProps, '
 export const PaginationButton: FC<PaginationButtonProps> = ({ active, children, onClick, outline, ...props }) => {
   return (
     <Button
-      outline={outline}
+      outline={!active && outline}
       rounded="none"
       type="button"
       color={active ? ColorsEnum.primary : ColorsEnum.secondary}

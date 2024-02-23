@@ -15,7 +15,7 @@ export default {
   ],
 } as Meta
 
-const Template: StoryFn<PaginationProps> = ({ currentPage = 1, layout = 'pagination', totalPages = 100, ...rest }) => {
+const Template: StoryFn<PaginationProps> = ({ currentPage = 1, totalPages = 100, ...rest }) => {
   const [page, setPage] = useState(currentPage)
 
   const onPageChange = (page: number) => {
@@ -26,7 +26,7 @@ const Template: StoryFn<PaginationProps> = ({ currentPage = 1, layout = 'paginat
     setPage(currentPage)
   }, [currentPage])
 
-  return <Pagination {...rest} currentPage={page} layout={layout} onPageChange={onPageChange} totalPages={totalPages} />
+  return <Pagination {...rest} currentPage={page} onPageChange={onPageChange} totalPages={totalPages} />
 }
 
 export const Default = Template.bind({})
@@ -39,7 +39,7 @@ PaginationWithIcons.args = {
 
 export const Nav = Template.bind({})
 Nav.args = {
-  layout: 'navigation',
+  hasRange: false,
 }
 export const Outline = Template.bind({})
 Outline.args = {
@@ -49,17 +49,21 @@ Outline.args = {
 export const NavWithIcons = Template.bind({})
 NavWithIcons.storyName = 'Nav with icons'
 NavWithIcons.args = {
-  layout: 'navigation',
   showIcons: true,
 }
 
 export const Table = Template.bind({})
 Table.args = {
-  layout: 'table',
+  hasLabels: true,
+}
+export const PageSize = Template.bind({})
+PageSize.args = {
+  pageSize: 15,
+  hasLabels: true,
 }
 export const Labels = Template.bind({})
 Labels.args = {
-  layout: 'table',
+  hasLabels: true,
   labels: {
     entries: 'dades',
     of: 'de',
@@ -73,6 +77,6 @@ Labels.args = {
 export const TableWithIcons = Template.bind({})
 TableWithIcons.storyName = 'Table with icons'
 TableWithIcons.args = {
-  layout: 'table',
+  hasLabels: true,
   showIcons: true,
 }
