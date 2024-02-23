@@ -14,7 +14,6 @@ export interface PaginationLayoutTheme {
     span: string
   }
 }
-
 export interface PaginationPagesTheme {
   base: string
   showIcon: string
