@@ -28,7 +28,7 @@ const Template: StoryFn<NavbarProps> = args => (
 const Tab = () => <div className="h-64 w-96 grid place-items-center">Some fancy lists</div>
 export const Default = Template.bind({})
 Default.args = {
-  leftContent: <img src="https://ui.polgubau.com/logo.png" className="h-6 sm:h-9" alt="Pol-ui Logo" />,
+  leftContent: <img src="https://ui.polgubau.com/logo.png" className="h-6 sm:h-7" alt="Pol-ui Logo" />,
   links: [
     { href: '#', label: 'Home' },
     { href: '#', label: 'About', content: <Tab /> },
@@ -40,7 +40,7 @@ Default.args = {
 
 export const WithCTA = Template.bind({})
 WithCTA.args = {
-  leftContent: <img src="https://ui.polgubau.com/logo.png" className="h-6 sm:h-9" alt="Pol-ui Logo" />,
+  leftContent: <img src="https://ui.polgubau.com/logo.png" className="h-6 sm:h-7" alt="Pol-ui Logo" />,
   links: [
     { href: '#', label: 'Home' },
     { href: '#', label: 'About', content: <Tab /> },
@@ -53,7 +53,7 @@ WithCTA.args = {
 
 export const WithDropdown = Template.bind({})
 WithDropdown.args = {
-  leftContent: <img src="https://ui.polgubau.com/logo.png" className="h-6 sm:h-9" alt="Pol-ui Logo" />,
+  leftContent: <img src="https://ui.polgubau.com/logo.png" className="h-6 sm:h-7" alt="Pol-ui Logo" />,
   links: [
     { href: '#', label: 'Home' },
     { href: '#', label: 'About', content: <Tab /> },
@@ -124,4 +124,21 @@ export const CustomLinkClass = Template.bind({})
 CustomLinkClass.args = {
   ...Default.args,
   linkClassName: 'text-primary-100 bg-primary-800 w-[150px]',
+}
+export const WithoutHamburguer = Template.bind({})
+WithoutHamburguer.args = {
+  ...Default.args,
+  hasHambuguer: false,
+  rightContent: (
+    <div className="flex gap-3 md:order-2">
+      <Dropdown
+        label="User settings"
+        trigger={<Avatar alt="User settings" img="https://avatars.githubusercontent.com/u/63197171?v=4" />}
+      >
+        <DropdownItem label="Profile" />
+        <DropdownItem label="Settings" />
+        <DropdownItem label="Logout" />
+      </Dropdown>
+    </div>
+  ),
 }
