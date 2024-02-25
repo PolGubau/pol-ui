@@ -29,7 +29,7 @@ export const Default = () => {
 }
 export const WideParent = () => {
   return (
-    <div className="w-full min-h-screen rounded-3xl border bg-primary-200">
+    <div className="w-full min-h-screen  border bg-primary-200">
       <PerspectiveCard>
         <div className="w-[150px] h-[150px] rounded-3xl bg-primary grid place-items-center"> Hello there </div>
       </PerspectiveCard>
