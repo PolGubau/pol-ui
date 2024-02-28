@@ -2,14 +2,19 @@ import type { RoundedSizesTypes } from '../../types'
 
 export type PopoverTheme = {
   base: string
+  content: string
   animation: string
   rounded: RoundedSizesTypes
+  closeButton: string
 }
 
 export const popoverTheme: PopoverTheme = {
-  base: 'z-50 min-w-72 rounded-md border bg-secondary-50 p-4 text-secondary-900 shadow-md outline-none',
+  base: '',
+  content: 'z-50 min-w-72 rounded-md border bg-secondary-50 p-4 text-secondary-900 shadow-md outline-none',
   animation:
-    'will-change-[transform,opacity] data-[state=open]:data-[side=top]:animate-slideDownAndFade data-[state=open]:data-[side=right]:animate-slideLeftAndFade data-[state=open]:data-[side=bottom]:animate-slideUpAndFade data-[state=open]:data-[side=left]:animate-slideRightAndFade',
+    'data-[state=open]:data-[side=top]:animate-slideDownAndFade data-[state=open]:data-[side=right]:animate-slideLeftAndFade data-[state=open]:data-[side=bottom]:animate-slideUpAndFade data-[state=open]:data-[side=left]:animate-slideRightAndFade',
+  closeButton:
+    'absolute top-2 right-2 focus:outline-none focus:ring-2 focus:ring-primary-700 dark:focus:ring-primary-400 rounded-full',
   rounded: {
     xs: 'rounded-xs',
     sm: 'rounded-sm',

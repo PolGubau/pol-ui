@@ -235,19 +235,32 @@ export const CompleteExample = () => {
 
   return (
     <div className="flex w-full rounded-xl overflow-hidden border border-secondary-800 min-h-[400px]  bg-primary-100 flex-col">
-      <Navbar className="bg-primary-50 shadow-md">
-        <Navbar.Brand>
-          <img src="https://ui.polgubau.com/logo.png" className="mr-3 h-6 sm:h-6" alt="Pol-ui Logo" />
-        </Navbar.Brand>
-        <Navbar.Toggle />
-        <Navbar.Collapse>
-          <Navbar.Link href="/navbars" active>
-            Home
-          </Navbar.Link>
-          <Navbar.Link href="/navbars">About</Navbar.Link>
-          <Navbar.Link href="/navbars">Login</Navbar.Link>
-        </Navbar.Collapse>
-      </Navbar>
+      <Navbar
+        links={[
+          {
+            href: '#',
+            label: 'Home',
+            active: true,
+          },
+          {
+            href: '#',
+            label: 'About',
+            content: (
+              <div className="flex flex-col gap-2">
+                <a href="#">About us</a>
+                <a href="#">Our team</a>
+                <a href="#">Our mission</a>
+              </div>
+            ),
+          },
+          {
+            href: '#',
+            label: 'Contact',
+          },
+        ]}
+        className="bg-primary-50 shadow-md"
+        leftContent={<img src="https://ui.polgubau.com/logo.png" className="mr-3 h-6 sm:h-6" alt="Pol-ui Logo" />}
+      />
       <section className="flex h-full">
         <div className="bg-primary-50 w-fit  shadow-lg">
           <Sidebar collapsed={value} toggle={toggle}>
