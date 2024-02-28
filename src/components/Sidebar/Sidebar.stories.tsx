@@ -230,6 +230,7 @@ LogoBranding.args = {
     </>
   ),
 }
+
 export const CompleteExample = () => {
   const { value, toggle } = useBoolean(true)
 
