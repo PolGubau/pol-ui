@@ -6,8 +6,9 @@ import type { SidebarTheme } from './theme'
 
 export interface SidebarContext extends SidebarProps {
   theme: SidebarTheme
-  collapsed: boolean
   color?: string
+  childsOpened: string[]
+  setChildsOpened: (value: string[]) => void
 }
 
 export const SidebarContext = createContext<SidebarContext | undefined>(undefined)

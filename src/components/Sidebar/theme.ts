@@ -26,17 +26,28 @@ export const sidebarTheme: SidebarTheme = {
       on: 'w-16',
       off: 'w-64',
     },
-    inner: 'h-full overflow-y-auto overflow-x-hidden py-4 px-3 flex flex-col justify-between gap-6' ,
+    inner: 'h-full overflow-y-auto overflow-x-hidden py-4 px-3 flex flex-col justify-between gap-6',
   },
   collapse: {
     button:
-      'group  bg-secondary-50 dark:bg-secondary-900 flex w-full items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700',
+      'group flex w-full bg-secondary-50 dark:bg-secondary-900 items-center justify-center p-2 text-secondary-900 hover:brightness-90 dark:hover:brightness-125 dark:text-secondary-50',
     icon: {
       base: 'h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white',
       open: {
         off: '',
         on: 'text-gray-900',
       },
+    },
+    rounded: {
+      xs: 'rounded-xs',
+      sm: 'rounded-sm',
+      md: 'rounded-md',
+      lg: 'rounded-lg',
+      xl: 'rounded-xl',
+      '2xl': 'rounded-2xl',
+      '3xl': 'rounded-3xl',
+      none: '',
+      full: 'rounded-full',
     },
     label: {
       base: 'ml-3 flex-1 whitespace-nowrap text-left',
@@ -48,7 +59,7 @@ export const sidebarTheme: SidebarTheme = {
         },
       },
     },
-    list: 'space-y-2 py-2',
+    list: 'space-y-2 py-2 animate-slideDownAndFade',
   },
 
   item: {
@@ -78,7 +89,7 @@ export const sidebarTheme: SidebarTheme = {
       base: 'h-6 w-6 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white',
       active: ' ',
     },
-    label: '',
+    badge: '',
     listItem: '',
   },
 

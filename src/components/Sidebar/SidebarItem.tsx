@@ -26,7 +26,7 @@ export interface SidebarItemTheme {
     base: string
     active: string
   }
-  label: string
+  badge: string
   listItem: string
 }
 
@@ -35,7 +35,7 @@ export interface SidebarItemProps extends Omit<ComponentProps<'div'>, 'ref'>, Re
   as?: ElementType
   href?: string
   icon?: FC<ComponentProps<'svg'>>
-  label?: string
+  badge?: string
   rounded?: RoundedSizes
   labelColor?: Colors
   theme?: DeepPartial<SidebarItemTheme>
@@ -45,12 +45,11 @@ const ListItem: FC<
   PropsWithChildren<{
     id: string
     theme: SidebarItemTheme
-    collapsed: boolean
-    rounded: RoundedSizes
+    collapsed?: boolean
     tooltipChildren: ReactNode | undefined
     className?: string
   }>
-> = ({ id, theme, collapsed, tooltipChildren, children: wrapperChildren, ...props }) => {
+> = ({ id, theme, collapsed = false, tooltipChildren, children: wrapperChildren, ...props }) => {
   const [ripple, event] = useRipple({
     // disabled: disabled || loading,
     opacity: 0.2,
@@ -93,7 +92,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
       className,
       rounded = RoundedSizesEnum.md,
       icon: Icon,
-      label,
+      badge,
       labelColor = ColorsEnum.secondary,
       theme: customTheme = {},
       ...props
@@ -101,7 +100,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
     ref,
   ) => {
     const id = useId()
-    const { theme: rootTheme, collapsed, color } = useSidebarContext()
+    const { theme: rootTheme, open: collapsed, color } = useSidebarContext()
     const { isInsideCollapse } = useSidebarItemContext()
 
     const theme = mergeDeep(rootTheme.item, customTheme)
@@ -113,14 +112,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
       open: { opacity: 1 },
     }
     return (
-      <ListItem
-        theme={theme}
-        className={theme.listItem}
-        id={id}
-        rounded={rounded}
-        collapsed={collapsed}
-        tooltipChildren={children}
-      >
+      <ListItem theme={theme} className={theme.listItem} id={id} collapsed={collapsed} tooltipChildren={children}>
         <motion.div
           variants={itemVariants}
           transition={{
@@ -158,9 +150,9 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
                 {children}
               </Children>
             )}
-            {!collapsed && label && (
-              <Badge color={labelColor} data-testid="ui-sidebar-label" hidden={collapsed} className={theme.label}>
-                {label}
+            {!collapsed && badge && (
+              <Badge color={labelColor} data-testid="ui-sidebar-label" hidden={collapsed} className={theme.badge}>
+                {badge}
               </Badge>
             )}
           </Component>

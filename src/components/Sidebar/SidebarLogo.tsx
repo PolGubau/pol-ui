@@ -43,5 +43,3 @@ export const SidebarLogo: FC<SidebarLogoProps> = ({
     </a>
   )
 }
-
-SidebarLogo.displayName = 'Sidebar.Logo'

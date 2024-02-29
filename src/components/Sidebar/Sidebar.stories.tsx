@@ -34,6 +34,8 @@ import { Divider } from '../Divider'
 import { IconButton } from '../IconButton'
 import { Input } from '../Input'
 import { Avatar } from '../Avatar'
+import { SidebarCollapse } from './SidebarCollapse'
+import { SidebarLogo } from './SidebarLogo'
 
 export default {
   title: 'Components/Sidebar',
@@ -54,7 +56,7 @@ const Template: StoryFn<SidebarProps> = args => {
   const { value, toggle } = useBoolean(false)
   return (
     <div className="bg-secondary-50">
-      <Sidebar {...args} collapsed={value} toggle={toggle} />{' '}
+      <Sidebar {...args} open={value} toggle={toggle} />{' '}
     </div>
   )
 }
@@ -103,7 +105,7 @@ export const HidingCollapse = () => {
 
   return (
     <div className="flex gap-4 items-start">
-      <Sidebar collapseMode="hide" collapsed={value} toggle={toggle}>
+      <Sidebar collapseMode="hide" open={value} toggle={toggle}>
         <SidebarItem href="#" icon={TbLayout}>
           Dashboard
         </SidebarItem>
@@ -135,16 +137,12 @@ MultiLevelDropdown.args = {
       <SidebarItem href="#" icon={TbHome}>
         1
       </SidebarItem>
-      <Sidebar.Collapse icon={TbShoppingBag} label="2">
+      <SidebarCollapse icon={TbShoppingBag} badge="2">
         <SidebarItem href="#" label="2.1">
           2.1
         </SidebarItem>
         <SidebarItem href="#">2.2</SidebarItem>
-        <Sidebar.Collapse label="2.3">
-          <SidebarItem href="#">2.3.1</SidebarItem>
-          <SidebarItem href="#">2.3.2</SidebarItem>
-        </Sidebar.Collapse>
-      </Sidebar.Collapse>
+      </SidebarCollapse>
       <SidebarItem href="#" icon={TbAt}>
         3
       </SidebarItem>
@@ -169,14 +167,17 @@ DefaultExpandedDropdown.args = {
       <SidebarItem href="#" icon={TbGraph}>
         Dashboard
       </SidebarItem>
-      <Sidebar.Collapse icon={TbCoin} label="Shop">
+      <SidebarCollapse icon={TbCoin} badge="Shop" defaultOpen>
         <SidebarItem icon={TbMoneybag} href="#">
           Products
         </SidebarItem>
-      </Sidebar.Collapse>
-      <Sidebar.Collapse icon={TbShare} label="Share" open>
+      </SidebarCollapse>
+      <SidebarCollapse icon={TbShare} badge="Share" defaultOpen>
         <SidebarItem href="#">Usage Summary</SidebarItem>
-      </Sidebar.Collapse>
+      </SidebarCollapse>
+      <SidebarCollapse icon={TbShare} badge="Share" defaultOpen>
+        <SidebarItem href="#">Usage Summary</SidebarItem>
+      </SidebarCollapse>
       <SidebarItem href="#" icon={TbMail}>
         Mail
       </SidebarItem>
@@ -228,9 +229,9 @@ LogoBranding.storyName = 'Logo branding'
 LogoBranding.args = {
   children: (
     <>
-      <Sidebar.Logo href="#" img="favicon.svg" imgAlt="Pol-ui logo">
+      <SidebarLogo href="#" img="favicon.svg" imgAlt="Pol-ui logo">
         Pol-ui
-      </Sidebar.Logo>
+      </SidebarLogo>
       <SidebarItem href="#" icon={TbGraph}>
         Home
       </SidebarItem>
@@ -272,7 +273,7 @@ export const CompleteExample = () => {
       />
       <section className="flex h-full gap-4">
         <Sidebar
-          collapsed={value}
+          open={value}
           toggle={toggle}
           className="rounded-tr-xl flex flex-col justify-between h-full"
           footer={
@@ -340,7 +341,7 @@ export const WithSearch = () => {
       />
       <section className="flex h-full">
         <div className="bg-secondary-50 w-fit shadow-lg">
-          <Sidebar collapsed={value} toggle={toggle}>
+          <Sidebar open={value} toggle={toggle}>
             <div>
               <Input
                 leftComponent={<TbSearch />}
@@ -406,7 +407,7 @@ export const DarkMode = () => {
       />
       <section className="flex h-full">
         <div className="  w-fit  shadow-lg">
-          <Sidebar collapsed={value} toggle={toggle}>
+          <Sidebar open={value} toggle={toggle}>
             <SidebarItem href="#" icon={TbDatabaseSearch} active>
               Home
             </SidebarItem>
