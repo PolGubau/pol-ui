@@ -21,7 +21,7 @@ export interface SidebarTheme {
 }
 export const sidebarTheme: SidebarTheme = {
   root: {
-    base: 'h-full w-fit bg-secondary-50 dark:secondary-900 transition-all',
+    base: 'h-full w-fit transition-all scrollbar-gutter',
     collapsed: {
       on: 'w-16',
       off: 'w-64',
@@ -30,7 +30,7 @@ export const sidebarTheme: SidebarTheme = {
   },
   collapse: {
     button:
-      'group flex w-full items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700',
+      'group  bg-secondary-50 dark:bg-secondary-900 flex w-full items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700',
     icon: {
       base: 'h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white',
       open: {
@@ -52,7 +52,7 @@ export const sidebarTheme: SidebarTheme = {
   },
 
   item: {
-    base: 'flex bg-secondary-50 dark:secondary-900 items-center justify-center p-2 text-base font-normal text-secondary-900 hover:brightness-90 dark:text-secondary-50',
+    base: 'flex bg-secondary-50 dark:bg-secondary-900 items-center justify-center p-2 text-secondary-900 hover:brightness-90 dark:hover:brightness-125 dark:text-secondary-50',
 
     rounded: {
       xs: 'rounded-xs',
@@ -66,7 +66,7 @@ export const sidebarTheme: SidebarTheme = {
       full: 'rounded-full',
     },
 
-    active: 'bg-primary-200 dark:bg-primary-700',
+    active: 'bg-primary-200 dark:bg-primary-700  ',
     collapsed: {
       insideCollapse: 'group w-full pl-8 transition duration-75',
       noIcon: 'font-bold aspect-square flex justify-center items-center h-6',
@@ -76,7 +76,7 @@ export const sidebarTheme: SidebarTheme = {
     },
     icon: {
       base: 'h-6 w-6 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white',
-      active: 'text-secondary-700 dark:text-secondary-100',
+      active: ' ',
     },
     label: '',
     listItem: '',

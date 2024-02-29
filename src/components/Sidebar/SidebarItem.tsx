@@ -109,6 +109,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
       closed: {
         opacity: 0,
       },
+
       open: { opacity: 1 },
     }
     return (
@@ -120,7 +121,13 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
         collapsed={collapsed}
         tooltipChildren={children}
       >
-        <motion.div variants={itemVariants}>
+        <motion.div
+          variants={itemVariants}
+          transition={{
+            type: 'spring',
+            stiffness: 260,
+          }}
+        >
           <Component
             aria-labelledby={`ui-sidebar-item-${id}`}
             ref={ref}

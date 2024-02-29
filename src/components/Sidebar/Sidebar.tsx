@@ -22,6 +22,7 @@ export interface SidebarProps extends ComponentProps<'div'> {
   collapsed?: boolean
   toggle?: () => void
   customBgColor?: string
+  innerClassName?: string
 }
 
 const SidebarComponent: FC<SidebarProps> = ({
@@ -34,17 +35,20 @@ const SidebarComponent: FC<SidebarProps> = ({
   toggle,
   customBgColor,
   className,
+  innerClassName,
   ...props
 }) => {
   const theme: SidebarTheme = mergeDeep(getTheme().sidebar, customTheme)
 
   const value = useMemo(() => ({ theme, collapsed, color: customBgColor }), [theme, collapsed, customBgColor])
 
+  const itemValue = useMemo(() => ({ isInsideCollapse: false }), [])
+
   const shouldHaveContent = !collapsed || collapseMode === 'collapse'
 
   return (
     <SidebarContext.Provider value={value}>
-      <motion.div layout {...framerSidebarPanel} className="flex flex-col h-full ">
+      <motion.div className="flex flex-col h-full ">
         {shouldHaveContent && (
           <Component
             aria-label="Sidebar"
@@ -54,10 +58,8 @@ const SidebarComponent: FC<SidebarProps> = ({
             {...props}
           >
             <div className={theme.root.inner}>
-              <ul data-testid="ui-sidebar-item-group" className={twMerge(theme.itemGroup, className)}>
-                <SidebarItemContext.Provider value={{ isInsideCollapse: false }}>
-                  {children}
-                </SidebarItemContext.Provider>
+              <ul data-testid="ui-sidebar-item-group" className={twMerge(theme.itemGroup, innerClassName)}>
+                <SidebarItemContext.Provider value={itemValue}>{children}</SidebarItemContext.Provider>
               </ul>
               {collapsable && (
                 <div
@@ -81,10 +83,3 @@ export const Sidebar = Object.assign(SidebarComponent, {
   Item: SidebarItem,
   Logo: SidebarLogo,
 })
-
-const framerSidebarPanel = {
-  initial: { x: '-100%' },
-  animate: { x: 0 },
-  exit: { x: '-100%' },
-  transition: { duration: 0.3 },
-}

@@ -1,7 +1,7 @@
 'use client'
 
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react'
-import { useEffect, useId, useState } from 'react'
+import { useId } from 'react'
 import { HiChevronDown } from 'react-icons/hi'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
@@ -9,6 +9,8 @@ import type { DeepPartial, IBoolean } from '../../types/types'
 import { Tooltip } from '../Tooltip'
 import { SidebarItemContext, useSidebarContext } from './SidebarContext'
 import type { SidebarItemProps } from './SidebarItem'
+import { motion } from 'framer-motion'
+import { useBoolean } from '../../hooks'
 
 export interface SidebarCollapseTheme {
   button: string
@@ -48,30 +50,28 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
   ...props
 }) => {
   const id = useId()
-  const [isOpen, setOpen] = useState(open)
+  const { value, toggle } = useBoolean(open)
   const { theme: rootTheme, collapsed } = useSidebarContext()
 
   const theme = mergeDeep(rootTheme.collapse, customTheme)
 
-  useEffect(() => setOpen(open), [open])
-
   const Wrapper: FC<PropsWithChildren> = ({ children }) => (
-    <li>
-      {collapsed && !isOpen ? (
+    <motion.li>
+      {collapsed && !value ? (
         <Tooltip content={label} placement="right">
           {children}
         </Tooltip>
       ) : (
         children
       )}
-    </li>
+    </motion.li>
   )
 
   return (
     <Wrapper>
       <button
         id={`ui-sidebar-collapse-${id}`}
-        onClick={() => setOpen(!isOpen)}
+        onClick={() => toggle()}
         title={label}
         type="button"
         className={twMerge(theme.button, className)}
@@ -81,7 +81,7 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
           <Icon
             aria-hidden
             data-testid="ui-sidebar-collapse-icon"
-            className={twMerge(theme.icon.base, theme.icon.open[isOpen ? 'on' : 'off'])}
+            className={twMerge(theme.icon.base, theme.icon.open[value ? 'on' : 'off'])}
           />
         )}
         {collapsed ? (
@@ -92,17 +92,17 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
               {label}
             </span>
             {renderChevronIcon ? (
-              renderChevronIcon(theme, isOpen)
+              renderChevronIcon(theme, value)
             ) : (
               <ChevronIcon
                 aria-hidden
-                className={twMerge(theme.label.icon.base, theme.label.icon.open[isOpen ? 'on' : 'off'])}
+                className={twMerge(theme.label.icon.base, theme.label.icon.open[value ? 'on' : 'off'])}
               />
             )}
           </>
         )}
       </button>
-      <ul aria-labelledby={`ui-sidebar-collapse-${id}`} hidden={!isOpen} className={theme.list}>
+      <ul aria-labelledby={`ui-sidebar-collapse-${id}`} hidden={!value} className={theme.list}>
         <SidebarItemContext.Provider value={{ isInsideCollapse: true }}>{children}</SidebarItemContext.Provider>
       </ul>
     </Wrapper>

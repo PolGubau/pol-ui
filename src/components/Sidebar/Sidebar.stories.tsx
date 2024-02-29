@@ -22,6 +22,7 @@ import {
   TbMoneybag,
   TbPaperBag,
   TbPlus,
+  TbSearch,
   TbShare,
   TbShoppingBag,
   TbSignRight,
@@ -29,6 +30,11 @@ import {
 } from 'react-icons/tb'
 import { ColorsEnum } from '../../types'
 import { SidebarItem } from './SidebarItem'
+import { SidebarLogo } from './SidebarLogo'
+import { Divider } from '../Divider'
+import { IconButton } from '../IconButton'
+import { Input } from '../Input'
+import { Avatar } from '../Avatar'
 
 export default {
   title: 'Components/Sidebar',
@@ -47,7 +53,11 @@ export default {
 } as Meta
 const Template: StoryFn<SidebarProps> = args => {
   const { value, toggle } = useBoolean(false)
-  return <Sidebar {...args} collapsed={value} toggle={toggle} />
+  return (
+    <div className="bg-secondary-50">
+      <Sidebar {...args} collapsed={value} toggle={toggle} />{' '}
+    </div>
+  )
 }
 
 export const Default = Template.bind({})
@@ -124,23 +134,30 @@ MultiLevelDropdown.args = {
   children: (
     <>
       <SidebarItem href="#" icon={TbHome}>
-        Home
+        1
       </SidebarItem>
-      <Sidebar.Collapse icon={TbShoppingBag} label="E-commerce">
-        <SidebarItem href="#">Shop</SidebarItem>
+      <Sidebar.Collapse icon={TbShoppingBag} label="2">
+        <SidebarItem href="#" label="2.1">
+          2.1
+        </SidebarItem>
+        <SidebarItem href="#">2.2</SidebarItem>
+        <Sidebar.Collapse label="2.3">
+          <SidebarItem href="#">2.3.1</SidebarItem>
+          <SidebarItem href="#">2.3.2</SidebarItem>
+        </Sidebar.Collapse>
       </Sidebar.Collapse>
       <SidebarItem href="#" icon={TbAt}>
-        Email
+        3
       </SidebarItem>
       <SidebarItem href="#" icon={TbUser}>
-        Users
+        4
       </SidebarItem>
 
       <SidebarItem href="#" icon={TbSignRight}>
-        Sign In
+        5
       </SidebarItem>
       <SidebarItem href="#" icon={TbPlus}>
-        Sign Up
+        6
       </SidebarItem>
     </>
   ),
@@ -246,25 +263,21 @@ export const CompleteExample = () => {
           {
             href: '#',
             label: 'About',
-            content: (
-              <div className="flex flex-col gap-2">
-                <a href="#">About us</a>
-                <a href="#">Our team</a>
-                <a href="#">Our mission</a>
-              </div>
-            ),
           },
           {
             href: '#',
             label: 'Contact',
           },
         ]}
-        className="bg-primary-50 shadow-md"
         leftContent={<img src="https://ui.polgubau.com/logo.png" className="mr-3 h-6 sm:h-6" alt="Pol-ui Logo" />}
       />
-      <section className="flex h-full">
-        <div className="bg-primary-50 w-fit  shadow-lg">
-          <Sidebar collapsed={value} toggle={toggle}>
+      <section className="flex h-full gap-4">
+        <Sidebar
+          collapsed={value}
+          toggle={toggle}
+          className="rounded-tr-xl w-fit shadow-lg flex flex-col justify-between h-full"
+        >
+          <div className="flex flex-col gap-1 ">
             <SidebarItem href="#" icon={TbDatabaseSearch} active rounded="full">
               Home
             </SidebarItem>
@@ -277,6 +290,145 @@ export const CompleteExample = () => {
             <SidebarItem href="#" icon={TbUser} rounded="full">
               Accounts
             </SidebarItem>
+          </div>
+          <div className="flex justify-start gap-3 h-10">
+            <Avatar img="https://avatars.githubusercontent.com/u/63197171?v=4" />
+            <p className={`${value ? 'hidden' : 'flex'}  flex-col  items-start `}>
+              <strong>Pol Gubau</strong>
+              <span className="text-xs">Developer</span>
+            </p>
+          </div>
+        </Sidebar>
+        <div className="flex flex-col gap-5 p-8 w-full bg-primary-200  rounded-xl">
+          <h2>Content</h2>
+          <div className="bg-primary-400 rounded-2xl w-full h-20"></div>
+          <div className="bg-primary-400 rounded-2xl w-full h-10"></div>
+          <div className="bg-primary-300 rounded-2xl w-full h-14"></div>
+          <div className="w-full h-20 flex gap-5">
+            <div className="bg-primary-300 rounded-2xl w-full h-14"></div>
+            <div className="bg-primary-300 rounded-2xl w-full h-14"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+export const WithSearch = () => {
+  const { value, toggle } = useBoolean(true)
+
+  return (
+    <div className="flex w-full rounded-xl overflow-hidden bg-secondary-50 min-h-[400px] flex-col">
+      <Navbar
+        links={[
+          {
+            href: '#',
+            label: 'Home',
+            active: true,
+          },
+          {
+            href: '#',
+            label: 'About',
+          },
+          {
+            href: '#',
+            label: 'Contact',
+          },
+        ]}
+        leftContent={<img src="https://ui.polgubau.com/logo.png" className="mr-3 h-6 sm:h-6" alt="Pol-ui Logo" />}
+      />
+      <section className="flex h-full">
+        <div className="bg-secondary-50 w-fit shadow-lg">
+          <Sidebar collapsed={value} toggle={toggle}>
+            <div>
+              <Input
+                leftComponent={<TbSearch />}
+                placeholder="Search"
+                className={`w-full ${value ? 'hidden' : 'flex'}`}
+              />
+              <IconButton className={`w-full max-w-10 ${value ? 'flex' : 'hidden'}`} onClick={toggle}>
+                <TbSearch />
+              </IconButton>
+            </div>
+
+            <SidebarItem href="#" icon={TbDatabaseSearch} active>
+              Home
+            </SidebarItem>
+            <SidebarItem href="#" icon={TbLayoutKanban} label="Empty" labelColor={ColorsEnum.primary}>
+              Menus
+            </SidebarItem>
+            <SidebarItem href="#" icon={TbAt} label="3">
+              Mail
+            </SidebarItem>
+            <SidebarItem href="#" icon={TbUser}>
+              Accounts
+            </SidebarItem>
+          </Sidebar>
+        </div>
+        <div className="flex flex-col gap-5 p-8 w-full bg-primary-200 m-4 rounded-xl">
+          <h2>Content</h2>
+          <div className="bg-primary-400 rounded-2xl w-full h-20"></div>
+          <div className="bg-primary-400 rounded-2xl w-full h-10"></div>
+          <div className="bg-primary-300 rounded-2xl w-full h-14"></div>
+          <div className="w-full h-20 flex gap-5">
+            <div className="bg-primary-300 rounded-2xl w-full h-14"></div>
+            <div className="bg-primary-300 rounded-2xl w-full h-14"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+export const DarkMode = () => {
+  const { value, toggle } = useBoolean(true)
+
+  return (
+    <div className="dark flex w-full   min-h-[400px]  bg-secondary-800 flex-col">
+      <Navbar
+        className="bg-secondary-900 shadow-md"
+        links={[
+          {
+            href: '#',
+            label: 'Home',
+            active: true,
+          },
+          {
+            href: '#',
+            label: 'About',
+          },
+          {
+            href: '#',
+            label: 'Contact',
+          },
+        ]}
+      />
+      <section className="flex h-full">
+        <div className="  w-fit  shadow-lg">
+          <Sidebar collapsed={value} toggle={toggle}>
+            <SidebarLogo href="#" img="https://ui.polgubau.com/isotype.png" imgAlt="Pol-ui logo">
+              Pol-ui
+            </SidebarLogo>
+
+            <div className="flex flex-col justify-between h-full gap-1">
+              <ul>
+                <SidebarItem href="#" icon={TbDatabaseSearch} active>
+                  Home
+                </SidebarItem>
+                <SidebarItem href="#" icon={TbLayoutKanban} label="Empty" labelColor={ColorsEnum.primary}>
+                  Menus
+                </SidebarItem>
+                <SidebarItem href="#" icon={TbAt} label="3">
+                  Mail
+                </SidebarItem>{' '}
+              </ul>
+              <ul>
+                <Divider />
+                <SidebarItem href="#" icon={TbUser}>
+                  Accounts
+                </SidebarItem>
+              </ul>
+            </div>
           </Sidebar>
         </div>
         <div className="flex flex-col gap-5 p-8 w-full bg-primary-200 m-4 rounded-xl">
