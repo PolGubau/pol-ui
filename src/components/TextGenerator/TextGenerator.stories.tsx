@@ -38,7 +38,7 @@ export const Fast = Template.bind({})
 Fast.args = { text: words, speed: 0.1 }
 
 export const Delay = Template.bind({})
-Delay.args = { text: words, delay: 0.5 }
+Delay.args = { text: words, delay: 1 }
 
 export const CustomClass = Template.bind({})
 CustomClass.args = { text: words, className: 'text-4xl text-error' }

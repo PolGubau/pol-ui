@@ -2,6 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react'
 import type { ProgressProps } from './Progress'
 import { Progress } from './Progress'
 import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../../types/enums'
+import type { Colors, MainSizes } from '../../types'
 
 export default {
   title: 'Components/Progress',
@@ -23,17 +24,17 @@ Default.args = {
   progress: 45,
 }
 
-export const Colors = (): JSX.Element => (
+export const AllColors = (): JSX.Element => (
   <div className="flex gap-4 flex-col">
     {Object.keys(ColorsEnum).map(color => (
-      <Progress progress={45} color={color} label={color} key={color} />
+      <Progress progress={45} color={color as Colors} label={color} key={color} />
     ))}
   </div>
 )
 export const Sizes = (): JSX.Element => (
   <div className="flex gap-4 flex-col">
     {Object.keys(MainSizesEnum).map(v => (
-      <Progress progress={45} size={v} label={v} key={v} />
+      <Progress progress={45} size={v as MainSizes} label={v} key={v} />
     ))}
   </div>
 )
