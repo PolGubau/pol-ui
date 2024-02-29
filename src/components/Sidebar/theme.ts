@@ -21,12 +21,12 @@ export interface SidebarTheme {
 }
 export const sidebarTheme: SidebarTheme = {
   root: {
-    base: 'h-full w-fit transition-all scrollbar-gutter',
+    base: 'h-full w-fit transition-all scrollbar-gutter bg-secondary-50 dark:bg-secondary-900',
     collapsed: {
       on: 'w-16',
       off: 'w-64',
     },
-    inner: 'h-full overflow-y-auto overflow-x-hidden py-4 px-3 flex flex-col justify-between gap-6',
+    inner: 'h-full overflow-y-auto overflow-x-hidden py-4 px-3 flex flex-col justify-between gap-6' ,
   },
   collapse: {
     button:

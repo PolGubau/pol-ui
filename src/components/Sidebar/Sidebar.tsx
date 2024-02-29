@@ -23,6 +23,7 @@ export interface SidebarProps extends ComponentProps<'div'> {
   toggle?: () => void
   customBgColor?: string
   innerClassName?: string
+  footer?: React.ReactNode
 }
 
 const SidebarComponent: FC<SidebarProps> = ({
@@ -36,6 +37,7 @@ const SidebarComponent: FC<SidebarProps> = ({
   customBgColor,
   className,
   innerClassName,
+  footer,
   ...props
 }) => {
   const theme: SidebarTheme = mergeDeep(getTheme().sidebar, customTheme)
@@ -61,13 +63,16 @@ const SidebarComponent: FC<SidebarProps> = ({
               <ul data-testid="ui-sidebar-item-group" className={twMerge(theme.itemGroup, innerClassName)}>
                 <SidebarItemContext.Provider value={itemValue}>{children}</SidebarItemContext.Provider>
               </ul>
-              {collapsable && (
-                <div
-                  className={twMerge(theme.closeButton.base, theme.closeButton[collapsed ? 'collapsed' : 'expanded'])}
-                >
-                  <IconButton onClick={toggle}>{collapsed ? <TbChevronsRight /> : <TbChevronsLeft />}</IconButton>
-                </div>
-              )}
+              <div>
+                {footer}
+                {collapsable && (
+                  <div
+                    className={twMerge(theme.closeButton.base, theme.closeButton[collapsed ? 'collapsed' : 'expanded'])}
+                  >
+                    <IconButton onClick={toggle}>{collapsed ? <TbChevronsRight /> : <TbChevronsLeft />}</IconButton>
+                  </div>
+                )}
+              </div>
             </div>
           </Component>
         )}

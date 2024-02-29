@@ -30,7 +30,6 @@ import {
 } from 'react-icons/tb'
 import { ColorsEnum } from '../../types'
 import { SidebarItem } from './SidebarItem'
-import { SidebarLogo } from './SidebarLogo'
 import { Divider } from '../Divider'
 import { IconButton } from '../IconButton'
 import { Input } from '../Input'
@@ -275,7 +274,16 @@ export const CompleteExample = () => {
         <Sidebar
           collapsed={value}
           toggle={toggle}
-          className="rounded-tr-xl w-fit shadow-lg flex flex-col justify-between h-full"
+          className="rounded-tr-xl flex flex-col justify-between h-full"
+          footer={
+            <div className="flex justify-start gap-3 h-10 my-2">
+              <Avatar img="https://avatars.githubusercontent.com/u/63197171?v=4" />
+              <p className={`${value ? 'hidden' : 'flex'}  flex-col  items-start `}>
+                <strong>Pol Gubau</strong>
+                <span className="text-xs">Developer</span>
+              </p>
+            </div>
+          }
         >
           <div className="flex flex-col gap-1 ">
             <SidebarItem href="#" icon={TbDatabaseSearch} active rounded="full">
@@ -290,13 +298,6 @@ export const CompleteExample = () => {
             <SidebarItem href="#" icon={TbUser} rounded="full">
               Accounts
             </SidebarItem>
-          </div>
-          <div className="flex justify-start gap-3 h-10">
-            <Avatar img="https://avatars.githubusercontent.com/u/63197171?v=4" />
-            <p className={`${value ? 'hidden' : 'flex'}  flex-col  items-start `}>
-              <strong>Pol Gubau</strong>
-              <span className="text-xs">Developer</span>
-            </p>
           </div>
         </Sidebar>
         <div className="flex flex-col gap-5 p-8 w-full bg-primary-200  rounded-xl">
@@ -406,29 +407,19 @@ export const DarkMode = () => {
       <section className="flex h-full">
         <div className="  w-fit  shadow-lg">
           <Sidebar collapsed={value} toggle={toggle}>
-            <SidebarLogo href="#" img="https://ui.polgubau.com/isotype.png" imgAlt="Pol-ui logo">
-              Pol-ui
-            </SidebarLogo>
-
-            <div className="flex flex-col justify-between h-full gap-1">
-              <ul>
-                <SidebarItem href="#" icon={TbDatabaseSearch} active>
-                  Home
-                </SidebarItem>
-                <SidebarItem href="#" icon={TbLayoutKanban} label="Empty" labelColor={ColorsEnum.primary}>
-                  Menus
-                </SidebarItem>
-                <SidebarItem href="#" icon={TbAt} label="3">
-                  Mail
-                </SidebarItem>{' '}
-              </ul>
-              <ul>
-                <Divider />
-                <SidebarItem href="#" icon={TbUser}>
-                  Accounts
-                </SidebarItem>
-              </ul>
-            </div>
+            <SidebarItem href="#" icon={TbDatabaseSearch} active>
+              Home
+            </SidebarItem>
+            <SidebarItem href="#" icon={TbLayoutKanban} label="Empty" labelColor={ColorsEnum.primary}>
+              Menus
+            </SidebarItem>
+            <SidebarItem href="#" icon={TbAt} label="3">
+              Mail
+            </SidebarItem>
+            <Divider />
+            <SidebarItem href="#" icon={TbUser}>
+              Accounts
+            </SidebarItem>
           </Sidebar>
         </div>
         <div className="flex flex-col gap-5 p-8 w-full bg-primary-200 m-4 rounded-xl">
