@@ -3,7 +3,8 @@ import { Button } from '../Button'
 import type { TooltipProps } from './Tooltip'
 import { Tooltip } from './Tooltip'
 import { Input } from '../Input'
-import { TbAB, TbFile } from 'react-icons/tb'
+import { TbFile } from 'react-icons/tb'
+import { IconButton } from '../IconButton'
 
 export default {
   title: 'Components/Tooltip',
@@ -76,11 +77,10 @@ export const IconUseCase = Template.bind({})
 DefaultTooltip.storyName = 'Default'
 DefaultTooltip.args = {
   content: 'Upload a file',
-  placement: 'bottom',
   children: (
-    <Button outline>
+    <IconButton>
       <TbFile size={20} />
-    </Button>
+    </IconButton>
   ),
 }
 
