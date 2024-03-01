@@ -44,7 +44,7 @@ export const Default: StoryFn<ToasterProps> = args => {
 }
 export const Examples: StoryFn<ToasterProps> = args => {
   return (
-    <div className="flex gap-3">
+    <div className="flex gap-3 flex-wrap">
       <Button
         onClick={() => {
           toast({
