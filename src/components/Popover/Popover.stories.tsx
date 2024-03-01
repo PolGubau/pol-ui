@@ -5,6 +5,7 @@ import { Button } from '../Button'
 import { Avatar } from '../Avatar'
 import { theme } from '../../theme'
 import { useBoolean } from '../../hooks'
+import type { RoundedSizes } from '../../types'
 
 export default {
   title: 'Components/Popover',
@@ -58,7 +59,7 @@ export const Default = (): JSX.Element => {
 export const AllRounded = () => (
   <div className="flex gap-3 flex-wrap">
     {Object.keys(theme.popover.rounded).map(rounded => (
-      <Popover key={rounded}>
+      <Popover key={rounded} rounded={rounded as RoundedSizes}>
         <ExampleContent />
       </Popover>
     ))}
