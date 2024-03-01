@@ -16,7 +16,7 @@ export interface TableRootTheme {
 }
 export const tableTheme: TableTheme = {
   root: {
-    base: 'w-full text-left text-sm text-secondary-500 dark:text-secondary-400',
+    base: 'w-full text-left text-sm text-secondary-800 dark:text-secondary-200',
     shadow: 'shadow-xl-z-10',
     wrapper: 'relative',
   },
@@ -27,7 +27,7 @@ export const tableTheme: TableTheme = {
     },
   },
   head: {
-    base: 'group/head text-xs uppercase text-secondary-800 dark:text-secondary-200',
+    base: 'group/head text-xs uppercase text-secondary-900 dark:text-secondary-100',
     cell: {
       base: 'group-first/head:first:rounded-tl-lg group-first/head:last:rounded-tr-lg bg-secondary-50 dark:bg-secondary-700 px-6 py-3',
     },
