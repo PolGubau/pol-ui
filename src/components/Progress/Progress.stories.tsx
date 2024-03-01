@@ -10,7 +10,7 @@ export default {
   tags: ['Progress', 'autodocs'],
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col pt-20 min-h-[400px] bg-secondary-50">
+      <div className="flex p-6 flex-col pt-10 bg-secondary-50">
         <Story />
       </div>
     ),
