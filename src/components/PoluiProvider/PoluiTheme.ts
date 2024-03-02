@@ -57,6 +57,7 @@ import type { ToggleTheme } from '../Toggle/theme'
 import type { HamburguerTheme } from '../Hamburguer/theme'
 import type { NavigationMenuTheme } from '../NavigationMenu/theme'
 import type { ChipTheme } from '../Chip/theme'
+import type { DropzoneTheme } from '../Dropzone/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -124,4 +125,5 @@ export interface PoluiTheme {
   hamburguer: HamburguerTheme
   navigationMenu: NavigationMenuTheme
   chip: ChipTheme
+  dropzone: DropzoneTheme
 }

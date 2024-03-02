@@ -1,5 +1,8 @@
 import React, { useId } from 'react'
-import { cn } from '../../helpers'
+import { cn, mergeDeep } from '../../helpers'
+import type { DropzoneTheme } from './theme'
+import { getTheme } from '../../theme-store'
+import type { DeepPartial } from '../../types'
 
 // Define interface for component props/api:
 export interface DropZoneProps {
@@ -12,6 +15,10 @@ export interface DropZoneProps {
   multiple?: boolean
   accept?: string
   disabled?: boolean
+  className?: string
+  disabledClassName?: string
+  activeClassName?: string
+  theme?: DeepPartial<DropzoneTheme>
 }
 
 export const Dropzone = React.memo((props: React.PropsWithChildren<DropZoneProps>) => {
@@ -26,6 +33,10 @@ export const Dropzone = React.memo((props: React.PropsWithChildren<DropZoneProps
     multiple = true,
     accept,
     disabled = false,
+    className,
+    disabledClassName,
+    activeClassName = '',
+    theme: customTheme = {},
   } = props
 
   // Create state to keep track when dropzone is active/non-active:
@@ -49,13 +60,15 @@ export const Dropzone = React.memo((props: React.PropsWithChildren<DropZoneProps
     (event: DragEvent) => {
       event.preventDefault()
       event.stopPropagation()
-      onDragIn?.()
+      if (!disabled) {
+        onDragIn?.()
 
-      if (event.dataTransfer?.items && event.dataTransfer.items.length > 0) {
-        setIsDragActive(true)
+        if (event.dataTransfer?.items && event.dataTransfer.items.length > 0) {
+          setIsDragActive(true)
+        }
       }
     },
-    [onDragIn],
+    [disabled, onDragIn],
   )
 
   // Create handler for dragleave event:
@@ -90,19 +103,21 @@ export const Dropzone = React.memo((props: React.PropsWithChildren<DropZoneProps
       event.preventDefault()
       event.stopPropagation()
 
-      setIsDragActive(false)
-      onDrop?.(event)
+      if (!disabled) {
+        setIsDragActive(false)
+        onDrop?.(event)
 
-      if (event.dataTransfer?.files && event.dataTransfer.files.length > 0) {
-        const files = mapFileListToArray(event.dataTransfer.files)
+        if (event.dataTransfer?.files && event.dataTransfer.files.length > 0) {
+          const files = mapFileListToArray(event.dataTransfer.files)
 
-        // exclude the nulls
-        const filteredFiles = files.filter((file: File | null) => file !== null) as File[]
-        filteredFiles && onFilesDrop?.(filteredFiles)
-        event.dataTransfer.clearData()
+          // exclude the nulls
+          const filteredFiles = files.filter((file: File | null) => file !== null) as File[]
+          filteredFiles && onFilesDrop?.(filteredFiles)
+          event.dataTransfer.clearData()
+        }
       }
     },
-    [onDrop, onFilesDrop],
+    [disabled, onDrop, onFilesDrop],
   )
 
   const id = useId()
@@ -133,7 +148,8 @@ export const Dropzone = React.memo((props: React.PropsWithChildren<DropZoneProps
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // Render <div> with ref and children:
+  const theme: DropzoneTheme = mergeDeep(getTheme().dropzone, customTheme)
+
   return (
     <>
       <input
@@ -158,10 +174,12 @@ export const Dropzone = React.memo((props: React.PropsWithChildren<DropZoneProps
         ref={dropZoneRef}
         htmlFor={id}
         className={cn(
-          'flex flex-col gap-1 bg-secondary-200 w-full h-full text-center p-4 transition-all cursor-pointer border-2 border-dashed border-transparent rounded-lg hover:border-primary-400 hover:bg-primary-100 focus:border-primary-400 focus:bg-primary-100 disabled:bg-secondary-100 disabled:border-secondary-200 disabled:text-secondary-400 disabled:cursor-not-allowed',
-          {
-            'bg-primary-400': isDragActive,
-          },
+          theme.base,
+          className,
+          disabled && theme.disabled,
+          disabled && disabledClassName,
+          isDragActive && theme.active,
+          isDragActive && activeClassName,
         )}
       >
         {children}
@@ -170,5 +188,4 @@ export const Dropzone = React.memo((props: React.PropsWithChildren<DropZoneProps
   )
 })
 
-// Define display name for component:
 Dropzone.displayName = 'Dropzone'

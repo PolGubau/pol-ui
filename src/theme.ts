@@ -1,3 +1,4 @@
+import { dropzoneTheme } from './components/Dropzone/theme'
 import type { PoluiTheme } from '.'
 import { accordionTheme } from './components/Accordion/theme'
 import { alertTheme } from './components/Alert/theme'
@@ -118,4 +119,5 @@ export const theme: PoluiTheme = {
   hamburguer: hamburguerTheme,
   navigationMenu: navigationMenuTheme,
   chip: chipTheme,
+  dropzone: dropzoneTheme,
 }
