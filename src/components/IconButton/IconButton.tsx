@@ -13,7 +13,7 @@ import type { IconButtonTheme } from './theme'
 import { Tooltip } from '../Tooltip'
 import { motion } from 'framer-motion'
 import { mergeDeep } from '../../helpers/merge-deep'
-import { rippleClass } from '../../helpers/rippleClass'
+import { colorToTailwind } from '../../helpers/colorToTailwind'
 import type { ButtonProps } from '../Button'
 
 export type IconButtonProps<T extends ElementType = 'button'> = {
@@ -45,7 +45,7 @@ const IconButtonFn = <T extends ElementType = 'button'>({
   const [ripple, event] = useRipple({
     disabled: disabled || loading,
     opacity: 0.2,
-    className: rippleClass(color),
+    className: colorToTailwind(color),
   })
 
   const MotionBase = motion(ButtonBase)

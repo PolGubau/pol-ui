@@ -26,7 +26,7 @@ export interface AccordionTitleTheme {
  * @description Props for the AccordionTitle component.
  * @property {React.ReactNode} children
  * @property {string} className
- * @property {string} rippleClassName
+ * @property {string} colorToTailwindName
  * @property {DeepPartial<AccordionTitleTheme>} theme
  * @property {HeadingLevel} as
  * @property {FC<ComponentProps<'svg'>>} arrowIcon
@@ -35,7 +35,7 @@ export interface AccordionTitleProps extends ComponentProps<'button'> {
   arrowIcon?: FC<ComponentProps<'svg'>>
   as?: HeadingLevel
   theme?: DeepPartial<AccordionTitleTheme>
-  rippleClassName?: string
+  colorToTailwindName?: string
 }
 
 /**
@@ -53,7 +53,7 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
   as: Component = HeadingLevelEnum.h2,
   children,
   className,
-  rippleClassName,
+  colorToTailwindName,
   theme: customTheme = {},
   ...props
 }: AccordionTitleProps): JSX.Element => {
@@ -63,7 +63,7 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
   const theme = mergeDeep(getTheme().accordion.title, customTheme)
   const [ripple, event] = useRipple({
     disabled: !setOpen,
-    className: twMerge('bg-secondary-700', rippleClassName),
+    className: twMerge('bg-secondary-700', colorToTailwindName),
   })
   return (
     <button

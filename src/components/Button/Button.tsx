@@ -10,7 +10,7 @@ import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../../types/enums'
 import { useRipple } from '../../hooks'
 import { motion } from 'framer-motion'
 import type { ButtonProps } from './props'
-import { rippleClass } from '../../helpers/rippleClass'
+import { colorToTailwind } from '../../helpers/colorToTailwind'
 
 export const Button = <T extends ElementType = 'button'>({
   children,
@@ -39,7 +39,7 @@ export const Button = <T extends ElementType = 'button'>({
   const [ripple, event] = useRipple({
     disabled: disabled || loading,
     opacity: 0.2,
-    className: rippleClass(color),
+    className: colorToTailwind(color),
   })
 
   const MotionButtonBase = motion(ButtonBase)

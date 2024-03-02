@@ -5,7 +5,7 @@ import { getTheme } from '../../theme-store'
 import type { Colors, DeepPartial } from '../../types/types'
 import type { ListGroupItemTheme } from './theme'
 import { useRipple } from '../../hooks'
-import { rippleClass } from '../../helpers'
+import { colorToTailwind } from '../../helpers'
 import { ColorsEnum } from '../../types'
 
 export interface ListGroupItemProps extends PropsWithChildren {
@@ -38,7 +38,7 @@ export const ListItem: FC<
   const Component = isLink ? 'a' : 'button'
   const [ripple, event] = useRipple({
     opacity: 0.2,
-    className: rippleClass(color ?? ColorsEnum.secondary),
+    className: colorToTailwind(color ?? ColorsEnum.secondary),
   })
 
   return (

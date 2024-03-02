@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { isClient } from '../helpers/is-client'
-import { useWatchLocalStorageValue } from '../hooks/use-watch-localstorage-value'
+import { useWatchLocalStorage } from '../hooks/use-watch-localstorage-value'
 import { getThemeMode } from '../theme-store'
 
 const DEFAULT_MODE: ThemeMode = 'light'
@@ -43,7 +43,7 @@ export const useThemeMode = () => {
   /**
    * Sync all tabs with the latest theme mode value
    */
-  useWatchLocalStorageValue({
+  useWatchLocalStorage({
     key: STORAGE_THEME_MODE,
     onChange(newValue) {
       if (newValue) return handleSetMode(newValue as ThemeMode)

@@ -53,7 +53,7 @@ const ListItem: FC<
   const [ripple, event] = useRipple({
     // disabled: disabled || loading,
     opacity: 0.2,
-    // className: rippleClass(color),
+    // className: colorToTailwind(color),
   })
   return (
     <motion.li {...props} ref={ripple} onPointerDown={event}>

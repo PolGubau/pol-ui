@@ -1,5 +1,5 @@
 import React from 'react'
-import { cn, mergeDeep, rippleClass } from '../../helpers'
+import { cn, mergeDeep, colorToTailwind } from '../../helpers'
 import { ColorsEnum, type Colors, type DeepPartial, type RoundedSizes } from '../../types'
 import { getTheme } from '../../theme-store'
 import type { ToggleTheme } from './theme'
@@ -48,7 +48,7 @@ export const Toggle: React.FC<ToggleProps> = ({
   const [ripple, event] = useRipple({
     disabled: disabled,
     opacity: 0.4,
-    className: rippleClass(color),
+    className: colorToTailwind(color),
   })
   return (
     <button
