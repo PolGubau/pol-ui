@@ -92,7 +92,6 @@ export const FileList = React.memo((props: React.PropsWithChildren<FileListProps
                 },
               },
             ]}
-            className="border border-primary/80    "
           >
             {file.name}
           </Chip>
