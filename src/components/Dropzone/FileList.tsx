@@ -1,8 +1,9 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 import React from 'react'
 import { TbX } from 'react-icons/tb'
 import { Chip } from '../Chip'
 import { Tooltip } from '../Tooltip'
-import { Button } from '../Button'
 
 export interface FileListProps {
   files: File[]
@@ -23,6 +24,10 @@ export const FileList = React.memo((props: React.PropsWithChildren<FileListProps
               {/* try to show the file */}
               {file.type.startsWith('image') && (
                 <img
+                  onKeyDown={() => window.open(URL.createObjectURL(file), '_blank')}
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => window.open(URL.createObjectURL(file), '_blank')}
                   src={URL.createObjectURL(file)}
                   alt={file.name}
                   loading="lazy"
@@ -50,7 +55,7 @@ export const FileList = React.memo((props: React.PropsWithChildren<FileListProps
               )}
               <h3>
                 <b>Name:</b> {file.name}
-              </h3>{' '}
+              </h3>
               {Boolean(file.lastModified) && (
                 <p>
                   <b>Type:</b> {file.type}
@@ -68,14 +73,6 @@ export const FileList = React.memo((props: React.PropsWithChildren<FileListProps
                   <b>Last modified:</b> {new Date(file.lastModified).toLocaleString()}
                 </p>
               )}
-              <footer className="flex gap-2 pt-2 flex-wrap">
-                <Button size="sm" onClick={() => window.open(URL.createObjectURL(file), '_blank')}>
-                  View
-                </Button>
-                <Button color="error" size="sm" onClick={() => setFiles(files.filter(f => f.name !== file.name))}>
-                  Remove from list
-                </Button>
-              </footer>
             </div>
           }
           key={`${file.name}_${file.lastModified}`}

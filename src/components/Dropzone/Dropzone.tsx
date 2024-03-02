@@ -7,9 +7,8 @@ export interface DropZoneProps {
   onDrag?: () => void
   onDragIn?: () => void
   onDragOut?: () => void
-  onDrop?: () => void
+  onDrop?: (e: DragEvent) => void
   onFilesDrop?: (files: File[]) => void
-
   multiple?: boolean
   accept?: string
   disabled?: boolean
@@ -92,14 +91,14 @@ export const Dropzone = React.memo((props: React.PropsWithChildren<DropZoneProps
       event.stopPropagation()
 
       setIsDragActive(false)
-      onDrop?.()
+      onDrop?.(event)
 
       if (event.dataTransfer?.files && event.dataTransfer.files.length > 0) {
         const files = mapFileListToArray(event.dataTransfer.files)
 
         // exclude the nulls
         const filteredFiles = files.filter((file: File | null) => file !== null) as File[]
-        files && onFilesDrop?.(filteredFiles)
+        filteredFiles && onFilesDrop?.(filteredFiles)
         event.dataTransfer.clearData()
       }
     },
@@ -142,7 +141,7 @@ export const Dropzone = React.memo((props: React.PropsWithChildren<DropZoneProps
           const fileList = e.target.files
           if (fileList) {
             const newFiles = Array.from(fileList).filter(file => file !== null) as File[]
-            onFilesDrop?.([...newFiles])
+            onFilesDrop?.(newFiles)
           }
         }}
         className="hidden"
@@ -158,9 +157,12 @@ export const Dropzone = React.memo((props: React.PropsWithChildren<DropZoneProps
       <label
         ref={dropZoneRef}
         htmlFor={id}
-        className={cn('flex flex-col gap-1 bg-secondary-200 w-full h-full text-center p-4 transition-all', {
-          'bg-primary-400': isDragActive,
-        })}
+        className={cn(
+          'flex flex-col gap-1 bg-secondary-200 w-full h-full text-center p-4 transition-all cursor-pointer border-2 border-dashed border-transparent rounded-lg hover:border-primary-400 hover:bg-primary-100 focus:border-primary-400 focus:bg-primary-100 disabled:bg-secondary-100 disabled:border-secondary-200 disabled:text-secondary-400 disabled:cursor-not-allowed',
+          {
+            'bg-primary-400': isDragActive,
+          },
+        )}
       >
         {children}
       </label>
