@@ -1,10 +1,12 @@
 import type { ElementType } from 'react'
 import React from 'react'
-import { ColorsEnum, type Colors, type DeepPartial, type MainSizes, type RoundedSizes } from '../../types'
+import { ColorsEnum, type Colors, type DeepPartial, type RoundedSizes } from '../../types'
 import { IconButton } from '../IconButton'
-import { cn, mergeDeep } from '../../helpers'
+import { cn, colorToTailwind, mergeDeep } from '../../helpers'
 import { getTheme } from '../../theme-store'
 import type { ChipTheme } from './theme'
+import { useRipple } from '../../hooks'
+import type { MinimalEvent } from '../../hooks/use-ripple/use-ripple'
 
 const BASE_COMPONENT = 'li'
 type BASE_COMPONENT_TYPE = typeof BASE_COMPONENT
@@ -18,10 +20,8 @@ export type ChipProps<T extends ElementType = BASE_COMPONENT_TYPE> = {
   as?: T
   children: React.ReactNode
   label?: string
-  onClick?: () => void
-
+  onClick?: (e: React.MouseEvent) => void
   color?: Colors
-  size?: MainSizes
   disabled?: boolean
   rounded?: RoundedSizes
   actions?: ChipAction[]
@@ -45,8 +45,14 @@ export const Chip = <T extends ElementType = BASE_COMPONENT_TYPE>({
   elementClassName,
   textClassName,
 }: ChipProps<T>) => {
-  const Component = BaseComponent ?? BASE_COMPONENT
+  const Component = onClick ? 'button' : BaseComponent ?? BASE_COMPONENT
   const theme = mergeDeep(getTheme().chip, customTheme)
+
+  const [ripple, event] = useRipple({
+    disabled: disabled,
+    opacity: 0.5,
+    className: colorToTailwind(color),
+  })
 
   return (
     <Component
@@ -59,6 +65,8 @@ export const Chip = <T extends ElementType = BASE_COMPONENT_TYPE>({
         !disabled && onClick && theme.clickable,
         className,
       )}
+      onPointerDown={(e: MinimalEvent) => onClick && event(e)}
+      ref={onClick && ripple}
       onClick={onClick}
     >
       <p className={cn(theme.text, textClassName)}>{label ?? children}</p>
