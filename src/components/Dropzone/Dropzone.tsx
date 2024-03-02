@@ -3,9 +3,10 @@ import { cn, mergeDeep } from '../../helpers'
 import type { DropzoneTheme } from './theme'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
+import { toast } from '../Toaster'
 
 // Define interface for component props/api:
-export interface DropZoneProps {
+export interface DropzoneProps {
   onDragStateChange?: (isDragActive: boolean) => void
   onDrag?: () => void
   onDragIn?: () => void
@@ -21,7 +22,7 @@ export interface DropZoneProps {
   theme?: DeepPartial<DropzoneTheme>
 }
 
-export const Dropzone = React.memo((props: React.PropsWithChildren<DropZoneProps>) => {
+export const Dropzone = React.memo((props: React.PropsWithChildren<DropzoneProps>) => {
   const {
     onDragStateChange,
     onFilesDrop,
@@ -112,12 +113,28 @@ export const Dropzone = React.memo((props: React.PropsWithChildren<DropZoneProps
 
           // exclude the nulls
           const filteredFiles = files.filter((file: File | null) => file !== null) as File[]
-          filteredFiles && onFilesDrop?.(filteredFiles)
+
+          // filtering the accept files
+
+          if (accept) {
+            const acceptedFiles = filteredFiles.filter(file => file.type.match(accept))
+            const rejectedFiles = filteredFiles.filter(file => !file.type.match(accept))
+
+            rejectedFiles.length > 0 &&
+              toast({
+                title: 'Only ' + accept + ' files allowed.',
+                description: `Rejected files: ${rejectedFiles.map(f => f.name)} `,
+                type: 'error',
+              })
+
+            onFilesDrop?.(multiple ? acceptedFiles : acceptedFiles.slice(0, 1))
+          } else filteredFiles && onFilesDrop?.(multiple ? filteredFiles : filteredFiles.slice(0, 1))
+
           event.dataTransfer.clearData()
         }
       }
     },
-    [disabled, onDrop, onFilesDrop],
+    [accept, disabled, multiple, onDrop, onFilesDrop],
   )
 
   const id = useId()

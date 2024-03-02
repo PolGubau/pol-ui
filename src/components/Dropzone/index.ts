@@ -1,3 +1,3 @@
-export * from './Dropzone'
-export * from './FileList'
-export * from './theme'
+export { Dropzone, type DropzoneProps as DropZoneProps } from './Dropzone'
+export { FileList, type FileListProps } from './FileList'
+export { type DropzoneTheme, dropzoneTheme } from './theme'

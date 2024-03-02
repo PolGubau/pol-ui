@@ -2,6 +2,7 @@ import type { Meta } from '@storybook/react'
 import { useCallback, useState } from 'react'
 import { Dropzone } from './Dropzone'
 import { FileList } from './FileList'
+import { Toaster } from '../Toaster'
 
 export default {
   title: 'Components/Dropzone',
@@ -11,6 +12,7 @@ export default {
     Story => (
       <div className="flex p-6 flex-col ">
         <Story />
+        <Toaster />
       </div>
     ),
   ],
@@ -82,5 +84,30 @@ export const CustomClass = () => {
         <FileList files={files} setFiles={setFiles} />
       </Dropzone>
     </div>
+  )
+}
+
+export const Single = () => {
+  const [files, setFiles] = useState<File[]>([])
+  const onFilesDrop = useCallback((newFiles: File[]) => {
+    setFiles(newFiles)
+  }, [])
+  return (
+    <Dropzone onFilesDrop={onFilesDrop} multiple={false}>
+      <h2>You can only take 1 file as MULTIPLE is setted to false</h2>
+      <FileList files={files} setFiles={setFiles} />
+    </Dropzone>
+  )
+}
+export const CustomAccepts = () => {
+  const [files, setFiles] = useState<File[]>([])
+  const onFilesDrop = useCallback((newFiles: File[]) => {
+    setFiles(newFiles)
+  }, [])
+  return (
+    <Dropzone onFilesDrop={onFilesDrop} multiple={false} accept=".pdf">
+      <h2>You can only import PDFs here</h2>
+      <FileList files={files} setFiles={setFiles} />
+    </Dropzone>
   )
 }
