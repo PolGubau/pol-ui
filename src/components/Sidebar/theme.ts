@@ -35,7 +35,7 @@ export const sidebarTheme: SidebarTheme = {
       base: 'h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white',
       open: {
         off: '',
-        on: 'text-gray-900',
+        on: '',
       },
     },
     rounded: {
@@ -52,10 +52,10 @@ export const sidebarTheme: SidebarTheme = {
     label: {
       base: 'ml-3 flex-1 whitespace-nowrap text-left',
       icon: {
-        base: 'h-6 w-6 transition ease-in-out delay-0',
+        base: 'h-6 w-6 shrink-0 transition-all transform origin-center',
         open: {
-          on: 'rotate-180',
-          off: '',
+          off: ' rotate-0',
+          on: 'rotate-180 ',
         },
       },
     },

@@ -1,7 +1,7 @@
 'use client'
 
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react'
-import { useEffect, useId } from 'react'
+import { useEffect, useId, useMemo } from 'react'
 import { HiChevronDown } from 'react-icons/hi'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
@@ -78,17 +78,14 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
     }
     if (collapsed) toogleCollapsed?.()
   }
-  console.log({
-    childsOpened,
-    id,
-  })
+
   const theme = mergeDeep(rootTheme.collapse, customTheme)
   const [ripple, event] = useRipple({
     opacity: 0.2,
   })
   const Wrapper: FC<PropsWithChildren> = ({ children }) => (
     <AnimatePresence mode="wait">
-      <motion.li layout ref={ripple} onPointerDown={event}>
+      <li ref={ripple} onPointerDown={event}>
         {collapsed ? (
           <Tooltip content={badge} placement="right">
             {children}
@@ -96,9 +93,11 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
         ) : (
           children
         )}
-      </motion.li>
+      </li>
     </AnimatePresence>
   )
+
+  const value = useMemo(() => ({ isInsideCollapse: true }), [])
 
   return (
     <Wrapper>
@@ -140,11 +139,20 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
           </>
         )}
       </button>
-      {isOpen && (
-        <motion.ul aria-labelledby={`ui-sidebar-collapse-${id}`} className={theme.list}>
-          <SidebarItemContext.Provider value={{ isInsideCollapse: true }}>{children}</SidebarItemContext.Provider>
-        </motion.ul>
-      )}
+      <AnimatePresence mode="wait">
+        {isOpen && (
+          <motion.ul
+            aria-labelledby={`ui-sidebar-collapse-${id}`}
+            className={theme.list}
+            initial={{ height: 0, scale: 0.7 }}
+            animate={{ height: 'auto', scale: 1 }}
+            exit={{ height: 0, scale: 0.7 }}
+            transition={{ duration: 0.2, ease: 'easeInOut', type: 'tween' }}
+          >
+            <SidebarItemContext.Provider value={value}>{children}</SidebarItemContext.Provider>
+          </motion.ul>
+        )}
+      </AnimatePresence>
     </Wrapper>
   )
 }

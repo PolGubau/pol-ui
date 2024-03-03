@@ -7,7 +7,6 @@ import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types/types'
 import { SidebarContext, SidebarItemContext } from './SidebarContext'
 import type { SidebarTheme } from './theme'
-import { motion } from 'framer-motion'
 import { IconButton } from '../IconButton'
 import { TbChevronsLeft, TbChevronsRight } from 'react-icons/tb'
 
@@ -63,7 +62,7 @@ export const Sidebar: FC<SidebarProps> = ({
 
   return (
     <SidebarContext.Provider value={value}>
-      <motion.div className="flex flex-col h-full ">
+      <div className="flex flex-col h-full ">
         {shouldHaveContent && (
           <Component
             aria-label="Sidebar"
@@ -73,13 +72,9 @@ export const Sidebar: FC<SidebarProps> = ({
             {...props}
           >
             <div className={theme.root.inner}>
-              <motion.ul
-                layout
-                data-testid="ui-sidebar-item-group"
-                className={twMerge(theme.itemGroup, innerClassName)}
-              >
+              <ul data-testid="ui-sidebar-item-group" className={twMerge(theme.itemGroup, innerClassName)}>
                 <SidebarItemContext.Provider value={itemValue}>{children}</SidebarItemContext.Provider>
-              </motion.ul>
+              </ul>
               <div>
                 {footer}
                 {toggle && (
@@ -91,7 +86,7 @@ export const Sidebar: FC<SidebarProps> = ({
             </div>
           </Component>
         )}
-      </motion.div>
+      </div>
     </SidebarContext.Provider>
   )
 }
