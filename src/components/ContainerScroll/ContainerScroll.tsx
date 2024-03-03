@@ -104,8 +104,8 @@ export const ContainerScroll = ({
   const rotate = useTransform(scrollYProgress, animations(rotation).checkpoints, animations(rotation).rotations)
   const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions())
   const translate = useTransform(scrollYProgress, [0, 1], [0, -100])
+  const translateTitle = useTransform(scrollYProgress, [0, 1], [0, -300])
 
-  const titleStyles = { translateY: translate }
   return (
     <div className={cn(theme.base, className)} ref={containerRef}>
       <div
@@ -115,7 +115,12 @@ export const ContainerScroll = ({
         }}
       >
         {titleComponent && (
-          <motion.div style={titleStyles} className={cn(theme.header, headerClassName)}>
+          <motion.div
+            style={{
+              translateY: translateTitle,
+            }}
+            className={cn(theme.header, headerClassName)}
+          >
             {titleComponent}
           </motion.div>
         )}
