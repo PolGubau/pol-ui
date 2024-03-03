@@ -12,7 +12,7 @@ export default {
 const Template: StoryFn<ContainerScrollProps> = args => <ContainerScroll {...args} />
 
 const titleComponent = (
-  <h1 className="flex flex-col gap-4">
+  <h1 className="flex flex-col gap-2">
     <span className="text-6xl font-bold text-black dark:text-white">Pol-ui</span>
     <span className="text-2xl font-bold text-black dark:text-white">Empowering web development</span>
   </h1>
