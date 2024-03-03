@@ -1,8 +1,9 @@
 import { type Config } from 'tailwindcss'
+import { PoluiPlugin } from './src'
 
 const config: Config = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
-  plugins: [],
+  plugins: [PoluiPlugin],
   darkMode: 'class',
   theme: {
     extend: {
