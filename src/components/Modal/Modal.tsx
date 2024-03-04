@@ -28,9 +28,9 @@ export interface ModalPositions extends Positions {
 export interface ModalProps extends ComponentPropsWithoutRef<'div'> {
   onClose?: () => void
   position?: keyof ModalPositions
+  open?: boolean
   popup?: boolean
   root?: HTMLElement
-  show?: boolean
   size?: MainSizes
   dismissible?: boolean
   deleteButton?: boolean
@@ -47,8 +47,8 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
       dismissible = true,
       onClose,
       position = 'center',
+      open = false,
       root,
-      show,
       size = '2xl',
       theme: customTheme = {},
       initialFocus,
@@ -61,7 +61,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
     const theme = mergeDeep(getTheme().modal, customTheme)
 
     const { context } = useFloating({
-      open: show,
+      open,
       onOpenChange: () => onClose?.(),
     })
 
@@ -72,18 +72,18 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
     const role = useRole(context)
 
     const { getFloatingProps } = useInteractions([click, dismiss, role])
-    if (!show) {
+    if (!open) {
       return null
     }
 
     return (
       <AnimatePresence mode="wait">
-        {show && (
+        {open && (
           <FloatingPortal root={root}>
             <FloatingOverlay
               lockScroll={lockScroll}
               data-testid="modal-overlay"
-              className={twMerge(theme.base, theme.positions[position], show && theme.show, className)}
+              className={twMerge(theme.base, theme.positions[position], open && theme.show, className)}
               {...props}
             >
               <FloatingFocusManager context={context} initialFocus={initialFocus}>

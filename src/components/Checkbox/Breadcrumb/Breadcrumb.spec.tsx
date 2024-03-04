@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import type { FC } from 'react'
 import { HiHome } from 'react-icons/hi'
 import { describe, expect, it } from 'vitest'
-import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider'
+import { PoluiProvider, type CustomPoluiTheme } from '../../PoluiProvider'
 import { Breadcrumb } from './Breadcrumb'
 import { BreadcrumbItem } from './BreadcrumbItem'
 
