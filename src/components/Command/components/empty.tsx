@@ -1,5 +1,5 @@
+import type { ComponentProps } from 'react'
 import React from 'react'
-import type { Children, DivProps } from '../types'
 import { useCommandState } from '../Command'
 import { cn, mergeDeep } from '../../../helpers'
 import { getTheme } from '../../../theme-store'
@@ -8,10 +8,9 @@ import type { CommandTheme } from '../theme'
 /**
  * Automatically renders when there are no results for the search query.
  */
-export type EmptyProps = Children &
-  DivProps & {
-    theme?: Partial<CommandTheme>
-  }
+export interface EmptyProps extends ComponentProps<'div'> {
+  theme?: Partial<CommandTheme>
+}
 
 export const Empty = React.forwardRef<HTMLDivElement, EmptyProps>((props, forwardedRef) => {
   const { theme: customTheme = {} } = props
