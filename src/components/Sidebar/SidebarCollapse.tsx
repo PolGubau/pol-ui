@@ -57,7 +57,7 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
   const {
     theme: rootTheme,
     open: collapsed,
-    toggle: toogleCollapsed,
+    onOpenChange: toogleCollapsed,
     childsOpened,
     setChildsOpened,
   } = useSidebarContext()

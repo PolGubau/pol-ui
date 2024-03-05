@@ -56,7 +56,7 @@ const Template: StoryFn<SidebarProps> = args => {
   const { value, toggle } = useBoolean(false)
   return (
     <div className="bg-secondary-50">
-      <Sidebar {...args} open={value} toggle={toggle} />{' '}
+      <Sidebar {...args} open={value} onOpenChange={toggle} />{' '}
     </div>
   )
 }
@@ -105,7 +105,7 @@ export const HidingCollapse = () => {
 
   return (
     <div className="flex gap-4 items-start">
-      <Sidebar collapseMode="hide" open={value} toggle={toggle}>
+      <Sidebar collapseMode="hide" open={value} onOpenChange={toggle}>
         <SidebarItem href="#" icon={TbLayout}>
           Dashboard
         </SidebarItem>
@@ -274,7 +274,7 @@ export const CompleteExample = () => {
       <section className="flex h-full gap-4">
         <Sidebar
           open={value}
-          toggle={toggle}
+          onOpenChange={toggle}
           className="rounded-tr-xl flex flex-col justify-between h-full"
           footer={
             <div className="flex justify-start gap-3 h-10 my-2">
@@ -341,7 +341,7 @@ export const WithSearch = () => {
       />
       <section className="flex h-full">
         <div className="bg-secondary-50 w-fit shadow-lg">
-          <Sidebar open={value} toggle={toggle}>
+          <Sidebar open={value} onOpenChange={toggle}>
             <div>
               <Input
                 leftComponent={<TbSearch />}
@@ -407,7 +407,7 @@ export const DarkMode = () => {
       />
       <section className="flex h-full">
         <div className="  w-fit  shadow-lg">
-          <Sidebar open={value} toggle={toggle}>
+          <Sidebar open={value} onOpenChange={toggle}>
             <SidebarItem href="#" icon={TbDatabaseSearch} active>
               Home
             </SidebarItem>

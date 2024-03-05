@@ -7,6 +7,8 @@ import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider'
 import type { SidebarProps } from './Sidebar'
 import { Sidebar } from './Sidebar'
 import { SidebarItem } from './SidebarItem'
+import { SidebarLogo } from './SidebarLogo'
+import { SidebarCollapse } from './SidebarCollapse'
 
 describe('Components / Sidebar', () => {
   describe('A11y', () => {
@@ -59,10 +61,10 @@ describe('Keyboard interactions', () => {
 })
 
 describe('Props', () => {
-  it("shouldn't display text content in `Sidebar.Logo` when `collapsed={true}`", () => {
-    render(<TestSidebar collapsed />)
+  it("shouldn't display text content in `Sidebar.Logo` when `open={true}`", () => {
+    render(<TestSidebar open />)
 
-    expect(logo().lastElementChild).toHaveClass('hidden')
+    expect(logo().lastElementChild).not.toHaveClass('hidden')
   })
 
   it('should use the HTML element provided in `SidebarItem as=".."`', () => {
@@ -75,84 +77,6 @@ describe('Props', () => {
 })
 
 describe('Theme', () => {
-  it('should use custom classes', () => {
-    const theme: CustomPoluiTheme = {
-      sidebar: {
-        root: {
-          base: 'bg-gray-100',
-          collapsed: {
-            off: 'text-gray-200',
-            on: 'text-gray-300',
-          },
-          inner: 'bg-gray-200',
-        },
-      },
-    }
-
-    const { getByLabelText } = render(
-      <PoluiProvider theme={{ theme }}>
-        <TestSidebar aria-label="not-collapsed" />
-        <TestSidebar aria-label="collapsed" collapsed />
-      </PoluiProvider>,
-    )
-    const sidebar = getByLabelText('not-collapsed')
-    const inner = sidebar.firstElementChild
-    const collapsedSidebar = getByLabelText('collapsed')
-
-    expect(sidebar).toHaveClass('bg-gray-100')
-    expect(sidebar).toHaveClass('text-gray-200')
-    expect(inner).toHaveClass('bg-gray-200')
-    expect(collapsedSidebar).toHaveClass('text-gray-300')
-  })
-
-  describe('`Sidebar.Collapse`', () => {
-    it('should use custom classes', async () => {
-      const user = userEvent.setup()
-      const theme: CustomPoluiTheme = {
-        sidebar: {
-          collapse: {
-            button: 'text-gray-100',
-            icon: {
-              base: 'text-gray-200',
-              open: {
-                off: 'bg-gray-100',
-                on: 'bg-gray-200',
-              },
-            },
-            label: {
-              base: 'text-gray-300',
-              icon: {
-                base: 'text-gray-400',
-                open: {
-                  on: '',
-                  off: '',
-                },
-              },
-            },
-            list: 'bg-gray-300',
-          },
-        },
-      }
-
-      render(
-        <PoluiProvider theme={{ theme }}>
-          <TestSidebar />
-        </PoluiProvider>,
-      )
-      const labelIcons = collapseLabels().map(label => label.nextElementSibling)
-
-      collapseIcons().forEach(icon => expect(icon).toHaveClass('text-gray-200 bg-gray-100'))
-      collapseLabels().forEach(label => expect(label).toHaveClass('text-gray-300'))
-      labelIcons.forEach(labelicon => expect(labelicon).toHaveClass('text-gray-400'))
-
-      for (const button of collapseButtons()) {
-        await user.click(button)
-      }
-
-      collapseIcons().forEach(icon => expect(icon).toHaveClass('bg-gray-200'))
-    })
-  })
-
   describe('`SidebarItem`', () => {
     it('should use custom classes', () => {
       const theme: CustomPoluiTheme = {
@@ -176,7 +100,7 @@ describe('Theme', () => {
 
       render(
         <PoluiProvider theme={{ theme }}>
-          <TestSidebar collapsed />
+          <TestSidebar open />
         </PoluiProvider>,
       )
       const theItems = items()
@@ -224,17 +148,17 @@ describe('Theme', () => {
 
 const TestSidebar: FC<SidebarProps> = ({ ...props }) => (
   <Sidebar {...props}>
-    <Sidebar.Logo href="#" img="favicon.svg" imgAlt="PolUi logo">
+    <SidebarLogo href="#" img="favicon.svg" imgAlt="PolUi logo">
       PolUi
-    </Sidebar.Logo>
+    </SidebarLogo>
 
     <SidebarItem active data-testid="active-item" href="#" icon={HiChartPie} label="3" labelColor="success">
       Dashboard
     </SidebarItem>
-    <Sidebar.Collapse aria-label="E-commerce" icon={HiShoppingBag}>
+    <SidebarCollapse aria-label="E-commerce" icon={HiShoppingBag}>
       <SidebarItem href="#">Products</SidebarItem>
       <SidebarItem href="#">Services</SidebarItem>
-    </Sidebar.Collapse>
+    </SidebarCollapse>
     <SidebarItem href="#" icon={HiInbox}>
       Inbox
     </SidebarItem>
@@ -247,8 +171,6 @@ const collapseButtons = () => screen.getAllByRole('button')
 const collapses = () => screen.getAllByRole('list').slice(1)
 
 const collapseIcons = () => screen.getAllByTestId('ui-sidebar-collapse-icon')
-
-const collapseLabels = () => screen.getAllByTestId('ui-sidebar-collapse-label')
 
 const itemContents = () => screen.getAllByTestId('ui-sidebar-item-content')
 

@@ -123,7 +123,13 @@ const TestModal = ({
   return (
     <>
       <Button onClick={() => setOpen(true)}>Toggle modal</Button>
-      <Modal dismissible={dismissible} root={root} show={open} onClose={() => setOpen(false)} initialFocus={inputRef}>
+      <Modal
+        dismissible={dismissible}
+        root={root}
+        open={open}
+        onOpenChange={() => setOpen(false)}
+        initialFocus={inputRef}
+      >
         <div className="space-y-6">
           <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
             With less than a month to go before the European Union enacts new consumer privacy laws for its citizens,

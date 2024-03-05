@@ -15,7 +15,7 @@ export interface SidebarProps extends ComponentProps<'div'> {
   collapseMode?: 'collapse' | 'hide'
   theme?: DeepPartial<SidebarTheme>
   open?: boolean
-  toggle?: () => void
+  onOpenChange?: () => void
   customBgColor?: string
   innerClassName?: string
   footer?: React.ReactNode
@@ -28,7 +28,7 @@ export const Sidebar: FC<SidebarProps> = ({
   collapseMode = 'collapse',
   theme: customTheme = {},
   open = true,
-  toggle,
+  onOpenChange,
   customBgColor,
   className,
   innerClassName,
@@ -41,14 +41,14 @@ export const Sidebar: FC<SidebarProps> = ({
   const value = useMemo(
     () => ({
       theme,
-      toggle,
+      toggle: onOpenChange,
       hasMotion,
       open,
       color: customBgColor,
       childsOpened,
       setChildsOpened,
     }),
-    [theme, toggle, hasMotion, open, customBgColor, childsOpened],
+    [theme, onOpenChange, hasMotion, open, customBgColor, childsOpened],
   )
 
   const itemValue = useMemo(() => ({ isInsideCollapse: false }), [])
@@ -57,7 +57,7 @@ export const Sidebar: FC<SidebarProps> = ({
 
   const handleToggle = () => {
     setChildsOpened([])
-    toggle?.()
+    onOpenChange?.()
   }
 
   return (
@@ -77,7 +77,7 @@ export const Sidebar: FC<SidebarProps> = ({
               </ul>
               <div>
                 {footer}
-                {toggle && (
+                {onOpenChange && (
                   <div className={twMerge(theme.closeButton.base, theme.closeButton[open ? 'collapsed' : 'expanded'])}>
                     <IconButton onClick={handleToggle}>{open ? <TbChevronsRight /> : <TbChevronsLeft />}</IconButton>
                   </div>
