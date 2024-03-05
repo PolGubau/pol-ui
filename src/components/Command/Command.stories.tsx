@@ -1,20 +1,13 @@
 import type { Meta } from '@storybook/react'
 
-import { Command } from './completeCommand'
+import { Command } from './Command'
 import { useBoolean } from '../../hooks'
 import { Button } from '../Button'
-import {
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-} from './styledCommand'
 import { useEffect } from 'react'
+import { Modal } from '../Modal'
+import { Toaster, toast } from '../Toaster'
+import { TbUser } from 'react-icons/tb'
 import { Kbd } from '../Kbd'
-import { Input } from '../Input'
 
 export default {
   title: 'Components/Command',
@@ -24,6 +17,7 @@ export default {
     Story => (
       <div className="flex p-6 flex-col justify-center items-center">
         <Story />
+        <Toaster />
       </div>
     ),
   ],
@@ -53,33 +47,107 @@ export const CommandMenu = () => {
           <span className="text-xs">⌘</span>J
         </kbd>
       </p>
-      <CommandDialog open={value} onOpenChange={toggle}>
-        <CommandInput placeholder="Type a command or search..." />
-        <Input />
-        <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Suggestions">
-            <CommandItem>Calendar</CommandItem>
-            <CommandItem>Search Emoji</CommandItem>
-            <CommandItem>Calculator</CommandItem>
-          </CommandGroup>
-          <CommandSeparator />
-          <CommandGroup
-            heading={
-              <span>
-                <span>Settings</span>
-                <Kbd>ctrl 2</Kbd>
-              </span>
-            }
-          >
-            <CommandItem>Profile</CommandItem>
-            <CommandItem>Billing</CommandItem>
-            <CommandItem>Settings</CommandItem>
-          </CommandGroup>
-        </CommandList>
-      </CommandDialog>
-      Content of the website
+
+      <Modal open={value} onOpenChange={toggle} contentClassName="p-0   bg-secondary-100 shadow-lg ">
+        <Command>
+          <Command.Input placeholder="Type a command or search..." />
+          <Command.List>
+            <Command.Empty>No results found.</Command.Empty>
+            <Command.Group heading="Suggestions">
+              <Command.Item onSelect={() => toast({ title: 'Calendar' })}>Calendar</Command.Item>
+              <Command.Item onSelect={() => toast({ title: 'Emoji' })}>Search Emoji</Command.Item>
+              <Command.Item onSelect={() => toast({ title: 'calculator' })}>Calculator</Command.Item>
+            </Command.Group>
+            <Command.Separator />
+            <Command.Group heading="Settings">
+              <Command.Item
+                value="profile"
+                onSelect={() => toast({ title: 'Profile' })}
+                className="flex gap-2 items-center"
+              >
+                <TbUser />
+                Profile
+              </Command.Item>
+              <Command.Item onSelect={() => toast({ title: 'Billing' })}>Billing</Command.Item>
+              <Command.Item onSelect={() => toast({ title: 'Settings' })}>Settings</Command.Item>
+            </Command.Group>
+          </Command.List>
+        </Command>
+      </Modal>
       <Button onClick={toggle}>Open Command</Button>
     </>
+  )
+}
+export const InlineCommand = () => {
+  return (
+    <Command label="Command Menu" className="bg-white rounded-xl p-2 shadow-xl flex justify-center max-w-[500px]">
+      <Command.Input />
+      <Command.List>
+        <Command.Empty>No results found.</Command.Empty>
+
+        <Command.Group heading="Letters">
+          <Command.Item>a</Command.Item>
+          <Command.Item>b</Command.Item>
+          <Command.Separator />
+          <Command.Item>c</Command.Item>
+        </Command.Group>
+
+        <Command.Item>Apple</Command.Item>
+      </Command.List>
+    </Command>
+  )
+}
+
+export const DarkMode = () => {
+  const { value, toggle } = useBoolean(false)
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === 'j' && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault()
+        toggle()
+      }
+    }
+
+    document.addEventListener('keydown', down)
+    return () => document.removeEventListener('keydown', down)
+  }, [])
+  return (
+    <section className="dark bg-secondary-900 w-full min-h-[400px] gap-4 flex flex-col justify-center items-center text-white">
+      <p className="text-sm">
+        Press <Kbd>⌘J</Kbd>
+      </p>
+
+      <Modal
+        open={value}
+        onOpenChange={toggle}
+        contentClassName="p-0 dark bg-secondary-800 border border-secondary-800 shadow-lg "
+      >
+        <Command>
+          <Command.Input placeholder="Type a command or search..." />
+          <Command.List>
+            <Command.Empty>No results found.</Command.Empty>
+            <Command.Group heading="Suggestions">
+              <Command.Item onSelect={() => toast({ title: 'Calendar' })}>Calendar</Command.Item>
+              <Command.Item onSelect={() => toast({ title: 'Emoji' })}>Search Emoji</Command.Item>
+              <Command.Item onSelect={() => toast({ title: 'calculator' })}>Calculator</Command.Item>
+            </Command.Group>
+            <Command.Separator />
+            <Command.Group heading="Settings">
+              <Command.Item
+                value="profile"
+                onSelect={() => toast({ title: 'Profile' })}
+                className="flex gap-2 items-center"
+              >
+                <TbUser />
+                Profile
+              </Command.Item>
+              <Command.Item onSelect={() => toast({ title: 'Billing' })}>Billing</Command.Item>
+              <Command.Item onSelect={() => toast({ title: 'Settings' })}>Settings</Command.Item>
+            </Command.Group>
+          </Command.List>
+        </Command>
+      </Modal>
+      <Button onClick={toggle}>Open Command</Button>
+    </section>
   )
 }

@@ -59,6 +59,7 @@ import { toggleTheme } from './components/Toggle/theme'
 import { hamburguerTheme } from './components/Hamburguer/theme'
 import { navigationMenuTheme } from './components/NavigationMenu/theme'
 import { chipTheme } from './components/Chip/theme'
+import { commandTheme } from './components/Command/theme'
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,
@@ -120,4 +121,5 @@ export const theme: PoluiTheme = {
   navigationMenu: navigationMenuTheme,
   chip: chipTheme,
   dropzone: dropzoneTheme,
+  command: commandTheme,
 }
