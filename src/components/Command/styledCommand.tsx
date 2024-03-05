@@ -7,7 +7,6 @@ import { TbSearch } from 'react-icons/tb'
 import { cn } from '../../helpers'
 import type { ModalProps } from '../Modal'
 import { Modal } from '../Modal'
-import { Input } from '../Input'
 
 const Command = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,

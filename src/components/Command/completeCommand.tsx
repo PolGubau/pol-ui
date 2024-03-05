@@ -4,6 +4,8 @@ import * as RadixDialog from '@radix-ui/react-dialog'
 import * as React from 'react'
 import { Primitive } from '@radix-ui/react-primitive'
 import { commandScore } from './completeScore'
+import { mergeRefs } from '../../helpers/mergeRefs/mergeRefs'
+import { useValue } from './use-value'
 
 type Children = { children?: React.ReactNode }
 type DivProps = React.ComponentPropsWithoutRef<typeof Primitive.div>
@@ -147,24 +149,27 @@ type Group = {
   forceMount?: boolean
 }
 
-const GROUP_SELECTOR = `[data-cmdk-group=""]`
-const GROUP_ITEMS_SELECTOR = `[data-cmdk-group-items=""]`
-const GROUP_HEADING_SELECTOR = `[data-cmdk-group-heading=""]`
-const ITEM_SELECTOR = `[data-cmdk-item=""]`
-const VALID_ITEM_SELECTOR = `${ITEM_SELECTOR}:not([aria-disabled="true"])`
-const SELECT_EVENT = `data-cmdk-item-select`
-const VALUE_ATTR = `data-value`
+export const SELECTORS = {
+  GROUP_SELECTOR: `[data-cmdk-group=""]`,
+  GROUP_ITEMS_SELECTOR: `[data-cmdk-group-items=""]`,
+  GROUP_HEADING_SELECTOR: `[data-cmdk-group-heading=""]`,
+  ITEM_SELECTOR: `[data-cmdk-item=""]`,
+  VALID_ITEM_SELECTOR: `[data-cmdk-item=""]:not([aria-disabled="true"])`,
+  SELECT_EVENT: `data-cmdk-item-select`,
+  VALUE_ATTR: `data-value`,
+}
+
 const defaultFilter: CommandProps['filter'] = (value, search, keywords) => commandScore(value, search, keywords ?? [])
 // @ts-expect-error sync external store
 
-const CommandContext = React.createContext<Context>(undefined)
-const useCommand = () => React.useContext(CommandContext)
+export const CommandContext = React.createContext<Context>(undefined)
+export const useCommand = () => React.useContext(CommandContext)
 // @ts-expect-error sync external store
 
-const StoreContext = React.createContext<Store>(undefined)
-const useStore = () => React.useContext(StoreContext)
+export const StoreContext = React.createContext<Store>(undefined)
+export const useStore = () => React.useContext(StoreContext)
 // @ts-expect-error sync external store
-const GroupContext = React.createContext<Group>(undefined)
+export const GroupContext = React.createContext<Group>(undefined)
 
 const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwardedRef) => {
   const state = useLazyRef<State>(() => ({
@@ -380,7 +385,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwarded
         return (scores.get(valueB) ?? 0) - (scores.get(valueA) ?? 0)
       })
       .forEach(item => {
-        const group = item.closest(GROUP_ITEMS_SELECTOR)
+        const group = item.closest(SELECTORS.GROUP_ITEMS_SELECTOR)
 
         if (!group) {
           listInsertionElement?.appendChild(item)
@@ -389,7 +394,9 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwarded
         if (group) {
           // Append to the group
           group.appendChild(
-            item.parentElement === group ? item : (item.closest(`${GROUP_ITEMS_SELECTOR} > *`) as HTMLElement),
+            item.parentElement === group
+              ? item
+              : (item.closest(`${SELECTORS.GROUP_ITEMS_SELECTOR} > *`) as HTMLElement),
           )
         } else {
           if (!listInsertionElement) {
@@ -399,7 +406,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwarded
           listInsertionElement.appendChild(
             item.parentElement === listInsertionElement
               ? item
-              : (item.closest(`${GROUP_ITEMS_SELECTOR} > *`) as HTMLElement),
+              : (item.closest(`${SELECTORS.GROUP_ITEMS_SELECTOR} > *`) as HTMLElement),
           )
         }
       })
@@ -407,14 +414,16 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwarded
     groups
       .sort((a, b) => b[1] - a[1])
       .forEach(group => {
-        const element = listInnerRef.current?.querySelector(`${GROUP_SELECTOR}[${VALUE_ATTR}="${group[0]}"]`)
+        const element = listInnerRef.current?.querySelector(
+          `${SELECTORS.GROUP_SELECTOR}[${SELECTORS.VALUE_ATTR}="${group[0]}"]`,
+        )
         element?.parentElement?.appendChild(element)
       })
   }
 
   function selectFirstItem() {
     const item = getValidItems().find(item => item.getAttribute('aria-disabled') !== 'true')
-    const value = item?.getAttribute(VALUE_ATTR)
+    const value = item?.getAttribute(SELECTORS.VALUE_ATTR)
     store.setState('value', value ?? '')
   }
 
@@ -462,7 +471,10 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwarded
     if (item) {
       if (item.parentElement?.firstChild === item) {
         // First item in Group, ensure heading is in view
-        item.closest(GROUP_SELECTOR)?.querySelector(GROUP_HEADING_SELECTOR)?.scrollIntoView({ block: 'nearest' })
+        item
+          .closest(SELECTORS.GROUP_SELECTOR)
+          ?.querySelector(SELECTORS.GROUP_HEADING_SELECTOR)
+          ?.scrollIntoView({ block: 'nearest' })
       }
 
       // Ensure the item is always in view
@@ -473,11 +485,11 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwarded
   /** Getters */
 
   function getSelectedItem() {
-    return listInnerRef.current?.querySelector(`${ITEM_SELECTOR}[aria-selected="true"]`)
+    return listInnerRef.current?.querySelector(`${SELECTORS.ITEM_SELECTOR}[aria-selected="true"]`)
   }
 
   function getValidItems() {
-    return Array.from(listInnerRef.current?.querySelectorAll(VALID_ITEM_SELECTOR) ?? [])
+    return Array.from(listInnerRef.current?.querySelectorAll(SELECTORS.VALID_ITEM_SELECTOR) ?? [])
   }
 
   /** Setters */
@@ -485,7 +497,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwarded
   function updateSelectedToIndex(index: number) {
     const items = getValidItems()
     const item = items[index]
-    if (item) store.setState('value', item.getAttribute(VALUE_ATTR) ?? '')
+    if (item) store.setState('value', item.getAttribute(SELECTORS.VALUE_ATTR) ?? '')
   }
 
   function updateSelectedByItem(change: 1 | -1) {
@@ -505,21 +517,24 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwarded
             : items[index + change]
     }
 
-    if (newSelected) store.setState('value', newSelected.getAttribute(VALUE_ATTR) ?? '')
+    if (newSelected) store.setState('value', newSelected.getAttribute(SELECTORS.VALUE_ATTR) ?? '')
   }
 
   function updateSelectedByGroup(change: 1 | -1) {
     const selected = getSelectedItem()
-    let group = selected?.closest(GROUP_SELECTOR)
+    let group = selected?.closest(SELECTORS.GROUP_SELECTOR)
     let item: HTMLElement | undefined = undefined
 
     while (group && !item) {
-      group = change > 0 ? findNextSibling(group, GROUP_SELECTOR) : findPreviousSibling(group, GROUP_SELECTOR)
-      item = group?.querySelector(VALID_ITEM_SELECTOR) ?? undefined
+      group =
+        change > 0
+          ? findNextSibling(group, SELECTORS.GROUP_SELECTOR)
+          : findPreviousSibling(group, SELECTORS.GROUP_SELECTOR)
+      item = group?.querySelector(SELECTORS.VALID_ITEM_SELECTOR) ?? undefined
     }
 
     if (item) {
-      store.setState('value', item.getAttribute(VALUE_ATTR) ?? '')
+      store.setState('value', item.getAttribute(SELECTORS.VALUE_ATTR) ?? '')
     } else {
       updateSelectedByItem(change)
     }
@@ -614,7 +629,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwarded
                 e.preventDefault()
                 const item = getSelectedItem()
                 if (item) {
-                  const event = new Event(SELECT_EVENT)
+                  const event = new Event(SELECTORS.SELECT_EVENT)
                   item.dispatchEvent(event)
                 }
               }
@@ -647,7 +662,7 @@ Command.displayName = 'Command'
  * Preferably pass a `value`, otherwise the value will be inferred from `children` or
  * the rendered item's `textContent`.
  */
-const Item = React.forwardRef<HTMLDivElement, ItemProps>((props, forwardedRef) => {
+export const Item = React.forwardRef<HTMLDivElement, ItemProps>((props, forwardedRef) => {
   const id = React.useId()
   const ref = React.useRef<HTMLDivElement>(null)
   const groupContext = React.useContext(GroupContext)
@@ -678,8 +693,8 @@ const Item = React.forwardRef<HTMLDivElement, ItemProps>((props, forwardedRef) =
   React.useEffect(() => {
     const element = ref.current
     if (!element || props.disabled) return
-    element.addEventListener(SELECT_EVENT, onSelectValue)
-    return () => element.removeEventListener(SELECT_EVENT, onSelectValue)
+    element.addEventListener(SELECTORS.SELECT_EVENT, onSelectValue)
+    return () => element.removeEventListener(SELECTORS.SELECT_EVENT, onSelectValue)
   }, [render, props.onSelect, props.disabled])
 
   function onSelectValue() {
@@ -720,7 +735,7 @@ Item.displayName = 'Item'
  * Group command menu items together with a heading.
  * Grouped items are always shown together.
  */
-const Group = React.forwardRef<HTMLDivElement, GroupProps>((props, forwardedRef) => {
+export const Group = React.forwardRef<HTMLDivElement, GroupProps>((props, forwardedRef) => {
   const { heading, forceMount, ...etc } = props
   const id = React.useId()
   const ref = React.useRef<HTMLDivElement>(null)
@@ -766,7 +781,7 @@ Group.displayName = 'Group'
  * A visual and semantic separator between items or groups.
  * Visible when the search query is empty or `alwaysRender` is true, hidden otherwise.
  */
-const Separator = React.forwardRef<HTMLDivElement, SeparatorProps>((props, forwardedRef) => {
+export const Separator = React.forwardRef<HTMLDivElement, SeparatorProps>((props, forwardedRef) => {
   const { alwaysRender, ...etc } = props
   const ref = React.useRef<HTMLDivElement>(null)
   const render = useCmdk(state => !state.search)
@@ -780,7 +795,7 @@ Separator.displayName = 'Separator'
  * Command menu input.
  * All props are forwarded to the underyling `input` element.
  */
-const Input = React.forwardRef<HTMLInputElement, InputProps>((props, forwardedRef) => {
+export const Input = React.forwardRef<HTMLInputElement, InputProps>((props, forwardedRef) => {
   const { onValueChange, ...etc } = props
   const isControlled = props.value != null
   const store = useStore()
@@ -790,7 +805,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, forwardedRe
 
   const selectedItemId = React.useMemo(() => {
     const item = context.listInnerRef.current?.querySelector(
-      `${ITEM_SELECTOR}[${VALUE_ATTR}="${encodeURIComponent(value)}"]`,
+      `${SELECTORS.ITEM_SELECTOR}[${SELECTORS.VALUE_ATTR}="${encodeURIComponent(value)}"]`,
     )
     return item?.getAttribute('id')
   }, [])
@@ -834,7 +849,7 @@ Input.displayName = 'Input'
  * Contains `Item`, `Group`, and `Separator`.
  * Use the `--cmdk-list-height` CSS variable to animate height based on the number of results.
  */
-const List = React.forwardRef<HTMLDivElement, ListProps>((props, forwardedRef) => {
+export const List = React.forwardRef<HTMLDivElement, ListProps>((props, forwardedRef) => {
   const { label = 'Suggestions', ...etc } = props
   const ref = React.useRef<HTMLDivElement>(null)
   const height = React.useRef<HTMLDivElement>(null)
@@ -881,7 +896,7 @@ List.displayName = 'List'
 /**
  * Renders the command menu in a Radix Dialog.
  */
-const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, forwardedRef) => {
+export const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, forwardedRef) => {
   const { open, onOpenChange, overlayClassName, contentClassName, container, ...etc } = props
   return (
     <RadixDialog.Root open={open} onOpenChange={onOpenChange}>
@@ -899,7 +914,7 @@ Dialog.displayName = 'Dialog'
 /**
  * Automatically renders when there are no results for the search query.
  */
-const Empty = React.forwardRef<HTMLDivElement, EmptyProps>((props, forwardedRef) => {
+export const Empty = React.forwardRef<HTMLDivElement, EmptyProps>((props, forwardedRef) => {
   const render = useCmdk(state => state.filtered.count === 0)
 
   if (!render) return null
@@ -910,7 +925,7 @@ Empty.displayName = 'Empty'
 /**
  * You should conditionally render this with `progress` while loading asynchronous items.
  */
-const Loading = React.forwardRef<HTMLDivElement, LoadingProps>((props, forwardedRef) => {
+export const Loading = React.forwardRef<HTMLDivElement, LoadingProps>((props, forwardedRef) => {
   const { progress, label = 'Loading...', ...etc } = props
 
   return (
@@ -945,12 +960,10 @@ const pkg = Object.assign(Command, {
 
 export { useCmdk as useCommandState }
 export { pkg as Command }
-
 export { Command as CommandRoot }
 export { List as CommandList }
 export { Item as CommandItem }
 export { Input as CommandInput }
-export { Group as CommandGroup }
 export { Separator as CommandSeparator }
 export { Dialog as CommandDialog }
 export { Empty as CommandEmpty }
@@ -1004,54 +1017,11 @@ function useLazyRef<T>(fn: () => T) {
   return ref as React.MutableRefObject<T>
 }
 
-// ESM is still a nightmare with Next.js so I'm just gonna copy the package code in
-// https://github.com/gregberge/react-merge-refs
-// Copyright (c) 2020 Greg Bergé
-function mergeRefs<T = any>(refs: Array<React.MutableRefObject<T> | React.LegacyRef<T>>): React.RefCallback<T> {
-  return value => {
-    refs.forEach(ref => {
-      if (typeof ref === 'function') {
-        ref(value)
-      } else if (ref != null) {
-        return ((ref as React.MutableRefObject<T | null>).current = value)
-      }
-    })
-  }
-}
-
 /** Run a selector against the store state. */
 function useCmdk<T = any>(selector: (state: State) => T) {
   const store = useStore()
   const cb = () => selector(store.snapshot())
   return React.useSyncExternalStore(store.subscribe, cb, cb)
-}
-
-function useValue(
-  id: string,
-  ref: React.RefObject<HTMLElement>,
-  deps: (string | React.ReactNode | React.RefObject<HTMLElement>)[],
-  aliases: string[] = [],
-) {
-  const valueRef = React.useRef<string>()
-  const context = useCommand()
-
-  useLayoutEffect(() => {
-    const value = (() => {
-      for (const part of deps ?? []) {
-        if (typeof part === 'string') {
-          return part.trim()
-        }
-      }
-    })()
-
-    const keywords = aliases.map(alias => alias.trim())
-
-    context.value(id, value ?? '', keywords)
-    ref.current?.setAttribute(VALUE_ATTR, value ?? '')
-    valueRef.current = value
-  })
-
-  return valueRef
 }
 
 /** Imperatively run a function on the next layout effect cycle. */
