@@ -17,6 +17,9 @@ export interface CommandTheme {
     icon: string
     input: string
   }
+  separator: {
+    base: string
+  }
 }
 
 export const commandTheme: CommandTheme = {
@@ -38,5 +41,8 @@ export const commandTheme: CommandTheme = {
     icon: 'mr-2 h-4 w-4 shrink-0 opacity-50',
     input:
       'flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-secondary-600  placeholder:dark:text-secondary-700 disabled:cursor-not-allowed disabled:opacity-50',
+  },
+  separator: {
+    base: 'h-px dark:bg-secondary-800 bg-secondary-200',
   },
 }

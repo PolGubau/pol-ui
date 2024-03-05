@@ -13,7 +13,7 @@ export const Separator = React.forwardRef<HTMLDivElement, SeparatorProps>((props
   const { alwaysRender, theme: customTheme = {}, ...etc } = props
   const ref = React.useRef<HTMLDivElement>(null)
   const render = useCmdk(state => !state.search)
-  const theme = mergeDeep(getTheme().divider, customTheme)
+  const theme = mergeDeep(getTheme().command, customTheme)
 
   if (!alwaysRender && !render) return null
   return (
@@ -22,7 +22,7 @@ export const Separator = React.forwardRef<HTMLDivElement, SeparatorProps>((props
       {...etc}
       data-command-separator=""
       role="separator"
-      className={cn('h-px dark:bg-secondary-800 bg-secondary-200', props.className)}
+      className={cn(theme.separator.base, props.className)}
     />
   )
 })
