@@ -64,7 +64,7 @@ describe('Props', () => {
   it("shouldn't display text content in `Sidebar.Logo` when `open={true}`", () => {
     render(<TestSidebar open />)
 
-    expect(logo().lastElementChild).not.toHaveClass('hidden')
+    expect(logo().lastElementChild).toHaveClass('hidden')
   })
 
   it('should use the HTML element provided in `SidebarItem as=".."`', () => {

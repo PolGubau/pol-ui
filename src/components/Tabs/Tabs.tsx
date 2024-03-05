@@ -27,7 +27,7 @@ export interface TabsProps {
   contentClassName?: string
   hasMotion?: boolean
   hasNavMotion?: boolean
-  mode: TabModeType
+  mode?: TabModeType
   theme?: Partial<TabsTheme>
 }
 
