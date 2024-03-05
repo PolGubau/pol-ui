@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as RadixDialog from '@radix-ui/react-dialog'
 import * as React from 'react'
-import { commandScore } from './command-score'
 import { Primitive } from '@radix-ui/react-primitive'
+import { commandScore } from './completeScore'
 
 type Children = { children?: React.ReactNode }
 type DivProps = React.ComponentPropsWithoutRef<typeof Primitive.div>
@@ -147,12 +147,12 @@ type Group = {
   forceMount?: boolean
 }
 
-const GROUP_SELECTOR = `[cmdk-group=""]`
-const GROUP_ITEMS_SELECTOR = `[cmdk-group-items=""]`
-const GROUP_HEADING_SELECTOR = `[cmdk-group-heading=""]`
-const ITEM_SELECTOR = `[cmdk-item=""]`
+const GROUP_SELECTOR = `[data-cmdk-group=""]`
+const GROUP_ITEMS_SELECTOR = `[data-cmdk-group-items=""]`
+const GROUP_HEADING_SELECTOR = `[data-cmdk-group-heading=""]`
+const ITEM_SELECTOR = `[data-cmdk-item=""]`
 const VALID_ITEM_SELECTOR = `${ITEM_SELECTOR}:not([aria-disabled="true"])`
-const SELECT_EVENT = `cmdk-item-select`
+const SELECT_EVENT = `data-cmdk-item-select`
 const VALUE_ATTR = `data-value`
 const defaultFilter: CommandProps['filter'] = (value, search, keywords) => commandScore(value, search, keywords ?? [])
 // @ts-expect-error sync external store
@@ -272,7 +272,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwarded
           if (!allGroups.current.has(groupId)) {
             allGroups.current.set(groupId, new Set([id]))
           } else {
-            allGroups.current.get(groupId).add(id)
+            allGroups.current.get(groupId)?.add(id)
           }
         }
 
@@ -446,7 +446,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwarded
     // Check which groups have at least 1 item shown
     for (const [groupId, group] of allGroups.current) {
       for (const itemId of group) {
-        if (state.current.filtered.items.get(itemId ?? '') > 0) {
+        if (state.current.filtered.items.get(itemId) ?? 0 > 0) {
           state.current.filtered.groups.add(groupId)
           break
         }
@@ -505,7 +505,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwarded
             : items[index + change]
     }
 
-    if (newSelected) store.setState('value', newSelected.getAttribute(VALUE_ATTR))
+    if (newSelected) store.setState('value', newSelected.getAttribute(VALUE_ATTR) ?? '')
   }
 
   function updateSelectedByGroup(change: 1 | -1) {
@@ -624,7 +624,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwarded
       }}
     >
       <label
-        cmdk-label=""
+        data-cmdk-label=""
         htmlFor={context.inputId}
         id={context.labelId}
         // Screen reader only
@@ -653,55 +653,62 @@ const Item = React.forwardRef<HTMLDivElement, ItemProps>((props, forwardedRef) =
   const groupContext = React.useContext(GroupContext)
   const context = useCommand()
   const propsRef = useAsRef(props)
-  const forceMount = propsRef.current?.forceMount ?? groupContext?.forceMount
+  const forceMountBool = propsRef.current?.forceMount ?? groupContext?.forceMount ?? false
 
   useLayoutEffect(() => {
-    if (!forceMount) {
+    if (!forceMountBool) {
       return context.item(id, groupContext?.id)
     }
-  }, [forceMount])
+  }, [forceMountBool])
 
-  const value = useValue(id, ref, [props.value, props.children, ref], props.keywords)
+  const valueFromHook = useValue(id, ref, [props.value, props.children, ref], props.keywords)
 
   const store = useStore()
-  const selected = useCmdk(state => state.value && state.value === value.current)
+  const selected = useCmdk(state => state.value && state.value === valueFromHook.current)
   const render = useCmdk(state =>
-    forceMount ? true : context.filter() === false ? true : !state.search ? true : state.filtered.items.get(id) > 0,
+    forceMountBool
+      ? true
+      : context.filter() === false
+        ? true
+        : !state.search
+          ? true
+          : state.filtered.items.get(id) ?? 0 > 0,
   )
 
   React.useEffect(() => {
     const element = ref.current
     if (!element || props.disabled) return
-    element.addEventListener(SELECT_EVENT, onSelect)
-    return () => element.removeEventListener(SELECT_EVENT, onSelect)
+    element.addEventListener(SELECT_EVENT, onSelectValue)
+    return () => element.removeEventListener(SELECT_EVENT, onSelectValue)
   }, [render, props.onSelect, props.disabled])
 
-  function onSelect() {
+  function onSelectValue() {
     select()
-    propsRef.current.onSelect?.(value.current)
+    propsRef.current.onSelect?.(valueFromHook.current ?? '')
   }
 
   function select() {
-    store.setState('value', value.current, true)
+    store.setState('value', valueFromHook.current ?? '', true)
   }
 
   if (!render) return null
 
-  const { disabled, value: _, onSelect: __, forceMount: ___, keywords: ____, ...etc } = props
+  const { disabled, ...etc } = props
 
   return (
     <Primitive.div
       ref={mergeRefs([ref, forwardedRef])}
       {...etc}
       id={id}
-      cmdk-item=""
+      data-cmdk-item=""
       role="option"
       aria-disabled={Boolean(disabled)}
       aria-selected={Boolean(selected)}
       data-disabled={Boolean(disabled)}
       data-selected={Boolean(selected)}
       onPointerMove={disabled || context.disablePointerSelection ? undefined : select}
-      onClick={disabled ? undefined : onSelect}
+      onClick={disabled ? undefined : onSelectValue}
+      onSelect={onSelectValue}
     >
       {props.children}
     </Primitive.div>
@@ -714,7 +721,7 @@ Item.displayName = 'Item'
  * Grouped items are always shown together.
  */
 const Group = React.forwardRef<HTMLDivElement, GroupProps>((props, forwardedRef) => {
-  const { heading, children, forceMount, ...etc } = props
+  const { heading, forceMount, ...etc } = props
   const id = React.useId()
   const ref = React.useRef<HTMLDivElement>(null)
   const headingRef = React.useRef<HTMLDivElement>(null)
@@ -736,17 +743,17 @@ const Group = React.forwardRef<HTMLDivElement, GroupProps>((props, forwardedRef)
     <Primitive.div
       ref={mergeRefs([ref, forwardedRef])}
       {...etc}
-      cmdk-group=""
+      data-cmdk-group=""
       role="presentation"
       hidden={render ? undefined : true}
     >
       {heading && (
-        <div ref={headingRef} cmdk-group-heading="" aria-hidden id={headingId}>
+        <div ref={headingRef} data-cmdk-group-heading="" aria-hidden id={headingId}>
           {heading}
         </div>
       )}
       {SlottableWithNestedChildren(props, child => (
-        <div cmdk-group-items="" role="group" aria-labelledby={heading ? headingId : undefined}>
+        <div data-cmdk-group-items="" role="group" aria-labelledby={heading ? headingId : undefined}>
           <GroupContext.Provider value={contextValue}>{child}</GroupContext.Provider>
         </div>
       ))}
@@ -798,7 +805,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, forwardedRe
     <Primitive.input
       ref={forwardedRef}
       {...etc}
-      cmdk-input=""
+      data-cmdk-input=""
       autoComplete="off"
       autoCorrect="off"
       spellCheck={false}
@@ -807,7 +814,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, forwardedRe
       aria-expanded={true}
       aria-controls={context.listId}
       aria-labelledby={context.labelId}
-      aria-activedescendant={selectedItemId}
+      aria-activedescendant={selectedItemId ?? undefined}
       id={context.inputId}
       type="text"
       value={isControlled ? props.value : search}
@@ -828,7 +835,7 @@ Input.displayName = 'Input'
  * Use the `--cmdk-list-height` CSS variable to animate height based on the number of results.
  */
 const List = React.forwardRef<HTMLDivElement, ListProps>((props, forwardedRef) => {
-  const { children, label = 'Suggestions', ...etc } = props
+  const { label = 'Suggestions', ...etc } = props
   const ref = React.useRef<HTMLDivElement>(null)
   const height = React.useRef<HTMLDivElement>(null)
   const context = useCommand()
@@ -837,7 +844,7 @@ const List = React.forwardRef<HTMLDivElement, ListProps>((props, forwardedRef) =
     if (height.current && ref.current) {
       const el = height.current
       const wrapper = ref.current
-      let animationFrame
+      let animationFrame: number
       const observer = new ResizeObserver(() => {
         animationFrame = requestAnimationFrame(() => {
           const height = el.offsetHeight
@@ -862,7 +869,7 @@ const List = React.forwardRef<HTMLDivElement, ListProps>((props, forwardedRef) =
       id={context.listId}
     >
       {SlottableWithNestedChildren(props, child => (
-        <div ref={mergeRefs([height, context.listInnerRef])} cmdk-list-sizer="">
+        <div ref={mergeRefs([height, context.listInnerRef])} data-cmdk-list-sizer="">
           {child}
         </div>
       ))}
@@ -904,13 +911,13 @@ Empty.displayName = 'Empty'
  * You should conditionally render this with `progress` while loading asynchronous items.
  */
 const Loading = React.forwardRef<HTMLDivElement, LoadingProps>((props, forwardedRef) => {
-  const { progress, children, label = 'Loading...', ...etc } = props
+  const { progress, label = 'Loading...', ...etc } = props
 
   return (
-    <Primitive.div
+    <div
       ref={forwardedRef}
       {...etc}
-      cmdk-loading=""
+      data-cmdk-loading=""
       role="progressbar"
       aria-valuenow={progress}
       aria-valuemin={0}
@@ -920,7 +927,7 @@ const Loading = React.forwardRef<HTMLDivElement, LoadingProps>((props, forwarded
       {SlottableWithNestedChildren(props, child => (
         <div aria-hidden>{child}</div>
       ))}
-    </Primitive.div>
+    </div>
   )
 })
 Loading.displayName = 'Loading'

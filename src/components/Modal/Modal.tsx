@@ -24,9 +24,21 @@ import { TbX } from 'react-icons/tb'
 export interface ModalPositions extends Positions {
   [key: string]: string
 }
+export enum OpenChangeReasons {
+  OutsidePress = 'outside-press',
+  EscapeKey = 'escape-key',
+  AncestorScroll = 'ancestor-scroll',
+  ReferencePress = 'reference-press',
+  Click = 'click',
+  Hover = 'hover',
+  Focus = 'focus',
+  ListNavigation = 'list-navigation',
+  SafePolygon = 'safe-polygon',
+}
 
+export type OpenChangeReason = `${OpenChangeReasons}`
 export interface ModalProps extends ComponentPropsWithoutRef<'div'> {
-  onClose?: () => void
+  onOpenChange?: (open: boolean, reason: OpenChangeReason | undefined) => void
   position?: keyof ModalPositions
   open?: boolean
   popup?: boolean
@@ -37,6 +49,7 @@ export interface ModalProps extends ComponentPropsWithoutRef<'div'> {
   lockScroll?: boolean
   theme?: DeepPartial<ModalTheme>
   initialFocus?: number | MutableRefObject<HTMLElement | null>
+  contentClassName?: string
 }
 
 export const Modal = forwardRef<HTMLDivElement, ModalProps>(
@@ -45,7 +58,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
       children,
       className,
       dismissible = true,
-      onClose,
+      onOpenChange,
       position = 'center',
       open = false,
       root,
@@ -54,6 +67,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
       initialFocus,
       lockScroll = true,
       deleteButton = false,
+      contentClassName,
       ...props
     },
     theirRef = null,
@@ -62,7 +76,9 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
 
     const { context } = useFloating({
       open,
-      onOpenChange: () => onClose?.(),
+      onOpenChange(nextOpen, _e, reason) {
+        onOpenChange?.(nextOpen, reason)
+      },
     })
 
     const ref = useMergeRefs([context.refs.setFloating, theirRef])
@@ -94,14 +110,16 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
                   exit={{ opacity: 0, y: 20, transition: { duration: 0.2 } }}
                   ref={ref}
                   {...getFloatingProps(props)}
-                  className={twMerge(theme.content, theme.sizes[size])}
+                  className={twMerge(theme.content, theme.sizes[size], contentClassName)}
                 >
                   {deleteButton && (
                     <div className={twMerge(theme.closeButton)}>
                       <IconButton
                         aria-label="Close"
                         type="button"
-                        onClick={onClose}
+                        onClick={() => {
+                          onOpenChange?.(false, OpenChangeReasons.Click)
+                        }}
                         style={{
                           zIndex: 1000,
                         }}

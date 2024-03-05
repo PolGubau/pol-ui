@@ -26,20 +26,13 @@ export default {
 } as Meta
 
 const Template: StoryFn<ModalProps> = (props): JSX.Element => {
-  const { value, setTrue, setFalse } = useBoolean(false)
+  const { value, setTrue, setFalse, toggle } = useBoolean(false)
   return (
     <>
       <div className="flex">
         <Button onClick={setTrue}>Open modal</Button>
       </div>
-      <Modal
-        deleteButton
-        {...props}
-        onClose={() => {
-          setFalse()
-        }}
-        show={value}
-      >
+      <Modal deleteButton {...props} onOpenChange={toggle} open={value}>
         <div className="flex flex-col gap-3">
           <h3 className="text-xl font-semibold">Terms of Service</h3>
           <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
@@ -71,19 +64,14 @@ const Template: StoryFn<ModalProps> = (props): JSX.Element => {
 export const Default = Template.bind({})
 
 const WarningTemplate: StoryFn<ModalProps> = (): JSX.Element => {
-  const { value, setTrue, setFalse } = useBoolean(false)
+  const { value, setTrue, setFalse, toggle } = useBoolean(false)
 
   return (
     <>
       <div className="flex">
         <Button onClick={setTrue}>Open modal</Button>
       </div>
-      <Modal
-        onClose={() => {
-          setFalse()
-        }}
-        show={value}
-      >
+      <Modal onOpenChange={toggle} open={value}>
         <div className="text-center">
           <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
           <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
@@ -115,7 +103,7 @@ const WarningTemplate: StoryFn<ModalProps> = (): JSX.Element => {
 export const Warning = WarningTemplate.bind({})
 
 const TemplateForm: StoryFn<ModalProps> = (): JSX.Element => {
-  const { value, setTrue, setFalse } = useBoolean(false)
+  const { value, setTrue, toggle } = useBoolean(false)
 
   return (
     <>
@@ -126,12 +114,7 @@ const TemplateForm: StoryFn<ModalProps> = (): JSX.Element => {
       >
         Toggle modal
       </Button>
-      <Modal
-        onClose={() => {
-          setFalse()
-        }}
-        show={value}
-      >
+      <Modal onOpenChange={toggle} open={value}>
         <div className="space-y-6 px-6 pb-4 sm:pb-6 lg:px-8 xl:pb-8">
           <h3 className="text-xl font-medium text-gray-900 dark:text-white">Create an account</h3>
           <Input label="Email" id="email" placeholder="name@company.com" required />
