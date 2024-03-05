@@ -46,7 +46,7 @@ export const NavbarCollapse: FC<NavbarCollapseProps> = ({
             className={cn(theme.toggle.base, className)}
           />
         )}
-        <Modal show={value} onClose={toggle}>
+        <Modal open={value} onOpenChange={toggle}>
           {links.map((link, index) => {
             return (
               <ListItem key={index} className={cn('flex flex-col gap-2')}>

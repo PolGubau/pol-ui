@@ -30,14 +30,14 @@ export const SidebarLogo: FC<SidebarLogoProps> = ({
   ...props
 }) => {
   const id = useId()
-  const { theme: rootTheme, collapsed } = useSidebarContext()
+  const { theme: rootTheme, open } = useSidebarContext()
 
   const theme = mergeDeep(rootTheme.logo, customTheme)
 
   return (
     <a aria-labelledby={`ui-sidebar-logo-${id}`} href={href} className={twMerge(theme.base, className)} {...props}>
       <img alt={imgAlt} src={img} className={theme.img} />
-      <span className={theme.collapsed[collapsed ? 'on' : 'off']} id={`ui-sidebar-logo-${id}`}>
+      <span className={theme.collapsed[open ? 'on' : 'off']} id={`ui-sidebar-logo-${id}`}>
         {children}
       </span>
     </a>
