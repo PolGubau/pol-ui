@@ -55,10 +55,7 @@ export const Button = <T extends ElementType = 'button'>({
       onPointerDown={event}
       onKeyDown={(e: { key: string }) => {
         if (e.key === 'Enter') {
-          // get the middle point
-
           const middleX = (ripple.current?.getBoundingClientRect().width ?? 100) / 2
-
           const middleY = (ripple.current?.getBoundingClientRect().height ?? 80) / 2
           event({
             clientX: middleX,
