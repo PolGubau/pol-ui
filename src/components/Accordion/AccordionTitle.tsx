@@ -68,7 +68,20 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
   return (
     <button
       ref={ripple}
-      onPointerUp={event}
+      onPointerDown={event}
+      onKeyDown={key => {
+        if (key.key === 'Enter' && setOpen) {
+          // get the middle point
+
+          const middleX = (ripple.current?.getBoundingClientRect().width ?? 100) / 2
+
+          const middleY = (ripple.current?.getBoundingClientRect().height ?? 80) / 2
+          event({
+            clientX: middleX,
+            clientY: middleY,
+          })
+        }
+      }}
       className={twMerge(
         theme.base,
         theme.isBordered[bordered ? 'on' : 'off'],

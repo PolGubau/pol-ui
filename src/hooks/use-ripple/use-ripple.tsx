@@ -317,7 +317,7 @@ function cancelRippleAnimation<T extends HTMLElement>(
   )
   window.requestAnimationFrame(() => {
     element.addEventListener('transitionend', e => {
-      if (e.propertyName === 'opacity') void element.remove()
+      if (e.propertyName === 'opacity') element.remove()
     })
   })
 }

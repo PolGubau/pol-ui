@@ -13,13 +13,13 @@ export const accordionTheme: AccordionTheme = {
   },
   title: {
     arrow: {
-      base: 'h-6 w-6 shrink-0 rotate-0 transition-all transform origin-center',
+      base: 'h-6 w-6 shrink-0 rotate-0 transition-all transform origin-center ',
       open: {
         off: '',
         on: 'rotate-180 ',
       },
     },
-    base: 'flex w-full items-center justify-between first:rounded-t-xl last:rounded-b-xl py-5 px-5 text-left font-medium text-secondary-500 dark:text-secondary-400',
+    base: 'flex w-full items-center justify-between first:rounded-t-xl last:rounded-b-xl py-5 px-5 text-left font-medium text-secondary-500 dark:text-secondary-400 focus:bg-secondary-300 dark:focus:bg-secondary-700 focus:outline-none outline-none transition-all cursor-pointer',
     isBordered: {
       off: 'hover:bg-secondary-100 dark:hover:bg-secondary-800 dark:focus:ring-secondary-800',
       on: 'bg-transparent',

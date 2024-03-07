@@ -81,14 +81,13 @@ const Template: StoryFn<AccordionProps> = args => (
     </Accordion.Panel>
   </Accordion>
 )
+export const Default = Template.bind({})
 
 export const AlwaysOpen = Template.bind({})
 AlwaysOpen.storyName = 'Always open'
 AlwaysOpen.args = {
   alwaysOpen: true,
 }
-
-export const Default = Template.bind({})
 
 export const Bordered = Template.bind({})
 Bordered.args = {

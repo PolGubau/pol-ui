@@ -38,7 +38,7 @@ export const Button = <T extends ElementType = 'button'>({
 
   const [ripple, event] = useRipple({
     disabled: disabled || loading,
-    opacity: 0.2,
+    opacity: 0.4,
     className: colorToTailwind(color),
   })
 
@@ -51,7 +51,21 @@ export const Button = <T extends ElementType = 'button'>({
       whileHover={hasMotion && { scale: 0.98 }}
       whileFocus={hasMotion && { scale: 1.1 }}
       ref={ripple}
+      // onKeyDown={event}
       onPointerDown={event}
+      onKeyDown={(e: { key: string }) => {
+        if (e.key === 'Enter') {
+          // get the middle point
+
+          const middleX = (ripple.current?.getBoundingClientRect().width ?? 100) / 2
+
+          const middleY = (ripple.current?.getBoundingClientRect().height ?? 80) / 2
+          event({
+            clientX: middleX,
+            clientY: middleY,
+          })
+        }
+      }}
       onKeyPress={event}
       disabled={loading || disabled}
       className={twMerge(
