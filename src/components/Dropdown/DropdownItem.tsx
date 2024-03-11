@@ -12,19 +12,23 @@ export interface DropdownItemProps extends ComponentProps<'button'> {
   disabled?: boolean
   customTheme?: Partial<DropdownTheme>
   shortcut?: React.ReactNode
+  href?: string
 }
 
 export const DropdownItem = React.forwardRef<HTMLButtonElement, DropdownItemProps>(
-  ({ label, disabled, shortcut, customTheme = {}, ...props }, forwardedRef) => {
+  ({ label, disabled, shortcut, customTheme = {}, href, ...props }, forwardedRef) => {
     const menu = React.useContext(DropdownContext)
     const item = useListItem({ label: disabled ? null : label })
     const tree = useFloatingTree()
+
+    const isALink = typeof href !== 'undefined'
+    const Component = isALink ? 'a' : 'div'
 
     const isActive = item.index === menu.activeIndex
     const { dropdown: dropdownTheme } = getTheme()
     const theme: DropdownTheme = mergeDeep(dropdownTheme, customTheme)
     return (
-      <div className="relative">
+      <Component className="relative">
         <button
           {...props}
           ref={useMergeRefs([item.ref, forwardedRef])}
@@ -52,7 +56,7 @@ export const DropdownItem = React.forwardRef<HTMLButtonElement, DropdownItemProp
           {label}
           {shortcut && <Kbd className="text-xs p-1">{shortcut}</Kbd>}
         </button>
-      </div>
+      </Component>
     )
   },
 )

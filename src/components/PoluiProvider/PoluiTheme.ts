@@ -3,7 +3,7 @@ import type { AccordionTheme } from '../Accordion'
 import type { AlertTheme } from '../Alert'
 import type { AvatarTheme } from '../Avatar'
 import type { BadgeTheme } from '../Badge'
-import type { BreadcrumbTheme } from '../Checkbox/Breadcrumb'
+import type { BreadcrumbTheme } from '../Breadcrumb'
 import type { ButtonTheme } from '../Button'
 import type { CardTheme } from '../Card'
 import type { CarouselTheme } from '../Carousel'
@@ -59,6 +59,7 @@ import type { NavigationMenuTheme } from '../NavigationMenu/theme'
 import type { ChipTheme } from '../Chip/theme'
 import type { DropzoneTheme } from '../Dropzone/theme'
 import type { CommandTheme } from '../Command/theme'
+import type { OtpInputTheme } from '../OtpInput/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -128,4 +129,5 @@ export interface PoluiTheme {
   chip: ChipTheme
   dropzone: DropzoneTheme
   command: CommandTheme
+  otpInput: OtpInputTheme
 }

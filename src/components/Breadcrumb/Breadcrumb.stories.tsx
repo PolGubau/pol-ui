@@ -4,6 +4,9 @@ import { Breadcrumb } from './Breadcrumb'
 import { BreadcrumbItem } from './BreadcrumbItem'
 import { TbHome, TbUser } from 'react-icons/tb'
 
+import { Dropdown, DropdownItem } from '../Dropdown'
+import { HiOutlineChevronRight } from 'react-icons/hi'
+
 export default {
   title: 'Components/Breadcrumb',
   component: Breadcrumb,
@@ -26,8 +29,16 @@ const Template: StoryFn<BreadcrumbComponentProps> = args => (
       Home
     </BreadcrumbItem>
     <BreadcrumbItem href="https://polgubau.com/" icon={TbUser}>
-      Authors
+      Profiles
     </BreadcrumbItem>
+    <HiOutlineChevronRight className="text-secondary-600 ml-2" />
+
+    <Dropdown label={'...'} className="bg-transparent text-secondary-900">
+      <DropdownItem href="https://polgubau.com/" label="Authors" />
+      <DropdownItem href="https://polgubau.com/" label="Selected" />
+      <DropdownItem href="https://polgubau.com/" label="Matched" />
+    </Dropdown>
+
     <BreadcrumbItem>Pol Gubau Amores</BreadcrumbItem>
   </Breadcrumb>
 )
