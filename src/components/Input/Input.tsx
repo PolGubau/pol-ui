@@ -7,6 +7,10 @@ import { ColorsEnum, MainSizesEnum } from '../../types/enums'
 import { Label } from '../Label'
 import type { InputProps } from './props'
 
+/**
+ * @name Input
+ * The Input component is a text input field that allows users to enter text. It can be used in forms, modals, and more.
+ */
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {

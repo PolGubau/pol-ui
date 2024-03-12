@@ -1,12 +1,12 @@
 import type { Meta, StoryFn } from '@storybook/react'
-import { Input, type InputProps } from './Input'
-import { TbAt, TbEye, TbUser } from 'react-icons/tb'
+import { Input } from './Input'
+import { TbAt, TbEye, TbSend, TbUser } from 'react-icons/tb'
 import { ColorsEnum } from '../../types/enums'
 
-import { Dropdown, DropdownItem } from '../Dropdown'
 import { IconButton } from '../IconButton'
 import { Button } from '../Button'
 import type { Colors } from '../../types'
+import type { InputProps } from './props'
 
 export default {
   title: 'Components/Inputs/Input',
@@ -14,7 +14,7 @@ export default {
   tags: ['autodocs'],
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col w-full bg-secondary-50">
+      <div className="flex p-6 flex-col w-full">
         <div className="max-w-xl">
           <Story />
         </div>
@@ -54,26 +54,9 @@ export const WithAddon = Template.bind({})
 WithAddon.args = {
   placeholder: 'Addon',
   addon: (
-    <Dropdown label="Dropdown">
-      <DropdownItem label="Undo" />
-      <DropdownItem label="Redo" disabled />
-      <DropdownItem label="Cut" />
-      <Dropdown label="Copy as">
-        <DropdownItem label="Text" />
-        <DropdownItem label="Video" />
-        <Dropdown label="Image" nestingIcon="🎞️">
-          <DropdownItem label=".png" />
-          <DropdownItem label=".jpg" />
-          <DropdownItem label=".svg" />
-          <DropdownItem label=".gif" />
-        </Dropdown>
-        <DropdownItem label="Audio" />
-      </Dropdown>
-      <Dropdown label="Share">
-        <DropdownItem label="Mail" />
-        <DropdownItem label="Instagram" />
-      </Dropdown>
-    </Dropdown>
+    <IconButton>
+      <TbSend />
+    </IconButton>
   ),
 }
 
@@ -91,13 +74,6 @@ export const WithHelperText = Template.bind({})
 WithHelperText.args = {
   placeholder: 'Email',
   helperText: 'Helper text',
-}
-export const PasswordField = Template.bind({})
-PasswordField.args = {
-  type: 'password',
-  placeholder: '**********',
-  label: 'Password',
-  helperText: 'Must be at least 8 characters',
 }
 
 export const AllColors = () => (
