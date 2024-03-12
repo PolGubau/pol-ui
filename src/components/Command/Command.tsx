@@ -1,5 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+// Based on https://cmdk.paco.me and https://react-cmdk.com
+
 import * as React from 'react'
 import { commandScore } from './score'
 import { useAsRef, useCmdk, useScheduleLayoutEffect } from './hooks'
@@ -30,6 +33,9 @@ export const SELECTORS = {
 
 const defaultFilter: CommandProps['filter'] = (value, search, keywords) => commandScore(value, search, keywords ?? [])
 
+/**
+ * Command is a component that provides a way to navigate through a list of items using the keyboard. It is a combination of a list and an input, where the input is used to filter the list of items.
+ */
 const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwardedRef) => {
   const state = useLazyRef<State>(() => ({
     /** Value of the search query. */
