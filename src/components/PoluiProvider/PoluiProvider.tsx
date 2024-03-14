@@ -36,15 +36,10 @@ interface ProviderProps {
  * @author Pol Gubau - https://polgubau.com
 
  */
-export const PoluiProvider: FC<ProviderProps> = ({
-  children,
-  theme = {
-    mode: 'auto',
-  },
-}: ProviderProps): JSX.Element => {
+export const PoluiProvider: FC<ProviderProps> = ({ children, theme }: ProviderProps): JSX.Element => {
   return (
     <>
-      <ThemeInit mode={theme?.mode} theme={theme?.theme} />
+      <ThemeInit mode={theme?.mode ?? 'auto'} theme={theme?.theme} />
       {children}
     </>
   )
