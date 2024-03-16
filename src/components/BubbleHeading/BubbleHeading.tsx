@@ -20,6 +20,11 @@ export interface BubbleHeadingProps {
   transitionDuration?: number
 }
 
+/**
+ * BubbleHeading component
+ * @description The BubbleHeading component is used to create an important text that changes it's weight when hovered over with a smooth transition. Useful for titles and headings. 
+ *
+ */
 export const BubbleHeading: React.FC<BubbleHeadingProps> = ({
   children,
   minWeight = 100,

@@ -18,6 +18,15 @@ export interface AlertProps extends Omit<ComponentProps<'div'>, 'color'> {
   bordered?: boolean
 }
 
+/**
+ *
+ * @name Alert
+ * @description The Alert component is used to display a message to the user
+ * @param {ReactNode} props.additionalContent - The additional content of the alert
+ * @param {Colors} props.color - The color of the alert
+ *
+ * @returns React.FC<AlertProps>
+ */
 export const Alert: FC<AlertProps> = ({
   additionalContent,
   children,

@@ -11,6 +11,12 @@ export interface FooterProps extends ComponentProps<'footer'> {
   theme?: DeepPartial<FooterTheme>
 }
 
+/**
+ * 
+ * @name Footer
+ * @description The Footer component is used to display the footer of a page, it is usually used to display the author, the date, and the contact information of the page.
+ * @returns React.FC<FooterProps>
+ */
 export const Footer: FC<FooterProps> = ({
   children,
   className,

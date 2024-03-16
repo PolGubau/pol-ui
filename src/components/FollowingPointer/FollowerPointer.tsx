@@ -18,6 +18,12 @@ export interface FollowerPointerProps extends React.PropsWithChildren {
   theme?: DeepPartial<FollowerPointerTheme>
 }
 
+/**
+ *
+ * @name FollowerPointer
+ * @description The FollowerPointer component is used to display a pointer that follows the mouse and displays content, such as a tooltip or a popover. It is a decorative component that is used to enhance the user experience in certain scenarios.
+ * @returns
+ */
 export const FollowerPointer = ({
   children,
   className,

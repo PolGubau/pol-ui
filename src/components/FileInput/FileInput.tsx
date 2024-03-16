@@ -15,6 +15,11 @@ export interface FileInputProps extends Omit<ComponentProps<'input'>, 'type' | '
   theme?: DeepPartial<FileInputTheme>
 }
 
+/**
+ * @name FileInput
+ * @description The FileInput component is used to upload files from the user's device, useful in forms where you need to upload files as images, documents, etc.
+ * @returns React.FC<FileInputProps>
+ */
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
   (
     {

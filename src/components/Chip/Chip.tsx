@@ -30,6 +30,38 @@ export type ChipProps<T extends ElementType = BASE_COMPONENT_TYPE> = {
   elementClassName?: string
   textClassName?: string
 }
+/**
+ *  Chip component
+ * @description The chip component is used to display information in a compact way and can be used to trigger actions when clicked or to display actions when hovered over. It can be used to display tags, categories, actions...
+ *  @param {ElementType} props.as - The component to render
+ * @param {React.ReactNode} props.children - The content of the chip
+ * @param {string} props.label - The label of the chip
+ * @param {(e: React.MouseEvent) => void} props.onClick - The function to call when the chip is clicked
+ * @param {Colors} props.color - The color of the chip
+ * @param {boolean} props.disabled - If the chip is disabled
+ * @param {RoundedSizes} props.rounded - The rounded size of the chip
+ * @param {ChipAction[]} props.actions - The actions of the chip
+ * @param {DeepPartial<ChipTheme>} props.theme - The theme of the chip
+ * @param {string} props.className - The class name of the chip
+ * @param {string} props.elementClassName - The class name of the element
+ * @param {string} props.textClassName - The class name of the text
+ * @returns
+ * @example
+ *
+ * <Chip
+ *  label="Chip"
+ * color={ColorsEnum.primary}
+ * rounded="md"
+ * actions={[
+ *  {
+ *   icon: <Icon name="close" />,
+ *  onClick: () => console.log('close'),
+ * },
+ * ]}
+ * />
+ *
+ * @returns <Chip />
+ */
 
 export const Chip = <T extends ElementType = BASE_COMPONENT_TYPE>({
   as: BaseComponent,
@@ -71,6 +103,7 @@ export const Chip = <T extends ElementType = BASE_COMPONENT_TYPE>({
     >
       <p className={cn(theme.text, textClassName)}>{label ?? children}</p>
 
+      {/* The actions of the chip will be displayed as icons or elements */}
       {actions.map(({ onClick, element, icon }, index) => (
         <>
           {icon && (
@@ -88,3 +121,8 @@ export const Chip = <T extends ElementType = BASE_COMPONENT_TYPE>({
     </Component>
   )
 }
+
+
+
+
+ 

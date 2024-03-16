@@ -12,6 +12,22 @@ import type { DirectionHoverProps } from './types'
 import { directionHoverTextVariants, directionHoverVariants, getDirection } from './types'
 import type { Direction } from '../../types'
 
+/**
+ * 
+ * @name DirectionHover
+ * @description The DirectionHover component is used to display a hover effect with a direction, useful for displaying a list of items in a small space.
+ * @param {string} props.imageUrl - The image url
+ * @param {React.ReactNode} props.children - The content of the hover
+ * @param {string} props.childrenClassName - The class name of the content
+ * @param {number} props.speed - The speed of the hover
+ * @param {string} props.imageClassName - The class name of the image
+ * @param {string} props.alt - The alt of the image
+ * @param {string} props.className - The class name of the hover
+ * @param {RoundedSizesEnum} props.rounded - The rounded size of the hover
+ * @param {DeepPartial<DirectionHoverTheme>} props.theme - The theme of the hover
+ * @returns React.FC<DirectionHoverProps<T>>
+ * 
+ */
 export const DirectionHover = <T extends ElementType = 'button'>({
   imageUrl,
   children,

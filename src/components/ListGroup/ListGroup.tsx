@@ -10,6 +10,12 @@ export interface ListGroupProps extends ComponentProps<'ul'> {
   direction?: 'row' | 'column'
   bordered?: boolean
 }
+
+/**
+ * @name ListGroup
+ * @description The ListGroup component is used to display a list of items in a list format, it is usually used to display a list of items as buttons or links, usefull for navigation in mobile devices.
+ * @returns React.FC<ListGroupProps>
+ */
 export const ListGroup: FC<ListGroupProps> = ({
   children,
   className,

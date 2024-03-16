@@ -27,7 +27,7 @@ export type CardProps = (
 
 /**
  * @name Card
- * @description A Card component that can be used to display content in a card-like style.
+ * @description A Card component that can be used to display content in a card-like style. Usefull in a blog, a social network, a forum... It can be horizontal or vertical and can contain an image.
  *
  * @param {React.ReactNode} props.children The content of the card.
  * @param {string} props.className Custom class name for the card.

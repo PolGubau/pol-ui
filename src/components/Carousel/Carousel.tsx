@@ -41,6 +41,11 @@ function useCarousel() {
   return context
 }
 
+/**
+ * @name Carousel
+ * @description The Carousel component is used to display a list of items in a horizontal or vertical slider with a variety of options and plugins. It can be used to display a list of images, a list of cards, a list of products...
+ * @returns React.FC<CarouselProps>
+ */
 const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement> & CarouselProps>(
   ({ orientation = 'horizontal', options: opts, setApi, plugins, className, children, ...props }, ref) => {
     const [carouselRef, api] = useEmblaCarousel(

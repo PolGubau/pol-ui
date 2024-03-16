@@ -18,6 +18,11 @@ export interface NavigationMenuProps extends React.ComponentPropsWithoutRef<type
   theme?: DeepPartial<NavigationMenuThemeRoot>
 }
 
+/**
+ * @name NavigationMenu
+ * @description Used to travel from one route to another, it is usually used to navigate to different pages or sections of the same page, it is usually used in the sidebar of a page as a main navigation system.
+ * @returns React.FC<NavigationMenuProps>
+ */
 export const NavigationMenu = React.forwardRef<RefElement, NavigationMenuProps>(
   ({ className, children, hasIndicator = true, listClassName = '', theme: customTheme = {}, ...props }, ref) => {
     const theme = mergeDeep(getTheme().navigationMenu.root, customTheme)

@@ -3,7 +3,7 @@ import { ColorsEnum } from '../types'
 
 /**
  * @name colorToTailwind
- * @description Function to generate a ripple class based on the provided color.
+ * @description colorToTailwind function takes a color from the Colors enum and generates a corresponding Tailwind CSS class for the ripple effect. It switches on the provided color and returns the appropriate Tailwind CSS class based on the color type. If the color is not recognized, it defaults to the primary color. This function ensures consistency in applying ripple effects based on predefined colors in the application.
  * @param {Colors} color - Color for generating the ripple class.
  * @returns {string} - Generated ripple class.
  */

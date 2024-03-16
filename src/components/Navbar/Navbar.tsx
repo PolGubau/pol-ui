@@ -23,6 +23,12 @@ export interface NavbarProps extends Omit<ComponentProps<'nav'>, 'children'> {
   hasHambuguer?: boolean
 }
 
+/**
+ * @name Navbar
+ * @description The Navbar component is used to display a navigation bar in the top of the page, it is usually used to navigate to different pages or sections of the same page.
+ * @returns React.FC<NavbarProps>
+ */
+
 export const Navbar: FC<NavbarProps> = ({
   className,
   defaultOpen = false,

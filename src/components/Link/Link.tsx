@@ -15,6 +15,14 @@ export interface LinkProps extends ComponentProps<'a'> {
   underline?: boolean
 }
 
+/**
+ * @name Link
+ * @description The Link component is used to navigate to a different page or to a different section of the same page, it is usually used to navigate to a different page.
+ * @returns React.FC<LinkProps>
+ * @example
+ * <Link href="https://www.google.com">Google</Link>
+ * <Link href="https://www.google.com" underline={false}>Google</Link>
+ */
 export const Link: FC<LinkProps> = ({
   as: Component = 'a',
   children,

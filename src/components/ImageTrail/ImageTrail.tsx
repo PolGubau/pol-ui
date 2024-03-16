@@ -15,6 +15,11 @@ export interface ImageTrailProps extends React.ComponentProps<'div'> {
   theme?: DeepPartial<ImageTrailTheme>
 }
 
+/**
+ * ImageTrail component
+ * @description The ImageTrail component is used to create a trail of images that follow the mouse, it is a decorative component that can be used to create a visual effect on the page, interesting for landing pages and other creative uses.
+ * @returns React.FC<ImageTrailProps>
+ */
 export const ImageTrail = ({
   children,
   // List of image sources

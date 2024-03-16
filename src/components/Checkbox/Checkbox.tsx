@@ -68,7 +68,7 @@ const AnimatedCheckIcon = ({
 
 /**
  * @name Checkbox
- * @description Checkbox component for user input.
+ * @description Checkbox component for user input, it can be used to select multiple options from a list. It can be used in forms, surveys, etc.
  * @param {CheckboxProps} props - Props for the Checkbox component.
  * @param {string} props.className - Additional class names for styling.
  * @param {string} props.label - Label text for the checkbox.

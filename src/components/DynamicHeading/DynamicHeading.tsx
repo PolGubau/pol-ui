@@ -10,7 +10,7 @@ export interface DynamicHeadingProps extends PropsWithChildren, React.HTMLAttrib
  * @name DynamicHeading
  *
  * @description
- * The DynamicHeading component is a component that will render a heading based on the `as` prop.
+ * The DynamicHeading component is a component that will render a heading based on the `as` prop that is passed to it.
  *
  * @param {HeadingLevel} as The heading level that will be rendered
  * @param {React.ReactNode} children The content of the heading

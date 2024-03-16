@@ -7,7 +7,7 @@ import { Link } from '../Link'
 
 /**
  * @name Copyright
- * @description Functional component for rendering copyright information.
+ * @description Functional component for rendering copyright information, with an optional link to the author's website.
  * @param {CopyrightProps} props - Props for the Copyright component.
  * @returns {JSX.Element}
  * @author Pol Gubau Amores - https://polgubau.com

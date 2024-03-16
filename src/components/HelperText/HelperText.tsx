@@ -11,7 +11,12 @@ export interface HelperTextProps extends Omit<ComponentProps<'p'>, 'color'> {
   theme?: DeepPartial<HelperTextTheme>
   value?: string
 }
-
+/**
+ *
+ * @name HelperText
+ * @description The HelperText component is used to display a helper text to the user in a form or any other component that needs it.
+ * @returns  React.FC<HelperTextProps>
+ */
 export const HelperText: FC<HelperTextProps> = ({
   children,
   className,

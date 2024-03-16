@@ -13,6 +13,15 @@ export interface CardStackItemProps {
   total?: number
 }
 
+/**
+ *
+ * @name CardStackItem
+ * @description The CardStackItem component is used to create a card stack item
+ * @param {number} props.position - The position of the card
+ *
+ * @returns React.FC<CardStackItemProps>
+ *
+ */
 export const CardStackItem = ({
   position = 0,
   index = 1,
@@ -96,6 +105,13 @@ export interface CardStackProps {
   children?: React.ReactNode[]
   className?: string
 }
+
+/**
+ *
+ * @name CardStack
+ * @description The CardStack component is usefull to create a stack of cards, like a tinder card stack. Interessting for a dating app, a social network, a forum...
+ * @returns
+ */
 export function CardStack({ children, className }: Readonly<CardStackProps>) {
   const [items, setItems] = useState(
     children?.map((content, index) => {

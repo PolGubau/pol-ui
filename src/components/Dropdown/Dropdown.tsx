@@ -24,6 +24,16 @@ export interface DropdownProps extends BaseButtonProps {
   trigger?: React.JSX.Element
 }
 
+/**
+ * Dropdown component
+ * @description The Dropdown component is used to display a list of actions when clicked. It can be used to display a list of actions, a list of options, a list of links...
+ * @param {string} props.label - The label of the dropdown
+ * @param {boolean} props.nested - If the dropdown is nested
+ * @param {React.ReactNode} props.children - The content of the dropdown
+ *  
+ * @returns React.FC<DropdownProps>
+ * 
+ */
 export const Dropdown = React.forwardRef<HTMLButtonElement, DropdownProps & BaseButtonProps>((props, ref) => {
   const parentId = useFloatingParentNodeId()
 

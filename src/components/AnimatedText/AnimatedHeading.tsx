@@ -20,6 +20,11 @@ export interface AnimatedHeadingProps extends WithClassName, Pick<DynamicHeading
   theme?: DeepPartial<AnimateHeadingTheme>
 }
 
+/**
+ * AnimatedHeading component
+ * @description The AnimatedHeading component is used to animate the text of a heading with a variety of animations
+ * @returns React.FC<AnimatedHeadingProps>
+ */
 export const AnimatedHeading = ({
   as,
   children,

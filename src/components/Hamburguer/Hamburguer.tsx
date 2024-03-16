@@ -27,6 +27,12 @@ export interface HamburguerProps extends Omit<React.ComponentProps<'button'>, 'c
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
+/**
+ * 
+ * @name Hamburguer
+ * @description The Hamburguer component is used to display a hamburguer icon that can be opened or closed, it can be used to display a menu or to trigger an action. 
+ * @returns 
+ */
 export const Hamburguer = ({
   open = false,
   width = 16,

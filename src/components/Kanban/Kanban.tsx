@@ -16,6 +16,8 @@ interface OnReorder {
   newColumn: KanbanCardProps['column']
   isSameColumn: boolean
 }
+
+
 export interface KanbanProps {
   dragable?: boolean
   columns?: string[]
@@ -41,6 +43,12 @@ export interface KanbanProps {
   theme?: DeepPartial<KanbanTheme>
 }
 
+/**
+ *
+ * @name Kanban
+ * @description The Kanban component is used to display a kanban board, it is used to display cards in columns and allows the user to drag and drop the cards between columns. It's a great way to visualize the flow of work and to see what's in progress, what's done, and what's coming up.
+ * @returns
+ */
 export const Kanban: React.FC<KanbanProps> = ({
   dragable = true,
   cards,

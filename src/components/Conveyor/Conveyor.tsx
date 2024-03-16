@@ -17,6 +17,13 @@ export type ConveyorProps = {
   className?: string
 }
 
+/**
+ *
+ * @name Conveyor
+ * @description The Conveyor component is used to display a conveyor belt of items that move from one side to the other. Useful  for displaying a list of items in a small space.
+ *
+ * @returns
+ */
 export const Conveyor = ({
   direction = ConveyorDirectionEnum.right,
   speed = ConveyorSpeedEnum.fast,

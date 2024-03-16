@@ -20,6 +20,11 @@ export interface BannerComponentProps extends ComponentProps<'header'> {
   motionDistance?: number
   rounded?: RoundedSizes
 }
+/**
+ * Banner component
+ * @description The Banner component is used to display a message to the user with a variety of colors and styles, it can be closable or not. It can be used to display a message, a warning, an error, a success message...
+ * @returns React.FC<BannerComponentProps>
+ */
 
 export const Banner: FC<BannerComponentProps> = ({
   children,

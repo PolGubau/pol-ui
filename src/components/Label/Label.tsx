@@ -14,6 +14,11 @@ export interface LabelProps extends Omit<ComponentProps<'label'>, 'color'> {
   className?: string
 }
 
+/**
+ * @name Label
+ * @description The Label component is used to display a label to the user in a form or any other component that needs it.
+ * @returns React.FC<LabelProps>
+ */
 export const Label: FC<LabelProps> = ({
   children,
   color = ColorsEnum.secondary,

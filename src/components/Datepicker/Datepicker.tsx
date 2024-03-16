@@ -92,6 +92,25 @@ export interface DatepickerProps extends Omit<InputProps, 'theme'> {
   onSelectedDateChanged?: (date: Date) => void
 }
 
+/**
+ * 
+ * @name Datepicker
+ * @description The Datepicker component is used to select a date, it can be used as a popup or inline. You can also set the default date, min and max date, and the language.
+ * @param {boolean} props.open - The open state of the datepicker
+ * @param {boolean} props.inline - The inline state of the datepicker
+ * @param {boolean} props.autoHide - The autoHide state of the datepicker
+ * @param {boolean} props.showClearButton - The showClearButton state of the datepicker
+ * @param {string} props.labelClearButton - The labelClearButton state of the datepicker
+ * @param {ReactNode} props.clearIcon - The clearIcon state of the datepicker
+ * @param {boolean} props.showTodayButton - The showTodayButton state of the datepicker
+ * @param {ReactNode} props.todayIcon - The todayIcon state of the datepicker
+ * @param {string} props.labelTodayButton - The labelTodayButton state of the datepicker
+ * @param {Date} props.defaultDate - The defaultDate state of the datepicker
+ * @param {Date} props.minDate - The minDate state of the datepicker
+ * @param {Date} props.maxDate - The maxDate state of the datepicker
+ * 
+ * @returns React.FC<DatepickerProps> 
+ */
 export const Datepicker: FC<DatepickerProps> = ({
   title,
   open,

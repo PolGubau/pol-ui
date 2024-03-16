@@ -19,6 +19,12 @@ export interface BreadcrumbComponentProps extends ComponentProps<'nav'> {
   theme?: DeepPartial<BreadcrumbRootTheme>
 }
 
+/**
+ * 
+ * @name Breadcrumb
+ * @description The Breadcrumb component is used to display the current location within a hierarchy of content and provide a way to navigate back to the root of the hierarchy. 
+ * @returns React.FC<BreadcrumbComponentProps>
+ */
 export const Breadcrumb: FC<BreadcrumbComponentProps> = ({
   children,
   className,

@@ -18,6 +18,12 @@ export interface ContainerScrollProps extends PropsWithChildren, WithClassName {
   deviceWrapper?: boolean
   deviceClassName?: ClassName
 }
+/**
+ * ContainerScroll component
+ *
+ * @description The ContainerScroll component is used to create a container that will rotate and scale the content based on the scroll position
+ * @returns React.FC<ContainerScrollProps>
+ */
 export const ContainerScroll = ({
   titleComponent,
   children,

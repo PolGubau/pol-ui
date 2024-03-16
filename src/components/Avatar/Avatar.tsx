@@ -29,6 +29,13 @@ export interface AvatarProps extends Omit<ComponentProps<'div'>, 'color'> {
   theme?: DeepPartial<AvatarTheme>
 }
 
+/**
+ *
+ * @name Avatar
+ * @description The Avatar component is used to display a user's profile picture or initials, and can also display a status indicator or a counter. Usefull in a chat application, a social network, a forum... 
+ *
+ * @returns
+ */
 const AvatarComponent: FC<AvatarProps> = ({
   alt = '',
   bordered = false,

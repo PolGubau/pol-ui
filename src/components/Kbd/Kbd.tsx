@@ -10,6 +10,11 @@ export interface KbdProps extends ComponentProps<'span'> {
   theme?: DeepPartial<KbdTheme>
 }
 
+/**
+ * @name Kbd
+ * @description The Kbd component is used to define keyboard input in a document, it is used to display the keyboard input in a monospaced font. 
+ * @returns React.FC<KbdProps>
+ */
 export const Kbd: FC<KbdProps> = ({ children, className, icon: Icon, theme: customTheme = {}, ...props }) => {
   const theme = mergeDeep(getTheme().kbd, customTheme)
 

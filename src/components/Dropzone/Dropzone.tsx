@@ -22,6 +22,11 @@ export interface DropzoneProps {
   theme?: DeepPartial<DropzoneTheme>
 }
 
+/**
+ * Dropzone component
+ * @description The Dropzone component is used to create a drag and drop area for files, where the user can drop files to upload them.
+ * @returns React.FC<DropzoneProps>
+ */
 export const Dropzone = React.memo((props: React.PropsWithChildren<DropzoneProps>) => {
   const {
     onDragStateChange,

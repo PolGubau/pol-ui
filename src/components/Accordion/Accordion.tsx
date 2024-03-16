@@ -108,6 +108,11 @@ export interface AccordionProps extends ComponentProps<'div'> {
   theme?: DeepPartial<AccordionTheme>
 }
 
+/**
+ * @name Accordion
+ * @description The accordion component is used to display a list of items that can be expanded or collapsed.
+ * @returns <Accordion /> : JSX.Element
+ */
 const AccordionComponent: FC<AccordionProps> = ({
   alwaysOpen = false,
   arrowIcon = HiChevronDown,

@@ -12,6 +12,12 @@ export interface LoaderProps extends Omit<ComponentProps<'span'>, 'color' | 'siz
   theme?: DeepPartial<LoaderTheme>
 }
 
+/**
+ * @name Loader
+ * @description The Loader component is used to display a loader to the user, it is used to indicate that the page or any other component is loading.
+ * @returns React.FC<LoaderProps>
+ */
+
 export const Loader: FC<LoaderProps> = ({
   className,
   color = ColorsEnum.secondary,

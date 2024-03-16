@@ -22,6 +22,19 @@ export interface DarkThemeToggleProps extends Omit<ComponentProps<'button'>, 'co
   label?: string
 }
 
+/**
+ *
+ *
+ * @name DarkThemeToggle
+ * @description The DarkThemeToggle component is used to toggle between dark and light mode, you can assign your own icons or use the default ones (sun and moon)
+ * @param {string} props.iconDark - The icon for dark mode
+ * @param {string} props.iconLight - The icon for light mode
+ * @param {DeepPartial<DarkThemeToggleTheme>} props.theme - The theme of the dark theme toggle
+ *
+ *
+ * @returns React.FC<DarkThemeToggleProps>
+ *
+ */
 export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
   className,
   theme: customTheme = {},
