@@ -35,6 +35,6 @@
     "**/*.ts",
     "**/*.tsx",
     "postcss.config.js",
-    "tailwind.config.js",
+    "tailwind.config.js", "src/a.sass",
   ],
 }
