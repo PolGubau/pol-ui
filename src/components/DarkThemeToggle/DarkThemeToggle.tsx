@@ -10,11 +10,10 @@ import type { DarkThemeToggleTheme } from './theme'
 import { ColorsEnum } from '../../types'
 import { TbMoon, TbSun } from 'react-icons/tb'
 import { IconButton } from '../IconButton'
-import { AnimatePresence, motion } from 'framer-motion'
 
 export interface DarkThemeToggleProps extends Omit<ComponentProps<'button'>, 'color'> {
-  iconDark?: string
-  iconLight?: string
+  iconDark?: FC<ComponentProps<'svg'>>
+  iconLight?: FC<ComponentProps<'svg'>>
   theme?: DeepPartial<DarkThemeToggleTheme>
   ref?: React.Ref<HTMLButtonElement>
   color?: Colors
@@ -32,7 +31,7 @@ export interface DarkThemeToggleProps extends Omit<ComponentProps<'button'>, 'co
  * @param {DeepPartial<DarkThemeToggleTheme>} props.theme - The theme of the dark theme toggle
  *
  *
- * @returns React.FC<DarkThemeToggleProps>
+ * @returns JSX.Element
  *
  */
 export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
@@ -40,20 +39,13 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
   theme: customTheme = {},
   iconDark: IconDark = TbSun,
   iconLight: IconLight = TbMoon,
-  hasMotion = true,
   label = 'Toggle dark mode',
   color = ColorsEnum.primary,
   ...props
-}) => {
+}: DarkThemeToggleProps) => {
   const { computedMode, toggleMode } = useThemeMode()
 
   const theme = mergeDeep(getTheme().darkThemeToggle, customTheme)
-
-  const iconMotion = {
-    initial: hasMotion ? { opacity: 0, y: 50 } : {},
-    animate: hasMotion ? { opacity: 1, y: 0 } : {},
-    exit: hasMotion ? { opacity: 0, y: -50 } : {},
-  }
 
   return (
     <IconButton
@@ -66,26 +58,20 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
       color={color}
       {...props}
     >
-      <AnimatePresence mode="wait">
-        {computedMode === 'dark' && (
-          <motion.div {...iconMotion}>
-            <IconDark
-              aria-label="Currently dark mode"
-              data-active={computedMode === 'dark'}
-              className={twMerge(theme.root.icon)}
-            />
-          </motion.div>
-        )}
-        {computedMode === 'light' && (
-          <motion.div {...iconMotion}>
-            <IconLight
-              aria-label="Currently light mode"
-              data-active={computedMode === 'light'}
-              className={twMerge(theme.root.icon, 'dark:hidden')}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {computedMode === 'dark' && (
+        <IconDark
+          aria-label="Currently dark mode"
+          data-active={computedMode === 'dark'}
+          className={twMerge(theme.root.icon)}
+        />
+      )}
+      {computedMode === 'light' && (
+        <IconLight
+          aria-label="Currently light mode"
+          data-active={computedMode === 'light'}
+          className={twMerge(theme.root.icon, 'dark:hidden')}
+        />
+      )}
     </IconButton>
   )
 }

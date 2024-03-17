@@ -107,7 +107,15 @@ export const Chip = <T extends ElementType = BASE_COMPONENT_TYPE>({
       {actions.map(({ onClick, element, icon }, index) => (
         <>
           {icon && (
-            <IconButton key={index} size="xs" onClick={onClick} disabled={disabled}>
+            <IconButton
+              key={index}
+              size="xs"
+              onClick={e => {
+                e.stopPropagation()
+                onClick?.(e)
+              }}
+              disabled={disabled}
+            >
               {icon}
             </IconButton>
           )}
@@ -121,8 +129,3 @@ export const Chip = <T extends ElementType = BASE_COMPONENT_TYPE>({
     </Component>
   )
 }
-
-
-
-
- 

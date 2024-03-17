@@ -12,8 +12,6 @@ export const inputTheme: InputTheme = {
 
   label: 'ml-2',
 
-  addon:
-    'inline-flex items-center rounded-l-md border-none border-secondary-300 bg-secondary-200 text-sm text-secondary-900 dark:border-secondary-600 dark:bg-secondary-600 dark:text-secondary-400',
   field: {
     base: 'relative w-full',
     icons: {

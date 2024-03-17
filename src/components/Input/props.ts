@@ -166,16 +166,4 @@ export interface BaseInputsProps {
  * @type BaseInputsProps
  * @property addon `ReactNode`
  */
-export interface InputProps extends Omit<ComponentProps<'input'>, 'ref' | 'color' | 'size'>, BaseInputsProps {
-  /**
-   * @name addon
-   * @description Optional prop to add an addon component to the input.
-   * @default null
-   * @type ReactNode
-   * @example
-   * ```tsx
-   * <Input addon={<Icon />} />
-   * ```
-   */
-  addon?: ReactNode
-}
+export interface InputProps extends Omit<ComponentProps<'input'>, 'ref' | 'color' | 'size'>, BaseInputsProps {}

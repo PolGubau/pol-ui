@@ -57,7 +57,6 @@ export interface InputFieldTheme {
  * @name InputTheme
  * @description Interface for the theme of the Input component
  * @property base `string`
- * @property addon `string`
  * @property field `InputFieldTheme`
  * @author Pol Gubau Amores - https://polgubau.com
  */
@@ -70,7 +69,6 @@ export interface InputTheme {
     }
   }
   base: string
-  addon: string
   label: string
   field: InputFieldTheme
 }

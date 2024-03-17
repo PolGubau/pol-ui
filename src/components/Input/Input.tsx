@@ -14,7 +14,6 @@ import type { InputProps } from './props'
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
-      addon,
       className,
       color = ColorsEnum.primary,
       helperText,
@@ -42,7 +41,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           </Label>
         )}
         <div className={twMerge(theme.base, className)}>
-          {addon && <span className={theme.addon}>{addon}</span>}
           <div className={twMerge(theme.field.base)}>
             {leftComponent && (
               <div
@@ -71,7 +69,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 theme.field.input.sizes[size],
                 theme.field.input.withIcon[leftComponent ? 'on' : 'off'],
                 theme.field.input.withRightIcon[rightComponent ? 'on' : 'off'],
-                theme.field.input.withAddon[addon ? 'on' : 'off'],
                 innerClassName,
               )}
               {...props}
