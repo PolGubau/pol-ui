@@ -25,7 +25,7 @@ const Template: StoryFn<NavbarProps> = args => (
     <div className="bg-primary/50 w-full h-screen min-h-[700px]   p-6 "> Lorem</div>
   </>
 )
-export const StoryNavbarTab = () => <div className="h-64 w-96 grid place-items-center">Some fancy lists</div>
+const StoryNavbarTab = () => <div className="h-64 w-96 grid place-items-center">Some fancy lists</div>
 export const Default = Template.bind({})
 Default.args = {
   leftContent: <img src="https://ui.polgubau.com/logo.png" className="h-6 sm:h-7" alt="Pol-ui Logo" />,
