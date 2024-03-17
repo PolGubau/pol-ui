@@ -17,6 +17,7 @@ export interface ContainerScrollProps extends PropsWithChildren, WithClassName {
   headerClassName?: ClassName
   deviceWrapper?: boolean
   deviceClassName?: ClassName
+  screenClassName?: ClassName
 }
 /**
  * ContainerScroll component
@@ -36,6 +37,7 @@ export const ContainerScroll = ({
   headerClassName,
   deviceWrapper = true,
   deviceClassName,
+  screenClassName,
 }: ContainerScrollProps) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
@@ -137,6 +139,7 @@ export const ContainerScroll = ({
           theme={theme}
           deviceWrapper={deviceWrapper}
           deviceClassName={deviceClassName}
+          screenClassName={screenClassName}
         >
           {children}
         </Card>
@@ -152,6 +155,7 @@ interface CardProps extends PropsWithChildren {
   theme: ContainerScrollTheme
   deviceWrapper: ContainerScrollProps['deviceWrapper']
   deviceClassName?: ClassName
+  screenClassName?: ClassName
 }
 export const Card = ({
   rotate,
@@ -161,6 +165,7 @@ export const Card = ({
   theme,
   deviceWrapper = true,
   deviceClassName = '',
+  screenClassName = '',
 }: CardProps) => {
   return (
     <motion.div
@@ -171,7 +176,7 @@ export const Card = ({
       className={cn(deviceWrapper && theme.device, deviceClassName)}
     >
       {deviceWrapper ? (
-        <div className={theme.screen}>
+        <div className={cn(theme.screen, screenClassName)}>
           <motion.div style={{ translateY: translate }}>{children}</motion.div>
         </div>
       ) : (
