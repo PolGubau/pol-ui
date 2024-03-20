@@ -1,14 +1,14 @@
 import type { ColorScale } from './types'
 
 export const primary: ColorScale = {
-  50: '#e8dbff',
-  100: '#D5CFF9',
-  200: '#BFB2F5',
-  300: '#ba9cff',
-  400: '#A78DF0',
-  500: '#B49CFF',
-  600: '#9B7DE6',
-  700: '#816ECB',
-  800: '#675FAF',
-  900: '#4D5094',
+  50: '#f8f5ff',
+  100: '#e8e0ff',
+  200: '#ddd1ff',
+  300: '#cdbdff',
+  400: '#c3b0ff',
+  500: '#b49cff',
+  600: '#a48ee8',
+  700: '#806fb5',
+  800: '#63568c',
+  900: '#4c426b',
 }
