@@ -6,6 +6,9 @@ export type PopoverTheme = {
   animation: string
   rounded: RoundedSizesTypes
   closeButton: string
+  trigger: {
+    base: string
+  }
 }
 
 export const popoverTheme: PopoverTheme = {
@@ -25,5 +28,8 @@ export const popoverTheme: PopoverTheme = {
     '3xl': 'rounded-3xl',
     none: 'rounded-none',
     full: 'rounded-full',
+  },
+  trigger: {
+    base: 'focus:ring ring-primary-700 dark:ring-primary-400 focus:outline-none rounded-md',
   },
 }

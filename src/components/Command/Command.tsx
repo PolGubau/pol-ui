@@ -537,6 +537,7 @@ const command = Object.assign(Command, {
 })
 
 export { useCmdk as useCommandState }
+export { Group as CommandGroup }
 export { command as Command }
 export { Command as CommandRoot }
 export { List as CommandList }

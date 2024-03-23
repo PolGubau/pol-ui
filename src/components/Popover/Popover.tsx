@@ -46,11 +46,13 @@ export interface PopoverProps {
   trigger?: React.ReactNode
   label?: string
   rounded?: RoundedSizes
-  closeButton?: boolean
+  hasCloseButton?: boolean
   sideOffset?: number
   align?: Align
   side?: 'top' | 'right' | 'bottom' | 'left'
   theme?: DeepPartial<PopoverTheme>
+  className?: string
+  triggerClassName?: string
 }
 
 export const Popover = ({
@@ -58,25 +60,22 @@ export const Popover = ({
   label = 'Open',
   children,
   rounded = RoundedSizesEnum.md,
-  closeButton = true,
+  hasCloseButton = true,
   align = AlignEnum.center,
   side = 'bottom',
-
   sideOffset,
   theme: customTheme = {},
+  className,
+  triggerClassName,
   ...props
 }: PopoverProps) => {
   const theme = mergeDeep(getTheme().popover, customTheme)
 
   return (
     <Primitive.Root {...props}>
-      <Primitive.Trigger className="focus:ring ring-primary-700 dark:ring-primary-400 focus:outline-none rounded-md">
+      <Primitive.Trigger className={(cn(theme.trigger.base), triggerClassName)}>
         {trigger ?? (
-          <Button
-            tabIndex={-1}
-            className="inline-flex items-center justify-center focus:shadow-[0_0_0_2px] focus:shadow-black cursor-default outline-none"
-            aria-label="Update dimensions"
-          >
+          <Button tabIndex={-1} aria-label={label}>
             {label}
           </Button>
         )}
@@ -85,11 +84,11 @@ export const Popover = ({
         <Primitive.Content
           align={align}
           side={side}
-          className={cn(theme.content, theme.animation, theme.rounded[rounded])}
+          className={cn(theme.content, theme.animation, theme.rounded[rounded], className)}
           sideOffset={sideOffset}
         >
           {children}
-          {closeButton && (
+          {hasCloseButton && (
             <Primitive.Close aria-label="Close" className={theme.closeButton}>
               <IconButton tabIndex={-1}>
                 <TbX />

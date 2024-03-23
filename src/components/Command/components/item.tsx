@@ -4,7 +4,7 @@ import { cn } from '../../../helpers'
 import { mergeRefs } from '../../../helpers/mergeRefs/mergeRefs'
 import { GroupContext, useCommand, useStore } from '../contexts'
 import { useAsRef, useCmdk, useValue } from '../hooks'
-import { useIsomorphicLayoutEffect } from '../../../hooks'
+import { useIsomorphicLayoutEffect, useRipple } from '../../../hooks'
 import { SELECTORS } from '../Command'
 
 export type ItemProps = Omit<ComponentProps<'button'>, 'disabled' | 'onSelect' | 'value'> & {
@@ -72,12 +72,17 @@ export const Item = React.forwardRef<HTMLButtonElement, ItemProps>((props, forwa
   function select() {
     store.setState('value', valueFromHook.current ?? '', true)
   }
+  const [ripple, event] = useRipple({
+    opacity: 0.4,
+  })
   if (!render) return null
+
   return (
     <button
-      ref={mergeRefs([ref, forwardedRef])}
+      ref={mergeRefs([ref, forwardedRef, ripple])}
       {...etc}
       id={id}
+      onPointerDown={event}
       data-command-item=""
       className={cn(
         'flex flex-1 w-full relative cursor-pointer select-none items-center px-6 py-3 text-secondary-700 dark:text-secondary-50 text-sm outline-none aria-selected:bg-secondary-400/80 dark:aria-selected:bg-secondary-900/80  aria-selected:text-secondary-900 dark:aria-selected:text-secondary-50',
