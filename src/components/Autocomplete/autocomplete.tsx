@@ -52,7 +52,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
         </Button>
       }
     >
-      <Command label="Command Menu" className="bg-secondary-50">
+      <Command className="bg-secondary-50">
         <Command.Input placeholder={placeholder} className="h-9" />
         <Command.List>
           <Command.Empty>{noFoundText}</Command.Empty>
