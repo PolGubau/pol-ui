@@ -17,8 +17,6 @@ export interface NavbarCollapseProps extends ComponentProps<'div'> {
   theme?: DeepPartial<NavbarCollapseTheme>
   links?: NavbarProps['links']
   linkClassName?: string
-  defaultOpen?: boolean
-  hasHambuguer?: boolean
 }
 
 export const NavbarCollapse: FC<NavbarCollapseProps> = ({ links = [], linkClassName, className, ...props }) => {
