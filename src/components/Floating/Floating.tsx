@@ -1,15 +1,12 @@
 'use client'
 
-import type { Placement } from '@floating-ui/core'
-import { autoUpdate, useFocus } from '@floating-ui/react'
 import type { ComponentProps, FC, ReactNode } from 'react'
-import { useEffect, useRef } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { useBaseFLoating, useFloatingInteractions } from '../../hooks/use-floating'
 import { getArrowPlacement } from './helpers'
 import { TriggerReasonEnum } from '../../types/enums'
 import { useBoolean } from '../../hooks'
-import type { TriggerReason } from '../../types'
+import type { UseFloatingProps } from './use-floating'
+import { useFloating } from './use-floating'
 
 export interface FloatingTheme {
   arrow: FloatingArrowTheme
@@ -17,34 +14,22 @@ export interface FloatingTheme {
   base: string
   content: string
   hidden: string
-  style: {
-    auto: string
-    dark: string
-    light: string
-  }
+
   target: string
 }
 
 export interface FloatingArrowTheme {
   base: string
   placement: string
-  style: {
-    dark: string
-    light: string
-    auto: string
-  }
 }
 
-export type FloatingStyle = 'dark' | 'light' | 'auto'
-
-export interface FloatingProps extends Omit<ComponentProps<'div'>, 'content' | 'style'> {
+export interface FloatingProps
+  extends Omit<ComponentProps<'div'>, 'content' | 'style'>,
+    Pick<UseFloatingProps, 'trigger' | 'placement'> {
   animation?: false | `duration-${number}`
   arrow?: boolean
   content: ReactNode
-  placement?: 'auto' | Placement
-  style?: FloatingStyle
   theme: FloatingTheme
-  trigger?: TriggerReason
   minWidth?: number
 }
 
@@ -55,45 +40,19 @@ export const Floating: FC<FloatingProps> = ({
   className,
   content,
   placement = 'top',
-  style = 'dark',
   theme,
   trigger = TriggerReasonEnum.hover,
   minWidth,
   ...props
 }) => {
-  const arrowRef = useRef<HTMLDivElement>(null)
   const { value: open, setValue: setOpen } = useBoolean(false)
 
-  const floatingProperties = useBaseFLoating({
+  const { refs, getFloatingProps, getReferenceProps, x, y, arrowX, arrowY, arrowRef, strategy } = useFloating({
     open,
-    placement,
-    arrowRef,
     setOpen,
-  })
-
-  const {
-    context,
-    middlewareData: { arrow: { x: arrowX, y: arrowY } = {} },
-    refs,
-    strategy,
-    update,
-    x,
-    y,
-  } = floatingProperties
-
-  const focus = useFocus(context)
-  const { getFloatingProps, getReferenceProps } = useFloatingInteractions({
-    context,
-    role: 'tooltip',
     trigger,
-    interactions: [focus],
+    placement,
   })
-
-  useEffect(() => {
-    if (refs.reference.current && refs.floating.current && open) {
-      return autoUpdate(refs.reference.current, refs.floating.current, update)
-    }
-  }, [open, refs.floating, refs.reference, update])
 
   return (
     <>
@@ -108,7 +67,6 @@ export const Floating: FC<FloatingProps> = ({
             theme.base,
             animation && `${theme.animation} ${animation}`,
             !open && theme.hidden,
-            theme.style[style],
             className,
           ),
           style: {
@@ -123,12 +81,7 @@ export const Floating: FC<FloatingProps> = ({
         <div className={theme.content}>{content}</div>
         {arrow && (
           <div
-            className={twMerge(
-              theme.arrow.base,
-              style === 'dark' && theme.arrow.style.dark,
-              style === 'light' && theme.arrow.style.light,
-              style === 'auto' && theme.arrow.style.auto,
-            )}
+            className={twMerge(theme.arrow.base)}
             data-testid="ui-arrow"
             ref={arrowRef}
             style={{
@@ -136,7 +89,7 @@ export const Floating: FC<FloatingProps> = ({
               left: arrowX ?? ' ',
               right: ' ',
               bottom: ' ',
-              [getArrowPlacement({ placement: floatingProperties.placement })]: theme.arrow.placement,
+              [getArrowPlacement({ placement: placement })]: theme.arrow.placement,
             }}
           >
             &nbsp;

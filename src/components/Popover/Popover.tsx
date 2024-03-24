@@ -7,8 +7,7 @@ import { Button } from '../Button'
 import { IconButton } from '../IconButton'
 import { cn, mergeDeep } from '../../helpers'
 import { getTheme } from '../../theme-store'
-import type { Align } from '../../types'
-import { RoundedSizesEnum, type DeepPartial, type RoundedSizes, AlignEnum } from '../../types'
+import { RoundedSizesEnum, type DeepPartial, type RoundedSizes, AlignEnum, type Align } from '../../types'
 import type { PopoverTheme } from './theme'
 
 /**
@@ -74,11 +73,7 @@ export const Popover = ({
   return (
     <Primitive.Root {...props}>
       <Primitive.Trigger className={(cn(theme.trigger.base), triggerClassName)}>
-        {trigger ?? (
-          <Button tabIndex={-1} aria-label={label}>
-            {label}
-          </Button>
-        )}
+        {trigger ?? <Button aria-label={label}>{label}</Button>}
       </Primitive.Trigger>
       <Primitive.Portal>
         <Primitive.Content

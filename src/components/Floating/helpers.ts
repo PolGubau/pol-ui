@@ -1,6 +1,7 @@
 import type { Middleware, Placement } from '@floating-ui/react'
 import { arrow, autoPlacement, flip, offset, shift } from '@floating-ui/react'
 import type { RefObject } from 'react'
+import type { UseFloatingProps } from './use-floating'
 
 /**
  * @see https://floating-ui.com/docs/middleware
@@ -29,7 +30,7 @@ export const getPlacement = ({ placement }: { placement: 'auto' | Placement }): 
   return placement === 'auto' ? undefined : placement
 }
 
-export const getArrowPlacement = ({ placement }: { placement: Placement }): Placement => {
+export const getArrowPlacement = ({ placement = 'auto' }: { placement: UseFloatingProps['placement'] }): Placement => {
   return {
     top: 'bottom',
     right: 'left',

@@ -11,7 +11,7 @@ export default {
   tags: ['autodocs'],
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col justify-center items-center min-h-[400px] bg-secondary-50">
+      <div className="flex p-6 flex-col h-full justify-center items-center min-h-[600px] bg-secondary-50">
         <Story />
         <Toaster />
       </div>
@@ -63,6 +63,7 @@ export const InForm = () => {
         className="w-full"
         options={frameworks}
         onChange={v => {
+          console.log(v)
           toast({ title: `Selected: ${v?.label}` })
         }}
       />

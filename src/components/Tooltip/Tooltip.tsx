@@ -13,7 +13,6 @@ export interface TooltipProps extends Omit<ComponentProps<'div'>, 'content' | 's
   arrow?: boolean
   content: ReactNode
   placement?: 'auto' | Placement
-  style?: 'dark' | 'light' | 'auto'
   theme?: DeepPartial<TooltipTheme>
   trigger?: TriggerReason
 }
@@ -25,7 +24,6 @@ export const Tooltip: FC<TooltipProps> = ({
   className,
   content,
   placement = 'top',
-  style = 'auto',
   theme: customTheme = {},
   trigger = TriggerReasonEnum.hover,
   ...props
@@ -38,7 +36,6 @@ export const Tooltip: FC<TooltipProps> = ({
       arrow={arrow}
       content={content}
       placement={placement}
-      style={style}
       theme={theme}
       trigger={trigger}
       className={className}
