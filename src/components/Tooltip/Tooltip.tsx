@@ -33,12 +33,8 @@ export const Tooltip: FC<TooltipProps> = ({
   ...props
 }) => {
   const theme = mergeDeep(getTheme().tooltip, customTheme)
-  // const { value: open, setValue: setOpen } = useBoolean(false)
-
-  // handleChangeOpen is used to call setOpen from the outside
 
   const [openState, setOpenState] = useState(open)
-
   useEffect(() => {
     if (open !== undefined) {
       setOpenState(open)
@@ -49,7 +45,6 @@ export const Tooltip: FC<TooltipProps> = ({
     setOpen?.(value)
     setOpenState(value)
   }
-
   return (
     <Floating
       open={openState}

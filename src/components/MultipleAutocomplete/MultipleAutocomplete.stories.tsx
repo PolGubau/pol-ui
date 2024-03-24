@@ -1,17 +1,17 @@
 import type { Meta } from '@storybook/react'
 
-import type { AutocompleteOption } from './autocomplete'
-import { Autocomplete } from './autocomplete'
+import { MultipleAutocomplete } from './multipleAutocomplete'
 import { Toaster, toast } from '../Toaster'
 import { Input } from '../Input'
 import { Checkbox } from '../Checkbox'
 import { IconButton } from '../IconButton'
 import { TbDotsVertical } from 'react-icons/tb'
 import React from 'react'
+import type { AutocompleteOption } from '../Autocomplete'
 
 export default {
-  title: 'Components/Autocomplete',
-  component: Autocomplete,
+  title: 'Components/MultipleAutocomplete',
+  component: MultipleAutocomplete,
   tags: ['autodocs'],
   decorators: [
     Story => (
@@ -49,33 +49,33 @@ const frameworks = [
   },
 ]
 export const Default = () => {
-  const [value, setValue] = React.useState<AutocompleteOption | undefined>(undefined)
+  const [value, setValue] = React.useState<AutocompleteOption[]>([])
 
   return (
-    <Autocomplete
+    <MultipleAutocomplete
       options={frameworks}
       value={value}
       onChange={v => {
         setValue(v)
-        toast({ title: `Selected: ${v?.label}` })
+        toast({ title: `Selected: ${v?.map(x => x.label).join(', ')}` })
       }}
     />
   )
 }
 export const InForm = () => {
-  const [value, setValue] = React.useState<AutocompleteOption | undefined>(undefined)
+  const [value, setValue] = React.useState<AutocompleteOption[]>([])
 
   return (
     <form action="" className="flex flex-col gap-4">
       <Input label="Name" placeholder="Pol Gubau" />
       <Input label="Email" placeholder="hello@polgubau.com" />
-      <Autocomplete
+      <MultipleAutocomplete
         value={value}
         className="w-full"
         options={frameworks}
         onChange={v => {
           setValue(v)
-          toast({ title: `Selected: ${v?.label}` })
+          toast({ title: `Selected: ${v?.map(x => x.label).join(', ')}` })
         }}
       />
       <Checkbox label="Subscribe to newsletter" />
@@ -83,25 +83,25 @@ export const InForm = () => {
   )
 }
 export const RemainOpen = () => {
-  const [value, setValue] = React.useState<AutocompleteOption | undefined>(undefined)
+  const [value, setValue] = React.useState<AutocompleteOption[]>([])
 
   return (
-    <Autocomplete
+    <MultipleAutocomplete
       value={value}
       options={frameworks}
       closeOnSelect={false}
       onChange={v => {
         setValue(v)
-        toast({ title: `Selected: ${v?.label}` })
+        toast({ title: `Selected: ${v?.map(x => x.label).join(', ')}` })
       }}
     />
   )
 }
 export const CustomTrigger = () => {
-  const [value, setValue] = React.useState<AutocompleteOption | undefined>(undefined)
+  const [value, setValue] = React.useState<AutocompleteOption[]>([])
 
   return (
-    <Autocomplete
+    <MultipleAutocomplete
       value={value}
       trigger={
         <IconButton>
@@ -112,12 +112,12 @@ export const CustomTrigger = () => {
       onChange={v => {
         setValue(v)
 
-        toast({ title: `Selected: ${v?.label}` })
+        toast({ title: `Selected: ${v?.map(x => x.label).join(', ')}` })
       }}
     />
   )
 }
 
 export const Uncontrolled = () => {
-  return <Autocomplete options={frameworks} />
+  return <MultipleAutocomplete options={frameworks} />
 }

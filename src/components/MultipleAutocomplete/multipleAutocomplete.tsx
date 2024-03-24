@@ -2,7 +2,6 @@
 
 import * as React from 'react'
 
-import type { ButtonProps } from '../Button'
 import { Button } from '../Button'
 import { TbCheck, TbChevronDown } from 'react-icons/tb'
 import { cn } from '../../helpers'
@@ -10,29 +9,16 @@ import { Command } from '../Command'
 import { useBoolean } from '../../hooks'
 import { CommandGroup } from '../Command/Command'
 import { Tooltip } from '../Tooltip'
+import type { AutocompleteOption, AutocompleteProps } from '../Autocomplete'
 
-// value + label compulsory, any other prop allowed but won't be used
-export interface AutocompleteOption {
-  value: string
-  label: string
-  [key: string]: unknown
+export interface MultipleAutocompleteProps extends Omit<AutocompleteProps, 'onChange' | 'value'> {
+  value?: AutocompleteOption[]
+  onChange?: (value: AutocompleteOption[]) => void
 }
 
-export interface AutocompleteProps extends Omit<ButtonProps, 'onChange' | 'value'> {
-  value?: AutocompleteOption
-  onChange?: (value: AutocompleteOption | undefined) => void
-  placeholder?: string
-  noFoundText?: React.ReactNode
-  options: AutocompleteOption[]
-  trigger?: React.ReactNode
-  popupClassName?: string
-  className?: string
-  closeOnSelect?: boolean
-}
-
-export const Autocomplete: React.FC<AutocompleteProps> = ({
+export const MultipleAutocomplete: React.FC<MultipleAutocompleteProps> = ({
   onChange,
-  value: externalValue,
+  value: externalValue = [],
   placeholder,
   noFoundText = 'Nothing found...',
   options = [],
@@ -41,11 +27,11 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   className,
   closeOnSelect = true,
   ...props
-}: AutocompleteProps) => {
+}: MultipleAutocompleteProps) => {
   const { value: open, setFalse, setValue } = useBoolean(false)
-  const [value, setState] = React.useState<AutocompleteOption | undefined>(externalValue)
+  const [value, setState] = React.useState<AutocompleteOption[]>(externalValue)
 
-  const handleSend = (newValue: AutocompleteProps['value']) => {
+  const handleSend = (newValue: AutocompleteOption[]) => {
     setState(newValue)
     onChange?.(newValue)
   }
@@ -56,7 +42,17 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
 
   const handleOnChange = (currentValue: string) => {
     const obj = options.find(x => x.value === currentValue) // find the object by value
-    handleSend(obj === value ? undefined : obj) // if the same value is selected, set to undefined
+    if (!obj) return console.error('Object not found' + currentValue)
+
+    const alreadySelected = value.find(x => x.value === currentValue)
+
+    if (alreadySelected) {
+      handleSend(value.filter(x => x.value !== currentValue))
+    } else {
+      const newArray: AutocompleteOption[] = [...value, obj]
+      handleSend(newArray)
+    }
+
     setFalse()
   }
   const popupRef = React.useRef<HTMLDivElement>(null)
@@ -83,18 +79,21 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
             <Command.Empty>{noFoundText}</Command.Empty>
 
             <CommandGroup>
-              {options.map(o => (
-                <Command.Item
-                  key={o.value}
-                  value={o.value}
-                  onSelect={handleOnChange}
-                  className="
+              {options.map(o => {
+                const isSelected = value.find(x => x.value === o.value)
+                return (
+                  <Command.Item
+                    key={o.value}
+                    value={o.value}
+                    onSelect={handleOnChange}
+                    className="
             aria-selected:bg-primary/30"
-                >
-                  {o.label}
-                  <TbCheck className={cn('ml-auto h-4 w-4', value === o ? 'opacity-100' : 'opacity-0')} />
-                </Command.Item>
-              ))}
+                  >
+                    {o.label}
+                    <TbCheck className={cn('ml-auto h-4 w-4', isSelected ? 'opacity-100' : 'opacity-0')} />
+                  </Command.Item>
+                )
+              })}
             </CommandGroup>
           </Command.List>
         </Command>
@@ -104,7 +103,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
         <Button
           type="button"
           {...props}
-          value={value?.value ?? ''}
+          value={value?.map(x => x.value).join(', ') ?? ''}
           aria-autocomplete="list"
           aria-haspopup="listbox"
           outline
@@ -113,7 +112,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
           className={cn('flex justify-between min-w-[200px]', className)}
           innerClassname="flex justify-between "
         >
-          {value ? value.label : placeholder ?? 'Select'}
+          {value?.length > 0 ? value.map(x => x.label).join(', ') : placeholder ?? 'Select'}
           <TbChevronDown className="h-4 w-4 shrink-0 opacity-50" />
         </Button>
       )}
