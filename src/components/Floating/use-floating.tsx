@@ -7,10 +7,10 @@ import type { TriggerReason } from '../../types'
 export interface UseFloatingProps {
   open: boolean
   setOpen: Dispatch<React.SetStateAction<boolean>>
-  trigger: TriggerReason
+  trigger?: TriggerReason
   placement?: 'auto' | Placement
 }
-export const useFloating = ({ open, setOpen, trigger, placement }: UseFloatingProps) => {
+export const useFloating = ({ open, setOpen, trigger = 'hover', placement }: UseFloatingProps) => {
   const arrowRef = useRef<HTMLDivElement>(null)
 
   const floatingProperties = useBaseFLoating({

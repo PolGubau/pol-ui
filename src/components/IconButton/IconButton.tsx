@@ -21,11 +21,11 @@ export type IconButtonProps<T extends ElementType = 'button'> = {
 } & ComponentPropsWithoutRef<T> &
   Omit<ButtonProps, 'theme' | 'loadingLabel'>
 /**
- * 
+ *
  * @name IconButton
- * @description Base component for displaying icons as button with ripple effect, tooltip, and loading state. 
- * 
- * @returns 
+ * @description Base component for displaying icons as button with ripple effect, tooltip, and loading state.
+ *
+ * @returns
  */
 const IconButtonFn = <T extends ElementType = 'button'>({
   children = null,
