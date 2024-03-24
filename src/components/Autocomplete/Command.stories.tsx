@@ -63,7 +63,7 @@ export const InForm = () => {
         className="w-full"
         options={frameworks}
         onChange={v => {
-          toast({ title: `Selected: ${v}` })
+          toast({ title: `Selected: ${v?.label}` })
         }}
       />
       <Checkbox label="Subscribe to newsletter" />

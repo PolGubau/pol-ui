@@ -19,7 +19,7 @@ export interface AutocompleteOption {
 }
 
 export interface AutocompleteProps extends React.PropsWithChildren, Omit<ButtonProps, 'onChange'> {
-  onChange?: (value: string) => void
+  onChange?: (value: AutocompleteOption | undefined) => void
   placeholder?: string
   noFoundText?: React.ReactNode
   options: AutocompleteOption[]
@@ -39,12 +39,13 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   ...props
 }: AutocompleteProps) => {
   const { value: open, toggle: setOpen, setFalse } = useBoolean(false)
-  const [value, setValue] = React.useState('')
+  const [value, setValue] = React.useState<AutocompleteOption | undefined>(undefined)
 
   const handleOnChange = (currentValue: string) => {
-    setValue(currentValue === value ? '' : currentValue)
-    setFalse()
-    onChange?.(currentValue)
+    const obj = options.find(x => x.value === currentValue) // find the object by value
+    setValue(obj === value ? undefined : obj) // if the same value is selected, set to undefined
+    setFalse() // close the popover
+    onChange?.(obj) // call the parent onChange
   }
 
   return (
@@ -63,7 +64,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
             className={cn('flex justify-between min-w-[200px]', className)}
             innerClassname="flex justify-between "
           >
-            {value ? options.find(o => o.value === value)?.label : placeholder ?? 'Select'}
+            {value ? value.label : placeholder ?? 'Select'}
             <TbChevronDown className="h-4 w-4 shrink-0 opacity-50" />
           </Button>
         )
@@ -84,7 +85,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
               aria-selected:bg-primary/30"
               >
                 {o.label}
-                <TbCheck className={cn('ml-auto h-4 w-4', value === o.value ? 'opacity-100' : 'opacity-0')} />
+                <TbCheck className={cn('ml-auto h-4 w-4', value === o ? 'opacity-100' : 'opacity-0')} />
               </Command.Item>
             ))}
           </CommandGroup>
