@@ -1,3 +1,4 @@
+'use client'
 import type { ComponentProps, FC, ReactElement } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
@@ -32,7 +33,7 @@ export interface AvatarProps extends Omit<ComponentProps<'div'>, 'color'> {
 /**
  *
  * @name Avatar
- * @description The Avatar component is used to display a user's profile picture or initials, and can also display a status indicator or a counter. Usefull in a chat application, a social network, a forum... 
+ * @description The Avatar component is used to display a user's profile picture or initials, and can also display a status indicator or a counter. Usefull in a chat application, a social network, a forum...
  *
  * @returns
  */

@@ -1,3 +1,5 @@
+'use client'
+
 import type { ComponentProps, FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
@@ -20,9 +22,9 @@ export interface BreadcrumbComponentProps extends ComponentProps<'nav'> {
 }
 
 /**
- * 
+ *
  * @name Breadcrumb
- * @description The Breadcrumb component is used to display the current location within a hierarchy of content and provide a way to navigate back to the root of the hierarchy. 
+ * @description The Breadcrumb component is used to display the current location within a hierarchy of content and provide a way to navigate back to the root of the hierarchy.
  * @returns React.FC<BreadcrumbComponentProps>
  */
 export const Breadcrumb: FC<BreadcrumbComponentProps> = ({

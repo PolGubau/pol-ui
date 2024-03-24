@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { DynamicHeading } from '../DynamicHeading'
 import type { DeepPartial, HeadingLevel } from '../../types'
@@ -22,7 +24,7 @@ export interface BubbleHeadingProps {
 
 /**
  * BubbleHeading component
- * @description The BubbleHeading component is used to create an important text that changes it's weight when hovered over with a smooth transition. Useful for titles and headings. 
+ * @description The BubbleHeading component is used to create an important text that changes it's weight when hovered over with a smooth transition. Useful for titles and headings.
  *
  */
 export const BubbleHeading: React.FC<BubbleHeadingProps> = ({

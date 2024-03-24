@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, type ComponentProps, type FC, type MouseEventHandler } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'

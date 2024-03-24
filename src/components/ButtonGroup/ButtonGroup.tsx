@@ -1,3 +1,5 @@
+'use client'
+
 import type { ComponentProps, FC, ReactElement } from 'react'
 import { Children, cloneElement, useMemo } from 'react'
 import { twMerge } from 'tailwind-merge'

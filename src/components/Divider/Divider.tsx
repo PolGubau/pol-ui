@@ -1,3 +1,5 @@
+'use client'
+
 import type { ComponentProps, FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep'
@@ -10,7 +12,7 @@ export interface DividerProps extends ComponentProps<'hr'> {
 }
 
 /**
- * 
+ *
  * @name Divider
  * @description The Divider component is used to separate content within a section or a page, and it is used to create a visual separation between different sections of a page.
  * @returns React.FC<DividerProps>

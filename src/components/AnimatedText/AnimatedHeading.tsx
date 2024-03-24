@@ -1,3 +1,5 @@
+'use client'
+
 import { AnimatePresence, motion } from 'framer-motion'
 import type { DeepPartial, WithClassName } from '../../types'
 import { cn, mergeDeep } from '../../helpers'

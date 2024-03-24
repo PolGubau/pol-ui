@@ -1,3 +1,5 @@
+'use client'
+
 import type { ComponentProps, FC, ReactNode } from 'react'
 import { HiX } from 'react-icons/hi'
 import { twMerge } from 'tailwind-merge'

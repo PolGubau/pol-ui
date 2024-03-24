@@ -1,3 +1,5 @@
+'use client'
+
 import type { ElementType } from 'react'
 import React from 'react'
 import { ColorsEnum, type Colors, type DeepPartial, type RoundedSizes } from '../../types'

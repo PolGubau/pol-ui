@@ -1,3 +1,5 @@
+'use client'
+
 import { FloatingTree, useFloatingParentNodeId } from '@floating-ui/react'
 import * as React from 'react'
 import type { DropdownTheme } from './theme'
@@ -30,9 +32,9 @@ export interface DropdownProps extends BaseButtonProps {
  * @param {string} props.label - The label of the dropdown
  * @param {boolean} props.nested - If the dropdown is nested
  * @param {React.ReactNode} props.children - The content of the dropdown
- *  
+ *
  * @returns React.FC<DropdownProps>
- * 
+ *
  */
 export const Dropdown = React.forwardRef<HTMLButtonElement, DropdownProps & BaseButtonProps>((props, ref) => {
   const parentId = useFloatingParentNodeId()
