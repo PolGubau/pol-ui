@@ -2,8 +2,9 @@
 
 import * as React from 'react'
 
+import type { ButtonProps } from '../Button'
 import { Button } from '../Button'
-import { TbCheck, TbChevronsDown } from 'react-icons/tb'
+import { TbCheck, TbChevronDown } from 'react-icons/tb'
 import { Popover } from '../Popover'
 import { cn } from '../../helpers'
 import { Command } from '../Command'
@@ -17,11 +18,14 @@ export interface AutocompleteOption {
   [key: string]: unknown
 }
 
-export interface AutocompleteProps extends React.PropsWithChildren {
+export interface AutocompleteProps extends React.PropsWithChildren, Omit<ButtonProps, 'onChange'> {
   onChange?: (value: string) => void
   placeholder?: string
   noFoundText?: React.ReactNode
   options: AutocompleteOption[]
+  trigger?: React.ReactNode
+  popupClassName?: string
+  className?: string
 }
 
 export const Autocomplete: React.FC<AutocompleteProps> = ({
@@ -29,6 +33,10 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   placeholder,
   noFoundText = 'Nothing found...',
   options = [],
+  trigger,
+  popupClassName,
+  className,
+  ...props
 }: AutocompleteProps) => {
   const { value: open, toggle: setOpen, setFalse } = useBoolean(false)
   const [value, setValue] = React.useState('')
@@ -46,20 +54,35 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       className="p-0"
       onOpenChange={setOpen}
       trigger={
-        <Button outline role="combobox" aria-expanded={open} className="w-[200px] justify-between">
-          {value ? options.find(o => o.value === value)?.label : 'Select framework...'}
-          <TbChevronsDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-        </Button>
+        trigger ?? (
+          <Button
+            {...props}
+            outline
+            role="combobox"
+            aria-expanded={open}
+            className={cn('flex justify-between min-w-[200px]', className)}
+            innerClassname="flex justify-between "
+          >
+            {value ? options.find(o => o.value === value)?.label : placeholder ?? 'Select'}
+            <TbChevronDown className="h-4 w-4 shrink-0 opacity-50" />
+          </Button>
+        )
       }
     >
-      <Command className="bg-secondary-50">
-        <Command.Input placeholder={placeholder} className="h-9" />
+      <Command className={cn('bg-secondary-50', popupClassName)}>
+        <Command.Input placeholder={placeholder} className="h-10" />
         <Command.List>
           <Command.Empty>{noFoundText}</Command.Empty>
 
           <CommandGroup>
             {options.map(o => (
-              <Command.Item key={o.value} value={o.value} onSelect={handleOnChange}>
+              <Command.Item
+                key={o.value}
+                value={o.value}
+                onSelect={handleOnChange}
+                className="
+              aria-selected:bg-primary/30"
+              >
                 {o.label}
                 <TbCheck className={cn('ml-auto h-4 w-4', value === o.value ? 'opacity-100' : 'opacity-0')} />
               </Command.Item>

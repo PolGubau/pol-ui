@@ -1,11 +1,13 @@
 import type { ComponentProps } from 'react'
 import React from 'react'
-import { cn } from '../../../helpers'
+import { cn, mergeDeep } from '../../../helpers'
 import { mergeRefs } from '../../../helpers/mergeRefs/mergeRefs'
 import { GroupContext, useCommand, useStore } from '../contexts'
 import { useAsRef, useCmdk, useValue } from '../hooks'
 import { useIsomorphicLayoutEffect, useRipple } from '../../../hooks'
 import { SELECTORS } from '../Command'
+import { getTheme } from '../../../theme-store'
+import type { CommandTheme } from '../theme'
 
 export type ItemProps = Omit<ComponentProps<'button'>, 'disabled' | 'onSelect' | 'value'> & {
   /** Whether this item is currently disabled. */
@@ -21,6 +23,7 @@ export type ItemProps = Omit<ComponentProps<'button'>, 'disabled' | 'onSelect' |
   keywords?: string[]
   /** Whether this item is forcibly rendered regardless of filtering. */
   forceMount?: boolean
+  theme?: Partial<CommandTheme>
 }
 
 /**
@@ -73,9 +76,10 @@ export const Item = React.forwardRef<HTMLButtonElement, ItemProps>((props, forwa
     store.setState('value', valueFromHook.current ?? '', true)
   }
   const [ripple, event] = useRipple({
-    opacity: 0.4,
+    opacity: 0.2,
   })
   if (!render) return null
+  const theme = mergeDeep(getTheme().command, props.theme ?? {})
 
   return (
     <button
@@ -84,10 +88,7 @@ export const Item = React.forwardRef<HTMLButtonElement, ItemProps>((props, forwa
       id={id}
       onPointerDown={event}
       data-command-item=""
-      className={cn(
-        'flex flex-1 w-full relative cursor-pointer select-none items-center px-6 py-3 text-secondary-700 dark:text-secondary-50 text-sm outline-none aria-selected:bg-secondary-400/80 dark:aria-selected:bg-secondary-900/80  aria-selected:text-secondary-900 dark:aria-selected:text-secondary-50',
-        props.className,
-      )}
+      className={cn(theme.item.base, props.className)}
       onFocus={() => store.setState('value', valueFromHook.current ?? '', true)}
       role="option"
       aria-disabled={Boolean(disabled)}
