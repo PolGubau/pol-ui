@@ -26,6 +26,7 @@ export interface AutocompleteProps extends React.PropsWithChildren, Omit<ButtonP
   trigger?: React.ReactNode
   popupClassName?: string
   className?: string
+  closeOnSelect?: boolean
 }
 
 export const Autocomplete: React.FC<AutocompleteProps> = ({
@@ -33,12 +34,13 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   placeholder,
   noFoundText = 'Nothing found...',
   options = [],
-  // trigger,
+  trigger,
   popupClassName,
   className,
+  closeOnSelect = true,
   ...props
 }: AutocompleteProps) => {
-  const { value: open, setFalse } = useBoolean(false)
+  const { value: open, setFalse, toggle } = useBoolean(false)
   const [value, setValue] = React.useState<AutocompleteOption | undefined>(undefined)
 
   const handleOnChange = (currentValue: string) => {
@@ -47,33 +49,23 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     setFalse() // close the popover
     onChange?.(obj) // call the parent onChange
   }
+  const popupRef = React.useRef<HTMLDivElement>(null)
+
+  // focus the popup input when the popup is opened
+  React.useEffect(() => {
+    if (open) {
+      popupRef.current?.querySelector('input')?.focus()
+    }
+  }, [open])
 
   return (
     <Tooltip
-      // open={open}
-      // handleClose={setFalse}
+      open={open}
+      setOpen={closeOnSelect ? toggle : undefined}
       trigger="click"
-      // hasCloseButton={false}
-      // open={open}
       className="p-0"
-      // onOpenChange={setOpen}
-      // trigger={
-      //   trigger ?? (
-      //     <Button
-      //       {...props}
-      //       outline
-      //       role="combobox"
-      //       aria-expanded={open}
-      //       className={cn('flex justify-between min-w-[200px]', className)}
-      //       innerClassname="flex justify-between "
-      //     >
-      //       {value ? value.label : placeholder ?? 'Select'}
-      //       <TbChevronDown className="h-4 w-4 shrink-0 opacity-50" />
-      //     </Button>
-      //   )
-      // }
       content={
-        <Command className={cn('bg-secondary-50 min-w-[200px]', popupClassName)}>
+        <Command className={cn('bg-secondary-50 min-w-[200px]', popupClassName)} ref={popupRef}>
           <Command.Input placeholder={placeholder} className="h-10" />
           <Command.List>
             <Command.Empty>{noFoundText}</Command.Empty>
@@ -96,17 +88,19 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
         </Command>
       }
     >
-      <Button
-        {...props}
-        outline
-        role="combobox"
-        aria-expanded={open}
-        className={cn('flex justify-between min-w-[200px]', className)}
-        innerClassname="flex justify-between "
-      >
-        {value ? value.label : placeholder ?? 'Select'}
-        <TbChevronDown className="h-4 w-4 shrink-0 opacity-50" />
-      </Button>
+      {trigger ?? (
+        <Button
+          {...props}
+          outline
+          role="combobox"
+          aria-expanded={open}
+          className={cn('flex justify-between min-w-[200px]', className)}
+          innerClassname="flex justify-between "
+        >
+          {value ? value.label : placeholder ?? 'Select'}
+          <TbChevronDown className="h-4 w-4 shrink-0 opacity-50" />
+        </Button>
+      )}
     </Tooltip>
   )
 }

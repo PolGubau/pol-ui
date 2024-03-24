@@ -4,7 +4,6 @@ import type { ComponentProps, FC, ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { getArrowPlacement } from './helpers'
 import { TriggerReasonEnum } from '../../types/enums'
-import { useBoolean } from '../../hooks'
 import type { UseFloatingProps } from './use-floating'
 import { useFloating } from './use-floating'
 
@@ -31,6 +30,8 @@ export interface FloatingProps
   content: ReactNode
   theme: FloatingTheme
   minWidth?: number
+  open: boolean
+  setOpen: (prevState: boolean) => void
 }
 
 export const Floating: FC<FloatingProps> = ({
@@ -43,13 +44,13 @@ export const Floating: FC<FloatingProps> = ({
   theme,
   trigger = TriggerReasonEnum.hover,
   minWidth,
+  open = false,
+  setOpen,
   ...props
 }) => {
-  const { value: open, setValue: setOpen } = useBoolean(false)
-
   const { refs, getFloatingProps, getReferenceProps, x, y, arrowX, arrowY, arrowRef, strategy } = useFloating({
     open,
-    setOpen,
+    setOpen: () => setOpen(!open),
     trigger,
     placement,
   })

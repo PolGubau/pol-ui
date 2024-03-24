@@ -55,6 +55,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>((props, forw
       <input
         ref={forwardedRef}
         {...etc}
+        // eslint-disable-next-line jsx-a11y/no-autofocus
+        autoFocus
         data-command-input=""
         autoComplete="off"
         autoCorrect="off"

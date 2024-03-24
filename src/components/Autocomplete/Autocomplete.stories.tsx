@@ -4,6 +4,8 @@ import { Autocomplete } from './autocomplete'
 import { Toaster, toast } from '../Toaster'
 import { Input } from '../Input'
 import { Checkbox } from '../Checkbox'
+import { IconButton } from '../IconButton'
+import { TbDotsVertical } from 'react-icons/tb'
 
 export default {
   title: 'Components/Autocomplete',
@@ -49,7 +51,7 @@ export const Default = () => {
     <Autocomplete
       options={frameworks}
       onChange={v => {
-        toast({ title: `Selected: ${v}` })
+        toast({ title: `Selected: ${v?.label}` })
       }}
     />
   )
@@ -57,8 +59,8 @@ export const Default = () => {
 export const InForm = () => {
   return (
     <form action="" className="flex flex-col gap-4">
-      <Input label="Name" placeholder="Amancio Ortega" />
-      <Input label="Email" placeholder="amancio@ortega.com" />
+      <Input label="Name" placeholder="Pol Gubau" />
+      <Input label="Email" placeholder="hello@polgubau.com" />
       <Autocomplete
         className="w-full"
         options={frameworks}
@@ -69,5 +71,31 @@ export const InForm = () => {
       />
       <Checkbox label="Subscribe to newsletter" />
     </form>
+  )
+}
+export const RemainOpen = () => {
+  return (
+    <Autocomplete
+      options={frameworks}
+      closeOnSelect={false}
+      onChange={v => {
+        toast({ title: `Selected: ${v?.label}` })
+      }}
+    />
+  )
+}
+export const CustomTrigger = () => {
+  return (
+    <Autocomplete
+      trigger={
+        <IconButton>
+          <TbDotsVertical />
+        </IconButton>
+      }
+      options={frameworks}
+      onChange={v => {
+        toast({ title: `Selected: ${v?.label}` })
+      }}
+    />
   )
 }

@@ -1,20 +1,22 @@
 import type { Placement } from '@floating-ui/core'
-import type { ComponentProps, FC, ReactNode } from 'react'
+import { useState, type ComponentProps, type FC, type ReactNode, useEffect } from 'react'
 import { mergeDeep } from '../../helpers/merge-deep'
 import { getTheme } from '../../theme-store'
-import type { DeepPartial, TriggerReason } from '../../types/types'
-import { Floating, type FloatingTheme } from '../Floating'
+import type { DeepPartial } from '../../types/types'
+import type { FloatingProps, FloatingTheme } from '../Floating'
+import { Floating } from '../Floating'
 import { TriggerReasonEnum } from '../../types/enums'
 
 export type TooltipTheme = FloatingTheme
 
-export interface TooltipProps extends Omit<ComponentProps<'div'>, 'content' | 'style'> {
+export interface TooltipProps extends Omit<ComponentProps<'div'>, 'content' | 'style'>, Pick<FloatingProps, 'trigger'> {
   animation?: false | `duration-${number}`
   arrow?: boolean
   content: ReactNode
   placement?: 'auto' | Placement
   theme?: DeepPartial<TooltipTheme>
-  trigger?: TriggerReason
+  open?: boolean
+  setOpen?: (prevState: boolean) => void
 }
 
 export const Tooltip: FC<TooltipProps> = ({
@@ -26,12 +28,32 @@ export const Tooltip: FC<TooltipProps> = ({
   placement = 'top',
   theme: customTheme = {},
   trigger = TriggerReasonEnum.hover,
+  open = false,
+  setOpen,
   ...props
 }) => {
   const theme = mergeDeep(getTheme().tooltip, customTheme)
+  // const { value: open, setValue: setOpen } = useBoolean(false)
+
+  // handleChangeOpen is used to call setOpen from the outside
+
+  const [openState, setOpenState] = useState(open)
+
+  useEffect(() => {
+    if (open !== undefined) {
+      setOpenState(open)
+    }
+  }, [open])
+
+  const handleChangeOpen = (value: boolean) => {
+    setOpen?.(value)
+    setOpenState(value)
+  }
 
   return (
     <Floating
+      open={openState}
+      setOpen={handleChangeOpen}
       animation={animation}
       arrow={arrow}
       content={content}
