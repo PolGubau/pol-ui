@@ -17,16 +17,16 @@
 
     "plugins": [
       {
-        "name": "next",
-      },
+        "name": "next"
+      }
     ],
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
     "target": "ESNext",
-    "types": ["@testing-library/jest-dom", "node", "vitest"],
+    "types": ["@testing-library/jest-dom", "node", "vitest"]
   },
-  "exclude": ["./build/", "./lib/", "./.next/", "postcss.config.js"],
+  "exclude": ["./build/", "./coverage/", "./lib/", "./.next/", "postcss.config.js"],
   "include": [
     ".next/types/**/*.ts",
     "**/*.js",
@@ -35,6 +35,7 @@
     "**/*.ts",
     "**/*.tsx",
     "postcss.config.js",
-    "tailwind.config.js", "src/a.sass",
-  ],
+    "tailwind.config.ts",
+    "src/a.sass"
+  ]
 }
