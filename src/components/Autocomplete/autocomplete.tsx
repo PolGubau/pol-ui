@@ -69,7 +69,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
         )
       }
     >
-      <Command className={cn('bg-secondary-50', popupClassName)}>
+      <Command className={cn('bg-secondary-50 min-w-[200px]', popupClassName)}>
         <Command.Input placeholder={placeholder} className="h-10" />
         <Command.List>
           <Command.Empty>{noFoundText}</Command.Empty>
