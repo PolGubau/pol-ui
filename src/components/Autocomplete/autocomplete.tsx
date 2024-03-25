@@ -5,11 +5,14 @@ import * as React from 'react'
 import type { ButtonProps } from '../Button'
 import { Button } from '../Button'
 import { TbCheck, TbChevronDown } from 'react-icons/tb'
-import { cn } from '../../helpers'
+import { cn, mergeDeep } from '../../helpers'
 import { Command } from '../Command'
 import { useBoolean } from '../../hooks'
 import { CommandGroup } from '../Command/Command'
 import { Tooltip } from '../Tooltip'
+import { getTheme } from '../../theme-store'
+import type { AutocompleteTheme } from './theme'
+import type { DeepPartial } from '../../types'
 
 // value + label compulsory, any other prop allowed but won't be used
 export interface AutocompleteOption {
@@ -28,6 +31,7 @@ export interface AutocompleteProps extends Omit<ButtonProps, 'onChange' | 'value
   popupClassName?: string
   className?: string
   closeOnSelect?: boolean
+  theme?: DeepPartial<AutocompleteTheme>
 }
 
 export const Autocomplete: React.FC<AutocompleteProps> = ({
@@ -40,6 +44,8 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   popupClassName,
   className,
   closeOnSelect = true,
+  theme: customTheme = {},
+
   ...props
 }: AutocompleteProps) => {
   const { value: open, setFalse, setValue } = useBoolean(false)
@@ -67,6 +73,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       popupRef.current?.querySelector('input')?.focus()
     }
   }, [open])
+  const theme = mergeDeep(getTheme().autocomplete, customTheme)
 
   return (
     <Tooltip
@@ -77,22 +84,18 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       trigger="click"
       className="p-0"
       content={
-        <Command className={cn('bg-secondary-50 min-w-[200px]', popupClassName)} ref={popupRef}>
-          <Command.Input placeholder={placeholder} className="h-10" />
+        <Command className={(theme.command, popupClassName)} ref={popupRef}>
+          <Command.Input placeholder={placeholder} className={theme.command.input} />
           <Command.List>
             <Command.Empty>{noFoundText}</Command.Empty>
 
             <CommandGroup>
               {options.map(o => (
-                <Command.Item
-                  key={o.value}
-                  value={o.value}
-                  onSelect={handleOnChange}
-                  className="
-            aria-selected:bg-primary/30"
-                >
+                <Command.Item key={o.value} value={o.value} onSelect={handleOnChange} className={theme.command.item}>
                   {o.label}
-                  <TbCheck className={cn('ml-auto h-4 w-4', value === o ? 'opacity-100' : 'opacity-0')} />
+                  <TbCheck
+                    className={cn(theme.command.icon.base, theme.command.icon.selected[o === value ? 'on' : 'off'])}
+                  />
                 </Command.Item>
               ))}
             </CommandGroup>
@@ -110,11 +113,10 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
           outline
           role="combobox"
           aria-expanded={open}
-          className={cn('flex justify-between min-w-[200px]', className)}
-          innerClassname="flex justify-between "
+          className={cn(theme.button.base, className)}
         >
           {value ? value.label : placeholder ?? 'Select'}
-          <TbChevronDown className="h-4 w-4 shrink-0 opacity-50" />
+          <TbChevronDown className={cn(theme.button.chevron.base, open && theme.button.chevron.opened)} />{' '}
         </Button>
       )}
     </Tooltip>

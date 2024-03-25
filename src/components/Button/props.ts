@@ -6,8 +6,6 @@ import type { PositionInButtonGroup } from '../ButtonGroup'
 export type ButtonProps<T extends ElementType = 'button'> = {
   as?: T | null
 
-
-
   href?: string
   /**
    * @name color
@@ -74,19 +72,6 @@ export type ButtonProps<T extends ElementType = 'button'> = {
    */
   hasMotion?: boolean
 
-  /**
-   * @name hasBackground
-   * @description Optional prop to remove the background of the button.
-   * @default true
-   * @type boolean
-   * @example
-   * ```tsx
-   * <Button hasBackground={false}>Primary</Button>
-   * ```
-   *
-   */
-
-  hasBackground?: boolean
   /**
    * @name loader
    * @description Optional prop to change the loader of the button.
@@ -171,19 +156,6 @@ export type ButtonProps<T extends ElementType = 'button'> = {
 
    */
   theme?: DeepPartial<ButtonTheme>
-
-  /**
-   * @name innerClassname
-   * @description Optional prop to add a class to the inner span of the button.
-   * @default ''
-   * @type string
-   * @example
-   * ```tsx
-   * <Button innerClassname="text-red-500">Primary</Button>
-   * ```
-   *
-   */
-  innerClassname?: string
 
   /**
    * @name target

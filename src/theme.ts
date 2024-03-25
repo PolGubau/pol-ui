@@ -61,6 +61,7 @@ import { navigationMenuTheme } from './components/NavigationMenu/theme'
 import { chipTheme } from './components/Chip/theme'
 import { commandTheme } from './components/Command/theme'
 import { otpInputTheme } from './components/OtpInput/theme'
+import { autocompleteTheme } from './components/Autocomplete/theme'
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,
@@ -124,6 +125,7 @@ export const theme: PoluiTheme = {
   dropzone: dropzoneTheme,
   command: commandTheme,
   otpInput: otpInputTheme,
+  autocomplete: autocompleteTheme,
 }
 
 /*

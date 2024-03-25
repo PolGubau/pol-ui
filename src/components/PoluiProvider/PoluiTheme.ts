@@ -60,6 +60,7 @@ import type { ChipTheme } from '../Chip/theme'
 import type { DropzoneTheme } from '../Dropzone/theme'
 import type { CommandTheme } from '../Command/theme'
 import type { OtpInputTheme } from '../OtpInput/theme'
+import type { AutocompleteTheme } from '../Autocomplete/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -130,4 +131,5 @@ export interface PoluiTheme {
   dropzone: DropzoneTheme
   command: CommandTheme
   otpInput: OtpInputTheme
+  autocomplete: AutocompleteTheme
 }

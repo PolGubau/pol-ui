@@ -4,13 +4,15 @@ import * as React from 'react'
 
 import { Button } from '../Button'
 import { TbCheck, TbChevronDown, TbX } from 'react-icons/tb'
-import { cn, limitArray } from '../../helpers'
+import { cn, limitArray, mergeDeep } from '../../helpers'
 import { Command } from '../Command'
 import { useBoolean } from '../../hooks'
 import { CommandGroup } from '../Command/Command'
 import { Tooltip } from '../Tooltip'
 import type { AutocompleteOption, AutocompleteProps } from '../Autocomplete'
 import { Chip } from '../Chip'
+
+import { getTheme } from '../../theme-store'
 
 export interface MultipleAutocompleteProps extends Omit<AutocompleteProps, 'onChange' | 'value'> {
   value?: AutocompleteOption[]
@@ -29,6 +31,7 @@ export const MultipleAutocomplete: React.FC<MultipleAutocompleteProps> = ({
   className,
   closeOnSelect = true,
   limit = 2,
+  theme: customTheme = {},
   ...props
 }: MultipleAutocompleteProps) => {
   const { value: open, setFalse, setValue } = useBoolean(false)
@@ -65,6 +68,7 @@ export const MultipleAutocomplete: React.FC<MultipleAutocompleteProps> = ({
       popupRef.current?.querySelector('input')?.focus()
     }
   }, [open])
+  const theme = mergeDeep(getTheme().autocomplete, customTheme)
 
   const { limitedArray, remaining } = limitArray(value, limit)
   return (
@@ -74,10 +78,10 @@ export const MultipleAutocomplete: React.FC<MultipleAutocompleteProps> = ({
         closeOnSelect && setValue(state)
       }}
       trigger="click"
-      className="p-0"
+      className={cn(theme.base)}
       content={
-        <Command className={cn('bg-secondary-50 min-w-[200px]', popupClassName)} ref={popupRef}>
-          <Command.Input placeholder={placeholder} className="h-10" />
+        <Command className={(theme.command, popupClassName)} ref={popupRef}>
+          <Command.Input placeholder={placeholder} className={theme.command.input} />
           <Command.List>
             <Command.Empty>{noFoundText}</Command.Empty>
 
@@ -85,15 +89,11 @@ export const MultipleAutocomplete: React.FC<MultipleAutocompleteProps> = ({
               {options.map(o => {
                 const isSelected = value.find(x => x.value === o.value)
                 return (
-                  <Command.Item
-                    key={o.value}
-                    value={o.value}
-                    onSelect={handleOnChange}
-                    className="
-            aria-selected:bg-primary/30"
-                  >
+                  <Command.Item key={o.value} value={o.value} onSelect={handleOnChange} className={theme.command.item}>
                     {o.label}
-                    <TbCheck className={cn('ml-auto h-4 w-4', isSelected ? 'opacity-100' : 'opacity-0')} />
+                    <TbCheck
+                      className={cn(theme.command.icon.base, theme.command.icon.selected[isSelected ? 'on' : 'off'])}
+                    />
                   </Command.Item>
                 )
               })}
@@ -112,8 +112,7 @@ export const MultipleAutocomplete: React.FC<MultipleAutocompleteProps> = ({
           outline
           role="combobox"
           aria-expanded={open}
-          className={cn('flex justify-between h-10 min-w-[200px]', className)}
-          innerClassname="flex justify-between "
+          className={cn(theme.button.base, className)}
         >
           {(limitedArray.length === 0 && placeholder) ?? 'Select...'}
           {limitedArray.map(x => {
@@ -134,10 +133,10 @@ export const MultipleAutocomplete: React.FC<MultipleAutocompleteProps> = ({
           })}
           {remaining > 0 && (
             <Tooltip content={value.map(x => x.label).join(', ')}>
-              <span className="text-secondary-500 w-8 h-8">+{remaining}</span>
+              <span className={theme.button.remaining}>+{remaining}</span>
             </Tooltip>
           )}
-          <TbChevronDown className="h-4 w-4 shrink-0 opacity-50" />
+          <TbChevronDown className={cn(theme.button.chevron.base, open && theme.button.chevron.opened)} />
         </Button>
       )}
     </Tooltip>

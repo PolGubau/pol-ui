@@ -75,12 +75,7 @@ FullSized.args = {
   ...DefaultButton.args,
   fullSized: true,
 }
-export const Transparent = Template.bind({})
-Transparent.args = {
-  ...DefaultButton.args,
-  rounded: 'xl',
-  hasBackground: false,
-}
+
 export const Link = Template.bind({})
 Link.args = {
   ...DefaultButton.args,

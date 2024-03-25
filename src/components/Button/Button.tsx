@@ -46,7 +46,6 @@ export const Button = <T extends ElementType = 'button'>({
   loadingLabel = 'Loading...',
   loader,
   label,
-  hasBackground = true,
   outline = false,
   rounded = RoundedSizesEnum.md,
   positionInGroup = 'none',
@@ -95,38 +94,33 @@ export const Button = <T extends ElementType = 'button'>({
         outline && theme.outline.color[color],
         !outline && theme.ring.base,
         !outline && theme.ring.colors[color],
-        !outline && hasBackground && theme.color[color],
+        !outline && theme.color[color],
         theme.rounded[rounded],
         fullSized && theme.fullSized,
+        theme.inner.base,
+        theme.outline[outline ? 'on' : 'off'],
+        theme.size[size],
+        outline && !theme.outline.color[color] && theme.inner.outline,
+        loading && theme.loading,
+        loading && theme.inner.loadingPadding[size],
+        theme.inner.position[positionInGroup],
+        innerClassname,
         className,
       )}
       {...theirProps}
     >
-      <span
-        className={twMerge(
-          theme.inner.base,
-          theme.outline[outline ? 'on' : 'off'],
-          theme.size[size],
-          outline && !theme.outline.color[color] && theme.inner.outline,
-          loading && theme.loading,
-          loading && theme.inner.loadingPadding[size],
-          theme.inner.position[positionInGroup],
-          innerClassname,
-        )}
-      >
-        {loading && (
-          <span className={twMerge(theme.loaderSlot, theme.loaderLeftPosition[size])}>
-            {loader ?? <Loader size={size} />}
-          </span>
-        )}
-        {typeof children !== 'undefined' ? (
-          children
-        ) : (
-          <span data-testid="ui-button-label" className={twMerge(theme.label)}>
-            {loading ? loadingLabel : label}
-          </span>
-        )}
-      </span>
+      {loading && (
+        <span className={twMerge(theme.loaderSlot, theme.loaderLeftPosition[size])}>
+          {loader ?? <Loader size={size} />}
+        </span>
+      )}
+      {typeof children !== 'undefined' ? (
+        children
+      ) : (
+        <span data-testid="ui-button-label" className={twMerge(theme.label)}>
+          {loading ? loadingLabel : label}
+        </span>
+      )}
     </MotionButtonBase>
   )
 }
