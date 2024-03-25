@@ -13,7 +13,6 @@ export interface FloatingTheme {
   base: string
   content: string
   hidden: string
-
   target: string
 }
 

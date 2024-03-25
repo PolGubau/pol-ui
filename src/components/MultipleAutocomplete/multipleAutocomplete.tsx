@@ -3,13 +3,14 @@
 import * as React from 'react'
 
 import { Button } from '../Button'
-import { TbCheck, TbChevronDown } from 'react-icons/tb'
-import { cn } from '../../helpers'
+import { TbCheck, TbChevronDown, TbX } from 'react-icons/tb'
+import { cn, limitArray } from '../../helpers'
 import { Command } from '../Command'
 import { useBoolean } from '../../hooks'
 import { CommandGroup } from '../Command/Command'
 import { Tooltip } from '../Tooltip'
 import type { AutocompleteOption, AutocompleteProps } from '../Autocomplete'
+import { Chip } from '../Chip'
 
 export interface MultipleAutocompleteProps extends Omit<AutocompleteProps, 'onChange' | 'value'> {
   value?: AutocompleteOption[]
@@ -52,7 +53,6 @@ export const MultipleAutocomplete: React.FC<MultipleAutocompleteProps> = ({
       const newArray: AutocompleteOption[] = [...value, obj]
       handleSend(newArray)
     }
-
     setFalse()
   }
   const popupRef = React.useRef<HTMLDivElement>(null)
@@ -64,6 +64,7 @@ export const MultipleAutocomplete: React.FC<MultipleAutocompleteProps> = ({
     }
   }, [open])
 
+  const { limitedArray, remaining } = limitArray(value, 2)
   return (
     <Tooltip
       open={open}
@@ -109,10 +110,31 @@ export const MultipleAutocomplete: React.FC<MultipleAutocompleteProps> = ({
           outline
           role="combobox"
           aria-expanded={open}
-          className={cn('flex justify-between min-w-[200px]', className)}
+          className={cn('flex justify-between h-10 min-w-[200px]', className)}
           innerClassname="flex justify-between "
         >
-          {value?.length > 0 ? value.map(x => x.label).join(', ') : placeholder ?? 'Select'}
+          {(limitedArray.length === 0 && placeholder) ?? 'Select...'}
+          {limitedArray.map(x => {
+            return (
+              <Chip
+                key={x.value}
+                label={x.label}
+                actions={[
+                  {
+                    icon: <TbX />,
+                    onClick: () => handleSend(value.filter(y => y.value !== x.value)),
+                  },
+                ]}
+              >
+                {x.label}
+              </Chip>
+            )
+          })}
+          {remaining > 0 && (
+            <Tooltip content={value.map(x => x.label).join(', ')}>
+              <span className="text-secondary-500 w-8 h-8">+{remaining}</span>
+            </Tooltip>
+          )}
           <TbChevronDown className="h-4 w-4 shrink-0 opacity-50" />
         </Button>
       )}
