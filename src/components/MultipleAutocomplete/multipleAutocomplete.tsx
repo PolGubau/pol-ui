@@ -15,6 +15,7 @@ import { Chip } from '../Chip'
 export interface MultipleAutocompleteProps extends Omit<AutocompleteProps, 'onChange' | 'value'> {
   value?: AutocompleteOption[]
   onChange?: (value: AutocompleteOption[]) => void
+  limit?: number
 }
 
 export const MultipleAutocomplete: React.FC<MultipleAutocompleteProps> = ({
@@ -27,6 +28,7 @@ export const MultipleAutocomplete: React.FC<MultipleAutocompleteProps> = ({
   popupClassName,
   className,
   closeOnSelect = true,
+  limit = 2,
   ...props
 }: MultipleAutocompleteProps) => {
   const { value: open, setFalse, setValue } = useBoolean(false)
@@ -64,7 +66,7 @@ export const MultipleAutocomplete: React.FC<MultipleAutocompleteProps> = ({
     }
   }, [open])
 
-  const { limitedArray, remaining } = limitArray(value, 2)
+  const { limitedArray, remaining } = limitArray(value, limit)
   return (
     <Tooltip
       open={open}
