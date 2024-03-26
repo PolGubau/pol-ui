@@ -19,7 +19,6 @@ import {
   useReactTable,
 } from '@tanstack/react-table'
 
-import { Button } from '../Button'
 import { Checkbox } from '../Checkbox'
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../Table'
@@ -34,6 +33,21 @@ interface DataTableProps<T> extends Pick<TableOptions<T>, 'onRowSelectionChange'
   actions?: (row: T) => { label: string; onClick: () => void }[]
   selectedRows?: RowSelectionState
 }
+function IndeterminateCheckbox({
+  indeterminate,
+  className = '',
+  ...rest
+}: { indeterminate?: boolean } & React.HTMLProps<HTMLInputElement>) {
+  const ref = React.useRef<HTMLInputElement>(null!)
+
+  React.useEffect(() => {
+    if (typeof indeterminate === 'boolean') {
+      ref.current.indeterminate = !rest.checked && indeterminate
+    }
+  }, [ref, indeterminate])
+
+  return <input type="checkbox" ref={ref} className={className + ' cursor-pointer'} {...rest} />
+}
 
 export const DataTable = <T extends { id: Identification }>({
   data = [],
@@ -47,8 +61,8 @@ export const DataTable = <T extends { id: Identification }>({
     }
 
     // Get keys from the first item in the data array
-    const keys = Object.keys(data[0]) as (keyof T)[]
-    const keysButId = keys.filter(key => key !== 'id')
+    const keys = (Object.keys(data[0]) as (keyof T)[]) ?? [] // Get the keys from the first item in the data array
+    const keysButId = keys.filter(key => key !== 'id') ?? [] // Remove the 'id' key
 
     const columns: ColumnDef<T>[] = keysButId.map(key => ({
       accessorKey: key,
@@ -57,26 +71,6 @@ export const DataTable = <T extends { id: Identification }>({
       },
       cell: ({ row }: any) => <div>{row.getValue(key)}</div>,
     }))
-
-    const firstColumn: ColumnDef<T> = {
-      id: 'id',
-      header: ({ table }) => (
-        <Checkbox
-          checked={table.getIsAllPageRowsSelected()}
-          onChange={() => table.toggleAllPageRowsSelected(!table.getIsAllPageRowsSelected())}
-          aria-label="Select all"
-        />
-      ),
-      cell: ({ row }) => (
-        <Checkbox
-          checked={Boolean(row.getIsSelected())}
-          onChange={() => row.toggleSelected(!row.getIsSelected())}
-          aria-label="Select row"
-        />
-      ),
-      enableSorting: false,
-      enableHiding: false,
-    }
 
     const actionsColumn: ColumnDef<T> = {
       id: 'actions',
@@ -101,77 +95,76 @@ export const DataTable = <T extends { id: Identification }>({
     const hasActions = actions && actions.length > 0
 
     if (!hasActions) {
-      return [firstColumn, ...columns]
+      return [...columns]
     }
-
-    return [firstColumn, ...columns, actionsColumn]
+    return [...columns, actionsColumn]
   }, [actions, data])
-  const columns: ColumnDef<T>[] = [
-    {
-      id: 'select',
-      header: ({ table }) => (
-        <Checkbox
-          checked={table.getIsAllPageRowsSelected()}
-          onChange={() => table.toggleAllPageRowsSelected(!table.getIsAllPageRowsSelected())}
-          aria-label="Select all"
-        />
-      ),
-      cell: ({ row }) => (
-        <Checkbox
-          checked={row.getIsSelected()}
-          onChange={() => row.toggleSelected(!row.getIsSelected())}
-          aria-label="Select row"
-        />
-      ),
-      enableSorting: false,
-      enableHiding: false,
-    },
-    {
-      accessorKey: 'status',
-      header: ({ column }) => {
-        return <span className="capitalize">{column.id}</span>
-      },
-      cell: ({ row }) => <div className="capitalize">{row.getValue('status')}</div>,
-    },
-    {
-      accessorKey: 'email',
-      header: ({ column }) => {
-        return <span className="capitalize">{column.id}</span>
-      },
-      cell: ({ row }) => <div className="lowercase">{row.getValue('email')}</div>,
-    },
-    {
-      accessorKey: 'amount',
-      header: ({ column }) => {
-        return <span className="capitalize">{column.id}</span>
-      },
-      cell: ({ row }) => {
-        const amount = parseFloat(row.getValue('amount'))
 
-        // Format the amount as a dollar amount
-        const formatted = new Intl.NumberFormat('en-US', {
-          style: 'currency',
-          currency: 'USD',
-        }).format(amount)
-
-        return <div>{formatted}</div>
+  const firstColumn = React.useMemo<ColumnDef<T>[]>(
+    () => [
+      {
+        id: 'select',
+        header: ({ table }) => (
+          <IndeterminateCheckbox
+            {...{
+              checked: table.getIsAllRowsSelected(),
+              indeterminate: table.getIsSomeRowsSelected(),
+              onChange: table.getToggleAllRowsSelectedHandler(),
+            }}
+          />
+        ),
+        cell: ({ row }) => (
+          <div className="px-1">
+            <IndeterminateCheckbox
+              {...{
+                checked: row.getIsSelected(),
+                disabled: !row.getCanSelect(),
+                indeterminate: row.getIsSomeSelected(),
+                onChange: row.getToggleSelectedHandler(),
+              }}
+            />
+          </div>
+        ),
       },
-    },
-    {
-      id: 'actions',
-      enableHiding: false,
-      cell: () =>
-        // { row }
-        {
-          return (
-            <Dropdown trigger={<TbDots className="h-4 w-4" />}>
-              <DropdownItem>View customer</DropdownItem>
-              <DropdownItem>View payment details</DropdownItem>
-            </Dropdown>
-          )
-        },
-    },
-  ]
+    ],
+    [],
+  )
+
+  // const firstColumn: ColumnDef<T> = {
+  //   id: 'id',
+  //   header: ({ table }) => {
+  //     if (!table) return null
+  //     return (
+  //       <IndeterminateCheckbox
+  //         {...{
+  //           checked: table.getIsAllRowsSelected(),
+  //           indeterminate: table.getIsSomeRowsSelected(),
+  //           onChange: table.getToggleAllRowsSelectedHandler(),
+  //         }}
+  //       />
+  //     )
+  //   },
+  //   cell: ({ row }) => {
+  //     if (!row) return null
+  //     return (
+  //       <>
+  //         {/* <IndeterminateCheckbox
+  //           {...{
+  //             checked: row.getIsSelected(),
+  //             disabled: !row.getCanSelect(),
+  //             indeterminate: row.getIsSomeSelected(),
+  //             onChange: row.getToggleSelectedHandler(),
+  //           }}
+  //         /> */}
+  //       </>
+  //     )
+  //   },
+  //   enableSorting: false,
+  //   enableHiding: false,
+  // }
+
+  const columns = React.useMemo(() => [...firstColumn, ...inferredColumns], [firstColumn, inferredColumns])
+
   const [globalFilter, setGlobalFilter] = React.useState('')
 
   const [sorting, setSorting] = React.useState<SortingState>([])
@@ -180,7 +173,7 @@ export const DataTable = <T extends { id: Identification }>({
 
   const table = useReactTable({
     data,
-    columns: inferredColumns,
+    columns,
     onGlobalFilterChange: setGlobalFilter,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -234,6 +227,8 @@ export const DataTable = <T extends { id: Identification }>({
           </ul>
         </Dropdown>
       </header>
+
+      {/*  */}
       <Table className="w-full rounded-lg border">
         <TableHeader>
           {table.getHeaderGroups().map(headerGroup => (
@@ -241,7 +236,6 @@ export const DataTable = <T extends { id: Identification }>({
               {headerGroup.headers.map(header => {
                 return (
                   <TableHead key={header.id} colSpan={header.colSpan}>
-                    {' '}
                     {header.isPlaceholder ? null : (
                       <button
                         className={cn('flex gap-2 items-center', {
@@ -273,13 +267,15 @@ export const DataTable = <T extends { id: Identification }>({
         </TableHeader>
         <TableBody>
           {table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map(row => (
-              <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
-                {row.getVisibleCells().map(cell => (
-                  <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
-                ))}
-              </TableRow>
-            ))
+            table.getRowModel().rows.map(row => {
+              return (
+                <TableRow key={row.id} data-state={'selected'}>
+                  {row.getVisibleCells().map(cell => (
+                    <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
+                  ))}
+                </TableRow>
+              )
+            })
           ) : (
             <TableRow>
               <TableCell colSpan={columns.length} className="h-24 text-center">
@@ -289,7 +285,7 @@ export const DataTable = <T extends { id: Identification }>({
           )}
         </TableBody>
       </Table>
-      <footer className="flex items-center justify-end space-x-2 py-4">
+      {/* <footer className="flex items-center justify-end space-x-2 py-4">
         <div className="flex-1 text-sm text-muted-foreground">
           {table.getFilteredSelectedRowModel().rows.length} of {table.getFilteredRowModel().rows.length} row(s)
           selected.
@@ -302,7 +298,7 @@ export const DataTable = <T extends { id: Identification }>({
             Next
           </Button>
         </div>
-      </footer>
+      </footer> */}
     </section>
   )
 }
