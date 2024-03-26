@@ -39,7 +39,6 @@ import { footerTheme } from './components/Footer/theme'
 import { copyrightTheme } from './components/Copyright/theme'
 import { directionHoverTheme } from './components/DirectionHover/theme'
 import { conveyorTheme } from './components/Conveyor/theme'
-import { popoverTheme } from './components/Popover'
 import { buttonGroupTheme } from './components/ButtonGroup'
 
 import { toastTheme } from './components/Toaster/theme'
@@ -62,6 +61,7 @@ import { chipTheme } from './components/Chip/theme'
 import { commandTheme } from './components/Command/theme'
 import { otpInputTheme } from './components/OtpInput/theme'
 import { autocompleteTheme } from './components/Autocomplete/theme'
+import { popoverTheme } from './components/Popover'
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,

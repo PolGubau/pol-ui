@@ -1,19 +1,17 @@
-import type { Meta } from '@storybook/react'
-import { Popover } from './Popover'
-import React from 'react'
+import type { Meta, StoryFn } from '@storybook/react'
 import { Button } from '../Button'
+import type { PopoverProps } from './Popover'
+import { Popover } from './Popover'
+import { TbFile } from 'react-icons/tb'
+import { IconButton } from '../IconButton'
 import { Avatar } from '../Avatar'
-import { theme } from '../../theme'
-import { useBoolean } from '../../hooks'
-import type { RoundedSizes } from '../../types'
 
 export default {
   title: 'Components/Popover',
   component: Popover,
-  tags: ['autodocs'],
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col justify-center items-center">
+      <div className="flex p-6 flex-col items-center pt-20 min-h-[400px] bg-secondary-50">
         <Story />
       </div>
     ),
@@ -21,16 +19,8 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
-  argTypes: {
-    // controlled value prop
-    value: {
-      control: {
-        disable: true,
-      },
-    },
-  },
+  tags: ['autodocs'],
 } as Meta
-
 const ExampleContent = () => {
   return (
     <div className="flex flex-col items-center rounded-2xl">
@@ -49,38 +39,54 @@ const ExampleContent = () => {
     </div>
   )
 }
-export const Default = (): JSX.Element => {
-  return (
-    <Popover>
-      <ExampleContent />
-    </Popover>
-  )
-}
-export const AllRounded = () => (
-  <div className="flex gap-3 flex-wrap">
-    {Object.keys(theme.popover.rounded).map(rounded => (
-      <Popover key={rounded} rounded={rounded as RoundedSizes}>
-        <ExampleContent />
-      </Popover>
-    ))}
-  </div>
-)
-export const DefaultOpen = () => (
-  <div className="flex gap-3 flex-wrap">
-    <Popover defaultOpen>
-      <ExampleContent />
-    </Popover>
-  </div>
-)
+const Template: StoryFn<PopoverProps> = args => <Popover {...args} />
 
-export const Controlled = (): JSX.Element => {
-  const { value, toggle } = useBoolean(false)
-  return (
-    <>
-      Open state is {value.toString()}
-      <Popover open={value} onOpenChange={toggle}>
-        <ExampleContent />
-      </Popover>
-    </>
-  )
+export const Default = Template.bind({})
+Default.args = {
+  content: <ExampleContent />,
+  placement: 'bottom',
+  children: <Button>Default tooltip</Button>,
 }
+
+export const NoArrow = Template.bind({})
+NoArrow.storyName = 'No arrow'
+NoArrow.args = {
+  arrow: false,
+  content: <ExampleContent />,
+  placement: 'bottom',
+  children: <Button>Tooltip with no arrow</Button>,
+}
+
+export const SlowAnimation = Template.bind({})
+SlowAnimation.storyName = 'Slow animation'
+SlowAnimation.args = {
+  animation: 'duration-1000',
+  content: <ExampleContent />,
+  placement: 'bottom',
+  children: <Button>Tooltip with slow animation</Button>,
+}
+
+export const IconUseCase = Template.bind({})
+IconUseCase.args = {
+  content: <ExampleContent />,
+  children: (
+    <IconButton>
+      <TbFile size={20} />
+    </IconButton>
+  ),
+}
+
+export const DarkMode = () => (
+  <div className=" grid grid-cols-2 border border-secondary rounded-2xl overflow-hidden">
+    <div className="flex p-8 ">
+      <Popover content={<ExampleContent />} placement="bottom">
+        <Button>Default tooltip</Button>
+      </Popover>
+    </div>
+    <div className="flex p-8 bg-secondary-900 dark">
+      <Popover content={<ExampleContent />} placement="bottom">
+        <Button>Default tooltip</Button>
+      </Popover>
+    </div>
+  </div>
+)

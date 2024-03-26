@@ -1,81 +1,45 @@
-import { render, screen } from '@testing-library/react'
+import React from 'react'
+import { render, fireEvent } from '@testing-library/react'
+import { Tooltip } from './Tooltip'
+import { describe, expect, test } from 'vitest'
 import userEvent from '@testing-library/user-event'
-import { describe, expect, it } from 'vitest'
-import { Button } from '../Button'
-import { Tooltip } from './index'
-import { TriggerReasonEnum } from '../../types/enums'
 
-describe('Tooltip', () => {
-  describe('Keyboard interactions', () => {
-    it('should display when target is focused with `Tab`', async () => {
-      const user = userEvent.setup()
-      render(<TooltipTests />)
+describe('Tooltip component', () => {
+  test('renders tooltip content when trigger is hovered', async () => {
+    const { getByText } = render(
+      <Tooltip content="Tooltip Content">
+        <span>Hover me</span>
+      </Tooltip>,
+    )
 
-      await user.tab()
+    await userEvent.hover(getByText('Hover me'))
 
-      const tooltip = tooltips()[0]
-
-      expect(tooltip).not.toHaveClass('invisible')
-    })
-
-    it('should display when `Space` is pressed while target is focused', async () => {
-      const user = userEvent.setup()
-      render(<TooltipTests />)
-
-      const target = targets()[1]
-      const tooltip = tooltips()[1]
-
-      await user.click(target)
-
-      expect(tooltip).not.toHaveClass('invisible')
-    })
+    expect(getByText('Tooltip Content')).toBeInTheDocument()
   })
 
-  describe('Rendering', () => {
-    it('should invert placement so it stays on screen if it would normally be placed off screen', async () => {
-      const user = userEvent.setup()
-      render(<TooltipTests />)
+  test('hides tooltip content when trigger loses focus', () => {
+    const { getByText, queryByText } = render(
+      <Tooltip content="Tooltip Content">
+        <span>Hover me</span>
+      </Tooltip>,
+    )
 
-      let tooltip = tooltips()[2]
-      let arrow = arrows()[2]
+    fireEvent.mouseEnter(getByText('Hover me'))
+    fireEvent.mouseLeave(getByText('Hover me'))
 
-      await user.click(tooltip)
-      expect(arrow).toHaveStyle('top: -4px')
+    expect(queryByText('Tooltip Content')).not.toBeInTheDocument()
+  })
 
-      tooltip = tooltips()[3]
-      arrow = arrows()[3]
+  test('opens tooltip content when trigger is focused', () => {
+    const { getByText, getByTestId } = render(
+      <Tooltip content="Tooltip Content">
+        <span>Hover me</span>
+      </Tooltip>,
+    )
 
-      await user.click(tooltip)
+    fireEvent.focus(getByText('Hover me'))
 
-      expect(arrow).toHaveStyle('left: -4px')
-    })
+    expect(getByTestId('ui-arrow')).toBeInTheDocument()
+    expect(getByText('Tooltip Content')).toBeInTheDocument()
   })
 })
-
-const TooltipTests = (): JSX.Element => {
-  return (
-    <div>
-      <Tooltip content="Tooltip content">
-        <Button>Default tooltip</Button>
-      </Tooltip>
-      <Tooltip content="Tooltip content" trigger={TriggerReasonEnum.click}>
-        <Button>Click tooltip</Button>
-      </Tooltip>
-      <Tooltip content="Tooltip content" placement="bottom" trigger={TriggerReasonEnum.click}>
-        <Button>Bottom placed tooltip</Button>
-      </Tooltip>
-      <Tooltip content="Tooltip content" placement="right" trigger={TriggerReasonEnum.click}>
-        <Button>Right placed tooltip</Button>
-      </Tooltip>
-      <Tooltip content="Tooltip content" placement="auto" trigger={TriggerReasonEnum.click}>
-        <Button>Auto placed tooltip</Button>
-      </Tooltip>
-    </div>
-  )
-}
-
-const arrows = () => screen.getAllByTestId('ui-arrow')
-
-const targets = () => screen.getAllByTestId('ui-target')
-
-const tooltips = () => screen.getAllByTestId('ui-target')

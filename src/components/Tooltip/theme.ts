@@ -1,4 +1,14 @@
-import type { TooltipTheme } from './Tooltip'
+export type TooltipTheme = {
+  target: string
+  animation: string
+  arrow: {
+    base: string
+
+    placement: string
+  }
+  base: string
+  hidden: string
+}
 
 export const tooltipTheme: TooltipTheme = {
   target: 'w-fit',
@@ -10,6 +20,4 @@ export const tooltipTheme: TooltipTheme = {
   },
   base: 'shadow-lg absolute inline-block z-10 rounded-xl py-2 px-3 text-sm font-medium bg-secondary-100 text-secondary-900 dark:bg-secondary-700 dark:text-white',
   hidden: 'invisible opacity-0',
-
-  content: 'relative z-20',
 }
