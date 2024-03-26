@@ -7,7 +7,6 @@ import type {
   ColumnFiltersState,
   RowSelectionState,
   SortingState,
-  TableOptions,
   VisibilityState,
 } from '@tanstack/react-table'
 import {
@@ -28,34 +27,21 @@ import { cn } from '../../helpers'
 import { DebouncedInput } from '../DebouncedInput'
 import type { Identification } from '../../types'
 
-interface DataTableProps<T> extends Pick<TableOptions<T>, 'onRowSelectionChange'> {
+interface DataTableProps<T> {
   data: T[]
   actions?: (row: T) => { label: string; onClick: () => void }[]
+  // Row selection
   selectedRows?: RowSelectionState
-}
-function IndeterminateCheckbox({
-  indeterminate,
-  className = '',
-  ...rest
-}: { indeterminate?: boolean } & React.HTMLProps<HTMLInputElement>) {
-  const ref = React.useRef<HTMLInputElement>(null!)
-
-  React.useEffect(() => {
-    if (typeof indeterminate === 'boolean') {
-      ref.current.indeterminate = !rest.checked && indeterminate
-    }
-  }, [ref, indeterminate])
-
-  return <input type="checkbox" ref={ref} className={className + ' cursor-pointer'} {...rest} />
+  onRowSelectionChange?: (selectedRows: RowSelectionState) => void
 }
 
 export const DataTable = <T extends { id: Identification }>({
   data = [],
   actions,
-  selectedRows,
-  onRowSelectionChange,
+  selectedRows: controlledSelectedRows,
+  onRowSelectionChange: controlledOnRowSelectionChange,
 }: DataTableProps<T>) => {
-  const inferredColumns = React.useMemo(() => {
+  const columns = React.useMemo(() => {
     if (data.length === 0) {
       return []
     }
@@ -72,6 +58,16 @@ export const DataTable = <T extends { id: Identification }>({
       cell: ({ row }: any) => <div>{row.getValue(key)}</div>,
     }))
 
+    const firstColumn: ColumnDef<T> = {
+      id: 'id',
+      enableHiding: false,
+      header: ({ table }) => (
+        <Checkbox {...{ checked: table.getIsAllRowsSelected(), onChange: table.getToggleAllRowsSelectedHandler() }} />
+      ),
+      cell: ({ row }) => {
+        return <Checkbox {...{ checked: row.getIsSelected(), onChange: row.getToggleSelectedHandler() }} />
+      },
+    }
     const actionsColumn: ColumnDef<T> = {
       id: 'actions',
       enableHiding: false,
@@ -95,81 +91,20 @@ export const DataTable = <T extends { id: Identification }>({
     const hasActions = actions && actions.length > 0
 
     if (!hasActions) {
-      return [...columns]
+      return [firstColumn, ...columns]
     }
-    return [...columns, actionsColumn]
+    return [firstColumn, ...columns, actionsColumn]
   }, [actions, data])
-
-  const firstColumn = React.useMemo<ColumnDef<T>[]>(
-    () => [
-      {
-        id: 'select',
-        header: ({ table }) => (
-          <IndeterminateCheckbox
-            {...{
-              checked: table.getIsAllRowsSelected(),
-              indeterminate: table.getIsSomeRowsSelected(),
-              onChange: table.getToggleAllRowsSelectedHandler(),
-            }}
-          />
-        ),
-        cell: ({ row }) => (
-          <div className="px-1">
-            <IndeterminateCheckbox
-              {...{
-                checked: row.getIsSelected(),
-                disabled: !row.getCanSelect(),
-                indeterminate: row.getIsSomeSelected(),
-                onChange: row.getToggleSelectedHandler(),
-              }}
-            />
-          </div>
-        ),
-      },
-    ],
-    [],
-  )
-
-  // const firstColumn: ColumnDef<T> = {
-  //   id: 'id',
-  //   header: ({ table }) => {
-  //     if (!table) return null
-  //     return (
-  //       <IndeterminateCheckbox
-  //         {...{
-  //           checked: table.getIsAllRowsSelected(),
-  //           indeterminate: table.getIsSomeRowsSelected(),
-  //           onChange: table.getToggleAllRowsSelectedHandler(),
-  //         }}
-  //       />
-  //     )
-  //   },
-  //   cell: ({ row }) => {
-  //     if (!row) return null
-  //     return (
-  //       <>
-  //         {/* <IndeterminateCheckbox
-  //           {...{
-  //             checked: row.getIsSelected(),
-  //             disabled: !row.getCanSelect(),
-  //             indeterminate: row.getIsSomeSelected(),
-  //             onChange: row.getToggleSelectedHandler(),
-  //           }}
-  //         /> */}
-  //       </>
-  //     )
-  //   },
-  //   enableSorting: false,
-  //   enableHiding: false,
-  // }
-
-  const columns = React.useMemo(() => [...firstColumn, ...inferredColumns], [firstColumn, inferredColumns])
 
   const [globalFilter, setGlobalFilter] = React.useState('')
 
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
+  const [uncontrolledSelectedRows, setUncontrolledSelectedRows] = React.useState<RowSelectionState>({})
+
+  const selectedRows = controlledSelectedRows ?? uncontrolledSelectedRows
+  const setSelectedRows = controlledOnRowSelectionChange ?? setUncontrolledSelectedRows
 
   const table = useReactTable({
     data,
@@ -183,7 +118,7 @@ export const DataTable = <T extends { id: Identification }>({
     enableRowSelection: true,
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
-    onRowSelectionChange,
+    onRowSelectionChange: setSelectedRows as any,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     isMultiSortEvent: (e: any) => e.ctrlKey || e.shiftKey, // also use the `Ctrl` key to trigger multi-sorting
     maxMultiSortColCount: 3, // only allow 3 columns to be sorted at once
@@ -269,7 +204,7 @@ export const DataTable = <T extends { id: Identification }>({
           {table.getRowModel().rows?.length ? (
             table.getRowModel().rows.map(row => {
               return (
-                <TableRow key={row.id} data-state={'selected'}>
+                <TableRow key={row.id} data-state={row.getIsSelected() ? 'selected' : undefined}>
                   {row.getVisibleCells().map(cell => (
                     <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
                   ))}

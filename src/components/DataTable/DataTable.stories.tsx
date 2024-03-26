@@ -57,6 +57,12 @@ const data = [
     status: 'failed',
     email: 'carmella@hotmail.com',
   },
+  {
+    id: 'gery',
+    amount: 999,
+    status: 'success',
+    email: 'dia@blo.com',
+  },
 ]
 
 export const Default = () => (
