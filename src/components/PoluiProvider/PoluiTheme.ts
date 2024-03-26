@@ -26,7 +26,6 @@ import type { RatingTheme } from '../Rating'
 import type { SelectTheme } from '../Select'
 import type { SidebarTheme } from '../Sidebar'
 import type { LoaderTheme } from '../Loader'
-import type { TableTheme } from '../Table'
 import type { TabsTheme } from '../Tabs'
 import type { InputTheme } from '../Input'
 import type { TimelineTheme } from '../Timeline'
@@ -113,7 +112,7 @@ export interface PoluiTheme {
   textInput: InputTheme
   switch: SwitchTheme
   helperText: HelperTextTheme
-  table: TableTheme
+  // table: TableTheme
   timeline: TimelineTheme
   conveyor: ConveyorTheme
   parallaxText: ParallaxTextTheme

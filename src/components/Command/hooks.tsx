@@ -51,7 +51,7 @@ export function useCmdk<T = any>(selector: (state: State) => T) {
 
 /** Imperatively run a function on the next layout effect cycle. */
 export const useScheduleLayoutEffect = () => {
-  const [s, ss] = React.useState<object>()
+  const [s, setS] = React.useState<object>()
   const fns = useLazyRef(() => new Map<string | number, () => void>())
 
   useIsomorphicLayoutEffect(() => {
@@ -61,6 +61,6 @@ export const useScheduleLayoutEffect = () => {
 
   return (id: string | number, cb: () => void) => {
     fns.current.set(id, cb)
-    ss({})
+    setS({})
   }
 }

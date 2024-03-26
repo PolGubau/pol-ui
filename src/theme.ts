@@ -27,7 +27,7 @@ import { ratingTheme } from './components/Rating/theme'
 import { selectTheme } from './components/Select/theme'
 import { sidebarTheme } from './components/Sidebar/theme'
 import { loaderTheme } from './components/Loader/theme'
-import { tableTheme } from './components/Table/theme'
+// import { tableTheme } from './components/Table/theme'
 import { tabsTheme } from './components/Tabs/theme'
 import { inputTheme } from './components/Input/theme'
 import { timelineTheme } from './components/Timeline/theme'
@@ -102,7 +102,7 @@ export const theme: PoluiTheme = {
   switch: switchTheme,
   sidebar: sidebarTheme,
   loader: loaderTheme,
-  table: tableTheme,
+  // table: tableTheme,
   tabs: tabsTheme,
   timeline: timelineTheme,
   toast: toastTheme,

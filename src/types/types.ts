@@ -14,6 +14,8 @@ import {
   type AlignEnum,
 } from './enums'
 
+export type Identification = string | number
+
 export type DeepPartial<T> = T extends object
   ? {
       [P in keyof T]?: DeepPartial<T[P]>

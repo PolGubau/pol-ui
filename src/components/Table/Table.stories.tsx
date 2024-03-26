@@ -1,79 +1,91 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import type { TableProps } from './Table'
-import { Table } from './Table'
-import { IconButton } from '../IconButton'
-import { TbEdit, TbEye } from 'react-icons/tb'
+import type { Meta } from '@storybook/react'
+import { Table, TableBody, TableCell, TableFooter, TableHead, TableHeader, TableRow } from './Table'
+import { Checkbox } from '../Checkbox'
 
 export default {
-  title: 'Components/Tables',
+  title: 'Components/Table-new',
   component: Table,
 } as Meta
-
-const mockUsers = [
+const components = [
   {
-    id: 1,
-    name: 'Albert Arrebola',
-    username: 'arrebolsillo',
-    email: 'bolarre@polui.com',
-    address: 'Calle Eucalipto 66',
+    invoice: 'C1',
+    paymentStatus: 'Button',
+    downloads: '255',
+    description: 'Small clickable element',
   },
   {
-    id: 2,
-    name: 'Cristina Llull',
-    username: 'cristinallull',
-    email: 'cristinallull@polui.com',
-    address: 'Calle 123',
+    invoice: 'C2',
+    paymentStatus: 'Input',
+    downloads: '151',
+    description: 'Text input field',
   },
   {
-    id: 3,
-    name: 'Berta Pasamontes',
-    username: 'donutconchocolate',
-    email: 'donutconchocolate@polui.com',
-    address: 'Avenida 123',
+    invoice: 'C3',
+    paymentStatus: 'Table',
+    downloads: '356',
+    description: 'Data grid with rows and columns',
   },
   {
-    id: 4,
-    name: 'Pepito Grillo',
-    username: 'PepeGrillo',
-    email: 'PepeGrillo@polui.com',
-    address: 'Pasillo 4',
+    invoice: 'C4',
+    paymentStatus: 'Avatar',
+    downloads: '450',
+    description: 'Profile picture or user icon',
+  },
+  {
+    invoice: 'C5',
+    paymentStatus: 'Accordion',
+    downloads: '550',
+    description: 'Expandable content',
+  },
+  {
+    invoice: 'C6',
+    paymentStatus: 'Radio',
+    downloads: '220',
+    description: 'Single choice input',
+  },
+  {
+    invoice: 'C7',
+    paymentStatus: 'Popover',
+    downloads: '303',
+    description: 'Floating content',
   },
 ]
 
-const Template: StoryFn<TableProps> = args => (
-  <Table {...args}>
-    <Table.Head>
-      <Table.HeadCell>Name</Table.HeadCell>
-      <Table.HeadCell>Username</Table.HeadCell>
-      <Table.HeadCell>Email</Table.HeadCell>
-      <Table.HeadCell>Address</Table.HeadCell>
-      <Table.HeadCell>
-        <span className="sr-only">Edit</span>
-      </Table.HeadCell>
-    </Table.Head>
-
-    <Table.Body className="divide-y">
-      {mockUsers.map(user => (
-        <Table.Row key={user.id}>
-          <Table.Cell>{user.name}</Table.Cell>
-          <Table.Cell>{user.username}</Table.Cell>
-          <Table.Cell>{user.email}</Table.Cell>
-          <Table.Cell>{user.address}</Table.Cell>
-          <Table.Cell>
-            <div className="flex gap-1">
-              <IconButton title="Edit">
-                <TbEdit />
-              </IconButton>
-              <IconButton title="Edit" color="info">
-                <TbEye />
-              </IconButton>
-            </div>
-          </Table.Cell>
-        </Table.Row>
-      ))}
-    </Table.Body>
-  </Table>
-)
-
-export const DefaultTable = Template.bind({})
-DefaultTable.storyName = 'Default'
+export function TableDemo() {
+  return (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead className="w-[100px]">
+            <Checkbox />
+          </TableHead>
+          <TableHead className="w-[100px]">Component</TableHead>
+          <TableHead>Name</TableHead>
+          <TableHead>Description</TableHead>
+          <TableHead className="text-right">Amount</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {components.map(invoice => (
+          <TableRow key={invoice.invoice}>
+            <TableCell className="w-[100px]">
+              <Checkbox />
+            </TableCell>
+            <TableCell className="font-medium">{invoice.invoice}</TableCell>
+            <TableCell>{invoice.paymentStatus}</TableCell>
+            <TableCell>{invoice.description}</TableCell>
+            <TableCell className="text-right">{invoice.downloads}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+      <TableFooter>
+        <TableRow>
+          <TableCell colSpan={4}>Total Downloads</TableCell>
+          <TableCell className="text-right">
+            {components.reduce((acc, curr) => acc + parseInt(curr.downloads), 0)}
+          </TableCell>
+        </TableRow>
+      </TableFooter>
+    </Table>
+  )
+}

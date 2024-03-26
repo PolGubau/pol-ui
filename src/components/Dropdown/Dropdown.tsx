@@ -13,7 +13,7 @@ import type { Colors, DeepPartial, MainSizes, RoundedSizes } from '../../types/t
 type BaseButtonProps = Omit<React.ComponentProps<'button'>, 'color' | 'size'>
 
 export interface DropdownProps extends BaseButtonProps {
-  label: string
+  label?: string
   nested?: boolean
   children?: React.ReactNode
   icon?: React.FC<React.ComponentProps<'svg'>>

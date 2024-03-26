@@ -197,7 +197,6 @@ export const DropdownComponent = React.forwardRef<HTMLButtonElement, DropdownPro
               disabled={disabled}
               type="button"
               className={cn(
-                '',
                 !trigger && theme.root.base,
                 disabled && theme.root.disabled,
                 !trigger && theme.root.color[providerValue.color],

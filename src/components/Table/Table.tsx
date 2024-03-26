@@ -1,61 +1,68 @@
-'use client'
+import * as React from 'react'
+import { cn } from '../../helpers'
+export interface TableProps extends React.HTMLAttributes<HTMLTableElement> {}
+const Table = React.forwardRef<HTMLTableElement, TableProps>(({ className, ...props }, ref) => (
+  <div className="relative w-full overflow-auto">
+    <table ref={ref} className={cn('w-full caption-bottom text-sm', className)} {...props} />
+  </div>
+))
+Table.displayName = 'Table'
 
-import { useMemo, type ComponentProps, type FC } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep'
-import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types/types'
-import { TableBody } from './TableBody'
-import { TableCell } from './TableCell'
-import { TableContext } from './TableContext'
-import { TableHead } from './TableHead'
-import { TableHeadCell } from './TableHeadCell'
-import { TableRow } from './TableRow'
-import type { TableTheme } from './theme'
+export interface TableSectionProps extends React.HTMLAttributes<HTMLTableSectionElement> {}
 
-export interface TableProps extends ComponentProps<'table'> {
-  striped?: boolean
-  hoverable?: boolean
-  theme?: DeepPartial<TableTheme>
-  hasShadow?: boolean
-}
+const TableHeader = React.forwardRef<HTMLTableSectionElement, TableSectionProps>(({ className, ...props }, ref) => (
+  <thead ref={ref} className={cn('[&_tr]:border-b', className)} {...props} />
+))
+TableHeader.displayName = 'TableHeader'
 
-const TableComponent: FC<TableProps> = ({
-  children,
-  className,
-  striped,
-  hoverable,
-  hasShadow = true,
-  theme: customTheme = {},
-  ...props
-}) => {
-  const theme = mergeDeep(getTheme().table, customTheme)
+const TableBody = React.forwardRef<HTMLTableSectionElement, TableSectionProps>(({ className, ...props }, ref) => (
+  <tbody ref={ref} className={cn('[&_tr:last-child]:border-0', className)} {...props} />
+))
+TableBody.displayName = 'TableBody'
 
-  const value = useMemo(() => ({ theme, striped, hoverable }), [theme, striped, hoverable])
+const TableFooter = React.forwardRef<HTMLTableSectionElement, TableSectionProps>(({ className, ...props }, ref) => (
+  <tfoot
+    ref={ref}
+    className={cn('border-t bg-secondary/50 font-medium [&>tr]:last:border-b-0', className)}
+    {...props}
+  />
+))
+TableFooter.displayName = 'TableFooter'
 
-  return (
-    <div data-testid="table-element" className={twMerge(theme.root.wrapper)}>
-      <TableContext.Provider value={value}>
-        <div className={twMerge(hasShadow && theme.root.shadow, className)}></div>
-        <table className={twMerge(theme.root.base, className)} {...props}>
-          {children}
-        </table>
-      </TableContext.Provider>
-    </div>
-  )
-}
+const TableRow = React.forwardRef<HTMLTableRowElement, React.HTMLAttributes<HTMLTableRowElement>>(
+  ({ className, ...props }, ref) => (
+    <tr
+      ref={ref}
+      className={cn('border-b transition-colors hover:bg-secondary/50 data-[state=selected]:bg-secondary', className)}
+      {...props}
+    />
+  ),
+)
+TableRow.displayName = 'TableRow'
 
-TableComponent.displayName = 'Table'
-TableHead.displayName = 'Table.Head'
-TableBody.displayName = 'Table.Body'
-TableRow.displayName = 'Table.Row'
-TableCell.displayName = 'Table.Cell'
-TableHeadCell.displayName = 'Table.HeadCell'
+const TableHead = React.forwardRef<HTMLTableCellElement, React.ThHTMLAttributes<HTMLTableCellElement>>(
+  ({ className, ...props }, ref) => (
+    <th
+      ref={ref}
+      className={cn(
+        'h-10 px-2 text-left align-middle font-medium text-secondary-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]',
+        className,
+      )}
+      {...props}
+    />
+  ),
+)
+TableHead.displayName = 'TableHead'
 
-export const Table = Object.assign(TableComponent, {
-  Head: TableHead,
-  Body: TableBody,
-  Row: TableRow,
-  Cell: TableCell,
-  HeadCell: TableHeadCell,
-})
+const TableCell = React.forwardRef<HTMLTableCellElement, React.TdHTMLAttributes<HTMLTableCellElement>>(
+  ({ className, ...props }, ref) => (
+    <td
+      ref={ref}
+      className={cn('p-2 align-middle [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]', className)}
+      {...props}
+    />
+  ),
+)
+TableCell.displayName = 'TableCell'
+
+export { Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableCell }

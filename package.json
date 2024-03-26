@@ -55,8 +55,10 @@
   "dependencies": {
     "@floating-ui/react": "^0.26.2",
     "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-navigation-menu": "^1.1.4",
     "@radix-ui/react-popover": "^1.0.7",
+    "@tanstack/react-table": "^8.15.0",
     "clsx": "^2.1.0",
     "embla-carousel-react": "^8.0.0-rc19",
     "framer-motion": "^10.18.0",

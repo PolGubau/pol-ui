@@ -8,7 +8,7 @@ import { mergeDeep } from '../../helpers/merge-deep'
 import type { DropdownTheme } from './theme'
 import { Kbd } from '../Kbd'
 export interface DropdownItemProps extends ComponentProps<'button'> {
-  label: string
+  label?: string
   disabled?: boolean
   customTheme?: Partial<DropdownTheme>
   shortcut?: React.ReactNode
@@ -16,7 +16,7 @@ export interface DropdownItemProps extends ComponentProps<'button'> {
 }
 
 export const DropdownItem = React.forwardRef<HTMLButtonElement, DropdownItemProps>(
-  ({ label, disabled, shortcut, customTheme = {}, href, ...props }, forwardedRef) => {
+  ({ label, children, disabled, shortcut, customTheme = {}, href, ...props }, forwardedRef) => {
     const menu = React.useContext(DropdownContext)
     const item = useListItem({ label: disabled ? null : label })
     const tree = useFloatingTree()
@@ -53,7 +53,7 @@ export const DropdownItem = React.forwardRef<HTMLButtonElement, DropdownItemProp
             },
           })}
         >
-          {label}
+          {label ?? children}
           {shortcut && <Kbd className="text-xs p-1">{shortcut}</Kbd>}
         </button>
       </Component>
