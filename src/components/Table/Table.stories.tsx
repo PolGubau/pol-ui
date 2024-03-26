@@ -1,9 +1,8 @@
 import type { Meta } from '@storybook/react'
 import { Table, TableBody, TableCell, TableFooter, TableHead, TableHeader, TableRow } from './Table'
-import { Checkbox } from '../Checkbox'
 
 export default {
-  title: 'Components/Table-new',
+  title: 'Components/Table',
   component: Table,
 } as Meta
 const components = [
@@ -56,9 +55,6 @@ export function TableDemo() {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[100px]">
-            <Checkbox />
-          </TableHead>
           <TableHead className="w-[100px]">Component</TableHead>
           <TableHead>Name</TableHead>
           <TableHead>Description</TableHead>
@@ -68,9 +64,6 @@ export function TableDemo() {
       <TableBody>
         {components.map(invoice => (
           <TableRow key={invoice.invoice}>
-            <TableCell className="w-[100px]">
-              <Checkbox />
-            </TableCell>
             <TableCell className="font-medium">{invoice.invoice}</TableCell>
             <TableCell>{invoice.paymentStatus}</TableCell>
             <TableCell>{invoice.description}</TableCell>
@@ -80,7 +73,7 @@ export function TableDemo() {
       </TableBody>
       <TableFooter>
         <TableRow>
-          <TableCell colSpan={4}>Total Downloads</TableCell>
+          <TableCell colSpan={3}>Total Downloads</TableCell>
           <TableCell className="text-right">
             {components.reduce((acc, curr) => acc + parseInt(curr.downloads), 0)}
           </TableCell>
