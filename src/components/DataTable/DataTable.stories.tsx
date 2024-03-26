@@ -1,6 +1,8 @@
 import type { Meta } from '@storybook/react'
 import { DataTable } from './DataTable'
 import { Toaster, toast } from '../Toaster'
+import React from 'react'
+import type { RowSelectionState } from '@tanstack/react-table'
 
 export default {
   title: 'Components/DataTable',
@@ -72,3 +74,28 @@ export const Default = () => (
     ]}
   />
 )
+export const ControlledSelection = () => {
+  // example of how to manage row selection:
+  // {1: true, 2: true} means rows with INDEX 1 and 2 are selected
+  const [rowSelection, setRowSelection] = React.useState<RowSelectionState>({})
+  return (
+    <>
+      <pre> SelectedRows:{JSON.stringify(rowSelection)}</pre>
+      <DataTable
+        selectedRows={rowSelection}
+        onRowSelectionChange={setRowSelection}
+        data={data}
+        actions={row => [
+          { label: 'Print email', onClick: () => toast({ title: row.email }) },
+          {
+            label: 'Copy ID',
+            onClick: () => {
+              navigator.clipboard.writeText(row.id)
+              toast({ title: `ID ${row.id} copied to clipboard` })
+            },
+          },
+        ]}
+      />
+    </>
+  )
+}

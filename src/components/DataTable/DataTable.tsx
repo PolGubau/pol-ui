@@ -5,9 +5,9 @@ import * as React from 'react'
 import type {
   ColumnDef,
   ColumnFiltersState,
-  OnChangeFn,
   RowSelectionState,
   SortingState,
+  TableOptions,
   VisibilityState,
 } from '@tanstack/react-table'
 import {
@@ -29,18 +29,17 @@ import { cn } from '../../helpers'
 import { DebouncedInput } from '../DebouncedInput'
 import type { Identification } from '../../types'
 
-interface DataTableProps<T> {
+interface DataTableProps<T> extends Pick<TableOptions<T>, 'onRowSelectionChange'> {
   data: T[]
   actions?: (row: T) => { label: string; onClick: () => void }[]
-  selectedRows?: Identification[]
-  onSelectedRowsChange?: (selectedRows: Identification[]) => void
+  selectedRows?: RowSelectionState
 }
 
 export const DataTable = <T extends { id: Identification }>({
   data = [],
   actions,
-  selectedRows = [],
-  onSelectedRowsChange,
+  selectedRows,
+  onRowSelectionChange,
 }: DataTableProps<T>) => {
   const inferredColumns = React.useMemo(() => {
     if (data.length === 0) {
@@ -179,32 +178,6 @@ export const DataTable = <T extends { id: Identification }>({
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
 
-  // example of how to manage row selection:
-  // {1: true, 2: true} means rows with INDEX 1 and 2 are selected
-  const [rowSelection, setRowSelection] = React.useState<RowSelectionState>({})
-
-  const changeSelectedRows: OnChangeFn<RowSelectionState> = React.useCallback(
-    newRows => {
-      // we set the new row selection state
-      setRowSelection(newRows)
-
-      // we get the new data in RowSelectionState format, we want to convert it to the Identification[] format taking the keys of the object
-      const selectedRows = Object.keys(newRows).map(Number)
-      onSelectedRowsChange?.(selectedRows)
-    },
-    [onSelectedRowsChange],
-  )
-
-  // each time selectedRows changes from the parent, we update the rowSelection state
-  React.useEffect(() => {
-    const newSelection: RowSelectionState = selectedRows.reduce((acc, row) => {
-      acc[row] = true
-      return acc
-    }, {} as RowSelectionState)
-
-    setRowSelection(newSelection)
-  }, [selectedRows])
-
   const table = useReactTable({
     data,
     columns: inferredColumns,
@@ -214,9 +187,10 @@ export const DataTable = <T extends { id: Identification }>({
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
+    enableRowSelection: true,
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
-    onRowSelectionChange: changeSelectedRows,
+    onRowSelectionChange,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     isMultiSortEvent: (e: any) => e.ctrlKey || e.shiftKey, // also use the `Ctrl` key to trigger multi-sorting
     maxMultiSortColCount: 3, // only allow 3 columns to be sorted at once
@@ -226,7 +200,7 @@ export const DataTable = <T extends { id: Identification }>({
       columnFilters,
       globalFilter,
       columnVisibility,
-      rowSelection,
+      rowSelection: selectedRows,
     },
   })
 
