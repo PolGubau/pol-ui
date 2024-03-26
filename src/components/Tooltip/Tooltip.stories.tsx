@@ -31,14 +31,6 @@ DefaultTooltip.args = {
   children: <Button>Default tooltip</Button>,
 }
 
-export const SlowAnimation = Template.bind({})
-SlowAnimation.storyName = 'Slow animation'
-SlowAnimation.args = {
-  content: 'Tooltip content',
-  placement: 'bottom',
-  children: <Button>Tooltip with slow animation</Button>,
-}
-
 export const IconUseCase = Template.bind({})
 IconUseCase.args = {
   content: 'Upload a file',

@@ -13,8 +13,11 @@ import {
   useMergeRefs,
   FloatingPortal,
   FloatingFocusManager,
-  useId,
 } from '@floating-ui/react'
+import { cn, mergeDeep } from '../../helpers'
+import type { PopoverTheme } from './theme'
+import type { DeepPartial } from '../../types'
+import { getTheme } from '../../theme-store'
 
 interface PopoverOptions {
   initialOpen?: boolean
@@ -99,17 +102,35 @@ export const usePopoverContext = () => {
   return context
 }
 
+export interface PopoverProps extends PopoverOptions, React.PropsWithChildren {
+  content: React.ReactNode
+  className?: string
+  contentClassName?: string
+  theme?: DeepPartial<PopoverTheme>
+}
+
 export function Popover({
   children,
   modal = false,
+  content,
+  contentClassName,
+  className,
+  theme: customTheme = {},
   ...restOptions
-}: {
-  children: React.ReactNode
-} & PopoverOptions) {
+}: PopoverProps) {
+  const theme = mergeDeep(getTheme().popover, customTheme)
+
   // This can accept any props as options, e.g. `placement`,
   // or other positioning options.
   const popover = usePopover({ modal, ...restOptions })
-  return <PopoverContext.Provider value={popover}>{children}</PopoverContext.Provider>
+  return (
+    <PopoverContext.Provider value={popover}>
+      <PopoverTrigger tabIndex={-1} className={className}>
+        {children}
+      </PopoverTrigger>
+      <PopoverContent className={cn(theme.base, !open && theme.hidden, contentClassName)}>{content}</PopoverContent>
+    </PopoverContext.Provider>
+  )
 }
 
 interface PopoverTriggerProps {
@@ -176,56 +197,3 @@ export const PopoverContent = React.forwardRef<HTMLDivElement, React.HTMLProps<H
     </FloatingPortal>
   )
 })
-
-export const PopoverHeading = React.forwardRef<HTMLHeadingElement, React.HTMLProps<HTMLHeadingElement>>(
-  function PopoverHeading(props, ref) {
-    const { setLabelId } = usePopoverContext()
-    const id = useId()
-
-    // Only sets `aria-labelledby` on the Popover root element
-    // if this component is mounted inside it.
-    React.useLayoutEffect(() => {
-      setLabelId(id)
-      return () => setLabelId(undefined)
-    }, [id, setLabelId])
-
-    return (
-      <h2 {...props} ref={ref} id={id}>
-        {props.children}
-      </h2>
-    )
-  },
-)
-
-export const PopoverDescription = React.forwardRef<HTMLParagraphElement, React.HTMLProps<HTMLParagraphElement>>(
-  function PopoverDescription(props, ref) {
-    const { setDescriptionId } = usePopoverContext()
-    const id = useId()
-
-    // Only sets `aria-describedby` on the Popover root element
-    // if this component is mounted inside it.
-    React.useLayoutEffect(() => {
-      setDescriptionId(id)
-      return () => setDescriptionId(undefined)
-    }, [id, setDescriptionId])
-
-    return <p {...props} ref={ref} id={id} />
-  },
-)
-
-export const PopoverClose = React.forwardRef<HTMLButtonElement, React.ButtonHTMLAttributes<HTMLButtonElement>>(
-  function PopoverClose(props, ref) {
-    const { setOpen } = usePopoverContext()
-    return (
-      <button
-        type="button"
-        ref={ref}
-        {...props}
-        onClick={event => {
-          props.onClick?.(event)
-          setOpen(false)
-        }}
-      />
-    )
-  },
-)

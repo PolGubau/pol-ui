@@ -31,7 +31,7 @@ describe('Tooltip component', () => {
   })
 
   test('opens tooltip content when trigger is focused', () => {
-    const { getByText, getByTestId } = render(
+    const { getByText } = render(
       <Tooltip content="Tooltip Content">
         <span>Hover me</span>
       </Tooltip>,
@@ -39,7 +39,6 @@ describe('Tooltip component', () => {
 
     fireEvent.focus(getByText('Hover me'))
 
-    expect(getByTestId('ui-arrow')).toBeInTheDocument()
     expect(getByText('Tooltip Content')).toBeInTheDocument()
   })
 })

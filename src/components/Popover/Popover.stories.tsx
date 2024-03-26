@@ -5,6 +5,7 @@ import { Popover } from './Popover'
 import { TbFile } from 'react-icons/tb'
 import { IconButton } from '../IconButton'
 import { Avatar } from '../Avatar'
+import { useState } from 'react'
 
 export default {
   title: 'Components/Popover',
@@ -44,26 +45,7 @@ const Template: StoryFn<PopoverProps> = args => <Popover {...args} />
 export const Default = Template.bind({})
 Default.args = {
   content: <ExampleContent />,
-  placement: 'bottom',
   children: <Button>Default tooltip</Button>,
-}
-
-export const NoArrow = Template.bind({})
-NoArrow.storyName = 'No arrow'
-NoArrow.args = {
-  arrow: false,
-  content: <ExampleContent />,
-  placement: 'bottom',
-  children: <Button>Tooltip with no arrow</Button>,
-}
-
-export const SlowAnimation = Template.bind({})
-SlowAnimation.storyName = 'Slow animation'
-SlowAnimation.args = {
-  animation: 'duration-1000',
-  content: <ExampleContent />,
-  placement: 'bottom',
-  children: <Button>Tooltip with slow animation</Button>,
 }
 
 export const IconUseCase = Template.bind({})
@@ -90,3 +72,12 @@ export const DarkMode = () => (
     </div>
   </div>
 )
+
+export function Controlled() {
+  const [open, setOpen] = useState(false)
+  return (
+    <Popover open={open} onOpenChange={setOpen} content={<ExampleContent />}>
+      <Button onClick={() => setOpen(v => !v)}>My trigger</Button>
+    </Popover>
+  )
+}

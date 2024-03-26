@@ -12,13 +12,13 @@ import {
   useInteractions,
   useMergeRefs,
   FloatingPortal,
+  arrow,
 } from '@floating-ui/react'
 import type { Placement } from '@floating-ui/react'
 import type { DeepPartial } from '../../types'
 import type { TooltipTheme } from './theme'
 import { cn, mergeDeep } from '../../helpers'
 import { getTheme } from '../../theme-store'
-import type { UseFloatingProps } from '../Floating/use-floating'
 
 interface TooltipOptions {
   initialOpen?: boolean
@@ -34,7 +34,7 @@ export function useTooltip({
   onOpenChange: setControlledOpen,
 }: TooltipOptions = {}) {
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(initialOpen)
-  const arrowRef = React.useRef<HTMLDivElement>(null)
+  const arrowRef = React.useRef(null)
 
   const open = controlledOpen ?? uncontrolledOpen
   const setOpen = setControlledOpen ?? setUncontrolledOpen
@@ -45,6 +45,9 @@ export function useTooltip({
     onOpenChange: setOpen,
     whileElementsMounted: autoUpdate,
     middleware: [
+      arrow({
+        element: arrowRef,
+      }),
       offset(5),
       flip({
         crossAxis: placement.includes('-'),
@@ -119,9 +122,7 @@ export function Tooltip({
       <TooltipTrigger className={className} tabIndex={-1}>
         {children}
       </TooltipTrigger>
-      <TooltipContent theme={theme} className={cn(theme.base, !open && theme.hidden, contentClassName)}>
-        {content}
-      </TooltipContent>
+      <TooltipContent className={cn(theme.base, !open && theme.hidden, contentClassName)}>{content}</TooltipContent>
     </TooltipContext.Provider>
   )
 }
@@ -161,24 +162,16 @@ const TooltipTrigger = React.forwardRef<HTMLElement, React.HTMLProps<HTMLElement
 
 interface TooltipContentProps extends React.HTMLProps<HTMLDivElement> {
   arrow?: boolean
-  theme: TooltipTheme
 }
 const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(function TooltipContent(
-  { style, arrow = true, theme, ...props },
+  { style, ...props },
   propRef,
 ) {
   const context = useTooltipContext()
   const ref = useMergeRefs([context.refs.setFloating, propRef])
 
   if (!context.open) return null
-  const getArrowPlacement = ({ placement = 'auto' }: { placement: UseFloatingProps['placement'] }): Placement => {
-    return {
-      top: 'bottom',
-      right: 'left',
-      bottom: 'top',
-      left: 'right',
-    }[placement.split('-')[0]] as Placement
-  }
+
   return (
     <FloatingPortal>
       <div
@@ -189,22 +182,6 @@ const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(fun
         }}
         {...context.getFloatingProps(props)}
       />
-      {arrow && (
-        <div
-          className={cn(theme.arrow.base)}
-          data-testid="ui-arrow"
-          ref={context.arrowRef}
-          style={{
-            top: context.middlewareData.arrow?.y ?? 0,
-            left: context.middlewareData.arrow?.x ?? 0,
-            right: ' ',
-            bottom: ' ',
-            [getArrowPlacement({ placement: context.placement })]: theme.arrow.placement,
-          }}
-        >
-          &nbsp;
-        </div>
-      )}
     </FloatingPortal>
   )
 })

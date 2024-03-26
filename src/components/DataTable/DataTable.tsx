@@ -69,7 +69,7 @@ export const DataTable = <T extends { id: Identification }>({
       ),
       cell: ({ row }) => (
         <Checkbox
-          checked={row.getIsSelected()}
+          checked={Boolean(row.getIsSelected())}
           onChange={() => row.toggleSelected(!row.getIsSelected())}
           aria-label="Select row"
         />
