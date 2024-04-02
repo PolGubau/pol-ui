@@ -5,7 +5,8 @@ import { Tooltip } from './Tooltip'
 import { TbFile } from 'react-icons/tb'
 import { IconButton } from '../IconButton'
 import { useState } from 'react'
-
+import { TooltipContent, TooltipTrigger } from './new'
+import { Tooltip as Tooltip2 } from './new'
 export default {
   title: 'Components/Tooltip',
   component: Tooltip,
@@ -64,5 +65,18 @@ export const Controlled = () => {
         My trigger
       </Button>
     </Tooltip>
+  )
+}
+
+export function CustomControlled() {
+  const [open, setOpen] = useState(false)
+  return (
+    <div className="App">
+      <h1>Floating UI — Tooltip</h1>
+      <Tooltip2 open={open} onOpenChange={setOpen}>
+        <TooltipTrigger onClick={() => setOpen(v => !v)}>My trigger</TooltipTrigger>
+        <TooltipContent className="Tooltip">My tooltip</TooltipContent>
+      </Tooltip2>
+    </div>
   )
 }

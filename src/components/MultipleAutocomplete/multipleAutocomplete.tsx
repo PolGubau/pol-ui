@@ -77,7 +77,6 @@ export const MultipleAutocomplete: React.FC<MultipleAutocompleteProps> = ({
       setOpen={state => {
         closeOnSelect && setValue(state)
       }}
-      trigger="click"
       className={cn(theme.base)}
       content={
         <Command className={(theme.command, popupClassName)} ref={popupRef}>
