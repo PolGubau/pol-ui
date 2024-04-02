@@ -8,7 +8,7 @@ import type { DeepPartial } from '../../types/types'
 import type { CardTheme } from './theme'
 import { omit } from '../../helpers'
 
-interface CommonCardProps extends ComponentProps<'div'> {
+export interface CardProps extends ComponentProps<'div'> {
   horizontal?: boolean
   childrenClass?: string
   href?: string
@@ -16,16 +16,6 @@ interface CommonCardProps extends ComponentProps<'div'> {
   theme?: DeepPartial<CardTheme>
   className?: string
 }
-
-export type CardProps = (
-  | { imgAlt?: string; imgSrc?: string; renderImage?: never }
-  | {
-      renderImage?: (theme: DeepPartial<CardTheme>, horizontal: boolean) => JSX.Element
-      imgAlt?: never
-      imgSrc?: never
-    }
-) &
-  CommonCardProps
 
 /**
  * @name Card
@@ -55,16 +45,7 @@ export type CardProps = (
  * 
  */
 export const Card: FC<CardProps> = (props): React.ReactNode => {
-  const {
-    children,
-    className,
-    horizontal = false,
-    href,
-    theme: customTheme = {},
-    childrenClass = '',
-    imageClass = '',
-    renderImage,
-  } = props
+  const { children, className, href, theme: customTheme = {}, childrenClass = '' } = props
 
   // Card component will be an Anchor link if href prop is passed.
 
@@ -85,18 +66,9 @@ export const Card: FC<CardProps> = (props): React.ReactNode => {
     <Component
       data-testid="ui-card"
       href={href}
-      className={twMerge(
-        theme.root.base,
-        theme.root.horizontal[horizontal ? 'on' : 'off'],
-        href && theme.root.href,
-        className,
-      )}
+      className={twMerge(theme.root.base, href && theme.root.href, className)}
       {...externalProps}
     >
-      {!renderImage && props.imgSrc && (
-        <img src={props.imgSrc} alt={props.imgAlt} className={imageClass} data-testid="ui-card-image" />
-      )}
-      {renderImage?.(theme, horizontal)}
       <div className={twMerge(theme.root.children, childrenClass)}>{children}</div>
     </Component>
   )

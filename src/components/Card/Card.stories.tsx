@@ -24,18 +24,4 @@ Default.args = {}
 export const Horizontal = Template.bind({})
 Horizontal.args = {
   horizontal: true,
-  imgSrc: 'https://ui.polgubau.com/logo.png',
-}
-
-export const WithDecorativeImage = Template.bind({})
-WithDecorativeImage.storyName = 'With decorative image'
-WithDecorativeImage.args = {
-  imgSrc: 'https://ui.polgubau.com/logo.png',
-  imageClass: 'w-24',
-}
-
-export const WithNextImage = Template.bind({})
-WithNextImage.storyName = 'Custom img Component (Next.js...)'
-WithNextImage.args = {
-  renderImage: () => <img alt="Example" src={'https://ui.polgubau.com/logo.png'} className="w-24" />,
 }
