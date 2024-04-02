@@ -81,7 +81,6 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       setOpen={state => {
         closeOnSelect && setValue(state)
       }}
-      trigger="click"
       className="p-0"
       content={
         <Command className={(theme.command, popupClassName)} ref={popupRef}>

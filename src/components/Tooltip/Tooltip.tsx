@@ -102,6 +102,8 @@ export interface TooltipProps extends React.PropsWithChildren, TooltipOptions {
   content: React.ReactNode
   theme?: DeepPartial<TooltipTheme>
   className?: string
+  open?: boolean
+  setOpen ?: (open: boolean) => void
   contentClassName?: string
 }
 

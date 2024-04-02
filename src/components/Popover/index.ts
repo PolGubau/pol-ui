@@ -1,4 +1,4 @@
 export { popoverTheme, type PopoverTheme } from './theme'
 
 export { Popover } from './Popover'
-export type { PopoverProps as TooltipProps } from './Popover'
+export type { PopoverProps } from './Popover'
