@@ -86,7 +86,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
       contentClassName,
       ...props
     },
-    theirRef = null,
+    theirRef,
   ) => {
     const theme = mergeDeep(getTheme().modal, customTheme)
 

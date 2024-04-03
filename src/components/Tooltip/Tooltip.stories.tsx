@@ -5,8 +5,7 @@ import { Tooltip } from './Tooltip'
 import { TbFile } from 'react-icons/tb'
 import { IconButton } from '../IconButton'
 import { useState } from 'react'
-import { TooltipContent, TooltipTrigger } from './new'
-import { Tooltip as Tooltip2 } from './new'
+import { useBoolean } from '../../hooks'
 export default {
   title: 'Components/Tooltip',
   component: Tooltip,
@@ -58,25 +57,15 @@ export const DarkMode = () => (
 )
 
 export const Controlled = () => {
-  const [open, setOpen] = useState(false)
+  const { value, toggle } = useBoolean(false)
   return (
-    <Tooltip open={open} onOpenChange={setOpen} content="My tooltip">
-      <Button onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-        My trigger
+    <div className="flex gap-4">
+      <Tooltip open={value} onOpenChange={toggle} content="My tooltip">
+        <Button>My trigger</Button>
+      </Tooltip>
+      <Button color="secondary" outline onClick={toggle} className="w-fit">
+        Click me to toggle tooltip
       </Button>
-    </Tooltip>
-  )
-}
-
-export function CustomControlled() {
-  const [open, setOpen] = useState(false)
-  return (
-    <div className="App">
-      <h1>Floating UI — Tooltip</h1>
-      <Tooltip2 open={open} onOpenChange={setOpen}>
-        <TooltipTrigger onClick={() => setOpen(v => !v)}>My trigger</TooltipTrigger>
-        <TooltipContent className="Tooltip">My tooltip</TooltipContent>
-      </Tooltip2>
     </div>
   )
 }
