@@ -98,12 +98,12 @@ export const useTooltipContext = () => {
   return context
 }
 
-export interface TooltipProps extends React.PropsWithChildren, TooltipOptions {
+export interface TooltipProps extends React.PropsWithChildren<TooltipOptions> {
   content: React.ReactNode
   theme?: DeepPartial<TooltipTheme>
   className?: string
   open?: boolean
-  setOpen ?: (open: boolean) => void
+  setOpen?: (open: boolean) => void
   contentClassName?: string
 }
 
@@ -114,7 +114,7 @@ export function Tooltip({
   className,
   contentClassName,
   ...options
-}: TooltipProps) {
+}: Readonly<TooltipProps>) {
   const theme = mergeDeep(getTheme().tooltip, customTheme)
   // This can accept any props as options, e.g. `placement`,
   // or other positioning options.
@@ -162,9 +162,9 @@ const TooltipTrigger = React.forwardRef<HTMLElement, React.HTMLProps<HTMLElement
   },
 )
 
-interface TooltipContentProps extends React.HTMLProps<HTMLDivElement> {
-  arrow?: boolean
-}
+interface TooltipContentProps extends React.HTMLProps<HTMLDivElement> {}
+
+interface TooltipContentProps extends React.HTMLProps<HTMLDivElement> {}
 const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(function TooltipContent(
   { style, ...props },
   propRef,

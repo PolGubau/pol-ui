@@ -4,7 +4,6 @@ import type { TooltipProps } from './Tooltip'
 import { Tooltip } from './Tooltip'
 import { TbFile } from 'react-icons/tb'
 import { IconButton } from '../IconButton'
-import { useState } from 'react'
 import { useBoolean } from '../../hooks'
 export default {
   title: 'Components/Tooltip',
