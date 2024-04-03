@@ -18,6 +18,6 @@ export const tooltipTheme: TooltipTheme = {
 
     placement: '-4px',
   },
-  base: 'shadow-lg absolute inline-block z-10 rounded-xl py-2 px-3 text-sm font-medium bg-secondary-100 text-secondary-900 dark:bg-secondary-700 dark:text-white',
+  base: 'shadow-lg absolute inline-block z-10 rounded-xl py-2 px-3 text-sm font-medium bg-secondary-100 text-secondary-900 dark:bg-secondary-700 dark:text-white motion-safe:animate-fadeIn',
   hidden: 'invisible opacity-0',
 }
