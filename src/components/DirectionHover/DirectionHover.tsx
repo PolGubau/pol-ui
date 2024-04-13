@@ -4,7 +4,7 @@ import type { ElementType } from 'react'
 import { useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep'
+import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DirectionHoverTheme } from './theme'
 import { DirectionEnum, RoundedSizesEnum } from '../../types/enums'
@@ -13,7 +13,7 @@ import { directionHoverTextVariants, directionHoverVariants, getDirection } from
 import type { Direction } from '../../types'
 
 /**
- * 
+ *
  * @name DirectionHover
  * @description The DirectionHover component is used to display a hover effect with a direction, useful for displaying a list of items in a small space.
  * @param {string} props.imageUrl - The image url
@@ -26,7 +26,7 @@ import type { Direction } from '../../types'
  * @param {RoundedSizesEnum} props.rounded - The rounded size of the hover
  * @param {DeepPartial<DirectionHoverTheme>} props.theme - The theme of the hover
  * @returns React.FC<DirectionHoverProps<T>>
- * 
+ *
  */
 export const DirectionHover = <T extends ElementType = 'button'>({
   imageUrl,

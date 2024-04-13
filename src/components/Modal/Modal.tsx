@@ -13,7 +13,7 @@ import {
 } from '@floating-ui/react'
 import { forwardRef, type ComponentPropsWithoutRef, type MutableRefObject } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep'
+import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial, MainSizes, Positions } from '../../types/types'
 import type { ModalTheme } from './theme'

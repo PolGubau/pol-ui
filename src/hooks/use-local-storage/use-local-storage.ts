@@ -3,6 +3,8 @@ import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useEffect, useState } from 'react'
 import { useEventCallback } from '../use-event-callback/use-event-callback'
 import { useEventListener } from '../use-event-listener/use-event-listener'
+import { parseJSON } from '../../helpers/parseJSON/parseJSON'
+import { decrypt } from '../../helpers/encryption/encryption'
 
 declare global {
   interface WindowEventMap {
@@ -12,9 +14,35 @@ declare global {
 
 type SetValue<T> = Dispatch<SetStateAction<T>>
 
-export function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
+/**
+ * @name useLocalStorage
+ * @description A hook to use localStorage with ease and encriptation
+ * @param key {string} - The key to store the value in localStorage
+ * @param initialValue {T} - The initial value to store in localStorage
+ * @param encriptationKey {string} - The key to encript the value in localStorage
+ * @returns {[T, SetValue<T>]} The stored value and a function to set the value
+ *
+ * @example
+ * ```tsx
+ * const [value, setValue] = useLocalStorage('key', 'initialValue')
+ * ```
+ *
+ */
+export function useLocalStorage<T>(key: string, initialValue: T, encriptationKey?: string): [T, SetValue<T>] {
   // Get from local storage then
   // parse stored json or return initialValue
+  if (initialValue === undefined) throw new Error('initialValue is required')
+  if (typeof initialValue === 'function') throw new Error('initialValue cannot be a function')
+
+  function decryptAndParse<T>(data: string, key?: string): T {
+    if (!key) {
+      return parseJSON(data) as T
+    } else {
+      // Decrypt data
+      const decryptedData = decrypt(data, key)
+      return parseJSON(decryptedData) as T
+    }
+  }
   const readValue = useCallback((): T => {
     // Prevent build error "window is undefined" but keeps working
     if (typeof window === 'undefined') {
@@ -23,12 +51,12 @@ export function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T
 
     try {
       const item = window.localStorage.getItem(key)
-      return item ? (parseJSON(item) as T) : initialValue
+      return item ? (decryptAndParse(item, encriptationKey) as T) : initialValue
     } catch (error) {
       console.warn(`Error reading localStorage key “${key}”:`, error)
       return initialValue
     }
-  }, [initialValue, key])
+  }, [initialValue, key, encriptationKey])
 
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
@@ -82,14 +110,4 @@ export function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T
   useEventListener('local-storage', handleStorageChange)
 
   return [storedValue, setValue]
-}
-
-// A wrapper for "JSON.parse()"" to support "undefined" value
-function parseJSON<T>(value: string | null): T | undefined {
-  try {
-    return value === 'undefined' ? undefined : JSON.parse(value ?? '')
-  } catch {
-    console.log('parsing error on', { value })
-    return undefined
-  }
 }

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 import type { ConveyorDirection, ConveyorSpeed } from './ConveyorTypes'
 import { ConveyorSpeedEnum, ConveyorDirectionEnum } from './ConveyorTypes'
-import { mergeDeep } from '../../helpers/merge-deep'
+import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { ConveyorTheme } from './theme'
 

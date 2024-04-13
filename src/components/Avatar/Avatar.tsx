@@ -1,7 +1,7 @@
 'use client'
 import type { ComponentProps, FC, ReactElement } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep'
+import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { Colors, DeepPartial, MainSizes, Positions, RoundedSizes } from '../../types/types'
 import { AvatarGroup } from './AvatarGroup'

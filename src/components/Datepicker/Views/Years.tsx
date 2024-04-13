@@ -2,7 +2,7 @@
 
 import type { FC } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../../helpers/merge-deep'
+import { mergeDeep } from '../../../helpers/merge-deep/merge-deep'
 import { useDatePickerContext } from '../DatepickerContext'
 import { Views, isDateEqual, isDateInRange, startOfYearPeriod } from '../helpers'
 import { Button } from '../../Button'

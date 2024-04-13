@@ -3,7 +3,7 @@
 import type { ComponentProps, FC, ReactElement } from 'react'
 import { Children, cloneElement, useMemo } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep'
+import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types/types'
 import type { ButtonProps } from '../Button'

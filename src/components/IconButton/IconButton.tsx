@@ -12,8 +12,8 @@ import { ButtonBase } from '../Button/ButtonBase'
 import type { IconButtonTheme } from './theme'
 import { Tooltip } from '../Tooltip'
 import { motion } from 'framer-motion'
-import { mergeDeep } from '../../helpers/merge-deep'
-import { colorToTailwind } from '../../helpers/colorToTailwind'
+import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
+import { colorToTailwind } from '../../helpers/color-to-tailwind/colorToTailwind'
 import type { ButtonProps } from '../Button'
 
 export type IconButtonProps<T extends ElementType = 'button'> = {

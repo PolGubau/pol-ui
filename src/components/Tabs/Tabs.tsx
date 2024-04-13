@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { twMerge } from 'tailwind-merge'
 import { getTheme } from '../../theme-store'
 import type { TabsTheme } from './theme'
-import { mergeDeep } from '../../helpers/merge-deep'
+import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 
 type Tab = {
   name: string

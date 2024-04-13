@@ -2,7 +2,7 @@ import type { ComponentProps, FC } from 'react'
 import { forwardRef } from 'react'
 import { HiOutlineChevronRight } from 'react-icons/hi'
 import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep'
+import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial, IBoolean } from '../../types/types'
 

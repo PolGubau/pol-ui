@@ -1,5 +1,5 @@
-import type { Colors } from '../types'
-import { ColorsEnum } from '../types'
+import type { Colors } from '../../types'
+import { ColorsEnum } from '../../types'
 
 /**
  * @name colorToTailwind

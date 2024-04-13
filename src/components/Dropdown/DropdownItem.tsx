@@ -4,7 +4,7 @@ import { DropdownContext } from './DropdownContext'
 import { useFloatingTree, useListItem, useMergeRefs } from '@floating-ui/react'
 import { twMerge } from 'tailwind-merge'
 import { getTheme } from '../../theme-store'
-import { mergeDeep } from '../../helpers/merge-deep'
+import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import type { DropdownTheme } from './theme'
 import { Kbd } from '../Kbd'
 export interface DropdownItemProps extends ComponentProps<'button'> {

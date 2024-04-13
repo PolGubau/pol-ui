@@ -2,7 +2,7 @@
 
 import type { ElementType } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep'
+import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import { getTheme } from '../../theme-store'
 import { Loader } from '../Loader'
 import { ButtonBase, type ButtonBaseProps } from './ButtonBase'
@@ -10,7 +10,7 @@ import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../../types/enums'
 import { useRipple } from '../../hooks'
 import { motion } from 'framer-motion'
 import type { ButtonProps } from './props'
-import { colorToTailwind } from '../../helpers/colorToTailwind'
+import { colorToTailwind } from '../../helpers/color-to-tailwind/colorToTailwind'
 
 /**
  *

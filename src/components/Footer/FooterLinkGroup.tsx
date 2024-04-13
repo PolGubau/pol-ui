@@ -1,6 +1,6 @@
 import type { ComponentProps, ElementType, FC } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep'
+import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types/types'
 import type { FooterLinkGroupTheme } from './theme'

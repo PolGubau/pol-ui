@@ -1,7 +1,7 @@
 import type { ComponentProps, FC, ReactNode } from 'react'
 import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep'
+import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { Colors, DeepPartial, MainSizes } from '../../types/types'
 import { HelperText } from '../HelperText'

@@ -1,7 +1,7 @@
 // Import necessary modules for testing
 import { test, assert } from 'vitest'
-import type { Colors } from '../types'
-import { ColorsEnum } from '../types'
+import type { Colors } from '../../types'
+import { ColorsEnum } from '../../types'
 import { colorToTailwind } from './colorToTailwind'
 
 // Define test cases for colorToTailwind function

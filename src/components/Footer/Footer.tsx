@@ -1,6 +1,6 @@
 import type { ComponentProps, FC } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep'
+import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types/types'
 
@@ -12,7 +12,7 @@ export interface FooterProps extends ComponentProps<'footer'> {
 }
 
 /**
- * 
+ *
  * @name Footer
  * @description The Footer component is used to display the footer of a page, it is usually used to display the author, the date, and the contact information of the page.
  * @returns React.FC<FooterProps>

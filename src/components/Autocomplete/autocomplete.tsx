@@ -40,7 +40,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   placeholder,
   noFoundText = 'Nothing found...',
   options = [],
-  trigger,
+  trigger = null,
   popupClassName,
   className,
   closeOnSelect = true,

@@ -2,7 +2,7 @@
 
 import type { ComponentProps, FC } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep'
+import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import { useThemeMode } from '../../hooks/use-theme-mode'
 import { getTheme } from '../../theme-store'
 import type { Colors, DeepPartial } from '../../types/types'

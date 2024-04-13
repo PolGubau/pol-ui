@@ -3,7 +3,7 @@ import type { DropdownProps } from './Dropdown'
 import { TbChevronRight } from 'react-icons/tb'
 import { getTheme } from '../../theme-store'
 import { DropdownContext } from './DropdownContext'
-import { mergeDeep } from '../../helpers/merge-deep'
+import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import {
   autoUpdate,
   useFloatingTree,

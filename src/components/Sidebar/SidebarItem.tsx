@@ -3,7 +3,7 @@
 import type { ComponentProps, ElementType, FC, PropsWithChildren, ReactNode } from 'react'
 import { forwardRef, useId } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep'
+import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import type { Colors, DeepPartial, RoundedSizes, RoundedSizesTypes } from '../../types/types'
 import { Badge } from '../Badge'
 import { Tooltip } from '../Tooltip'

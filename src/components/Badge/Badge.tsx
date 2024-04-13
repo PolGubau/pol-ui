@@ -2,7 +2,7 @@
 
 import type { ComponentProps, FC } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep'
+import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { Colors, DeepPartial, MainSizes, RoundedSizes } from '../../types/types'
 import { ColorsEnum, RoundedSizesEnum, SizesEnum } from '../../types/enums'

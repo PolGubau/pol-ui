@@ -4,7 +4,7 @@ import type { FC, ReactNode } from 'react'
 import { useEffect, useRef, useState } from 'react'
 import { TbCalendar, TbArrowLeft, TbArrowRight, TbTrash } from 'react-icons/tb'
 import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep'
+import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types/types'
 import { Input, type InputTheme, type InputProps } from '../Input'
@@ -93,7 +93,7 @@ export interface DatepickerProps extends Omit<InputProps, 'theme'> {
 }
 
 /**
- * 
+ *
  * @name Datepicker
  * @description The Datepicker component is used to select a date, it can be used as a popup or inline. You can also set the default date, min and max date, and the language.
  * @param {boolean} props.open - The open state of the datepicker
@@ -108,8 +108,8 @@ export interface DatepickerProps extends Omit<InputProps, 'theme'> {
  * @param {Date} props.defaultDate - The defaultDate state of the datepicker
  * @param {Date} props.minDate - The minDate state of the datepicker
  * @param {Date} props.maxDate - The maxDate state of the datepicker
- * 
- * @returns React.FC<DatepickerProps> 
+ *
+ * @returns React.FC<DatepickerProps>
  */
 export const Datepicker: FC<DatepickerProps> = ({
   title,
