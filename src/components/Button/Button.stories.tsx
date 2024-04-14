@@ -1,6 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import { theme } from '../../theme'
 import { Button } from '.'
+import { Button as NewButton } from './new'
 import type { MainSizes, Colors, RoundedSizes } from '../../types'
 import type { ButtonProps } from '.'
 import { TbStarFilled } from 'react-icons/tb'
@@ -153,4 +154,35 @@ export const WithIcon = (args: ButtonProps) => (
     <TbStarFilled />
     Button
   </Button>
+)
+export const NewButtonDefault = () => (
+  <div className="flex gap-5">
+    <NewButton>Button</NewButton>
+    <NewButton variant={'outline'}>outline</NewButton>
+    <NewButton variant={'link'}>outline</NewButton>
+    <NewButton variant={'error'}>outline</NewButton>
+    <NewButton variant={'secondary'}>outline</NewButton>
+    <NewButton variant={'ghost'}>outline</NewButton>
+  </div>
+)
+
+export const NewAllColors = () => (
+  <section className="flex gap-12 flex-wrap justify-center items-center">
+    <div className="flex gap-3 flex-wrap p-4 rounded-xl">
+      {Object.keys(theme.button.color).map(color => (
+        <NewButton key={color} color={color as Colors}>
+          {color}
+        </NewButton>
+      ))}
+    </div>
+    <div className="dark">
+      <div className="flex gap-3 flex-wrap bg-secondary-900 p-4 rounded-xl">
+        {Object.keys(theme.button.color).map(color => (
+          <NewButton key={color} color={color as Colors}>
+            {color}
+          </NewButton>
+        ))}
+      </div>
+    </div>
+  </section>
 )

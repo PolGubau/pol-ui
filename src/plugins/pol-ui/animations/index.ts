@@ -20,6 +20,7 @@ export const animations = {
     slideRightAndFade: 'slideRightAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
     slideDownAndFade: 'slideDownAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
     slideLeftAndFade: 'slideLeftAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+    growAndContract: 'growAndContract 0.5s ease-in-out infinite',
   },
   keyframes: {
     shimmer: {
@@ -131,6 +132,11 @@ export const animations = {
     fadeOut: {
       from: { opacity: '1' },
       to: { opacity: '0' },
+    },
+    growAndContract: {
+      from: {
+        
+      }
     },
   },
 }

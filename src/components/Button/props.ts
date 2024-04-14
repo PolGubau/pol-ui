@@ -169,4 +169,5 @@ export type ButtonProps<T extends ElementType = 'button'> = {
    *
    */
   target?: string
+  asChild?: boolean
 } & ComponentPropsWithoutRef<T>

@@ -15,24 +15,43 @@ import { colorToTailwind } from '../../helpers/color-to-tailwind/colorToTailwind
 /**
  *
  * @name Button
+ *
  * @description The Button component is used to trigger an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.
+ *
  * @param {React.ReactNode} props.children - The content of the button
+ *
  * @param {string} props.className - The class name of the button
+ *
  * @param {ColorsEnum} props.color - The color of the button
+ *
  * @param {boolean} props.disabled - If the button is disabled
+ *
  * @param {boolean} props.hasMotion - If the button has motion
+ *
  * @param {boolean} props.fullSized - If the button is full sized
+ *
  * @param {boolean} props.loading - If the button is loading
+ *
  * @param {string} props.loadingLabel - The label of the loading state
+ *
  * @param {React.ReactNode} props.loader - The loader of the button
+ *
  * @param {string} props.label - The label of the button
+ *
  * @param {boolean} props.hasBackground - If the button has background
+ *
  * @param {boolean} props.outline - If the button is outline
+ *
  * @param {RoundedSizesEnum} props.rounded - The rounded size of the button
+ *
  * @param {string} props.positionInGroup - The position in the group
+ *
  * @param {MainSizesEnum} props.size - The size of the button
+ *
  * @param {DeepPartial<ButtonTheme>} props.theme - The theme of the button
+ *
  * @param {string} props.innerClassname - The class name of the inner content
+ *
  * @returns React.FC<ButtonProps>
  */
 export const Button = <T extends ElementType = 'button'>({
@@ -52,6 +71,7 @@ export const Button = <T extends ElementType = 'button'>({
   size = MainSizesEnum.md,
   theme: customTheme = {},
   innerClassname = '',
+  asChild = false,
   ...props
 }: ButtonProps<T>) => {
   const theme = mergeDeep(getTheme().button, customTheme)
@@ -68,6 +88,7 @@ export const Button = <T extends ElementType = 'button'>({
 
   return (
     <MotionButtonBase
+      asChild={asChild}
       transition={hasMotion && { duration: 0.1, type: 'spring' }}
       whileTap={hasMotion && { scale: 0.95 }}
       whileHover={hasMotion && { scale: 0.98 }}
