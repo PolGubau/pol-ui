@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { useEventCallback } from '../use-event-callback/use-event-callback'
 import { useEventListener } from '../use-event-listener/use-event-listener'
 import { parseJSON } from '../../helpers/parseJSON/parseJSON'
-import { decrypt } from '../../helpers/encryption/encryption'
+import { decrypt, encrypt } from '../../helpers/encryption/encryption'
 
 declare global {
   interface WindowEventMap {
@@ -75,7 +75,10 @@ export function useLocalStorage<T>(key: string, initialValue: T, encriptationKey
       const newValue = value instanceof Function ? value(storedValue) : value
 
       // Save to local storage
-      window.localStorage.setItem(key, JSON.stringify(newValue))
+      const maybeEncryptedvalue = encriptationKey
+        ? encrypt(JSON.stringify(newValue), encriptationKey)
+        : JSON.stringify(newValue)
+      window.localStorage.setItem(key, maybeEncryptedvalue)
 
       // Save state
       setStoredValue(newValue)
