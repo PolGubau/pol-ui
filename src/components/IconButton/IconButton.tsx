@@ -64,7 +64,7 @@ export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
           ref={ref}
           rounded={rounded}
           loadingLabel={loadingLabel}
-          className={cn(theme.inner.base, className)}
+          className={cn(theme.base, className)}
         />
       </Tooltip>
     )
