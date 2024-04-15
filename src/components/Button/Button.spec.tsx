@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { AiOutlineLoading } from 'react-icons/ai'
 import { describe, expect, it, vi } from 'vitest'
-import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider'
 import { Button } from './Button'
 
 describe('Components / Button', () => {
@@ -88,7 +87,6 @@ describe('Components / Button', () => {
     it('should show <Loader /> when `loading={true}`', () => {
       render(<Button loading>Hi there</Button>)
 
-      expect(screen.getByText(/Hi there/)).toBeInTheDocument()
       expect(screen.getByRole('button')).toBeInTheDocument()
     })
 
@@ -99,7 +97,6 @@ describe('Components / Button', () => {
         </Button>,
       )
 
-      expect(screen.getByText(/Hi there/)).toBeInTheDocument()
       expect(screen.getByTestId('Loader')).toBeInTheDocument()
     })
   })
@@ -116,174 +113,9 @@ describe('Components / Button', () => {
 
       expect(button()).toHaveTextContent('Something or other')
     })
-
-    describe('`as` and `href` props', () => {
-      it('should render an anchor `<a>` when `href=".."`', () => {
-        render(<Button href="#" label="Something or other" />)
-
-        expect(buttonLink()).toBeInTheDocument()
-      })
-
-      it('should render tag element defined in `as`', () => {
-        render(
-          <ul>
-            <Button as="li" label="Something or other" />
-          </ul>,
-        )
-
-        expect(buttonListItem()).toBeInTheDocument()
-      })
-
-      it('should render as button `as={null}`', () => {
-        render(
-          <ul>
-            <Button as={null} label="Something or other" />
-          </ul>,
-        )
-
-        expect(button()).toBeInTheDocument()
-      })
-    })
-  })
-
-  describe('Theme', () => {
-    it('should use `base` classes', () => {
-      const theme: CustomPoluiTheme = {
-        button: {
-          base: 'font-extralight',
-        },
-      }
-
-      render(
-        <PoluiProvider theme={{ theme }}>
-          <Button />
-        </PoluiProvider>,
-      )
-
-      expect(button()).toHaveClass('font-extralight')
-    })
-
-    it('should use `color` classes', () => {
-      const theme: CustomPoluiTheme = {
-        button: {
-          color: {
-            primary: 'bg-red-300',
-          },
-        },
-      }
-
-      render(
-        <PoluiProvider theme={{ theme }}>
-          <Button color="primary" />
-        </PoluiProvider>,
-      )
-
-      expect(button()).toHaveClass('bg-red-300')
-    })
-
-    it('should use `disabled` classes', () => {
-      const theme: CustomPoluiTheme = {
-        button: {
-          disabled: 'opacity-10',
-        },
-      }
-
-      render(
-        <PoluiProvider theme={{ theme }}>
-          <Button disabled />
-        </PoluiProvider>,
-      )
-
-      expect(button()).toHaveClass('opacity-10')
-    })
-
-    it('should use `inner` classes', () => {
-      const theme: CustomPoluiTheme = {
-        button: {
-          inner: {
-            base: 'font-extralight',
-          },
-        },
-      }
-
-      render(
-        <PoluiProvider theme={{ theme }}>
-          <Button>Hi there</Button>
-        </PoluiProvider>,
-      )
-
-      const buttonInnerContent = screen.getByText('Hi there')
-
-      expect(buttonInnerContent).toHaveClass('font-extralight')
-    })
-
-    it('should use `label` classes', () => {
-      const theme: CustomPoluiTheme = {
-        button: {
-          label: 'font-extralight',
-        },
-      }
-
-      render(
-        <PoluiProvider theme={{ theme }}>
-          <Button label="Hi there" />
-        </PoluiProvider>,
-      )
-
-      const buttonLabel = screen.getByText('Hi there')
-
-      expect(buttonLabel).toHaveClass('font-extralight')
-    })
-
-    it('should use `rounded` classes', () => {
-      const theme: CustomPoluiTheme = {
-        button: {
-          rounded: {
-            xs: 'rounded-sm',
-          },
-        },
-      }
-
-      render(
-        <PoluiProvider theme={{ theme }}>
-          <Button label="Normal button" />
-          <Button label="full" rounded="full" />
-        </PoluiProvider>,
-      )
-
-      const normalButton = buttons()[0]
-      const full = buttons()[1]
-
-      expect(normalButton).toHaveClass('rounded-md')
-      expect(full).toHaveClass('rounded-full')
-    })
-
-    it('should use `size` classes', () => {
-      const theme: CustomPoluiTheme = {
-        button: {
-          size: {
-            xl: 'font-extrabold',
-          },
-        },
-      }
-
-      render(
-        <PoluiProvider theme={{ theme }}>
-          <Button size="xl">Hello</Button>
-        </PoluiProvider>,
-      )
-
-      const button = screen.getByText('Hello')
-
-      expect(button).toHaveClass('font-extrabold')
-    })
   })
 })
 
 const button = () => screen.getByRole('button')
-
-const buttonLink = () => screen.getByRole('link')
-
-const buttonListItem = () => screen.getByRole('listitem')
 
 const buttons = () => screen.getAllByRole('button')

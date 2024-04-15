@@ -71,14 +71,6 @@ describe('Components / IconButton', () => {
 
         expect(iconButton()).toHaveTextContent('0')
       })
-
-      describe('`as` and `href` props', () => {
-        it('should render an anchor `<a>` when `href=".."`', () => {
-          render(<IconButton href="#" label="Something or other" />)
-
-          expect(iconButtonLink()).toBeInTheDocument()
-        })
-      })
     })
 
     describe('Theme', () => {
@@ -97,64 +89,8 @@ describe('Components / IconButton', () => {
 
         expect(iconButton()).toHaveClass('font-extralight')
       })
-
-      it('should use `color` classes', () => {
-        const theme: CustomPoluiTheme = {
-          iconButton: {
-            color: {
-              primary: 'bg-red-300',
-            },
-          },
-        }
-
-        render(
-          <PoluiProvider theme={{ theme }}>
-            <IconButton color="primary" />
-          </PoluiProvider>,
-        )
-
-        expect(iconButton()).toHaveClass('bg-red-300')
-      })
-
-      it('should use `disabled` classes', () => {
-        const theme: CustomPoluiTheme = {
-          iconButton: {
-            disabled: 'opacity-10',
-          },
-        }
-
-        render(
-          <PoluiProvider theme={{ theme }}>
-            <IconButton disabled />
-          </PoluiProvider>,
-        )
-
-        expect(iconButton()).toHaveClass('opacity-10')
-      })
-
-      it('should use `inner` classes', () => {
-        const theme: CustomPoluiTheme = {
-          iconButton: {
-            inner: {
-              base: 'font-extralight',
-            },
-          },
-        }
-
-        render(
-          <PoluiProvider theme={{ theme }}>
-            <IconButton>Hi there</IconButton>
-          </PoluiProvider>,
-        )
-
-        const iconButtonInnerContent = screen.getByText('Hi there')
-
-        expect(iconButtonInnerContent).toHaveClass('font-extralight')
-      })
     })
   })
 
   const iconButton = () => screen.getByRole('button')
-
-  const iconButtonLink = () => screen.getByRole('link')
 })

@@ -64,7 +64,6 @@ export * from './components/Tooltip'
 export * from './components/Autocomplete'
 export * from './components/MultipleAutocomplete'
 export * from './components/SlipButton'
-
 export * from './helpers'
 export * from './hooks/use-boolean/use-boolean'
 export * from './hooks/use-copy-to-clipboard/use-copy-to-clipboard'

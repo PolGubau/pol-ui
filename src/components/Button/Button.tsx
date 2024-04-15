@@ -133,6 +133,7 @@ export interface ButtonProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
+  label?: string
   loading?: boolean
   fullSized?: boolean
   loader?: React.ReactNode
@@ -199,7 +200,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 {loadingLabel && <p>{loadingLabel}</p>}
               </>
             )
-          : props.children}
+          : props.label ?? props.children}
       </Comp>
     )
   },
