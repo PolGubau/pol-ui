@@ -1,1 +1,1 @@
-export { SplitButton, type SplitButtonProps } from './SplitButton'
+export * from './SplitButton'
