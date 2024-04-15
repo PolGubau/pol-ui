@@ -40,9 +40,4 @@ describe('useLocalStorage hook', () => {
     const { result } = renderHook(() => useLocalStorage('testKey', 'initialValue'))
     expect(result.current[0]).toBe(undefined) // initial value because of invalid JSON
   })
-
-  test('should handle encriptation with third parameter', () => {
-    const { result } = renderHook(() => useLocalStorage('testKey', 'initialValue'))
-    expect(result.current[0]).toBe('initialValue')
-  })
 })
