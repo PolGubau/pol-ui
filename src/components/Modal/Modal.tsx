@@ -54,18 +54,31 @@ export interface ModalProps extends ComponentPropsWithoutRef<'div'> {
 
 /**
  * @name Modal
+ *
  * @description The Modal component is used to display a message to the user, it can be closable or not. It can be used to display a message, a warning, an error, a success message... A modal is a dialog box or a popup window that is displayed on top of the current page.
+ *
  * @param {ReactNode} props.children - The content of the modal
+ *
  * @param {string} props.className - The class name of the modal
+ *
  * @param {boolean} props.dismissible - If the modal can be dismissed
+ *
  * @param {boolean} props.open - If the modal is open
+ *
  * @param {HTMLElement} props.root - The root element of the modal
+ *
  * @param {MainSizes} props.size - The size of the modal
+ *
  * @param {DeepPartial<ModalTheme>} props.theme - The theme of the modal
+ *
  * @param {number | MutableRefObject<HTMLElement | null>} props.initialFocus - The initial focus of the modal
+ *
  * @param {boolean} props.lockScroll - If the scroll is locked
+ *
  * @param {boolean} props.deleteButton - If the delete button is displayed
+ *
  * @param {string} props.contentClassName - The class name of the content
+ *
  * @returns React.FC<ModalProps>
  */
 export const Modal = forwardRef<HTMLDivElement, ModalProps>(

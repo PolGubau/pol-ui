@@ -1,3 +1,5 @@
+'use client'
+
 import * as React from 'react'
 import type { Placement } from '@floating-ui/react'
 import {

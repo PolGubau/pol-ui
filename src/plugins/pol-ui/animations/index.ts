@@ -20,7 +20,8 @@ export const animations = {
     slideRightAndFade: 'slideRightAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
     slideDownAndFade: 'slideDownAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
     slideLeftAndFade: 'slideLeftAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
-    growAndContract: 'growAndContract 0.5s ease-in-out infinite',
+    growAndContract: 'growAndContract 3s ease-in-out infinite',
+    totalScaleAppear: 'totalScaleAppear 200ms ease',
   },
   keyframes: {
     shimmer: {
@@ -134,9 +135,19 @@ export const animations = {
       to: { opacity: '0' },
     },
     growAndContract: {
-      from: {
-        
-      }
+      '0%': {
+        transform: 'scale(0.8)',
+      },
+      '50%': {
+        transform: 'scale(1.2)',
+      },
+      '100%': {
+        transform: 'scale(0.8)',
+      },
+    },
+    totalScaleAppear: {
+      from: { opacity: '0', transform: 'scale(0)' },
+      to: { opacity: '1', transform: 'scale(1)' },
     },
   },
 }

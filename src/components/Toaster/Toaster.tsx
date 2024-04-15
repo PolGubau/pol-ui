@@ -1,3 +1,5 @@
+'use client'
+
 import { Toaster as PrimitiveToaster, toast as primitiveToast } from 'sonner'
 import type { ToastT, ToasterProps } from './types'
 import { Loader } from '../Loader'
