@@ -1,4 +1,3 @@
-import type { ComponentProps } from 'react'
 import React from 'react'
 import { DropdownContext } from './DropdownContext'
 import { useFloatingTree, useListItem, useMergeRefs } from '@floating-ui/react'
@@ -7,7 +6,8 @@ import { getTheme } from '../../theme-store'
 import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import type { DropdownTheme } from './theme'
 import { Kbd } from '../Kbd'
-export interface DropdownItemProps extends ComponentProps<'button'> {
+import { Button, type ButtonProps } from '../Button'
+export interface DropdownItemProps extends ButtonProps {
   label?: string
   disabled?: boolean
   customTheme?: Partial<DropdownTheme>
@@ -29,11 +29,13 @@ export const DropdownItem = React.forwardRef<HTMLButtonElement, DropdownItemProp
     const theme: DropdownTheme = mergeDeep(dropdownTheme, customTheme)
     return (
       <Component className="relative">
-        <button
+        <Button
           {...props}
           ref={useMergeRefs([item.ref, forwardedRef])}
           type="button"
+          focusEffect={false}
           role="menuitem"
+          variant="ghost"
           className={twMerge(
             theme.item.base,
             disabled && theme.root.disabled,
@@ -55,7 +57,7 @@ export const DropdownItem = React.forwardRef<HTMLButtonElement, DropdownItemProp
         >
           {label ?? children}
           {shortcut && <Kbd className="text-xs p-1">{shortcut}</Kbd>}
-        </button>
+        </Button>
       </Component>
     )
   },

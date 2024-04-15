@@ -56,7 +56,7 @@ const buttonVariants = cva(
       },
       {
         variant: ['link', 'outline', 'ghost'],
-        className: 'text-secondary-900 dark:text-secondary-50',
+        className: 'text-secondary-900 dark:text-secondary-50 ',
       },
       {
         variant: 'filled',
@@ -137,6 +137,7 @@ export interface ButtonProps
   fullSized?: boolean
   loader?: React.ReactNode
   loadingLabel?: string | React.ReactNode
+  focusEffect?: boolean
 }
 
 export type ButtonVariants = keyof typeof variants.variant
@@ -153,6 +154,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       fullSized = false,
       size,
       color,
+      focusEffect = true,
       asChild = false,
       loadingLabel = 'Loading...',
       ...props
@@ -178,15 +180,17 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           event(e)
         }}
       >
-        <span
-          className={cn(
-            'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full hidden group-focus:flex justify-center items-center ',
-          )}
-        >
-          <div className="animate-totalScaleAppear  w-full h-full flex justify-center items-center">
-            <span className=" transition-transform duration-200 ease-in-out animate-growAndContract rounded-full bg-secondary-800/50 group-focus-visible:w-[80%] aspect-square group-focus-visible:h-auto"></span>
-          </div>
-        </span>
+        {focusEffect && (
+          <span
+            className={cn(
+              'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full hidden group-focus:flex justify-center items-center ',
+            )}
+          >
+            <div className="animate-totalScaleAppear  w-full h-full flex justify-center items-center">
+              <span className=" transition-transform duration-200 ease-in-out animate-growAndContract rounded-full bg-secondary-800/50 group-focus-visible:w-[80%] aspect-square group-focus-visible:h-auto"></span>
+            </div>
+          </span>
+        )}
 
         {loading
           ? loader ?? (
