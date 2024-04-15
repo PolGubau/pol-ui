@@ -134,6 +134,8 @@ export interface ButtonProps
   asChild?: boolean
   loading?: boolean
   fullSized?: boolean
+  loader?: React.ReactNode
+  loaderLabel?: string
 }
 
 export type ButtonVariants = keyof typeof variants.variant
@@ -141,7 +143,19 @@ export type VariantsEnum = keyof typeof variants
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { className, loading, variant = 'filled', rounded, fullSized = false, size, color, asChild = false, ...props },
+    {
+      className,
+      loader,
+      loading,
+      variant = 'filled',
+      rounded,
+      fullSized = false,
+      size,
+      color,
+      asChild = false,
+      loaderLabel = 'Loading...',
+      ...props
+    },
     ref,
   ) => {
     const [ripple, event] = useRipple({
@@ -173,14 +187,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           </div>
         </span>
 
-        {loading ? (
-          <>
-            <Loader size={size ?? 'sm'} />
-            <p>Loading...</p>
-          </>
-        ) : (
-          props.children
-        )}
+        {loading
+          ? loader ?? (
+              <>
+                <Loader size={size ?? 'sm'} />
+                <p>{loaderLabel}</p>
+              </>
+            )
+          : props.children}
       </Comp>
     )
   },
