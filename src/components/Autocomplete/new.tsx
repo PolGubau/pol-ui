@@ -6,7 +6,7 @@ import { TbCheck, TbSortAscending } from 'react-icons/tb'
 import { Command, CommandEmpty, CommandInput } from '../Command'
 import { CommandGroup, CommandItem } from '../Command/Command'
 import { cn } from '../../helpers'
-import { Button } from '../Button/new'
+import { Button } from '../Button/Button'
 
 const frameworks = [
   {

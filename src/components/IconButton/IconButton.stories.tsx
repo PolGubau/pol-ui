@@ -61,25 +61,12 @@ DefaultButton.args = {
   children: <TbSearch />,
   label: 'Search',
 }
-export const WithMotion = Template.bind({})
-WithMotion.parameters = {
-  docs: {
-    description: {
-      story: 'The default for displaying icons as button',
-    },
-  },
-}
-WithMotion.args = {
-  children: <TbSearch />,
-  hasMotion: true,
-  label: 'Search',
-}
 
 export const OutlineButton = Template.bind({})
 OutlineButton.storyName = 'Outline'
 OutlineButton.args = {
   ...DefaultButton.args,
-  outline: true,
+  variant: 'outline',
 }
 export const WithoutTooltip = Template.bind({})
 WithoutTooltip.parameters = {
@@ -104,17 +91,10 @@ Disabled.args = {
   disabled: true,
 }
 
-export const Transparent = Template.bind({})
-Transparent.args = {
+export const Filled = Template.bind({})
+Filled.args = {
   ...DefaultButton.args,
-  rounded: 'xl',
-  className: 'bg-secondary-50 text-black dark:text-white',
-}
-export const Link = Template.bind({})
-Link.args = {
-  ...DefaultButton.args,
-  href: 'https://www.polgubau.com',
-  target: '_blank',
+  variant: 'filled',
 }
 
 export const Rounded = (args: IconButtonProps) => (

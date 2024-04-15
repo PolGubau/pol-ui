@@ -1,147 +1,203 @@
-'use client'
-
-import type { ElementType } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import { getTheme } from '../../theme-store'
-import { Loader } from '../Loader'
-import { ButtonBase, type ButtonBaseProps } from './ButtonBase'
-import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../../types/enums'
+import * as React from 'react'
+import { Slot } from '@radix-ui/react-slot'
+import { cva, type VariantProps } from 'class-variance-authority'
+import { cn, mergeRefs } from '../../helpers'
 import { useRipple } from '../../hooks'
-import { motion } from 'framer-motion'
-import type { ButtonProps } from './props'
-import { colorToTailwind } from '../../helpers/color-to-tailwind/colorToTailwind'
+import { Loader } from '../Loader'
 
-/**
- *
- * @name Button
- *
- * @description The Button component is used to trigger an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.
- *
- * @param {React.ReactNode} props.children - The content of the button
- *
- * @param {string} props.className - The class name of the button
- *
- * @param {ColorsEnum} props.color - The color of the button
- *
- * @param {boolean} props.disabled - If the button is disabled
- *
- * @param {boolean} props.hasMotion - If the button has motion
- *
- * @param {boolean} props.fullSized - If the button is full sized
- *
- * @param {boolean} props.loading - If the button is loading
- *
- * @param {string} props.loadingLabel - The label of the loading state
- *
- * @param {React.ReactNode} props.loader - The loader of the button
- *
- * @param {string} props.label - The label of the button
- *
- * @param {boolean} props.hasBackground - If the button has background
- *
- * @param {boolean} props.outline - If the button is outline
- *
- * @param {RoundedSizesEnum} props.rounded - The rounded size of the button
- *
- * @param {string} props.positionInGroup - The position in the group
- *
- * @param {MainSizesEnum} props.size - The size of the button
- *
- * @param {DeepPartial<ButtonTheme>} props.theme - The theme of the button
- *
- * @param {string} props.innerClassname - The class name of the inner content
- *
- * @returns React.FC<ButtonProps>
- */
-export const Button = <T extends ElementType = 'button'>({
-  children,
-  className,
-  color = ColorsEnum.primary,
-  disabled,
-  hasMotion = false,
-  fullSized = false,
-  loading = false,
-  loadingLabel = 'Loading...',
-  loader,
-  label,
-  outline = false,
-  rounded = RoundedSizesEnum.md,
-  positionInGroup = 'none',
-  size = MainSizesEnum.md,
-  theme: customTheme = {},
-  innerClassname = '',
-  asChild = false,
-  ...props
-}: ButtonProps<T>) => {
-  const theme = mergeDeep(getTheme().button, customTheme)
-
-  const theirProps = props as ButtonBaseProps<T>
-
-  const [ripple, event] = useRipple({
-    disabled: disabled || loading,
-    opacity: 0.4,
-    className: colorToTailwind(color),
-  })
-
-  const MotionButtonBase = motion(ButtonBase)
-
-  return (
-    <MotionButtonBase
-      asChild={asChild}
-      transition={hasMotion && { duration: 0.1, type: 'spring' }}
-      whileTap={hasMotion && { scale: 0.95 }}
-      whileHover={hasMotion && { scale: 0.98 }}
-      whileFocus={hasMotion && { scale: 1.1 }}
-      ref={ripple}
-      // onKeyDown={event}
-      onPointerDown={event}
-      onKeyDown={(e: { key: string }) => {
-        if (e.key === 'Enter') {
-          const middleX = (ripple.current?.getBoundingClientRect().width ?? 100) / 2
-          const middleY = (ripple.current?.getBoundingClientRect().height ?? 80) / 2
-          event({
-            clientX: middleX,
-            clientY: middleY,
-          })
-        }
-      }}
-      onKeyPress={event}
-      disabled={loading || disabled}
-      className={twMerge(
-        theme.base,
-        disabled && theme.disabled,
-        outline && theme.outline.outlineBase,
-        outline && theme.outline.color[color],
-        !outline && theme.ring.base,
-        !outline && theme.ring.colors[color],
-        !outline && theme.color[color],
-        theme.rounded[rounded],
-        fullSized && theme.fullSized,
-        theme.inner.base,
-        theme.outline[outline ? 'on' : 'off'],
-        theme.size[size],
-        outline && !theme.outline.color[color] && theme.inner.outline,
-        loading && theme.loading,
-        loading && theme.inner.loadingPadding[size],
-        theme.inner.position[positionInGroup],
-        innerClassname,
-        className,
-      )}
-      {...theirProps}
-    >
-      {loading && (
-        <span className={twMerge(theme.loaderSlot, theme.loaderLeftPosition[size])}>
-          {loader ?? <Loader size={size} />}
-        </span>
-      )}
-      {typeof children !== 'undefined' ? (
-        children
-      ) : (
-        <span data-testid="ui-button-label" className={twMerge(theme.label)}>
-          {loading ? loadingLabel : label}
-        </span>
-      )}
-    </MotionButtonBase>
-  )
+const variants = {
+  variant: {
+    filled: 'shadow hover:shadow-lg focus:shadow-lg transition-shadow',
+    outline: 'border bg-transparent shadow hover:shadow-lg focus:shadow-lg transition-[colors, shadow]',
+    ghost: 'hover:bg-primary/60',
+    link: 'text-primary underline-offset-4 hover:underline',
+  },
+  size: {
+    md: 'h-9 px-4 py-2',
+    sm: 'h-8 px-3 text-xs',
+    xs: 'h-7 px-2 text-xs',
+    lg: 'h-10 px-8',
+    xl: 'h-12 px-10',
+  },
+  color: {
+    primary: '',
+    secondary: '',
+    error: '',
+    info: '',
+    success: '',
+    warning: '',
+  },
+  rounded: {
+    none: '',
+    xs: 'rounded-xs',
+    sm: 'rounded-sm',
+    md: 'rounded-md',
+    lg: 'rounded-lg',
+    xl: 'rounded-xl',
+    full: 'rounded-full',
+    '2xl': 'rounded-2xl',
+    '3xl': 'rounded-3xl',
+  },
+  fullSized: {
+    true: 'w-full',
+    false: '',
+  },
 }
+export type Variants = typeof variants
+
+const buttonVariants = cva(
+  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50 relative group overflow-hidden gap-2',
+  {
+    variants: variants,
+    compoundVariants: [
+      {
+        variant: 'filled',
+        className: 'text-secondary-50 dark:text-secondary-900 hover:brightness-90',
+      },
+      {
+        variant: ['link', 'outline', 'ghost'],
+        className: 'text-secondary-900 dark:text-secondary-50',
+      },
+      {
+        variant: 'filled',
+        color: 'primary',
+        className: 'bg-primary',
+      },
+      {
+        variant: 'filled',
+        color: 'secondary',
+        className: 'bg-secondary',
+      },
+      {
+        variant: 'filled',
+        color: 'success',
+        className: 'bg-success',
+      },
+      {
+        variant: 'filled',
+        color: 'error',
+        className: 'bg-error',
+      },
+      {
+        variant: 'filled',
+        color: 'info',
+        className: 'bg-info',
+      },
+      {
+        variant: 'filled',
+        color: 'warning',
+        className: 'bg-warning',
+      },
+      {
+        variant: ['outline', 'ghost'],
+        color: 'primary',
+        className: 'border-primary hover:bg-primary/50',
+      },
+      {
+        variant: ['outline', 'ghost'],
+        color: 'secondary',
+        className: 'border-secondary hover:bg-secondary/50',
+      },
+      {
+        variant: ['outline', 'ghost'],
+        color: 'error',
+        className: 'border-error hover:bg-error/50',
+      },
+      {
+        variant: ['outline', 'ghost'],
+        color: 'warning',
+        className: 'border-warning hover:bg-warning/50',
+      },
+      {
+        variant: ['outline', 'ghost'],
+        color: 'info',
+        className: 'border-info hover:bg-info/50',
+      },
+      {
+        variant: ['outline', 'ghost'],
+        color: 'success',
+        className: 'border-success hover:bg-success/50',
+      },
+    ],
+    defaultVariants: {
+      variant: 'filled',
+      size: 'md',
+      color: 'primary',
+      fullSized: false,
+      rounded: 'md',
+    },
+  },
+)
+
+export interface ButtonProps
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean
+  loading?: boolean
+  fullSized?: boolean
+  loader?: React.ReactNode
+  loadingLabel?: string | React.ReactNode
+}
+
+export type ButtonVariants = keyof typeof variants.variant
+export type VariantsEnum = keyof typeof variants
+
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      className,
+      loader,
+      loading,
+      variant = 'filled',
+      rounded,
+      fullSized = false,
+      size,
+      color,
+      asChild = false,
+      loadingLabel = 'Loading...',
+      ...props
+    },
+    ref,
+  ) => {
+    const [ripple, event] = useRipple({
+      disabled: props.disabled || loading,
+      opacity: 0.2,
+      duration: 700,
+    })
+    const refs = mergeRefs([ripple, ref])
+    const Comp = asChild ? Slot : 'button'
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, fullSized, className, color, rounded }))}
+        ref={refs}
+        {...props}
+        onClick={e => {
+          if (props.onClick) {
+            props.onClick(e as React.MouseEvent<HTMLButtonElement>)
+          }
+          event(e)
+        }}
+      >
+        <span
+          className={cn(
+            'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full hidden group-focus:flex justify-center items-center ',
+          )}
+        >
+          <div className="animate-totalScaleAppear  w-full h-full flex justify-center items-center">
+            <span className=" transition-transform duration-200 ease-in-out animate-growAndContract rounded-full bg-secondary-800/50 group-focus-visible:w-[80%] aspect-square group-focus-visible:h-auto"></span>
+          </div>
+        </span>
+
+        {loading
+          ? loader ?? (
+              <>
+                <Loader size={size ?? 'sm'} />
+                {loadingLabel && <p>{loadingLabel}</p>}
+              </>
+            )
+          : props.children}
+      </Comp>
+    )
+  },
+)
+Button.displayName = 'Button'

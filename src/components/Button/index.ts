@@ -1,3 +1,2 @@
-export { Button } from './Button'
-export type { ButtonProps } from './props'
+export { Button, type ButtonProps } from './Button'
 export { buttonTheme, type ButtonTheme } from './theme'

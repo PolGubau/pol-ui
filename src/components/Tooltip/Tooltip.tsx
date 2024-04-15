@@ -109,7 +109,7 @@ export interface TooltipProps extends React.PropsWithChildren<TooltipOptions> {
 
 export function Tooltip({
   children,
-  content,
+  content = null,
   theme: customTheme = {},
   className,
   contentClassName,
@@ -119,12 +119,15 @@ export function Tooltip({
   // This can accept any props as options, e.g. `placement`,
   // or other positioning options.
   const tooltip = useTooltip(options)
+  if (!content) return children
   return (
     <TooltipContext.Provider value={tooltip}>
       <TooltipTrigger className={className} tabIndex={-1}>
         {children}
       </TooltipTrigger>
-      <TooltipContent className={cn(theme.base, !open && theme.hidden, contentClassName)}>{content}</TooltipContent>
+      {content && (
+        <TooltipContent className={cn(theme.base, !open && theme.hidden, contentClassName)}>{content}</TooltipContent>
+      )}
     </TooltipContext.Provider>
   )
 }

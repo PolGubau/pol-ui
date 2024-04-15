@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import { theme } from '../../theme'
-import type { ButtonVariants, ButtonProps } from './new'
-import { Button } from './new'
+import type { ButtonProps } from './Button'
+import { Button } from './Button'
 import { type MainSizes, type Colors, type RoundedSizes } from '../../types'
 import { TbStarFilled } from 'react-icons/tb'
 
@@ -129,52 +129,4 @@ export const WithIcon = (args: ButtonProps) => (
     <TbStarFilled />
     Button
   </Button>
-)
-export const NewButtonDefault = () => (
-  <div className="flex gap-5 flex-col flex-wrap">
-    <nav className="flex gap-4 items-center">
-      {['default', 'outline', 'link', 'ghost'].map(variant => (
-        <Button key={variant} variant={variant as ButtonVariants}>
-          {variant}
-        </Button>
-      ))}
-    </nav>
-    <nav className="flex gap-4 items-center ">
-      {Object.keys(theme.button.size).map(size => (
-        <Button key={size} size={size as MainSizes}>
-          {size}
-        </Button>
-      ))}
-    </nav>
-
-    <nav className="flex gap-4">
-      {Object.keys(theme.button.rounded).map(r => (
-        <Button key={r} rounded={r as RoundedSizes}>
-          {r}
-        </Button>
-      ))}
-    </nav>
-    <Button className="rounded-2xl w-fit bg-orange-500 shadow-inner hover:shadow-none">Custom with classes</Button>
-  </div>
-)
-
-export const NewAllColors = () => (
-  <section className="flex gap-12 flex-wrap justify-center items-center">
-    <div className="flex gap-3 flex-wrap p-4 rounded-xl ">
-      {Object.keys(theme.button.color).map(color => (
-        <Button key={color} color={color as Colors}>
-          {color}
-        </Button>
-      ))}
-    </div>
-    <div className="dark">
-      <div className="flex gap-3 flex-wrap bg-secondary-900 p-4 rounded-xl">
-        {Object.keys(theme.button.color).map(color => (
-          <Button key={color} color={color as Colors}>
-            {color}
-          </Button>
-        ))}
-      </div>
-    </div>
-  </section>
 )
