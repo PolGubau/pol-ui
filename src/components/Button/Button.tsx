@@ -13,9 +13,9 @@ const variants = {
     link: 'text-primary underline-offset-4 hover:underline',
   },
   size: {
-    md: 'h-9 px-4 py-2',
-    sm: 'h-8 px-3 text-xs',
-    xs: 'h-7 px-2 text-xs',
+    md: 'h-9 px-3 py-2',
+    sm: 'h-8 px-2 text-xs',
+    xs: 'h-7 px-1 text-xs',
     lg: 'h-10 px-8',
     xl: 'h-12 px-10',
   },

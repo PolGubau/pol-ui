@@ -3,5 +3,5 @@ export interface IconButtonTheme {
 }
 
 export const iconButtonTheme: IconButtonTheme = {
-  base: 'aspect-square h-fit w-auto px-1 py-1',
+  base: 'aspect-square h-fit w-auto',
 }
