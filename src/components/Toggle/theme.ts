@@ -1,8 +1,7 @@
-import type { BooleanEnum, ColorsType, RoundedSizesTypes } from '../../types'
+import type { BooleanEnum, ColorsType } from '../../types'
 
 export interface ToggleTheme {
   base: string
-  rounded: RoundedSizesTypes
   active: Record<
     BooleanEnum,
     {
@@ -12,17 +11,8 @@ export interface ToggleTheme {
   >
 }
 export const toggleTheme: ToggleTheme = {
-  base: 'flex items-center justify-center aspect-square h-10  text-black dark:text-white transition-colors focus:outline-none',
-  rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    md: 'rounded-md',
-    lg: 'rounded-lg',
-    xl: 'rounded-xl',
-    '2xl': 'rounded-2xl',
-    '3xl': 'rounded-3xl',
-    full: 'rounded-full',
-  },
+  base: 'flex items-center justify-center aspect-square dark:text-white transition-colors focus:outline-none',
+
   active: {
     on: {
       base: '',

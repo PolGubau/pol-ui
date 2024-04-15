@@ -122,7 +122,7 @@ export const AllColors = (args: IconButtonProps) => (
             </IconButton>
           </div>
         ))}
-      </div>{' '}
+      </div>
     </div>
     <div className="flex gap-3 flex-col bg-secondary-900 p-4 rounded-xl">
       <h3 className="text-white text-xl">Dark Mode</h3>
