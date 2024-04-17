@@ -75,6 +75,18 @@ Disabled.args = {
   ...DefaultButton.args,
   disabled: true,
 }
+export const Ghost = NewTemplate.bind({})
+Ghost.args = {
+  ...DefaultButton.args,
+  variant: 'ghost',
+}
+export const Link = () => {
+  return (
+    <Button asChild>
+      <a href="https://google.com">Google</a>
+    </Button>
+  )
+}
 export const FullSized = NewTemplate.bind({})
 FullSized.args = {
   ...DefaultButton.args,
