@@ -108,7 +108,7 @@ export const MultipleAutocomplete: React.FC<MultipleAutocompleteProps> = ({
           value={value?.map(x => x.value).join(', ') ?? ''}
           aria-autocomplete="list"
           aria-haspopup="listbox"
-          outline
+          variant={'outline'}
           role="combobox"
           aria-expanded={open}
           className={cn(theme.button.base, className)}

@@ -180,7 +180,6 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
 
     return (
       <Button
-        hasMotion={false}
         data-testid="carousel-left-control"
         ref={ref}
         variant={variant}
@@ -209,7 +208,6 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
 
     return (
       <Button
-        hasMotion={false}
         ref={ref}
         variant={variant}
         data-testid="carousel-right-control"

@@ -78,7 +78,6 @@ export const Banner: FC<BannerComponentProps> = ({
               <IconButton
                 onClick={handleOnClose}
                 color={color}
-                {...props}
                 className={twMerge('bg-transparent text-current rounded-full', buttonClassName)}
               >
                 <TbX className="h-4 w-4" />

@@ -109,7 +109,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
           value={value?.value ?? ''}
           aria-autocomplete="list"
           aria-haspopup="listbox"
-          outline
+          variant={'outline'}
           role="combobox"
           aria-expanded={open}
           className={cn(theme.button.base, className)}

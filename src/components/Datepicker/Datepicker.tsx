@@ -340,7 +340,7 @@ export const Datepicker: FC<DatepickerProps> = ({
                     {showClearButton && (
                       <Button
                         type="button"
-                        outline
+                        variant="outline"
                         className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.clear)}
                         onClick={() => {
                           changeSelectedDate(defaultDate, true)

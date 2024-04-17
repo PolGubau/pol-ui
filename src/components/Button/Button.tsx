@@ -4,6 +4,8 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn, mergeRefs } from '../../helpers'
 import { useRipple } from '../../hooks'
 import { Loader } from '../Loader'
+import type { ButtonTheme } from './theme'
+import type { DeepPartial } from '../../types'
 
 const variants = {
   variant: {
@@ -139,6 +141,7 @@ export interface ButtonProps
   loader?: React.ReactNode
   loadingLabel?: string | React.ReactNode
   focusEffect?: boolean
+  theme?: DeepPartial<ButtonTheme>
 }
 
 export type ButtonVariants = keyof typeof variants.variant
