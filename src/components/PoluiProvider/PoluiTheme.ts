@@ -38,7 +38,6 @@ import type { CopyrightTheme } from '../Copyright/theme'
 import type { DirectionHoverTheme } from '../DirectionHover/theme'
 import type { ConveyorTheme } from '../Conveyor/theme'
 import type { PopoverTheme } from '../Popover'
-import type { ButtonGroupTheme } from '../ButtonGroup'
 import type { ToastTheme } from '../Toaster/theme'
 import type { DividerTheme } from '../Divider'
 import type { LinkTheme } from '../Link/theme'
@@ -77,7 +76,6 @@ export interface PoluiTheme {
   banner: BannerTheme
   breadcrumb: BreadcrumbTheme
   button: ButtonTheme
-  buttonGroup: ButtonGroupTheme
   iconButton: IconButtonTheme
   card: CardTheme
   copyright: CopyrightTheme

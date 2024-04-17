@@ -1,5 +1,4 @@
 import type { ColorsType, IBoolean, MainSizesType, RoundedSizesTypes } from '../../types'
-import type { PositionInButtonGroup } from '../ButtonGroup'
 
 export interface ButtonTheme {
   base: string
@@ -22,7 +21,6 @@ export interface ButtonTheme {
 
 export interface ButtonInnerTheme {
   base: string
-  position: PositionInButtonGroup
   outline: string
   loadingPadding: MainSizesType
 }
@@ -66,12 +64,7 @@ export const buttonTheme: ButtonTheme = {
   },
   inner: {
     base: 'flex gap-1 items-stretch items-center transition-all duration-200',
-    position: {
-      none: '',
-      start: 'rounded-r-none',
-      middle: 'rounded-none',
-      end: 'rounded-l-none',
-    },
+
     outline: 'border border-transparent',
     loadingPadding: {
       xs: 'pl-8',

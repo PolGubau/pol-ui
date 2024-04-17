@@ -16,9 +16,6 @@ export const FileList = React.memo((props: React.PropsWithChildren<FileListProps
     <ul className="flex flex-wrap justify-center gap-4">
       {files.map((file: File) => (
         <Tooltip
-          onClick={e => {
-            e.preventDefault()
-          }}
           content={
             <div className="flex justify-normal flex-col items-start gap-1">
               {/* try to show the file */}
@@ -76,7 +73,6 @@ export const FileList = React.memo((props: React.PropsWithChildren<FileListProps
             </div>
           }
           key={`${file.name}_${file.lastModified}`}
-          trigger="click"
         >
           <Chip
             onClick={e => {

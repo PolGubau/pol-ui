@@ -64,7 +64,7 @@ export const AddKanbanCard = ({
           type="submit"
           size="sm"
           onClick={() => setAdding(true)}
-          hasBackground={false}
+          variant={'ghost'}
         >
           <span className="first-letter:uppercase">{labels.add}</span>
           <TbPlus />

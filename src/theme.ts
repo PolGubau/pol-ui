@@ -39,7 +39,6 @@ import { footerTheme } from './components/Footer/theme'
 import { copyrightTheme } from './components/Copyright/theme'
 import { directionHoverTheme } from './components/DirectionHover/theme'
 import { conveyorTheme } from './components/Conveyor/theme'
-import { buttonGroupTheme } from './components/ButtonGroup'
 
 import { toastTheme } from './components/Toaster/theme'
 import { dividerTheme } from './components/Divider'
@@ -73,7 +72,6 @@ export const theme: PoluiTheme = {
   button: buttonTheme,
   iconButton: iconButtonTheme,
   link: linkTheme,
-  buttonGroup: buttonGroupTheme,
   card: cardTheme,
   carousel: carouselTheme,
   copyright: copyrightTheme,
