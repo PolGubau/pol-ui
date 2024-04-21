@@ -4,6 +4,7 @@ import { Table, TableBody, TableCell, TableFooter, TableHead, TableHeader, Table
 export default {
   title: 'Components/Table',
   component: Table,
+  tags:['autodocs']
 } as Meta
 const components = [
   {

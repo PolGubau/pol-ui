@@ -11,7 +11,7 @@ import {
   useMergeRefs,
   useRole,
 } from '@floating-ui/react'
-import { forwardRef, type ComponentPropsWithoutRef, type MutableRefObject } from 'react'
+import { type ComponentPropsWithoutRef, type MutableRefObject } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import { getTheme } from '../../theme-store'
@@ -40,8 +40,7 @@ export type OpenChangeReason = `${OpenChangeReasons}`
 export interface ModalProps extends ComponentPropsWithoutRef<'div'> {
   onOpenChange?: (open: boolean, reason: OpenChangeReason | undefined) => void
   position?: keyof ModalPositions
-  open?: boolean
-  popup?: boolean
+  show?: boolean
   root?: HTMLElement
   size?: MainSizes
   dismissible?: boolean
@@ -81,90 +80,84 @@ export interface ModalProps extends ComponentPropsWithoutRef<'div'> {
  *
  * @returns React.FC<ModalProps>
  */
-export const Modal = forwardRef<HTMLDivElement, ModalProps>(
-  (
-    {
-      children,
-      className,
-      dismissible = true,
-      onOpenChange,
-      position = 'center',
-      open = false,
-      root,
-      size = '2xl',
-      theme: customTheme = {},
-      initialFocus,
-      lockScroll = true,
-      deleteButton = false,
-      contentClassName,
-      ...props
+export const Modal = ({
+  children,
+  className,
+  dismissible = true,
+  onOpenChange,
+  position = 'center',
+  show = false,
+  root,
+  size = 'xl',
+  theme: customTheme = {},
+  initialFocus,
+  lockScroll = true,
+  deleteButton = false,
+  contentClassName,
+  ...props
+}: ModalProps) => {
+  const theme = mergeDeep(getTheme().modal, customTheme)
+
+  const { context } = useFloating({
+    open: show,
+    onOpenChange(nextOpen, _e, reason) {
+      onOpenChange?.(nextOpen, reason)
     },
-    theirRef,
-  ) => {
-    const theme = mergeDeep(getTheme().modal, customTheme)
+  })
 
-    const { context } = useFloating({
-      open,
-      onOpenChange(nextOpen, _e, reason) {
-        onOpenChange?.(nextOpen, reason)
-      },
-    })
+  const ref = useMergeRefs([context.refs.setFloating])
 
-    const ref = useMergeRefs([context.refs.setFloating, theirRef])
+  const click = useClick(context)
+  const dismiss = useDismiss(context, { outsidePressEvent: 'mousedown', enabled: dismissible })
+  const role = useRole(context)
 
-    const click = useClick(context)
-    const dismiss = useDismiss(context, { outsidePressEvent: 'mousedown', enabled: dismissible })
-    const role = useRole(context)
+  const { getFloatingProps } = useInteractions([click, dismiss, role])
+  if (!open) {
+    return null
+  }
 
-    const { getFloatingProps } = useInteractions([click, dismiss, role])
-    if (!open) {
-      return null
-    }
-
-    return (
-      <AnimatePresence mode="wait">
-        {open && (
-          <FloatingPortal root={root}>
-            <FloatingOverlay
-              lockScroll={lockScroll}
-              data-testid="modal-overlay"
-              className={twMerge(theme.base, theme.positions[position], open && theme.show, className)}
-              {...props}
-            >
-              <FloatingFocusManager context={context} initialFocus={initialFocus}>
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0, transition: { duration: 0.2 } }}
-                  exit={{ opacity: 0, y: 20, transition: { duration: 0.2 } }}
-                  ref={ref}
-                  {...getFloatingProps(props)}
-                  className={twMerge(theme.content, theme.sizes[size], contentClassName)}
-                >
-                  {deleteButton && (
-                    <div className={twMerge(theme.closeButton)}>
-                      <IconButton
-                        aria-label="Close"
-                        type="button"
-                        onClick={() => {
-                          onOpenChange?.(false, OpenChangeReasons.Click)
-                        }}
-                        style={{
-                          zIndex: 1000,
-                        }}
-                      >
-                        <TbX aria-hidden size={20} />
-                      </IconButton>
-                    </div>
-                  )}
-                  {children}
-                </motion.div>
-              </FloatingFocusManager>
-            </FloatingOverlay>
-          </FloatingPortal>
-        )}
-      </AnimatePresence>
-    )
-  },
-)
-Modal.displayName = 'Modal'
+  return (
+    <AnimatePresence mode="wait">
+      {show && (
+        <FloatingPortal root={root}>
+          <FloatingOverlay
+            lockScroll={lockScroll}
+            data-testid="modal-overlay"
+            className={twMerge(theme.base, theme.positions[position], show && theme.show, className)}
+            {...props}
+          >
+            <FloatingFocusManager context={context} initialFocus={initialFocus}>
+              <motion.div
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0, transition: { duration: 0.2 } }}
+                exit={{ opacity: 0, y: 20, transition: { duration: 0.2 } }}
+                ref={ref}
+                {...getFloatingProps(props)}
+                className={twMerge(theme.content, theme.sizes[size], contentClassName)}
+              >
+                {deleteButton && (
+                  <div className={twMerge(theme.closeButton)}>
+                    <IconButton
+                      aria-label="Close"
+                      type="button"
+                      onClick={() => {
+                        onOpenChange?.(false, OpenChangeReasons.Click)
+                      }}
+                      style={{
+                        zIndex: 1000,
+                      }}
+                    >
+                      <TbX aria-hidden size={20} />
+                    </IconButton>
+                  </div>
+                )}
+                {children}
+              </motion.div>
+            </FloatingFocusManager>
+          </FloatingOverlay>
+        </FloatingPortal>
+      )}
+    </AnimatePresence>
+  )
+}
