@@ -47,7 +47,7 @@ const variants = {
 }
 export type Variants = typeof variants
 
-const buttonVariants = cva(
+export const buttonVariants = cva(
   'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50 relative group overflow-hidden gap-2',
   {
     variants: variants,
@@ -184,26 +184,28 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           event(e)
         }}
       >
-        {focusEffect && (
-          <span
-            className={cn(
-              'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full hidden group-focus:flex justify-center items-center ',
-            )}
-          >
-            <div className="animate-totalScaleAppear  w-full h-full flex justify-center items-center">
-              <span className=" transition-transform duration-200 ease-in-out animate-growAndContract rounded-full bg-secondary-800/50 group-focus-visible:w-[80%] aspect-square group-focus-visible:h-auto"></span>
-            </div>
-          </span>
-        )}
+        <>
+          {focusEffect && (
+            <span
+              className={cn(
+                'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full hidden group-focus:flex justify-center items-center ',
+              )}
+            >
+              <div className="animate-totalScaleAppear  w-full h-full flex justify-center items-center">
+                <span className=" transition-transform duration-200 ease-in-out animate-growAndContract rounded-full bg-secondary-800/50 group-focus-visible:w-[80%] aspect-square group-focus-visible:h-auto"></span>
+              </div>
+            </span>
+          )}
 
-        {loading
-          ? loader ?? (
-              <>
-                <Loader size={size ?? 'sm'} />
-                {loadingLabel && <p>{loadingLabel}</p>}
-              </>
-            )
-          : props.label ?? props.children}
+          {loading
+            ? loader ?? (
+                <>
+                  <Loader size={size ?? 'sm'} />
+                  {loadingLabel && <p>{loadingLabel}</p>}
+                </>
+              )
+            : props.label ?? props.children}
+        </>
       </Comp>
     )
   },
