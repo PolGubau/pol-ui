@@ -24,7 +24,7 @@ export interface NavigationMenuProps extends ItemProps {
   children?: React.ReactNode
 }
 
-export interface NavigationProps {
+export interface MultiLevelSidebarProps {
   defaultOpen?: boolean
   links: NavigationPropsLink[]
   menus?: NavigationMenuProps[]
@@ -58,7 +58,7 @@ const svgVariants = {
   },
 }
 
-const MultiLevelSidebar = ({ links, menus, ...rest }: NavigationProps) => {
+const MultiLevelSidebar = ({ links, menus, ...rest }: MultiLevelSidebarProps) => {
   const [isOpen, setIsOpen] = useState(rest.defaultOpen || false)
   const [selectedProject, setSelectedProject] = useState<string | null>(null)
 

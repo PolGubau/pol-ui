@@ -4,6 +4,7 @@ import type { NavigationMenuProps } from './MultiLevelSidebar'
 import NavigationLink from './link'
 import { Divider } from '../Divider'
 import { Input } from '../Input'
+import { useState } from 'react'
 
 const variants = {
   close: {
@@ -24,7 +25,13 @@ interface ProjectNavigationProps {
 }
 
 const ProjectNavigation = ({ selectedProject, menu, isOpen, setSelectedProject }: ProjectNavigationProps) => {
+  const [searched, setSearched] = useState('')
+
   if (!menu) return null
+
+  const links = menu.links
+
+  const searchedLinks = links?.filter(link => link.name.toLowerCase().includes(searched.toLowerCase()))
   return (
     <motion.nav
       variants={variants}
@@ -35,7 +42,7 @@ const ProjectNavigation = ({ selectedProject, menu, isOpen, setSelectedProject }
         duration: 0.25,
         ease: 'easeInOut',
       }}
-      className={`h-full flex flex-col gap-8 w-64 absolute bg-secondary-100 dark:bg-secondary-900 ml-0 overflow-auto ${
+      className={`h-full flex flex-col gap-5 w-64 absolute bg-secondary-50 dark:bg-secondary-900 ml-0 overflow-auto ${
         isOpen ? 'left-64' : 'left-20'
       } border-r border-secondary-200 dark:border-secondary-800 p-5`}
     >
@@ -45,13 +52,19 @@ const ProjectNavigation = ({ selectedProject, menu, isOpen, setSelectedProject }
           <TbX className="w-8 stroke-neutral-400" />
         </button>
       </div>
-      <Input placeholder="Search" />
+      <Input placeholder="Search" value={searched} onTextChange={setSearched} />
 
       <div className="flex flex-col gap-3">
-        {menu.links?.map((props, index) => <NavigationLink key={index} {...props} />)}
+        {searchedLinks?.map((props, index) => <NavigationLink key={index} {...props} />)}
+        {!searchedLinks?.length && <p className="text-neutral-400">No results found</p>}
       </div>
-      <Divider />
-      {menu.children}
+
+      {menu.children && (
+        <>
+          <Divider />
+          {menu.children}
+        </>
+      )}
     </motion.nav>
   )
 }

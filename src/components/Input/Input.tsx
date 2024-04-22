@@ -17,6 +17,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       className,
       color = ColorsEnum.primary,
       helperText,
+      onTextChange,
       leftComponent,
       rightComponent,
       size = MainSizesEnum.md,
@@ -71,6 +72,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 theme.field.input.withRightIcon[rightComponent ? 'on' : 'off'],
                 innerClassName,
               )}
+              onChange={e => {
+                props.onChange?.(e)
+                onTextChange?.(e.target.value)
+              }}
               {...props}
               ref={ref}
             />{' '}

@@ -158,6 +158,8 @@ export interface BaseInputsProps {
    * ```
    */
   innerClassName?: string
+
+  onTextChange?: (text: string) => void
 }
 
 /**
