@@ -10011,6 +10011,7 @@ __metadata:
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     react-icons: "npm:^4.12.0"
+    react-resizable-panels: "npm:^2.0.18"
     react-virtual: "npm:^2.10.4"
     sonner: "npm:^1.4.0"
     storybook: "npm:^8.0.4"
@@ -10535,6 +10536,16 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 4952657e6a7b9d661d4ad4dfcef81b9c7fa493e35164abff99c35c0b27b3d172ef7ad70c09416dc44dd14ff2e6b38a5ec7da27e27e90a15cbad36b8fd2fd8054
+  languageName: node
+  linkType: hard
+
+"react-resizable-panels@npm:^2.0.18":
+  version: 2.0.18
+  resolution: "react-resizable-panels@npm:2.0.18"
+  peerDependencies:
+    react: ^16.14.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.14.0 || ^17.0.0 || ^18.0.0
+  checksum: d0ca0f738aae73c6db102fd0e44ca3efdbdf054a21302a6790385e0a5101631428dfdc57333b30bf8819e0c7b17f911cd6702a12622f9c624140206dee9f67a4
   languageName: node
   linkType: hard
 

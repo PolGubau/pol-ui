@@ -1,0 +1,20 @@
+.line {
+  @apply w-[150px] transition-transform duration-[0.1s] relative py-1  hover:scale-x-[1.5] px-10 translate-x-[50%] cursor-pointer;
+}
+
+.line > div {
+  @apply h-full h-0.5 transition-[background] duration-[0.6s,width] delay-[0.0s] bg-secondary-900;
+}
+
+.line:has(+ .line:hover),
+.line:hover + .line {
+  @apply scale-x-[1.1] transition-transform;
+}
+.line:has(+ .line:hover) > div,
+.line:hover + .line > div {
+  @apply scale-x-[1.2] transition-transform;
+}
+.line:has(+ .line + .line:hover),
+.line:hover + .line + .line {
+  @apply scale-x-105;
+}
