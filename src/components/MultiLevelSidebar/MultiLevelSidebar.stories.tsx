@@ -1,14 +1,39 @@
 import type { Meta } from '@storybook/react'
 import type { NavigationMenuProps, NavigationPropsLink } from './MultiLevelSidebar'
 import MultiLevelSidebar from './MultiLevelSidebar'
-import { TbActivityHeartbeat, TbCalendar, TbProgress, TbUser } from 'react-icons/tb'
+import { TbActivityHeartbeat, TbCalendar, TbFaceId, TbHammer, TbProgress, TbUniverse, TbUser } from 'react-icons/tb'
 import { Card } from '../Card'
+import { Navbar } from '../Navbar'
+import { useBoolean } from '../../hooks'
+import { Button } from '../Button'
+import { cn } from '../../helpers'
 
 export default {
   title: 'Components/MultiLevelSidebar',
   component: MultiLevelSidebar,
   tags: ['autodocs'],
-  decorators: [Story => <Story />],
+  decorators: [
+    Story => {
+      const { value: darkMode, toggle } = useBoolean(false)
+      return (
+        <div className={cn('flex h-screen flex-col', { dark: darkMode })}>
+          <Navbar
+            rightContent={<Button onClick={toggle}>Toggle Dark Mode</Button>}
+            leftContent={
+              <div className="flex items-center gap-2 flex-1">
+                <div className="h-5 w-5 bg-orange-200 rounded-full " /> <p className="dark:text-secondary-50">Navbar</p>
+              </div>
+            }
+            className="bg-secondary-50 dark:bg-secondary-900 border-b dark:border-secondary-800"
+          />
+          <section className="grid grid-cols-[auto,1fr] h-full pt-[60px]">
+            <Story />
+            <div className="w-full h-full bg-primary-100"></div>
+          </section>
+        </div>
+      )
+    },
+  ],
   parameters: {
     layout: 'fullscreen',
   },
@@ -24,27 +49,27 @@ const links: NavigationPropsLink[] = [
   {
     name: 'Projects',
     navigate: () => console.log('Navigate to Dashboard'),
-    icon: TbUser,
+    icon: TbFaceId,
   },
   {
     name: 'Team',
     navigate: () => console.log('Navigate to Dashboard'),
-    icon: TbUser,
+    icon: TbActivityHeartbeat,
   },
   {
     name: 'Calendar',
     navigate: () => console.log('Navigate to Dashboard'),
-    icon: TbUser,
+    icon: TbHammer,
   },
   {
     name: 'Documents',
     navigate: () => console.log('Navigate to Dashboard'),
-    icon: TbUser,
+    icon: TbProgress,
   },
   {
     name: 'Reports',
     navigate: () => console.log('Navigate to Dashboard'),
-    icon: TbUser,
+    icon: TbUniverse,
   },
 ]
 const menus: NavigationMenuProps[] = [
@@ -72,6 +97,22 @@ const menus: NavigationMenuProps[] = [
       <div>
         <Card>
           <p className="dark:text-secondary ">Discover more</p>
+          <img src="https://picsum.photos/200" alt="Project" className="rounded-xl shadow shadow-secondary" />
+        </Card>
+        <Card>
+          <p className="dark:text-secondary ">Discover more 2</p>
+          <img src="https://picsum.photos/200" alt="Project" className="rounded-xl shadow shadow-secondary" />
+        </Card>
+        <Card>
+          <p className="dark:text-secondary ">Discover more 3</p>
+          <img src="https://picsum.photos/200" alt="Project" className="rounded-xl shadow shadow-secondary" />
+        </Card>
+        <Card>
+          <p className="dark:text-secondary ">Discover more 4</p>
+          <img src="https://picsum.photos/200" alt="Project" className="rounded-xl shadow shadow-secondary" />
+        </Card>
+        <Card>
+          <p className="dark:text-secondary ">Discover more 5</p>
           <img src="https://picsum.photos/200" alt="Project" className="rounded-xl shadow shadow-secondary" />
         </Card>
       </div>
@@ -123,16 +164,14 @@ const menus: NavigationMenuProps[] = [
 ]
 
 export const Default = () => {
-  return (
-    <div className="bg-secondary-50 h-screen w-full">
-      <MultiLevelSidebar links={links} menus={menus} />
-    </div>
-  )
+  return <MultiLevelSidebar links={links} menus={menus} />
 }
-export const DarkMode = () => {
+
+export const StressTest = () => {
   return (
-    <div className="dark bg-secondary-800 h-screen w-full">
-      <MultiLevelSidebar links={links} menus={menus} />
-    </div>
+    <MultiLevelSidebar
+      links={[...links, ...links, ...links, ...links]}
+      menus={[...menus, ...menus, ...menus, ...menus]}
+    />
   )
 }

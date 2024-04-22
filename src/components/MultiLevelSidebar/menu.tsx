@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { TbX } from 'react-icons/tb'
 import type { NavigationMenuProps } from './MultiLevelSidebar'
-import NavigationLink from './NavigationLink'
+import NavigationLink from './link'
 import { Divider } from '../Divider'
 import { Input } from '../Input'
 
@@ -35,7 +35,7 @@ const ProjectNavigation = ({ selectedProject, menu, isOpen, setSelectedProject }
         duration: 0.25,
         ease: 'easeInOut',
       }}
-      className={`h-full flex flex-col gap-8 w-64 absolute bg-secondary-100 dark:bg-secondary-900 ml-0  ${
+      className={`h-full flex flex-col gap-8 w-64 absolute bg-secondary-100 dark:bg-secondary-900 ml-0 overflow-auto ${
         isOpen ? 'left-64' : 'left-20'
       } border-r border-secondary-200 dark:border-secondary-800 p-5`}
     >

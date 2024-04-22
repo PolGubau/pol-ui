@@ -1,22 +1,25 @@
 import { motion, useAnimationControls, AnimatePresence } from 'framer-motion'
 import type { ComponentProps, FC } from 'react'
 import { useState, useEffect } from 'react'
-import NavigationLink from './NavigationLink'
+import NavigationLink from './link'
 
-import ProjectLink from './ProjectLink'
-import ProjectNavigation from './MenuNavigation'
+import ProjectLink from './menu-link'
+import ProjectNavigation from './menu'
 import type { ButtonProps } from '../Button'
+import { Divider } from '../Divider'
+import { IconButton } from '../IconButton'
+import { cn } from '../../helpers'
 
-export interface NavigationPropsLink extends ButtonProps {
+interface ItemProps extends Omit<ButtonProps, 'name'> {
   name: string
-  navigate: (route: string) => void
   icon: FC<ComponentProps<'svg'>>
+}
+export interface NavigationPropsLink extends ItemProps {
+  navigate: (route: string) => void
   active?: boolean
 }
 
-export interface NavigationMenuProps {
-  name: string
-  icon: FC<ComponentProps<'svg'>>
+export interface NavigationMenuProps extends ItemProps {
   links?: NavigationPropsLink[]
   children?: React.ReactNode
 }
@@ -48,7 +51,7 @@ const containerVariants = {
 
 const svgVariants = {
   close: {
-    rotate: 360,
+    rotate: 0,
   },
   open: {
     rotate: 180,
@@ -85,18 +88,33 @@ const MultiLevelSidebar = ({ links, menus, ...rest }: NavigationProps) => {
         variants={containerVariants}
         animate={containerControls}
         initial="close"
-        className="bg-secondary-50 dark:bg-secondary-900 flex flex-col z-10 gap-20 p-5 absolute top-0 left-0 h-full shadow dark:shadow-secondary-600"
+        className="bg-secondary-50 dark:bg-secondary-900 flex flex-col z-10 gap-2 p-0 h-full w-full shadow dark:shadow-secondary-600 overflow-y-auto relative"
       >
-        <div className="flex flex-row w-full justify-between place-items-center">
-          <div className="w-10 h-10 bg-gradient-to-br from-primary-400 to-primary-700 rounded-full" />
-          <button className="p-1 rounded-full flex" onClick={() => handleOpenClose()}>
+        <div className="p-2 flex flex-col gap-2 h-full">
+          {links.map((props, index) => (
+            <NavigationLink key={index} {...props} />
+          ))}
+          <Divider />
+          {menus?.map((menu, index) => (
+            <ProjectLink {...menu} setSelectedProject={setSelectedProject} key={index} isOpen={isOpen} />
+          ))}
+        </div>
+
+        <div
+          className={cn(
+            'flex w-full p-3 px-5 transition-all justify-end',
+            'bg-secondary-50 dark:bg-secondary-900',
+            'bottom-0 sticky',
+            'border-t border-secondary-100 dark:border-secondary-800',
+          )}
+        >
+          <IconButton variant={'ghost'} className="h-10 w-10 min-h-10 min-w-10" onClick={() => handleOpenClose()}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1}
               stroke="currentColor"
-              className="w-8 h-8 stroke-neutral-200"
             >
               <motion.path
                 strokeLinecap="round"
@@ -110,17 +128,7 @@ const MultiLevelSidebar = ({ links, menus, ...rest }: NavigationProps) => {
                 }}
               />
             </svg>
-          </button>
-        </div>
-        <div className="flex flex-col gap-3">
-          {links.map((props, index) => (
-            <NavigationLink key={index} {...props} />
-          ))}
-        </div>
-        <div className="flex flex-col gap-3">
-          {menus?.map((menu, index) => (
-            <ProjectLink name={menu.name} icon={menu.icon} setSelectedProject={setSelectedProject} key={index} />
-          ))}
+          </IconButton>
         </div>
       </motion.nav>
       <AnimatePresence>
