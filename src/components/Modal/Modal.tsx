@@ -40,7 +40,7 @@ export type OpenChangeReason = `${OpenChangeReasons}`
 export interface ModalProps extends ComponentPropsWithoutRef<'div'> {
   onOpenChange?: (open: boolean, reason: OpenChangeReason | undefined) => void
   position?: keyof ModalPositions
-  show?: boolean
+  open?: boolean
   root?: HTMLElement
   size?: MainSizes
   dismissible?: boolean
@@ -86,7 +86,7 @@ export const Modal = ({
   dismissible = true,
   onOpenChange,
   position = 'center',
-  show = false,
+  open = false,
   root,
   size = 'xl',
   theme: customTheme = {},
@@ -99,7 +99,7 @@ export const Modal = ({
   const theme = mergeDeep(getTheme().modal, customTheme)
 
   const { context } = useFloating({
-    open: show,
+    open: open,
     onOpenChange(nextOpen, _e, reason) {
       onOpenChange?.(nextOpen, reason)
     },
@@ -118,16 +118,17 @@ export const Modal = ({
 
   return (
     <AnimatePresence mode="wait">
-      {show && (
+      {open && (
         <FloatingPortal root={root}>
           <FloatingOverlay
             lockScroll={lockScroll}
             data-testid="modal-overlay"
-            className={twMerge(theme.base, theme.positions[position], show && theme.show, className)}
+            className={twMerge(theme.base, theme.positions[position], open && theme.show, className)}
             {...props}
           >
             <FloatingFocusManager context={context} initialFocus={initialFocus}>
               <motion.div
+                role="dialog"
                 layout
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0, transition: { duration: 0.2 } }}
