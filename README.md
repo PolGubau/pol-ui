@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-A complete UI solution for React projects, based on <a href="https://storybook.js.org/">Storybook</a> and <a href="https://vitejs.dev/">Vite</a>.
+A complete UI solution for React projects, based on React, TypeScript, and tailwind.
   <br />
   <br />
   <a href="https://github.com/PolGubau/ui">Stars are welcome 😊</a>
@@ -11,16 +11,10 @@ A complete UI solution for React projects, based on <a href="https://storybook.j
 
 ## 🏎️ Using this package
 
-1. Install the package with npm
+1. Install the package with npm (or yarn, bun, pnpm...)
 
 ```bash
 npm i pol-ui
-```
-
-You can also use yarn
-
-```bash
-yarn add pol-ui
 ```
 
 2. Import the components you want to use
