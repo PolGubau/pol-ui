@@ -54,6 +54,7 @@ jobs:
         run: |
           git config user.name "PolGubau"
           git config user.email "gubaupol@gmail.com"
+          git remote set-url origin git@github.com:PolGubau/pol-ui.git
 
       - name: 🔄 Commit and Push Version Update
         run: |
