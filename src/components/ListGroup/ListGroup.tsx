@@ -1,3 +1,5 @@
+'use client'
+
 import type { ComponentProps, FC } from 'react'
 import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import { getTheme } from '../../theme-store'

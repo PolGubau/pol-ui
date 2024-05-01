@@ -1,3 +1,5 @@
+'use client'
+
 // Core component that receives mouse positions and renders pointer and content
 
 import type { PropsWithChildren } from 'react'

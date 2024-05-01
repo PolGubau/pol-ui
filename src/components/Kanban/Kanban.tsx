@@ -1,3 +1,5 @@
+'use client'
+
 import { AnimatePresence } from 'framer-motion'
 import { useBoolean, useDebounce } from '../../hooks'
 import { KanbanColumn } from './Column'
@@ -16,7 +18,6 @@ interface OnReorder {
   newColumn: KanbanCardProps['column']
   isSameColumn: boolean
 }
-
 
 export interface KanbanProps {
   dragable?: boolean

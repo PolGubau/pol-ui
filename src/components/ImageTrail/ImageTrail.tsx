@@ -1,3 +1,5 @@
+'use client'
+
 import { useAnimate } from 'framer-motion'
 import type { MouseEventHandler } from 'react'
 import React, { useRef } from 'react'

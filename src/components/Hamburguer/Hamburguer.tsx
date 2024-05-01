@@ -1,3 +1,5 @@
+'use client'
+
 import type { SVGMotionProps } from 'framer-motion'
 import { motion } from 'framer-motion'
 import { type Colors, type RoundedSizes, type DeepPartial, ColorsEnum } from '../../types'
@@ -28,10 +30,10 @@ export interface HamburguerProps extends Omit<React.ComponentProps<'button'>, 'c
 }
 
 /**
- * 
+ *
  * @name Hamburguer
- * @description The Hamburguer component is used to display a hamburguer icon that can be opened or closed, it can be used to display a menu or to trigger an action. 
- * @returns 
+ * @description The Hamburguer component is used to display a hamburguer icon that can be opened or closed, it can be used to display a menu or to trigger an action.
+ * @returns
  */
 export const Hamburguer = ({
   open = false,
