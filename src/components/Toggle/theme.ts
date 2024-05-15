@@ -28,12 +28,12 @@ export const toggleTheme: ToggleTheme = {
     off: {
       base: '',
       colors: {
-        primary: 'enabled:hover:bg-primary/20 enabled:focus:bg-primary/30',
-        secondary: 'enabled:hover:bg-secondary/20 enabled:focus:bg-secondary/30',
-        success: 'enabled:hover:bg-success/20 enabled:focus:bg-success/30',
-        info: 'enabled:hover:bg-info/20 enabled:focus:bg-info/30',
-        warning: 'enabled:hover:bg-warning/20 enabled:focus:bg-warning/30',
-        error: 'enabled:hover:bg-error/20 enabled:focus:bg-error/30',
+        primary: 'enabled:hover:bg-primary/20 ',
+        secondary: 'enabled:hover:bg-secondary/20 ',
+        success: 'enabled:hover:bg-success/20 ',
+        info: 'enabled:hover:bg-info/20 ',
+        warning: 'enabled:hover:bg-warning/20 ',
+        error: 'enabled:hover:bg-error/20 ',
       },
     },
   },
