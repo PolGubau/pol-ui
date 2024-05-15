@@ -30,13 +30,13 @@
     "url": "git+https://github.com/PolGubau/pol-ui.git"
   },
   "scripts": {
-    "build": "rm -rf ./lib/ && yarn build:esm && yarn build:cjs",
+    "build": "rm -rf ./lib/ && pnpm build:esm && pnpm build:cjs",
     "build:cjs": "tsc -p tsconfig.lib.json",
     "build:esm": "tsc -p tsconfig.lib.json --module esnext --declaration --outDir ./lib/esm",
     "commit": "cz",
     "lint": "eslint  ",
     "lint-fix": "eslint --fix",
-    "prepublishOnly": "yarn build",
+    "prepublishOnly": "pnpm build",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "test": "vitest --ui",
@@ -45,7 +45,7 @@
     "test:e2e": "start-test 3000 ",
     "test:e2e:open": "start-test 3000 ",
     "typecheck": "tsc --noEmit",
-    "publish": "yarn prepublishOnly && yarn publish:lib",
+    "publish": "pnpm prepublishOnly && pnpm publish:lib",
     "publish:lib": "npm publish --access public",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
@@ -89,8 +89,8 @@
     "@types/crypto-js": "^4",
     "@types/esm": "^3",
     "@types/node": "^20.10.0",
-    "@types/react": "^18.2.37",
-    "@types/react-dom": "^18.2.15",
+    "@types/react": "18.3.2",
+    "@types/react-dom": "18.3.0",
     "@types/react-syntax-highlighter": "^15.5.10",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
@@ -110,8 +110,8 @@
     "prettier": "^3.1.0",
     "prettier-plugin-organize-imports": "^3.2.4",
     "prettier-plugin-tailwindcss": "^0.5.7",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "19.0.0-canary-95e6f032c-20240401",
+    "react-dom": "19.0.0-canary-95e6f032c-20240401",
     "storybook": "^8.0.4",
     "tailwindcss": "^3.3.5",
     "tsconfig-paths-webpack-plugin": "^4.1.0",
@@ -121,8 +121,8 @@
     "vitest": "^0.34.6"
   },
   "peerDependencies": {
-    "react": "^18",
-    "react-dom": "^18",
+    "react": "*",
+    "react-dom": "*",
     "tailwindcss": "^3"
   },
   "eslintConfig": {
@@ -172,5 +172,5 @@
       "react/no-unescaped-entities": "off"
     }
   },
-  "packageManager": "yarn@4.0.2"
+  "packageManager": "pnpm@4.0.2"
 }

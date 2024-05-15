@@ -11,7 +11,7 @@ A complete UI solution for React projects, based on React, TypeScript, and tailw
 
 ## 🏎️ Using this package
 
-1. Install the package with npm (or yarn, bun, pnpm...)
+1. Install the package with npm (or pnpm, bun, pnpm...)
 
 ```bash
 npm i pol-ui

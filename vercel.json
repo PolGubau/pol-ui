@@ -1,8 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "yarn build-storybook",
-  "devCommand": "yarn storybook",
-  "installCommand": "yarn --immutable",
+  "buildCommand": "pnpm build-storybook",
+  "devCommand": "pnpm storybook",
+  "installCommand": "pnpm --immutable",
   "framework": null,
   "outputDirectory": "./storybook-static"
 }

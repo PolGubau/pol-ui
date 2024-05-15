@@ -2,13 +2,7 @@
 import type { LazyProps } from 'framer-motion'
 import { LazyMotion, domAnimation, m, useMotionTemplate, useSpring } from 'framer-motion'
 import type { ReactNode } from 'react'
-import {
-  createContext,
-  useContext,
-  useEffect,
-  // @ts-expect-error This export exists on react@canary
-  useOptimistic,
-} from 'react'
+import { createContext, useContext, useEffect, useOptimistic } from 'react'
 import { useInterval } from '../../hooks'
 
 /**

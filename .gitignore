@@ -8,8 +8,8 @@ storybook-static
 .DS_Store
 npm-debug.log*
 tsconfig.tsbuildinfo
-yarn-debug.log*
-yarn-error.log*
+pnpm-debug.log*
+pnpm-error.log*
 dist
 .contentlayer
 lib/

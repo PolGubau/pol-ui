@@ -3,8 +3,8 @@ import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useEffect, useState } from 'react'
 import { useEventCallback } from '../use-event-callback/use-event-callback'
 import { useEventListener } from '../use-event-listener/use-event-listener'
-import { parseJSON } from '../../helpers/parseJSON/parseJSON'
 import { decrypt, encrypt } from '../../helpers/encryption/encryption'
+import { json } from '../../helpers'
 
 declare global {
   interface WindowEventMap {
@@ -31,16 +31,20 @@ type SetValue<T> = Dispatch<SetStateAction<T>>
 export function useLocalStorage<T>(key: string, initialValue: T, encriptationKey?: string): [T, SetValue<T>] {
   // Get from local storage then
   // parse stored json or return initialValue
-  if (initialValue === undefined) throw new Error('initialValue is required')
-  if (typeof initialValue === 'function') throw new Error('initialValue cannot be a function')
+  if (initialValue === undefined) {
+    throw new Error('initialValue is required')
+  }
+  if (typeof initialValue === 'function') {
+    throw new Error('initialValue cannot be a function')
+  }
 
-  function decryptAndParse<T>(data: string, key?: string): T {
-    if (!key) {
-      return parseJSON(data) as T
+  function decryptAndParse<T>(data: string, keyToDecrypt?: string): T {
+    if (!keyToDecrypt) {
+      return json.parse(data) as T
     } else {
       // Decrypt data
-      const decryptedData = decrypt(data, key)
-      return parseJSON(decryptedData) as T
+      const decryptedData = decrypt(data, keyToDecrypt)
+      return json.parse(decryptedData) as T
     }
   }
   const readValue = useCallback((): T => {
