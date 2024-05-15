@@ -172,3 +172,27 @@ export type ClassName = string
 export interface WithClassName {
   className?: ClassName
 }
+
+export enum Methods {
+  GET = 'GET',
+  POST = 'POST',
+  PUT = 'PUT',
+  DELETE = 'DELETE',
+  PATCH = 'PATCH',
+}
+export type Method = `${Methods}`
+
+export enum HttpStatusEnum {
+  OK = 200,
+  CREATED = 201,
+  NO_CONTENT = 204,
+  BAD_REQUEST = 400,
+  UNAUTHORIZED = 401,
+  FORBIDDEN = 403,
+  NOT_FOUND = 404,
+  CONFLICT = 409,
+  UNPROCESSABLE_ENTITY = 422,
+  INTERNAL_SERVER_ERROR = 500,
+}
+export type HttpStatusLabel = keyof typeof HttpStatusEnum
+export type HttpStatus = `${HttpStatusEnum}`
