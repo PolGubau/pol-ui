@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { describe, expect, test } from 'vitest'
 import type * as CVA from './cva'
 import { cva, cx } from './cva'
@@ -335,7 +336,6 @@ describe('cva', () => {
 
       describe.each<[ButtonWithoutBaseWithDefaultsProps, string]>([
         [
-          // @ts-expect-error
           undefined,
           'button font-semibold border rounded button--primary bg-blue-500 text-white border-transparent hover:bg-blue-600 button--enabled cursor-pointer button--medium text-base py-2 px-4 m-0 button--primary-medium uppercase',
         ],
@@ -632,8 +632,7 @@ describe('cva', () => {
         [{}, 'button font-semibold border rounded'],
         [
           {
-            // @ts-expect-error
-            aCheekyInvalidProp: 'lol',
+             aCheekyInvalidProp: 'lol',
           },
           'button font-semibold border rounded',
         ],
@@ -688,7 +687,7 @@ describe('cva', () => {
           } as ButtonWithBaseWithoutDefaultsProps,
           'button font-semibold border rounded button--primary bg-blue-500 text-white border-transparent hover:bg-blue-600 adhoc-className',
         ],
-      ])('button(%o)', (options, expected) => {
+      ])('button(%o)', (options:any, expected:any) => {
         test(`returns ${expected}`, () => {
           expect(buttonWithBaseWithoutDefaultsString(options)).toBe(expected)
           expect(buttonWithBaseWithoutDefaultsWithClassNameString(options)).toBe(expected)
@@ -925,8 +924,7 @@ describe('cva', () => {
 
       describe.each<[ButtonWithBaseWithDefaultsProps, string]>([
         [
-          // @ts-expect-error
-          undefined,
+           undefined,
           'button font-semibold border rounded button--primary bg-blue-500 text-white border-transparent hover:bg-blue-600 button--enabled cursor-pointer button--medium text-base py-2 px-4 button--primary-medium uppercase',
         ],
         [
@@ -1007,7 +1005,7 @@ describe('cva', () => {
           } as ButtonWithBaseWithDefaultsProps,
           'button font-semibold border rounded button--primary bg-blue-500 text-white border-transparent hover:bg-blue-600 button--enabled cursor-pointer button--medium text-base py-2 px-4 button--primary-medium uppercase adhoc-classname',
         ],
-      ])('button(%o)', (options, expected) => {
+      ])('button(%o)', (options:any, expected:any) => {
         test(`returns ${expected}`, () => {
           expect(buttonWithBaseWithDefaultsString(options)).toBe(expected)
           expect(buttonWithBaseWithDefaultsWithClassNameString(options)).toBe(expected)
@@ -1047,8 +1045,7 @@ describe('cva', () => {
 
     describe.each<[CardProps, string]>([
       [
-        // @ts-expect-error
-        undefined,
+         undefined,
         'box box-border m-0 p-0 card border-solid border-slate-300 rounded',
       ],
       [{}, 'box box-border m-0 p-0 card border-solid border-slate-300 rounded'],
@@ -1056,7 +1053,7 @@ describe('cva', () => {
       [{ padding: 4 }, 'box box-border m-0 p-4 card border-solid border-slate-300 rounded'],
       [{ margin: 2, padding: 4 }, 'box box-border m-2 p-4 card border-solid border-slate-300 rounded'],
       [{ shadow: 'md' }, 'box box-border m-0 p-0 card border-solid border-slate-300 rounded drop-shadow-md'],
-    ])('card(%o)', (options, expected) => {
+    ])('card(%o)', (options:any, expected:any) => {
       test(`returns ${expected}`, () => {
         expect(card(options)).toBe(expected)
       })

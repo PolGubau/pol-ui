@@ -33,7 +33,7 @@ export const SELECTORS = {
   VALUE_ATTR: `data-value`,
 }
 
-const defaultFilter: CommandProps['filter'] = (value, search, keywords) => commandScore(value, search, keywords ?? [])
+const defaultFilter: CommandProps['filter'] = (value: string, search: string, keywords: any) => commandScore(value, search, keywords ?? [])
 
 /**
  * Command is a component that provides a way to navigate through a list of items using the keyboard. It is a combination of a list and an input, where the input is used to filter the list of items.

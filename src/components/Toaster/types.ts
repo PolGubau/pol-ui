@@ -1,4 +1,5 @@
 import type React from 'react'
+import type { ToastAction } from 'sonner'
 
 export type ToastTypes = 'normal' | 'action' | 'success' | 'info' | 'warning' | 'error' | 'loading' | 'default'
 export type PromiseT<Data = unknown> = Promise<Data> | (() => Promise<Data>)
@@ -145,14 +146,9 @@ export interface ToastT {
 
   /**
    * @name action
-   * @type {{ label: React.ReactNode, onClick: (event: React.MouseEvent<HTMLButtonElement>) => void }}
-   * @description Action button for the toast.
-   * @default undefined
-   */
-  action?: {
-    label: React.ReactNode
-    onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
-  }
+    * @description Action button for the toast.
+    */
+  action?: ToastAction
 
   /**
    * @name cancel

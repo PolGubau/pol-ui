@@ -14,6 +14,7 @@ export interface ListProps extends PropsWithChildren, DivProps {
    */
   label?: string
   theme?: Partial<CommandTheme>
+  className ?:string
 }
 /**
  * Contains `Item`, `Group`, and `Separator`.

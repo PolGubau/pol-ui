@@ -17,6 +17,9 @@ jobs:
           node-version: lts/*
           cache: 'pnpm'
 
+      - name: 💡 Install PNPM
+        run: npm install -g pnpm
+
       - name: 📥 Install Dependencies
         run: pnpm install --immutable
 

@@ -2,7 +2,7 @@ import { clsx } from 'clsx'
 
 import type { ClassProp, ClassValue, OmitUndefined, StringToBoolean } from './types'
 
-export type VariantProps<Component extends (...args: unknown[]) => unknown> = Omit<
+export type VariantProps<Component extends (...args: never) => unknown> = Omit<
   OmitUndefined<Parameters<Component>[0]>,
   'class' | 'className'
 >

@@ -1,6 +1,6 @@
 import type { Dispatch } from 'react'
 import { useEffect, useRef } from 'react'
-import { useBaseFLoating, useFloatingInteractions } from '../../hooks'
+import { useBaseFloating, useFloatingInteractions } from '../../hooks'
 import type { Placement } from '@floating-ui/react'
 import { autoUpdate, useFocus } from '@floating-ui/react'
 import type { TriggerReason } from '../../types'
@@ -13,7 +13,7 @@ export interface UseFloatingProps {
 export const useFloating = ({ open, setOpen, trigger = 'hover', placement }: UseFloatingProps) => {
   const arrowRef = useRef<HTMLDivElement>(null)
 
-  const floatingProperties = useBaseFLoating({
+  const floatingProperties = useBaseFloating({
     open,
     placement,
     arrowRef,

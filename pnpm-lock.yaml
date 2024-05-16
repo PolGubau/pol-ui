@@ -20,6 +20,9 @@ dependencies:
   '@radix-ui/react-popover':
     specifier: ^1.0.7
     version: 1.0.7(@types/react-dom@18.3.0)(@types/react@18.3.2)(react-dom@18.3.1)(react@18.3.1)
+  '@radix-ui/react-primitive':
+    specifier: ^1.0.3
+    version: 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.2)(react-dom@18.3.1)(react@18.3.1)
   '@radix-ui/react-slot':
     specifier: ^1.0.2
     version: 1.0.2(@types/react@18.3.2)(react@18.3.1)
@@ -30,7 +33,7 @@ dependencies:
     specifier: ^0.7.0
     version: 0.7.0
   clsx:
-    specifier: ^2.1.0
+    specifier: ^2.1.1
     version: 2.1.1
   crypto-js:
     specifier: ^4.2.0
