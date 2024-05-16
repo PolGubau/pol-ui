@@ -43,7 +43,7 @@ export const Floating: FC<FloatingProps> = ({
   theme,
   trigger = TriggerReasonEnum.hover,
   minWidth,
-  open=false,
+  open = false,
   setOpen,
   ...props
 }) => {
@@ -91,7 +91,7 @@ export const Floating: FC<FloatingProps> = ({
               left: arrowX ?? ' ',
               right: ' ',
               bottom: ' ',
-              [getArrowPlacement({ placement: placement })]: theme.arrow.placement,
+              [getArrowPlacement({ placement })]: theme.arrow.placement,
             }}
           >
             &nbsp;

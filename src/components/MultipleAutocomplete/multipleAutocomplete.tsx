@@ -74,7 +74,7 @@ export const MultipleAutocomplete: React.FC<MultipleAutocompleteProps> = ({
   return (
     <Tooltip
       open={open}
-      setOpen={state => {
+      onOpenChange={state => {
         closeOnSelect && setValue(state)
       }}
       className={cn(theme.base)}

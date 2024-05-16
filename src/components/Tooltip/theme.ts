@@ -1,23 +1,14 @@
 export type TooltipTheme = {
-  target: string
-  animation: string
-  arrow: {
+  content: {
     base: string
-
-    placement: string
+    animation: string
   }
-  base: string
-  hidden: string
 }
 
 export const tooltipTheme: TooltipTheme = {
-  target: 'w-fit',
-  animation: 'transition-opacity',
-  arrow: {
-    base: 'absolute z-10 h-2 w-2 rotate-45 bg-secondary-100 dark:bg-secondary-700 pointer-events-none user-select-none',
-
-    placement: '-4px',
+  content: {
+    base: ' bg-secondary-50 dark:bg-secondary-900 px-3 py-2 leading-none shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] will-change-[transform,opacity] text-sm rounded-xl select-none',
+    animation:
+      'data-[state=delayed-open]:data-[side=top]:animate-slideDownAndFade data-[state=delayed-open]:data-[side=right]:animate-slideLeftAndFade data-[state=delayed-open]:data-[side=left]:animate-slideRightAndFade data-[state=delayed-open]:data-[side=bottom]:animate-slideUpAndFade',
   },
-  base: 'shadow-lg absolute inline-block z-10 rounded-xl py-2 px-3 text-sm font-medium bg-secondary-100 text-secondary-900 dark:bg-secondary-700 dark:text-white motion-safe:animate-fadeIn',
-  hidden: 'invisible opacity-0',
 }

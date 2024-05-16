@@ -1,5 +1,13 @@
+// use-floating.ts
 'use client'
-import type { ElementProps, Placement, ReferenceType, UseRoleProps } from '@floating-ui/react'
+import type {
+  ElementProps,
+  Placement,
+  ReferenceType,
+  UseRoleProps,
+  UseFloatingReturn,
+  Middleware,
+} from '@floating-ui/react'
 import {
   autoUpdate,
   safePolygon,
@@ -20,19 +28,26 @@ export type UseBaseFloatingParams = {
   setOpen: Dispatch<SetStateAction<boolean>>
 }
 
+export type UseBaseFloatingReturn<Type extends ReferenceType> = UseFloatingReturn<Type> & {
+  middleware: Middleware[]
+}
+
 export const useBaseFloating = <Type extends ReferenceType>({
   open,
   arrowRef,
   placement = 'top',
   setOpen,
-}: UseBaseFloatingParams) => {
-  return useFloating<Type>({
-    open,
-    placement: getPlacement({ placement }),
-    onOpenChange: setOpen,
-    whileElementsMounted: autoUpdate,
+}: UseBaseFloatingParams): UseBaseFloatingReturn<Type> => {
+  return {
+    ...useFloating<Type>({
+      open,
+      placement: getPlacement({ placement }),
+      onOpenChange: setOpen,
+      whileElementsMounted: autoUpdate,
+      middleware: getMiddleware({ placement, arrowRef }),
+    }),
     middleware: getMiddleware({ placement, arrowRef }),
-  })
+  }
 }
 
 export type UseFloatingInteractionsParams = {

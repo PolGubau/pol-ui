@@ -431,3 +431,10 @@ export enum DirEnum {
   ltr = 'ltr',
   auto = 'auto',
 }
+
+export enum SidesEnum {
+  top = 'top',
+  right = 'right',
+  bottom = 'bottom',
+  left = 'left',
+}

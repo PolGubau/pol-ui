@@ -61,12 +61,12 @@ IconUseCase.args = {
 export const DarkMode = () => (
   <div className=" grid grid-cols-2 border border-secondary rounded-2xl overflow-hidden">
     <div className="flex p-8 ">
-      <Popover content={<ExampleContent />} placement="bottom">
+      <Popover content={<ExampleContent />} side="bottom">
         <Button>Default tooltip</Button>
       </Popover>
     </div>
     <div className="flex p-8 bg-secondary-900 dark">
-      <Popover content={<ExampleContent />} placement="bottom">
+      <Popover content={<ExampleContent />} side="bottom">
         <Button>Default tooltip</Button>
       </Popover>
     </div>

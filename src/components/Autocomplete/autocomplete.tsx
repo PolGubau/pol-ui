@@ -78,7 +78,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   return (
     <Tooltip
       open={open}
-      setOpen={state => {
+      onOpenChange={state => {
         closeOnSelect && setValue(state)
       }}
       className="p-0"

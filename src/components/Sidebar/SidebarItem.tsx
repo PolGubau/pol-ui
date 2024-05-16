@@ -9,7 +9,7 @@ import { Badge } from '../Badge'
 import { Tooltip } from '../Tooltip'
 import { useSidebarContext, useSidebarItemContext } from './SidebarContext'
 import { motion } from 'framer-motion'
-import { ColorsEnum, RoundedSizesEnum } from '../../types'
+import { ColorsEnum, RoundedSizesEnum, SidesEnum } from '../../types'
 import { useRipple } from '../../hooks'
 export interface SidebarItemTheme {
   active: string
@@ -64,7 +64,7 @@ const ListItem: FC<
               {tooltipChildren}
             </Children>
           }
-          placement="right"
+          side={SidesEnum.right}
         >
           {wrapperChildren}
         </Tooltip>

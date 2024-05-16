@@ -1,194 +1,78 @@
-import type { Placement } from '@floating-ui/react'
-import {
-  FloatingPortal,
-  arrow,
-  autoUpdate,
-  flip,
-  offset,
-  shift,
-  useDismiss,
-  useFloating,
-  useFocus,
-  useHover,
-  useInteractions,
-  useMergeRefs,
-  useRole,
-} from '@floating-ui/react'
+import * as PrimitiveTooltip from '@radix-ui/react-tooltip'
+import React from 'react'
 import { cn, mergeDeep } from '../../helpers'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
 import type { TooltipTheme } from './theme'
-import { cloneElement, createContext, forwardRef, isValidElement, useContext, useMemo, useRef, useState } from 'react'
 
-interface TooltipOptions {
-  initialOpen?: boolean
-  placement?: Placement
-  open?: boolean
-  onOpenChange?: (open: boolean) => void
-}
-
-export function useTooltip({
-  initialOpen = false,
-  placement = 'top',
-  open: controlledOpen,
-  onOpenChange: setControlledOpen,
-}: TooltipOptions = {}) {
-  const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen)
-  const arrowRef = useRef(null)
-
-  const open = controlledOpen ?? uncontrolledOpen
-  const setOpen = setControlledOpen ?? setUncontrolledOpen
-
-  const data = useFloating({
-    placement,
-    open,
-    onOpenChange: setOpen,
-    whileElementsMounted: autoUpdate,
-    middleware: [
-      arrow({
-        element: arrowRef,
-      }),
-      offset(5),
-      flip({
-        crossAxis: placement.includes('-'),
-        fallbackAxisSideDirection: 'start',
-        padding: 5,
-      }),
-      shift({ padding: 5 }),
-    ],
-  })
-
-  const context = data.context
-
-  const hover = useHover(context, {
-    move: false,
-    enabled: controlledOpen == null,
-  })
-  const focus = useFocus(context, {
-    enabled: controlledOpen == null,
-  })
-  const dismiss = useDismiss(context)
-  const role = useRole(context, { role: 'tooltip' })
-
-  const interactions = useInteractions([hover, focus, dismiss, role])
-
-  return useMemo(
-    () => ({
-      open,
-      setOpen,
-      ...interactions,
-      ...data,
-      arrowRef,
-    }),
-    [open, setOpen, interactions, data],
-  )
-}
-
-type ContextType = ReturnType<typeof useTooltip> | null
-
-const TooltipContext = createContext<ContextType>(null)
-
-export const useTooltipContext = () => {
-  const context = useContext(TooltipContext)
-
-  if (context == null) {
-    throw new Error('Tooltip components must be wrapped in <Tooltip />')
-  }
-
-  return context
-}
-
-export interface TooltipProps extends React.PropsWithChildren<TooltipOptions> {
+export interface TooltipProps extends Omit<PrimitiveTooltip.TooltipContentProps, 'content'> {
   content: React.ReactNode
+  arrow?: boolean
   theme?: DeepPartial<TooltipTheme>
   className?: string
+  children?: React.ReactNode
   open?: boolean
-  setOpen?: (open: boolean) => void
-  contentClassName?: string
+  defaultOpen?: boolean
+  onOpenChange?: (open: boolean) => void
+  /**
+   * The duration from when the pointer enters the trigger until the tooltip gets opened. This will
+   * override the prop with the same name passed to Provider.
+   * @defaultValue 700
+   */
+  delayDuration?: number
+  /**
+   * When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger.
+   * @defaultValue false
+   */
+  disableHoverableContent?: boolean
 }
-
-export function Tooltip({
+export const Tooltip = ({
   children,
-  content = null,
-  theme: customTheme = {},
+  content,
+  arrow = true,
   className,
-  contentClassName,
-  ...options
-}: Readonly<TooltipProps>) {
+
+  theme: customTheme = {},
+  open,
+  defaultOpen,
+  onOpenChange,
+
+  /**
+   * The duration from when the pointer enters the trigger until the tooltip gets opened. This will
+   * override the prop with the same name passed to Provider.
+   * @defaultValue 300
+   */
+  delayDuration = 300,
+
+  /**
+   * When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger.
+   */
+  disableHoverableContent,
+  ...rest
+}: TooltipProps) => {
   const theme = mergeDeep(getTheme().tooltip, customTheme)
-  // This can accept any props as options, e.g. `placement`,
-  // or other positioning options.
-  const tooltip = useTooltip(options)
-  if (!content) return children
+
   return (
-    <TooltipContext.Provider value={tooltip}>
-      <TooltipTrigger className={className} tabIndex={-1}>
-        {children}
-      </TooltipTrigger>
-      {content && (
-        <TooltipContent className={cn(theme.base, !open && theme.hidden, contentClassName)}>{content}</TooltipContent>
-      )}
-    </TooltipContext.Provider>
+    <PrimitiveTooltip.Provider>
+      <PrimitiveTooltip.Root
+        open={open}
+        defaultOpen={defaultOpen}
+        onOpenChange={onOpenChange}
+        delayDuration={delayDuration}
+        disableHoverableContent={disableHoverableContent}
+      >
+        <PrimitiveTooltip.Trigger asChild>{children}</PrimitiveTooltip.Trigger>
+        <PrimitiveTooltip.Portal>
+          <PrimitiveTooltip.Content
+            sideOffset={rest.sideOffset ?? 5}
+            className={cn(theme.content.base, theme.content.animation, className)}
+            {...rest}
+          >
+            {content}
+            {arrow && <PrimitiveTooltip.Arrow className="fill-white" />}
+          </PrimitiveTooltip.Content>
+        </PrimitiveTooltip.Portal>
+      </PrimitiveTooltip.Root>
+    </PrimitiveTooltip.Provider>
   )
 }
-
-const TooltipTrigger = forwardRef<HTMLElement, React.HTMLProps<HTMLElement> & { asChild?: boolean }>(
-  function TooltipTrigger({ children, asChild = false, ...props }, propRef) {
-    const context = useTooltipContext()
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const childrenRef = (children as any).ref
-    const ref = useMergeRefs([context.refs.setReference, propRef, childrenRef])
-
-    // `asChild` allows the user to pass any element as the anchor
-    if (asChild && isValidElement(children)) {
-      return cloneElement(
-        children,
-        context.getReferenceProps({
-          ref,
-          ...props,
-          ...children.props,
-          'data-state': context.open ? 'open' : 'closed',
-        }),
-      )
-    }
-
-    return (
-      <button
-        ref={ref}
-        // The user can style the trigger based on the state
-        data-state={context.open ? 'open' : 'closed'}
-        {...context.getReferenceProps(props)}
-      >
-        {children}
-      </button>
-    )
-  },
-)
-
-interface TooltipContentProps extends React.HTMLProps<HTMLDivElement> {}
-
-interface TooltipContentProps extends React.HTMLProps<HTMLDivElement> {}
-const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>(function TooltipContent(
-  { style, ...props },
-  propRef,
-) {
-  const context = useTooltipContext()
-  const ref = useMergeRefs([context.refs.setFloating, propRef])
-
-  if (!context.open) {
-    return null
-  }
-
-  return (
-    <FloatingPortal>
-      <div
-        ref={ref}
-        style={{
-          ...context.floatingStyles,
-          ...style,
-        }}
-        {...context.getFloatingProps(props)}
-      />
-    </FloatingPortal>
-  )
-})

@@ -1,17 +1,17 @@
-import type { DirEnum } from './enums'
+import type { DirEnum, SidesEnum } from './enums'
 import {
+  type AlignEnum,
   type BooleanEnum,
-  type StateColorsEnum,
   type BrandColorsEnum,
-  type GetValuesEnum,
   type ColorsEnum,
+  type DirectionEnum,
+  type GetValuesEnum,
   type HeadingLevelEnum,
   type MainSizesEnum,
-  type SizesEnum,
   type RoundedSizesEnum,
+  type SizesEnum,
+  type StateColorsEnum,
   type TriggerReasonEnum,
-  type DirectionEnum,
-  type AlignEnum,
 } from './enums'
 
 export type Identification = string | number
@@ -163,6 +163,8 @@ export type TriggerReason = `${TriggerReasonEnum}`
  * @author Pol Gubau Amores - https://polgubau.com
  */
 export type Direction = `${DirectionEnum}`
+
+export type Side = `${SidesEnum}`
 
 export type Align = `${AlignEnum}`
 

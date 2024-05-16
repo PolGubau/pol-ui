@@ -11,7 +11,7 @@ import { SidebarItemContext, useSidebarContext } from './SidebarContext'
 import type { SidebarItemProps } from './SidebarItem'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useRipple } from '../../hooks'
-import { RoundedSizesEnum } from '../../types'
+import { RoundedSizesEnum, SidesEnum } from '../../types'
 
 export interface SidebarCollapseTheme {
   button: string
@@ -29,10 +29,8 @@ export interface SidebarCollapseTheme {
   }
   list: string
 }
-
-export interface SidebarCollapseProps
-  extends Pick<SidebarItemProps, 'active' | 'rounded' | 'as' | 'href' | 'icon' | 'badge' | 'labelColor'>,
-    ComponentProps<'button'> {
+type PropsFromItem = 'active' | 'rounded' | 'as' | 'href' | 'icon' | 'badge' | 'labelColor'
+export interface SidebarCollapseProps extends Pick<SidebarItemProps, PropsFromItem>, ComponentProps<'button'> {
   onClick?: ComponentProps<'button'>['onClick']
   defaultOpen?: boolean
   chevronIcon?: FC<ComponentProps<'svg'>>
@@ -76,22 +74,24 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
     } else {
       setChildsOpened([...childsOpened, id])
     }
-    if (collapsed) toogleCollapsed?.()
+    if (collapsed) {
+      toogleCollapsed?.()
+    }
   }
 
   const theme = mergeDeep(rootTheme.collapse, customTheme)
   const [ripple, event] = useRipple({
     opacity: 0.2,
   })
-  const Wrapper: FC<PropsWithChildren> = ({ children }) => (
+  const Wrapper: FC<PropsWithChildren> = ({ children: ch }) => (
     <AnimatePresence mode="wait">
       <li ref={ripple} onPointerDown={event}>
         {collapsed ? (
-          <Tooltip content={badge} placement="right">
-            {children}
+          <Tooltip content={badge} side={SidesEnum.right}>
+            {ch}
           </Tooltip>
         ) : (
-          children
+          ch
         )}
       </li>
     </AnimatePresence>
