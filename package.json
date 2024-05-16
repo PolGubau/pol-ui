@@ -172,5 +172,5 @@
       "react/no-unescaped-entities": "warn"
     }
   },
-  "packageManager": "pnpm@4.0.2"
+  "packageManager": "pnpm@9.1.1"
 }
