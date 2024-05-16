@@ -1,24 +1,24 @@
-import * as React from 'react'
+import type { Placement } from '@floating-ui/react'
 import {
-  useFloating,
-  autoUpdate,
-  offset,
-  flip,
-  shift,
-  useHover,
-  useFocus,
-  useDismiss,
-  useRole,
-  useInteractions,
-  useMergeRefs,
   FloatingPortal,
   arrow,
+  autoUpdate,
+  flip,
+  offset,
+  shift,
+  useDismiss,
+  useFloating,
+  useFocus,
+  useHover,
+  useInteractions,
+  useMergeRefs,
+  useRole,
 } from '@floating-ui/react'
-import type { Placement } from '@floating-ui/react'
-import type { DeepPartial } from '../../types'
-import type { TooltipTheme } from './theme'
 import { cn, mergeDeep } from '../../helpers'
 import { getTheme } from '../../theme-store'
+import type { DeepPartial } from '../../types'
+import type { TooltipTheme } from './theme'
+import { cloneElement, createContext, forwardRef, isValidElement, useContext, useMemo, useRef, useState } from 'react'
 
 interface TooltipOptions {
   initialOpen?: boolean
@@ -33,8 +33,8 @@ export function useTooltip({
   open: controlledOpen,
   onOpenChange: setControlledOpen,
 }: TooltipOptions = {}) {
-  const [uncontrolledOpen, setUncontrolledOpen] = React.useState(initialOpen)
-  const arrowRef = React.useRef(null)
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen)
+  const arrowRef = useRef(null)
 
   const open = controlledOpen ?? uncontrolledOpen
   const setOpen = setControlledOpen ?? setUncontrolledOpen
@@ -72,7 +72,7 @@ export function useTooltip({
 
   const interactions = useInteractions([hover, focus, dismiss, role])
 
-  return React.useMemo(
+  return useMemo(
     () => ({
       open,
       setOpen,
@@ -86,10 +86,10 @@ export function useTooltip({
 
 type ContextType = ReturnType<typeof useTooltip> | null
 
-const TooltipContext = React.createContext<ContextType>(null)
+const TooltipContext = createContext<ContextType>(null)
 
 export const useTooltipContext = () => {
-  const context = React.useContext(TooltipContext)
+  const context = useContext(TooltipContext)
 
   if (context == null) {
     throw new Error('Tooltip components must be wrapped in <Tooltip />')
@@ -132,7 +132,7 @@ export function Tooltip({
   )
 }
 
-const TooltipTrigger = React.forwardRef<HTMLElement, React.HTMLProps<HTMLElement> & { asChild?: boolean }>(
+const TooltipTrigger = forwardRef<HTMLElement, React.HTMLProps<HTMLElement> & { asChild?: boolean }>(
   function TooltipTrigger({ children, asChild = false, ...props }, propRef) {
     const context = useTooltipContext()
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -140,8 +140,8 @@ const TooltipTrigger = React.forwardRef<HTMLElement, React.HTMLProps<HTMLElement
     const ref = useMergeRefs([context.refs.setReference, propRef, childrenRef])
 
     // `asChild` allows the user to pass any element as the anchor
-    if (asChild && React.isValidElement(children)) {
-      return React.cloneElement(
+    if (asChild && isValidElement(children)) {
+      return cloneElement(
         children,
         context.getReferenceProps({
           ref,
@@ -168,14 +168,16 @@ const TooltipTrigger = React.forwardRef<HTMLElement, React.HTMLProps<HTMLElement
 interface TooltipContentProps extends React.HTMLProps<HTMLDivElement> {}
 
 interface TooltipContentProps extends React.HTMLProps<HTMLDivElement> {}
-const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(function TooltipContent(
+const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>(function TooltipContent(
   { style, ...props },
   propRef,
 ) {
   const context = useTooltipContext()
   const ref = useMergeRefs([context.refs.setFloating, propRef])
 
-  if (!context.open) return null
+  if (!context.open) {
+    return null
+  }
 
   return (
     <FloatingPortal>

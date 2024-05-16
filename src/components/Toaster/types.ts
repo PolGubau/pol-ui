@@ -1,5 +1,4 @@
 import type React from 'react'
-import type { ToastAction } from 'sonner'
 
 export type ToastTypes = 'normal' | 'action' | 'success' | 'info' | 'warning' | 'error' | 'loading' | 'default'
 export type PromiseT<Data = unknown> = Promise<Data> | (() => Promise<Data>)
@@ -146,9 +145,12 @@ export interface ToastT {
 
   /**
    * @name action
-    * @description Action button for the toast.
-    */
-  action?: ToastAction
+   * @description Action button for the toast.
+   */
+  action?: {
+    label: React.ReactNode | string
+    onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
+  }
 
   /**
    * @name cancel
@@ -485,12 +487,6 @@ export interface ToasterProps {
   pauseWhenPageIsHidden?: boolean
 }
 
-/**
- * Type representing an external toast with certain properties omitted.
- * @typedef {Omit<ToastT, 'id' | 'type' | 'title' | 'jsx' | 'delete' | 'promise'> & {
- *   id?: number | string;
- * }} ExternalToast
- */
 export type ExternalToast = Omit<ToastT, 'id' | 'type' | 'title' | 'jsx' | 'delete' | 'promise'> & {
   id?: number | string
 }

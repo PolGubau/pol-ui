@@ -1,5 +1,5 @@
-'use client';
-import type { ElementProps, Placement, ReferenceType, UseRoleProps } from '@floating-ui/react';
+'use client'
+import type { ElementProps, Placement, ReferenceType, UseRoleProps } from '@floating-ui/react'
 import {
   autoUpdate,
   safePolygon,
@@ -9,16 +9,16 @@ import {
   useHover,
   useInteractions,
   useRole,
-} from '@floating-ui/react';
-import type { Dispatch, RefObject, SetStateAction } from 'react';
-import { getMiddleware, getPlacement } from '../components/Floating/helpers';
+} from '@floating-ui/react'
+import type { Dispatch, RefObject, SetStateAction } from 'react'
+import { getMiddleware, getPlacement } from '../components/Floating/helpers'
 
 export type UseBaseFloatingParams = {
-  placement?: 'auto' | Placement;
-  open: boolean;
-  arrowRef?: RefObject<HTMLDivElement>;
-  setOpen: Dispatch<SetStateAction<boolean>>;
-};
+  placement?: 'auto' | Placement
+  open: boolean
+  arrowRef?: RefObject<HTMLDivElement>
+  setOpen: Dispatch<SetStateAction<boolean>>
+}
 
 export const useBaseFloating = <Type extends ReferenceType>({
   open,
@@ -32,15 +32,15 @@ export const useBaseFloating = <Type extends ReferenceType>({
     onOpenChange: setOpen,
     whileElementsMounted: autoUpdate,
     middleware: getMiddleware({ placement, arrowRef }),
-  });
-};
+  })
+}
 
 export type UseFloatingInteractionsParams = {
-  context: ReturnType<typeof useFloating>['context'];
-  trigger?: 'hover' | 'click';
-  role?: UseRoleProps['role'];
-  interactions?: ElementProps[];
-};
+  context: ReturnType<typeof useFloating>['context']
+  trigger?: 'hover' | 'click'
+  role?: UseRoleProps['role']
+  interactions?: ElementProps[]
+}
 
 export const useFloatingInteractions = ({
   context,
@@ -57,5 +57,5 @@ export const useFloatingInteractions = ({
     useDismiss(context),
     useRole(context, { role }),
     ...interactions,
-  ]);
-};
+  ])
+}
