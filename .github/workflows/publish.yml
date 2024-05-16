@@ -54,7 +54,7 @@ jobs:
           git config user.email ""
 
       - name: 🍀 Publish to NPM
-        run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc && pnpm publish
+        run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc && pnpm publish --no-git-checks
 
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
