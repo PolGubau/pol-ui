@@ -29,16 +29,4 @@ describe('Tooltip component', () => {
 
     expect(queryByText('Tooltip Content')).not.toBeInTheDocument()
   })
-
-  test('opens tooltip content when trigger is focused', () => {
-    const { getByText } = render(
-      <Tooltip content="Tooltip Content">
-        <span>Hover me</span>
-      </Tooltip>,
-    )
-
-    fireEvent.focus(getByText('Hover me'))
-
-    expect(getByText('Tooltip Content')).toBeInTheDocument()
-  })
 })

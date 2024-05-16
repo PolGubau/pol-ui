@@ -38,6 +38,6 @@ describe('useLocalStorage hook', () => {
   test('should handle invalid JSON in localStorage', () => {
     window.localStorage.setItem('testKey', 'invalidJson')
     const { result } = renderHook(() => useLocalStorage('testKey', 'initialValue'))
-    expect(result.current[0]).toBe(undefined) // initial value because of invalid JSON
+    expect(result.current[0]).toBe('initialValue')
   })
 })
