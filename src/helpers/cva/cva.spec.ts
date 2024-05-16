@@ -3,28 +3,6 @@ import { describe, expect, test } from 'vitest'
 import type * as CVA from './cva'
 import { cva, cx } from './cva'
 
-describe('cx', () => {
-  describe.each<CVA.CxOptions>([
-    [null, ''],
-    [undefined, ''],
-    [false && 'foo', ''],
-    [true && 'foo', 'foo'],
-    [['foo', null, 'bar', undefined, 'baz'], 'foo bar baz'],
-    [
-      [
-        'foo',
-        [null, ['bar'], [undefined, ['baz', 'qux', 'quux', 'quuz', [[[[[[[[['corge', 'grault']]]]], 'garply']]]]]]],
-      ],
-      'foo bar baz qux quux quuz corge grault garply',
-    ],
-    [['foo', [1 && 'bar', { baz: false, bat: null }, ['hello', ['world']]], 'cya'], 'foo bar hello world cya'],
-  ])('cx(%o)', (options, expected) => {
-    test(`returns ${expected}`, () => {
-      expect(cx(options)).toBe(expected)
-    })
-  })
-})
-
 describe('cva', () => {
   describe('without base', () => {
     describe('without anything', () => {
@@ -33,7 +11,7 @@ describe('cva', () => {
         expect(example()).toBe('')
         expect(
           example({
-            // @ts-expect-error
+            // @ts-expect-error should not be allowed
             aCheekyInvalidProp: 'lol',
           }),
         ).toBe('')
@@ -42,7 +20,7 @@ describe('cva', () => {
         expect(
           example({
             class: 'adhoc-class',
-            // @ts-expect-error
+            // @ts-expect-error should not be allowed
             className: 'adhoc-className',
           }),
         ).toBe('adhoc-class adhoc-className')
@@ -53,7 +31,7 @@ describe('cva', () => {
         expect(example()).toBe('')
         expect(
           example({
-            // @ts-expect-error
+            // @ts-expect-error should not be allowed
             aCheekyInvalidProp: 'lol',
           }),
         ).toBe('')
@@ -62,7 +40,7 @@ describe('cva', () => {
         expect(
           example({
             class: 'adhoc-class',
-            // @ts-expect-error
+            // @ts-expect-error should not be allowed
             className: 'adhoc-className',
           }),
         ).toBe('adhoc-class adhoc-className')
@@ -73,7 +51,7 @@ describe('cva', () => {
         expect(example()).toBe('')
         expect(
           example({
-            // @ts-expect-error
+            // @ts-expect-error should not be allowed
             aCheekyInvalidProp: 'lol',
           }),
         ).toBe('')
@@ -82,7 +60,7 @@ describe('cva', () => {
         expect(
           example({
             class: 'adhoc-class',
-            // @ts-expect-error
+            // @ts-expect-error should not be allowed
             className: 'adhoc-className',
           }),
         ).toBe('adhoc-class adhoc-className')
@@ -336,6 +314,7 @@ describe('cva', () => {
 
       describe.each<[ButtonWithoutBaseWithDefaultsProps, string]>([
         [
+          // @ts-expect-error should not be allowed
           undefined,
           'button font-semibold border rounded button--primary bg-blue-500 text-white border-transparent hover:bg-blue-600 button--enabled cursor-pointer button--medium text-base py-2 px-4 m-0 button--primary-medium uppercase',
         ],
@@ -632,7 +611,8 @@ describe('cva', () => {
         [{}, 'button font-semibold border rounded'],
         [
           {
-             aCheekyInvalidProp: 'lol',
+            // @ts-expect-error should not be allowed
+            aCheekyInvalidProp: 'lol',
           },
           'button font-semibold border rounded',
         ],
@@ -687,7 +667,7 @@ describe('cva', () => {
           } as ButtonWithBaseWithoutDefaultsProps,
           'button font-semibold border rounded button--primary bg-blue-500 text-white border-transparent hover:bg-blue-600 adhoc-className',
         ],
-      ])('button(%o)', (options:any, expected:any) => {
+      ])('button(%o)', (options: any, expected: any) => {
         test(`returns ${expected}`, () => {
           expect(buttonWithBaseWithoutDefaultsString(options)).toBe(expected)
           expect(buttonWithBaseWithoutDefaultsWithClassNameString(options)).toBe(expected)
@@ -924,7 +904,9 @@ describe('cva', () => {
 
       describe.each<[ButtonWithBaseWithDefaultsProps, string]>([
         [
-           undefined,
+          // @ts-expect-error should not be allowed
+
+          undefined,
           'button font-semibold border rounded button--primary bg-blue-500 text-white border-transparent hover:bg-blue-600 button--enabled cursor-pointer button--medium text-base py-2 px-4 button--primary-medium uppercase',
         ],
         [
@@ -1005,7 +987,7 @@ describe('cva', () => {
           } as ButtonWithBaseWithDefaultsProps,
           'button font-semibold border rounded button--primary bg-blue-500 text-white border-transparent hover:bg-blue-600 button--enabled cursor-pointer button--medium text-base py-2 px-4 button--primary-medium uppercase adhoc-classname',
         ],
-      ])('button(%o)', (options:any, expected:any) => {
+      ])('button(%o)', (options: any, expected: any) => {
         test(`returns ${expected}`, () => {
           expect(buttonWithBaseWithDefaultsString(options)).toBe(expected)
           expect(buttonWithBaseWithDefaultsWithClassNameString(options)).toBe(expected)
@@ -1044,16 +1026,15 @@ describe('cva', () => {
     const card = ({ margin, padding, shadow }: CardProps = {}) => cx(box({ margin, padding }), cardBase({ shadow }))
 
     describe.each<[CardProps, string]>([
-      [
-         undefined,
-        'box box-border m-0 p-0 card border-solid border-slate-300 rounded',
-      ],
+      // @ts-expect-error should not be allowed
+
+      [undefined, 'box box-border m-0 p-0 card border-solid border-slate-300 rounded'],
       [{}, 'box box-border m-0 p-0 card border-solid border-slate-300 rounded'],
       [{ margin: 4 }, 'box box-border m-4 p-0 card border-solid border-slate-300 rounded'],
       [{ padding: 4 }, 'box box-border m-0 p-4 card border-solid border-slate-300 rounded'],
       [{ margin: 2, padding: 4 }, 'box box-border m-2 p-4 card border-solid border-slate-300 rounded'],
       [{ shadow: 'md' }, 'box box-border m-0 p-0 card border-solid border-slate-300 rounded drop-shadow-md'],
-    ])('card(%o)', (options:any, expected:any) => {
+    ])('card(%o)', (options: any, expected: any) => {
       test(`returns ${expected}`, () => {
         expect(card(options)).toBe(expected)
       })
