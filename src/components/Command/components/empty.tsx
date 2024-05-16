@@ -8,11 +8,11 @@ import type { CommandTheme } from '../theme'
 /**
  * Automatically renders when there are no results for the search query.
  */
-export interface EmptyProps extends ComponentProps<'div'> {
+export interface CommandEmptyProps extends ComponentProps<'div'> {
   theme?: Partial<CommandTheme>
 }
 
-export const Empty = React.forwardRef<HTMLDivElement, EmptyProps>((props, forwardedRef) => {
+export const CommandEmpty = React.forwardRef<HTMLDivElement, CommandEmptyProps>((props, forwardedRef) => {
   const { theme: customTheme = {} } = props
   const render = useCommandState(state => state.filtered.count === 0)
   const theme = mergeDeep(getTheme().command, customTheme)
@@ -28,4 +28,4 @@ export const Empty = React.forwardRef<HTMLDivElement, EmptyProps>((props, forwar
     />
   )
 })
-Empty.displayName = 'Empty'
+CommandEmpty.displayName = 'Empty'

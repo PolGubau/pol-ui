@@ -31,7 +31,7 @@ export type ItemProps = Omit<ComponentProps<'button'>, 'disabled' | 'onSelect' |
  * Preferably pass a `value`, otherwise the value will be inferred from `children` or
  * the rendered item's `textContent`.
  */
-export const Item = React.forwardRef<HTMLButtonElement, ItemProps>((props, forwardedRef) => {
+export const CommandItem = React.forwardRef<HTMLButtonElement, ItemProps>((props, forwardedRef) => {
   const id = React.useId()
   const ref = React.useRef<HTMLButtonElement>(null)
   const groupContext = React.useContext(GroupContext)
@@ -103,4 +103,4 @@ export const Item = React.forwardRef<HTMLButtonElement, ItemProps>((props, forwa
     </button>
   )
 })
-Item.displayName = 'Item'
+CommandItem.displayName = 'Item'

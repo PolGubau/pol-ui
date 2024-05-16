@@ -8,7 +8,6 @@ import { Checkbox } from '../Checkbox'
 import { IconButton } from '../IconButton'
 import { TbDotsVertical } from 'react-icons/tb'
 import React from 'react'
-import { ComboboxDemo } from './new'
 
 export default {
   title: 'Components/Autocomplete',
@@ -104,24 +103,16 @@ export const CustomTrigger = () => {
   return (
     <Autocomplete
       value={value}
-      trigger={
-        <IconButton>
-          <TbDotsVertical />
-        </IconButton>
-      }
       options={frameworks}
       onChange={v => {
         setValue(v)
 
         toast({ title: `Selected: ${v?.label}` })
       }}
-    />
+    >
+      <IconButton>
+        <TbDotsVertical />
+      </IconButton>
+    </Autocomplete>
   )
-}
-
-export const Uncontrolled = () => {
-  return <Autocomplete options={frameworks} />
-}
-export const New = () => {
-  return <ComboboxDemo />
 }

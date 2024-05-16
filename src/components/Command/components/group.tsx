@@ -13,7 +13,7 @@ import { getTheme } from '../../../theme-store'
  * Group command menu items together with a heading.
  * Grouped items are always shown together.
  */
-export const Group = React.forwardRef<HTMLDivElement, GroupProps>((props, forwardedRef) => {
+export const CommandGroup = React.forwardRef<HTMLDivElement, GroupProps>((props, forwardedRef) => {
   const { heading, forceMount, theme: customTheme = {}, ...etc } = props
   const id = React.useId()
   const ref = React.useRef<HTMLDivElement>(null)
@@ -61,4 +61,4 @@ export const Group = React.forwardRef<HTMLDivElement, GroupProps>((props, forwar
     </div>
   )
 })
-Group.displayName = 'Group'
+CommandGroup.displayName = 'Group'

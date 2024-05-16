@@ -13,13 +13,13 @@ import type { CommandProps, Context, State, Store } from './types'
 import { useLazyRef } from '../../hooks/use-lazy-ref/use-lazy-ref'
 import { useIsomorphicLayoutEffect } from '../../hooks'
 import { CommandContext, StoreContext } from './contexts'
-import { Empty } from './components/empty'
-import { Group } from './components/group'
-import { List } from './components/list'
-import { Input } from './components/input'
-import { Item } from './components/item'
-import { Separator } from './components/separator'
-import { Loading } from './components/loading'
+import { CommandEmpty } from './components/empty'
+import { CommandGroup } from './components/group'
+import { CommandList } from './components/list'
+import { CommandInput } from './components/commandInput'
+import { CommandItem } from './components/item'
+import { CommandSeparator } from './components/separator'
+import { CommandLoading } from './components/loading'
 import { SlottableWithNestedChildren, findNextSibling, findPreviousSibling } from './utils'
 import { getTheme } from '../../theme-store'
 
@@ -33,7 +33,8 @@ export const SELECTORS = {
   VALUE_ATTR: `data-value`,
 }
 
-const defaultFilter: CommandProps['filter'] = (value: string, search: string, keywords: any) => commandScore(value, search, keywords ?? [])
+const defaultFilter: CommandProps['filter'] = (value: string, search: string, keywords: any) =>
+  commandScore(value, search, keywords ?? [])
 
 /**
  * Command is a component that provides a way to navigate through a list of items using the keyboard. It is a combination of a list and an input, where the input is used to filter the list of items.
@@ -529,25 +530,25 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwarded
 Command.displayName = 'Command'
 
 const command = Object.assign(Command, {
-  List,
-  Item,
-  Input,
-  Group,
-  Separator,
-  Loading,
-  Empty,
+  List: CommandList,
+  Item: CommandItem,
+  Input: CommandInput,
+  Group: CommandGroup,
+  Separator: CommandSeparator,
+  Loading: CommandLoading,
+  Empty: CommandEmpty,
 })
 
 export { useCmdk as useCommandState }
-export { Group as CommandGroup }
+export { CommandGroup as CommandGroup }
 export { command as Command }
 export { Command as CommandRoot }
-export { List as CommandList }
-export { Item as CommandItem }
-export { Input as CommandInput }
-export { Separator as CommandSeparator }
-export { Loading as CommandLoading }
-export { Empty as CommandEmpty }
+export { CommandList as CommandList }
+export { CommandItem as CommandItem }
+export { CommandInput as CommandInput }
+export { CommandSeparator as CommandSeparator }
+export { CommandLoading as CommandLoading }
+export { CommandEmpty as CommandEmpty }
 
 const srOnlyStyles = {
   position: 'absolute',

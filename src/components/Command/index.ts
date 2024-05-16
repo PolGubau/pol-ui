@@ -1,4 +1,4 @@
-export { type EmptyProps } from './components/empty'
+export { type CommandEmptyProps as EmptyProps } from './components/empty'
 export {
   CommandEmpty,
   CommandInput,

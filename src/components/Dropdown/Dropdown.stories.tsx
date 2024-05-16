@@ -1,9 +1,31 @@
 import type { Meta } from '@storybook/react'
-import { Dropdown } from './Dropdown'
-import { DropdownItem } from './DropdownItem'
-import { theme } from '../../theme'
-import { Avatar } from '../Avatar'
-import type { RoundedSizes } from '../../types'
+
+import { BiCloud, BiLogOut } from 'react-icons/bi'
+import { BsGithub } from 'react-icons/bs'
+import {
+  TbCreditCard,
+  TbKeyboard,
+  TbLifebuoy,
+  TbMail,
+  TbMessage,
+  TbPlus,
+  TbSettings,
+  TbUser,
+  TbUserPlus,
+  TbUsers,
+} from 'react-icons/tb'
+import {
+  Dropdown,
+  DropdownGroup,
+  DropdownItem,
+  DropdownLabel,
+  DropdownPortal,
+  DropdownSeparator,
+  DropdownShortcut,
+  DropdownSub,
+  DropdownSubContent,
+  DropdownSubTrigger,
+} from './Dropdown'
 
 export default {
   title: 'Components/Dropdown',
@@ -17,7 +39,7 @@ export default {
   },
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col items-center">
+      <div className="flex p-6 grid min-w-[200px] place-items-center">
         <Story />
       </div>
     ),
@@ -26,101 +48,91 @@ export default {
     layout: 'fullscreen',
   },
 } as Meta
-
-const Example = () => {
+export function Default() {
   return (
-    <>
-      <DropdownItem label="Undo" onClick={() => console.log('Undo')} shortcut="Ctrl+Z" />
-      <DropdownItem label="Redo" disabled />
-      <DropdownItem label="Cut" />
-      <Dropdown label="Copy as">
-        <DropdownItem label="Text" />
-        <DropdownItem label="Video" />
-        <Dropdown label="Image" nestingIcon="🎞️">
-          <DropdownItem label=".png" />
-          <DropdownItem label=".jpg" />
-          <DropdownItem label=".svg" />
-          <DropdownItem label=".gif" />
-        </Dropdown>
-        <DropdownItem label="Audio" />
-      </Dropdown>
-      <Dropdown label="Share">
-        <DropdownItem label="Mail" />
-        <DropdownItem label="Instagram" />
-      </Dropdown>
-    </>
+    <Dropdown>
+      <DropdownLabel>My Account</DropdownLabel>
+      <DropdownSeparator />
+      <DropdownGroup>
+        <DropdownItem>
+          <TbUser className="mr-2 h-4 w-4" />
+          <span>Profile</span>
+          <DropdownShortcut>⇧⌘P</DropdownShortcut>
+        </DropdownItem>
+        <DropdownItem>
+          <TbCreditCard className="mr-2 h-4 w-4" />
+          <span>Billing</span>
+          <DropdownShortcut>⌘B</DropdownShortcut>
+        </DropdownItem>
+        <DropdownItem>
+          <TbSettings className="mr-2 h-4 w-4" />
+          <span>Settings</span>
+          <DropdownShortcut>⌘S</DropdownShortcut>
+        </DropdownItem>
+        <DropdownItem>
+          <TbKeyboard className="mr-2 h-4 w-4" />
+          <span>Keyboard shortcuts</span>
+          <DropdownShortcut>⌘K</DropdownShortcut>
+        </DropdownItem>
+      </DropdownGroup>
+      <DropdownSeparator />
+      <DropdownGroup>
+        <DropdownItem>
+          <TbUsers className="mr-2 h-4 w-4" />
+          <span>Team</span>
+        </DropdownItem>
+        <DropdownSub>
+          <DropdownSubTrigger>
+            <TbUserPlus className="mr-2 h-4 w-4" />
+            <span>Invite users</span>
+          </DropdownSubTrigger>
+          <DropdownPortal>
+            <DropdownSubContent>
+              <DropdownItem>
+                <TbMail className="mr-2 h-4 w-4" />
+                <span>Email</span>
+              </DropdownItem>
+              <DropdownItem>
+                <TbMessage className="mr-2 h-4 w-4" />
+                <span>Message</span>
+              </DropdownItem>
+              <DropdownSeparator />
+              <DropdownItem>
+                <TbPlus className="mr-2 h-4 w-4" />
+                <span>More...</span>
+              </DropdownItem>
+            </DropdownSubContent>
+          </DropdownPortal>
+        </DropdownSub>
+        <DropdownItem>
+          <TbPlus className="mr-2 h-4 w-4" />
+          <span>New Team</span>
+          <DropdownShortcut>⌘+T</DropdownShortcut>
+        </DropdownItem>
+      </DropdownGroup>
+      <DropdownSeparator />
+      <DropdownItem>
+        <BsGithub className="mr-2 h-4 w-4" />
+        <span>GitHub</span>
+      </DropdownItem>
+      <DropdownItem>
+        <TbLifebuoy className="mr-2 h-4 w-4" />
+        <span>Support</span>
+      </DropdownItem>
+      <DropdownItem disabled>
+        <BiCloud className="mr-2 h-4 w-4" />
+        <span>API</span>
+      </DropdownItem>
+      <DropdownSeparator />
+      <DropdownItem>
+        <BiLogOut className="mr-2 h-4 w-4" />
+        <span>Log out</span>
+        <DropdownShortcut>⇧⌘Q</DropdownShortcut>
+      </DropdownItem>
+    </Dropdown>
   )
 }
 
-const SimpleComponent = () => {
-  return (
-    <>
-      <DropdownItem label="Undo" onClick={() => console.log('Undo')} />
-      <DropdownItem label="Redo" disabled />
-      <DropdownItem label="Cut text " shortcut="⌘Z" />
-      <Dropdown label="Share">
-        <DropdownItem label="Mail" />
-        <DropdownItem label="Instagram" />
-      </Dropdown>
-    </>
-  )
+export const AutoDropdown = () => {
+  return <Dropdown>a</Dropdown>
 }
-
-export const Default = () => (
-  <Dropdown label="Dropdown">
-    <Example />
-  </Dropdown>
-)
-export const SimpleExample = () => (
-  <Dropdown label="Dropdown">
-    <SimpleComponent />
-  </Dropdown>
-)
-
-export const Colors = () => (
-  <div className="flex gap-3 flex-wrap">
-    {Object.keys(theme.dropdown.root.color).map(c => (
-      <Dropdown label={c} color={c as keyof typeof theme.dropdown.root.color} key={c}>
-        <Example />
-      </Dropdown>
-    ))}
-  </div>
-)
-export const Roundness = () => (
-  <div className="flex gap-3 flex-wrap">
-    {Object.keys(theme.dropdown.rounded).map(c => {
-      return (
-        <Dropdown label={c} rounded={c as RoundedSizes} key={c}>
-          <Example />
-        </Dropdown>
-      )
-    })}
-  </div>
-)
-export const Sizes = () => (
-  <div className="flex gap-3 flex-wrap items-center">
-    {Object.keys(theme.dropdown.size).map(c => (
-      <Dropdown label={c} size={c as keyof typeof theme.dropdown.size} key={c}>
-        <Example />
-      </Dropdown>
-    ))}
-  </div>
-)
-export const Disabled = () => (
-  <Dropdown disabled label={`I'm disabled 🥲`}>
-    <Example />
-  </Dropdown>
-)
-export const CustomTrigger = () => (
-  <Dropdown
-    label="Dropdown with custom trigger"
-    trigger={
-      <div className="flex items-center gap-2 rounded-full border p-3 hover:bg-secondary-200 transition-all">
-        <span>Name</span>
-        <Avatar size="sm" img="https://polgubau.com/_next/image?url=%2Fimages%2Fme.png&w=256&q=75" status="online" />
-      </div>
-    }
-  >
-    <Example />
-  </Dropdown>
-)

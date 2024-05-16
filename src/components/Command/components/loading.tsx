@@ -5,7 +5,7 @@ import { SlottableWithNestedChildren } from '../utils'
 /**
  * You should conditionally render this with `progress` while loading asynchronous items.
  */
-export const Loading = React.forwardRef<HTMLDivElement, LoadingProps>((props, forwardedRef) => {
+export const CommandLoading = React.forwardRef<HTMLDivElement, LoadingProps>((props, forwardedRef) => {
   const { progress, label = 'Loading...', ...etc } = props
 
   return (
@@ -25,4 +25,4 @@ export const Loading = React.forwardRef<HTMLDivElement, LoadingProps>((props, fo
     </div>
   )
 })
-Loading.displayName = 'Loading'
+CommandLoading.displayName = 'Loading'

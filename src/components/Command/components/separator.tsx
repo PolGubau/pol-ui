@@ -9,7 +9,7 @@ import type { SeparatorProps } from '../types'
  * A visual and semantic separator between items or groups.
  * Visible when the search query is empty or `alwaysRender` is true, hidden otherwise.
  */
-export const Separator = React.forwardRef<HTMLDivElement, SeparatorProps>((props, forwardedRef) => {
+export const CommandSeparator = React.forwardRef<HTMLDivElement, SeparatorProps>((props, forwardedRef) => {
   const { alwaysRender, theme: customTheme = {}, ...etc } = props
   const ref = React.useRef<HTMLDivElement>(null)
   const render = useCmdk(state => !state.search)
@@ -26,4 +26,4 @@ export const Separator = React.forwardRef<HTMLDivElement, SeparatorProps>((props
     />
   )
 })
-Separator.displayName = 'Separator'
+CommandSeparator.displayName = 'Separator'

@@ -1,123 +1,64 @@
 'use client'
 
 import * as React from 'react'
+import { TbCheck, TbSortAscending } from 'react-icons/tb'
+import { Command, CommandEmpty, CommandInput } from '../Command'
+import { CommandGroup, CommandItem } from '../Command/Command'
+import { cn } from '../../helpers'
+import { Button } from '../Button/Button'
+import type { PopoverProps } from '../Popover'
+import { Popover } from '../Popover'
 
-import type { ButtonProps } from '../Button'
-import { Button } from '../Button'
-import { TbCheck, TbChevronDown } from 'react-icons/tb'
-import { cn, mergeDeep } from '../../helpers'
-import { Command } from '../Command'
-import { useBoolean } from '../../hooks'
-import { CommandGroup } from '../Command/Command'
-import { Tooltip } from '../Tooltip'
-import { getTheme } from '../../theme-store'
-import type { AutocompleteTheme } from './theme'
-import type { DeepPartial } from '../../types'
-
-// value + label compulsory, any other prop allowed but won't be used
-export interface AutocompleteOption {
+export type AutocompleteOption = {
   value: string
   label: string
-  [key: string]: unknown
 }
 
-export interface AutocompleteProps extends Omit<ButtonProps, 'onChange' | 'value'> {
+interface AutocompleteProps extends Omit<PopoverProps, 'children' | 'value' | 'onChange' | 'content'> {
   value?: AutocompleteOption
-  onChange?: (value: AutocompleteOption | undefined) => void
-  placeholder?: string
-  noFoundText?: React.ReactNode
+  onChange: (value: AutocompleteOption) => void
   options: AutocompleteOption[]
-  trigger?: React.ReactNode
-  popupClassName?: string
-  className?: string
   closeOnSelect?: boolean
-  theme?: DeepPartial<AutocompleteTheme>
+  children?: React.ReactNode
 }
-
-export const Autocomplete: React.FC<AutocompleteProps> = ({
-  onChange,
-  value: externalValue,
-  placeholder,
-  noFoundText = 'Nothing found...',
-  options = [],
-  trigger = null,
-  popupClassName,
-  className,
-  closeOnSelect = true,
-  theme: customTheme = {},
-
-  ...props
-}: AutocompleteProps) => {
-  const { value: open, setFalse, setValue } = useBoolean(false)
-  const [value, setState] = React.useState<AutocompleteOption | undefined>(externalValue)
-
-  const handleSend = (newValue: AutocompleteProps['value']) => {
-    setState(newValue)
-    onChange?.(newValue)
-  }
-
-  React.useEffect(() => {
-    setState(externalValue)
-  }, [externalValue])
-
-  const handleOnChange = (currentValue: string) => {
-    const obj = options.find(x => x.value === currentValue) // find the object by value
-    handleSend(obj === value ? undefined : obj) // if the same value is selected, set to undefined
-    setFalse()
-  }
-  const popupRef = React.useRef<HTMLDivElement>(null)
-
-  // focus the popup input when the popup is opened
-  React.useEffect(() => {
-    if (open) {
-      popupRef.current?.querySelector('input')?.focus()
-    }
-  }, [open])
-  const theme = mergeDeep(getTheme().autocomplete, customTheme)
-
+export function Autocomplete({ value, onChange, options, closeOnSelect = true, children, ...rest }: AutocompleteProps) {
   return (
-    <Tooltip
-      open={open}
-      onOpenChange={state => {
-        closeOnSelect && setValue(state)
-      }}
-      className="p-0"
+    <Popover
+      hasCloseButton={false}
+      className={cn('p-0', rest.className)}
+      {...rest}
       content={
-        <Command className={(theme.command, popupClassName)} ref={popupRef}>
-          <Command.Input placeholder={placeholder} className={theme.command.input} />
-          <Command.List>
-            <Command.Empty>{noFoundText}</Command.Empty>
-
-            <CommandGroup>
-              {options.map(o => (
-                <Command.Item key={o.value} value={o.value} onSelect={handleOnChange} className={theme.command.item}>
-                  {o.label}
-                  <TbCheck
-                    className={cn(theme.command.icon.base, theme.command.icon.selected[o === value ? 'on' : 'off'])}
-                  />
-                </Command.Item>
-              ))}
-            </CommandGroup>
-          </Command.List>
+        <Command className="bg-secondary-50">
+          <CommandInput placeholder="Search framework..." className="h-9" />
+          <CommandEmpty>No option found.</CommandEmpty>
+          <CommandGroup>
+            {options.map(option => (
+              <CommandItem
+                key={option.value}
+                value={option.value}
+                onSelect={currentValue => {
+                  onChange(options.find(framework => framework.value === currentValue)!)
+                  if (closeOnSelect) {
+                    rest.onOpenChange?.(false)
+                  }
+                }}
+              >
+                {option.label}
+                <TbCheck
+                  className={cn('ml-auto h-4 w-4', value?.value === option.value ? 'opacity-100' : 'opacity-0')}
+                />
+              </CommandItem>
+            ))}
+          </CommandGroup>
         </Command>
       }
     >
-      {trigger ?? (
-        <Button
-          type="button"
-          {...props}
-          value={value?.value ?? ''}
-          aria-autocomplete="list"
-          aria-haspopup="listbox"
-          variant={'outline'}
-          role="combobox"
-          aria-expanded={open}
-          className={cn(theme.button.base, className)}
-        >
-          {value ? value.label : placeholder ?? 'Select'}
-          <TbChevronDown className={cn(theme.button.chevron.base, open && theme.button.chevron.opened)} />{' '}
+      {children ?? (
+        <Button variant="outline" role="combobox" aria-expanded={rest.open} className="w-[200px] justify-between">
+          {value ? options.find(framework => framework.value === value.value)?.label : 'Select...'}
+          <TbSortAscending className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       )}
-    </Tooltip>
+    </Popover>
   )
 }

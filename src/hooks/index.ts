@@ -4,7 +4,6 @@ export * from './use-debounce';
 export * from './use-event-callback';
 export * from './use-event-listener';
 export * from './use-fetch';
-export * from './use-floating';
 export * from './use-interval';
 export * from './use-isomorphic-layout-effect';
 export * from './use-lazy-ref/use-lazy-ref';

@@ -14,13 +14,13 @@ export interface ListProps extends PropsWithChildren, DivProps {
    */
   label?: string
   theme?: Partial<CommandTheme>
-  className ?:string
+  className?: string
 }
 /**
  * Contains `Item`, `Group`, and `Separator`.
  * Use the `--command-list-height` CSS variable to animate height based on the number of results.
  */
-export const List = React.forwardRef<HTMLDivElement, ListProps>((props, forwardedRef) => {
+export const CommandList = React.forwardRef<HTMLDivElement, ListProps>((props, forwardedRef) => {
   const { theme: customTheme = {}, label = 'Suggestions', ...etc } = props
 
   const ref = React.useRef<HTMLDivElement>(null)
@@ -65,4 +65,4 @@ export const List = React.forwardRef<HTMLDivElement, ListProps>((props, forwarde
     </div>
   )
 })
-List.displayName = 'List'
+CommandList.displayName = 'List'

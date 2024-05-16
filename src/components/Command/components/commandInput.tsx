@@ -8,7 +8,7 @@ import { useCmdk } from '../hooks'
 import type { CommandTheme } from '../theme'
 import { getTheme } from '../../../theme-store'
 
-export interface InputProps extends Omit<ComponentProps<'input'>, 'value' | 'onChange' | 'type'> {
+export interface CommandInputProps extends Omit<ComponentProps<'input'>, 'value' | 'onChange' | 'type'> {
   /**
    * Optional controlled state for the value of the search input.
    */
@@ -27,7 +27,7 @@ export interface InputProps extends Omit<ComponentProps<'input'>, 'value' | 'onC
  * Command menu input.
  * All props are forwarded to the underyling `input` element.
  */
-export const Input = React.forwardRef<HTMLInputElement, InputProps>((props, forwardedRef) => {
+export const CommandInput = React.forwardRef<HTMLInputElement, CommandInputProps>((props, forwardedRef) => {
   const { theme: customTheme = {}, onValueChange, dynamicPlaceholder = true, ...etc } = props
   const isControlled = props.value != null
   const store = useStore()
@@ -82,4 +82,4 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>((props, forw
     </div>
   )
 })
-Input.displayName = 'Input'
+CommandInput.displayName = 'Input'

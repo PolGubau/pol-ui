@@ -12,6 +12,7 @@ import { cn } from '../../helpers'
 export interface IconButtonProps extends ButtonProps {
   theme?: DeepPartial<IconButtonTheme>
   label?: string
+  allowTooltip?: boolean
 }
 
 /**
@@ -50,6 +51,7 @@ export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
       theme: customTheme = {},
       label = null,
       loadingLabel = null,
+      allowTooltip = true,
       ...props
     },
     ref,
@@ -57,7 +59,7 @@ export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
     const theme = mergeDeep(getTheme().iconButton, customTheme)
 
     return (
-      <Tooltip content={label}>
+      <Tooltip content={allowTooltip && label}>
         <Button
           {...props}
           variant={variant}
