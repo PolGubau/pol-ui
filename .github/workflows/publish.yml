@@ -21,7 +21,7 @@ jobs:
           cache: 'pnpm'
 
       - name: 📥 Install Dependencies
-        run: pnpm install --immutable
+        run: pnpm install
 
       - name: 💅 Lint
         run: pnpm lint
