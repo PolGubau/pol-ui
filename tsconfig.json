@@ -36,6 +36,8 @@
     "**/*.tsx",
     "postcss.config.js",
     "tailwind.config.ts",
-    "src/a.sass"
+    "src/a.sass",
+    "src/components/AppleWatchDock/AppleWatchDock.jsx",
+    "src/components/AppleWatchDock/Item.jsx"
   ]
 }
