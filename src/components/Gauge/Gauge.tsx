@@ -7,10 +7,6 @@ const arcLimits = {
   end: 0,
 }
 
-export const foregroundStyles: React.CSSProperties = {
-  animationDelay: 'var(--gradientPositionDelay, 0s)',
-} as React.CSSProperties
-
 const arcDefaultStyles: React.CSSProperties = {
   strokeLinecap: 'round',
   transformOrigin: 'center center',
@@ -45,7 +41,7 @@ export interface GaugeProps {
 }
 
 const Gauge: React.FC<GaugeProps> = ({ min = 0, max = 100, value }) => {
-  const [percent, setPercent] = useState<number>(calculatePercentageValue(value, min, max))
+  const [percent, setPercent] = useState(calculatePercentageValue(value, min, max))
 
   useEffect(() => {
     if (value <= min) {
@@ -60,7 +56,7 @@ const Gauge: React.FC<GaugeProps> = ({ min = 0, max = 100, value }) => {
   }, [max, min, value])
 
   return (
-    <div className="relative" style={{ width: 96 }}>
+    <div className="relative">
       <div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" height="100" width="100">
           <defs>
@@ -85,16 +81,7 @@ const Gauge: React.FC<GaugeProps> = ({ min = 0, max = 100, value }) => {
             fillOpacity="0"
             className="stroke-secondary-100 "
           ></path>
-          <foreignObject width="100" height="100" mask={`url(#foreground-mask)`} className="bg-red-400">
-            <div
-              style={
-                {
-                  '--gradientPositionDelay': `${percent * 0.5}s`,
-                  ...foregroundStyles,
-                } as React.CSSProperties
-              }
-            />
-          </foreignObject>
+          <foreignObject width="100" height="100" mask={`url(#foreground-mask)`} className="bg-red-400" />
         </svg>
       </div>
       <div className="absolute w-full top-0 flex items-center justify-center h-full">
