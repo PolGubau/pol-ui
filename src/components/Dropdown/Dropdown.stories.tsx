@@ -20,12 +20,12 @@ import {
   DropdownItem,
   DropdownLabel,
   DropdownPortal,
-  DropdownSeparator,
   DropdownShortcut,
   DropdownSub,
   DropdownSubContent,
   DropdownSubTrigger,
 } from './Dropdown'
+import { Divider } from '../Divider'
 
 export default {
   title: 'Components/Dropdown',
@@ -52,9 +52,9 @@ export function Default() {
   return (
     <Dropdown>
       <DropdownLabel>My Account</DropdownLabel>
-      <DropdownSeparator />
+      <Divider />
       <DropdownGroup>
-        <DropdownItem>
+        <DropdownItem onSelect={() => alert('a')}>
           <TbUser className="mr-2 h-4 w-4" />
           <span>Profile</span>
           <DropdownShortcut>⇧⌘P</DropdownShortcut>
@@ -75,7 +75,7 @@ export function Default() {
           <DropdownShortcut>⌘K</DropdownShortcut>
         </DropdownItem>
       </DropdownGroup>
-      <DropdownSeparator />
+      <Divider />
       <DropdownGroup>
         <DropdownItem>
           <TbUsers className="mr-2 h-4 w-4" />
@@ -96,7 +96,7 @@ export function Default() {
                 <TbMessage className="mr-2 h-4 w-4" />
                 <span>Message</span>
               </DropdownItem>
-              <DropdownSeparator />
+              <Divider />
               <DropdownItem>
                 <TbPlus className="mr-2 h-4 w-4" />
                 <span>More...</span>
@@ -110,7 +110,7 @@ export function Default() {
           <DropdownShortcut>⌘+T</DropdownShortcut>
         </DropdownItem>
       </DropdownGroup>
-      <DropdownSeparator />
+      <Divider />
       <DropdownItem>
         <BsGithub className="mr-2 h-4 w-4" />
         <span>GitHub</span>
@@ -123,7 +123,7 @@ export function Default() {
         <BiCloud className="mr-2 h-4 w-4" />
         <span>API</span>
       </DropdownItem>
-      <DropdownSeparator />
+      <Divider />
       <DropdownItem>
         <BiLogOut className="mr-2 h-4 w-4" />
         <span>Log out</span>
@@ -133,6 +133,6 @@ export function Default() {
   )
 }
 
-export const AutoDropdown = () => {
+export const Empty = () => {
   return <Dropdown>a</Dropdown>
 }

@@ -1,20 +1,22 @@
 'use client'
 
 import * as D from '@radix-ui/react-dropdown-menu'
-import { cn } from '../../helpers'
-import { TbCheck, TbChevronRight, TbCircle } from 'react-icons/tb'
 import type { ComponentPropsWithoutRef, ElementRef, HTMLAttributes } from 'react'
 import { forwardRef } from 'react'
+import { TbCheck, TbChevronRight, TbCircle } from 'react-icons/tb'
+import { cn } from '../../helpers'
 import { Button } from '../Button'
 
-interface DropdownProps extends D.DropdownMenuContentProps {
+export interface DropdownProps extends D.DropdownMenuContentProps {
   trigger?: React.ReactNode
   children: React.ReactNode
+  label?: string
 }
-const Dropdown = ({ trigger, children, ...props }: DropdownProps) => {
+
+const Dropdown = ({ trigger, label, children, ...props }: DropdownProps) => {
   return (
     <D.Root>
-      <D.Trigger asChild>{trigger ?? <Button>Open</Button>}</D.Trigger>
+      <D.Trigger asChild>{trigger ?? <Button>{label ?? 'Open'}</Button>}</D.Trigger>
       <D.Portal>
         <D.Content
           sideOffset={props.sideOffset ?? 5}
@@ -30,6 +32,7 @@ const Dropdown = ({ trigger, children, ...props }: DropdownProps) => {
     </D.Root>
   )
 }
+const DropdownTrigger = D.Trigger
 
 const DropdownGroup = D.Group
 
@@ -48,7 +51,7 @@ const DropdownSubTrigger = forwardRef<
   <D.SubTrigger
     ref={ref}
     className={cn(
-      'flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent data-[state=open]:bg-accent',
+      'flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-primary data-[state=open]:bg-primary',
       inset && 'pl-8',
       className,
     )}
@@ -65,7 +68,7 @@ const DropdownSubContent = forwardRef<ElementRef<typeof D.SubContent>, Component
     <D.SubContent
       ref={ref}
       className={cn(
-        'z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
+        'z-50 min-w-[8rem] overflow-hidden rounded-md border bg-secondary-50 p-1 text-secondary-900 shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
         className,
       )}
       {...props}
@@ -81,7 +84,7 @@ const DropdownContent = forwardRef<ElementRef<typeof D.Content>, ComponentPropsW
         ref={ref}
         sideOffset={sideOffset}
         className={cn(
-          'z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
+          'z-50 min-w-[8rem] overflow-hidden rounded-md border bg-secondary-100 p-1 text-secondary-100-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
           className,
         )}
         {...props}
@@ -91,16 +94,14 @@ const DropdownContent = forwardRef<ElementRef<typeof D.Content>, ComponentPropsW
 )
 DropdownContent.displayName = D.Content.displayName
 
-const DropdownItem = forwardRef<
-  ElementRef<typeof D.Item>,
-  ComponentPropsWithoutRef<typeof D.Item> & {
-    inset?: boolean
-  }
->(({ className, inset, ...props }, ref) => (
+type DropdownItemProps = ComponentPropsWithoutRef<typeof D.Item> & {
+  inset?: boolean
+}
+const DropdownItem = forwardRef<ElementRef<typeof D.Item>, DropdownItemProps>(({ className, inset, ...props }, ref) => (
   <D.Item
     ref={ref}
     className={cn(
-      'relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      'relative  flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-primary focus:text-primary-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       inset && 'pl-8',
       className,
     )}
@@ -116,7 +117,7 @@ const DropdownCheckboxItem = forwardRef<
   <D.CheckboxItem
     ref={ref}
     className={cn(
-      'relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      'relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-primary focus:text-primary-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       className,
     )}
     checked={checked}
@@ -137,7 +138,7 @@ const DropdownRadioItem = forwardRef<ElementRef<typeof D.RadioItem>, ComponentPr
     <D.RadioItem
       ref={ref}
       className={cn(
-        'relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+        'relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-primary focus:text-primary-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
         className,
       )}
       {...props}
@@ -163,13 +164,6 @@ const DropdownLabel = forwardRef<
 ))
 DropdownLabel.displayName = D.Label.displayName
 
-const DropdownSeparator = forwardRef<ElementRef<typeof D.Separator>, ComponentPropsWithoutRef<typeof D.Separator>>(
-  ({ className, ...props }, ref) => (
-    <D.Separator ref={ref} className={cn('-mx-1 my-1 h-px bg-muted', className)} {...props} />
-  ),
-)
-DropdownSeparator.displayName = D.Separator.displayName
-
 const DropdownShortcut = ({ className, ...props }: HTMLAttributes<HTMLSpanElement>) => {
   return <span className={cn('ml-auto text-xs tracking-widest opacity-60', className)} {...props} />
 }
@@ -177,16 +171,18 @@ DropdownShortcut.displayName = 'DropdownShortcut'
 
 export {
   Dropdown,
-  DropdownItem,
   DropdownCheckboxItem,
-  DropdownRadioItem,
-  DropdownLabel,
-  DropdownSeparator,
-  DropdownShortcut,
+  DropdownContent,
   DropdownGroup,
+  DropdownItem,
+  DropdownLabel,
   DropdownPortal,
+  DropdownRadioGroup,
+  DropdownRadioItem,
+  DropdownShortcut,
   DropdownSub,
   DropdownSubContent,
   DropdownSubTrigger,
-  DropdownRadioGroup,
+  DropdownTrigger,
+  type DropdownItemProps,
 }

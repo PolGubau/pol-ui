@@ -47,8 +47,11 @@ export const MultipleAutocomplete: React.FC<MultipleAutocompleteProps> = ({
   }, [externalValue])
 
   const handleOnChange = (currentValue: string) => {
-    const obj = options.find(x => x.value === currentValue) // find the object by value
-    if (!obj) return console.error('Object not found' + currentValue)
+    // find the object by value
+    const obj = options.find(x => x.value === currentValue)
+    if (!obj) {
+      return console.error('Object not found' + currentValue)
+    }
 
     const alreadySelected = value.find(x => x.value === currentValue)
 

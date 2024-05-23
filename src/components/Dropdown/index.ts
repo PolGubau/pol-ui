@@ -6,7 +6,6 @@ export {
   DropdownCheckboxItem,
   DropdownRadioItem,
   DropdownLabel,
-  DropdownSeparator,
   DropdownShortcut,
   DropdownGroup,
   DropdownPortal,
@@ -14,5 +13,6 @@ export {
   DropdownSubContent,
   DropdownSubTrigger,
   DropdownRadioGroup,
+  type DropdownItemProps,
 } from './Dropdown'
 export { type DropdownTheme, dropdownTheme } from './theme'

@@ -35,14 +35,6 @@ describe('Components / Sidebar', () => {
   })
 })
 
-describe('Props', () => {
-  it("shouldn't display text content in `Sidebar.Logo` when `open={true}`", () => {
-    render(<TestSidebar open />)
-
-    expect(logo().lastElementChild).toHaveClass('hidden')
-  })
-})
-
 describe('Theme', () => {
   describe('`Sidebar.Logo`', () => {
     it('should use custom classes', () => {

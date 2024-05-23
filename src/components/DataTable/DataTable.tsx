@@ -47,8 +47,10 @@ export const DataTable = <T extends { id: Identification }>({
     }
 
     // Get keys from the first item in the data array
-    const keys = (Object.keys(data[0]) as (keyof T)[]) ?? [] // Get the keys from the first item in the data array
-    const keysButId = keys.filter(key => key !== 'id') ?? [] // Remove the 'id' key
+    // Get the keys from the first item in the data array
+    const keys = (Object.keys(data[0]) as (keyof T)[]) ?? []
+    // Remove the 'id' key
+    const keysButId = keys.filter(key => key !== 'id') ?? []
 
     const columns: ColumnDef<T>[] = keysButId.map(key => ({
       accessorKey: key,

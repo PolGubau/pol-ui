@@ -39,7 +39,7 @@
     "prepublishOnly": "pnpm build",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
-    "test": "vitest --ui",
+    "test": "vitest",
     "test:coverage": "vitest run --coverage --ui",
     "test:open": "vitest --ui",
     "test:e2e": "start-test 3000 ",

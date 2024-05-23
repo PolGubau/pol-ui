@@ -14,7 +14,7 @@ export type AutocompleteOption = {
   label: string
 }
 
-interface AutocompleteProps extends Omit<PopoverProps, 'children' | 'value' | 'onChange' | 'content'> {
+export interface AutocompleteProps extends Omit<PopoverProps, 'children' | 'value' | 'onChange' | 'content'> {
   value?: AutocompleteOption
   onChange: (value: AutocompleteOption) => void
   options: AutocompleteOption[]
