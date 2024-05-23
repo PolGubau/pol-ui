@@ -173,6 +173,5 @@
       "jsx-a11y/anchor-is-valid": "warn",
       "react/no-unescaped-entities": "warn"
     }
-  },
-  "packageManager": "pnpm@9.1.1"
+  }
 }
