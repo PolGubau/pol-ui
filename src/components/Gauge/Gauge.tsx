@@ -40,7 +40,7 @@ export interface GaugeProps {
   value: number
 }
 
-const Gauge: React.FC<GaugeProps> = ({ min = 0, max = 100, value }) => {
+const Gauge: React.FC<GaugeProps> = ({ min = 0, max = 100, value = 0 }) => {
   const [percent, setPercent] = useState(calculatePercentageValue(value, min, max))
 
   useEffect(() => {
@@ -54,6 +54,8 @@ const Gauge: React.FC<GaugeProps> = ({ min = 0, max = 100, value }) => {
     }
     setPercent(calculatePercentageValue(value, min, max))
   }, [max, min, value])
+
+  const parsedPercent = (percent * 100).toFixed(0) ?? min
 
   return (
     <div className="relative">
@@ -85,7 +87,7 @@ const Gauge: React.FC<GaugeProps> = ({ min = 0, max = 100, value }) => {
         </svg>
       </div>
       <div className="absolute w-full top-0 flex items-center justify-center h-full">
-        <div className="text-2xl tabular-nums">{(percent * 100).toFixed(0)}</div>
+        <div className="text-2xl tabular-nums">{parsedPercent}</div>
       </div>
     </div>
   )
