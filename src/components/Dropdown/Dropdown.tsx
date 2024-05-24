@@ -2,7 +2,7 @@
 
 import * as D from '@radix-ui/react-dropdown-menu'
 import type { ComponentPropsWithoutRef, ElementRef, HTMLAttributes } from 'react'
-import { forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 import { TbCheck, TbChevronRight, TbCircle } from 'react-icons/tb'
 import { cn } from '../../helpers'
 import { Button } from '../Button'
@@ -11,24 +11,29 @@ export interface DropdownProps extends D.DropdownMenuContentProps {
   trigger?: React.ReactNode
   children: React.ReactNode
   label?: string
+  disabled?: boolean
 }
 
-const Dropdown = ({ trigger, label, children, ...props }: DropdownProps) => {
+const Dropdown = ({ trigger, label, children, disabled, ...props }: DropdownProps) => {
   return (
     <D.Root>
-      <D.Trigger asChild>{trigger ?? <Button>{label ?? 'Open'}</Button>}</D.Trigger>
-      <D.Portal>
-        <D.Content
-          sideOffset={props.sideOffset ?? 5}
-          className={cn(
-            'z-50 min-w-[8rem] overflow-hidden rounded-md border bg-secondary-50 dark:bg-secondary-900 p-1 text-secondary-900 dark:text-secondary-50 shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
-            props.className,
-          )}
-          {...props}
-        >
-          {children}
-        </D.Content>
-      </D.Portal>
+      <D.Trigger disabled={disabled} asChild>
+        {trigger ?? <Button>{label ?? 'Open'}</Button>}
+      </D.Trigger>
+      {!disabled && (
+        <D.Portal>
+          <D.Content
+            sideOffset={props.sideOffset ?? 5}
+            className={cn(
+              'z-50 min-w-[8rem] overflow-hidden rounded-md border bg-secondary-50 dark:bg-secondary-900 p-1 text-secondary-900 dark:text-secondary-50 shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
+              props.className,
+            )}
+            {...props}
+          >
+            {children}
+          </D.Content>
+        </D.Portal>
+      )}
     </D.Root>
   )
 }
@@ -96,18 +101,26 @@ DropdownContent.displayName = D.Content.displayName
 
 type DropdownItemProps = ComponentPropsWithoutRef<typeof D.Item> & {
   inset?: boolean
+  label?: string
+  shortcut?: React.ReactNode
+  shortcutClassName?: string
 }
-const DropdownItem = forwardRef<ElementRef<typeof D.Item>, DropdownItemProps>(({ className, inset, ...props }, ref) => (
-  <D.Item
-    ref={ref}
-    className={cn(
-      'relative  flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-primary focus:text-primary-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-      inset && 'pl-8',
-      className,
-    )}
-    {...props}
-  />
-))
+const DropdownItem = forwardRef<ElementRef<typeof D.Item>, DropdownItemProps>(
+  ({ className, inset, label, shortcut, shortcutClassName, ...props }, ref) => (
+    <D.Item
+      ref={ref}
+      className={cn(
+        'relative  flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-primary focus:text-primary-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+        inset && 'pl-8',
+        className,
+      )}
+      {...props}
+    >
+      {props.children ?? label}
+      {shortcut && <DropdownShortcut className={shortcutClassName}>{shortcut}</DropdownShortcut>}
+    </D.Item>
+  ),
+)
 DropdownItem.displayName = D.Item.displayName
 
 const DropdownCheckboxItem = forwardRef<

@@ -67,7 +67,6 @@ export function Default() {
         <DropdownItem>
           <TbSettings className="mr-2 h-4 w-4" />
           <span>Settings</span>
-          <DropdownShortcut>⌘S</DropdownShortcut>
         </DropdownItem>
         <DropdownItem>
           <TbKeyboard className="mr-2 h-4 w-4" />
