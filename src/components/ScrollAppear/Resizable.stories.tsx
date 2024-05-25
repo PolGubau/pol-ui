@@ -18,9 +18,5 @@ export default {
 } as Meta
 
 export const Default = () => {
-  return (
-    <div className="bg-red-200 h-[2000px] grid place-items-center w-full">
-      <ScrollAppear />
-    </div>
-  )
+  return <ScrollAppear />
 }

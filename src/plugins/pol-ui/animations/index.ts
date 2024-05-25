@@ -22,18 +22,55 @@ export const animations = {
     slideRightAndFade: 'slideRightAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
     growAndContract: 'growAndContract 3s ease-in-out infinite',
     totalScaleAppear: 'totalScaleAppear 200ms ease',
+    'fade-out-down': 'fade-out-down linear forwards',
+    'make-it-bigger': 'make-it-bigger linear forwards',
+  },
+  supports: {
+    'scroll-timeline': '(animation-timeline: scroll())',
+    'no-scroll-timeline': 'not (animation-timeline: scroll())',
   },
   keyframes: {
-    shimmer: {
+    'fade-out-down': {
+      from: {
+        opacity: '1',
+        transform: 'translateY(0)',
+      },
+      to: {
+        opacity: '0',
+        transform: 'translateY(40%)',
+      },
+    },
+    'make-it-bigger': {
+      '0%': {
+        transform: 'translateY(0%)',
+      },
+      '80%': {
+        transform: 'translateY(-30%)',
+      },
+      '90%': {
+        transform: 'translateY(-10%) scale(1.75)',
+      },
       '100%': {
+        transform: 'translateY(0%) scale(2)',
+        opacity: '30%',
+      },
+    },
+
+    shimmer: {
+      to: {
         transform: 'translateX(100%)',
       },
     },
+    translateDown: {
+      to: {
+        transform: 'translateY(0)',
+      },
+    },
     'spinner-spin': {
-      '0%': {
+      from: {
         transform: 'rotate(0deg)',
       },
-      '100%': {
+      to: {
         transform: 'rotate(360deg)',
       },
     },
@@ -102,22 +139,7 @@ export const animations = {
         transform: 'translate(calc(-50% - 0.5rem))',
       },
     },
-    enterFromRight: {
-      from: { opacity: '0', transform: 'translateX(var(--longSlideDistance))' },
-      to: { opacity: '1', transform: 'translateX(0)' },
-    },
-    enterFromLeft: {
-      from: { opacity: '0', transform: 'translateX(-var(--longSlideDistance))' },
-      to: { opacity: '1', transform: 'translateX(0)' },
-    },
-    exitToRight: {
-      from: { opacity: '1', transform: 'translateX(0)' },
-      to: { opacity: '0', transform: 'translateX(var(--longSlideDistance))' },
-    },
-    exitToLeft: {
-      from: { opacity: '1', transform: 'translateX(0)' },
-      to: { opacity: '0', transform: 'translateX(-var(--longSlideDistance))' },
-    },
+
     scaleIn: {
       from: { opacity: '0', transform: 'rotateX(-10deg) scale(0.9)' },
       to: { opacity: '1', transform: 'rotateX(0deg) scale(1)' },

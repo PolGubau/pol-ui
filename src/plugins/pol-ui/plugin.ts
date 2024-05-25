@@ -90,6 +90,11 @@ export const poluiPlugin = (config: CustomPluginConfig = {}): ReturnType<typeof 
         { values: { DEFAULT: '' }, modifiers: 'any' },
       )
 
+      /**
+       * Animation range utility
+       * Use to be [animation-range:0px_300px], now you can use range-0px_300px
+       * @example range-0px_300px
+       */
       matchUtilities(
         {
           range: (value, { modifier }) => ({
@@ -112,18 +117,12 @@ export const poluiPlugin = (config: CustomPluginConfig = {}): ReturnType<typeof 
 
     {
       darkMode: 'class',
-      theme: {
-        timelineValues: {
-          DEFAULT: 'y',
-          block: 'block',
-          x: 'x',
+
+      extend: {
+        colors: {
+          ...parsedColors,
         },
-        extend: {
-          colors: {
-            ...parsedColors,
-          },
-          ...animations,
-        },
+        ...animations,
       },
     },
   )

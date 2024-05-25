@@ -1,12 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-:root {
-  /* Vars for tailwind keyframes */
-
-  --smallSlideDistance: 0.5rem;
-  --longSlideDistance: 200px;
-}
 @layer base {
   @font-face {
     font-family: 'Inter';
