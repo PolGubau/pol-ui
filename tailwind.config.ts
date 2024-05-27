@@ -6,6 +6,16 @@ const config: Config = {
   plugins: [poluiPlugin()],
   theme: {
     extend: {
+      appeadOnViewport: {
+        from: {
+          opacity: '0',
+          transform: 'translateY(0)',
+        },
+        to: {
+          opacity: '1',
+          transform: 'translateY(40%)',
+        },
+      },
       keyframes: {
         'fade-out-down': {
           from: {
