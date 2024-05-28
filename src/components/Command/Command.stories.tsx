@@ -8,6 +8,7 @@ import { Modal } from '../Modal'
 import { Toaster, toast } from '../Toaster'
 import { TbUser } from 'react-icons/tb'
 import { Kbd } from '../Kbd'
+import { Divider } from '../Divider'
 
 export default {
   title: 'Components/Command',
@@ -58,7 +59,7 @@ export const CommandMenu = () => {
               <Command.Item onSelect={() => toast({ title: 'Emoji' })}>Search Emoji</Command.Item>
               <Command.Item onSelect={() => toast({ title: 'calculator' })}>Calculator</Command.Item>
             </Command.Group>
-            <Command.Separator />
+            <Divider />
             <Command.Group heading="Settings">
               <Command.Item
                 value="profile"
@@ -88,7 +89,7 @@ export const InlineCommand = () => {
         <Command.Group heading="Letters">
           <Command.Item>a</Command.Item>
           <Command.Item>b</Command.Item>
-          <Command.Separator />
+          <Divider />
           <Command.Item>c</Command.Item>
         </Command.Group>
 
@@ -131,7 +132,7 @@ export const DarkMode = () => {
               <Command.Item onSelect={() => toast({ title: 'Emoji' })}>Search Emoji</Command.Item>
               <Command.Item onSelect={() => toast({ title: 'calculator' })}>Calculator</Command.Item>
             </Command.Group>
-            <Command.Separator />
+            <Divider />
             <Command.Group heading="Settings">
               <Command.Item
                 value="profile"

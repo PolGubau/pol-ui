@@ -18,7 +18,6 @@ import { CommandGroup } from './components/group'
 import { CommandList } from './components/list'
 import { CommandInput } from './components/commandInput'
 import { CommandItem } from './components/item'
-import { CommandSeparator } from './components/separator'
 import { CommandLoading } from './components/loading'
 import { SlottableWithNestedChildren, findNextSibling, findPreviousSibling } from './utils'
 import { getTheme } from '../../theme-store'
@@ -534,7 +533,6 @@ const command = Object.assign(Command, {
   Item: CommandItem,
   Input: CommandInput,
   Group: CommandGroup,
-  Separator: CommandSeparator,
   Loading: CommandLoading,
   Empty: CommandEmpty,
 })
@@ -546,7 +544,6 @@ export { Command as CommandRoot }
 export { CommandList as CommandList }
 export { CommandItem as CommandItem }
 export { CommandInput as CommandInput }
-export { CommandSeparator as CommandSeparator }
 export { CommandLoading as CommandLoading }
 export { CommandEmpty as CommandEmpty }
 
