@@ -50,11 +50,11 @@ const ScrollImage = ({
   initialRadius = 0,
   ...props
 }: ScrollImageProps) => {
-  gsap.registerPlugin(useGSAP, ScrollTrigger)
-
+  
   const maskId = useId()
   const filterId = useId()
   const main = useRef<SVGSVGElement>(null)
+  gsap.registerPlugin(useGSAP, ScrollTrigger)
   useGSAP(
     () => {
       gsap.to('#item', {

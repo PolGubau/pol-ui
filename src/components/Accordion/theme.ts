@@ -19,9 +19,9 @@ export const accordionTheme: AccordionTheme = {
         on: 'rotate-180 ',
       },
     },
-    base: 'flex w-full items-center justify-between first:rounded-t-xl last:rounded-b-xl py-5 px-5 text-left font-medium text-secondary-500 dark:text-secondary-400 focus:bg-secondary-300 dark:focus:bg-secondary-700 focus:outline-none outline-none transition-all cursor-pointer',
+    base: 'flex w-full items-center justify-between first:rounded-t-xl last:rounded-b-xl py-6 px-4 text-left',
     isBordered: {
-      off: 'hover:bg-secondary-100 dark:hover:bg-secondary-800 dark:focus:ring-secondary-800',
+      off: '',
       on: 'bg-transparent',
     },
     heading: '',

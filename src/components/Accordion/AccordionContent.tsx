@@ -49,7 +49,7 @@ export const AccordionContent: FC<AccordionContentProps> = ({
             initial={hasMotion ? { opacity: 0, height: 0, scale: 0.99 } : undefined}
             animate={hasMotion ? { opacity: 1, height: 'auto', scale: 1 } : undefined}
             exit={hasMotion ? { opacity: 0, height: 0, scale: 0.99 } : undefined}
-            transition={hasMotion ? { ease: 'linear', duration: 0.2 } : undefined}
+            transition={hasMotion ? { ease: 'linear', duration: 0.15 } : undefined}
           >
             {children}
           </motion.div>

@@ -22,7 +22,7 @@ export const inputTheme: InputTheme = {
     },
 
     input: {
-      base: 'block w-full group  disabled:cursor-not-allowed disabled:opacity-50 outline-none focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-opacity-50   focus:ring-offset-2 focus:ring-offset-secondary-50 dark:focus:ring-offset-secondary-900 transition resize-none rounded-lg',
+      base: 'block w-full group  disabled:cursor-not-allowed disabled:opacity-50 outline-none focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-opacity-50 focus:ring-offset-2 focus:ring-offset-secondary-50 dark:focus:ring-offset-secondary-900 transition resize-none rounded-lg',
       border: {
         on: 'border-2 border-opacity-30 group-focus:border-opacity-100',
         off: '',

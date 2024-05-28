@@ -117,12 +117,13 @@ export const poluiPlugin = (config: CustomPluginConfig = {}): ReturnType<typeof 
 
     {
       darkMode: 'class',
-
-      extend: {
-        colors: {
-          ...parsedColors,
+      theme: {
+        extend: {
+          colors: {
+            ...parsedColors,
+          },
+          ...animations,
         },
-        ...animations,
       },
     },
   )

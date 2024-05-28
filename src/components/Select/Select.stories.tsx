@@ -1,39 +1,98 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { BsFlagFill } from 'react-icons/bs';
-import type { SelectProps } from './Select';
-import { Select } from './Select';
-
+import type { Meta, StoryFn } from '@storybook/react'
+import { Select, SelectProps, SelectGroup, SelectItem, SelectLabel } from './Select'
+import { Divider } from '../Divider'
+import React from 'react'
+import { Toaster, toast } from '../Toaster'
+import { Button } from '../Button'
 export default {
   title: 'Components/Select',
   component: Select,
-} as Meta;
+  decorators: [
+    Story => (
+      <div className="p-4 bg-primary-50 dark:bg-secondary-800">
+        <Story />
+        <Toaster />
+      </div>
+    ),
+  ],
+  tags: ['autodocs'],
+} as Meta
 
-const Template: StoryFn<SelectProps> = (args) => <Select {...args} />;
+const Template: StoryFn<SelectProps> = args => <Select {...args} />
 
-export const DefaultSelect = Template.bind({});
-DefaultSelect.storyName = 'Select';
-DefaultSelect.args = {
-  id: 'countries',
+export const Default = Template.bind({})
+Default.args = {
   children: (
     <>
-      <option>United States</option>
-      <option>Canada</option>
-      <option>France</option>
-      <option>Germany</option>
+      <SelectGroup>
+        <SelectLabel>Fruits</SelectLabel>
+        <SelectItem value="apple">Apple</SelectItem>
+        <SelectItem value="banana">Banana</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Grapes</SelectItem>
+        <SelectItem value="pineapple">Pineapple</SelectItem>
+      </SelectGroup>
+      <Divider className="my-1" />
+      <SelectGroup>
+        <SelectLabel>Cities</SelectLabel>
+        <SelectItem value="mataro">Mataró</SelectItem>
+        <SelectItem value="barcelona">Barcelona</SelectItem>
+        <SelectItem value="madrid">Madrid</SelectItem>
+        <SelectItem value="valencia">Valencia</SelectItem>
+        <SelectItem value="sevilla">Sevilla</SelectItem>
+        <SelectItem value="premia">Premià</SelectItem>
+      </SelectGroup>
     </>
   ),
-};
+}
 
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-  id: 'countries',
-  icon: BsFlagFill,
-  children: (
+export const Controlled = () => {
+  const [value, setValue] = React.useState('apple')
+  return (
     <>
-      <option>United States</option>
-      <option>Canada</option>
-      <option>France</option>
-      <option>Germany</option>
+      <p>Select value: {value}</p>
+      <Select value={value} onChange={setValue}>
+        <SelectGroup>
+          <SelectLabel>Fruits</SelectLabel>
+          <SelectItem value="apple">Apple</SelectItem>
+          <SelectItem value="banana">Banana</SelectItem>
+          <SelectItem value="blueberry">Blueberry</SelectItem>
+          <SelectItem value="grapes">Grapes</SelectItem>
+          <SelectItem value="pineapple">Pineapple</SelectItem>
+        </SelectGroup>
+      </Select>
     </>
-  ),
-};
+  )
+}
+
+export const UncontrolledInForm = () => {
+  return (
+    <form
+      onSubmit={e => {
+        e.preventDefault()
+        const formData = new FormData(e.target as HTMLFormElement)
+        toast({
+          title: 'Form submitted!',
+          description: JSON.stringify(Object.fromEntries(formData.entries()), null, 2),
+        })
+      }}
+    >
+      <Select
+        name="fruit"
+        defaultValue="apple"
+        defaultTriggerOptions={{
+          className: 'rounded-none rounded-l-xl justify-between',
+        }}
+      >
+        <SelectItem value="apple">Apple</SelectItem>
+        <SelectItem value="banana">Banana</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Grapes</SelectItem>
+        <SelectItem value="pineapple">Pineapple</SelectItem>
+      </Select>
+      <Button className="rounded-none rounded-r-xl" type="submit">
+        Submit
+      </Button>
+    </form>
+  )
+}

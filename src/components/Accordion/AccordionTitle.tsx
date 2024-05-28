@@ -6,9 +6,10 @@ import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial, HeadingLevel, IBoolean } from '../../types/types'
 import { useAccordionContext } from './AccordionPanelContext'
-import { HeadingLevelEnum } from '../../types/enums'
+import { ColorsEnum, HeadingLevelEnum, RoundedSizesEnum } from '../../types/enums'
 import DynamicHeading from '../DynamicHeading/DynamicHeading'
 import { useRipple } from '../../hooks'
+import { Button, ButtonProps } from '../Button'
 
 export interface AccordionTitleTheme {
   arrow: {
@@ -31,7 +32,7 @@ export interface AccordionTitleTheme {
  * @property {HeadingLevel} as
  * @property {FC<ComponentProps<'svg'>>} arrowIcon
  */
-export interface AccordionTitleProps extends ComponentProps<'button'> {
+export interface AccordionTitleProps extends ButtonProps {
   arrowIcon?: FC<ComponentProps<'svg'>>
   as?: HeadingLevel
   theme?: DeepPartial<AccordionTitleTheme>
@@ -61,34 +62,19 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
   const onClick = () => typeof setOpen !== 'undefined' && setOpen()
 
   const theme = mergeDeep(getTheme().accordion.title, customTheme)
-  const [ripple, event] = useRipple({
-    disabled: !setOpen,
-    className: twMerge('bg-secondary-700', colorToTailwindName),
-  })
+
   return (
-    <button
-      ref={ripple}
-      onPointerDown={event}
-      onKeyDown={key => {
-        if (key.key === 'Enter' && setOpen) {
-          // get the middle point
-
-          const middleX = (ripple.current?.getBoundingClientRect().width ?? 100) / 2
-
-          const middleY = (ripple.current?.getBoundingClientRect().height ?? 80) / 2
-          event({
-            clientX: middleX,
-            clientY: middleY,
-          })
-        }
-      }}
+    <Button
+      color={props.color || ColorsEnum.secondary}
+      rounded={props.rounded || 'none'}
+      variant={props.variant || 'ghost'}
+      onClick={onClick}
       className={twMerge(
         theme.base,
         theme.isBordered[bordered ? 'on' : 'off'],
         theme.open[isOpen ? 'on' : 'off'],
         className,
       )}
-      onClick={onClick}
       type="button"
       {...props}
     >
@@ -103,6 +89,6 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
           data-testid="ui-accordion-arrow"
         />
       )}
-    </button>
+    </Button>
   )
 }
