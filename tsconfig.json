@@ -15,11 +15,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
 
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
@@ -28,7 +23,6 @@
   },
   "exclude": ["./build/", "./coverage/", "./lib/", "./.next/", "postcss.config.js", "./storybook-static/"],
   "include": [
-    ".next/types/**/*.ts",
     "**/*.js",
     "**/*.mdx",
     "**/*.mjs",
@@ -36,8 +30,6 @@
     "**/*.tsx",
     "postcss.config.js",
     "tailwind.config.ts",
-    "src/a.sass",
-    "src/components/AppleWatchDock/AppleWatchDock.jsx",
-    "src/components/AppleWatchDock/Item.jsx"
+    "src/a.sass"
   ]
 }

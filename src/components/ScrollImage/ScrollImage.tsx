@@ -1,10 +1,11 @@
+'use client'
+
 import React, { useId, useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { cn } from '../../helpers'
+import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 
-gsap.registerPlugin(useGSAP, ScrollTrigger)
+import { cn } from '../../helpers'
 
 export interface ScrollImageProps extends React.SVGProps<SVGImageElement> {
   className?: string
@@ -49,6 +50,8 @@ const ScrollImage = ({
   initialRadius = 0,
   ...props
 }: ScrollImageProps) => {
+  gsap.registerPlugin(useGSAP, ScrollTrigger)
+
   const maskId = useId()
   const filterId = useId()
   const main = useRef<SVGSVGElement>(null)
