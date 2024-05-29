@@ -127,5 +127,11 @@ export const theme: PoluiTheme = {
 }
 
 /*
-"You see here kid? You gotta just go for it; don’t think about what comes after or what came before. You just gotta bend your knees, take a deep breath, and jump. And you might think; what if I fall? Well, what if you don’t? What if you fly?" - Alan Watts
+"You see here kid? 
+You gotta just go for it; don’t think about what comes after or what came before. 
+just gotta bend your knees, take a deep breath, and jump. 
+And you might think; what if I fall? 
+Well, what if you don’t? 
+What if you fly?" 
+- Alan Watts
 */
