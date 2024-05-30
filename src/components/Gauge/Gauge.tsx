@@ -80,7 +80,7 @@ const Gauge: React.FC<GaugeProps> = ({
           ${50 - 46 - strokeWidth / 2} ${50 - 46 - strokeWidth / 2}
           ${46 * 2 + strokeWidth} ${46 * 2 + strokeWidth}
           `}
-          className={cn('w-24 bg-red-100', rest.className)}
+          className={cn('w-24', rest.className)}
           {...rest}
         >
           <defs>

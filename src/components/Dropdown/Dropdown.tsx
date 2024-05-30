@@ -18,7 +18,7 @@ const Dropdown = ({ trigger, label, children, disabled, ...props }: DropdownProp
   return (
     <D.Root>
       <D.Trigger disabled={disabled} asChild>
-        {trigger ?? <Button>{label ?? 'Open'}</Button>}
+        {trigger ?? <Button name={label}>{label ?? 'Open'}</Button>}
       </D.Trigger>
       {!disabled && (
         <DropdownContent sideOffset={props.sideOffset ?? 5} {...props}>

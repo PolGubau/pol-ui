@@ -16,7 +16,7 @@ const Slider = React.forwardRef<React.ElementRef<typeof SliderPrimitive.Root>, S
     const theme: SliderTheme = mergeDeep(getTheme().slider, customTheme)
 
     return (
-      <SliderPrimitive.Root ref={ref} className={cn(theme.base, className)} {...props}>
+      <SliderPrimitive.Root ref={ref} className={cn(theme.base, className)} {...props} data-testid="ui-slider">
         <SliderPrimitive.Track className={theme.track}>
           <SliderPrimitive.Range className={cn(theme.range.base, theme.range.colors[color])} />
         </SliderPrimitive.Track>
