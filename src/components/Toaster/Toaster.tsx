@@ -1,12 +1,12 @@
 'use client'
 
 import { Toaster as PrimitiveToaster, toast as primitiveToast } from 'sonner'
-import type { ToastT, ToasterProps } from './types'
-import { Loader } from '../Loader'
 import { mergeDeep } from '../../helpers'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types'
+import { Loader } from '../Loader'
 import type { ToastTheme } from './theme'
+import type { ToastT, ToasterProps } from './types'
 
 /**
  * Toaster component for displaying toasts.
@@ -24,7 +24,7 @@ export const Toaster = (props: ToasterProps): React.ReactNode => {
  * @interface ToastProps
  * @extends {Omit<ToastT, 'id'>}
  */
-export interface ToastProps extends Omit<ToastT, 'id'> {
+export interface ToastProps extends Omit<ToastT, 'id' | 'cancel'> {
   /**
    * @name theme
    * @type {DeepPartial<ToastTheme>}
@@ -55,7 +55,6 @@ export const toast = ({
 
   primitiveToast(title, {
     unstyled: true,
-
     classNames: {
       toast: theme.base,
       title: theme.title,

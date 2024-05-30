@@ -1,11 +1,11 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import { BsDribbble, BsGithub, BsInstagram } from 'react-icons/bs'
-import { Footer } from './Footer'
 import { Button } from '../Button'
+import { Copyright } from '../Copyright'
 import { Divider } from '../Divider'
 import { IconButton } from '../IconButton'
-import { Copyright } from '../Copyright'
 import { Link } from '../Link'
+import { Footer } from './Footer'
 import { FooterBrand } from './FooterBrand'
 import { FooterLinkGroup } from './FooterLinkGroup'
 
@@ -99,16 +99,16 @@ WithSocialMediaFooter.args = {
       <div className="w-full sm:flex sm:items-center sm:justify-between">
         <Copyright href="#" by="Pol-ui™" year={2022} />
         <div className="mt-4 flex space-x-2 sm:mt-0 sm:justify-center">
-          <IconButton href="#">
+          <IconButton>
             <BsDribbble size={20} />
           </IconButton>
-          <IconButton href="#">
+          <IconButton>
             <BsInstagram size={20} />
           </IconButton>
-          <IconButton href="#">
+          <IconButton>
             <BsGithub size={20} />
           </IconButton>
-          <IconButton href="#">
+          <IconButton>
             <BsDribbble size={20} />
           </IconButton>
         </div>
@@ -158,16 +158,16 @@ SitemapLinksFooter.args = {
       <div className="w-full px-4 py-6 sm:flex sm:items-center sm:justify-between sm:px-10">
         <Copyright href="#" by="Pol-ui" year={2022} />
         <div className="mt-4 flex space-x-2 sm:mt-0 sm:justify-center">
-          <IconButton href="#">
+          <IconButton>
             <BsDribbble size={20} />
           </IconButton>
-          <IconButton href="#">
+          <IconButton>
             <BsInstagram size={20} />
           </IconButton>
-          <IconButton href="#">
+          <IconButton>
             <BsGithub size={20} />
           </IconButton>
-          <IconButton href="#">
+          <IconButton>
             <BsDribbble size={20} />
           </IconButton>
         </div>

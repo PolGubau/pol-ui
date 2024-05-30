@@ -125,20 +125,3 @@ CustomLinkClass.args = {
   ...Default.args,
   linkClassName: 'text-primary-100 bg-primary-800 w-[150px]',
 }
-export const WithoutHamburguer = Template.bind({})
-WithoutHamburguer.args = {
-  ...Default.args,
-  hasHambuguer: false,
-  rightContent: (
-    <div className="flex gap-3 md:order-2">
-      <Dropdown
-        label="User settings"
-        trigger={<Avatar alt="User settings" img="https://avatars.githubusercontent.com/u/63197171?v=4" />}
-      >
-        <DropdownItem label="Profile" />
-        <DropdownItem label="Settings" />
-        <DropdownItem label="Logout" />
-      </Dropdown>
-    </div>
-  ),
-}

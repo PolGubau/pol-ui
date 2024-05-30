@@ -34,9 +34,9 @@ const Template: StoryFn<BreadcrumbComponentProps> = args => (
     <HiOutlineChevronRight className="text-secondary-600 ml-2" />
 
     <Dropdown label={'...'} className="bg-transparent text-secondary-900">
-      <DropdownItem href="https://polgubau.com/" label="Authors" />
-      <DropdownItem href="https://polgubau.com/" label="Selected" />
-      <DropdownItem href="https://polgubau.com/" label="Matched" />
+      <DropdownItem label="Authors" />
+      <DropdownItem label="Selected" />
+      <DropdownItem label="Matched" />
     </Dropdown>
 
     <BreadcrumbItem>Pol Gubau Amores</BreadcrumbItem>

@@ -1,11 +1,11 @@
 import type { Meta, StoryFn } from '@storybook/react'
-import { Input } from './Input'
-import { TbAt, TbEye, TbSend, TbUser } from 'react-icons/tb'
+import { TbAt, TbEye, TbUser } from 'react-icons/tb'
 import { ColorsEnum } from '../../types/enums'
+import { Input } from './Input'
 
-import { IconButton } from '../IconButton'
-import { Button } from '../Button'
 import type { Colors } from '../../types'
+import { Button } from '../Button'
+import { IconButton } from '../IconButton'
 import type { InputProps } from './props'
 
 export default {
@@ -48,16 +48,6 @@ LeftLabel.args = {
   placeholder: 'pol@ui.com',
   label: 'Email',
   labelPosition: 'left',
-}
-
-export const WithAddon = Template.bind({})
-WithAddon.args = {
-  placeholder: 'Addon',
-  addon: (
-    <IconButton>
-      <TbSend />
-    </IconButton>
-  ),
 }
 
 export const WithIcon = Template.bind({})
@@ -126,7 +116,7 @@ export const AllColorsWithBorder = () => (
           placeholder={color}
           color={color as Colors}
           rightComponent={
-            <IconButton size="sm" outline color={color as Colors} onClick={() => alert(color)}>
+            <IconButton size="sm" variant={'outline'} color={color as Colors} onClick={() => alert(color)}>
               <TbEye size={18} />
             </IconButton>
           }

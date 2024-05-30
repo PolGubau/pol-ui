@@ -28,7 +28,7 @@ const Template: StoryFn<TooltipProps> = args => <Tooltip {...args} />
 export const DefaultTooltip = Template.bind({})
 DefaultTooltip.storyName = 'Default'
 DefaultTooltip.args = {
-  content: 'Tooltip content',
+  label: 'Tooltip content',
   children: <Button>Default tooltip</Button>,
 }
 export const DefaultOpened = Template.bind({})
@@ -39,7 +39,7 @@ DefaultOpened.args = {
 
 export const IconUseCase = Template.bind({})
 IconUseCase.args = {
-  content: 'Upload a file',
+  label: 'Upload a file',
   children: (
     <IconButton>
       <TbFile size={20} />
@@ -50,12 +50,12 @@ IconUseCase.args = {
 export const DarkMode = () => (
   <div className=" grid grid-cols-2 border border-secondary rounded-2xl overflow-hidden">
     <div className="flex p-8 ">
-      <Tooltip content="Tooltip content">
+      <Tooltip label="Tooltip content">
         <Button>Default tooltip</Button>
       </Tooltip>
     </div>
     <div className="flex p-8 bg-secondary-900 dark">
-      <Tooltip content="Tooltip content">
+      <Tooltip label="Tooltip content">
         <Button>Default tooltip</Button>
       </Tooltip>
     </div>
@@ -66,7 +66,7 @@ export const Controlled = () => {
   const { value, toggle } = useBoolean(false)
   return (
     <div className="flex gap-4">
-      <Tooltip open={value} onOpenChange={toggle} content="My tooltip">
+      <Tooltip open={value} onOpenChange={toggle} label="My tooltip">
         <Button>My trigger</Button>
       </Tooltip>
       <Button color="secondary" onClick={toggle} className="w-fit">
@@ -79,7 +79,7 @@ export const AllSides = () => {
   return (
     <div className="flex gap-4">
       {Object.keys(SidesEnum).map(side => (
-        <Tooltip key={side} content="Tooltip content" side={side as Side}>
+        <Tooltip key={side} label="Tooltip content" side={side as Side}>
           <Button>{side} tooltip</Button>
         </Tooltip>
       ))}
@@ -90,7 +90,7 @@ export const AllAlignments = () => {
   return (
     <div className="flex gap-4">
       {Object.keys(AlignEnum).map(align => (
-        <Tooltip key={align} content="Tooltip content" align={align as Align}>
+        <Tooltip key={align} label="Tooltip content" align={align as Align}>
           <Button>{align} tooltip</Button>
         </Tooltip>
       ))}

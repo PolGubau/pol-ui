@@ -48,22 +48,22 @@ describe('Components / Badge', () => {
         badge: {
           root: {
             size: {
-              xxl: 'text-2xl',
+              xl: 'text-2xl',
             },
           },
           icon: {
             off: 'rounded-lg p-1',
             on: 'rounded-full p-5',
             size: {
-              xxl: 'w-6 h-6',
+              xl: 'w-6 h-6',
             },
           },
         },
       }
       render(
         <PoluiProvider theme={{ theme }}>
-          <Badge size="xxl">A badge</Badge>
-          <Badge icon={HiCheck} size="xxl" />
+          <Badge size="xl">A badge</Badge>
+          <Badge icon={HiCheck} size="xl" />
         </PoluiProvider>,
       )
 
