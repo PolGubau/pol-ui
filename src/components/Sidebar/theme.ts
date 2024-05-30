@@ -59,7 +59,7 @@ export const sidebarTheme: SidebarTheme = {
         },
       },
     },
-    list: 'space-y-2 py-2 animate-slideDownAndFade',
+    list: 'space-y-2 py-2 animate-slideDownIn',
   },
 
   item: {

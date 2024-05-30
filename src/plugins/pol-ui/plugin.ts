@@ -6,6 +6,7 @@ import { utilities } from './utilities'
 import type { CustomPluginConfig } from './types'
 import type { ThemeColors } from './colors'
 import { colors } from './colors/colors'
+import { singleTimeline } from './helpers'
 
 export const poluiPlugin = (config: CustomPluginConfig = {}): ReturnType<typeof plugin> => {
   const { colors: userColors = {} } = config
@@ -38,81 +39,81 @@ export const poluiPlugin = (config: CustomPluginConfig = {}): ReturnType<typeof 
   }, {} as ThemeColors)
 
   return plugin(
-    ({ addUtilities, matchUtilities, addVariant, theme }) => {
-      addUtilities({ ...utilities })
-      matchUtilities(
-        {
-          timeline: (value, { modifier }) => ({
-            animationTimeline: modifier ? `--${modifier}` : value,
-          }),
+    ({ addUtilities, matchUtilities, theme }) => {
+      // Predefined animations in same element
+
+      interface DynamicUtil {
+        [key: string]: {
+          css: string
+          values: string[]
+          generateValue?: (value: string) => string
+        }
+      }
+
+      const dynamicUtils: DynamicUtil = {
+        'animate-delay': {
+          css: 'animation-delay',
+          values: theme('animationDelay'),
         },
-        {
-          values: {
-            DEFAULT: 'scroll(y)',
-            auto: 'auto',
-            none: 'none',
-            'scroll-x': 'scroll(x)',
-            view: 'view()',
+        'animate-duration': { css: 'animation-duration', values: theme('animationDuration') },
+        'animate-iteration-count': { css: 'animation-iteration-count', values: theme('animationIterationCount') },
+        'animate-fill-mode': { css: 'animation-fill-mode', values: theme('animationFillMode') },
+        'animate-bezier': { css: 'animation-timing-function', values: theme('animationCubicBezier') },
+        'animate-steps': {
+          css: 'animation-timing-function',
+          values: theme('animationSteps'),
+          generateValue: (value: string | number) => `steps(${value})`,
+        },
+        'animate-range': {
+          css: 'animation-range',
+          values: theme('animationRange'),
+          generateValue: (value: string) => value,
+        },
+        timeline: {
+          css: 'animation-timeline',
+          values: theme('timeline'),
+          generateValue: (value: string) => singleTimeline(value),
+        },
+        'scroll-timeline': {
+          css: 'scroll-timeline-name',
+          values: theme('scrollTimeline'),
+          generateValue: (value: string) => singleTimeline(value),
+        },
+        'view-timeline': {
+          css: 'view-timeline-name',
+          values: theme('viewTimeline'),
+          generateValue: (value: string) => singleTimeline(value),
+        },
+        'scroll-timeline-axis': { css: 'scroll-timeline-axis', values: theme('scrollTimelineAxis') },
+        'view-timeline-axis': { css: 'view-timeline-axis', values: theme('viewTimelineAxis') },
+        'scroll-animate': {
+          css: 'scroll-timeline-name',
+          values: theme('scrollTimeline'),
+          generateValue: (value: string) => `${singleTimeline(value)};\n  animation-timeline: ${singleTimeline(value)}`,
+        },
+        'view-animate': {
+          css: 'view-timeline-name',
+          values: theme('viewTimeline'),
+          generateValue: (value: string) => `${singleTimeline(value)};\n  animation-timeline: ${singleTimeline(value)}`,
+        },
+      }
+
+      const dynamicUtilsEntries = Object.entries(dynamicUtils)
+
+      dynamicUtilsEntries.forEach(([name, { css, values, generateValue }]) => {
+        matchUtilities(
+          {
+            [name]: value => ({
+              [css]: generateValue ? generateValue(value) : value,
+            }),
           },
-          modifiers: 'any',
-        },
-      )
-      matchUtilities(
-        {
-          'scroll-timeline': (value, { modifier }) => ({
-            scrollTimeline: (modifier ? `--${modifier} ` : 'none ') + value,
-          }),
-        },
-        {
-          values: theme('timelineValues'),
-          modifiers: 'any',
-        },
-      )
-
-      matchUtilities(
-        {
-          'view-timeline': (value, { modifier }) => ({
-            viewTimeline: (modifier ? `--${modifier} ` : 'none ') + value,
-          }),
-        },
-        {
-          values: theme('timelineValues'),
-          modifiers: 'any',
-        },
-      )
-
-      matchUtilities(
-        {
-          scope: (_v, { modifier }) => ({
-            timelineScope: `--${modifier}`,
-          }),
-        },
-        { values: { DEFAULT: '' }, modifiers: 'any' },
-      )
-
-      /**
-       * Animation range utility
-       * Use to be [animation-range:0px_300px], now you can use range-0px_300px
-       * @example range-0px_300px
-       */
-      matchUtilities(
-        {
-          range: (value, { modifier }) => ({
-            animationRange: splitAndCombine(value, modifier),
-          }),
-        },
-        {
-          values: {
-            DEFAULT: 'cover cover',
-            'on-entry': 'entry entry',
-            'on-exit': 'exit exit',
-            contain: 'contain contain',
+          {
+            values: Object.fromEntries(values.map(value => [value, value])),
           },
-          modifiers: 'any',
-        },
-      )
+        )
+      })
 
-      addVariant('no-animations', '@supports not (animation-range: cover)')
+      addUtilities(utilities)
     },
 
     {
@@ -127,13 +128,4 @@ export const poluiPlugin = (config: CustomPluginConfig = {}): ReturnType<typeof 
       },
     },
   )
-}
-
-function splitAndCombine(values: string, modifiers: string | null) {
-  const valueArray = (values || '').split(' ')
-  const modifierArray = (modifiers || ['0_100%'].join('_')).split('_')
-
-  const combinedValues = [valueArray[0], modifierArray[0], valueArray[1], modifierArray[1]]
-
-  return combinedValues.join(' ')
 }
