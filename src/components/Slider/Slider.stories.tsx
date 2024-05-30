@@ -26,8 +26,11 @@ export default {
 const Template: StoryFn<SliderProps> = args => <Slider {...args} />
 
 export const Default = Template.bind({})
-Default.storyName = 'Slider'
 Default.args = {}
+export const Disabled = Template.bind({})
+Disabled.args = {
+  disabled: true,
+}
 
 export const AllColors = () => {
   return (

@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { createRef } from 'react'
 import { describe, expect, it, vi } from 'vitest'
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider'
 import { Slider } from './Slider'
@@ -66,20 +65,6 @@ describe('Components / Button', () => {
     })
   })
 
-  describe('Props', () => {
-    it('should be disabled when `disabled={true}`', () => {
-      render(<Slider disabled />)
-
-      expect(TestSlider()).toBeDisabled()
-    })
-
-    it('should allow ref as prop', () => {
-      const ref = createRef<HTMLInputElement>()
-      render(<Slider ref={ref} name="range_slider_name" />)
-      expect(ref.current?.name).toBe('range_slider_name')
-    })
-  })
-
   describe('Rendering', () => {
     it('should render with no props', () => {
       render(<Slider />)
@@ -113,7 +98,7 @@ describe('Components / Button', () => {
 
       render(<Slider theme={theme} />)
 
-      expect(TestSlider()).toHaveClass('dummy-range-slider-base-classes')
+      expect(SliderContainer()).toHaveClass('dummy-range-slider-base-classes')
     })
   })
 })

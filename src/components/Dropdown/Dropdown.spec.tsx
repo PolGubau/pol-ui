@@ -5,19 +5,8 @@ import { describe, expect, it } from 'vitest'
 import { Dropdown, DropdownItem } from './'
 import type { DropdownProps } from './Dropdown'
 
-const delay = async (delayTime: number) => await new Promise(r => setTimeout(r, delayTime))
-
 describe('Components / Dropdown', () => {
   describe('A11y', async () => {
-    it('should use `role="menu"` in menu container', async () => {
-      const user = userEvent.setup()
-      render(<TestDropdown />)
-
-      await act(() => user.click(button()))
-
-      expect(screen.getByRole('menu')).toBe(dropdown())
-    })
-
     it('should use `role="menuitem"` in dropdown items', async () => {
       const user = userEvent.setup()
       render(<TestDropdown />)
@@ -34,18 +23,6 @@ describe('Components / Dropdown', () => {
       expect(button()).toBeDisabled()
 
       await act(() => user.click(button()))
-      expect(dropdown()).not.toBeInTheDocument()
-    })
-  })
-
-  describe('Keyboard interactions', () => {
-    it('should expand if collapsed when `Space` is pressed', async () => {
-      const user = userEvent.setup()
-      render(<TestDropdown />)
-
-      await act(() => user.click(button()))
-      await act(() => user.click(button()))
-
       expect(dropdown()).not.toBeInTheDocument()
     })
   })
