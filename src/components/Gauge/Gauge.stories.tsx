@@ -1,5 +1,4 @@
 import type { Meta } from '@storybook/react'
-import type { GaugeProps } from './Gauge'
 import Gauge from './Gauge'
 
 export default {
@@ -18,12 +17,12 @@ export default {
   },
 } as Meta
 
-type FuelLevelGaugeProps = Pick<GaugeProps, 'value'>
+export const Default = () => <Gauge value={55} />
 
-export const Default: React.FC<FuelLevelGaugeProps> = ({ value }) => {
-  const options: Omit<GaugeProps, 'value'> = {
-    min: 0,
-    max: 100,
-  }
-  return <Gauge {...options} value={value} />
-}
+export const WithCustomValue = () => <Gauge value={75} />
+export const Complete = () => <Gauge value={100} />
+export const ABit = () => <Gauge value={10} />
+export const Debug = () => <Gauge value={90} debug />
+
+export const WithCustomMaxValue = () => <Gauge value={1} max={3} />
+export const ShowValue = () => <Gauge value={2} max={3} show="value" />
