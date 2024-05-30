@@ -16,7 +16,7 @@ export const FileList = React.memo((props: React.PropsWithChildren<FileListProps
     <ul className="flex flex-wrap justify-center gap-4">
       {files.map((file: File) => (
         <Tooltip
-          content={
+          label={
             <div className="flex justify-normal flex-col items-start gap-1">
               {/* try to show the file */}
               {file.type.startsWith('image') && (

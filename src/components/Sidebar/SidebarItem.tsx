@@ -59,7 +59,7 @@ const ListItem: FC<
     <motion.li {...props} ref={ripple} onPointerDown={event}>
       {collapsed ? (
         <Tooltip
-          content={
+          label={
             <Children id={id} theme={theme}>
               {tooltipChildren}
             </Children>

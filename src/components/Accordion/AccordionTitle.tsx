@@ -4,12 +4,11 @@ import type { ComponentProps, FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import { getTheme } from '../../theme-store'
+import { ColorsEnum, HeadingLevelEnum } from '../../types/enums'
 import type { DeepPartial, HeadingLevel, IBoolean } from '../../types/types'
-import { useAccordionContext } from './AccordionPanelContext'
-import { ColorsEnum, HeadingLevelEnum, RoundedSizesEnum } from '../../types/enums'
-import DynamicHeading from '../DynamicHeading/DynamicHeading'
-import { useRipple } from '../../hooks'
 import { Button, ButtonProps } from '../Button'
+import DynamicHeading from '../DynamicHeading/DynamicHeading'
+import { useAccordionContext } from './AccordionPanelContext'
 
 export interface AccordionTitleTheme {
   arrow: {

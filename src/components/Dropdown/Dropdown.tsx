@@ -21,11 +21,9 @@ const Dropdown = ({ trigger, label, children, disabled, ...props }: DropdownProp
         {trigger ?? <Button>{label ?? 'Open'}</Button>}
       </D.Trigger>
       {!disabled && (
-        <D.Portal>
-          <DropdownContent sideOffset={props.sideOffset ?? 5} {...props}>
-            {children}
-          </DropdownContent>
-        </D.Portal>
+        <DropdownContent sideOffset={props.sideOffset ?? 5} {...props}>
+          {children}
+        </DropdownContent>
       )}
     </D.Root>
   )
@@ -82,13 +80,10 @@ const DropdownContent = forwardRef<ElementRef<typeof D.Content>, ComponentPropsW
         ref={ref}
         sideOffset={sideOffset}
         className={cn(
-          'z-50 min-w-[8rem] overflow-hidden rounded-lg border bg-secondary-50 p-1 shadow-md',
+          'z-50 min-w-[8rem] overflow-hidden rounded-md border bg-secondary-50 dark:secondary-900 p-1 shadow-md ',
+          // 'animate-bounce delay-150 duration-300',
+          'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
 
-          // base animation classes
-          'data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out',
-
-          // sides animation classes
-          'data-[state=open]:data-[side=bottom]:animate-slide-in-bottom data-[state=closed]:data-[side=bottom]:animate-slide-out-bottom',
           className,
         )}
         {...props}

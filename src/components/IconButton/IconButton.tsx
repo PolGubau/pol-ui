@@ -59,7 +59,7 @@ export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
     const theme = mergeDeep(getTheme().iconButton, customTheme)
 
     return (
-      <Tooltip content={allowTooltip && label}>
+      <Tooltip label={allowTooltip && label}>
         <Button
           {...props}
           variant={variant}

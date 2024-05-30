@@ -23,7 +23,6 @@ import { navbarTheme } from './components/Navbar/theme'
 import { paginationTheme } from './components/Pagination/theme'
 import { progressTheme } from './components/Progress/theme'
 import { radioTheme } from './components/Radio/theme'
-import { rangeSliderTheme } from './components/RangeSlider/theme'
 import { ratingTheme } from './components/Rating/theme'
 import { selectTheme } from './components/Select/theme'
 import { sidebarTheme } from './components/Sidebar/theme'
@@ -51,6 +50,7 @@ import { followerPointerTheme } from './components/FollowingPointer/theme'
 import { hamburguerTheme } from './components/Hamburguer/theme'
 import { imageTrailTheme } from './components/ImageTrail/theme'
 import { kanbanTheme } from './components/Kanban/theme'
+import { sliderTheme } from './components/Slider/theme'
 import { linkTheme } from './components/Link/theme'
 import { navigationMenuTheme } from './components/NavigationMenu/theme'
 import { otpInputTheme } from './components/OtpInput/theme'
@@ -93,7 +93,7 @@ export const theme: PoluiTheme = {
   pagination: paginationTheme,
   progress: progressTheme,
   radio: radioTheme,
-  rangeSlider: rangeSliderTheme,
+  slider: sliderTheme,
   rating: ratingTheme,
   select: selectTheme,
   textInput: inputTheme,

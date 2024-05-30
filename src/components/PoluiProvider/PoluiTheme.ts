@@ -21,7 +21,7 @@ import type { NavbarTheme } from '../Navbar'
 import type { PaginationTheme } from '../Pagination'
 import type { ProgressTheme } from '../Progress'
 import type { RadioTheme } from '../Radio'
-import type { RangeSliderTheme } from '../RangeSlider'
+import type { SliderTheme } from '../Slider'
 import type { RatingTheme } from '../Rating'
 import type { SelectTheme } from '../Select'
 import type { SidebarTheme } from '../Sidebar'
@@ -105,7 +105,7 @@ export interface PoluiTheme {
   stickyScroll: StickyScrollTheme
   followerPointer: FollowerPointerTheme
   radio: RadioTheme
-  rangeSlider: RangeSliderTheme
+  slider: SliderTheme
   select: SelectTheme
   textInput: InputTheme
   switch: SwitchTheme

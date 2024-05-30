@@ -9,7 +9,7 @@ export default {
   component: Select,
   decorators: [
     Story => (
-      <div className="p-4 bg-primary-50 dark:bg-secondary-800">
+      <div className="p-4 bg-secondary-50 dark:bg-secondary-800">
         <Story />
         <Toaster />
       </div>

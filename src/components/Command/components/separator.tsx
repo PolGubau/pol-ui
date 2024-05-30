@@ -22,7 +22,7 @@ export const CommandSeparator = React.forwardRef<HTMLDivElement, SeparatorProps>
       {...etc}
       data-command-separator=""
       role="separator"
-      className={cn(theme.separator.base, props.className)}
+      className={cn(theme.base, props.className)}
     />
   )
 })

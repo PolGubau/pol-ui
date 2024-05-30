@@ -9,6 +9,6 @@ export const secondary: ColorScale = {
   500: '#bfbfbf',
   600: '#aeaeae',
   700: '#888888',
-  800: '#696969',
-  900: '#505050',
+  800: '#4c4c4c',
+  900: '#1c1c1c',
 }

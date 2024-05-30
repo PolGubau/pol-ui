@@ -3,54 +3,54 @@ import userEvent from '@testing-library/user-event'
 import { createRef } from 'react'
 import { describe, expect, it, vi } from 'vitest'
 import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider'
-import { RangeSlider } from './RangeSlider'
+import { Slider } from './Slider'
 
 describe('Components / Button', () => {
   describe('A11y', () => {
     it('should have `role="progressbar"` by default', () => {
-      render(<RangeSlider />)
-      expect(rangeSlider()).toBeInTheDocument()
+      render(<Slider />)
+      expect(Slider()).toBeInTheDocument()
     })
 
-    it('should be able to use any other role permitted for `RangeSlider`', () => {
+    it('should be able to use any other role permitted for `Slider`', () => {
       // eslint-disable-next-line jsx-a11y/aria-role
-      render(<RangeSlider role="rangeinput" />)
-      expect(rangeSlider('rangeinput')).toBeInTheDocument()
+      render(<Slider role="rangeinput" />)
+      expect(Slider('rangeinput')).toBeInTheDocument()
     })
   })
 
   describe('Keyboard interactions', () => {
     it('should focus when `Tab` is pressed', async () => {
       const user = userEvent.setup()
-      render(<RangeSlider />)
+      render(<Slider />)
       await user.tab()
-      expect(rangeSlider()).toHaveFocus()
+      expect(Slider()).toHaveFocus()
     })
 
     it('should be possible to `Tab` out', async () => {
       const user = userEvent.setup()
       render(
         <>
-          <RangeSlider />
-          <RangeSlider />
-          <RangeSlider />
+          <Slider />
+          <Slider />
+          <Slider />
         </>,
       )
-      const rangeSliderElements = rangeSliders()
+      const SliderElements = Sliders()
       await user.tab()
-      expect(rangeSliderElements[0]).toHaveFocus()
+      expect(SliderElements[0]).toHaveFocus()
       await user.tab()
-      expect(rangeSliderElements[1]).toHaveFocus()
+      expect(SliderElements[1]).toHaveFocus()
       await user.tab()
-      expect(rangeSliderElements[2]).toHaveFocus()
+      expect(SliderElements[2]).toHaveFocus()
     })
 
     it('should not trigger `onChange` when `Space` is pressed', async () => {
       const user = userEvent.setup()
       const handleChange = vi.fn()
-      render(<RangeSlider onChange={handleChange} />)
+      render(<Slider onChange={handleChange} />)
       await user.tab()
-      expect(rangeSlider()).toHaveFocus()
+      expect(Slider()).toHaveFocus()
       await user.keyboard('[Space]')
       expect(handleChange).not.toHaveBeenCalled()
     })
@@ -58,9 +58,9 @@ describe('Components / Button', () => {
     it('should not trigger `onChange` when `Enter` is pressed', async () => {
       const user = userEvent.setup()
       const handleChange = vi.fn()
-      render(<RangeSlider onChange={handleChange} />)
+      render(<Slider onChange={handleChange} />)
       await user.tab()
-      expect(rangeSlider()).toHaveFocus()
+      expect(Slider()).toHaveFocus()
       await user.keyboard('[Enter]')
       expect(handleChange).not.toHaveBeenCalled()
     })
@@ -68,43 +68,43 @@ describe('Components / Button', () => {
 
   describe('Props', () => {
     it('should allow HTML attributes for `<input type="range">`s', () => {
-      render(<RangeSlider formAction="post.php" min={4} max={10} step={0.5} />)
-      const rangeSliderElement = rangeSlider()
-      expect(rangeSliderElement).toHaveAttribute('formAction', 'post.php')
-      expect(rangeSliderElement).toHaveAttribute('min', '4')
-      expect(rangeSliderElement).toHaveAttribute('max', '10')
-      expect(rangeSliderElement).toHaveAttribute('step', '0.5')
+      render(<Slider formAction="post.php" min={4} max={10} step={0.5} />)
+      const SliderElement = Slider()
+      expect(SliderElement).toHaveAttribute('formAction', 'post.php')
+      expect(SliderElement).toHaveAttribute('min', '4')
+      expect(SliderElement).toHaveAttribute('max', '10')
+      expect(SliderElement).toHaveAttribute('step', '0.5')
     })
 
     it('should be disabled when `disabled={true}`', () => {
-      render(<RangeSlider disabled />)
+      render(<Slider disabled />)
 
-      expect(rangeSlider()).toBeDisabled()
+      expect(Slider()).toBeDisabled()
     })
 
     it('should be required when `required={true}`', () => {
-      render(<RangeSlider required={true} />)
-      expect(rangeSlider()).toHaveAttribute('required')
+      render(<Slider required={true} />)
+      expect(Slider()).toHaveAttribute('required')
     })
 
     it('should allow ref as prop', () => {
       const ref = createRef<HTMLInputElement>()
-      render(<RangeSlider ref={ref} name="range_slider_name" />)
+      render(<Slider ref={ref} name="range_slider_name" />)
       expect(ref.current?.name).toBe('range_slider_name')
     })
   })
 
   describe('Rendering', () => {
     it('should render with no props', () => {
-      render(<RangeSlider />)
-      expect(rangeSlider()).toBeInTheDocument()
+      render(<Slider />)
+      expect(Slider()).toBeInTheDocument()
     })
   })
 
   describe('Theme', () => {
     it('should use `base` classes', () => {
       const theme: CustomPoluiTheme = {
-        rangeSlider: {
+        slider: {
           root: {
             base: 'dummy-range-slider-base-classes',
           },
@@ -113,16 +113,16 @@ describe('Components / Button', () => {
 
       render(
         <PoluiProvider theme={{ theme }}>
-          <RangeSlider />
+          <Slider />
         </PoluiProvider>,
       )
 
-      expect(rangeSliderContainer()).toHaveClass('dummy-range-slider-base-classes')
+      expect(SliderContainer()).toHaveClass('dummy-range-slider-base-classes')
     })
 
     it('should use `base` classes of field', () => {
       const theme: CustomPoluiTheme = {
-        rangeSlider: {
+        slider: {
           field: {
             base: 'dummy-range-slider-field-base-classes',
           },
@@ -131,16 +131,16 @@ describe('Components / Button', () => {
 
       render(
         <PoluiProvider theme={{ theme }}>
-          <RangeSlider />
+          <Slider />
         </PoluiProvider>,
       )
 
-      expect(rangeSliderContainer().childNodes[0]).toHaveClass('dummy-range-slider-field-base-classes')
+      expect(SliderContainer().childNodes[0]).toHaveClass('dummy-range-slider-field-base-classes')
     })
 
     it('should use `base` classes of input', () => {
       const theme: CustomPoluiTheme = {
-        rangeSlider: {
+        slider: {
           field: {
             input: {
               base: 'dummy-range-slider-field-input-base-classes',
@@ -151,16 +151,16 @@ describe('Components / Button', () => {
 
       render(
         <PoluiProvider theme={{ theme }}>
-          <RangeSlider />
+          <Slider />
         </PoluiProvider>,
       )
 
-      expect(rangeSlider()).toHaveClass('dummy-range-slider-field-input-base-classes')
+      expect(Slider()).toHaveClass('dummy-range-slider-field-input-base-classes')
     })
 
     it('should use `sizes` classes of input', () => {
       const theme: CustomPoluiTheme = {
-        rangeSlider: {
+        slider: {
           field: {
             input: {
               sizes: {
@@ -173,41 +173,41 @@ describe('Components / Button', () => {
 
       render(
         <PoluiProvider theme={{ theme }}>
-          <RangeSlider size="lg" />
+          <Slider size="lg" />
         </PoluiProvider>,
       )
 
-      expect(rangeSlider()).toHaveClass('dummy-range-slider-field-input-sizes-lg-classes')
+      expect(Slider()).toHaveClass('dummy-range-slider-field-input-sizes-lg-classes')
     })
   })
 
   describe('Theme as a prop', () => {
     it('should use `base` classes', () => {
-      const theme: CustomPoluiTheme['rangeSlider'] = {
+      const theme: CustomPoluiTheme['slider'] = {
         root: {
           base: 'dummy-range-slider-base-classes',
         },
       }
 
-      render(<RangeSlider theme={theme} />)
+      render(<Slider theme={theme} />)
 
-      expect(rangeSliderContainer()).toHaveClass('dummy-range-slider-base-classes')
+      expect(SliderContainer()).toHaveClass('dummy-range-slider-base-classes')
     })
 
     it('should use `base` classes of field', () => {
-      const theme: CustomPoluiTheme['rangeSlider'] = {
+      const theme: CustomPoluiTheme['slider'] = {
         field: {
           base: 'dummy-range-slider-field-base-classes',
         },
       }
 
-      render(<RangeSlider theme={theme} />)
+      render(<Slider theme={theme} />)
 
-      expect(rangeSliderContainer().childNodes[0]).toHaveClass('dummy-range-slider-field-base-classes')
+      expect(SliderContainer().childNodes[0]).toHaveClass('dummy-range-slider-field-base-classes')
     })
 
     it('should use `base` classes of input', () => {
-      const theme: CustomPoluiTheme['rangeSlider'] = {
+      const theme: CustomPoluiTheme['slider'] = {
         field: {
           input: {
             base: 'dummy-range-slider-field-input-base-classes',
@@ -215,13 +215,13 @@ describe('Components / Button', () => {
         },
       }
 
-      render(<RangeSlider theme={theme} />)
+      render(<Slider theme={theme} />)
 
-      expect(rangeSlider()).toHaveClass('dummy-range-slider-field-input-base-classes')
+      expect(Slider()).toHaveClass('dummy-range-slider-field-input-base-classes')
     })
 
     it('should use `sizes` classes of input', () => {
-      const theme: CustomPoluiTheme['rangeSlider'] = {
+      const theme: CustomPoluiTheme['slider'] = {
         field: {
           input: {
             sizes: {
@@ -231,13 +231,13 @@ describe('Components / Button', () => {
         },
       }
 
-      render(<RangeSlider size="lg" theme={theme} />)
+      render(<Slider size="lg" theme={theme} />)
 
-      expect(rangeSlider()).toHaveClass('dummy-range-slider-field-input-sizes-lg-classes')
+      expect(Slider()).toHaveClass('dummy-range-slider-field-input-sizes-lg-classes')
     })
   })
 })
 
-const rangeSliderContainer = () => screen.getByTestId('ui-range-slider')
-const rangeSlider = (role = 'slider') => screen.getByRole(role)
-const rangeSliders = (role = 'slider') => screen.getAllByRole(role)
+const SliderContainer = () => screen.getByTestId('ui-range-slider')
+const Slider = (role = 'slider') => screen.getByRole(role)
+const Sliders = (role = 'slider') => screen.getAllByRole(role)

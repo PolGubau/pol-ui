@@ -87,7 +87,7 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
     <AnimatePresence mode="wait">
       <li ref={ripple} onPointerDown={event}>
         {collapsed ? (
-          <Tooltip content={badge} side={SidesEnum.right}>
+          <Tooltip label={badge} side={SidesEnum.right}>
             {ch}
           </Tooltip>
         ) : (

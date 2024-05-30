@@ -6,7 +6,7 @@ import type { DeepPartial } from '../../types'
 import type { TooltipTheme } from './theme'
 
 export interface TooltipProps extends Omit<PrimitiveTooltip.TooltipContentProps, 'content'> {
-  content: React.ReactNode | undefined
+  label: React.ReactNode | undefined
   arrow?: boolean
   theme?: DeepPartial<TooltipTheme>
   className?: string
@@ -29,7 +29,7 @@ export interface TooltipProps extends Omit<PrimitiveTooltip.TooltipContentProps,
 export const Tooltip = ({
   children,
 
-  content,
+  label,
   arrow = true,
   className,
 
@@ -63,14 +63,14 @@ export const Tooltip = ({
         disableHoverableContent={disableHoverableContent}
       >
         <PrimitiveTooltip.Trigger asChild>{children}</PrimitiveTooltip.Trigger>
-        {content && (
+        {label && (
           <PrimitiveTooltip.Portal>
             <PrimitiveTooltip.Content
               sideOffset={rest.sideOffset ?? 5}
               className={cn(theme.content.base, theme.content.animation, className)}
               {...rest}
             >
-              {content}
+              {label}
               {arrow && <PrimitiveTooltip.Arrow className="fill-white" />}
             </PrimitiveTooltip.Content>
           </PrimitiveTooltip.Portal>
