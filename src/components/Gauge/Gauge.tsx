@@ -33,10 +33,9 @@ export interface GaugeProps {
   min?: number
   value: number
   show?: 'percent' | 'value'
-  debug?: boolean
 }
 
-const Gauge: React.FC<GaugeProps> = ({ min = 0, max = 100, value = 0, show = 'percent', debug = false }) => {
+const Gauge: React.FC<GaugeProps> = ({ min = 0, max = 100, value = 0, show = 'percent' }) => {
   const [percent, setPercent] = useState(calculatePercentageValue(value, min, max))
   const id = useId()
   useEffect(() => {
@@ -54,59 +53,48 @@ const Gauge: React.FC<GaugeProps> = ({ min = 0, max = 100, value = 0, show = 'pe
   const parsedPercent = (percent * 100).toFixed(0) ?? min
 
   return (
-    <>
-      {debug && (
-        <div className="absolute top-0 left-0 bg-red-400 p-2">
-          <div>min: {min}</div>
-          <div>max: {max}</div>
-          <div>value: {value}</div>
-          <div>percent: {percent}</div>
-          <div>parsedPercent: {parsedPercent}</div>
-        </div>
-      )}
-      <div className="relative">
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" height="100" width="100">
-            <defs>
-              <mask id={id}>
-                <path
-                  // This is the color of the mask (alpha channel)
-                  className="stroke-white"
-                  style={{
-                    ...foregroundArcMaskStyles,
-                    ...dashProps(percent),
-                  }}
-                  d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92"
-                  strokeWidth="8"
-                  fillOpacity="0"
-                ></path>
-              </mask>
-            </defs>
-            <path
-              style={backgroundArcStyles}
-              d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92"
-              strokeWidth="8"
-              fillOpacity="0"
-              className="stroke-secondary-100 "
-            ></path>
-            <path
-              className="stroke-primary-500"
-              style={{
-                ...foregroundArcMaskStyles,
-                ...dashProps(percent),
-              }}
-              d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92"
-              strokeWidth="8"
-              fillOpacity="0"
-              mask={`url(#${id})`}
-            ></path>
-          </svg>
-        </div>
-        <div className="absolute w-full top-0 flex items-center justify-center h-full">
-          <div className="text-2xl tabular-nums">{show === 'value' ? value : parsedPercent}</div>
-        </div>
+    <div className="relative">
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" height="100" width="100">
+          <defs>
+            <mask id={id}>
+              <path
+                // This is the color of the mask (alpha channel)
+                className="stroke-white"
+                style={{
+                  ...foregroundArcMaskStyles,
+                  ...dashProps(percent),
+                }}
+                d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92"
+                strokeWidth="8"
+                fillOpacity="0"
+              ></path>
+            </mask>
+          </defs>
+          <path
+            style={backgroundArcStyles}
+            d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92"
+            strokeWidth="8"
+            fillOpacity="0"
+            className="stroke-secondary-100 "
+          ></path>
+          <path
+            className="stroke-primary-500"
+            style={{
+              ...foregroundArcMaskStyles,
+              ...dashProps(percent),
+            }}
+            d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92"
+            strokeWidth="8"
+            fillOpacity="0"
+            mask={`url(#${id})`}
+          ></path>
+        </svg>
       </div>
-    </>
+      <div className="absolute w-full top-0 flex items-center justify-center h-full">
+        <div className="text-2xl tabular-nums">{show === 'value' ? value : parsedPercent}</div>
+      </div>
+    </div>
   )
 }
 
