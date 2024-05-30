@@ -1,4 +1,5 @@
 import type { Meta } from '@storybook/react'
+import { ColorsEnum } from '../../types'
 import Gauge from './Gauge'
 
 export default {
@@ -24,3 +25,32 @@ export const Complete = () => <Gauge value={100} />
 export const ABit = () => <Gauge value={10} />
 export const WithCustomMaxValue = () => <Gauge value={1} max={3} />
 export const ShowValue = () => <Gauge value={2} max={3} show="value" />
+
+export const AllColors = () => {
+  return (
+    <div className="flex gap-4">
+      {Object.keys(ColorsEnum).map(color => (
+        <Gauge key={color} value={55} color={color as any} />
+      ))}
+    </div>
+  )
+}
+
+export const DifferentSizes = () => {
+  return (
+    <div className="flex gap-4">
+      {['w-[50px]', 'w-[60px]', 'w-[70px]', 'w-[80px]'].map(s => (
+        <Gauge key={s} value={55} className={s} />
+      ))}
+    </div>
+  )
+}
+export const DifferentStrokeWidth = () => {
+  return (
+    <div className="flex gap-4">
+      {[2, 6, 10, 14].map(s => (
+        <Gauge key={s} value={s} strokeWidth={s} />
+      ))}
+    </div>
+  )
+}

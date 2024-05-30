@@ -59,6 +59,7 @@ import type { DropzoneTheme } from '../Dropzone/theme'
 import type { CommandTheme } from '../Command/theme'
 import type { OtpInputTheme } from '../OtpInput/theme'
 import type { AutocompleteTheme } from '../Autocomplete/theme'
+import { GaugeTheme } from '../Gauge'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -73,6 +74,7 @@ export interface PoluiTheme {
   avatar: AvatarTheme
   badge: BadgeTheme
   popover: PopoverTheme
+  gauge: GaugeTheme
   banner: BannerTheme
   breadcrumb: BreadcrumbTheme
   button: ButtonTheme

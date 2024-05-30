@@ -1,5 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useId, useState } from 'react'
+import { Colors, ColorsEnum, DeepPartial } from '../../types'
+import { GaugeTheme } from './theme'
+import { cn, mergeDeep } from '../../helpers'
+import { getTheme } from '../../theme-store'
 
 // This is the range of the arc in degrees, from 0 to 360 (0 is at the top, 90 is at the right, 180 is at the bottom, 270 is at the left)
 
@@ -28,16 +32,29 @@ const dashProps = (percentage: number) => {
   }
 }
 
-export interface GaugeProps {
+export interface GaugeProps extends React.SVGProps<SVGSVGElement> {
   max?: number
   min?: number
   value: number
   show?: 'percent' | 'value'
+  theme?: DeepPartial<GaugeTheme>
+  color?: Colors
+  strokeWidth?: number
 }
 
-const Gauge: React.FC<GaugeProps> = ({ min = 0, max = 100, value = 0, show = 'percent' }) => {
+const Gauge: React.FC<GaugeProps> = ({
+  min = 0,
+  max = 100,
+  value = 0,
+  show = 'percent',
+  strokeWidth = 8,
+  theme: customTheme = {},
+  color = ColorsEnum.primary,
+  ...rest
+}) => {
   const [percent, setPercent] = useState(calculatePercentageValue(value, min, max))
   const id = useId()
+  const theme = mergeDeep(getTheme().gauge, customTheme)
   useEffect(() => {
     if (value <= min) {
       setPercent(0)
@@ -52,10 +69,20 @@ const Gauge: React.FC<GaugeProps> = ({ min = 0, max = 100, value = 0, show = 'pe
 
   const parsedPercent = (percent * 100).toFixed(0) ?? min
 
+  const dShape = `M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92`
   return (
-    <div className="relative">
+    <div className="relative flex justify-center items-center">
       <div>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" height="100" width="100">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          // adat the viewBox to the size of the gauge and its stroke width
+          viewBox={`
+          ${50 - 46 - strokeWidth / 2} ${50 - 46 - strokeWidth / 2}
+          ${46 * 2 + strokeWidth} ${46 * 2 + strokeWidth}
+          `}
+          className={cn('w-24 bg-red-100', rest.className)}
+          {...rest}
+        >
           <defs>
             <mask id={id}>
               <path
@@ -65,27 +92,27 @@ const Gauge: React.FC<GaugeProps> = ({ min = 0, max = 100, value = 0, show = 'pe
                   ...foregroundArcMaskStyles,
                   ...dashProps(percent),
                 }}
-                d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92"
-                strokeWidth="8"
+                d={dShape}
+                strokeWidth={strokeWidth}
                 fillOpacity="0"
               ></path>
             </mask>
           </defs>
           <path
             style={backgroundArcStyles}
-            d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92"
-            strokeWidth="8"
+            d={dShape}
+            strokeWidth={strokeWidth}
             fillOpacity="0"
-            className="stroke-secondary-100 "
+            className="stroke-secondary-100"
           ></path>
           <path
-            className="stroke-primary-500"
+            className={cn(theme.color[color])}
             style={{
               ...foregroundArcMaskStyles,
               ...dashProps(percent),
             }}
-            d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92"
-            strokeWidth="8"
+            d={dShape}
+            strokeWidth={strokeWidth}
             fillOpacity="0"
             mask={`url(#${id})`}
           ></path>

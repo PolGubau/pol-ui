@@ -1,4 +1,4 @@
-import type { PoluiTheme } from '.'
+import { gaugeTheme, type PoluiTheme } from '.'
 import { accordionTheme } from './components/Accordion/theme'
 import { alertTheme } from './components/Alert/theme'
 import { avatarTheme } from './components/Avatar/theme'
@@ -124,6 +124,7 @@ export const theme: PoluiTheme = {
   command: commandTheme,
   otpInput: otpInputTheme,
   autocomplete: autocompleteTheme,
+  gauge: gaugeTheme,
 }
 
 /*
