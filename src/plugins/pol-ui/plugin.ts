@@ -7,6 +7,7 @@ import type { CustomPluginConfig } from './types'
 import type { ThemeColors } from './colors'
 import { colors } from './colors/colors'
 import { singleTimeline } from './helpers'
+import { KeyValuePair } from 'tailwindcss/types/config'
 
 export const poluiPlugin = (config: CustomPluginConfig = {}): ReturnType<typeof plugin> => {
   const { colors: userColors = {} } = config
@@ -45,7 +46,7 @@ export const poluiPlugin = (config: CustomPluginConfig = {}): ReturnType<typeof 
       interface DynamicUtil {
         [key: string]: {
           css: string
-          values: string[]
+          values: KeyValuePair<string | string>
           generateValue?: (value: string) => string
         }
       }
@@ -108,7 +109,7 @@ export const poluiPlugin = (config: CustomPluginConfig = {}): ReturnType<typeof 
             }),
           },
           {
-            values: Object.fromEntries(values.map(value => [value, value])),
+            values,
           },
         )
       })

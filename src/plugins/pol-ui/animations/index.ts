@@ -77,8 +77,28 @@ export const animations = {
     'impulse-rotation-left': 'impulse-rotation-left 1s ease-in-out both',
     dancing: 'dancing 1s ease-in-out both',
     pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+    'small-slide-down-fade': 'slide-down-fade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+    'small-slide-left-fade': 'slide-left-fade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+    'small-slide-up-fade': 'slide-up-fade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+    'small-slide-right-fade': 'slide-right-fade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
   },
   keyframes: {
+    'small-slide-down-fade': {
+      from: { opacity: '0', transform: 'translateY(-2px)' },
+      to: { opacity: '1', transform: 'translateY(0)' },
+    },
+    'small-slide-left-fade': {
+      from: { opacity: '0', transform: 'translateX(2px)' },
+      to: { opacity: '1', transform: 'translateX(0)' },
+    },
+    'small-slide-up-fade': {
+      from: { opacity: '0', transform: 'translateY(2px)' },
+      to: { opacity: '1', transform: 'translateY(0)' },
+    },
+    'small-slide-right-fade': {
+      from: { opacity: '0', transform: 'translateX(-2px)' },
+      to: { opacity: '1', transform: 'translateX(0)' },
+    },
     'fade-in': {
       '0%': { opacity: '0' },
       '100%': { opacity: '1' },

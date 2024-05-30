@@ -85,10 +85,10 @@ const DropdownContent = forwardRef<ElementRef<typeof D.Content>, ComponentPropsW
           'z-50 min-w-[8rem] overflow-hidden rounded-lg border bg-secondary-50 p-1 shadow-md',
 
           // base animation classes
-          'data-[state=open]:animate-fadeIn data-[state=closed]:animate-fadeOut',
+          'data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out',
 
           // sides animation classes
-          'data-[state=open]:data-[side=bottom]:animate-slideDownIn data-[state=closed]:data-[side=bottom]:animate-slideUpOut',
+          'data-[state=open]:data-[side=bottom]:animate-slide-in-bottom data-[state=closed]:data-[side=bottom]:animate-slide-out-bottom',
           className,
         )}
         {...props}
