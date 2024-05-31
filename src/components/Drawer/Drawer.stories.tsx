@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react'
-import { Drawer } from './Drawer'
+import { Drawer, NestedDrawer } from './Drawer'
 import { TbDotsVertical } from 'react-icons/tb'
 import { IconButton } from '../IconButton'
 import React from 'react'
@@ -63,7 +63,7 @@ export const Controlled = () => {
       <pre> The drawer is {open ? 'open' : 'closed'} </pre>
       <Drawer open={open} onClose={() => setOpen(false)} label="Now the state commes from the other button">
         <SampleContent />
-      </Drawer>{' '}
+      </Drawer>
     </>
   )
 }
@@ -123,6 +123,22 @@ export const HandleOnly = () => {
   return (
     <Drawer handleOnly>
       <SampleContent />
+    </Drawer>
+  )
+}
+
+export const Nested = () => {
+  return (
+    <Drawer>
+      <NestedDrawer>
+        <NestedDrawer>
+          <NestedDrawer>
+            <NestedDrawer>
+              <SampleContent />
+            </NestedDrawer>
+          </NestedDrawer>
+        </NestedDrawer>
+      </NestedDrawer>
     </Drawer>
   )
 }
