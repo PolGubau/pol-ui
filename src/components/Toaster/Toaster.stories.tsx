@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import React from 'react'
 import { Button } from '../Button'
-import { Toaster, toast } from './Toaster'
+import { Toaster, toast } from '.'
 import type { ToasterProps } from './types'
 import { TbAlien } from 'react-icons/tb'
 
@@ -23,8 +23,7 @@ export default {
 
 export const Default: StoryFn<ToasterProps> = args => {
   const createToast = () => {
-    toast({
-      title: 'This is a toast',
+    toast('This is a toast', {
       duration: 500000,
       action: {
         label: 'Undo',
@@ -47,17 +46,14 @@ export const Examples: StoryFn<ToasterProps> = args => {
     <div className="flex gap-3 flex-wrap">
       <Button
         onClick={() => {
-          toast({
-            title: 'This is a toast',
-          })
+          toast('This is a toast')
         }}
       >
         Normal Toast
       </Button>
       <Button
         onClick={() =>
-          toast({
-            title: 'This is a toast',
+          toast('This is a toast', {
             action: {
               label: 'Undo',
               onClick: () => {
@@ -69,35 +65,34 @@ export const Examples: StoryFn<ToasterProps> = args => {
       >
         Action Toast
       </Button>
-      <Button color="success" onClick={() => toast({ title: 'This is a success toast', type: 'success' })}>
+      <Button color="success" onClick={() => toast.success('This is a success toast')}>
         Success Toast
       </Button>
-      <Button color="error" onClick={() => toast({ title: 'This is a error toast', type: 'error' })}>
+      <Button color="error" onClick={() => toast.error('This is a error toast')}>
         error Toast
       </Button>
-      <Button color="info" onClick={() => toast({ title: 'This is a info toast', type: 'info' })}>
+      <Button color="info" onClick={() => toast.info('This is a info toast')}>
         info Toast
       </Button>
-      <Button color="warning" onClick={() => toast({ title: 'This is a warning toast', type: 'warning' })}>
+      <Button color="warning" onClick={() => toast.warning('This is a warning toast')}>
         warning Toast
       </Button>
-      <Button color="secondary" onClick={() => toast({ title: 'This toast is loading', type: 'loading' })}>
+      <Button color="secondary" onClick={() => toast.loading('This toast is loading')}>
         Loading Toast
       </Button>
       <Button
         color="secondary"
-        onClick={() => toast({ title: 'This toast is loading', description: 'I am the description of the toast' })}
+        onClick={() => toast('This toast is loading', { description: 'I am the description of the toast' })}
       >
         Description Toast
       </Button>
-      <Button color="secondary" onClick={() => toast({ title: 'Martian toast', icon: <TbAlien /> })}>
+      <Button color="secondary" onClick={() => toast('Martian toast', { icon: <TbAlien /> })}>
         Custom icon <TbAlien />
       </Button>
       <Button
         color="secondary"
         onClick={() =>
-          toast({
-            title: 'I will autoclose in 5 seconds',
+          toast('I will autoclose in 5 seconds', {
             onDismiss: t => {
               alert('You dismissed ' + t.title)
             },
@@ -110,6 +105,42 @@ export const Examples: StoryFn<ToasterProps> = args => {
         Action on close Toast
       </Button>
 
+      <Toaster {...args} />
+    </div>
+  )
+}
+
+export const CustomPosition: StoryFn<ToasterProps> = args => {
+  return (
+    <div className="flex gap-3 flex-wrap">
+      <Button
+        onClick={() => {
+          toast('This is a toast', { position: 'top-right' })
+        }}
+      >
+        Top Right
+      </Button>
+      <Button
+        onClick={() => {
+          toast('This is a toast', { position: 'top-left' })
+        }}
+      >
+        Top Left
+      </Button>
+      <Button
+        onClick={() => {
+          toast('This is a toast', { position: 'bottom-right' })
+        }}
+      >
+        Bottom Right
+      </Button>
+      <Button
+        onClick={() => {
+          toast('This is a toast', { position: 'bottom-left' })
+        }}
+      >
+        Bottom Left
+      </Button>
       <Toaster {...args} />
     </div>
   )
