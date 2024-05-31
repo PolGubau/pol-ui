@@ -126,10 +126,8 @@ export const Dropzone = React.memo((props: React.PropsWithChildren<DropzoneProps
             const rejectedFiles = filteredFiles.filter(file => !file.type.match(accept))
 
             rejectedFiles.length > 0 &&
-              toast({
-                title: 'Only ' + accept + ' files allowed.',
+              toast.error('Only ' + accept + ' files allowed.', {
                 description: `Rejected files: ${rejectedFiles.map(f => f.name)} `,
-                type: 'error',
               })
 
             onFilesDrop?.(multiple ? acceptedFiles : acceptedFiles.slice(0, 1))

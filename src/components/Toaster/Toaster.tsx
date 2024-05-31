@@ -1,14 +1,18 @@
 'use client'
 
-import { Toaster as PrimitiveToaster, toast as primitiveToast } from 'sonner'
+/**
+ * Based on Sonner's Toaster component, see [Sonner](https://sonner.emilkowal.ski/).
+ */
+
+import { Toaster as PrimitiveToaster, toast } from 'sonner'
 import { Loader } from '../Loader'
-import type { ToastClassnames, ToasterProps as PrimitiveToasterProps } from './types'
+import type { ToasterProps as PrimitiveToasterProps } from './types'
 import { mergeDeep } from '../../helpers'
 import { getTheme } from '../../theme-store'
 import { DeepPartial } from '../../types'
 import { ToastTheme } from './theme'
 
-export const toast = primitiveToast
+export { toast }
 
 export interface ToasterProps extends Omit<PrimitiveToasterProps, 'theme'> {
   theme?: DeepPartial<ToastTheme>
@@ -17,7 +21,7 @@ export interface ToasterProps extends Omit<PrimitiveToasterProps, 'theme'> {
 export const Toaster = ({ theme: customTheme = {}, ...props }: ToasterProps): React.ReactNode => {
   const theme = mergeDeep(getTheme().toast, customTheme)
 
-  const classNames: ToastClassnames = {
+  const classNames = {
     toast: theme.base,
     title: theme.title,
     description: theme.description,

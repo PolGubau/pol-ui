@@ -74,7 +74,7 @@ export const KanbanColumn = ({
 
     // If the card to transfer is not found, show a toast and exit the function.
     if (!cardToTransfer) {
-      toast({ title: 'Card not found' })
+      toast.error('Card not found')
       return
     }
 
