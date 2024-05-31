@@ -12,8 +12,6 @@ import { getTheme } from '../../theme-store'
 import { DeepPartial } from '../../types'
 import { ToastTheme } from './theme'
 
-export { toast }
-
 export interface ToasterProps extends Omit<PrimitiveToasterProps, 'theme'> {
   theme?: DeepPartial<ToastTheme>
 }
@@ -45,3 +43,4 @@ export const Toaster = ({ theme: customTheme = {}, ...props }: ToasterProps): Re
     ...props,
   })
 }
+export { toast }

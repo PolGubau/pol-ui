@@ -75,7 +75,8 @@
     "react-icons": "^4.12.0",
     "react-resizable-panels": "^2.0.18",
     "sonner": "^1.4.0",
-    "tailwind-merge": "^2.0.0"
+    "tailwind-merge": "^2.0.0",
+    "vaul": "^0.9.1"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^8.1.4",
