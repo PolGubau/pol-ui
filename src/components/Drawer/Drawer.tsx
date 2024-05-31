@@ -4,12 +4,12 @@ import * as React from 'react'
 import { Drawer as DrawerPrimitive } from 'vaul'
 import { cn } from '../../helpers'
 import { Button } from '../Button'
+import { IconButton } from '../IconButton'
+import { TbX } from 'react-icons/tb'
 
 const DrawerRoot = DrawerPrimitive.Root
 const DrawerTrigger = DrawerPrimitive.Trigger
-
 const DrawerPortal = DrawerPrimitive.Portal
-
 const DrawerClose = DrawerPrimitive.Close
 
 const DrawerOverlay = React.forwardRef<
@@ -36,7 +36,7 @@ const DrawerContent = React.forwardRef<React.ElementRef<typeof DrawerPrimitive.C
         <DrawerPrimitive.Content
           ref={ref}
           className={cn(
-            'fixed  z-50 p-4 flex h-auto flex-col border bg-secondary-50 dark:bg-secondary-900',
+            'fixed z-50 p-4 flex h-auto flex-col border bg-secondary-50 dark:bg-secondary-900',
             {
               'bottom-0': direction !== 'top',
               'top-0': direction !== 'bottom',
@@ -58,8 +58,27 @@ const DrawerContent = React.forwardRef<React.ElementRef<typeof DrawerPrimitive.C
           )}
           {...props}
         >
-          <DrawerPrimitive.Handle className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-secondary" />
+          {direction === 'bottom' && (
+            <DrawerPrimitive.Handle className="mx-auto mb-2 h-2 w-[100px] rounded-full bg-secondary" />
+          )}
+          {direction === 'left' && (
+            <DrawerPrimitive.Close className="absolute top-0 right-0 m-1" aria-label="Close" asChild>
+              <IconButton>
+                <TbX />
+              </IconButton>
+            </DrawerPrimitive.Close>
+          )}
+          {direction === 'right' && (
+            <DrawerPrimitive.Close className="absolute top-0 left-0 m-1" aria-label="Close" asChild>
+              <IconButton>
+                <TbX />
+              </IconButton>
+            </DrawerPrimitive.Close>
+          )}
           {children}
+          {direction === 'top' && (
+            <DrawerPrimitive.Handle className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-secondary" />
+          )}
         </DrawerPrimitive.Content>
       </DrawerPortal>
     )
