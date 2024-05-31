@@ -1,3 +1,2 @@
-export { Toaster } from './Toaster'
-export { toast } from './toast'
+export { Toaster, toast } from './Toaster'
 export { type ToastTheme, toastTheme } from './theme'

@@ -13,6 +13,7 @@ export default {
     Story => (
       <div className="flex p-6 flex-col items-center pt-20 min-h-[400px] bg-secondary-50 ">
         <Story />
+        <Toaster />
       </div>
     ),
   ],
@@ -21,7 +22,7 @@ export default {
   },
 } as Meta
 
-export const Default: StoryFn<ToasterProps> = args => {
+export const Default: StoryFn<ToasterProps> = () => {
   const createToast = () => {
     toast('This is a toast', {
       duration: 500000,
@@ -37,11 +38,11 @@ export const Default: StoryFn<ToasterProps> = args => {
     <div className="flex flex-col gap-3">
       <p>Click the button to show a toast</p>
       <Button onClick={createToast}>Show toaster</Button>
-      <Toaster {...args} />
     </div>
   )
 }
-export const Examples: StoryFn<ToasterProps> = args => {
+
+export const Examples: StoryFn<ToasterProps> = () => {
   return (
     <div className="flex gap-3 flex-wrap">
       <Button
@@ -82,7 +83,7 @@ export const Examples: StoryFn<ToasterProps> = args => {
       </Button>
       <Button
         color="secondary"
-        onClick={() => toast('This toast is loading', { description: 'I am the description of the toast' })}
+        onClick={() => toast('Funky title', { description: 'I am the description of the toast' })}
       >
         Description Toast
       </Button>
@@ -104,13 +105,11 @@ export const Examples: StoryFn<ToasterProps> = args => {
       >
         Action on close Toast
       </Button>
-
-      <Toaster {...args} />
     </div>
   )
 }
 
-export const CustomPosition: StoryFn<ToasterProps> = args => {
+export const CustomPosition: StoryFn<ToasterProps> = () => {
   return (
     <div className="flex gap-3 flex-wrap">
       <Button
@@ -141,7 +140,140 @@ export const CustomPosition: StoryFn<ToasterProps> = args => {
       >
         Bottom Left
       </Button>
-      <Toaster {...args} />
+    </div>
+  )
+}
+
+export const CustomDuration: StoryFn<ToasterProps> = () => {
+  return (
+    <div className="flex gap-3 flex-wrap">
+      <Button
+        onClick={() => {
+          toast('This is a toast', { duration: 5000 })
+        }}
+      >
+        5 seconds
+      </Button>
+      <Button
+        onClick={() => {
+          toast('This is a toast', { duration: 10000 })
+        }}
+      >
+        10 seconds
+      </Button>
+      <Button
+        onClick={() => {
+          toast('This is a toast', { duration: 20000 })
+        }}
+      >
+        20 seconds
+      </Button>
+      <Button
+        onClick={() => {
+          toast('This is a toast', { duration: 30000 })
+        }}
+      >
+        30 seconds
+      </Button>
+    </div>
+  )
+}
+
+export const Actions = () => {
+  return (
+    <div className="flex gap-3 flex-wrap">
+      <Button
+        onClick={() => {
+          toast('This is a toast', {
+            action: {
+              label: 'Undo',
+              onClick: () => {
+                alert('Undo')
+              },
+            },
+          })
+        }}
+      >
+        Undo
+      </Button>
+      <Button
+        onClick={() => {
+          toast('This is a toast', {
+            action: {
+              label: 'Retry',
+              onClick: () => {
+                alert('Retry')
+              },
+            },
+          })
+        }}
+      >
+        Retry
+      </Button>
+      <Button
+        onClick={() => {
+          toast('This is a toast', {
+            action: {
+              label: 'Cancel',
+              onClick: () => {
+                alert('Cancel')
+              },
+            },
+          })
+        }}
+      >
+        Cancel
+      </Button>
+      <Button
+        onClick={() => {
+          toast('This is a toast', {
+            action: {
+              label: 'Close',
+              onClick: () => {
+                alert('Close')
+              },
+            },
+          })
+        }}
+      >
+        Close
+      </Button>
+    </div>
+  )
+}
+
+export const DarkMode: StoryFn<ToasterProps> = () => {
+  return (
+    <div className="flex gap-3 flex-wrap bg-secondary-900 dark">
+      <Toaster />
+      <Button
+        onClick={() => {
+          toast('This is a toast', { position: 'top-right' })
+        }}
+      >
+        Top Right
+      </Button>
+      <Button
+        onClick={() => {
+          toast('This is a toast', { position: 'top-left' })
+        }}
+      >
+        Top Left
+      </Button>
+      <Button
+        onClick={() => {
+          toast('This is a toast', { position: 'bottom-right' })
+        }}
+      >
+        Bottom Right
+      </Button>
+      <Button
+        onClick={() => {
+          toast('This is a toast', { position: 'bottom-left' })
+        }}
+      >
+        Bottom Left
+      </Button>
     </div>
   )
 }
