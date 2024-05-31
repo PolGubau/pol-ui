@@ -5,11 +5,7 @@ import { Drawer as DrawerPrimitive } from 'vaul'
 import { cn } from '../../helpers'
 import { Button } from '../Button'
 
-const Root = ({ shouldScaleBackground = true, ...props }: React.ComponentProps<typeof DrawerPrimitive.Root>) => (
-  <DrawerPrimitive.Root shouldScaleBackground={shouldScaleBackground} {...props} />
-)
-Root.displayName = 'DrawerRoot'
-
+const DrawerRoot = DrawerPrimitive.Root
 const DrawerTrigger = DrawerPrimitive.Trigger
 
 const DrawerPortal = DrawerPrimitive.Portal
@@ -78,18 +74,26 @@ export type DrawerProps = React.ComponentProps<typeof DrawerPrimitive.Root> & {
 }
 
 const Drawer = ({ children, label = 'Open Drawer', trigger, ...props }: DrawerProps) => {
-  const defaultTrigger = <Button>{label}</Button>
-  const triggerNode = trigger || defaultTrigger
-
-  // all props included in DrawerContentProps
-
+  const triggerNode = trigger || <Button>{label}</Button>
   return (
-    <Root {...props}>
+    <DrawerRoot {...props}>
       <DrawerTrigger>{triggerNode}</DrawerTrigger>
       <DrawerContent direction={props.direction ?? 'bottom'} fillBackground={props.shouldScaleBackground}>
         {children}
       </DrawerContent>
-    </Root>
+    </DrawerRoot>
   )
 }
-export { Drawer, DrawerClose, DrawerContent, DrawerOverlay, DrawerPortal, DrawerTrigger }
+
+const NestedDrawer = ({ children, label = 'Open Drawer', trigger, ...props }: DrawerProps) => {
+  const triggerNode = trigger || <Button>{label}</Button>
+  return (
+    <DrawerPrimitive.NestedRoot {...props}>
+      <DrawerTrigger>{triggerNode}</DrawerTrigger>
+      <DrawerContent direction={props.direction ?? 'bottom'} fillBackground={props.shouldScaleBackground}>
+        {children}
+      </DrawerContent>
+    </DrawerPrimitive.NestedRoot>
+  )
+}
+export { Drawer, DrawerClose, DrawerContent, DrawerOverlay, DrawerPortal, DrawerTrigger, NestedDrawer }
