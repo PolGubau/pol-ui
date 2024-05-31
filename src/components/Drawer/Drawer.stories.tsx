@@ -130,10 +130,10 @@ export const HandleOnly = () => {
 export const Nested = () => {
   return (
     <Drawer>
-      <NestedDrawer>
-        <NestedDrawer>
-          <NestedDrawer>
-            <NestedDrawer>
+      <NestedDrawer direction="left">
+        <NestedDrawer direction="right">
+          <NestedDrawer direction="top">
+            <NestedDrawer direction="left">
               <SampleContent />
             </NestedDrawer>
           </NestedDrawer>
