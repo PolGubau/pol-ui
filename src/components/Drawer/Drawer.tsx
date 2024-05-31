@@ -6,6 +6,7 @@ import { cn } from '../../helpers'
 import { Button } from '../Button'
 import { IconButton } from '../IconButton'
 import { TbX } from 'react-icons/tb'
+import { Direction, DirectionEnum } from '../../types'
 
 const DrawerRoot = DrawerPrimitive.Root
 const DrawerTrigger = DrawerPrimitive.Trigger
@@ -21,14 +22,14 @@ const DrawerOverlay = React.forwardRef<
 DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName
 
 interface DrawerContentProps extends React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content> {
-  direction?: 'top' | 'right' | 'bottom' | 'left'
+  direction?: Direction
   fillBackground?: boolean
 }
 
 const DrawerContent = React.forwardRef<React.ElementRef<typeof DrawerPrimitive.Content>, DrawerContentProps>(
   ({ className, direction, children, fillBackground, ...props }, ref) => {
-    const isVertical = direction === 'top' || direction === 'bottom'
-    const isHorizontal = direction === 'right' || direction === 'left'
+    const isVertical = direction === DirectionEnum.top || direction === DirectionEnum.bottom
+    const isHorizontal = direction === DirectionEnum.right || direction === DirectionEnum.left
 
     return (
       <DrawerPortal>
@@ -38,15 +39,15 @@ const DrawerContent = React.forwardRef<React.ElementRef<typeof DrawerPrimitive.C
           className={cn(
             'fixed z-50 p-4 flex h-auto flex-col border bg-secondary-50 dark:bg-secondary-900',
             {
-              'bottom-0': direction !== 'top',
-              'top-0': direction !== 'bottom',
-              'right-0': direction !== 'left',
-              'left-0': direction !== 'right',
+              'bottom-0': direction !== DirectionEnum.top,
+              'top-0': direction !== DirectionEnum.bottom,
+              'right-0': direction !== DirectionEnum.left,
+              'left-0': direction !== DirectionEnum.right,
 
-              'rounded-t-[10px]': direction === 'bottom',
-              'rounded-b-[10px]': direction === 'top',
-              'rounded-l-[10px]': direction === 'right',
-              'rounded-r-[10px]': direction === 'left',
+              'rounded-t-[10px]': direction === DirectionEnum.bottom,
+              'rounded-b-[10px]': direction === DirectionEnum.top,
+              'rounded-l-[10px]': direction === DirectionEnum.right,
+              'rounded-r-[10px]': direction === DirectionEnum.left,
 
               ' max-h-[96%]': isVertical,
               ' max-w-[96%]': isHorizontal,
@@ -58,17 +59,17 @@ const DrawerContent = React.forwardRef<React.ElementRef<typeof DrawerPrimitive.C
           )}
           {...props}
         >
-          {direction === 'bottom' && (
+          {direction === DirectionEnum.bottom && (
             <DrawerPrimitive.Handle className="mx-auto mb-2 h-2 w-[100px] rounded-full bg-secondary" />
           )}
-          {direction === 'left' && (
+          {direction === DirectionEnum.left && (
             <DrawerPrimitive.Close className="absolute top-0 right-0 m-1" aria-label="Close" asChild>
               <IconButton>
                 <TbX />
               </IconButton>
             </DrawerPrimitive.Close>
           )}
-          {direction === 'right' && (
+          {direction === DirectionEnum.right && (
             <DrawerPrimitive.Close className="absolute top-0 left-0 m-1" aria-label="Close" asChild>
               <IconButton>
                 <TbX />
@@ -76,7 +77,7 @@ const DrawerContent = React.forwardRef<React.ElementRef<typeof DrawerPrimitive.C
             </DrawerPrimitive.Close>
           )}
           {children}
-          {direction === 'top' && (
+          {direction === DirectionEnum.top && (
             <DrawerPrimitive.Handle className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-secondary" />
           )}
         </DrawerPrimitive.Content>
@@ -97,7 +98,7 @@ const Drawer = ({ children, label = 'Open Drawer', trigger, ...props }: DrawerPr
   return (
     <DrawerRoot {...props}>
       <DrawerTrigger>{triggerNode}</DrawerTrigger>
-      <DrawerContent direction={props.direction ?? 'bottom'} fillBackground={props.shouldScaleBackground}>
+      <DrawerContent direction={props.direction ?? DirectionEnum.bottom} fillBackground={props.shouldScaleBackground}>
         {children}
       </DrawerContent>
     </DrawerRoot>
@@ -109,7 +110,7 @@ const NestedDrawer = ({ children, label = 'Open Drawer', trigger, ...props }: Dr
   return (
     <DrawerPrimitive.NestedRoot {...props}>
       <DrawerTrigger>{triggerNode}</DrawerTrigger>
-      <DrawerContent direction={props.direction ?? 'bottom'} fillBackground={props.shouldScaleBackground}>
+      <DrawerContent direction={props.direction ?? DirectionEnum.bottom} fillBackground={props.shouldScaleBackground}>
         {children}
       </DrawerContent>
     </DrawerPrimitive.NestedRoot>
