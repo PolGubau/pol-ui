@@ -1,8 +1,6 @@
 export const animations = {
   animation: {
     'blurred-fade-in': 'blurred-fade-in 0.9s ease-in-out both',
-    'fade-in': 'fade-in 0.6s ease-in both',
-    'fade-out': 'fade-out 0.6s ease-out both',
     'slide-in-top': 'slide-in-top 0.6s ease-out both',
     'slide-in-bottom': 'slide-in-bottom 0.6s ease-out both',
     'slide-out-top': 'slide-out-top 0.6s ease-out both',
@@ -85,6 +83,7 @@ export const animations = {
     'small-slide-left-out': 'small-slide-left-in 400ms cubic-bezier(0.16, 1, 0.3, 1) reverse',
     'small-slide-up-out': 'small-slide-up-in 400ms cubic-bezier(0.16, 1, 0.3, 1) reverse',
     'small-slide-right-out': 'small-slide-right-in 400ms cubic-bezier(0.16, 1, 0.3, 1) reverse',
+    'grow-contract': 'grow-contract 2s ease-in-out both infinite',
   },
   keyframes: {
     enter: {
@@ -100,6 +99,11 @@ export const animations = {
         transform:
           'translate3d(var(--tw-exit-translate-x, 0), var(--tw-exit-translate-y, 0), 0) scale3d(var(--tw-exit-scale, 1), var(--tw-exit-scale, 1), var(--tw-exit-scale, 1)) rotate(var(--tw-exit-rotate, 0))',
       },
+    },
+    'grow-contract': {
+      from: { transform: 'scale(1)' },
+      '50%': { transform: 'scale(0.7)' },
+      to: { transform: 'scale(1)' },
     },
     'small-slide-down-in': {
       from: { opacity: '0', transform: 'translateY(-2px) scale(0.95)' },
@@ -117,14 +121,7 @@ export const animations = {
       from: { opacity: '0', transform: 'translateX(-2px)' },
       to: { opacity: '1', transform: 'translateX(0)' },
     },
-    'fade-in': {
-      '0%': { opacity: '0' },
-      '100%': { opacity: '1' },
-    },
-    'fade-out': {
-      '0%': { opacity: '1' },
-      '100%': { opacity: '0' },
-    },
+
     'slide-in-top': {
       '0%': { transform: 'translateY(-20px)' },
       '100%': { transform: 'translateY(0)' },
@@ -141,14 +138,7 @@ export const animations = {
       '0%': { transform: 'translateY(0)' },
       '100%': { transform: 'translateY(20px)' },
     },
-    'zoom-in': {
-      '0%': { opacity: '0', transform: 'scale(.5)' },
-      '100%': { opacity: '1', transform: 'scale(1)' },
-    },
-    'zoom-out': {
-      '0%': { opacity: '1', transform: 'scale(1)' },
-      '100%': { opacity: '0', transform: 'scale(.5)' },
-    },
+
     'rotate-90': {
       '0%': { transform: 'rotate(0deg)' },
       '100%': { transform: 'rotate(90deg)' },
@@ -477,32 +467,22 @@ export const animations = {
       '100%': { transform: 'skew(0deg)' },
     },
   },
-
-  animationDuration: {
-    none: '0ms',
-    slower: '500ms',
-    slow: '400ms',
-    normal: '300ms',
-    fast: '200ms',
-    faster: '100ms',
-    0: '0ms',
-    100: '100ms',
-    150: '150ms',
-    200: '200ms',
-    250: '250ms',
-    300: '300ms',
-    400: '400ms',
-    500: '500ms',
-    700: '700ms',
-    800: '800ms',
-    900: '900ms',
-    1000: '1000ms',
+  animationDirection: {
+    normal: 'normal',
+    reverse: 'reverse',
+    alternate: 'alternate',
+    'alternate-reverse': 'alternate-reverse',
   },
   animationSteps: {
     none: '0',
     retro: '8',
     normal: '16',
     modern: '24',
+  },
+  animationRepeat: {
+    0: '0',
+    1: '1',
+    infinite: 'infinite',
   },
   animationIterationCount: {
     none: '0',
