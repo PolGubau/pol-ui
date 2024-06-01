@@ -37,7 +37,7 @@ const DrawerContent = React.forwardRef<React.ElementRef<typeof DrawerPrimitive.C
         <DrawerPrimitive.Content
           ref={ref}
           className={cn(
-            'fixed z-50 p-4 flex h-auto flex-col border bg-secondary-50 dark:bg-secondary-900',
+            'fixed z-50 p-4 flex h-auto flex-col border bg-secondary-50 dark:bg-secondary-900 overflow-y-auto',
             {
               'bottom-0': direction !== DirectionEnum.top,
               'top-0': direction !== DirectionEnum.bottom,
@@ -86,6 +86,8 @@ const DrawerContent = React.forwardRef<React.ElementRef<typeof DrawerPrimitive.C
   },
 )
 DrawerContent.displayName = 'DrawerContent'
+
+//
 
 export type DrawerProps = React.ComponentProps<typeof DrawerPrimitive.Root> & {
   children: React.ReactNode
