@@ -7,6 +7,8 @@ import { twMerge } from 'tailwind-merge'
 import { TbArrowLeft, TbArrowRight } from 'react-icons/tb'
 import { MainSizesEnum } from '../../types'
 import { Button } from '../Button'
+import { IconButton } from '../IconButton'
+import { cn } from '../../helpers'
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -179,12 +181,12 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
     const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
     return (
-      <Button
+      <IconButton
         data-testid="carousel-left-control"
         ref={ref}
         variant={variant}
         size={size}
-        className={twMerge(
+        className={cn(
           'absolute  h-8 w-8 rounded-full',
           orientation === 'horizontal'
             ? '-left-12 top-1/2 -translate-y-1/2'
@@ -195,9 +197,9 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
         onClick={scrollPrev}
         {...props}
       >
-        <TbArrowLeft className="h-4 w-4" />
+        <TbArrowLeft size={15} />
         <span className="sr-only">Previous slide</span>
-      </Button>
+      </IconButton>
     )
   },
 )
@@ -212,7 +214,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
         variant={variant}
         data-testid="carousel-right-control"
         size={size}
-        className={twMerge(
+        className={cn(
           'absolute h-8 w-8 rounded-full',
           orientation === 'horizontal'
             ? '-right-12 top-1/2 -translate-y-1/2'
@@ -223,7 +225,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
         onClick={scrollNext}
         {...props}
       >
-        <TbArrowRight className="h-4 w-4" />
+        <TbArrowRight size={15} />
         <span className="sr-only">Next slide</span>
       </Button>
     )
