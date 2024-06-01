@@ -49,7 +49,7 @@ const variants = {
 export type Variants = typeof variants
 
 export const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50 relative group overflow-hidden gap-2',
+  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50 relative group overflow-hidden gap-2 transition-colors transition-width',
   {
     variants: variants,
     compoundVariants: [
@@ -161,7 +161,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       color,
       focusEffect = true,
       asChild = false,
-      loadingLabel = 'Loading...',
+      loadingLabel,
       ...props
     },
     ref,
@@ -173,6 +173,8 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     })
     const refs = mergeRefs([ripple, ref])
     const Comp = asChild ? Slot : 'button'
+
+    const label = props.label ?? props.children
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, fullSized, className, color, rounded }))}
@@ -192,10 +194,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             ? loader ?? (
                 <>
                   <Loader size={size ?? 'sm'} />
-                  {loadingLabel && <p>{loadingLabel}</p>}
+                  {label}
                 </>
               )
-            : props.label ?? props.children}
+            : label}
         </>
       </Comp>
     )

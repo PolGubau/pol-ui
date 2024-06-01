@@ -1,15 +1,19 @@
-import React from 'react'
 import { cn } from '../../helpers'
+import { themeGetter } from '../../theme-store'
+import { DeepPartial } from '../../types'
+import { FocusEffectTheme } from './theme'
+export interface FocusEffectProps {
+  className?: string
+  theme?: DeepPartial<FocusEffectTheme>
+}
 
-const FocusEffect = () => {
+const FocusEffect = ({ className, theme: customTheme = {} }: FocusEffectProps) => {
+  const theme = themeGetter('focusEffect', customTheme)
+
   return (
-    <span
-      className={cn(
-        'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full hidden group-focus:flex justify-center items-center ',
-      )}
-    >
-      <div className="animate-in scale-100 w-full h-full flex justify-center items-center">
-        <span className="animate-grow-contract rounded-full bg-secondary-800/50 group-focus-visible:w-[80%] aspect-square group-focus-visible:h-auto" />
+    <span className={theme.container}>
+      <div className={theme.wrapper}>
+        <span className={cn(theme.circle, className)} />
       </div>
     </span>
   )

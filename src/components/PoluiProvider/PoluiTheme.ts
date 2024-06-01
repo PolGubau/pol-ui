@@ -60,6 +60,7 @@ import type { CommandTheme } from '../Command/theme'
 import type { OtpInputTheme } from '../OtpInput/theme'
 import type { AutocompleteTheme } from '../Autocomplete/theme'
 import { GaugeTheme } from '../Gauge'
+import { FocusEffectTheme } from '../FocusEffect/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -78,6 +79,7 @@ export interface PoluiTheme {
   banner: BannerTheme
   breadcrumb: BreadcrumbTheme
   button: ButtonTheme
+  focusEffect: FocusEffectTheme
   iconButton: IconButtonTheme
   card: CardTheme
   copyright: CopyrightTheme

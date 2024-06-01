@@ -61,6 +61,7 @@ import { stickyScrollTheme } from './components/StickyScroll/theme'
 import { textGeneratorTheme } from './components/TextGenerator/theme'
 import { toastTheme } from './components/Toaster/theme'
 import { toggleTheme } from './components/Toggle/theme'
+import { focusEffectTheme } from './components/FocusEffect/theme'
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,
@@ -125,6 +126,7 @@ export const theme: PoluiTheme = {
   otpInput: otpInputTheme,
   autocomplete: autocompleteTheme,
   gauge: gaugeTheme,
+  focusEffect: focusEffectTheme,
 }
 
 /*

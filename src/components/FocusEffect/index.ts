@@ -1,1 +1,1 @@
-export { default as FocusEffect } from './FocusEffect';
+export { default as FocusEffect, type FocusEffectProps } from './FocusEffect'

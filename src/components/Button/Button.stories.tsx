@@ -4,6 +4,7 @@ import type { ButtonProps } from './Button'
 import { Button } from './Button'
 import { type MainSizes, type Colors, type RoundedSizes } from '../../types'
 import { TbStarFilled } from 'react-icons/tb'
+import { useBoolean } from '../../hooks'
 
 export default {
   title: 'Components/Button',
@@ -65,10 +66,14 @@ OutlineButton.args = {
   ...DefaultButton.args,
   variant: 'outline',
 }
-export const Loading = NewTemplate.bind({})
-Loading.args = {
-  ...DefaultButton.args,
-  loading: true,
+
+export const Loading = () => {
+  const { value, toggle } = useBoolean(true)
+  return (
+    <Button loading={value} onClick={toggle}>
+      Click me
+    </Button>
+  )
 }
 export const Disabled = NewTemplate.bind({})
 Disabled.args = {

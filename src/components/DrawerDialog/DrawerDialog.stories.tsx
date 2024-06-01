@@ -1,13 +1,12 @@
 import type { Meta, StoryFn } from '@storybook/react'
 
-import { Dialog, DialogProps } from '../Dialog'
-import { DialogFooter, DialogHeader, DialogTitle } from '../Dialog/extras'
-import { Button } from '../Button'
-import { DrawerProps } from '../Drawer/Drawer'
-import { DrawerDialog } from './DrawerDialog'
 import { cn } from '../../helpers'
+import { Button } from '../Button'
+import { Dialog } from '../Dialog'
+import { DrawerProps } from '../Drawer/Drawer'
 import { Input } from '../Input'
 import { Label } from '../Label'
+import { DrawerDialog } from './DrawerDialog'
 
 export default {
   title: 'Components/DrawerDialog',
