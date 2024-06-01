@@ -14,11 +14,13 @@ export interface DropdownProps extends D.DropdownMenuContentProps {
   disabled?: boolean
 }
 
-const Dropdown = ({ trigger, label, children, disabled, ...props }: DropdownProps) => {
+const Dropdown = ({ trigger, label = 'Open Menu', children, disabled, ...props }: DropdownProps) => {
+  const triggerNode = trigger || <Button name={label}>{label}</Button>
+
   return (
     <D.Root>
       <D.Trigger disabled={disabled} asChild>
-        {trigger ?? <Button name={label}>{label ?? 'Open'}</Button>}
+        {triggerNode}
       </D.Trigger>
       {!disabled && (
         <DropdownContent sideOffset={props.sideOffset ?? 5} {...props}>
