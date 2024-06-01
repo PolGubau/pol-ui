@@ -83,7 +83,7 @@ export const animations = {
     'small-slide-left-out': 'small-slide-left-in 400ms cubic-bezier(0.16, 1, 0.3, 1) reverse',
     'small-slide-up-out': 'small-slide-up-in 400ms cubic-bezier(0.16, 1, 0.3, 1) reverse',
     'small-slide-right-out': 'small-slide-right-in 400ms cubic-bezier(0.16, 1, 0.3, 1) reverse',
-    'grow-contract': 'heartbeat 0.6s ease-out both infinite',
+    'grow-contract': 'heartbeat 10s ease-out both infinite',
   },
   keyframes: {
     enter: {
@@ -99,11 +99,6 @@ export const animations = {
         transform:
           'translate3d(var(--tw-exit-translate-x, 0), var(--tw-exit-translate-y, 0), 0) scale3d(var(--tw-exit-scale, 1), var(--tw-exit-scale, 1), var(--tw-exit-scale, 1)) rotate(var(--tw-exit-rotate, 0))',
       },
-    },
-    'grow-contract': {
-      from: { transform: 'scale(1)' },
-      '50%': { transform: 'scale(0.7)' },
-      to: { transform: 'scale(1)' },
     },
     'small-slide-down-in': {
       from: { opacity: '0', transform: 'translateY(-2px) scale(0.95)' },
