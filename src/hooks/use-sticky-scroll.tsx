@@ -1,3 +1,5 @@
+'use client'
+
 import { useMotionValueEvent, useScroll } from 'framer-motion'
 import { useRef, useState } from 'react'
 
@@ -21,7 +23,6 @@ export const useBgColorTransition = (colors: string[]) => {
   useMotionValueEvent(scrollY, 'change', latest => {
     const amountColors = colors.length
     const step = ref.current!.offsetHeight / amountColors
-
 
     const index = Math.floor(latest / step)
 

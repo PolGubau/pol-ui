@@ -1,3 +1,5 @@
+'use client'
+
 import plugin from 'tailwindcss/plugin.js'
 import type { ColorScale } from './colors/types'
 import { animations } from './animations'

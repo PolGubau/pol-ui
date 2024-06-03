@@ -1,3 +1,5 @@
+'use client'
+
 import type { CustomPoluiTheme, PoluiTheme } from '../components/PoluiProvider'
 import { cloneDeep } from '../helpers/clone-deep'
 import { mergeDeep } from '../helpers/merge-deep/merge-deep'
