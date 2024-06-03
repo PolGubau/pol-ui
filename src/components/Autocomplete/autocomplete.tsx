@@ -41,38 +41,37 @@ export function Autocomplete({
       hasCloseButton={false}
       className={cn('p-0', rest.className)}
       {...rest}
-      content={
-        <Command className={cn('bg-secondary-50', popupClassName)}>
-          <CommandInput placeholder={placeholder} className="h-9" />
-          <CommandEmpty>{noFoundText}</CommandEmpty>
-          <CommandGroup>
-            {options.map(option => (
-              <CommandItem
-                key={option.value}
-                value={option.value}
-                onSelect={currentValue => {
-                  onChange(options.find(framework => framework.value === currentValue)!)
-                  if (closeOnSelect) {
-                    rest.onOpenChange?.(false)
-                  }
-                }}
-              >
-                {option.label}
-                <TbCheck
-                  className={cn('ml-auto h-4 w-4', value?.value === option.value ? 'opacity-100' : 'opacity-0')}
-                />
-              </CommandItem>
-            ))}
-          </CommandGroup>
-        </Command>
+      trigger={
+        children ?? (
+          <Button variant="outline" aria-expanded={rest.open} className="w-[200px] justify-between">
+            {value ? options.find(framework => framework.value === value.value)?.label : 'Select...'}
+            <TbSortAscending className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          </Button>
+        )
       }
     >
-      {children ?? (
-        <Button variant="outline" aria-expanded={rest.open} className="w-[200px] justify-between">
-          {value ? options.find(framework => framework.value === value.value)?.label : 'Select...'}
-          <TbSortAscending className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-        </Button>
-      )}
+      {' '}
+      <Command className={cn('bg-secondary-50', popupClassName)}>
+        <CommandInput placeholder={placeholder} className="h-9" />
+        <CommandEmpty>{noFoundText}</CommandEmpty>
+        <CommandGroup>
+          {options.map(option => (
+            <CommandItem
+              key={option.value}
+              value={option.value}
+              onSelect={currentValue => {
+                onChange(options.find(framework => framework.value === currentValue)!)
+                if (closeOnSelect) {
+                  rest.onOpenChange?.(false)
+                }
+              }}
+            >
+              {option.label}
+              <TbCheck className={cn('ml-auto h-4 w-4', value?.value === option.value ? 'opacity-100' : 'opacity-0')} />
+            </CommandItem>
+          ))}
+        </CommandGroup>
+      </Command>
     </Popover>
   )
 }
