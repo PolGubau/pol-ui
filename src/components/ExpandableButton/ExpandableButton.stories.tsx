@@ -5,6 +5,7 @@ import { Dropdown, DropdownCheckboxItem, DropdownItem, DropdownLabel } from '../
 import { Textarea } from '../Textarea'
 import { Button } from '../Button'
 import { TbChevronRight, TbSend } from 'react-icons/tb'
+import { IconButton } from '../IconButton'
 
 export default {
   title: 'Components/ExpandableButton',
@@ -24,7 +25,7 @@ export default {
 
 export const Default = () => (
   <ExpandableButton>
-    <div className="bg-secondary-100 p-2 flex flex-col gap-2">
+    <div className="bg-secondary-100 p-2 flex flex-col gap-2 rounded-b-lg py-3">
       <h4>Add comment</h4>
       <Textarea className="w-full" placeholder="Write a comment" />
       <nav className="flex flex-row-reverse justify-right w-full">
@@ -37,17 +38,39 @@ export const Default = () => (
   </ExpandableButton>
 )
 
-export const InDropdown = () => {
-  return (
-    <div className="flex p-6 flex-col items-center h-full">
-      <Dropdown className="w-96">
-        <DropdownLabel>User</DropdownLabel>
-        <DropdownCheckboxItem>Item 1</DropdownCheckboxItem>
-        <DropdownCheckboxItem>Item 2</DropdownCheckboxItem>
-        <DropdownItem>Item 1</DropdownItem>
-        <DropdownItem>Item 2</DropdownItem>
-        <ExpandableButton> Content </ExpandableButton>{' '}
-      </Dropdown>
+export const CustomTrigger = () => (
+  <div className="flex justify-center items-center">
+    <ExpandableButton
+      trigger={
+        <IconButton className="w-[50px]">
+          <TbSend />
+        </IconButton>
+      }
+    >
+      <div className="bg-secondary-100 p-2 flex flex-col gap-2 rounded-b-lg py-3">
+        <h4>Add comment</h4>
+        <Textarea className="w-full" placeholder="Write a comment" />
+        <nav className="flex flex-row-reverse justify-right w-full">
+          <Button size={'sm'}>
+            Send
+            <TbChevronRight className="w-4 h-4" />
+          </Button>
+        </nav>
+      </div>
+    </ExpandableButton>
+  </div>
+)
+export const Once = () => (
+  <ExpandableButton once>
+    <div className="bg-secondary-100 p-2 flex flex-col gap-2 rounded-b-lg py-3">
+      <h4>Add comment</h4>
+      <Textarea className="w-full" placeholder="Write a comment" />
+      <nav className="flex flex-row-reverse justify-right w-full">
+        <Button size={'sm'}>
+          Send
+          <TbChevronRight className="w-4 h-4" />
+        </Button>
+      </nav>
     </div>
-  )
-}
+  </ExpandableButton>
+)

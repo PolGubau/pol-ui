@@ -1,12 +1,12 @@
 import type { ComponentProps } from 'react'
 import { forwardRef, useId } from 'react'
-import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import { getTheme } from '../../theme-store'
 import { HelperText } from '../HelperText'
 import { ColorsEnum, MainSizesEnum } from '../../types/enums'
 import { Label } from '../Label'
 import type { BaseInputsProps } from '../Input/props'
+import { cn } from '../../helpers'
 
 export interface TextareaProps extends Omit<ComponentProps<'textarea'>, 'color' | 'ref' | 'size'>, BaseInputsProps {}
 
@@ -33,18 +33,18 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     const randomId = useId()
 
     return (
-      <div className={twMerge(theme.root.base, theme.root.labelPosition[labelPosition])}>
+      <div className={cn(theme.root.base, theme.root.labelPosition[labelPosition])}>
         {label && (
-          <Label className={twMerge(theme.label, labelClassName)} htmlFor={randomId}>
+          <Label className={cn(theme.label, labelClassName)} htmlFor={randomId}>
             {label}
           </Label>
         )}
-        <div className={twMerge(theme.base, className)}>
-          <div className={twMerge(theme.field.base)}>
+        <div className={cn(theme.base, className)}>
+          <div className={cn(theme.field.base)}>
             {leftComponent && (
               <div
                 data-testid="left-icon"
-                className={twMerge(theme.field.icons.base, theme.field.icons.svg, theme.field.icons.left)}
+                className={cn(theme.field.icons.base, theme.field.icons.svg, theme.field.icons.left)}
               >
                 {leftComponent}
               </div>
@@ -52,7 +52,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             {rightComponent && (
               <div
                 data-testid="right-icon"
-                className={twMerge(theme.field.icons.base, theme.field.icons.svg, theme.field.icons.right)}
+                className={cn(theme.field.icons.base, theme.field.icons.svg, theme.field.icons.right)}
               >
                 {rightComponent}
               </div>
@@ -61,7 +61,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               ref={ref}
               name={randomId}
               id={randomId}
-              className={twMerge(
+              className={cn(
                 theme.field.input.base,
                 theme.field.input.multiline.on,
                 theme.field.input.border[border ? 'on' : 'off'],

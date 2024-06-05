@@ -12,9 +12,17 @@ export interface ExpandableButtonProps extends React.HTMLAttributes<HTMLDivEleme
 
   trigger?: React.ReactNode
   label?: string
+  triggerWrapperClassName?: string
 }
 
-const ExpandableButton = ({ children, once, trigger, label = 'Click to toggle', ...rest }: ExpandableButtonProps) => {
+const ExpandableButton = ({
+  children,
+  once,
+  trigger,
+  triggerWrapperClassName,
+  label = 'Click to toggle',
+  ...rest
+}: ExpandableButtonProps) => {
   const { value, toggle, setTrue } = useBoolean(false)
   const handleClick = () => {
     if (once) {
@@ -24,13 +32,20 @@ const ExpandableButton = ({ children, once, trigger, label = 'Click to toggle', 
     }
   }
 
-  const defaultTrigger = trigger ?? <Button onClick={handleClick}>{label}</Button>
+  const defaultTrigger = trigger ?? <Button className="w-full">{label}</Button>
   return (
     <div className="flex flex-col w-full" {...rest}>
       {
-        <Button onClick={handleClick} asChild>
+        <div
+          data-state={value ? 'open' : 'closed'}
+          className={cn(triggerWrapperClassName)}
+          onClickCapture={e => {
+            e.stopPropagation()
+            handleClick()
+          }}
+        >
           {defaultTrigger}
-        </Button>
+        </div>
       }
       <AnimatePresence mode="wait">
         {value && (

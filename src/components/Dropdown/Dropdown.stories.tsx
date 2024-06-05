@@ -30,6 +30,8 @@ import { Button } from '../Button'
 import { cn } from '../../helpers'
 import { FocusEffect } from '../FocusEffect'
 import { DropdownItem, DropdownSubContent, DropdownSubTrigger } from './components'
+import { DropdownExpandable, DropdownExpandableTextArea } from './components/items'
+import { Textarea } from '../Textarea'
 
 export default {
   title: 'Components/Dropdown',
@@ -53,6 +55,7 @@ export default {
   },
 } as Meta
 export function Default() {
+  const [value, setValue] = useState('')
   return (
     <Dropdown>
       <DropdownHeader>
@@ -119,6 +122,8 @@ export function Default() {
         <BiCloud className="mr-2 h-4 w-4" />
         <span>API</span>
       </DropdownItem>
+      <DropdownExpandableTextArea />
+
       <Divider />
       <DropdownItem icon={BiLogOut} className="text-error focus:bg-error/10">
         <span>Log out</span>
