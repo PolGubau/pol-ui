@@ -8,8 +8,13 @@ export default {
   tags: ['autodocs'],
   decorators: [
     Story => (
-      <div className="flex p-6 items-center justify-center w-full">
-        <Story />
+      <div className="flex ">
+        <div className="flex p-6 items-center justify-center w-full">
+          <Story />
+        </div>
+        <div className="dark bg-secondary-900 flex p-6 items-center justify-center w-full">
+          <Story />
+        </div>
       </div>
     ),
   ],
@@ -80,10 +85,10 @@ export const Conversation = () => {
 
   return (
     <div className="flex p-6 items-center justify-center flex-col w-full">
-      <div className="max-w-xl bg-primary-100 border-4 border-primary-900 w-full h-[80vh] rounded-xl overflow-y-auto">
+      <div className="max-w-xl bg-primary-100 dark:bg-slate-900 border-4 border-primary-900 w-full h-[80vh] rounded-xl overflow-y-auto">
         <header className="flex flex-col gap-1 p-4">
-          <h1 className="text-4xl font-bold">Anna</h1>
-          <p className="text-lg text-primary-800">Last seen at 12:04 PM</p>
+          <h1 className="text-4xl font-bold text-black dark:text-white">Anna</h1>
+          <p className="text-lg text-primary-800 dark:text-white">Last seen at 12:04 PM</p>
           <Divider className="border-black" />
         </header>
         <section className="w-full p-4">
