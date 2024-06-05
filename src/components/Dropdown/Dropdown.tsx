@@ -7,15 +7,20 @@ import { TbCheck, TbCircle } from 'react-icons/tb'
 import { cn } from '../../helpers'
 import { Button } from '../Button'
 import { DropdownContent } from './components'
+import { Drawer } from '../Drawer'
+import { useMediaQuery } from '../../hooks'
 
 export interface DropdownProps extends D.DropdownMenuContentProps {
   trigger?: React.ReactNode
   children: React.ReactNode
   label?: string
   disabled?: boolean
+  /** When responsive, in mobile devices will render a drawer instead of a dropdown */
+
+  responsive?: boolean
 }
 
-const Dropdown = ({ trigger, label = 'Open Menu', children, disabled, ...props }: DropdownProps) => {
+const Dropdown = ({ trigger, label = 'Open Menu', children, disabled, responsive, ...props }: DropdownProps) => {
   const triggerNode = trigger || <Button name={label}>{label}</Button>
 
   return (
@@ -31,6 +36,7 @@ const Dropdown = ({ trigger, label = 'Open Menu', children, disabled, ...props }
     </D.Root>
   )
 }
+
 const DropdownTrigger = D.Trigger
 
 const DropdownGroup = D.Group

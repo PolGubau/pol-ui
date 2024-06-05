@@ -7,6 +7,7 @@ import { FocusEffect } from '../../FocusEffect'
 import { ExpandableButton } from '../../ExpandableButton'
 import { Button, ButtonProps } from '../../Button'
 import { Textarea, TextareaProps } from '../../Textarea'
+import { useMediaQuery } from '../../../hooks'
 
 interface DropdownItemProps extends ComponentProps<typeof Item> {
   label?: string
@@ -84,34 +85,43 @@ const DropdownExpandable = ({
   children,
   once,
   ...props
-}: DropdownExpandableProps) => (
-  <ExpandableButton
-    className="w-full"
-    once
-    label={label}
-    triggerWrapperClassName={cn('mx-2 rounded-t-lg data-[state=open]:bg-secondary-800/10', triggerWrapperClassName)}
-    trigger={
-      <Item
-        {...props}
-        className={cn(
-          'group w-auto relative flex cursor-default select-none items-center p-2 text-sm outline-none gap-4 rounded-md opacity-90 text-black dark:text-white overflow-hidden',
-          'hover:opacity-100',
-          'focus:bg-secondary-800/10',
-          'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+}: DropdownExpandableProps) => {
+  const isDesktop = useMediaQuery('(min-width: 768px)')
+  return (
+    <ExpandableButton
+      className="w-full"
+      once
+      label={label}
+      triggerWrapperClassName={cn('mx-2 rounded-t-lg data-[state=open]:bg-secondary-800/10', triggerWrapperClassName)}
+      trigger={
+        <Item
+          {...props}
+          className={cn(
+            'group w-auto relative flex cursor-default select-none items-center p-2 text-sm outline-none gap-4 rounded-md opacity-90 text-black dark:text-white overflow-hidden',
+            'hover:opacity-100',
+            'focus:bg-secondary-800/10',
+            'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
 
-          className,
-        )}
+            className,
+          )}
+        >
+          <FocusEffect className="bg-black/10" />
+
+          {Icon && <Icon className="h-[18px] w-[18px]" />}
+          {label}
+        </Item>
+      }
+    >
+      <div
+        className={cn(wrapperClassName, {
+          'mx-2 bg-secondary-800/10 rounded-b-lg': !isDesktop,
+        })}
       >
-        <FocusEffect className="bg-black/10" />
-
-        {Icon && <Icon className="h-[18px] w-[18px]" />}
-        {label}
-      </Item>
-    }
-  >
-    <div className={cn('mx-2 bg-secondary-800/10 rounded-b-lg', wrapperClassName)}>{children}</div>
-  </ExpandableButton>
-)
+        {children}
+      </div>
+    </ExpandableButton>
+  )
+}
 
 interface DropdownExpandableTextAreaProps extends TextareaProps {
   label?: string
@@ -133,7 +143,7 @@ const DropdownExpandableTextArea = ({
     <form className="flex flex-col gap-2 p-2 pt-1 border-b-lg">
       <Textarea autoFocus {...props} innerClassName="w-full bg-white p-2" />
       <nav className="flex flex-row-reverse justify-right w-full">
-        <Button size={'sm'} {...button}>
+        <Button size={'sm'} {...button} type="submit">
           {button.label}
           <TbChevronRight className="w-4 h-4" />
         </Button>

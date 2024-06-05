@@ -93,6 +93,7 @@ export type DrawerProps = React.ComponentProps<typeof DrawerPrimitive.Root> & {
   children: React.ReactNode
   label?: string
   trigger?: React.ReactNode
+  
 }
 
 const Drawer = ({ children, label = 'Open Drawer', trigger, ...props }: DrawerProps) => {
