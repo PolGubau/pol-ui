@@ -31,7 +31,7 @@ export const messageTheme: MessageTheme = {
 
     date: 'text-xs text-secondary-800',
     arrow: {
-      base: 'absolute w-0 h-0 border-r-[10px] border-t-[10px] border-l-[10px] border-primary border-transparent',
+      base: 'absolute w-0 h-0 border-r-[10px] border-t-[10px] border-l-[10px] border-transparent',
       mine: {
         on: 'right-0 border-t-primary',
         off: 'left-0 border-t-secondary',
