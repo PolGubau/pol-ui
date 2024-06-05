@@ -6,6 +6,7 @@ import { Button } from '../Button'
 import { AnimatePresence, motion } from 'framer-motion'
 import { cn } from '../../helpers'
 import { Drawer } from '../Drawer'
+import { DialogTitle } from '@radix-ui/react-dialog'
 
 export interface ExpandableButtonProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
@@ -68,7 +69,17 @@ const ExpandableButton = ({
         </AnimatePresence>
       )}
       {!isDesktop && (
-        <Drawer open={value} onClose={toggle} trigger={<></>}>
+        <Drawer
+          open={value}
+          onClose={toggle}
+          noTrigger
+          onOpenChange={newState => {
+            if (newState === false) {
+              toggle()
+            }
+          }}
+        >
+          <DialogTitle>{label}</DialogTitle>
           {children}
         </Drawer>
       )}

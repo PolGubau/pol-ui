@@ -90,7 +90,6 @@ const DropdownExpandable = ({
   return (
     <ExpandableButton
       className="w-full"
-      once
       label={label}
       triggerWrapperClassName={cn('mx-2 rounded-t-lg data-[state=open]:bg-secondary-800/10', triggerWrapperClassName)}
       trigger={
@@ -114,7 +113,7 @@ const DropdownExpandable = ({
     >
       <div
         className={cn(wrapperClassName, {
-          'mx-2 bg-secondary-800/10 rounded-b-lg': !isDesktop,
+          'mx-2 bg-secondary-800/10 rounded-b-lg': isDesktop,
         })}
       >
         {children}
