@@ -3,7 +3,10 @@ import { IBoolean } from '../../types'
 export interface MessageTheme {
   message: {
     base: string
-    content: string
+    content: {
+      base: string
+      mine: IBoolean
+    }
     date: string
     arrow: {
       base: string
@@ -18,13 +21,20 @@ export interface MessageTheme {
 export const messageTheme: MessageTheme = {
   message: {
     base: 'relative px-2 flex max-w-[80%] w-fit',
-    content: 'bg-primary rounded-xl py-1 px-3 z-10 flex items-end gap-3 text-pretty',
+    content: {
+      base: 'rounded-xl py-1 px-3 z-10 flex items-end gap-3 text-pretty',
+      mine: {
+        on: 'bg-primary',
+        off: 'bg-secondary',
+      },
+    },
+
     date: 'text-xs text-secondary-800',
     arrow: {
-      base: 'absolute w-0 h-0 border-r-[10px] border-t-[10px] border-l-[10px] border-primary border-transparent border-t-primary',
+      base: 'absolute w-0 h-0 border-r-[10px] border-t-[10px] border-l-[10px] border-primary border-transparent',
       mine: {
-        on: 'right-0',
-        off: 'left-0',
+        on: 'right-0 border-t-primary',
+        off: 'left-0 border-t-secondary',
       },
     },
   },

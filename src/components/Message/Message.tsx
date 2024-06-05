@@ -20,7 +20,7 @@ const Message = ({ content, date, arrow, locale, mine = true, theme: customTheme
 
   return (
     <div className={theme.message.base}>
-      <div className={theme.message.content}>
+      <div className={cn(theme.message.content.base, theme.message.content.mine[mine ? 'on' : 'off'])}>
         {content}
         {date && <div className={theme.message.date}>{parsedDate}</div>}
       </div>
