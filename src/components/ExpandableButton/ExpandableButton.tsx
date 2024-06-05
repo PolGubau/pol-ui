@@ -17,6 +17,15 @@ export interface ExpandableButtonProps extends React.HTMLAttributes<HTMLDivEleme
   trigger?: React.ReactNode
   label?: string
   triggerWrapperClassName?: string
+  /**
+   * If true, the content will be shown inline on desktop and in a Drawer on mobile.
+   */
+  responsive?: boolean
+
+  /**
+   * If true, the label will be shown in the Drawer on mobile, otherwise it will be hidden.
+   */
+  showLabelInDrawer?: boolean
 }
 
 const ExpandableButton = ({
@@ -25,6 +34,8 @@ const ExpandableButton = ({
   trigger,
   triggerWrapperClassName,
   label = 'Click to toggle',
+  responsive = true,
+  showLabelInDrawer = true,
   ...rest
 }: ExpandableButtonProps) => {
   const isDesktop = useMediaQuery('(min-width: 768px)')
@@ -39,6 +50,9 @@ const ExpandableButton = ({
   }
 
   const defaultTrigger = trigger ?? <Button className="w-full">{label}</Button>
+
+  const shouldBeDrawer = !isDesktop && responsive
+
   return (
     <div className="flex flex-col w-full" {...rest}>
       {
@@ -53,7 +67,21 @@ const ExpandableButton = ({
           {defaultTrigger}
         </div>
       }
-      {isDesktop && (
+
+      {shouldBeDrawer ? (
+        <Drawer
+          open={value}
+          onClose={toggle}
+          noTrigger
+          onOpenChange={newState => {
+            if (newState === false) {
+              toggle()
+            }
+          }}
+        >
+          {showLabelInDrawer && <DialogTitle>{label}</DialogTitle>} {children}
+        </Drawer>
+      ) : (
         <AnimatePresence mode="wait">
           {value && (
             <motion.div
@@ -67,21 +95,6 @@ const ExpandableButton = ({
             </motion.div>
           )}
         </AnimatePresence>
-      )}
-      {!isDesktop && (
-        <Drawer
-          open={value}
-          onClose={toggle}
-          noTrigger
-          onOpenChange={newState => {
-            if (newState === false) {
-              toggle()
-            }
-          }}
-        >
-          <DialogTitle>{label}</DialogTitle>
-          {children}
-        </Drawer>
       )}
     </div>
   )

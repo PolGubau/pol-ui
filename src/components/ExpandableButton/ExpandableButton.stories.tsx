@@ -1,11 +1,9 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import type { ExpandableButtonProps } from './ExpandableButton'
-import ExpandableButton from './ExpandableButton'
-import { Dropdown, DropdownCheckboxItem, DropdownItem, DropdownLabel } from '../Dropdown'
-import { Textarea } from '../Textarea'
-import { Button } from '../Button'
+import type { Meta } from '@storybook/react'
 import { TbChevronRight, TbSend } from 'react-icons/tb'
+import { Button } from '../Button'
 import { IconButton } from '../IconButton'
+import { Textarea } from '../Textarea'
+import ExpandableButton from './ExpandableButton'
 
 export default {
   title: 'Components/ExpandableButton',
@@ -24,10 +22,10 @@ export default {
 } as Meta
 
 export const Default = () => (
-  <ExpandableButton>
-    <div className="bg-secondary-100 p-2 flex flex-col gap-2 rounded-b-lg py-3">
+  <ExpandableButton showLabelInDrawer={false}>
+    <div className="p-2 flex flex-col gap-2 rounded-b-lg py-3">
       <h4>Add comment</h4>
-      <Textarea className="w-full" placeholder="Write a comment" />
+      <Textarea className="w-full" placeholder="Write a comment" autoFocus />
       <nav className="flex flex-row-reverse justify-right w-full">
         <Button size={'sm'}>
           Send
