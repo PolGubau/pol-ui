@@ -63,6 +63,7 @@ import { toastTheme } from './components/Toaster/theme'
 import { toggleTheme } from './components/Toggle/theme'
 import { focusEffectTheme } from './components/FocusEffect/theme'
 import { gaugeTheme } from './components/Gauge/theme'
+import { messageTheme } from './components/Message/theme'
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,
@@ -116,6 +117,7 @@ export const theme: PoluiTheme = {
   kanban: kanbanTheme,
   bubbleHeading: bubbleHeadingTheme,
   imageTrail: imageTrailTheme,
+  message: messageTheme,
   containerScroll: containerScrollTheme,
   animatedText: animatedHeadingTheme,
   toggle: toggleTheme,

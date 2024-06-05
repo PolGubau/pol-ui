@@ -61,6 +61,7 @@ import type { OtpInputTheme } from '../OtpInput/theme'
 import type { AutocompleteTheme } from '../Autocomplete/theme'
 import { GaugeTheme } from '../Gauge'
 import { FocusEffectTheme } from '../FocusEffect/theme'
+import { MessageTheme } from '../Message/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -78,6 +79,7 @@ export interface PoluiTheme {
   gauge: GaugeTheme
   banner: BannerTheme
   breadcrumb: BreadcrumbTheme
+  message: MessageTheme
   button: ButtonTheme
   focusEffect: FocusEffectTheme
   iconButton: IconButtonTheme
