@@ -1,6 +1,5 @@
 'use client'
 import type { ComponentProps, FC, ReactElement } from 'react'
-import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { Colors, DeepPartial, MainSizes, Positions, RoundedSizes } from '../../types/types'
@@ -9,6 +8,7 @@ import { AvatarGroupCounter } from './AvatarGroupCounter'
 import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../../types/enums'
 import type { AvatarStatus } from './AvatarTypes'
 import type { AvatarTheme } from './theme'
+import { cn } from '../../helpers'
 
 export interface AvatarImageProps {
   alt?: string
@@ -55,7 +55,7 @@ const AvatarComponent: FC<AvatarProps> = ({
 }) => {
   const theme = mergeDeep(getTheme().avatar, customTheme)
 
-  const imgClassName = twMerge(
+  const imgClassName = cn(
     theme.root.img.base,
     bordered && theme.root.bordered,
     bordered && theme.root.color[color],
@@ -66,11 +66,11 @@ const AvatarComponent: FC<AvatarProps> = ({
   )
 
   const imgProps = {
-    className: twMerge(imgClassName, theme.root.img.on),
+    className: cn(imgClassName, theme.root.img.on),
     'data-testid': 'ui-avatar-img',
   }
   return (
-    <div className={twMerge(theme.root.base, className)} data-testid="ui-avatar" {...props}>
+    <div className={cn(theme.root.base, className)} data-testid="ui-avatar" {...props}>
       <div className="relative">
         {img ? (
           typeof img === 'string' ? (
@@ -80,7 +80,7 @@ const AvatarComponent: FC<AvatarProps> = ({
           )
         ) : placeholderInitials ? (
           <div
-            className={twMerge(
+            className={cn(
               theme.root.img.off,
               theme.root.initials.base,
               stacked && theme.root.stacked,
@@ -91,12 +91,12 @@ const AvatarComponent: FC<AvatarProps> = ({
             )}
             data-testid="ui-avatar-initials-placeholder"
           >
-            <span className={twMerge(theme.root.initials.text)} data-testid="ui-avatar-initials-placeholder-text">
+            <span className={cn(theme.root.initials.text)} data-testid="ui-avatar-initials-placeholder-text">
               {placeholderInitials}
             </span>
           </div>
         ) : (
-          <div className={twMerge(imgClassName, theme.root.img.off)} data-testid="ui-avatar-img">
+          <div className={cn(imgClassName, theme.root.img.off)} data-testid="ui-avatar-img">
             <svg
               className={theme.root.img.placeholder}
               fill="currentColor"
@@ -110,7 +110,7 @@ const AvatarComponent: FC<AvatarProps> = ({
         {status && (
           <span
             data-testid="ui-avatar-status"
-            className={twMerge(
+            className={cn(
               theme.root.status.base,
               theme.root.status[status as keyof AvatarStatus],
               theme.root.statusPosition[statusPosition],

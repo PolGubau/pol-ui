@@ -1,22 +1,22 @@
 'use client'
 
 import type { ComponentProps, FC } from 'react'
-import { twMerge } from 'tailwind-merge'
 import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types/types'
 import type { NavbarTheme } from './theme'
 import { NavbarCollapse } from './navbar-collapse'
+import { cn } from '../../helpers'
 export interface NavbarLink extends Omit<ComponentProps<'a'>, 'content'> {
   href: string
   label: string
-  content?: React.ReactNode
+  content?: JSX.Element
   active?: boolean
 }
 export interface NavbarProps extends Omit<ComponentProps<'nav'>, 'children'> {
   theme?: DeepPartial<NavbarTheme>
-  rightContent?: React.ReactNode
-  leftContent?: React.ReactNode
+  rightContent?: JSX.Element
+  leftContent?: JSX.Element
   links?: NavbarLink[]
   linkClassName?: string
 }
@@ -38,7 +38,7 @@ export const Navbar: FC<NavbarProps> = ({
 }) => {
   const theme = mergeDeep(getTheme().navbar, customTheme)
   return (
-    <nav className={twMerge(theme.root.base, className)} {...props}>
+    <nav className={cn(theme.base, className)} {...props}>
       {leftContent}
       <NavbarCollapse links={links} linkClassName={linkClassName} />
       {rightContent}

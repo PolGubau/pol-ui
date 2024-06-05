@@ -1,8 +1,10 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import { Avatar } from '../Avatar'
 import { Button } from '../Button'
-import { Dropdown, DropdownItem } from '../Dropdown'
+import { Dropdown, DropdownGroup, DropdownItem, DropdownLabel } from '../Dropdown'
 import { Navbar, type NavbarProps } from './Navbar'
+import { TbCreditCard, TbKeyboard, TbLogout, TbSettings, TbUser } from 'react-icons/tb'
+import { IconButton } from '../IconButton'
 
 export default {
   title: 'Components/Navbar',
@@ -62,16 +64,41 @@ WithDropdown.args = {
     { href: '#', label: 'Contact' },
   ],
   rightContent: (
-    <div className="flex gap-3 md:order-2">
-      <Dropdown
-        label="User settings"
-        trigger={<Avatar alt="User settings" img="https://avatars.githubusercontent.com/u/63197171?v=4" />}
-      >
-        <DropdownItem label="Profile" />
-        <DropdownItem label="Settings" />
-        <DropdownItem label="Logout" />
-      </Dropdown>
-    </div>
+    // <Dropdown
+    //   label="User settings"
+    //   trigger={<Avatar alt="User settings" img="https://avatars.githubusercontent.com/u/63197171?v=4" />}
+    // >
+    //   <DropdownItem label="Profile" />
+    //   <DropdownItem label="Settings" />
+    //   <DropdownItem label="Logout" />
+    // </Dropdown>
+    <Dropdown
+      trigger={
+        <IconButton className="p-0">
+          <Avatar alt="User settings" img="https://avatars.githubusercontent.com/u/63197171?v=4" />
+        </IconButton>
+      }
+    >
+      <DropdownLabel>My Account</DropdownLabel>
+      <DropdownGroup>
+        <DropdownItem onSelect={() => alert('a')}>
+          <TbUser className="mr-2 h-4 w-4" />
+          <span>Profile</span>
+        </DropdownItem>
+        <DropdownItem>
+          <TbCreditCard className="mr-2 h-4 w-4" />
+          <span>Billing</span>
+        </DropdownItem>
+        <DropdownItem>
+          <TbSettings className="mr-2 h-4 w-4" />
+          <span>Settings</span>
+        </DropdownItem>
+        <DropdownItem>
+          <TbKeyboard className="mr-2 h-4 w-4" />
+          <span>Keyboard shortcuts</span>
+        </DropdownItem>
+      </DropdownGroup>
+    </Dropdown>
   ),
 }
 export const DarkMode = Template.bind({})
@@ -88,7 +115,11 @@ DarkMode.args = {
     <div className="flex gap-3 md:order-2">
       <Dropdown
         label="User settings"
-        trigger={<Avatar alt="User settings" img="https://avatars.githubusercontent.com/u/63197171?v=4" />}
+        trigger={
+          <IconButton className="p-0">
+            <Avatar alt="User settings" img="https://avatars.githubusercontent.com/u/63197171?v=4" />
+          </IconButton>
+        }
       >
         <DropdownItem label="Profile" />
         <DropdownItem label="Settings" />
@@ -99,7 +130,8 @@ DarkMode.args = {
 }
 export const CustomClasses = Template.bind({})
 CustomClasses.args = {
-  className: 'bg-primary-900 rounded-full max-w-[800px] mx-auto top-5',
+  className: 'bg-primary-900 fixed rounded-full max-w-[800px] mx-auto top-5 left-1/2 transform -translate-x-1/2',
+  linkClassName: 'text-primary-50',
   links: [
     { href: '#', label: 'Home' },
     { href: '#', label: 'About', content: <StoryNavbarTab /> },
@@ -110,8 +142,11 @@ CustomClasses.args = {
   rightContent: (
     <div className="flex gap-3 md:order-2">
       <Dropdown
-        label="User settings"
-        trigger={<Avatar alt="User settings" img="https://avatars.githubusercontent.com/u/63197171?v=4" />}
+        trigger={
+          <IconButton className="p-0">
+            <Avatar alt="User settings" img="https://avatars.githubusercontent.com/u/63197171?v=4" />
+          </IconButton>
+        }
       >
         <DropdownItem label="Profile" />
         <DropdownItem label="Settings" />

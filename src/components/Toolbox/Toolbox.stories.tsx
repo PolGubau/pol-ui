@@ -1,9 +1,8 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import { Button } from '../Button'
-import Toolbox, { ToolboxProps } from './Toolbox'
-import { IconButton } from '../IconButton'
-import { useThemeMode } from '../../hooks'
+import type { Meta } from '@storybook/react'
 import { TbMoon, TbSettings, TbSun, TbUser } from 'react-icons/tb'
+import { useThemeMode } from '../../hooks'
+import { IconButton } from '../IconButton'
+import Toolbox from './Toolbox'
 
 export default {
   title: 'Components/Toolbox',

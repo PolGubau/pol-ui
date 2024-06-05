@@ -1,5 +1,3 @@
 export { Navbar } from './Navbar'
 export type { NavbarProps as NavbarComponentProps } from './Navbar'
-export { NavbarCollapse } from './navbar-collapse'
-export type { NavbarCollapseTheme, NavbarCollapseProps } from './navbar-collapse'
 export type { NavbarRootTheme, NavbarTheme } from './theme'

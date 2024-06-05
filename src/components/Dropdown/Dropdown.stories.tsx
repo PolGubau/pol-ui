@@ -43,7 +43,7 @@ export default {
   },
   decorators: [
     Story => (
-      <div className="flex grid min-w-[200px] place-items-center">
+      <div className="flex grid min-h-[200px] place-items-center">
         <Story />
       </div>
     ),
