@@ -1,7 +1,7 @@
 'use client'
 
 import type { ComponentProps, FC } from 'react'
-import { twMerge } from 'tailwind-merge'
+import { cn } from '../../helpers'
 import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { DeepPartial } from '../../types/types'
@@ -19,5 +19,5 @@ export interface DividerProps extends ComponentProps<'hr'> {
  */
 export const Divider: FC<DividerProps> = ({ className, theme: customTheme = {}, ...props }) => {
   const theme = mergeDeep(getTheme().divider, customTheme)
-  return <hr data-testid="divider" className={twMerge(theme.base, className)} {...props} />
+  return <hr data-testid="divider" className={cn(theme.base, className)} {...props} />
 }

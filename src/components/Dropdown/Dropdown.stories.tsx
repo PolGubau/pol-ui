@@ -16,20 +16,20 @@ import {
 } from 'react-icons/tb'
 import {
   Dropdown,
+  DropdownDescription,
   DropdownGroup,
-  DropdownItem,
+  DropdownHeader,
   DropdownLabel,
   DropdownPortal,
   DropdownShortcut,
   DropdownSub,
-  DropdownSubContent,
-  DropdownSubTrigger,
 } from './Dropdown'
 import { Divider } from '../Divider'
 import { useState } from 'react'
 import { Button } from '../Button'
 import { cn } from '../../helpers'
 import { FocusEffect } from '../FocusEffect'
+import { DropdownItem, DropdownSubContent, DropdownSubTrigger } from './components'
 
 export default {
   title: 'Components/Dropdown',
@@ -43,7 +43,7 @@ export default {
   },
   decorators: [
     Story => (
-      <div className="flex grid min-h-[200px] place-items-center">
+      <div className="flex grid min-h-[200px] place-items-center bg-secondary-50 dark:bg-secondary-900">
         <Story />
       </div>
     ),
@@ -55,33 +55,32 @@ export default {
 export function Default() {
   return (
     <Dropdown>
-      <DropdownLabel>My Account</DropdownLabel>
+      <DropdownHeader>
+        <DropdownLabel>Pol Gubau Amores</DropdownLabel>
+        <DropdownDescription>supersecret@gmail.com</DropdownDescription>
+      </DropdownHeader>
+
       <Divider />
       <DropdownGroup>
-        <DropdownItem onSelect={() => alert('a')}>
-          <TbUser className="mr-2 h-4 w-4" />
+        <DropdownItem onSelect={() => alert('a')} icon={TbUser}>
           <span>Profile</span>
           <DropdownShortcut>⇧⌘P</DropdownShortcut>
         </DropdownItem>
-        <DropdownItem>
-          <TbCreditCard className="mr-2 h-4 w-4" />
+        <DropdownItem icon={TbCreditCard}>
           <span>Billing</span>
           <DropdownShortcut>⌘B</DropdownShortcut>
         </DropdownItem>
-        <DropdownItem>
-          <TbSettings className="mr-2 h-4 w-4" />
+        <DropdownItem icon={TbSettings}>
           <span>Settings</span>
         </DropdownItem>
-        <DropdownItem>
-          <TbKeyboard className="mr-2 h-4 w-4" />
+        <DropdownItem icon={TbKeyboard}>
           <span>Keyboard shortcuts</span>
           <DropdownShortcut>⌘K</DropdownShortcut>
         </DropdownItem>
       </DropdownGroup>
       <Divider />
       <DropdownGroup>
-        <DropdownItem>
-          <TbUsers className="mr-2 h-4 w-4" />
+        <DropdownItem icon={TbUsers}>
           <span>Team</span>
         </DropdownItem>
         <DropdownSub>
@@ -91,35 +90,29 @@ export function Default() {
           </DropdownSubTrigger>
           <DropdownPortal>
             <DropdownSubContent>
-              <DropdownItem>
-                <TbMail className="mr-2 h-4 w-4" />
+              <DropdownItem icon={TbMail}>
                 <span>Email</span>
               </DropdownItem>
-              <DropdownItem>
-                <TbMessage className="mr-2 h-4 w-4" />
+              <DropdownItem icon={TbMessage}>
                 <span>Message</span>
               </DropdownItem>
               <Divider />
-              <DropdownItem>
-                <TbPlus className="mr-2 h-4 w-4" />
-                <span>More...</span>
+              <DropdownItem icon={TbPlus}>
+                <span>More</span>
               </DropdownItem>
             </DropdownSubContent>
           </DropdownPortal>
         </DropdownSub>
-        <DropdownItem>
-          <TbPlus className="mr-2 h-4 w-4" />
+        <DropdownItem icon={TbPlus}>
           <span>New Team</span>
           <DropdownShortcut>⌘+T</DropdownShortcut>
         </DropdownItem>
       </DropdownGroup>
       <Divider />
-      <DropdownItem>
-        <BsGithub className="mr-2 h-4 w-4" />
+      <DropdownItem icon={BsGithub}>
         <span>GitHub</span>
       </DropdownItem>
-      <DropdownItem>
-        <TbLifebuoy className="mr-2 h-4 w-4" />
+      <DropdownItem icon={TbLifebuoy}>
         <span>Support</span>
       </DropdownItem>
       <DropdownItem disabled>
@@ -127,17 +120,12 @@ export function Default() {
         <span>API</span>
       </DropdownItem>
       <Divider />
-      <DropdownItem>
-        <BiLogOut className="mr-2 h-4 w-4" />
+      <DropdownItem icon={BiLogOut} className="text-error focus:bg-error/10">
         <span>Log out</span>
         <DropdownShortcut>⇧⌘Q</DropdownShortcut>
       </DropdownItem>
     </Dropdown>
   )
-}
-
-export const Empty = () => {
-  return <Dropdown>a</Dropdown>
 }
 
 export const AppPicker = () => {
@@ -181,7 +169,6 @@ export const AppPicker = () => {
                     },
                   )}
                 >
-                  <FocusEffect className="bg-black/10" />
                   <span className="scale-150">{app.icon}</span>
                   <span>{app.name}</span>
                 </DropdownItem>

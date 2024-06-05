@@ -2,7 +2,6 @@ export {
   Dropdown,
   DropdownTrigger,
   DropdownContent,
-  DropdownItem,
   DropdownCheckboxItem,
   DropdownRadioItem,
   DropdownLabel,
@@ -10,9 +9,9 @@ export {
   DropdownGroup,
   DropdownPortal,
   DropdownSub,
-  DropdownSubContent,
-  DropdownSubTrigger,
   DropdownRadioGroup,
-  type DropdownItemProps,
 } from './Dropdown'
 export { type DropdownTheme, dropdownTheme } from './theme'
+export { DropdownItem, type DropdownItemProps, DropdownSubTrigger, type DropdownSubTriggerProps } from './components'
+
+export * from './components'

@@ -116,7 +116,7 @@ export const AllColorsWithBorder = () => (
           placeholder={color}
           color={color as Colors}
           rightComponent={
-            <IconButton size="sm" variant={'outline'} color={color as Colors} onClick={() => alert(color)}>
+            <IconButton size="sm" variant={'ghost'} color={color as Colors} onClick={() => alert(color)}>
               <TbEye size={18} />
             </IconButton>
           }
