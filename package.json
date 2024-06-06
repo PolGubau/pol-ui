@@ -9,7 +9,8 @@
     "format": "prettier --write .",
     "prepare": "husky install",
     "common": "pnpm --filter common",
-    "app": "pnpm --filter web-app"
+    "app": "pnpm --filter web-app",
+    "ui": "pnpm --filter pol-ui"
   },
   "lint-staged": {
     "**/*.{js,ts,tsx}": [
