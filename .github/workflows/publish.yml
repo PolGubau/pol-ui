@@ -21,13 +21,13 @@ jobs:
           cache: 'pnpm'
 
       - name: 📥 Install Dependencies
-        run: pnpm install --filter ./packages/ui...
+        run: pnpm ui install
 
       - name: 💅 Lint
-        run: pnpm lint --filter ./packages/ui...
+        run: pnpm ui lint
 
       - name: 🧪 Unit Tests and coverage
-        run: pnpm test:coverage --filter ./packages/ui...
+        run: pnpm test:ui coverage
 
   publish:
     name: 🚀 Publish
@@ -46,7 +46,7 @@ jobs:
         run: npm install -g pnpm
 
       - name: 📥 Install Dependencies
-        run: pnpm install --filter ./packages/ui...
+        run: pnpm ui install
 
       - name: setup git config
         run: |
