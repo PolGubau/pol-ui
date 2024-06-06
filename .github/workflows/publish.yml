@@ -27,7 +27,7 @@ jobs:
         run: pnpm ui lint
 
       - name: 🧪 Unit Tests and coverage
-        run: pnpm test:ui coverage
+        run: pnpm ui test
 
   publish:
     name: 🚀 Publish
