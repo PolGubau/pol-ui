@@ -52,7 +52,22 @@ jobs:
         run: |
           git config user.name "Bot"
           git config user.email ""
+          
+- name: Get run number
+        id: run_number
+        run: echo "RUN_NUMBER=${{ github.run_number }}" >> $GITHUB_ENV
 
+      - name: Update version in package.json
+        run: |
+          cd packages/ui
+          node -e "
+          let pkg = require('./package.json');
+          let versionParts = pkg.version.split('.');
+          versionParts[2] = '${{ env.RUN_NUMBER }}';
+          pkg.version = versionParts.join('.');
+          require('fs').writeFileSync('./package.json', JSON.stringify(pkg, null, 2));
+          "
+        shell: bash
       - name: 🍀 Publish to NPM
         run: |
           echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc 
