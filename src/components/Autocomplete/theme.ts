@@ -24,7 +24,7 @@ export interface AutocompleteTheme {
 export const autocompleteTheme: AutocompleteTheme = {
   base: 'p-0',
   command: {
-    base: 'bg-secondary-50 min-w-[200px]',
+    base: 'bg-secondary-50 min-w-[200px] border',
 
     input: 'w-full h-10',
     item: 'aria-selected:bg-primary/30',
