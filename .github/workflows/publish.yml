@@ -21,13 +21,13 @@ jobs:
           cache: 'pnpm'
 
       - name: 📥 Install Dependencies
-        run: pnpm install
+        run: pnpm ui install
 
       - name: 💅 Lint
-        run: pnpm lint
+        run: pnpm ui lint
 
       - name: 🧪 Unit Tests and coverage
-        run: pnpm test:coverage
+        run: pnpm test:ui coverage
 
   publish:
     name: 🚀 Publish
@@ -46,7 +46,7 @@ jobs:
         run: npm install -g pnpm
 
       - name: 📥 Install Dependencies
-        run: pnpm install
+        run: pnpm ui install
 
       - name: setup git config
         run: |
@@ -54,7 +54,10 @@ jobs:
           git config user.email ""
 
       - name: 🍀 Publish to NPM
-        run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc && pnpm publish --no-git-checks
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc 
+          cd packages/ui 
+          pnpm publish --no-git-checks
 
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

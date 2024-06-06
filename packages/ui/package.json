@@ -1,0 +1,182 @@
+{
+  "name": "pol-ui",
+  "version": "2.1.29",
+  "displayName": "Pol-UI",
+  "description": "Beauty and Performance React UI Library",
+  "keywords": [
+    "design-system",
+    "pol gubau amores",
+    "react",
+    "react",
+    "tailwind",
+    "tailwindcss",
+    "ui"
+  ],
+  "contributors": [
+    "Pol Gubau Amores <gubaupol@gmail.com> (https://polgubau.com)"
+  ],
+  "homepage": "https://ui.polgubau.com",
+  "author": "Pol Gubau Amores <gubaupol@gmail.com> (https://polgubau.com)",
+  "bugs": "https://github.com/PolGubau/pol-ui/issues",
+  "license": "MIT",
+  "files": [
+    "./lib/"
+  ],
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PolGubau/pol-ui.git"
+  },
+  "scripts": {
+    "build": "rm -rf ./lib/ && pnpm build:esm && pnpm build:cjs",
+    "build:cjs": "tsc -p tsconfig.lib.json",
+    "build:esm": "tsc -p tsconfig.lib.json --module esnext --declaration --outDir ./lib/esm",
+    "commit": "cz",
+    "lint": "eslint  ",
+    "lint-fix": "eslint --fix",
+    "prepublishOnly": "pnpm build",
+    "prettier": "prettier --check .",
+    "prettier:fix": "prettier --write .",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage --ui",
+    "test:open": "vitest --ui",
+    "test:e2e": "start-test 3000 ",
+    "test:e2e:open": "start-test 3000 ",
+    "typecheck": "tsc --noEmit",
+    "publish": "pnpm prepublishOnly && pnpm publish:lib",
+    "publish:lib": "npm publish --access public",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "serve-storybook": "serve storybook-static",
+    "vercel": "vercel --prod"
+  },
+  "dependencies": {
+    "@floating-ui/react": "^0.26.2",
+    "@gsap/react": "^2.1.1",
+    "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
+    "@radix-ui/react-navigation-menu": "^1.1.4",
+    "@radix-ui/react-popover": "^1.0.7",
+    "@radix-ui/react-primitive": "^1.0.3",
+    "@radix-ui/react-select": "^2.0.0",
+    "@radix-ui/react-slider": "^1.1.2",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-tooltip": "^1.0.7",
+    "@tanstack/react-table": "^8.15.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "crypto-js": "^4.2.0",
+    "embla-carousel-react": "^8.0.0-rc19",
+    "framer-motion": "^10.18.0",
+    "gsap": "^3.12.5",
+    "pol-standard": "^0.0.1",
+    "react-icons": "^4.12.0",
+    "react-resizable-panels": "^2.0.18",
+    "sonner": "^1.4.0",
+    "tailwind-merge": "^2.0.0",
+    "vaul": "^0.9.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.1.4",
+    "@storybook/addon-interactions": "^8.1.4",
+    "@storybook/addon-links": "^8.1.4",
+    "@storybook/addon-onboarding": "^8.1.4",
+    "@storybook/blocks": "^8.1.4",
+    "@storybook/manager-api": "^8.1.4",
+    "@storybook/react": "^8.1.4",
+    "@storybook/react-vite": "^8.1.4",
+    "@storybook/test": "^8.1.4",
+    "@storybook/theming": "^8.1.4",
+    "@testing-library/dom": "^9.3.3",
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.1",
+    "@types/crypto-js": "^4",
+    "@types/esm": "^3",
+    "@types/node": "^20.10.0",
+    "@types/react": "18.3.2",
+    "@types/react-dom": "18.3.0",
+    "@types/react-syntax-highlighter": "^15.5.10",
+    "@typescript-eslint/eslint-plugin": "^6.11.0",
+    "@typescript-eslint/parser": "^6.11.0",
+    "@vitejs/plugin-react": "^4.2.0",
+    "@vitest/coverage-v8": "^0.34.6",
+    "@vitest/ui": "^0.34.7",
+    "autoprefixer": "^10.4.16",
+    "axe-core": "^4.8.2",
+    "eslint": "^8.54.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-storybook": "^0.6.15",
+    "esm": "^3.2.25",
+    "jsdom": "^22.1.0",
+    "postcss": "^8.4.31",
+    "prettier": "^3.1.0",
+    "prettier-plugin-organize-imports": "^3.2.4",
+    "prettier-plugin-tailwindcss": "^0.5.7",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "storybook": "^8.1.4",
+    "tailwindcss": "^3.3.5",
+    "tsconfig-paths-webpack-plugin": "^4.1.0",
+    "typescript": "^5.3.2",
+    "vite": "^4.1.0-beta.0",
+    "vite-tsconfig-paths": "^4.2.1",
+    "vitest": "^0.34.6"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*",
+    "tailwindcss": "^3"
+  },
+  "eslintConfig": {
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:jsx-a11y/recommended",
+      "plugin:react/recommended",
+      "plugin:react-hooks/recommended",
+      "plugin:storybook/recommended"
+    ],
+    "ignorePatterns": [
+      "/build/",
+      "/coverage/",
+      "/docs/",
+      "/lib/",
+      "/postcss.config.js",
+      "/tailwind.config.js"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "project": [
+        "./tsconfig.json"
+      ]
+    },
+    "plugins": [
+      "@typescript-eslint",
+      "jsx-a11y",
+      "react",
+      "react-hooks",
+      "storybook"
+    ],
+    "root": true,
+    "rules": {
+      "react/prop-types": "off",
+      "react/react-in-jsx-scope": "off",
+      "@typescript-eslint/consistent-type-imports": "warn",
+      "jsx-a11y/anchor-is-valid": "warn",
+      "react/no-unescaped-entities": "warn"
+    }
+  }
+}
