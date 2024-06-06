@@ -5,7 +5,7 @@ import { PoluiProvider } from '../../components/PoluiProvider'
 import { useClickHandlers } from './use-click-handlers'
 
 export default {
-  title: 'Hooks/useKeyShortcuts',
+  title: 'Hooks/useClickHandlers',
   component: PoluiProvider,
   decorators: [
     Story => (
