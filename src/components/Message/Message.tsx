@@ -1,4 +1,3 @@
-import React from 'react'
 import { cn, mergeDeep } from '../../helpers'
 import { getTheme } from '../../theme-store'
 import { MessageTheme } from './theme'

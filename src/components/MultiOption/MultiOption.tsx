@@ -1,7 +1,7 @@
-import React, { useId } from 'react'
+import { useId } from 'react'
+import { Autocomplete, AutocompleteOption } from '../Autocomplete'
 import { Radio } from '../Radio'
 import { Select } from '../Select'
-import { Autocomplete, AutocompleteOption } from '../Autocomplete'
 import { SelectGroup, SelectItem } from '../Select/Select'
 /**
  * @name MultiOption
@@ -69,4 +69,4 @@ const MultiOption = ({ options = [], value = '', onChange }: MultiOptionProps) =
   }
 }
 
-export { type MultiOptionProps, MultiOption }
+export { MultiOption, type MultiOptionProps }
