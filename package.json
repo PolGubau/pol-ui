@@ -1,8 +1,8 @@
 {
   "name": "pol-ui",
-  "version": "2.1.28",
+  "version": "2.1.29",
   "displayName": "Pol-UI",
-  "description": "Official React components built for Pol Gubau Amores' apps",
+  "description": "Beauty and Performance React UI Library",
   "keywords": [
     "design-system",
     "pol gubau amores",
