@@ -1,5 +1,10 @@
 'use client'
-
+/**
+ * @name AnimatedHeading
+ * @description The AnimatedHeading component is used to animate the text of a heading with a variety of animations
+ * @returns React.FC<AnimatedHeadingProps>
+ *
+ */
 import { AnimatePresence, motion } from 'framer-motion'
 import type { DeepPartial, WithClassName } from '../../types'
 import { cn, mergeDeep } from '../../helpers'

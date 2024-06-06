@@ -39,7 +39,7 @@ import { tabsTheme } from './components/Tabs/theme'
 import { timelineTheme } from './components/Timeline/theme'
 import { tooltipTheme } from './components/Tooltip/theme'
 
-import { animatedHeadingTheme } from './components/AnimatedText/theme'
+import { animatedHeadingTheme } from './components/AnimatedHeading/theme'
 import { autocompleteTheme } from './components/Autocomplete/theme'
 import { bubbleHeadingTheme } from './components/BubbleHeading/theme'
 import { chipTheme } from './components/Chip/theme'
