@@ -10,7 +10,8 @@
     "prepare": "husky install",
     "common": "pnpm --filter common",
     "app": "pnpm --filter web-app",
-    "ui": "pnpm --filter pol-ui"
+    "ui": "pnpm --filter pol-ui",
+    "storybook": "pnpm --filter pol-ui storybook"
   },
   "lint-staged": {
     "**/*.{js,ts,tsx}": [

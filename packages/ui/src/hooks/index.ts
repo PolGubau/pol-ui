@@ -1,4 +1,5 @@
 export * from './use-boolean';
+export * from './use-click-handlers';
 export * from './use-copy-to-clipboard';
 export * from './use-counter';
 export * from './use-debounce';
@@ -8,6 +9,7 @@ export * from './use-fetch';
 export * from './use-hover';
 export * from './use-interval';
 export * from './use-isomorphic-layout-effect';
+export * from './use-key-shortcuts';
 export * from './use-lazy-ref';
 export * from './use-local-storage';
 export * from './use-media-query';
