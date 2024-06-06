@@ -52,8 +52,8 @@ jobs:
         run: |
           git config user.name "Bot"
           git config user.email ""
-          
-- name: Get run number
+
+      - name: Get run number
         id: run_number
         run: echo "RUN_NUMBER=${{ github.run_number }}" >> $GITHUB_ENV
 

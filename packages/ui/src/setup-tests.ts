@@ -18,4 +18,5 @@ class ResizeObserver {
     // Mock implementation
   }
 }
+
 global.ResizeObserver = ResizeObserver
