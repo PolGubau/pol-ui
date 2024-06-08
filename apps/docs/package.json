@@ -10,6 +10,7 @@
     "build:css": "tailwindcss -i ./src/styles/tailwind.css -o ./public/styles/tailwind.css"
   },
   "dependencies": {
+    "pol-ui": "workspace:*",
     "react": "^18",
     "react-dom": "^18",
     "next": "14.2.3"
