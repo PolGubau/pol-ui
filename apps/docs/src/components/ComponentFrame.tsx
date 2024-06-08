@@ -25,23 +25,57 @@ const ComponentFrame = memo(
         // Clear existing content
         body.innerHTML = '';
 
-        // In production, load Tailwind CSS from the built file
-        const link = doc.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = '/styles/tailwind.css';
-        doc.head.appendChild(link);
+        const isProduction = process.env.NODE_ENV === 'production';
 
-        // Create a div to mount the React component
-        const mountDiv = doc.createElement('div');
-        body.appendChild(mountDiv);
+        if (isProduction) {
+          // In production, load Tailwind CSS from the built file
+          const link = doc.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = '/styles/tailwind.css'; // Adjust path as necessary
+          doc.head.appendChild(link);
 
-        // Initialize the root only once
-        if (!rootRef.current) {
-          rootRef.current = createRoot(mountDiv);
+          // Create a div to mount the React component
+          const mountDiv = doc.createElement('div');
+          body.appendChild(mountDiv);
+
+          // Initialize the root only once
+          if (!rootRef.current) {
+            rootRef.current = createRoot(mountDiv);
+          }
+
+          // Set iframe loaded state
+          setIframeLoaded(true);
+        } else {
+          // In development, load Tailwind CSS from CDN
+          const link = doc.createElement('link');
+          link.rel = 'stylesheet';
+          link.href =
+            'https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css';
+          doc.head.appendChild(link);
+
+          const script = doc.createElement('script');
+          script.src = 'https://cdn.tailwindcss.com';
+          script.onload = () => {
+            const tailwindConfigScript = doc.createElement('script');
+            tailwindConfigScript.innerHTML = `
+            tailwind.config = ${JSON.stringify(tailwindConfig)};
+          `;
+            doc.head.appendChild(tailwindConfigScript);
+
+            // Create a div to mount the React component
+            const mountDiv = doc.createElement('div');
+            body.appendChild(mountDiv);
+
+            // Initialize the root only once
+            if (!rootRef.current) {
+              rootRef.current = createRoot(mountDiv);
+            }
+
+            // Set iframe loaded state
+            setIframeLoaded(true);
+          };
+          doc.head.appendChild(script);
         }
-
-        // Set iframe loaded state
-        setIframeLoaded(true);
       };
 
       // Attach onLoad event

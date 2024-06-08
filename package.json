@@ -9,8 +9,8 @@
     "format": "prettier --write .",
     "prepare": "husky install",
     "common": "pnpm --filter common",
-    "app": "pnpm --filter web-app",
     "ui": "pnpm --filter pol-ui",
+    "web-docs": "pnpm --filter docs",
     "storybook": "pnpm --filter pol-ui storybook"
   },
   "lint-staged": {
