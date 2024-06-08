@@ -8,7 +8,6 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "prepare": "husky install",
-    "common": "pnpm --filter common",
     "ui": "pnpm --filter pol-ui",
     "web-docs": "pnpm --filter docs",
     "storybook": "pnpm --filter pol-ui storybook",

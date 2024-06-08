@@ -438,3 +438,8 @@ export enum SidesEnum {
   bottom = 'bottom',
   left = 'left',
 }
+
+export enum OrientationsEnum {
+  horizontal = 'horizontal',
+  vertical = 'vertical',
+}

@@ -24,3 +24,10 @@ export const Default: StoryFn = () => (
     Texts 2
   </>
 )
+export const Vertical: StoryFn = () => (
+  <div className="flex gap-2">
+    Texts 1
+    <Divider orientation="vertical" />
+    Texts 2
+  </div>
+)

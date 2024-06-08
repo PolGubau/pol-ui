@@ -1,7 +1,15 @@
 export interface DividerTheme {
   base: string
+  orientation: {
+    horizontal: string
+    vertical: string
+  }
 }
 
 export const dividerTheme: DividerTheme = {
-  base: 'w-full border-secondary-200 sm:mx-auto dark:border-secondary-800 my-2',
+  base: 'bg-secondary-200 dark:bg-secondary-800',
+  orientation: {
+    horizontal: 'w-full h-px sm:mx-auto my-2',
+    vertical: 'h-auto w-px mx-2',
+  },
 }

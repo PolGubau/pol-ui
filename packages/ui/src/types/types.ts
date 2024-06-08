@@ -1,4 +1,4 @@
-import type { DirEnum, SidesEnum } from './enums'
+import type { DirEnum, OrientationsEnum, SidesEnum } from './enums'
 import {
   type AlignEnum,
   type BooleanEnum,
@@ -198,3 +198,5 @@ export enum HttpStatusEnum {
 }
 export type HttpStatusLabel = keyof typeof HttpStatusEnum
 export type HttpStatus = `${HttpStatusEnum}`
+
+export type Orientation = `${OrientationsEnum}`

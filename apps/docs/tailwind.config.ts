@@ -1,6 +1,5 @@
 import type { Config } from 'tailwindcss';
 import { poluiPlugin } from 'pol-ui';
-
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -8,6 +7,6 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
 
-  plugins: [],
+  plugins: [poluiPlugin()],
 };
 export default config;
