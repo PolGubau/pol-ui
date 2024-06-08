@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import { poluiPlugin } from 'pol-ui';
 
 const config: Config = {
   content: [
