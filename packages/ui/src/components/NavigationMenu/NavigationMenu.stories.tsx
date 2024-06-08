@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react'
-import type { NavigationMenuProps } from './navigation-menu'
-import { NavigationMenu } from './navigation-menu'
+import type { NavigationMenuProps } from './NavigationMenu'
+import { NavigationMenu } from './NavigationMenu'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 import { NavigationMenuTrigger } from './navigation-menu-trigger'

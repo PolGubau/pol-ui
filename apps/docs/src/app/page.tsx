@@ -1,58 +1,87 @@
-import Image from 'next/image';
+import ComponentFrame from '@/components/ComponentFrame';
+import dynamic from 'next/dynamic';
+import React from 'react';
 
-export default function Home() {
-  /**
-   * The `process.cwd()` function returns the current working directory of the Node.js process.
-   * In dev: /Users/username/Projects/nextjs-starter
-   * In prod: /vercel/path0
-   */
-  const rootDir = process.cwd();
-  console.log('rootDir:', rootDir);
+const rootDir = process.cwd();
+const fs = require('fs');
+const path = require('path');
+const polUiDir = path.join(rootDir, '../../packages/ui/src');
+const componentsUrl = path.join(polUiDir, 'components');
 
-  /** get all files in the package packages/pol-ui inside this same monorepo, now we are in /apps/docs */
-  const fs = require('fs');
-  const path = require('path');
-  const polUiDir = path.join(rootDir, '../../packages/ui/src');
+//
 
-  const componentsUrl = path.join(polUiDir, 'components');
-  // get all dirs in the components folder, be sure we don't get the /index.ts file
+export type Component = {
+  name: string;
+  component: {
+    url: string;
+    code: string;
+  };
+  storybook: {
+    url: string;
+    code: string;
+  };
+};
+
+//
+const getComponents = (): string[] => {
   const components = fs
     .readdirSync(componentsUrl)
     .filter((file: string) => !file.includes('index.ts'));
+  const componentsExcluded = ['PoluiProvider'];
 
-  const componentsData = components.map((component: any) => {
-    const componenDirUrl = path.join(componentsUrl, component);
-    const componentUrl = path.join(componenDirUrl, `${component}.tsx`);
-    const componentCode = fs.readFileSync(componentUrl, 'utf8');
+  const componentsFiltered = components.filter(
+    (component: any) => !componentsExcluded.includes(component),
+  );
+  return componentsFiltered;
+};
 
-    // get the storybook file, Could be not found
-    const storybookUrl =
-      path.join(componenDirUrl, `${component}.stories.tsx`) || '';
-    const storybookCode = fs.readFileSync(storybookUrl, 'utf8');
+const componentsData: Component[] = getComponents().map((component: any) => {
+  const componenDirUrl = path.join(componentsUrl, component);
 
-    return {
-      name: component,
-      files: {
-        component: componentCode,
-        storybook: storybookUrl,
-      },
-    };
+  const componentUrl = path.join(componenDirUrl, `${component}.tsx`);
+  const componentCode = fs.readFileSync(componentUrl, 'utf8');
+
+  // get the storybook file, Could be not found
+  const storybookUrl =
+    path.join(componenDirUrl, `${component}.stories.tsx`) || '';
+  const storybookCode = fs.readFileSync(storybookUrl, 'utf8');
+  const reactCompoent = dynamic(() => import(componentUrl), {
+    loading: () => (
+      <div className="grid h-full min-h-[400px] place-items-center">
+        Loading...
+      </div>
+    ),
+    ssr: false,
   });
-  console.log(componentsData);
 
+  const comp: Component = {
+    name: component,
+    component: {
+      url: componentUrl,
+      code: componentCode,
+    },
+    storybook: {
+      url: storybookUrl,
+      code: storybookCode,
+    },
+  };
+  return comp;
+});
+
+export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {/* {components.map((component: any) => (
-        <div key={component} className="flex items-center justify-center">
-          <Image
-            src={`/api/image?name=${component}`}
-            alt={component}
-            width={200}
-            height={200}
-          />
-          <p className="text-2xl font-bold">{component}</p>
+      {componentsData.map(({ name, component, storybook }) => (
+        <div key={name} className="grid grid-cold-2 gap-4">
+          <h2>{name}</h2>
+          <pre>{storybook.url}</pre>
+          <ComponentFrame>
+            <div className="bg-red-100 w-full h-fill">
+              {React.createElement(component.code, {}) as JSX.Element}
+            </div>
+          </ComponentFrame>
         </div>
-      ))} */}
+      ))}
     </main>
   );
 }
