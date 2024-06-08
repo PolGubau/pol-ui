@@ -25,7 +25,7 @@ const EyeButton = ({
   hideIcon?: PasswordInputProps['hideIcon']
 }) => {
   return (
-    <IconButton onClick={() => setShowPassword(!showPassword)} size={MainSizesEnum.sm}>
+    <IconButton type="button" onClick={() => setShowPassword(!showPassword)} size={MainSizesEnum.sm} tabIndex={-1}>
       {showPassword ? <HideIcon data-testid="hide-icon" /> : <ShowIcon data-testid="show-icon" />}
     </IconButton>
   )
