@@ -21,8 +21,7 @@ examples
 data
 
 content
-
-
+lib
 .turbo
 .turbo*
 build-storybook.log
