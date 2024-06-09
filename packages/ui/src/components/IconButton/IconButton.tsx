@@ -64,6 +64,7 @@ export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
           {...props}
           variant={variant}
           ref={ref}
+          type={props.type || 'button'}
           rounded={rounded}
           loadingLabel={loadingLabel}
           className={cn(theme.base, className)}
