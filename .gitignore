@@ -22,6 +22,8 @@ data
 
 content
 
+./.turbo
+**/.turbo/*
 
 
 build-storybook.log

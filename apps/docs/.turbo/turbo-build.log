@@ -1,0 +1,43 @@
+
+> docs@0.1.0 build C:\Users\pol.gubau\dev\mine\ui\pol-ui\apps\docs
+> next build
+
+  ▲ Next.js 14.2.3
+
+   Creating an optimized production build ...
+ ⚠ Compiled with warnings
+
+./src/app/page.tsx
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./src/app/page.tsx
+
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+ ⨯ ESLint: Cannot read config file: C:\Users\pol.gubau\dev\mine\ui\pol-ui\.eslintrc.cjs Error: Cannot use import statement outside a module
+   Collecting page data ...
+Error: ENOENT: no such file or directory, open 'C:\Users\pol.gubau\dev\mine\ui\pol-ui\packages\ui\src\components\Collapsible\Collapsible.stories.tsx'
+    at Object.readFileSync (node:fs:453:20)
+    at C:\Users\pol.gubau\dev\mine\ui\pol-ui\apps\docs\.next\server\app\page.js:50:25899
+    at Array.map (<anonymous>)
+    at 5415 (C:\Users\pol.gubau\dev\mine\ui\pol-ui\apps\docs\.next\server\app\page.js:50:25784)
+    at t (C:\Users\pol.gubau\dev\mine\ui\pol-ui\apps\docs\.next\server\webpack-runtime.js:1:128)
+    at 7750 (C:\Users\pol.gubau\dev\mine\ui\pol-ui\apps\docs\.next\server\app\page.js:1:1319)
+    at t (C:\Users\pol.gubau\dev\mine\ui\pol-ui\apps\docs\.next\server\webpack-runtime.js:1:128)
+    at r (C:\Users\pol.gubau\dev\mine\ui\pol-ui\apps\docs\.next\server\app\page.js:55:30861)
+    at C:\Users\pol.gubau\dev\mine\ui\pol-ui\apps\docs\.next\server\app\page.js:55:30892
+    at t.X (C:\Users\pol.gubau\dev\mine\ui\pol-ui\apps\docs\.next\server\webpack-runtime.js:1:1206) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\pol.gubau\\dev\\mine\\ui\\pol-ui\\packages\\ui\\src\\components\\Collapsible\\Collapsible.stories.tsx'
+}
+
+> Build error occurred
+Error: Failed to collect page data for /
+    at C:\Users\pol.gubau\dev\mine\ui\pol-ui\node_modules\.pnpm\next@14.2.3_@babel+core@7.24.7_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next\dist\build\utils.js:1268:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  type: 'Error'
+}
+ ELIFECYCLE  Command failed with exit code 1.
