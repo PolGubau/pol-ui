@@ -13,6 +13,7 @@ export * from './use-key-shortcuts';
 export * from './use-lazy-ref';
 export * from './use-local-storage';
 export * from './use-media-query';
+export * from './use-mounted';
 export * from './use-perspective';
 export * from './use-ripple';
 export * from './use-step';
