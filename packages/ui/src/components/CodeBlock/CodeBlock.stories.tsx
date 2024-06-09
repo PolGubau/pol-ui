@@ -8,8 +8,13 @@ export default {
   tags: ['autodocs'],
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col justify-center items-center">
-        <Story />
+      <div className="grid md:grid-cols-2 items-start bg-secondary-50 ">
+        <div className="flex flex-col justify-center items-center bg-secondary-50 ">
+          <Story />
+        </div>
+        <div className="flexflex-col justify-center items-center dark bg-secondary-900 text-secondary-100 h-full">
+          <Story />
+        </div>
         <Toaster />
       </div>
     ),
@@ -24,7 +29,8 @@ const Template: StoryFn<CodeBlockProps> = args => <CodeBlock {...args} />
 export const Default = Template.bind({})
 
 const code = `'use client'
-
+ 
+export { CodeBlock, type CodeBlockProps }
 import * as React from 'react'
 import { cn } from '../../helpers'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../Collapsible'
@@ -66,8 +72,7 @@ function CodeBlock({ expandButtonTitle = 'View Code', className, children, ...pr
     </Collapsible>
   )
 }
-
-export { CodeBlock, type CodeBlockProps }
+ 
 `
 
 Default.args = {
