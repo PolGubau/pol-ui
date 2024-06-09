@@ -46,6 +46,7 @@
     "typecheck": "tsc --noEmit",
     "publish": "pnpm prepublishOnly && pnpm publish:lib",
     "publish:lib": "npm publish --access public",
+    "dev": "pnpm storybook",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "serve-storybook": "serve storybook-static",
