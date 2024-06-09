@@ -30,7 +30,7 @@
     "url": "git+https://github.com/PolGubau/pol-ui.git"
   },
   "scripts": {
-    "build": "rm -rf ./lib/ && pnpm build:esm && pnpm build:cjs",
+    "build": "pnpm build:esm && pnpm build:cjs",
     "build:cjs": "tsc -p tsconfig.lib.json",
     "build:esm": "tsc -p tsconfig.lib.json --module esnext --declaration --outDir ./lib/esm",
     "commit": "cz",

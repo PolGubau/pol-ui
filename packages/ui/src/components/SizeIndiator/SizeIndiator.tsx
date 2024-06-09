@@ -1,5 +1,3 @@
-import React from 'react'
-
 type SizeIndiatorProps = {}
 const SizeIndiator = () => {
   return (

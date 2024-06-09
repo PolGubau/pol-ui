@@ -1,1 +1,1 @@
-export { default as SizeIndiator } from './SizeIndiator';
+export { SizeIndiator, type SizeIndiatorProps } from './SizeIndiator'

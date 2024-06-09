@@ -15,6 +15,8 @@ export * from './CardStack';
 export * from './Carousel';
 export * from './Checkbox';
 export * from './Chip';
+export * from './CodeBlock';
+export * from './Collapsible';
 export * from './Command/components';
 export * from './Command';
 export * from './ContainerScroll';

@@ -1,7 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import { Toaster } from '../Toaster'
 import { CodeBlock, type CodeBlockProps } from './CodeBlock'
-import { parseJSON } from '../../helpers'
 
 export default {
   title: 'Components/CodeBlock',
