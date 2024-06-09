@@ -87,9 +87,9 @@ Ghost.args = {
 }
 export const Link = () => {
   return (
-    <Button asChild>
-      <a href="https://google.com">Google</a>
-    </Button>
+    <a href="https://google.com">
+      <Button variant={'link'}>Google</Button>
+    </a>
   )
 }
 export const FullSized = NewTemplate.bind({})

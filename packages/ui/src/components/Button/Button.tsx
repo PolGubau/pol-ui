@@ -12,8 +12,8 @@ const variants = {
   variant: {
     filled: 'shadow hover:shadow-lg focus:shadow-lg transition-shadow',
     outline: 'border bg-transparent shadow hover:shadow-lg focus:shadow-lg transition-[colors, shadow]',
-    ghost: 'hover:bg-primary/60',
-    link: 'text-primary underline-offset-4 hover:underline',
+    ghost: 'hover:bg-primary/60 transition-colors',
+    link: 'text-primary underline-offset-4 hover:underline focus:underline',
   },
   size: {
     md: 'h-9 px-3 py-2',
@@ -49,7 +49,7 @@ const variants = {
 export type Variants = typeof variants
 
 export const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50 relative group overflow-hidden gap-2 transition-colors transition-width',
+  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50 relative group overflow-hidden gap-2',
   {
     variants: variants,
     compoundVariants: [
@@ -166,8 +166,9 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
+    const isDisabled = props.disabled || loading
     const [ripple, event] = useRipple({
-      disabled: props.disabled || loading,
+      disabled: isDisabled,
       opacity: 0.2,
       duration: 700,
     })
@@ -180,6 +181,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(buttonVariants({ variant, size, fullSized, className, color, rounded }))}
         ref={refs}
         {...props}
+        disabled={isDisabled}
         onClick={e => {
           if (props.onClick) {
             props.onClick(e as React.MouseEvent<HTMLButtonElement>)

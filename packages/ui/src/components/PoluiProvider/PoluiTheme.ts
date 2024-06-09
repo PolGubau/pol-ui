@@ -62,6 +62,7 @@ import type { AutocompleteTheme } from '../Autocomplete/theme'
 import { GaugeTheme } from '../Gauge'
 import { FocusEffectTheme } from '../FocusEffect/theme'
 import { MessageTheme } from '../Message/theme'
+import { AnnouncmentTheme } from '../Announcement/theme'
 
 export type CustomPoluiTheme = DeepPartial<PoluiTheme>
 
@@ -135,4 +136,5 @@ export interface PoluiTheme {
   command: CommandTheme
   otpInput: OtpInputTheme
   autocomplete: AutocompleteTheme
+  announcement: AnnouncmentTheme
 }

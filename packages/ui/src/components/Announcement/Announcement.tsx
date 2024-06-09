@@ -1,13 +1,28 @@
 import React from 'react'
+import { cn, mergeDeep } from '../../helpers'
+import { getTheme } from '../../theme-store'
+import { Colors, ColorsEnum, DeepPartial } from '../../types'
+import { AnnouncmentTheme } from './theme'
+import { Button, ButtonProps } from '../Button'
 
-interface AnnouncementProps {
+interface AnnouncementProps extends ButtonProps {
   children: React.ReactNode
+  theme?: DeepPartial<AnnouncmentTheme>
+  color?: Colors
 }
-const Announcement = ({ children }: AnnouncementProps) => {
+
+const Announcement = ({
+  children,
+  theme: customTheme = {},
+  color = ColorsEnum.secondary,
+  ...props
+}: AnnouncementProps) => {
+  const theme = mergeDeep(getTheme().announcement, customTheme)
+
   return (
-    <div className="inline-flex items-center rounded-lg bg-secondary-300 dark:bg-secondary-800 text-secondary-900 dark:text-secondary-50 px-3 py-1 text-sm font-medium">
+    <Button {...props} color={color} className={cn(theme.base, props.className)}>
       {children}
-    </div>
+    </Button>
   )
 }
 

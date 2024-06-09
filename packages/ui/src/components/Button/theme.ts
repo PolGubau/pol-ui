@@ -52,7 +52,7 @@ export const buttonTheme: ButtonTheme = {
       secondary: 'ring-secondary-700 dark:ring-secondary-400',
     },
   },
-  disabled: 'cursor-not-allowed opacity-50',
+  disabled: 'cursor-not-allowed opacity-70',
   loading: 'cursor-wait',
   loaderSlot: 'absolute h-full top-0 flex items-center animate-fade-in',
   loaderLeftPosition: {
