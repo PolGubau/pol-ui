@@ -22899,3 +22899,21 @@
 2024-06-09T17:48:34.600108Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
 2024-06-09T17:48:35.197356Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".changeset")}
 2024-06-09T17:48:35.197375Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2024-06-09T17:50:04.493269Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("vitest.config.ts")}
+2024-06-09T17:50:04.493288Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2024-06-09T17:50:11.698442Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("vitest.config.ts")}
+2024-06-09T17:50:11.698480Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2024-06-09T17:50:12.900955Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("vitest.config.ts")}
+2024-06-09T17:50:12.900968Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2024-06-09T17:50:14.605971Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("vitest.config.ts")}
+2024-06-09T17:50:14.606020Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2024-06-09T17:52:52.495697Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages\\ui\\package.json")}
+2024-06-09T17:52:52.495714Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("pol-ui"), path: AnchoredSystemPathBuf("packages\\ui") }}))
+2024-06-09T17:53:07.500929Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("packages\\ui\\src\\components\\Pagination\\Pagination.tsx")}
+2024-06-09T17:53:07.500945Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("pol-ui"), path: AnchoredSystemPathBuf("packages\\ui") }}))
+2024-06-09T18:20:48.422896Z  WARN build:build_inner: turborepo_repository::package_graph::builder: Unable to calculate transitive closures: Workspace 'packages/cli' not found in lockfile
+2024-06-09T18:20:49.624708Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo")}
+2024-06-09T18:20:49.624729Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2024-06-09T18:21:06.738596Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("package.json")}
+2024-06-09T18:21:06.738669Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(All)
+2024-06-09T18:21:06.826543Z  WARN build:build_inner: turborepo_repository::package_graph::builder: Unable to calculate transitive closures: Workspace 'packages/cli' not found in lockfile

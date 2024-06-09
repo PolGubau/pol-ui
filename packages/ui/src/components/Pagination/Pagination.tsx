@@ -65,7 +65,6 @@ export const Pagination: FC<PaginationProps> = ({
     onPageChange(Math.max(currentPage - 1, 1))
   }
   const numRange = range(firstPage, lastPage)
-  console.log('numRange', numRange)
   return (
     <nav className={cn(theme.base, className)} {...props}>
       {hasLabels && (

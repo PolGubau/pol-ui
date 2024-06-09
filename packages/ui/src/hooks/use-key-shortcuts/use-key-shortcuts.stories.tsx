@@ -3,8 +3,7 @@ import type { Meta } from '@storybook/react'
 import { PoluiProvider } from '../../components/PoluiProvider'
 import { useKeyShortcuts } from './use-key-shortcuts'
 import { KeyCombination, ModifierKey, RegularKey } from './valid-keys'
-import { toast } from '../../components/Toaster/types'
-import { Toaster } from '../../components'
+import { Toaster, toast } from '../../components'
 
 export default {
   title: 'Hooks/useKeyShortcuts',

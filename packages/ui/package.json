@@ -36,7 +36,6 @@
     "commit": "cz",
     "lint": "eslint  ",
     "lint-fix": "eslint --fix",
-    "prepublishOnly": "pnpm build",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "test": "vitest",
@@ -74,10 +73,12 @@
     "gsap": "^3.12.5",
     "pol-standard": "^0.0.1",
     "react-icons": "^4.12.0",
+    "react-image-file-resizer": "^0.4.8",
     "react-resizable-panels": "^2.0.18",
     "sonner": "^1.4.0",
     "tailwind-merge": "^2.0.0",
-    "vaul": "^0.9.1"
+    "vaul": "^0.9.1",
+    "webp-converter-browser": "^1.0.4"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^8.1.4",
