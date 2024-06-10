@@ -1,10 +1,9 @@
-import react from '@vitejs/plugin-react';
-import type { UserConfig } from 'vite';
-import { defineConfig } from 'vite';
-import tsconfigPaths from 'vite-tsconfig-paths';
-import type { InlineConfig } from 'vitest';
+import react from "@vitejs/plugin-react"
+import { defineConfig, type UserConfig } from "vite"
+import tsconfigPaths from "vite-tsconfig-paths"
+import type { InlineConfig } from "vitest"
 
-type ViteConfig = UserConfig & { test: InlineConfig };
+type ViteConfig = UserConfig & { test: InlineConfig }
 
 const config: ViteConfig = {
   build: {
@@ -13,13 +12,14 @@ const config: ViteConfig = {
   plugins: [react(), tsconfigPaths()],
   test: {
     coverage: {
-      reporter: ['html', 'json', 'text'],
+      reporter: ["html", "json", "text"],
     },
-    environment: 'jsdom',
-    exclude: [  'lib/**/*', 'node_modules'],
-    globals: true,
-    setupFiles: './src/setup-tests.ts',
-  },
-};
 
-export default defineConfig(config);
+    environment: "jsdom",
+    exclude: ["lib/**/*", "node_modules"],
+    globals: true,
+    setupFiles: "./src/setup-tests.ts",
+  },
+}
+
+export default defineConfig(config)

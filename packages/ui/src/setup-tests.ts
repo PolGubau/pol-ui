@@ -1,8 +1,10 @@
-import '@testing-library/jest-dom/vitest'
-import { cleanup } from '@testing-library/react'
-import { afterEach } from 'vitest'
+import "@testing-library/jest-dom/vitest"
+import { cleanup } from "@testing-library/react"
+import { afterEach, vi } from "vitest"
 
-afterEach(() => { cleanup(); })
+afterEach(() => {
+  cleanup()
+})
 class ResizeObserver {
   callback: ResizeObserverCallback
   constructor(callback: ResizeObserverCallback) {
@@ -20,3 +22,17 @@ class ResizeObserver {
 }
 
 global.ResizeObserver = ResizeObserver
+
+Object.defineProperty(window, "matchMedia", {
+  writable: true,
+  value: vi.fn().mockImplementation((query) => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: vi.fn(), // deprecated
+    removeListener: vi.fn(), // deprecated
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
+  })),
+})
