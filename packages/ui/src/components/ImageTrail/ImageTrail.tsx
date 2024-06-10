@@ -1,13 +1,14 @@
-'use client'
+"use client"
 
-import { useAnimate } from 'framer-motion'
-import type { MouseEventHandler } from 'react'
-import React, { useRef } from 'react'
-import { cn, mergeDeep } from '../../helpers'
-import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
-import type { ImageTrailTheme } from './theme'
-export interface ImageTrailProps extends React.ComponentProps<'div'> {
+import React, { useRef, type MouseEventHandler } from "react"
+import { useAnimate } from "framer-motion"
+
+import { cn, mergeDeep } from "../../helpers"
+import { getTheme } from "../../theme-store"
+import type { DeepPartial } from "../../types"
+import type { ImageTrailTheme } from "./theme"
+
+export interface ImageTrailProps extends React.ComponentProps<"div"> {
   images: string[]
   renderImageBuffer?: number
   rotationRange?: number
@@ -32,8 +33,8 @@ export const ImageTrail = ({
   // alternating between a positive and negative rotation
   rotationRange = 20,
   disapearDelay = 1,
-  className = '',
-  imageClassName = '',
+  className = "",
+  imageClassName = "",
   theme: customTheme = {},
   ...props
 }: ImageTrailProps) => {
@@ -42,10 +43,15 @@ export const ImageTrail = ({
   const lastRenderPosition = useRef({ x: 0, y: 0 })
   const imageRenderCount = useRef(0)
 
-  const handleMouseMove: MouseEventHandler<HTMLDivElement> = e => {
+  const handleMouseMove: MouseEventHandler<HTMLDivElement> = (e) => {
     const { clientX, clientY } = e
 
-    const distance = calculateDistance(clientX, clientY, lastRenderPosition.current.x, lastRenderPosition.current.y)
+    const distance = calculateDistance(
+      clientX,
+      clientY,
+      lastRenderPosition.current.x,
+      lastRenderPosition.current.y
+    )
 
     if (distance >= renderImageBuffer) {
       lastRenderPosition.current.x = clientX
@@ -55,7 +61,12 @@ export const ImageTrail = ({
     }
   }
 
-  const calculateDistance = (x1: number, y1: number, x2: number, y2: number) => {
+  const calculateDistance = (
+    x1: number,
+    y1: number,
+    x2: number,
+    y2: number
+  ) => {
     const deltaX = x2 - x1
     const deltaY = y2 - y1
 
@@ -67,35 +78,36 @@ export const ImageTrail = ({
 
   const renderNextImage = () => {
     const imageIndex = imageRenderCount.current % images.length
-    const selector = `[data-mouse-move-index="${imageIndex}"]`
+    const selector = `[data-mouse-move-index="${imageIndex.toString()}"]`
 
-    const el = document.querySelector(selector)!
-
-    el.style.top = `${lastRenderPosition.current.y}px`
-    el.style.left = `${lastRenderPosition.current.x}px`
-    el.style.zIndex = imageRenderCount.current.toString()
+    const el = document.querySelector(selector)
+    if (!el) return null
+    const element = el as HTMLElement
+    element.style.top = `${lastRenderPosition.current.y.toString()}px`
+    element.style.left = `${lastRenderPosition.current.x.toString()}px`
+    element.style.zIndex = imageRenderCount.current.toString()
 
     const rotation = Math.random() * rotationRange
 
-    animate(
+    void animate(
       selector,
 
       {
         opacity: [0, 1],
         transform: [
-          `translate(-50%, -25%) scale(0.5) rotate( ${imageIndex % 2 ? '' : '-'}${rotation}deg)`,
-          `translate(-50%, -25%) scale(1) rotate( ${imageIndex % 2 ? '-' : ''}${rotation}deg)`,
+          `translate(-50%, -25%) scale(0.5) rotate( ${imageIndex % 2 ? "" : "-"}${rotation.toString()}deg)`,
+          `translate(-50%, -25%) scale(1) rotate( ${imageIndex % 2 ? "-" : ""}${rotation.toString()}deg)`,
         ],
       },
-      { type: 'spring', damping: 15, stiffness: 200 },
+      { type: "spring", damping: 15, stiffness: 200 }
     )
 
-    animate(
+    void animate(
       selector,
       {
         opacity: [1, 0],
       },
-      { ease: 'linear', duration: 0.5, delay: disapearDelay },
+      { ease: "linear", duration: 0.5, delay: disapearDelay }
     )
 
     imageRenderCount.current = imageRenderCount.current + 1
@@ -104,14 +116,20 @@ export const ImageTrail = ({
   const theme = mergeDeep(getTheme().imageTrail, customTheme)
 
   return (
-    <div ref={scope} className={cn(theme.base, className)} onMouseMove={handleMouseMove} role="presentation" {...props}>
+    <div
+      ref={scope}
+      className={cn(theme.base, className)}
+      onMouseMove={handleMouseMove}
+      role="presentation"
+      {...props}
+    >
       {children}
 
       {images.map((img, index) => (
         <img
           className={cn(theme.image, imageClassName)}
           src={img}
-          alt={`Mouse move ${index}`}
+          alt={`Mouse move ${index.toString()}`}
           key={index}
           data-mouse-move-index={index}
         />

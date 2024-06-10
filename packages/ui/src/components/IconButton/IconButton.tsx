@@ -1,13 +1,14 @@
-'use client'
+"use client"
 
-import { getTheme } from '../../theme-store'
-import type { IconButtonTheme } from './theme'
-import { Tooltip } from '../Tooltip'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import { Button, type ButtonProps } from '../Button'
-import React from 'react'
-import type { DeepPartial } from '../../types'
-import { cn } from '../../helpers'
+import React from "react"
+
+import { cn } from "../../helpers"
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
+import { getTheme } from "../../theme-store"
+import type { DeepPartial } from "../../types"
+import { Button, type ButtonProps } from "../Button"
+import { Tooltip } from "../Tooltip"
+import type { IconButtonTheme } from "./theme"
 
 export interface IconButtonProps extends ButtonProps {
   theme?: DeepPartial<IconButtonTheme>
@@ -46,15 +47,14 @@ export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
   (
     {
       className,
-      variant = 'ghost',
-      rounded = 'full',
+      variant = "ghost",
+      rounded = "full",
       theme: customTheme = {},
       label = null,
-      loadingLabel = null,
       allowTooltip = true,
       ...props
     },
-    ref,
+    ref
   ) => {
     const theme = mergeDeep(getTheme().iconButton, customTheme)
 
@@ -64,13 +64,12 @@ export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
           {...props}
           variant={variant}
           ref={ref}
-          type={props.type || 'button'}
+          type={props.type ?? "button"}
           rounded={rounded}
-          loadingLabel={loadingLabel}
           className={cn(theme.base, className)}
         />
       </Tooltip>
     )
-  },
+  }
 )
-IconButton.displayName = 'IconButton'
+IconButton.displayName = "IconButton"
