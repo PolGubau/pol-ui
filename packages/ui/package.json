@@ -44,6 +44,7 @@
     "test:e2e": "start-test 3000 ",
     "test:e2e:open": "start-test 3000 ",
     "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm build",
     "publish": "pnpm prepublishOnly && pnpm publish:lib",
     "publish:lib": "npm publish --access public",
     "dev": "pnpm storybook",
