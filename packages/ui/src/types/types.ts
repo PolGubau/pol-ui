@@ -200,3 +200,8 @@ export type HttpStatusLabel = keyof typeof HttpStatusEnum
 export type HttpStatus = `${HttpStatusEnum}`
 
 export type Orientation = `${OrientationsEnum}`
+
+export type IdName = {
+  id: string
+  name: string
+}
