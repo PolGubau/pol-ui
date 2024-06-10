@@ -17,8 +17,10 @@ export default tseslint.config(
         tsconfigRootDir: import.meta.dirname,
       },
     },
+
     ignores: [
       "eslint.config.js", // Exclude eslint.config.js from being linted
     ],
+    extends: ["eslint-plugin-tailwindcss"],
   }
 )

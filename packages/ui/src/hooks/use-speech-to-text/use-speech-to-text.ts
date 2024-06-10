@@ -1,3 +1,5 @@
+"use client"
+
 import { useCallback, useEffect, useState } from "react"
 
 // Define custom types for SpeechRecognition and SpeechRecognitionEvent
@@ -26,11 +28,29 @@ declare global {
 }
 
 interface UseSpeechToTextProps {
+  /**
+   * The language code for the recognition
+   */
   lang?: string
+  /**
+   * Whether the recognition should continue even after the user stops speaking
+   */
   continuous?: boolean
+  /**
+   * Whether interim results should be returned
+   */
   interimResults?: boolean
+  /**
+   * The maximum number of alternative transcripts to return
+   */
   maxAlternatives?: number
+  /**
+   * Callback function to be invoked when a result is recognized
+   */
   onResult?: (result: string) => void
+  /**
+   * Callback function to be invoked when an error occurs
+   */
   onError?: (error: string) => void
 }
 
@@ -83,7 +103,7 @@ const useSpeechToText = ({
       setTranscript(transcript + finalTranscript + interimTranscript)
 
       // Invoke callback with the latest transcript
-      onResult && onResult(transcript + finalTranscript + interimTranscript)
+      onResult?.(transcript + finalTranscript + interimTranscript)
     },
     [onResult, transcript, lastProcessedIndex]
   )
@@ -105,7 +125,7 @@ const useSpeechToText = ({
 
   useEffect(() => {
     if (!recognition) {
-      onError && onError("Speech recognition is not supported in this browser.")
+      onError?.("Speech recognition is not supported in this browser.")
       return
     }
 
@@ -114,7 +134,9 @@ const useSpeechToText = ({
     recognition.interimResults = interimResults
     recognition.maxAlternatives = maxAlternatives
     recognition.onresult = handleResult
-    recognition.onerror = (event) => onError?.(event.type)
+    recognition.onerror = (event) => {
+      onError?.("Errror" + JSON.stringify(event))
+    }
     recognition.onend = () => {
       setIsListening(false)
     }

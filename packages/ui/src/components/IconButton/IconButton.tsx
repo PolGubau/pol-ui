@@ -21,7 +21,6 @@ export interface IconButtonProps extends ButtonProps {
  *
  * @description Base component for displaying icons as button with ripple effect, tooltip, and loading state
  *
- * @param props IconButtonProps extends ButtonBaseProps
  *
  * @returns React.FC IconButton component
  *
