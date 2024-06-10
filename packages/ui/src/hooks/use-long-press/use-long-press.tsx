@@ -1,20 +1,22 @@
 import { useCallback, useEffect, useRef } from "react"
 
-export function useLongPress({
-  delay,
-  onLongPress,
-  onClick,
-  onCancel,
-  onFinish,
-  onStart,
-}: {
+interface LongPressProps {
   delay: number
   onLongPress: () => void
   onClick?: () => void
   onCancel?: () => void
   onFinish?: () => void
   onStart?: () => void
-}) {
+}
+
+function useLongPress({
+  delay,
+  onLongPress,
+  onClick,
+  onCancel,
+  onFinish,
+  onStart,
+}: LongPressProps) {
   const timerRef = useRef<ReturnType<typeof setTimeout>>()
   const pressTriggeredRef = useRef<boolean>(false)
   const pressInitiatedRef = useRef<boolean>(false)
@@ -68,3 +70,4 @@ export function useLongPress({
     onTouchEnd: clear,
   }
 }
+export { useLongPress, type LongPressProps }

@@ -1,14 +1,14 @@
-import type { Meta } from '@storybook/react'
+import type { Meta } from "@storybook/react"
 
-import { Toaster, toast } from '../../components'
-import { PoluiProvider } from '../../components/PoluiProvider'
-import { useClickHandlers } from './use-click-handlers'
+import { Button, Toaster, toast } from "../../components"
+import { PoluiProvider } from "../../components/PoluiProvider"
+import { useClickHandlers } from "./use-click-handlers"
 
 export default {
-  title: 'Hooks/useClickHandlers',
+  title: "Hooks/useClickHandlers",
   component: PoluiProvider,
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col items-center pt-20 min-h-[400px] bg-secondary-50 ">
         <Story />
         <Toaster />
@@ -16,17 +16,17 @@ export default {
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 } as Meta
 export const Default: React.FC = () => {
   const handleDoubleClick = () => {
-    toast('Double click detected')
+    toast("Double click detected")
   }
 
   const handleHoldClick = () => {
-    toast('Hold click detected')
+    toast("Hold click detected")
   }
 
   const buttonRef = useClickHandlers({
@@ -38,7 +38,7 @@ export const Default: React.FC = () => {
   return (
     <div>
       <h1>Click Handlers Example</h1>
-      <button ref={buttonRef}>Click or Hold Me</button>
+      <Button ref={buttonRef}>Double Click or Hold Me</Button>
     </div>
   )
 }

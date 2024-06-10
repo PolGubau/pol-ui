@@ -13,10 +13,26 @@ interface NavigatorWithNetworkInformation extends Navigator {
 }
 
 interface NetworkState {
+  /**
+   * The downlink attribute represents the effective bandwidth estimate in megabits per second, rounded to the nearest multiple of 25 kilobits per second.
+   */
   downlink?: number | null
+
+  /**
+   * The effectiveType attribute represents the effective type of the connection meaning one of 'slow-2g', '2g', '3g', or '4g'.
+   */
   effectiveType?: "slow-2g" | "2g" | "3g" | "4g" | null
+  /**
+   * The rtt attribute represents the effective round-trip time estimate in milliseconds.
+   */
   rtt?: number | null
+  /**
+   * The saveData attribute is a boolean that is true if the user has requested a reduced data usage mode from the user agent.
+   */
   saveData?: boolean | null
+  /**
+   * The isOnline attribute is a boolean that is true if the user is connected to the internet.
+   */
   isOnline: boolean
 }
 
