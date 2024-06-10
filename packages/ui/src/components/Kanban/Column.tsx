@@ -234,8 +234,8 @@ export const KanbanColumn = ({
         <span className={theme.column.length}>{filteredCards.length}</span>
       </header>
       <motion.button
-        onDrop={e => handleDragEnd(e as unknown as DragEvent)}
-        onDragOver={e => handleDragOver(e as unknown as DragEvent)}
+        onDrop={e => { handleDragEnd(e as unknown as DragEvent); }}
+        onDragOver={e => { handleDragOver(e as unknown as DragEvent); }}
         onDragLeave={handleDragLeave}
         onDragEnd={() => {
           setDragging(false)

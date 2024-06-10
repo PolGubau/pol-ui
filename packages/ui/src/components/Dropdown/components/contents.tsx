@@ -2,7 +2,7 @@ import * as D from '@radix-ui/react-dropdown-menu'
 import { cn } from '../../../helpers'
 import { ComponentPropsWithoutRef } from 'react'
 
-interface DropdownSubContentProps extends ComponentPropsWithoutRef<typeof D.SubContent> {}
+type DropdownSubContentProps = ComponentPropsWithoutRef<typeof D.SubContent>
 const DropdownSubContent = ({ className, sideOffset = 4, ...props }: DropdownSubContentProps) => (
   <D.SubContent
     sideOffset={sideOffset}
@@ -15,7 +15,7 @@ const DropdownSubContent = ({ className, sideOffset = 4, ...props }: DropdownSub
   />
 )
 
-interface DropdownContentProps extends ComponentPropsWithoutRef<typeof D.Content> {}
+type DropdownContentProps = ComponentPropsWithoutRef<typeof D.Content>
 const DropdownContent = ({ className, sideOffset = 4, ...props }: DropdownContentProps) => (
   <D.Portal>
     <D.Content

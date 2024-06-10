@@ -103,7 +103,7 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
     <Wrapper>
       <button
         id={`ui-sidebar-collapse-${id}`}
-        onClick={() => handleToggle()}
+        onClick={() => { handleToggle(); }}
         title={badge}
         type="button"
         className={twMerge(

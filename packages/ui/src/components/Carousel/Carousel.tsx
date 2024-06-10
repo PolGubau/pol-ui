@@ -15,7 +15,7 @@ type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
 type CarouselOptions = UseCarouselParameters[0]
 type CarouselPlugin = UseCarouselParameters[1]
 
-export type CarouselProps = {
+export interface CarouselProps {
   options?: CarouselOptions
   plugins?: CarouselPlugin
   orientation?: 'horizontal' | 'vertical'
@@ -108,7 +108,7 @@ const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
       api.on('select', onSelect)
 
       return () => {
-        api?.off('select', onSelect)
+        api.off('select', onSelect)
       }
     }, [api, onSelect])
 

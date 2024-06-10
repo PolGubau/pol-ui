@@ -11,7 +11,7 @@ export type ColorScale = Partial<{
   900: string
 }>
 
-export type ThemeColors = {
+export interface ThemeColors {
   primary: ColorScale
   secondary: ColorScale
   success: ColorScale

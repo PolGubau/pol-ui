@@ -21,7 +21,7 @@ export const CommandGroup = React.forwardRef<HTMLDivElement, GroupProps>((props,
   const headingId = React.useId()
   const context = useCommand()
   const render = useCommandState(state =>
-    forceMount ? true : context.filter() === false ? true : !state.search ? true : state.filtered.groups.has(id),
+    forceMount ? true : !context.filter() ? true : !state.search ? true : state.filtered.groups.has(id),
   )
 
   useIsomorphicLayoutEffect(() => {

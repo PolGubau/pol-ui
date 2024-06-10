@@ -1,11 +1,11 @@
-'use client'
+"use client"
 
-import React, { useId, useRef } from 'react'
-import gsap from 'gsap'
-import { useGSAP } from '@gsap/react'
-import ScrollTrigger from 'gsap/dist/ScrollTrigger'
+import React, { useId, useRef } from "react"
+import { useGSAP } from "@gsap/react"
+import gsap from "gsap"
+import ScrollTrigger from "gsap/dist/ScrollTrigger"
 
-import { cn } from '../../helpers'
+import { cn } from "../../helpers"
 
 export interface ScrollImageProps extends React.SVGProps<SVGImageElement> {
   className?: string
@@ -39,7 +39,7 @@ export interface ScrollImageProps extends React.SVGProps<SVGImageElement> {
  */
 const ScrollImage = ({
   debug = false,
-  ease = 'power1.inOut',
+  ease = "power1.inOut",
   image,
   baseFrequency = 2,
   displacementScale = 50,
@@ -50,27 +50,26 @@ const ScrollImage = ({
   initialRadius = 0,
   ...props
 }: ScrollImageProps) => {
-  
   const maskId = useId()
   const filterId = useId()
   const main = useRef<SVGSVGElement>(null)
   gsap.registerPlugin(useGSAP, ScrollTrigger)
   useGSAP(
     () => {
-      gsap.to('#item', {
-        r: '100%',
+      gsap.to("#item", {
+        r: "100%",
         ease,
         scrollTrigger: {
-          trigger: '#item',
-          start: 'clamp(top bottom+=0%)',
+          trigger: "#item",
+          start: "clamp(top bottom+=0%)",
           scrub: speed,
           markers: debug,
         },
       })
     },
-    { scope: main },
+    { scope: main }
   )
-  const baseClassName = 'w-full h-full'
+  const baseClassName = "w-full h-full"
   return (
     <svg
       ref={main}
@@ -98,9 +97,9 @@ const ScrollImage = ({
         </filter>
         <mask id={maskId}>
           <circle
-            id={'item'}
-            cx={`${maskXPercent}%`}
-            cy={`${maskYPercent}%`}
+            id={"item"}
+            cx={`${maskXPercent.toString()}%`}
+            cy={`${maskYPercent.toString()}%`}
             r={initialRadius}
             fill="white"
             style={{ filter: `url(#${filterId})` }}
@@ -108,7 +107,12 @@ const ScrollImage = ({
         </mask>
       </defs>
 
-      <image xlinkHref={image} {...props} mask={`url(#${maskId})`} className={baseClassName} />
+      <image
+        xlinkHref={image}
+        {...props}
+        mask={`url(#${maskId})`}
+        className={baseClassName}
+      />
     </svg>
   )
 }
@@ -116,45 +120,44 @@ const ScrollImage = ({
 export default ScrollImage
 
 type EaseString =
-  | 'none'
-  | 'power1'
-  | 'power1.in'
-  | 'power1.out'
-  | 'power1.inOut'
-  | 'power2'
-  | 'power2.in'
-  | 'power2.out'
-  | 'power2.inOut'
-  | 'power3'
-  | 'power3.in'
-  | 'power3.out'
-  | 'power3.inOut'
-  | 'power4'
-  | 'power4.in'
-  | 'power4.out'
-  | 'power4.inOut'
-  | 'back'
-  | 'back.in'
-  | 'back.out'
-  | 'back.inOut'
-  | 'bounce'
-  | 'bounce.in'
-  | 'bounce.out'
-  | 'bounce.inOut'
-  | 'circ'
-  | 'circ.in'
-  | 'circ.out'
-  | 'circ.inOut'
-  | 'elastic'
-  | 'elastic.in'
-  | 'elastic.out'
-  | 'elastic.inOut'
-  | 'expo'
-  | 'expo.in'
-  | 'expo.out'
-  | 'expo.inOut'
-  | 'sine'
-  | 'sine.in'
-  | 'sine.out'
-  | 'sine.inOut'
-  | ({} & string)
+  | "none"
+  | "power1"
+  | "power1.in"
+  | "power1.out"
+  | "power1.inOut"
+  | "power2"
+  | "power2.in"
+  | "power2.out"
+  | "power2.inOut"
+  | "power3"
+  | "power3.in"
+  | "power3.out"
+  | "power3.inOut"
+  | "power4"
+  | "power4.in"
+  | "power4.out"
+  | "power4.inOut"
+  | "back"
+  | "back.in"
+  | "back.out"
+  | "back.inOut"
+  | "bounce"
+  | "bounce.in"
+  | "bounce.out"
+  | "bounce.inOut"
+  | "circ"
+  | "circ.in"
+  | "circ.out"
+  | "circ.inOut"
+  | "elastic"
+  | "elastic.in"
+  | "elastic.out"
+  | "elastic.inOut"
+  | "expo"
+  | "expo.in"
+  | "expo.out"
+  | "expo.inOut"
+  | "sine"
+  | "sine.in"
+  | "sine.out"
+  | "sine.inOut"

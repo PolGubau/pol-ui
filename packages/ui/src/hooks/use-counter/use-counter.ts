@@ -4,7 +4,7 @@ import { useCallback, useState } from 'react'
 
 import type { Dispatch, SetStateAction } from 'react'
 
-type UseCounterReturn = {
+interface UseCounterReturn {
   count: number
   increment: () => void
   decrement: () => void

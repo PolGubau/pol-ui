@@ -1,16 +1,25 @@
-'use client'
+"use client"
 
-import { useState } from 'react'
+import { useState } from "react"
 
 type CopiedValue = string | null
 type CopyFn = (text: string) => Promise<boolean> // Return success
 
-export function useCopyToClipboard(): { copiedText: CopiedValue; copy: CopyFn } {
+export function useCopyToClipboard(): {
+  copiedText: CopiedValue
+  copy: CopyFn
+} {
   const [copiedText, setCopiedText] = useState<CopiedValue>(null)
 
-  const copy: CopyFn = async text => {
-    if (!navigator?.clipboard) {
-      console.warn('Clipboard not supported')
+  const copy: CopyFn = async (text) => {
+    const hasNavigator = typeof navigator !== "undefined"
+    if (!hasNavigator) {
+      console.warn("Clipboard not supported")
+      return false
+    }
+    const hasClipboard = "clipboard" in navigator
+    if (!hasClipboard) {
+      console.warn("Clipboard not supported")
       return false
     }
 
@@ -20,7 +29,7 @@ export function useCopyToClipboard(): { copiedText: CopiedValue; copy: CopyFn } 
       setCopiedText(text)
       return true
     } catch (error) {
-      console.warn('Copy failed', error)
+      console.warn("Copy failed", error)
       setCopiedText(null)
       return false
     }

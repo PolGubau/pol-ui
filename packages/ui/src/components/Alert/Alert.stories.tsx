@@ -62,7 +62,7 @@ export const AlertDismissible = Template.bind({})
 AlertDismissible.storyName = 'Dismissible'
 AlertDismissible.args = {
   color: ColorsEnum.success,
-  onDismiss: () => alert('Alert dismissed!'),
+  onDismiss: () => { alert('Alert dismissed!'); },
   children: (
     <>
       Yeyy, that's a success alert! How the component has 'onDismiss' as a prop, you can trigger an action when clicking
@@ -125,7 +125,7 @@ AlertWithAllOptions.args = {
   color: ColorsEnum.error,
   rounded: 'none',
   bordered: true,
-  onDismiss: () => alert('Alert dismissed!'),
+  onDismiss: () => { alert('Alert dismissed!'); },
   icon: BiTrash,
   additionalContent: (
     <>

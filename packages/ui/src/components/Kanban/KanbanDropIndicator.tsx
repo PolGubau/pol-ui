@@ -1,7 +1,7 @@
 import { twMerge } from 'tailwind-merge'
 import type { KanbanTheme } from './theme'
 
-export type KanbanIndicatorProps = {
+export interface KanbanIndicatorProps {
   beforeId: string | null
   column: string
   className?: string

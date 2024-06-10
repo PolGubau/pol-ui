@@ -144,7 +144,7 @@ const TestAlert: FC<AlertProps> = (props: AlertProps) => {
       }
       color="info"
       icon={HiInformationCircle}
-      onDismiss={() => setDismissed(!isDismissed)}
+      onDismiss={() => { setDismissed(!isDismissed); }}
       bordered
     >
       {isDismissed ? 'dismissed' : 'waiting'}

@@ -7,7 +7,7 @@ import { getTheme } from '../../theme-store'
 import type { TabsTheme } from './theme'
 import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 
-type Tab = {
+interface Tab {
   name: string
   content?: React.ReactNode
   disabled?: boolean
@@ -73,8 +73,8 @@ export const Tabs: React.FC<TabsProps> = ({
             onBlur={() => {
               setHovering(false)
             }}
-            onMouseEnter={() => setHovering(true)}
-            onMouseLeave={() => setHovering(false)}
+            onMouseEnter={() => { setHovering(true); }}
+            onMouseLeave={() => { setHovering(false); }}
             className={twMerge(
               theme.navItem.base,
               tab.disabled && theme.disabled,

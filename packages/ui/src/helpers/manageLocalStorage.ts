@@ -1,3 +1,5 @@
+import { json } from "./handle-json"
+
 // Function to get a value from localStorage
 export function getLocalStorage(key: string, initialValue: unknown) {
   const value = localStorage.getItem(key)
@@ -5,7 +7,7 @@ export function getLocalStorage(key: string, initialValue: unknown) {
     setToLocalStorage(key, initialValue)
     return initialValue
   }
-  return JSON.parse(value)
+  return json.saveParse(value)
 }
 
 // Function to set a value in localStorage
@@ -18,4 +20,5 @@ export function removeFromLocalStorage(key: string): void {
   localStorage.removeItem(key)
 }
 
-export const getToken = (tokenType: string = 'mesalvo.accessToken') => localStorage.getItem(tokenType) ?? ''
+export const getToken = (tokenType = "mesalvo.accessToken") =>
+  localStorage.getItem(tokenType) ?? ""

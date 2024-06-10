@@ -99,14 +99,14 @@ describe('Components / List group', () => {
         </PoluiProvider>,
       )
 
-      icons().forEach(icon => expect(icon).toHaveClass('text-gray-300'))
-      items().forEach(item => expect(item.parentNode).toHaveClass('text-gray-100'))
+      icons().forEach(icon => { expect(icon).toHaveClass('text-gray-300'); })
+      items().forEach(item => { expect(item.parentNode).toHaveClass('text-gray-100'); })
 
       const activeItem = items()[0]
       const itemWithHref = items()[1]
 
-      ;[...items().filter(item => item !== activeItem)].forEach(item => expect(item).toHaveClass('text-gray-400'))
-      ;[...items().filter(item => item !== itemWithHref)].forEach(item => expect(item).toHaveClass('font-bold'))
+      ;[...items().filter(item => item !== activeItem)].forEach(item => { expect(item).toHaveClass('text-gray-400'); })
+      ;[...items().filter(item => item !== itemWithHref)].forEach(item => { expect(item).toHaveClass('font-bold'); })
 
       expect(activeItem).toHaveClass('text-gray-200')
       expect(itemWithHref).toHaveClass('font-normal')
@@ -119,7 +119,7 @@ const TestListGroup = (): JSX.Element => {
 
   return (
     <ListGroup>
-      <ListItem active onClick={() => setClicked(!isClicked)}>
+      <ListItem active onClick={() => { setClicked(!isClicked); }}>
         {isClicked ? 'Clicked' : 'Waiting'}
       </ListItem>
       <ListItem href="#">Settings</ListItem>

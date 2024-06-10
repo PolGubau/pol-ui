@@ -1,13 +1,30 @@
-import React from 'react'
+import React from "react"
 
-type ToastTypes = 'normal' | 'action' | 'success' | 'info' | 'warning' | 'error' | 'loading' | 'default'
-type PromiseT<Data = any> = Promise<Data> | (() => Promise<Data>)
-type PromiseExternalToast = Omit<ExternalToast, 'description'>
-type PromiseData<ToastData = any> = PromiseExternalToast & {
+type ToastTypes =
+  | "normal"
+  | "action"
+  | "success"
+  | "info"
+  | "warning"
+  | "error"
+  | "loading"
+  | "default"
+type PromiseT<Data = unknown> = Promise<Data> | (() => Promise<Data>)
+type PromiseExternalToast = Omit<ExternalToast, "description">
+type PromiseData<ToastData = unknown> = PromiseExternalToast & {
   loading?: string | React.ReactNode
-  success?: string | React.ReactNode | ((data: ToastData) => React.ReactNode | string)
-  error?: string | React.ReactNode | ((error: any) => React.ReactNode | string)
-  description?: string | React.ReactNode | ((data: any) => React.ReactNode | string)
+  success?:
+    | string
+    | React.ReactNode
+    | ((data: ToastData) => React.ReactNode | string)
+  error?:
+    | string
+    | React.ReactNode
+    | ((error: unknown) => React.ReactNode | string)
+  description?:
+    | string
+    | React.ReactNode
+    | ((data: unknown) => React.ReactNode | string)
   finally?: () => void | Promise<void>
 }
 interface ToastClassnames {
@@ -36,7 +53,7 @@ interface ToastIcons {
 }
 interface ToastAction {
   label: string | JSX.Element
-  onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
   actionButtonStyle?: React.CSSProperties
 }
 interface ToastT {
@@ -66,7 +83,13 @@ interface ToastT {
   descriptionClassName?: string
   position?: Position
 }
-type Position = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'top-center' | 'bottom-center'
+type Position =
+  | "top-left"
+  | "top-right"
+  | "bottom-left"
+  | "bottom-right"
+  | "top-center"
+  | "bottom-center"
 interface ToastOptions {
   className?: string
   closeButton?: boolean
@@ -78,10 +101,10 @@ interface ToastOptions {
   unstyled?: boolean
   classNames?: ToastClassnames
 }
-type CnFunction = (...classes: Array<string | undefined>) => string
+type CnFunction = (...classes: (string | undefined)[]) => string
 interface ToasterProps {
   invert?: boolean
-  theme?: 'light' | 'dark' | 'system'
+  theme?: "light" | "dark" | "system"
   position?: Position
   hotkey?: string[]
   richColors?: boolean
@@ -94,35 +117,22 @@ interface ToasterProps {
   className?: string
   style?: React.CSSProperties
   offset?: string | number
-  dir?: 'rtl' | 'ltr' | 'auto'
+  dir?: "rtl" | "ltr" | "auto"
   icons?: ToastIcons
   containerAriaLabel?: string
   pauseWhenPageIsHidden?: boolean
   cn?: CnFunction
 }
-type ExternalToast = Omit<ToastT, 'id' | 'type' | 'title' | 'jsx' | 'delete' | 'promise'> & {
+type ExternalToast = Omit<
+  ToastT,
+  "id" | "type" | "title" | "jsx" | "delete" | "promise"
+> & {
   id?: number | string
 }
-
-declare const toast: ((message: string | React.ReactNode, data?: ExternalToast) => string | number) & {
-  success: (message: string | React.ReactNode, data?: ExternalToast) => string | number
-  info: (message: string | React.ReactNode, data?: ExternalToast) => string | number
-  warning: (message: string | React.ReactNode, data?: ExternalToast) => string | number
-  error: (message: string | React.ReactNode, data?: ExternalToast) => string | number
-  custom: (jsx: (id: number | string) => React.ReactElement, data?: ExternalToast) => string | number
-  message: (message: string | React.ReactNode, data?: ExternalToast) => string | number
-  promise: <ToastData>(promise: PromiseT<ToastData>, data?: PromiseData<ToastData>) => string | number
-  dismiss: (id?: number | string) => string | number
-  loading: (message: string | React.ReactNode, data?: ExternalToast) => string | number
-}
-
-declare const Toaster: (props: ToasterProps) => JSX.Element
 
 export {
   type ExternalToast,
   type ToastT,
-  Toaster,
-  toast,
   type ToastClassnames,
   type ToastOptions,
   type ToasterProps,

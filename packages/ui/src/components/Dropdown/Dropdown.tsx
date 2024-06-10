@@ -95,11 +95,11 @@ const DropdownLabel = forwardRef<
   <D.Label ref={ref} className={cn('text-sm', inset && 'pl-8', className)} {...props} />
 ))
 DropdownLabel.displayName = D.Label.displayName
-export interface DropdownHeaderProps extends HTMLAttributes<HTMLHeadingElement> {}
+export type DropdownHeaderProps = HTMLAttributes<HTMLHeadingElement>
 const DropdownDescription = ({ className, ...props }: DropdownHeaderProps) => (
   <D.Label className={cn('text-sm opacity-75', className)} {...props} />
 )
-export interface DropdownHeaderProps extends HTMLAttributes<HTMLHeadingElement> {}
+export type DropdownHeaderProps = HTMLAttributes<HTMLHeadingElement>
 const DropdownHeader = ({ className, ...props }: DropdownHeaderProps) => (
   <header
     className={cn('px-4 py-2 text-sm flex flex-col gap-1 text-secondary-900 dark:text-secondary-50', className)}

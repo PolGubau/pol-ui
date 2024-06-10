@@ -1,18 +1,20 @@
-import type { DirEnum, OrientationsEnum, SidesEnum } from './enums'
 import {
   type AlignEnum,
   type BooleanEnum,
   type BrandColorsEnum,
   type ColorsEnum,
+  type DirEnum,
   type DirectionEnum,
   type GetValuesEnum,
   type HeadingLevelEnum,
   type MainSizesEnum,
+  type OrientationsEnum,
   type RoundedSizesEnum,
+  type SidesEnum,
   type SizesEnum,
   type StateColorsEnum,
   type TriggerReasonEnum,
-} from './enums'
+} from "./enums"
 
 export type Identification = string | number
 
@@ -74,15 +76,15 @@ export type HeadingLevel = keyof typeof HeadingLevelEnum
  *
  */
 export interface Positions {
-  'bottom-left': string
-  'bottom-right': string
-  'bottom-center': string
-  'top-left': string
-  'top-center': string
-  'top-right': string
-  'center-left': string
+  "bottom-left": string
+  "bottom-right": string
+  "bottom-center": string
+  "top-left": string
+  "top-center": string
+  "top-right": string
+  "center-left": string
   center: string
-  'center-right': string
+  "center-right": string
 }
 
 /**
@@ -126,7 +128,10 @@ export type RoundedSizes = keyof typeof RoundedSizesEnum
  * @extends RoundedSizesType
  * @author Pol Gubau Amores - https://polgubau.com
  */
-export type RoundedSizesTypes = Record<GetValuesEnum<typeof RoundedSizesEnum>, string>
+export type RoundedSizesTypes = Record<
+  GetValuesEnum<typeof RoundedSizesEnum>,
+  string
+>
 
 /**
  * @name RoundedSizesElastic
@@ -134,10 +139,11 @@ export type RoundedSizesTypes = Record<GetValuesEnum<typeof RoundedSizesEnum>, s
  * @see RoundedSizesEnum for the different sizes
  * @extends RoundedSizesType
  * @author Pol Gubau Amores - https://polgubau.com
+ * 
+
  */
-export interface RoundedSizesElastic extends RoundedSizesTypes {
-  [key: string]: string
-}
+// use a record
+export type RoundedSizesElastic = RoundedSizesTypes & Record<string, string>
 
 /**
  * @name ContentPositions
@@ -176,11 +182,11 @@ export interface WithClassName {
 }
 
 export enum Methods {
-  GET = 'GET',
-  POST = 'POST',
-  PUT = 'PUT',
-  DELETE = 'DELETE',
-  PATCH = 'PATCH',
+  GET = "GET",
+  POST = "POST",
+  PUT = "PUT",
+  DELETE = "DELETE",
+  PATCH = "PATCH",
 }
 export type Method = `${Methods}`
 
@@ -201,7 +207,7 @@ export type HttpStatus = `${HttpStatusEnum}`
 
 export type Orientation = `${OrientationsEnum}`
 
-export type IdName = {
+export interface IdName {
   id: string
   name: string
 }

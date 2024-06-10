@@ -31,7 +31,7 @@ const DEFAULT_CARDS: KanbanCardProps[] = [
     id: '5',
     column: 'todo',
   },
-  { title: 'I have an action!!!', id: '6', column: 'todo', onClick: () => alert('I have been clicked') },
+  { title: 'I have an action!!!', id: '6', column: 'todo', onClick: () => { alert('I have been clicked'); } },
   {
     title: 'I am a card with a long long long long long long long long long long long long title',
     id: '7',

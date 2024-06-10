@@ -9,8 +9,8 @@ export function useHover<T extends HTMLElement = HTMLElement>(elementRef: RefObj
     const element = elementRef.current
     if (!element) return
 
-    const handleMouseEnter = () => setValue(true)
-    const handleMouseLeave = () => setValue(false)
+    const handleMouseEnter = () => { setValue(true); }
+    const handleMouseLeave = () => { setValue(false); }
 
     element.addEventListener('mouseenter', handleMouseEnter)
     element.addEventListener('mouseleave', handleMouseLeave)

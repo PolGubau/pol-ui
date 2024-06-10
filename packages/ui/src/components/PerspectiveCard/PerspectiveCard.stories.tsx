@@ -40,7 +40,7 @@ export const CustomProps = () => {
   return (
     <div className="w-full min-h-screen rounded-3xl border bg-primary-200">
       <PerspectiveCard
-        onClick={() => alert('clicked')}
+        onClick={() => { alert('clicked'); }}
         whileHover={{
           scale: 1.1,
           transition: {

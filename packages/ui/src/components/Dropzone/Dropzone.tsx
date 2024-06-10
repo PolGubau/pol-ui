@@ -150,7 +150,7 @@ export const Dropzone = React.memo((props: React.PropsWithChildren<DropzoneProps
 
   // Attach listeners to dropzone on mount:
   React.useEffect(() => {
-    const tempZoneRef = dropZoneRef?.current
+    const tempZoneRef = dropZoneRef.current
     if (tempZoneRef) {
       tempZoneRef.addEventListener('dragenter', handleDragIn)
       tempZoneRef.addEventListener('dragleave', handleDragOut)
@@ -176,7 +176,7 @@ export const Dropzone = React.memo((props: React.PropsWithChildren<DropzoneProps
         onChange={e => {
           const fileList = e.target.files
           if (fileList) {
-            const newFiles = Array.from(fileList).filter(file => file !== null) as File[]
+            const newFiles = Array.from(fileList).filter(file => file !== null)
             onFilesDrop?.(newFiles)
           }
         }}

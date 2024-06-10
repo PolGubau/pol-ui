@@ -22,15 +22,15 @@ export default {
 export const TwoOptions = () => {
   const options = ['1', '2']
   const [value, setValue] = useState(options[0])
-  return <MultiOption value={value} onChange={v => setValue(v)} options={options} />
+  return <MultiOption value={value} onChange={v => { setValue(v); }} options={options} />
 }
 export const ThreeOptions = () => {
   const options = ['1', '2', '3']
   const [value, setValue] = useState(options[0])
-  return <MultiOption value={value} onChange={v => setValue(v)} options={options} />
+  return <MultiOption value={value} onChange={v => { setValue(v); }} options={options} />
 }
 export const TenOptions = () => {
   const options = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
   const [value, setValue] = useState(options[0])
-  return <MultiOption value={value} onChange={v => setValue(v)} options={options} />
+  return <MultiOption value={value} onChange={v => { setValue(v); }} options={options} />
 }

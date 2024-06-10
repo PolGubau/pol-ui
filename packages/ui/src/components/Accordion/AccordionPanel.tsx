@@ -56,7 +56,7 @@ export const AccordionPanel: FC<PanelProps> = ({ children, ...props }) => {
       return {
         ...props,
         isOpen,
-        setOpen: () => setIsOpen(!isOpen),
+        setOpen: () => { setIsOpen(!isOpen); },
       }
     }
     return props

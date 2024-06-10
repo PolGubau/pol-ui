@@ -38,7 +38,7 @@ export const CommandMenu = () => {
     }
 
     document.addEventListener('keydown', down)
-    return () => document.removeEventListener('keydown', down)
+    return () => { document.removeEventListener('keydown', down); }
   }, [])
   return (
     <>
@@ -110,7 +110,7 @@ export const DarkMode = () => {
     }
 
     document.addEventListener('keydown', down)
-    return () => document.removeEventListener('keydown', down)
+    return () => { document.removeEventListener('keydown', down); }
   }, [])
   return (
     <section className="dark bg-secondary-900 w-full min-h-[400px] gap-4 flex flex-col justify-center items-center text-white">

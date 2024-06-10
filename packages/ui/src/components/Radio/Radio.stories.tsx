@@ -40,7 +40,7 @@ export const Default = (): JSX.Element => {
           <Radio
             key={option}
             checked={value === option}
-            onChange={() => setValue(option)}
+            onChange={() => { setValue(option); }}
             value={option}
             label={option}
           />
@@ -61,7 +61,7 @@ export const WithIds = (): JSX.Element => {
             id={option}
             key={option}
             checked={value === option}
-            onChange={() => setValue(option)}
+            onChange={() => { setValue(option); }}
             value={option}
             label={option}
           />
@@ -117,7 +117,7 @@ export const DarkMode = (): JSX.Element => {
           <Radio
             key={option}
             checked={value === option}
-            onClick={() => setValue(option)}
+            onClick={() => { setValue(option); }}
             value={option}
             label={option}
           />

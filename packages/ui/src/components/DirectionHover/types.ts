@@ -14,7 +14,7 @@ export type DirectionHoverProps<T extends ElementType = 'button'> = {
   speed?: number
 } & ComponentPropsWithoutRef<T>
 
-export const getDirection = (ev: React.MouseEvent<HTMLButtonElement, MouseEvent>, obj: HTMLElement) => {
+export const getDirection = (ev: React.MouseEvent<HTMLButtonElement>, obj: HTMLElement) => {
   const { width: w, height: h, left, top } = obj.getBoundingClientRect()
   const x = ev.clientX - left - (w / 2) * (w > h ? h / w : 1)
   const y = ev.clientY - top - (h / 2) * (h > w ? w / h : 1)

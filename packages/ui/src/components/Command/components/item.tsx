@@ -37,7 +37,7 @@ export const CommandItem = React.forwardRef<HTMLButtonElement, ItemProps>((props
   const groupContext = React.useContext(GroupContext)
   const context = useCommand()
   const propsRef = useAsRef(props)
-  const forceMountBool = propsRef.current?.forceMount ?? groupContext?.forceMount ?? false
+  const forceMountBool = propsRef.current.forceMount ?? groupContext?.forceMount ?? false
   const { disabled = false, ...etc } = props
 
   useIsomorphicLayoutEffect(() => {
@@ -53,7 +53,7 @@ export const CommandItem = React.forwardRef<HTMLButtonElement, ItemProps>((props
   const render = useCmdk(state =>
     forceMountBool
       ? true
-      : context.filter() === false
+      : !context.filter()
         ? true
         : !state.search
           ? true
@@ -64,7 +64,7 @@ export const CommandItem = React.forwardRef<HTMLButtonElement, ItemProps>((props
     const element = ref.current
     if (!element || disabled) return
     element.addEventListener(SELECTORS.SELECT_EVENT, onSelectValue)
-    return () => element.removeEventListener(SELECTORS.SELECT_EVENT, onSelectValue)
+    return () => { element.removeEventListener(SELECTORS.SELECT_EVENT, onSelectValue); }
   }, [render, props.onSelect, disabled])
 
   function onSelectValue() {

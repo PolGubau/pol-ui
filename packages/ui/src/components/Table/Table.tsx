@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { cn } from '../../helpers'
-export interface TableProps extends React.HTMLAttributes<HTMLTableElement> {}
+export type TableProps = React.HTMLAttributes<HTMLTableElement>
 const Table = React.forwardRef<HTMLTableElement, TableProps>(({ className, ...props }, ref) => (
   <div className="relative w-full overflow-auto">
     <table ref={ref} className={cn('w-full caption-bottom text-sm', className)} {...props} />
@@ -8,7 +8,7 @@ const Table = React.forwardRef<HTMLTableElement, TableProps>(({ className, ...pr
 ))
 Table.displayName = 'Table'
 
-export interface TableSectionProps extends React.HTMLAttributes<HTMLTableSectionElement> {}
+export type TableSectionProps = React.HTMLAttributes<HTMLTableSectionElement>
 
 const TableHeader = React.forwardRef<HTMLTableSectionElement, TableSectionProps>(({ className, ...props }, ref) => (
   <thead ref={ref} className={cn('[&_tr]:border-b', className)} {...props} />

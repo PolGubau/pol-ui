@@ -48,7 +48,7 @@ const ProjectNavigation = ({ selectedProject, menu, isOpen, setSelectedProject }
     >
       <div className="flex flex-row w-full justify-between place-items-center">
         <h1 className="tracking-wide dark:text-neutral-100 text-neutral-900 text-lg">{selectedProject}</h1>
-        <button onClick={() => setSelectedProject(null)}>
+        <button onClick={() => { setSelectedProject(null); }}>
           <TbX className="w-8 stroke-neutral-400" />
         </button>
       </div>

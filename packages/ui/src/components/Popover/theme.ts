@@ -1,4 +1,4 @@
-export type PopoverTheme = {
+export interface PopoverTheme {
   content: {
     base: string
     animation: string

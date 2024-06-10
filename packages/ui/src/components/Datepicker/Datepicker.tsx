@@ -221,8 +221,8 @@ export const Datepicker: FC<DatepickerProps> = ({
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      const clickedInsideDatepicker = datepickerRef?.current?.contains(event.target as Node)
-      const clickedInsideInput = inputRef?.current?.contains(event.target as Node)
+      const clickedInsideDatepicker = datepickerRef.current?.contains(event.target as Node)
+      const clickedInsideInput = inputRef.current?.contains(event.target as Node)
 
       if (!clickedInsideDatepicker && !clickedInsideInput) {
         setIsOpen(false)
@@ -292,7 +292,7 @@ export const Datepicker: FC<DatepickerProps> = ({
                         theme.popup.header.selectors.button.base,
                         theme.popup.header.selectors.button.prev,
                       )}
-                      onClick={() => setViewDate(getViewDatePage(view, viewDate, -1))}
+                      onClick={() => { setViewDate(getViewDatePage(view, viewDate, -1)); }}
                     >
                       <TbArrowLeft />
                     </Button>
@@ -303,7 +303,7 @@ export const Datepicker: FC<DatepickerProps> = ({
                         theme.popup.header.selectors.button.base,
                         theme.popup.header.selectors.button.view,
                       )}
-                      onClick={() => setView(getNextView())}
+                      onClick={() => { setView(getNextView()); }}
                     >
                       {getViewTitle()}
                     </Button>
@@ -314,7 +314,7 @@ export const Datepicker: FC<DatepickerProps> = ({
                         theme.popup.header.selectors.button.base,
                         theme.popup.header.selectors.button.next,
                       )}
-                      onClick={() => setViewDate(getViewDatePage(view, viewDate, 1))}
+                      onClick={() => { setViewDate(getViewDatePage(view, viewDate, 1)); }}
                     >
                       <TbArrowRight />
                     </Button>

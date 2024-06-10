@@ -42,33 +42,33 @@ export default {
 const links: NavigationPropsLink[] = [
   {
     name: 'Dashboard',
-    navigate: () => console.log('Navigate to Dashboard'),
+    navigate: () => { console.log('Navigate to Dashboard'); },
     icon: TbUser,
     active: true,
   },
   {
     name: 'Projects',
-    navigate: () => console.log('Navigate to Dashboard'),
+    navigate: () => { console.log('Navigate to Dashboard'); },
     icon: TbFaceId,
   },
   {
     name: 'Team',
-    navigate: () => console.log('Navigate to Dashboard'),
+    navigate: () => { console.log('Navigate to Dashboard'); },
     icon: TbActivityHeartbeat,
   },
   {
     name: 'Calendar',
-    navigate: () => console.log('Navigate to Dashboard'),
+    navigate: () => { console.log('Navigate to Dashboard'); },
     icon: TbHammer,
   },
   {
     name: 'Documents',
-    navigate: () => console.log('Navigate to Dashboard'),
+    navigate: () => { console.log('Navigate to Dashboard'); },
     icon: TbProgress,
   },
   {
     name: 'Reports',
-    navigate: () => console.log('Navigate to Dashboard'),
+    navigate: () => { console.log('Navigate to Dashboard'); },
     icon: TbUniverse,
   },
 ]
@@ -79,17 +79,17 @@ const menus: NavigationMenuProps[] = [
     links: [
       {
         name: 'Project 1',
-        navigate: () => console.log('Navigate to Project 1'),
+        navigate: () => { console.log('Navigate to Project 1'); },
         icon: TbUser,
       },
       {
         name: 'Project 2',
-        navigate: () => console.log('Navigate to Project 2'),
+        navigate: () => { console.log('Navigate to Project 2'); },
         icon: TbUser,
       },
       {
         name: 'Project 3',
-        navigate: () => console.log('Navigate to Project 3'),
+        navigate: () => { console.log('Navigate to Project 3'); },
         icon: TbUser,
       },
     ],
@@ -124,17 +124,17 @@ const menus: NavigationMenuProps[] = [
     links: [
       {
         name: 'Team 1',
-        navigate: () => console.log('Navigate to Team 1'),
+        navigate: () => { console.log('Navigate to Team 1'); },
         icon: TbUser,
       },
       {
         name: 'Team 2',
-        navigate: () => console.log('Navigate to Team 2'),
+        navigate: () => { console.log('Navigate to Team 2'); },
         icon: TbUser,
       },
       {
         name: 'Team 3',
-        navigate: () => console.log('Navigate to Team 3'),
+        navigate: () => { console.log('Navigate to Team 3'); },
         icon: TbUser,
       },
     ],
@@ -146,17 +146,17 @@ const menus: NavigationMenuProps[] = [
     links: [
       {
         name: 'Calendar 1',
-        navigate: () => console.log('Navigate to Calendar 1'),
+        navigate: () => { console.log('Navigate to Calendar 1'); },
         icon: TbUser,
       },
       {
         name: 'Calendar 2',
-        navigate: () => console.log('Navigate to Calendar 2'),
+        navigate: () => { console.log('Navigate to Calendar 2'); },
         icon: TbUser,
       },
       {
         name: 'Calendar 3',
-        navigate: () => console.log('Navigate to Calendar 3'),
+        navigate: () => { console.log('Navigate to Calendar 3'); },
         icon: TbUser,
       },
     ],

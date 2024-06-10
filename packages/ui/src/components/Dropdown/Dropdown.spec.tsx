@@ -71,7 +71,7 @@ describe('Components / Dropdown', () => {
   const TestDropdown: FC<Partial<DropdownProps>> = ({ disabled, trigger }) => (
     <div>
       <Dropdown label="Dropdown button" trigger={trigger} disabled={disabled}>
-        <DropdownItem label="Undo" onClick={() => console.log('Undo')} shortcut="Ctrl+Z" />
+        <DropdownItem label="Undo" onClick={() => { console.log('Undo'); }} shortcut="Ctrl+Z" />
         <DropdownItem label="Redo" disabled />
         <DropdownItem label="Cut" />
         <DropdownItem label="Share" />

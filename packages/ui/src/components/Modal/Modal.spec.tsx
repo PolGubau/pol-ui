@@ -108,7 +108,7 @@ describe('Components / Modal', () => {
       const modal = dialog()
       expect(modal).toBeInTheDocument()
 
-      await waitFor(() => expect(document.activeElement).toEqual(input()))
+      await waitFor(() => { expect(document.activeElement).toEqual(input()); })
     })
   })
 })
@@ -122,12 +122,12 @@ const TestModal = ({
 
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Toggle modal</Button>
+      <Button onClick={() => { setOpen(true); }}>Toggle modal</Button>
       <Modal
         dismissible={dismissible}
         root={root}
         open={open}
-        onOpenChange={() => setOpen(false)}
+        onOpenChange={() => { setOpen(false); }}
         initialFocus={inputRef}
       >
         <div className="space-y-6">
@@ -141,8 +141,8 @@ const TestModal = ({
             soon as possible of high-risk data breaches that could personally affect them.
           </p>{' '}
           <Input ref={inputRef} data-testid="text-input" />
-          <Button onClick={() => setOpen(false)}>I accept</Button>
-          <Button onClick={() => setOpen(false)}>Decline</Button>
+          <Button onClick={() => { setOpen(false); }}>I accept</Button>
+          <Button onClick={() => { setOpen(false); }}>Decline</Button>
         </div>
       </Modal>
     </>

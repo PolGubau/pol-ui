@@ -1,12 +1,12 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import type { SliderProps } from './Slider'
-import { Slider } from './Slider'
-import { ColorsEnum } from '../../types'
+import type { Meta, StoryFn } from "@storybook/react"
+
+import { Colors, ColorsEnum } from "../../types"
+import { Slider, type SliderProps } from "./Slider"
 
 export default {
-  title: 'Components/Slider',
+  title: "Components/Slider",
   component: Slider,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story): JSX.Element => (
       <div className="flex flex-col gap-10">
@@ -23,7 +23,7 @@ export default {
   ],
 } as Meta
 
-const Template: StoryFn<SliderProps> = args => <Slider {...args} />
+const Template: StoryFn<SliderProps> = (args) => <Slider {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}
@@ -35,8 +35,8 @@ Disabled.args = {
 export const AllColors = () => {
   return (
     <div className="grid grid-cols-6 gap-4">
-      {Object.keys(ColorsEnum).map(color => (
-        <Slider key={color} color={color as any} />
+      {Object.keys(ColorsEnum).map((color) => (
+        <Slider key={color} color={color as Colors} />
       ))}
     </div>
   )

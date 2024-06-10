@@ -35,7 +35,7 @@ export function SplitButton({ options, ...rest }: Readonly<SplitButtonProps>) {
       >
         <DropdownGroup>
           {options.map((option, index) => (
-            <DropdownItem {...option} key={option.label} onSelect={() => handleMenuItemClick(option, index)}>
+            <DropdownItem {...option} key={option.label} onSelect={() => { handleMenuItemClick(option, index); }}>
               {option.label}
             </DropdownItem>
           ))}

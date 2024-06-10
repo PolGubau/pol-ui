@@ -55,7 +55,7 @@ export function useLocalStorage<T>(key: string, initialValue: T, encriptationKey
 
     try {
       const item = window.localStorage.getItem(key)
-      return item ? (decryptAndParse(item, encriptationKey) as T) : initialValue
+      return item ? (decryptAndParse(item, encriptationKey)) : initialValue
     } catch (error) {
       console.warn(`Error reading localStorage key “${key}”:`, error)
       return initialValue
@@ -101,7 +101,7 @@ export function useLocalStorage<T>(key: string, initialValue: T, encriptationKey
 
   const handleStorageChange = useCallback(
     (event: StorageEvent | CustomEvent) => {
-      if ((event as StorageEvent)?.key && (event as StorageEvent).key !== key) {
+      if ((event as StorageEvent).key && (event as StorageEvent).key !== key) {
         return
       }
       setStoredValue(readValue())

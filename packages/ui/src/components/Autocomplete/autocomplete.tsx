@@ -9,12 +9,12 @@ import { Button } from '../Button/Button'
 import type { PopoverProps } from '../Popover'
 import { Popover } from '../Popover'
 
-export type AutocompleteOption = {
+export interface AutocompleteOption {
   value: string
   label: string
 }
 
-interface ReusablePropsFromPopover extends Omit<PopoverProps, 'children' | 'value' | 'onChange' | 'content'> {}
+type ReusablePropsFromPopover = Omit<PopoverProps, 'children' | 'value' | 'onChange' | 'content'>
 export interface AutocompleteProps extends ReusablePropsFromPopover {
   value?: AutocompleteOption
   onChange: (value: AutocompleteOption) => void

@@ -38,7 +38,7 @@ export const useThemeMode = () => {
   useEffect(() => {
     setModeInLS(mode)
     setModeInDOM(mode)
-  }, []) // eslint-disable-line
+  }, [])  
 
   /**
    * Sync all tabs with the latest theme mode value
@@ -46,14 +46,14 @@ export const useThemeMode = () => {
   useWatchLocalStorage({
     key: STORAGE_THEME_MODE,
     onChange(newValue) {
-      if (newValue) return handleSetMode(newValue as ThemeMode)
+      if (newValue) { handleSetMode(newValue as ThemeMode); return; }
     },
   })
 
   /**
    * Keep the other instances of the hook in sync (bi-directional)
    */
-  useSyncMode(mode => setMode(mode))
+  useSyncMode(mode => { setMode(mode); })
 
   /**
    * Sets `mode` to a given value: `light | dark` | `auto`
@@ -99,14 +99,14 @@ const useSyncMode = (onChange: (mode: ThemeMode) => void) => {
     }
 
     document.addEventListener(SYNC_THEME_MODE, handleSync)
-    return () => document.removeEventListener(SYNC_THEME_MODE, handleSync)
-  }, []) // eslint-disable-line
+    return () => { document.removeEventListener(SYNC_THEME_MODE, handleSync); }
+  }, [])  
 }
 
 /**
  * Sets the give value in local storage
  */
-const setModeInLS = (mode: ThemeMode) => localStorage.setItem(STORAGE_THEME_MODE, mode)
+const setModeInLS = (mode: ThemeMode) => { localStorage.setItem(STORAGE_THEME_MODE, mode); }
 
 /**
  * Add or remove class `dark` on `html` element
@@ -142,5 +142,5 @@ const computeModeValue = (mode: ThemeMode): ThemeMode => {
  * @returns `light` | `dark`
  */
 const prefersColorScheme = (): ThemeMode => {
-  return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 }

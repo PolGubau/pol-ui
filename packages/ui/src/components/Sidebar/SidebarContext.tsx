@@ -23,7 +23,7 @@ export function useSidebarContext(): SidebarContext {
   return context
 }
 
-export type SidebarItemContext = {
+export interface SidebarItemContext {
   isInsideCollapse: boolean
 }
 

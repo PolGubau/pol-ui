@@ -26,7 +26,7 @@ for folder in $GLOB; do
   git clone --quiet --depth 1 git@github.com:PolGubau/${NAME}.git $CLONE_DIR > /dev/null
   cd $CLONE_DIR
   find . | grep -v ".git" | grep -v "^\.*$" | xargs rm -rf # delete all files (to handle deletions in monorepo)
-  cp -r $BASE/$folder/. .
+  cp -r $BASE/$folder/. ./ # copy all files over
 
   if [ -n "$(git status --porcelain)" ]; then
     git add .

@@ -3,7 +3,7 @@ import { useEffect, useCallback } from 'react'
 import { KeyCombination, ModifierKey, RegularKey } from './valid-keys'
 import { isValidKeyCombination } from './isValidKeyCombination'
 
-type KeyShortcut = {
+interface KeyShortcut {
   keys: KeyCombination
   callback: () => void
 }

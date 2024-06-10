@@ -65,7 +65,7 @@ export function Default() {
 
       <Divider />
       <DropdownGroup>
-        <DropdownItem onSelect={() => alert('a')} icon={TbUser}>
+        <DropdownItem onSelect={() => { alert('a'); }} icon={TbUser}>
           <span>Profile</span>
           <DropdownShortcut>⇧⌘P</DropdownShortcut>
         </DropdownItem>
@@ -166,7 +166,7 @@ export const AppPicker = () => {
               {apps.map(app => (
                 <DropdownItem
                   key={app.name}
-                  onSelect={() => setSelectedApp(app)}
+                  onSelect={() => { setSelectedApp(app); }}
                   className={cn(
                     'flex flex-col gap-2 max-w-[80px] rounded-xl cursor-pointer group first:rounded-t-xl last:rounded-b-xl overflow-hidden',
                     {

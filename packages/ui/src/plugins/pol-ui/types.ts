@@ -1,6 +1,6 @@
 import type { SomeColors } from './colors/types'
 
-export type CustomPluginConfig = {
+export interface CustomPluginConfig {
   colors?: SomeColors
   prefix?: string
 }

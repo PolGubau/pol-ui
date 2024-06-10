@@ -88,7 +88,7 @@ export const Hamburguer = ({
     ...lineProps,
   }
   const unitHeight = 4
-  const unitWidth = (unitHeight * (width as number)) / (height as number)
+  const unitWidth = (unitHeight * (width)) / (height)
   const theme = mergeDeep(getTheme().hamburguer, customTheme)
 
   return (

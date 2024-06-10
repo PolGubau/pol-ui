@@ -1,4 +1,4 @@
-export type TooltipTheme = {
+export interface TooltipTheme {
   content: {
     base: string
     animation: string

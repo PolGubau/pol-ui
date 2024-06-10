@@ -44,12 +44,12 @@ WithButtons.storyName = 'With buttons'
 WithButtons.args = {
   children: (
     <>
-      <ListItem active onClick={() => alert('Profile clicked!')}>
+      <ListItem active onClick={() => { alert('Profile clicked!'); }}>
         Profile
       </ListItem>
-      <ListItem onClick={() => alert('Settings clicked!')}>Settings</ListItem>
-      <ListItem onClick={() => alert('Messages clicked!')}>Messages</ListItem>
-      <ListItem onClick={() => alert('Download clicked!')}>Download</ListItem>
+      <ListItem onClick={() => { alert('Settings clicked!'); }}>Settings</ListItem>
+      <ListItem onClick={() => { alert('Messages clicked!'); }}>Messages</ListItem>
+      <ListItem onClick={() => { alert('Download clicked!'); }}>Download</ListItem>
     </>
   ),
 }

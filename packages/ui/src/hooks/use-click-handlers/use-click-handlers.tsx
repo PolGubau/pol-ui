@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState, useCallback } from 'react'
 
-type UseClickHandlersOptions = {
+interface UseClickHandlersOptions {
   onDoubleClick?: () => void
   onHoldClick?: () => void
   holdTime?: number

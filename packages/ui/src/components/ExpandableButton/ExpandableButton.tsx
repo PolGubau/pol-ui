@@ -74,7 +74,7 @@ const ExpandableButton = ({
           onClose={toggle}
           noTrigger
           onOpenChange={newState => {
-            if (newState === false) {
+            if (!newState) {
               toggle()
             }
           }}

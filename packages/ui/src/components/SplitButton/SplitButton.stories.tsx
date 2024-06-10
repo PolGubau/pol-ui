@@ -14,15 +14,15 @@ const Template: StoryFn<SplitButtonProps> = props => (
     options={[
       {
         label: 'Option 1',
-        onClick: () => alert('One'),
+        onClick: () => { alert('One'); },
       },
       {
         label: 'Option 2',
-        onClick: () => alert('Two'),
+        onClick: () => { alert('Two'); },
       },
       {
         label: 'Option 3',
-        onClick: () => alert('Three'),
+        onClick: () => { alert('Three'); },
       },
     ]}
   />

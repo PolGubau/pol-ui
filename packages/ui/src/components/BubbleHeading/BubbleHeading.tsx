@@ -69,8 +69,8 @@ export const BubbleHeading: React.FC<BubbleHeadingProps> = ({
             transition: `font-weight ${transitionDuration}s ease-in-out`,
             fontWeight: weight(idx),
           }}
-          onMouseEnter={() => setHoveredIndex(idx)}
-          onMouseLeave={() => setHoveredIndex(null)}
+          onMouseEnter={() => { setHoveredIndex(idx); }}
+          onMouseLeave={() => { setHoveredIndex(null); }}
           key={idx}
         >
           {child}

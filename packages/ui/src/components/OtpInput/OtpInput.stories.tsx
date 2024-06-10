@@ -82,7 +82,7 @@ export function Example() {
       {step === 3 && (
         <Card>
           <h1>Account verfied!</h1>
-          <Button onClick={() => setStep(1)}>Reset</Button>
+          <Button onClick={() => { setStep(1); }}>Reset</Button>
         </Card>
       )}
     </>

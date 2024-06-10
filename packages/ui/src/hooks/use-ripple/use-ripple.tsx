@@ -1,7 +1,7 @@
-'use client'
+"use client"
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useCallback, useRef } from 'react'
+import { useCallback, useRef } from "react"
 
 /**
  * @name Options
@@ -19,7 +19,7 @@ import { useCallback, useRef } from 'react'
  * @returns <Options> The options to use for the ripple
  * @author Pol Gubau Amores - https://polgubau.com
  */
-export type Options<T extends HTMLElement = any> = {
+export interface Options<T extends HTMLElement = any> {
   duration: number
   // color: string;
   timingFunction: string
@@ -48,7 +48,7 @@ export type Options<T extends HTMLElement = any> = {
   ref: React.RefObject<T>
 }
 
-export type MinimalEvent = {
+export interface MinimalEvent {
   clientX: number
   clientY: number
 
@@ -60,8 +60,8 @@ export type MinimalEvent = {
 
 const self = () => document
 const completedFactor = 0.4
-const className = 'bg-[#fff]'
-const containerClassName = 'ripple--container'
+const className = "bg-[#fff]"
+const containerClassName = "ripple--container"
 
 /**
  * @name useRipple
@@ -75,13 +75,15 @@ const containerClassName = 'ripple--container'
  * @author Pol Gubau Amores - https://polgubau.com
  */
 
-export default function useRipple<T extends HTMLElement = any>(inputOptions?: Partial<Options<T>>) {
+export default function useRipple<T extends HTMLElement = any>(
+  inputOptions?: Partial<Options<T>>
+) {
   const internalRef = useRef<T>(null)
 
   const { ref, ...options }: Options = {
     duration: 450,
     cancelAutomatically: false,
-    timingFunction: 'cubic-bezier(.42,.36,.28,.88)',
+    timingFunction: "cubic-bezier(.42,.36,.28,.88)",
     disabled: false,
     opacity: 0.1,
     className,
@@ -95,26 +97,36 @@ export default function useRipple<T extends HTMLElement = any>(inputOptions?: Pa
     (event: MinimalEvent) => {
       if (
         !ref.current ||
-        options.disabled ||
-        (options.ignoreNonLeftClick && event.nativeEvent?.which !== 1 && event.nativeEvent?.type === 'mousedown')
+        (options.disabled ??
+          (options.ignoreNonLeftClick &&
+            event.nativeEvent?.which !== 1 &&
+            event.nativeEvent?.type === "mousedown"))
       )
         return
       const target = ref.current
-      if (window.getComputedStyle(target).position === 'static') applyStyles([['position', 'relative']], target)
+      if (window.getComputedStyle(target).position === "static")
+        applyStyles([["position", "relative"]], target)
 
       if (!target) return
 
-      const existingContainer = target.querySelector(`.${options.containerClassName}`)
+      const existingContainer = target.querySelector(
+        `.${options.containerClassName}`
+      )
 
-      const container = existingContainer ?? createRippleContainer(options.containerClassName)
+      const container =
+        existingContainer ?? createRippleContainer(options.containerClassName)
 
       if (!existingContainer) target.appendChild(container)
 
       // Used to ensure overflow: hidden is registered properly on IOS Safari before ripple is shown
       requestAnimationFrame(() => {
         const begun = Date.now()
-        const ripple = centerElementToPointer(event, target, createRipple(target, event, options))
-        const events = ['mouseup', 'touchend'] as const
+        const ripple = centerElementToPointer(
+          event,
+          target,
+          createRipple(target, event, options)
+        )
+        const events = ["mouseup", "touchend"] as const
         const cancelRipple = () => {
           const now = Date.now()
           const diff = now - begun
@@ -123,13 +135,20 @@ export default function useRipple<T extends HTMLElement = any>(inputOptions?: Pa
             () => {
               cancelRippleAnimation(ripple, options)
             },
-            diff > 0.4 * options.duration ? 0 : completedFactor * options.duration - diff,
+            diff > 0.4 * options.duration
+              ? 0
+              : completedFactor * options.duration - diff
           )
-          for (const event of events) self().removeEventListener(event, cancelRipple)
+          for (const event of events)
+            self().removeEventListener(event, cancelRipple)
         }
         if (!options.cancelAutomatically && !isTouchDevice())
-          for (const event of events) self().addEventListener(event, cancelRipple)
-        else setTimeout(() => cancelRippleAnimation(ripple, options), options.duration * completedFactor)
+          for (const event of events)
+            self().addEventListener(event, cancelRipple)
+        else
+          setTimeout(() => {
+            cancelRippleAnimation(ripple, options)
+          }, options.duration * completedFactor)
 
         container.appendChild(ripple)
         options.onSpawn?.({
@@ -141,7 +160,7 @@ export default function useRipple<T extends HTMLElement = any>(inputOptions?: Pa
         })
       })
     },
-    [ref, options],
+    [ref, options]
   )
   return [ref, event] as const
 }
@@ -162,7 +181,9 @@ export default function useRipple<T extends HTMLElement = any>(inputOptions?: Pa
  * @author Pol Gubau Amores - https://polgubau.com
  */
 
-export function customRipple<T extends HTMLElement = any>(inputOptions?: Partial<Omit<Options<T>, 'ref'>>) {
+export function customRipple<T extends HTMLElement = any>(
+  inputOptions?: Partial<Omit<Options<T>, "ref">>
+) {
   return (overrideOptions?: Partial<Options<T>>) =>
     useRipple({
       ...inputOptions,
@@ -186,10 +207,14 @@ export function customRipple<T extends HTMLElement = any>(inputOptions?: Partial
  *
  * @author Pol Gubau Amores - https://polgubau.com
  */
-function centerElementToPointer<T extends HTMLElement>(event: MinimalEvent, ref: HTMLElement, element: T): T {
+function centerElementToPointer<T extends HTMLElement>(
+  event: MinimalEvent,
+  ref: HTMLElement,
+  element: T
+): T {
   const { top, left } = ref.getBoundingClientRect()
-  element.style.setProperty('top', px(event.clientY - top))
-  element.style.setProperty('left', px(event.clientX - left))
+  element.style.setProperty("top", px(event.clientY - top))
+  element.style.setProperty("left", px(event.clientX - left))
   return element
 }
 
@@ -206,7 +231,7 @@ function centerElementToPointer<T extends HTMLElement>(event: MinimalEvent, ref:
  * @author Pol Gubau Amores - https://polgubau.com
  */
 function px(arg: string | number) {
-  return `${arg}px`
+  return `${arg.toString()}px`
 }
 
 /**
@@ -231,25 +256,25 @@ function px(arg: string | number) {
 function createRipple<T extends HTMLElement>(
   ref: T,
   event: MinimalEvent,
-  { duration, timingFunction, className, opacity }: Omit<Options, 'ref'>,
-  ctx = document,
+  { duration, timingFunction, className, opacity }: Omit<Options, "ref">,
+  ctx = document
 ): HTMLDivElement {
-  const element = ctx.createElement('div')
+  const element = ctx.createElement("div")
   const { clientX, clientY } = event
   const { height, width, top, left } = ref.getBoundingClientRect()
   const maxHeight = Math.max(clientY - top, height - clientY + top)
   const maxWidth = Math.max(clientX - left, width - clientX + left)
   const size = px(Math.hypot(maxHeight, maxWidth) * 2)
   const styles = [
-    ['position', 'absolute'],
-    ['height', size],
-    ['width', size],
-    ['transform', 'translate(-50%, -50%) scale(0)'],
-    ['pointer-events', 'none'],
-    ['border-radius', '50%'],
-    ['opacity', opacity.toString()],
+    ["position", "absolute"],
+    ["height", size],
+    ["width", size],
+    ["transform", "translate(-50%, -50%) scale(0)"],
+    ["pointer-events", "none"],
+    ["border-radius", "50%"],
+    ["opacity", opacity.toString()],
     [
-      'transition',
+      "transition",
       `transform ${duration * 0.6}ms ${timingFunction}, opacity ${Math.max(duration * 0.05, 140)}ms ease-out`,
     ],
   ]
@@ -257,7 +282,7 @@ function createRipple<T extends HTMLElement>(
   element.classList.add(className)
 
   window.requestAnimationFrame(() => {
-    applyStyles([['transform', 'translate(-50%, -50%) scale(1)']], element)
+    applyStyles([["transform", "translate(-50%, -50%) scale(1)"]], element)
   })
 
   return applyStyles(styles, element)
@@ -300,24 +325,24 @@ function applyStyles<T extends HTMLElement>(styles: string[][], target: T): T {
  */
 function cancelRippleAnimation<T extends HTMLElement>(
   element: T,
-  options: Omit<Options<T>, 'color' | 'ref' | 'onSpawn' | 'cancelAutomatically'>,
+  options: Omit<Options<T>, "color" | "ref" | "onSpawn" | "cancelAutomatically">
 ) {
   const { duration, timingFunction } = options
   applyStyles(
     [
-      ['opacity', '0'],
+      ["opacity", "0"],
       [
-        'transition',
+        "transition",
         `transform ${duration * 0.6}ms ${timingFunction}, opacity ${duration * 0.65}ms ease-in-out ${
           duration * 0.13
         }ms`,
       ],
     ],
-    element,
+    element
   )
   window.requestAnimationFrame(() => {
-    element.addEventListener('transitionend', e => {
-      if (e.propertyName === 'opacity') element.remove()
+    element.addEventListener("transitionend", (e) => {
+      if (e.propertyName === "opacity") element.remove()
     })
   })
 }
@@ -331,21 +356,21 @@ function cancelRippleAnimation<T extends HTMLElement>(
  * @author Pol Gubau Amores - https://polgubau.com
  */
 function createRippleContainer(className: string): HTMLDivElement {
-  const container = self().createElement('div')
+  const container = self().createElement("div")
   container.classList.add(className)
 
   return applyStyles(
     [
-      ['position', 'absolute'],
-      ['height', '100%'],
-      ['width', '100%'],
-      ['border-radius', 'inherit'],
-      ['top', '0'],
-      ['left', '0'],
-      ['pointer-events', 'none'],
-      ['overflow', 'hidden'],
+      ["position", "absolute"],
+      ["height", "100%"],
+      ["width", "100%"],
+      ["border-radius", "inherit"],
+      ["top", "0"],
+      ["left", "0"],
+      ["pointer-events", "none"],
+      ["overflow", "hidden"],
     ],
-    container,
+    container
   )
 }
 
@@ -361,5 +386,9 @@ function createRippleContainer(className: string): HTMLDivElement {
  *  @see https://stackoverflow.com/a/4819886/13188385 - source
  */
 function isTouchDevice(): boolean {
-  return 'ontouchstart' in window || navigator.maxTouchPoints > 0 || ((navigator as any)?.msMaxTouchPoints ?? 0 > 0)
+  return (
+    "ontouchstart" in window ||
+    navigator.maxTouchPoints > 0 ||
+    ((navigator as any)?.msMaxTouchPoints ?? 0 > 0)
+  )
 }

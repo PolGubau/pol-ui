@@ -1,19 +1,20 @@
-'use client'
+"use client"
 
-import type { ComponentProps, FC, ReactNode } from 'react'
-import { HiX } from 'react-icons/hi'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import { getTheme } from '../../theme-store'
-import { ColorsEnum, RoundedSizesEnum } from '../../types/enums'
-import type { AlertTheme } from './theme'
-import { IconButton } from '../IconButton'
-import type { Colors, DeepPartial, RoundedSizes } from '../../types/types'
+import type { ComponentProps, FC, ReactNode } from "react"
+import { HiX } from "react-icons/hi"
+import { twMerge } from "tailwind-merge"
 
-export interface AlertProps extends Omit<ComponentProps<'div'>, 'color'> {
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
+import { getTheme } from "../../theme-store"
+import { ColorsEnum, RoundedSizesEnum } from "../../types/enums"
+import type { Colors, DeepPartial, RoundedSizes } from "../../types/types"
+import { IconButton } from "../IconButton"
+import type { AlertTheme } from "./theme"
+
+export interface AlertProps extends Omit<ComponentProps<"div">, "color"> {
   additionalContent?: ReactNode
   color?: Colors
-  icon?: FC<ComponentProps<'svg'>>
+  icon?: FC<ComponentProps<"svg">>
   onDismiss?: () => void
   rounded?: RoundedSizes
   theme?: DeepPartial<AlertTheme>
@@ -69,7 +70,7 @@ export const Alert: FC<AlertProps> = ({
         theme.color[color],
         theme.rounded[rounded],
         bordered && theme.borderAccent,
-        className,
+        className
       )}
       role="alert"
       {...props}
@@ -77,7 +78,7 @@ export const Alert: FC<AlertProps> = ({
       <div className={theme.wrapper} data-testid="ui-alert-wrapper">
         {Icon && <Icon className={theme.icon} data-testid="ui-alert-icon" />}
         <div>{children}</div>
-        {typeof onDismiss === 'function' && (
+        {typeof onDismiss === "function" && (
           <IconButton
             label="Dismiss"
             title="Dismiss"

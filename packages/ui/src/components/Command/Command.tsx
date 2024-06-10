@@ -105,7 +105,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwarded
             // Scroll the selected item into view
             schedule(5, scrollSelectedIntoView)
           }
-          if (propsRef.current?.value !== undefined) {
+          if (propsRef.current.value !== undefined) {
             // If controlled, just call the callback instead of updating state internally
             const newValue = (value ?? '') as string
             propsRef.current.onValueChange?.(newValue)
@@ -117,7 +117,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwarded
         store.emit()
       },
       emit: () => {
-        listeners.current.forEach(l => l())
+        listeners.current.forEach(l => { l(); })
       },
     }
   }, [])
@@ -205,7 +205,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwarded
   )
 
   function score(value: string, keywords?: string[]) {
-    const filter = propsRef.current?.filter ?? defaultFilter
+    const filter = propsRef.current.filter ?? defaultFilter
     return value ? filter?.(value, state.current.search, keywords) : 0
   }
 
@@ -263,7 +263,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwarded
           group.appendChild(
             item.parentElement === group
               ? item
-              : (item.closest(`${SELECTORS.GROUP_ITEMS_SELECTOR} > *`) as HTMLElement),
+              : (item.closest(`${SELECTORS.GROUP_ITEMS_SELECTOR} > *`)!),
           )
         } else {
           if (!listInsertionElement) {
@@ -273,7 +273,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwarded
           listInsertionElement.appendChild(
             item.parentElement === listInsertionElement
               ? item
-              : (item.closest(`${SELECTORS.GROUP_ITEMS_SELECTOR} > *`) as HTMLElement),
+              : (item.closest(`${SELECTORS.GROUP_ITEMS_SELECTOR} > *`)!),
           )
         }
       })
@@ -375,7 +375,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwarded
     // Get item at this index
     let newSelected = items[index + change]
 
-    if (propsRef.current?.loop) {
+    if (propsRef.current.loop) {
       newSelected =
         index + change < 0
           ? items[items.length - 1]
@@ -407,7 +407,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, forwarded
     }
   }
 
-  const last = () => updateSelectedToIndex(getValidItems().length - 1)
+  const last = () => { updateSelectedToIndex(getValidItems().length - 1); }
 
   const next = (e: React.KeyboardEvent) => {
     e.preventDefault()

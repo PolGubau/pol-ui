@@ -121,7 +121,7 @@ export const DataTable = <T extends { id: Identification }>({
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setSelectedRows as any,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     
     isMultiSortEvent: (e: any) => e.ctrlKey || e.shiftKey, // also use the `Ctrl` key to trigger multi-sorting
     maxMultiSortColCount: 3, // only allow 3 columns to be sorted at once
 
@@ -141,7 +141,7 @@ export const DataTable = <T extends { id: Identification }>({
           className="max-w-xs w-full"
           delay={300}
           value={globalFilter ?? ''}
-          onChange={value => setGlobalFilter(String(value))}
+          onChange={value => { setGlobalFilter(String(value)); }}
           placeholder="Search all columns..."
         />
         <Dropdown label="Columns">
@@ -156,7 +156,7 @@ export const DataTable = <T extends { id: Identification }>({
                       label={column.id}
                       className="capitalize"
                       checked={column.getIsVisible()}
-                      onChange={() => column.toggleVisibility(!column.getIsVisible())}
+                      onChange={() => { column.toggleVisibility(!column.getIsVisible()); }}
                     />
                   </li>
                 )
@@ -203,7 +203,7 @@ export const DataTable = <T extends { id: Identification }>({
           ))}
         </TableHeader>
         <TableBody>
-          {table.getRowModel().rows?.length ? (
+          {table.getRowModel().rows.length ? (
             table.getRowModel().rows.map(row => {
               return (
                 <TableRow key={row.id} data-state={row.getIsSelected() ? 'selected' : undefined}>

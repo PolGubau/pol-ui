@@ -77,7 +77,7 @@ export function Controlled() {
   const [open, setOpen] = useState(false)
   return (
     <Popover open={open} onOpenChange={setOpen} content={<ExampleContent />}>
-      <Button onClick={() => setOpen(v => !v)}>My trigger</Button>
+      <Button onClick={() => { setOpen(v => !v); }}>My trigger</Button>
     </Popover>
   )
 }

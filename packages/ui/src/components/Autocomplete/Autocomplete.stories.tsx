@@ -57,7 +57,7 @@ export const Default = () => {
       value={value}
       onChange={v => {
         setValue(v)
-        toast({ title: `Selected: ${v?.label}` })
+        toast({ title: `Selected: ${v.label}` })
       }}
     />
   )
@@ -75,7 +75,7 @@ export const InForm = () => {
         options={frameworks}
         onChange={v => {
           setValue(v)
-          toast({ title: `Selected: ${v?.label}` })
+          toast({ title: `Selected: ${v.label}` })
         }}
       />
       <Checkbox label="Subscribe to newsletter" />
@@ -92,7 +92,7 @@ export const RemainOpen = () => {
       closeOnSelect={false}
       onChange={v => {
         setValue(v)
-        toast({ title: `Selected: ${v?.label}` })
+        toast({ title: `Selected: ${v.label}` })
       }}
     />
   )
@@ -107,7 +107,7 @@ export const CustomTrigger = () => {
       onChange={v => {
         setValue(v)
 
-        toast({ title: `Selected: ${v?.label}` })
+        toast({ title: `Selected: ${v.label}` })
       }}
     >
       <IconButton>

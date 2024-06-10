@@ -3,7 +3,7 @@
 import { createContext, useContext } from 'react'
 import type { TimelineTheme } from './theme'
 
-export type TimelineContext = {
+export interface TimelineContext {
   theme: TimelineTheme
   horizontal?: boolean
 }

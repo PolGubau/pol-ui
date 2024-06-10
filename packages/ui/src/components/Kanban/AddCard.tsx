@@ -8,7 +8,7 @@ import { Button } from '../Button'
 import { ColorsEnum } from '../../types'
 import type { KanbanProps } from './Kanban'
 
-export type AddCardProps = {
+export interface AddCardProps {
   column: string
   labels: KanbanProps['labels']
   onCreate?: ({ column, title }: { column: string; title: string }) => void
@@ -43,12 +43,12 @@ export const AddKanbanCard = ({
       {adding ? (
         <motion.form layout onSubmit={handleSubmit} className={theme.add?.form}>
           <Textarea
-            onChange={e => setText(e.target.value)}
+            onChange={e => { setText(e.target.value); }}
             placeholder={labels.placeholder}
             className={theme.add?.textarea}
           />
           <div className={theme.add?.buttonGroup}>
-            <Button color={ColorsEnum.secondary} type="button" onClick={() => setAdding(false)} size="sm">
+            <Button color={ColorsEnum.secondary} type="button" onClick={() => { setAdding(false); }} size="sm">
               <span className="first-letter:uppercase">{labels.cancel}</span>
             </Button>
             <Button color={ColorsEnum.primary} type="submit" size="sm" disabled={!text.trim().length}>
@@ -63,7 +63,7 @@ export const AddKanbanCard = ({
           color={ColorsEnum.primary}
           type="submit"
           size="sm"
-          onClick={() => setAdding(true)}
+          onClick={() => { setAdding(true); }}
           variant={'ghost'}
         >
           <span className="first-letter:uppercase">{labels.add}</span>

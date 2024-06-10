@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { KanbanIndicator } from './KanbanDropIndicator'
 import type { KanbanTheme } from './theme'
 
-export type CompleteKanbanCardProps = {
+export interface CompleteKanbanCardProps {
   // eslint-disable-next-line @typescript-eslint/ban-types
   handleDragStart: Function
   setDragging: (value: boolean) => void
@@ -12,7 +12,7 @@ export type CompleteKanbanCardProps = {
   indicatorClassName?: string
   theme: KanbanTheme
 }
-export type KanbanCardProps = {
+export interface KanbanCardProps {
   title: string
   id: string
   column: string
@@ -37,7 +37,7 @@ export const KanbanCard = ({
         layoutId={id}
         draggable={dragable}
         onDragStart={e => handleDragStart(e, { title, id, column })}
-        onDragEnd={() => setDragging(false)}
+        onDragEnd={() => { setDragging(false); }}
         className={twMerge(theme.card.base, dragable && theme.card.dragable)}
       >
         {title}

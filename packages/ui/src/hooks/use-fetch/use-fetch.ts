@@ -7,7 +7,7 @@ interface State<T> {
   error?: Error;
 }
 
-type Cache<T> = { [url: string]: T };
+type Cache<T> = Record<string, T>;
 
 // discriminated union type
 type Action<T> = { type: 'loading' } | { type: 'fetched'; payload: T } | { type: 'error'; payload: Error };

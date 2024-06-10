@@ -1,16 +1,21 @@
-'use client'
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client"
 
-import plugin from 'tailwindcss/plugin.js'
-import type { ColorScale } from './colors/types'
-import { animations } from './animations'
-import { KeyValuePair } from 'tailwindcss/types/config'
-import type { ThemeColors } from './colors'
-import { colors } from './colors/colors'
-import { filterDefault, singleTimeline } from './helpers'
-import type { CustomPluginConfig } from './types'
-import { utilities } from './utilities'
+import plugin from "tailwindcss/plugin.js"
+import { KeyValuePair } from "tailwindcss/types/config"
 
-export const poluiPlugin = (config: CustomPluginConfig = {}): ReturnType<typeof plugin> => {
+import { animations } from "./animations"
+import type { ThemeColors } from "./colors"
+import { colors } from "./colors/colors"
+import type { ColorScale } from "./colors/types"
+import { filterDefault, singleTimeline } from "./helpers"
+import type { CustomPluginConfig } from "./types"
+import { utilities } from "./utilities"
+
+export const poluiPlugin = (
+  config: CustomPluginConfig = {}
+): ReturnType<typeof plugin> => {
   const { colors: userColors = {} } = config
 
   // allColors is the official object with all colors from pol-ui but the user can override them using the userColors object.
@@ -24,79 +29,105 @@ export const poluiPlugin = (config: CustomPluginConfig = {}): ReturnType<typeof 
     }
   }
 
-  const parsedColors: ThemeColors = Object.keys(colors).reduce((acc, key) => {
-    const color = colors[key as keyof ThemeColors]
-    const userColor = userColors[key as keyof ThemeColors]
+  const parsedColors: ThemeColors = Object.keys(colors).reduce<ThemeColors>(
+    (acc, key) => {
+      const color = colors[key as keyof ThemeColors]
+      const userColor = userColors[key as keyof ThemeColors]
 
-    if (userColor) {
-      acc[key as keyof ThemeColors] = addDefault({
-        ...color,
-        ...userColor,
-      })
-    } else {
-      acc[key as keyof ThemeColors] = addDefault(color)
+      if (userColor) {
+        acc[key as keyof ThemeColors] = addDefault({
+          ...color,
+          ...userColor,
+        })
+      } else {
+        acc[key as keyof ThemeColors] = addDefault(color)
+      }
+
+      return acc
+    },
+    {
+      ...colors,
     }
-
-    return acc
-  }, {} as ThemeColors)
+  )
 
   return plugin(
     ({ addUtilities, matchUtilities, theme }) => {
       // Predefined animations in same element
 
-      interface DynamicUtil {
-        [key: string]: {
+      type DynamicUtil = Record<
+        string,
+        {
           css: string
-          values: KeyValuePair<string | string>
+          values: KeyValuePair
           generateValue?: (value: string) => string
         }
-      }
+      >
 
       const dynamicUtils: DynamicUtil = {
-        'animate-delay': {
-          css: 'animation-delay',
-          values: theme('animationDelay'),
+        "animate-delay": {
+          css: "animation-delay",
+          values: theme("animationDelay"),
         },
-        'animate-duration': { css: 'animation-duration', values: theme('animationDuration') },
-        'animate-iteration-count': { css: 'animation-iteration-count', values: theme('animationIterationCount') },
-        'animate-fill-mode': { css: 'animation-fill-mode', values: theme('animationFillMode') },
-        'animate-bezier': { css: 'animation-timing-function', values: theme('animationCubicBezier') },
-        'animate-steps': {
-          css: 'animation-timing-function',
-          values: theme('animationSteps'),
-          generateValue: (value: string | number) => `steps(${value})`,
+        "animate-duration": {
+          css: "animation-duration",
+          values: theme("animationDuration"),
         },
-        'animate-range': {
-          css: 'animation-range',
-          values: theme('animationRange'),
+        "animate-iteration-count": {
+          css: "animation-iteration-count",
+          values: theme("animationIterationCount"),
+        },
+        "animate-fill-mode": {
+          css: "animation-fill-mode",
+          values: theme("animationFillMode"),
+        },
+        "animate-bezier": {
+          css: "animation-timing-function",
+          values: theme("animationCubicBezier"),
+        },
+        "animate-steps": {
+          css: "animation-timing-function",
+          values: theme("animationSteps"),
+          generateValue: (value: string) => `steps(${value})`,
+        },
+        "animate-range": {
+          css: "animation-range",
+          values: theme("animationRange"),
           generateValue: (value: string) => value,
         },
         timeline: {
-          css: 'animation-timeline',
-          values: theme('timeline'),
+          css: "animation-timeline",
+          values: theme("timeline"),
           generateValue: (value: string) => singleTimeline(value),
         },
-        'scroll-timeline': {
-          css: 'scroll-timeline-name',
-          values: theme('scrollTimeline'),
+        "scroll-timeline": {
+          css: "scroll-timeline-name",
+          values: theme("scrollTimeline"),
           generateValue: (value: string) => singleTimeline(value),
         },
-        'view-timeline': {
-          css: 'view-timeline-name',
-          values: theme('viewTimeline'),
+        "view-timeline": {
+          css: "view-timeline-name",
+          values: theme("viewTimeline"),
           generateValue: (value: string) => singleTimeline(value),
         },
-        'scroll-timeline-axis': { css: 'scroll-timeline-axis', values: theme('scrollTimelineAxis') },
-        'view-timeline-axis': { css: 'view-timeline-axis', values: theme('viewTimelineAxis') },
-        'scroll-animate': {
-          css: 'scroll-timeline-name',
-          values: theme('scrollTimeline'),
-          generateValue: (value: string) => `${singleTimeline(value)};\n  animation-timeline: ${singleTimeline(value)}`,
+        "scroll-timeline-axis": {
+          css: "scroll-timeline-axis",
+          values: theme("scrollTimelineAxis"),
         },
-        'view-animate': {
-          css: 'view-timeline-name',
-          values: theme('viewTimeline'),
-          generateValue: (value: string) => `${singleTimeline(value)};\n  animation-timeline: ${singleTimeline(value)}`,
+        "view-timeline-axis": {
+          css: "view-timeline-axis",
+          values: theme("viewTimelineAxis"),
+        },
+        "scroll-animate": {
+          css: "scroll-timeline-name",
+          values: theme("scrollTimeline"),
+          generateValue: (value: string) =>
+            `${singleTimeline(value)};\n  animation-timeline: ${singleTimeline(value)}`,
+        },
+        "view-animate": {
+          css: "view-timeline-name",
+          values: theme("viewTimeline"),
+          generateValue: (value: string) =>
+            `${singleTimeline(value)};\n  animation-timeline: ${singleTimeline(value)}`,
         },
       }
 
@@ -105,154 +136,166 @@ export const poluiPlugin = (config: CustomPluginConfig = {}): ReturnType<typeof 
       dynamicUtilsEntries.forEach(([name, { css, values, generateValue }]) => {
         matchUtilities(
           {
-            [name]: value => ({
+            [name]: (value) => ({
               [css]: generateValue ? generateValue(value) : value,
             }),
           },
           {
             values,
-          },
+          }
         )
       })
 
       addUtilities(utilities)
       addUtilities({
-        '@keyframes enter': theme('keyframes.enter'),
-        '@keyframes exit': theme('keyframes.exit'),
-        '.animate-in': {
-          animationName: 'enter',
-          animationDuration: theme('animationDuration.DEFAULT'),
-          '--tw-enter-opacity': 'initial',
-          '--tw-enter-scale': 'initial',
-          '--tw-enter-rotate': 'initial',
-          '--tw-enter-translate-x': 'initial',
-          '--tw-enter-translate-y': 'initial',
+        "@keyframes enter": theme("keyframes.enter"),
+        "@keyframes exit": theme("keyframes.exit"),
+        ".animate-in": {
+          animationName: "enter",
+          animationDuration: theme("animationDuration.DEFAULT"),
+          "--tw-enter-opacity": "initial",
+          "--tw-enter-scale": "initial",
+          "--tw-enter-rotate": "initial",
+          "--tw-enter-translate-x": "initial",
+          "--tw-enter-translate-y": "initial",
         },
-        '.animate-out': {
-          animationName: 'exit',
-          animationDuration: theme('animationDuration.DEFAULT'),
-          '--tw-exit-opacity': 'initial',
-          '--tw-exit-scale': 'initial',
-          '--tw-exit-rotate': 'initial',
-          '--tw-exit-translate-x': 'initial',
-          '--tw-exit-translate-y': 'initial',
+        ".animate-out": {
+          animationName: "exit",
+          animationDuration: theme("animationDuration.DEFAULT"),
+          "--tw-exit-opacity": "initial",
+          "--tw-exit-scale": "initial",
+          "--tw-exit-rotate": "initial",
+          "--tw-exit-translate-x": "initial",
+          "--tw-exit-translate-y": "initial",
         },
       })
 
       matchUtilities(
         {
-          'fade-in': value => ({ '--tw-enter-opacity': value }),
-          'fade-out': value => ({ '--tw-exit-opacity': value }),
+          "fade-in": (value: string) => ({ "--tw-enter-opacity": value }),
+          "fade-out": (value) => ({ "--tw-exit-opacity": value }),
         },
-        { values: theme('animationOpacity') },
+        { values: theme("animationOpacity") }
       )
 
       matchUtilities(
         {
-          'zoom-in': value => ({ '--tw-enter-scale': value }),
-          'zoom-out': value => ({ '--tw-exit-scale': value }),
+          "zoom-in": (value: string) => ({ "--tw-enter-scale": value }),
+          "zoom-out": (value) => ({ "--tw-exit-scale": value }),
         },
-        { values: theme('animationScale') },
+        { values: theme("animationScale") }
       )
 
       matchUtilities(
         {
-          'spin-in': value => ({ '--tw-enter-rotate': value }),
-          'spin-out': value => ({ '--tw-exit-rotate': value }),
+          "spin-in": (value: string) => ({ "--tw-enter-rotate": value }),
+          "spin-out": (value) => ({ "--tw-exit-rotate": value }),
         },
-        { values: theme('animationRotate') },
+        { values: theme("animationRotate") }
       )
 
       matchUtilities(
         {
-          'slide-in-from-top': value => ({
-            '--tw-enter-translate-y': `-${value}`,
+          "slide-in-from-top": (value: string) => ({
+            "--tw-enter-translate-y": `-${value}`,
           }),
-          'slide-in-from-bottom': value => ({
-            '--tw-enter-translate-y': value,
+          "slide-in-from-bottom": (value) => ({
+            "--tw-enter-translate-y": value,
           }),
-          'slide-in-from-left': value => ({
-            '--tw-enter-translate-x': `-${value}`,
+          "slide-in-from-left": (value) => ({
+            "--tw-enter-translate-x": `-${value}`,
           }),
-          'slide-in-from-right': value => ({
-            '--tw-enter-translate-x': value,
+          "slide-in-from-right": (value) => ({
+            "--tw-enter-translate-x": value,
           }),
-          'slide-out-to-top': value => ({
-            '--tw-exit-translate-y': `-${value}`,
+          "slide-out-to-top": (value) => ({
+            "--tw-exit-translate-y": `-${value}`,
           }),
-          'slide-out-to-bottom': value => ({
-            '--tw-exit-translate-y': value,
+          "slide-out-to-bottom": (value) => ({
+            "--tw-exit-translate-y": value,
           }),
-          'slide-out-to-left': value => ({
-            '--tw-exit-translate-x': `-${value}`,
+          "slide-out-to-left": (value) => ({
+            "--tw-exit-translate-x": `-${value}`,
           }),
-          'slide-out-to-right': value => ({
-            '--tw-exit-translate-x': value,
+          "slide-out-to-right": (value) => ({
+            "--tw-exit-translate-x": value,
           }),
         },
-        { values: theme('animationTranslate') },
+        { values: theme("animationTranslate") }
       )
 
       matchUtilities(
-        { duration: value => ({ animationDuration: value }) },
-        { values: filterDefault(theme('animationDuration')) },
+        { duration: (value) => ({ animationDuration: value }) },
+        { values: filterDefault(theme("animationDuration")) }
       )
 
-      matchUtilities({ delay: value => ({ animationDelay: value }) }, { values: theme('animationDelay') })
+      matchUtilities(
+        { delay: (value: string) => ({ animationDelay: value }) },
+        { values: theme("animationDelay") }
+      )
 
       matchUtilities(
-        { ease: value => ({ animationTimingFunction: value }) },
-        { values: filterDefault(theme('animationTimingFunction')) },
+        { ease: (value) => ({ animationTimingFunction: value }) },
+        { values: filterDefault(theme("animationTimingFunction")) }
       )
 
       addUtilities({
-        '.running': { animationPlayState: 'running' },
-        '.paused': { animationPlayState: 'paused' },
+        ".running": { animationPlayState: "running" },
+        ".paused": { animationPlayState: "paused" },
       })
 
-      matchUtilities({ 'fill-mode': value => ({ animationFillMode: value }) }, { values: theme('animationFillMode') })
+      matchUtilities(
+        { "fill-mode": (value: string) => ({ animationFillMode: value }) },
+        { values: theme("animationFillMode") }
+      )
 
-      matchUtilities({ direction: value => ({ animationDirection: value }) }, { values: theme('animationDirection') })
+      matchUtilities(
+        { direction: (value: string) => ({ animationDirection: value }) },
+        { values: theme("animationDirection") }
+      )
 
-      matchUtilities({ repeat: value => ({ animationIterationCount: value }) }, { values: theme('animationRepeat') })
+      matchUtilities(
+        { repeat: (value: string) => ({ animationIterationCount: value }) },
+        { values: theme("animationRepeat") }
+      )
     },
 
     {
-      darkMode: 'class',
+      darkMode: "class",
       theme: {
         extend: {
           colors: {
             ...parsedColors,
           },
-          animationDelay: ({ theme }: any) => ({
-            ...theme('transitionDelay'),
+          animationDelay: ({ theme }: { theme: any }): any => ({
+            ...theme("transitionDelay"),
           }),
-          animationDuration: ({ theme }: any) => ({
-            0: '0ms',
-            ...theme('transitionDuration'),
+          animationDuration: ({ theme }: { theme: any }): any => ({
+            0: "0ms",
+            ...theme("transitionDuration"),
           }),
-          animationTimingFunction: ({ theme }: any) => ({
-            ...theme('transitionTimingFunction'),
+          animationTimingFunction: ({ theme }: { theme: any }): any => ({
+            ...theme("transitionTimingFunction"),
           }),
-          animationOpacity: ({ theme }: any) => ({
+          animationOpacity: ({ theme }: { theme: any }): any => ({
             DEFAULT: 0,
-            ...theme('opacity'),
+            ...theme("opacity"),
           }),
-          animationTranslate: ({ theme }: any) => ({
-            DEFAULT: '100%',
-            ...theme('translate'),
+          animationTranslate: ({ theme }: { theme: any }): any => ({
+            DEFAULT: "100%",
+            ...theme("translate"),
           }),
-          animationScale: ({ theme }: any) => ({
+          animationScale: ({ theme }: { theme: any }): any => ({
             DEFAULT: 0,
-            ...theme('scale'),
+            ...theme("scale"),
           }),
-          animationRotate: ({ theme }: any) => ({
-            DEFAULT: '30deg',
-            ...theme('rotate'),
+          animationRotate: ({ theme }: { theme: any }): any => ({
+            DEFAULT: "30deg",
+            ...theme("rotate"),
           }),
           ...animations,
         },
       },
-    },
+    }
   )
 }

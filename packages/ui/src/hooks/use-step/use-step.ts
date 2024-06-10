@@ -4,7 +4,7 @@ import { useCallback, useState } from 'react'
 
 import type { Dispatch, SetStateAction } from 'react'
 
-type UseStepActions = {
+interface UseStepActions {
   goToNextStep: () => void
   goToPrevStep: () => void
   reset: () => void

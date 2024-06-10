@@ -5,7 +5,7 @@ export * from './color-to-tailwind';
 export * from './cookieUtils';
 export * from './cva';
 export * from './encryption';
-export * from './fetchData';
+export * from './fetchers';
 export * from './generateUUID';
 export * from './generic-forward-ref';
 export * from './getDocumentDirection';

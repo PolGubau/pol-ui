@@ -1,7 +1,7 @@
-'use client'
+"use client"
 
-import { useMotionValueEvent, useScroll } from 'framer-motion'
-import { useRef, useState } from 'react'
+import { useRef, useState } from "react"
+import { useMotionValueEvent, useScroll } from "framer-motion"
 
 /**
  * Hook for transitioning background color based on scroll position.
@@ -20,13 +20,17 @@ export const useBgColorTransition = (colors: string[]) => {
 
   const { scrollY } = useScroll({})
 
-  useMotionValueEvent(scrollY, 'change', latest => {
+  useMotionValueEvent(scrollY, "change", (latest) => {
     const amountColors = colors.length
-    const step = ref.current!.offsetHeight / amountColors
+    if (!ref.current) return
+    const step = ref.current.offsetHeight / amountColors
 
     const index = Math.floor(latest / step)
 
-    if (index >= amountColors) return setActiveColor(colors[amountColors - 1])
+    if (index >= amountColors) {
+      setActiveColor(colors[amountColors - 1])
+      return
+    }
 
     setActiveColor(colors[index])
   })

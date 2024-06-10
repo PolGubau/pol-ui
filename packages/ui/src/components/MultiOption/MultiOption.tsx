@@ -65,7 +65,7 @@ const MultiOption = ({ options = [], value = '', onChange }: MultiOptionProps) =
     const autocompleteAdaterOptions: AutocompleteOption[] = options.map(option => ({ value: option, label: option }))
 
     const adaptedValue = autocompleteAdaterOptions.find(option => option.value === value)
-    return <Autocomplete value={adaptedValue} onChange={n => onChange(n.value)} options={autocompleteAdaterOptions} />
+    return <Autocomplete value={adaptedValue} onChange={n => { onChange(n.value); }} options={autocompleteAdaterOptions} />
   }
 }
 

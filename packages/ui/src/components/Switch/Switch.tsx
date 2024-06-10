@@ -33,7 +33,7 @@ export const Switch: FC<SwitchProps> = ({
   const id = useId()
   const theme = mergeDeep(getTheme().switch, customTheme)
 
-  const toggle = (): void => onChange(!checked)
+  const toggle = (): void => { onChange(!checked); }
 
   const handleOnKeyDown = (event: KeyboardEvent<HTMLButtonElement>): void => {
     if (event.code == 'Space' || event.code == 'Enter') {

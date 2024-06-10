@@ -21,15 +21,13 @@
     "target": "ESNext",
     "types": ["@testing-library/jest-dom", "node", "vitest"]
   },
-  "exclude": ["./build/", "./coverage/", "./lib/", "./.next/", "postcss.config.js", "./storybook-static/"],
-  "include": [
-    "**/*.js",
-    "**/*.mdx",
-    "**/*.mjs",
-    "**/*.ts",
-    "**/*.tsx",
+  "exclude": [
+    "./build/",
+    "./coverage/",
+    "./lib/",
+    "./.next/",
     "postcss.config.js",
-    "tailwind.config.cjs",
-    "src/a.sass"
+    "./storybook-static/",
+    "tailwind.config.cjs"
   ]
 }

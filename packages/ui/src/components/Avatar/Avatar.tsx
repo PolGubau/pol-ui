@@ -112,7 +112,7 @@ const AvatarComponent: FC<AvatarProps> = ({
             data-testid="ui-avatar-status"
             className={cn(
               theme.root.status.base,
-              theme.root.status[status as keyof AvatarStatus],
+              theme.root.status[status],
               theme.root.statusPosition[statusPosition],
             )}
           />

@@ -34,7 +34,7 @@ describe('Components / Accordion', () => {
 
     it("shouldn't include `arrowIcon` in `Accordion.Title` label", () => {
       render(<TestAccordion />)
-      titles().forEach(title => expect(title).toHaveAccessibleName('Title'))
+      titles().forEach(title => { expect(title).toHaveAccessibleName('Title'); })
     })
   })
   describe('Keyboard interactions', () => {

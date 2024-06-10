@@ -1,17 +1,20 @@
-'use client'
-import type { ComponentProps } from 'react'
-import { forwardRef, useId } from 'react'
-import { Label } from '../Label'
-import type { Colors, DeepPartial } from '../../types/types'
-import type { RadioTheme } from './theme'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import { getTheme } from '../../theme-store'
-import { ColorsEnum } from '../../types'
-import { TbCheck } from 'react-icons/tb'
-import { AnimatePresence, motion } from 'framer-motion'
+"use client"
 
-export interface RadioProps extends Omit<ComponentProps<'input'>, 'type' | 'ref' | 'color'> {
+import { forwardRef, useId, type ComponentProps } from "react"
+import { AnimatePresence, motion } from "framer-motion"
+import { TbCheck } from "react-icons/tb"
+import { twMerge } from "tailwind-merge"
+
+import { cn } from "../../helpers"
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
+import { getTheme } from "../../theme-store"
+import { ColorsEnum } from "../../types"
+import type { Colors, DeepPartial } from "../../types/types"
+import { Label } from "../Label"
+import type { RadioTheme } from "./theme"
+
+export interface RadioProps
+  extends Omit<ComponentProps<"input">, "type" | "ref" | "color"> {
   theme?: DeepPartial<RadioTheme>
   color?: Colors
   label?: string
@@ -25,21 +28,27 @@ const AnimatedCheckIcon = ({
   initial?: boolean
   isVisible?: boolean
   theme?: DeepPartial<RadioTheme>
-  color?: RadioProps['color']
+  color?: RadioProps["color"]
 }) => {
   const theme = mergeDeep(getTheme().checkbox, customTheme)
 
   return (
     <AnimatePresence initial={initial} mode="wait">
       {isVisible && (
-        <div className={twMerge('hidden peer-checked:flex', theme.floating.base)}>
+        <div
+          className={twMerge("hidden peer-checked:flex", theme.floating.base)}
+        >
           <svg
             width="24"
             height="18"
             viewBox="0 0 24 18"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className={twMerge(theme.floating.svg, theme.check.color[color], 'stroke-current')}
+            className={twMerge(
+              theme.floating.svg,
+              theme.check.color[color],
+              "stroke-current"
+            )}
           >
             <motion.path
               d="M2.5 9.5L8.5 15.5L21.5 2.5"
@@ -50,9 +59,9 @@ const AnimatedCheckIcon = ({
               strokeLinecap="round"
               strokeLinejoin="round"
               transition={{
-                type: 'tween',
+                type: "tween",
                 duration: 0.3,
-                ease: isVisible ? 'easeOut' : 'easeIn',
+                ease: "easeOut",
               }}
             />
           </svg>
@@ -62,22 +71,45 @@ const AnimatedCheckIcon = ({
   )
 }
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  ({ className, label, color = ColorsEnum.primary, theme: customTheme = {}, ...props }, ref) => {
+  (
+    {
+      className,
+      label,
+      color = ColorsEnum.primary,
+      theme: customTheme = {},
+      ...props
+    },
+    ref
+  ) => {
     const theme: RadioTheme = mergeDeep(getTheme().radio, customTheme)
 
     const id = useId()
 
+    // id : props.id, if label: label+id, if not lavel: id
+    const getLabel = () => {
+      if (props.id) return props.id
+      if (label) return label + id
+      return id
+    }
+
+    const parsedId = getLabel()
+
     return (
       <li className="inline-flex items-center gap-2 relative">
         <input
-          id={props.id ?? label + id}
+          id={parsedId}
           {...props}
-          className={twMerge(theme.base, theme.before, theme.color[color], className)}
+          className={cn(
+            theme.base,
+            theme.before,
+            theme.color[color],
+            className
+          )}
           ref={ref}
           type="radio"
         />
 
-        {typeof props.checked === 'undefined' ? (
+        {typeof props.checked === "undefined" ? (
           <span className={twMerge(theme.check.base, theme.check.color[color])}>
             <TbCheck />
           </span>
@@ -87,7 +119,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         {label && <Label htmlFor={props.id ?? label + id}>{label}</Label>}
       </li>
     )
-  },
+  }
 )
 
-Radio.displayName = 'Radio'
+Radio.displayName = "Radio"

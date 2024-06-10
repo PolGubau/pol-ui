@@ -57,7 +57,7 @@ StaggeredFadeIn.args = {
 export const Gradual = Template.bind({})
 Gradual.args = {
   ...Default.args,
-  animation: AnimatedHeadingAnimationsEnum['gradual'],
+  animation: AnimatedHeadingAnimationsEnum.gradual,
 }
 export const LetterPullUp = Template.bind({})
 LetterPullUp.args = {

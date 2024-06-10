@@ -95,7 +95,7 @@ export const Pagination: FC<PaginationProps> = ({
                 outline,
                 className: cn(theme.pages.selector.base, currentPage === page && theme.pages.selector.active),
                 active: page === currentPage,
-                onClick: () => onPageChange(page),
+                onClick: () => { onPageChange(page); },
                 children: page,
               })}
             </li>

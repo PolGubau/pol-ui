@@ -9,7 +9,7 @@
  * ```
  */
 export function toCamelCase(str: string): string {
-  return str.replace(/[-_](.)/g, (_, c) => c.toUpperCase())
+  return str.replace(/[-_](.)/g, (_, c: string) => c.toUpperCase())
 }
 
 /**
@@ -18,7 +18,10 @@ export function toCamelCase(str: string): string {
  * @returns {string} The title-cased string.
  */
 export function toTitleCase(str: string): string {
-  return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.slice(1).toLowerCase())
+  return str.replace(
+    /\w\S*/g,
+    (txt) => txt.charAt(0).toUpperCase() + txt.slice(1).toLowerCase()
+  )
 }
 /**
  * Converts a string to kebab case.
@@ -27,8 +30,8 @@ export function toTitleCase(str: string): string {
  */
 export function toKebabCase(str: string): string {
   return str
-    .replace(/([a-z])([A-Z])/g, '$1-$2')
-    .replace(/\s+/g, '-')
+    .replace(/([a-z])([A-Z])/g, "$1-$2")
+    .replace(/\s+/g, "-")
     .toLowerCase()
 }
 
@@ -64,7 +67,7 @@ export function capitalize(str: string): string {
  * @returns {string} The whitespace-free string.
  */
 export function removeWhitespace(str: string): string {
-  return str.replace(/\s/g, '')
+  return str.replace(/\s/g, "")
 }
 
 /**
@@ -73,7 +76,7 @@ export function removeWhitespace(str: string): string {
  * @returns {string} The reversed string.
  */
 export function reverseString(str: string): string {
-  return str.split('').reverse().join('')
+  return str.split("").reverse().join("")
 }
 
 /**
@@ -84,9 +87,15 @@ export function reverseString(str: string): string {
  * @returns {string} The truncated string.
  */
 
-export function truncateString(str: string, length: number = 50, suffix: string = '...'): string {
+export function truncateString(
+  str: string,
+  length = 50,
+  suffix = "..."
+): string {
   if (str.length === 0) return str
-  return str.length > length ? str.substring(0, length - suffix.length) + suffix : str
+  return str.length > length
+    ? str.substring(0, length - suffix.length) + suffix
+    : str
 }
 
 /**
@@ -101,8 +110,8 @@ export function truncateString(str: string, length: number = 50, suffix: string 
  *
  */
 export function formatString(str: string): string {
-  const result = str.replace(/([a-z])([A-Z])/g, '$1 $2')
-  return capitalize(result.replace(/([A-Z])([A-Z][a-z])/g, '$1 $2').trim())
+  const result = str.replace(/([a-z])([A-Z])/g, "$1 $2")
+  return capitalize(result.replace(/([A-Z])([A-Z][a-z])/g, "$1 $2").trim())
 }
 
 /**
@@ -116,8 +125,8 @@ export function formatString(str: string): string {
  * ```
  */
 export const randomString = (length: number): string => {
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-  let result = ''
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+  let result = ""
 
   for (let i = 0; i < length; i++) {
     const randomIndex = Math.floor(Math.random() * characters.length)
@@ -139,5 +148,5 @@ export const randomString = (length: number): string => {
  * ```
  *  */
 export const lowerAndNoSpace = (str: string): string => {
-  return str.toLowerCase().replace(/\s/g, '')
+  return str.toLowerCase().replace(/\s/g, "")
 }

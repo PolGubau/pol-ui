@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useIsomorphicLayoutEffect } from '../use-isomorphic-layout-effect'
 import { isClient } from '../../helpers'
 
-type UseMediaQueryOptions = {
+interface UseMediaQueryOptions {
   defaultValue?: boolean
   initializeWithValue?: boolean
 }

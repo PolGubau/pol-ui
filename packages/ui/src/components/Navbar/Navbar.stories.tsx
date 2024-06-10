@@ -81,7 +81,7 @@ WithDropdown.args = {
     >
       <DropdownLabel>My Account</DropdownLabel>
       <DropdownGroup>
-        <DropdownItem onSelect={() => alert('a')}>
+        <DropdownItem onSelect={() => { alert('a'); }}>
           <TbUser className="mr-2 h-4 w-4" />
           <span>Profile</span>
         </DropdownItem>

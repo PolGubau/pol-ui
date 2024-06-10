@@ -77,7 +77,7 @@ export type CommandProps = DivProps & {
   children?: React.ReactNode
 }
 
-export type Context = {
+export interface Context {
   value: (id: string, value: string, keywords?: string[]) => void
   item: (id: string, groupId: string) => () => void
   group: (id: string) => () => void
@@ -91,19 +91,19 @@ export type Context = {
   // Refs
   listInnerRef: React.RefObject<HTMLDivElement | null>
 }
-export type State = {
+export interface State {
   search: string
   value: string
   filtered: { count: number; items: Map<string, number>; groups: Set<string> }
 }
-export type Store = {
+export interface Store {
   subscribe: (callback: () => void) => () => void
   snapshot: () => State
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setState: <K extends keyof State>(key: K, value: State[K], opts?: any) => void
   emit: () => void
 }
-export type Group = {
+export interface Group {
   id: string
   forceMount?: boolean
 }

@@ -55,7 +55,7 @@ export const useScheduleLayoutEffect = () => {
   const fns = useLazyRef(() => new Map<string | number, () => void>())
 
   useIsomorphicLayoutEffect(() => {
-    fns.current.forEach(f => f())
+    fns.current.forEach(f => { f(); })
     fns.current = new Map()
   }, [s])
 

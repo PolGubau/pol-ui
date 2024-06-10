@@ -8,7 +8,7 @@ import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
 import { getTheme } from '../../theme-store'
 import type { ConveyorTheme } from './theme'
 
-export type ConveyorProps = {
+export interface ConveyorProps {
   children?: React.ReactNode[]
   direction?: ConveyorDirection
   speed?: ConveyorSpeed

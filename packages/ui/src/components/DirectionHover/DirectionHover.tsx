@@ -44,7 +44,7 @@ export const DirectionHover = <T extends ElementType = 'button'>({
   const [direction, setDirection] = useState<Direction>(DirectionEnum.left)
   const theme: DirectionHoverTheme = mergeDeep(getTheme().directionHover, customTheme)
 
-  const handleMouseEnter = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleMouseEnter = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (!ref.current) return
     const direction = getDirection(event, ref.current)
     switch (direction) {

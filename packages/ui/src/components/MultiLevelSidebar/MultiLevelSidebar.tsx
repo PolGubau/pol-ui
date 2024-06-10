@@ -108,7 +108,7 @@ const MultiLevelSidebar = ({ links, menus, ...rest }: MultiLevelSidebarProps) =>
             'border-t border-secondary-100 dark:border-secondary-800',
           )}
         >
-          <IconButton variant={'ghost'} className="h-10 w-10 min-h-10 min-w-10" onClick={() => handleOpenClose()}>
+          <IconButton variant={'ghost'} className="h-10 w-10 min-h-10 min-w-10" onClick={() => { handleOpenClose(); }}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

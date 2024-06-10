@@ -23,7 +23,7 @@ export const DebouncedInput = forwardRef<HTMLInputElement, DebouncedInputProps>(
 
     useEffect(() => {
       // Pass the debounced value to the propOnChange after the specified delay
-      const timer = setTimeout(() => propOnChange(debouncedValue), delay)
+      const timer = setTimeout(() => { propOnChange(debouncedValue); }, delay)
 
       return () => {
         clearTimeout(timer)
@@ -35,7 +35,7 @@ export const DebouncedInput = forwardRef<HTMLInputElement, DebouncedInputProps>(
       setInputValue(propValue)
     }, [propValue])
 
-    return <Input {...props} value={inputValue} onChange={e => setInputValue(e.target.value)} ref={ref} />
+    return <Input {...props} value={inputValue} onChange={e => { setInputValue(e.target.value); }} ref={ref} />
   },
 )
 

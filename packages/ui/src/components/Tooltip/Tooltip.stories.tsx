@@ -119,10 +119,10 @@ SideOffset.args = {
 export const OnEscapeKeyDown = Template.bind({})
 OnEscapeKeyDown.args = {
   ...DefaultTooltip.args,
-  onEscapeKeyDown: () => alert('Escape key pressed'),
+  onEscapeKeyDown: () => { alert('Escape key pressed'); },
 }
 export const OnPointerDownOutside = Template.bind({})
 OnPointerDownOutside.args = {
   ...DefaultTooltip.args,
-  onPointerDownOutside: () => alert('Pointer down outside'),
+  onPointerDownOutside: () => { alert('Pointer down outside'); },
 }

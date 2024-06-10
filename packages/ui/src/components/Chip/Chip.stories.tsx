@@ -86,10 +86,10 @@ DropdownExample.args = {
             </div>
           }
         >
-          <DropdownItem label="Undo" onClick={() => alert('Undo')} shortcut="⌘Z" />
-          <DropdownItem label="Redo" shortcut="⌘Y" onClick={() => alert('Redo')} />
+          <DropdownItem label="Undo" onClick={() => { alert('Undo'); }} shortcut="⌘Z" />
+          <DropdownItem label="Redo" shortcut="⌘Y" onClick={() => { alert('Redo'); }} />
           <Divider />
-          <DropdownItem label="More actions" onClick={() => alert('More actions')} />
+          <DropdownItem label="More actions" onClick={() => { alert('More actions'); }} />
         </Dropdown>
       ),
     },

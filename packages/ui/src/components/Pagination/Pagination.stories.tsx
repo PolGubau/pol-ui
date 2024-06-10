@@ -1,10 +1,10 @@
-/* eslint-disable react/prop-types */
-import type { Meta, StoryFn } from '@storybook/react'
-import React, { useEffect, useState } from 'react'
-import type { PaginationProps } from './Pagination'
-import { Pagination } from './Pagination'
+import React, { useEffect, useState } from "react"
+import type { Meta, StoryFn } from "@storybook/react"
+
+import { Pagination, type PaginationProps } from "./Pagination"
+
 export default {
-  title: 'Components/Pagination',
+  title: "Components/Pagination",
   component: Pagination,
   decorators: [
     (Story): JSX.Element => (
@@ -15,7 +15,11 @@ export default {
   ],
 } as Meta
 
-const Template: StoryFn<PaginationProps> = ({ currentPage = 1, totalPages = 100, ...rest }) => {
+const Template: StoryFn<PaginationProps> = ({
+  currentPage = 1,
+  totalPages = 100,
+  ...rest
+}) => {
   const [page, setPage] = useState(currentPage)
 
   const onPageChange = (page: number) => {
@@ -26,13 +30,20 @@ const Template: StoryFn<PaginationProps> = ({ currentPage = 1, totalPages = 100,
     setPage(currentPage)
   }, [currentPage])
 
-  return <Pagination {...rest} currentPage={page} onPageChange={onPageChange} totalPages={totalPages} />
+  return (
+    <Pagination
+      {...rest}
+      currentPage={page}
+      onPageChange={onPageChange}
+      totalPages={totalPages}
+    />
+  )
 }
 
 export const Default = Template.bind({})
 
 export const PaginationWithIcons = Template.bind({})
-PaginationWithIcons.storyName = 'Pagination with icons'
+PaginationWithIcons.storyName = "Pagination with icons"
 PaginationWithIcons.args = {
   showIcons: true,
 }
@@ -47,7 +58,7 @@ Outline.args = {
 }
 
 export const NavWithIcons = Template.bind({})
-NavWithIcons.storyName = 'Nav with icons'
+NavWithIcons.storyName = "Nav with icons"
 NavWithIcons.args = {
   showIcons: true,
 }
@@ -65,17 +76,17 @@ export const Labels = Template.bind({})
 Labels.args = {
   hasLabels: true,
   labels: {
-    entries: 'dades',
-    of: 'de',
-    showing: 'Mostrant',
-    to: 'de',
-    next: 'Següent',
-    previous: 'Anterior',
+    entries: "dades",
+    of: "de",
+    showing: "Mostrant",
+    to: "de",
+    next: "Següent",
+    previous: "Anterior",
   },
 }
 
 export const TableWithIcons = Template.bind({})
-TableWithIcons.storyName = 'Table with icons'
+TableWithIcons.storyName = "Table with icons"
 TableWithIcons.args = {
   hasLabels: true,
   showIcons: true,

@@ -69,7 +69,7 @@ export const ImageTrail = ({
     const imageIndex = imageRenderCount.current % images.length
     const selector = `[data-mouse-move-index="${imageIndex}"]`
 
-    const el = document.querySelector(selector) as HTMLElement
+    const el = document.querySelector(selector)!
 
     el.style.top = `${lastRenderPosition.current.y}px`
     el.style.left = `${lastRenderPosition.current.x}px`

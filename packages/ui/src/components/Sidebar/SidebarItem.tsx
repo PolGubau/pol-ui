@@ -1,16 +1,30 @@
-'use client'
+"use client"
 
-import type { ComponentProps, ElementType, FC, PropsWithChildren, ReactNode } from 'react'
-import { forwardRef, useId } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import type { Colors, DeepPartial, RoundedSizes, RoundedSizesTypes } from '../../types/types'
-import { Badge } from '../Badge'
-import { Tooltip } from '../Tooltip'
-import { useSidebarContext, useSidebarItemContext } from './SidebarContext'
-import { motion } from 'framer-motion'
-import { ColorsEnum, RoundedSizesEnum, SidesEnum } from '../../types'
-import { useRipple } from '../../hooks'
+import {
+  forwardRef,
+  useId,
+  type ComponentProps,
+  type ElementType,
+  type FC,
+  type PropsWithChildren,
+  type ReactNode,
+} from "react"
+import { motion } from "framer-motion"
+import { twMerge } from "tailwind-merge"
+
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
+import { useRipple } from "../../hooks"
+import { ColorsEnum, RoundedSizesEnum, SidesEnum } from "../../types"
+import type {
+  Colors,
+  DeepPartial,
+  RoundedSizes,
+  RoundedSizesTypes,
+} from "../../types/types"
+import { Badge } from "../Badge"
+import { Tooltip } from "../Tooltip"
+import { useSidebarContext, useSidebarItemContext } from "./SidebarContext"
+
 export interface SidebarItemTheme {
   active: string
   base: string
@@ -30,11 +44,13 @@ export interface SidebarItemTheme {
   listItem: string
 }
 
-export interface SidebarItemProps extends Omit<ComponentProps<'div'>, 'ref'>, Record<string, unknown> {
+export interface SidebarItemProps
+  extends Omit<ComponentProps<"div">, "ref">,
+    Record<string, unknown> {
   active?: boolean
   as?: ElementType
   href?: string
-  icon?: FC<ComponentProps<'svg'>>
+  icon?: FC<ComponentProps<"svg">>
   badge?: string
   rounded?: RoundedSizes
   labelColor?: Colors
@@ -49,7 +65,14 @@ const ListItem: FC<
     tooltipChildren: ReactNode | undefined
     className?: string
   }>
-> = ({ id, theme, collapsed = false, tooltipChildren, children: wrapperChildren, ...props }) => {
+> = ({
+  id,
+  theme,
+  collapsed = false,
+  tooltipChildren,
+  children: wrapperChildren,
+  ...props
+}) => {
   const [ripple, event] = useRipple({
     // disabled: disabled || loading,
     opacity: 0.2,
@@ -75,9 +98,15 @@ const ListItem: FC<
   )
 }
 
-const Children: FC<PropsWithChildren<{ id: string; theme: SidebarItemTheme }>> = ({ id, theme, children }) => {
+const Children: FC<
+  PropsWithChildren<{ id: string; theme: SidebarItemTheme }>
+> = ({ id, theme, children }) => {
   return (
-    <span data-testid="ui-sidebar-item-content" id={`ui-sidebar-item-${id}`} className={twMerge(theme.content.base)}>
+    <span
+      data-testid="ui-sidebar-item-content"
+      id={`ui-sidebar-item-${id}`}
+      className={twMerge(theme.content.base)}
+    >
       {children}
     </span>
   )
@@ -87,7 +116,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
   (
     {
       active: isActive,
-      as: Component = 'a',
+      as: Component = "a",
       children,
       className,
       rounded = RoundedSizesEnum.md,
@@ -97,7 +126,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
       theme: customTheme = {},
       ...props
     },
-    ref,
+    ref
   ) => {
     const id = useId()
     const { theme: rootTheme, open: collapsed, color } = useSidebarContext()
@@ -112,11 +141,17 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
       open: { opacity: 1 },
     }
     return (
-      <ListItem theme={theme} className={theme.listItem} id={id} collapsed={collapsed} tooltipChildren={children}>
+      <ListItem
+        theme={theme}
+        className={theme.listItem}
+        id={id}
+        collapsed={collapsed}
+        tooltipChildren={children}
+      >
         <motion.div
           variants={itemVariants}
           transition={{
-            type: 'spring',
+            type: "spring",
             stiffness: 260,
           }}
         >
@@ -127,8 +162,8 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
               theme.base,
               theme.rounded[rounded],
               isActive && theme.active,
-              !collapsed && isInsideCollapse && theme.collapsed?.insideCollapse,
-              className,
+              !collapsed && isInsideCollapse && theme.collapsed.insideCollapse,
+              className
             )}
             style={{ backgroundColor: !isActive && color }}
             {...props}
@@ -137,12 +172,15 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
               <Icon
                 aria-hidden
                 data-testid="ui-sidebar-item-icon"
-                className={twMerge(theme.icon?.base, isActive && theme.icon?.active)}
+                className={twMerge(
+                  theme.icon.base,
+                  isActive && theme.icon.active
+                )}
               />
             )}
             {collapsed && !Icon && (
-              <span className={theme.collapsed?.noIcon}>
-                {(children as string).charAt(0).toLocaleUpperCase() ?? '?'}
+              <span className={theme.collapsed.noIcon}>
+                {(children as string).charAt(0).toLocaleUpperCase()}
               </span>
             )}
             {!collapsed && (
@@ -151,7 +189,12 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
               </Children>
             )}
             {!collapsed && badge && (
-              <Badge color={labelColor} data-testid="ui-sidebar-label" hidden={collapsed} className={theme.badge}>
+              <Badge
+                color={labelColor}
+                data-testid="ui-sidebar-label"
+                hidden={collapsed}
+                className={theme.badge}
+              >
                 {badge}
               </Badge>
             )}
@@ -159,7 +202,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
         </motion.div>
       </ListItem>
     )
-  },
+  }
 )
 
-SidebarItem.displayName = 'SidebarItem'
+SidebarItem.displayName = "SidebarItem"

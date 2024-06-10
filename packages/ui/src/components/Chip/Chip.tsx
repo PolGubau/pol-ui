@@ -18,7 +18,7 @@ export interface ChipAction extends React.HTMLAttributes<HTMLButtonElement> {
   icon?: React.ReactNode
 }
 
-export type ChipProps<T extends ElementType = BASE_COMPONENT_TYPE> = {
+export interface ChipProps<T extends ElementType = BASE_COMPONENT_TYPE> {
   as?: T
   children: React.ReactNode
   label?: string

@@ -60,9 +60,9 @@ export const Controlled = () => {
   const [open, setOpen] = React.useState(false)
   return (
     <>
-      <button onClick={() => setOpen(true)}>Open Drawer</button>
+      <button onClick={() => { setOpen(true); }}>Open Drawer</button>
       <pre> The drawer is {open ? 'open' : 'closed'} </pre>
-      <Drawer open={open} onClose={() => setOpen(false)} label="Now the state commes from the other button">
+      <Drawer open={open} onClose={() => { setOpen(false); }} label="Now the state commes from the other button">
         <SampleContent />
       </Drawer>
     </>

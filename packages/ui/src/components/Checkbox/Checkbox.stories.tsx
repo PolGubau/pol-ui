@@ -31,7 +31,7 @@ export const Controlled = (): JSX.Element => {
   const [checked, setChecked] = useState(false)
   return (
     <div className="flex flex-wrap gap-2">
-      <Checkbox label="Controlled" color={ColorsEnum.primary} checked={checked} onChange={() => setChecked(!checked)} />
+      <Checkbox label="Controlled" color={ColorsEnum.primary} checked={checked} onChange={() => { setChecked(!checked); }} />
     </div>
   )
 }

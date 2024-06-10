@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 import React, { useEffect, useId, useState } from 'react'
 import { Colors, ColorsEnum, DeepPartial } from '../../types'
 import { GaugeTheme } from './theme'

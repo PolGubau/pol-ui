@@ -26,8 +26,8 @@ export const Default = () => {
   return (
     <div className="flex flex-col gap-3 w-full max-w-md">
       Current value decrypted from localstorage:{value}
-      <Input value={value} onChange={e => setValue(e.target.value)} />
-      <Button onClick={() => setValue('')}>Clear</Button>
+      <Input value={value} onChange={e => { setValue(e.target.value); }} />
+      <Button onClick={() => { setValue(''); }}>Clear</Button>
     </div>
   )
 }
@@ -38,8 +38,8 @@ export const Encrypted = () => {
     <div className="flex flex-col gap-3 w-full max-w-md">
       Current value decrypted from localstorage:{value}
       <span> Check the application tab in the devtools to see the encrypted value</span>
-      <Input value={value} onChange={e => setValue(e.target.value)} />
-      <Button onClick={() => setValue('')}>Clear</Button>
+      <Input value={value} onChange={e => { setValue(e.target.value); }} />
+      <Button onClick={() => { setValue(''); }}>Clear</Button>
     </div>
   )
 }

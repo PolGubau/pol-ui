@@ -37,7 +37,7 @@ export const Default = () => {
     <div className="flex flex-col gap-4 max-w-sm w-full">
       Current value: {value}
       <div>
-        <Input value={value} onChange={e => setValue(e.target.value)} />
+        <Input value={value} onChange={e => { setValue(e.target.value); }} />
       </div>
       <Button onClick={handleEncrypt}>Encrypt</Button>
       <Button onClick={handleDecrypt} color="secondary" disabled={!value}>
