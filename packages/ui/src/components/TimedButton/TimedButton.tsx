@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react"
+import React, { useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 
 import { useLongPress } from "../../hooks"
@@ -74,4 +74,4 @@ const TimedButton = ({
   )
 }
 
-export { TimedButton }
+export { TimedButton, type LongPressProps }
