@@ -19,6 +19,4 @@ export function setToLocalStorage(key: string, value: unknown): void {
 export function removeFromLocalStorage(key: string): void {
   localStorage.removeItem(key)
 }
-
-export const getToken = (tokenType = "mesalvo.accessToken") =>
-  localStorage.getItem(tokenType) ?? ""
+ 

@@ -1,6 +1,6 @@
-'use client'
+"use client"
 
-import { useEffect } from 'react'
+import { useEffect } from "react"
 
 /**
  * Triggers `onChange` when another browser tab instance mutates the LS value.
@@ -16,7 +16,9 @@ export const useWatchLocalStorage = ({
     if (key === watchKey) onChange(newValue)
   }
   useEffect(() => {
-    window.addEventListener('storage', handleStorageChange)
-    return () => { window.removeEventListener('storage', handleStorageChange); }
-  }, [])  
+    window.addEventListener("storage", handleStorageChange)
+    return () => {
+      window.removeEventListener("storage", handleStorageChange)
+    }
+  }, [])
 }

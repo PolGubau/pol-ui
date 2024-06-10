@@ -87,4 +87,9 @@ function useNetwork(): NetworkState {
   return networkState
 }
 
-export default useNetwork
+export {
+  useNetwork,
+  type NetworkState,
+  type NetworkInformation,
+  type NavigatorWithNetworkInformation,
+}

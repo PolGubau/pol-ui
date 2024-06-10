@@ -9,7 +9,9 @@ export const setCookie = (name: string, value: string, days?: number): void => {
   const expirationDate = new Date()
   expirationDate.setDate(expirationDate.getDate() + (days ?? 0))
 
-  const cookieValue = encodeURIComponent(value) + (days ? `; expires=${expirationDate.toUTCString()}` : '')
+  const cookieValue =
+    encodeURIComponent(value) +
+    (days ? `; expires=${expirationDate.toUTCString()}` : "")
   document.cookie = `${name}=${cookieValue}; path=/`
 }
 
@@ -18,15 +20,15 @@ export const setCookie = (name: string, value: string, days?: number): void => {
  * @param {string} name - The name of the cookie to retrieve.
  * @returns {string|null} The value of the cookie if found, or null if not found.
  */
-export const getCookie = (name: string): string | null => {
-  const cookies = document.cookie.split('; ')
+export const getCookie = (name: string): string | undefined => {
+  const cookies = document.cookie.split("; ")
   for (const cookie of cookies) {
-    const [cookieName, cookieValue] = cookie.split('=')
+    const [cookieName, cookieValue] = cookie.split("=")
     if (cookieName === name) {
       return decodeURIComponent(cookieValue)
     }
   }
-  return null
+  return undefined
 }
 /**
  * Deletes a cookie by setting its expiration date to the past.
