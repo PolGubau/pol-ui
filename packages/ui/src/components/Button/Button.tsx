@@ -4,6 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn, mergeRefs } from "../../helpers"
 import { useRipple } from "../../hooks"
+import { RippleOptions } from "../../hooks/use-ripple/use-ripple"
 import type { DeepPartial } from "../../types"
 import { FocusEffect } from "../FocusEffect"
 import { Loader } from "../Loader"
@@ -145,6 +146,7 @@ export interface ButtonProps
   loader?: React.ReactNode
   focusEffect?: boolean
   theme?: DeepPartial<ButtonTheme>
+  rippleOptions?: Partial<RippleOptions>
 }
 
 export type ButtonVariants = keyof typeof variants.variant
@@ -163,6 +165,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       color,
       focusEffect = true,
       asChild = false,
+      rippleOptions = {
+        opacity: 0.2,
+        duration: 700,
+      },
       ...props
     },
     ref
@@ -170,8 +176,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const isDisabled = props.disabled ?? loading
     const [ripple, event] = useRipple({
       disabled: isDisabled,
-      opacity: 0.2,
-      duration: 700,
+      ...rippleOptions,
     })
     const refs = mergeRefs([ripple, ref])
     const Comp = asChild ? Slot : "button"
@@ -200,8 +205,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         }}
       >
         <>
-          {focusEffect && <FocusEffect />}
-
           {loading
             ? loader ?? (
                 <>
@@ -210,6 +213,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 </>
               )
             : label}
+          {focusEffect && <FocusEffect />}
         </>
       </Comp>
     )

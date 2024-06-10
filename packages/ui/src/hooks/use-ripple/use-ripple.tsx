@@ -19,7 +19,7 @@ import { useCallback, useRef } from "react"
  * @returns <Options> The options to use for the ripple
  * @author Pol Gubau Amores - https://polgubau.com
  */
-export interface Options<T extends HTMLElement = any> {
+export interface RippleOptions<T extends HTMLElement = any> {
   duration: number
   // color: string;
   timingFunction: string
@@ -76,11 +76,11 @@ const containerClassName = "ripple--container"
  */
 
 export default function useRipple<T extends HTMLElement = any>(
-  inputOptions?: Partial<Options<T>>
+  inputOptions?: Partial<RippleOptions<T>>
 ) {
   const internalRef = useRef<T>(null)
 
-  const { ref, ...options }: Options = {
+  const { ref, ...options }: RippleOptions = {
     duration: 450,
     cancelAutomatically: false,
     timingFunction: "cubic-bezier(.42,.36,.28,.88)",
@@ -182,9 +182,9 @@ export default function useRipple<T extends HTMLElement = any>(
  */
 
 export function customRipple<T extends HTMLElement = any>(
-  inputOptions?: Partial<Omit<Options<T>, "ref">>
+  inputOptions?: Partial<Omit<RippleOptions<T>, "ref">>
 ) {
-  return (overrideOptions?: Partial<Options<T>>) =>
+  return (overrideOptions?: Partial<RippleOptions<T>>) =>
     useRipple({
       ...inputOptions,
       ...overrideOptions,
@@ -256,7 +256,7 @@ function px(arg: string | number) {
 function createRipple<T extends HTMLElement>(
   ref: T,
   event: MinimalEvent,
-  { duration, timingFunction, className, opacity }: Omit<Options, "ref">,
+  { duration, timingFunction, className, opacity }: Omit<RippleOptions, "ref">,
   ctx = document
 ): HTMLDivElement {
   const element = ctx.createElement("div")
@@ -325,7 +325,10 @@ function applyStyles<T extends HTMLElement>(styles: string[][], target: T): T {
  */
 function cancelRippleAnimation<T extends HTMLElement>(
   element: T,
-  options: Omit<Options<T>, "color" | "ref" | "onSpawn" | "cancelAutomatically">
+  options: Omit<
+    RippleOptions<T>,
+    "color" | "ref" | "onSpawn" | "cancelAutomatically"
+  >
 ) {
   const { duration, timingFunction } = options
   applyStyles(

@@ -22,7 +22,12 @@ function useLongPress({
   const pressInitiatedRef = useRef<boolean>(false)
 
   const start = useCallback(
-    (event: React.MouseEvent<unknown> | React.TouchEvent<unknown>) => {
+    (
+      event:
+        | React.MouseEvent<unknown>
+        | React.TouchEvent<unknown>
+        | React.KeyboardEvent<unknown>
+    ) => {
       // Only left clicks (button 0)
       if ("button" in event && event.button !== 0) return
       pressTriggeredRef.current = false
