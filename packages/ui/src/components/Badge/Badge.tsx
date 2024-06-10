@@ -1,18 +1,24 @@
-'use client'
+"use client"
 
-import type { ComponentProps, FC } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import { getTheme } from '../../theme-store'
-import type { Colors, DeepPartial, MainSizes, RoundedSizes } from '../../types/types'
-import { ColorsEnum, RoundedSizesEnum, SizesEnum } from '../../types/enums'
-import type { BadgeTheme } from './theme'
+import type { ComponentProps, FC } from "react"
+import { twMerge } from "tailwind-merge"
 
-export interface BadgeProps extends Omit<ComponentProps<'span'>, 'color'> {
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
+import { getTheme } from "../../theme-store"
+import { ColorsEnum, RoundedSizesEnum, SizesEnum } from "../../types/enums"
+import type {
+  Colors,
+  DeepPartial,
+  MainSizes,
+  RoundedSizes,
+} from "../../types/types"
+import type { BadgeTheme } from "./theme"
+
+export interface BadgeProps extends Omit<ComponentProps<"span">, "color"> {
   color?: Colors
   href?: string
   rounded?: RoundedSizes
-  icon?: FC<ComponentProps<'svg'>>
+  icon?: FC<ComponentProps<"svg">>
   size?: MainSizes
   theme?: DeepPartial<BadgeTheme>
 }
@@ -41,13 +47,19 @@ export const Badge: FC<BadgeProps> = ({
         theme.root.color[color],
         theme.root.size[size],
         theme.root.rounded[rounded],
-        theme.icon[Icon ? 'on' : 'off'],
-        className,
+        theme.icon[Icon ? "on" : "off"],
+        className
       )}
       data-testid="ui-badge"
       {...props}
     >
-      {Icon && <Icon aria-hidden className={theme.icon.size[size]} data-testid="ui-badge-icon" />}
+      {Icon && (
+        <Icon
+          aria-hidden
+          className={theme.icon.size[size]}
+          data-testid="ui-badge-icon"
+        />
+      )}
       {children && <span>{children}</span>}
     </span>
   )
@@ -63,4 +75,4 @@ export const Badge: FC<BadgeProps> = ({
 }
 
 // Title of the component: Badge
-Badge.displayName = 'Badge'
+Badge.displayName = "Badge"
