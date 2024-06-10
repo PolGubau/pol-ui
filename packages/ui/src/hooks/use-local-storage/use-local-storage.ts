@@ -8,7 +8,7 @@ import {
   type SetStateAction,
 } from "react"
 
-import { json, setToLocalStorage } from "../../helpers"
+import { json } from "../../helpers"
 import { decrypt, encrypt } from "../../helpers/encryption/encryption"
 import { useEventCallback } from "../use-event-callback/use-event-callback"
 import { useEventListener } from "../use-event-listener/use-event-listener"
@@ -95,7 +95,8 @@ export function useLocalStorage<T>(
       const maybeEncryptedvalue = encriptationKey
         ? encrypt(JSON.stringify(newValue), encriptationKey)
         : JSON.stringify(newValue)
-      setToLocalStorage(key, maybeEncryptedvalue)
+
+      window.localStorage.setItem(key, maybeEncryptedvalue)
 
       // Save state
       setStoredValue(newValue)

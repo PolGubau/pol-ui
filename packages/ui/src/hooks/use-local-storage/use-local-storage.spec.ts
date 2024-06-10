@@ -13,16 +13,15 @@ describe("useLocalStorage hook", () => {
   })
 
   test("should update the value and localStorage on setValue", () => {
-    const newValue = "updatedValue"
     const { result } = renderHook(() =>
       useLocalStorage("testKey", "initialValue")
     )
     act(() => {
-      result.current[1](newValue)
+      result.current[1]("updatedValue")
     })
-    expect(result.current[0]).toBe(newValue)
+    expect(result.current[0]).toBe("updatedValue")
     expect(window.localStorage.getItem("testKey")).toBe(
-      JSON.stringify(newValue)
+      JSON.stringify("updatedValue")
     )
   })
 
