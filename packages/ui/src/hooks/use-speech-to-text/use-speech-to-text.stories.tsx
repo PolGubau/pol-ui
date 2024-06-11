@@ -28,7 +28,7 @@ export const Default: React.FC = () => {
     lang: "en-US",
     continuous: true,
     interimResults: true,
-    maxAlternatives: 1,
+    maxAlternatives: 3,
     onResult: (result) => {
       toast("Recognized speech:", { description: result })
     },
