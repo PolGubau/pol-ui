@@ -27,8 +27,63 @@ export const Default: React.FC = () => {
   const { start, stop, transcript, isListening } = useSpeechToText({
     lang: "en-US",
     continuous: true,
-    interimResults: true,
-    maxAlternatives: 3,
+    maxAlternatives: 1,
+    onResult: (result) => {
+      toast("Recognized speech:", { description: result })
+    },
+    onError: (error) => {
+      toast.error("Error occurred:", { description: error })
+    },
+  })
+
+  return (
+    <div>
+      <h1>Speech to Text</h1>
+      <Button onClick={start} disabled={isListening}>
+        Start Listening
+      </Button>
+      <Button onClick={stop} disabled={!isListening}>
+        Stop Listening
+      </Button>
+      <div>
+        <h2>Transcript:</h2>
+        <p>{transcript}</p>
+      </div>
+    </div>
+  )
+}
+export const NoCountuous: React.FC = () => {
+  const { start, stop, transcript, isListening } = useSpeechToText({
+    lang: "en-US",
+    continuous: false,
+    onResult: (result) => {
+      toast("Recognized speech:", { description: result })
+    },
+    onError: (error) => {
+      toast.error("Error occurred:", { description: error })
+    },
+  })
+
+  return (
+    <div>
+      <h1>Speech to Text</h1>
+      <Button onClick={start} disabled={isListening}>
+        Start Listening
+      </Button>
+      <Button onClick={stop} disabled={!isListening}>
+        Stop Listening
+      </Button>
+      <div>
+        <h2>Transcript:</h2>
+        <p>{transcript}</p>
+      </div>
+    </div>
+  )
+}
+export const Spanish: React.FC = () => {
+  const { start, stop, transcript, isListening } = useSpeechToText({
+    lang: "es-ES",
+    continuous: false,
     onResult: (result) => {
       toast("Recognized speech:", { description: result })
     },
