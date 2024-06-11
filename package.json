@@ -29,7 +29,7 @@
     "ui:build": "pnpm ui build",
     "ui:lint": "pnpm ui lint",
     "ui:coverage": "pnpm ui test:coverage",
-    "build-storybook": "storybook ui build",
+    "build-storybook": "pnpm ui build-storybook",
     "--------------------------------------------------------------- DOCS ---------": "---------------------------------------------",
     "docs:dev": "pnpm web-docs dev",
     "build:docs": "pnpm web-docs build",
