@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "./lib/types",
+    "esModuleInterop": true,
+    "lib": ["esnext", "DOM"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "./lib/cjs",
+    "types": ["node"],
+    "strict": true,
+    "target": "esnext",
+    "typeRoots": ["./types", "./node_modules/@types"]
+  },
+  "include": ["./src", "./test"]
+}
