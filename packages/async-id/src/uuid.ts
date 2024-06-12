@@ -11,7 +11,6 @@ export const generateUidFunction =
         );
         return;
       }
-
       if (len <= 0) {
         reject(new Error('You must supply a length integer greater than zero'));
         return;
