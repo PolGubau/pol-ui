@@ -1,10 +1,10 @@
-name: CI
+name: Async-id
 
 on:
   push:
-    branches: ['main']
+    branches: ["main"]
   pull_request:
-    branches: ['main']
+    branches: ["main"]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -18,7 +18,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        node: [16, 18, 20]
+        node: [20]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
@@ -29,7 +29,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-          cache: 'pnpm'
+          cache: "pnpm"
       - run: pnpm install
       - run: pnpm test
       - name: Maybe Release
