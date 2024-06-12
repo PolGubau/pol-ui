@@ -1,6 +1,6 @@
 // the file extension is needed for ESM
 import type { RandomBytes } from './types.js';
-import { generateUidFunction } from './uid.js';
+import { generateUidFunction } from './uuid.js';
 
 const randomBytes: RandomBytes = (size, callback) => {
   if (size < 0 || size > 65536) {

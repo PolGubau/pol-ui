@@ -1,4 +1,4 @@
 import { randomBytes } from 'node:crypto';
-import { generateUidFunction } from './uid.js';
+import { generateUidFunction } from './uuid';
 
-export const uid = generateUidFunction(randomBytes);
+export const uuid = generateUidFunction(randomBytes);
