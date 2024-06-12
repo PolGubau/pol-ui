@@ -15,6 +15,7 @@ export const generateUidFunction =
         reject(new Error('You must supply a length integer greater than zero'));
         return;
       }
+
       randomBytes(len, (err, buf) => {
         if (err) {
           return reject(err);
