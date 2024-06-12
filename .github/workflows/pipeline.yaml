@@ -13,7 +13,7 @@ concurrency:
 jobs:
   async-id-test:
     name: Async-id (Lint, Build, Test, Deploy)
-    if: ${{ github.event_name == 'push' && (contains(github.event.head_commit.message, 'packages/async-id') || contains(join(github.event.commits.*.modified, ','), 'packages/async-id')) }}
+    if: ${{ github.event_name == 'push' && contains(join(github.event.commits.*.modified, ','), 'packages/async-id')) }}
     timeout-minutes: 5
     strategy:
       fail-fast: false
