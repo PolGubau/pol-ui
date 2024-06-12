@@ -11,9 +11,37 @@ concurrency:
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
+  check-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      async-id-changed: ${{ steps.check.outputs.async-id-changed }}
+      ui-changed: ${{ steps.check.outputs.ui-changed }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Check for async-id changes
+        id: check
+        run: |
+          echo "Checking for changes in packages/async-id..."
+          if git diff --name-only HEAD^ HEAD | grep -q '^packages/async-id/'; then
+            echo "async-id-changed=true" >> $GITHUB_ENV
+          else
+            echo "async-id-changed=false" >> $GITHUB_ENV
+          fi
+
+          echo "Checking for changes in packages/ui..."
+          if git diff --name-only HEAD^ HEAD | grep -q '^packages/ui/'; then
+            echo "ui-changed=true" >> $GITHUB_ENV
+          else
+            echo "ui-changed=false" >> $GITHUB_ENV
+          fi
+        shell: bash
+
   async-id-test:
     name: Async-id (Lint, Build, Test, Deploy)
-    if: ${{contains(join(github.event.commits.*.modified, ','), 'packages/async-id')}}
+    needs: check-changes
+    if: needs.check-changes.outputs.async-id-changed == 'true'
     timeout-minutes: 5
     strategy:
       fail-fast: false
@@ -42,40 +70,32 @@ jobs:
 
   pol-ui:
     name: 🧪 Pol-UI (Lint, Build, Test, Deploy)
-    if: ${{contains(join(github.event.commits.*.modified, ','), 'packages/ui')}}
+    needs: check-changes
+    if: needs.check-changes.outputs.ui-changed == 'true'
     runs-on: ubuntu-latest
-
     steps:
       - name: 👍 Checkout
         uses: actions/checkout@v3
-
       - name: 💡 Install PNPM
         run: npm install -g pnpm
-
       - name: ❇️ Setup node.js LTS
         uses: actions/setup-node@v3
         with:
           node-version: lts/*
           cache: "pnpm"
-
       - name: 📥 Install Dependencies
         run: pnpm ui install
-
       - name: 💅 Lint
         run: pnpm ui lint
-
       - name: 🧪 Unit Tests and coverage
         run: pnpm ui test
-
       - name: setup git config
         run: |
           git config user.name "Bot"
           git config user.email ""
-
       - name: Get run number
         id: run_number
         run: echo "RUN_NUMBER=${{ github.run_number }}" >> $GITHUB_ENV
-
       - name: Update version in package.json
         run: |
           cd packages/ui
@@ -93,7 +113,6 @@ jobs:
           echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc 
           cd packages/ui 
           pnpm publish --no-git-checks
-
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
