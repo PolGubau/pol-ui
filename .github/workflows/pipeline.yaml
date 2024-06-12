@@ -20,28 +20,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Fetch all history for all branches and tags
-        run: git fetch --prune --unshallow
-
       - name: Check for async-id changes
         id: check
         run: |
           echo "Checking for changes in packages/async-id..."
-          if [ $(git rev-list --count HEAD) -eq 1 ]; then
-            echo "async-id-changed=true" >> $GITHUB_ENV
-          elif git diff --name-only HEAD~1 | grep -q '^packages/async-id/'; then
-            echo "async-id-changed=true" >> $GITHUB_ENV
+          if git diff --name-only HEAD^ HEAD | grep -q '^packages/async-id/'; then
+            echo "::set-output name=async-id-changed::true"
           else
-            echo "async-id-changed=false" >> $GITHUB_ENV
+            echo "::set-output name=async-id-changed::false"
           fi
 
           echo "Checking for changes in packages/ui..."
-          if [ $(git rev-list --count HEAD) -eq 1 ]; then
-            echo "ui-changed=true" >> $GITHUB_ENV
-          elif git diff --name-only HEAD~1 | grep -q '^packages/ui/'; then
-            echo "ui-changed=true" >> $GITHUB_ENV
+          if git diff --name-only HEAD^ HEAD | grep -q '^packages/ui/'; then
+            echo "::set-output name=ui-changed::true"
           else
-            echo "ui-changed=false" >> $GITHUB_ENV
+            echo "::set-output name=ui-changed::false"
           fi
         shell: bash
 
