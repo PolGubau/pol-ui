@@ -2,6 +2,7 @@ import { forwardRef, useId, type ComponentProps } from "react"
 
 import { cn } from "../../helpers"
 import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
+import { useSpeechToText } from "../../hooks"
 import { getTheme } from "../../theme-store"
 import { ColorsEnum, MainSizesEnum } from "../../types/enums"
 import { HelperText } from "../HelperText"

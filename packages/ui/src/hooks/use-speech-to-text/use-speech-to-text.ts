@@ -135,7 +135,7 @@ const useSpeechToText = ({
     recognition.maxAlternatives = maxAlternatives
     recognition.onresult = handleResult
     recognition.onerror = (event) => {
-      onError?.("Errror" + JSON.stringify(event))
+      onError?.("Errror " + JSON.stringify(event))
     }
     recognition.onend = () => {
       setIsListening(false)
