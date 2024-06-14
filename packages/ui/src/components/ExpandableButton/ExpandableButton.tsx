@@ -1,14 +1,16 @@
-'use client'
+"use client"
 
-import React from 'react'
-import { useBoolean, useMediaQuery } from '../../hooks'
-import { Button } from '../Button'
-import { AnimatePresence, motion } from 'framer-motion'
-import { cn } from '../../helpers'
-import { Drawer } from '../Drawer'
-import { DialogTitle } from '@radix-ui/react-dialog'
+import React from "react"
+import { DialogTitle } from "@radix-ui/react-dialog"
+import { AnimatePresence, motion } from "framer-motion"
 
-export interface ExpandableButtonProps extends React.HTMLAttributes<HTMLDivElement> {
+import { cn } from "../../helpers"
+import { useBoolean, useMediaQuery } from "../../hooks"
+import { Button } from "../Button"
+import { Drawer } from "../Drawer"
+
+export interface ExpandableButtonProps
+  extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * If true, the content will be shown only once and won't be able to be opened or closed again.
    */
@@ -33,12 +35,12 @@ const ExpandableButton = ({
   once,
   trigger,
   triggerWrapperClassName,
-  label = 'Click to toggle',
+  label = "Click to toggle",
   responsive = true,
   showLabelInDrawer = true,
   ...rest
 }: ExpandableButtonProps) => {
-  const isDesktop = useMediaQuery('(min-width: 768px)')
+  const isDesktop = useMediaQuery("(min-width: 768px)")
 
   const { value, toggle, setTrue } = useBoolean(false)
   const handleClick = () => {
@@ -57,9 +59,9 @@ const ExpandableButton = ({
     <div className="flex flex-col w-full" {...rest}>
       {
         <div
-          data-state={value ? 'open' : 'closed'}
+          data-state={value ? "open" : "closed"}
           className={cn(triggerWrapperClassName)}
-          onClickCapture={e => {
+          onClickCapture={(e) => {
             e.stopPropagation()
             handleClick()
           }}
@@ -73,7 +75,7 @@ const ExpandableButton = ({
           open={value}
           onClose={toggle}
           noTrigger
-          onOpenChange={newState => {
+          onOpenChange={(newState) => {
             if (!newState) {
               toggle()
             }
@@ -86,10 +88,10 @@ const ExpandableButton = ({
           {value && (
             <motion.div
               initial={{ opacity: 0, height: 0, scale: 0.99 }}
-              animate={{ opacity: 1, height: 'auto', scale: 1 }}
+              animate={{ opacity: 1, height: "auto", scale: 1 }}
               exit={{ opacity: 0, height: 0, scale: 0.99 }}
-              transition={{ ease: 'linear', duration: 0.15 }}
-              className={cn('overflow-hidden', rest.className)}
+              transition={{ ease: "linear", duration: 0.15 }}
+              className={cn("overflow-hidden", rest.className)}
             >
               {children}
             </motion.div>
