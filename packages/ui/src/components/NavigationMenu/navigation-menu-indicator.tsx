@@ -1,5 +1,7 @@
-import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu'
-import { forwardRef } from 'react'
+"use client"
+
+import { forwardRef } from "react"
+import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
 
 export const NavigationMenuIndicator = forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Indicator>,
@@ -8,7 +10,7 @@ export const NavigationMenuIndicator = forwardRef<
   <NavigationMenuPrimitive.Indicator
     className={
       className +
-      'data-[state=visible]:animate-fadeIn data-[state=hidden]:animate-fadeOut top-full z-[1] flex h-[10px] items-end justify-center overflow-hidden transition-[width,transform_250ms_ease]'
+      "data-[state=visible]:animate-fadeIn data-[state=hidden]:animate-fadeOut top-full z-[1] flex h-[10px] items-end justify-center overflow-hidden transition-[width,transform_250ms_ease]"
     }
     {...props}
     ref={ref}
@@ -16,4 +18,4 @@ export const NavigationMenuIndicator = forwardRef<
     <div className="relative top-[70%] h-[10px] w-[10px] rotate-[45deg] rounded-tl-[2px] bg-white dark:bg-black" />
   </NavigationMenuPrimitive.Indicator>
 ))
-NavigationMenuIndicator.displayName = 'NavigationMenuIndicator'
+NavigationMenuIndicator.displayName = "NavigationMenuIndicator"
