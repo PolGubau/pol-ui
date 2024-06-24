@@ -1,15 +1,18 @@
-import type { ComponentProps, ElementType, FC } from 'react'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types/types'
-import { cn } from '../../helpers'
+"use client"
+
+import type { ComponentProps, ElementType, FC } from "react"
+
+import { cn } from "../../helpers"
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
+import { getTheme } from "../../theme-store"
+import type { DeepPartial } from "../../types/types"
 
 export interface LinkTheme {
   base: string
   href: string
 }
 
-export interface LinkProps extends ComponentProps<'a'> {
+export interface LinkProps extends ComponentProps<"a"> {
   as?: ElementType
   theme?: DeepPartial<LinkTheme>
   underline?: boolean
@@ -24,7 +27,7 @@ export interface LinkProps extends ComponentProps<'a'> {
  * <Link href="https://www.google.com" underline={false}>Google</Link>
  */
 export const Link: FC<LinkProps> = ({
-  as: Component = 'a',
+  as: Component = "a",
   children,
   className,
   underline = true,
@@ -37,9 +40,9 @@ export const Link: FC<LinkProps> = ({
     <Component
       className={cn(
         theme.base,
-        theme.underline[underline ? 'on' : 'off'],
+        theme.underline[underline ? "on" : "off"],
 
-        className,
+        className
       )}
       {...props}
     >

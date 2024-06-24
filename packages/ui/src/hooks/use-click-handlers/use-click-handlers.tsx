@@ -1,4 +1,6 @@
-import { useRef, useEffect, useState, useCallback } from 'react'
+"use client"
+
+import { useCallback, useEffect, useRef, useState } from "react"
 
 interface UseClickHandlersOptions {
   onDoubleClick?: () => void
@@ -6,14 +8,18 @@ interface UseClickHandlersOptions {
   holdTime?: number
 }
 
-const useClickHandlers = ({ onDoubleClick, onHoldClick, holdTime = 500 }: UseClickHandlersOptions) => {
+const useClickHandlers = ({
+  onDoubleClick,
+  onHoldClick,
+  holdTime = 500,
+}: UseClickHandlersOptions) => {
   const ref = useRef<HTMLButtonElement | null>(null)
   const [clickCount, setClickCount] = useState(0)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const holdTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const handleClick = useCallback(() => {
-    setClickCount(prev => prev + 1)
+    setClickCount((prev) => prev + 1)
   }, [])
 
   const handleMouseDown = useCallback(() => {
@@ -54,16 +60,16 @@ const useClickHandlers = ({ onDoubleClick, onHoldClick, holdTime = 500 }: UseCli
   useEffect(() => {
     const element = ref.current
     if (element) {
-      element.addEventListener('click', handleClick)
-      element.addEventListener('mousedown', handleMouseDown)
-      element.addEventListener('mouseup', handleMouseUp)
-      element.addEventListener('mouseleave', handleMouseUp)
+      element.addEventListener("click", handleClick)
+      element.addEventListener("mousedown", handleMouseDown)
+      element.addEventListener("mouseup", handleMouseUp)
+      element.addEventListener("mouseleave", handleMouseUp)
 
       return () => {
-        element.removeEventListener('click', handleClick)
-        element.removeEventListener('mousedown', handleMouseDown)
-        element.removeEventListener('mouseup', handleMouseUp)
-        element.removeEventListener('mouseleave', handleMouseUp)
+        element.removeEventListener("click", handleClick)
+        element.removeEventListener("mousedown", handleMouseDown)
+        element.removeEventListener("mouseup", handleMouseUp)
+        element.removeEventListener("mouseleave", handleMouseUp)
       }
     }
   }, [handleClick, handleMouseDown, handleMouseUp])

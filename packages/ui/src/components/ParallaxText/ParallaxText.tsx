@@ -1,24 +1,27 @@
-import type { ElementType } from 'react'
-import { useRef } from 'react'
+"use client"
+
+import { useRef, type ElementType } from "react"
 import {
   motion,
+  useAnimationFrame,
+  useMotionValue,
   useScroll,
   useSpring,
   useTransform,
-  useMotionValue,
   useVelocity,
-  useAnimationFrame,
-} from 'framer-motion'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers'
-import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
-import type { ParallaxTextTheme } from './theme'
+} from "framer-motion"
+import { twMerge } from "tailwind-merge"
+
+import { mergeDeep } from "../../helpers"
+import { getTheme } from "../../theme-store"
+import type { DeepPartial } from "../../types"
+import type { ParallaxTextTheme } from "./theme"
+
 export const wrap = (min: number, max: number, v: number) => {
   const rangeSize = max - min
   return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min
 }
-export interface ParallaxTextProps<T extends ElementType = 'span'> {
+export interface ParallaxTextProps<T extends ElementType = "span"> {
   children: string
   velocity?: number
   className?: string
@@ -43,7 +46,7 @@ export interface ParallaxTextProps<T extends ElementType = 'span'> {
   theme?: DeepPartial<ParallaxTextTheme>
 }
 
-export const ParallaxText = <T extends ElementType = 'span'>({
+export const ParallaxText = <T extends ElementType = "span">({
   children,
   velocity = 5,
   resistance = 1000,
@@ -64,18 +67,19 @@ export const ParallaxText = <T extends ElementType = 'span'>({
     clamp: false,
   })
 
-  const Component = BaseComponent ?? 'span'
+  const Component = BaseComponent ?? "span"
 
   /**
    * This is a magic wrapping for the length of the text - you
    * have to replace for wrapping that works for you or dynamically
    * calculate
    */
-  const x = useTransform(baseX, v => `${wrap(40, -45, v)}%`)
+  const x = useTransform(baseX, (v) => `${wrap(40, -45, v)}%`)
 
   const directionFactor = useRef<number>(1)
   useAnimationFrame((_t, delta) => {
-    let moveBy = directionFactor.current * (velocity / 2) * (delta / -resistance)
+    let moveBy =
+      directionFactor.current * (velocity / 2) * (delta / -resistance)
 
     /**
      * This is what changes the direction of the scroll once we
@@ -94,7 +98,11 @@ export const ParallaxText = <T extends ElementType = 'span'>({
   const theme = mergeDeep(getTheme().parallaxText, customTheme)
 
   return (
-    <motion.div className={twMerge(theme.base, className)} style={{ x }} {...props}>
+    <motion.div
+      className={twMerge(theme.base, className)}
+      style={{ x }}
+      {...props}
+    >
       {Array.from({ length: renderedElements }).map((_, i) => (
         <Component key={i}>{children}</Component>
       ))}

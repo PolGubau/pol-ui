@@ -1,11 +1,15 @@
-import * as PrimitiveTooltip from '@radix-ui/react-tooltip'
-import React from 'react'
-import { cn, mergeDeep } from '../../helpers'
-import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
-import type { TooltipTheme } from './theme'
+"use client"
 
-export interface TooltipProps extends Omit<PrimitiveTooltip.TooltipContentProps, 'content'> {
+import React from "react"
+import * as PrimitiveTooltip from "@radix-ui/react-tooltip"
+
+import { cn, mergeDeep } from "../../helpers"
+import { getTheme } from "../../theme-store"
+import type { DeepPartial } from "../../types"
+import type { TooltipTheme } from "./theme"
+
+export interface TooltipProps
+  extends Omit<PrimitiveTooltip.TooltipContentProps, "content"> {
   label: React.ReactNode | undefined
   arrow?: boolean
   theme?: DeepPartial<TooltipTheme>
@@ -67,7 +71,11 @@ export const Tooltip = ({
           <PrimitiveTooltip.Portal>
             <PrimitiveTooltip.Content
               sideOffset={rest.sideOffset ?? 5}
-              className={cn(theme.content.base, theme.content.animation, className)}
+              className={cn(
+                theme.content.base,
+                theme.content.animation,
+                className
+              )}
               {...rest}
             >
               {label}

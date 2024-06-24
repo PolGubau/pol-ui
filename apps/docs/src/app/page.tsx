@@ -1,7 +1,8 @@
 import React from "react"
 import dynamic from "next/dynamic"
+import { Card } from "pol-ui"
 
-import ComponentFrame from "@/components/ComponentFrame"
+import ComponentFrame from "../components/ComponentFrame"
 
 const rootDir = process.cwd()
 const fs = require("fs")
@@ -73,15 +74,17 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       {componentsData.map(({ name, component, storybook }) => (
-        <div key={name} className="grid grid-cold-2 gap-4">
+        <Card key={name} className="grid grid-cols-2 gap-4">
           <h2>{name}</h2>
           <pre>{storybook.url}</pre>
-          <ComponentFrame>
-            <div className="bg-red-100 w-full h-fill">
-              {React.createElement(component.code, {}) as JSX.Element}
-            </div>
-          </ComponentFrame>
-        </div>
+          <div className="bg-red-200">
+            <ComponentFrame>
+              <div className="bg-red-100 w-96 h-48">
+                {React.createElement(component.code, {}) as JSX.Element}
+              </div>
+            </ComponentFrame>
+          </div>
+        </Card>
       ))}
     </main>
   )

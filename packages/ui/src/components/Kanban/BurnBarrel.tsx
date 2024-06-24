@@ -1,34 +1,43 @@
-import type { Dispatch, PropsWithChildren, SetStateAction } from 'react'
-import { useState } from 'react'
-import type { KanbanCardProps } from './Card'
-import { TbTrash } from 'react-icons/tb'
-import { motion } from 'framer-motion'
-import { twMerge } from 'tailwind-merge'
-import type { KanbanProps } from './Kanban'
+"use client"
+
+import {
+  useState,
+  type Dispatch,
+  type PropsWithChildren,
+  type SetStateAction,
+} from "react"
+import { motion } from "framer-motion"
+import { TbTrash } from "react-icons/tb"
+import { twMerge } from "tailwind-merge"
+
+import type { KanbanCardProps } from "./Card"
+import type { KanbanProps } from "./Kanban"
 
 interface KanbanDeleteCardsButtonProps extends PropsWithChildren {
   setDragging: Dispatch<SetStateAction<boolean>>
-  positionY?: 'top' | 'bottom'
-  positionX?: 'left' | 'right' | 'center'
-  onDelete?: KanbanProps['onDelete']
-  content?: KanbanProps['deleteButton']
+  positionY?: "top" | "bottom"
+  positionX?: "left" | "right" | "center"
+  onDelete?: KanbanProps["onDelete"]
+  content?: KanbanProps["deleteButton"]
 }
 
-export const KanbanDeleteCardsButton: React.FC<KanbanDeleteCardsButtonProps> = ({
+export const KanbanDeleteCardsButton: React.FC<
+  KanbanDeleteCardsButtonProps
+> = ({
   setDragging,
-  content = active => (
+  content = (active) => (
     <div
       className={twMerge(
-        ' flex items-center gap-2 truncate py-3 px-6 rounded-2xl text-xl   backdrop-blur-md bg-error-200 dark:bg-error-700 text-error-900 dark:text-error-50 transition-shadow shadow-md z-50 shadow-error-900/20 hover:shadow-lg',
-        active && 'brightness-95  ',
+        " flex items-center gap-2 truncate py-3 px-6 rounded-2xl text-xl   backdrop-blur-md bg-error-200 dark:bg-error-700 text-error-900 dark:text-error-50 transition-shadow shadow-md z-50 shadow-error-900/20 hover:shadow-lg",
+        active && "brightness-95  "
       )}
     >
       <TbTrash />
       Delete Card
     </div>
   ),
-  positionY = 'bottom',
-  positionX = 'center',
+  positionY = "bottom",
+  positionX = "center",
   onDelete,
 }: KanbanDeleteCardsButtonProps): JSX.Element => {
   const [active, setActive] = useState(false)
@@ -39,15 +48,17 @@ export const KanbanDeleteCardsButton: React.FC<KanbanDeleteCardsButtonProps> = (
   const handleDragLeave = () => {
     setActive(false)
   }
-  const handleDragEnd = (e: { dataTransfer: { getData: (arg0: string) => KanbanCardProps['id'] } }) => {
+  const handleDragEnd = (e: {
+    dataTransfer: { getData: (arg0: string) => KanbanCardProps["id"] }
+  }) => {
     setDragging(false)
     if (!e.dataTransfer) return
-    const cardId = e.dataTransfer.getData('cardId')
+    const cardId = e.dataTransfer.getData("cardId")
     onDelete?.(cardId)
     setActive(false)
   }
 
-  const negativeIfTop = positionY === 'top' ? -1 : 1
+  const negativeIfTop = positionY === "top" ? -1 : 1
   const initialPositionY = negativeIfTop * 100
 
   return (
@@ -71,12 +82,12 @@ export const KanbanDeleteCardsButton: React.FC<KanbanDeleteCardsButtonProps> = (
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       className={twMerge(
-        'fixed',
-        positionY === 'top' && 'top-6',
-        positionY === 'bottom' && 'bottom-6',
-        positionX === 'left' && 'left-6',
-        positionX === 'right' && 'right-6',
-        positionX === 'center' && 'mx-auto inset-x-0 max-w-max',
+        "fixed",
+        positionY === "top" && "top-6",
+        positionY === "bottom" && "bottom-6",
+        positionX === "left" && "left-6",
+        positionX === "right" && "right-6",
+        positionX === "center" && "mx-auto inset-x-0 max-w-max"
       )}
     >
       {content(active)}

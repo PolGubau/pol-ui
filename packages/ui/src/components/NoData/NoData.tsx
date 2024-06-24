@@ -1,11 +1,15 @@
-import type { ComponentProps } from 'react'
-import React from 'react'
-import { cn } from '../../helpers'
-import type { MainSizes } from '../../types'
-import { MainSizesEnum } from '../../types'
-import { default as DefaultIllustration, default as EmptySvg } from './default-illustration'
+"use client"
 
-export interface NoDataProps extends ComponentProps<'div'> {
+import React, { type ComponentProps } from "react"
+
+import { cn } from "../../helpers"
+import { MainSizesEnum, type MainSizes } from "../../types"
+import {
+  default as DefaultIllustration,
+  default as EmptySvg,
+} from "./default-illustration"
+
+export interface NoDataProps extends ComponentProps<"div"> {
   description?: string
   size?: MainSizes
   illustration?: React.ReactNode
@@ -22,22 +26,22 @@ export const NoData: React.FC<NoDataProps> = ({
       {illustration ?? (
         <EmptySvg
           className={cn({
-            'scale-75': size === MainSizesEnum.xs,
-            'scale-90': size === MainSizesEnum.sm,
-            'scale-125': size === MainSizesEnum.lg,
-            'scale-150': size === MainSizesEnum.xl,
+            "scale-75": size === MainSizesEnum.xs,
+            "scale-90": size === MainSizesEnum.sm,
+            "scale-125": size === MainSizesEnum.lg,
+            "scale-150": size === MainSizesEnum.xl,
           })}
         />
       )}
 
       {description && (
         <p
-          className={cn('text-secondary-400 dark:text-background-onPrimary', {
-            'text-sm mt-1': size === MainSizesEnum.xs,
-            'text-base mt-2': size === MainSizesEnum.sm,
-            'text-lg mt-4': size === MainSizesEnum.md,
-            'text-2xl mt-8': size === MainSizesEnum.lg,
-            'text-3xl mt-12': size === MainSizesEnum.xl,
+          className={cn("text-secondary-400 dark:text-background-onPrimary", {
+            "text-sm mt-1": size === MainSizesEnum.xs,
+            "text-base mt-2": size === MainSizesEnum.sm,
+            "text-lg mt-4": size === MainSizesEnum.md,
+            "text-2xl mt-8": size === MainSizesEnum.lg,
+            "text-3xl mt-12": size === MainSizesEnum.xl,
           })}
         >
           {description}

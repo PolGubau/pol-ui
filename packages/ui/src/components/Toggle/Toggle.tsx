@@ -1,11 +1,12 @@
-import React from 'react'
-import { cn, mergeDeep } from '../../helpers'
-import type { Colors } from '../../types'
-import { ColorsEnum, type DeepPartial } from '../../types'
-import { getTheme } from '../../theme-store'
-import type { ToggleTheme } from './theme'
-import type { IconButtonProps } from '../IconButton'
-import { IconButton } from '../IconButton'
+"use client"
+
+import React from "react"
+
+import { cn, mergeDeep } from "../../helpers"
+import { getTheme } from "../../theme-store"
+import { ColorsEnum, type Colors, type DeepPartial } from "../../types"
+import { IconButton, type IconButtonProps } from "../IconButton"
+import type { ToggleTheme } from "./theme"
 
 export interface ToggleProps extends IconButtonProps {
   active?: boolean
@@ -31,7 +32,7 @@ export const Toggle: React.FC<ToggleProps> = ({
   active = false,
   color = ColorsEnum.primary,
   theme: customTheme = {},
-  rounded = 'lg',
+  rounded = "lg",
   className,
 
   ...props
@@ -47,7 +48,7 @@ export const Toggle: React.FC<ToggleProps> = ({
 
         active ? theme.active.on.base : theme.active.off.base,
         active ? theme.active.on.colors[color] : theme.active.off.colors[color],
-        className,
+        className
       )}
     />
   )

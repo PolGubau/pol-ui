@@ -1,16 +1,19 @@
+"use client"
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useLayoutEffect, useRef } from 'react'
-import { SELECTORS } from './Command'
-import { useCommand, useStore } from './contexts'
-import { useIsomorphicLayoutEffect } from '../../hooks'
-import type { State } from './types'
-import { useLazyRef } from '../../hooks/use-lazy-ref/use-lazy-ref'
+import React, { useLayoutEffect, useRef } from "react"
+
+import { useIsomorphicLayoutEffect } from "../../hooks"
+import { useLazyRef } from "../../hooks/use-lazy-ref/use-lazy-ref"
+import { SELECTORS } from "./Command"
+import { useCommand, useStore } from "./contexts"
+import type { State } from "./types"
 
 export function useValue(
   id: string,
   ref: React.RefObject<HTMLElement>,
   deps: (string | React.ReactNode | React.RefObject<HTMLElement>)[],
-  aliases: string[] = [],
+  aliases: string[] = []
 ) {
   const valueRef = useRef<string>()
   const context = useCommand()
@@ -18,14 +21,14 @@ export function useValue(
   useLayoutEffect(() => {
     const value = (() => {
       for (const part of deps ?? []) {
-        if (typeof part === 'string') {
+        if (typeof part === "string") {
           return part.trim()
         }
       }
     })()
-    const keywords = aliases.map(alias => alias.trim())
-    context.value(id, value ?? '', keywords)
-    ref.current?.setAttribute(SELECTORS.VALUE_ATTR, value ?? '')
+    const keywords = aliases.map((alias) => alias.trim())
+    context.value(id, value ?? "", keywords)
+    ref.current?.setAttribute(SELECTORS.VALUE_ATTR, value ?? "")
     valueRef.current = value
   })
 
@@ -55,7 +58,9 @@ export const useScheduleLayoutEffect = () => {
   const fns = useLazyRef(() => new Map<string | number, () => void>())
 
   useIsomorphicLayoutEffect(() => {
-    fns.current.forEach(f => { f(); })
+    fns.current.forEach((f) => {
+      f()
+    })
     fns.current = new Map()
   }, [s])
 

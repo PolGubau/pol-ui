@@ -1,7 +1,10 @@
-import { twMerge } from 'tailwind-merge'
-import { motion } from 'framer-motion'
-import { KanbanIndicator } from './KanbanDropIndicator'
-import type { KanbanTheme } from './theme'
+"use client"
+
+import { motion } from "framer-motion"
+import { twMerge } from "tailwind-merge"
+
+import { KanbanIndicator } from "./KanbanDropIndicator"
+import type { KanbanTheme } from "./theme"
 
 export interface CompleteKanbanCardProps {
   // eslint-disable-next-line @typescript-eslint/ban-types
@@ -30,14 +33,21 @@ export const KanbanCard = ({
   const { title, id, column } = card
   return (
     <>
-      <KanbanIndicator beforeId={id} column={column} className={indicatorClassName} theme={theme} />
+      <KanbanIndicator
+        beforeId={id}
+        column={column}
+        className={indicatorClassName}
+        theme={theme}
+      />
       <motion.button
         layout
         onClick={card.onClick}
         layoutId={id}
         draggable={dragable}
-        onDragStart={e => handleDragStart(e, { title, id, column })}
-        onDragEnd={() => { setDragging(false); }}
+        onDragStart={(e) => handleDragStart(e, { title, id, column })}
+        onDragEnd={() => {
+          setDragging(false)
+        }}
         className={twMerge(theme.card.base, dragable && theme.card.dragable)}
       >
         {title}

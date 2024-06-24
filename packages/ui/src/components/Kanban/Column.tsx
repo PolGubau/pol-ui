@@ -1,17 +1,30 @@
-import { type Dispatch, type SetStateAction } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { useBoolean } from '../../hooks'
-import { toast } from '../Toaster'
-import { KanbanCard, type KanbanCardProps } from './Card'
-import { motion } from 'framer-motion'
-import { AddKanbanCard } from './AddCard'
-import { KanbanIndicator } from './KanbanDropIndicator'
-import type { KanbanProps } from './Kanban'
-import { mergeDeep } from '../../helpers'
-import { getTheme } from '../../theme-store'
-import type { KanbanTheme } from './theme'
+"use client"
+
+import { type Dispatch, type SetStateAction } from "react"
+import { motion } from "framer-motion"
+import { twMerge } from "tailwind-merge"
+
+import { mergeDeep } from "../../helpers"
+import { useBoolean } from "../../hooks"
+import { getTheme } from "../../theme-store"
+import { toast } from "../Toaster"
+import { AddKanbanCard } from "./AddCard"
+import { KanbanCard, type KanbanCardProps } from "./Card"
+import type { KanbanProps } from "./Kanban"
+import { KanbanIndicator } from "./KanbanDropIndicator"
+import type { KanbanTheme } from "./theme"
+
 export interface KanbanColumnProps
-  extends Pick<KanbanProps, 'cards' | 'setCards' | 'labels' | 'onCreate' | 'onReorder' | 'theme' | 'dragable'> {
+  extends Pick<
+    KanbanProps,
+    | "cards"
+    | "setCards"
+    | "labels"
+    | "onCreate"
+    | "onReorder"
+    | "theme"
+    | "dragable"
+  > {
   title: string
   column: string
   setDragging: Dispatch<SetStateAction<boolean>>
@@ -61,20 +74,24 @@ export const KanbanColumn = ({
    */
   const handleDragStart = (e: DragEvent, card: KanbanCardProps): void => {
     if (e.dataTransfer) {
-      e.dataTransfer.setData('cardId', card.id)
+      e.dataTransfer.setData("cardId", card.id)
       setDragging(true)
     }
   }
-  const reorderCards = (cards: KanbanCardProps[], cardId: string, before: string) => {
+  const reorderCards = (
+    cards: KanbanCardProps[],
+    cardId: string,
+    before: string
+  ) => {
     // Create a shallow copy of the cards array.
     let copy = [...cards]
 
     // Find the card to transfer based on its id.
-    let cardToTransfer = copy.find(c => c.id === cardId)
+    let cardToTransfer = copy.find((c) => c.id === cardId)
 
     // If the card to transfer is not found, show a toast and exit the function.
     if (!cardToTransfer) {
-      toast.error('Card not found')
+      toast.error("Card not found")
       return
     }
 
@@ -84,17 +101,17 @@ export const KanbanColumn = ({
     cardToTransfer = { ...cardToTransfer, column }
 
     // Remove the card from its current position in the copy array.
-    copy = copy.filter(c => c.id !== cardId)
+    copy = copy.filter((c) => c.id !== cardId)
 
     // Check if the card should be moved to the back of the array.
-    const moveToBack = before === '-1'
+    const moveToBack = before === "-1"
 
     // If moveToBack is true, push the cardToTransfer to the end of the copy array.
     if (moveToBack) {
       copy.push(cardToTransfer)
     } else {
       // If moveToBack is false, find the index to insert the card and splice it into the copy array.
-      const insertAtIndex = copy.findIndex(el => el.id === before)
+      const insertAtIndex = copy.findIndex((el) => el.id === before)
       if (insertAtIndex === undefined) return
       copy.splice(insertAtIndex, 0, cardToTransfer)
     }
@@ -103,10 +120,22 @@ export const KanbanColumn = ({
 
     // If the card is being moved within the same column, call the onReorderSameColumn function.
     if (isTheSameColumn) {
-      onReorder?.({ cards: copy, cardId, before, isSameColumn: true, newColumn: column })
+      onReorder?.({
+        cards: copy,
+        cardId,
+        before,
+        isSameColumn: true,
+        newColumn: column,
+      })
     } else {
       // If the card is being moved to a different column, call the onReorderDifferentColumn function.
-      onReorder?.({ cards: copy, cardId, before, isSameColumn: false, newColumn: column })
+      onReorder?.({
+        cards: copy,
+        cardId,
+        before,
+        isSameColumn: false,
+        newColumn: column,
+      })
     }
   }
   /**
@@ -122,7 +151,7 @@ export const KanbanColumn = ({
     if (!e.dataTransfer) return
 
     // Retrieve the cardId from the dataTransfer object.
-    const cardId = e.dataTransfer.getData('cardId')
+    const cardId = e.dataTransfer.getData("cardId")
 
     // Set the active state to false.
     setFalse()
@@ -138,7 +167,7 @@ export const KanbanColumn = ({
 
     // Get the value of the 'before' attribute from the indicator's dataset, defaulting to '-1'.
     // Before is the id of the card before which the dragged card should be placed.
-    const before = element.dataset.before ?? '-1'
+    const before = element.dataset.before ?? "-1"
 
     // If the drop indicator is different from the cardId, proceed with reordering.
     if (before !== cardId) {
@@ -163,8 +192,8 @@ export const KanbanColumn = ({
   const clearHighlights = (els?: HTMLElement[]): void => {
     const indicators = els ?? getIndicators()
 
-    indicators.forEach(i => {
-      i.style.opacity = '0'
+    indicators.forEach((i) => {
+      i.style.opacity = "0"
     })
   }
 
@@ -175,7 +204,7 @@ export const KanbanColumn = ({
 
     const el = getNearestIndicator(e, indicators)
 
-    el.element.style.opacity = '1'
+    el.element.style.opacity = "1"
   }
   /**
    * Gets the nearest drop indicator element.
@@ -183,7 +212,10 @@ export const KanbanColumn = ({
    * @param {HTMLElement[]} indicators - Array of drop indicator elements.
    * @returns {{ offset: number, element: HTMLElement }} The nearest indicator element and its offset.
    */
-  const getNearestIndicator = (e: DragEvent, indicators: HTMLElement[]): { offset: number; element: HTMLElement } => {
+  const getNearestIndicator = (
+    e: DragEvent,
+    indicators: HTMLElement[]
+  ): { offset: number; element: HTMLElement } => {
     const DISTANCE_OFFSET = 50
 
     const el = indicators.reduce(
@@ -201,7 +233,7 @@ export const KanbanColumn = ({
       {
         offset: Number.NEGATIVE_INFINITY,
         element: indicators[indicators.length - 1],
-      },
+      }
     )
 
     return el
@@ -211,7 +243,11 @@ export const KanbanColumn = ({
    * @returns {HTMLElement[]} Array of drop indicator elements.
    */
   const getIndicators = (): HTMLElement[] => {
-    return Array.from(document.querySelectorAll(`[data-column="${column}"]`) as unknown as HTMLElement[])
+    return Array.from(
+      document.querySelectorAll(
+        `[data-column="${column}"]`
+      ) as unknown as HTMLElement[]
+    )
   }
   /**
    * Handles the drag-leave event during dragging a card.
@@ -223,7 +259,7 @@ export const KanbanColumn = ({
   }
 
   // Filter cards based on the current column.
-  const filteredCards = cards.filter(c => c.column === column)
+  const filteredCards = cards.filter((c) => c.column === column)
 
   // Render the KanbanColumn component.
 
@@ -234,15 +270,23 @@ export const KanbanColumn = ({
         <span className={theme.column.length}>{filteredCards.length}</span>
       </header>
       <motion.button
-        onDrop={e => { handleDragEnd(e as unknown as DragEvent); }}
-        onDragOver={e => { handleDragOver(e as unknown as DragEvent); }}
+        onDrop={(e) => {
+          handleDragEnd(e as unknown as DragEvent)
+        }}
+        onDragOver={(e) => {
+          handleDragOver(e as unknown as DragEvent)
+        }}
         onDragLeave={handleDragLeave}
         onDragEnd={() => {
           setDragging(false)
         }}
-        className={twMerge(theme.column.column, columnClassName, active && theme.column.active)}
+        className={twMerge(
+          theme.column.column,
+          columnClassName,
+          active && theme.column.active
+        )}
       >
-        {filteredCards.map(c => {
+        {filteredCards.map((c) => {
           return (
             <KanbanCard
               key={c.id}
@@ -255,8 +299,20 @@ export const KanbanColumn = ({
             />
           )
         })}
-        <KanbanIndicator beforeId={null} column={column} className={indicatorClassName} theme={theme} />
-        {onCreate && <AddKanbanCard column={column} onCreate={onCreate} theme={theme} labels={labels} />}
+        <KanbanIndicator
+          beforeId={null}
+          column={column}
+          className={indicatorClassName}
+          theme={theme}
+        />
+        {onCreate && (
+          <AddKanbanCard
+            column={column}
+            onCreate={onCreate}
+            theme={theme}
+            labels={labels}
+          />
+        )}
       </motion.button>
     </div>
   )

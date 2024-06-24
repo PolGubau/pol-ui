@@ -1,13 +1,21 @@
-import type { ComponentProps, FC } from 'react'
-import { useId } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import { getTheme } from '../../theme-store'
-import type { Colors, DeepPartial, MainSizes, RoundedSizesElastic } from '../../types/types'
-import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from '../../types/enums'
-import type { ProgressTheme } from './theme'
-import { motion } from 'framer-motion'
-export interface ProgressProps extends Omit<ComponentProps<'div'>, 'color'> {
+"use client"
+
+import { useId, type ComponentProps, type FC } from "react"
+import { motion } from "framer-motion"
+import { twMerge } from "tailwind-merge"
+
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
+import { getTheme } from "../../theme-store"
+import { ColorsEnum, MainSizesEnum, RoundedSizesEnum } from "../../types/enums"
+import type {
+  Colors,
+  DeepPartial,
+  MainSizes,
+  RoundedSizesElastic,
+} from "../../types/types"
+import type { ProgressTheme } from "./theme"
+
+export interface ProgressProps extends Omit<ComponentProps<"div">, "color"> {
   progress?: number
   size?: MainSizes
   label?: string
@@ -34,21 +42,40 @@ export const Progress: FC<ProgressProps> = ({
   const theme = mergeDeep(getTheme().progress, customTheme)
 
   return (
-    <div id={id} aria-label={label} role="progressbar" {...props} aria-valuenow={progress}>
+    <div
+      id={id}
+      aria-label={label}
+      role="progressbar"
+      {...props}
+      aria-valuenow={progress}
+    >
       <label className={theme.label} data-testid="ui-progress-label-container">
         {label && <span data-testid="ui-progress-label">{label}</span>}
       </label>
-      <div className={twMerge(theme.base, theme.size[size], theme.rounded[rounded], className)}>
+      <div
+        className={twMerge(
+          theme.base,
+          theme.size[size],
+          theme.rounded[rounded],
+          className
+        )}
+      >
         <motion.div
           initial={hasMotion ? { width: 0 } : false}
           animate={{ width: `${progress}%` }}
           exit={{ width: 0 }}
-          transition={{ ease: 'easeOut', duration: 0.5 }}
-          className={twMerge(theme.bar, theme.rounded[rounded], theme.color[color], theme.size[size], barClassName)}
+          transition={{ ease: "easeOut", duration: 0.5 }}
+          className={twMerge(
+            theme.bar,
+            theme.rounded[rounded],
+            theme.color[color],
+            theme.size[size],
+            barClassName
+          )}
         ></motion.div>
       </div>
     </div>
   )
 }
 
-Progress.displayName = 'Progress'
+Progress.displayName = "Progress"

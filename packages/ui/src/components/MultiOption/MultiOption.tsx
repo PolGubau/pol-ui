@@ -1,8 +1,12 @@
-import { useId } from 'react'
-import { Autocomplete, AutocompleteOption } from '../Autocomplete'
-import { Radio } from '../Radio'
-import { Select } from '../Select'
-import { SelectGroup, SelectItem } from '../Select/Select'
+"use client"
+
+import { useId } from "react"
+
+import { Autocomplete, AutocompleteOption } from "../Autocomplete"
+import { Radio } from "../Radio"
+import { Select } from "../Select"
+import { SelectGroup, SelectItem } from "../Select/Select"
+
 /**
  * @name MultiOption
  * @description A input component that merges multiple various-choice-but-select-one options into one input field.
@@ -27,18 +31,24 @@ interface MultiOptionProps {
    */
   onChange: (value: string) => void
 }
-const MultiOption = ({ options = [], value = '', onChange }: MultiOptionProps) => {
+const MultiOption = ({
+  options = [],
+  value = "",
+  onChange,
+}: MultiOptionProps) => {
   const length = options.length
   const id = useId()
 
   if (length < 2) {
-    throw new Error('You need to provide at least two options into the MultiOption UI')
+    throw new Error(
+      "You need to provide at least two options into the MultiOption UI"
+    )
   }
 
   if (length === 2) {
     return (
       <div className="flex flex-col gap-2">
-        {options.map(option => (
+        {options.map((option) => (
           <div className="flex gap-2">
             <Radio key={option} value={option} name={id} />
             {option}
@@ -52,7 +62,7 @@ const MultiOption = ({ options = [], value = '', onChange }: MultiOptionProps) =
     return (
       <Select value={value} onChange={onChange}>
         <SelectGroup>
-          {options.map(option => (
+          {options.map((option) => (
             <SelectItem key={option} value={option}>
               {option}
             </SelectItem>
@@ -62,10 +72,22 @@ const MultiOption = ({ options = [], value = '', onChange }: MultiOptionProps) =
     )
   }
   if (length >= 10) {
-    const autocompleteAdaterOptions: AutocompleteOption[] = options.map(option => ({ value: option, label: option }))
+    const autocompleteAdaterOptions: AutocompleteOption[] = options.map(
+      (option) => ({ value: option, label: option })
+    )
 
-    const adaptedValue = autocompleteAdaterOptions.find(option => option.value === value)
-    return <Autocomplete value={adaptedValue} onChange={n => { onChange(n.value); }} options={autocompleteAdaterOptions} />
+    const adaptedValue = autocompleteAdaterOptions.find(
+      (option) => option.value === value
+    )
+    return (
+      <Autocomplete
+        value={adaptedValue}
+        onChange={(n) => {
+          onChange(n.value)
+        }}
+        options={autocompleteAdaterOptions}
+      />
+    )
   }
 }
 

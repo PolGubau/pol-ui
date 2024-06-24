@@ -1,7 +1,10 @@
-import type { FC } from 'react'
-import type { ThemeMode } from '../../hooks/use-theme-mode'
-import { ThemeInit } from '../../theme-store/init'
-import type { CustomPoluiTheme } from './PoluiTheme'
+"use client"
+
+import type { FC } from "react"
+
+import type { ThemeMode } from "../../hooks/use-theme-mode"
+import { ThemeInit } from "../../theme-store/init"
+import type { CustomPoluiTheme } from "./PoluiTheme"
 
 /**
  * @name ThemeProps
@@ -36,14 +39,17 @@ interface ProviderProps {
  * @author Pol Gubau - https://polgubau.com
 
  */
-export const PoluiProvider: FC<ProviderProps> = ({ children, theme }: ProviderProps): JSX.Element => {
+export const PoluiProvider: FC<ProviderProps> = ({
+  children,
+  theme,
+}: ProviderProps): JSX.Element => {
   return (
     <>
-      <ThemeInit mode={theme?.mode ?? 'auto'} theme={theme?.theme} />
+      <ThemeInit mode={theme?.mode ?? "auto"} theme={theme?.theme} />
       {children}
     </>
   )
 }
 
 // Set display name for PoluiProvider component
-PoluiProvider.displayName = 'PoluiProvider'
+PoluiProvider.displayName = "PoluiProvider"

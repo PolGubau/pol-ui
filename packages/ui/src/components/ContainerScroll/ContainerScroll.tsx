@@ -1,12 +1,18 @@
-'use client'
-import type { PropsWithChildren } from 'react'
-import React, { useRef } from 'react'
-import type { MotionValue } from 'framer-motion'
-import { useScroll, useTransform, motion } from 'framer-motion'
-import { cn, mergeDeep } from '../../helpers'
-import { getTheme } from '../../theme-store'
-import type { ClassName, DeepPartial, WithClassName } from '../../types'
-import type { ContainerScrollTheme } from './theme'
+"use client"
+
+import React, { useRef, type PropsWithChildren } from "react"
+import {
+  motion,
+  useScroll,
+  useTransform,
+  type MotionValue,
+} from "framer-motion"
+
+import { cn, mergeDeep } from "../../helpers"
+import { getTheme } from "../../theme-store"
+import type { ClassName, DeepPartial, WithClassName } from "../../types"
+import type { ContainerScrollTheme } from "./theme"
+
 export interface ContainerScrollProps extends PropsWithChildren, WithClassName {
   titleComponent?: string | React.ReactNode
   top?: boolean
@@ -52,9 +58,9 @@ export const ContainerScroll = ({
       setIsMobile(window.innerWidth <= 768)
     }
     checkMobile()
-    window.addEventListener('resize', checkMobile)
+    window.addEventListener("resize", checkMobile)
     return () => {
-      window.removeEventListener('resize', checkMobile)
+      window.removeEventListener("resize", checkMobile)
     }
   }, [])
 
@@ -109,7 +115,11 @@ export const ContainerScroll = ({
     return { checkpoints: checkpoints(), rotations: rotations() }
   }
 
-  const rotate = useTransform(scrollYProgress, animations(rotation).checkpoints, animations(rotation).rotations)
+  const rotate = useTransform(
+    scrollYProgress,
+    animations(rotation).checkpoints,
+    animations(rotation).rotations
+  )
   const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions())
   const translate = useTransform(scrollYProgress, [0, 1], [0, -100])
   const translateTitle = useTransform(scrollYProgress, [0, 1], [0, -300])
@@ -153,7 +163,7 @@ interface CardProps extends PropsWithChildren {
   scale: MotionValue<number>
   translate: MotionValue<number>
   theme: ContainerScrollTheme
-  deviceWrapper: ContainerScrollProps['deviceWrapper']
+  deviceWrapper: ContainerScrollProps["deviceWrapper"]
   deviceClassName?: ClassName
   screenClassName?: ClassName
 }
@@ -164,8 +174,8 @@ export const Card = ({
   children,
   theme,
   deviceWrapper = true,
-  deviceClassName = '',
-  screenClassName = '',
+  deviceClassName = "",
+  screenClassName = "",
 }: CardProps) => {
   return (
     <motion.div
