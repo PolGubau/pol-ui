@@ -1,0 +1,8 @@
+/* Custom CSS for transitioning space-x */
+.transition-space-x {
+  transition: margin 0.2s ease-in-out;
+}
+
+.transition-space-x > * {
+  transition: margin 0.2s ease-in-out;
+}
