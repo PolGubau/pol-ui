@@ -1,15 +1,17 @@
-import type { ComponentProps, FC, KeyboardEvent } from 'react'
-import { useId } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import { getTheme } from '../../theme-store'
-import type { Colors, DeepPartial, MainSizes } from '../../types/types'
-import { ColorsEnum, MainSizesEnum } from '../../types/enums'
-import type { SwitchTheme } from './theme'
-import { motion } from 'framer-motion'
-import { Label } from '../Label'
+"use client"
 
-export type SwitchProps = Omit<ComponentProps<'button'>, 'onChange'> & {
+import { useId, type ComponentProps, type FC, type KeyboardEvent } from "react"
+import { motion } from "framer-motion"
+import { twMerge } from "tailwind-merge"
+
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
+import { getTheme } from "../../theme-store"
+import { ColorsEnum, MainSizesEnum } from "../../types/enums"
+import type { Colors, DeepPartial, MainSizes } from "../../types/types"
+import { Label } from "../Label"
+import type { SwitchTheme } from "./theme"
+
+export type SwitchProps = Omit<ComponentProps<"button">, "onChange"> & {
   checked: boolean
   color?: Colors
   size?: MainSizes
@@ -33,35 +35,49 @@ export const Switch: FC<SwitchProps> = ({
   const id = useId()
   const theme = mergeDeep(getTheme().switch, customTheme)
 
-  const toggle = (): void => { onChange(!checked); }
+  const toggle = (): void => {
+    onChange(!checked)
+  }
 
   const handleOnKeyDown = (event: KeyboardEvent<HTMLButtonElement>): void => {
-    if (event.code == 'Space' || event.code == 'Enter') {
+    if (event.code == "Space" || event.code == "Enter") {
       event.preventDefault()
       toggle()
     }
-    if (event.code == 'ArrowLeft') {
+    if (event.code == "ArrowLeft") {
       event.preventDefault()
       onChange(false)
     }
-    if (event.code == 'ArrowRight') {
+    if (event.code == "ArrowRight") {
       event.preventDefault()
       onChange(true)
     }
   }
   const spring = {
-    type: 'spring',
+    type: "spring",
     stiffness: 700,
     damping: 30,
   }
 
-  const isSizeAMainSize = Object.keys(theme.toggle.sizes).includes(size as string)
-  if (!isSizeAMainSize) throw new Error(`Size ${size} is not a valid size - ${Object.keys(MainSizesEnum)}`)
+  const isSizeAMainSize = Object.keys(theme.toggle.sizes).includes(
+    size as string
+  )
+  if (!isSizeAMainSize)
+    throw new Error(
+      `Size ${size} is not a valid size - ${Object.keys(MainSizesEnum)}`
+    )
 
   return (
     <>
       {name && checked ? (
-        <input checked={checked} hidden name={name} readOnly type="checkbox" className="sr-only" />
+        <input
+          checked={checked}
+          hidden
+          name={name}
+          readOnly
+          type="checkbox"
+          className="sr-only"
+        />
       ) : null}
       <button
         data-testid="ui-switch"
@@ -77,16 +93,20 @@ export const Switch: FC<SwitchProps> = ({
         title={label}
         tabIndex={0}
         type="button"
-        className={twMerge(theme.root.base, theme.root.active[disabled ? 'off' : 'on'], className)}
+        className={twMerge(
+          theme.root.base,
+          theme.root.active[disabled ? "off" : "on"],
+          className
+        )}
         {...props}
       >
         <motion.div
           data-testid="ui-switch-toggle"
           className={twMerge(
             theme.toggle.base,
-            theme.toggle.checked[checked ? 'on' : 'off'],
+            theme.toggle.checked[checked ? "on" : "off"],
             theme.toggle.color[color],
-            theme.toggle.sizes[size as keyof typeof theme.toggle.sizes],
+            theme.toggle.sizes[size as keyof typeof theme.toggle.sizes]
           )}
         >
           <motion.div
@@ -94,7 +114,9 @@ export const Switch: FC<SwitchProps> = ({
             transition={spring}
             className={twMerge(
               theme.toggle.handler.base,
-              theme.toggle.handler.sizes[size as keyof typeof theme.toggle.handler.sizes],
+              theme.toggle.handler.sizes[
+                size as keyof typeof theme.toggle.handler.sizes
+              ]
             )}
           />
         </motion.div>
@@ -115,4 +137,4 @@ export const Switch: FC<SwitchProps> = ({
   )
 }
 
-Switch.displayName = 'Switch'
+Switch.displayName = "Switch"

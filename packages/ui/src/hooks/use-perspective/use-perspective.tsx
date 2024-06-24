@@ -1,7 +1,7 @@
-'use client'
+"use client"
 
-import { useMotionValue, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef } from "react"
+import { useMotionValue, useTransform } from "framer-motion"
 
 export const usePerspective = () => {
   const ref = useRef<HTMLDivElement>(null)
