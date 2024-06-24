@@ -49,7 +49,9 @@ Resizeable.args = {
 }
 
 export const SpeechRecognition = () => {
+  const [hasError, setHasError] = useState(false)
   const handleError = (error: string) => {
+    setHasError(true)
     toast.error(error, {
       description:
         "Please make sure you have a microphone connected, maybe your browser doesn't support this feature",
@@ -71,8 +73,7 @@ export const SpeechRecognition = () => {
       {isListening && (
         <ListeningAnimation
           isListening={isListening}
-          className="absolute top-0 right-4 
-      "
+          className="absolute top-1/2 left-0 transform -translate-y-1/2 translate-x-1/3"
         />
       )}
       <Textarea
@@ -81,13 +82,15 @@ export const SpeechRecognition = () => {
         disabled={isListening}
         onBlur={stop}
         rightComponent={
-          <IconButton onClick={isListening ? stop : start}>
-            {isListening ? (
-              <TbPlayerPauseFilled size={20} />
-            ) : (
-              <BiUserVoice size={20} />
-            )}
-          </IconButton>
+          !hasError && (
+            <IconButton onClick={isListening ? stop : start}>
+              {isListening ? (
+                <TbPlayerPauseFilled size={20} />
+              ) : (
+                <BiUserVoice size={20} />
+              )}
+            </IconButton>
+          )
         }
       />
     </div>

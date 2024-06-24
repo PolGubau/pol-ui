@@ -47,7 +47,8 @@
     "release": "changeset version",
     "pub:beta": "cd packages/cli && pnpm pub:beta",
     "pub:release": "cd packages/cli && pnpm pub:release",
-    "test": "turbo run test --force"
+    "test": "turbo run test --force",
+    "folderOpen": "pnpm i && pnpm ui storybook"
   },
   "lint-staged": {
     "**/*.{js,ts,tsx}": [

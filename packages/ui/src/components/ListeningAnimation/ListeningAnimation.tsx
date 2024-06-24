@@ -10,6 +10,8 @@ interface ListeningAnimationProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: number
   scaleFactor?: number
   itemClassName?: string
+  dotsAmount?: number
+  className?: string
 }
 
 const ListeningAnimation: React.FC<ListeningAnimationProps> = ({
@@ -17,17 +19,19 @@ const ListeningAnimation: React.FC<ListeningAnimationProps> = ({
   size = 20,
   scaleFactor = 1.7,
   itemClassName,
+  dotsAmount = 4,
+  className,
   ...rest
 }) => {
   return (
     <div
       className={cn(
         "gap-2 flex w-[100px] justify-center items-center",
-        rest.className
+        className
       )}
       {...rest}
     >
-      {[...Array(4)].map((_, index) => (
+      {[...Array(dotsAmount)].map((_, index) => (
         <motion.div
           key={index}
           className={cn(
