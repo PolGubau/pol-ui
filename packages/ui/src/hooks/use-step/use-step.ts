@@ -1,8 +1,11 @@
-'use client'
+"use client"
 
-import { useCallback, useState } from 'react'
-
-import type { Dispatch, SetStateAction } from 'react'
+import {
+  useCallback,
+  useState,
+  type Dispatch,
+  type SetStateAction,
+} from "react"
 
 interface UseStepActions {
   goToNextStep: () => void
@@ -15,14 +18,17 @@ interface UseStepActions {
 
 type SetStepCallbackType = (step: number | ((step: number) => number)) => void
 
-export function useStep(maxStep: number): [number, UseStepActions] {
-  const [currentStep, setCurrentStep] = useState(1)
+export function useStep(
+  maxStep: number,
+  startingStep: number = 1
+): [number, UseStepActions] {
+  const [currentStep, setCurrentStep] = useState(startingStep)
 
   const canGoToNextStep = currentStep + 1 <= maxStep
   const canGoToPrevStep = currentStep - 1 > 0
 
   const setStep = useCallback<SetStepCallbackType>(
-    step => {
+    (step) => {
       // Allow value to be a function so we have the same API as useState
       const newStep = step instanceof Function ? step(currentStep) : step
 
@@ -31,20 +37,20 @@ export function useStep(maxStep: number): [number, UseStepActions] {
         return
       }
 
-      throw new Error('Step not valid')
+      throw new Error("Step not valid")
     },
-    [maxStep, currentStep],
+    [maxStep, currentStep]
   )
 
   const goToNextStep = useCallback(() => {
     if (canGoToNextStep) {
-      setCurrentStep(step => step + 1)
+      setCurrentStep((step) => step + 1)
     }
   }, [canGoToNextStep])
 
   const goToPrevStep = useCallback(() => {
     if (canGoToPrevStep) {
-      setCurrentStep(step => step - 1)
+      setCurrentStep((step) => step - 1)
     }
   }, [canGoToPrevStep])
 

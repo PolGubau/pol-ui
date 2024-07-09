@@ -63,7 +63,7 @@ export const buttonVariants = cva(
       },
       {
         variant: ["link", "outline", "ghost"],
-        className: "text-secondary-900 dark:text-secondary-50 ",
+        className: "text-secondary-900 dark:text-secondary-50",
       },
       {
         variant: "filled",
@@ -98,32 +98,32 @@ export const buttonVariants = cva(
       {
         variant: ["outline", "ghost"],
         color: "primary",
-        className: "border-primary hover:bg-primary/50",
+        className: "border-primary hover:bg-primary/30",
       },
       {
         variant: ["outline", "ghost"],
         color: "secondary",
-        className: "border-secondary hover:bg-secondary/50",
+        className: "border-secondary hover:bg-secondary/30",
       },
       {
         variant: ["outline", "ghost"],
         color: "error",
-        className: "border-error hover:bg-error/50",
+        className: "border-error hover:bg-error/30",
       },
       {
         variant: ["outline", "ghost"],
         color: "warning",
-        className: "border-warning hover:bg-warning/50",
+        className: "border-warning hover:bg-warning/30",
       },
       {
         variant: ["outline", "ghost"],
         color: "info",
-        className: "border-info hover:bg-info/50",
+        className: "border-info hover:bg-info/30",
       },
       {
         variant: ["outline", "ghost"],
         color: "success",
-        className: "border-success hover:bg-success/50",
+        className: "border-success hover:bg-success/30",
       },
     ],
     defaultVariants: {

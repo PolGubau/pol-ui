@@ -2,7 +2,6 @@
 
 import type { ComponentProps, FC, ReactElement } from "react"
 
-import "./animation.css"
 import { cn } from "../../helpers"
 import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
 import { getTheme } from "../../theme-store"

@@ -1,6 +1,6 @@
 import type { ComponentProps } from "react"
-import { twMerge } from "tailwind-merge"
 
+import { cn } from "../../helpers"
 import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
 import { getTheme } from "../../theme-store"
 import type { DeepPartial } from "../../types/types"
@@ -21,7 +21,7 @@ export const AvatarGroup: React.FC<AvatarGroupProps> = ({
   return (
     <div
       data-testid="avatar-group-element"
-      className={twMerge(theme.group, className)}
+      className={cn(theme.group, className)}
       {...props}
     >
       {children}

@@ -99,7 +99,7 @@ export const avatarTheme: AvatarTheme = {
     },
   },
   group:
-    "flex items-center -space-x-4 transition-space-x hover:space-x-0 transition-duration-300 ease-in-out",
+    "flex items-center -space-x-4 transition-space-x gap-0 hover:gap-4 transition-duration-200 ease-in-out transition-all",
   groupCounter:
     "relative grid place-content-center aspect-square h-10 text-xs font-medium text-white bg-secondary-700 rounded-full ring-2 ring-secondary-300 dark:bg-secondary-600 hover:bg-secondary-600 dark:ring-secondary-500",
 }
