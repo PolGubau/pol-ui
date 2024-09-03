@@ -2,7 +2,7 @@ import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
 
-import { cn, mergeRefs } from "../../helpers"
+import { cn } from "../../helpers"
 import { useRipple } from "../../hooks"
 import { RippleOptions } from "../../hooks/use-ripple/use-ripple"
 import type { DeepPartial } from "../../types"
@@ -152,71 +152,66 @@ export interface ButtonProps
 export type ButtonVariants = keyof typeof variants.variant
 export type VariantsEnum = keyof typeof variants
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      className,
-      loader,
-      loading,
-      variant = "filled",
-      rounded,
-      fullSized = false,
-      size,
-      color,
-      focusEffect = true,
-      asChild = false,
-      rippleOptions = {
-        opacity: 0.2,
-        duration: 700,
-      },
-      ...props
-    },
-    ref
-  ) => {
-    const isDisabled = props.disabled ?? loading
-    const [ripple, event] = useRipple({
-      disabled: isDisabled,
-      ...rippleOptions,
-    })
-    const refs = mergeRefs([ripple, ref])
-    const Comp = asChild ? Slot : "button"
+export const Button = ({
+  className,
+  loader,
+  loading,
+  variant = "filled",
+  rounded,
+  fullSized = false,
+  size,
+  color,
+  focusEffect = true,
+  asChild = false,
+  rippleOptions = {
+    opacity: 0.2,
+    duration: 700,
+  },
+  ...props
+}: ButtonProps) => {
+  const isDisabled = props.disabled ?? loading
+  const [ripple, event] = useRipple({
+    disabled: isDisabled,
+    ...rippleOptions,
+  })
+  // const refs = mergeRefs([ripple, ref])
+  const Comp = asChild ? Slot : "button"
 
-    const label = props.label ?? props.children
-    return (
-      <Comp
-        className={cn(
-          buttonVariants({
-            variant,
-            size,
-            fullSized,
-            className,
-            color,
-            rounded,
-          })
-        )}
-        ref={refs}
-        {...props}
-        disabled={isDisabled}
-        onClick={(e) => {
-          if (props.onClick) {
-            props.onClick(e as React.MouseEvent<HTMLButtonElement>)
-          }
-          event(e)
-        }}
-      >
-        <>
-          {loading
-            ? loader ?? (
-                <>
-                  <Loader size={size ?? "sm"} />
-                  {label}
-                </>
-              )
-            : label}
-          {focusEffect && <FocusEffect />}
-        </>
-      </Comp>
-    )
-  }
-)
+  const label = props.label ?? props.children
+  return (
+    <Comp
+      className={cn(
+        buttonVariants({
+          variant,
+          size,
+          fullSized,
+          className,
+          color,
+          rounded,
+        })
+      )}
+      ref={ripple}
+      {...props}
+      disabled={isDisabled}
+      onClick={(e) => {
+        if (props.onClick) {
+          props.onClick(e as React.MouseEvent<HTMLButtonElement>)
+        }
+        event(e)
+      }}
+    >
+      <>
+        {loading
+          ? loader ?? (
+              <>
+                <Loader size={size ?? "sm"} />
+                {label}
+              </>
+            )
+          : label}
+        {focusEffect && <FocusEffect />}
+      </>
+    </Comp>
+  )
+}
 Button.displayName = "Button"

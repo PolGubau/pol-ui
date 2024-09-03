@@ -1,6 +1,7 @@
-import type { Meta, StoryFn } from "@storybook/react"
+import type { Meta } from "@storybook/react"
 
-import { File, Folder, Tree } from "./FileTree"
+import { File, Folder } from "./"
+import { Tree, TreeViewElement } from "./FileTree"
 
 export default {
   title: "Components/FileTree",
@@ -72,54 +73,47 @@ export function FileTreeDemo() {
   )
 }
 
-const ELEMENTS = [
+const ELEMENTS: TreeViewElement[] = [
   {
     id: "1",
-    isSelectable: true,
     name: "src",
     children: [
       {
         id: "2",
-        isSelectable: true,
         name: "app",
         children: [
           {
             id: "3",
-            isSelectable: true,
             name: "layout.tsx",
           },
           {
             id: "4",
-            isSelectable: true,
             name: "page.tsx",
           },
         ],
       },
       {
         id: "5",
-        isSelectable: true,
         name: "components",
         children: [
           {
             id: "6",
-            isSelectable: true,
             name: "header.tsx",
           },
           {
             id: "7",
-            isSelectable: true,
             name: "footer.tsx",
           },
         ],
       },
       {
         id: "8",
-        isSelectable: true,
         name: "lib",
+        isSelectable: false,
+
         children: [
           {
             id: "9",
-            isSelectable: true,
             name: "utils.ts",
           },
         ],
