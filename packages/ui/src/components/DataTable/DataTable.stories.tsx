@@ -1,21 +1,22 @@
-import type { Meta } from '@storybook/react'
-import { DataTable } from './DataTable'
-import { Toaster, toast } from '../Toaster'
-import React from 'react'
-import type { RowSelectionState } from '@tanstack/react-table'
+import React from "react"
+import type { Meta } from "@storybook/react"
+import type { RowSelectionState } from "@tanstack/react-table"
+
+import { Toaster, toast } from "../Toaster"
+import { DataTable } from "./DataTable"
 
 export default {
-  title: 'Components/DataTable',
+  title: "Components/DataTable",
   component: DataTable,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   args: {
-    title: 'Dropdown example',
-    placement: 'auto',
+    title: "Dropdown example",
+    placement: "auto",
     disabled: false,
-    label: 'Dropdown',
+    label: "Dropdown",
   },
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col items-center">
         <Story />
         <Toaster />
@@ -23,58 +24,58 @@ export default {
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 } as Meta
 const data = [
   {
-    id: 'm5gr84i9',
+    id: "m5gr84i9",
     amount: 316,
-    status: 'success',
-    email: 'ken99@yahoo.com',
+    status: "success",
+    email: "ken99@yahoo.com",
   },
   {
-    id: '3u1reuv4',
+    id: "3u1reuv4",
     amount: 242,
-    status: 'success',
-    email: 'Abe45@gmail.com',
+    status: "success",
+    email: "Abe45@gmail.com",
   },
   {
-    id: 'derv1ws0',
+    id: "derv1ws0",
     amount: 837,
-    status: 'processing',
-    email: 'Monserrat44@gmail.com',
+    status: "processing",
+    email: "Monserrat44@gmail.com",
   },
   {
-    id: '5kma53ae',
+    id: "5kma53ae",
     amount: 874,
-    status: 'success',
-    email: 'Silas22@gmail.com',
+    status: "success",
+    email: "Silas22@gmail.com",
   },
   {
-    id: 'bhqecj4p',
+    id: "bhqecj4p",
     amount: 721,
-    status: 'failed',
-    email: 'carmella@hotmail.com',
+    status: "failed",
+    email: "carmella@hotmail.com",
   },
   {
-    id: 'gery',
+    id: "gery",
     amount: 999,
-    status: 'success',
-    email: 'dia@blo.com',
+    status: "success",
+    email: "dia@blo.com",
   },
 ]
 
 export const Default = () => (
   <DataTable
     data={data}
-    actions={row => [
-      { label: 'Print email', onClick: () => toast({ title: row.email }) },
+    actions={(row) => [
+      { label: "Print email", onClick: () => toast(row.email) },
       {
-        label: 'Copy ID',
+        label: "Copy ID",
         onClick: () => {
           navigator.clipboard.writeText(row.id)
-          toast({ title: `ID ${row.id} copied to clipboard` })
+          toast(`ID ${row.id} copied to clipboard`)
         },
       },
     ]}
@@ -91,13 +92,13 @@ export const ControlledSelection = () => {
         selectedRows={rowSelection}
         onRowSelectionChange={setRowSelection}
         data={data}
-        actions={row => [
-          { label: 'Print email', onClick: () => toast({ title: row.email }) },
+        actions={(row) => [
+          { label: "Print email", onClick: () => toast(row.email) },
           {
-            label: 'Copy ID',
+            label: "Copy ID",
             onClick: () => {
               navigator.clipboard.writeText(row.id)
-              toast({ title: `ID ${row.id} copied to clipboard` })
+              toast(`ID ${row.id} copied to clipboard`)
             },
           },
         ]}

@@ -1,15 +1,16 @@
-import type { Meta } from '@storybook/react'
-import { OtpInput } from './OtpInput'
-import { useEffect, useState } from 'react'
-import { Toaster, toast } from '../Toaster'
-import { Button } from '../Button'
-import { Card } from '../Card'
+import { useEffect, useState } from "react"
+import type { Meta } from "@storybook/react"
+
+import { Button } from "../Button"
+import { Card } from "../Card"
+import { Toaster, toast } from "../Toaster"
+import { OtpInput } from "./OtpInput"
 
 export default {
-  title: 'Components/OtpInput',
+  title: "Components/OtpInput",
   component: OtpInput,
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6">
         <Story />
         <Toaster />
@@ -17,29 +18,27 @@ export default {
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 } as Meta
 
 export function Default() {
-  const [otp, setOtp] = useState('')
+  const [otp, setOtp] = useState("")
   return (
     <OtpInput
       value={otp}
       onChange={setOtp}
       onComplete={(code: string) => {
-        toast({
-          title: `You typed ${code}`,
-        })
+        toast(`You typed ${code}`)
       }}
     />
   )
 }
 export function Example() {
   const [step, setStep] = useState<1 | 2 | 3>(1)
-  const [otp, setOtp] = useState('')
+  const [otp, setOtp] = useState("")
   useEffect(() => {
-    setOtp('')
+    setOtp("")
   }, [step])
 
   return (
@@ -49,9 +48,7 @@ export function Example() {
           <h1>Step 1</h1>
           <Button
             onClick={() => {
-              toast({
-                title: 'Your code is 1234',
-              })
+              toast("Your code is 1234")
               setStep(2)
             }}
           >
@@ -67,13 +64,10 @@ export function Example() {
             value={otp}
             onChange={setOtp}
             onComplete={(code: string) => {
-              if (code === '1234') {
+              if (code === "1234") {
                 setStep(3)
               } else {
-                toast({
-                  title: 'Invalid code',
-                  type: 'error',
-                })
+                toast.error("Invalid code")
               }
             }}
           />
@@ -82,7 +76,13 @@ export function Example() {
       {step === 3 && (
         <Card>
           <h1>Account verfied!</h1>
-          <Button onClick={() => { setStep(1); }}>Reset</Button>
+          <Button
+            onClick={() => {
+              setStep(1)
+            }}
+          >
+            Reset
+          </Button>
         </Card>
       )}
     </>

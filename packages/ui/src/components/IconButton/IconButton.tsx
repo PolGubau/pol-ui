@@ -1,7 +1,5 @@
 "use client"
 
-import React from "react"
-
 import { cn } from "../../helpers"
 import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
 import { getTheme } from "../../theme-store"
@@ -42,33 +40,26 @@ export interface IconButtonProps extends ButtonProps {
  *
  * @author Pol Gubau Amores - https://polgubau.com
  */
-export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
-  (
-    {
-      className,
-      variant = "ghost",
-      rounded = "full",
-      theme: customTheme = {},
-      label = null,
-      allowTooltip = true,
-      ...props
-    },
-    ref
-  ) => {
-    const theme = mergeDeep(getTheme().iconButton, customTheme)
+export const IconButton = ({
+  className,
+  variant = "ghost",
+  rounded = "full",
+  theme: customTheme = {},
+  label = undefined,
+  allowTooltip = true,
+  ...props
+}: IconButtonProps) => {
+  const theme = mergeDeep(getTheme().iconButton, customTheme)
 
-    return (
-      <Tooltip label={allowTooltip && label}>
-        <Button
-          {...props}
-          variant={variant}
-          ref={ref}
-          type={props.type ?? "button"}
-          rounded={rounded}
-          className={cn(theme.base, className)}
-        />
-      </Tooltip>
-    )
-  }
-)
-IconButton.displayName = "IconButton"
+  return (
+    <Tooltip label={allowTooltip && label}>
+      <Button
+        {...props}
+        variant={variant}
+        type={props.type ?? "button"}
+        rounded={rounded}
+        className={cn(theme.base, className)}
+      />
+    </Tooltip>
+  )
+}

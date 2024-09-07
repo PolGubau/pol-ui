@@ -12,7 +12,6 @@ import * as AccordionPrimitive from "@radix-ui/react-accordion"
 import { TbFile, TbFolder, TbFolderOpen } from "react-icons/tb"
 
 import { cn } from "../../helpers"
-import { ColorsEnum } from "../../types"
 import { Button, ButtonProps } from "../Button"
 import { ScrollArea } from "../ScrollArea/scroll-area"
 
@@ -212,138 +211,116 @@ type FolderProps = {
   isSelect?: boolean
 } & FolderComponentProps
 
-const Folder = forwardRef<
-  HTMLDivElement,
-  FolderProps & React.HTMLAttributes<HTMLDivElement>
->(
-  (
-    {
-      className,
-      element,
-      value,
-      isSelectable = true,
-      isSelect,
-      children,
-      ...props
-    },
-    ref
-  ) => {
-    const {
-      direction,
-      handleExpand,
-      expandedItems,
-      indicator,
-      setExpandedItems,
-      openIcon,
-      closeIcon,
-    } = useTree()
+const Folder = ({
+  className,
+  element,
+  value,
+  isSelectable = true,
+  isSelect,
+  children,
+  ...props
+}: FolderProps & React.HTMLAttributes<HTMLDivElement>) => {
+  const {
+    direction,
+    handleExpand,
+    expandedItems,
+    indicator,
+    setExpandedItems,
+    openIcon,
+    closeIcon,
+  } = useTree()
 
-    return (
-      <AccordionPrimitive.Item
-        {...props}
-        value={value}
-        className="relative overflow-hidden h-full "
+  return (
+    <AccordionPrimitive.Item
+      {...props}
+      value={value}
+      className="relative overflow-hidden h-full "
+    >
+      <AccordionPrimitive.Trigger
+        className={cn(`flex items-center gap-1 text-sm rounded-md`, className, {
+          "bg-muted rounded-md": isSelect && isSelectable,
+          "cursor-pointer": isSelectable,
+          "cursor-not-allowed opacity-50": !isSelectable,
+        })}
+        disabled={!isSelectable}
+        onClick={() => handleExpand(value)}
       >
-        <AccordionPrimitive.Trigger
-          className={cn(
-            `flex items-center gap-1 text-sm rounded-md`,
-            className,
-            {
-              "bg-muted rounded-md": isSelect && isSelectable,
-              "cursor-pointer": isSelectable,
-              "cursor-not-allowed opacity-50": !isSelectable,
-            }
-          )}
-          disabled={!isSelectable}
-          onClick={() => handleExpand(value)}
-        >
-          {expandedItems?.includes(value)
-            ? openIcon ?? <TbFolderOpen className="size-4" />
-            : closeIcon ?? <TbFolder className="size-4" />}
-          <span>{element}</span>
-        </AccordionPrimitive.Trigger>
-        <AccordionPrimitive.Content className="text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down relative overflow-hidden h-full">
-          {element && indicator && <TreeIndicator aria-hidden="true" />}
-          <AccordionPrimitive.Root
-            dir={direction}
-            type="multiple"
-            className="flex flex-col gap-1 py-1 ml-5 rtl:mr-5 "
-            defaultValue={expandedItems}
-            value={expandedItems}
-            onValueChange={(value) => {
-              setExpandedItems?.((prev) => [...(prev ?? []), value[0]])
-            }}
-          >
-            {children}
-          </AccordionPrimitive.Root>
-        </AccordionPrimitive.Content>
-      </AccordionPrimitive.Item>
-    )
-  }
-)
-
-Folder.displayName = "Folder"
-
-const File = forwardRef<
-  HTMLButtonElement,
-  {
-    value: string
-    handleSelect?: (id: string) => void
-    isSelectable?: boolean
-    isSelect?: boolean
-    fileIcon?: React.ReactNode
-  } & React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
->(
-  (
-    {
-      value,
-      className,
-      handleSelect,
-      isSelectable = true,
-      isSelect,
-      fileIcon,
-      children,
-      ...props
-    },
-    ref
-  ) => {
-    const { direction, selectedId, selectItem } = useTree()
-    const isSelected = isSelect ?? selectedId === value
-    return (
-      <AccordionPrimitive.Item value={value} className="relative">
-        <AccordionPrimitive.Trigger
-          ref={ref}
-          {...props}
+        {expandedItems?.includes(value)
+          ? openIcon ?? <TbFolderOpen className="size-4" />
+          : closeIcon ?? <TbFolder className="size-4" />}
+        <span>{element}</span>
+      </AccordionPrimitive.Trigger>
+      <AccordionPrimitive.Content className="text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down relative overflow-hidden h-full">
+        {element && indicator && <TreeIndicator aria-hidden="true" />}
+        <AccordionPrimitive.Root
           dir={direction}
-          disabled={!isSelectable}
-          aria-label="File"
-          className={cn(
-            "flex items-center gap-1 cursor-pointer text-sm pr-1 rtl:pl-1 rtl:pr-0 rounded-md  duration-200 ease-in-out",
-            {
-              "bg-muted": isSelected && isSelectable,
-            },
-            isSelectable ? "cursor-pointer" : "opacity-50 cursor-not-allowed",
-            className
-          )}
-          onClick={() => selectItem(value)}
+          type="multiple"
+          className="flex flex-col gap-1 py-1 ml-5 rtl:mr-5 "
+          defaultValue={expandedItems}
+          value={expandedItems}
+          onValueChange={(value) => {
+            setExpandedItems?.((prev) => [...(prev ?? []), value[0]])
+          }}
         >
-          {fileIcon ?? <TbFile className="size-4" />}
           {children}
-        </AccordionPrimitive.Trigger>
-      </AccordionPrimitive.Item>
-    )
-  }
-)
+        </AccordionPrimitive.Root>
+      </AccordionPrimitive.Content>
+    </AccordionPrimitive.Item>
+  )
+}
 
-File.displayName = "File"
+const File = ({
+  value,
+  className,
+  handleSelect,
+  isSelectable = true,
+  isSelect,
+  fileIcon,
+  children,
+  ...props
+}: {
+  value: string
+  handleSelect?: (id: string) => void
+  isSelectable?: boolean
+  isSelect?: boolean
+  fileIcon?: React.ReactNode
+} & React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>) => {
+  const { direction, selectedId, selectItem } = useTree()
+  const isSelected = isSelect ?? selectedId === value
+  return (
+    <AccordionPrimitive.Item value={value} className="relative">
+      <AccordionPrimitive.Trigger
+        {...props}
+        dir={direction}
+        disabled={!isSelectable}
+        aria-label="File"
+        className={cn(
+          "flex items-center gap-1 cursor-pointer text-sm pr-1 rtl:pl-1 rtl:pr-0 rounded-md  duration-200 ease-in-out",
+          {
+            "bg-muted": isSelected && isSelectable,
+          },
+          isSelectable ? "cursor-pointer" : "opacity-50 cursor-not-allowed",
+          className
+        )}
+        onClick={() => selectItem(value)}
+      >
+        {fileIcon ?? <TbFile className="size-4" />}
+        {children}
+      </AccordionPrimitive.Trigger>
+    </AccordionPrimitive.Item>
+  )
+}
 
-const CollapseButton = forwardRef<
-  HTMLButtonElement,
-  {
-    elements: TreeViewElement[]
-    expandAll?: boolean
-  } & ButtonProps
->(({ className, elements, expandAll = false, children, ...props }, ref) => {
+const CollapseButton = ({
+  className,
+  elements,
+  expandAll = false,
+  children,
+  ...props
+}: {
+  elements: TreeViewElement[]
+  expandAll?: boolean
+} & ButtonProps) => {
   const { expandedItems, setExpandedItems } = useTree()
 
   const expendAllTree = useCallback((elements: TreeViewElement[]) => {
@@ -384,8 +361,6 @@ const CollapseButton = forwardRef<
       <span className="sr-only">Toggle</span>
     </Button>
   )
-})
-
-CollapseButton.displayName = "CollapseButton"
+}
 
 export { CollapseButton, File, Folder, Tree, type TreeViewElement }

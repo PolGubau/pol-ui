@@ -1,24 +1,32 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import { Select, SelectProps, SelectGroup, SelectItem, SelectLabel } from './Select'
-import { Divider } from '../Divider'
-import React from 'react'
-import { Toaster, toast } from '../Toaster'
-import { Button } from '../Button'
+import React from "react"
+import type { Meta, StoryFn } from "@storybook/react"
+
+import { Button } from "../Button"
+import { Divider } from "../Divider"
+import { Toaster, toast } from "../Toaster"
+import {
+  Select,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectProps,
+} from "./Select"
+
 export default {
-  title: 'Components/Select',
+  title: "Components/Select",
   component: Select,
   decorators: [
-    Story => (
+    (Story) => (
       <div className="p-4 bg-secondary-50 dark:bg-secondary-800">
         <Story />
         <Toaster />
       </div>
     ),
   ],
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 } as Meta
 
-const Template: StoryFn<SelectProps> = args => <Select {...args} />
+const Template: StoryFn<SelectProps> = (args) => <Select {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
@@ -47,7 +55,7 @@ Default.args = {
 }
 
 export const Controlled = () => {
-  const [value, setValue] = React.useState('apple')
+  const [value, setValue] = React.useState("apple")
   return (
     <>
       <p>Select value: {value}</p>
@@ -68,12 +76,15 @@ export const Controlled = () => {
 export const UncontrolledInForm = () => {
   return (
     <form
-      onSubmit={e => {
+      onSubmit={(e) => {
         e.preventDefault()
         const formData = new FormData(e.target as HTMLFormElement)
-        toast({
-          title: 'Form submitted!',
-          description: JSON.stringify(Object.fromEntries(formData.entries()), null, 2),
+        toast("Form submitted!", {
+          description: JSON.stringify(
+            Object.fromEntries(formData.entries()),
+            null,
+            2
+          ),
         })
       }}
     >
@@ -81,7 +92,7 @@ export const UncontrolledInForm = () => {
         name="fruit"
         defaultValue="apple"
         defaultTriggerOptions={{
-          className: 'rounded-none rounded-l-xl justify-between',
+          className: "rounded-none rounded-l-xl justify-between",
         }}
       >
         <SelectItem value="apple">Apple</SelectItem>
