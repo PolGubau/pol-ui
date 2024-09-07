@@ -64,7 +64,6 @@ import { toggleTheme } from './components/Toggle/theme'
 import { focusEffectTheme } from './components/FocusEffect/theme'
 import { gaugeTheme } from './components/Gauge/theme'
 import { messageTheme } from './components/Message/theme'
-import { announcmentTheme } from './components/Announcement/theme'
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,
@@ -131,7 +130,6 @@ export const theme: PoluiTheme = {
   autocomplete: autocompleteTheme,
   gauge: gaugeTheme,
   focusEffect: focusEffectTheme,
-  announcement: announcmentTheme,
 }
 
 /*

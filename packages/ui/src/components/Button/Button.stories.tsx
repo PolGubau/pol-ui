@@ -1,70 +1,70 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import { theme } from '../../theme'
-import type { ButtonProps } from './Button'
-import { Button } from './Button'
-import { type MainSizes, type Colors, type RoundedSizes } from '../../types'
-import { TbStarFilled } from 'react-icons/tb'
-import { useBoolean } from '../../hooks'
+import type { Meta, StoryFn } from "@storybook/react"
+import { TbStarFilled } from "react-icons/tb"
+
+import { useBoolean } from "../../hooks"
+import { theme } from "../../theme"
+import { type Colors, type MainSizes, type RoundedSizes } from "../../types"
+import { Button, type ButtonProps } from "./Button"
 
 export default {
-  title: 'Components/Button',
+  title: "Components/Button",
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col justify-center items-center">
         <Story />
       </div>
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 
   component: Button,
-  tags: ['button', 'autodocs'],
+  tags: ["button", "autodocs"],
   argTypes: {
     color: {
       options: Object.keys(theme.button.color),
-      control: { type: 'inline-radio' },
+      control: { type: "inline-radio" },
     },
     size: {
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-      control: { type: 'inline-radio' },
+      options: ["xs", "sm", "md", "lg", "xl"],
+      control: { type: "inline-radio" },
     },
     fullSized: {
-      control: { type: 'boolean' },
+      control: { type: "boolean" },
       defaultValue: false,
     },
     variant: {
-      options: ['filled', 'outline', 'link', 'ghost'],
-      control: { type: 'inline-radio' },
+      options: ["filled", "outline", "link", "ghost"],
+      control: { type: "inline-radio" },
     },
 
     rounded: {
-      options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', 'full', 'none'],
-      control: { type: 'inline-radio' },
+      options: ["xs", "sm", "md", "lg", "xl", "2xl", "3xl", "full", "none"],
+      control: { type: "inline-radio" },
     },
     href: {
-      control: { type: 'text' },
+      control: { type: "text" },
     },
     target: {
-      control: { type: 'text' },
+      control: { type: "text" },
     },
   },
 } as Meta
 
-const NewTemplate: StoryFn<ButtonProps> = args => <Button {...args} />
+const NewTemplate: StoryFn<ButtonProps> = (args) => <Button {...args} />
 
 export const DefaultButton = NewTemplate.bind({})
-DefaultButton.storyName = 'Default'
+DefaultButton.storyName = "Default"
 DefaultButton.args = {
-  children: 'Button',
+  children: "Button",
 }
 
 export const OutlineButton = NewTemplate.bind({})
-OutlineButton.storyName = 'Outline'
+OutlineButton.storyName = "Outline"
 OutlineButton.args = {
   ...DefaultButton.args,
-  variant: 'outline',
+  variant: "outline",
 }
 
 export const Loading = () => {
@@ -83,12 +83,12 @@ Disabled.args = {
 export const Ghost = NewTemplate.bind({})
 Ghost.args = {
   ...DefaultButton.args,
-  variant: 'ghost',
+  variant: "ghost",
 }
 export const Link = () => {
   return (
     <a href="https://google.com">
-      <Button variant={'link'}>Google</Button>
+      <Button variant={"link"}>Google</Button>
     </a>
   )
 }
@@ -100,7 +100,7 @@ FullSized.args = {
 
 export const Rounded = () => (
   <div className="flex gap-3 flex-wrap">
-    {Object.keys(theme.button.rounded).map(r => (
+    {Object.keys(theme.button.rounded).map((r) => (
       <Button key={r} rounded={r as RoundedSizes}>
         {r}
       </Button>
@@ -109,7 +109,7 @@ export const Rounded = () => (
 )
 export const Sizes = (args: ButtonProps) => (
   <div className="flex gap-3 flex-wrap items-center">
-    {Object.keys(theme.button.size).map(size => (
+    {Object.keys(theme.button.size).map((size) => (
       <Button key={size} {...args} size={size as MainSizes}>
         {size}
       </Button>
@@ -118,28 +118,17 @@ export const Sizes = (args: ButtonProps) => (
 )
 
 export const AllColors = (args: ButtonProps) => (
-  <section className="flex gap-12 flex-wrap justify-center items-center">
-    <div className="flex gap-3 flex-wrap p-4 rounded-xl">
-      <nav className="flex gap-4 flex-col">
-        <div className="flex gap-2 flex">
-          {Object.keys(theme.button.color).map(color => (
-            <Button key={color} color={color as Colors}>
-              {color}
-            </Button>
-          ))}
-        </div>
-      </nav>
-    </div>
-    <div className="dark">
-      <div className="flex gap-3 flex-wrap bg-secondary-900 p-4 rounded-xl">
-        {Object.keys(theme.button.color).map(color => (
-          <Button key={color} {...args} color={color as Colors}>
+  <div className="flex gap-3 flex-wrap p-4 rounded-xl">
+    <nav className="flex gap-4 flex-col">
+      <div className="flex gap-2 flex">
+        {Object.keys(theme.button.color).map((color) => (
+          <Button key={color} color={color as Colors}>
             {color}
           </Button>
         ))}
       </div>
-    </div>
-  </section>
+    </nav>
+  </div>
 )
 export const WithIcon = (args: ButtonProps) => (
   <Button {...args}>

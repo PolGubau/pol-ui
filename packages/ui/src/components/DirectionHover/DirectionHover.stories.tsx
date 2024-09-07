@@ -1,18 +1,13 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import { DirectionHover } from './DirectionHover'
+import type { Meta, StoryFn } from "@storybook/react"
+
+import { DirectionHover } from "./DirectionHover"
 
 export default {
-  title: 'Components/DirectionHover',
+  title: "Components/DirectionHover",
   component: DirectionHover,
-  decorators: [
-    Story => (
-      <div className="flex p-6 bg-secondary-50">
-        <Story />
-      </div>
-    ),
-  ],
+
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 } as Meta
 export const Line: StoryFn = () => (

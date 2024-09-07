@@ -1,20 +1,21 @@
-import type { Meta } from '@storybook/react'
-import type { ConveyorProps } from './Conveyor'
-import { Conveyor } from './Conveyor'
-import { TbStar, TbStarFilled } from 'react-icons/tb'
+import type { Meta } from "@storybook/react"
+import { TbStar, TbStarFilled } from "react-icons/tb"
+
+import { Conveyor, type ConveyorProps } from "./Conveyor"
+
 export default {
-  title: 'Components/Conveyor',
+  title: "Components/Conveyor",
   component: Conveyor,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col justify-center items-center">
         <Story />
       </div>
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 } as Meta
 
@@ -45,13 +46,13 @@ export const Default = (args: ConveyorProps): JSX.Element => {
   )
 }
 Default.args = {
-  direction: 'right',
-  speed: 'slow',
+  direction: "right",
+  speed: "slow",
 }
 Default.parameters = {
   docs: {
     description: {
-      story: 'This is the default configuration of the conveyor component.',
+      story: "This is the default configuration of the conveyor component.",
     },
   },
 }
@@ -59,30 +60,32 @@ Default.parameters = {
 const testimonials = [
   {
     review:
-      'This product is amazing! I bought it for my husband and he loves it!, also the customer service is great and they helped me with all my questions.',
-    name: 'Paulina G.',
+      "This product is amazing! I bought it for my husband and he loves it!, also the customer service is great and they helped me with all my questions.",
+    name: "Paulina G.",
     stars: 5,
   },
   {
     review:
-      'Based on my experience, I would recommend this product to anyone. The only thing I would change is the price, it is a little bit expensive.',
-    name: 'John D.',
+      "Based on my experience, I would recommend this product to anyone. The only thing I would change is the price, it is a little bit expensive.",
+    name: "John D.",
     stars: 4,
   },
   {
     stars: 2,
     review:
-      'I will never buy this product again, it is not worth the money. I would recommend you to buy another product.',
-    name: 'Robert S.',
+      "I will never buy this product again, it is not worth the money. I would recommend you to buy another product.",
+    name: "Robert S.",
   },
   {
     stars: 5,
-    name: 'Paulina G.',
-    review: 'I bought this profuct again because I love it! I would recommend it to anyone. 🚀🤘',
+    name: "Paulina G.",
+    review:
+      "I bought this profuct again because I love it! I would recommend it to anyone. 🚀🤘",
   },
   {
-    review: 'Truly amazing product, Powerfull and easy to use. I strongly recommend it.',
-    name: 'Samantha R.',
+    review:
+      "Truly amazing product, Powerfull and easy to use. I strongly recommend it.",
+    name: "Samantha R.",
     stars: 5,
   },
 ]
@@ -143,7 +146,10 @@ export const Logos = (args: ConveyorProps): JSX.Element => {
             d="M16.667 7H12.44l.021.093.002.008.022.086A4.671 4.671 0 0 0 18 10.559V8.333A1.337 1.337 0 0 0 16.667 7z"
             opacity=".1"
           />
-          <path d="M15.667 8h-2.884A4.667 4.667 0 0 0 17 10.667V9.333A1.337 1.337 0 0 0 15.667 8z" opacity=".2" />
+          <path
+            d="M15.667 8h-2.884A4.667 4.667 0 0 0 17 10.667V9.333A1.337 1.337 0 0 0 15.667 8z"
+            opacity=".2"
+          />
           <circle cx="27.5" cy="7.5" fill="#5059c9" r="3.5" />
           <path
             d="M30.5 12h-7.861a.64.64 0 0 0-.64.64v8.11a5.121 5.121 0 0 0 3.967 5.084A5.006 5.006 0 0 0 32 20.938V13.5a1.5 1.5 0 0 0-1.5-1.5z"
@@ -153,7 +159,10 @@ export const Logos = (args: ConveyorProps): JSX.Element => {
             d="M25 13.5V23a7.995 7.995 0 0 1-14.92 4 7.173 7.173 0 0 1-.5-1 8.367 8.367 0 0 1-.33-1A8.24 8.24 0 0 1 9 23v-9.5a1.498 1.498 0 0 1 1.5-1.5h13a1.498 1.498 0 0 1 1.5 1.5z"
             fill="#7b83eb"
           />
-          <path d="M15.667 8h-2.884A4.667 4.667 0 0 0 17 10.667V9.333A1.337 1.337 0 0 0 15.667 8z" opacity=".2" />
+          <path
+            d="M15.667 8h-2.884A4.667 4.667 0 0 0 17 10.667V9.333A1.337 1.337 0 0 0 15.667 8z"
+            opacity=".2"
+          />
           <path
             d="M18 12v12.67a1.32 1.32 0 0 1-1.04 1.29.966.966 0 0 1-.29.04H9.58a8.367 8.367 0 0 1-.33-1A8.24 8.24 0 0 1 9 23v-9.5a1.498 1.498 0 0 1 1.5-1.5z"
             opacity=".1"
@@ -174,7 +183,10 @@ export const Logos = (args: ConveyorProps): JSX.Element => {
             d="M1.333 8h13.334A1.333 1.333 0 0 1 16 9.333v13.334A1.333 1.333 0 0 1 14.667 24H1.333A1.333 1.333 0 0 1 0 22.667V9.333A1.333 1.333 0 0 1 1.333 8z"
             fill="#4b53bc"
           />
-          <path d="M11.98 12.975H8.99v8.02H7.028v-8.02H4.02v-1.97h7.96z" fill="#fff" />
+          <path
+            d="M11.98 12.975H8.99v8.02H7.028v-8.02H4.02v-1.97h7.96z"
+            fill="#fff"
+          />
           <path d="M0 0h32v32H0z" fill="none" />
         </svg>
       </div>
@@ -224,7 +236,10 @@ export const Logos = (args: ConveyorProps): JSX.Element => {
             <stop offset="0" stopColor="#4b2d4f" stopOpacity=".98" />
             <stop offset="1" stopColor="#180024" />
           </radialGradient>
-          <path d="M24.803 155.549h545.674v530.792H24.803V155.549z" fill="url(#a)" />
+          <path
+            d="M24.803 155.549h545.674v530.792H24.803V155.549z"
+            fill="url(#a)"
+          />
           <path
             d="M24.803 155.549h545.674v530.792H24.803V155.549zM0 711.145h595.28V130.746H0v580.399zm357.168-335.342c0-2.977 0-10.169-1.24-24.06 0-1.984.248-2.48 1.984-3.224 15.13-6.201 50.599-17.114 90.78-17.114 1.984 0 2.976.496 2.976 2.48v35.965c0 1.984-.744 2.48-2.728 2.48-15.627-.744-38.197 1.24-46.879 4.96v156.262c0 1.983-.744 2.976-2.977 2.976h-38.94c-1.984 0-2.977-.744-2.977-2.976V375.803zm-158.741 22.571c5.704.496 10.169.496 20.091.496 29.02 0 56.304-10.169 56.304-49.606 0-31.5-19.347-47.375-52.584-47.375-9.921 0-19.346.496-23.811.744v95.741zm-43.902-131.706c0-1.736.496-2.977 2.48-2.977 15.874-.744 39.189-1.24 63.745-1.24 68.705 0 98.717 37.701 98.717 86.068 0 63-45.638 90.036-101.693 90.036-9.426 0-12.65-.496-19.347-.496v95.245c0 1.984-.744 2.976-2.977 2.976h-38.197c-1.984 0-2.977-.744-2.977-2.976V266.668h.249z"
             fill="#e579ff"
@@ -258,14 +273,14 @@ Logos.args = {}
 Logos.parameters = {
   docs: {
     description: {
-      story: 'You can provide any children to the conveyor component.',
+      story: "You can provide any children to the conveyor component.",
     },
   },
 }
 export const FastConveyor = (args: ConveyorProps): JSX.Element => {
   return (
     <Conveyor {...args}>
-      {['1', '2', '3', '4', '5', '6'].map(item => (
+      {["1", "2", "3", "4", "5", "6"].map((item) => (
         <div
           key={item}
           className="w-[350px] h-full max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-secondary-500 px-8 py-6 md:w-[450px] bg-secondary-300 flex justify-center"
@@ -277,12 +292,12 @@ export const FastConveyor = (args: ConveyorProps): JSX.Element => {
   )
 }
 FastConveyor.args = {
-  speed: 'fast',
+  speed: "fast",
 }
 FastConveyor.parameters = {
   docs: {
     description: {
-      story: 'You can change the speed of the conveyor component.',
+      story: "You can change the speed of the conveyor component.",
     },
   },
 }

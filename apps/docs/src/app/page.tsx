@@ -1,62 +1,34 @@
+"use server"
+
+import fs from "fs"
+import path from "path"
 import React from "react"
+import { Metadata } from "next"
 import dynamic from "next/dynamic"
 
-import ComponentFrame from "../components/ComponentFrame"
-
 const rootDir = process.cwd()
-const fs = require("fs")
-const path = require("path")
 const polUiDir = path.join(rootDir, "../../packages/ui/src")
 const componentsUrl = path.join(polUiDir, "components")
 
-//
+// Function to fetch component data server-side
+async function getComponentData(componentName: string) {
+  const componentDirUrl = path.join(componentsUrl, componentName)
 
-export interface Component {
-  name: string
-  component: {
-    url: string
-    code: string
-  }
-  storybook: {
-    url: string
-    code: string
-  }
-}
-
-//
-const getComponents = (): string[] => {
-  const components = fs
-    .readdirSync(componentsUrl)
-    .filter((file: string) => !file.includes("index.ts"))
-  const componentsExcluded = ["PoluiProvider"]
-
-  const componentsFiltered = components.filter(
-    (component: any) => !componentsExcluded.includes(component)
+  const componentUrl = path.join(componentDirUrl, `${componentName}.tsx`)
+  const storybookUrl = path.join(
+    componentDirUrl,
+    `${componentName}.stories.tsx`
   )
-  return componentsFiltered
-}
 
-const componentsData: Component[] = getComponents().map((component: any) => {
-  const componenDirUrl = path.join(componentsUrl, component)
+  const componentCode = fs.existsSync(componentUrl)
+    ? fs.readFileSync(componentUrl, "utf8")
+    : ""
+  const storybookCode = fs.existsSync(storybookUrl)
+    ? fs.readFileSync(storybookUrl, "utf8")
+    : ""
 
-  const componentUrl = path.join(componenDirUrl, `${component}.tsx`)
-  const componentCode = fs.readFileSync(componentUrl, "utf8")
-
-  // get the storybook file, Could be not found
-  const storybookUrl =
-    path.join(componenDirUrl, `${component}.stories.tsx`) || ""
-  const storybookCode = fs.readFileSync(storybookUrl, "utf8")
-  const reactCompoent = dynamic(() => import(componentUrl), {
-    loading: () => (
-      <div className="grid h-full min-h-[400px] place-items-center">
-        Loading...
-      </div>
-    ),
-    ssr: false,
-  })
-
-  const comp: Component = {
-    name: component,
+  return {
+    name: componentName,
     component: {
       url: componentUrl,
       code: componentCode,
@@ -66,23 +38,47 @@ const componentsData: Component[] = getComponents().map((component: any) => {
       code: storybookCode,
     },
   }
-  return comp
-})
+}
 
-export default function Home() {
+// Function to get metadata (optional)
+export async function generateMetadata({
+  params,
+}: {
+  params: { componentName: string }
+}): Promise<Metadata> {
+  return {
+    title: `${params.componentName} Documentation`,
+  }
+}
+
+// Page component
+export default async function ComponentPage({
+  params,
+}: {
+  params: { componentName: string }
+}) {
+  const { componentName } = params
+  const componentData = await getComponentData(componentName)
+
+  const DynamicComponent = dynamic(() => import(componentData.component.url), {
+    loading: () => (
+      <div className="grid h-full min-h-[400px] place-items-center">
+        Loading...
+      </div>
+    ),
+    ssr: false,
+  })
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {componentsData.map(({ name, component, storybook }) => (
-        <div key={name} className="grid grid-cols-2 gap-4">
-          <h2 className="text-xl">{name}</h2>
-          <pre>{storybook.url}</pre>
-          {/* <ComponentFrame>
-            <div className="bg-blue-100 w-96 h-48">
-              {React.createElement(component.code, {}) as JSX.Element}
-            </div>
-          </ComponentFrame> */}
+      <div key={componentData.name} className="grid grid-cols-2 gap-4">
+        <h2 className="text-xl">{componentData.name}</h2>
+        <pre>{componentData.component.url}</pre>
+        <pre>{componentData.storybook.url}</pre>
+        <div className="bg-blue-100 w-96 h-48">
+          <DynamicComponent />
         </div>
-      ))}
+      </div>
     </main>
   )
 }

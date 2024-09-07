@@ -24,16 +24,27 @@ export interface AlertProps extends Omit<ComponentProps<"div">, "color"> {
 /**
  *
  * @name Alert
+ *
  * @description The Alert component is used to display a message to the user
+ *
  * @param {JSX.Element} props.additionalContent - The additional content of the alert
+ *
  * @param {Colors} props.color - The color of the alert
+ *
  * @param {FC<ComponentProps<'svg'>>} props.icon - The icon of the alert
+ *
  * @param {() => void} props.onDismiss - The function to call when the alert is dismissed
+ *
  * @param {RoundedSizes} props.rounded - The rounded size of the alert
+ *
  * @param {DeepPartial<AlertTheme>} props.theme - The theme of the alert
+ *
  * @param {boolean} props.bordered - The border of the alert
+ *
  * @param {ComponentProps<'div'>} props - The props of the alert
+ *
  * @returns JSX.Element
+ *
  * @example
  * <Alert
  *  onDismiss={() => alert('Dismissed')}

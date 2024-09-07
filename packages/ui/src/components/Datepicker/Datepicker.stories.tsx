@@ -1,33 +1,34 @@
-import type { Meta } from '@storybook/react'
-import { Datepicker } from './Datepicker'
-import { WeekStart } from './helpers'
+import type { Meta } from "@storybook/react"
+
+import { Datepicker } from "./Datepicker"
+import { WeekStart } from "./helpers"
 
 export default {
-  title: 'Components/Datepicker',
+  title: "Components/Datepicker",
   component: Datepicker,
   decorators: [
-    Story => (
+    (Story) => (
       <div className="p-6 ">
         <Story />
       </div>
     ),
   ],
 
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     language: {
       control: {
-        type: 'select',
-        options: ['en', 'es-ES'],
+        type: "select",
+        options: ["en", "es-ES"],
       },
     },
     weekStart: {
-      options: Object.values(WeekStart).filter(x => typeof x === 'string'),
+      options: Object.values(WeekStart).filter((x) => typeof x === "string"),
       mapping: WeekStart,
       control: {
-        type: 'select',
+        type: "select",
         labels: Object.entries(WeekStart)
-          .filter(([, value]) => typeof value !== 'string')
+          .filter(([, value]) => typeof value !== "string")
           .reduce((acc, [key, value]) => ({ ...acc, [value]: key }), {}),
       },
     },
@@ -39,13 +40,7 @@ export const Default = (): JSX.Element => (
     <Datepicker />
   </div>
 )
-export const DarkMode = (): JSX.Element => (
-  <div className="dark">
-    <div className=" bg-secondary-50  rounded-2xl dark:bg-secondary-900 p-8 min-h-[500px] ">
-      <Datepicker />
-    </div>
-  </div>
-)
+
 export const AutoHideDisabled = (): JSX.Element => (
   <div className="flex flex-wrap gap-6">
     <Datepicker autoHide={false} />
@@ -58,6 +53,9 @@ export const Inline = (): JSX.Element => (
 )
 export const RangedDates = (): JSX.Element => (
   <div className="flex flex-wrap gap-6">
-    <Datepicker minDate={new Date('2021-01-01')} maxDate={new Date('2021-12-31')} />
+    <Datepicker
+      minDate={new Date("2021-01-01")}
+      maxDate={new Date("2021-12-31")}
+    />
   </div>
 )

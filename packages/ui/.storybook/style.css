@@ -1,16 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-  @font-face {
-    font-family: 'Inter';
-    src: url(inter.ttf) format('truetype');
-    font-weight: 100 200 300 400 500 600 700 800 900;
-    font-display: swap;
-  }
-
-  html {
-    font-family: 'Inter', sans-serif;
-  }
+@font-face {
+  font-family: "Poppins";
+  src: url("./Poppins-Regular.ttf") format("truetype");
+}
+h1,
+h2,
+h3,
+h5,
+h4,
+h6,
+input,
+textarea,
+button {
+  font-family: "Poppins", Arial, Helvetica, sans-serif !important;
+}
+:root {
+  font-family: "Poppins", Arial, Helvetica, sans-serif !important ;
 }

@@ -1,18 +1,18 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import { Chip, type ChipProps } from './Chip'
-import { TbDots, TbTrash, TbX } from 'react-icons/tb'
-import { Dropdown, DropdownItem } from '../Dropdown'
-import { Divider } from '../Divider'
-import type { Colors } from '../../types'
-import { ColorsEnum } from '../../types'
-import { Toaster, toast } from '../Toaster'
+import type { Meta, StoryFn } from "@storybook/react"
+import { TbDots, TbTrash, TbX } from "react-icons/tb"
+
+import { ColorsEnum, type Colors } from "../../types"
+import { Divider } from "../Divider"
+import { Dropdown, DropdownItem } from "../Dropdown"
+import { Toaster, toast } from "../Toaster"
+import { Chip, type ChipProps } from "./Chip"
 
 export default {
-  title: 'Components/Chip',
+  title: "Components/Chip",
   component: Chip,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col justify-center items-center">
         <Story />
         <Toaster />
@@ -20,35 +20,35 @@ export default {
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 } as Meta
 
-const Template: StoryFn<ChipProps> = args => <Chip {...args} />
+const Template: StoryFn<ChipProps> = (args) => <Chip {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  children: 'Chip',
+  children: "Chip",
 }
 export const OnClick = Template.bind({})
 OnClick.args = {
-  children: 'Chip',
+  children: "Chip",
   onClick: () => {
-    toast({ title: 'Clicked' })
+    toast("Clicked")
   },
 }
 export const Disabled = Template.bind({})
 Disabled.args = {
-  children: 'disabled',
+  children: "disabled",
   disabled: true,
 }
 export const OnDelete = Template.bind({})
 OnDelete.args = {
-  children: 'Chip',
+  children: "Chip",
   actions: [
     {
       onClick: () => {
-        toast({ title: 'Delete' })
+        toast("Delete")
       },
       icon: <TbX />,
     },
@@ -56,17 +56,17 @@ OnDelete.args = {
 }
 export const MultipleActions = Template.bind({})
 MultipleActions.args = {
-  children: 'Custom Icon',
+  children: "Custom Icon",
   actions: [
     {
       onClick: () => {
-        toast({ title: 'More actions' })
+        toast("More actions")
       },
       icon: <TbDots />,
     },
     {
       onClick: () => {
-        toast({ title: 'Delete' })
+        toast("Delete")
       },
       icon: <TbTrash />,
     },
@@ -74,7 +74,7 @@ MultipleActions.args = {
 }
 export const DropdownExample = Template.bind({})
 DropdownExample.args = {
-  children: 'Custom Icon',
+  children: "Custom Icon",
   actions: [
     {
       element: (
@@ -86,10 +86,27 @@ DropdownExample.args = {
             </div>
           }
         >
-          <DropdownItem label="Undo" onClick={() => { alert('Undo'); }} shortcut="⌘Z" />
-          <DropdownItem label="Redo" shortcut="⌘Y" onClick={() => { alert('Redo'); }} />
+          <DropdownItem
+            label="Undo"
+            onClick={() => {
+              alert("Undo")
+            }}
+            shortcut="⌘Z"
+          />
+          <DropdownItem
+            label="Redo"
+            shortcut="⌘Y"
+            onClick={() => {
+              alert("Redo")
+            }}
+          />
           <Divider />
-          <DropdownItem label="More actions" onClick={() => { alert('More actions'); }} />
+          <DropdownItem
+            label="More actions"
+            onClick={() => {
+              alert("More actions")
+            }}
+          />
         </Dropdown>
       ),
     },

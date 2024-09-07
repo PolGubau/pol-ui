@@ -1,25 +1,25 @@
-import { create } from '@storybook/theming/create'
+import { create } from "@storybook/theming/create"
 
 export default create({
-  base: 'light',
+  base: "light",
   // Typography
-  fontBase: '"Open Sans", sans-serif',
-  fontCode: 'monospace',
+  fontBase: '"Poppins", "Arial", "Open Sans", sans-serif',
+  fontCode: "monospace",
 
-  brandTitle: 'Pol-ui Storybook',
-  brandUrl: '/',
-  brandImage: 'https://ui.polgubau.com/logo.png',
-  brandTarget: '_self',
+  brandTitle: "Pol-ui Storybook",
+  brandUrl: "/",
+  brandImage: "https://ui.polgubau.com/logo.png",
+  brandTarget: "_self",
 
   //
-  colorPrimary: '#B49CFF',
+  colorPrimary: "#B49CFF",
   // colorSecondary: '#BFBFBF',
 
   // // UI
-  appBg: '#F3F0FD',
-  appContentBg: '#F6F6F6',
-  appPreviewBg: '#F6F6F6',
-  appBorderColor: '#585C6D',
+  appBg: "#F3F0FD",
+  appContentBg: "#F6F6F6",
+  appPreviewBg: "#F6F6F6",
+  appBorderColor: "#585C6D",
   appBorderRadius: 4,
 
   // // Text colors
@@ -36,4 +36,5 @@ export default create({
   // inputBorder: '#816ECB',
   // inputTextColor: '#10162F',
   // inputBorderRadius: 10,
+  inputBorderRadius: 10,
 })
