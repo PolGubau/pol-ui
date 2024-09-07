@@ -1,0 +1,83 @@
+
+> pol-ui-docs@0.1.0 build C:\Users\pol.gubau\dev\mine\ui\pol-ui\apps\docs
+> next build
+
+  ▲ Next.js 14.2.3
+
+   Creating an optimized production build ...
+ ⚠ Compiled with warnings
+
+./src/app/page.tsx
+Critical dependency: the request of a dependency is an expression
+
+Import trace for requested module:
+./src/app/page.tsx
+
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/5) ...
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received undefined
+    at validateString (node:internal/validators:162:11)
+    at Object.join (node:path:433:7)
+    at m (C:\Users\pol.gubau\dev\mine\ui\pol-ui\apps\docs\.next\server\app\page.js:1:4801)
+    at y (C:\Users\pol.gubau\dev\mine\ui\pol-ui\apps\docs\.next\server\app\page.js:1:5172)
+    at eh (C:\Users\pol.gubau\dev\mine\ui\pol-ui\node_modules\.pnpm\next@14.2.3_@babel+core@7.24.7_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:134786)
+    at e (C:\Users\pol.gubau\dev\mine\ui\pol-ui\node_modules\.pnpm\next@14.2.3_@babel+core@7.24.7_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:137671)
+    at ek (C:\Users\pol.gubau\dev\mine\ui\pol-ui\node_modules\.pnpm\next@14.2.3_@babel+core@7.24.7_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:138145)
+    at Array.toJSON (C:\Users\pol.gubau\dev\mine\ui\pol-ui\node_modules\.pnpm\next@14.2.3_@babel+core@7.24.7_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\pol.gubau\dev\mine\ui\pol-ui\node_modules\.pnpm\next@14.2.3_@babel+core@7.24.7_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219) {
+  code: 'ERR_INVALID_ARG_TYPE',
+  digest: '3519889815'
+}
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received undefined
+    at validateString (node:internal/validators:162:11)
+    at Object.join (node:path:433:7)
+    at m (C:\Users\pol.gubau\dev\mine\ui\pol-ui\apps\docs\.next\server\app\page.js:1:4801)
+    at y (C:\Users\pol.gubau\dev\mine\ui\pol-ui\apps\docs\.next\server\app\page.js:1:5172)
+    at eh (C:\Users\pol.gubau\dev\mine\ui\pol-ui\node_modules\.pnpm\next@14.2.3_@babel+core@7.24.7_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:134786)
+    at e (C:\Users\pol.gubau\dev\mine\ui\pol-ui\node_modules\.pnpm\next@14.2.3_@babel+core@7.24.7_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:137671)
+    at ek (C:\Users\pol.gubau\dev\mine\ui\pol-ui\node_modules\.pnpm\next@14.2.3_@babel+core@7.24.7_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:138145)
+    at Array.toJSON (C:\Users\pol.gubau\dev\mine\ui\pol-ui\node_modules\.pnpm\next@14.2.3_@babel+core@7.24.7_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\pol.gubau\dev\mine\ui\pol-ui\node_modules\.pnpm\next@14.2.3_@babel+core@7.24.7_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219) {
+  code: 'ERR_INVALID_ARG_TYPE',
+  digest: '3519889815'
+}
+   Generating static pages (1/5) 
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received undefined
+    at validateString (node:internal/validators:162:11)
+    at Object.join (node:path:433:7)
+    at m (C:\Users\pol.gubau\dev\mine\ui\pol-ui\apps\docs\.next\server\app\page.js:1:4801)
+    at y (C:\Users\pol.gubau\dev\mine\ui\pol-ui\apps\docs\.next\server\app\page.js:1:5172)
+    at eh (C:\Users\pol.gubau\dev\mine\ui\pol-ui\node_modules\.pnpm\next@14.2.3_@babel+core@7.24.7_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:134786)
+    at e (C:\Users\pol.gubau\dev\mine\ui\pol-ui\node_modules\.pnpm\next@14.2.3_@babel+core@7.24.7_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:137671)
+    at ek (C:\Users\pol.gubau\dev\mine\ui\pol-ui\node_modules\.pnpm\next@14.2.3_@babel+core@7.24.7_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:138145)
+    at Array.toJSON (C:\Users\pol.gubau\dev\mine\ui\pol-ui\node_modules\.pnpm\next@14.2.3_@babel+core@7.24.7_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+   Generating static pages (2/5) 
+    at stringify (<anonymous>)
+    at eR (C:\Users\pol.gubau\dev\mine\ui\pol-ui\node_modules\.pnpm\next@14.2.3_@babel+core@7.24.7_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219) {
+  code: 'ERR_INVALID_ARG_TYPE',
+   Generating static pages (3/5) 
+ ✓ Generating static pages (5/5)
+  digest: '3519889815'
+}
+
+Error occurred prerendering page "/". Read more: https://nextjs.org/docs/messages/prerender-error
+
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received undefined
+    at validateString (node:internal/validators:162:11)
+    at Object.join (node:path:433:7)
+    at m (C:\Users\pol.gubau\dev\mine\ui\pol-ui\apps\docs\.next\server\app\page.js:1:4801)
+    at y (C:\Users\pol.gubau\dev\mine\ui\pol-ui\apps\docs\.next\server\app\page.js:1:5172)
+    at eh (C:\Users\pol.gubau\dev\mine\ui\pol-ui\node_modules\.pnpm\next@14.2.3_@babel+core@7.24.7_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:134786)
+    at e (C:\Users\pol.gubau\dev\mine\ui\pol-ui\node_modules\.pnpm\next@14.2.3_@babel+core@7.24.7_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:137671)
+    at ek (C:\Users\pol.gubau\dev\mine\ui\pol-ui\node_modules\.pnpm\next@14.2.3_@babel+core@7.24.7_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:138145)
+    at Array.toJSON (C:\Users\pol.gubau\dev\mine\ui\pol-ui\node_modules\.pnpm\next@14.2.3_@babel+core@7.24.7_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\pol.gubau\dev\mine\ui\pol-ui\node_modules\.pnpm\next@14.2.3_@babel+core@7.24.7_react-dom@18.3.1_react@18.3.1__react@18.3.1\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+
+> Export encountered errors on following paths:
+	/page: /
+ ELIFECYCLE  Command failed with exit code 1.
