@@ -36,7 +36,7 @@ export default {
                 <p className="dark:text-secondary-50">Navbar</p>
               </div>
             }
-            className="bg-secondary-50 dark:bg-secondary-900 border-b dark:border-secondary-800"
+            className="dark:bg-secondary-900 border-b dark:border-secondary-800"
           />
           <section className="grid grid-cols-[auto,1fr] h-full pt-[60px]">
             <Story />

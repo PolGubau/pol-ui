@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
-import type { FC } from 'react'
-import { useMemo, useState } from 'react'
-import type { AccordionProps } from './Accordion'
-import { AccordionPanelContext } from './AccordionPanelContext'
+import { useMemo, useState, type FC } from "react"
+
+import { AccordionPanelContext } from "./AccordionPanelContext"
+import type { AccordionProps } from "./types"
 
 /**
  * @name PanelProps
@@ -13,12 +13,12 @@ import { AccordionPanelContext } from './AccordionPanelContext'
  * <Accordion>
  * ...
  * </Accordion>
- *  
+ *
  * @example
  * <Accordion alwaysOpen>
  * ...
  * </Accordion>
- *  
+ *
  * @example
  * <Accordion alwaysOpen>
  * <Accordion.Panel isOpen>
@@ -56,11 +56,17 @@ export const AccordionPanel: FC<PanelProps> = ({ children, ...props }) => {
       return {
         ...props,
         isOpen,
-        setOpen: () => { setIsOpen(!isOpen); },
+        setOpen: () => {
+          setIsOpen(!isOpen)
+        },
       }
     }
     return props
   }, [alwaysOpen, isOpen, props])
 
-  return <AccordionPanelContext.Provider value={provider}>{children}</AccordionPanelContext.Provider>
+  return (
+    <AccordionPanelContext.Provider value={provider}>
+      {children}
+    </AccordionPanelContext.Provider>
+  )
 }

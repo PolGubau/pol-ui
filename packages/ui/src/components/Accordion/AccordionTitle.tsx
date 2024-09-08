@@ -1,14 +1,15 @@
-'use client'
+"use client"
 
-import type { ComponentProps, FC } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import { getTheme } from '../../theme-store'
-import { ColorsEnum, HeadingLevelEnum } from '../../types/enums'
-import type { DeepPartial, HeadingLevel, IBoolean } from '../../types/types'
-import { Button, ButtonProps } from '../Button'
-import DynamicHeading from '../DynamicHeading/DynamicHeading'
-import { useAccordionContext } from './AccordionPanelContext'
+import type { ComponentProps, FC } from "react"
+import { twMerge } from "tailwind-merge"
+
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
+import { getTheme } from "../../theme-store"
+import { ColorsEnum, HeadingLevelEnum } from "../../types/enums"
+import type { DeepPartial, HeadingLevel, IBoolean } from "../../types/types"
+import { Button, ButtonProps } from "../Button"
+import DynamicHeading from "../DynamicHeading/DynamicHeading"
+import { useAccordionContext } from "./AccordionPanelContext"
 
 export interface AccordionTitleTheme {
   arrow: {
@@ -32,7 +33,7 @@ export interface AccordionTitleTheme {
  * @property {FC<ComponentProps<'svg'>>} arrowIcon
  */
 export interface AccordionTitleProps extends ButtonProps {
-  arrowIcon?: FC<ComponentProps<'svg'>>
+  arrowIcon?: FC<ComponentProps<"svg">>
   as?: HeadingLevel
   theme?: DeepPartial<AccordionTitleTheme>
   colorToTailwindName?: string
@@ -57,34 +58,46 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
   theme: customTheme = {},
   ...props
 }: AccordionTitleProps): JSX.Element => {
-  const { arrowIcon: ArrowIcon, isBordered: bordered, isOpen, setOpen } = useAccordionContext()
-  const onClick = () => typeof setOpen !== 'undefined' && setOpen()
+  const {
+    arrowIcon: ArrowIcon,
+    isBordered: bordered,
+    isOpen,
+    setOpen,
+  } = useAccordionContext()
+  const onClick = () => typeof setOpen !== "undefined" && setOpen()
 
   const theme = mergeDeep(getTheme().accordion.title, customTheme)
 
   return (
     <Button
       color={props.color || ColorsEnum.secondary}
-      rounded={props.rounded || 'none'}
-      variant={props.variant || 'ghost'}
+      rounded={props.rounded || "none"}
+      variant={props.variant || "ghost"}
       onClick={onClick}
       className={twMerge(
         theme.base,
-        theme.isBordered[bordered ? 'on' : 'off'],
-        theme.open[isOpen ? 'on' : 'off'],
-        className,
+        theme.isBordered[bordered ? "on" : "off"],
+        theme.open[isOpen ? "on" : "off"],
+        className
       )}
       type="button"
       {...props}
     >
-      <DynamicHeading as={Component} className={theme.heading} data-testid="ui-accordion-heading">
+      <DynamicHeading
+        as={Component}
+        className={theme.heading}
+        data-testid="ui-accordion-heading"
+      >
         {children}
       </DynamicHeading>
 
       {ArrowIcon && (
         <ArrowIcon
           aria-hidden
-          className={twMerge(theme.arrow.base, theme.arrow.open[isOpen ? 'on' : 'off'])}
+          className={twMerge(
+            theme.arrow.base,
+            theme.arrow.open[isOpen ? "on" : "off"]
+          )}
           data-testid="ui-accordion-arrow"
         />
       )}

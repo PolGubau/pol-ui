@@ -40,7 +40,6 @@ import type { LinkTheme } from "../Link/theme"
 import type { ListGroupTheme } from "../ListGroup"
 import type { LoaderTheme } from "../Loader"
 import { MessageTheme } from "../Message/theme"
-import type { ModalTheme } from "../Modal"
 import type { NavbarTheme } from "../Navbar"
 import type { NavigationMenuTheme } from "../NavigationMenu/theme"
 import type { OtpInputTheme } from "../OtpInput/theme"
@@ -91,7 +90,6 @@ export interface PoluiTheme {
   footer: FooterTheme
   kbd: KbdTheme
   listGroup: ListGroupTheme
-  modal: ModalTheme
   navbar: NavbarTheme
   rating: RatingTheme
   pagination: PaginationTheme

@@ -1,23 +1,18 @@
-import type { Meta } from '@storybook/react'
-import { TbChevronRight, TbSend } from 'react-icons/tb'
-import { Button } from '../Button'
-import { IconButton } from '../IconButton'
-import { Textarea } from '../Textarea'
-import ExpandableButton from './ExpandableButton'
+import type { Meta } from "@storybook/react"
+import { TbChevronRight, TbSend } from "react-icons/tb"
+
+import { Button } from "../Button"
+import { IconButton } from "../IconButton"
+import { Textarea } from "../Textarea"
+import ExpandableButton from "./ExpandableButton"
 
 export default {
-  title: 'Components/ExpandableButton',
-  tags: ['autodocs'],
+  title: "Components/ExpandableButton",
+  tags: ["autodocs"],
   component: ExpandableButton,
-  decorators: [
-    Story => (
-      <div className="bg-secondary-50 min-h-[200px] dark:bg-secondary-900 p-6">
-        <Story />
-      </div>
-    ),
-  ],
+
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 } as Meta
 
@@ -27,7 +22,7 @@ export const Default = () => (
       <h4>Add comment</h4>
       <Textarea className="w-full" placeholder="Write a comment" autoFocus />
       <nav className="flex flex-row-reverse justify-right w-full">
-        <Button size={'sm'}>
+        <Button size={"sm"}>
           Send
           <TbChevronRight className="w-4 h-4" />
         </Button>
@@ -49,7 +44,7 @@ export const CustomTrigger = () => (
         <h4>Add comment</h4>
         <Textarea className="w-full" placeholder="Write a comment" />
         <nav className="flex flex-row-reverse justify-right w-full">
-          <Button size={'sm'}>
+          <Button size={"sm"}>
             Send
             <TbChevronRight className="w-4 h-4" />
           </Button>
@@ -64,7 +59,7 @@ export const Once = () => (
       <h4>Add comment</h4>
       <Textarea className="w-full" placeholder="Write a comment" />
       <nav className="flex flex-row-reverse justify-right w-full">
-        <Button size={'sm'}>
+        <Button size={"sm"}>
           Send
           <TbChevronRight className="w-4 h-4" />
         </Button>

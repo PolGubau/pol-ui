@@ -1,12 +1,14 @@
-'use client'
+"use client"
 
-import { createContext, useContext } from 'react'
-import type { PanelProps } from './AccordionPanel'
+import { createContext, useContext } from "react"
 
-type AccordionPanelContext = Omit<PanelProps, 'children'>
+import type { PanelProps } from "./AccordionPanel"
 
-export const AccordionPanelContext = createContext<AccordionPanelContext | undefined>(undefined)
+type AccordionPanelContext = Omit<PanelProps, "children">
 
+export const AccordionPanelContext = createContext<
+  AccordionPanelContext | undefined
+>(undefined)
 
 /**
  * @name useAccordionContext
@@ -15,13 +17,15 @@ export const AccordionPanelContext = createContext<AccordionPanelContext | undef
  * @returns {AccordionPanelContext}
  * @throws {Error} If useAccordionContext is not used within the AccordionPanelContext provider.
  * @see https://polgubau.com/components/accordion
- * 
+ *
  */
 export function useAccordionContext(): AccordionPanelContext {
   const context = useContext(AccordionPanelContext)
 
   if (!context) {
-    throw new Error('useAccordionContext should be used within the AccordionPanelContext provider!')
+    throw new Error(
+      "useAccordionContext should be used within the AccordionPanelContext provider!"
+    )
   }
 
   return context

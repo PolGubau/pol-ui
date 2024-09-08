@@ -1,30 +1,29 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import { Toaster } from '../Toaster'
-import { CodeBlock, type CodeBlockProps } from './CodeBlock'
+import type { Meta, StoryFn } from "@storybook/react"
+
+import { CodeBlock, type CodeBlockProps } from "./CodeBlock"
 
 export default {
-  title: 'Components/CodeBlock',
+  title: "Components/CodeBlock",
   component: CodeBlock,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
-    Story => (
-      <div className="grid md:grid-cols-2 items-start bg-secondary-50 ">
-        <div className="flex flex-col justify-center items-center bg-secondary-50 ">
+    (Story) => (
+      <div className="grid md:grid-cols-2 items-start ">
+        <div className="flex flex-col justify-center items-center ">
           <Story />
         </div>
         <div className="flexflex-col justify-center items-center dark bg-secondary-900 text-secondary-100 h-full">
           <Story />
         </div>
-        <Toaster />
       </div>
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 } as Meta
 
-const Template: StoryFn<CodeBlockProps> = args => <CodeBlock {...args} />
+const Template: StoryFn<CodeBlockProps> = (args) => <CodeBlock {...args} />
 
 export const Default = Template.bind({})
 

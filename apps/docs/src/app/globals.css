@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+@font-face {
+  font-family: "SpaceMono";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/SpaceMono-Regular.ttf") format("truetype");
+}
+
+:root {
+  font-family: "SpaceMono", monospace;
+}
+
+body {
+  background-color: #000;
+  font-size: 14px;
+}

@@ -67,7 +67,7 @@ WithHelperText.args = {
 }
 
 export const AllColors = () => (
-  <div className="flex flex-col gap-4 p-4 bg-secondary-50">
+  <div className="flex flex-col gap-4">
     {Object.keys(ColorsEnum).map((color) => (
       <Input
         key={color}
@@ -79,7 +79,7 @@ export const AllColors = () => (
   </div>
 )
 export const AllColorsFilled = () => (
-  <div className="flex flex-col gap-4 p-4 bg-secondary-50">
+  <div className="flex flex-col gap-4">
     {Object.keys(ColorsEnum).map((color) => (
       <Input
         key={color}
@@ -92,7 +92,7 @@ export const AllColorsFilled = () => (
   </div>
 )
 export const AllColorsWithBorder = () => (
-  <div className="flex flex-col gap-4 p-4 bg-secondary-50">
+  <div className="flex flex-col gap-4">
     {Object.keys(ColorsEnum).map((color) => (
       <Input
         border

@@ -13,7 +13,7 @@ import { TbFile, TbFolder, TbFolderOpen } from "react-icons/tb"
 
 import { cn } from "../../helpers"
 import { Button, ButtonProps } from "../Button"
-import { ScrollArea } from "../ScrollArea/scroll-area"
+import { ScrollArea } from "../ScrollArea/ScrollArea"
 
 type TreeViewElement = {
   id: string
@@ -246,8 +246,8 @@ const Folder = ({
         onClick={() => handleExpand(value)}
       >
         {expandedItems?.includes(value)
-          ? openIcon ?? <TbFolderOpen className="size-4" />
-          : closeIcon ?? <TbFolder className="size-4" />}
+          ? (openIcon ?? <TbFolderOpen className="size-4" />)
+          : (closeIcon ?? <TbFolder className="size-4" />)}
         <span>{element}</span>
       </AccordionPrimitive.Trigger>
       <AccordionPrimitive.Content className="text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down relative overflow-hidden h-full">
