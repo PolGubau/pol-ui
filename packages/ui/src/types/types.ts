@@ -24,6 +24,10 @@ export type DeepPartial<T> = T extends object
     }
   : T
 
+export type Mutable<T> = {
+  -readonly [P in keyof T]: T[P]
+}
+
 /**
  * @name IBoolean
  * @description Type for booleans, on and off states
