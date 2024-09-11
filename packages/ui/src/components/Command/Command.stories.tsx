@@ -3,10 +3,8 @@ import type { Meta } from "@storybook/react"
 import { TbUser } from "react-icons/tb"
 
 import { useBoolean } from "../../hooks"
-import { Button } from "../Button"
+import { Dialog } from "../Dialog"
 import { Divider } from "../Divider"
-import { Kbd } from "../Kbd"
-import { Modal } from "../Modal"
 import { Toaster, toast } from "../Toaster"
 import { Command } from "./Command"
 
@@ -51,11 +49,7 @@ export const CommandMenu = () => {
         </kbd>
       </p>
 
-      <Modal
-        open={value}
-        onOpenChange={toggle}
-        contentClassName="p-0   bg-secondary-100 shadow-lg "
-      >
+      <Dialog open={value} onOpenChange={toggle}>
         <Command>
           <Command.Input placeholder="Type a command or search..." />
           <Command.List>
@@ -90,17 +84,13 @@ export const CommandMenu = () => {
             </Command.Group>
           </Command.List>
         </Command>
-      </Modal>
-      <Button onClick={toggle}>Open Command</Button>
+      </Dialog>
     </>
   )
 }
 export const InlineCommand = () => {
   return (
-    <Command
-      label="Command Menu"
-      className="bg-white rounded-xl p-2 shadow-xl flex justify-center max-w-[500px]"
-    >
+    <Command label="Command Menu">
       <Command.Input />
       <Command.List>
         <Command.Empty>No results found.</Command.Empty>

@@ -36,8 +36,22 @@ export interface AccordionRootTheme {
 
 /**
  * @name Accordion
+ *
  * @description The accordion component is used to display a list of items that can be expanded or collapsed.
+ *
  * @returns <Accordion /> : JSX.Element
+ * 
+ * @example ```
+ *   <Accordion>
+ *   <Accordion.Panel>
+  *    <Accordion.Title>Title</Accordion.Title>
+  *   <Accordion.Content>
+  *        Content
+  *   </Accordion.Content>
+ *   </Accordion.Panel>
+ * </Accordion>
+ * ```
+
  */
 const AccordionComponent: FC<AccordionProps> = ({
   alwaysOpen = false,

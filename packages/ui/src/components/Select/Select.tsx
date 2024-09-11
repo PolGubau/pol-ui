@@ -5,70 +5,32 @@ import * as SelectPrimitive from "@radix-ui/react-select"
 import { TbCheck, TbChevronDown, TbChevronUp } from "react-icons/tb"
 
 import { cn } from "../../helpers"
-import { Button, ButtonProps } from "../Button"
 
-const S = SelectPrimitive.Root
-export interface SelectProps extends React.ComponentProps<typeof S> {
-  children: React.ReactNode
-  trigger?: React.ReactNode
-  placeholder?: string
-  onChange?: (value: string) => void
-  defaultTriggerOptions?: Partial<ButtonProps>
-}
-const Select = ({
-  children,
-  onChange,
-  trigger,
-  placeholder = "Select an option...",
-  defaultTriggerOptions,
-  ...rest
-}: SelectProps) => {
-  return (
-    <S {...rest} onValueChange={onChange}>
-      <SelectTrigger
-        trigger={trigger}
-        options={defaultTriggerOptions}
-        className={cn("min-w-[180px]", defaultTriggerOptions?.className)}
-      >
-        <SelectValue placeholder={placeholder} />
-      </SelectTrigger>
-      <SelectContent>{children}</SelectContent>
-    </S>
-  )
-}
+const SelectRoot = SelectPrimitive.Root
 
 const SelectGroup = SelectPrimitive.Group
 
 const SelectValue = SelectPrimitive.Value
 
-interface TriggerProps
-  extends React.ComponentProps<typeof SelectPrimitive.Trigger> {
-  trigger?: React.ReactNode
-  options?: Partial<ButtonProps>
-}
-
-const SelectTrigger = ({
-  className,
-  children,
-  trigger,
-  options,
-  ...props
-}: TriggerProps) => (
-  <SelectPrimitive.Trigger asChild className={cn(className)} {...props}>
-    {trigger ?? (
-      <Button
-        variant={"outline"}
-        {...options}
-        className={cn("justify-between", options?.className)}
-      >
-        {children}
-        <SelectPrimitive.Icon asChild>
-          <TbChevronDown className="h-4 w-4 opacity-50" />
-        </SelectPrimitive.Icon>
-      </Button>
+const SelectTrigger = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
+>(({ className, children, ...props }, ref) => (
+  <SelectPrimitive.Trigger
+    ref={ref}
+    className={cn(
+      "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
+      className
     )}
+    {...props}
+  >
+    {children}
+    <SelectPrimitive.Icon asChild>
+      <TbChevronDown className="h-4 w-4 opacity-50" />
+    </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
-)
+))
+SelectTrigger.displayName = SelectPrimitive.Trigger.displayName
 
 const SelectScrollUpButton = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.ScrollUpButton>,
@@ -113,14 +75,10 @@ const SelectContent = React.forwardRef<
     <SelectPrimitive.Content
       ref={ref}
       className={cn(
-        "relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-md border bg-secondary-50 shadow-md ",
-
+        "relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-md border bg-secondary-50 dark:bg-secondary-900 text-secondary-900 dark:text-secondary-50 shadow-md",
         "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-        {
-          "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1":
-            position === "popper",
-        },
-
+        position === "popper" &&
+          "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
         className
       )}
       position={position}
@@ -129,7 +87,7 @@ const SelectContent = React.forwardRef<
       <SelectScrollUpButton />
       <SelectPrimitive.Viewport
         className={cn(
-          "p-0",
+          "p-1",
           position === "popper" &&
             "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]"
         )}
@@ -153,6 +111,7 @@ const SelectLabel = React.forwardRef<
   />
 ))
 SelectLabel.displayName = SelectPrimitive.Label.displayName
+
 const SelectItem = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
@@ -160,7 +119,7 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-secondary-300 data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       className
     )}
     {...props}
@@ -176,12 +135,56 @@ const SelectItem = React.forwardRef<
 ))
 SelectItem.displayName = SelectPrimitive.Item.displayName
 
+const SelectSeparator = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.Separator>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
+>(({ className, ...props }, ref) => (
+  <SelectPrimitive.Separator
+    ref={ref}
+    className={cn("-mx-1 my-1 h-px bg-muted", className)}
+    {...props}
+  />
+))
+SelectSeparator.displayName = SelectPrimitive.Separator.displayName
+
+export interface SelectProps
+  extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root> {
+  children: React.ReactNode
+  trigger?: React.ReactNode
+  placeholder?: string
+  onChange?: (value: string) => void
+  defaultTriggerOptions?: React.ComponentPropsWithoutRef<
+    typeof SelectPrimitive.Trigger
+  >
+  contentProps?: React.ComponentProps<typeof SelectPrimitive.Content>
+}
+
+const Select = (props: SelectProps) => {
+  return (
+    <SelectRoot
+      {...props}
+      onValueChange={(v) => {
+        if (props.onChange) props.onChange(v)
+        props.onValueChange?.(v)
+      }}
+    >
+      <SelectTrigger {...props.defaultTriggerOptions}>
+        <SelectValue placeholder={props.placeholder} />
+      </SelectTrigger>
+      <SelectContent {...props.contentProps}>{props.children}</SelectContent>
+    </SelectRoot>
+  )
+}
 export {
   Select,
-  SelectGroup,
-  SelectValue,
-  SelectTrigger,
   SelectContent,
-  SelectLabel,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
+  SelectRoot,
+  SelectScrollDownButton,
+  SelectScrollUpButton,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
 }

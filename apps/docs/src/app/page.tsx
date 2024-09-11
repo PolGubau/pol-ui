@@ -117,7 +117,6 @@ export default async function Index() {
         className="min-h-[700px] w-screen flex flex-col md:pt-36"
       >
         <Header />
-
         <article className="flex flex-col gap-36 py-48 justify-center w-full items-center">
           {components.map((component, idx) => {
             return (

@@ -1,5 +1,3 @@
-"use client"
-
 import React from "react"
 import * as PrimitiveTooltip from "@radix-ui/react-tooltip"
 
@@ -79,7 +77,9 @@ export const Tooltip = ({
               {...rest}
             >
               {label}
-              {arrow && <PrimitiveTooltip.Arrow className="fill-white" />}
+              {arrow && (
+                <PrimitiveTooltip.Arrow className="fill-background dark:fill-black" />
+              )}
             </PrimitiveTooltip.Content>
           </PrimitiveTooltip.Portal>
         )}

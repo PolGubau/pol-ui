@@ -1,34 +1,34 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import { TbFile } from 'react-icons/tb'
-import { useBoolean } from '../../hooks'
-import { Button } from '../Button'
-import { IconButton } from '../IconButton'
-import type { TooltipProps } from './Tooltip'
-import { Tooltip } from './Tooltip'
-import type { Align, Side } from '../../types'
-import { AlignEnum, SidesEnum } from '../../types'
+import type { Meta, StoryFn } from "@storybook/react"
+import { TbFile } from "react-icons/tb"
+
+import { useBoolean } from "../../hooks"
+import { AlignEnum, SidesEnum, type Align, type Side } from "../../types"
+import { Button } from "../Button"
+import { IconButton } from "../IconButton"
+import { Tooltip, type TooltipProps } from "./Tooltip"
+
 export default {
-  title: 'Components/Tooltip',
+  title: "Components/Tooltip",
   component: Tooltip,
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 grid place-items-center min-h-[200px] bg-secondary-50">
         <Story />
       </div>
     ),
   ],
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 } as Meta
 
-const Template: StoryFn<TooltipProps> = args => <Tooltip {...args} />
+const Template: StoryFn<TooltipProps> = (args) => <Tooltip {...args} />
 
 export const DefaultTooltip = Template.bind({})
-DefaultTooltip.storyName = 'Default'
+DefaultTooltip.storyName = "Default"
 DefaultTooltip.args = {
-  label: 'Tooltip content',
+  label: "Tooltip content",
   children: <Button>Default tooltip</Button>,
 }
 export const DefaultOpened = Template.bind({})
@@ -39,7 +39,7 @@ DefaultOpened.args = {
 
 export const IconUseCase = Template.bind({})
 IconUseCase.args = {
-  label: 'Upload a file',
+  label: "Upload a file",
   children: (
     <IconButton>
       <TbFile size={20} />
@@ -78,7 +78,7 @@ export const Controlled = () => {
 export const AllSides = () => {
   return (
     <div className="flex gap-4">
-      {Object.keys(SidesEnum).map(side => (
+      {Object.keys(SidesEnum).map((side) => (
         <Tooltip key={side} label="Tooltip content" side={side as Side}>
           <Button>{side} tooltip</Button>
         </Tooltip>
@@ -89,7 +89,7 @@ export const AllSides = () => {
 export const AllAlignments = () => {
   return (
     <div className="flex gap-4">
-      {Object.keys(AlignEnum).map(align => (
+      {Object.keys(AlignEnum).map((align) => (
         <Tooltip key={align} label="Tooltip content" align={align as Align}>
           <Button>{align} tooltip</Button>
         </Tooltip>
@@ -102,7 +102,7 @@ DisableHoverableContent.parameters = {
   docs: {
     description: {
       story:
-        'When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger.',
+        "When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger.",
     },
   },
 }
@@ -119,10 +119,14 @@ SideOffset.args = {
 export const OnEscapeKeyDown = Template.bind({})
 OnEscapeKeyDown.args = {
   ...DefaultTooltip.args,
-  onEscapeKeyDown: () => { alert('Escape key pressed'); },
+  onEscapeKeyDown: () => {
+    alert("Escape key pressed")
+  },
 }
 export const OnPointerDownOutside = Template.bind({})
 OnPointerDownOutside.args = {
   ...DefaultTooltip.args,
-  onPointerDownOutside: () => { alert('Pointer down outside'); },
+  onPointerDownOutside: () => {
+    alert("Pointer down outside")
+  },
 }

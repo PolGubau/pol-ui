@@ -3,7 +3,7 @@ import type { Meta, StoryFn } from "@storybook/react"
 
 import { Button } from "../Button"
 import { Divider } from "../Divider"
-import { Toaster, toast } from "../Toaster"
+import { toast } from "../Toaster"
 import {
   Select,
   SelectGroup,
@@ -15,14 +15,6 @@ import {
 export default {
   title: "Components/Select",
   component: Select,
-  decorators: [
-    (Story) => (
-      <div className="p-4 bg-secondary-50 dark:bg-secondary-800">
-        <Story />
-        <Toaster />
-      </div>
-    ),
-  ],
   tags: ["autodocs"],
 } as Meta
 

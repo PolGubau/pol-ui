@@ -20,18 +20,12 @@ const Provider = ({ children }: PropsWithChildren) => {
     >
       <div
         className={cn("relative w-full h-full grid", {
-          // dark: darkOrLight === "dark",
+          dark: darkOrLight === "dark",
         })}
       >
-        <div className="w-full h-full bg-background dark:bg-secondary-900 relative grid pt-6 rounded-xl p-2 min-h-[300px]">
+        <div className="w-full h-full bg-secondary-50 dark:bg-secondary-900 relative flex gap-2 pt-6 rounded-xl p-2 min-h-[300px]">
           {children}
-          <div
-            className="absolute scale-50"
-            style={{
-              right: ".3em",
-              top: ".3em",
-            }}
-          >
+          <div className=" scale-50">
             <DarkThemeToggle />
           </div>
         </div>
