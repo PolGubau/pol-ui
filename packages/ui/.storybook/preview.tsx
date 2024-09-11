@@ -6,28 +6,27 @@ import { themes } from "@storybook/theming"
 import { DarkThemeToggle, Toaster } from "../src/components"
 import { useThemeMode } from "../src/hooks"
 import "./style.css"
-import { PoluiProvider, cn } from "../src"
+import { PoluiProvider } from "../src"
 
 const Provider = ({ children }: PropsWithChildren) => {
   const { computedMode } = useThemeMode()
 
-  const darkOrLight = computedMode === "dark" ? "dark" : "light"
   return (
     <PoluiProvider
       theme={{
         mode: computedMode,
       }}
     >
-      <div
-        className={cn("relative w-full h-full grid", {
-          dark: darkOrLight === "dark",
-        })}
-      >
-        <div className="w-full h-full bg-secondary-50 dark:bg-secondary-900 relative flex gap-2 pt-6 rounded-xl p-2 min-h-[300px]">
-          {children}
-          <div className=" scale-50">
-            <DarkThemeToggle />
-          </div>
+      <div className="w-full h-full bg-background dark:bg-secondary-900 relative grid pt-6 rounded-xl p-2 min-h-[400px]">
+        {children}
+        <div
+          className="absolute"
+          style={{
+            right: ".5em",
+            top: ".5em",
+          }}
+        >
+          <DarkThemeToggle />
         </div>
         <Toaster />
       </div>

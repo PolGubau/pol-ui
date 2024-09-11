@@ -1,37 +1,37 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import type { RatingProps } from './Rating'
-import { theme } from '../../theme'
-import { TbAdjustmentsBolt, TbCactus, TbLayout, TbPhoneCheck, TbPhotoFilled } from 'react-icons/tb'
-import type { RatingTheme } from '.'
-import { Rating } from '.'
-import { Progress } from '../Progress'
-import type { MainSizes } from '../../types'
+import type { Meta, StoryFn } from "@storybook/react"
+import {
+  TbAdjustmentsBolt,
+  TbCactus,
+  TbLayout,
+  TbPhoneCheck,
+  TbPhotoFilled,
+} from "react-icons/tb"
+
+import { Rating, type RatingTheme } from "."
+import { theme } from "../../theme"
+import type { MainSizes } from "../../types"
+import { Progress } from "../Progress"
+import type { RatingProps } from "./Rating"
 
 export default {
-  title: 'Components/Rating',
+  title: "Components/Rating",
   component: Rating,
-  tags: ['autodocs'],
-  decorators: [
-    Story => (
-      <div className="flex p-6 flex-col items-center  bg-secondary-50">
-        <Story />
-      </div>
-    ),
-  ],
+  tags: ["autodocs"],
+
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 } as Meta
 
-const Template: StoryFn<RatingProps> = args => <Rating {...args} />
+const Template: StoryFn<RatingProps> = (args) => <Rating {...args} />
 
 const ratingTheme: RatingTheme = theme.rating
 
 export const DefaultRating = Template.bind({})
-DefaultRating.storyName = 'Default'
+DefaultRating.storyName = "Default"
 
 export const CustomStarAmount = Template.bind({})
-CustomStarAmount.storyName = 'Custom stars amount'
+CustomStarAmount.storyName = "Custom stars amount"
 CustomStarAmount.args = {
   stars: 10,
 }
@@ -47,7 +47,7 @@ export const CustomFilledAmount = (): JSX.Element => (
 )
 export const CustomSize = (): JSX.Element => (
   <div className="flex flex-col gap-4 w-full">
-    {Object.keys(ratingTheme.star.size).map(size => (
+    {Object.keys(ratingTheme.star.size).map((size) => (
       <Rating key={size} size={size as MainSizes} />
     ))}
   </div>
@@ -67,27 +67,27 @@ export const MoreDetails = (): JSX.Element => (
     <section className="flex flex-col gap-2">
       <div className="flex gap-2 items-center">
         5 stars
-        <Progress progress={85} className="w-[400px]" size={'lg'} />
+        <Progress progress={85} className="w-[400px]" size={"lg"} />
         2174 votes
       </div>
       <div className="flex gap-2 items-center">
         4 stars
-        <Progress progress={42} className="w-[400px]" size={'lg'} />
+        <Progress progress={42} className="w-[400px]" size={"lg"} />
         1234 votes
       </div>
       <div className="flex gap-2 items-center">
         3 stars
-        <Progress progress={6} className="w-[400px]" size={'lg'} />
+        <Progress progress={6} className="w-[400px]" size={"lg"} />
         23 votes
       </div>
       <div className="flex gap-2 items-center">
         2 stars
-        <Progress progress={12} className="w-[400px]" size={'lg'} />
+        <Progress progress={12} className="w-[400px]" size={"lg"} />
         432 votes
       </div>
       <div className="flex gap-2 items-center">
         1 stars
-        <Progress progress={23} className="w-[400px]" size={'lg'} />
+        <Progress progress={23} className="w-[400px]" size={"lg"} />
         432 votes
       </div>
     </section>
