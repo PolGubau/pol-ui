@@ -1,25 +1,17 @@
 "use client"
 
-import {
-  Children,
-  cloneElement,
-  useMemo,
-  useState,
-  type ComponentProps,
-  type FC,
-  type ReactElement,
-} from "react"
+import { Children, cloneElement, useMemo, useState, type FC } from "react"
 import { HiChevronDown } from "react-icons/hi"
 import { twMerge } from "tailwind-merge"
 
 import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
 import { getTheme } from "../../theme-store"
-import type { DeepPartial, IBoolean } from "../../types/types"
+import type { IBoolean } from "../../types/types"
 import {
   AccordionContent,
   type AccordionComponentTheme,
 } from "./AccordionContent"
-import { AccordionPanel, type PanelProps } from "./AccordionPanel"
+import { AccordionPanel } from "./AccordionPanel"
 import { AccordionTitle, type AccordionTitleTheme } from "./AccordionTitle"
 import { AccordionProps } from "./types"
 
