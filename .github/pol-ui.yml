@@ -1,6 +1,10 @@
 name: CI
 
-on: push
+# on push or commit in main branch
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   test:
@@ -18,7 +22,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: lts/*
-          cache: 'pnpm'
+          cache: "pnpm"
 
       - name: 📥 Install Dependencies
         run: pnpm ui install
@@ -41,7 +45,7 @@ jobs:
         with:
           node-version: lts/*
           always-auth: true
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: "https://registry.npmjs.org"
       - name: 💡 Install PNPM
         run: npm install -g pnpm
 
