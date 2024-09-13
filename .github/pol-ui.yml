@@ -22,13 +22,13 @@ jobs:
           cache: "pnpm"
 
       - name: 📥 Install Dependencies
-        run: pnpm ui install
+        run: pnpm install
 
       - name: 💅 Lint
-        run: pnpm ui lint
+        run: pnpm lint
 
       - name: 🧪 Unit Tests and coverage
-        run: pnpm ui test
+        run: pnpm test
 
   publish:
     name: 🚀 Publish
@@ -43,11 +43,12 @@ jobs:
           node-version: lts/*
           always-auth: true
           registry-url: "https://registry.npmjs.org"
+
       - name: 💡 Install PNPM
         run: npm install -g pnpm
 
       - name: 📥 Install Dependencies
-        run: pnpm ui install
+        run: pnpm install
 
       - name: setup git config
         run: |
@@ -60,15 +61,15 @@ jobs:
 
       - name: Update version in package.json
         run: |
-          cd packages/ui
           node -e "
-          let pkg = require('./package.json');
+          let pkg = require('./packages/ui/package.json');
           let versionParts = pkg.version.split('.');
           versionParts[2] = '${{ env.RUN_NUMBER }}';
           pkg.version = versionParts.join('.');
-          require('fs').writeFileSync('./package.json', JSON.stringify(pkg, null, 2));
+          require('fs').writeFileSync('./packages/ui/package.json', JSON.stringify(pkg, null, 2));
           "
         shell: bash
+
       - name: 🍀 Publish to NPM
         run: |
           echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc 
