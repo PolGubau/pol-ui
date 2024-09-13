@@ -10,8 +10,7 @@ import type { BreadcrumbTheme } from "../Breadcrumb"
 import type { BubbleHeadingTheme } from "../BubbleHeading/theme"
 import type { ButtonTheme } from "../Button"
 import type { CardTheme } from "../Card"
-import type { CarouselTheme } from "../Carousel"
-import type { CheckboxTheme } from "../Checkbox"
+ import type { CheckboxTheme } from "../Checkbox"
 import type { ChipTheme } from "../Chip/theme"
 import type { CommandTheme } from "../Command/theme"
 import type { ContainerScrollTheme } from "../ContainerScroll/theme"
@@ -84,8 +83,7 @@ export interface PoluiTheme {
   iconButton: IconButtonTheme
   card: CardTheme
   copyright: CopyrightTheme
-  carousel: CarouselTheme
-  datepicker: DatepickerTheme
+   datepicker: DatepickerTheme
   darkThemeToggle: DarkThemeToggleTheme
   footer: FooterTheme
   kbd: KbdTheme

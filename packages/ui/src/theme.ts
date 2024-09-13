@@ -11,7 +11,6 @@ import { breadcrumbTheme } from "./components/Breadcrumb/theme"
 import { bubbleHeadingTheme } from "./components/BubbleHeading/theme"
 import { buttonTheme } from "./components/Button/theme"
 import { cardTheme } from "./components/Card/theme"
-import { carouselTheme } from "./components/Carousel/theme"
 import { checkboxTheme } from "./components/Checkbox/theme"
 import { chipTheme } from "./components/Chip/theme"
 import { commandTheme } from "./components/Command/theme"
@@ -74,8 +73,7 @@ export const theme: PoluiTheme = {
   iconButton: iconButtonTheme,
   link: linkTheme,
   card: cardTheme,
-  carousel: carouselTheme,
-  copyright: copyrightTheme,
+   copyright: copyrightTheme,
   checkbox: checkboxTheme,
   datepicker: datePickerTheme,
   darkThemeToggle: darkThemeToggleTheme,
