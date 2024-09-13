@@ -34,7 +34,7 @@ jobs:
     name: 🧪 Pol-UI (Lint, Build, Test, Deploy)
     needs: check-changes
     runs-on: ubuntu-latest
-    if: env.ui-changed == 'true'
+    if: github.ref == 'refs/heads/main' # Ejecuta siempre que sea en la rama `main`
     steps:
       - name: 👍 Checkout
         uses: actions/checkout@v3
