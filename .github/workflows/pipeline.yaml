@@ -34,7 +34,7 @@ jobs:
     name: 🧪 Pol-UI (Lint, Build, Test, Deploy)
     needs: check-changes
     runs-on: ubuntu-latest
-    if: env.ui-changed == 'true' # Puedes eliminar esta línea si quieres que se ejecute siempre en `main`
+    if: env.ui-changed == 'true'
     steps:
       - name: 👍 Checkout
         uses: actions/checkout@v3
