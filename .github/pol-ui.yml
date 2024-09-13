@@ -1,10 +1,7 @@
 name: CI
 
-# on push or commit in main branch
-on:
-  push:
-    branches:
-      - main
+# on push or commit
+on: [push]
 
 jobs:
   test:
