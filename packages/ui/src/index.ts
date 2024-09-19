@@ -1,4 +1,3 @@
-export type { CustomPoluiTheme } from "./components/PoluiProvider/PoluiTheme"
 export * from "./helpers"
 export * from "./hooks"
 export * from "./theme"
