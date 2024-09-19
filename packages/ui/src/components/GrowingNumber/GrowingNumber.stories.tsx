@@ -1,28 +1,28 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import { useState } from 'react'
-import { TbReload } from 'react-icons/tb'
-import { IconButton } from '../IconButton'
-import type { AnimatedNumberProps } from './AnimatedNumber'
-import AnimatedNumber from './AnimatedNumber'
+import { useState } from "react"
+import type { Meta, StoryFn } from "@storybook/react"
+import { TbReload } from "react-icons/tb"
+
+import { IconButton } from "../IconButton"
+import GrowingNumber, { type GrowingNumberProps } from "./GrowingNumber"
 
 export default {
-  title: 'Components/AnimatedNumber',
-  component: AnimatedNumber,
+  title: "Components/GrowingNumber",
+  component: GrowingNumber,
 
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col justify-center items-center">
         <Story />
       </div>
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 } as Meta
 
-const Template: StoryFn<AnimatedNumberProps> = props => {
+const Template: StoryFn<GrowingNumberProps> = (props) => {
   const [key, setKey] = useState(0)
   function sum() {
     setKey(key + 1)
@@ -32,7 +32,7 @@ const Template: StoryFn<AnimatedNumberProps> = props => {
       <IconButton onClick={sum} className="absolute top-2 right-2">
         <TbReload />
       </IconButton>
-      <AnimatedNumber {...props} key={key} />
+      <GrowingNumber {...props} key={key} />
     </div>
   )
 }
@@ -43,18 +43,19 @@ export const CustomProps = Template.bind({})
 CustomProps.parameters = {
   docs: {
     description: {
-      story: 'This story shows the `className` prop set to `text-4xl text-green-400 font-bold`.',
+      story:
+        "This story shows the `className` prop set to `text-4xl text-green-400 font-bold`.",
     },
   },
 }
 CustomProps.args = {
-  className: 'text-4xl text-green-400 font-bold',
+  className: "text-4xl text-green-400 font-bold",
 }
 export const CustomDuration = Template.bind({})
 CustomDuration.parameters = {
   docs: {
     description: {
-      story: 'This story shows the `duration` prop set to 15.',
+      story: "This story shows the `duration` prop set to 15.",
     },
   },
 }
@@ -65,7 +66,7 @@ export const CustomUntil = Template.bind({})
 CustomUntil.parameters = {
   docs: {
     description: {
-      story: 'This story shows the `until` prop set to 777.',
+      story: "This story shows the `until` prop set to 777.",
     },
   },
 }
@@ -76,7 +77,7 @@ export const CustomSince = Template.bind({})
 CustomSince.parameters = {
   docs: {
     description: {
-      story: 'This story shows the `from` prop set to 50.',
+      story: "This story shows the `from` prop set to 50.",
     },
   },
 }

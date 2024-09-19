@@ -31,11 +31,11 @@ export const Default: React.FC = () => {
 
   const shortcuts: KeyPressItem[] = [
     {
-      keys: ["Control", "KeyS"],
+      key: ["Control", "KeyS"],
       event: saveFunction,
     },
     {
-      keys: ["Control", "KeyZ"],
+      key: ["Control", "KeyZ"],
       event: undoFunction,
     },
   ]

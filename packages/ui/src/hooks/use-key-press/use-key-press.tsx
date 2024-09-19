@@ -8,7 +8,7 @@ import { Keys } from "./valid-keys"
 type KeysInput = (keyof typeof Keys)[]
 
 interface KeyPressItem {
-  keys: KeysInput
+  key: KeysInput
   event: (event: KeyboardEvent) => void
   preventDefault?: boolean
 }
@@ -25,7 +25,7 @@ function useKeyPress({
   useEffect(() => {
     const keydownListener = (event: KeyboardEvent) => {
       keyPressItems.forEach(
-        ({ keys, event: triggerEvent, preventDefault = true }) => {
+        ({ key: keys, event: triggerEvent, preventDefault = true }) => {
           if (
             checkCombination(event, keys) &&
             shouldFireEvent(event, tagsToIgnore, triggerOnContentEditable)

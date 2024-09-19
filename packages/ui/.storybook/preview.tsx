@@ -6,6 +6,8 @@ import { themes } from "@storybook/theming"
 import { DarkThemeToggle, Toaster } from "../src/components"
 import { useThemeMode } from "../src/hooks"
 import "./style.css"
+import React from "react"
+
 import { PoluiProvider } from "../src"
 
 const Provider = ({ children }: PropsWithChildren) => {
@@ -36,13 +38,6 @@ const Provider = ({ children }: PropsWithChildren) => {
 
 const preview: Preview = {
   decorators: [
-    withThemeByClassName({
-      themes: {
-        light: "light",
-        dark: "dark",
-      },
-      defaultTheme: "light",
-    }),
     (Story) => (
       <Provider>
         <Story />
