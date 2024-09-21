@@ -8,7 +8,7 @@ interface MeasureResult<T extends Element> {
 }
 
 const useMeasure = <T extends Element = Element>(): MeasureResult<T> => {
-  const ref = useRef<T>(null)
+  const ref = useRef<T>(null!)
   const [bounds, setBounds] = useState<DOMRectReadOnly>(new DOMRectReadOnly())
 
   useEffect(() => {
