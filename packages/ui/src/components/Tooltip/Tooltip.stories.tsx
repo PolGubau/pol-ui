@@ -6,21 +6,12 @@ import { AlignEnum, SidesEnum, type Align, type Side } from "../../types"
 import { Button } from "../Button"
 import { IconButton } from "../IconButton"
 import { Tooltip, type TooltipProps } from "./Tooltip"
+import ToolbarExpandable from "./v2"
 
 export default {
   title: "Components/Tooltip",
   component: Tooltip,
-  decorators: [
-    (Story) => (
-      <div className="flex p-6 grid place-items-center min-h-[200px] bg-secondary-50">
-        <Story />
-      </div>
-    ),
-  ],
   tags: ["autodocs"],
-  parameters: {
-    layout: "fullscreen",
-  },
 } as Meta
 
 const Template: StoryFn<TooltipProps> = (args) => <Tooltip {...args} />
@@ -47,20 +38,7 @@ IconUseCase.args = {
   ),
 }
 
-export const DarkMode = () => (
-  <div className=" grid grid-cols-2 border border-secondary rounded-2xl overflow-hidden">
-    <div className="flex p-8 ">
-      <Tooltip label="Tooltip content">
-        <Button>Default tooltip</Button>
-      </Tooltip>
-    </div>
-    <div className="flex p-8 bg-secondary-900 dark">
-      <Tooltip label="Tooltip content">
-        <Button>Default tooltip</Button>
-      </Tooltip>
-    </div>
-  </div>
-)
+export const New = () => <ToolbarExpandable />
 
 export const Controlled = () => {
   const { value, toggle } = useBoolean(false)

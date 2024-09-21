@@ -17,9 +17,7 @@ export default {
       </div>
     ),
   ],
-  parameters: {
-    layout: "fullscreen",
-  },
+
   tags: ["autodocs"],
 } as Meta
 const ExampleContent = () => {

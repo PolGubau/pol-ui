@@ -5,8 +5,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { TbCheck } from "react-icons/tb"
 import { twMerge } from "tailwind-merge"
 
-import { cn } from "../../helpers"
-import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
+import { mergeDeep } from "../../helpers"
 import { getTheme } from "../../theme-store"
 import { ColorsEnum } from "../../types"
 import type { Colors, DeepPartial } from "../../types/types"
@@ -61,7 +60,7 @@ const AnimatedCheckIcon = ({
               transition={{
                 type: "tween",
                 duration: 0.3,
-                ease: "easeOut",
+                ease: isVisible ? "easeOut" : "easeIn",
               }}
             />
           </svg>
@@ -85,21 +84,12 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
 
     const id = useId()
 
-    // id : props.id, if label: label+id, if not lavel: id
-    const getLabel = () => {
-      if (props.id) return props.id
-      if (label) return label + id
-      return id
-    }
-
-    const parsedId = getLabel()
-
     return (
       <li className="inline-flex items-center gap-2 relative">
         <input
-          id={parsedId}
+          id={props.id ?? label + id}
           {...props}
-          className={cn(
+          className={twMerge(
             theme.base,
             theme.before,
             theme.color[color],

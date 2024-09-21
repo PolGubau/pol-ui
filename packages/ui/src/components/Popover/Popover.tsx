@@ -1,17 +1,42 @@
 "use client"
 
-import React from "react"
-import * as P from "@radix-ui/react-popover"
+import * as React from "react"
+import * as PopoverPrimitive from "@radix-ui/react-popover"
 import { TbX } from "react-icons/tb"
 
 import { cn, mergeDeep } from "../../helpers"
 import { getTheme } from "../../theme-store"
-import type { DeepPartial } from "../../types"
+import { DeepPartial } from "../../types"
 import { Button } from "../Button"
 import { IconButton } from "../IconButton"
-import type { PopoverTheme } from "./theme"
+import { PopoverTheme } from "./theme"
 
-export interface PopoverProps extends Omit<P.PopoverContentProps, "content"> {
+const PopoverTrigger = PopoverPrimitive.Trigger
+
+const PopoverAnchor = PopoverPrimitive.Anchor
+
+const PopoverContent = React.forwardRef<
+  React.ElementRef<typeof PopoverPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>
+>(({ className, align = "center", sideOffset = 4, ...props }, ref) => (
+  <PopoverPrimitive.Portal>
+    <PopoverPrimitive.Content
+      ref={ref}
+      align={align}
+      sideOffset={sideOffset}
+      className={cn(
+        "z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+        className
+      )}
+      {...props}
+    />
+  </PopoverPrimitive.Portal>
+))
+PopoverContent.displayName = PopoverPrimitive.Content.displayName
+
+//
+interface PopoverProps
+  extends Omit<PopoverPrimitive.PopoverContentProps, "content"> {
   children: React.ReactNode
   open?: boolean
   defaultOpen?: boolean
@@ -25,7 +50,7 @@ export interface PopoverProps extends Omit<P.PopoverContentProps, "content"> {
   label?: string
   disabled?: boolean
 }
-export const Popover = ({
+const Popover = ({
   children,
   open,
   defaultOpen,
@@ -35,27 +60,26 @@ export const Popover = ({
   label = "Open Menu",
   theme: customTheme = {},
   closeClassName,
-  hasCloseButton = true,
+  hasCloseButton = false,
   closeIcon = <TbX />,
   disabled = false,
   ...rest
 }: PopoverProps) => {
   const theme = mergeDeep(getTheme().popover, customTheme)
+
   const triggerNode = trigger || <Button name={label}>{label}</Button>
 
   return (
-    <P.Root
+    <PopoverPrimitive.Root
       open={open}
       defaultOpen={defaultOpen}
       onOpenChange={onOpenChange}
       modal={modal}
     >
-      <P.Trigger disabled={disabled} asChild>
-        {triggerNode}
-      </P.Trigger>
+      <PopoverTrigger>{triggerNode}</PopoverTrigger>
       {!disabled && (
-        <P.Portal>
-          <P.Content
+        <PopoverPrimitive.Portal>
+          <PopoverPrimitive.Content
             {...rest}
             className={cn(
               theme.content.base,
@@ -66,20 +90,28 @@ export const Popover = ({
           >
             {hasCloseButton && (
               <div className={theme.close}>
-                <P.Close
+                <PopoverPrimitive.Close
                   className={cn(closeClassName)}
                   aria-label="Close"
                   asChild
                 >
                   <IconButton>{closeIcon}</IconButton>
-                </P.Close>
+                </PopoverPrimitive.Close>
               </div>
             )}
             {children}
-            <P.Arrow className="fill-secondary-50 dark:fill-secondary-900" />
-          </P.Content>
-        </P.Portal>
+            <PopoverPrimitive.Arrow className="fill-background dark:fill-secondary-900" />
+          </PopoverPrimitive.Content>
+        </PopoverPrimitive.Portal>
       )}
-    </P.Root>
+    </PopoverPrimitive.Root>
   )
+}
+
+export {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverAnchor,
+  type PopoverProps,
 }

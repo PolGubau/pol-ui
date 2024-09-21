@@ -1,27 +1,16 @@
-'use client'
+"use client"
 
-import { forwardRef } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types/types'
-import { ColorsEnum } from '../../types/enums'
-import { Label } from '../Label'
-import { TbCheck } from 'react-icons/tb'
-import type { CheckboxTheme } from './theme'
-import { AnimatePresence, motion } from 'framer-motion'
-import type { CheckboxProps } from './props'
+import { forwardRef, useEffect, useState } from "react"
+import { AnimatePresence, motion } from "framer-motion"
 
-/**
- * @name AnimatedCheckIcon
- * @description Animated check icon for the Checkbox component.
- * @param {object} props - Props for the AnimatedCheckIcon component.
- * @param {boolean} props.initial - Initial visibility state.
- * @param {boolean} props.isVisible - Visibility state.
- * @param {DeepPartial<CheckboxTheme>} props.theme - Custom theme for the icon.
- * @param {Colors} props.color - Color of the icon.
- * @returns {JSX.Element}
- */
+import { cn, mergeDeep } from "../../helpers"
+import { getTheme } from "../../theme-store"
+import { ColorsEnum } from "../../types/enums"
+import type { DeepPartial } from "../../types/types"
+import { Label } from "../Label"
+import type { CheckboxProps } from "./props"
+import type { CheckboxTheme } from "./theme"
+
 const AnimatedCheckIcon = ({
   initial = true,
   isVisible = false,
@@ -31,21 +20,25 @@ const AnimatedCheckIcon = ({
   initial?: boolean
   isVisible?: boolean
   theme?: DeepPartial<CheckboxTheme>
-  color?: CheckboxProps['color']
+  color?: CheckboxProps["color"]
 }): JSX.Element => {
   const theme = mergeDeep(getTheme().checkbox, customTheme)
 
   return (
     <AnimatePresence initial={initial} mode="wait">
       {isVisible && (
-        <div className={twMerge(theme.floating.base)}>
+        <div className={cn(theme.floating.base)}>
           <svg
             width="24"
             height="18"
             viewBox="0 0 24 18"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className={twMerge(theme.floating.svg, theme.check.color[color], 'stroke-current')}
+            className={cn(
+              theme.floating.svg,
+              theme.check.color[color],
+              "stroke-current"
+            )}
           >
             <motion.path
               d="M2.5 9.5L8.5 15.5L21.5 2.5"
@@ -56,9 +49,58 @@ const AnimatedCheckIcon = ({
               strokeLinecap="round"
               strokeLinejoin="round"
               transition={{
-                type: 'tween',
+                type: "tween",
                 duration: 0.3,
-                ease: isVisible ? 'easeOut' : 'easeIn',
+                ease: isVisible ? "easeOut" : "easeIn",
+              }}
+            />
+          </svg>
+        </div>
+      )}
+    </AnimatePresence>
+  )
+}
+const AnimatedIntermediateIcon = ({
+  initial = true,
+  isVisible = false,
+  theme: customTheme = {},
+  color = ColorsEnum.primary,
+}: {
+  initial?: boolean
+  isVisible?: boolean
+  theme?: DeepPartial<CheckboxTheme>
+  color?: CheckboxProps["color"]
+}): JSX.Element => {
+  const theme = mergeDeep(getTheme().checkbox, customTheme)
+
+  return (
+    <AnimatePresence initial={initial} mode="wait">
+      {isVisible && (
+        <div className={cn(theme.floating.base)}>
+          <svg
+            width="24"
+            height="18"
+            viewBox="0 0 24 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className={cn(
+              theme.floating.svg,
+              theme.check.color[color],
+              "stroke-current"
+            )}
+          >
+            <motion.path
+              d="M2.5 9.5L21.5 9.5"
+              animate={{ pathLength: 1 }}
+              initial={{ pathLength: 0 }}
+              exit={{ pathLength: 0 }}
+              strokeWidth="5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              transition={{
+                type: "tween",
+                duration: 0.3,
+                ease: isVisible ? "easeOut" : "easeIn",
               }}
             />
           </svg>
@@ -70,40 +112,86 @@ const AnimatedCheckIcon = ({
 
 /**
  * @name Checkbox
+ *
  * @description Checkbox component for user input, it can be used to select multiple options from a list. It can be used in forms, surveys, etc.
+ *
  * @param {CheckboxProps} props - Props for the Checkbox component.
+ *
  * @param {string} props.className - Additional class names for styling.
+ *
  * @param {string} props.label - Label text for the checkbox.
+ *
  * @param {Colors} props.color - Color of the checkbox.
+ *
  * @param {DeepPartial<CheckboxTheme>} props.theme - Custom theme for the checkbox.
- * @author Pol Gubau Amores - https://polgubau.com
- * @returns {JSX.Element}
+ *
+ * @author Pol Gubau - Mesalvo, SUS
+ *
+ * @returns {JSX.Element} - Rendered Checkbox component.
  */
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, label, color = ColorsEnum.primary, theme: customTheme = {}, ...props }, ref) => {
+  (
+    {
+      checked = false,
+      className,
+      label,
+      color = ColorsEnum.primary,
+      theme: customTheme = {},
+      onChange,
+      ...props
+    },
+    ref
+  ) => {
     const theme = mergeDeep(getTheme().checkbox, customTheme)
 
+    const [value, setValue] = useState(checked)
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValue(event.target.checked)
+      onChange?.(event)
+    }
+
+    useEffect(() => {
+      // just update the value if the checked prop changes
+      if (checked === value) return
+      // if it's uncontrolled, update the value
+      if (typeof checked !== "undefined") setValue(checked)
+    }, [checked])
+
+    const state = {
+      isFalse: Boolean(value) === false,
+      isTrue: Boolean(value) === true && checked !== "indeterminate",
+      isIntermediate: value === "indeterminate",
+    }
+
     return (
-      <div className="inline-flex items-center gap-3 relative">
+      <div className="inline-flex items-center gap-3 relative ">
         <input
           id={props.id ?? label}
           {...props}
-          className={twMerge(theme.base, theme.before, theme.color[color], className)}
+          checked={state.isTrue || state.isIntermediate}
+          onChange={handleChange}
+          className={cn(
+            theme.base,
+            theme.before,
+            theme.color[color],
+            className
+          )}
           ref={ref}
           type="checkbox"
         />
 
-        {typeof props.checked === 'undefined' ? (
-          <span className={twMerge(theme.check.base, theme.check.color[color])}>
-            <TbCheck />
-          </span>
-        ) : (
-          <AnimatedCheckIcon isVisible={props.checked ?? false} color={color} />
-        )}
+        <>
+          <AnimatedCheckIcon isVisible={state.isTrue ?? false} color={color} />
+          <AnimatedIntermediateIcon
+            isVisible={state.isIntermediate ?? false}
+            color={color}
+          />
+        </>
         {label && <Label htmlFor={props.id ?? label}>{label}</Label>}
       </div>
     )
-  },
+  }
 )
 
-Checkbox.displayName = 'Checkbox'
+Checkbox.displayName = "Checkbox"
