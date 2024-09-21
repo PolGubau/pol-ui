@@ -34,7 +34,7 @@ const Toolbox = ({ children }: ToolboxProps) => {
       <div
         style={{ zIndex: 999999 }}
         className={cn(
-          "bg-secondary-900 flex transition-all justify-center items-center rounded-full p-1 gap-1 fixed left-1/2 -translate-x-1/2 z-40",
+          "bg-secondary-900 flex transition-all justify-center items-center rounded-full p-1 gap-1 fixed left-1/2 -translate-x-1/2 z-40 max-w-[90vw]",
           {
             "bottom-12": showDebug,
             "-bottom-20": !showDebug,

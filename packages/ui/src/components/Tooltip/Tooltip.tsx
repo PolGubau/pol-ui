@@ -10,6 +10,8 @@ export interface TooltipProps
   extends Omit<PrimitiveTooltip.TooltipContentProps, "content"> {
   label: React.ReactNode | undefined
   arrow?: boolean
+  arrowProps?: PrimitiveTooltip.TooltipArrowProps &
+    React.RefAttributes<SVGSVGElement>
   theme?: DeepPartial<TooltipTheme>
   className?: string
   children?: React.ReactNode
@@ -39,6 +41,7 @@ export const Tooltip = ({
   open,
   defaultOpen,
   onOpenChange,
+  arrowProps,
 
   /**
    * The duration from when the pointer enters the trigger until the tooltip gets opened. This will
@@ -78,7 +81,10 @@ export const Tooltip = ({
             >
               {label}
               {arrow && (
-                <PrimitiveTooltip.Arrow className="fill-background dark:fill-black" />
+                <PrimitiveTooltip.Arrow
+                  className={cn(theme.arrow, arrowProps?.className)}
+                  {...arrowProps}
+                />
               )}
             </PrimitiveTooltip.Content>
           </PrimitiveTooltip.Portal>

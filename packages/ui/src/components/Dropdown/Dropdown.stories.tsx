@@ -28,12 +28,12 @@ import {
   DropdownShortcut,
   DropdownSub,
 } from "./Dropdown"
+import { DropdownSubContent } from "./components"
 import {
+  DropdownExpandableTextArea,
   DropdownItem,
-  DropdownSubContent,
   DropdownSubTrigger,
-} from "./components"
-import { DropdownExpandableTextArea } from "./components/items"
+} from "./components/items"
 
 export default {
   title: "Components/Dropdown",

@@ -6,11 +6,19 @@ import { AlignEnum, SidesEnum, type Align, type Side } from "../../types"
 import { Button } from "../Button"
 import { IconButton } from "../IconButton"
 import { Tooltip, type TooltipProps } from "./Tooltip"
-import ToolbarExpandable from "./v2"
+import ToolbarExpandable from "../Toolbox/v2"
 
 export default {
   title: "Components/Tooltip",
   component: Tooltip,
+  decorators: [
+    (Story) => (
+      <div className="grid place-items-center">
+        <Story />
+      </div>
+    ),
+  ],
+
   tags: ["autodocs"],
 } as Meta
 
