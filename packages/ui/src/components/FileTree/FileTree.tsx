@@ -34,14 +34,6 @@ type TreeContextProps = {
 
 const TreeContext = createContext<TreeContextProps | null>(null)
 
-const useTree = () => {
-  const context = useContext(TreeContext)
-  if (!context) {
-    throw new Error("useTree must be used within a TreeProvider")
-  }
-  return context
-}
-
 interface TreeViewComponentProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 type Direction = "rtl" | "ltr" | undefined
