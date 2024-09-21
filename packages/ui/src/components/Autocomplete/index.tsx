@@ -1,3 +1,7 @@
-export { autocompleteTheme, type AutocompleteTheme } from './theme'
+export { autocompleteTheme, type AutocompleteTheme } from "./theme"
 
-export { Autocomplete, type AutocompleteProps, type AutocompleteOption } from './autocomplete'
+export {
+  Autocomplete,
+  type AutocompleteProps,
+  type AutocompleteOption,
+} from "./autocomplete"

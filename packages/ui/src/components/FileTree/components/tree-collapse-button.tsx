@@ -9,7 +9,7 @@ type CollapseButtonProps = {
   expandAll?: boolean
 } & ButtonProps
 
-const CollapseButton = ({
+const TreeCollapseButton = ({
   className,
   elements,
   expandAll = false,
@@ -57,4 +57,4 @@ const CollapseButton = ({
     </Button>
   )
 }
-export { CollapseButton }
+export { TreeCollapseButton as CollapseButton }

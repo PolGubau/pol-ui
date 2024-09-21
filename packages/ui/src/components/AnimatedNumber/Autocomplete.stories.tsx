@@ -3,7 +3,7 @@ import type { Meta } from "@storybook/react"
 import { TbArrowBarToUp, TbChevronUp, TbReload } from "react-icons/tb"
 
 import { Button } from "../Button"
-import AnimatedNumber from "./index"
+import AnimatedNumber from "./AnimatedNumber"
 
 export default {
   title: "Components/AnimatedNumber",

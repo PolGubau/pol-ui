@@ -1,6 +1,7 @@
 import type { Meta } from "@storybook/react"
 
-import { File, Folder, Tree, TreeViewElement } from "./FileTree"
+import { Tree, TreeViewElement } from "./FileTree"
+import { File, Folder } from "./components"
 
 export default {
   title: "Components/FileTree",
