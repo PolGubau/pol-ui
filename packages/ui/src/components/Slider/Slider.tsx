@@ -12,6 +12,13 @@ import { SliderTheme } from "./theme"
 export interface SliderProps
   extends React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root> {
   className?: string
+  tooltip?: boolean
+  classNames?: {
+    root?: string
+    track?: string
+    range?: string
+    thumb?: string
+  }
   color?: Colors
   theme?: DeepPartial<SliderTheme>
 }
@@ -23,6 +30,7 @@ const Slider = React.forwardRef<
   (
     {
       className,
+      classNames,
       color = ColorsEnum.primary,
       theme: customTheme = {},
       orientation = OrientationsEnum.horizontal,
@@ -53,7 +61,8 @@ const Slider = React.forwardRef<
         value={value}
         onValueChange={onChange}
         ref={ref}
-        className={cn(theme.base, className)}
+        data-testid="slider"
+        className={cn(theme.base, classNames?.root, className)}
         data-orientation={orientation}
         orientation={orientation}
         disabled={props.disabled}
@@ -63,11 +72,15 @@ const Slider = React.forwardRef<
         {/*  */}
         <SliderPrimitive.Track
           data-orientation={orientation}
-          className={cn(theme.track.base, theme.track[orientation])}
+          className={cn(
+            theme.track.base,
+            theme.track[orientation],
+            classNames?.track
+          )}
         >
           <SliderPrimitive.Range
             data-orientation={orientation}
-            className={cn(theme.range, `bg-${color}`)}
+            className={cn(theme.range, `bg-${color}`, classNames?.range)}
           />
         </SliderPrimitive.Track>
 
@@ -85,7 +98,11 @@ const Slider = React.forwardRef<
               onPointerUp={onDragEnd}
               aria-disabled={props.disabled}
               key={i}
-              className={cn(`border-${color} ring-${color}`, theme.thumb)}
+              className={cn(
+                `border-${color} ring-${color}`,
+                theme.thumb,
+                classNames?.thumb
+              )}
             />
           </Tooltip>
         ))}
