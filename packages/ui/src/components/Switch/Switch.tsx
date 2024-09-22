@@ -24,18 +24,30 @@ export type SwitchProps = Omit<ComponentProps<"button">, "onChange"> & {
   label?: string
   onChange?: (checked: boolean) => void
   theme?: DeepPartial<SwitchTheme>
+
+  keys?: {
+    true?: string[]
+    false?: string[]
+    toggle?: string[]
+  }
 }
 
+const initKeys = {
+  true: ["ArrowRight", "KeyT", "KeyY"],
+  false: ["ArrowLeft", "KeyF", "KeyN"],
+  toggle: ["Space", "Enter"],
+}
 export const Switch: FC<SwitchProps> = ({
   checked,
   className,
-  color = ColorsEnum.secondary,
+  color = ColorsEnum.primary,
   size = MainSizesEnum.md,
-  disabled,
+  disabled = false,
   label,
   name,
   onChange,
   theme: customTheme = {},
+  keys = initKeys,
   ...props
 }) => {
   const id = useId()
@@ -49,23 +61,21 @@ export const Switch: FC<SwitchProps> = ({
   }
 
   const handleOnKeyDown = (event: KeyboardEvent<HTMLButtonElement>): void => {
-    if (event.code == "Space" || event.code == "Enter") {
-      event.preventDefault()
-      set()
+    const code = event.code
+    if (disabled || !code) return
+    props.onKeyDown?.(event)
+    event.preventDefault()
+
+    //
+    const isIn = (key: string, arr: keyof typeof keys) => {
+      const a = keys[arr]
+      if (!a) return false
+      return a.includes(key)
     }
-    if (event.code == "ArrowLeft") {
-      event.preventDefault()
-      set(false)
-    }
-    if (event.code == "ArrowRight") {
-      event.preventDefault()
-      set(true)
-    }
-  }
-  const spring = {
-    type: "spring",
-    stiffness: 700,
-    damping: 30,
+
+    if (isIn(code, "toggle")) set()
+    if (isIn(code, "false")) set(false)
+    if (isIn(code, "true")) set(true)
   }
 
   const isSizeAMainSize = Object.keys(theme.toggle.sizes).includes(
@@ -85,7 +95,7 @@ export const Switch: FC<SwitchProps> = ({
         name={name}
         readOnly
         type="checkbox"
-        className="sr-only"
+        className="sr-only group"
       />
       <button
         data-testid="ui-switch"
@@ -123,7 +133,12 @@ export const Switch: FC<SwitchProps> = ({
           <motion.div
             data-checked={value}
             layout
-            transition={spring}
+            transition={{
+              type: "spring",
+              stiffness: 700,
+              damping: 30,
+              duration: 0.3,
+            }}
             className={cn(theme.toggle.handler.base)}
           />
         </motion.div>
