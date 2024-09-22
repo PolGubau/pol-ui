@@ -78,14 +78,6 @@ export const Switch: FC<SwitchProps> = ({
     if (isIn(code, "true")) set(true)
   }
 
-  const isSizeAMainSize = Object.keys(theme.toggle.sizes).includes(
-    size as string
-  )
-  if (!isSizeAMainSize)
-    throw new Error(
-      `Size ${size} is not a valid size - ${Object.keys(MainSizesEnum)}`
-    )
-
   return (
     <>
       <input
@@ -102,8 +94,6 @@ export const Switch: FC<SwitchProps> = ({
         aria-checked={value}
         aria-labelledby={`${id}-switch-label`}
         disabled={disabled}
-        aria-label={label}
-        data-color={color}
         data-checked={value}
         id={`${id}-ui-switch`}
         name={`${id}-ui-switch`}
@@ -111,7 +101,6 @@ export const Switch: FC<SwitchProps> = ({
         onKeyDown={handleOnKeyDown}
         role="switch"
         title={label}
-        tabIndex={0}
         type="button"
         className={cn(
           theme.root.base,
@@ -120,12 +109,11 @@ export const Switch: FC<SwitchProps> = ({
         )}
         {...props}
       >
-        <motion.div
+        <div
           data-checked={value}
           data-testid="ui-switch-toggle"
           className={cn(
             theme.toggle.base,
-            theme.toggle.checked[value ? "on" : "off"],
             theme.toggle.color[color],
             theme.toggle.sizes[size as keyof typeof theme.toggle.sizes]
           )}
@@ -133,15 +121,10 @@ export const Switch: FC<SwitchProps> = ({
           <motion.div
             data-checked={value}
             layout
-            transition={{
-              type: "spring",
-              stiffness: 700,
-              damping: 30,
-              duration: 0.3,
-            }}
+            transition={spring}
             className={cn(theme.toggle.handler.base)}
           />
-        </motion.div>
+        </div>
 
         {label?.length ? (
           <Label
@@ -160,3 +143,8 @@ export const Switch: FC<SwitchProps> = ({
 }
 
 Switch.displayName = "Switch"
+const spring = {
+  type: "spring",
+  stiffness: 700,
+  damping: 30,
+}

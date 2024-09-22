@@ -15,7 +15,6 @@ export interface SwitchToggleTheme {
   base: string
   sizes: MainSizesType
   color: ColorsType
-  checked: IBoolean
   handler: SwitchHandlerTheme
 }
 
@@ -34,7 +33,7 @@ export const switchTheme: SwitchTheme = {
       "ml-3 text-sm font-medium text-secondary-900 dark:text-secondary-300",
   },
   toggle: {
-    base: "rounded-full border group-focus:ring-2 group-focus:ring-primary/25 flex items-center transition-all overflow-hidden aspect-video p-0.5",
+    base: "rounded-full border group-focus:ring-2 group-focus:ring-primary/25 flex items-center overflow-hidden aspect-video p-0.5 justify-start	bg-transparent data-[checked=true]:justify-end data-[checked=false]:opacity-50",
     color: {
       error: "bg-error border-error-500",
       success: "bg-success border-success-500",
@@ -43,10 +42,7 @@ export const switchTheme: SwitchTheme = {
       primary: "bg-primary border-primary-600",
       secondary: "bg-secondary border-secondary-400",
     },
-    checked: {
-      on: "justify-end",
-      off: "justify-start	bg-transparent opacity-50",
-    },
+
     sizes: {
       xs: "w-8",
       sm: "w-10",
@@ -55,7 +51,7 @@ export const switchTheme: SwitchTheme = {
       xl: "w-16",
     },
     handler: {
-      base: "shadow-sm bg-secondary-50 rounded-full flex h-full aspect-square data-[checked=false]:h-full group-active:aspect-[4/3] transition-all",
+      base: "bg-secondary-50 rounded-full h-full aspect-square group-active:aspect-[4/3] transition-[aspect-ratio] ease-in-out duration-200",
     },
   },
 }
