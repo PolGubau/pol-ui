@@ -19,7 +19,7 @@ const Provider = ({ children }: PropsWithChildren) => {
         mode: computedMode,
       }}
     >
-      <div className="w-full h-full bg-background dark:bg-secondary-900 relative grid pt-6 rounded-xl p-2 min-h-[400px]">
+      <div className="w-full h-full bg-background dark:bg-secondary-900 relative grid pt-6 rounded-xl p-2 min-h-[300px]">
         {children}
         <div
           className="absolute"

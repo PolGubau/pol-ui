@@ -1,12 +1,3 @@
-export { DialogFooter, DialogTitle, DialogHeader } from './extras'
-
-export {
-  Root,
-  DialogPortal,
-  DialogOverlay,
-  DialogClose,
-  DialogTrigger,
-  DialogContent,
-  Dialog,
-  type DialogProps,
-} from './Dialog'
+export * from "./Dialog"
+export * from "./components"
+export * from "./extras"

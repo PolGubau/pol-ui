@@ -1,9 +1,15 @@
 "use client"
 
-import { useId, type ComponentProps, type FC, type KeyboardEvent } from "react"
+import {
+  useId,
+  useState,
+  type ComponentProps,
+  type FC,
+  type KeyboardEvent,
+} from "react"
 import { motion } from "framer-motion"
-import { twMerge } from "tailwind-merge"
 
+import { cn } from "../../helpers"
 import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
 import { getTheme } from "../../theme-store"
 import { ColorsEnum, MainSizesEnum } from "../../types/enums"
@@ -12,11 +18,11 @@ import { Label } from "../Label"
 import type { SwitchTheme } from "./theme"
 
 export type SwitchProps = Omit<ComponentProps<"button">, "onChange"> & {
-  checked: boolean
+  checked?: boolean
   color?: Colors
   size?: MainSizes
   label?: string
-  onChange: (checked: boolean) => void
+  onChange?: (checked: boolean) => void
   theme?: DeepPartial<SwitchTheme>
 }
 
@@ -35,22 +41,25 @@ export const Switch: FC<SwitchProps> = ({
   const id = useId()
   const theme = mergeDeep(getTheme().switch, customTheme)
 
-  const toggle = (): void => {
-    onChange(!checked)
+  const [value, setValue] = useState(checked)
+
+  const set = (newValue = !value): void => {
+    onChange?.(newValue)
+    setValue(newValue)
   }
 
   const handleOnKeyDown = (event: KeyboardEvent<HTMLButtonElement>): void => {
     if (event.code == "Space" || event.code == "Enter") {
       event.preventDefault()
-      toggle()
+      set()
     }
     if (event.code == "ArrowLeft") {
       event.preventDefault()
-      onChange(false)
+      set(false)
     }
     if (event.code == "ArrowRight") {
       event.preventDefault()
-      onChange(true)
+      set(true)
     }
   }
   const spring = {
@@ -69,31 +78,32 @@ export const Switch: FC<SwitchProps> = ({
 
   return (
     <>
-      {name && checked ? (
-        <input
-          checked={checked}
-          hidden
-          name={name}
-          readOnly
-          type="checkbox"
-          className="sr-only"
-        />
-      ) : null}
+      <input
+        checked={value}
+        onChange={() => setValue(!value)}
+        hidden
+        name={name}
+        readOnly
+        type="checkbox"
+        className="sr-only"
+      />
       <button
         data-testid="ui-switch"
-        aria-checked={checked}
+        aria-checked={value}
         aria-labelledby={`${id}-switch-label`}
         disabled={disabled}
         aria-label={label}
+        data-color={color}
+        data-checked={value}
         id={`${id}-ui-switch`}
         name={`${id}-ui-switch`}
-        onClick={toggle}
+        onClick={() => set()}
         onKeyDown={handleOnKeyDown}
         role="switch"
         title={label}
         tabIndex={0}
         type="button"
-        className={twMerge(
+        className={cn(
           theme.root.base,
           theme.root.active[disabled ? "off" : "on"],
           className
@@ -101,23 +111,20 @@ export const Switch: FC<SwitchProps> = ({
         {...props}
       >
         <motion.div
+          data-checked={value}
           data-testid="ui-switch-toggle"
-          className={twMerge(
+          className={cn(
             theme.toggle.base,
-            theme.toggle.checked[checked ? "on" : "off"],
+            theme.toggle.checked[value ? "on" : "off"],
             theme.toggle.color[color],
             theme.toggle.sizes[size as keyof typeof theme.toggle.sizes]
           )}
         >
           <motion.div
+            data-checked={value}
             layout
             transition={spring}
-            className={twMerge(
-              theme.toggle.handler.base,
-              theme.toggle.handler.sizes[
-                size as keyof typeof theme.toggle.handler.sizes
-              ]
-            )}
+            className={cn(theme.toggle.handler.base)}
           />
         </motion.div>
 
