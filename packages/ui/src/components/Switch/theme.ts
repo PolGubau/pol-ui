@@ -37,7 +37,7 @@ export const switchTheme: SwitchTheme = {
       "ml-3 text-sm font-medium text-secondary-900 dark:text-secondary-300",
   },
   toggle: {
-    base: "rounded-full border group-focus:ring-2 group-focus:ring-primary/25  flex items-center transition-all overflow-hidden",
+    base: "rounded-full border group-focus:ring-2 group-focus:ring-primary/25 flex items-center transition-all overflow-hidden aspect-video p-0.5",
     color: {
       error: "bg-error border-error-900",
       success: "bg-success border-success-500",
@@ -48,17 +48,17 @@ export const switchTheme: SwitchTheme = {
     },
     checked: {
       on: "justify-end",
-      off: "justify-start	border-secondary-800 bg-transparent dark:border-secondary-600  opacity-50",
+      off: "justify-start	border-secondary-800 bg-transparent dark:border-secondary-600 opacity-50",
     },
     sizes: {
-      xs: "w-8 h-5 p-px",
-      sm: "w-9 h-6 p-[2px]",
-      md: "w-12 h-7 p-[4px]",
-      lg: "w-14 h-8 p-1",
-      xl: "w-16 h-9 p-1",
+      xs: "w-8",
+      sm: "w-10",
+      md: "w-12",
+      lg: "w-14",
+      xl: "w-16",
     },
     handler: {
-      base: "shadow-sm bg-secondary-50 rounded-full flex h-full aspect-square",
+      base: "shadow-sm bg-secondary-50 rounded-full flex h-full aspect-square data-[checked=true]:scale-80",
     },
   },
 }
