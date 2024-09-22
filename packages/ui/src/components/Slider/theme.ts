@@ -1,40 +1,29 @@
-import type { ColorsType } from '../../types'
+import { cn } from "../../helpers"
 
 export interface SliderTheme {
   base: string
-  track: string
-  range: {
+  track: {
     base: string
-    colors: ColorsType
+    vertical: string
+    horizontal: string
   }
-  thumb: {
-    base: string
-    colors: ColorsType
-  }
+  range: string
+  thumb: string
 }
 export const sliderTheme: SliderTheme = {
-  base: 'relative flex w-full touch-none select-none items-center',
-  track: 'relative h-2 w-full grow overflow-hidden rounded-full bg-secondary-200 dark:bg-secondary-800',
-  range: {
-    base: 'absolute h-full',
-    colors: {
-      primary: 'bg-primary',
-      secondary: 'bg-secondary',
-      success: 'bg-success',
-      error: 'bg-error',
-      warning: 'bg-warning',
-      info: 'bg-info',
-    },
+  base: "relative flex w-full touch-none select-none items-center group data-[orientation=vertical]:flex-col data-[orientation=vertical]:w-3 data-[orientation=vertical]:h-full data-[disabled=true]:opacity-50  data-[disabled=true]:pointer-events-none",
+
+  track: {
+    base: cn(
+      "relative grow overflow-hidden rounded-full bg-secondary-200 dark:bg-secondary-800 cursor-ew-resize h-3 w-full",
+      "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-3"
+    ),
+
+    vertical: "w-3 h-full",
+    horizontal: "h-3 w-full",
   },
-  thumb: {
-    base: 'block h-5 w-5 rounded-full border-2 bg-secondary-50 dark:bg-secondary-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ring-offset-secondary-50 dark:ring-offset-secondary-900',
-    colors: {
-      primary: 'border-primary ring-primary dark:ring-primary',
-      secondary: 'border-secondary ring-secondary dark:ring-secondary',
-      success: 'border-success ring-success dark:ring-success',
-      error: 'border-error ring-error dark:ring-error',
-      warning: 'border-warning ring-warning dark:ring-warning',
-      info: 'border-info ring-info dark:ring-info',
-    },
-  },
+
+  range: "absolute h-full data-[orientation=vertical]:w-full",
+  thumb:
+    "block w-4 h-4 group-hover:h-6 group-hover:w-6 rounded-full border-8 group-hover:border-4 focus-visible:border-4 bg-secondary-50 dark:bg-secondary-900 transition-all ring-0 focus-visible:ring-2 focus-visible:outline-0 disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
 }

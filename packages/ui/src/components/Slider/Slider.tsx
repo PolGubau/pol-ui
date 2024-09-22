@@ -1,18 +1,19 @@
 "use client"
 
-import React from "react"
+import * as React from "react"
 import * as SliderPrimitive from "@radix-ui/react-slider"
 
 import { cn, mergeDeep } from "../../helpers"
 import { getTheme } from "../../theme-store"
-import { ColorsEnum } from "../../types"
-import type { Colors, DeepPartial } from "../../types/types"
-import type { SliderTheme } from "./theme"
+import { Colors, ColorsEnum, DeepPartial, OrientationsEnum } from "../../types"
+import { Tooltip } from "../Tooltip"
+import { SliderTheme } from "./theme"
 
 export interface SliderProps
   extends React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root> {
-  theme?: DeepPartial<SliderTheme>
+  className?: string
   color?: Colors
+  theme?: DeepPartial<SliderTheme>
 }
 
 const Slider = React.forwardRef<
@@ -22,30 +23,73 @@ const Slider = React.forwardRef<
   (
     {
       className,
-      theme: customTheme = {},
       color = ColorsEnum.primary,
+      theme: customTheme = {},
+      orientation = OrientationsEnum.horizontal,
       ...props
     },
     ref
   ) => {
-    const theme: SliderTheme = mergeDeep(getTheme().slider, customTheme)
+    const theme = mergeDeep(getTheme().slider, customTheme)
+
+    const [value, setValue] = React.useState(props.defaultValue || [0])
+
+    const [isDragging, setIsDragging] = React.useState(false)
+
+    const onChange = (values: number[]) => {
+      setValue(values)
+      props.onValueChange?.(values)
+    }
+
+    const onDragStart = () => setIsDragging(true)
+    const onDragEnd = () => {
+      setTimeout(() => {
+        setIsDragging(false)
+      }, 1000)
+    }
 
     return (
-      <SliderPrimitive.Root
+      <SliderPrimitive.Slider
+        value={value}
+        onValueChange={onChange}
         ref={ref}
         className={cn(theme.base, className)}
+        data-orientation={orientation}
+        orientation={orientation}
+        disabled={props.disabled}
+        data-disabled={props.disabled}
         {...props}
-        data-testid="ui-slider"
       >
-        <SliderPrimitive.Track className={theme.track}>
+        {/*  */}
+        <SliderPrimitive.Track
+          data-orientation={orientation}
+          className={cn(theme.track.base, theme.track[orientation])}
+        >
           <SliderPrimitive.Range
-            className={cn(theme.range.base, theme.range.colors[color])}
+            data-orientation={orientation}
+            className={cn(theme.range, `bg-${color}`)}
           />
         </SliderPrimitive.Track>
-        <SliderPrimitive.Thumb
-          className={cn(theme.thumb.base, theme.thumb.colors[color])}
-        />
-      </SliderPrimitive.Root>
+
+        {/*  */}
+        {value.map((_, i) => (
+          <Tooltip
+            arrow
+            key={i}
+            label={value[i] ? value[i].toString() : ""}
+            open={isDragging}
+            disabled={props.disabled}
+          >
+            <SliderPrimitive.Thumb
+              onPointerDown={onDragStart}
+              onPointerUp={onDragEnd}
+              aria-disabled={props.disabled}
+              key={i}
+              className={cn(`border-${color} ring-${color}`, theme.thumb)}
+            />
+          </Tooltip>
+        ))}
+      </SliderPrimitive.Slider>
     )
   }
 )

@@ -16,6 +16,7 @@ export interface TooltipProps
   className?: string
   children?: React.ReactNode
   open?: boolean
+  disabled?: boolean
   defaultOpen?: boolean
   onOpenChange?: (open: boolean) => void
   /**
@@ -49,6 +50,7 @@ export const Tooltip = ({
    * @defaultValue 300
    */
   delayDuration = 300,
+  disabled = false,
 
   /**
    * When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger.
@@ -68,7 +70,7 @@ export const Tooltip = ({
         disableHoverableContent={disableHoverableContent}
       >
         <PrimitiveTooltip.Trigger asChild>{children}</PrimitiveTooltip.Trigger>
-        {label && (
+        {label && !disabled && (
           <PrimitiveTooltip.Portal>
             <PrimitiveTooltip.Content
               sideOffset={rest.sideOffset ?? 5}
