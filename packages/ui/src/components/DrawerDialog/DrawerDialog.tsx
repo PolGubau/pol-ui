@@ -1,23 +1,30 @@
-import * as React from 'react'
+import * as React from "react"
 
-import { useMediaQuery } from '../../hooks/use-media-query'
-import { Dialog } from '../Dialog'
-import { Drawer, DrawerProps } from '../Drawer'
+import { useMediaQuery } from "../../hooks/use-media-query"
+import { Dialog, DialogProps } from "../Dialog"
+import { Drawer, DrawerProps } from "../Drawer"
 
-export const DrawerDialog = ({ children, ...props }: DrawerProps) => {
+export type DrawerDialogProps = DrawerProps &
+  DialogProps & {
+    children: React.ReactNode
+  }
+
+export const DrawerDialog = ({ children, ...rest }: DrawerDialogProps) => {
   const [open, setOpen] = React.useState(false)
-  const isDesktop = useMediaQuery('(min-width: 768px)')
+  const isDesktop = useMediaQuery("(min-width: 768px)")
 
   if (isDesktop) {
+    const propsForDialog = rest as DialogProps
     return (
-      <Dialog open={open} onOpenChange={setOpen} {...props}>
+      <Dialog open={open} onOpenChange={setOpen} {...propsForDialog}>
         {children}
       </Dialog>
     )
   }
+  const propsForDrawer = rest as DrawerProps
 
   return (
-    <Drawer open={open} onOpenChange={setOpen} {...props}>
+    <Drawer open={open} onOpenChange={setOpen} {...propsForDrawer}>
       {children}
     </Drawer>
   )

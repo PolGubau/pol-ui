@@ -58,14 +58,14 @@ const TimedButton = ({
       onMouseUp={handleMouseUp}
       onTouchEnd={handleTouchEnd}
       rippleOptions={{ disabled: isPressed }}
-      className="relative overflow-hidden"
+      className="relative overflow-hidden "
     >
       <AnimatePresence>
         {isPressed && (
           <motion.div
-            className="absolute top-0 left-0 h-full bg-primary-800/50 z-0"
+            className="absolute left-0 h-full bg-black/15 z-0 rounded-r-full items-center"
             initial={{ width: "0%", x: "0%" }}
-            animate={{ width: "100%", x: "0%" }}
+            animate={{ width: "100%", x: "0%", height: "200%" }}
             exit={{ width: "0%", x: "0%" }}
             transition={{ duration: delay / 1000 }}
           />

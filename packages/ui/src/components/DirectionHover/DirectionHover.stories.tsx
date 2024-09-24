@@ -12,7 +12,7 @@ export default {
 } as Meta
 export const Line: StoryFn = () => (
   <div className="flex gap-2">
-    <DirectionHover imageUrl="https://source.unsplash.com/random">
+    <DirectionHover imageUrl="https://picsum.photos/600">
       <div className="flex flex-col items-center justify-center ">
         <h2 className="text-white">Hover me</h2>
       </div>
@@ -21,17 +21,17 @@ export const Line: StoryFn = () => (
 )
 export const Default: StoryFn = () => (
   <div className="flex gap-2">
-    <DirectionHover imageUrl="https://source.unsplash.com/random">
+    <DirectionHover imageUrl="https://picsum.photos/600">
       <div className="flex flex-col items-center justify-center ">
         <h2 className="text-white">Hover me</h2>
       </div>
     </DirectionHover>
-    <DirectionHover imageUrl="https://source.unsplash.com/random">
+    <DirectionHover imageUrl="https://picsum.photos/600">
       <div className="flex flex-col items-center justify-center ">
         <h2 className="text-white">Hover me</h2>
       </div>
     </DirectionHover>
-    <DirectionHover imageUrl="https://source.unsplash.com/random">
+    <DirectionHover imageUrl="https://picsum.photos/600">
       <div className="flex flex-col items-center justify-center ">
         <h2 className="text-white">Hover me</h2>
       </div>
@@ -40,47 +40,47 @@ export const Default: StoryFn = () => (
 )
 export const Grid: StoryFn = () => (
   <div className="grid grid-cols-3 grid-rows-3 gap-2">
-    <DirectionHover imageUrl="https://source.unsplash.com/random">
+    <DirectionHover imageUrl="https://picsum.photos/600">
       <div className="flex flex-col items-center justify-center ">
         <h2 className="text-white">Hover me</h2>
       </div>
     </DirectionHover>
-    <DirectionHover imageUrl="https://source.unsplash.com/random">
+    <DirectionHover imageUrl="https://picsum.photos/600">
       <div className="flex flex-col items-center justify-center ">
         <h2 className="text-white">Hover me</h2>
       </div>
     </DirectionHover>
-    <DirectionHover imageUrl="https://source.unsplash.com/random">
+    <DirectionHover imageUrl="https://picsum.photos/600">
       <div className="flex flex-col items-center justify-center ">
         <h2 className="text-white">Hover me</h2>
       </div>
     </DirectionHover>
-    <DirectionHover imageUrl="https://source.unsplash.com/random">
+    <DirectionHover imageUrl="https://picsum.photos/600">
       <div className="flex flex-col items-center justify-center ">
         <h2 className="text-white">Hover me</h2>
       </div>
     </DirectionHover>
-    <DirectionHover imageUrl="https://source.unsplash.com/random">
+    <DirectionHover imageUrl="https://picsum.photos/600">
       <div className="flex flex-col items-center justify-center ">
         <h2 className="text-white">Hover me</h2>
       </div>
     </DirectionHover>
-    <DirectionHover imageUrl="https://source.unsplash.com/random">
+    <DirectionHover imageUrl="https://picsum.photos/600">
       <div className="flex flex-col items-center justify-center ">
         <h2 className="text-white">Hover me</h2>
       </div>
     </DirectionHover>
-    <DirectionHover imageUrl="https://source.unsplash.com/random">
+    <DirectionHover imageUrl="https://picsum.photos/600">
       <div className="flex flex-col items-center justify-center ">
         <h2 className="text-white">Hover me</h2>
       </div>
     </DirectionHover>
-    <DirectionHover imageUrl="https://source.unsplash.com/random">
+    <DirectionHover imageUrl="https://picsum.photos/600">
       <div className="flex flex-col items-center justify-center ">
         <h2 className="text-white">Hover me</h2>
       </div>
     </DirectionHover>
-    <DirectionHover imageUrl="https://source.unsplash.com/random">
+    <DirectionHover imageUrl="https://picsum.photos/600">
       <div className="flex flex-col items-center justify-center ">
         <h2 className="text-white">Hover me</h2>
       </div>

@@ -48,6 +48,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
       showIcon: ShowIcon = TbEye,
       hideIcon: HideIcon = TbEyeOff,
       defaultVisibility = false,
+      placeholder = "*".repeat(8),
       ...props
     },
     ref
@@ -57,6 +58,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
       <Input
         {...props}
         ref={ref}
+        placeholder={placeholder}
         type={showPassword ? "text" : "password"}
         rightComponent={
           <EyeButton

@@ -1,13 +1,14 @@
-'use client'
+"use client"
 
-import { forwardRef, useId } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import { getTheme } from '../../theme-store'
-import { HelperText } from '../HelperText'
-import { ColorsEnum, MainSizesEnum } from '../../types/enums'
-import { Label } from '../Label'
-import type { InputProps } from './props'
+import { forwardRef, useId } from "react"
+import { twMerge } from "tailwind-merge"
+
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
+import { getTheme } from "../../theme-store"
+import { ColorsEnum, MainSizesEnum } from "../../types/enums"
+import { HelperText } from "../HelperText"
+import { Label } from "../Label"
+import type { InputProps } from "./props"
 
 /**
  * @name Input
@@ -25,22 +26,31 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       size = MainSizesEnum.md,
       theme: customTheme = {},
       label,
-      labelPosition = 'top',
+      labelPosition = "top",
       innerClassName,
       border = false,
-      labelClassName = '',
+      labelClassName = "",
       ...props
     },
-    ref,
+    ref
   ) => {
     const theme = mergeDeep(getTheme().textInput, customTheme)
     const randomId = useId()
 
     return (
-      <div className={twMerge(theme.root.base, theme.root.labelPosition[labelPosition])}>
+      <div
+        className={twMerge(
+          theme.root.base,
+          theme.root.labelPosition[labelPosition]
+        )}
+      >
         {label && (
-          <Label className={twMerge(theme.label, labelClassName)} htmlFor={randomId}>
+          <Label
+            className={twMerge(theme.label, labelClassName)}
+            htmlFor={randomId}
+          >
             {label}
+            {props.required && <span>*</span>}
           </Label>
         )}
         <div className={twMerge(theme.base, className)}>
@@ -48,7 +58,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             {leftComponent && (
               <div
                 data-testid="left-icon"
-                className={twMerge(theme.field.icons.base, theme.field.icons.svg, theme.field.icons.left)}
+                className={twMerge(
+                  theme.field.icons.base,
+                  theme.field.icons.svg,
+                  theme.field.icons.left
+                )}
               >
                 {leftComponent}
               </div>
@@ -56,7 +70,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             {rightComponent && (
               <div
                 data-testid="right-icon"
-                className={twMerge(theme.field.icons.base, theme.field.icons.svg, theme.field.icons.right)}
+                className={twMerge(
+                  theme.field.icons.base,
+                  theme.field.icons.svg,
+                  theme.field.icons.right
+                )}
               >
                 {rightComponent}
               </div>
@@ -67,26 +85,26 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               className={twMerge(
                 theme.field.input.base,
                 theme.field.input.multiline.off,
-                theme.field.input.border[border ? 'on' : 'off'],
+                theme.field.input.border[border ? "on" : "off"],
                 theme.field.input.colors[color],
                 theme.field.input.sizes[size],
-                theme.field.input.withIcon[leftComponent ? 'on' : 'off'],
-                theme.field.input.withRightIcon[rightComponent ? 'on' : 'off'],
-                innerClassName,
+                theme.field.input.withIcon[leftComponent ? "on" : "off"],
+                theme.field.input.withRightIcon[rightComponent ? "on" : "off"],
+                innerClassName
               )}
-              onChange={e => {
+              onChange={(e) => {
                 props.onChange?.(e)
                 onTextChange?.(e.target.value)
               }}
               {...props}
               ref={ref}
-            />{' '}
+            />{" "}
             {helperText && <HelperText color={color}>{helperText}</HelperText>}
           </div>
         </div>
       </div>
     )
-  },
+  }
 )
 
-Input.displayName = 'Input'
+Input.displayName = "Input"

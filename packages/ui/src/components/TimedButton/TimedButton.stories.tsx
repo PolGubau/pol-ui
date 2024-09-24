@@ -9,7 +9,7 @@ export default {
   component: TimedButton,
   decorators: [
     (Story) => (
-      <div className="flex p-6 flex-col items-center pt-20 min-h-[400px] bg-secondary-50 ">
+      <div className="flex p-6 flex-col items-center pt-20  ">
         <Story />
         <Toaster />
       </div>
@@ -17,13 +17,9 @@ export default {
   ],
 } as Meta
 
-export const Example = () => (
-  <>
-    <TimedButton onLongPress={() => toast("Action confirmed")}>
-      <div className="z-10 flex gap-2 items-center">
-        Long Press me
-        <TbChevronRight />
-      </div>
-    </TimedButton>
-  </>
+export const Default = () => (
+  <TimedButton onLongPress={() => toast("Action confirmed")}>
+    Long Press me
+    <TbChevronRight />
+  </TimedButton>
 )

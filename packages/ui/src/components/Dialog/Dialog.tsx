@@ -20,9 +20,12 @@ export interface DialogProps
   extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root> {
   children: React.ReactNode
   label?: string
+  withoutTrigger?: boolean
+
   trigger?: React.ReactNode
   contentProps?: DialogContentProps
   triggerProps?: React.ComponentProps<typeof DialogPrimitive.Trigger>
+  className?: string
 }
 const Dialog = ({
   children,
@@ -30,13 +33,19 @@ const Dialog = ({
   trigger,
   contentProps,
   triggerProps,
+  className,
+  withoutTrigger,
   ...root
 }: DialogProps) => {
   const triggerNode = trigger || <Button>{label}</Button>
 
   return (
     <Root {...root}>
-      <DialogTrigger {...triggerProps}>{triggerNode}</DialogTrigger>
+      {!withoutTrigger && (
+        <DialogTrigger asChild {...triggerProps}>
+          {triggerNode}
+        </DialogTrigger>
+      )}
       <DialogContent {...contentProps}>{children}</DialogContent>
     </Root>
   )

@@ -103,8 +103,10 @@ export function Conveyor({
         ref={ref}
         {...hoverProps}
       >
-        {children}
-        {children}
+        {/* {children}
+        {children} */}
+
+        {Array.from({ length: renders }).map((_) => children)}
       </motion.div>
     </div>
   )

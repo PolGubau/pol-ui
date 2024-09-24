@@ -1,7 +1,7 @@
 import React from "react"
 import type { Meta } from "@storybook/react"
 
-import { Card, Toaster, toast } from "../../components"
+import { Button, Card, Toaster, toast } from "../../components"
 import { PoluiProvider } from "../../components/PoluiProvider"
 import { useLongPress } from "./use-long-press"
 
@@ -11,7 +11,7 @@ export default {
 
   decorators: [
     (Story) => (
-      <div className="flex p-6 flex-col items-center pt-20 min-h-[400px] bg-secondary-50 ">
+      <div className="flex p-6 flex-col items-center pt-20   ">
         <Story />
         <Toaster />
       </div>
@@ -31,9 +31,9 @@ export const Default: React.FC = () => {
   })
 
   return (
-    <div className="flex justify-center flex-col gap-2">
+    <div className="flex justify-center flex-col gap-2 dark:text-secondary-50">
       <h1>useLongPress Example</h1>
-      <Card
+      <Button
         className="active:scale-90 transition-transform duration-200 ease-in-out"
         onMouseDown={onMouseDown}
         onTouchStart={onTouchStart}
@@ -41,7 +41,7 @@ export const Default: React.FC = () => {
         onTouchEnd={onTouchEnd}
       >
         Press and hold for 1 second
-      </Card>
+      </Button>
     </div>
   )
 }

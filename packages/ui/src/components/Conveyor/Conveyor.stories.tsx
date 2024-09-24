@@ -44,9 +44,9 @@ const testimonials = [
 
 //
 
-export const Default = (args: ConveyorProps): JSX.Element => {
+export const Default = (): JSX.Element => {
   return (
-    <Conveyor {...args}>
+    <Conveyor duration={30}>
       {testimonials.map((testimonial, i) => (
         <Card key={i} className="w-[350px] flex flex-col gap-4">
           <Rating
@@ -60,9 +60,6 @@ export const Default = (args: ConveyorProps): JSX.Element => {
       ))}
     </Conveyor>
   )
-}
-Default.args = {
-  duration: 30,
 }
 
 //
@@ -106,6 +103,21 @@ export const Words = (args: ConveyorProps): JSX.Element => {
   )
 }
 Words.args = {
-  duration: 30,
+  duration: 15,
   durationOnHover: 80,
+}
+export const Stress = (): JSX.Element => {
+  return (
+    <Conveyor
+      className="flex items-center justify-center"
+      duration={2}
+      renders={20}
+    >
+      {Array.from({ length: 2 }).map((_, i) => (
+        <span key={i} className="text-2xl">
+          {i} -{"  "}
+        </span>
+      ))}
+    </Conveyor>
+  )
 }

@@ -8,7 +8,7 @@
  * toCamelCase('hello_world'); // 'helloWorld'
  * ```
  */
-export function toCamelCase(str: string): string {
+function toCamelCase(str: string): string {
   return str.replace(/[-_](.)/g, (_, c: string) => c.toUpperCase())
 }
 
@@ -17,7 +17,7 @@ export function toCamelCase(str: string): string {
  * @param {string} str - The string to convert.
  * @returns {string} The title-cased string.
  */
-export function toTitleCase(str: string): string {
+function toTitleCase(str: string): string {
   return str.replace(
     /\w\S*/g,
     (txt) => txt.charAt(0).toUpperCase() + txt.slice(1).toLowerCase()
@@ -28,7 +28,7 @@ export function toTitleCase(str: string): string {
  * @param {string} str - The string to convert.
  * @returns {string} The kebab-cased string.
  */
-export function toKebabCase(str: string): string {
+function toKebabCase(str: string): string {
   return str
     .replace(/([a-z])([A-Z])/g, "$1-$2")
     .replace(/\s+/g, "-")
@@ -40,7 +40,7 @@ export function toKebabCase(str: string): string {
  * @param {string} str - The string to convert.
  * @returns {string} The uppercased string.
  */
-export function toUpperCase(str: string): string {
+function toUpperCase(str: string): string {
   return str.toUpperCase()
 }
 
@@ -49,7 +49,7 @@ export function toUpperCase(str: string): string {
  * @param {string} str - The string to convert.
  * @returns {string} The lowercased string.
  */
-export function toLowerCase(str: string): string {
+function toLowerCase(str: string): string {
   return str.toLowerCase()
 }
 /**
@@ -57,7 +57,7 @@ export function toLowerCase(str: string): string {
  * @param {string} str - The string to capitalize.
  * @returns {string} The capitalized string.
  */
-export function capitalize(str: string): string {
+function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
@@ -66,7 +66,7 @@ export function capitalize(str: string): string {
  * @param {string} str - The string to remove whitespace from.
  * @returns {string} The whitespace-free string.
  */
-export function removeWhitespace(str: string): string {
+function removeWhitespace(str: string): string {
   return str.replace(/\s/g, "")
 }
 
@@ -75,7 +75,7 @@ export function removeWhitespace(str: string): string {
  * @param {string} str - The string to reverse.
  * @returns {string} The reversed string.
  */
-export function reverseString(str: string): string {
+function reverseString(str: string): string {
   return str.split("").reverse().join("")
 }
 
@@ -87,11 +87,7 @@ export function reverseString(str: string): string {
  * @returns {string} The truncated string.
  */
 
-export function truncateString(
-  str: string,
-  length = 50,
-  suffix = "..."
-): string {
+function truncateString(str: string, length = 50, suffix = "..."): string {
   if (str.length === 0) return str
   return str.length > length
     ? str.substring(0, length - suffix.length) + suffix
@@ -109,7 +105,7 @@ export function truncateString(
  * ```
  *
  */
-export function formatString(str: string): string {
+function formatString(str: string): string {
   const result = str.replace(/([a-z])([A-Z])/g, "$1 $2")
   return capitalize(result.replace(/([A-Z])([A-Z][a-z])/g, "$1 $2").trim())
 }
@@ -124,7 +120,7 @@ export function formatString(str: string): string {
  * randomString(5); // 'aBcDe'
  * ```
  */
-export const randomString = (length: number): string => {
+const randomString = (length: number = 4): string => {
   const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
   let result = ""
 
@@ -147,6 +143,21 @@ export const randomString = (length: number): string => {
  * lowerAndNoSpace('Global Wizard Flow'); // 'globalwizardflow'
  * ```
  *  */
-export const lowerAndNoSpace = (str: string): string => {
+const lowerAndNoSpace = (str: string): string => {
   return str.toLowerCase().replace(/\s/g, "")
+}
+
+export {
+  toCamelCase,
+  toTitleCase,
+  toKebabCase,
+  toUpperCase,
+  toLowerCase,
+  capitalize,
+  removeWhitespace,
+  reverseString,
+  truncateString,
+  formatString,
+  randomString,
+  lowerAndNoSpace,
 }
