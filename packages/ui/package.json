@@ -51,7 +51,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "serve-storybook": "serve storybook-static",
-    "vercel": "vercel --prod"
+    "vercel": "vercel --prod",
+    "watch": "tsup src/index.ts --watch"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.2",

@@ -12,9 +12,9 @@ export const Default = () => {
   return (
     <div className="flex gap-4">
       <div className="h-[30px] flex gap-2">
-        <Skeleton className="h-full aspect-square rounded-full"></Skeleton>
-        <Skeleton className="h-full w-[80px]"></Skeleton>
-        <Skeleton className="h-full w-[160px]"></Skeleton>
+        <Skeleton className="h-full aspect-square rounded-full" />
+        <Skeleton className="h-full w-[80px] bg-secondary-400" />
+        <Skeleton className="h-full w-[160px] bg-secondary-600" />
       </div>
     </div>
   )
