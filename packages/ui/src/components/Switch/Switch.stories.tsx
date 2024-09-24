@@ -3,6 +3,7 @@ import type { Meta, StoryFn } from "@storybook/react"
 
 import type { Colors, MainSizes } from "../../types"
 import { ColorsEnum, MainSizesEnum } from "../../types/enums"
+import { Input } from "../Input"
 import { Switch, type SwitchProps } from "./Switch"
 
 export default {
@@ -54,5 +55,19 @@ export const AllSizes = (): JSX.Element => (
         <Template size={v as MainSizes} label={v} />
       </div>
     ))}
+  </div>
+)
+
+export const InForm = (): JSX.Element => (
+  <div className="flex flex-wrap gap-6">
+    <form>
+      <Switch
+        checked={false}
+        label="Enable notifications"
+        name="notifications"
+        onChange={console.log}
+      />
+      <Input type="text" />
+    </form>
   </div>
 )

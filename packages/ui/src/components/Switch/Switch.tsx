@@ -98,7 +98,11 @@ export const Switch: FC<SwitchProps> = ({
         id={`${id}-ui-switch`}
         name={`${id}-ui-switch`}
         onClick={() => set()}
-        onKeyDown={handleOnKeyDown}
+        onKeyDown={(e) => {
+          // if tab, continue the focus flow
+          if (e.code === "Tab") return
+          handleOnKeyDown(e)
+        }}
         role="switch"
         title={label}
         type="button"
