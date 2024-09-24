@@ -20,6 +20,10 @@ export const Default = () => {
         <LazyImage src="https://picsum.photos/599" className="rounded-lg" />
       </div>
       <div className="border flex flex-col gap-4 p-2 rounded-xl">
+        Incorrect Image
+        <LazyImage src="https://picsum.pho5tasdos/588" className="rounded-lg" />
+      </div>
+      <div className="border flex flex-col gap-4 p-2 rounded-xl">
         Image 3
         <LazyImage src="https://picsum.photos/588" className="rounded-lg" />
       </div>
