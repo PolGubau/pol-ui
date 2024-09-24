@@ -69,7 +69,7 @@ const formatToParts = (
   }: { locales?: Intl.LocalesArgument; format?: Intl.NumberFormatOptions }
 ) => {
   const formatter = new Intl.NumberFormat(locales, format)
-  const parts = formatter.formatToParts(value)
+  const parts = formatter.formatToParts(value as number)
 
   const pre: KeyedNumberPart[] = []
   const _integer: NumberPart[] = [] // we do a second pass to key these from RTL
@@ -276,7 +276,23 @@ const MotionNumber = React.forwardRef<
     }),
     [parent, forceUpdate, motion, transition]
   )
+  const vars = {
+    display: "inline-flex",
 
+    // Activates the scale correction, which gets stored in --motion-number-scale-x-correction
+    "--motion-number-scale-x-correct": 1,
+    margin: `0 calc(-1*${maskWidth})`,
+    padding: `calc(${maskHeight}/2) ${maskWidth}`,
+    position: "relative", // for zIndex
+    zIndex: -1, // should be underneath everything else
+    overflow: "clip", // important so it doesn't affect page layout
+    // Prefixed properties have better support than unprefixed ones:
+    WebkitMaskImage: mask,
+    WebkitMaskSize: maskSize,
+    WebkitMaskPosition:
+      "center, center, top left, top right, bottom right, bottom left",
+    WebkitMaskRepeat: "no-repeat",
+  } as any
   return (
     <MotionNumberContext.Provider value={context}>
       <MotionConfig transition={transition}>
@@ -338,25 +354,7 @@ const MotionNumber = React.forwardRef<
               layout // make sure this one scales
               ref={maskedRef}
               aria-hidden={true}
-              // @ts-expect-error React doesn't support inert
-              inert=""
-              style={{
-                display: "inline-flex",
-
-                // Activates the scale correction, which gets stored in --motion-number-scale-x-correction
-                "--motion-number-scale-x-correct": 1,
-                margin: `0 calc(-1*${maskWidth})`,
-                padding: `calc(${maskHeight}/2) ${maskWidth}`,
-                position: "relative", // for zIndex
-                zIndex: -1, // should be underneath everything else
-                overflow: "clip", // important so it doesn't affect page layout
-                // Prefixed properties have better support than unprefixed ones:
-                WebkitMaskImage: mask,
-                WebkitMaskSize: maskSize,
-                WebkitMaskPosition:
-                  "center, center, top left, top right, bottom right, bottom left",
-                WebkitMaskRepeat: "no-repeat",
-              }}
+              style={vars}
             >
               <Section
                 data-motion-number-part="integer"
