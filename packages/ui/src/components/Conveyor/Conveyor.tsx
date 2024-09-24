@@ -89,7 +89,11 @@ export function Conveyor({
     : {}
 
   return (
-    <div className={cn("overflow-hidden", rest.className)} {...rest}>
+    <div
+      data-testid="conveyor-scroller"
+      className={cn("overflow-hidden scroller", rest.className)}
+      {...rest}
+    >
       <motion.div
         className="flex w-max"
         style={{

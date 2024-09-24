@@ -62,6 +62,7 @@ const Slider = React.forwardRef<
         onValueChange={onChange}
         ref={ref}
         data-testid="slider"
+        role="progressbar"
         className={cn(theme.base, classNames?.root, className)}
         data-orientation={orientation}
         orientation={orientation}
@@ -69,7 +70,6 @@ const Slider = React.forwardRef<
         data-disabled={props.disabled}
         {...props}
       >
-        {/*  */}
         <SliderPrimitive.Track
           data-orientation={orientation}
           className={cn(
