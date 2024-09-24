@@ -1,16 +1,19 @@
-'use client'
-import type { ComponentProps, FC } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types/types'
-import { useAccordionContext } from './AccordionPanelContext'
-import { AnimatePresence, motion } from 'framer-motion'
+"use client"
+
+import type { ComponentProps, FC } from "react"
+import { AnimatePresence, motion } from "framer-motion"
+
+import { cn } from "../../helpers"
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
+import { getTheme } from "../../theme-store"
+import type { DeepPartial } from "../../types/types"
+import { useAccordionContext } from "./AccordionPanelContext"
+
 export interface AccordionComponentTheme {
   base: string
 }
 
-export interface AccordionContentProps extends ComponentProps<'div'> {
+export interface AccordionContentProps extends ComponentProps<"div"> {
   theme?: DeepPartial<AccordionComponentTheme>
   hasMotion?: boolean
 }
@@ -41,15 +44,27 @@ export const AccordionContent: FC<AccordionContentProps> = ({
 
   const theme = mergeDeep(getTheme().accordion.content, customTheme)
 
+  const animations = {
+    init: { opacity: 0, height: 0, scale: 0.99 },
+    open: { opacity: 1, height: "auto", scale: 1 },
+  }
+
   return (
     <AnimatePresence mode="wait">
       {isOpen && (
-        <div className={twMerge(theme.base, className)} data-testid="ui-accordion-content" hidden={!isOpen} {...props}>
+        <div
+          className={cn(theme.base, className)}
+          data-testid="ui-accordion-content"
+          hidden={!isOpen}
+          {...props}
+        >
           <motion.div
-            initial={hasMotion ? { opacity: 0, height: 0, scale: 0.99 } : undefined}
-            animate={hasMotion ? { opacity: 1, height: 'auto', scale: 1 } : undefined}
-            exit={hasMotion ? { opacity: 0, height: 0, scale: 0.99 } : undefined}
-            transition={hasMotion ? { ease: 'linear', duration: 0.15 } : undefined}
+            initial={hasMotion ? animations.init : undefined}
+            animate={hasMotion ? animations.open : undefined}
+            exit={hasMotion ? animations.init : undefined}
+            transition={
+              hasMotion ? { ease: "linear", duration: 0.15 } : undefined
+            }
           >
             {children}
           </motion.div>
