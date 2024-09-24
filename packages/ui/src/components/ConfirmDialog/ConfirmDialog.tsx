@@ -1,6 +1,5 @@
 import { useState } from "react"
 
-import { cn } from "../../helpers"
 import { ColorsEnum } from "../../types"
 import { Button } from "../Button"
 import { DialogClose, DialogProps } from "../Dialog"

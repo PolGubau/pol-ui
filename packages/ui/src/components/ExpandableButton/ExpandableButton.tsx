@@ -74,7 +74,7 @@ const ExpandableButton = ({
         <Drawer
           open={value}
           onClose={toggle}
-          noTrigger
+          withoutTrigger
           onOpenChange={(newState) => {
             if (!newState) {
               toggle()
