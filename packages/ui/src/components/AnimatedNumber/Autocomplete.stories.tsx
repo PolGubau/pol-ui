@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react"
 import type { Meta } from "@storybook/react"
-import { TbArrowBarToUp, TbChevronUp, TbReload } from "react-icons/tb"
+import {
+  TbChevronLeft,
+  TbChevronRight,
+  TbChevronUp,
+  TbReload,
+} from "react-icons/tb"
 
+import { useStep } from "../../hooks"
 import { Button } from "../Button"
+import { IconButton } from "../IconButton"
 import AnimatedNumber from "./AnimatedNumber"
 
 export default {
@@ -144,6 +151,28 @@ export const Grouped = () => {
           />
         )}
       />
+    </div>
+  )
+}
+
+export const Pagination = () => {
+  const MAX = 20
+  const MIN = 1
+  const [step, { goToNextStep, goToPrevStep }] = useStep(MAX, MIN)
+  return (
+    <div className="justify-center flex gap-2 w-fit h-fit items-center border rounded-full p-1">
+      <AnimatedNumber
+        className="text-xl font-bold w-[30px] justify-end"
+        value={step}
+      />
+
+      <IconButton onClick={goToPrevStep} size={"sm"} disabled={step <= MIN}>
+        <TbChevronLeft size={18} />
+      </IconButton>
+      {/*  */}
+      <IconButton onClick={goToNextStep} size={"sm"} disabled={step >= MAX}>
+        <TbChevronRight size={18} />
+      </IconButton>
     </div>
   )
 }

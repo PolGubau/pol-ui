@@ -1,94 +1,111 @@
-'use client'
+"use client"
 
-import React, { useEffect, useState } from 'react'
-import { twMerge } from 'tailwind-merge'
-import type { ConveyorDirection, ConveyorSpeed } from './ConveyorTypes'
-import { ConveyorSpeedEnum, ConveyorDirectionEnum } from './ConveyorTypes'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import { getTheme } from '../../theme-store'
-import type { ConveyorTheme } from './theme'
+import { useEffect, useState } from "react"
+import { animate, motion, useMotionValue } from "framer-motion"
+import useMeasure from "react-use-measure"
 
-export interface ConveyorProps {
-  children?: React.ReactNode[]
-  direction?: ConveyorDirection
-  speed?: ConveyorSpeed
-  pauseOnHover?: boolean
-  theme?: Partial<ConveyorTheme>
-  className?: string
-}
+import { cn } from "../../helpers"
 
-/**
- *
- * @name Conveyor
- * @description The Conveyor component is used to display a conveyor belt of items that move from one side to the other. Useful  for displaying a list of items in a small space.
- *
- * @returns
- */
-export const Conveyor = ({
-  direction = ConveyorDirectionEnum.right,
-  speed = ConveyorSpeedEnum.fast,
-  pauseOnHover = true,
+export type ConveyorProps = {
+  children: React.ReactNode
+  gap?: number
+  duration?: number
+  durationOnHover?: number
+  direction?: "horizontal" | "vertical"
+  renders?: number
+  reverse?: boolean
+} & React.HTMLAttributes<HTMLDivElement>
+
+export function Conveyor({
   children,
-  theme: customTheme = {},
-  className,
-  ...props
-}: ConveyorProps) => {
-  const containerRef = React.useRef<HTMLDivElement>(null)
-  const scrollerRef = React.useRef<HTMLUListElement>(null)
-  const theme: ConveyorTheme = mergeDeep(getTheme().conveyor, customTheme)
+  gap = 16,
+  duration = 25,
+  durationOnHover,
+  direction = "horizontal",
+  reverse = false,
+  renders = 2,
+  ...rest
+}: ConveyorProps) {
+  const [currentDuration, setCurrentDuration] = useState(duration)
+  const [ref, { width, height }] = useMeasure()
+  const translation = useMotionValue(0)
+  const [isTransitioning, setIsTransitioning] = useState(false)
+  const [key, setKey] = useState(0)
 
-  const getSpeed = () => {
-    if (containerRef.current) {
-      if (speed === ConveyorSpeedEnum.fast) {
-        containerRef.current.style.setProperty('--animation-duration', '30s')
-      } else if (speed === ConveyorSpeedEnum.normal) {
-        containerRef.current.style.setProperty('--animation-duration', '50s')
-      } else {
-        containerRef.current.style.setProperty('--animation-duration', '100s')
-      }
-    }
-  }
-  const getDirection = () => {
-    if (containerRef.current) {
-      if (direction === 'left') {
-        containerRef.current.style.setProperty('--animation-direction', 'forwards')
-      } else {
-        containerRef.current.style.setProperty('--animation-direction', 'reverse')
-      }
-    }
-  }
   useEffect(() => {
-    if (containerRef.current && scrollerRef.current) {
-      const scrollerContent = Array.from(scrollerRef.current.children)
+    let controls
+    const size = direction === "horizontal" ? width : height
+    const contentSize = size + gap
+    const from = reverse ? -contentSize / 2 : 0
+    const to = reverse ? 0 : -contentSize / 2
 
-      scrollerContent.forEach(item => {
-        const duplicatedItem = item.cloneNode(true)
-        if (scrollerRef.current) {
-          scrollerRef.current.appendChild(duplicatedItem)
-        }
+    if (isTransitioning) {
+      controls = animate(translation, [translation.get(), to], {
+        ease: "linear",
+        duration:
+          currentDuration * Math.abs((translation.get() - to) / contentSize),
+        onComplete: () => {
+          setIsTransitioning(false)
+          setKey((prevKey) => prevKey + 1)
+        },
       })
-
-      getDirection()
-      getSpeed()
-      setStart(true)
+    } else {
+      controls = animate(translation, [from, to], {
+        ease: "linear",
+        duration: currentDuration,
+        repeat: Infinity,
+        repeatType: "loop",
+        repeatDelay: 0,
+        onRepeat: () => {
+          translation.set(from)
+        },
+      })
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [direction, speed])
-  const [start, setStart] = useState(false)
+
+    return controls?.stop
+  }, [
+    key,
+    translation,
+    currentDuration,
+    width,
+    height,
+    gap,
+    isTransitioning,
+    direction,
+    reverse,
+  ])
+
+  const hoverProps = durationOnHover
+    ? {
+        onHoverStart: () => {
+          setIsTransitioning(true)
+          setCurrentDuration(durationOnHover)
+        },
+        onHoverEnd: () => {
+          setIsTransitioning(true)
+          setCurrentDuration(duration)
+        },
+      }
+    : {}
 
   return (
-    <div ref={containerRef} {...props} className={twMerge(theme.scroller, className)} data-testid="conveyor-scroller">
-      <ul
-        data-testid="conveyor-list"
-        ref={scrollerRef}
-        className={twMerge(theme.list, start && theme.animation, pauseOnHover && theme.pauseAnimation)}
+    <div className={cn("overflow-hidden", rest.className)} {...rest}>
+      <motion.div
+        className="flex w-max"
+        style={{
+          ...(direction === "horizontal"
+            ? { x: translation }
+            : { y: translation }),
+          gap: `${gap}px`,
+          touchAction: "none",
+          flexDirection: direction === "horizontal" ? "row" : "column",
+        }}
+        ref={ref}
+        {...hoverProps}
       >
-        {children?.map((item, i) => (
-          <li data-testid="conveyor-item" key={i}>
-            {item}
-          </li>
-        ))}
-      </ul>
+        {children}
+        {children}
+      </motion.div>
     </div>
   )
 }
