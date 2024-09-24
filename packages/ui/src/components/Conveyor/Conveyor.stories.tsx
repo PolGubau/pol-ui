@@ -63,8 +63,30 @@ export const Default = (args: ConveyorProps): JSX.Element => {
 }
 Default.args = {
   duration: 30,
-  durationOnHover: 80,
-  direction: "horizontal",
+}
+
+//
+
+export const Vertical = (args: ConveyorProps): JSX.Element => {
+  return (
+    <Conveyor {...args} className="max-h-[400px] overflow-hidden">
+      {testimonials.map((testimonial, i) => (
+        <Card key={i} className="w-[350px] flex flex-col gap-4">
+          <Rating
+            stars={5}
+            filled={testimonial.stars}
+            starClassName="fill-secondary"
+          />
+          <p className="text mb-4">{testimonial.review}</p>
+          <p className="text-sm">{testimonial.name}</p>
+        </Card>
+      ))}
+    </Conveyor>
+  )
+}
+Vertical.args = {
+  duration: 30,
+  direction: "vertical",
 }
 
 //
@@ -86,5 +108,4 @@ export const Words = (args: ConveyorProps): JSX.Element => {
 Words.args = {
   duration: 30,
   durationOnHover: 80,
-  direction: "horizontal",
 }
