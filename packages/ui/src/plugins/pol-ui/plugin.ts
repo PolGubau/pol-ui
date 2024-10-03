@@ -262,6 +262,8 @@ export const poluiPlugin = (
 
     {
       darkMode: "class",
+      plugins: [require("@tailwindcss/container-queries")],
+
       theme: {
         extend: {
           colors: {
