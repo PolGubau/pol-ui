@@ -69,7 +69,8 @@ const Avatar: FC<AvatarProps> = ({
     theme.root.rounded[rounded],
     stacked && theme.root.stacked,
     theme.root.img.on,
-    theme.root.size[size]
+    theme.root.size[size],
+    className
   )
 
   const imgProps = {
