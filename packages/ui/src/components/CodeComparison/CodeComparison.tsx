@@ -20,10 +20,12 @@ interface CodeComparisonHeaderProps {
 const CodeComparisonHeader = (props: CodeComparisonHeaderProps) => {
   const { filename, fileIcon: FileIcon = TbFile, label } = props
   return (
-    <div className="flex items-center bg-secondary/20 p-2 text-sm text-secondary-900 dark:text-secondary-50">
+    <div className="flex items-center bg-secondary/20 p-2 text-sm text-secondary-900 dark:text-secondary-50 @container/header">
       <FileIcon className="mr-2 h-4 w-4" />
       {filename}
-      {label && <span className="ml-auto">{label}</span>}
+      {label && (
+        <span className="ml-auto hidden @xs/header:flex ">{label}</span>
+      )}
     </div>
   )
 }
@@ -92,18 +94,18 @@ export function CodeComparison({
   return (
     <div
       className={cn(
-        "relative w-full overflow-hidden rounded-xl border border-secondary/30",
+        "relative  overflow-hidden rounded-xl border border-secondary/30",
         rest.className
       )}
       {...rest}
     >
-      <ResizablePanelGroup direction="horizontal" className="grid">
-        <ResizablePanel>
+      <ResizablePanelGroup direction="horizontal" className=" overflow-hidden">
+        <ResizablePanel minSize={5}>
           <CodeComparisonHeader filename={filename} label="before" />
           {renderCode(beforeCode, highlightedBefore)}
         </ResizablePanel>
         <ResizableHandle withHandle />
-        <ResizablePanel>
+        <ResizablePanel minSize={5}>
           <CodeComparisonHeader filename={filename} label="after" />
           {renderCode(afterCode, highlightedAfter)}
         </ResizablePanel>

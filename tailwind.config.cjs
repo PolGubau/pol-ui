@@ -4,5 +4,5 @@ import { poluiPlugin } from "./packages/ui/src"
 
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
-  plugins: [poluiPlugin()],
+  plugins: [poluiPlugin(), require("@tailwindcss/container-queries")],
 }
