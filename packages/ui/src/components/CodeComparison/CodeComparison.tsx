@@ -94,12 +94,12 @@ export function CodeComparison({
   return (
     <div
       className={cn(
-        "relative  overflow-hidden rounded-xl border border-secondary/30",
+        "relative overflow-hidden rounded-xl border border-secondary/30  max-w-5xl",
         rest.className
       )}
       {...rest}
     >
-      <ResizablePanelGroup direction="horizontal" className=" overflow-hidden">
+      <ResizablePanelGroup direction="horizontal" className="">
         <ResizablePanel minSize={5}>
           <CodeComparisonHeader filename={filename} label="before" />
           {renderCode(beforeCode, highlightedBefore)}
