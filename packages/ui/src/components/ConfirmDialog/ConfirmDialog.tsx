@@ -14,7 +14,7 @@ export type ConfirmDialogProps = DrawerDialogWithoutChildren & {
   title?: string
   message?: string
   onConfirm: () => void
-  onCancel: () => void
+  onCancel?: () => void
   cancelText?: string
   confirmText?: string
   hold?: boolean
@@ -50,15 +50,17 @@ export const ConfirmDialog = ({
         <p>{message}</p>
       </main>
       <footer className="flex justify-end p-2 border-t gap-2">
-        <DialogClose asChild>
-          <Button
-            variant={"ghost"}
-            color={ColorsEnum.secondary}
-            onClick={onCancel}
-          >
-            {cancelText}
-          </Button>
-        </DialogClose>
+        {onCancel && (
+          <DialogClose asChild>
+            <Button
+              variant={"ghost"}
+              color={ColorsEnum.secondary}
+              onClick={onCancel}
+            >
+              {cancelText}
+            </Button>
+          </DialogClose>
+        )}
         {hold ? (
           <TimedButton
             color={ColorsEnum.error}
