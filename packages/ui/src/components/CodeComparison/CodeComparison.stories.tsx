@@ -67,13 +67,55 @@ export const config = {
   matcher: ['/((?!_next/|_static|_vercel|[\\w-]+\\.\\w+).*)'],
 };`
 
-export function CodeComparisonDemo() {
+export function Default() {
   return (
     <CodeComparison
-      beforeCode={beforeCode}
-      afterCode={afterCode}
-      language="typescript"
-      filename="middleware.ts"
+      sides={[
+        {
+          code: beforeCode,
+          label: "Before",
+          filename: "Middleware.js",
+          language: "javascript",
+        },
+        {
+          code: afterCode,
+          label: "After",
+          filename: "Middleware.ts",
+          language: "typescript",
+        },
+      ]}
+    />
+  )
+}
+export function MoreSides() {
+  return (
+    <CodeComparison
+      sides={[
+        {
+          code: beforeCode,
+          label: "Before",
+          filename: "Middleware.js",
+          language: "javascript",
+        },
+        {
+          code: afterCode,
+          label: "After",
+          filename: "Middleware.ts",
+          language: "typescript",
+        },
+        {
+          code: beforeCode,
+          label: "",
+          filename: "Button.tsx",
+          language: "typescript",
+        },
+        {
+          code: afterCode,
+          label: "",
+          filename: "Imagine its sql",
+          language: "sql",
+        },
+      ]}
     />
   )
 }

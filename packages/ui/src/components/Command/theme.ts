@@ -25,7 +25,7 @@ export interface CommandTheme {
 
 export const commandTheme: CommandTheme = {
   root: {
-    base: "flex h-full w-full flex-col overflow-hidden rounded-md text-secondary-900 dark:text-secondary-50",
+    base: "flex h-full w-full flex-col overflow-hidden rounded-xl text-secondary-900 dark:text-secondary-50",
   },
   empty: {
     base: "py-4 text-center text-sm",

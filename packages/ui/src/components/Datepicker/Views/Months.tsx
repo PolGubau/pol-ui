@@ -1,10 +1,11 @@
-import type { FC } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../../helpers/merge-deep/merge-deep'
-import { useDatePickerContext } from '../DatepickerContext'
-import { Views, getFormattedDate, isDateEqual, isDateInRange } from '../helpers'
-import { Button } from '../../Button'
-import type { IBoolean } from '../../../types'
+import type { FC } from "react"
+import { twMerge } from "tailwind-merge"
+
+import { mergeDeep } from "../../../helpers/merge-deep/merge-deep"
+import type { IBoolean } from "../../../types"
+import { Button } from "../../Button"
+import { useDatePickerContext } from "../DatepickerContext"
+import { Views, getFormattedDate, isDateEqual, isDateInRange } from "../helpers"
 
 export interface DatepickerViewsMonthsTheme {
   items: {
@@ -21,7 +22,9 @@ export interface DatepickerViewsMonthsProps {
   theme?: DatepickerViewsMonthsTheme
 }
 
-export const DatepickerViewsMonth: FC<DatepickerViewsMonthsProps> = ({ theme: customTheme = {} }) => {
+export const DatepickerViewsMonth: FC<DatepickerViewsMonthsProps> = ({
+  theme: customTheme = {},
+}) => {
   const {
     theme: rootTheme,
     minDate,
@@ -40,21 +43,22 @@ export const DatepickerViewsMonth: FC<DatepickerViewsMonthsProps> = ({ theme: cu
       {[...Array(12)].map((_month, index) => {
         const newDate = new Date(viewDate.getTime())
         newDate.setMonth(index)
-        const month = getFormattedDate(language, newDate, { month: 'short' })
+        const month = getFormattedDate(language, newDate, { month: "short" })
 
         const isSelected = isDateEqual(selectedDate, newDate)
         const isDisabled = !isDateInRange(newDate, minDate, maxDate)
 
         return (
           <Button
+            variant={"ghost"}
             disabled={isDisabled}
             key={index}
             type="button"
             className={twMerge(
               theme.items.item.base,
-              theme.items.item.selected[isSelected ? 'on' : 'off'],
+              theme.items.item.selected[isSelected ? "on" : "off"],
 
-              isDisabled && theme.items.item.disabled,
+              isDisabled && theme.items.item.disabled
             )}
             onClick={() => {
               if (isDisabled) return

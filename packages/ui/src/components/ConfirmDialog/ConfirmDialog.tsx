@@ -49,7 +49,7 @@ export const ConfirmDialog = ({
       <main className="px-4 py-2">
         <p>{message}</p>
       </main>
-      <footer className="flex justify-end p-2 border-t gap-2">
+      <footer className="flex justify-end p-2 md:border-t gap-2">
         {onCancel && (
           <DialogClose asChild>
             <Button

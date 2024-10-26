@@ -55,7 +55,7 @@ export const Default = () => {
   return (
     <>
       <TransitionPanel
-        className="border overflow-hidden rounded-xl border-zinc-950/10 bg-white dark:bg-zinc-700"
+        className="border overflow-hidden rounded-xl border-zinc-950/10 shadow dark:bg-zinc-700"
         activeIndex={activeIndex}
         variants={{
           enter: (direction) => ({

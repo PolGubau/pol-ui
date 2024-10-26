@@ -29,7 +29,7 @@ export interface TooltipProps
    * When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger.
    * @defaultValue false
    */
-  disableHoverableContent?: boolean
+  closeOnHover?: boolean
 }
 export const Tooltip = ({
   children,
@@ -55,7 +55,7 @@ export const Tooltip = ({
   /**
    * When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger.
    */
-  disableHoverableContent,
+  closeOnHover = true,
   ...rest
 }: TooltipProps) => {
   const theme = mergeDeep(getTheme().tooltip, customTheme)
@@ -67,7 +67,7 @@ export const Tooltip = ({
         defaultOpen={defaultOpen}
         onOpenChange={onOpenChange}
         delayDuration={delayDuration}
-        disableHoverableContent={disableHoverableContent}
+        disableHoverableContent={closeOnHover}
       >
         <PrimitiveTooltip.Trigger asChild>{children}</PrimitiveTooltip.Trigger>
         {label && !disabled && (

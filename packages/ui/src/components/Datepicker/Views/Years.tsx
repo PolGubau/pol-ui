@@ -1,12 +1,18 @@
-'use client'
+"use client"
 
-import type { FC } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../../helpers/merge-deep/merge-deep'
-import { useDatePickerContext } from '../DatepickerContext'
-import { Views, isDateEqual, isDateInRange, startOfYearPeriod } from '../helpers'
-import { Button } from '../../Button'
-import type { IBoolean } from '../../../types'
+import type { FC } from "react"
+import { twMerge } from "tailwind-merge"
+
+import { mergeDeep } from "../../../helpers/merge-deep/merge-deep"
+import type { IBoolean } from "../../../types"
+import { Button } from "../../Button"
+import { useDatePickerContext } from "../DatepickerContext"
+import {
+  Views,
+  isDateEqual,
+  isDateInRange,
+  startOfYearPeriod,
+} from "../helpers"
 
 export interface DatepickerViewsYearsTheme {
   items: {
@@ -23,8 +29,18 @@ export interface DatepickerViewsYearsProps {
   theme?: DatepickerViewsYearsTheme
 }
 
-export const DatepickerViewsYears: FC<DatepickerViewsYearsProps> = ({ theme: customTheme = {} }) => {
-  const { theme: rootTheme, selectedDate, minDate, maxDate, viewDate, setViewDate, setView } = useDatePickerContext()
+export const DatepickerViewsYears: FC<DatepickerViewsYearsProps> = ({
+  theme: customTheme = {},
+}) => {
+  const {
+    theme: rootTheme,
+    selectedDate,
+    minDate,
+    maxDate,
+    viewDate,
+    setViewDate,
+    setView,
+  } = useDatePickerContext()
 
   const theme = mergeDeep(rootTheme.views.years, customTheme)
 
@@ -41,13 +57,14 @@ export const DatepickerViewsYears: FC<DatepickerViewsYearsProps> = ({ theme: cus
 
         return (
           <Button
+            variant={"ghost"}
             disabled={isDisabled}
             key={index}
             type="button"
             className={twMerge(
               theme.items.item.base,
-              theme.items.item.selected[isSelected ? 'on' : 'off'],
-              isDisabled && theme.items.item.disabled,
+              theme.items.item.selected[isSelected ? "on" : "off"],
+              isDisabled && theme.items.item.disabled
             )}
             onClick={() => {
               if (isDisabled) return

@@ -3,8 +3,10 @@ import type { Meta } from "@storybook/react"
 import { TbUser } from "react-icons/tb"
 
 import { useBoolean } from "../../hooks"
+import { Badge } from "../Badge"
 import { Dialog } from "../Dialog"
 import { Divider } from "../Divider"
+import { DrawerDialog } from "../DrawerDialog"
 import { Toaster, toast } from "../Toaster"
 import { Command } from "./Command"
 
@@ -41,15 +43,25 @@ export const CommandMenu = () => {
     }
   }, [])
   return (
-    <>
-      <p className="text-sm text-muted-foreground">
+    <section className="flex flex-col gap-2 items-center">
+      <Badge>
         Press{" "}
-        <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
+        <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100">
           <span className="text-xs">⌘</span>J
         </kbd>
-      </p>
+      </Badge>
 
-      <Dialog open={value} onOpenChange={toggle}>
+      <DrawerDialog
+        shouldScaleBackground
+        open={value}
+        onOpenChange={(s) => {
+          if (value != s) toggle()
+        }}
+        className="p-0"
+        contentProps={{
+          className: "p-0",
+        }}
+      >
         <Command>
           <Command.Input placeholder="Type a command or search..." />
           <Command.List>
@@ -84,8 +96,8 @@ export const CommandMenu = () => {
             </Command.Group>
           </Command.List>
         </Command>
-      </Dialog>
-    </>
+      </DrawerDialog>
+    </section>
   )
 }
 export const InlineCommand = () => {

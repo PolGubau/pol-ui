@@ -3,10 +3,11 @@ import { TbFile } from "react-icons/tb"
 
 import { useBoolean } from "../../hooks"
 import { AlignEnum, SidesEnum, type Align, type Side } from "../../types"
+import { Badge } from "../Badge"
 import { Button } from "../Button"
 import { IconButton } from "../IconButton"
-import { Tooltip, type TooltipProps } from "./Tooltip"
 import ToolbarExpandable from "../Toolbox/v2"
+import { Tooltip, type TooltipProps } from "./Tooltip"
 
 export default {
   title: "Components/Tooltip",
@@ -83,20 +84,26 @@ export const AllAlignments = () => {
     </div>
   )
 }
-export const DisableHoverableContent = Template.bind({})
-DisableHoverableContent.parameters = {
-  docs: {
-    description: {
-      story:
-        "When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger.",
-    },
-  },
+/**
+ * When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger.
+ */
+export const CloseOnHover = () => {
+  return (
+    <div className="flex gap-4">
+      <Tooltip label="I will close on hover" closeOnHover={true}>
+        <span>
+          <Badge>Hover the tooltip</Badge>
+        </span>
+      </Tooltip>
+      <Tooltip label="I will stay opened on hover" closeOnHover={false}>
+        <span>
+          <Badge>Hover the tooltip</Badge>
+        </span>
+      </Tooltip>
+    </div>
+  )
 }
 
-DisableHoverableContent.args = {
-  ...DefaultTooltip.args,
-  disableHoverableContent: true,
-}
 export const SideOffset = Template.bind({})
 SideOffset.args = {
   ...DefaultTooltip.args,

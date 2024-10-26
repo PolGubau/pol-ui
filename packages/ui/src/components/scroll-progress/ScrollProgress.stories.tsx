@@ -1,6 +1,6 @@
 import type { Meta } from "@storybook/react"
 
-import { ScrollProgress } from "./scroll-progress"
+import { ScrollProgress, ScrollProgressProps } from "./scroll-progress"
 
 export default {
   title: "Components/ScrollProgress",
@@ -29,14 +29,54 @@ const dummyContent = Array.from({ length: 10 }, (_, i) => (
   </p>
 ))
 
-export function Default() {
+export function Default(props: ScrollProgressProps) {
   return (
     <div className="m-4">
-      <ScrollProgress className="" />
+      <ScrollProgress {...props} />
       <strong className="font-bold flex items-center justify-center">
         Note: The scroll progress is shown below the navbar of the page.
       </strong>
       {dummyContent}
     </div>
   )
+}
+/**
+ * You can customize the animation options using the 'options' prop
+ */
+export function CustomAnimation() {
+  return (
+    <Default
+      options={{
+        bounce: 20,
+        stiffness: 500,
+        damping: 50,
+      }}
+    />
+  )
+}
+export function CustomAnimation2() {
+  return (
+    <Default
+      options={{
+        mass: 20,
+        stiffness: 400,
+      }}
+    />
+  )
+}
+
+/**
+ * Tailwind classes could be also modifyed, by default, your 'primary' color will be used.
+ */
+export function CustomClasses() {
+  return (
+    <Default className="bg-success h-[10px] rounded-[40px] top-2 left-2 right-2" />
+  )
+}
+
+/**
+ * Using tailwind classes you can override the position, just remember to disable the top property with top-[null].
+ */
+export function InBottom() {
+  return <Default className="bottom-0 top-[null]" />
 }

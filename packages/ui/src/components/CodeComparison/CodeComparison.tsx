@@ -1,79 +1,97 @@
 "use client"
 
 import { ComponentProps, useEffect, useState } from "react"
-import { TbFile } from "react-icons/tb"
-import { codeToHtml } from "shiki"
+import { BiLogoPostgresql } from "react-icons/bi"
+import {
+  TbBrandJavascript,
+  TbBrandTypescript,
+  TbFile,
+  TbSql,
+} from "react-icons/tb"
+import { BundledLanguage, codeToHtml } from "shiki"
 
 import { cn } from "../../helpers"
 import { useThemeMode } from "../../hooks"
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "../Resizable"
+import { Badge } from "../Badge"
+import { CopyButton } from "../CopyButton"
 
 interface CodeComparisonHeaderProps {
   filename: string
   fileIcon?: React.FC<ComponentProps<"svg">>
   label?: string
+  code: string
+  language: string
 }
 const CodeComparisonHeader = (props: CodeComparisonHeaderProps) => {
-  const { filename, fileIcon: FileIcon = TbFile, label } = props
+  const { filename, fileIcon, label, code, language } = props
+
+  const defaultIcons = {
+    typescript: TbBrandTypescript,
+    javascript: TbBrandJavascript,
+    sql: TbSql,
+    postgre: BiLogoPostgresql,
+  }
+
+  const Icon =
+    fileIcon || defaultIcons[language as keyof typeof defaultIcons] || TbFile
+
   return (
-    <div className="flex items-center bg-secondary/20 p-2 text-sm text-secondary-900 dark:text-secondary-50 @container/header">
-      <FileIcon className="mr-2 h-4 w-4" />
-      {filename}
-      {label && (
-        <span className="ml-auto hidden @xs/header:flex ">{label}</span>
-      )}
+    <div className="flex items-center justify-between bg-secondary/20 p-2 text-sm text-secondary-900 dark:text-secondary-50 @container/header">
+      <div className="flex gap-2 items-center">
+        <Icon className="h-4 w-4" />
+        {filename}
+      </div>
+      <div className="flex gap-1 items-center">
+        {label && (
+          <Badge color="secondary" className="ml-auto hidden @xs/header:flex">
+            {label}
+          </Badge>
+        )}
+        <CopyButton size={"sm"} toCopy={code} />
+      </div>
     </div>
   )
 }
 
+type Comparison = {
+  label?: string
+  code: string
+  filename: string
+  icon?: React.FC<ComponentProps<"svg">>
+  language: BundledLanguage
+}
+
 export interface CodeComparisonProps
   extends React.HTMLAttributes<HTMLDivElement> {
-  beforeCode: string
-  afterCode: string
-  language: string
-  filename: string
   lightTheme?: string
   darkTheme?: string
-
-  beforeIcon?: React.FC<ComponentProps<"svg">>
-  afterIcon?: React.FC<ComponentProps<"svg">>
+  sides: Comparison[]
 }
 
 export function CodeComparison({
-  beforeCode,
-  afterCode,
-  language,
-  filename,
   lightTheme = "github-light",
   darkTheme = "github-dark",
+  sides,
   ...rest
 }: CodeComparisonProps) {
   const { computedMode } = useThemeMode()
-  const [highlightedBefore, setHighlightedBefore] = useState("")
-  const [highlightedAfter, setHighlightedAfter] = useState("")
+
+  const [highlighteds, setHighlighteds] = useState<string[]>([])
 
   useEffect(() => {
-    const selectedTheme = computedMode === "dark" ? darkTheme : lightTheme
+    const theme = computedMode === "dark" ? darkTheme : lightTheme
 
     async function highlightCode() {
-      const before = await codeToHtml(beforeCode, {
-        lang: language,
-        theme: selectedTheme,
+      sides.map(async (s) => {
+        const side = await codeToHtml(s.code, {
+          lang: s.language,
+          theme: theme,
+        })
+        setHighlighteds((prev) => [...prev, side])
       })
-      const after = await codeToHtml(afterCode, {
-        lang: language,
-        theme: selectedTheme,
-      })
-      setHighlightedBefore(before)
-      setHighlightedAfter(after)
     }
-
     highlightCode()
-  }, [beforeCode, afterCode, language, computedMode])
+  }, [sides, computedMode])
 
   const renderCode = (code: string, highlighted: string) => {
     if (highlighted) {
@@ -94,22 +112,26 @@ export function CodeComparison({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-xl border border-secondary/30  max-w-5xl",
+        "relative overflow-hidden rounded-xl border border-secondary/30 w-full",
         rest.className
       )}
       {...rest}
     >
-      <ResizablePanelGroup direction="horizontal" className="">
-        <ResizablePanel minSize={5}>
-          <CodeComparisonHeader filename={filename} label="before" />
-          {renderCode(beforeCode, highlightedBefore)}
-        </ResizablePanel>
-        <ResizableHandle withHandle />
-        <ResizablePanel minSize={5}>
-          <CodeComparisonHeader filename={filename} label="after" />
-          {renderCode(afterCode, highlightedAfter)}
-        </ResizablePanel>
-      </ResizablePanelGroup>
+      <section className={`grid grid-cols-${sides.length} divide-x`}>
+        {sides.map((s, idx) => {
+          return (
+            <article key={s.code}>
+              <CodeComparisonHeader
+                filename={s.filename}
+                label={s.label}
+                code={s.code}
+                language={s.language}
+              />
+              {renderCode(s.code, highlighteds[idx])}
+            </article>
+          )
+        })}
+      </section>
     </div>
   )
 }

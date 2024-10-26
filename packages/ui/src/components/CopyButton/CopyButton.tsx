@@ -1,14 +1,17 @@
-'use client'
+"use client"
 
-import * as React from 'react'
+import * as React from "react"
+import { TbCheck, TbClipboard } from "react-icons/tb"
 
-import { TbCheck, TbClipboard } from 'react-icons/tb'
-import { useBoolean, useCopyToClipboard } from '../../hooks'
-import { ButtonProps } from '../Button'
-import { IconButton } from '../IconButton'
+import { useBoolean, useCopyToClipboard } from "../../hooks"
+import { ButtonProps } from "../Button"
+import { IconButton } from "../IconButton"
 
 interface CopyButtonProps extends ButtonProps {
   toCopy: string | number | object | boolean
+  copyIcon?: React.FC<React.ComponentProps<"svg">>
+  copiedIcon?: React.FC<React.ComponentProps<"svg">>
+  iconSize?: number
   labels?: {
     copy: string
     copied: string
@@ -17,9 +20,12 @@ interface CopyButtonProps extends ButtonProps {
 
 function CopyButton({
   toCopy,
+  iconSize = 14,
+  copyIcon: CopyIcon = TbCheck,
+  copiedIcon: CopiedIcon = TbClipboard,
   labels = {
-    copy: 'Copy',
-    copied: 'Copied',
+    copy: "Copy",
+    copied: "Copied",
   },
   ...props
 }: CopyButtonProps) {
@@ -34,7 +40,8 @@ function CopyButton({
   const { copy } = useCopyToClipboard()
 
   const handleCopy = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const stringToCopy = typeof toCopy === 'object' ? JSON.stringify(toCopy) : toCopy.toString()
+    const stringToCopy =
+      typeof toCopy === "object" ? JSON.stringify(toCopy) : toCopy.toString()
     copy(stringToCopy)
     setTrue()
     props.onClick?.(e)
@@ -42,14 +49,19 @@ function CopyButton({
 
   return (
     <IconButton
-      type="button"
+      color={value ? "success" : "primary"}
+      type={props.type || "button"}
       label={value ? labels.copied : labels.copy}
-      variant="ghost"
+      variant={props.variant || "ghost"}
       onClick={handleCopy}
       {...props}
     >
       <span className="sr-only">{value ? labels.copied : labels.copy}</span>
-      {value ? <TbCheck /> : <TbClipboard />}
+      {value ? (
+        <CopyIcon style={{ fontSize: iconSize }} />
+      ) : (
+        <CopiedIcon style={{ fontSize: iconSize }} />
+      )}
     </IconButton>
   )
 }

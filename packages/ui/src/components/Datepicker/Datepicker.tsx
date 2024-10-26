@@ -1,19 +1,32 @@
-'use client'
+"use client"
 
-import type { FC, ReactNode } from 'react'
-import { useEffect, useRef, useState } from 'react'
-import { TbCalendar, TbArrowLeft, TbArrowRight, TbTrash } from 'react-icons/tb'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types/types'
-import { Input, type InputTheme, type InputProps } from '../Input'
-import { DatepickerContext } from './DatepickerContext'
-import type { DatepickerViewsDaysTheme } from './Views/Days'
-import { DatepickerViewsDays } from './Views/Days'
-import { DatepickerViewsDecades, type DatepickerViewsDecadesTheme } from './Views/Decades'
-import { DatepickerViewsMonth, type DatepickerViewsMonthsTheme } from './Views/Months'
-import { DatepickerViewsYears, type DatepickerViewsYearsTheme } from './Views/Years'
+import { useEffect, useRef, useState, type FC, type ReactNode } from "react"
+import { AnimatePresence, motion } from "framer-motion"
+import { TbArrowLeft, TbArrowRight, TbCalendar, TbTrash } from "react-icons/tb"
+
+import { cn } from "../../helpers"
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
+import { getTheme } from "../../theme-store"
+import type { DeepPartial } from "../../types/types"
+import { Button } from "../Button"
+import { Input, type InputProps, type InputTheme } from "../Input"
+import { DatepickerContext } from "./DatepickerContext"
+import {
+  DatepickerViewsDays,
+  type DatepickerViewsDaysTheme,
+} from "./Views/Days"
+import {
+  DatepickerViewsDecades,
+  type DatepickerViewsDecadesTheme,
+} from "./Views/Decades"
+import {
+  DatepickerViewsMonth,
+  type DatepickerViewsMonthsTheme,
+} from "./Views/Months"
+import {
+  DatepickerViewsYears,
+  type DatepickerViewsYearsTheme,
+} from "./Views/Years"
 import {
   Views,
   WeekStart,
@@ -23,9 +36,7 @@ import {
   getFormattedDate,
   isDateEqual,
   startOfYearPeriod,
-} from './helpers'
-import { Button } from '../Button'
-import { AnimatePresence, motion } from 'framer-motion'
+} from "./helpers"
 
 export interface DatepickerTheme {
   root: {
@@ -73,7 +84,7 @@ export interface DatepickerPopupTheme {
   }
 }
 
-export interface DatepickerProps extends Omit<InputProps, 'theme'> {
+export interface DatepickerProps extends Omit<InputProps, "theme"> {
   open?: boolean
   inline?: boolean
   autoHide?: boolean
@@ -95,37 +106,51 @@ export interface DatepickerProps extends Omit<InputProps, 'theme'> {
 /**
  *
  * @name Datepicker
+ *
  * @description The Datepicker component is used to select a date, it can be used as a popup or inline. You can also set the default date, min and max date, and the language.
+ *
  * @param {boolean} props.open - The open state of the datepicker
+ *
  * @param {boolean} props.inline - The inline state of the datepicker
+ *
  * @param {boolean} props.autoHide - The autoHide state of the datepicker
+ *
  * @param {boolean} props.showClearButton - The showClearButton state of the datepicker
+ *
  * @param {string} props.labelClearButton - The labelClearButton state of the datepicker
+ *
  * @param {ReactNode} props.clearIcon - The clearIcon state of the datepicker
+ *
  * @param {boolean} props.showTodayButton - The showTodayButton state of the datepicker
+ *
  * @param {ReactNode} props.todayIcon - The todayIcon state of the datepicker
+ *
  * @param {string} props.labelTodayButton - The labelTodayButton state of the datepicker
+ *
  * @param {Date} props.defaultDate - The defaultDate state of the datepicker
+ *
  * @param {Date} props.minDate - The minDate state of the datepicker
+ *
  * @param {Date} props.maxDate - The maxDate state of the datepicker
  *
  * @returns React.FC<DatepickerProps>
  */
+
 export const Datepicker: FC<DatepickerProps> = ({
   title,
   open,
   inline = false,
   autoHide = true,
   showClearButton = true,
-  labelClearButton = 'Clear',
+  labelClearButton = "Clear",
   clearIcon = <TbTrash />,
   showTodayButton = true,
   todayIcon = <TbCalendar />,
-  labelTodayButton = 'Today',
+  labelTodayButton = "Today",
   defaultDate = new Date(),
   minDate = new Date(1900, 0, 1),
   maxDate = new Date(2100, 0, 1),
-  language = 'en',
+  language = "en",
   weekStart = WeekStart.Monday,
   className,
   theme: customTheme = {},
@@ -196,10 +221,13 @@ export const Datepicker: FC<DatepickerProps> = ({
       case Views.Years:
         return `${startOfYearPeriod(viewDate, 10)} - ${startOfYearPeriod(viewDate, 10) + 9}`
       case Views.Months:
-        return getFormattedDate(language, viewDate, { year: 'numeric' })
+        return getFormattedDate(language, viewDate, { year: "numeric" })
       case Views.Days:
       default:
-        return getFormattedDate(language, viewDate, { month: 'long', year: 'numeric' })
+        return getFormattedDate(language, viewDate, {
+          month: "long",
+          year: "numeric",
+        })
     }
   }
 
@@ -221,18 +249,22 @@ export const Datepicker: FC<DatepickerProps> = ({
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      const clickedInsideDatepicker = datepickerRef.current?.contains(event.target as Node)
-      const clickedInsideInput = inputRef.current?.contains(event.target as Node)
+      const clickedInsideDatepicker = datepickerRef.current?.contains(
+        event.target as Node
+      )
+      const clickedInsideInput = inputRef.current?.contains(
+        event.target as Node
+      )
 
       if (!clickedInsideDatepicker && !clickedInsideInput) {
         setIsOpen(false)
       }
     }
 
-    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener("mousedown", handleClickOutside)
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener("mousedown", handleClickOutside)
     }
   }, [inputRef, datepickerRef, setIsOpen])
 
@@ -256,7 +288,7 @@ export const Datepicker: FC<DatepickerProps> = ({
           changeSelectedDate,
         }}
       >
-        <motion.div className={twMerge(theme.root.base, className)}>
+        <motion.div className={cn(theme.root.base, className)}>
           {!inline && (
             <Input
               theme={theme.root.input}
@@ -276,45 +308,64 @@ export const Datepicker: FC<DatepickerProps> = ({
           {(isOpen || inline) && (
             <motion.div
               initial={!inline && { opacity: 0.5, y: -10, scale: 0.97 }}
-              animate={{ opacity: 1, y: 0, scale: 1, transition: { duration: 0.1 } }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                transition: { duration: 0.1 },
+              }}
               exit={{ opacity: 0, y: -10, scale: 0.9 }}
               ref={datepickerRef}
-              className={twMerge(theme.popup.root.base, inline && theme.popup.root.inline)}
+              className={cn(
+                theme.popup.root.base,
+                inline && theme.popup.root.inline
+              )}
             >
               <div className={theme.popup.root.inner}>
                 <div className={theme.popup.header.base}>
-                  {title && <div className={theme.popup.header.title}>{title}</div>}
+                  {title && (
+                    <div className={theme.popup.header.title}>{title}</div>
+                  )}
                   <div className={theme.popup.header.selectors.base}>
                     <Button
                       type="button"
-                      size={'sm'}
-                      className={twMerge(
+                      variant={"ghost"}
+                      size={"sm"}
+                      className={cn(
                         theme.popup.header.selectors.button.base,
-                        theme.popup.header.selectors.button.prev,
+                        theme.popup.header.selectors.button.prev
                       )}
-                      onClick={() => { setViewDate(getViewDatePage(view, viewDate, -1)); }}
+                      onClick={() => {
+                        setViewDate(getViewDatePage(view, viewDate, -1))
+                      }}
                     >
                       <TbArrowLeft />
                     </Button>
                     <Button
+                      variant={"ghost"}
                       type="button"
-                      size={'sm'}
-                      className={twMerge(
+                      size={"sm"}
+                      className={cn(
                         theme.popup.header.selectors.button.base,
-                        theme.popup.header.selectors.button.view,
+                        theme.popup.header.selectors.button.view
                       )}
-                      onClick={() => { setView(getNextView()); }}
+                      onClick={() => {
+                        setView(getNextView())
+                      }}
                     >
                       {getViewTitle()}
                     </Button>
                     <Button
-                      size={'sm'}
+                      variant={"ghost"}
+                      size={"sm"}
                       type="button"
-                      className={twMerge(
+                      className={cn(
                         theme.popup.header.selectors.button.base,
-                        theme.popup.header.selectors.button.next,
+                        theme.popup.header.selectors.button.next
                       )}
-                      onClick={() => { setViewDate(getViewDatePage(view, viewDate, 1)); }}
+                      onClick={() => {
+                        setViewDate(getViewDatePage(view, viewDate, 1))
+                      }}
                     >
                       <TbArrowRight />
                     </Button>
@@ -326,7 +377,10 @@ export const Datepicker: FC<DatepickerProps> = ({
                     {showTodayButton && (
                       <Button
                         type="button"
-                        className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.today)}
+                        className={cn(
+                          theme.popup.footer.button.base,
+                          theme.popup.footer.button.today
+                        )}
                         onClick={() => {
                           const today = new Date()
                           changeSelectedDate(today, true)
@@ -339,9 +393,13 @@ export const Datepicker: FC<DatepickerProps> = ({
                     )}
                     {showClearButton && (
                       <Button
+                        variant={"ghost"}
+                        color={"secondary"}
                         type="button"
-                        variant="outline"
-                        className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.clear)}
+                        className={cn(
+                          theme.popup.footer.button.base,
+                          theme.popup.footer.button.clear
+                        )}
                         onClick={() => {
                           changeSelectedDate(defaultDate, true)
                           if (defaultDate) {
@@ -364,4 +422,4 @@ export const Datepicker: FC<DatepickerProps> = ({
   )
 }
 
-Datepicker.displayName = 'Datepicker'
+Datepicker.displayName = "Datepicker"
