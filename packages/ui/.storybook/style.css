@@ -19,3 +19,13 @@ button {
 :root {
   font-family: "Poppins", Arial, Helvetica, sans-serif !important ;
 }
+
+/*  */
+.provider {
+  transition: transform 0.3s ease;
+}
+:has(.drawer-open) .provider {
+  --c: 1;
+  transform: scale(calc(1 - (var(--c) * 0.01))) translateY(0.87rem);
+  will-change: transform;
+}

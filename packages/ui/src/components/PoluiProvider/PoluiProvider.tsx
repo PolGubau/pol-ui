@@ -1,7 +1,8 @@
 "use client"
 
-import type { FC } from "react"
+import React, { type FC } from "react"
 
+import { cn } from "../../helpers"
 import type { ThemeMode } from "../../hooks/use-theme-mode"
 import { ThemeInit } from "../../theme-store/init"
 import type { CustomPoluiTheme } from "./PoluiTheme"
@@ -26,7 +27,7 @@ export interface ThemeProps {
  * @author Pol Gubau - https://polgubau.com
 
  */
-interface ProviderProps {
+interface ProviderProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
   theme?: ThemeProps
 }
@@ -42,12 +43,13 @@ interface ProviderProps {
 export const PoluiProvider: FC<ProviderProps> = ({
   children,
   theme,
+  ...rest
 }: ProviderProps): JSX.Element => {
   return (
-    <>
+    <div {...rest} className={cn("provider", rest?.className)}>
       <ThemeInit mode={theme?.mode ?? "auto"} theme={theme?.theme} />
       {children}
-    </>
+    </div>
   )
 }
 
