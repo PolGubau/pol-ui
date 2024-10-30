@@ -7,7 +7,10 @@ import { useThemeMode } from "../src/hooks"
 import "./style.css"
 import React from "react"
 
-import { PoluiProvider } from "../src"
+import {
+  PoluiProvider,
+ 
+} from "../src"
 
 const Provider = ({ children }: PropsWithChildren) => {
   const { computedMode } = useThemeMode()
@@ -18,8 +21,8 @@ const Provider = ({ children }: PropsWithChildren) => {
         mode: computedMode,
       }}
     >
-      <main className="w-full h-full bg-background dark:bg-secondary-900 relative grid pt-6 rounded-xl p-2 min-h-[300px]">
-        {children}
+      <main className="w-full h-full bg-secondary-50 dark:bg-secondary-900 relative grid pt-6 p-2 min-h-[300px]">
+      {children}
         <div
           className="absolute"
           style={{
