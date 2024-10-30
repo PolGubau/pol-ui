@@ -27,7 +27,11 @@ function CodeBlock({
   const { value: isOpened, toggle } = useBoolean(false)
 
   return (
-    <Collapsible open={isOpened} onOpenChange={toggle}>
+    <Collapsible
+      open={isOpened}
+      onOpenChange={toggle}
+      className="overflow-hidden"
+    >
       <div
         className={cn(
           "relative overflow-hidden bg-secondary-50 dark:bg-secondary-900 ",

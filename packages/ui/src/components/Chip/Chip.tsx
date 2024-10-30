@@ -1,16 +1,21 @@
-'use client'
+"use client"
 
-import type { ElementType } from 'react'
-import React from 'react'
-import { ColorsEnum, type Colors, type DeepPartial, type RoundedSizes } from '../../types'
-import { IconButton } from '../IconButton'
-import { cn, colorToTailwind, mergeDeep } from '../../helpers'
-import { getTheme } from '../../theme-store'
-import type { ChipTheme } from './theme'
-import { useRipple } from '../../hooks'
-import type { MinimalEvent } from '../../hooks/use-ripple/use-ripple'
+import React, { type ElementType } from "react"
 
-const BASE_COMPONENT = 'li'
+import { cn, colorToTailwind, mergeDeep } from "../../helpers"
+import { useRipple } from "../../hooks"
+import type { MinimalEvent } from "../../hooks/use-ripple/use-ripple"
+import { getTheme } from "../../theme-store"
+import {
+  ColorsEnum,
+  type Colors,
+  type DeepPartial,
+  type RoundedSizes,
+} from "../../types"
+import { IconButton } from "../IconButton"
+import type { ChipTheme } from "./theme"
+
+const BASE_COMPONENT = "li"
 type BASE_COMPONENT_TYPE = typeof BASE_COMPONENT
 
 export interface ChipAction extends React.HTMLAttributes<HTMLButtonElement> {
@@ -33,23 +38,35 @@ export interface ChipProps<T extends ElementType = BASE_COMPONENT_TYPE> {
   textClassName?: string
 }
 /**
- *  Chip component
- * @description The chip component is used to display information in a compact way and can be used to trigger actions when clicked or to display actions when hovered over. It can be used to display tags, categories, actions...
- *  @param {ElementType} props.as - The component to render
- * @param {React.ReactNode} props.children - The content of the chip
- * @param {string} props.label - The label of the chip
- * @param {(e: React.MouseEvent) => void} props.onClick - The function to call when the chip is clicked
- * @param {Colors} props.color - The color of the chip
- * @param {boolean} props.disabled - If the chip is disabled
- * @param {RoundedSizes} props.rounded - The rounded size of the chip
- * @param {ChipAction[]} props.actions - The actions of the chip
- * @param {DeepPartial<ChipTheme>} props.theme - The theme of the chip
- * @param {string} props.className - The class name of the chip
- * @param {string} props.elementClassName - The class name of the element
- * @param {string} props.textClassName - The class name of the text
- * @returns
- * @example
+ * @name Chip component
  *
+ * @description The chip component is used to display information in a compact way and can be used to trigger actions when clicked or to display actions when hovered over. It can be used to display tags, categories, actions...
+ *
+ *  @param {ElementType} props.as - The component to render
+ *
+ * @param {React.ReactNode} props.children - The content of the chip
+ *
+ * @param {string} props.label - The label of the chip
+ *
+ * @param {(e: React.MouseEvent) => void} props.onClick - The function to call when the chip is clicked
+ *
+ * @param {Colors} props.color - The color of the chip
+ *
+ * @param {boolean} props.disabled - If the chip is disabled
+ *
+ * @param {RoundedSizes} props.rounded - The rounded size of the chip
+ *
+ * @param {ChipAction[]} props.actions - The actions of the chip
+ *
+ * @param {DeepPartial<ChipTheme>} props.theme - The theme of the chip
+ *
+ * @param {string} props.className - The class name of the chip
+ *
+ * @param {string} props.elementClassName - The class name of the element
+ *
+ * @param {string} props.textClassName - The class name of the text
+ *
+ * @example
  * <Chip
  *  label="Chip"
  * color={ColorsEnum.primary}
@@ -73,13 +90,13 @@ export const Chip = <T extends ElementType = BASE_COMPONENT_TYPE>({
   actions = [],
   disabled = false,
   color = ColorsEnum.secondary,
-  rounded = 'full',
+  rounded = "full",
   theme: customTheme = {},
   className,
   elementClassName,
   textClassName,
 }: ChipProps<T>) => {
-  const Component = onClick ? 'button' : BaseComponent ?? BASE_COMPONENT
+  const Component = onClick ? "button" : (BaseComponent ?? BASE_COMPONENT)
   const theme = mergeDeep(getTheme().chip, customTheme)
 
   const [ripple, event] = useRipple({
@@ -97,7 +114,7 @@ export const Chip = <T extends ElementType = BASE_COMPONENT_TYPE>({
         theme.color[color],
         disabled && theme.disabled,
         !disabled && onClick && theme.clickable,
-        className,
+        className
       )}
       onPointerDown={(e: MinimalEvent) => onClick && event(e)}
       ref={onClick && ripple}
@@ -112,7 +129,7 @@ export const Chip = <T extends ElementType = BASE_COMPONENT_TYPE>({
             <IconButton
               key={index}
               size="xs"
-              onClick={e => {
+              onClick={(e) => {
                 e.stopPropagation()
                 onClick?.(e)
               }}

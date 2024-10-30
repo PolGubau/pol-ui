@@ -10,13 +10,12 @@ import type { BreadcrumbTheme } from "../Breadcrumb"
 import type { BubbleHeadingTheme } from "../BubbleHeading/theme"
 import type { ButtonTheme } from "../Button"
 import type { CardTheme } from "../Card"
- import type { CheckboxTheme } from "../Checkbox"
+import type { CheckboxTheme } from "../Checkbox"
 import type { ChipTheme } from "../Chip/theme"
 import type { CommandTheme } from "../Command/theme"
 import type { ContainerScrollTheme } from "../ContainerScroll/theme"
 import type { ConveyorTheme } from "../Conveyor/theme"
 import type { CopyrightTheme } from "../Copyright/theme"
-import type { DarkThemeToggleTheme } from "../DarkThemeToggle"
 import type { DatepickerTheme } from "../Datepicker"
 import type { DirectionHoverTheme } from "../DirectionHover/theme"
 import type { DividerTheme } from "../Divider"
@@ -83,8 +82,7 @@ export interface PoluiTheme {
   iconButton: IconButtonTheme
   card: CardTheme
   copyright: CopyrightTheme
-   datepicker: DatepickerTheme
-  darkThemeToggle: DarkThemeToggleTheme
+  datepicker: DatepickerTheme
   footer: FooterTheme
   kbd: KbdTheme
   listGroup: ListGroupTheme
@@ -112,7 +110,6 @@ export interface PoluiTheme {
   textInput: InputTheme
   switch: SwitchTheme
   helperText: HelperTextTheme
-  // table: TableTheme
   timeline: TimelineTheme
   conveyor: ConveyorTheme
   parallaxText: ParallaxTextTheme

@@ -8,13 +8,8 @@ export default {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <div className="grid md:grid-cols-2 items-start ">
-        <div className="flex flex-col justify-center items-center ">
-          <Story />
-        </div>
-        <div className="flexflex-col justify-center items-center dark bg-secondary-900 text-secondary-100 h-full">
-          <Story />
-        </div>
+      <div className="flex flex-col justify-center items-center ">
+        <Story />
       </div>
     ),
   ],
@@ -22,10 +17,6 @@ export default {
     layout: "fullscreen",
   },
 } as Meta
-
-const Template: StoryFn<CodeBlockProps> = (args) => <CodeBlock {...args} />
-
-export const Default = Template.bind({})
 
 const code = `'use client'
  
@@ -74,6 +65,10 @@ function CodeBlock({ expandButtonTitle = 'View Code', className, children, ...pr
  
 `
 
-Default.args = {
-  children: code,
+export const Default = () => {
+  return (
+    <CodeBlock>
+      <pre>{code}</pre>
+    </CodeBlock>
+  )
 }

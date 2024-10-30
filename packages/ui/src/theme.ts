@@ -17,7 +17,6 @@ import { commandTheme } from "./components/Command/theme"
 import { containerScrollTheme } from "./components/ContainerScroll/theme"
 import { conveyorTheme } from "./components/Conveyor/theme"
 import { copyrightTheme } from "./components/Copyright/theme"
-import { darkThemeToggleTheme } from "./components/DarkThemeToggle/theme"
 import { datePickerTheme } from "./components/Datepicker/theme"
 import { directionHoverTheme } from "./components/DirectionHover/theme"
 import { dividerTheme } from "./components/Divider"
@@ -73,10 +72,9 @@ export const theme: PoluiTheme = {
   iconButton: iconButtonTheme,
   link: linkTheme,
   card: cardTheme,
-   copyright: copyrightTheme,
+  copyright: copyrightTheme,
   checkbox: checkboxTheme,
   datepicker: datePickerTheme,
-  darkThemeToggle: darkThemeToggleTheme,
   dropdown: dropdownTheme,
   fileInput: fileInputTheme,
   footer: footerTheme,
