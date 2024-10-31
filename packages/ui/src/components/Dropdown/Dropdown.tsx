@@ -10,7 +10,7 @@ import * as D from "@radix-ui/react-dropdown-menu"
 import { TbCheck, TbCircle } from "react-icons/tb"
 
 import { cn } from "../../helpers"
-import { Button } from "../Button"
+import { Button, ButtonProps } from "../Button"
 import { DropdownContent } from "./components"
 
 export interface DropdownProps extends D.DropdownMenuContentProps {
@@ -19,6 +19,7 @@ export interface DropdownProps extends D.DropdownMenuContentProps {
   /** Label of the trigger button, if you don't provide a custom trigger */
   label?: string
   disabled?: boolean
+  defaultTriggerOptions?: ButtonProps
 }
 
 const Dropdown = ({
@@ -26,9 +27,14 @@ const Dropdown = ({
   label = "Open Menu",
   children,
   disabled,
+  defaultTriggerOptions,
   ...props
 }: DropdownProps) => {
-  const triggerNode = trigger ?? <Button name={label}>{label}</Button>
+  const triggerNode = trigger ?? (
+    <Button {...defaultTriggerOptions} name={label}>
+      {label}
+    </Button>
+  )
   return (
     <D.Root>
       <D.Trigger disabled={disabled} asChild>

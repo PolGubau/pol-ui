@@ -1,60 +1,72 @@
 "use client"
 
-import type { ComponentProps, FC } from "react"
+import React, { type ComponentProps, type FC } from "react"
 
-import { cn } from "../../helpers"
+import { cn, mergeRefs } from "../../helpers"
 import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
+import { useRipple } from "../../hooks"
 import { getTheme } from "../../theme-store"
 import type { DeepPartial } from "../../types/types"
+import { ButtonProps } from "../Button"
 import { FocusEffect } from "../FocusEffect"
 import type { CardTheme } from "./theme"
 
 export type CardProps = ComponentProps<"div"> &
   ComponentProps<"button"> &
-  ComponentProps<"a"> & {
-    href?: string
+  Pick<ButtonProps, "rippleOptions"> & {
     theme?: DeepPartial<CardTheme>
     onClick?: () => void
   }
 
 /**
  * @name Card
+ *
  * @description A Card component that can be used to display content in a card-like style. Usefull in a blog, a social network, a forum...
  *
- * @returns {React.ReactNode} A Card component.
  *
- * @example
+ * @example ```
  * <Card>
  *    <h5 className="text-2xl font-bold">Card title!</h5>
  *     <p className="font-normal text-secondary-700">
  *       Hello there!
  *    </p>
  * </Card>
+ * ```
+ * @returns {React.ReactNode} A Card component.
  *
  */
-export const Card: FC<CardProps> = (props): React.ReactNode => {
-  const { href, theme: customTheme = {}, onClick, ...rest } = props
 
-  // Card component will be an Anchor link if href prop is passed.
+export const Card = React.forwardRef<React.ElementRef<"div">, CardProps>(
+  (props, ref) => {
+    const { theme: customTheme = {}, onClick, className = "", ...rest } = props
 
-  const Component =
-    typeof onClick === "undefined"
-      ? typeof href === "undefined"
-        ? "div"
-        : "a"
-      : "button"
+    // Card component will be an Anchor link if href prop is passed.
 
-  const theme = mergeDeep(getTheme().card, customTheme)
-  return (
-    <Component
-      data-testid="ui-card"
-      href={href}
-      onClick={onClick}
-      className={cn(theme.base, href && theme.href, rest?.className)}
-      {...(rest as any)}
-    >
-      {rest.children}
-      {onClick && <FocusEffect />}
-    </Component>
-  )
-}
+    const Component = typeof onClick === "undefined" ? "div" : "button"
+
+    const theme = mergeDeep(getTheme().card, customTheme)
+
+    const [ripple, event] = useRipple({
+      disabled: rest.disabled,
+      ...rest.rippleOptions,
+      opacity: 0.3,
+    })
+    return (
+      <Component
+        ref={mergeRefs([ripple, ref])}
+        data-testid="ui-card"
+        onClick={(e) => {
+          if (onClick) {
+            event(e)
+            onClick(e as React.MouseEvent<HTMLButtonElement>)
+          }
+        }}
+        className={cn(theme.base, className)}
+        {...(rest as any)}
+      >
+        {rest.children}
+        {onClick && <FocusEffect />}
+      </Component>
+    )
+  }
+)

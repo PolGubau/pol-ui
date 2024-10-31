@@ -1,29 +1,28 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import type { BreadcrumbComponentProps } from './Breadcrumb'
-import { Breadcrumb } from './Breadcrumb'
-import { BreadcrumbItem } from './BreadcrumbItem'
-import { TbHome, TbUser } from 'react-icons/tb'
+import type { Meta, StoryFn } from "@storybook/react"
+import { HiOutlineChevronRight } from "react-icons/hi"
+import { TbHome, TbUser } from "react-icons/tb"
 
-import { Dropdown, DropdownItem } from '../Dropdown'
-import { HiOutlineChevronRight } from 'react-icons/hi'
+import { Dropdown, DropdownItem } from "../Dropdown"
+import { Breadcrumb, type BreadcrumbComponentProps } from "./Breadcrumb"
+import { BreadcrumbItem } from "./BreadcrumbItem"
 
 export default {
-  title: 'Components/Breadcrumb',
+  title: "Components/Breadcrumb",
   component: Breadcrumb,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col ">
         <Story />
       </div>
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 } as Meta
 
-const Template: StoryFn<BreadcrumbComponentProps> = args => (
+const Template: StoryFn<BreadcrumbComponentProps> = (args) => (
   <Breadcrumb {...args}>
     <BreadcrumbItem href="https://polgubau.com/" icon={TbHome}>
       Home
@@ -33,7 +32,11 @@ const Template: StoryFn<BreadcrumbComponentProps> = args => (
     </BreadcrumbItem>
     <HiOutlineChevronRight className="text-secondary-600 ml-2" />
 
-    <Dropdown label={'...'} className="bg-transparent text-secondary-900">
+    <Dropdown
+      defaultTriggerOptions={{ variant: "ghost" }}
+      label={"..."}
+      className="bg-transparent text-secondary-900"
+    >
       <DropdownItem label="Authors" />
       <DropdownItem label="Selected" />
       <DropdownItem label="Matched" />
@@ -46,7 +49,7 @@ const Template: StoryFn<BreadcrumbComponentProps> = args => (
 export const Default = Template.bind({})
 
 export const SolidBackground = Template.bind({})
-SolidBackground.storyName = 'Solid background'
+SolidBackground.storyName = "Solid background"
 SolidBackground.args = {
-  className: 'bg-primary-400 w-fit py-2 px-4 rounded-xl',
+  className: "bg-primary-400 w-fit py-2 px-4 rounded-xl",
 }

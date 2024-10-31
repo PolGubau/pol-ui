@@ -2,7 +2,9 @@ import React from "react"
 import type { Meta } from "@storybook/react"
 
 import { cn } from "../../helpers"
-import { BooleanCard } from "./index"
+import { useBoolean } from "../../hooks"
+import { Button } from "../Button"
+import { BooleanCard, LoadingBooleanCard } from "./index"
 
 const meta: Meta<typeof BooleanCard> = {
   title: "Components/BooleanCard",
@@ -108,7 +110,7 @@ export const CustomDescription = () => {
     return (
       <div className="flex gap-2 flex-col">
         <span>Custom description</span>
-        <span className="text-xs text-secondary">
+        <span className="text-xs text-secondary-600">
           This is a custom description
         </span>
         <div className="flex gap-2 items-center">
@@ -132,6 +134,26 @@ export const CustomDescription = () => {
         checked={checked}
         onChange={setChecked}
       />
+    </div>
+  )
+}
+
+export const Loading = () => {
+  const { value: isLoading, toggle } = useBoolean(false)
+
+  return (
+    <div className="flex flex-col gap-4 max-w-sm">
+      <Button onClick={toggle}>{isLoading ? "Stop" : "Start"} loading</Button>
+      {isLoading ? (
+        <LoadingBooleanCard />
+      ) : (
+        <BooleanCard
+          title="Remember me"
+          description="Your account will be saved"
+          checked={isLoading}
+          onChange={toggle}
+        />
+      )}
     </div>
   )
 }

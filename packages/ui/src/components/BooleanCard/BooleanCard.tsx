@@ -33,15 +33,18 @@ export const BooleanCard = ({
 
   return (
     <Card
-      className={cn("cursor-pointer transition-colors h-fit w-full", {
+      className={cn("text-left cursor-pointer transition-colors h-fit w-full", {
         "bg-secondary-50": innerChecked,
       })}
       onClick={() => handleChange(!innerChecked)}
     >
-      <div className="flex justify-between gap-4 w-full">
+      <div className="flex justify-between gap-6 w-full">
         <header className="flex flex-col gap-1 w-full">
           <strong
-            className={cn("text-medium", rest.titleProps?.className)}
+            className={cn(
+              "text-medium text-balance",
+              rest.titleProps?.className
+            )}
             {...rest.titleProps}
           >
             {title}
@@ -54,7 +57,12 @@ export const BooleanCard = ({
           </p>
         </header>
 
-        <Switch {...rest} checked={innerChecked} onChange={handleChange} />
+        <Switch
+          tabIndex={-1}
+          {...rest}
+          checked={innerChecked}
+          onChange={handleChange}
+        />
       </div>
     </Card>
   )

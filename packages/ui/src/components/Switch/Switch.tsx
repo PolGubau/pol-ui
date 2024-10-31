@@ -1,6 +1,7 @@
 "use client"
 
 import {
+  useEffect,
   useId,
   useState,
   type ComponentProps,
@@ -59,6 +60,9 @@ export const Switch: FC<SwitchProps> = ({
     onChange?.(newValue)
     setValue(newValue)
   }
+  useEffect(() => {
+    setValue(checked)
+  }, [checked])
 
   const handleOnKeyDown = (event: KeyboardEvent<HTMLButtonElement>): void => {
     const code = event.code

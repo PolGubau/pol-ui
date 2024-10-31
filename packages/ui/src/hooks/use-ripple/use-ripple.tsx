@@ -3,6 +3,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useRef } from "react"
 
+import { px } from "../../helpers/px/px"
+
 /**
  * @name Options
  * @description The options to use for the ripple
@@ -60,7 +62,7 @@ export interface MinimalEvent {
 
 const self = () => document
 const completedFactor = 0.4
-const className = "bg-[#fff]"
+const className = "bg-secondary-50"
 const containerClassName = "ripple--container"
 
 /**
@@ -81,7 +83,7 @@ export default function useRipple<T extends HTMLElement = any>(
   const internalRef = useRef<T>(null)
 
   const { ref, ...options }: RippleOptions = {
-    duration: 450,
+    duration: 850,
     cancelAutomatically: false,
     timingFunction: "cubic-bezier(.42,.36,.28,.88)",
     disabled: false,
@@ -216,22 +218,6 @@ function centerElementToPointer<T extends HTMLElement>(
   element.style.setProperty("top", px(event.clientY - top))
   element.style.setProperty("left", px(event.clientX - left))
   return element
-}
-
-/**
- * @name px
- * @description Converts the specified number to a pixel string
- * @param arg <string | number> The number to convert
- * @returns <string> The pixel string
- * @example
- * const pxString = px(10);
- * console.log(pxString); // 10px
- * const pxString = px('10'); // 10px
- *
- * @author Pol Gubau Amores - https://polgubau.com
- */
-function px(arg: string | number) {
-  return `${arg.toString()}px`
 }
 
 /**
