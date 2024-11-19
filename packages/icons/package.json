@@ -27,10 +27,6 @@
     "start": "rollup -c -w",
     "generate:icons": "svgr --icon --typescript --svgo-config ./scripts/svgoConfig.json -d ./src ./resources/icons"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/devEbaas/react-icon-library.git"
-  },
   "files": [
     "dist"
   ],
