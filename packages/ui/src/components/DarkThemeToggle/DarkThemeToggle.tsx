@@ -2,11 +2,8 @@
 
 import type { ComponentProps, FC } from "react"
 import { TbMoon, TbSun } from "react-icons/tb"
-import { twMerge } from "tailwind-merge"
 
-import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
 import { useThemeMode } from "../../hooks/use-theme-mode"
-import { getTheme } from "../../theme-store"
 import { IconButton, IconButtonProps } from "../IconButton"
 
 export interface DarkThemeToggleProps extends IconButtonProps {

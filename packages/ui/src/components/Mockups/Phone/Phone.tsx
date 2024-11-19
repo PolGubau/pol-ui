@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react"
+import { PropsWithChildren } from "react"
 
 interface PhoneMockupProps extends PropsWithChildren {}
 const PhoneMockup = (props: PhoneMockupProps) => {

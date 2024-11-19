@@ -1,6 +1,6 @@
 "use client"
 
-import React, { type ComponentProps, type FC } from "react"
+import React, { type ComponentProps } from "react"
 
 import { cn, mergeRefs } from "../../helpers"
 import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
