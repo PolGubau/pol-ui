@@ -1,0 +1,44 @@
+{
+  "name": "pol-icons",
+  "version": "1.0.0",
+  "description": "React icon library for Pol-UI ecosystem",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rollup": "^2.75.7"
+  },
+  "devDependencies": {
+    "@svgr/babel-plugin-remove-jsx-attribute": "^5.4.0",
+    "@svgr/cli": "^5.4.0",
+    "@svgr/core": "^5.4.0",
+    "@svgr/plugin-svgo": "^5.4.0",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "babel-core": "^6.26.3",
+    "babel-runtime": "^6.26.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rollup-plugin-typescript2": "^0.27.3",
+    "typescript": "^3.9.3"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "start": "rollup -c -w",
+    "generate:icons": "svgr --icon --typescript --svgo-config ./scripts/svgoConfig.json -d ./src ./resources/icons"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devEbaas/react-icon-library.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "react",
+    "icon",
+    "library"
+  ],
+  "author": "Pol Gubau Amores",
+  "license": "MIT"
+}
