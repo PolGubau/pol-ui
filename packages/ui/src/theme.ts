@@ -5,7 +5,6 @@ import { animatedHeadingTheme } from "./components/AnimatedHeading/theme"
 import { autocompleteTheme } from "./components/Autocomplete/theme"
 import { avatarTheme } from "./components/Avatar/theme"
 import { badgeTheme } from "./components/Badge/theme"
-// import { tableTheme } from './components/Table/theme'
 import { bannerTheme } from "./components/Banner/theme"
 import { breadcrumbTheme } from "./components/Breadcrumb/theme"
 import { bubbleHeadingTheme } from "./components/BubbleHeading/theme"
@@ -13,7 +12,6 @@ import { buttonTheme } from "./components/Button/theme"
 import { cardTheme } from "./components/Card/theme"
 import { checkboxTheme } from "./components/Checkbox/theme"
 import { chipTheme } from "./components/Chip/theme"
-import { commandTheme } from "./components/Command/theme"
 import { containerScrollTheme } from "./components/ContainerScroll/theme"
 import { conveyorTheme } from "./components/Conveyor/theme"
 import { copyrightTheme } from "./components/Copyright/theme"
@@ -96,7 +94,6 @@ export const theme: PoluiTheme = {
   switch: switchTheme,
   sidebar: sidebarTheme,
   loader: loaderTheme,
-  // table: tableTheme,
   tabs: tabsTheme,
   timeline: timelineTheme,
   toast: toastTheme,
@@ -118,7 +115,6 @@ export const theme: PoluiTheme = {
   navigationMenu: navigationMenuTheme,
   chip: chipTheme,
   dropzone: dropzoneTheme,
-  command: commandTheme,
   otpInput: otpInputTheme,
   autocomplete: autocompleteTheme,
   gauge: gaugeTheme,

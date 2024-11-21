@@ -1,8 +1,0 @@
-
-> pol-ui@2.1.29 build C:\Users\pol.gubau\dev\mine\ui\pol-ui\packages\ui
-> pnpm build:esm && pnpm build:cjs
-
-
-> pol-ui@2.1.29 build:esm C:\Users\pol.gubau\dev\mine\ui\pol-ui\packages\ui
-> tsc -p tsconfig.lib.json --module esnext --declaration --outDir ./lib/esm
-

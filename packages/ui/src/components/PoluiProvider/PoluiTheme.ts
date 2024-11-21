@@ -12,7 +12,6 @@ import type { ButtonTheme } from "../Button"
 import type { CardTheme } from "../Card"
 import type { CheckboxTheme } from "../Checkbox"
 import type { ChipTheme } from "../Chip/theme"
-import type { CommandTheme } from "../Command/theme"
 import type { ContainerScrollTheme } from "../ContainerScroll/theme"
 import type { ConveyorTheme } from "../Conveyor/theme"
 import type { CopyrightTheme } from "../Copyright/theme"
@@ -125,7 +124,6 @@ export interface PoluiTheme {
   navigationMenu: NavigationMenuTheme
   chip: ChipTheme
   dropzone: DropzoneTheme
-  command: CommandTheme
   otpInput: OtpInputTheme
   autocomplete: AutocompleteTheme
 }
