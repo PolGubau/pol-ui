@@ -2,7 +2,6 @@
 
 import { useId } from "react"
 
-import { Autocomplete, AutocompleteOption } from "../Autocomplete"
 import { Radio } from "../Radio"
 import { Select } from "../Select"
 import { SelectGroup, SelectItem } from "../Select/Select"
@@ -69,24 +68,6 @@ const MultiOption = ({
           ))}
         </SelectGroup>
       </Select>
-    )
-  }
-  if (length >= 10) {
-    const autocompleteAdaterOptions: AutocompleteOption[] = options.map(
-      (option) => ({ value: option, label: option })
-    )
-
-    const adaptedValue = autocompleteAdaterOptions.find(
-      (option) => option.value === value
-    )
-    return (
-      <Autocomplete
-        value={adaptedValue}
-        onChange={(n) => {
-          onChange(n.value)
-        }}
-        options={autocompleteAdaterOptions}
-      />
     )
   }
 }

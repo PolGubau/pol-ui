@@ -2,7 +2,6 @@ import type { DeepPartial } from "../../types/types"
 import type { AccordionTheme } from "../Accordion"
 import type { AlertTheme } from "../Alert"
 import type { AnimateHeadingTheme } from "../AnimatedHeading/theme"
-import type { AutocompleteTheme } from "../Autocomplete/theme"
 import type { AvatarTheme } from "../Avatar"
 import type { BadgeTheme } from "../Badge"
 import type { BannerTheme } from "../Banner"
@@ -125,5 +124,4 @@ export interface PoluiTheme {
   chip: ChipTheme
   dropzone: DropzoneTheme
   otpInput: OtpInputTheme
-  autocomplete: AutocompleteTheme
 }

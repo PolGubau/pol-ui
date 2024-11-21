@@ -2,7 +2,6 @@ import { type PoluiTheme } from "."
 import { accordionTheme } from "./components/Accordion/theme"
 import { alertTheme } from "./components/Alert/theme"
 import { animatedHeadingTheme } from "./components/AnimatedHeading/theme"
-import { autocompleteTheme } from "./components/Autocomplete/theme"
 import { avatarTheme } from "./components/Avatar/theme"
 import { badgeTheme } from "./components/Badge/theme"
 import { bannerTheme } from "./components/Banner/theme"
@@ -116,7 +115,6 @@ export const theme: PoluiTheme = {
   chip: chipTheme,
   dropzone: dropzoneTheme,
   otpInput: otpInputTheme,
-  autocomplete: autocompleteTheme,
   gauge: gaugeTheme,
   focusEffect: focusEffectTheme,
 }
