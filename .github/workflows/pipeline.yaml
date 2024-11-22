@@ -81,9 +81,15 @@ jobs:
       - name: 🍀 Publish to NPM
         if: github.ref == 'refs/heads/main'
         run: |
-          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc 
-          cd packages/ui 
-          pnpm publish --no-git-checks
+          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+          cd packages/ui
+          if ! npm view pol-ui@$(node -pe "require('./package.json').version") > /dev/null 2>&1; then
+            pnpm publish --no-git-checks
+          else
+            echo "Version already published."
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
