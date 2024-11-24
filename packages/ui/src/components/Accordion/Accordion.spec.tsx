@@ -4,7 +4,10 @@ import userEvent from "@testing-library/user-event"
 import { HiOutlineArrowCircleDown } from "react-icons/hi"
 import { describe, expect, it } from "vitest"
 
-import { PoluiProvider, type CustomPoluiTheme } from "../PoluiProvider"
+import {
+  PoluiProvider,
+  type CustomPoluiTheme,
+} from "../../providers/PoluiProvider"
 import { Accordion } from "./Accordion"
 import type { AccordionProps } from "./types"
 

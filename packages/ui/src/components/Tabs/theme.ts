@@ -18,11 +18,11 @@ export interface TabsTheme {
 }
 
 export const tabsTheme: TabsTheme = {
-  base: 'flex flex-row items-center justify-start relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full [perspective:1000px] gap-1 p-px ',
+  base: 'flex flex-row justify-start relative',
 
   disabled: 'opacity-50 cursor-not-allowed',
   navItem: {
-    base: 'relative px-3 py-1.5 rounded-full',
+    base: 'relative outline-0 px-3 py-1.5 rounded-full hover:bg-primary/20 dark:hover:bg-primary-800/20 cursor-pointer transition-colors',
     text: 'relative flex text-secondary-900 dark:text-secondary-50',
 
     marker: {
@@ -33,7 +33,7 @@ export const tabsTheme: TabsTheme = {
       },
       mode: {
         underlined: 'h-1 top-8',
-        contained: 'h-full',
+        contained: 'h-full bg-primary/20 dark:bg-primary-800/20',
       },
     },
   },

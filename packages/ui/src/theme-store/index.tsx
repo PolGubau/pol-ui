@@ -1,11 +1,11 @@
-'use client'
+"use client"
 
-import type { CustomPoluiTheme, PoluiTheme } from '../components/PoluiProvider'
-import { cloneDeep } from '../helpers/clone-deep'
-import { mergeDeep } from '../helpers/merge-deep/merge-deep'
-import type { ThemeMode } from '../hooks/use-theme-mode'
-import { theme as defaultTheme } from '../theme'
-import { DeepPartial } from '../types'
+import { cloneDeep } from "../helpers/clone-deep"
+import { mergeDeep } from "../helpers/merge-deep/merge-deep"
+import type { ThemeMode } from "../hooks/use-theme-mode"
+import type { CustomPoluiTheme, PoluiTheme } from "../providers/PoluiProvider"
+import { theme as defaultTheme } from "../theme"
+import { DeepPartial } from "../types"
 
 interface ThemeStore {
   mode?: ThemeMode
@@ -37,7 +37,10 @@ export type ThemeKey = keyof PoluiTheme
 export type ThemeOfPart<T extends ThemeKey> = PoluiTheme[T]
 export type PartOfTheme<T extends ThemeKey> = DeepPartial<ThemeOfPart<T>>
 
-export const themeGetter = <T extends ThemeKey>(path: T, theme: PartOfTheme<T>): ThemeOfPart<T> => {
+export const themeGetter = <T extends ThemeKey>(
+  path: T,
+  theme: PartOfTheme<T>
+): ThemeOfPart<T> => {
   const allThemes = getTheme()
   return mergeDeep(allThemes[path], theme)
 }

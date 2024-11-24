@@ -2,7 +2,10 @@ import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { describe, expect, it, vi } from "vitest"
 
-import { PoluiProvider, type CustomPoluiTheme } from "../PoluiProvider"
+import {
+  PoluiProvider,
+  type CustomPoluiTheme,
+} from "../../providers/PoluiProvider"
 import { Slider } from "./Slider"
 
 describe("Components / Button", () => {

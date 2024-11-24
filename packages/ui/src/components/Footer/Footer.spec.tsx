@@ -1,16 +1,20 @@
-import { cleanup, render, screen } from '@testing-library/react'
-import type { FC } from 'react'
-import { describe, expect, it } from 'vitest'
-import { PoluiProvider, type CustomPoluiTheme } from '../PoluiProvider'
-import { Footer } from './Footer'
-import { FooterBrand } from './FooterBrand'
-import { Copyright } from '../Copyright'
-import { Link } from '../Link'
-import { FooterLinkGroup } from './FooterLinkGroup'
-import { Divider } from '../Divider'
+import type { FC } from "react"
+import { cleanup, render, screen } from "@testing-library/react"
+import { describe, expect, it } from "vitest"
 
-describe('Components / Footer', () => {
-  describe('Rendering', () => {
+import {
+  PoluiProvider,
+  type CustomPoluiTheme,
+} from "../../providers/PoluiProvider"
+import { Copyright } from "../Copyright"
+import { Divider } from "../Divider"
+import { Link } from "../Link"
+import { Footer } from "./Footer"
+import { FooterBrand } from "./FooterBrand"
+import { FooterLinkGroup } from "./FooterLinkGroup"
+
+describe("Components / Footer", () => {
+  describe("Rendering", () => {
     it('should render an `<a>` with an `<img>` on `Footer.Brand href=".."`', () => {
       render(
         <Footer>
@@ -21,10 +25,10 @@ describe('Components / Footer', () => {
           >
             Pol-ui
           </FooterBrand>
-        </Footer>,
+        </Footer>
       )
-      const a = screen.getByTestId('ui-footer-brand')
-      const img = screen.getByAltText('PoluiProvider')
+      const a = screen.getByTestId("ui-footer-brand")
+      const img = screen.getByAltText("PoluiProvider")
 
       expect(a).toBeInTheDocument()
       expect(a).toContainElement(img)
@@ -37,9 +41,9 @@ describe('Components / Footer', () => {
         <FooterBrand alt="PoluiProvider" src="">
           PoluiProvider
         </FooterBrand>
-      </Footer>,
+      </Footer>
     )
-    const img = screen.getByAltText('PoluiProvider')
+    const img = screen.getByAltText("PoluiProvider")
 
     expect(img).toBeInTheDocument()
   })
@@ -47,73 +51,81 @@ describe('Components / Footer', () => {
   it('should render an `<a>` on `Footer.Copyright href=".."`', () => {
     render(
       <Footer>
-        <Copyright by="PoluiProvider" href="https://PoluiProvider.com" year={2022}>
+        <Copyright
+          by="PoluiProvider"
+          href="https://PoluiProvider.com"
+          year={2022}
+        >
           PoluiProvider
         </Copyright>
-      </Footer>,
+      </Footer>
     )
 
-    expect(copyright()).toContainElement(screen.getByRole('link'))
+    expect(copyright()).toContainElement(screen.getByRole("link"))
   })
 
-  describe('Theme', () => {
-    it('should use `base` classes', () => {
+  describe("Theme", () => {
+    it("should use `base` classes", () => {
       const theme: CustomPoluiTheme = {
         footer: {
           root: {
-            base: 'text-gray-100',
+            base: "text-gray-100",
           },
         },
       }
       render(
         <PoluiProvider theme={{ theme }}>
           <TestFooter />
-        </PoluiProvider>,
+        </PoluiProvider>
       )
 
-      expect(footer()).toHaveClass('text-gray-100')
+      expect(footer()).toHaveClass("text-gray-100")
     })
 
-    it('should use `container` classes', () => {
+    it("should use `container` classes", () => {
       const theme: CustomPoluiTheme = {
         footer: {
           root: {
-            container: 'text-gray-100',
+            container: "text-gray-100",
           },
         },
       }
       render(
         <PoluiProvider theme={{ theme }}>
           <TestFooter />
-        </PoluiProvider>,
+        </PoluiProvider>
       )
 
-      expect(footer()).toHaveClass('text-gray-100')
+      expect(footer()).toHaveClass("text-gray-100")
     })
 
-    describe('`Footer.Brand`', () => {
-      it('should use `brand` classes', () => {
+    describe("`Footer.Brand`", () => {
+      it("should use `brand` classes", () => {
         const theme: CustomPoluiTheme = {
           footer: {
             brand: {
-              base: 'text-gray-100',
-              img: 'text-gray-200',
-              span: 'text-gray-300',
+              base: "text-gray-100",
+              img: "text-gray-200",
+              span: "text-gray-300",
             },
           },
         }
         render(
           <PoluiProvider theme={{ theme }}>
             <Footer>
-              <FooterBrand alt="PoluiProvider" href="https://PoluiProvider.com" src="">
+              <FooterBrand
+                alt="PoluiProvider"
+                href="https://PoluiProvider.com"
+                src=""
+              >
                 PoluiProvider
               </FooterBrand>
             </Footer>
-          </PoluiProvider>,
+          </PoluiProvider>
         )
 
-        expect(brand()).toHaveClass('text-gray-100')
-        expect(screen.getByRole('img')).toHaveClass('text-gray-200')
+        expect(brand()).toHaveClass("text-gray-100")
+        expect(screen.getByRole("img")).toHaveClass("text-gray-200")
 
         cleanup()
         render(
@@ -123,10 +135,12 @@ describe('Components / Footer', () => {
                 PoluiProvider
               </FooterBrand>
             </Footer>
-          </PoluiProvider>,
+          </PoluiProvider>
         )
 
-        expect(screen.getByTestId('ui-footer-brand-span')).toHaveClass('text-gray-300')
+        expect(screen.getByTestId("ui-footer-brand-span")).toHaveClass(
+          "text-gray-300"
+        )
       })
     })
   })
@@ -173,8 +187,8 @@ const TestFooter: FC = () => (
   </Footer>
 )
 
-const brand = () => screen.getByTestId('ui-footer-brand')
+const brand = () => screen.getByTestId("ui-footer-brand")
 
-const copyright = () => screen.getByTestId('ui-footer-copyright')
+const copyright = () => screen.getByTestId("ui-footer-copyright")
 
-const footer = () => screen.getByTestId('ui-footer')
+const footer = () => screen.getByTestId("ui-footer")

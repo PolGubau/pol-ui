@@ -1,7 +1,7 @@
 import type { Meta } from "@storybook/react"
 
 import { Toaster, toast } from "../../components"
-import { PoluiProvider } from "../../components/PoluiProvider"
+import { PoluiProvider } from "../../providers/PoluiProvider"
 import { KeyPressItem, useKeyPress } from "./use-key-press"
 
 export default {

@@ -1,4 +1,4 @@
-const labelsToHighlight = [
+export const labelsToHighlight = [
   "displayName",
   "name",
   "label",
@@ -8,14 +8,14 @@ const labelsToHighlight = [
   "value",
   "userName",
 ]
-export type GetMainFirldType = (
+export type GetMainFieldType = (
   item: Record<string, any>,
   preferenceLabels?: string[]
 ) => {
   key: string
   value: string
 }
-export const getMainField: GetMainFirldType = (
+export const getMainField: GetMainFieldType = (
   item: Record<string, any>,
   preferenceLabels
 ) => {

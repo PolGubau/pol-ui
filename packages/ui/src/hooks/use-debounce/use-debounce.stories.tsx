@@ -2,7 +2,7 @@ import { useState } from "react"
 import type { Meta } from "@storybook/react"
 
 import { Input, Toaster } from "../../components"
-import { PoluiProvider } from "../../components/PoluiProvider"
+import { PoluiProvider } from "../../providers/PoluiProvider"
 import { useDebounce } from "./use-debounce"
 
 export default {

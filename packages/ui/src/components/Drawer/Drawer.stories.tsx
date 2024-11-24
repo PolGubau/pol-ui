@@ -1,34 +1,32 @@
-import React, { useState } from "react"
-import type { Meta } from "@storybook/react"
-import { TbDotsVertical } from "react-icons/tb"
+import type { Meta, StoryObj } from '@storybook/react'
+import { Drawer, NestedDrawer } from './Drawer'
+import { TbDotsVertical } from 'react-icons/tb'
+import { IconButton } from '../IconButton'
+import React, { useState } from 'react'
+import { Button } from '../Button'
+import { cn } from '../../helpers'
 
-import { cn } from "../../helpers"
-import { Button } from "../Button"
-import { IconButton } from "../IconButton"
-import { Drawer, NestedDrawer } from "./Drawer"
-
-export default {
-  title: "Components/Drawer",
+const meta: Meta<typeof Drawer> = {
+  title: 'Components/Drawer',
   component: Drawer,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   decorators: [
-    (Story) => (
+    Story => (
       <div className="flex p-6 flex-col">
         <Story />
       </div>
     ),
   ],
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
   },
 } as Meta
+export default meta
 
 const SampleContent = () => (
   <div className="flex flex-col h-full gap-4 pt-8">
     <h1 className="text-2xl font-bold text-center">Drawer Content</h1>
-    <p className="text-gray-500 text-center">
-      This is a sample content for the drawer
-    </p>
+    <p className="text-gray-500 text-center">This is a sample content for the drawer</p>
 
     <div className="flex gap-2 justify-center">
       <Button>Action 1</Button>
@@ -63,21 +61,9 @@ export const Controlled = () => {
   const [open, setOpen] = React.useState(false)
   return (
     <>
-      <button
-        onClick={() => {
-          setOpen(true)
-        }}
-      >
-        Open Drawer
-      </button>
-      <pre> The drawer is {open ? "open" : "closed"} </pre>
-      <Drawer
-        open={open}
-        onClose={() => {
-          setOpen(false)
-        }}
-        label="Now the state commes from the other button"
-      >
+      <button onClick={() => setOpen(true)}>Open Drawer</button>
+      <pre> The drawer is {open ? 'open' : 'closed'} </pre>
+      <Drawer open={open} onClose={() => setOpen(false)} label="Now the state commes from the other button">
         <SampleContent />
       </Drawer>
     </>
@@ -94,7 +80,7 @@ export const NotScaledBackground = () => {
 export const Directions = () => {
   return (
     <div className="flex flex-col gap-4">
-      <Drawer label="Bottom">
+      <Drawer direction="bottom" label="Bottom">
         <SampleContent />
       </Drawer>
       <Drawer direction="left" label="Left">
@@ -159,19 +145,19 @@ export const Nested = () => {
   )
 }
 export const Snapped = () => {
-  const [snap, setSnap] = useState<number | string | null>("148px")
+  const [snap, setSnap] = useState<number | string | null>('148px')
 
   return (
     <Drawer
-      snapPoints={["160px", "355px", 1]}
+      snapPoints={['160px', '355px', 1]}
       activeSnapPoint={snap}
       setActiveSnapPoint={setSnap}
       label="drag multiple times"
     >
       <div
-        className={cn("flex flex-col max-w-md mx-auto w-full p-4 pt-5", {
-          "overflow-y-auto": snap === 1,
-          "overflow-hidden": snap !== 1,
+        className={cn('flex flex-col max-w-md mx-auto w-full p-4 pt-5', {
+          'overflow-y-auto': snap === 1,
+          'overflow-hidden': snap !== 1,
         })}
       >
         <div className="flex items-center">
@@ -235,15 +221,12 @@ export const Snapped = () => {
               clip-rule="evenodd"
             ></path>
           </svg>
-        </div>{" "}
+        </div>{' '}
         <h1 className="text-2xl mt-2 font-medium">The Hidden Details</h1>
-        <p className="text-sm mt-1 text-gray-600 mb-6">
-          2 modules, 27 hours of video
-        </p>
+        <p className="text-sm mt-1 text-gray-600 mb-6">2 modules, 27 hours of video</p>
         <p className="text-gray-600">
-          The world of user interface design is an intricate landscape filled
-          with hidden details and nuance. In this course, you will learn
-          something cool. To the untrained eye, a beautifully designed UI.
+          The world of user interface design is an intricate landscape filled with hidden details and nuance. In this
+          course, you will learn something cool. To the untrained eye, a beautifully designed UI.
         </p>
         <button className="bg-black text-gray-50 mt-8 rounded-md h-[48px] flex-shrink-0 font-medium">
           Buy for $199
@@ -253,9 +236,7 @@ export const Snapped = () => {
           <div className="space-y-4 mt-4">
             <div>
               <span className="block">Layers of UI</span>
-              <span className="text-gray-600">
-                A basic introduction to Layers of Design.
-              </span>
+              <span className="text-gray-600">A basic introduction to Layers of Design.</span>
             </div>
             <div>
               <span className="block">Typography</span>
@@ -263,23 +244,18 @@ export const Snapped = () => {
             </div>
             <div>
               <span className="block">UI Animations</span>
-              <span className="text-gray-600">
-                Going through the right easings and durations.
-              </span>
+              <span className="text-gray-600">Going through the right easings and durations.</span>
             </div>
           </div>
         </div>
         <div className="mt-12">
           <figure>
             <blockquote className="font-serif">
-              “I especially loved the hidden details video. That was so useful,
-              learned a lot by just reading it. Can&rsquo;t wait for more course
-              content!”
+              “I especially loved the hidden details video. That was so useful, learned a lot by just reading it.
+              Can&rsquo;t wait for more course content!”
             </blockquote>
             <figcaption>
-              <span className="text-sm text-gray-600 mt-2 block">
-                Yvonne Ray, Frontend Developer
-              </span>
+              <span className="text-sm text-gray-600 mt-2 block">Yvonne Ray, Frontend Developer</span>
             </figcaption>
           </figure>
         </div>
@@ -288,25 +264,19 @@ export const Snapped = () => {
           <div className="space-y-4 mt-4">
             <div>
               <span className="block">Build</span>
-              <span className="text-gray-600">
-                Create cool components to practice.
-              </span>
+              <span className="text-gray-600">Create cool components to practice.</span>
             </div>
             <div>
               <span className="block">User Insight</span>
-              <span className="text-gray-600">
-                Find out what users think and fine-tune.
-              </span>
+              <span className="text-gray-600">Find out what users think and fine-tune.</span>
             </div>
             <div>
               <span className="block">Putting it all together</span>
-              <span className="text-gray-600">
-                Let&apos;s build an app together and apply everything.
-              </span>
+              <span className="text-gray-600">Let&apos;s build an app together and apply everything.</span>
             </div>
           </div>
         </div>
-      </div>{" "}
+      </div>{' '}
     </Drawer>
   )
 }

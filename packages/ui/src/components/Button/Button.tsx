@@ -131,7 +131,7 @@ export const buttonVariants = cva(
       size: "md",
       color: "primary",
       fullSized: false,
-      rounded: "md",
+      rounded: "lg",
     },
   }
 )

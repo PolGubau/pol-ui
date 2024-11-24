@@ -1,7 +1,7 @@
 import type { Meta } from "@storybook/react"
 
 import { Button, Toaster, toast } from "../../components"
-import { PoluiProvider } from "../../components/PoluiProvider"
+import { PoluiProvider } from "../../providers/PoluiProvider"
 import { useConfirmation } from "./use-confirmation"
 
 export default {

@@ -1,24 +1,18 @@
 import type { Meta } from '@storybook/react'
 import type { TabsProps } from './Tabs'
 import { Tabs } from './Tabs'
-
-export default {
+import React from 'react'
+import { Card } from '../Card'
+import { useStep } from '../../hooks'
+import { Button } from '../Button'
+const meta: Meta<typeof Tabs> = {
   title: 'Components/Tabs',
   tags: ['Tabs', 'autodocs'],
   component: Tabs,
 
-  argTypes: {
-    className: {
-      control: 'text',
-    },
-    style: {
-      control: 'radio',
-      options: ['default', 'underline', 'pills', 'fullWidth'],
-    },
-  },
   decorators: [
     Story => (
-      <div className="flex p-6 flex-col min-h-[400px] bg-secondary-50">
+      <div className="flex p-6 flex-col min-h-[400px]">
         <Story />
       </div>
     ),
@@ -26,60 +20,61 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
-} as Meta
+}
+export default meta
 
 const tabs = [
   {
     name: 'Product',
     content: (
-      <div className="bg-secondary-200 p-6 rounded-2xl">
-        <h2 className="text-3xl text-secondary-900 font-bold">Product Tab</h2>
-        <p>
+      <Card className="flex-col">
+        <h2 className="text-xl text-secondary-900 pb-2">Product</h2>
+        <p className="opacity-80">
           Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur
           adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem
           ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur
         </p>
-      </div>
+      </Card>
     ),
   },
   {
     name: 'Features',
     content: (
-      <div className="bg-secondary-200 p-6 rounded-2xl">
-        <h2 className="text-3xl text-secondary-900 font-bold">Features Tab</h2>
-        <p>
+      <Card className="flex-col">
+        <h2 className="text-xl text-secondary-900 pb-2">Features</h2>
+        <p className="opacity-80">
           Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur
           adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem
         </p>
-      </div>
+      </Card>
     ),
   },
   {
     name: 'Reviews',
     content: (
-      <div className="bg-secondary-200 p-6 rounded-2xl">
-        <h2 className="text-3xl text-secondary-900 font-bold">Reviews Tab</h2>
-        <p>
+      <Card className="flex-col">
+        <h2 className="text-xl text-secondary-900 pb-2"> Reviews</h2>
+        <p className="opacity-80">
           Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur
           adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem
           ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur
         </p>
-      </div>
+      </Card>
     ),
   },
   {
     name: 'Customers',
     content: (
-      <div className="bg-secondary-200 p-6 rounded-2xl">
-        <h2 className="text-3xl text-secondary-900 font-bold">Customers Tab</h2>
-        <p>
+      <Card className="flex-col">
+        <h2 className="text-xl text-secondary-900 pb-2"> Customers</h2>
+        <p className="opacity-80">
           Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur
           adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem
           ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur
           adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem
           ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas.
         </p>
-      </div>
+      </Card>
     ),
   },
 ]
@@ -96,11 +91,7 @@ ContainedMode.args = {
   tabs: tabs,
   mode: 'contained',
 }
-export const WithMotion = (args: TabsProps): JSX.Element => TabsExample.bind({})(args)
-WithMotion.args = {
-  tabs: tabs,
-  hasMotion: true,
-}
+
 export const WithoutAnyMotion = (args: TabsProps): JSX.Element => TabsExample.bind({})(args)
 WithoutAnyMotion.args = {
   tabs: tabs,
@@ -113,7 +104,7 @@ Disabled.args = {
     {
       name: 'Enabled',
       content: (
-        <div className="bg-secondary-200 p-6 rounded-2xl">
+        <div className="bg-background-onPrimary p-6 rounded-2xl">
           <h2 className="text-3xl text-secondary-900 font-bold">Enabled Tab</h2>
           <p>
             Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte
@@ -128,7 +119,7 @@ Disabled.args = {
       name: 'Disabled',
       disabled: true,
       content: (
-        <div className="bg-secondary-200 p-6 rounded-2xl">
+        <div className="bg-background-onPrimary p-6 rounded-2xl">
           <h2 className="text-3xl text-secondary-900 font-bold">Disabled Tab</h2>
           <p>
             Lorem ipsum dolor sit amet consecte tur adipisicing elit. Ipsam, quas. Lorem ipsum dolor sit amet consecte
@@ -141,4 +132,27 @@ Disabled.args = {
     },
   ],
 }
-Disabled.displayName = 'Disabled'
+
+export const Controlled = (): JSX.Element => {
+  const [currentStep, { goToNextStep, goToPrevStep, canGoToNextStep, canGoToPrevStep, setStep, reset }] = useStep(
+    tabs.length,
+  )
+  return (
+    <div className=" relative flex flex-col gap-8">
+      <header className="flex flex-wrap gap-2">
+        <Button onClick={goToPrevStep} disabled={!canGoToPrevStep}>
+          Previous
+        </Button>
+        <Button onClick={goToNextStep} disabled={!canGoToNextStep}>
+          Next
+        </Button>
+
+        <Button onClick={reset}>Reset</Button>
+
+        <Button onClick={() => setStep(1)}>Go to second</Button>
+      </header>
+      Current step: {currentStep.toString()}
+      <Tabs value={currentStep} onTabChange={setStep} tabs={tabs} />
+    </div>
+  )
+}

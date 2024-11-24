@@ -25,7 +25,6 @@ export interface DarkThemeToggleProps extends IconButtonProps {
  *
  */
 export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
-  className,
   theme: customTheme = {},
   iconDark: IconDark = TbSun,
   iconLight: IconLight = TbMoon,

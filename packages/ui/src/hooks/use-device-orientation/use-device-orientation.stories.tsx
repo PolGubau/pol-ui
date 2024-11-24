@@ -1,6 +1,6 @@
 import type { Meta } from "@storybook/react"
 
-import { PoluiProvider } from "../../components/PoluiProvider"
+import { PoluiProvider } from "../../providers/PoluiProvider"
 import { useDeviceOrientation } from "./use-device-orientation"
 
 export default {

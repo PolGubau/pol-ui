@@ -2,162 +2,141 @@
 
 import * as React from "react"
 import { TbX } from "react-icons/tb"
-import { Drawer as D } from "vaul"
+import { Drawer as DrawerPrimitive } from "vaul"
 
 import { cn } from "../../helpers"
 import { Direction, DirectionEnum } from "../../types"
 import { Button } from "../Button"
-import { CommonPopupContentProps, DialogOverlay } from "../Dialog"
 import { IconButton } from "../IconButton"
 
-const DrawerRoot = D.Root
-const DrawerTrigger = D.Trigger
-const DrawerPortal = D.Portal
-const DrawerClose = D.Close
+type DrawerTriggerProps = React.ComponentProps<typeof DrawerPrimitive.Trigger>
+type DrawerPortalProps = React.ComponentProps<typeof DrawerPrimitive.Portal>
+type DrawerCloseProps = React.ComponentProps<typeof DrawerPrimitive.Close>
+type DrawerOverlayProps = React.ComponentProps<typeof DrawerPrimitive.Overlay>
 
-const DrawerOverlay = React.forwardRef<
-  React.ElementRef<typeof D.Overlay>,
-  React.ComponentPropsWithoutRef<typeof D.Overlay>
->(({ className, ...props }, ref) => (
-  <D.Overlay
-    ref={ref}
+const DrawerRoot = DrawerPrimitive.Root
+const DrawerTrigger = ({ ...props }: DrawerTriggerProps) => {
+  return <DrawerPrimitive.Trigger {...props} />
+}
+const DrawerPortal = ({ ...props }: DrawerPortalProps) => {
+  return <DrawerPrimitive.Portal {...props} />
+}
+const DrawerClose = ({ ...props }: DrawerCloseProps) => {
+  return <DrawerPrimitive.Close {...props} />
+}
+
+const DrawerOverlay = ({ className, ...props }: DrawerOverlayProps) => (
+  <DrawerPrimitive.Overlay
     className={cn("fixed inset-0 z-50 bg-black/80", className)}
     {...props}
   />
-))
-DrawerOverlay.displayName = D.Overlay.displayName
+)
 
-export type DrawerContentProps = React.ComponentPropsWithoutRef<
-  typeof D.Content
-> &
-  CommonPopupContentProps & {
-    direction?: Direction
-    fillBackground?: boolean
-    withOverlay?: boolean
-  }
+interface DrawerContentProps
+  extends React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content> {
+  direction?: Direction
+  fillBackground?: boolean
+}
 
 const DrawerContent = React.forwardRef<
-  React.ElementRef<typeof D.Content>,
+  React.ElementRef<typeof DrawerPrimitive.Content>,
   DrawerContentProps
->(
-  (
-    {
-      className,
-      direction = "bottom",
-      children,
-      fillBackground,
-      overlayProps,
-      withOverlay = true,
-      ...props
-    },
-    ref
-  ) => {
-    const isVertical =
-      direction === DirectionEnum.top || direction === DirectionEnum.bottom
-    const isHorizontal =
-      direction === DirectionEnum.right || direction === DirectionEnum.left
-    return (
-      <DrawerPortal>
-        {withOverlay && <DialogOverlay {...overlayProps} />}{" "}
-        <D.Content
-          ref={ref}
-          className={cn(
-            "fixed z-50 p-4 flex flex-col border bg-secondary-50 dark:bg-secondary-900 drawer-open z-[100000]",
-            {
-              "bottom-0": direction !== DirectionEnum.top,
-              "top-0": direction !== DirectionEnum.bottom,
-              "right-0": direction !== DirectionEnum.left,
-              "left-0": direction !== DirectionEnum.right,
+>(({ className, direction, children, fillBackground, ...props }, ref) => {
+  const isVertical =
+    direction === DirectionEnum.top || direction === DirectionEnum.bottom
+  const isHorizontal =
+    direction === DirectionEnum.right || direction === DirectionEnum.left
 
-              "rounded-t-[10px]": direction === DirectionEnum.bottom,
-              "rounded-b-[10px] pb-8": direction === DirectionEnum.top,
-              "rounded-l-[10px]": direction === DirectionEnum.right,
-              "rounded-r-[10px]": direction === DirectionEnum.left,
+  return (
+    <DrawerPortal>
+      <DrawerOverlay />
+      <DrawerPrimitive.Content
+        ref={ref}
+        className={cn(
+          "fixed z-50 p-4 flex h-auto flex-col border bg-background dark:bg-secondary-900 overflow-y-auto overflow-hidden",
+          {
+            "bottom-0": direction !== DirectionEnum.top,
+            "top-0": direction !== DirectionEnum.bottom,
+            "right-0": direction !== DirectionEnum.left,
+            "left-0": direction !== DirectionEnum.right,
 
-              "max-h-[96%] h-fit w-full": isVertical,
-              "max-w-[96%] w-fit h-full": isHorizontal,
+            "rounded-t-3xl": direction === DirectionEnum.bottom,
+            "rounded-b-3xl": direction === DirectionEnum.top,
+            "rounded-l-3xl": direction === DirectionEnum.right,
+            "rounded-r-3xl": direction === DirectionEnum.left,
 
-              "h-full": isVertical && fillBackground,
-              "w-full": isHorizontal && fillBackground,
-            },
-            className
-          )}
-          {...props}
-        >
-          {direction === DirectionEnum.bottom && (
-            <D.Handle className="mx-auto mb-2 h-2 w-[100px] rounded-full bg-secondary" />
-          )}
-          {direction === DirectionEnum.left && (
-            <D.Close
-              className="absolute top-0 right-0 m-1"
-              aria-label="Close"
-              asChild
-            >
-              <IconButton>
-                <TbX />
-              </IconButton>
-            </D.Close>
-          )}
-          {direction === DirectionEnum.right && (
-            <D.Close
-              className="absolute top-0 left-0 m-1"
-              aria-label="Close"
-              asChild
-            >
-              <IconButton>
-                <TbX />
-              </IconButton>
-            </D.Close>
-          )}
-          {children}
-          {direction === DirectionEnum.top && (
-            <D.Handle className="absolute bottom-3 left-1/2 transform -translate-x-1/2 h-2 w-[100px] rounded-full bg-secondary" />
-          )}
-        </D.Content>
-      </DrawerPortal>
-    )
-  }
-)
+            " max-h-[96%]": isVertical,
+            " max-w-[96%]": isHorizontal,
+
+            "h-full": isVertical && fillBackground,
+            "w-full": isHorizontal && fillBackground,
+          },
+          className
+        )}
+        {...props}
+      >
+        {direction === DirectionEnum.bottom && (
+          <DrawerPrimitive.Handle className="mx-auto mb-2 h-2 w-[100px] rounded-full bg-secondary" />
+        )}
+        {direction === DirectionEnum.left && (
+          <DrawerPrimitive.Close
+            className="absolute top-0 right-0 m-1"
+            aria-label="Close"
+            asChild
+          >
+            <IconButton size={"sm"}>
+              <TbX size={15} />
+            </IconButton>
+          </DrawerPrimitive.Close>
+        )}
+        {direction === DirectionEnum.right && (
+          <DrawerPrimitive.Close
+            className="absolute top-0 left-0 m-1"
+            aria-label="Close"
+            asChild
+          >
+            <IconButton size={"sm"}>
+              <TbX size={15} />
+            </IconButton>
+          </DrawerPrimitive.Close>
+        )}
+        <div className="overflow-y-auto rounded-xl">{children}</div>
+        {direction === DirectionEnum.top && (
+          <DrawerPrimitive.Handle className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-secondary" />
+        )}
+      </DrawerPrimitive.Content>
+    </DrawerPortal>
+  )
+})
 DrawerContent.displayName = "DrawerContent"
 
 //
 
-export type DrawerProps = React.ComponentProps<typeof D.Root> & {
+export type DrawerProps = React.ComponentProps<typeof DrawerPrimitive.Root> & {
   children: React.ReactNode
   label?: string
   trigger?: React.ReactNode
-  withoutTrigger?: boolean
-  contentProps?: DrawerContentProps
-  triggerProps?: React.ComponentProps<typeof D.Trigger>
+  noTrigger?: boolean
   className?: string
-  hasOverlay?: boolean
 }
 
 const Drawer = ({
   children,
   label = "Open Drawer",
   trigger,
-  contentProps,
-  triggerProps,
-  className,
-  withoutTrigger,
+  noTrigger,
   ...props
 }: DrawerProps) => {
   const triggerNode = trigger || <Button>{label}</Button>
   return (
     <DrawerRoot {...props}>
-      {!withoutTrigger && (
-        <DrawerTrigger asChild {...triggerProps}>
-          {triggerNode}
-        </DrawerTrigger>
-      )}
+      {!noTrigger && <DrawerTrigger asChild>{triggerNode}</DrawerTrigger>}
       <DrawerContent
-        {...contentProps}
-        direction={props.direction}
-        withOverlay={props.hasOverlay}
+        direction={props.direction ?? DirectionEnum.bottom}
         fillBackground={props.shouldScaleBackground}
+        className={props.className}
       >
-        <div aria-popover="open">{children}</div>
+        {children}
       </DrawerContent>
     </DrawerRoot>
   )
@@ -171,7 +150,7 @@ const NestedDrawer = ({
 }: DrawerProps) => {
   const triggerNode = trigger || <Button>{label}</Button>
   return (
-    <D.NestedRoot {...props}>
+    <DrawerPrimitive.NestedRoot {...props}>
       <DrawerTrigger>{triggerNode}</DrawerTrigger>
       <DrawerContent
         direction={props.direction ?? DirectionEnum.bottom}
@@ -179,7 +158,7 @@ const NestedDrawer = ({
       >
         {children}
       </DrawerContent>
-    </D.NestedRoot>
+    </DrawerPrimitive.NestedRoot>
   )
 }
 export {
@@ -190,4 +169,5 @@ export {
   DrawerPortal,
   DrawerTrigger,
   NestedDrawer,
+  type DrawerTriggerProps,
 }

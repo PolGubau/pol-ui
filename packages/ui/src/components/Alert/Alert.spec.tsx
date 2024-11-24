@@ -4,7 +4,10 @@ import userEvent from "@testing-library/user-event"
 import { HiEye, HiHeart, HiInformationCircle } from "react-icons/hi"
 import { describe, expect, it, vi } from "vitest"
 
-import { PoluiProvider, type CustomPoluiTheme } from "../PoluiProvider"
+import {
+  PoluiProvider,
+  type CustomPoluiTheme,
+} from "../../providers/PoluiProvider"
 import { Alert, type AlertProps } from "./Alert"
 
 describe.concurrent("Components / Alert", () => {

@@ -1,29 +1,19 @@
-import { PropsWithChildren } from "react"
+import React, { PropsWithChildren } from "react"
 import type { Preview } from "@storybook/react"
 import { themes } from "@storybook/theming"
 
-import { DarkThemeToggle, Toaster } from "../src/components"
-import { useThemeMode } from "../src/hooks"
+import { DarkThemeToggle } from "../src/components"
 import "./style.css"
-import React from "react"
-
-import { PoluiProvider } from "../src"
+import { PoluiProvider, Toolbox } from "../src"
 
 const Provider = ({ children }: PropsWithChildren) => {
-  const { computedMode } = useThemeMode()
-
   return (
-    <PoluiProvider
-      theme={{
-        mode: computedMode,
-      }}
-    >
+    <PoluiProvider>
       <main className="w-full h-full bg-secondary-50 dark:bg-secondary-900 relative grid pt-6 p-2 min-h-[300px] relative">
         {children}
-        <div className="absolute top-2 right-2">
-          <DarkThemeToggle />
-        </div>
-        <Toaster />
+        <Toolbox>
+          <DarkThemeToggle className="text-white dark:text-white" />
+        </Toolbox>
       </main>
     </PoluiProvider>
   )

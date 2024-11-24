@@ -4,10 +4,10 @@ import { ColorsEnum } from "../../types"
 import { Button } from "../Button"
 import { DialogClose, DialogProps } from "../Dialog"
 import { DrawerProps } from "../Drawer"
-import { DrawerDialog, DrawerDialogProps } from "../DrawerDialog"
+import { DrawerDialog } from "../DrawerDialog"
 import { TimedButton } from "../TimedButton"
 
-type DrawerDialogWithoutChildren = Omit<DrawerDialogProps, "children">
+type DrawerDialogWithoutChildren = Omit<DrawerProps, "children">
 
 export type ConfirmDialogProps = DrawerDialogWithoutChildren & {
   isOpen?: boolean
@@ -32,17 +32,10 @@ export const ConfirmDialog = ({
   hold = false,
   ...rest
 }: ConfirmDialogProps) => {
-  const drawerDialogProps = rest as DrawerDialogProps
+  const drawerDialogProps = rest as DrawerProps
   const [open, setOpen] = useState(false)
   return (
-    <DrawerDialog
-      open={open}
-      onOpenChange={setOpen}
-      {...drawerDialogProps}
-      contentProps={{
-        className: "md:p-0",
-      }}
-    >
+    <DrawerDialog open={open} onOpenChange={setOpen} {...drawerDialogProps}>
       <header className="flex pb-2 p-4 md:bg-secondary/10">
         <h2>{title}</h2>
       </header>

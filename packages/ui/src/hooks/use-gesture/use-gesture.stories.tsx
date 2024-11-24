@@ -2,7 +2,7 @@ import React, { useRef } from "react"
 import type { Meta } from "@storybook/react"
 
 import { Card, Toaster, toast } from "../../components"
-import { PoluiProvider } from "../../components/PoluiProvider"
+import { PoluiProvider } from "../../providers/PoluiProvider"
 import { GestureConfig, useGesture } from "./use-gesture"
 
 export default {

@@ -34,16 +34,16 @@ export const Toaster = ({
     default: theme.default,
   }
 
-  return PrimitiveToaster({
-    loadingIcon: (
-      <div className="flex">
-        <Loader size="sm" />
-      </div>
-    ),
-    toastOptions: { classNames, ...props.toastOptions },
-    richColors: props.richColors ?? true,
-    closeButton: props.closeButton ?? true,
-    ...props,
-  })
+  return (
+    <PrimitiveToaster
+      icons={{
+        loading: <Loader size="sm" />,
+      }}
+      toastOptions={{ classNames, ...props.toastOptions }}
+      richColors={props.richColors ?? true}
+      closeButton={props.closeButton ?? true}
+      {...props}
+    />
+  )
 }
 export { toast }

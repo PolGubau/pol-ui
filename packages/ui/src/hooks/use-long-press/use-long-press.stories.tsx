@@ -2,7 +2,7 @@ import React from "react"
 import type { Meta } from "@storybook/react"
 
 import { Button, Card, Toaster, toast } from "../../components"
-import { PoluiProvider } from "../../components/PoluiProvider"
+import { PoluiProvider } from "../../providers/PoluiProvider"
 import { useLongPress } from "./use-long-press"
 
 export default {

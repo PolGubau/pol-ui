@@ -2,7 +2,10 @@ import { render, screen } from "@testing-library/react"
 import { HiCheck } from "react-icons/hi"
 import { describe, expect, it } from "vitest"
 
-import { PoluiProvider, type CustomPoluiTheme } from "../PoluiProvider"
+import {
+  PoluiProvider,
+  type CustomPoluiTheme,
+} from "../../providers/PoluiProvider"
 import { Badge } from "./Badge"
 
 describe("Components / Badge", () => {

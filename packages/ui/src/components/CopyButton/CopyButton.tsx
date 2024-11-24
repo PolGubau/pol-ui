@@ -6,6 +6,7 @@ import { TbCheck, TbClipboard } from "react-icons/tb"
 import { useBoolean, useCopyToClipboard } from "../../hooks"
 import { ButtonProps } from "../Button"
 import { IconButton } from "../IconButton"
+import { toast } from "../Toaster"
 
 interface CopyButtonProps extends ButtonProps {
   toCopy: string | number | object | boolean
@@ -21,8 +22,8 @@ interface CopyButtonProps extends ButtonProps {
 function CopyButton({
   toCopy,
   iconSize = 14,
-  copyIcon: CopyIcon = TbCheck,
-  copiedIcon: CopiedIcon = TbClipboard,
+  copyIcon: CopyIcon = TbClipboard,
+  copiedIcon: CopiedIcon = TbCheck,
   labels = {
     copy: "Copy",
     copied: "Copied",
@@ -45,6 +46,10 @@ function CopyButton({
     copy(stringToCopy)
     setTrue()
     props.onClick?.(e)
+
+    toast.success("Copied to clipboard", {
+      description: stringToCopy,
+    })
   }
 
   return (
@@ -58,9 +63,9 @@ function CopyButton({
     >
       <span className="sr-only">{value ? labels.copied : labels.copy}</span>
       {value ? (
-        <CopyIcon style={{ fontSize: iconSize }} />
-      ) : (
         <CopiedIcon style={{ fontSize: iconSize }} />
+      ) : (
+        <CopyIcon style={{ fontSize: iconSize }} />
       )}
     </IconButton>
   )

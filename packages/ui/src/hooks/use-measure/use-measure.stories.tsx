@@ -2,7 +2,7 @@ import React from "react"
 import type { Meta } from "@storybook/react"
 
 import { Toaster } from "../../components"
-import { PoluiProvider } from "../../components/PoluiProvider"
+import { PoluiProvider } from "../../providers/PoluiProvider"
 import { useMeasure } from "./use-measure"
 
 export default {

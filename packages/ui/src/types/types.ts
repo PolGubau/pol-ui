@@ -1,3 +1,4 @@
+import { CountryCode, Locale } from "../i18n"
 import {
   type AlignEnum,
   type BooleanEnum,
@@ -214,4 +215,18 @@ export type Orientation = `${OrientationsEnum}`
 export interface IdName {
   id: string
   name: string
+}
+export interface Language {
+  locale: Locale
+  country?: CountryCode
+  language: string
+  flagCode?: CountryCode
+  basedOn?: Locale[]
+}
+export type Translation = Record<string, string>
+export type AllTranslations = Record<Locale, Translation>
+export type SomeTranslations = Partial<AllTranslations>
+export interface LangAndText {
+  language: Locale
+  text: string
 }

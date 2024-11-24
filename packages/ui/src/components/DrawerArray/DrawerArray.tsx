@@ -1,12 +1,13 @@
 import { useState } from "react"
 import { TbEdit, TbPlus } from "react-icons/tb"
+import z from "zod"
 
-import { getMainField } from "../../helpers/get-main-field/get-main-field"
+import { cn } from "../../helpers"
+import { getMainField } from "../../helpers/get-main-field"
 import useArray from "../../hooks/use-array/use-array"
 import { Button } from "../Button"
 import { Card } from "../Card"
-import { ConfirmDialog } from "../ConfirmDialog"
-import { DialogClose } from "../Dialog"
+import { DeleteButton } from "../DeleteButton"
 import { Drawer } from "../Drawer/Drawer"
 import { IconButton } from "../IconButton"
 import DrawerContent from "./DrawerContent"
@@ -18,6 +19,8 @@ export interface DrawerArrayProps<T> {
   label?: string
   form: (props: { value: T; onChange: (value: T) => void }) => JSX.Element
   view?: (value: T) => JSX.Element
+  shape?: z.ZodObject<any, any>
+  drawerContentClassName?: string
 }
 
 export const DrawerArray = <T extends object>({
@@ -27,11 +30,14 @@ export const DrawerArray = <T extends object>({
   form,
   label,
   view,
+  shape,
+  drawerContentClassName,
 }: DrawerArrayProps<T>) => {
   //
   const { array, push, update, remove } = useArray(values, onChange)
 
   const [newProp, setNewProp] = useState<T>(initialProperty)
+
   const handleCreateNew = (e: any) => {
     e.preventDefault()
     push(newProp)
@@ -83,18 +89,18 @@ export const DrawerArray = <T extends object>({
             />
           </Drawer>
           <div className="pr-1">
-            <ConfirmDialog onConfirm={() => remove(index)} />
-            {/* <DeleteButton onConfirm={() => remove(index)} /> */}
+            <DeleteButton onConfirm={() => remove(index)} />
           </div>
         </Card>
       ))}
       <Drawer
         direction="right"
+        className="overflow-x-hidden"
         trigger={
           <Button
             color={"secondary"}
             variant={"ghost"}
-            className="text-left justify-start"
+            className="text-left justify-start w-fit"
           >
             <TbPlus />
             {"AddNew"}
@@ -103,14 +109,22 @@ export const DrawerArray = <T extends object>({
       >
         <form
           onSubmit={handleCreateNew}
-          className="grid h-full grid-rows-[1fr,auto] gap-4 overflow-hidden pt-10"
+          className="grid h-full grid-rows-[1fr,auto] gap-4 overflow pt-10"
         >
-          <div className="">
+          <div
+            className={cn(
+              "w-[40vw] max-w-4xl flex flex-col gap-4",
+              drawerContentClassName
+            )}
+          >
             {form({ value: newProp, onChange: setNewProp })}
           </div>
-          <DialogClose>
-            <Button>{"create"}</Button>
-          </DialogClose>
+          <footer className="flex gap-2 items-center">
+            <Button>
+              <TbPlus />
+              {"create"}
+            </Button>
+          </footer>
         </form>
       </Drawer>
     </section>

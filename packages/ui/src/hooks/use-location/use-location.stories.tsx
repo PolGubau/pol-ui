@@ -2,7 +2,7 @@ import React from "react"
 import type { Meta } from "@storybook/react"
 
 import { Card, Toaster } from "../../components"
-import { PoluiProvider } from "../../components/PoluiProvider"
+import { PoluiProvider } from "../../providers/PoluiProvider"
 import { useLocation } from "./use-location"
 
 export default {
