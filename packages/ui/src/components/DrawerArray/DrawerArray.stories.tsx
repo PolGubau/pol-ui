@@ -107,15 +107,6 @@ export const CustomView = () => {
             value={value.name ?? ""}
             onChange={(e) => onChange({ ...value, name: e.target.value })}
           />
-
-          <Selector
-            label="Type"
-            value={value.type}
-            onChange={(type) => {
-              onChange({ ...value, type })
-            }}
-            options={["string", "number", "boolean"]}
-          />
         </form>
       )}
     />
@@ -161,15 +152,6 @@ export const Debug = () => {
               label="Name"
               value={value.name ?? ""}
               onChange={(e) => onChange({ ...value, name: e.target.value })}
-            />
-
-            <Selector
-              label="Type"
-              value={value.type}
-              onChange={(type) => {
-                onChange({ ...value, type })
-              }}
-              options={["string", "number", "boolean"]}
             />
           </form>
         )}
