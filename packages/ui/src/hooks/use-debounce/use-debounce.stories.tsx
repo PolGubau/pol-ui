@@ -13,7 +13,6 @@ export default {
     (Story) => (
       <div className="flex p-6 flex-col items-center pt-20 min-h-[400px] bg-secondary-50 ">
         <Story />
-        <Toaster />
       </div>
     ),
   ],

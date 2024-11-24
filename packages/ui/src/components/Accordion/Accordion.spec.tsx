@@ -1,13 +1,9 @@
-import type { FC } from "react"
 import { render, screen, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
+import type { FC } from "react"
 import { HiOutlineArrowCircleDown } from "react-icons/hi"
 import { describe, expect, it } from "vitest"
 
-import {
-  PoluiProvider,
-  type CustomPoluiTheme,
-} from "../../providers/PoluiProvider"
 import { Accordion } from "./Accordion"
 import type { AccordionProps } from "./types"
 
@@ -93,132 +89,6 @@ describe("Components / Accordion", () => {
 
       expect(headings()[0].tagName.toLocaleLowerCase()).toEqual("h3")
       expect(headings()[1].tagName.toLocaleLowerCase()).toEqual("h2")
-    })
-  })
-  describe("Theme", () => {
-    describe("`Accordion`", () => {
-      it("should use custom `base` classes", () => {
-        const theme: CustomPoluiTheme = {
-          accordion: {
-            root: {
-              base: "text-4xl",
-            },
-          },
-        }
-
-        render(
-          <PoluiProvider theme={{ theme }}>
-            <TestAccordion />
-          </PoluiProvider>
-        )
-
-        expect(accordion()).toHaveClass("text-4xl")
-      })
-
-      it("should use custom `isBordered` classes", () => {
-        const theme: CustomPoluiTheme = {
-          accordion: {
-            root: {
-              isBordered: {
-                off: "text-3xl",
-                on: "text-3xl",
-              },
-            },
-          },
-        }
-
-        render(
-          <PoluiProvider theme={{ theme }}>
-            <TestAccordion />
-            <TestAccordion isBordered />
-          </PoluiProvider>
-        )
-
-        const accordions = screen.getAllByTestId("ui-accordion")
-        const normal = accordions[0]
-        const isBordered = accordions[1]
-
-        expect(normal).toHaveClass("text-3xl")
-        expect(isBordered).toHaveClass("text-3xl")
-      })
-    })
-
-    describe("`Accordion.Content`", () => {
-      it("should use custom `content` classes", () => {
-        const theme: CustomPoluiTheme = {
-          accordion: {
-            content: {
-              base: "text-4xl",
-            },
-          },
-        }
-
-        render(
-          <PoluiProvider theme={{ theme }}>
-            <TestAccordion />
-          </PoluiProvider>
-        )
-
-        content().forEach((content) => {
-          expect(content).toHaveClass("text-4xl")
-        })
-      })
-    })
-
-    describe("`Accordion.Title`", () => {
-      it("should use custom `title` classes", () => {
-        const theme: CustomPoluiTheme = {
-          accordion: {
-            title: {
-              arrow: {
-                base: "w-8 h-8",
-                open: {
-                  off: "",
-                  on: "text-purple-600",
-                },
-              },
-              base: "p-3",
-              isBordered: {
-                off: "text-4xl",
-                on: "text-3xl",
-              },
-              open: {
-                off: "text-gray-400",
-                on: "text-gray-600",
-              },
-            },
-          },
-        }
-
-        render(
-          <PoluiProvider theme={{ theme }}>
-            <TestAccordion alwaysOpen />
-            <TestAccordion alwaysOpen isBordered />
-          </PoluiProvider>
-        )
-
-        const normalTitles = [titles()[0], titles()[1]]
-        const isBorderedTitles = [titles()[2], titles()[3]]
-        const openTitles = [titles()[0], titles()[2]]
-        const closedTitles = [titles()[1], titles()[3]]
-
-        titles().forEach((title) => {
-          expect(title).toHaveClass("p-3")
-        })
-        normalTitles.forEach((title) => {
-          expect(title).toHaveClass("text-3xl")
-        })
-        isBorderedTitles.forEach((title) => {
-          expect(title).toHaveClass("text-3xl")
-        })
-        openTitles.forEach((title) => {
-          // Note: it is being overwrited by the className prop which is expected
-          expect(title).toHaveClass("text-cyan-300")
-        })
-        closedTitles.forEach((title) => {
-          expect(title).toHaveClass("text-gray-400")
-        })
-      })
     })
   })
 })

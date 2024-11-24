@@ -97,14 +97,14 @@ export const PoluiProvider: FC<ProviderProps> = ({
 
   return (
     <PolUiContext.Provider value={context}>
-      <main
+      <div
         className={cn({
           dark: computedMode === "dark",
         })}
       >
         {children}
         <Toaster {...toaster} />
-      </main>
+      </div>
       <ThemeInit mode={theme?.mode ?? computedMode} theme={theme?.theme} />
     </PolUiContext.Provider>
   )

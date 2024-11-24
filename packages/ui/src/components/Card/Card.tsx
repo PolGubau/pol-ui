@@ -1,28 +1,37 @@
 "use client"
 
-import React, { type ComponentProps } from "react"
+import type { ComponentProps, FC } from "react"
 
-import { cn, mergeRefs } from "../../helpers"
-import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
-import { useRipple } from "../../hooks"
+import { cn, mergeDeep, omit } from "../../helpers"
 import { getTheme } from "../../theme-store"
 import type { DeepPartial } from "../../types/types"
-import { ButtonProps } from "../Button"
 import { FocusEffect } from "../FocusEffect"
 import type { CardTheme } from "./theme"
 
-export type CardProps = ComponentProps<"div"> &
-  ComponentProps<"button"> &
-  Pick<ButtonProps, "rippleOptions"> & {
-    theme?: DeepPartial<CardTheme>
-    onClick?: () => void
-  }
+export interface CardProps extends ComponentProps<"div"> {
+  href?: string
+  theme?: DeepPartial<CardTheme>
+  className?: string
+  disabled?: boolean
+}
 
 /**
  * @name Card
+ * @description A Card component that can be used to display content in a card-like style. Usefull in a blog, a social network, a forum... It can be horizontal or vertical and can contain an image.
  *
- * @description A Card component that can be used to display content in a card-like style. Usefull in a blog, a social network, a forum...
+ * @param {React.ReactNode} props.children The content of the card.
  *
+ * @param {string} props.className Custom class name for the card.
+ *
+ *
+ * @param {string} props.href, If provided, the card will be an anchor link.
+ *
+ *
+ * @param {DeepPartial<CardTheme>} props.theme, To override default theme for the card.
+ *
+ * @param {string} props.childrenClass, Custom class name for the children.
+ *
+ * @returns {React.ReactNode} A Card component.
  *
  * @example ```
  * <Card>
@@ -32,41 +41,31 @@ export type CardProps = ComponentProps<"div"> &
  *    </p>
  * </Card>
  * ```
- * @returns {React.ReactNode} A Card component.
- *
  */
+export const Card: FC<CardProps> = (props): React.ReactNode => {
+  const { children, className, href, theme: customTheme = {} } = props
 
-export const Card = React.forwardRef<React.ElementRef<"div">, CardProps>(
-  (props, ref) => {
-    const { theme: customTheme = {}, onClick, className = "", ...rest } = props
+  // Card component will be an Anchor link if href prop is passed.
+  const Component = typeof href === "undefined" ? "div" : "a"
+  const theme = mergeDeep(getTheme().card, customTheme)
+  const externalProps = omit([
+    "children",
+    "className",
+    "horizontal",
+    "href",
+    "theme",
+  ])(props)
 
-    // Card component will be an Anchor link if href prop is passed.
+  return (
+    <Component
+      data-testid="ui-card"
+      href={href}
+      className={cn(theme.root.base, href && theme.root.href, className)}
+      {...externalProps}
+    >
+      {props.onClick && <FocusEffect />}
 
-    const Component = typeof onClick === "undefined" ? "div" : "button"
-
-    const theme = mergeDeep(getTheme().card, customTheme)
-
-    const [ripple, event] = useRipple({
-      disabled: rest.disabled,
-      ...rest.rippleOptions,
-      opacity: 0.3,
-    })
-    return (
-      <Component
-        ref={mergeRefs([ripple, ref])}
-        data-testid="ui-card"
-        onClick={(e) => {
-          if (onClick) {
-            event(e)
-            onClick(e as React.MouseEvent<HTMLButtonElement>)
-          }
-        }}
-        className={cn(theme.base, className)}
-        {...(rest as any)}
-      >
-        {rest.children}
-        {onClick && <FocusEffect />}
-      </Component>
-    )
-  }
-)
+      {children}
+    </Component>
+  )
+}

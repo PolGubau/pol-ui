@@ -1,3 +1,2 @@
-export { PoluiProvider } from './PoluiProvider'
-export type { ThemeProps } from './PoluiProvider'
-export type { CustomPoluiTheme, PoluiTheme } from './PoluiTheme'
+export * from './PoluiProvider';
+export * from './PoluiTheme';

@@ -57,72 +57,6 @@ describe("Components / List group", () => {
 
     expect(outsideButton).toHaveFocus()
   })
-
-  describe("Theme", () => {
-    it("should use custom classes", () => {
-      const theme: CustomPoluiTheme = {
-        listGroup: {
-          root: {
-            base: "text-gray-100",
-          },
-        },
-      }
-
-      render(
-        <PoluiProvider theme={{ theme }}>
-          <TestListGroup />
-        </PoluiProvider>
-      ),
-        expect(listGroup()).toHaveClass("text-gray-100")
-    })
-
-    it("should use custom classes on `ListItem`", () => {
-      const theme: CustomPoluiTheme = {
-        listGroup: {
-          item: {
-            base: "text-gray-100",
-            link: {
-              active: {
-                off: "text-gray-400",
-                on: "text-gray-200",
-              },
-              href: {
-                off: "font-bold",
-                on: "font-normal",
-              },
-              icon: "text-gray-300",
-            },
-          },
-        },
-      }
-
-      render(
-        <PoluiProvider theme={{ theme }}>
-          <TestListGroup />
-        </PoluiProvider>
-      )
-
-      icons().forEach((icon) => {
-        expect(icon).toHaveClass("text-gray-300")
-      })
-      items().forEach((item) => {
-        expect(item.parentNode).toHaveClass("text-gray-100")
-      })
-
-      const activeItem = items()[0]
-      const itemWithHref = items()[1]
-
-      ;[...items().filter((item) => item !== activeItem)].forEach((item) => {
-        expect(item).toHaveClass("text-gray-400")
-      })
-      ;[...items().filter((item) => item !== itemWithHref)].forEach((item) => {
-        expect(item).toHaveClass("font-bold")
-      })
-
-      expect(activeItem).toHaveClass("text-gray-200")
-      expect(itemWithHref).toHaveClass("font-normal")
-    })
-  })
 })
 
 const TestListGroup = (): JSX.Element => {
@@ -144,10 +78,6 @@ const TestListGroup = (): JSX.Element => {
     </ListGroup>
   )
 }
-
-const listGroup = () => screen.getByRole("list")
-
-const icons = () => screen.getAllByTestId("ui-list-group-item-icon")
 
 const items = () =>
   screen

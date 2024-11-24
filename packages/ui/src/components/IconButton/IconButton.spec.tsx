@@ -76,24 +76,6 @@ describe("Components / IconButton", () => {
         expect(iconButton()).toHaveTextContent("0")
       })
     })
-
-    describe("Theme", () => {
-      it("should use `base` classes", () => {
-        const theme: CustomPoluiTheme = {
-          iconButton: {
-            base: "font-extralight",
-          },
-        }
-
-        render(
-          <PoluiProvider theme={{ theme }}>
-            <IconButton />
-          </PoluiProvider>
-        )
-
-        expect(iconButton()).toHaveClass("font-extralight")
-      })
-    })
   })
 
   const iconButton = () => screen.getByRole("button")

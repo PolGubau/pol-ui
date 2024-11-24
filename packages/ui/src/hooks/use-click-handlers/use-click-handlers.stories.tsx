@@ -1,6 +1,6 @@
 import type { Meta } from "@storybook/react"
 
-import { Button, Toaster, toast } from "../../components"
+import { toast } from "../../components"
 import { PoluiProvider } from "../../providers/PoluiProvider"
 import { useClickHandlers } from "./use-click-handlers"
 
@@ -11,7 +11,6 @@ export default {
     (Story) => (
       <div className="flex p-6 flex-col items-center pt-20 min-h-[400px] bg-secondary-50 ">
         <Story />
-        <Toaster />
       </div>
     ),
   ],

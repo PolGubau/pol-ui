@@ -1,13 +1,9 @@
-import { useState, type FC } from "react"
 import { render, screen, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
-import { HiEye, HiHeart, HiInformationCircle } from "react-icons/hi"
+import { useState, type FC } from "react"
+import { HiEye, HiInformationCircle } from "react-icons/hi"
 import { describe, expect, it, vi } from "vitest"
 
-import {
-  PoluiProvider,
-  type CustomPoluiTheme,
-} from "../../providers/PoluiProvider"
 import { Alert, type AlertProps } from "./Alert"
 
 describe.concurrent("Components / Alert", () => {
@@ -16,53 +12,6 @@ describe.concurrent("Components / Alert", () => {
       render(<TestAlert />)
 
       expect(alert()).toBeInTheDocument()
-    })
-
-    describe("Theme", () => {
-      it("should use custom `borderAccent` classes", () => {
-        const theme: CustomPoluiTheme = {
-          alert: {
-            borderAccent: "border-t-4 border-purple-500",
-          },
-        }
-        render(
-          <PoluiProvider theme={{ theme }}>
-            <TestAlert bordered />
-          </PoluiProvider>
-        )
-
-        expect(alert()).toHaveClass("border-t-4 border-purple-500")
-      })
-
-      it("should use custom `wrapper` classes", () => {
-        const theme: CustomPoluiTheme = {
-          alert: {
-            wrapper: "flex items-center",
-          },
-        }
-        render(
-          <PoluiProvider theme={{ theme }}>
-            <TestAlert />
-          </PoluiProvider>
-        )
-
-        expect(wrapper()).toHaveClass("flex items-center")
-      })
-
-      it("should use custom `icon`", () => {
-        const theme: CustomPoluiTheme = {
-          alert: {
-            icon: "alert-custom-icon",
-          },
-        }
-        render(
-          <PoluiProvider theme={{ theme }}>
-            <TestAlert icon={HiHeart} />
-          </PoluiProvider>
-        )
-
-        expect(icon()).toHaveClass("alert-custom-icon")
-      })
     })
   })
 

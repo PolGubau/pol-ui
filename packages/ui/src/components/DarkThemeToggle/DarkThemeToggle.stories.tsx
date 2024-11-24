@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from "@storybook/react"
 
-import { PoluiProvider } from "../../providers/PoluiProvider"
+import { PoluiProvider } from "../.."
 import { Button } from "../Button"
 import { DarkThemeToggle } from "./DarkThemeToggle"
 

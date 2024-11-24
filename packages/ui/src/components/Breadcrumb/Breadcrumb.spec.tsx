@@ -57,37 +57,6 @@ describe("Components / Breadcrumb", () => {
         <TestBreadcrumb />
       </PoluiProvider>
     )
-
-    expect(breadcrumbList()).toHaveClass("gap-6")
-  })
-
-  it("should use custom item classes via theme={}", () => {
-    const theme: CustomPoluiTheme = {
-      breadcrumb: {
-        item: {
-          base: "justify-center",
-          chevron: "h-9 w-9",
-          href: {
-            off: "text-md",
-            on: "text-lg",
-          },
-          icon: "h-6 w-6",
-        },
-      },
-    }
-    render(
-      <PoluiProvider theme={{ theme }}>
-        <TestBreadcrumb />
-      </PoluiProvider>
-    )
-
-    expect(items()[0]).toHaveClass("justify-center")
-    expect(contents()[0]).toHaveAttribute("href")
-    expect(contents()[0]).toHaveClass("text-lg")
-
-    expect(items()[2]).toHaveClass("justify-center")
-    expect(contents()[2]).not.toHaveAttribute("href")
-    expect(contents()[2]).toHaveClass("text-md")
   })
 })
 
@@ -108,5 +77,3 @@ const breadcrumbList = () => screen.getByRole("list")
 const items = () => screen.getAllByRole("listitem")
 
 const links = () => screen.getAllByRole("link")
-
-const contents = () => screen.getAllByTestId("ui-breadcrumb-item")

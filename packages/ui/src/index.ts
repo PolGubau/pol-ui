@@ -13,7 +13,7 @@ export * from "./hooks" // Pueden depender de helpers o types
 
 // 4. Temas y configuración
 export * from "./theme" // Define temas globales
-export { getTheme, getThemeMode } from "./theme-store" // Accesores de tema
+export * from "./theme-store" // Accesores de tema
 
 // 5. Plugins
 export * from "./plugins/pol-ui" // Usa temas, helpers o hooks (si aplica)

@@ -1,4 +1,4 @@
-export const labelsToHighlight = [
+export const DEFAULT_KEYS = [
   "displayName",
   "name",
   "label",
@@ -7,6 +7,8 @@ export const labelsToHighlight = [
   "code",
   "value",
   "userName",
+  "locale",
+  "id",
 ]
 export type GetMainFieldType = (
   item: Record<string, any>,
@@ -20,7 +22,7 @@ export const getMainField: GetMainFieldType = (
   preferenceLabels
 ) => {
   // search for the first time a label is found in labelsToHighlight (1st position has preference over 2nd position)
-  const lth = preferenceLabels ?? labelsToHighlight
+  const lth = preferenceLabels ?? DEFAULT_KEYS
   const label = lth.find((label) => {
     const value = item[label]
     if (value) {
