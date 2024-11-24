@@ -3,14 +3,15 @@ import React from "react"
 import { formatString } from "../../helpers"
 import { Locale, Locales } from "../../i18n"
 import "../../providers"
+import { PolUiContext } from "../../providers/PoluiProvider/PoluiProvider"
 import { LangAndText, Language, Translation } from "../../types"
 import { useLocalStorage } from "../use-local-storage"
 
 const useTranslate = () => {
-  const cortexContext = React.useContext(CortexContext)
+  const cortexContext = React.useContext(PolUiContext)
   if (!cortexContext) {
     throw new Error(
-      "😯 This Mesalvo App must be used within a MesalvoProvider, please check the parent component (as Layout). This error is getting thrown by useTranslate custom hook and it is intentional. ⚠️"
+      "😯 This App must be used within a <PolUiProvider/>, please check the parent component (as Layout). This error is getting thrown by useTranslate custom hook and it is intentional. ⚠️"
     )
   }
   const { keys, defaultLanguage, translations, allLanguages } = cortexContext

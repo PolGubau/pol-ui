@@ -1,4 +1,3 @@
-import { type PoluiTheme } from "."
 import { accordionTheme } from "./components/Accordion/theme"
 import { alertTheme } from "./components/Alert/theme"
 import { animatedHeadingTheme } from "./components/AnimatedHeading/theme"
@@ -57,6 +56,7 @@ import { timelineTheme } from "./components/Timeline/theme"
 import { toastTheme } from "./components/Toaster/theme"
 import { toggleTheme } from "./components/Toggle/theme"
 import { tooltipTheme } from "./components/Tooltip/theme"
+import { type PoluiTheme } from "./providers/PoluiProvider"
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,

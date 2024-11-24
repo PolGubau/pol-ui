@@ -116,7 +116,7 @@ export type DrawerProps = React.ComponentProps<typeof DrawerPrimitive.Root> & {
   children: React.ReactNode
   label?: string
   trigger?: React.ReactNode
-  noTrigger?: boolean
+  withoutTrigger?: boolean
   className?: string
 }
 
@@ -124,13 +124,13 @@ const Drawer = ({
   children,
   label = "Open Drawer",
   trigger,
-  noTrigger,
+  withoutTrigger,
   ...props
 }: DrawerProps) => {
   const triggerNode = trigger || <Button>{label}</Button>
   return (
     <DrawerRoot {...props}>
-      {!noTrigger && <DrawerTrigger asChild>{triggerNode}</DrawerTrigger>}
+      {!withoutTrigger && <DrawerTrigger asChild>{triggerNode}</DrawerTrigger>}
       <DrawerContent
         direction={props.direction ?? DirectionEnum.bottom}
         fillBackground={props.shouldScaleBackground}

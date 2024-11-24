@@ -76,8 +76,6 @@ export const PoluiProvider: FC<ProviderProps> = ({
   toaster,
   translations = {
     "en-US": {},
-    "es-ES": {},
-    "de-DE": {},
   },
 }: ProviderProps): JSX.Element => {
   const locales = Object.keys(translations) as Locale[]

@@ -34,5 +34,6 @@ export * from './use-step';
 export * from './use-sticky-scroll';
 export * from './use-text-selection';
 export * from './use-theme-mode';
+export * from './use-translate';
 export * from './use-undo';
 export * from './use-watch-localstorage-value';

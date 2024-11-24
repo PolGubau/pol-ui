@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { TbEdit, TbPlus } from "react-icons/tb"
-import z from "zod"
 
 import { cn } from "../../helpers"
 import { getMainField } from "../../helpers/get-main-field"
@@ -19,7 +18,7 @@ export interface DrawerArrayProps<T> {
   label?: string
   form: (props: { value: T; onChange: (value: T) => void }) => JSX.Element
   view?: (value: T) => JSX.Element
-  shape?: z.ZodObject<any, any>
+  // shape?: z.ZodObject<any, any>
   drawerContentClassName?: string
 }
 
@@ -30,7 +29,6 @@ export const DrawerArray = <T extends object>({
   form,
   label,
   view,
-  shape,
   drawerContentClassName,
 }: DrawerArrayProps<T>) => {
   //
