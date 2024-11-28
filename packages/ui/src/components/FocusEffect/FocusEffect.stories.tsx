@@ -1,20 +1,20 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import type { FocusEffectProps } from './FocusEffect'
-import FocusEffect from './FocusEffect'
+import type { Meta, StoryFn } from "@storybook/react"
+
+import FocusEffect, { type FocusEffectProps } from "./FocusEffect"
 
 export default {
-  title: 'Components/FocusEffect',
-  tags: ['autodocs'],
+  title: "Components/FocusEffect",
+  tags: ["autodocs"],
   component: FocusEffect,
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col items-center h-full">
         <Story />
       </div>
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 } as Meta
 
