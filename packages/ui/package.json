@@ -12,16 +12,12 @@
     "tailwindcss",
     "ui"
   ],
-  "contributors": [
-    "Pol Gubau Amores <gubaupol@gmail.com> (https://polgubau.com)"
-  ],
+  "contributors": ["Pol Gubau Amores <gubaupol@gmail.com> (https://polgubau.com)"],
   "homepage": "https://ui.polgubau.com",
   "author": "Pol Gubau Amores <gubaupol@gmail.com> (https://polgubau.com)",
   "bugs": "https://github.com/PolGubau/pol-ui/issues",
   "license": "MIT",
-  "files": [
-    "./lib/"
-  ],
+  "files": ["./lib/"],
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
   "types": "./lib/esm/index.d.ts",
