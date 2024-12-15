@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import { FaChevronUp } from "react-icons/fa"
+import { FaChevronUp } from "react-icons/fa";
 
-import { cn } from "../../helpers"
-import { useBoolean } from "../../hooks"
-import { ColorsEnum } from "../../types"
-import { IconButton } from "../IconButton"
+import { cn } from "../../helpers";
+import { useBoolean } from "../../hooks";
+import { ColorsEnum } from "../../types";
+import { IconButton } from "../IconButton";
 
 export interface ToolboxProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 const Toolbox = ({ children }: ToolboxProps) => {
-  const { value: showDebug, toggle } = useBoolean(false)
+  const { value: showDebug, toggle } = useBoolean(false);
 
   return (
     <>
@@ -38,13 +38,13 @@ const Toolbox = ({ children }: ToolboxProps) => {
           {
             "bottom-12": showDebug,
             "-bottom-20": !showDebug,
-          }
+          },
         )}
       >
         {children}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Toolbox
+export default Toolbox;

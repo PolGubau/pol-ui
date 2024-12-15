@@ -1,41 +1,37 @@
-"use client"
+"use client";
 
-import React, { type ElementType } from "react"
+import type React from "react";
+import type { ElementType } from "react";
 
-import { cn, colorToTailwind, mergeDeep } from "../../helpers"
-import { useRipple } from "../../hooks"
-import type { MinimalEvent } from "../../hooks/use-ripple/use-ripple"
-import { getTheme } from "../../theme-store"
-import {
-  ColorsEnum,
-  type Colors,
-  type DeepPartial,
-  type RoundedSizes,
-} from "../../types"
-import { IconButton } from "../IconButton"
-import type { ChipTheme } from "./theme"
+import { cn, colorToTailwind, mergeDeep } from "../../helpers";
+import { useRipple } from "../../hooks";
+import type { MinimalEvent } from "../../hooks/use-ripple/use-ripple";
+import { getTheme } from "../../theme-store";
+import { type Colors, ColorsEnum, type DeepPartial, type RoundedSizes } from "../../types";
+import { IconButton } from "../IconButton";
+import type { ChipTheme } from "./theme";
 
-const BASE_COMPONENT = "li"
-type BASE_COMPONENT_TYPE = typeof BASE_COMPONENT
+const BASE_COMPONENT = "li";
+type BaseComponentType = typeof BASE_COMPONENT;
 
 export interface ChipAction extends React.HTMLAttributes<HTMLButtonElement> {
-  element?: React.ReactNode
-  icon?: React.ReactNode
+  element?: React.ReactNode;
+  icon?: React.ReactNode;
 }
 
-export interface ChipProps<T extends ElementType = BASE_COMPONENT_TYPE> {
-  as?: T
-  children: React.ReactNode
-  label?: string
-  onClick?: (e: React.MouseEvent) => void
-  color?: Colors
-  disabled?: boolean
-  rounded?: RoundedSizes
-  actions?: ChipAction[]
-  theme?: DeepPartial<ChipTheme>
-  className?: string
-  elementClassName?: string
-  textClassName?: string
+export interface ChipProps<T extends ElementType = BaseComponentType> {
+  as?: T;
+  children: React.ReactNode;
+  label?: string;
+  onClick?: (e: React.MouseEvent) => void;
+  color?: Colors;
+  disabled?: boolean;
+  rounded?: RoundedSizes;
+  actions?: ChipAction[];
+  theme?: DeepPartial<ChipTheme>;
+  className?: string;
+  elementClassName?: string;
+  textClassName?: string;
 }
 /**
  * @name Chip component
@@ -82,7 +78,7 @@ export interface ChipProps<T extends ElementType = BASE_COMPONENT_TYPE> {
  * @returns <Chip />
  */
 
-export const Chip = <T extends ElementType = BASE_COMPONENT_TYPE>({
+export const Chip = <T extends ElementType = BaseComponentType>({
   as: BaseComponent,
   children,
   label = undefined,
@@ -96,14 +92,14 @@ export const Chip = <T extends ElementType = BASE_COMPONENT_TYPE>({
   elementClassName,
   textClassName,
 }: ChipProps<T>) => {
-  const Component = onClick ? "button" : (BaseComponent ?? BASE_COMPONENT)
-  const theme = mergeDeep(getTheme().chip, customTheme)
+  const Component = onClick ? "button" : (BaseComponent ?? BASE_COMPONENT);
+  const theme = mergeDeep(getTheme().chip, customTheme);
 
   const [ripple, event] = useRipple({
     disabled: disabled,
     opacity: 0.5,
     className: colorToTailwind(color),
-  })
+  });
 
   return (
     <Component
@@ -114,7 +110,7 @@ export const Chip = <T extends ElementType = BASE_COMPONENT_TYPE>({
         theme.color[color],
         disabled && theme.disabled,
         !disabled && onClick && theme.clickable,
-        className
+        className,
       )}
       onPointerDown={(e: MinimalEvent) => onClick && event(e)}
       ref={onClick && ripple}
@@ -123,15 +119,14 @@ export const Chip = <T extends ElementType = BASE_COMPONENT_TYPE>({
       <p className={cn(theme.text, textClassName)}>{label ?? children}</p>
 
       {/* The actions of the chip will be displayed as icons or elements */}
-      {actions.map(({ onClick, element, icon }, index) => (
-        <>
+      {actions.map(({ onClick, element, icon }) => (
+        <div key={element?.toString()}>
           {icon && (
             <IconButton
-              key={index}
               size="xs"
               onClick={(e) => {
-                e.stopPropagation()
-                onClick?.(e)
+                e.stopPropagation();
+                onClick?.(e);
               }}
               disabled={disabled}
             >
@@ -139,12 +134,12 @@ export const Chip = <T extends ElementType = BASE_COMPONENT_TYPE>({
             </IconButton>
           )}
           {element && (
-            <div key={index} className={cn(theme.element, elementClassName)}>
+            <div key={element.toString()} className={cn(theme.element, elementClassName)}>
               {element}
             </div>
           )}
-        </>
+        </div>
       ))}
     </Component>
-  )
-}
+  );
+};

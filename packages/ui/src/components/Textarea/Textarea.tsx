@@ -1,16 +1,14 @@
-import { forwardRef, useId, type ComponentProps } from "react"
+import { type ComponentProps, forwardRef, useId } from "react";
 
-import { cn } from "../../helpers"
-import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
-import { getTheme } from "../../theme-store"
-import { ColorsEnum, MainSizesEnum } from "../../types/enums"
-import { HelperText } from "../HelperText"
-import type { BaseInputsProps } from "../Input/props"
-import { Label } from "../Label"
+import { cn } from "../../helpers";
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { getTheme } from "../../theme-store";
+import { ColorsEnum, MainSizesEnum } from "../../types/enums";
+import { HelperText } from "../HelperText";
+import type { BaseInputsProps } from "../Input/props";
+import { Label } from "../Label";
 
-export interface TextareaProps
-  extends Omit<ComponentProps<"textarea">, "color" | "ref" | "size">,
-    BaseInputsProps {}
+export interface TextareaProps extends Omit<ComponentProps<"textarea">, "color" | "ref" | "size">, BaseInputsProps {}
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (
@@ -29,15 +27,13 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       innerClassName = "",
       ...props
     },
-    ref
+    ref,
   ) => {
-    const theme = mergeDeep(getTheme().textInput, customTheme)
-    const randomId = useId()
+    const theme = mergeDeep(getTheme().textInput, customTheme);
+    const randomId = useId();
 
     return (
-      <div
-        className={cn(theme.root.base, theme.root.labelPosition[labelPosition])}
-      >
+      <div className={cn(theme.root.base, theme.root.labelPosition[labelPosition])}>
         {label && (
           <Label className={cn(theme.label, labelClassName)} htmlFor={randomId}>
             {label}
@@ -48,11 +44,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             {leftComponent && (
               <div
                 data-testid="left-icon"
-                className={cn(
-                  theme.field.icons.base,
-                  theme.field.icons.svg,
-                  theme.field.icons.left
-                )}
+                className={cn(theme.field.icons.base, theme.field.icons.svg, theme.field.icons.left)}
               >
                 {leftComponent}
               </div>
@@ -60,11 +52,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             {rightComponent && (
               <div
                 data-testid="right-icon"
-                className={cn(
-                  theme.field.icons.base,
-                  theme.field.icons.svg,
-                  theme.field.icons.right
-                )}
+                className={cn(theme.field.icons.base, theme.field.icons.svg, theme.field.icons.right)}
               >
                 {rightComponent}
               </div>
@@ -81,7 +69,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 theme.field.input.sizes[size],
                 theme.field.input.withIcon[leftComponent ? "on" : "off"],
                 theme.field.input.withRightIcon[rightComponent ? "on" : "off"],
-                innerClassName
+                innerClassName,
               )}
               {...props}
             />
@@ -89,8 +77,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           </div>
         </div>
       </div>
-    )
-  }
-)
+    );
+  },
+);
 
-Textarea.displayName = "Textarea"
+Textarea.displayName = "Textarea";

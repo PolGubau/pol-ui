@@ -1,1 +1,1 @@
-export * from "./TimedButton"
+export * from "./TimedButton";

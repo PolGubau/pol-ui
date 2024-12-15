@@ -1,6 +1,6 @@
-'use client'
+"use client";
 
-import React from 'react'
+import React from "react";
 
 /**
  * Custom hook for creating a lazy-initialized mutable ref.
@@ -10,16 +10,16 @@ import React from 'react'
  */
 export function useLazyRef<T>(fn: () => T): React.MutableRefObject<T> {
   // Create a mutable ref to store the value
-  const ref = React.useRef<T>()
+  const ref = React.useRef<T>();
 
   // Check if the current value of the ref is undefined
   if (ref.current === undefined) {
     // If undefined, initialize the ref with the result of the provided function
-    ref.current = fn()
+    ref.current = fn();
   }
 
   // Return the ref as a React.MutableRefObject
-  return ref as React.MutableRefObject<T>
+  return ref as React.MutableRefObject<T>;
 }
 
 // Example usage:

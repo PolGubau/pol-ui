@@ -1,38 +1,33 @@
-import type {
-  ColorsType,
-  IBoolean,
-  MainSizesType,
-  RoundedSizesTypes,
-} from "../../types"
+import type { ColorsType, IBoolean, MainSizesType, RoundedSizesTypes } from "../../types";
 
 export interface ButtonTheme {
-  base: string
-  fullSized: string
-  color: ColorsType
+  base: string;
+  fullSized: string;
+  color: ColorsType;
   ring: {
-    base: string
-    colors: ColorsType
-  }
-  disabled: string
-  loading: string
-  loaderSlot: string
-  loaderLeftPosition: MainSizesType
-  inner: ButtonInnerTheme
-  label: string
-  outline: ButtonOutlineTheme
-  rounded: RoundedSizesTypes
-  size: MainSizesType
+    base: string;
+    colors: ColorsType;
+  };
+  disabled: string;
+  loading: string;
+  loaderSlot: string;
+  loaderLeftPosition: MainSizesType;
+  inner: ButtonInnerTheme;
+  label: string;
+  outline: ButtonOutlineTheme;
+  rounded: RoundedSizesTypes;
+  size: MainSizesType;
 }
 
 export interface ButtonInnerTheme {
-  base: string
-  outline: string
-  loadingPadding: MainSizesType
+  base: string;
+  outline: string;
+  loadingPadding: MainSizesType;
 }
 
 export interface ButtonOutlineTheme extends IBoolean {
-  outlineBase: string
-  color: ColorsType
+  outlineBase: string;
+  color: ColorsType;
 }
 
 export const buttonTheme: ButtonTheme = {
@@ -79,11 +74,9 @@ export const buttonTheme: ButtonTheme = {
       xl: "pl-20",
     },
   },
-  label:
-    "ml-2 inline-flex h-4 w-4 items-center justify-center rounded-full text-xs font-semibold",
+  label: "ml-2 inline-flex h-4 w-4 items-center justify-center rounded-full text-xs font-semibold",
   outline: {
-    outlineBase:
-      "enabled:hover:brightness-90  dark:enabled:hover:brightness-125 ring ring-1 focus:ring-[3px]",
+    outlineBase: "enabled:hover:brightness-90  dark:enabled:hover:brightness-125 ring ring-1 focus:ring-[3px]",
     color: {
       error: "text-error-900 dark:text-error-50  ring-error",
       info: "text-info-900 dark:text-info-50  ring-info",
@@ -114,4 +107,4 @@ export const buttonTheme: ButtonTheme = {
     lg: "text-base px-4 py-2.5",
     xl: "text-base px-6 py-3.5",
   },
-}
+};

@@ -1,60 +1,50 @@
-import { useCallback, useEffect } from "react"
+import { useCallback, useEffect } from "react";
 
-import { Button, ButtonProps } from "../../Button"
-import { TreeViewElement } from "../FileTree"
-import { useTree } from "../hooks/use-tree"
+import { Button, type ButtonProps } from "../../Button";
+import type { TreeViewElement } from "../FileTree";
+import { useTree } from "../hooks/use-tree";
 
 type CollapseButtonProps = {
-  elements: TreeViewElement[]
-  expandAll?: boolean
-} & ButtonProps
+  elements: TreeViewElement[];
+  expandAll?: boolean;
+} & ButtonProps;
 
-const TreeCollapseButton = ({
-  className,
-  elements,
-  expandAll = false,
-  children,
-  ...props
-}: CollapseButtonProps) => {
-  const { expandedItems, setExpandedItems } = useTree()
+const TreeCollapseButton = ({ className, elements, expandAll = false, children, ...props }: CollapseButtonProps) => {
+  const { expandedItems, setExpandedItems } = useTree();
 
   const expendAllTree = useCallback((elements: TreeViewElement[]) => {
     const expandTree = (element: TreeViewElement) => {
-      const isSelectable = element.isSelectable ?? true
+      const isSelectable = element.isSelectable ?? true;
       if (isSelectable && element.children && element.children.length > 0) {
-        setExpandedItems?.((prev) => [...(prev ?? []), element.id])
-        element.children.forEach(expandTree)
+        setExpandedItems?.((prev) => [...(prev ?? []), element.id]);
+        element.children.forEach(expandTree);
       }
-    }
+    };
 
-    elements.forEach(expandTree)
-  }, [])
+    elements.forEach(expandTree);
+  }, []);
 
   const closeAll = useCallback(() => {
-    setExpandedItems?.([])
-  }, [])
+    setExpandedItems?.([]);
+  }, []);
 
   useEffect(() => {
-    console.log(expandAll)
+    console.log(expandAll);
     if (expandAll) {
-      expendAllTree(elements)
+      expendAllTree(elements);
     }
-  }, [expandAll])
+  }, [expandAll]);
 
   return (
     <Button
       variant={"ghost"}
       className="h-8 w-fit p-1 absolute bottom-1 right-2"
-      onClick={
-        expandedItems && expandedItems.length > 0
-          ? closeAll
-          : () => expendAllTree(elements)
-      }
+      onClick={expandedItems && expandedItems.length > 0 ? closeAll : () => expendAllTree(elements)}
       {...props}
     >
       {children}
       <span className="sr-only">Toggle</span>
     </Button>
-  )
-}
-export { TreeCollapseButton as CollapseButton }
+  );
+};
+export { TreeCollapseButton as CollapseButton };

@@ -7,7 +7,7 @@ THIS FILE LIST ALL THE ENUMS USED IN THE BASE POL-UI THEME
  * @description Helper type to get the values of an enum dynamically
  * @author Pol Gubau Amores - https://polgubau.com
  */
-export type GetValuesEnum<T> = T[keyof T]
+export type GetValuesEnum<T> = T[keyof T];
 
 /**
  * @name MainSizesEnum
@@ -28,7 +28,7 @@ export enum MainSizesEnum {
    * @example
    * <Button size={MainSizesEnum.xs} />
    */
-  xs = 'xs',
+  xs = "xs",
 
   /**
    * @name Small
@@ -36,7 +36,7 @@ export enum MainSizesEnum {
    * @example
    * <Button size={MainSizesEnum.sm} />
    */
-  sm = 'sm',
+  sm = "sm",
 
   /**
    * @name Medium
@@ -44,7 +44,7 @@ export enum MainSizesEnum {
    * @example
    * <Button size={MainSizesEnum.md} />
    */
-  md = 'md',
+  md = "md",
 
   /**
    * @name Large
@@ -52,7 +52,7 @@ export enum MainSizesEnum {
    * @example
    * <Button size={MainSizesEnum.lg} />
    */
-  lg = 'lg',
+  lg = "lg",
 
   /**
    * @name ExtraLarge
@@ -60,7 +60,7 @@ export enum MainSizesEnum {
    * @example
    * <Button size={MainSizesEnum.xl} />
    */
-  xl = 'xl',
+  xl = "xl",
 }
 
 /**
@@ -90,7 +90,7 @@ export const SizesEnum = {
    * @example
    * <Button size={SizesEnum.2xl} />
    */
-  '2xl': '2xl',
+  "2xl": "2xl",
 
   /**
    * @name 3xl
@@ -98,7 +98,7 @@ export const SizesEnum = {
    * @example
    * <Button size={SizesEnum.3xl} />
    */
-  '3xl': '3xl',
+  "3xl": "3xl",
 
   /**
    * @name 4xl
@@ -106,7 +106,7 @@ export const SizesEnum = {
    * @example
    * <Button size={SizesEnum.4xl} />
    */
-  '4xl': '4xl',
+  "4xl": "4xl",
 
   /**
    * @name 5xl
@@ -114,7 +114,7 @@ export const SizesEnum = {
    * @example
    * <Button size={SizesEnum.5xl} />
    */
-  '5xl': '5xl',
+  "5xl": "5xl",
 
   /**
    * @name 6xl
@@ -122,7 +122,7 @@ export const SizesEnum = {
    * @example
    * <Button size={SizesEnum.6xl} />
    */
-  '6xl': '6xl',
+  "6xl": "6xl",
 
   /**
    * @name 7xl
@@ -130,8 +130,8 @@ export const SizesEnum = {
    * @example
    * <Button size={SizesEnum.7xl} />
    */
-  '7xl': '7xl',
-}
+  "7xl": "7xl",
+};
 
 /**
  * @name RoundedSizesEnum
@@ -151,7 +151,7 @@ export const RoundedSizesEnum = {
    * @example
    * <Button rounded={RoundedSizesEnum.2xl} /> // 2 extra large rounded
    */
-  '2xl': '2xl',
+  "2xl": "2xl",
 
   /**
    * @name 3xl
@@ -159,7 +159,7 @@ export const RoundedSizesEnum = {
    * @example
    * <Button rounded={RoundedSizesEnum.3xl} /> // 3 extra large rounded
    */
-  '3xl': '3xl',
+  "3xl": "3xl",
 
   /**
    * @name Full
@@ -167,7 +167,7 @@ export const RoundedSizesEnum = {
    * @example
    * <Button rounded={RoundedSizesEnum.full} /> // Full rounded
    */
-  full: 'full',
+  full: "full",
 
   /**
    * @name None
@@ -175,8 +175,8 @@ export const RoundedSizesEnum = {
    * @example
    * <Button rounded={RoundedSizesEnum.none} /> // No rounded
    */
-  none: 'none',
-}
+  none: "none",
+};
 
 /**
  * @name BooleanEnum
@@ -187,8 +187,8 @@ export const RoundedSizesEnum = {
  * @author Pol Gubau Amores - https://polgubau.com
  */
 export enum BooleanEnum {
-  off = 'off',
-  on = 'on',
+  off = "off",
+  on = "on",
 }
 
 /**
@@ -212,7 +212,7 @@ export enum StateColorsEnum {
    * @example
    * <Button color={StateColorsEnum.info} /> // Info color
    */
-  info = 'info',
+  info = "info",
 
   /**
    * Error color
@@ -220,7 +220,7 @@ export enum StateColorsEnum {
    * @example
    * <Button color={StateColorsEnum.error} /> // Info color
    */
-  error = 'error',
+  error = "error",
 
   /**
    * Success color
@@ -228,7 +228,7 @@ export enum StateColorsEnum {
    * @example
    * <Button color={StateColorsEnum.success} /> // Info color
    */
-  success = 'success',
+  success = "success",
 
   /**
    * Warning color
@@ -236,7 +236,7 @@ export enum StateColorsEnum {
    * @example
    * <Button color={StateColorsEnum.warning} /> // Info color
    */
-  warning = 'warning',
+  warning = "warning",
 }
 
 /**
@@ -256,7 +256,7 @@ export enum BrandColorsEnum {
    * @example
    * <Button color={BrandColorsEnum.primary} /> // Primary color
    */
-  primary = 'primary',
+  primary = "primary",
 
   /**
    * Secondary color
@@ -264,7 +264,7 @@ export enum BrandColorsEnum {
    * @example
    * <Button color={BrandColorsEnum.secondary} /> // Secondary color
    */
-  secondary = 'secondary',
+  secondary = "secondary",
 }
 
 /**
@@ -294,7 +294,7 @@ export enum HeadingLevelEnum {
    * <Heading level={HeadingLevelEnum.h1} /> // Heading level 1
    *
    */
-  h1 = 'h1',
+  h1 = "h1",
 
   /**
    * Heading level 2
@@ -303,7 +303,7 @@ export enum HeadingLevelEnum {
    * <Heading level={HeadingLevelEnum.h2} /> // Heading level 2
    *
    */
-  h2 = 'h2',
+  h2 = "h2",
 
   /**
    * Heading level 3
@@ -312,7 +312,7 @@ export enum HeadingLevelEnum {
    * <Heading level={HeadingLevelEnum.h3} /> // Heading level 3
    *
    */
-  h3 = 'h3',
+  h3 = "h3",
 
   /**
    * Heading level 4
@@ -321,7 +321,7 @@ export enum HeadingLevelEnum {
    * <Heading level={HeadingLevelEnum.h4} /> // Heading level 4
    *
    */
-  h4 = 'h4',
+  h4 = "h4",
 
   /**
    * Heading level 5
@@ -330,7 +330,7 @@ export enum HeadingLevelEnum {
    * <Heading level={HeadingLevelEnum.h5} /> // Heading level 5
    *
    */
-  h5 = 'h5',
+  h5 = "h5",
 
   /**
    * Heading level 6
@@ -339,7 +339,7 @@ export enum HeadingLevelEnum {
    * <Heading level={HeadingLevelEnum.h6} /> // Heading level 6
    *
    */
-  h6 = 'h6',
+  h6 = "h6",
 }
 
 /**
@@ -347,7 +347,7 @@ export enum HeadingLevelEnum {
  * @description Enum for the different colors, merging state and brand colors
  * @author Pol Gubau Amores - https://polgubau.com
  */
-export const ColorsEnum = { ...StateColorsEnum, ...BrandColorsEnum }
+export const ColorsEnum = { ...StateColorsEnum, ...BrandColorsEnum };
 
 /**
  * @name TriggerReasonEnum
@@ -366,14 +366,14 @@ export enum TriggerReasonEnum {
    * @example
    * <Tooltip trigger={TriggerReasonEnum.hover} ... // Hover trigger
    */
-  hover = 'hover',
+  hover = "hover",
   /**
    * @name Click
    * @description Click trigger
    * @example
    * <Tooltip trigger={TriggerReasonEnum.click} ... // Hover trigger
    */
-  click = 'click',
+  click = "click",
 }
 
 /**
@@ -392,10 +392,10 @@ export enum TriggerReasonEnum {
  * @author Pol Gubau Amores - https://polgubau.com
  */
 export enum DirectionEnum {
-  top = 'top',
-  right = 'right',
-  bottom = 'bottom',
-  left = 'left',
+  top = "top",
+  right = "right",
+  bottom = "bottom",
+  left = "left",
 }
 
 /**
@@ -408,9 +408,9 @@ export enum DirectionEnum {
  * @author Pol Gubau Amores - https://polgubau.com
  */
 export enum AlignEnum {
-  start = 'start',
-  center = 'center',
-  end = 'end',
+  start = "start",
+  center = "center",
+  end = "end",
 }
 
 /**
@@ -427,19 +427,19 @@ export enum AlignEnum {
  * @author Pol Gubau Amores - https://polgubau.com
  */
 export enum DirEnum {
-  rtl = 'rtl',
-  ltr = 'ltr',
-  auto = 'auto',
+  rtl = "rtl",
+  ltr = "ltr",
+  auto = "auto",
 }
 
 export enum SidesEnum {
-  top = 'top',
-  right = 'right',
-  bottom = 'bottom',
-  left = 'left',
+  top = "top",
+  right = "right",
+  bottom = "bottom",
+  left = "left",
 }
 
 export enum OrientationsEnum {
-  horizontal = 'horizontal',
-  vertical = 'vertical',
+  horizontal = "horizontal",
+  vertical = "vertical",
 }

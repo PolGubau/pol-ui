@@ -1,4 +1,4 @@
-import type { DatepickerTheme } from "."
+import type { DatepickerTheme } from ".";
 
 export const datePickerTheme: DatepickerTheme = {
   root: {
@@ -8,13 +8,11 @@ export const datePickerTheme: DatepickerTheme = {
     root: {
       base: "absolute top-10 z-50 block pt-2",
       inline: "relative top-0 z-auto",
-      inner:
-        "inline-block rounded-xl p-3 bg-secondary-50 dark:bg-secondary-800",
+      inner: "inline-block rounded-xl p-3 bg-secondary-50 dark:bg-secondary-800",
     },
     header: {
       base: "",
-      title:
-        "px-2 py-3 text-center font-semibold text-secondary-900 dark:text-secondary-50",
+      title: "px-2 py-3 text-center font-semibold text-secondary-900 dark:text-secondary-50",
       selectors: {
         base: "flex justify-between mb-2 flex gap-2",
         button: {
@@ -41,8 +39,7 @@ export const datePickerTheme: DatepickerTheme = {
     days: {
       header: {
         base: "grid grid-cols-7 mb-1",
-        title:
-          "dow h-6 text-center text-sm font-medium leading-6 text-secondary-600 dark:text-primary-400",
+        title: "dow h-6 text-center text-sm font-medium leading-6 text-secondary-600 dark:text-primary-400",
       },
       items: {
         base: "grid w-64 grid-cols-7",
@@ -52,8 +49,7 @@ export const datePickerTheme: DatepickerTheme = {
             on: "bg-primary text-primary-50 hover:brightness-90 dark:bg-primary-600 dark:text-primary-50",
             off: " hover:bg-primary-100 dark:hover:bg-primary-600",
           },
-          disabled:
-            "text-primary-900 dark:textprimary-50 opacity-50 cursor-not-allowed",
+          disabled: "text-primary-900 dark:textprimary-50 opacity-50 cursor-not-allowed",
         },
       },
     },
@@ -97,4 +93,4 @@ export const datePickerTheme: DatepickerTheme = {
       },
     },
   },
-}
+};

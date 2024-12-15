@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useRef, useState } from "react"
-import { useMotionValueEvent, useScroll } from "framer-motion"
+import { useMotionValueEvent, useScroll } from "framer-motion";
+import { useRef, useState } from "react";
 
 /**
  * Hook for transitioning background color based on scroll position.
@@ -15,25 +15,27 @@ import { useMotionValueEvent, useScroll } from "framer-motion"
  * ```
  */
 export const useBgColorTransition = (colors: string[]) => {
-  const [activeColor, setActiveColor] = useState(colors[0])
-  const ref = useRef<HTMLDivElement | null>(null)
+  const [activeColor, setActiveColor] = useState(colors[0]);
+  const ref = useRef<HTMLDivElement | null>(null);
 
-  const { scrollY } = useScroll({})
+  const { scrollY } = useScroll({});
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const amountColors = colors.length
-    if (!ref.current) return
-    const step = ref.current.offsetHeight / amountColors
+    const amountColors = colors.length;
+    if (!ref.current) {
+      return;
+    }
+    const step = ref.current.offsetHeight / amountColors;
 
-    const index = Math.floor(latest / step)
+    const index = Math.floor(latest / step);
 
     if (index >= amountColors) {
-      setActiveColor(colors[amountColors - 1])
-      return
+      setActiveColor(colors[amountColors - 1]);
+      return;
     }
 
-    setActiveColor(colors[index])
-  })
+    setActiveColor(colors[index]);
+  });
 
-  return { color: activeColor, ref }
-}
+  return { color: activeColor, ref };
+};

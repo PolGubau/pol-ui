@@ -1,16 +1,16 @@
-'use client'
+"use client";
 
-import type { ElementType } from 'react'
-import { useRef, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import { getTheme } from '../../theme-store'
-import type { DirectionHoverTheme } from './theme'
-import { DirectionEnum, RoundedSizesEnum } from '../../types/enums'
-import type { DirectionHoverProps } from './types'
-import { directionHoverTextVariants, directionHoverVariants, getDirection } from './types'
-import type { Direction } from '../../types'
+import { AnimatePresence, motion } from "framer-motion";
+import type { ElementType } from "react";
+import { useRef, useState } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { Direction } from "../../types";
+import { DirectionEnum, RoundedSizesEnum } from "../../types/enums";
+import type { DirectionHoverTheme } from "./theme";
+import type { DirectionHoverProps } from "./types";
+import { directionHoverTextVariants, directionHoverVariants, getDirection } from "./types";
 
 /**
  *
@@ -28,7 +28,7 @@ import type { Direction } from '../../types'
  * @returns React.FC<DirectionHoverProps<T>>
  *
  */
-export const DirectionHover = <T extends ElementType = 'button'>({
+export const DirectionHover = <T extends ElementType = "button">({
   imageUrl,
   children,
   childrenClassName,
@@ -40,31 +40,33 @@ export const DirectionHover = <T extends ElementType = 'button'>({
   theme: customTheme = {},
   ...props
 }: DirectionHoverProps<T>) => {
-  const ref = useRef<HTMLButtonElement>(null)
-  const [direction, setDirection] = useState<Direction>(DirectionEnum.left)
-  const theme: DirectionHoverTheme = mergeDeep(getTheme().directionHover, customTheme)
+  const ref = useRef<HTMLButtonElement>(null);
+  const [direction, setDirection] = useState<Direction>(DirectionEnum.left);
+  const theme: DirectionHoverTheme = mergeDeep(getTheme().directionHover, customTheme);
 
   const handleMouseEnter = (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (!ref.current) return
-    const direction = getDirection(event, ref.current)
+    if (!ref.current) {
+      return;
+    }
+    const direction = getDirection(event, ref.current);
     switch (direction) {
       case 0:
-        setDirection(DirectionEnum.top)
-        break
+        setDirection(DirectionEnum.top);
+        break;
       case 1:
-        setDirection(DirectionEnum.right)
-        break
+        setDirection(DirectionEnum.right);
+        break;
       case 2:
-        setDirection(DirectionEnum.bottom)
-        break
+        setDirection(DirectionEnum.bottom);
+        break;
       case 3:
-        setDirection(DirectionEnum.left)
-        break
+        setDirection(DirectionEnum.left);
+        break;
       default:
-        setDirection(DirectionEnum.left)
-        break
+        setDirection(DirectionEnum.left);
+        break;
     }
-  }
+  };
 
   return (
     <motion.button
@@ -81,7 +83,7 @@ export const DirectionHover = <T extends ElementType = 'button'>({
             className={theme.background.wrapper}
             transition={{
               duration: 0.2,
-              ease: 'easeOut',
+              ease: "easeOut",
             }}
           >
             <div
@@ -89,14 +91,14 @@ export const DirectionHover = <T extends ElementType = 'button'>({
               style={{
                 backgroundImage: `url(${imageUrl})`,
               }}
-              aria-label={alt ?? 'From Direction hover component'}
+              aria-label={alt ?? "From Direction hover component"}
             />
           </motion.div>
           <motion.div
             variants={directionHoverTextVariants(speed)}
             transition={{
               duration: 0.5,
-              ease: 'easeOut',
+              ease: "easeOut",
             }}
             className={twMerge(theme.children, childrenClassName)}
           >
@@ -105,5 +107,5 @@ export const DirectionHover = <T extends ElementType = 'button'>({
         </motion.div>
       </AnimatePresence>
     </motion.button>
-  )
-}
+  );
+};

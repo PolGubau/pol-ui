@@ -1,25 +1,23 @@
-"use client"
+"use client";
 
-import type { ComponentProps, FC, PropsWithChildren } from "react"
-import { twMerge } from "tailwind-merge"
+import type { ComponentProps, FC, PropsWithChildren } from "react";
+import { twMerge } from "tailwind-merge";
 
-import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
-import { getTheme } from "../../theme-store"
-import type { DeepPartial } from "../../types/types"
-import type { FooterBrandTheme } from "./theme"
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types/types";
+import type { FooterBrandTheme } from "./theme";
 
 export interface FooterBrandProps extends PropsWithChildren {
-  alt?: string
-  className?: string
-  href?: string
-  name?: string
-  src: string
-  theme?: DeepPartial<FooterBrandTheme>
+  alt?: string;
+  className?: string;
+  href?: string;
+  name?: string;
+  src: string;
+  theme?: DeepPartial<FooterBrandTheme>;
 }
 
-export const FooterBrand: FC<
-  FooterBrandProps & ComponentProps<"a"> & ComponentProps<"img">
-> = ({
+export const FooterBrand: FC<FooterBrandProps & ComponentProps<"a"> & ComponentProps<"img">> = ({
   alt,
   className,
   children,
@@ -29,17 +27,12 @@ export const FooterBrand: FC<
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().footer.brand, customTheme)
+  const theme = mergeDeep(getTheme().footer.brand, customTheme);
 
   return (
     <div>
       {href ? (
-        <a
-          data-testid="ui-footer-brand"
-          href={href}
-          className={twMerge(theme.base, className)}
-          {...props}
-        >
+        <a data-testid="ui-footer-brand" href={href} className={twMerge(theme.base, className)} {...props}>
           <img alt={alt} src={src} className={theme.img} />
           <span data-testid="ui-footer-brand-span" className={theme.span}>
             {name}
@@ -47,14 +40,8 @@ export const FooterBrand: FC<
           {children}
         </a>
       ) : (
-        <img
-          alt={alt}
-          data-testid="ui-footer-brand"
-          src={src}
-          className={twMerge(theme.img, className)}
-          {...props}
-        />
+        <img alt={alt} data-testid="ui-footer-brand" src={src} className={twMerge(theme.img, className)} {...props} />
       )}
     </div>
-  )
-}
+  );
+};

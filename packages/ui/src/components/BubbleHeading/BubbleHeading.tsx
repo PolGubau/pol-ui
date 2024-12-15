@@ -1,25 +1,25 @@
-'use client'
+"use client";
 
-import React from 'react'
-import { DynamicHeading } from '../DynamicHeading'
-import type { DeepPartial, HeadingLevel } from '../../types'
-import { cn, mergeDeep } from '../../helpers'
-import { getTheme } from '../../theme-store'
-import type { BubbleHeadingTheme } from './theme'
+import React from "react";
+import { cn, mergeDeep } from "../../helpers";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial, HeadingLevel } from "../../types";
+import { DynamicHeading } from "../DynamicHeading";
+import type { BubbleHeadingTheme } from "./theme";
 export interface BubbleHeadingProps {
-  children: string
-  minWeight?: number
-  maxWeight?: number
-  step?: number
+  children: string;
+  minWeight?: number;
+  maxWeight?: number;
+  step?: number;
 
   /**
    * If true, the text will be bold when not hovered
    */
-  opposite?: boolean
-  as?: HeadingLevel
-  className?: string
-  theme?: DeepPartial<BubbleHeadingTheme>
-  transitionDuration?: number
+  opposite?: boolean;
+  as?: HeadingLevel;
+  className?: string;
+  theme?: DeepPartial<BubbleHeadingTheme>;
+  transitionDuration?: number;
 }
 
 /**
@@ -32,50 +32,54 @@ export const BubbleHeading: React.FC<BubbleHeadingProps> = ({
   minWeight = 100,
   maxWeight = 900,
   step = 100,
-  as = 'h2',
+  as = "h2",
   opposite,
   transitionDuration = 0.25,
   className,
   theme: customTheme = {},
 }: BubbleHeadingProps) => {
-  const theme = mergeDeep(getTheme().bubbleHeading, customTheme)
+  const theme = mergeDeep(getTheme().bubbleHeading, customTheme);
 
-  const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null)
+  const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
 
   const distanceFromHovered = (idx: number) => {
     if (hoveredIndex === null) {
-      return 999
+      return 999;
     }
-    return Math.abs(hoveredIndex - idx)
-  }
+    return Math.abs(hoveredIndex - idx);
+  };
 
   const weight = (idx: number) => {
     if (hoveredIndex === null) {
-      return opposite ? maxWeight : minWeight
+      return opposite ? maxWeight : minWeight;
     }
-    const distance = distanceFromHovered(idx)
+    const distance = distanceFromHovered(idx);
 
-    const hoverMeansBold = maxWeight - distance * step
-    const hoverMeansLight = minWeight + distance * step
+    const hoverMeansBold = maxWeight - distance * step;
+    const hoverMeansLight = minWeight + distance * step;
 
-    return opposite ? hoverMeansLight : hoverMeansBold
-  }
+    return opposite ? hoverMeansLight : hoverMeansBold;
+  };
 
   return (
     <DynamicHeading as={as} className={cn(theme.base, className)}>
-      {children.split('').map((child, idx) => (
+      {children.split("").map((child, idx) => (
         <span
           style={{
             transition: `font-weight ${transitionDuration}s ease-in-out`,
             fontWeight: weight(idx),
           }}
-          onMouseEnter={() => { setHoveredIndex(idx); }}
-          onMouseLeave={() => { setHoveredIndex(null); }}
+          onMouseEnter={() => {
+            setHoveredIndex(idx);
+          }}
+          onMouseLeave={() => {
+            setHoveredIndex(null);
+          }}
           key={idx}
         >
           {child}
         </span>
       ))}
     </DynamicHeading>
-  )
-}
+  );
+};

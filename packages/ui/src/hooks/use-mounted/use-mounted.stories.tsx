@@ -1,9 +1,9 @@
-import React from "react"
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
+import type React from "react";
 
-import { Toaster } from "../../components"
-import { PoluiProvider } from "../../providers/PoluiProvider"
-import { useMounted } from "./use-mounted"
+import { Toaster } from "../../components";
+import { PoluiProvider } from "../../providers/PoluiProvider";
+import { useMounted } from "./use-mounted";
 
 export default {
   title: "Hooks/useMounted",
@@ -21,18 +21,10 @@ export default {
     layout: "fullscreen",
   },
   tags: ["autodocs"],
-} as Meta
+} as Meta;
 export const Default: React.FC = () => {
   // Example media query for screen widths less than 600px
-  const isMounted = useMounted()
+  const isMounted = useMounted();
 
-  return (
-    <div>
-      {isMounted ? (
-        <p>The component is mounted.</p>
-      ) : (
-        <p>The component is not mounted.</p>
-      )}
-    </div>
-  )
-}
+  return <div>{isMounted ? <p>The component is mounted.</p> : <p>The component is not mounted.</p>}</div>;
+};

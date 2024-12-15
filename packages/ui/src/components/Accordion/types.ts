@@ -1,8 +1,8 @@
-import { ComponentProps, FC, ReactElement } from "react"
+import type { ComponentProps, FC, ReactElement } from "react";
 
-import { DeepPartial } from "../../types"
-import { AccordionTheme } from "./Accordion"
-import { PanelProps } from "./AccordionPanel"
+import type { DeepPartial } from "../../types";
+import type { AccordionTheme } from "./Accordion";
+import type { PanelProps } from "./AccordionPanel";
 
 /**
  * @name AccordionProps
@@ -19,7 +19,7 @@ export interface AccordionProps extends ComponentProps<"div"> {
    *   ...
    * </Accordion>
    */
-  alwaysOpen?: boolean
+  alwaysOpen?: boolean;
 
   /**
    * @name arrowIcon
@@ -33,7 +33,7 @@ export interface AccordionProps extends ComponentProps<"div"> {
    * </Accordion>
    *
    */
-  arrowIcon?: FC<ComponentProps<"svg">>
+  arrowIcon?: FC<ComponentProps<"svg">>;
 
   /**
    * @name children
@@ -48,7 +48,7 @@ export interface AccordionProps extends ComponentProps<"div"> {
    * </Accordion>
    */
 
-  children: ReactElement<PanelProps> | ReactElement<PanelProps>[]
+  children: ReactElement<PanelProps> | ReactElement<PanelProps>[];
 
   /**
    * @name isBordered
@@ -61,7 +61,7 @@ export interface AccordionProps extends ComponentProps<"div"> {
    * ...
    * </Accordion>
    */
-  isBordered?: boolean
+  isBordered?: boolean;
 
   /**
    * @name collapseAll
@@ -73,7 +73,7 @@ export interface AccordionProps extends ComponentProps<"div"> {
    * ...
    * </Accordion>
    */
-  collapseAll?: boolean
+  collapseAll?: boolean;
 
   /**
    * @name theme
@@ -84,5 +84,5 @@ export interface AccordionProps extends ComponentProps<"div"> {
    * ...
    * </Accordion>
    */
-  theme?: DeepPartial<AccordionTheme>
+  theme?: DeepPartial<AccordionTheme>;
 }

@@ -1,8 +1,8 @@
-import React from "react"
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
+import type React from "react";
 
-import { PoluiProvider } from "../../providers/PoluiProvider"
-import { useMeasure } from "./use-measure"
+import { PoluiProvider } from "../../providers/PoluiProvider";
+import { useMeasure } from "./use-measure";
 
 export default {
   title: "Hooks/useMeasure",
@@ -19,9 +19,9 @@ export default {
     layout: "fullscreen",
   },
   tags: ["autodocs"],
-} as Meta
+} as Meta;
 export const Default: React.FC = () => {
-  const { ref, bounds } = useMeasure<HTMLDivElement>()
+  const { ref, bounds } = useMeasure<HTMLDivElement>();
 
   return (
     <div className="flex flex-col gap-4">
@@ -42,5 +42,5 @@ export const Default: React.FC = () => {
         <p>Height: {bounds.height}px</p>
       </div>
     </div>
-  )
-}
+  );
+};

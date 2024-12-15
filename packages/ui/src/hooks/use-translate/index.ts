@@ -1,1 +1,1 @@
-export { default as useTranslate } from './use-translate'
+export { default as useTranslate } from "./use-translate";

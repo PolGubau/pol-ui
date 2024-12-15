@@ -1,23 +1,23 @@
-'use client'
+"use client";
 
 // Core component that receives mouse positions and renders pointer and content
 
-import type { PropsWithChildren } from 'react'
-import React, { useEffect, useState } from 'react'
+import type { PropsWithChildren } from "react";
+import React, { useEffect, useState } from "react";
 
-import type { MotionValue } from 'framer-motion'
-import { motion, AnimatePresence, useMotionValue } from 'framer-motion'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers'
-import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
-import type { FollowerPointerTheme } from './theme'
+import type { MotionValue } from "framer-motion";
+import { AnimatePresence, motion, useMotionValue } from "framer-motion";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { FollowerPointerTheme } from "./theme";
 
 export interface FollowerPointerProps extends React.PropsWithChildren {
-  className?: string
-  content?: string | React.ReactNode
-  icon?: React.ReactNode
-  theme?: DeepPartial<FollowerPointerTheme>
+  className?: string;
+  content?: string | React.ReactNode;
+  icon?: React.ReactNode;
+  theme?: DeepPartial<FollowerPointerTheme>;
 }
 
 /**
@@ -33,34 +33,34 @@ export const FollowerPointer = ({
   icon,
   theme: customTheme = {},
 }: PropsWithChildren<FollowerPointerProps>) => {
-  const x = useMotionValue(0)
-  const y = useMotionValue(0)
-  const ref = React.useRef<HTMLDivElement>(null)
-  const [rect, setRect] = useState<DOMRect | null>(null)
-  const [isInside, setIsInside] = useState<boolean>(false) // Add this line
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const ref = React.useRef<HTMLDivElement>(null);
+  const [rect, setRect] = useState<DOMRect | null>(null);
+  const [isInside, setIsInside] = useState<boolean>(false); // Add this line
 
   useEffect(() => {
     if (ref.current) {
-      setRect(ref.current.getBoundingClientRect())
+      setRect(ref.current.getBoundingClientRect());
     }
-  }, [])
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (rect) {
-      const scrollX = window.scrollX
-      const scrollY = window.scrollY
-      x.set(e.clientX - rect.left + scrollX)
-      y.set(e.clientY - rect.top + scrollY)
+      const scrollX = window.scrollX;
+      const scrollY = window.scrollY;
+      x.set(e.clientX - rect.left + scrollX);
+      y.set(e.clientY - rect.top + scrollY);
     }
-  }
+  };
   const handleMouseLeave = () => {
-    setIsInside(false)
-  }
+    setIsInside(false);
+  };
 
   const handleMouseEnter = () => {
-    setIsInside(true)
-  }
-  const theme = mergeDeep(getTheme().followerPointer, customTheme)
+    setIsInside(true);
+  };
+  const theme = mergeDeep(getTheme().followerPointer, customTheme);
 
   return (
     <div
@@ -75,8 +75,8 @@ export const FollowerPointer = ({
       </AnimatePresence>
       {children}
     </div>
-  )
-}
+  );
+};
 
 export const FollowPointer = ({
   x,
@@ -85,11 +85,11 @@ export const FollowPointer = ({
   icon,
   theme,
 }: {
-  x: MotionValue<number>
-  y: MotionValue<number>
-  content: string | React.ReactNode
-  icon?: React.ReactNode
-  theme: DeepPartial<FollowerPointerTheme>
+  x: MotionValue<number>;
+  y: MotionValue<number>;
+  content: string | React.ReactNode;
+  icon?: React.ReactNode;
+  theme: DeepPartial<FollowerPointerTheme>;
 }) => {
   const defaultIcon = icon ?? (
     <svg
@@ -104,7 +104,7 @@ export const FollowPointer = ({
     >
       <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z"></path>
     </svg>
-  )
+  );
 
   return (
     <motion.div
@@ -112,7 +112,7 @@ export const FollowPointer = ({
       style={{
         top: y,
         left: x,
-        pointerEvents: 'none',
+        pointerEvents: "none",
       }}
       initial={{
         scale: 1,
@@ -147,5 +147,5 @@ export const FollowPointer = ({
         {content}
       </motion.div>
     </motion.div>
-  )
-}
+  );
+};

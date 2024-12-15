@@ -1,9 +1,9 @@
-import type { Meta } from "@storybook/react"
-import { TbHeart, TbLock, TbPlus, TbShare, TbWand, TbX } from "react-icons/tb"
+import type { Meta } from "@storybook/react";
+import { TbHeart, TbLock, TbPlus, TbShare, TbWand, TbX } from "react-icons/tb";
 
-import { Button } from "../Button"
-import { IconButton } from "../IconButton"
-import { UnderSheet } from "./UnderSheet"
+import { Button } from "../Button";
+import { IconButton } from "../IconButton";
+import { UnderSheet } from "./UnderSheet";
 
 export default {
   title: "Components/UnderSheet",
@@ -19,7 +19,7 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 export const Default = () => {
   return (
     <UnderSheet
@@ -49,7 +49,7 @@ export const Default = () => {
               <span className="text-sm">Share</span>
             </Button>
           </div>
-          <Button fullSized>
+          <Button fullSized={true}>
             <TbWand className="h-4 w-4" />
             <span className="text-sm">Regenerate</span>
           </Button>
@@ -59,18 +59,15 @@ export const Default = () => {
       <div className="dark:text-secondary-50">
         <h3 className="font-medium text-lg pb-2">Lorem ipsum dolor sit amet</h3>
         <p className="opacity-80">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
-          recusandae, perspiciatis tempore optio laboriosam ex neque provident
-          temporibus similique dolores saepe repellat dolorem nobis vitae et
-          fuga minus itaque atque cupiditate.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus recusandae, perspiciatis tempore optio
+          laboriosam ex neque provident temporibus similique dolores saepe repellat dolorem nobis vitae et fuga minus
+          itaque atque cupiditate.
         </p>
         <p className="opacity-80">
-          Ipsam excepturi accusamus, consequatur sequi? Autem necessitatibus
-          incidunt impedit? Lorem ipsum dolor sit amet consectetur adipisicing
-          elit. Et, recusandae. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit.
+          Ipsam excepturi accusamus, consequatur sequi? Autem necessitatibus incidunt impedit? Lorem ipsum dolor sit
+          amet consectetur adipisicing elit. Et, recusandae. Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </p>
       </div>
     </UnderSheet>
-  )
-}
+  );
+};

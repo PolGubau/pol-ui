@@ -1,8 +1,8 @@
-import { useState } from "react"
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
+import { useState } from "react";
 
-import { Button } from "../Button"
-import { ListeningAnimation } from "./ListeningAnimation"
+import { Button } from "../Button";
+import { ListeningAnimation } from "./ListeningAnimation";
 
 export default {
   title: "Components/ListeningAnimation",
@@ -18,17 +18,15 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
 export function Default() {
-  const [isListening, setIsListening] = useState(false)
+  const [isListening, setIsListening] = useState(false);
 
   return (
     <div className="flex gap-4 items-center flex-col ">
-      <Button onClick={() => setIsListening(!isListening)}>
-        {isListening ? "Stop" : "Start"} Listening
-      </Button>
+      <Button onClick={() => setIsListening(!isListening)}>{isListening ? "Stop" : "Start"} Listening</Button>
       <ListeningAnimation isListening={isListening} />
     </div>
-  )
+  );
 }

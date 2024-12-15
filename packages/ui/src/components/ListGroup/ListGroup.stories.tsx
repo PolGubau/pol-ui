@@ -1,18 +1,18 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import type { ListGroupProps } from './ListGroup'
-import { ListGroup } from './ListGroup'
-import { ListItem } from './ListItem'
-import { TbAt, TbDownload, TbSettings, TbUser } from 'react-icons/tb'
+import type { Meta, StoryFn } from "@storybook/react";
+import { TbAt, TbDownload, TbSettings, TbUser } from "react-icons/tb";
+import type { ListGroupProps } from "./ListGroup";
+import { ListGroup } from "./ListGroup";
+import { ListItem } from "./ListItem";
 
 export default {
-  title: 'Components/ListGroup',
+  title: "Components/ListGroup",
   component: ListGroup,
-} as Meta
+} as Meta;
 
-const Template: StoryFn<ListGroupProps> = args => <ListGroup {...args} />
+const Template: StoryFn<ListGroupProps> = (args) => <ListGroup {...args} />;
 
-export const DefaultListGroup = Template.bind({})
-DefaultListGroup.storyName = 'Default'
+export const DefaultListGroup = Template.bind({});
+DefaultListGroup.storyName = "Default";
 DefaultListGroup.args = {
   children: (
     <>
@@ -22,14 +22,14 @@ DefaultListGroup.args = {
       <ListItem>Download</ListItem>
     </>
   ),
-}
+};
 
-export const WithLinks = Template.bind({})
-WithLinks.storyName = 'With links'
+export const WithLinks = Template.bind({});
+WithLinks.storyName = "With links";
 WithLinks.args = {
   children: (
     <>
-      <ListItem active href="#">
+      <ListItem active={true} href="#">
         Profile
       </ListItem>
       <ListItem href="#">Settings</ListItem>
@@ -37,29 +37,52 @@ WithLinks.args = {
       <ListItem href="#">Download</ListItem>
     </>
   ),
-}
+};
 
-export const WithButtons = Template.bind({})
-WithButtons.storyName = 'With buttons'
+export const WithButtons = Template.bind({});
+WithButtons.storyName = "With buttons";
 WithButtons.args = {
   children: (
     <>
-      <ListItem active onClick={() => { alert('Profile clicked!'); }}>
+      <ListItem
+        active={true}
+        onClick={() => {
+          alert("Profile clicked!");
+        }}
+      >
         Profile
       </ListItem>
-      <ListItem onClick={() => { alert('Settings clicked!'); }}>Settings</ListItem>
-      <ListItem onClick={() => { alert('Messages clicked!'); }}>Messages</ListItem>
-      <ListItem onClick={() => { alert('Download clicked!'); }}>Download</ListItem>
+      <ListItem
+        onClick={() => {
+          alert("Settings clicked!");
+        }}
+      >
+        Settings
+      </ListItem>
+      <ListItem
+        onClick={() => {
+          alert("Messages clicked!");
+        }}
+      >
+        Messages
+      </ListItem>
+      <ListItem
+        onClick={() => {
+          alert("Download clicked!");
+        }}
+      >
+        Download
+      </ListItem>
     </>
   ),
-}
+};
 
-export const WithIcons = Template.bind({})
-WithIcons.storyName = 'With icons'
+export const WithIcons = Template.bind({});
+WithIcons.storyName = "With icons";
 WithIcons.args = {
   children: (
     <>
-      <ListItem active icon={TbUser}>
+      <ListItem active={true} icon={TbUser}>
         Profile
       </ListItem>
       <ListItem icon={TbSettings}>Settings</ListItem>
@@ -67,14 +90,14 @@ WithIcons.args = {
       <ListItem icon={TbDownload}>Download</ListItem>
     </>
   ),
-}
-export const Row = Template.bind({})
-Row.storyName = 'Row direction'
+};
+export const Row = Template.bind({});
+Row.storyName = "Row direction";
 Row.args = {
-  direction: 'row',
+  direction: "row",
   children: (
     <>
-      <ListItem active href="#">
+      <ListItem active={true} href="#">
         Profile
       </ListItem>
       <ListItem href="#">Settings</ListItem>
@@ -82,4 +105,4 @@ Row.args = {
       <ListItem href="#">Download</ListItem>
     </>
   ),
-}
+};

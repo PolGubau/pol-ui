@@ -1,54 +1,50 @@
-"use client"
+"use client";
 
-import React, { useEffect, useId, useRef } from "react"
-import {
-  AnimatePresence,
-  MotionConfig,
-  MotionProps,
-  motion,
-} from "framer-motion"
+import { AnimatePresence, MotionConfig, type MotionProps, motion } from "framer-motion";
+import type React from "react";
+import { useEffect, useId, useRef } from "react";
 
-import { cn } from "../../helpers"
-import { useBoolean } from "../../hooks"
-import { useClickOutside } from "../../hooks/use-click-outside"
-import { buttonVariants } from "../Button"
+import { cn } from "../../helpers";
+import { useBoolean } from "../../hooks";
+import { useClickOutside } from "../../hooks/use-click-outside";
+import { buttonVariants } from "../Button";
 
 const TRANSITION = {
   type: "spring",
   bounce: 0.05,
   duration: 0.3,
-}
+};
 
 type ChildrenPassedProps = {
-  onClose: () => void
-}
+  onClose: () => void;
+};
 
 interface OverButtonProps {
-  children: (props: ChildrenPassedProps) => React.ReactNode
+  children: (props: ChildrenPassedProps) => React.ReactNode;
   //   all motion.div props
-  trigger?: React.HTMLProps<HTMLDivElement> & MotionProps
+  trigger?: React.HTMLProps<HTMLDivElement> & MotionProps;
 }
 
 export function OverButton({ children, trigger }: OverButtonProps) {
-  const uniqueId = useId()
-  const { addEventListener, removeEventListener } = document
-  const formContainerRef = useRef<HTMLDivElement>(null)
-  const { value, setFalse, setTrue } = useBoolean(false)
+  const uniqueId = useId();
+  const { addEventListener, removeEventListener } = document;
+  const formContainerRef = useRef<HTMLDivElement>(null);
+  const { value, setFalse, setTrue } = useBoolean(false);
 
   useClickOutside(formContainerRef, () => {
-    setFalse()
-  })
+    setFalse();
+  });
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setFalse()
+        setFalse();
       }
-    }
-    addEventListener("keydown", handleKeyDown)
+    };
+    addEventListener("keydown", handleKeyDown);
     return () => {
-      removeEventListener("keydown", handleKeyDown)
-    }
-  }, [])
+      removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   return (
     <MotionConfig transition={TRANSITION}>
@@ -60,7 +56,7 @@ export function OverButton({ children, trigger }: OverButtonProps) {
             buttonVariants({
               variant: "ghost",
             }),
-            trigger?.className
+            trigger?.className,
           )}
           style={{
             borderRadius: 8,
@@ -88,5 +84,5 @@ export function OverButton({ children, trigger }: OverButtonProps) {
         </AnimatePresence>
       </div>
     </MotionConfig>
-  )
+  );
 }

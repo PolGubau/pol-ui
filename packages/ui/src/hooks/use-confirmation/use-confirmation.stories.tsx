@@ -1,8 +1,8 @@
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
 
-import { Button, Toaster, toast } from "../../components"
-import { PoluiProvider } from "../../providers/PoluiProvider"
-import { useConfirmation } from "./use-confirmation"
+import { Button, Toaster, toast } from "../../components";
+import { PoluiProvider } from "../../providers/PoluiProvider";
+import { useConfirmation } from "./use-confirmation";
 
 export default {
   title: "Hooks/useConfirmation",
@@ -20,21 +20,18 @@ export default {
     layout: "fullscreen",
   },
   tags: ["autodocs"],
-} as Meta
+} as Meta;
 export const Default: React.FC = () => {
   const { isUnlocked, triggerSafeClick } = useConfirmation(() => {
-    toast("Action confirmed")
-  }, 5000)
+    toast("Action confirmed");
+  }, 5000);
 
   return (
     <div className="flex justify-center flex-col gap-2">
       <h1>Double-click Confirmation Example</h1>
-      <Button
-        onClick={triggerSafeClick}
-        color={isUnlocked ? "error" : "secondary"}
-      >
+      <Button onClick={triggerSafeClick} color={isUnlocked ? "error" : "secondary"}>
         {isUnlocked ? "Confirm action" : "Click twice to confirm"}
       </Button>
     </div>
-  )
-}
+  );
+};

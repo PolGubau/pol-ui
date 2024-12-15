@@ -1,10 +1,10 @@
-import { secondary } from './secondary'
-import { primary } from './primary'
-import { error } from './error'
-import { success } from './success'
-import { warning } from './warning'
-import { info } from './info'
-import type { ThemeColors } from './types'
+import { error } from "./error";
+import { info } from "./info";
+import { primary } from "./primary";
+import { secondary } from "./secondary";
+import { success } from "./success";
+import type { ThemeColors } from "./types";
+import { warning } from "./warning";
 
 export const colors: ThemeColors = {
   info,
@@ -13,6 +13,6 @@ export const colors: ThemeColors = {
   success,
   primary,
   secondary,
-}
+};
 
-export type Colors = typeof colors
+export type Colors = typeof colors;

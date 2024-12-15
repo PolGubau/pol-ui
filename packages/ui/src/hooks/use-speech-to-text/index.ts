@@ -1,1 +1,1 @@
-export * from './use-speech-to-text';
+export * from "./use-speech-to-text";

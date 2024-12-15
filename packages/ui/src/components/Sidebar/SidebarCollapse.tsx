@@ -1,42 +1,42 @@
-'use client'
+"use client";
 
-import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react'
-import { useEffect, useId, useMemo } from 'react'
-import { HiChevronDown } from 'react-icons/hi'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import type { DeepPartial, IBoolean, RoundedSizesTypes } from '../../types/types'
-import { Tooltip } from '../Tooltip'
-import { SidebarItemContext, useSidebarContext } from './SidebarContext'
-import type { SidebarItemProps } from './SidebarItem'
-import { AnimatePresence, motion } from 'framer-motion'
-import { useRipple } from '../../hooks'
-import { RoundedSizesEnum, SidesEnum } from '../../types'
+import { AnimatePresence, motion } from "framer-motion";
+import type { ComponentProps, FC, PropsWithChildren, ReactElement } from "react";
+import { useEffect, useId, useMemo } from "react";
+import { HiChevronDown } from "react-icons/hi";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { useRipple } from "../../hooks";
+import { RoundedSizesEnum, SidesEnum } from "../../types";
+import type { DeepPartial, IBoolean, RoundedSizesTypes } from "../../types/types";
+import { Tooltip } from "../Tooltip";
+import { SidebarItemContext, useSidebarContext } from "./SidebarContext";
+import type { SidebarItemProps } from "./SidebarItem";
 
 export interface SidebarCollapseTheme {
-  button: string
+  button: string;
   icon: {
-    base: string
-    open: IBoolean
-  }
-  rounded: RoundedSizesTypes
+    base: string;
+    open: IBoolean;
+  };
+  rounded: RoundedSizesTypes;
   label: {
-    base: string
+    base: string;
     icon: {
-      base: string
-      open: IBoolean
-    }
-  }
-  list: string
+      base: string;
+      open: IBoolean;
+    };
+  };
+  list: string;
 }
-type PropsFromItem = 'active' | 'rounded' | 'as' | 'href' | 'icon' | 'badge' | 'labelColor'
-export interface SidebarCollapseProps extends Pick<SidebarItemProps, PropsFromItem>, ComponentProps<'button'> {
-  onClick?: ComponentProps<'button'>['onClick']
-  defaultOpen?: boolean
-  chevronIcon?: FC<ComponentProps<'svg'>>
-  renderChevronIcon?: (theme: SidebarCollapseTheme, open: boolean) => ReactElement
-  theme?: DeepPartial<SidebarCollapseTheme>
-  hasMotion?: boolean
+type PropsFromItem = "active" | "rounded" | "as" | "href" | "icon" | "badge" | "labelColor";
+export interface SidebarCollapseProps extends Pick<SidebarItemProps, PropsFromItem>, ComponentProps<"button"> {
+  onClick?: ComponentProps<"button">["onClick"];
+  defaultOpen?: boolean;
+  chevronIcon?: FC<ComponentProps<"svg">>;
+  renderChevronIcon?: (theme: SidebarCollapseTheme, open: boolean) => ReactElement;
+  theme?: DeepPartial<SidebarCollapseTheme>;
+  hasMotion?: boolean;
 }
 
 export const SidebarCollapse: FC<SidebarCollapseProps> = ({
@@ -51,38 +51,38 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const id = useId()
+  const id = useId();
   const {
     theme: rootTheme,
     open: collapsed,
     onOpenChange: toogleCollapsed,
     childsOpened,
     setChildsOpened,
-  } = useSidebarContext()
-  const isOpen: boolean = childsOpened.includes(id)
+  } = useSidebarContext();
+  const isOpen: boolean = childsOpened.includes(id);
 
   useEffect(() => {
     if (defaultOpen && !isOpen) {
-      setChildsOpened([...childsOpened, id])
+      setChildsOpened([...childsOpened, id]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [defaultOpen])
+  }, [defaultOpen]);
 
   const handleToggle = () => {
     if (isOpen) {
-      setChildsOpened(childsOpened.filter(childId => childId !== id))
+      setChildsOpened(childsOpened.filter((childId) => childId !== id));
     } else {
-      setChildsOpened([...childsOpened, id])
+      setChildsOpened([...childsOpened, id]);
     }
     if (collapsed) {
-      toogleCollapsed?.()
+      toogleCollapsed?.();
     }
-  }
+  };
 
-  const theme = mergeDeep(rootTheme.collapse, customTheme)
+  const theme = mergeDeep(rootTheme.collapse, customTheme);
   const [ripple, event] = useRipple({
     opacity: 0.2,
-  })
+  });
   const Wrapper: FC<PropsWithChildren> = ({ children: ch }) => (
     <AnimatePresence mode="wait">
       <li ref={ripple} onPointerDown={event}>
@@ -95,15 +95,17 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
         )}
       </li>
     </AnimatePresence>
-  )
+  );
 
-  const value = useMemo(() => ({ isInsideCollapse: true }), [])
+  const value = useMemo(() => ({ isInsideCollapse: true }), []);
 
   return (
     <Wrapper>
       <button
         id={`ui-sidebar-collapse-${id}`}
-        onClick={() => { handleToggle(); }}
+        onClick={() => {
+          handleToggle();
+        }}
         title={badge}
         type="button"
         className={twMerge(
@@ -116,9 +118,9 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
       >
         {Icon && (
           <Icon
-            aria-hidden
+            aria-hidden={true}
             data-testid="ui-sidebar-collapse-icon"
-            className={twMerge(theme.icon.base, theme.icon.open[isOpen ? 'on' : 'off'])}
+            className={twMerge(theme.icon.base, theme.icon.open[isOpen ? "on" : "off"])}
           />
         )}
         {collapsed ? (
@@ -132,8 +134,8 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
               renderChevronIcon(theme, isOpen)
             ) : (
               <ChevronIcon
-                aria-hidden
-                className={twMerge(theme.label.icon.base, theme.label.icon.open[isOpen ? 'on' : 'off'])}
+                aria-hidden={true}
+                className={twMerge(theme.label.icon.base, theme.label.icon.open[isOpen ? "on" : "off"])}
               />
             )}
           </>
@@ -145,16 +147,16 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
             aria-labelledby={`ui-sidebar-collapse-${id}`}
             className={theme.list}
             initial={{ height: 0, scale: 0.7 }}
-            animate={{ height: 'auto', scale: 1 }}
+            animate={{ height: "auto", scale: 1 }}
             exit={{ height: 0, scale: 0.7 }}
-            transition={{ duration: 0.2, ease: 'easeInOut', type: 'tween' }}
+            transition={{ duration: 0.2, ease: "easeInOut", type: "tween" }}
           >
             <SidebarItemContext.Provider value={value}>{children}</SidebarItemContext.Provider>
           </motion.ul>
         )}
       </AnimatePresence>
     </Wrapper>
-  )
-}
+  );
+};
 
-SidebarCollapse.displayName = 'Sidebar.Collapse'
+SidebarCollapse.displayName = "Sidebar.Collapse";

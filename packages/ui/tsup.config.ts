@@ -1,4 +1,4 @@
-import { defineConfig } from "tsup"
+import { defineConfig } from "tsup";
 
 export default defineConfig({
   minify: true,
@@ -7,6 +7,6 @@ export default defineConfig({
   outDir: "lib",
   sourcemap: true,
   dts: true,
-  format: ["esm", "cjs"],
+  format: ["esm"],
   injectStyle: true,
-})
+});

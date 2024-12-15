@@ -6,5 +6,5 @@
  * @returns {ListTypes<T>}
  */
 export type ListTypes<T> = {
-  [K in keyof T]: T[K]
-}
+  [K in keyof T]: T[K];
+};

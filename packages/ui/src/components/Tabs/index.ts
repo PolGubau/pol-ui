@@ -1,2 +1,2 @@
-export * from './Tabs'
-export * from './theme'
+export * from "./Tabs";
+export * from "./theme";

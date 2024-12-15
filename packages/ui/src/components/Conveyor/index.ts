@@ -1,2 +1,2 @@
-export * from "./Conveyor"
-export * from "./theme"
+export * from "./Conveyor";
+export * from "./theme";

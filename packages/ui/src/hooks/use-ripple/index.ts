@@ -1,1 +1,1 @@
-export { default as useRipple } from './use-ripple';
+export { default as useRipple } from "./use-ripple";

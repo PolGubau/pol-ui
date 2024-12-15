@@ -1,43 +1,36 @@
-"use client"
+"use client";
 
-import {
-  useEffect,
-  useId,
-  useState,
-  type ComponentProps,
-  type FC,
-  type KeyboardEvent,
-} from "react"
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import { type ComponentProps, type FC, type KeyboardEvent, useEffect, useId, useState } from "react";
 
-import { cn } from "../../helpers"
-import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
-import { getTheme } from "../../theme-store"
-import { ColorsEnum, MainSizesEnum } from "../../types/enums"
-import type { Colors, DeepPartial, MainSizes } from "../../types/types"
-import { Label } from "../Label"
-import type { SwitchTheme } from "./theme"
+import { cn } from "../../helpers";
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { getTheme } from "../../theme-store";
+import { ColorsEnum, MainSizesEnum } from "../../types/enums";
+import type { Colors, DeepPartial, MainSizes } from "../../types/types";
+import { Label } from "../Label";
+import type { SwitchTheme } from "./theme";
 
 export type SwitchProps = Omit<ComponentProps<"button">, "onChange"> & {
-  checked?: boolean
-  color?: Colors
-  size?: MainSizes
-  label?: string
-  onChange?: (checked: boolean) => void
-  theme?: DeepPartial<SwitchTheme>
+  checked?: boolean;
+  color?: Colors;
+  size?: MainSizes;
+  label?: string;
+  onChange?: (checked: boolean) => void;
+  theme?: DeepPartial<SwitchTheme>;
 
   keys?: {
-    true?: string[]
-    false?: string[]
-    toggle?: string[]
-  }
-}
+    true?: string[];
+    false?: string[];
+    toggle?: string[];
+  };
+};
 
 const initKeys = {
   true: ["ArrowRight", "KeyT", "KeyY"],
   false: ["ArrowLeft", "KeyF", "KeyN"],
   toggle: ["Space", "Enter"],
-}
+};
 export const Switch: FC<SwitchProps> = ({
   checked,
   className,
@@ -51,45 +44,55 @@ export const Switch: FC<SwitchProps> = ({
   keys = initKeys,
   ...props
 }) => {
-  const id = useId()
-  const theme = mergeDeep(getTheme().switch, customTheme)
+  const id = useId();
+  const theme = mergeDeep(getTheme().switch, customTheme);
 
-  const [value, setValue] = useState(checked)
+  const [value, setValue] = useState(checked);
 
   const set = (newValue = !value): void => {
-    onChange?.(newValue)
-    setValue(newValue)
-  }
+    onChange?.(newValue);
+    setValue(newValue);
+  };
   useEffect(() => {
-    setValue(checked)
-  }, [checked])
+    setValue(checked);
+  }, [checked]);
 
   const handleOnKeyDown = (event: KeyboardEvent<HTMLButtonElement>): void => {
-    const code = event.code
-    if (disabled || !code) return
-    props.onKeyDown?.(event)
-    event.preventDefault()
+    const code = event.code;
+    if (disabled || !code) {
+      return;
+    }
+    props.onKeyDown?.(event);
+    event.preventDefault();
 
     //
     const isIn = (key: string, arr: keyof typeof keys) => {
-      const a = keys[arr]
-      if (!a) return false
-      return a.includes(key)
-    }
+      const a = keys[arr];
+      if (!a) {
+        return false;
+      }
+      return a.includes(key);
+    };
 
-    if (isIn(code, "toggle")) set()
-    if (isIn(code, "false")) set(false)
-    if (isIn(code, "true")) set(true)
-  }
+    if (isIn(code, "toggle")) {
+      set();
+    }
+    if (isIn(code, "false")) {
+      set(false);
+    }
+    if (isIn(code, "true")) {
+      set(true);
+    }
+  };
 
   return (
     <>
       <input
         checked={value}
         onChange={() => setValue(!value)}
-        hidden
+        hidden={true}
         name={name}
-        readOnly
+        readOnly={true}
         type="checkbox"
         className="sr-only group"
       />
@@ -104,17 +107,15 @@ export const Switch: FC<SwitchProps> = ({
         onClick={() => set()}
         onKeyDown={(e) => {
           // if tab, continue the focus flow
-          if (e.code === "Tab") return
-          handleOnKeyDown(e)
+          if (e.code === "Tab") {
+            return;
+          }
+          handleOnKeyDown(e);
         }}
         role="switch"
         title={label}
         type="button"
-        className={cn(
-          theme.root.base,
-          theme.root.active[disabled ? "off" : "on"],
-          className
-        )}
+        className={cn(theme.root.base, theme.root.active[disabled ? "off" : "on"], className)}
         {...props}
       >
         <div
@@ -123,12 +124,12 @@ export const Switch: FC<SwitchProps> = ({
           className={cn(
             theme.toggle.base,
             theme.toggle.color[color],
-            theme.toggle.sizes[size as keyof typeof theme.toggle.sizes]
+            theme.toggle.sizes[size as keyof typeof theme.toggle.sizes],
           )}
         >
           <motion.div
             data-checked={value}
-            layout
+            layout={true}
             transition={spring}
             className={cn(theme.toggle.handler.base)}
           />
@@ -147,12 +148,12 @@ export const Switch: FC<SwitchProps> = ({
         ) : null}
       </button>
     </>
-  )
-}
+  );
+};
 
-Switch.displayName = "Switch"
+Switch.displayName = "Switch";
 const spring = {
   type: "spring",
   stiffness: 700,
   damping: 30,
-}
+};

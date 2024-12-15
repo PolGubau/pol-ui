@@ -1,1 +1,1 @@
-export * from "./scroll-progress"
+export * from "./scroll-progress";

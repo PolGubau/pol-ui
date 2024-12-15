@@ -1,1 +1,1 @@
-export { default as ScrollImage } from './ScrollImage'
+export { default as ScrollImage } from "./ScrollImage";

@@ -1,69 +1,69 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import { HiCheck } from 'react-icons/hi'
-import { theme } from '../../theme'
-import type { BadgeProps } from './Badge'
-import { Badge } from './Badge'
-import { ColorsEnum } from '../../types/enums'
+import type { Meta, StoryFn } from "@storybook/react";
+import { HiCheck } from "react-icons/hi";
+import { theme } from "../../theme";
+import { ColorsEnum } from "../../types/enums";
+import type { BadgeProps } from "./Badge";
+import { Badge } from "./Badge";
 
 export default {
-  title: 'Components/Badge',
+  title: "Components/Badge",
   component: Badge,
   argTypes: {
     color: {
       options: Object.keys(theme.badge.root.color),
-      control: { type: 'inline-radio' },
+      control: { type: "inline-radio" },
     },
     size: {
       options: Object.keys(theme.badge.root.size),
-      control: { type: 'inline-radio' },
+      control: { type: "inline-radio" },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col  justify-center items-center ">
         <Story />
       </div>
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
-const Template: StoryFn<BadgeProps> = args => (
+const Template: StoryFn<BadgeProps> = (args) => (
   <div className="flex items-center">
     <Badge {...args} />
   </div>
-)
+);
 
-export const DefaultBadge = Template.bind({})
+export const DefaultBadge = Template.bind({});
 DefaultBadge.args = {
-  children: 'Default',
-}
+  children: "Default",
+};
 
-export const BadgeWithIcon = Template.bind({})
+export const BadgeWithIcon = Template.bind({});
 BadgeWithIcon.args = {
   color: ColorsEnum.error,
   icon: HiCheck,
-  children: '2 minutes ago',
-}
+  children: "2 minutes ago",
+};
 
-export const BadgeOnlyIcon = Template.bind({})
+export const BadgeOnlyIcon = Template.bind({});
 BadgeOnlyIcon.args = {
   color: ColorsEnum.success,
   icon: HiCheck,
-}
+};
 
-export const BadgeAsLink = Template.bind({})
-BadgeAsLink.storyName = 'As link'
+export const BadgeAsLink = Template.bind({});
+BadgeAsLink.storyName = "As link";
 BadgeAsLink.args = {
-  href: '/badges',
-  children: 'Read more →',
-}
-export const SmallRounded = Template.bind({})
+  href: "/badges",
+  children: "Read more →",
+};
+export const SmallRounded = Template.bind({});
 SmallRounded.args = {
-  size: 'lg',
-  rounded: 'sm',
-  children: 'Read more →',
-}
+  size: "lg",
+  rounded: "sm",
+  children: "Read more →",
+};

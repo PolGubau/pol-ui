@@ -1,1 +1,1 @@
-export * from "./TransitionPanel"
+export * from "./TransitionPanel";

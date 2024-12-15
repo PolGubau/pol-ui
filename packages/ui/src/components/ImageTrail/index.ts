@@ -1,1 +1,1 @@
-export { ImageTrail, type ImageTrailProps } from './ImageTrail'
+export { ImageTrail, type ImageTrailProps } from "./ImageTrail";

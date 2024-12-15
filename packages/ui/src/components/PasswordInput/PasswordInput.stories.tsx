@@ -1,15 +1,15 @@
-import type { Meta, StoryFn } from '@storybook/react'
+import type { Meta, StoryFn } from "@storybook/react";
 
-import type { PasswordInputProps } from './PasswordInput'
-import { PasswordInput } from './PasswordInput'
+import type { PasswordInputProps } from "./PasswordInput";
+import { PasswordInput } from "./PasswordInput";
 
 export default {
-  title: 'Components/Inputs/PasswordInput',
+  title: "Components/Inputs/PasswordInput",
   component: PasswordInput,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col justify-center items-center ">
         <div className="max-w-md w-full">
           <Story />
@@ -18,15 +18,15 @@ export default {
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
-const Template: StoryFn<PasswordInputProps> = args => <PasswordInput {...args} />
+const Template: StoryFn<PasswordInputProps> = (args) => <PasswordInput {...args} />;
 
-export const Default = Template.bind({})
-Default.storyName = 'Password input'
+export const Default = Template.bind({});
+Default.storyName = "Password input";
 Default.args = {
-  placeholder: '*********',
-  label: 'Password',
-}
+  placeholder: "*********",
+  label: "Password",
+};

@@ -1,41 +1,41 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import type { ImageTrailProps } from './ImageTrail'
-import { ImageTrail } from './ImageTrail'
-import { TbMouse } from 'react-icons/tb'
+import type { Meta, StoryFn } from "@storybook/react";
+import { TbMouse } from "react-icons/tb";
+import type { ImageTrailProps } from "./ImageTrail";
+import { ImageTrail } from "./ImageTrail";
 
 export default {
-  title: 'Components/ImageTrail',
+  title: "Components/ImageTrail",
   component: ImageTrail,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col w-full min-h-[400px] justify-center items-center">
         <Story />
       </div>
     ),
   ],
-} as Meta
+} as Meta;
 
-const Template: StoryFn<ImageTrailProps> = args => <ImageTrail {...args} />
+const Template: StoryFn<ImageTrailProps> = (args) => <ImageTrail {...args} />;
 const images = [
-  'https://images.pexels.com/photos/59992/crocus-flower-spring-purple-59992.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-  'https://images.pexels.com/photos/139205/pexels-photo-139205.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-  'https://images.pexels.com/photos/1555900/pexels-photo-1555900.jpeg?auto=compress&cs=tinysrgb&w=600',
-  'https://images.pexels.com/photos/45180/crocus-flowers-violet-spring-45180.jpeg?auto=compress&cs=tinysrgb&w=600',
-  'https://images.pexels.com/photos/59992/crocus-flower-spring-purple-59992.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-  'https://images.pexels.com/photos/139205/pexels-photo-139205.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-  'https://images.pexels.com/photos/1555900/pexels-photo-1555900.jpeg?auto=compress&cs=tinysrgb&w=600',
-  'https://images.pexels.com/photos/45180/crocus-flowers-violet-spring-45180.jpeg?auto=compress&cs=tinysrgb&w=600',
-  'https://images.pexels.com/photos/59992/crocus-flower-spring-purple-59992.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-  'https://images.pexels.com/photos/139205/pexels-photo-139205.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-  'https://images.pexels.com/photos/1555900/pexels-photo-1555900.jpeg?auto=compress&cs=tinysrgb&w=600',
-  'https://images.pexels.com/photos/45180/crocus-flowers-violet-spring-45180.jpeg?auto=compress&cs=tinysrgb&w=600',
-  'https://images.pexels.com/photos/59992/crocus-flower-spring-purple-59992.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-  'https://images.pexels.com/photos/139205/pexels-photo-139205.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-  'https://images.pexels.com/photos/1555900/pexels-photo-1555900.jpeg?auto=compress&cs=tinysrgb&w=600',
-  'https://images.pexels.com/photos/45180/crocus-flowers-violet-spring-45180.jpeg?auto=compress&cs=tinysrgb&w=600',
-]
-export const Default = Template.bind({})
+  "https://images.pexels.com/photos/59992/crocus-flower-spring-purple-59992.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "https://images.pexels.com/photos/139205/pexels-photo-139205.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "https://images.pexels.com/photos/1555900/pexels-photo-1555900.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/45180/crocus-flowers-violet-spring-45180.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/59992/crocus-flower-spring-purple-59992.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "https://images.pexels.com/photos/139205/pexels-photo-139205.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "https://images.pexels.com/photos/1555900/pexels-photo-1555900.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/45180/crocus-flowers-violet-spring-45180.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/59992/crocus-flower-spring-purple-59992.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "https://images.pexels.com/photos/139205/pexels-photo-139205.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "https://images.pexels.com/photos/1555900/pexels-photo-1555900.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/45180/crocus-flowers-violet-spring-45180.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/59992/crocus-flower-spring-purple-59992.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "https://images.pexels.com/photos/139205/pexels-photo-139205.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "https://images.pexels.com/photos/1555900/pexels-photo-1555900.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/45180/crocus-flowers-violet-spring-45180.jpeg?auto=compress&cs=tinysrgb&w=600",
+];
+export const Default = Template.bind({});
 Default.args = {
   renderImageBuffer: 50,
   rotationRange: 20,
@@ -48,8 +48,8 @@ Default.args = {
     </section>
   ),
   images: images,
-}
-export const MoreRotation = Template.bind({})
+};
+export const MoreRotation = Template.bind({});
 MoreRotation.args = {
   renderImageBuffer: 50,
   rotationRange: 80,
@@ -62,8 +62,8 @@ MoreRotation.args = {
     </section>
   ),
   images: images,
-}
-export const MoreRenderBuffer = Template.bind({})
+};
+export const MoreRenderBuffer = Template.bind({});
 MoreRenderBuffer.args = {
   renderImageBuffer: 300,
   rotationRange: 20,
@@ -76,4 +76,4 @@ MoreRenderBuffer.args = {
     </section>
   ),
   images: images,
-}
+};

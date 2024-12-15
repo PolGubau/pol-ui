@@ -1,1 +1,1 @@
-export * from './MagneticButton';
+export * from "./MagneticButton";

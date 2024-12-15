@@ -11,5 +11,5 @@
  * @author Pol Gubau Amores - https://polgubau.com
  */
 export function px(arg: string | number) {
-  return `${arg.toString()}px`
+  return `${arg.toString()}px`;
 }

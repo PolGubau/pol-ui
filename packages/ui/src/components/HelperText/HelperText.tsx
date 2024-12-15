@@ -1,17 +1,17 @@
-'use client'
+"use client";
 
-import type { ComponentProps, FC } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import { getTheme } from '../../theme-store'
-import type { Colors, DeepPartial } from '../../types/types'
-import type { HelperTextTheme } from './theme'
-import { ColorsEnum } from '../../types/enums'
+import type { ComponentProps, FC } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { getTheme } from "../../theme-store";
+import { ColorsEnum } from "../../types/enums";
+import type { Colors, DeepPartial } from "../../types/types";
+import type { HelperTextTheme } from "./theme";
 
-export interface HelperTextProps extends Omit<ComponentProps<'p'>, 'color'> {
-  color?: Colors
-  theme?: DeepPartial<HelperTextTheme>
-  value?: string
+export interface HelperTextProps extends Omit<ComponentProps<"p">, "color"> {
+  color?: Colors;
+  theme?: DeepPartial<HelperTextTheme>;
+  value?: string;
 }
 /**
  *
@@ -27,13 +27,13 @@ export const HelperText: FC<HelperTextProps> = ({
   value,
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().helperText, customTheme)
+  const theme = mergeDeep(getTheme().helperText, customTheme);
 
   return (
     <p className={twMerge(theme.root.base, theme.root.colors[color], className)} {...props}>
-      {value ?? children ?? ''}
+      {value ?? children ?? ""}
     </p>
-  )
-}
+  );
+};
 
-HelperText.displayName = 'HelperText'
+HelperText.displayName = "HelperText";

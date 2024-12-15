@@ -1,37 +1,31 @@
-"use client"
+"use client";
 
-import {
-  useCallback,
-  useMemo,
-  useState,
-  type Dispatch,
-  type SetStateAction,
-} from "react"
+import { type Dispatch, type SetStateAction, useCallback, useMemo, useState } from "react";
 
 interface UseBooleanOutput {
-  value: boolean
-  setValue: Dispatch<SetStateAction<boolean>>
-  setTrue: () => void
-  setFalse: () => void
-  toggle: () => void
-  isTrue: boolean
-  isFalse: boolean
+  value: boolean;
+  setValue: Dispatch<SetStateAction<boolean>>;
+  setTrue: () => void;
+  setFalse: () => void;
+  toggle: () => void;
+  isTrue: boolean;
+  isFalse: boolean;
 }
 
 export function useBoolean(defaultValue?: boolean): UseBooleanOutput {
-  const [value, setValue] = useState<boolean>(!!defaultValue)
+  const [value, setValue] = useState<boolean>(!!defaultValue);
 
   const setTrue = useCallback(() => {
-    setValue(true)
-  }, [])
+    setValue(true);
+  }, []);
   const setFalse = useCallback(() => {
-    setValue(false)
-  }, [])
+    setValue(false);
+  }, []);
   const toggle = useCallback(() => {
-    setValue((x) => !x)
-  }, [])
-  const isTrue = useMemo(() => value === true, [value])
-  const isFalse = useMemo(() => value === false, [value])
+    setValue((x) => !x);
+  }, []);
+  const isTrue = useMemo(() => value === true, [value]);
+  const isFalse = useMemo(() => value === false, [value]);
 
-  return { value, setValue, setTrue, setFalse, toggle, isTrue, isFalse }
+  return { value, setValue, setTrue, setFalse, toggle, isTrue, isFalse };
 }

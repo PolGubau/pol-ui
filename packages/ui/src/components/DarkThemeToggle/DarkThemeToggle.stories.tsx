@@ -1,8 +1,8 @@
-import type { Meta, StoryFn } from "@storybook/react"
+import type { Meta, StoryFn } from "@storybook/react";
 
-import { PoluiProvider } from "../.."
-import { Button } from "../Button"
-import { DarkThemeToggle } from "./DarkThemeToggle"
+import { PoluiProvider } from "../..";
+import { Button } from "../Button";
+import { DarkThemeToggle } from "./DarkThemeToggle";
 
 export default {
   title: "Components/DarkThemeToggle",
@@ -15,20 +15,20 @@ export default {
       </div>
     ),
   ],
-} as Meta
+} as Meta;
 
 const Template: StoryFn = (args) => (
   <PoluiProvider>
     <DarkThemeToggle {...args} />
   </PoluiProvider>
-)
+);
 
-export const DefaultDarkThemeToggle = Template.bind({})
-DefaultDarkThemeToggle.storyName = "Default"
-DefaultDarkThemeToggle.args = {}
-export const CustomClasses = Template.bind({})
-CustomClasses.storyName = "Custom Styles"
+export const DefaultDarkThemeToggle = Template.bind({});
+DefaultDarkThemeToggle.storyName = "Default";
+DefaultDarkThemeToggle.args = {};
+export const CustomClasses = Template.bind({});
+CustomClasses.storyName = "Custom Styles";
 CustomClasses.args = {
   className:
     "bg-transparent hover:bg-gray-100 dark:hover:bg-secondary-800 text-secondary text-secondary-900 dark:text-secondary-50",
-}
+};

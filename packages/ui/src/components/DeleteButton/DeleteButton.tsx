@@ -1,22 +1,22 @@
-import { ComponentProps, FC } from "react"
-import { TbTrash } from "react-icons/tb"
+import type { ComponentProps, FC } from "react";
+import { TbTrash } from "react-icons/tb";
 
-import { cn } from "../../helpers"
-import { useTranslate } from "../../hooks/use-translate"
-import { Button, ButtonProps } from "../Button"
-import { DialogClose, DialogFooter, DialogHeader, DialogTitle } from "../Dialog"
-import { DrawerDialog } from "../DrawerDialog"
-import { IconButton } from "../IconButton"
+import { cn } from "../../helpers";
+import { useTranslate } from "../../hooks/use-translate";
+import { Button, type ButtonProps } from "../Button";
+import { DialogClose, DialogFooter, DialogHeader, DialogTitle } from "../Dialog";
+import { DrawerDialog } from "../DrawerDialog";
+import { IconButton } from "../IconButton";
 
 type OptionalProps = {
-  icon?: FC<ComponentProps<"svg">>
-  className?: string
-  label?: string
-  triggerProps?: ButtonProps
-}
+  icon?: FC<ComponentProps<"svg">>;
+  className?: string;
+  label?: string;
+  triggerProps?: ButtonProps;
+};
 export type DeleteButtonProps = OptionalProps & {
-  onConfirm: (event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
-}
+  onConfirm: (event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+};
 
 export const DeleteButton: React.FC<DeleteButtonProps> = ({
   onConfirm,
@@ -25,7 +25,7 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
   label,
   ...rest
 }) => {
-  const { t } = useTranslate()
+  const { t } = useTranslate();
 
   return (
     <>
@@ -75,7 +75,7 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
             </DialogClose>
             <DialogClose>
               <Button
-                autoFocus
+                autoFocus={true}
                 onClick={onConfirm}
                 color="error"
                 type="button"
@@ -89,5 +89,5 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
         </>
       </DrawerDialog>
     </>
-  )
-}
+  );
+};

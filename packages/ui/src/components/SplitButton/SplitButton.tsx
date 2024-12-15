@@ -1,24 +1,24 @@
-import * as React from 'react'
+import * as React from "react";
 
-import type { ButtonProps } from '../Button'
-import { Button } from '../Button'
-import { Dropdown, DropdownGroup, DropdownItem } from '../Dropdown'
-import { TbChevronDown } from 'react-icons/tb'
+import { TbChevronDown } from "react-icons/tb";
+import type { ButtonProps } from "../Button";
+import { Button } from "../Button";
+import { Dropdown, DropdownGroup, DropdownItem } from "../Dropdown";
 export interface SlipButtonOption {
-  label: string
-  onClick: () => void
+  label: string;
+  onClick: () => void;
 }
 export interface SplitButtonProps extends ButtonProps {
-  options: SlipButtonOption[]
+  options: SlipButtonOption[];
 }
 
 export function SplitButton({ options, ...rest }: Readonly<SplitButtonProps>) {
-  const [selectedIndex, setSelectedIndex] = React.useState(0)
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
 
   const handleMenuItemClick = (option: SlipButtonOption, index: number) => {
-    setSelectedIndex(index)
-    option.onClick()
-  }
+    setSelectedIndex(index);
+    option.onClick();
+  };
 
   return (
     <div className="flex">
@@ -35,12 +35,18 @@ export function SplitButton({ options, ...rest }: Readonly<SplitButtonProps>) {
       >
         <DropdownGroup>
           {options.map((option, index) => (
-            <DropdownItem {...option} key={option.label} onSelect={() => { handleMenuItemClick(option, index); }}>
+            <DropdownItem
+              {...option}
+              key={option.label}
+              onSelect={() => {
+                handleMenuItemClick(option, index);
+              }}
+            >
               {option.label}
             </DropdownItem>
           ))}
         </DropdownGroup>
       </Dropdown>
     </div>
-  )
+  );
 }

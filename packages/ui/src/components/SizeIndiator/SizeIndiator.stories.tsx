@@ -1,13 +1,13 @@
-import type { Meta, StoryFn } from "@storybook/react"
+import type { Meta, StoryFn } from "@storybook/react";
 
-import { SizeIndiator, SizeIndiatorProps } from "./SizeIndiator"
+import { SizeIndiator, type SizeIndiatorProps } from "./SizeIndiator";
 
 export default {
   title: "Components/SizeIndiator",
   component: SizeIndiator,
   tags: ["autodocs"],
   decorators: [
-    (Story): JSX.Element => (
+    (Story): React.ReactNode => (
       <div className="flex flex-col gap-10">
         <div className="flex flex-col bg-secondary-50 min-h-20 p-4 gap-4 relative">
           <Story />
@@ -15,11 +15,9 @@ export default {
       </div>
     ),
   ],
-} as Meta
+} as Meta;
 
-const Template: StoryFn<SizeIndiatorProps> = (args) => (
-  <SizeIndiator {...args} />
-)
+const Template: StoryFn<SizeIndiatorProps> = (args) => <SizeIndiator {...args} />;
 
-export const Default = Template.bind({})
-Default.args = {}
+export const Default = Template.bind({});
+Default.args = {};

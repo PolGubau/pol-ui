@@ -1,18 +1,18 @@
-import type { ComponentProps, ReactNode } from 'react'
-import { forwardRef } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import { getTheme } from '../../theme-store'
-import type { Colors, DeepPartial, MainSizes } from '../../types/types'
-import { HelperText } from '../HelperText'
-import type { FileInputTheme } from './theme'
-import { ColorsEnum, MainSizesEnum } from '../../types/enums'
+import type { ComponentProps, ReactNode } from "react";
+import { forwardRef } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { getTheme } from "../../theme-store";
+import { ColorsEnum, MainSizesEnum } from "../../types/enums";
+import type { Colors, DeepPartial, MainSizes } from "../../types/types";
+import { HelperText } from "../HelperText";
+import type { FileInputTheme } from "./theme";
 
-export interface FileInputProps extends Omit<ComponentProps<'input'>, 'type' | 'ref' | 'color' | 'size'> {
-  color?: Colors
-  helperText?: ReactNode
-  size?: MainSizes
-  theme?: DeepPartial<FileInputTheme>
+export interface FileInputProps extends Omit<ComponentProps<"input">, "type" | "ref" | "color" | "size"> {
+  color?: Colors;
+  helperText?: ReactNode;
+  size?: MainSizes;
+  theme?: DeepPartial<FileInputTheme>;
 }
 
 /**
@@ -23,7 +23,7 @@ export interface FileInputProps extends Omit<ComponentProps<'input'>, 'type' | '
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
   (
     {
-      className = '',
+      className = "",
       color = ColorsEnum.primary,
       helperText,
       size = MainSizesEnum.md,
@@ -32,7 +32,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
     },
     ref,
   ) => {
-    const theme = mergeDeep(getTheme().fileInput, customTheme)
+    const theme = mergeDeep(getTheme().fileInput, customTheme);
 
     return (
       <>
@@ -48,8 +48,8 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
         </div>
         {helperText && <HelperText color={color}>{helperText}</HelperText>}
       </>
-    )
+    );
   },
-)
+);
 
-FileInput.displayName = 'FileInput'
+FileInput.displayName = "FileInput";

@@ -1,8 +1,8 @@
-import { useState } from "react"
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
+import { useState } from "react";
 
-import { Button, Skeleton } from "../../components"
-import { shuffle } from "./shuffle"
+import { Button, Skeleton } from "../../components";
+import { shuffle } from "./shuffle";
 
 export default {
   title: "Helpers/shuffle",
@@ -16,15 +16,15 @@ export default {
   ],
 
   tags: ["autodocs"],
-} as Meta
+} as Meta;
 
 export const Default = () => {
-  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-  const [shuffled, setShuffled] = useState(shuffle(arr))
+  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const [shuffled, setShuffled] = useState(shuffle(arr));
 
   const handleShuffle = () => {
-    setShuffled(shuffle(arr))
-  }
+    setShuffled(shuffle(arr));
+  };
 
   return (
     <div className="flex gap-4">
@@ -47,5 +47,5 @@ export const Default = () => {
 
       <Button onClick={handleShuffle}>Shuffle</Button>
     </div>
-  )
-}
+  );
+};

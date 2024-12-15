@@ -1,11 +1,11 @@
-import transition from './transition'
-import animations from './animations'
-import scrollbarHide from './scrollbar-hide'
-import custom from './custom'
+import animations from "./animations";
+import custom from "./custom";
+import scrollbarHide from "./scrollbar-hide";
+import transition from "./transition";
 
 export const utilities = {
   ...custom,
   ...transition,
   ...scrollbarHide,
   ...animations,
-}
+};

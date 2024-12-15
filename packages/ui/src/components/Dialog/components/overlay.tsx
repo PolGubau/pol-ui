@@ -1,7 +1,7 @@
-import React from "react"
-import * as D from "@radix-ui/react-dialog"
+import * as D from "@radix-ui/react-dialog";
+import React from "react";
 
-import { cn } from "../../../helpers"
+import { cn } from "../../../helpers";
 
 export const DialogOverlay = React.forwardRef<
   React.ElementRef<typeof D.Overlay>,
@@ -11,9 +11,9 @@ export const DialogOverlay = React.forwardRef<
     ref={ref}
     className={cn(
       "fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-      className
+      className,
     )}
     {...props}
   />
-))
-DialogOverlay.displayName = D.Overlay.displayName
+));
+DialogOverlay.displayName = D.Overlay.displayName;

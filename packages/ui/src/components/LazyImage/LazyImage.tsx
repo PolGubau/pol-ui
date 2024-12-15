@@ -1,42 +1,43 @@
-import { useState } from "react"
-import { MotionProps, motion } from "framer-motion"
+import { type MotionProps, motion } from "framer-motion";
+import { useState } from "react";
 
-import { cn } from "../../helpers"
+import { cn } from "../../helpers";
 
 export type LazyImageProps = React.HTMLAttributes<HTMLImageElement> &
   MotionProps & {
-    src: string
-    initialHeight?: string
-  }
+    src: string;
+    initialHeight?: string;
+  };
 
 export function LazyImage(props: LazyImageProps) {
-  const { initialHeight = "8rem" } = props
+  const { initialHeight = "8rem" } = props;
 
-  const [imageLoading, setImageLoading] = useState(true)
+  const [imageLoading, setImageLoading] = useState(true);
 
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(false);
 
   //
-  const [pulsing, setPulsing] = useState(true)
+  const [pulsing, setPulsing] = useState(true);
 
   const imageLoaded = () => {
-    setImageLoading(false)
-    setTimeout(() => setPulsing(false), 300)
-  }
+    setImageLoading(false);
+    setTimeout(() => setPulsing(false), 300);
+  };
 
   const getHeight = (): string => {
-    if (error) return "0px"
+    if (error) {
+      return "0px";
+    }
 
-    if (imageLoading) return "6rem"
+    if (imageLoading) {
+      return "6rem";
+    }
 
-    return "auto"
-  }
+    return "auto";
+  };
 
   return (
-    <div
-      className={cn(`${pulsing ? "pulse" : ""}`, props.className)}
-      style={{ background: "#ccc" }}
-    >
+    <div className={cn(`${pulsing ? "pulse" : ""}`, props.className)} style={{ background: "#ccc" }}>
       <motion.img
         {...props}
         initial={{ height: initialHeight, opacity: 0 }}
@@ -54,5 +55,5 @@ export function LazyImage(props: LazyImageProps) {
         width="100%"
       />
     </div>
-  )
+  );
 }

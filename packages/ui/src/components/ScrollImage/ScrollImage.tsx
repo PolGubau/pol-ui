@@ -1,24 +1,25 @@
-"use client"
+"use client";
 
-import React, { useId, useRef } from "react"
-import { useGSAP } from "@gsap/react"
-import gsap from "gsap"
-import ScrollTrigger from "gsap/dist/ScrollTrigger"
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import type React from "react";
+import { useId, useRef } from "react";
 
-import { cn } from "../../helpers"
+import { cn } from "../../helpers";
 
 export interface ScrollImageProps extends React.SVGProps<SVGImageElement> {
-  className?: string
-  image: string
-  debug?: boolean
-  ease?: EaseString
-  baseFrequency?: number
-  displacementScale?: number
-  numOctaves?: number
-  maskXPercent?: number
-  maskYPercent?: number
-  initialRadius?: number
-  speed?: number
+  className?: string;
+  image: string;
+  debug?: boolean;
+  ease?: EaseString;
+  baseFrequency?: number;
+  displacementScale?: number;
+  numOctaves?: number;
+  maskXPercent?: number;
+  maskYPercent?: number;
+  initialRadius?: number;
+  speed?: number;
 }
 
 /**
@@ -26,7 +27,7 @@ export interface ScrollImageProps extends React.SVGProps<SVGImageElement> {
  *
  * @description A component that creates a scroll effect on an image using SVG filters. You need to provide the height of the component using tailwind or css.
  *
- * @returns JSX.Element
+ * @returns React.ReactNode
  *
  * @example ```
  * <ScrollImage
@@ -50,10 +51,10 @@ const ScrollImage = ({
   initialRadius = 0,
   ...props
 }: ScrollImageProps) => {
-  const maskId = useId()
-  const filterId = useId()
-  const main = useRef<SVGSVGElement>(null)
-  gsap.registerPlugin(useGSAP, ScrollTrigger)
+  const maskId = useId();
+  const filterId = useId();
+  const main = useRef<SVGSVGElement>(null);
+  gsap.registerPlugin(useGSAP, ScrollTrigger);
   useGSAP(
     () => {
       gsap.to("#item", {
@@ -65,11 +66,11 @@ const ScrollImage = ({
           scrub: speed,
           markers: debug,
         },
-      })
+      });
     },
-    { scope: main }
-  )
-  const baseClassName = "w-full h-full"
+    { scope: main },
+  );
+  const baseClassName = "w-full h-full";
   return (
     <svg
       ref={main}
@@ -107,17 +108,12 @@ const ScrollImage = ({
         </mask>
       </defs>
 
-      <image
-        xlinkHref={image}
-        {...props}
-        mask={`url(#${maskId})`}
-        className={baseClassName}
-      />
+      <image xlinkHref={image} {...props} mask={`url(#${maskId})`} className={baseClassName} />
     </svg>
-  )
-}
+  );
+};
 
-export default ScrollImage
+export default ScrollImage;
 
 type EaseString =
   | "none"
@@ -160,4 +156,4 @@ type EaseString =
   | "sine"
   | "sine.in"
   | "sine.out"
-  | "sine.inOut"
+  | "sine.inOut";

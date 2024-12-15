@@ -1,48 +1,45 @@
-import type { FC } from "react"
-import { render, screen } from "@testing-library/react"
-import { HiHome } from "react-icons/hi"
-import { describe, expect, it } from "vitest"
+import { render, screen } from "@testing-library/react";
+import type { FC } from "react";
+import { HiHome } from "react-icons/hi";
+import { describe, expect, it } from "vitest";
 
-import {
-  PoluiProvider,
-  type CustomPoluiTheme,
-} from "../../providers/PoluiProvider"
-import { Breadcrumb } from "./Breadcrumb"
-import { BreadcrumbItem } from "./BreadcrumbItem"
+import { type CustomPoluiTheme, PoluiProvider } from "../../providers/PoluiProvider";
+import { Breadcrumb } from "./Breadcrumb";
+import { BreadcrumbItem } from "./BreadcrumbItem";
 
 describe("Components / Breadcrumb", () => {
   it('should have `role="navigation"`', () => {
-    render(<TestBreadcrumb />)
+    render(<TestBreadcrumb />);
 
-    expect(breadcrumb()).toBeInTheDocument()
-  })
+    expect(breadcrumb()).toBeInTheDocument();
+  });
 
   it('should contain a `role="list"`', () => {
-    render(<TestBreadcrumb />)
+    render(<TestBreadcrumb />);
 
-    expect(breadcrumb()).toContainElement(breadcrumbList())
-  })
+    expect(breadcrumb()).toContainElement(breadcrumbList());
+  });
 
   it('should contain a `role="listitem"` for each `BreadcrumbItem`', () => {
-    render(<TestBreadcrumb />)
+    render(<TestBreadcrumb />);
 
-    expect(items()[0]).toHaveTextContent("Home")
-    expect(items()[1]).toHaveTextContent("Projects")
-    expect(items()[2]).toHaveTextContent("PoluiProvider React")
-  })
+    expect(items()[0]).toHaveTextContent("Home");
+    expect(items()[1]).toHaveTextContent("Projects");
+    expect(items()[2]).toHaveTextContent("PoluiProvider React");
+  });
 
   it('should contain a `role="link"` for each `BreadcrumbItem href=".."`', () => {
-    render(<TestBreadcrumb />)
+    render(<TestBreadcrumb />);
 
-    expect(links()[0]).toHaveTextContent("Home")
-    expect(links()[1]).toHaveTextContent("Projects")
-  })
+    expect(links()[0]).toHaveTextContent("Home");
+    expect(links()[1]).toHaveTextContent("Projects");
+  });
 
   it("should use `aria-label` if provided", () => {
-    render(<TestBreadcrumb />)
+    render(<TestBreadcrumb />);
 
-    expect(breadcrumb()).toHaveAccessibleName("test label")
-  })
+    expect(breadcrumb()).toHaveAccessibleName("test label");
+  });
 
   it("should use custom list classes via theme={}", () => {
     const theme: CustomPoluiTheme = {
@@ -51,14 +48,14 @@ describe("Components / Breadcrumb", () => {
           list: "gap-6",
         },
       },
-    }
+    };
     render(
       <PoluiProvider theme={{ theme }}>
         <TestBreadcrumb />
-      </PoluiProvider>
-    )
-  })
-})
+      </PoluiProvider>,
+    );
+  });
+});
 
 const TestBreadcrumb: FC = () => (
   <Breadcrumb aria-label="test label">
@@ -68,12 +65,12 @@ const TestBreadcrumb: FC = () => (
     <BreadcrumbItem href="#">Projects</BreadcrumbItem>
     <BreadcrumbItem icon={HiHome}>PoluiProvider React</BreadcrumbItem>
   </Breadcrumb>
-)
+);
 
-const breadcrumb = () => screen.getByRole("navigation")
+const breadcrumb = () => screen.getByRole("navigation");
 
-const breadcrumbList = () => screen.getByRole("list")
+const breadcrumbList = () => screen.getByRole("list");
 
-const items = () => screen.getAllByRole("listitem")
+const items = () => screen.getAllByRole("listitem");
 
-const links = () => screen.getAllByRole("link")
+const links = () => screen.getAllByRole("link");

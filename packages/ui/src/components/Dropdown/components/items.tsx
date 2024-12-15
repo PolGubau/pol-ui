@@ -1,38 +1,31 @@
-"use client"
+"use client";
 
-import { ComponentProps, FC } from "react"
-import { Item, SubTrigger } from "@radix-ui/react-dropdown-menu"
-import { TbChevronRight, TbMessage } from "react-icons/tb"
+import { Item, SubTrigger } from "@radix-ui/react-dropdown-menu";
+import type { ComponentProps, FC } from "react";
+import { TbChevronRight, TbMessage } from "react-icons/tb";
 
-import { cn } from "../../../helpers"
-import { useMediaQuery } from "../../../hooks"
-import { Button, ButtonProps } from "../../Button"
-import { ExpandableButton } from "../../ExpandableButton"
-import { FocusEffect } from "../../FocusEffect"
-import { Textarea, TextareaProps } from "../../Textarea"
-import { DropdownShortcut } from "../Dropdown"
+import { cn } from "../../../helpers";
+import { useMediaQuery } from "../../../hooks";
+import { Button, type ButtonProps } from "../../Button";
+import { ExpandableButton } from "../../ExpandableButton";
+import { FocusEffect } from "../../FocusEffect";
+import { Textarea, type TextareaProps } from "../../Textarea";
+import { DropdownShortcut } from "../Dropdown";
 
 interface DropdownItemProps extends ComponentProps<typeof Item> {
-  label?: string
-  shortcut?: React.ReactNode
-  icon?: FC<ComponentProps<"svg">>
-  shortcutClassName?: string
+  label?: string;
+  shortcut?: React.ReactNode;
+  icon?: FC<ComponentProps<"svg">>;
+  shortcutClassName?: string;
 }
-const DropdownItem = ({
-  className,
-  label,
-  icon: Icon,
-  shortcut,
-  shortcutClassName,
-  ...props
-}: DropdownItemProps) => (
+const DropdownItem = ({ className, label, icon: Icon, shortcut, shortcutClassName, ...props }: DropdownItemProps) => (
   <Item
     className={cn(
       "group relative flex cursor-default select-none items-center p-2 text-sm outline-none gap-4 rounded-md mx-2 opacity-90 text-black dark:text-white overflow-hidden",
       "hover:opacity-100",
       "focus:bg-secondary-800/10",
       "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-      className
+      className,
     )}
     {...props}
   >
@@ -40,18 +33,14 @@ const DropdownItem = ({
 
     {Icon && <Icon className="h-[18px] w-[18px]" />}
     {props.children ?? label}
-    {shortcut && (
-      <DropdownShortcut className={shortcutClassName}>
-        {shortcut}
-      </DropdownShortcut>
-    )}
+    {shortcut && <DropdownShortcut className={shortcutClassName}>{shortcut}</DropdownShortcut>}
   </Item>
-)
+);
 
 interface DropdownSubTriggerProps extends ComponentProps<typeof SubTrigger> {
-  icon?: FC<ComponentProps<"svg">>
-  label?: string
-  rightIcon?: FC<ComponentProps<"svg">>
+  icon?: FC<ComponentProps<"svg">>;
+  label?: string;
+  rightIcon?: FC<ComponentProps<"svg">>;
 }
 
 const DropdownSubTrigger = ({
@@ -68,7 +57,7 @@ const DropdownSubTrigger = ({
       "focus:bg-secondary-800/10",
       "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
 
-      className
+      className,
     )}
     {...props}
   >
@@ -76,17 +65,17 @@ const DropdownSubTrigger = ({
     <FocusEffect className="bg-black/10" />
     <RightIcon className="ml-auto h-4 w-4" />
   </SubTrigger>
-)
+);
 
 interface DropdownExpandableProps extends ComponentProps<typeof Item> {
-  label?: string
-  shortcut?: React.ReactNode
-  icon?: FC<ComponentProps<"svg">>
-  shortcutClassName?: string
-  children: React.ReactNode
-  once?: boolean
-  triggerWrapperClassName?: string
-  wrapperClassName?: string
+  label?: string;
+  shortcut?: React.ReactNode;
+  icon?: FC<ComponentProps<"svg">>;
+  shortcutClassName?: string;
+  children: React.ReactNode;
+  once?: boolean;
+  triggerWrapperClassName?: string;
+  wrapperClassName?: string;
 }
 const DropdownExpandable = ({
   className,
@@ -100,15 +89,12 @@ const DropdownExpandable = ({
   once,
   ...props
 }: DropdownExpandableProps) => {
-  const isDesktop = useMediaQuery("(min-width: 768px)")
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   return (
     <ExpandableButton
       className="w-full"
       label={label}
-      triggerWrapperClassName={cn(
-        "mx-2 rounded-t-lg data-[state=open]:bg-secondary-800/10",
-        triggerWrapperClassName
-      )}
+      triggerWrapperClassName={cn("mx-2 rounded-t-lg data-[state=open]:bg-secondary-800/10", triggerWrapperClassName)}
       trigger={
         <Item
           {...props}
@@ -118,7 +104,7 @@ const DropdownExpandable = ({
             "focus:bg-secondary-800/10",
             "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
 
-            className
+            className,
           )}
         >
           <FocusEffect className="bg-black/10" />
@@ -136,16 +122,16 @@ const DropdownExpandable = ({
         {children}
       </div>
     </ExpandableButton>
-  )
-}
+  );
+};
 
 interface DropdownExpandableTextAreaProps extends TextareaProps {
-  label?: string
-  icon?: FC<ComponentProps<"svg">>
-  shortcut?: React.ReactNode
-  shortcutClassName?: string
-  className?: string
-  button?: ButtonProps
+  label?: string;
+  icon?: FC<ComponentProps<"svg">>;
+  shortcut?: React.ReactNode;
+  shortcutClassName?: string;
+  className?: string;
+  button?: ButtonProps;
 }
 
 const DropdownExpandableTextArea = ({
@@ -155,13 +141,9 @@ const DropdownExpandableTextArea = ({
   },
   ...props
 }: DropdownExpandableTextAreaProps) => (
-  <DropdownExpandable
-    icon={TbMessage}
-    label="Write a comment"
-    className={cn("py-2", className)}
-  >
+  <DropdownExpandable icon={TbMessage} label="Write a comment" className={cn("py-2", className)}>
     <form className="flex flex-col gap-2 p-2 pt-1 border-b-lg">
-      <Textarea autoFocus {...props} innerClassName="w-full bg-white p-2" />
+      <Textarea autoFocus={true} {...props} innerClassName="w-full bg-white p-2" />
       <nav className="flex flex-row-reverse justify-right w-full">
         <Button size={"sm"} {...button} type="submit">
           {button.label}
@@ -170,7 +152,7 @@ const DropdownExpandableTextArea = ({
       </nav>
     </form>
   </DropdownExpandable>
-)
+);
 
 export {
   type DropdownItemProps,
@@ -181,4 +163,4 @@ export {
   DropdownExpandable,
   DropdownExpandableTextArea,
   type DropdownExpandableTextAreaProps,
-}
+};

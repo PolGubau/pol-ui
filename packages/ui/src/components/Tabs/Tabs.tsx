@@ -1,37 +1,37 @@
-"use client"
+"use client";
 
-import { useId } from "react"
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import { useId } from "react";
 
-import { cn, mergeDeep } from "../../helpers"
-import { useMergeValue } from "../../hooks"
-import { getTheme } from "../../theme-store"
-import type { TabsTheme } from "./theme"
+import { cn, mergeDeep } from "../../helpers";
+import { useMergeValue } from "../../hooks";
+import { getTheme } from "../../theme-store";
+import type { TabsTheme } from "./theme";
 
 type Tab = {
-  name: string
-  content?: React.ReactNode
-  disabled?: boolean
-}
+  name: string;
+  content?: React.ReactNode;
+  disabled?: boolean;
+};
 
 export enum TabMode {
   underlined = "underlined",
   contained = "contained",
 }
-export type TabModeType = keyof typeof TabMode
+export type TabModeType = keyof typeof TabMode;
 
 export interface TabsProps {
-  tabs: Tab[]
-  containerClassName?: string
-  activeTabClassName?: string
-  tabClassName?: string
-  contentClassName?: string
-  hasNavMotion?: boolean
-  mode?: TabModeType
-  theme?: Partial<TabsTheme>
-  value?: number
-  defaultValue?: number
-  onTabChange?: (index: number) => void
+  tabs: Tab[];
+  containerClassName?: string;
+  activeTabClassName?: string;
+  tabClassName?: string;
+  contentClassName?: string;
+  hasNavMotion?: boolean;
+  mode?: TabModeType;
+  theme?: Partial<TabsTheme>;
+  value?: number;
+  defaultValue?: number;
+  onTabChange?: (index: number) => void;
 }
 
 export const Tabs: React.FC<TabsProps> = ({
@@ -47,24 +47,26 @@ export const Tabs: React.FC<TabsProps> = ({
   defaultValue = 0,
   onTabChange,
 }: TabsProps) => {
-  if (propTabs.length === 0) throw new Error("Tabs must have at least one tab")
+  if (propTabs.length === 0) {
+    throw new Error("Tabs must have at least one tab");
+  }
 
   const [activeIdx, setActiveIdx] = useMergeValue(defaultValue, {
     value,
     onChange: onTabChange,
-  })
+  });
 
-  const theme: TabsTheme = mergeDeep(getTheme().tabs, customTheme)
-  const id = useId()
-  const isActive = (idx: number) => activeIdx === idx
-  const tab = propTabs[activeIdx]
+  const theme: TabsTheme = mergeDeep(getTheme().tabs, customTheme);
+  const id = useId();
+  const isActive = (idx: number) => activeIdx === idx;
+  const tab = propTabs[activeIdx];
   return (
     <div className="flex flex-col gap-4">
       <ul className={cn(theme.base, containerClassName)}>
         {propTabs.map((tab) => {
-          const idx = propTabs.indexOf(tab)
-          const isThisActive = isActive(idx)
-          const setThisActive = () => setActiveIdx(idx)
+          const idx = propTabs.indexOf(tab);
+          const isThisActive = isActive(idx);
+          const setThisActive = () => setActiveIdx(idx);
           return (
             <button
               type="button"
@@ -73,14 +75,10 @@ export const Tabs: React.FC<TabsProps> = ({
               role="tab"
               aria-selected={isThisActive}
               onClick={() => {
-                onTabChange?.(idx)
-                setThisActive()
+                onTabChange?.(idx);
+                setThisActive();
               }}
-              className={cn(
-                theme.navItem?.base,
-                tab.disabled && theme.disabled,
-                tabClassName
-              )}
+              className={cn(theme.navItem?.base, tab.disabled && theme.disabled, tabClassName)}
             >
               {isThisActive && (
                 <motion.div
@@ -90,37 +88,27 @@ export const Tabs: React.FC<TabsProps> = ({
                     theme.navItem.marker?.base,
                     theme.navItem.marker?.active.on,
                     theme.navItem.marker?.mode[mode],
-                    activeTabClassName
+                    activeTabClassName,
                   )}
                 />
               )}
 
               <span className={cn(theme.navItem.text)}>{tab.name}</span>
             </button>
-          )
+          );
         })}
       </ul>
-      <TabContent
-        content={tab.content}
-        key={tab.name}
-        className={cn("mt-4", contentClassName)}
-      />
+      <TabContent content={tab.content} key={tab.name} className={cn("mt-4", contentClassName)} />
     </div>
-  )
-}
+  );
+};
 
 export const TabContent = ({
   className,
   content,
 }: {
-  className?: string
-  content: Tab["content"]
+  className?: string;
+  content: Tab["content"];
 }) => {
-  return (
-    <motion.div
-      className={cn("relative w-full h-full transition-all ", className)}
-    >
-      {content}
-    </motion.div>
-  )
-}
+  return <motion.div className={cn("relative w-full h-full transition-all ", className)}>{content}</motion.div>;
+};

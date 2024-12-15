@@ -1,1 +1,1 @@
-export { useClickHandlers } from './use-click-handlers'
+export { useClickHandlers } from "./use-click-handlers";

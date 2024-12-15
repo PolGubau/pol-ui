@@ -1,1 +1,1 @@
-export { Hamburguer, type HamburguerProps } from './Hamburguer'
+export { Hamburguer, type HamburguerProps } from "./Hamburguer";

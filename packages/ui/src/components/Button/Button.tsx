@@ -1,20 +1,19 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
+import { Slot } from "@radix-ui/react-slot";
+import { type VariantProps, cva } from "class-variance-authority";
+import * as React from "react";
 
-import { cn, mergeRefs } from "../../helpers"
-import { useRipple } from "../../hooks"
-import { RippleOptions } from "../../hooks/use-ripple/use-ripple"
-import type { DeepPartial } from "../../types"
-import { FocusEffect } from "../FocusEffect"
-import { Loader } from "../Loader"
-import type { ButtonTheme } from "./theme"
+import { cn, mergeRefs } from "../../helpers";
+import { useRipple } from "../../hooks";
+import type { RippleOptions } from "../../hooks/use-ripple/use-ripple";
+import type { DeepPartial } from "../../types";
+import { FocusEffect } from "../FocusEffect";
+import { Loader } from "../Loader";
+import type { ButtonTheme } from "./theme";
 
 const variants = {
   variant: {
     filled: "shadow hover:shadow-lg focus:shadow-lg transition-shadow",
-    outline:
-      "border bg-transparent shadow hover:shadow-lg focus:shadow-lg transition-[colors, shadow]",
+    outline: "border bg-transparent shadow hover:shadow-lg focus:shadow-lg transition-[colors, shadow]",
     ghost: "hover:bg-primary/60 transition-colors",
     link: "text-primary underline-offset-4 hover:underline focus:underline",
   },
@@ -48,8 +47,8 @@ const variants = {
     true: "w-full",
     false: "",
   },
-}
-export type Variants = typeof variants
+};
+export type Variants = typeof variants;
 
 export const buttonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50 relative group overflow-hidden gap-2",
@@ -58,8 +57,7 @@ export const buttonVariants = cva(
     compoundVariants: [
       {
         variant: "filled",
-        className:
-          "text-secondary-50 dark:text-secondary-900 hover:brightness-90",
+        className: "text-secondary-50 dark:text-secondary-900 hover:brightness-90",
       },
       {
         variant: ["link", "outline", "ghost"],
@@ -133,34 +131,31 @@ export const buttonVariants = cva(
       fullSized: false,
       rounded: "lg",
     },
-  }
-)
+  },
+);
 
 export interface ButtonProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "color">,
     VariantProps<typeof buttonVariants> {
-  asChild?: boolean
-  label?: string
-  loading?: boolean
-  fullSized?: boolean
-  loader?: React.ReactNode
-  focusEffect?: boolean
-  theme?: DeepPartial<ButtonTheme>
-  rippleOptions?: Partial<RippleOptions>
+  asChild?: boolean;
+  label?: string;
+  loading?: boolean;
+  fullSized?: boolean;
+  loader?: React.ReactNode;
+  focusEffect?: boolean;
+  theme?: DeepPartial<ButtonTheme>;
+  rippleOptions?: Partial<RippleOptions>;
 }
 
-export type ButtonVariants = keyof typeof variants.variant
-export type VariantsEnum = keyof typeof variants
+export type ButtonVariants = keyof typeof variants.variant;
+export type VariantsEnum = keyof typeof variants;
 
 // const DropdownCheckboxItem = forwardRef<
 //   ElementRef<typeof D.CheckboxItem>,
 //   ComponentPropsWithoutRef<typeof D.CheckboxItem>
 // >(({ className, children, checked, ...props }, ref) => (
 
-export const Button = React.forwardRef<
-  React.ElementRef<typeof Slot>,
-  ButtonProps
->(
+export const Button = React.forwardRef<React.ElementRef<typeof Slot>, ButtonProps>(
   (
     {
       className,
@@ -179,17 +174,17 @@ export const Button = React.forwardRef<
       },
       ...props
     },
-    ref
+    ref,
   ) => {
-    const isDisabled = props.disabled ?? loading
+    const isDisabled = props.disabled ?? loading;
     const [ripple, event] = useRipple({
       disabled: isDisabled,
       ...rippleOptions,
-    })
+    });
     // const refs = mergeRefs([ripple, ref])
-    const Comp = asChild ? Slot : "button"
+    const Comp = asChild ? Slot : "button";
 
-    const label = props.label ?? props.children
+    const label = props.label ?? props.children;
     return (
       <Comp
         className={cn(
@@ -200,16 +195,16 @@ export const Button = React.forwardRef<
             className,
             color,
             rounded,
-          })
+          }),
         )}
         ref={mergeRefs([ripple, ref])}
         {...props}
         disabled={isDisabled}
         onClick={(e) => {
           if (props.onClick) {
-            props.onClick(e as React.MouseEvent<HTMLButtonElement>)
+            props.onClick(e as React.MouseEvent<HTMLButtonElement>);
           }
-          event(e)
+          event(e);
         }}
       >
         <>
@@ -224,7 +219,7 @@ export const Button = React.forwardRef<
           {focusEffect && <FocusEffect />}
         </>
       </Comp>
-    )
-  }
-)
-Button.displayName = "Button"
+    );
+  },
+);
+Button.displayName = "Button";

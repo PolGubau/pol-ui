@@ -1,10 +1,10 @@
-import React from "react"
-import type { Meta } from "@storybook/react"
-import { twMerge } from "tailwind-merge"
+import type { Meta } from "@storybook/react";
+import React from "react";
+import { twMerge } from "tailwind-merge";
 
-import type { KanbanCardProps } from "."
-import { Toaster, toast } from "../Toaster"
-import { Kanban } from "./Kanban"
+import type { KanbanCardProps } from ".";
+import { Toaster, toast } from "../Toaster";
+import { Kanban } from "./Kanban";
 
 export default {
   title: "Components/Kanban",
@@ -20,7 +20,7 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
 const DEFAULT_CARDS: KanbanCardProps[] = [
   // BACKLOG
@@ -38,12 +38,11 @@ const DEFAULT_CARDS: KanbanCardProps[] = [
     id: "6",
     column: "todo",
     onClick: () => {
-      alert("I have been clicked")
+      alert("I have been clicked");
     },
   },
   {
-    title:
-      "I am a card with a long long long long long long long long long long long long title",
+    title: "I am a card with a long long long long long long long long long long long long title",
     id: "7",
     column: "todo",
   },
@@ -61,48 +60,40 @@ const DEFAULT_CARDS: KanbanCardProps[] = [
     id: "10",
     column: "done",
   },
-]
-const columns = [...new Set(DEFAULT_CARDS.map((card) => card.column))]
+];
+const columns = [...new Set(DEFAULT_CARDS.map((card) => card.column))];
 
 export const Default = () => {
-  const [cards, setCards] = React.useState(DEFAULT_CARDS)
+  const [cards, setCards] = React.useState(DEFAULT_CARDS);
   const handleCreate = ({
     column,
     title,
   }: {
-    column: string
-    title: string
+    column: string;
+    title: string;
   }) => {
-    setCards([...cards, { title, id: `${Math.random()}`, column }])
-  }
+    setCards([...cards, { title, id: `${Math.random()}`, column }]);
+  };
   const handleDelete = (id: string) => {
-    setCards(cards.filter((card) => card.id !== id))
-  }
-  return (
-    <Kanban
-      onCreate={handleCreate}
-      cards={cards}
-      setCards={setCards}
-      columns={columns}
-      onDelete={handleDelete}
-    />
-  )
-}
+    setCards(cards.filter((card) => card.id !== id));
+  };
+  return <Kanban onCreate={handleCreate} cards={cards} setCards={setCards} columns={columns} onDelete={handleDelete} />;
+};
 
 export const DeleteOnTop = () => {
-  const [cards, setCards] = React.useState(DEFAULT_CARDS)
+  const [cards, setCards] = React.useState(DEFAULT_CARDS);
   const handleCreate = ({
     column,
     title,
   }: {
-    column: string
-    title: string
+    column: string;
+    title: string;
   }) => {
-    setCards([...cards, { title, id: `${Math.random()}`, column }])
-  }
+    setCards([...cards, { title, id: `${Math.random()}`, column }]);
+  };
   const handleDelete = (id: string) => {
-    setCards(cards.filter((card) => card.id !== id))
-  }
+    setCards(cards.filter((card) => card.id !== id));
+  };
   return (
     <Kanban
       deletePositionY="top"
@@ -112,22 +103,22 @@ export const DeleteOnTop = () => {
       onCreate={handleCreate}
       onDelete={handleDelete}
     />
-  )
-}
+  );
+};
 export const DeleteOnLeft = () => {
-  const [cards, setCards] = React.useState(DEFAULT_CARDS)
+  const [cards, setCards] = React.useState(DEFAULT_CARDS);
   const handleCreate = ({
     column,
     title,
   }: {
-    column: string
-    title: string
+    column: string;
+    title: string;
   }) => {
-    setCards([...cards, { title, id: `${Math.random()}`, column }])
-  }
+    setCards([...cards, { title, id: `${Math.random()}`, column }]);
+  };
   const handleDelete = (id: string) => {
-    setCards(cards.filter((card) => card.id !== id))
-  }
+    setCards(cards.filter((card) => card.id !== id));
+  };
   return (
     <Kanban
       deletePositionX="left"
@@ -137,22 +128,22 @@ export const DeleteOnLeft = () => {
       onCreate={handleCreate}
       onDelete={handleDelete}
     />
-  )
-}
+  );
+};
 export const DeleteOnRight = () => {
-  const [cards, setCards] = React.useState(DEFAULT_CARDS)
+  const [cards, setCards] = React.useState(DEFAULT_CARDS);
   const handleCreate = ({
     column,
     title,
   }: {
-    column: string
-    title: string
+    column: string;
+    title: string;
   }) => {
-    setCards([...cards, { title, id: `${Math.random()}`, column }])
-  }
+    setCards([...cards, { title, id: `${Math.random()}`, column }]);
+  };
   const handleDelete = (id: string) => {
-    setCards(cards.filter((card) => card.id !== id))
-  }
+    setCards(cards.filter((card) => card.id !== id));
+  };
   return (
     <Kanban
       deletePositionX="right"
@@ -162,22 +153,22 @@ export const DeleteOnRight = () => {
       onCreate={handleCreate}
       onDelete={handleDelete}
     />
-  )
-}
+  );
+};
 export const InstantDeleteDelay = () => {
-  const [cards, setCards] = React.useState(DEFAULT_CARDS)
+  const [cards, setCards] = React.useState(DEFAULT_CARDS);
   const handleCreate = ({
     column,
     title,
   }: {
-    column: string
-    title: string
+    column: string;
+    title: string;
   }) => {
-    setCards([...cards, { title, id: `${Math.random()}`, column }])
-  }
+    setCards([...cards, { title, id: `${Math.random()}`, column }]);
+  };
   const handleDelete = (id: string) => {
-    setCards(cards.filter((card) => card.id !== id))
-  }
+    setCards(cards.filter((card) => card.id !== id));
+  };
   return (
     <Kanban
       deleteDelay={0}
@@ -187,23 +178,23 @@ export const InstantDeleteDelay = () => {
       onCreate={handleCreate}
       onDelete={handleDelete}
     />
-  )
-}
+  );
+};
 
 export const CustomLabels = () => {
-  const [cards, setCards] = React.useState(DEFAULT_CARDS)
+  const [cards, setCards] = React.useState(DEFAULT_CARDS);
   const handleCreate = ({
     column,
     title,
   }: {
-    column: string
-    title: string
+    column: string;
+    title: string;
   }) => {
-    setCards([...cards, { title, id: `${Math.random()}`, column }])
-  }
+    setCards([...cards, { title, id: `${Math.random()}`, column }]);
+  };
   const handleDelete = (id: string) => {
-    setCards(cards.filter((card) => card.id !== id))
-  }
+    setCards(cards.filter((card) => card.id !== id));
+  };
   return (
     <Kanban
       cards={cards}
@@ -217,22 +208,22 @@ export const CustomLabels = () => {
         placeholder: "Afegir nova tasca...",
       }}
     />
-  )
-}
+  );
+};
 export const LongDeleteDelay = () => {
-  const [cards, setCards] = React.useState(DEFAULT_CARDS)
+  const [cards, setCards] = React.useState(DEFAULT_CARDS);
   const handleCreate = ({
     column,
     title,
   }: {
-    column: string
-    title: string
+    column: string;
+    title: string;
   }) => {
-    setCards([...cards, { title, id: `${Math.random()}`, column }])
-  }
+    setCards([...cards, { title, id: `${Math.random()}`, column }]);
+  };
   const handleDelete = (id: string) => {
-    setCards(cards.filter((card) => card.id !== id))
-  }
+    setCards(cards.filter((card) => card.id !== id));
+  };
   return (
     <Kanban
       deleteDelay={2000}
@@ -242,43 +233,36 @@ export const LongDeleteDelay = () => {
       onCreate={handleCreate}
       onDelete={handleDelete}
     />
-  )
-}
+  );
+};
 export const DeleteableDisabled = () => {
-  const [cards, setCards] = React.useState(DEFAULT_CARDS)
+  const [cards, setCards] = React.useState(DEFAULT_CARDS);
   const handleCreate = ({
     column,
     title,
   }: {
-    column: string
-    title: string
+    column: string;
+    title: string;
   }) => {
-    setCards([...cards, { title, id: `${Math.random()}`, column }])
-  }
+    setCards([...cards, { title, id: `${Math.random()}`, column }]);
+  };
 
-  return (
-    <Kanban
-      cards={cards}
-      setCards={setCards}
-      columns={columns}
-      onCreate={handleCreate}
-    />
-  )
-}
+  return <Kanban cards={cards} setCards={setCards} columns={columns} onCreate={handleCreate} />;
+};
 export const DragableDisabled = () => {
-  const [cards, setCards] = React.useState(DEFAULT_CARDS)
+  const [cards, setCards] = React.useState(DEFAULT_CARDS);
   const handleCreate = ({
     column,
     title,
   }: {
-    column: string
-    title: string
+    column: string;
+    title: string;
   }) => {
-    setCards([...cards, { title, id: `${Math.random()}`, column }])
-  }
+    setCards([...cards, { title, id: `${Math.random()}`, column }]);
+  };
   const handleDelete = (id: string) => {
-    setCards(cards.filter((card) => card.id !== id))
-  }
+    setCards(cards.filter((card) => card.id !== id));
+  };
   return (
     <Kanban
       dragable={false}
@@ -288,29 +272,29 @@ export const DragableDisabled = () => {
       onCreate={handleCreate}
       onDelete={handleDelete}
     />
-  )
-}
+  );
+};
 
 export const EventOnReorder = () => {
-  const [cards, setCards] = React.useState(DEFAULT_CARDS)
+  const [cards, setCards] = React.useState(DEFAULT_CARDS);
   const handleCreate = ({
     column,
     title,
   }: {
-    column: string
-    title: string
+    column: string;
+    title: string;
   }) => {
-    setCards([...cards, { title, id: `${Math.random()}`, column }])
-  }
+    setCards([...cards, { title, id: `${Math.random()}`, column }]);
+  };
   const handleDelete = (id: string) => {
-    setCards(cards.filter((card) => card.id !== id))
-  }
+    setCards(cards.filter((card) => card.id !== id));
+  };
   return (
     <Kanban
       onReorder={({ cardId, before, newColumn, isSameColumn }) => {
         toast("Card moved in same column", {
           description: `Card ${cardId} moved before ${before}, new column: ${newColumn}, isSameColumn: ${isSameColumn}`,
-        })
+        });
       }}
       onCreate={handleCreate}
       cards={cards}
@@ -318,78 +302,50 @@ export const EventOnReorder = () => {
       columns={columns}
       onDelete={handleDelete}
     />
-  )
-}
+  );
+};
 export const WithoutCreate = () => {
-  const [cards, setCards] = React.useState(DEFAULT_CARDS)
+  const [cards, setCards] = React.useState(DEFAULT_CARDS);
 
   const handleDelete = (id: string) => {
-    setCards(cards.filter((card) => card.id !== id))
-  }
-  return (
-    <Kanban
-      cards={cards}
-      setCards={setCards}
-      columns={columns}
-      onDelete={handleDelete}
-    />
-  )
-}
+    setCards(cards.filter((card) => card.id !== id));
+  };
+  return <Kanban cards={cards} setCards={setCards} columns={columns} onDelete={handleDelete} />;
+};
 export const CustomTitleClasses = () => {
-  const [cards, setCards] = React.useState(DEFAULT_CARDS)
+  const [cards, setCards] = React.useState(DEFAULT_CARDS);
 
   const handleDelete = (id: string) => {
-    setCards(cards.filter((card) => card.id !== id))
-  }
-  const classes = [
-    "text-primary-800",
-    "text-warning-800",
-    "text-info-800",
-    "text-success-800",
-  ]
-  return (
-    <Kanban
-      cards={cards}
-      setCards={setCards}
-      columns={columns}
-      onDelete={handleDelete}
-      titleClasses={classes}
-    />
-  )
-}
+    setCards(cards.filter((card) => card.id !== id));
+  };
+  const classes = ["text-primary-800", "text-warning-800", "text-info-800", "text-success-800"];
+  return <Kanban cards={cards} setCards={setCards} columns={columns} onDelete={handleDelete} titleClasses={classes} />;
+};
 export const CustomDeleteButton = () => {
-  const [cards, setCards] = React.useState(DEFAULT_CARDS)
+  const [cards, setCards] = React.useState(DEFAULT_CARDS);
   const handleDelete = (id: string) => {
-    setCards(cards.filter((card) => card.id !== id))
-  }
+    setCards(cards.filter((card) => card.id !== id));
+  };
 
   const content = (active: boolean) => (
     <div
       className={twMerge(
         "w-48 h-36 flex justify-center items-center text-center",
-        active ? "bg-red-500" : "bg-blue-500"
+        active ? "bg-red-500" : "bg-blue-500",
       )}
     >
       I am a custom delete buton.
     </div>
-  )
+  );
 
-  return (
-    <Kanban
-      cards={cards}
-      setCards={setCards}
-      columns={columns}
-      onDelete={handleDelete}
-      deleteButton={content}
-    />
-  )
-}
+  return <Kanban cards={cards} setCards={setCards} columns={columns} onDelete={handleDelete} deleteButton={content} />;
+};
 
 export const CustomClassname = () => {
-  const [cards, setCards] = React.useState(DEFAULT_CARDS)
+  const [cards, setCards] = React.useState(DEFAULT_CARDS);
   const handleDelete = (id: string) => {
-    setCards(cards.filter((card) => card.id !== id))
-  }
+    setCards(cards.filter((card) => card.id !== id));
+  };
 
   return (
     <Kanban
@@ -402,5 +358,5 @@ export const CustomClassname = () => {
       columnsClassName="flex gap-10 bg-red-200 p-3 rounded-xl"
       indicatorClassName="bg-orange-700"
     />
-  )
-}
+  );
+};

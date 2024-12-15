@@ -1,16 +1,18 @@
-"use client"
+"use client";
 
-import { setThemeMode } from ".."
-import { useThemeMode, type ThemeMode } from "../../hooks/use-theme-mode"
+import { setThemeMode } from "..";
+import { type ThemeMode, useThemeMode } from "../../hooks/use-theme-mode";
 
 interface Props {
-  mode?: ThemeMode
+  mode?: ThemeMode;
 }
 
 export function ThemeModeInit({ mode }: Props) {
-  if (mode) setThemeMode(mode)
+  if (mode) {
+    setThemeMode(mode);
+  }
 
-  useThemeMode()
+  useThemeMode();
 
-  return null
+  return null;
 }

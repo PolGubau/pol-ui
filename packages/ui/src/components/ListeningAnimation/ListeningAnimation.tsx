@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import React from "react"
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import type React from "react";
 
-import { cn } from "../../helpers"
+import { cn } from "../../helpers";
 
 interface ListeningAnimationProps extends React.HTMLAttributes<HTMLDivElement> {
-  isListening: boolean
-  size?: number
-  scaleFactor?: number
-  itemClassName?: string
-  dotsAmount?: number
-  className?: string
+  isListening: boolean;
+  size?: number;
+  scaleFactor?: number;
+  itemClassName?: string;
+  dotsAmount?: number;
+  className?: string;
 }
 
 const ListeningAnimation: React.FC<ListeningAnimationProps> = ({
@@ -24,20 +24,11 @@ const ListeningAnimation: React.FC<ListeningAnimationProps> = ({
   ...rest
 }) => {
   return (
-    <div
-      className={cn(
-        "gap-2 flex w-[100px] justify-center items-center",
-        className
-      )}
-      {...rest}
-    >
+    <div className={cn("gap-2 flex w-[100px] justify-center items-center", className)} {...rest}>
       {[...Array(dotsAmount)].map((_, index) => (
         <motion.div
           key={index}
-          className={cn(
-            "w-full aspect-square rounded-full bg-primary",
-            itemClassName
-          )}
+          className={cn("w-full aspect-square rounded-full bg-primary", itemClassName)}
           animate={
             isListening
               ? {
@@ -50,7 +41,7 @@ const ListeningAnimation: React.FC<ListeningAnimationProps> = ({
             isListening
               ? {
                   duration: 1,
-                  repeat: Infinity,
+                  repeat: Number.POSITIVE_INFINITY,
                   delay: index * 0.1,
                 }
               : undefined
@@ -58,8 +49,8 @@ const ListeningAnimation: React.FC<ListeningAnimationProps> = ({
         />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export { ListeningAnimation }
-export type { ListeningAnimationProps }
+export { ListeningAnimation };
+export type { ListeningAnimationProps };

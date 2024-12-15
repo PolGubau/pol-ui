@@ -1,39 +1,39 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import { CardStack } from './CardStack'
-import { twMerge } from 'tailwind-merge'
+import type { Meta, StoryFn } from "@storybook/react";
+import { twMerge } from "tailwind-merge";
+import { CardStack } from "./CardStack";
 
 export default {
-  title: 'Components/CardStack',
+  title: "Components/CardStack",
   component: CardStack,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 justify-center items-center">
         <Story />
       </div>
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
 const Example = (props: React.HTMLAttributes<HTMLDivElement>) => {
   return (
     <div
       {...props}
       className={twMerge(
-        'w-[150px] text-2xl h-[150px] rounded-3xl bg-primary grid place-items-center',
+        "w-[150px] text-2xl h-[150px] rounded-3xl bg-primary grid place-items-center",
         props.className,
       )}
     >
-      {props.children ?? 'Example'}
+      {props.children ?? "Example"}
     </div>
-  )
-}
+  );
+};
 
-const Template: StoryFn = args => <CardStack {...args} />
-export const Default = Template.bind({})
+const Template: StoryFn = (args) => <CardStack {...args} />;
+export const Default = Template.bind({});
 Default.args = {
   children: [
     <Example className="bg-red-200" key={1}>
@@ -52,12 +52,12 @@ Default.args = {
       5
     </Example>,
   ],
-}
-export const JustOneElement = Template.bind({})
+};
+export const JustOneElement = Template.bind({});
 JustOneElement.args = {
   children: [<Example key={1}>1</Example>],
-}
-export const Pair = Template.bind({})
+};
+export const Pair = Template.bind({});
 Pair.args = {
   children: [<Example key={1}>1</Example>, <Example key={2}>2</Example>],
-}
+};

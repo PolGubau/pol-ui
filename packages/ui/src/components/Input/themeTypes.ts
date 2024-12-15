@@ -1,4 +1,4 @@
-import type { ColorsType, IBoolean, MainSizesType } from '../../types'
+import type { ColorsType, IBoolean, MainSizesType } from "../../types";
 
 /**
  * @name InputProps
@@ -9,10 +9,10 @@ import type { ColorsType, IBoolean, MainSizesType } from '../../types'
  * @property right `string`
  */
 export interface InputFieldIconTheme {
-  base: string
-  svg: string
-  left: string
-  right: string
+  base: string;
+  svg: string;
+  left: string;
+  right: string;
 }
 /**
  * @name InputInputTheme
@@ -28,17 +28,17 @@ export interface InputFieldIconTheme {
  * @author Pol Gubau Amores - https://polgubau.com
  */
 export interface InputInputTheme {
-  base: string
-  sizes: MainSizesType
-  colors: ColorsType
+  base: string;
+  sizes: MainSizesType;
+  colors: ColorsType;
   label: {
-    base: string
-  }
-  border: IBoolean
-  withIcon: IBoolean
-  withRightIcon: IBoolean
-  withAddon: IBoolean
-  multiline: IBoolean
+    base: string;
+  };
+  border: IBoolean;
+  withIcon: IBoolean;
+  withRightIcon: IBoolean;
+  withAddon: IBoolean;
+  multiline: IBoolean;
 }
 /**
  * @name InputFieldTheme
@@ -49,9 +49,9 @@ export interface InputInputTheme {
  * @author Pol Gubau Amores - https://polgubau.com
  */
 export interface InputFieldTheme {
-  base: string
-  icons: InputFieldIconTheme
-  input: InputInputTheme
+  base: string;
+  icons: InputFieldIconTheme;
+  input: InputInputTheme;
 }
 /**
  * @name InputTheme
@@ -62,13 +62,13 @@ export interface InputFieldTheme {
  */
 export interface InputTheme {
   root: {
-    base: string
+    base: string;
     labelPosition: {
-      left: string
-      top: string
-    }
-  }
-  base: string
-  label: string
-  field: InputFieldTheme
+      left: string;
+      top: string;
+    };
+  };
+  base: string;
+  label: string;
+  field: InputFieldTheme;
 }

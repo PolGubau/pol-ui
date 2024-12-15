@@ -1,47 +1,47 @@
-'use client'
+"use client";
 
-import { AnimatePresence } from 'framer-motion'
-import { useBoolean, useDebounce } from '../../hooks'
-import { KanbanColumn } from './Column'
-import type { KanbanCardProps } from './Card'
-import { KanbanDeleteCardsButton } from './BurnBarrel'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers'
-import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types'
-import type { KanbanTheme } from './theme'
+import { AnimatePresence } from "framer-motion";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers";
+import { useBoolean, useDebounce } from "../../hooks";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import { KanbanDeleteCardsButton } from "./BurnBarrel";
+import type { KanbanCardProps } from "./Card";
+import { KanbanColumn } from "./Column";
+import type { KanbanTheme } from "./theme";
 
 interface OnReorder {
-  cards: KanbanCardProps[]
-  cardId: KanbanCardProps['id']
-  before: KanbanCardProps['id']
-  newColumn: KanbanCardProps['column']
-  isSameColumn: boolean
+  cards: KanbanCardProps[];
+  cardId: KanbanCardProps["id"];
+  before: KanbanCardProps["id"];
+  newColumn: KanbanCardProps["column"];
+  isSameColumn: boolean;
 }
 
 export interface KanbanProps {
-  dragable?: boolean
-  columns?: string[]
-  cards: KanbanCardProps[]
-  setCards: (value: KanbanCardProps[]) => void
-  deleteButton?: (dragging: boolean) => React.ReactNode
-  deletePositionY?: 'top' | 'bottom'
-  deletePositionX?: 'left' | 'right' | 'center'
-  deleteDelay?: number
-  onReorder?: ({ cards, cardId, before, newColumn, isSameColumn }: OnReorder) => void
-  onCreate?: ({ column, title }: { column: string; title: string }) => void
-  onDelete?: (cardId: KanbanCardProps['id']) => void
-  className?: string
-  columnClassName?: string
-  columnsClassName?: string
-  indicatorClassName?: string
-  titleClasses?: string[]
+  dragable?: boolean;
+  columns?: string[];
+  cards: KanbanCardProps[];
+  setCards: (value: KanbanCardProps[]) => void;
+  deleteButton?: (dragging: boolean) => React.ReactNode;
+  deletePositionY?: "top" | "bottom";
+  deletePositionX?: "left" | "right" | "center";
+  deleteDelay?: number;
+  onReorder?: ({ cards, cardId, before, newColumn, isSameColumn }: OnReorder) => void;
+  onCreate?: ({ column, title }: { column: string; title: string }) => void;
+  onDelete?: (cardId: KanbanCardProps["id"]) => void;
+  className?: string;
+  columnClassName?: string;
+  columnsClassName?: string;
+  indicatorClassName?: string;
+  titleClasses?: string[];
   labels?: {
-    add?: string
-    cancel?: string
-    placeholder?: string
-  }
-  theme?: DeepPartial<KanbanTheme>
+    add?: string;
+    cancel?: string;
+    placeholder?: string;
+  };
+  theme?: DeepPartial<KanbanTheme>;
 }
 
 /**
@@ -65,20 +65,26 @@ export const Kanban: React.FC<KanbanProps> = ({
   columnClassName,
   columnsClassName,
   indicatorClassName,
-  columns = [...new Set(cards.map(card => card.column))],
+  columns = [...new Set(cards.map((card) => card.column))],
   titleClasses,
-  labels = { add: 'Add', cancel: 'Cancel', placeholder: 'Add new...' },
+  labels = { add: "Add", cancel: "Cancel", placeholder: "Add new..." },
 
   theme: customTheme = {},
 }: KanbanProps) => {
-  const { value: dragging, setValue: setDragging } = useBoolean(false)
-  const debouncedDragging = useDebounce(dragging, deleteDelay)
-  const shouldRenderDeleteButton = onDelete && debouncedDragging
+  const { value: dragging, setValue: setDragging } = useBoolean(false);
+  const debouncedDragging = useDebounce(dragging, deleteDelay);
+  const shouldRenderDeleteButton = onDelete && debouncedDragging;
 
-  if (!columns.length) throw new Error('Kanban must have at least one column 🤔🤔🤔')
-  if (!cards.length) throw new Error('Kanban must have at least one card 🤔🤔🤔')
-  if (deleteButton && !onDelete) throw new Error('Kanban must have onDelete prop if deleteButton is provided 🤔🤔🤔')
-  const theme: KanbanTheme = mergeDeep(getTheme().kanban, customTheme)
+  if (!columns.length) {
+    throw new Error("Kanban must have at least one column 🤔🤔🤔");
+  }
+  if (!cards.length) {
+    throw new Error("Kanban must have at least one card 🤔🤔🤔");
+  }
+  if (deleteButton && !onDelete) {
+    throw new Error("Kanban must have onDelete prop if deleteButton is provided 🤔🤔🤔");
+  }
+  const theme: KanbanTheme = mergeDeep(getTheme().kanban, customTheme);
 
   return (
     <AnimatePresence mode="wait">
@@ -102,7 +108,7 @@ export const Kanban: React.FC<KanbanProps> = ({
               onCreate={onCreate}
               theme={theme}
             />
-          )
+          );
         })}
 
         {shouldRenderDeleteButton && (
@@ -116,5 +122,5 @@ export const Kanban: React.FC<KanbanProps> = ({
         )}
       </div>
     </AnimatePresence>
-  )
-}
+  );
+};

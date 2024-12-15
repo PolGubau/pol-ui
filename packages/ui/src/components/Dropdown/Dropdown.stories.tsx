@@ -1,7 +1,7 @@
-import { useState } from "react"
-import type { Meta } from "@storybook/react"
-import { BiCloud, BiExpandVertical, BiLogOut } from "react-icons/bi"
-import { BsGithub } from "react-icons/bs"
+import type { Meta } from "@storybook/react";
+import { useState } from "react";
+import { BiCloud, BiExpandVertical, BiLogOut } from "react-icons/bi";
+import { BsGithub } from "react-icons/bs";
 import {
   TbCreditCard,
   TbKeyboard,
@@ -13,11 +13,11 @@ import {
   TbUser,
   TbUserPlus,
   TbUsers,
-} from "react-icons/tb"
+} from "react-icons/tb";
 
-import { cn } from "../../helpers"
-import { Button } from "../Button"
-import { Divider } from "../Divider"
+import { cn } from "../../helpers";
+import { Button } from "../Button";
+import { Divider } from "../Divider";
 import {
   Dropdown,
   DropdownDescription,
@@ -27,13 +27,9 @@ import {
   DropdownPortal,
   DropdownShortcut,
   DropdownSub,
-} from "./Dropdown"
-import { DropdownSubContent } from "./components"
-import {
-  DropdownExpandableTextArea,
-  DropdownItem,
-  DropdownSubTrigger,
-} from "./components/items"
+} from "./Dropdown";
+import { DropdownSubContent } from "./components";
+import { DropdownExpandableTextArea, DropdownItem, DropdownSubTrigger } from "./components/items";
 
 export default {
   title: "Components/Dropdown",
@@ -55,7 +51,7 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 export function Default() {
   return (
     <Dropdown>
@@ -68,7 +64,7 @@ export function Default() {
       <DropdownGroup>
         <DropdownItem
           onSelect={() => {
-            alert("a")
+            alert("a");
           }}
           icon={TbUser}
         >
@@ -124,7 +120,7 @@ export function Default() {
       <DropdownItem icon={TbLifebuoy}>
         <span>Support</span>
       </DropdownItem>
-      <DropdownItem disabled>
+      <DropdownItem disabled={true}>
         <BiCloud className="mr-2 h-4 w-4" />
         <span>API</span>
       </DropdownItem>
@@ -136,7 +132,7 @@ export function Default() {
         <DropdownShortcut>⇧⌘Q</DropdownShortcut>
       </DropdownItem>
     </Dropdown>
-  )
+  );
 }
 
 export const AppPicker = () => {
@@ -152,9 +148,9 @@ export const AppPicker = () => {
       name: "contacts",
       icon: <TbPlus />,
     },
-  ]
+  ];
 
-  const [selectedApp, setSelectedApp] = useState(apps[0])
+  const [selectedApp, setSelectedApp] = useState(apps[0]);
 
   return (
     <section className="w-full bg-primary-200 min-h-[600px]">
@@ -163,14 +159,8 @@ export const AppPicker = () => {
           <h1>Pol/</h1>
           <Dropdown
             trigger={
-              <Button
-                color={"secondary"}
-                variant={"ghost"}
-                className="py-1"
-                rounded="full"
-              >
-                <span>{selectedApp.icon}</span> {selectedApp.name}{" "}
-                <BiExpandVertical />
+              <Button color={"secondary"} variant={"ghost"} className="py-1" rounded="full">
+                <span>{selectedApp.icon}</span> {selectedApp.name} <BiExpandVertical />
               </Button>
             }
           >
@@ -179,14 +169,13 @@ export const AppPicker = () => {
                 <DropdownItem
                   key={app.name}
                   onSelect={() => {
-                    setSelectedApp(app)
+                    setSelectedApp(app);
                   }}
                   className={cn(
                     "flex flex-col gap-2 max-w-[80px] rounded-xl cursor-pointer group first:rounded-t-xl last:rounded-b-xl overflow-hidden",
                     {
-                      "bg-primary-200 text-primary-900":
-                        selectedApp.name === app.name,
-                    }
+                      "bg-primary-200 text-primary-900": selectedApp.name === app.name,
+                    },
                   )}
                 >
                   <span className="scale-150">{app.icon}</span>
@@ -202,5 +191,5 @@ export const AppPicker = () => {
         <h2 className="text-xl font-bold">{selectedApp.name} App content</h2>
       </main>
     </section>
-  )
-}
+  );
+};

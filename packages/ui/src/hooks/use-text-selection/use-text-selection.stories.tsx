@@ -1,12 +1,13 @@
-import React, { useRef } from "react"
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
+import type React from "react";
+import { useRef } from "react";
 
-import { Button, Toaster, toast } from "../../components"
-import { useTextSelection } from "./use-text-selection"
+import { Toaster } from "../../components";
+import { useTextSelection } from "./use-text-selection";
 
 const Test = () => {
-  return "test"
-}
+  return "test";
+};
 
 export default {
   title: "Hooks/useTextSelection",
@@ -22,10 +23,10 @@ export default {
   ],
 
   tags: ["autodocs"],
-} as Meta
+} as Meta;
 export const Default: React.FC = () => {
-  const elementRef = useRef<HTMLDivElement>(null)
-  const { text, rects, ranges, selection } = useTextSelection(elementRef)
+  const elementRef = useRef<HTMLDivElement>(null);
+  const { text, rects, ranges, selection } = useTextSelection(elementRef);
 
   return (
     <div>
@@ -40,9 +41,7 @@ export const Default: React.FC = () => {
         }}
       >
         Select some text in this box to see the hook in action.
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed.
-        </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed.</p>
       </div>
       <div>
         <h2>Selected Text:</h2>
@@ -67,5 +66,5 @@ export const Default: React.FC = () => {
         </ul>
       </div>
     </div>
-  )
-}
+  );
+};

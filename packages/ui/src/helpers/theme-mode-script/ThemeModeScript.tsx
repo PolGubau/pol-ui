@@ -1,15 +1,14 @@
-import type { ThemeMode } from "../../hooks/use-theme-mode"
+import type { ThemeMode } from "../../hooks/use-theme-mode";
 
-export interface ThemeModeScriptProps
-  extends React.ComponentPropsWithoutRef<"script"> {
-  mode?: ThemeMode
+export interface ThemeModeScriptProps extends React.ComponentPropsWithoutRef<"script"> {
+  mode?: ThemeMode;
 }
 
 export const ThemeModeScript = ({ mode, ...others }: ThemeModeScriptProps) => {
   return (
     <script
       {...others}
-      data-ui-theme-mode-script
+      data-ui-theme-mode-script={true}
       dangerouslySetInnerHTML={{
         __html: getScript({
           mode,
@@ -18,17 +17,17 @@ export const ThemeModeScript = ({ mode, ...others }: ThemeModeScriptProps) => {
         }),
       }}
     />
-  )
-}
+  );
+};
 
 function getScript({
   mode = "auto",
   defaultMode,
   localStorageKey,
 }: {
-  mode?: ThemeMode
-  defaultMode: ThemeMode
-  localStorageKey: string
+  mode?: ThemeMode;
+  defaultMode: ThemeMode;
+  localStorageKey: string;
 }) {
   return `
     try {
@@ -42,5 +41,5 @@ function getScript({
         document.documentElement.classList.remove('dark');
       }
     } catch (e) {}
-  `
+  `;
 }

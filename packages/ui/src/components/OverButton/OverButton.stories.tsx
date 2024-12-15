@@ -1,12 +1,12 @@
-import { useState } from "react"
-import type { Meta } from "@storybook/react"
-import { TbArrowLeft, TbUser } from "react-icons/tb"
+import type { Meta } from "@storybook/react";
+import { useState } from "react";
+import { TbArrowLeft, TbUser } from "react-icons/tb";
 
-import { Button } from "../Button"
-import { Divider } from "../Divider"
-import { IconButton } from "../IconButton"
-import { toast } from "../Toaster"
-import { OverButton } from "./OverButton"
+import { Button } from "../Button";
+import { Divider } from "../Divider";
+import { IconButton } from "../IconButton";
+import { toast } from "../Toaster";
+import { OverButton } from "./OverButton";
 
 export default {
   title: "Components/OverButton",
@@ -21,10 +21,10 @@ export default {
       </div>
     ),
   ],
-} as Meta
+} as Meta;
 
 export function Default() {
-  const [note, setNote] = useState("")
+  const [note, setNote] = useState("");
 
   return (
     <OverButton>
@@ -32,15 +32,15 @@ export function Default() {
         <form
           className="flex h-full flex-col"
           onSubmit={(e) => {
-            e.preventDefault()
-            props.onClose()
-            toast.success("Note added")
-            setNote("")
+            e.preventDefault();
+            props.onClose();
+            toast.success("Note added");
+            setNote("");
           }}
         >
           <textarea
             className="h-full w-full resize-none rounded-md bg-transparent px-4 py-3 text-sm outline-none"
-            autoFocus
+            autoFocus={true}
             value={note}
             onChange={(e) => setNote(e.target.value)}
           />
@@ -53,7 +53,7 @@ export function Default() {
         </form>
       )}
     </OverButton>
-  )
+  );
 }
 export function Example() {
   return (
@@ -65,7 +65,7 @@ export function Example() {
         Note 2: <Default />
       </li>
     </ul>
-  )
+  );
 }
 
 export function UserInfo() {
@@ -99,5 +99,5 @@ export function UserInfo() {
         </section>
       )}
     </OverButton>
-  )
+  );
 }

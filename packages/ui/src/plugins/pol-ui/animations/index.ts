@@ -77,18 +77,12 @@ export const animations = {
     pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
     "small-slide-down-in": "slide-down-in 400ms cubic-bezier(0.16, 1, 0.3, 1)",
     "small-slide-left-in": "slide-left-in 400ms cubic-bezier(0.16, 1, 0.3, 1)",
-    "small-slide-up-in":
-      "small-slide-up-in 400ms cubic-bezier(0.16, 1, 0.3, 1)",
-    "small-slide-right-in":
-      "small-slide-right-in 400ms cubic-bezier(0.16, 1, 0.3, 1)",
-    "small-slide-down-out":
-      "small-slide-down-in 400ms cubic-bezier(0.16, 1, 0.3, 1) reverse",
-    "small-slide-left-out":
-      "small-slide-left-in 400ms cubic-bezier(0.16, 1, 0.3, 1) reverse",
-    "small-slide-up-out":
-      "small-slide-up-in 400ms cubic-bezier(0.16, 1, 0.3, 1) reverse",
-    "small-slide-right-out":
-      "small-slide-right-in 400ms cubic-bezier(0.16, 1, 0.3, 1) reverse",
+    "small-slide-up-in": "small-slide-up-in 400ms cubic-bezier(0.16, 1, 0.3, 1)",
+    "small-slide-right-in": "small-slide-right-in 400ms cubic-bezier(0.16, 1, 0.3, 1)",
+    "small-slide-down-out": "small-slide-down-in 400ms cubic-bezier(0.16, 1, 0.3, 1) reverse",
+    "small-slide-left-out": "small-slide-left-in 400ms cubic-bezier(0.16, 1, 0.3, 1) reverse",
+    "small-slide-up-out": "small-slide-up-in 400ms cubic-bezier(0.16, 1, 0.3, 1) reverse",
+    "small-slide-right-out": "small-slide-right-in 400ms cubic-bezier(0.16, 1, 0.3, 1) reverse",
     "grow-contract": "heartbeat 8s ease-out both infinite",
     "grow-width": "grow-width 1s ease-out both",
     "shrink-width": "grow-width 1s ease-out both reverse",
@@ -572,4 +566,4 @@ export const animations = {
   viewAnimation: {
     single: "--single-timeline",
   },
-}
+};

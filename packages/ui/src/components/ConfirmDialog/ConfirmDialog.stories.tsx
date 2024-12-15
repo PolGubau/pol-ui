@@ -1,7 +1,7 @@
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
 
-import { toast } from "../Toaster"
-import { ConfirmDialog } from "./ConfirmDialog"
+import { toast } from "../Toaster";
+import { ConfirmDialog } from "./ConfirmDialog";
 
 export default {
   title: "Components/ConfirmDialog",
@@ -17,62 +17,57 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
 export const Default = () => {
   const fakePromise = () => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve("Done")
-      }, 1000)
-    })
-  }
+        resolve("Done");
+      }, 1000);
+    });
+  };
 
   const handleConfirm = async () => {
     toast.promise(fakePromise, {
       loading: "Loading...",
       success: () => {
-        return `Data deleted`
+        return `Data deleted`;
       },
       error: "Error",
-    })
-    await fakePromise()
-  }
+    });
+    await fakePromise();
+  };
 
-  return (
-    <ConfirmDialog
-      onConfirm={handleConfirm}
-      onCancel={() => toast.info("Cancelled")}
-    />
-  )
-}
+  return <ConfirmDialog onConfirm={handleConfirm} onCancel={() => toast.info("Cancelled")} />;
+};
 
 export const Hold = () => {
   const fakePromise = () => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve("Done")
-      }, 1000)
-    })
-  }
+        resolve("Done");
+      }, 1000);
+    });
+  };
 
   const handleConfirm = async () => {
     toast.promise(fakePromise, {
       loading: "Loading...",
       success: () => {
-        return `Data deleted`
+        return `Data deleted`;
       },
       error: "Error",
-    })
-    await fakePromise()
-  }
+    });
+    await fakePromise();
+  };
 
   return (
     <ConfirmDialog
-      hold
+      hold={true}
       onConfirm={handleConfirm}
       onCancel={() => toast.info("Cancelled")}
       confirmText="Hold to delete"
     />
-  )
-}
+  );
+};

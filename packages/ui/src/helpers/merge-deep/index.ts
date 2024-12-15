@@ -1,1 +1,1 @@
-export * from './merge-deep';
+export * from "./merge-deep";

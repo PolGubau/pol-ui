@@ -1,6 +1,6 @@
-import type { Meta, StoryFn } from "@storybook/react"
+import type { Meta, StoryFn } from "@storybook/react";
 
-import { DirectionHover } from "./DirectionHover"
+import { DirectionHover } from "./DirectionHover";
 
 export default {
   title: "Components/DirectionHover",
@@ -9,7 +9,7 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 export const Line: StoryFn = () => (
   <div className="flex gap-2">
     <DirectionHover imageUrl="https://picsum.photos/600">
@@ -18,7 +18,7 @@ export const Line: StoryFn = () => (
       </div>
     </DirectionHover>
   </div>
-)
+);
 export const Default: StoryFn = () => (
   <div className="flex gap-2">
     <DirectionHover imageUrl="https://picsum.photos/600">
@@ -37,7 +37,7 @@ export const Default: StoryFn = () => (
       </div>
     </DirectionHover>
   </div>
-)
+);
 export const Grid: StoryFn = () => (
   <div className="grid grid-cols-3 grid-rows-3 gap-2">
     <DirectionHover imageUrl="https://picsum.photos/600">
@@ -86,4 +86,4 @@ export const Grid: StoryFn = () => (
       </div>
     </DirectionHover>
   </div>
-)
+);

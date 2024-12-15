@@ -1,52 +1,52 @@
-import { act, renderHook } from '@testing-library/react';
-import { describe, expect, test } from 'vitest';
-import { useBoolean } from './use-boolean';
+import { act, renderHook } from "@testing-library/react";
+import { describe, expect, test } from "vitest";
+import { useBoolean } from "./use-boolean";
 
-describe('useBoolean()', () => {
-  test('should use boolean', () => {
+describe("useBoolean()", () => {
+  test("should use boolean", () => {
     const { result } = renderHook(() => useBoolean());
 
     expect(result.current.value).toBe(false);
-    expect(typeof result.current.setTrue).toBe('function');
-    expect(typeof result.current.setFalse).toBe('function');
-    expect(typeof result.current.toggle).toBe('function');
-    expect(typeof result.current.setValue).toBe('function');
+    expect(typeof result.current.setTrue).toBe("function");
+    expect(typeof result.current.setFalse).toBe("function");
+    expect(typeof result.current.toggle).toBe("function");
+    expect(typeof result.current.setValue).toBe("function");
   });
 
-  test('should default value works (1)', () => {
+  test("should default value works (1)", () => {
     const { result } = renderHook(() => useBoolean(true));
 
     expect(result.current.value).toBe(true);
   });
 
-  test('should default value works (2)', () => {
+  test("should default value works (2)", () => {
     const { result } = renderHook(() => useBoolean(false));
 
     expect(result.current.value).toBe(false);
   });
 
-  test('should set to true (1)', () => {
+  test("should set to true (1)", () => {
     const { result } = renderHook(() => useBoolean(false));
 
     act(() => {
-      result.current.setTrue();
-    });
-
-    expect(result.current.value).toBe(true);
-  });
-
-  test('should set to true (2)', () => {
-    const { result } = renderHook(() => useBoolean(false));
-
-    act(() => {
-      result.current.setTrue();
       result.current.setTrue();
     });
 
     expect(result.current.value).toBe(true);
   });
 
-  test('should set to false (1)', () => {
+  test("should set to true (2)", () => {
+    const { result } = renderHook(() => useBoolean(false));
+
+    act(() => {
+      result.current.setTrue();
+      result.current.setTrue();
+    });
+
+    expect(result.current.value).toBe(true);
+  });
+
+  test("should set to false (1)", () => {
     const { result } = renderHook(() => useBoolean(true));
 
     act(() => {
@@ -56,7 +56,7 @@ describe('useBoolean()', () => {
     expect(result.current.value).toBe(false);
   });
 
-  test('should set to false (2)', () => {
+  test("should set to false (2)", () => {
     const { result } = renderHook(() => useBoolean(true));
 
     act(() => {
@@ -67,7 +67,7 @@ describe('useBoolean()', () => {
     expect(result.current.value).toBe(false);
   });
 
-  test('should toggle value', () => {
+  test("should toggle value", () => {
     const { result } = renderHook(() => useBoolean(true));
 
     act(() => {
@@ -77,7 +77,7 @@ describe('useBoolean()', () => {
     expect(result.current.value).toBe(false);
   });
 
-  test('should toggle value from prev using setValue', () => {
+  test("should toggle value from prev using setValue", () => {
     const { result } = renderHook(() => useBoolean(true));
 
     act(() => {

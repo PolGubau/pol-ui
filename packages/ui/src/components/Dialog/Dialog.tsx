@@ -1,31 +1,30 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as DialogPrimitive from "@radix-ui/react-dialog"
+import * as DialogPrimitive from "@radix-ui/react-dialog";
+import type * as React from "react";
 
-import { Button } from "../Button"
-import { DialogContent, DialogContentProps } from "./components"
+import { Button } from "../Button";
+import { DialogContent, type DialogContentProps } from "./components";
 
-const Root = DialogPrimitive.Root
+const Root = DialogPrimitive.Root;
 
-const DialogTrigger = DialogPrimitive.Trigger
+const DialogTrigger = DialogPrimitive.Trigger;
 
-const DialogPortal = DialogPrimitive.Portal
+const DialogPortal = DialogPrimitive.Portal;
 
-const DialogClose = DialogPrimitive.Close
+const DialogClose = DialogPrimitive.Close;
 
 // ------------------------------ DialogContent ------------------------------
 
-export interface DialogProps
-  extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root> {
-  children: React.ReactNode
-  label?: string
-  withoutTrigger?: boolean
+export interface DialogProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root> {
+  children: React.ReactNode;
+  label?: string;
+  withoutTrigger?: boolean;
 
-  trigger?: React.ReactNode
-  contentProps?: DialogContentProps
-  triggerProps?: React.ComponentProps<typeof DialogPrimitive.Trigger>
-  className?: string
+  trigger?: React.ReactNode;
+  contentProps?: DialogContentProps;
+  triggerProps?: React.ComponentProps<typeof DialogPrimitive.Trigger>;
+  className?: string;
 }
 const Dialog = ({
   children,
@@ -37,18 +36,18 @@ const Dialog = ({
   withoutTrigger,
   ...root
 }: DialogProps) => {
-  const triggerNode = trigger || <Button>{label}</Button>
+  const triggerNode = trigger || <Button>{label}</Button>;
 
   return (
     <Root {...root}>
       {!withoutTrigger && (
-        <DialogTrigger asChild {...triggerProps}>
+        <DialogTrigger asChild={true} {...triggerProps}>
           {triggerNode}
         </DialogTrigger>
       )}
       <DialogContent {...contentProps}>{children}</DialogContent>
     </Root>
-  )
-}
+  );
+};
 
-export { Root, DialogPortal, DialogClose, DialogTrigger, Dialog }
+export { Root, DialogPortal, DialogClose, DialogTrigger, Dialog };

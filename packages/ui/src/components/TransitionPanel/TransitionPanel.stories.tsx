@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react"
-import type { Meta } from "@storybook/react"
-import useMeasure from "react-use-measure"
+import type { Meta } from "@storybook/react";
+import { useEffect, useState } from "react";
+import useMeasure from "react-use-measure";
 
-import { Button } from "../Button"
-import { TransitionPanel } from "./TransitionPanel"
+import { Button } from "../Button";
+import { TransitionPanel } from "./TransitionPanel";
 
 export default {
   title: "Components/TransitionPanel",
@@ -19,12 +19,12 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
 export function Default() {
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const ITEMS = [
+  const items = [
     {
       title: "Aesthetics",
       subtitle: "Refining Visual Harmony",
@@ -43,12 +43,12 @@ export function Default() {
       content:
         "Gain proficiency in advanced techniques such as physics-based animations, 3D transformations, and complex sequencing to elevate your design skills and implementation.",
     },
-  ]
+  ];
 
   return (
     <div>
       <div className="mb-4 flex space-x-2">
-        {ITEMS.map((item, index) => (
+        {items.map((item, index) => (
           <button
             key={index}
             onClick={() => setActiveIndex(index)}
@@ -72,26 +72,24 @@ export function Default() {
             exit: { opacity: 0, y: 50, filter: "blur(4px)" },
           }}
         >
-          {ITEMS.map((item, index) => (
+          {items.map((item, index) => (
             <div key={index} className="py-2">
-              <h3 className="mb-2 font-medium text-zinc-800 dark:text-zinc-100">
-                {item.subtitle}
-              </h3>
+              <h3 className="mb-2 font-medium text-zinc-800 dark:text-zinc-100">{item.subtitle}</h3>
               <p className="text-zinc-600 dark:text-zinc-400">{item.content}</p>
             </div>
           ))}
         </TransitionPanel>
       </div>
     </div>
-  )
+  );
 }
 
 export function TransitionPanelCard() {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [direction, setDirection] = useState(1)
-  const [ref, bounds] = useMeasure()
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const [ref, bounds] = useMeasure();
 
-  const FEATURES = [
+  const features = [
     {
       title: "Brand",
       description:
@@ -112,17 +110,21 @@ export function TransitionPanelCard() {
       description:
         "Develop a design system that unifies your brand identity, ensuring consistency across all platforms and products.",
     },
-  ]
+  ];
 
   const handleSetActiveIndex = (newIndex: number) => {
-    setDirection(newIndex > activeIndex ? 1 : -1)
-    setActiveIndex(newIndex)
-  }
+    setDirection(newIndex > activeIndex ? 1 : -1);
+    setActiveIndex(newIndex);
+  };
 
   useEffect(() => {
-    if (activeIndex < 0) setActiveIndex(0)
-    if (activeIndex >= FEATURES.length) setActiveIndex(FEATURES.length - 1)
-  }, [activeIndex])
+    if (activeIndex < 0) {
+      setActiveIndex(0);
+    }
+    if (activeIndex >= features.length) {
+      setActiveIndex(features.length - 1);
+    }
+  }, [activeIndex]);
 
   const variants = {
     enter: (direction: number) => ({
@@ -143,7 +145,7 @@ export function TransitionPanelCard() {
       left: 0,
       width: "100%",
     }),
-  }
+  };
 
   return (
     <div className="w-[364px] overflow-hidden rounded-xl border border-zinc-950/10 bg-white dark:bg-zinc-700">
@@ -177,35 +179,19 @@ export function TransitionPanelCard() {
         }}
         custom={direction}
       >
-        {FEATURES.map((feature, index) => (
+        {features.map((feature, index) => (
           <div key={index} className="px-4 pt-4" ref={ref}>
-            <h3 className="mb-0.5 font-medium text-zinc-800 dark:text-zinc-100">
-              {feature.title}
-            </h3>
-            <p className="text-zinc-600 dark:text-zinc-400">
-              {feature.description}
-            </p>
+            <h3 className="mb-0.5 font-medium text-zinc-800 dark:text-zinc-100">{feature.title}</h3>
+            <p className="text-zinc-600 dark:text-zinc-400">{feature.description}</p>
           </div>
         ))}
       </TransitionPanel>
       <div className="flex justify-between p-4">
-        {activeIndex > 0 ? (
-          <Button onClick={() => handleSetActiveIndex(activeIndex - 1)}>
-            Previous
-          </Button>
-        ) : (
-          <div />
-        )}
-        <Button
-          onClick={() =>
-            activeIndex === FEATURES.length - 1
-              ? null
-              : handleSetActiveIndex(activeIndex + 1)
-          }
-        >
-          {activeIndex === FEATURES.length - 1 ? "Close" : "Next"}
+        {activeIndex > 0 ? <Button onClick={() => handleSetActiveIndex(activeIndex - 1)}>Previous</Button> : <div />}
+        <Button onClick={() => (activeIndex === features.length - 1 ? null : handleSetActiveIndex(activeIndex + 1))}>
+          {activeIndex === features.length - 1 ? "Close" : "Next"}
         </Button>
       </div>
     </div>
-  )
+  );
 }

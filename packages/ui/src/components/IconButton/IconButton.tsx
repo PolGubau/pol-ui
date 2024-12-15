@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import { cn } from "../../helpers"
-import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
-import { getTheme } from "../../theme-store"
-import type { DeepPartial } from "../../types"
-import { Button, type ButtonProps } from "../Button"
-import { Tooltip } from "../Tooltip"
-import type { IconButtonTheme } from "./theme"
+import { cn } from "../../helpers";
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import { Button, type ButtonProps } from "../Button";
+import { Tooltip } from "../Tooltip";
+import type { IconButtonTheme } from "./theme";
 
 export interface IconButtonProps extends ButtonProps {
-  theme?: DeepPartial<IconButtonTheme>
-  label?: string
-  allowTooltip?: boolean
+  theme?: DeepPartial<IconButtonTheme>;
+  label?: string;
+  allowTooltip?: boolean;
 }
 
 /**
@@ -49,7 +49,7 @@ export const IconButton = ({
   allowTooltip = true,
   ...props
 }: IconButtonProps) => {
-  const theme = mergeDeep(getTheme().iconButton, customTheme)
+  const theme = mergeDeep(getTheme().iconButton, customTheme);
 
   return (
     <Tooltip label={allowTooltip && label}>
@@ -61,5 +61,5 @@ export const IconButton = ({
         className={cn(theme.base, className)}
       />
     </Tooltip>
-  )
-}
+  );
+};

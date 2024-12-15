@@ -1,16 +1,14 @@
-import { useState } from "react"
+import { useState } from "react";
 
-import { useCalendar } from "../../helpers/dates"
-import { IconButton } from "../IconButton"
-import Day from "./components/Day"
-import WeekDays from "./components/Weekdays"
-
-export interface CalendarProps {}
+import { useCalendar } from "../../helpers/dates";
+import { IconButton } from "../IconButton";
+import Day from "./components/Day";
+import WeekDays from "./components/Weekdays";
 
 export const Calendar = () => {
-  const { days, month, nextMonth, prevMonth } = useCalendar()
-  const [selected, setSelected] = useState(new Date())
-  const MONTH_NAMES = [
+  const { days, month, nextMonth, prevMonth } = useCalendar();
+  const [selected, setSelected] = useState(new Date());
+  const monthNames = [
     "January",
     "February",
     "March",
@@ -23,8 +21,8 @@ export const Calendar = () => {
     "October",
     "November",
     "December",
-  ]
-  const monthName = MONTH_NAMES[month.getMonth()]
+  ];
+  const monthName = monthNames[month.getMonth()];
 
   return (
     <section className="flex flex-col gap-2 h-full">
@@ -36,15 +34,10 @@ export const Calendar = () => {
 
       <WeekDays />
       <div className="grid grid-cols-7 gap-1">
-        {days.map((day, i) => (
-          <Day
-            key={i}
-            day={day}
-            selected={selected}
-            setSelected={setSelected}
-          />
+        {days.map((day) => (
+          <Day key={day.ISODateString} day={day} selected={selected} setSelected={setSelected} />
         ))}
       </div>
     </section>
-  )
-}
+  );
+};

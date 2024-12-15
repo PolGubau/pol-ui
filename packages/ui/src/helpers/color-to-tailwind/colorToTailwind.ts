@@ -1,5 +1,5 @@
-import type { Colors } from '../../types'
-import { ColorsEnum } from '../../types'
+import type { Colors } from "../../types";
+import { ColorsEnum } from "../../types";
 
 /**
  * @name colorToTailwind
@@ -10,18 +10,18 @@ import { ColorsEnum } from '../../types'
 export const colorToTailwind = (color: Colors): string => {
   switch (color) {
     case ColorsEnum.primary:
-      return 'bg-primary-600'
+      return "bg-primary-600";
     case ColorsEnum.secondary:
-      return 'bg-secondary-600'
+      return "bg-secondary-600";
     case ColorsEnum.success:
-      return 'bg-success-600'
+      return "bg-success-600";
     case ColorsEnum.warning:
-      return 'bg-warning-600'
+      return "bg-warning-600";
     case ColorsEnum.error:
-      return 'bg-error-600'
+      return "bg-error-600";
     case ColorsEnum.info:
-      return 'bg-info-600'
+      return "bg-info-600";
     default:
-      return 'bg-primary-600'
+      return "bg-primary-600";
   }
-}
+};

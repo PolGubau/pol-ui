@@ -1,10 +1,10 @@
-import { useState } from "react"
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
+import { useState } from "react";
 
-import { Skeleton } from "../../components"
-import { Button } from "../../components/Button"
-import { Input } from "../../components/Input"
-import { decrypt, encrypt } from "./encryption"
+import { Skeleton } from "../../components";
+import { Button } from "../../components/Button";
+import { Input } from "../../components/Input";
+import { decrypt, encrypt } from "./encryption";
 
 export default {
   title: "Helpers/encryption",
@@ -20,19 +20,19 @@ export default {
     layout: "fullscreen",
   },
   tags: ["autodocs"],
-} as Meta
+} as Meta;
 
 export const Default = () => {
-  const [value, setValue] = useState("Hello there")
-  const supersecretkey = "supersecretkey"
+  const [value, setValue] = useState("Hello there");
+  const supersecretkey = "supersecretkey";
   const handleEncrypt = async () => {
-    const encrypted = encrypt(value, supersecretkey)
-    setValue(encrypted)
-  }
+    const encrypted = encrypt(value, supersecretkey);
+    setValue(encrypted);
+  };
   const handleDecrypt = async () => {
-    const decrypted = decrypt(value, supersecretkey)
-    setValue(decrypted)
-  }
+    const decrypted = decrypt(value, supersecretkey);
+    setValue(decrypted);
+  };
   return (
     <div className="flex flex-col gap-4 max-w-sm w-full">
       Current value: {value}
@@ -40,7 +40,7 @@ export const Default = () => {
         <Input
           value={value}
           onChange={(e) => {
-            setValue(e.target.value)
+            setValue(e.target.value);
           }}
         />
       </div>
@@ -49,5 +49,5 @@ export const Default = () => {
         Decrypt
       </Button>
     </div>
-  )
-}
+  );
+};

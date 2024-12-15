@@ -1,21 +1,22 @@
-"use client"
+"use client";
 
-import React, { useRef, type MouseEventHandler } from "react"
-import { useAnimate } from "framer-motion"
+import { useAnimate } from "framer-motion";
+import type React from "react";
+import { type MouseEventHandler, useRef } from "react";
 
-import { cn, mergeDeep } from "../../helpers"
-import { getTheme } from "../../theme-store"
-import type { DeepPartial } from "../../types"
-import type { ImageTrailTheme } from "./theme"
+import { cn, mergeDeep } from "../../helpers";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { ImageTrailTheme } from "./theme";
 
 export interface ImageTrailProps extends React.ComponentProps<"div"> {
-  images: string[]
-  renderImageBuffer?: number
-  rotationRange?: number
-  className?: string
-  imageClassName?: string
-  disapearDelay?: number
-  theme?: DeepPartial<ImageTrailTheme>
+  images: string[];
+  renderImageBuffer?: number;
+  rotationRange?: number;
+  className?: string;
+  imageClassName?: string;
+  disapearDelay?: number;
+  theme?: DeepPartial<ImageTrailTheme>;
 }
 
 /**
@@ -38,56 +39,48 @@ export const ImageTrail = ({
   theme: customTheme = {},
   ...props
 }: ImageTrailProps) => {
-  const [scope, animate] = useAnimate()
+  const [scope, animate] = useAnimate();
 
-  const lastRenderPosition = useRef({ x: 0, y: 0 })
-  const imageRenderCount = useRef(0)
+  const lastRenderPosition = useRef({ x: 0, y: 0 });
+  const imageRenderCount = useRef(0);
 
   const handleMouseMove: MouseEventHandler<HTMLDivElement> = (e) => {
-    const { clientX, clientY } = e
+    const { clientX, clientY } = e;
 
-    const distance = calculateDistance(
-      clientX,
-      clientY,
-      lastRenderPosition.current.x,
-      lastRenderPosition.current.y
-    )
+    const distance = calculateDistance(clientX, clientY, lastRenderPosition.current.x, lastRenderPosition.current.y);
 
     if (distance >= renderImageBuffer) {
-      lastRenderPosition.current.x = clientX
-      lastRenderPosition.current.y = clientY
+      lastRenderPosition.current.x = clientX;
+      lastRenderPosition.current.y = clientY;
 
-      renderNextImage()
+      renderNextImage();
     }
-  }
+  };
 
-  const calculateDistance = (
-    x1: number,
-    y1: number,
-    x2: number,
-    y2: number
-  ) => {
-    const deltaX = x2 - x1
-    const deltaY = y2 - y1
+  const calculateDistance = (x1: number, y1: number, x2: number, y2: number) => {
+    const deltaX = x2 - x1;
+    const deltaY = y2 - y1;
 
     // Using the Pythagorean theorem to calculate the distance
-    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
+    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
-    return distance
-  }
+    return distance;
+  };
 
   const renderNextImage = () => {
-    const imageIndex = imageRenderCount.current % images.length
-    const selector = `[data-mouse-move-index="${imageIndex.toString()}"]`
+    const imageIndex = imageRenderCount.current % images.length;
+    const selector = `[data-mouse-move-index="${imageIndex.toString()}"]`;
 
-    const el = document.querySelector(selector)
-    if (!el) return null
-    const element = el as HTMLElement
-    element.style.top = `${lastRenderPosition.current.y.toString()}px`
-    element.style.left = `${lastRenderPosition.current.x.toString()}px`
-    element.style.zIndex = imageRenderCount.current.toString()
+    const el = document.querySelector(selector);
+    if (!el) {
+      return null;
+    }
+    const element = el as HTMLElement;
+    element.style.top = `${lastRenderPosition.current.y.toString()}px`;
+    element.style.left = `${lastRenderPosition.current.x.toString()}px`;
+    element.style.zIndex = imageRenderCount.current.toString();
 
-    const rotation = Math.random() * rotationRange
+    const rotation = Math.random() * rotationRange;
 
     void animate(
       selector,
@@ -99,30 +92,24 @@ export const ImageTrail = ({
           `translate(-50%, -25%) scale(1) rotate( ${imageIndex % 2 ? "-" : ""}${rotation.toString()}deg)`,
         ],
       },
-      { type: "spring", damping: 15, stiffness: 200 }
-    )
+      { type: "spring", damping: 15, stiffness: 200 },
+    );
 
     void animate(
       selector,
       {
         opacity: [1, 0],
       },
-      { ease: "linear", duration: 0.5, delay: disapearDelay }
-    )
+      { ease: "linear", duration: 0.5, delay: disapearDelay },
+    );
 
-    imageRenderCount.current = imageRenderCount.current + 1
-  }
+    imageRenderCount.current = imageRenderCount.current + 1;
+  };
 
-  const theme = mergeDeep(getTheme().imageTrail, customTheme)
+  const theme = mergeDeep(getTheme().imageTrail, customTheme);
 
   return (
-    <div
-      ref={scope}
-      className={cn(theme.base, className)}
-      onMouseMove={handleMouseMove}
-      role="presentation"
-      {...props}
-    >
+    <div ref={scope} className={cn(theme.base, className)} onMouseMove={handleMouseMove} role="presentation" {...props}>
       {children}
 
       {images.map((img, index) => (
@@ -135,5 +122,5 @@ export const ImageTrail = ({
         />
       ))}
     </div>
-  )
-}
+  );
+};

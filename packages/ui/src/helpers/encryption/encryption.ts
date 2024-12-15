@@ -1,7 +1,7 @@
-import CryptoJS from 'crypto-js'
-type WordArray = CryptoJS.lib.WordArray
-type CipherParams = CryptoJS.lib.CipherParams
-type stringOrWordArray = string | WordArray
+import cryptoJs from "crypto-js";
+type WordArray = cryptoJs.lib.WordArray;
+type CipherParams = cryptoJs.lib.CipherParams;
+type StringOrWordArray = string | WordArray;
 
 /**
  * @name encrypt
@@ -14,9 +14,9 @@ type stringOrWordArray = string | WordArray
  * console.log(encrypt('Hello World', 'key')) // 'W1tYXV0aF1d'
  * ```
  */
-export function encrypt(value: stringOrWordArray, key: stringOrWordArray): string {
-  const encrypted = CryptoJS.AES.encrypt(value, key).toString()
-  return encrypted
+export function encrypt(value: StringOrWordArray, key: StringOrWordArray): string {
+  const encrypted = cryptoJs.AES.encrypt(value, key).toString();
+  return encrypted;
 }
 
 /**
@@ -32,8 +32,8 @@ export function encrypt(value: stringOrWordArray, key: stringOrWordArray): strin
  * console.log(decrypt(encryptedText, 'key')) // 'Hello World'
  * ```
  */
-export const decrypt = (encryptedText: CipherParams | string, key: stringOrWordArray): string => {
-  const decryptedBytes = CryptoJS.AES.decrypt(encryptedText, key)
-  const decrypted = decryptedBytes.toString(CryptoJS.enc.Utf8)
-  return decrypted
-}
+export const decrypt = (encryptedText: CipherParams | string, key: StringOrWordArray): string => {
+  const decryptedBytes = cryptoJs.AES.decrypt(encryptedText, key);
+  const decrypted = decryptedBytes.toString(cryptoJs.enc.Utf8);
+  return decrypted;
+};

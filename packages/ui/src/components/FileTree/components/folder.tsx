@@ -1,20 +1,19 @@
-import * as AccordionPrimitive from "@radix-ui/react-accordion"
-import { TbFolder, TbFolderOpen } from "react-icons/tb"
+import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import { TbFolder, TbFolderOpen } from "react-icons/tb";
 
-import { cn } from "../../../helpers"
-import { useTree } from "../hooks/use-tree"
-import { TreeIndicator } from "./tree-indicator"
+import { cn } from "../../../helpers";
+import { useTree } from "../hooks/use-tree";
+import { TreeIndicator } from "./tree-indicator";
 
-interface FolderComponentProps
-  extends React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item> {}
+interface FolderComponentProps extends React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item> {}
 
 type FolderProps = {
-  expandedItems?: string[]
-  element: string
-  isSelectable?: boolean
-  isSelect?: boolean
-  value: string
-} & FolderComponentProps
+  expandedItems?: string[];
+  element: string;
+  isSelectable?: boolean;
+  isSelect?: boolean;
+  value: string;
+} & FolderComponentProps;
 
 const Folder = ({
   className,
@@ -25,22 +24,10 @@ const Folder = ({
   children,
   ...props
 }: FolderProps & React.HTMLAttributes<HTMLDivElement>) => {
-  const {
-    direction,
-    handleExpand,
-    expandedItems,
-    indicator,
-    setExpandedItems,
-    openIcon,
-    closeIcon,
-  } = useTree()
+  const { direction, handleExpand, expandedItems, indicator, setExpandedItems, openIcon, closeIcon } = useTree();
 
   return (
-    <AccordionPrimitive.Item
-      {...props}
-      value={value}
-      className="relative overflow-hidden h-full "
-    >
+    <AccordionPrimitive.Item {...props} value={value} className="relative overflow-hidden h-full ">
       <AccordionPrimitive.Trigger
         className={cn(`flex items-center gap-1 text-sm rounded-md`, className, {
           "bg-muted rounded-md": isSelect && isSelectable,
@@ -51,8 +38,8 @@ const Folder = ({
         onClick={() => handleExpand(value)}
       >
         {expandedItems?.includes(value)
-          ? openIcon ?? <TbFolderOpen className="size-4" />
-          : closeIcon ?? <TbFolder className="size-4" />}
+          ? (openIcon ?? <TbFolderOpen className="size-4" />)
+          : (closeIcon ?? <TbFolder className="size-4" />)}
         <span>{element}</span>
       </AccordionPrimitive.Trigger>
       <AccordionPrimitive.Content className="text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down relative overflow-hidden h-full">
@@ -64,14 +51,14 @@ const Folder = ({
           defaultValue={expandedItems}
           value={expandedItems}
           onValueChange={(value) => {
-            setExpandedItems?.((prev) => [...(prev ?? []), value[0]])
+            setExpandedItems?.((prev) => [...(prev ?? []), value[0]]);
           }}
         >
           {children}
         </AccordionPrimitive.Root>
       </AccordionPrimitive.Content>
     </AccordionPrimitive.Item>
-  )
-}
+  );
+};
 
-export { Folder }
+export { Folder };

@@ -1,15 +1,15 @@
-import { getWeekDays } from "../../Datepicker/helpers"
-import { Weekday } from "./Weekday"
+import { getWeekDays } from "../../Datepicker/helpers";
+import { Weekday } from "./Weekday";
 
 const WeekDays = () => {
-  const days = getWeekDays()
+  const days = getWeekDays();
   return (
     <div className="grid grid-cols-7 gap-1">
       {days.map((day) => (
         <Weekday key={day}>{day}</Weekday>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default WeekDays
+export default WeekDays;

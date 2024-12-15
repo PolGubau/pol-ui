@@ -1,12 +1,12 @@
-import { setTheme } from ".."
-import type { CustomPoluiTheme } from "../../providers/PoluiProvider"
+import { setTheme } from "..";
+import type { CustomPoluiTheme } from "../../providers/PoluiProvider";
 
 interface Props {
-  theme?: CustomPoluiTheme
+  theme?: CustomPoluiTheme;
 }
 
 export function ThemeServerInit({ theme }: Props) {
-  setTheme(theme)
+  setTheme(theme);
 
-  return null
+  return null;
 }

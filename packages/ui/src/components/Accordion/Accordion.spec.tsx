@@ -1,97 +1,96 @@
-import { render, screen, waitFor } from "@testing-library/react"
-import userEvent from "@testing-library/user-event"
-import type { FC } from "react"
-import { HiOutlineArrowCircleDown } from "react-icons/hi"
-import { describe, expect, it } from "vitest"
-
-import { Accordion } from "./Accordion"
-import type { AccordionProps } from "./types"
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import type { FC } from "react";
+import { HiOutlineArrowCircleDown } from "react-icons/hi";
+import { describe, expect, it } from "vitest";
+import { Accordion } from "./Accordion";
+import type { AccordionProps } from "./types";
 
 describe("Components / Accordion", () => {
   describe("A11y", () => {
     it("should use `aria-label` if provided", () => {
-      render(<TestAccordion aria-label="My accordion" />)
-      expect(accordion()).toHaveAccessibleName("My accordion")
-    })
+      render(<TestAccordion aria-label="My accordion" />);
+      expect(accordion()).toHaveAccessibleName("My accordion");
+    });
 
     it('should use `aria-labelledby=""` in `Accordion.Content` if provided', () => {
-      render(<TestAccordion />)
-      expect(content()[0]).toHaveAccessibleName("Title")
-      expect(content()[0]).toHaveAttribute("aria-labelledby", "accordion-title")
-    })
+      render(<TestAccordion />);
+      expect(content()[0]).toHaveAccessibleName("Title");
+      expect(content()[0]).toHaveAttribute("aria-labelledby", "accordion-title");
+    });
 
     it('should use `role="button"` in `Accordion.Title`', () => {
-      render(<TestAccordion />)
-      titles().forEach((title) => {
-        expect(title).toBeInTheDocument()
-      })
-    })
+      render(<TestAccordion />);
+      for (const title of titles()) {
+        expect(title).toBeInTheDocument();
+      }
+    });
 
     it('should use `id=""` if provided in `Accordion.Title`', () => {
-      render(<TestAccordion aria-label="My accordion" />)
-      expect(accordion()).toHaveAccessibleName("My accordion")
-    })
+      render(<TestAccordion aria-label="My accordion" />);
+      expect(accordion()).toHaveAccessibleName("My accordion");
+    });
 
     it("shouldn't include `arrowIcon` in `Accordion.Title` label", () => {
-      render(<TestAccordion />)
-      titles().forEach((title) => {
-        expect(title).toHaveAccessibleName("Title")
-      })
-    })
-  })
+      render(<TestAccordion />);
+      for (const title of titles()) {
+        expect(title).toHaveAccessibleName("Title");
+      }
+    });
+  });
   describe("Keyboard interactions", () => {
     it("should open focused panel without closing others on an `Accordion.Panel` with `alwaysOpen={true}`", async () => {
-      const user = userEvent.setup()
-      render(<TestAccordion alwaysOpen />)
+      const user = userEvent.setup();
+      render(<TestAccordion alwaysOpen={true} />);
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       for (const _ of titles()) {
-        await user.tab()
+        await user.tab();
       }
 
-      await user.keyboard("[Space]")
-      expect(titles()[0]).toBeVisible()
-      expect(titles()[1]).toBeVisible()
-    })
+      await user.keyboard("[Space]");
+      expect(titles()[0]).toBeVisible();
+      expect(titles()[1]).toBeVisible();
+    });
 
     it("should be possible to `Tab` out", async () => {
-      const user = userEvent.setup()
+      const user = userEvent.setup();
       render(
         <>
           <TestAccordion />
-          <button>Outside button</button>
-        </>
-      )
+          <button type="button">Outside button</button>
+        </>,
+      );
 
-      const outsideButton = screen.getByText("Outside button")
+      const outsideButton = screen.getByText("Outside button");
 
       await waitFor(async () => {
-        await user.tab()
+        await user.tab();
 
-        expect(outsideButton).toHaveFocus()
-      })
-    })
+        expect(outsideButton).toHaveFocus();
+      });
+    });
 
     it("should give each `Accordion.Title` focus in order while pressing `Tab`", async () => {
-      const user = userEvent.setup()
-      render(<TestAccordion />)
+      const user = userEvent.setup();
+      render(<TestAccordion />);
 
       for (const title of titles()) {
-        await user.tab()
+        await user.tab();
 
-        expect(title).toHaveFocus()
+        expect(title).toHaveFocus();
       }
-    })
-  })
+    });
+  });
   describe("Props", () => {
     it('should use any HTML heading element in `Accordion.Title as=".."`', () => {
-      render(<TestAccordion />)
+      render(<TestAccordion />);
 
-      expect(headings()[0].tagName.toLocaleLowerCase()).toEqual("h3")
-      expect(headings()[1].tagName.toLocaleLowerCase()).toEqual("h2")
-    })
-  })
-})
+      expect(headings()[0].tagName.toLocaleLowerCase()).toEqual("h3");
+      expect(headings()[1].tagName.toLocaleLowerCase()).toEqual("h2");
+    });
+  });
+});
 
 const TestAccordion: FC<Omit<AccordionProps, "children">> = (props) => (
   <Accordion arrowIcon={HiOutlineArrowCircleDown} {...props}>
@@ -99,10 +98,7 @@ const TestAccordion: FC<Omit<AccordionProps, "children">> = (props) => (
       <Accordion.Title as="h3" className="text-cyan-300" id="accordion-title">
         Title
       </Accordion.Title>
-      <Accordion.Content
-        aria-labelledby="accordion-title"
-        className="text-cyan-300"
-      >
+      <Accordion.Content aria-labelledby="accordion-title" className="text-cyan-300">
         <p>Content</p>
       </Accordion.Content>
     </Accordion.Panel>
@@ -113,8 +109,8 @@ const TestAccordion: FC<Omit<AccordionProps, "children">> = (props) => (
       </Accordion.Content>
     </Accordion.Panel>
   </Accordion>
-)
-const accordion = () => screen.getByTestId("ui-accordion")
-const content = () => screen.getAllByTestId("ui-accordion-content")
-const headings = () => screen.getAllByTestId("ui-accordion-heading")
-const titles = () => screen.getAllByRole("button")
+);
+const accordion = () => screen.getByTestId("ui-accordion");
+const content = () => screen.getAllByTestId("ui-accordion-content");
+const headings = () => screen.getAllByTestId("ui-accordion-heading");
+const titles = () => screen.getAllByRole("button");

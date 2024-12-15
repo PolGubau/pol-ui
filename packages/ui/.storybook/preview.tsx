@@ -1,8 +1,7 @@
-import React, { PropsWithChildren } from "react"
-import type { Preview } from "@storybook/react"
-import { themes } from "@storybook/theming"
+import type { Preview } from "@storybook/react";
+import type { PropsWithChildren } from "react";
 
-import "./style.css"
+import "./style.css";
 
 const Provider = ({ children }: PropsWithChildren) => {
   return (
@@ -14,8 +13,8 @@ const Provider = ({ children }: PropsWithChildren) => {
       </Toolbox> */}
     </main>
     // </PoluiProvider>
-  )
-}
+  );
+};
 
 const preview: Preview = {
   decorators: [
@@ -36,6 +35,6 @@ const preview: Preview = {
   },
 
   tags: ["autodocs"],
-}
+};
 
-export default preview
+export default preview;

@@ -6,17 +6,17 @@
  * Author: Pol Gubau Amores
  */
 
-const errorLabel = 'parsing error on value: '
+const errorLabel = "parsing error on value: ";
 
 export function parseJSON<T>(value: string | null): T | undefined {
   try {
     if (!value) {
-      return undefined
+      return undefined;
     }
-    return JSON.parse(value ?? '')
+    return JSON.parse(value ?? "");
   } catch {
-    console.error(errorLabel, { value })
-    throw new Error(errorLabel + value)
+    console.error(errorLabel, { value });
+    throw new Error(errorLabel + value);
   }
 }
 
@@ -24,12 +24,12 @@ export function parseJSON<T>(value: string | null): T | undefined {
 export function saveParseJson<T>(value: string | null): T | undefined {
   try {
     if (!value) {
-      return undefined
+      return undefined;
     }
-    return JSON.parse(value ?? '')
+    return JSON.parse(value ?? "");
   } catch {
-    console.error(errorLabel, { value })
-    return undefined
+    console.error(errorLabel, { value });
+    return undefined;
   }
 }
 
@@ -40,10 +40,10 @@ export function saveParseJson<T>(value: string | null): T | undefined {
 
 export function stringify<T>(value: T): string | undefined {
   try {
-    return JSON.stringify(value)
+    return JSON.stringify(value);
   } catch {
-    console.error(errorLabel, { value })
-    return undefined
+    console.error(errorLabel, { value });
+    return undefined;
   }
 }
 
@@ -51,4 +51,4 @@ export const json = {
   saveParse: saveParseJson,
   parse: parseJSON,
   stringify,
-}
+};

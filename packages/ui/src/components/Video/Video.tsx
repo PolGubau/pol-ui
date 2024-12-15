@@ -1,16 +1,16 @@
-import React from "react"
-import { TbPlayerPauseFilled, TbPlayerPlayFilled } from "react-icons/tb"
+import React from "react";
+import { TbPlayerPauseFilled, TbPlayerPlayFilled } from "react-icons/tb";
 
-import { cn } from "../../helpers"
-import { IconButton } from "../IconButton"
+import { cn } from "../../helpers";
+import { IconButton } from "../IconButton";
 
 interface VideoProps extends React.VideoHTMLAttributes<HTMLVideoElement> {
-  width?: string | number
-  height?: string | number
-  className?: string
-  style?: React.CSSProperties
-  children?: React.ReactNode // For custom controls
-  videoClassName?: string
+  width?: string | number;
+  height?: string | number;
+  className?: string;
+  style?: React.CSSProperties;
+  children?: React.ReactNode; // For custom controls
+  videoClassName?: string;
 }
 
 const Video: React.FC<VideoProps> = ({
@@ -23,36 +23,36 @@ const Video: React.FC<VideoProps> = ({
   videoClassName,
   ...rest
 }) => {
-  const videoRef = React.useRef<HTMLVideoElement>(null) // Reference to the video element
-  const [currentTime, setCurrentTime] = React.useState(0)
-  const [duration, setDuration] = React.useState(0)
-  const [isPlaying, setIsPlaying] = React.useState(true)
+  const videoRef = React.useRef<HTMLVideoElement>(null); // Reference to the video element
+  const [currentTime, setCurrentTime] = React.useState(0);
+  const [duration, setDuration] = React.useState(0);
+  const [isPlaying, setIsPlaying] = React.useState(true);
 
   const handleTimeUpdate = (event: React.SyntheticEvent<HTMLVideoElement>) => {
     if (onTimeUpdate) {
-      onTimeUpdate(event)
+      onTimeUpdate(event);
     }
-    setCurrentTime(event.currentTarget.currentTime)
-  }
+    setCurrentTime(event.currentTarget.currentTime);
+  };
 
-  const handleLoadedMetadata = (
-    event: React.SyntheticEvent<HTMLVideoElement>
-  ) => {
-    setDuration(event.currentTarget.duration)
-  }
+  const handleLoadedMetadata = (event: React.SyntheticEvent<HTMLVideoElement>) => {
+    setDuration(event.currentTarget.duration);
+  };
 
   const togglePlay = () => {
-    if (!videoRef.current) return
+    if (!videoRef.current) {
+      return;
+    }
 
     if (isPlaying) {
-      videoRef.current.pause()
+      videoRef.current.pause();
     } else {
-      videoRef.current.play()
+      videoRef.current.play();
     }
-    setIsPlaying((prev) => !prev)
-  }
+    setIsPlaying((prev) => !prev);
+  };
 
-  const playbackProgress = (currentTime / duration) * 100
+  const playbackProgress = (currentTime / duration) * 100;
 
   return (
     <div
@@ -113,11 +113,7 @@ const Video: React.FC<VideoProps> = ({
             color="secondary"
             className="text-black border-1 border-black dark:text-white h-[40px] w-[40px] bg-secondary-200 dark:bg-secondary-800 border-secondary dark:border-secondary-900 border"
           >
-            {isPlaying ? (
-              <TbPlayerPauseFilled size={17} />
-            ) : (
-              <TbPlayerPlayFilled size={17} />
-            )}
+            {isPlaying ? <TbPlayerPauseFilled size={17} /> : <TbPlayerPlayFilled size={17} />}
           </IconButton>
         </div>{" "}
       </div>
@@ -137,7 +133,7 @@ const Video: React.FC<VideoProps> = ({
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Video
+export default Video;

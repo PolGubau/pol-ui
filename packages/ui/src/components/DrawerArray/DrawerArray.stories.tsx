@@ -1,8 +1,8 @@
-import React, { useState } from "react"
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
+import { useState } from "react";
 
-import { Input, toast } from ".."
-import { DrawerArray } from "./DrawerArray"
+import { Input, toast } from "..";
+import { DrawerArray } from "./DrawerArray";
 
 const meta: Meta<typeof DrawerArray> = {
   title: "Components/DrawerArray",
@@ -24,20 +24,20 @@ const meta: Meta<typeof DrawerArray> = {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta
-export default meta
+} as Meta;
+export default meta;
 interface Property {
-  name: string | null
-  description: string | null
-  label: string | null
-  type: null | string
+  name: string | null;
+  description: string | null;
+  label: string | null;
+  type: null | string;
 }
 const initialProperty: Property = {
   name: "",
   description: null,
   label: null,
   type: "string",
-}
+};
 
 export const Default = () => {
   const [values, setValue] = useState<Property[]>([
@@ -53,7 +53,7 @@ export const Default = () => {
       label: "label",
       type: "type1",
     },
-  ])
+  ]);
   return (
     <DrawerArray
       label="Properties"
@@ -62,16 +62,12 @@ export const Default = () => {
       onChange={setValue}
       form={({ value, onChange }) => (
         <form className="flex flex-col gap-2 ">
-          <Input
-            label="Name"
-            value={value.name ?? ""}
-            onChange={(e) => onChange({ ...value, name: e.target.value })}
-          />
+          <Input label="Name" value={value.name ?? ""} onChange={(e) => onChange({ ...value, name: e.target.value })} />
         </form>
       )}
     />
-  )
-}
+  );
+};
 export const CustomView = () => {
   const [values, setValue] = useState<Property[]>([
     {
@@ -86,7 +82,7 @@ export const CustomView = () => {
       label: "label",
       type: "type1",
     },
-  ])
+  ]);
   return (
     <DrawerArray
       label="Properties"
@@ -102,16 +98,12 @@ export const CustomView = () => {
       onChange={setValue}
       form={({ value, onChange }) => (
         <form className="flex flex-col gap-2 ">
-          <Input
-            label="Name"
-            value={value.name ?? ""}
-            onChange={(e) => onChange({ ...value, name: e.target.value })}
-          />
+          <Input label="Name" value={value.name ?? ""} onChange={(e) => onChange({ ...value, name: e.target.value })} />
         </form>
       )}
     />
-  )
-}
+  );
+};
 export const Debug = () => {
   const [values, setValue] = useState<Property[]>([
     {
@@ -126,7 +118,7 @@ export const Debug = () => {
       label: "label",
       type: "type1",
     },
-  ])
+  ]);
   return (
     <>
       <pre>{JSON.stringify(values, null, 2)}</pre>
@@ -143,8 +135,8 @@ export const Debug = () => {
           </div>
         )}
         onChange={(vs) => {
-          toast("Updated")
-          setValue(vs)
+          toast("Updated");
+          setValue(vs);
         }}
         form={({ value, onChange }) => (
           <form className="flex flex-col gap-2 ">
@@ -157,5 +149,5 @@ export const Debug = () => {
         )}
       />
     </>
-  )
-}
+  );
+};

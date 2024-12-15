@@ -1,111 +1,77 @@
-"use client"
+"use client";
 
-import { PropsWithChildren } from "react"
-import {
-  motion,
-  useAnimation,
-  useMotionValue,
-  useTransform,
-} from "framer-motion"
-import { TbChevronUp } from "react-icons/tb"
+import { motion, useAnimation, useMotionValue, useTransform } from "framer-motion";
+import type { PropsWithChildren } from "react";
+import { TbChevronUp } from "react-icons/tb";
 
-const EXPANDED = 600
-const COLLAPSED = EXPANDED / 1.5
-const TOGGLE_HEIGHT_THRESHOLD = (EXPANDED + COLLAPSED) / 2
+const EXPANDED = 600;
+const COLLAPSED = EXPANDED / 1.5;
+const TOGGLE_HEIGHT_THRESHOLD = (EXPANDED + COLLAPSED) / 2;
 
 export interface UnderSheetProps extends PropsWithChildren {
-  content: JSX.Element
-  trigger?: JSX.Element
+  content: React.ReactNode;
+  trigger?: React.ReactNode;
 }
 
 export const UnderSheet = (props: UnderSheetProps) => {
-  const { content, trigger = <TbChevronUp /> } = props
-  const contentHeight = useMotionValue(EXPANDED)
-  const contentAnimationControls = useAnimation()
+  const { content, trigger = <TbChevronUp /> } = props;
+  const contentHeight = useMotionValue(EXPANDED);
+  const contentAnimationControls = useAnimation();
 
   //
   const heightTransitionSettings = {
     duration: 0.5,
     ease: [0.32, 0.72, 0, 1],
-  }
-  const contentScale = useTransform(
-    contentHeight,
-    [EXPANDED, COLLAPSED],
-    [1, 0.95]
-  )
-  const contentRoundedCorners = useTransform(
-    contentHeight,
-    [EXPANDED, COLLAPSED],
-    [20, 10]
-  )
-  const contentPaddingTop = useTransform(
-    contentHeight,
-    [EXPANDED, COLLAPSED],
-    [0, -50]
-  )
-  const contentMarginTop = useTransform(
-    contentHeight,
-    [EXPANDED, COLLAPSED],
-    [0, 10]
-  )
-  const actionAreaHeight = useTransform(
-    contentHeight,
-    [EXPANDED, COLLAPSED],
-    [92, 20]
-  )
-  const actionButtonSize = useTransform(
-    contentHeight,
-    [EXPANDED, COLLAPSED],
-    [28, 4]
-  )
-  const actionIconScale = useTransform(
-    contentHeight,
-    [EXPANDED, COLLAPSED],
-    [1, 0]
-  )
+  };
+  const contentScale = useTransform(contentHeight, [EXPANDED, COLLAPSED], [1, 0.95]);
+  const contentRoundedCorners = useTransform(contentHeight, [EXPANDED, COLLAPSED], [20, 10]);
+  const contentPaddingTop = useTransform(contentHeight, [EXPANDED, COLLAPSED], [0, -50]);
+  const contentMarginTop = useTransform(contentHeight, [EXPANDED, COLLAPSED], [0, 10]);
+  const actionAreaHeight = useTransform(contentHeight, [EXPANDED, COLLAPSED], [92, 20]);
+  const actionButtonSize = useTransform(contentHeight, [EXPANDED, COLLAPSED], [28, 4]);
+  const actionIconScale = useTransform(contentHeight, [EXPANDED, COLLAPSED], [1, 0]);
   const onDragAdjustHeight = (_event: any, info: { delta: { y: number } }) => {
-    let newHeight = contentHeight.get() + info.delta.y
+    const newHeight = contentHeight.get() + info.delta.y;
 
     if (newHeight > COLLAPSED && newHeight <= EXPANDED) {
-      contentHeight.set(newHeight)
+      contentHeight.set(newHeight);
     }
-  }
+  };
   const onDragEndAdjustHeight = async () => {
     if (contentHeight.get() === COLLAPSED || contentHeight.get() === EXPANDED) {
-      return
+      return;
     }
-    const finalHeight =
-      contentHeight.get() < TOGGLE_HEIGHT_THRESHOLD ? COLLAPSED : EXPANDED
+    const finalHeight = contentHeight.get() < TOGGLE_HEIGHT_THRESHOLD ? COLLAPSED : EXPANDED;
     await contentAnimationControls.start({
       height: finalHeight,
       transition: heightTransitionSettings,
-    })
-  }
+    });
+  };
   const openSheet = () => {
     if (contentHeight.get() === COLLAPSED) {
-      return
+      return;
     }
     contentAnimationControls.start({
       height: COLLAPSED,
       transition: heightTransitionSettings,
-    })
-  }
+    });
+  };
   const closeSheet = () => {
     if (!(contentHeight.get() === COLLAPSED)) {
-      return
+      return;
     }
     contentAnimationControls.start({
       height: EXPANDED,
       transition: heightTransitionSettings,
-    })
-  }
+    });
+  };
   const toggleSheet = () => {
     if (contentHeight.get() === COLLAPSED) {
-      closeSheet()
+      closeSheet();
     } else {
-      openSheet()
+      openSheet();
     }
-  }
+  };
 
   return (
     <div
@@ -177,5 +143,5 @@ export const UnderSheet = (props: UnderSheetProps) => {
 
       {content}
     </div>
-  )
-}
+  );
+};

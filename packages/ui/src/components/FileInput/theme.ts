@@ -1,17 +1,17 @@
-import type { ColorsType, MainSizesType } from "../../types"
+import type { ColorsType, MainSizesType } from "../../types";
 
 export interface FileInputTheme {
   root: {
-    base: string
-  }
+    base: string;
+  };
   field: {
-    base: string
+    base: string;
     input: {
-      base: string
-      colors: ColorsType
-      size: MainSizesType
-    }
-  }
+      base: string;
+      colors: ColorsType;
+      size: MainSizesType;
+    };
+  };
 }
 
 export const fileInputTheme: FileInputTheme = {
@@ -35,9 +35,8 @@ export const fileInputTheme: FileInputTheme = {
         success: "file:bg-success/60 file:text-success-900 focus:ring-success",
         warning: "file:bg-warning/60 file:text-warning-900 focus:ring-warning",
         primary: "file:bg-primary/60 file:text-primary-900 focus:ring-primary",
-        secondary:
-          "file:bg-secondary/60 file:text-secondary-900 focus:ring-secondary",
+        secondary: "file:bg-secondary/60 file:text-secondary-900 focus:ring-secondary",
       },
     },
   },
-}
+};

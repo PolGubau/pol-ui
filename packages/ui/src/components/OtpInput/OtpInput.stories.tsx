@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react"
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
+import { useEffect, useState } from "react";
 
-import { Button } from "../Button"
-import { Card } from "../Card"
-import { Toaster, toast } from "../Toaster"
-import { OtpInput } from "./OtpInput"
+import { Button } from "../Button";
+import { Card } from "../Card";
+import { Toaster, toast } from "../Toaster";
+import { OtpInput } from "./OtpInput";
 
 export default {
   title: "Components/OtpInput",
@@ -20,26 +20,26 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
 export function Default() {
-  const [otp, setOtp] = useState("")
+  const [otp, setOtp] = useState("");
   return (
     <OtpInput
       value={otp}
       onChange={setOtp}
       onComplete={(code: string) => {
-        toast(`You typed ${code}`)
+        toast(`You typed ${code}`);
       }}
     />
-  )
+  );
 }
 export function Example() {
-  const [step, setStep] = useState<1 | 2 | 3>(1)
-  const [otp, setOtp] = useState("")
+  const [step, setStep] = useState<1 | 2 | 3>(1);
+  const [otp, setOtp] = useState("");
   useEffect(() => {
-    setOtp("")
-  }, [step])
+    setOtp("");
+  }, [step]);
 
   return (
     <>
@@ -48,8 +48,8 @@ export function Example() {
           <h1>Step 1</h1>
           <Button
             onClick={() => {
-              toast("Your code is 1234")
-              setStep(2)
+              toast("Your code is 1234");
+              setStep(2);
             }}
           >
             Get a code
@@ -65,9 +65,9 @@ export function Example() {
             onChange={setOtp}
             onComplete={(code: string) => {
               if (code === "1234") {
-                setStep(3)
+                setStep(3);
               } else {
-                toast.error("Invalid code")
+                toast.error("Invalid code");
               }
             }}
           />
@@ -78,7 +78,7 @@ export function Example() {
           <h1>Account verfied!</h1>
           <Button
             onClick={() => {
-              setStep(1)
+              setStep(1);
             }}
           >
             Reset
@@ -86,5 +86,5 @@ export function Example() {
         </Card>
       )}
     </>
-  )
+  );
 }

@@ -1,7 +1,7 @@
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
 
-import { Tree, TreeViewElement } from "./FileTree"
-import { File, Folder } from "./components"
+import { Tree, type TreeViewElement } from "./FileTree";
+import { File, Folder } from "./components";
 
 export default {
   title: "Components/FileTree",
@@ -17,7 +17,7 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
 export function FileTreeDemo() {
   return (
@@ -25,19 +25,7 @@ export function FileTreeDemo() {
       <Tree
         className="p-2 overflow-hidden rounded-md bg-background"
         initialSelectedId="7"
-        initialExpandedItems={[
-          "1",
-          "2",
-          "3",
-          "4",
-          "5",
-          "6",
-          "7",
-          "8",
-          "9",
-          "10",
-          "11",
-        ]}
+        initialExpandedItems={["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]}
         elements={ELEMENTS}
       >
         <Folder element="src" value="1">
@@ -70,7 +58,7 @@ export function FileTreeDemo() {
         </Folder>
       </Tree>
     </div>
-  )
+  );
 }
 
 const ELEMENTS: TreeViewElement[] = [
@@ -120,4 +108,4 @@ const ELEMENTS: TreeViewElement[] = [
       },
     ],
   },
-]
+];

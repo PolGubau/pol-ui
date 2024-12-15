@@ -1,6 +1,5 @@
-"use client"
+"use client";
 
-import { useRef, type ElementType } from "react"
 import {
   motion,
   useAnimationFrame,
@@ -9,25 +8,26 @@ import {
   useSpring,
   useTransform,
   useVelocity,
-} from "framer-motion"
-import { twMerge } from "tailwind-merge"
+} from "framer-motion";
+import { type ElementType, useRef } from "react";
+import { twMerge } from "tailwind-merge";
 
-import { mergeDeep } from "../../helpers"
-import { getTheme } from "../../theme-store"
-import type { DeepPartial } from "../../types"
-import type { ParallaxTextTheme } from "./theme"
+import { mergeDeep } from "../../helpers";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { ParallaxTextTheme } from "./theme";
 
 export const wrap = (min: number, max: number, v: number) => {
-  const rangeSize = max - min
-  return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min
-}
+  const rangeSize = max - min;
+  return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
+};
 export interface ParallaxTextProps<T extends ElementType = "span"> {
-  children: string
-  velocity?: number
-  className?: string
-  as?: T | null
+  children: string;
+  velocity?: number;
+  className?: string;
+  as?: T | null;
 
-  resistance?: number
+  resistance?: number;
 
   /**
    * @name renderedElements
@@ -41,9 +41,9 @@ export interface ParallaxTextProps<T extends ElementType = "span"> {
    * <ParallaxText renderedElements={5} />
    * ```
    */
-  renderedElements?: number
+  renderedElements?: number;
 
-  theme?: DeepPartial<ParallaxTextTheme>
+  theme?: DeepPartial<ParallaxTextTheme>;
 }
 
 export const ParallaxText = <T extends ElementType = "span">({
@@ -56,56 +56,51 @@ export const ParallaxText = <T extends ElementType = "span">({
   renderedElements = Math.ceil(100 / children.length) ?? 10,
   ...props
 }: ParallaxTextProps<T>) => {
-  const baseX = useMotionValue(0)
-  const { scrollY } = useScroll()
-  const scrollVelocity = useVelocity(scrollY)
+  const baseX = useMotionValue(0);
+  const { scrollY } = useScroll();
+  const scrollVelocity = useVelocity(scrollY);
   const smoothVelocity = useSpring(scrollVelocity, {
     damping: 50,
     stiffness: 400,
-  })
+  });
   const velocityFactor = useTransform(smoothVelocity, [0, resistance], [0, 5], {
     clamp: false,
-  })
+  });
 
-  const Component = BaseComponent ?? "span"
+  const Component = BaseComponent ?? "span";
 
   /**
    * This is a magic wrapping for the length of the text - you
    * have to replace for wrapping that works for you or dynamically
    * calculate
    */
-  const x = useTransform(baseX, (v) => `${wrap(40, -45, v)}%`)
+  const x = useTransform(baseX, (v) => `${wrap(40, -45, v)}%`);
 
-  const directionFactor = useRef<number>(1)
+  const directionFactor = useRef<number>(1);
   useAnimationFrame((_t, delta) => {
-    let moveBy =
-      directionFactor.current * (velocity / 2) * (delta / -resistance)
+    let moveBy = directionFactor.current * (velocity / 2) * (delta / -resistance);
 
     /**
      * This is what changes the direction of the scroll once we
      * switch scrolling directions.
      */
     if (velocityFactor.get() < 0) {
-      directionFactor.current = -1
+      directionFactor.current = -1;
     } else if (velocityFactor.get() > 0) {
-      directionFactor.current = 1
+      directionFactor.current = 1;
     }
 
-    moveBy += directionFactor.current * moveBy * velocityFactor.get()
+    moveBy += directionFactor.current * moveBy * velocityFactor.get();
 
-    baseX.set(baseX.get() + moveBy)
-  })
-  const theme = mergeDeep(getTheme().parallaxText, customTheme)
+    baseX.set(baseX.get() + moveBy);
+  });
+  const theme = mergeDeep(getTheme().parallaxText, customTheme);
 
   return (
-    <motion.div
-      className={twMerge(theme.base, className)}
-      style={{ x }}
-      {...props}
-    >
+    <motion.div className={twMerge(theme.base, className)} style={{ x }} {...props}>
       {Array.from({ length: renderedElements }).map((_, i) => (
         <Component key={i}>{children}</Component>
       ))}
     </motion.div>
-  )
-}
+  );
+};

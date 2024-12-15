@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import React, { type FC } from "react"
+import React, { type FC } from "react";
 
-import { Toaster } from "../../components/Toaster"
-import { ToasterProps } from "../../components/Toaster/Toaster"
-import { MakeRequired, cn } from "../../helpers"
-import { useThemeMode, type ThemeMode } from "../../hooks/use-theme-mode"
-import { languages } from "../../i18n"
-import { ThemeInit } from "../../theme-store/init"
-import { Language, SomeTranslations } from "../../types"
-import type { CustomPoluiTheme } from "./PoluiTheme"
+import { Toaster } from "../../components/Toaster";
+import type { ToasterProps } from "../../components/Toaster/Toaster";
+import { type MakeRequired, cn } from "../../helpers";
+import { type ThemeMode, useThemeMode } from "../../hooks/use-theme-mode";
+import { languages } from "../../i18n";
+import { ThemeInit } from "../../theme-store/init";
+import type { Language, SomeTranslations } from "../../types";
+import type { CustomPoluiTheme } from "./PoluiTheme";
 
 /**
  * @name ThemeProps
@@ -19,8 +19,8 @@ import type { CustomPoluiTheme } from "./PoluiTheme"
  * @property {CustomPoluiTheme} theme - The custom theme to be used
  */
 export interface ThemeProps {
-  mode?: ThemeMode
-  theme?: CustomPoluiTheme
+  mode?: ThemeMode;
+  theme?: CustomPoluiTheme;
 }
 
 /**
@@ -32,35 +32,28 @@ export interface ThemeProps {
 
  */
 interface ProviderProps {
-  children: React.ReactNode
-  theme?: ThemeProps
+  children: React.ReactNode;
+  theme?: ThemeProps;
   keys?: {
-    language: string
-  }
-  defaultLanguage?: Language
-  toaster?: ToasterProps
-  allLanguages?: Language[]
-  translations?: SomeTranslations
-  isDebug?: boolean
+    language: string;
+  };
+  defaultLanguage?: Language;
+  toaster?: ToasterProps;
+  allLanguages?: Language[];
+  translations?: SomeTranslations;
+  isDebug?: boolean;
 }
 
 export interface PolUiContextProps
-  extends MakeRequired<
-    Pick<
-      ProviderProps,
-      "defaultLanguage" | "translations" | "keys" | "allLanguages"
-    >
-  > {}
+  extends MakeRequired<Pick<ProviderProps, "defaultLanguage" | "translations" | "keys" | "allLanguages">> {}
 
-export const PolUiContext = React.createContext<PolUiContextProps | undefined>(
-  undefined
-)
+export const PolUiContext = React.createContext<PolUiContextProps | undefined>(undefined);
 
 /**
  * @name PoluiProvider
  * @description The PoluiProvider component is a wrapper component that provides the theme to all the components in the Polui library. It also initializes the theme mode and the custom theme if provided.
  * @param {ProviderProps} { children, theme} 
- * @returns {JSX.Element} The PoluiProvider component
+ * @returns {React.ReactNode} The PoluiProvider component
  * @author Pol Gubau - https://polgubau.com
 
  */
@@ -77,9 +70,9 @@ export const PoluiProvider: FC<ProviderProps> = ({
   translations = {
     "en-US": {},
   },
-}: ProviderProps): JSX.Element => {
-  const locales = Object.keys(translations) as Locale[]
-  type Locale = keyof typeof translations
+}: ProviderProps): React.ReactNode => {
+  const locales = Object.keys(translations) as Locale[];
+  type Locale = keyof typeof translations;
 
   const context = React.useMemo(
     () => ({
@@ -90,10 +83,10 @@ export const PoluiProvider: FC<ProviderProps> = ({
       allLanguages,
       isDebug,
     }),
-    [keys, defaultLanguage, translations, locales, allLanguages, isDebug]
-  )
+    [keys, defaultLanguage, translations, locales, allLanguages, isDebug],
+  );
 
-  const { computedMode } = useThemeMode()
+  const { computedMode } = useThemeMode();
 
   return (
     <PolUiContext.Provider value={context}>
@@ -107,8 +100,8 @@ export const PoluiProvider: FC<ProviderProps> = ({
       </div>
       <ThemeInit mode={theme?.mode ?? computedMode} theme={theme?.theme} />
     </PolUiContext.Provider>
-  )
-}
+  );
+};
 
 // Set display name for PoluiProvider component
-PoluiProvider.displayName = "PoluiProvider"
+PoluiProvider.displayName = "PoluiProvider";

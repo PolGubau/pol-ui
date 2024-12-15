@@ -1,2 +1,2 @@
-export * from './boolean-card'
-export * from './boolean-loading-card'
+export * from "./boolean-card";
+export * from "./boolean-loading-card";

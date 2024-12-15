@@ -1,14 +1,14 @@
-import { cn } from "../../helpers"
+import { cn } from "../../helpers";
 
 interface SizeIndiatorProps {
-  className?: string
+  className?: string;
 }
 const SizeIndiator = ({ className }: SizeIndiatorProps) => {
   return (
     <div
       className={cn(
         "fixed bottom-1 left-1 z-50 flex h-6 w-6 items-center justify-center rounded-full bg-gray-800 p-3 font-mono text-xs text-white",
-        className
+        className,
       )}
     >
       <div className="block sm:hidden">xs</div>
@@ -18,7 +18,7 @@ const SizeIndiator = ({ className }: SizeIndiatorProps) => {
       <div className="hidden xl:block 2xl:hidden">xl</div>
       <div className="hidden 2xl:block">2xl</div>
     </div>
-  )
-}
+  );
+};
 
-export { SizeIndiator, type SizeIndiatorProps }
+export { SizeIndiator, type SizeIndiatorProps };

@@ -1,13 +1,13 @@
-import type { Meta } from '@storybook/react'
-import { Hamburguer } from './Hamburguer'
-import { useBoolean } from '../../hooks'
+import type { Meta } from "@storybook/react";
+import { useBoolean } from "../../hooks";
+import { Hamburguer } from "./Hamburguer";
 
 export default {
-  title: 'Components/Hamburguer',
+  title: "Components/Hamburguer",
   component: Hamburguer,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col justify-center items-center">
         <div className="max-w-xl">
           <Story />
@@ -15,23 +15,23 @@ export default {
       </div>
     ),
   ],
-} as Meta
+} as Meta;
 
 export const Default = () => {
-  const { value, toggle } = useBoolean(false)
+  const { value, toggle } = useBoolean(false);
 
   return (
     <Hamburguer
       onClick={() => {
-        toggle()
+        toggle();
       }}
       open={value}
     />
-  )
-}
+  );
+};
 
 export const Outline = () => {
-  const { value, toggle } = useBoolean(false)
+  const { value, toggle } = useBoolean(false);
 
-  return <Hamburguer outline onClick={toggle} open={value} />
-}
+  return <Hamburguer outline={true} onClick={toggle} open={value} />;
+};

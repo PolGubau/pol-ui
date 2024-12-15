@@ -1,1 +1,1 @@
-export { NoData } from './NoData'
+export { NoData } from "./NoData";

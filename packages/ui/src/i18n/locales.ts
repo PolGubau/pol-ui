@@ -62,4 +62,4 @@ export enum Locales {
   EL_GR = "el-GR", // Greek (Greece)
 }
 
-export type Locale = `${Locales}`
+export type Locale = `${Locales}`;

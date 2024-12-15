@@ -1,8 +1,8 @@
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
 
-import { Button } from "../../components"
-import { PoluiProvider } from "../../providers/PoluiProvider"
-import { useCounter } from "./use-counter"
+import { Button } from "../../components";
+import { PoluiProvider } from "../../providers/PoluiProvider";
+import { useCounter } from "./use-counter";
 
 export default {
   title: "Hooks/useCounter",
@@ -19,9 +19,9 @@ export default {
     layout: "fullscreen",
   },
   tags: ["autodocs"],
-} as Meta
+} as Meta;
 export const Default: React.FC = () => {
-  const { count, increment, decrement, reset, setCount } = useCounter(0)
+  const { count, increment, decrement, reset, setCount } = useCounter(0);
 
   return (
     <div className="flex justify-center flex-col gap-2">
@@ -33,7 +33,7 @@ export const Default: React.FC = () => {
 
       <Button
         onClick={() => {
-          setCount(10)
+          setCount(10);
         }}
       >
         Set to 10
@@ -41,5 +41,5 @@ export const Default: React.FC = () => {
 
       <p>Count: {count}</p>
     </div>
-  )
-}
+  );
+};

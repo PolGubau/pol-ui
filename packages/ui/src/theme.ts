@@ -1,62 +1,62 @@
-import { accordionTheme } from "./components/Accordion/theme"
-import { alertTheme } from "./components/Alert/theme"
-import { animatedHeadingTheme } from "./components/AnimatedHeading/theme"
-import { avatarTheme } from "./components/Avatar/theme"
-import { badgeTheme } from "./components/Badge/theme"
-import { bannerTheme } from "./components/Banner/theme"
-import { breadcrumbTheme } from "./components/Breadcrumb/theme"
-import { bubbleHeadingTheme } from "./components/BubbleHeading/theme"
-import { buttonTheme } from "./components/Button/theme"
-import { cardTheme } from "./components/Card/theme"
-import { checkboxTheme } from "./components/Checkbox/theme"
-import { chipTheme } from "./components/Chip/theme"
-import { containerScrollTheme } from "./components/ContainerScroll/theme"
-import { conveyorTheme } from "./components/Conveyor/theme"
-import { copyrightTheme } from "./components/Copyright/theme"
-import { datePickerTheme } from "./components/Datepicker/theme"
-import { directionHoverTheme } from "./components/DirectionHover/theme"
-import { dividerTheme } from "./components/Divider"
-import { dropdownTheme } from "./components/Dropdown/theme"
-import { dropzoneTheme } from "./components/Dropzone/theme"
-import { fileInputTheme } from "./components/FileInput/theme"
-import { focusEffectTheme } from "./components/FocusEffect/theme"
-import { followerPointerTheme } from "./components/FollowerPointer/theme"
-import { footerTheme } from "./components/Footer/theme"
-import { gaugeTheme } from "./components/Gauge/theme"
-import { hamburguerTheme } from "./components/Hamburguer/theme"
-import { helperTextTheme } from "./components/HelperText/theme"
-import { iconButtonTheme } from "./components/IconButton/theme"
-import { imageTrailTheme } from "./components/ImageTrail/theme"
-import { inputTheme } from "./components/Input/theme"
-import { kanbanTheme } from "./components/Kanban/theme"
-import { kbdTheme } from "./components/Kbd/theme"
-import { labelTheme } from "./components/Label/theme"
-import { linkTheme } from "./components/Link/theme"
-import { listGroupTheme } from "./components/ListGroup/theme"
-import { loaderTheme } from "./components/Loader/theme"
-import { messageTheme } from "./components/Message/theme"
-import { navbarTheme } from "./components/Navbar/theme"
-import { navigationMenuTheme } from "./components/NavigationMenu/theme"
-import { otpInputTheme } from "./components/OtpInput/theme"
-import { paginationTheme } from "./components/Pagination/theme"
-import { parallaxTextTheme } from "./components/ParallaxText"
-import { perspectiveCardTheme } from "./components/PerspectiveCard/theme"
-import { popoverTheme } from "./components/Popover"
-import { progressTheme } from "./components/Progress/theme"
-import { radioTheme } from "./components/Radio/theme"
-import { ratingTheme } from "./components/Rating/theme"
-import { selectTheme } from "./components/Select/theme"
-import { sidebarTheme } from "./components/Sidebar/theme"
-import { sliderTheme } from "./components/Slider/theme"
-import { stickyScrollTheme } from "./components/StickyScroll/theme"
-import { switchTheme } from "./components/Switch/theme"
-import { tabsTheme } from "./components/Tabs/theme"
-import { textGeneratorTheme } from "./components/TextGenerator/theme"
-import { timelineTheme } from "./components/Timeline/theme"
-import { toastTheme } from "./components/Toaster/theme"
-import { toggleTheme } from "./components/Toggle/theme"
-import { tooltipTheme } from "./components/Tooltip/theme"
-import { type PoluiTheme } from "./providers/PoluiProvider"
+import { accordionTheme } from "./components/Accordion/theme";
+import { alertTheme } from "./components/Alert/theme";
+import { animatedHeadingTheme } from "./components/AnimatedHeading/theme";
+import { avatarTheme } from "./components/Avatar/theme";
+import { badgeTheme } from "./components/Badge/theme";
+import { bannerTheme } from "./components/Banner/theme";
+import { breadcrumbTheme } from "./components/Breadcrumb/theme";
+import { bubbleHeadingTheme } from "./components/BubbleHeading/theme";
+import { buttonTheme } from "./components/Button/theme";
+import { cardTheme } from "./components/Card/theme";
+import { checkboxTheme } from "./components/Checkbox/theme";
+import { chipTheme } from "./components/Chip/theme";
+import { containerScrollTheme } from "./components/ContainerScroll/theme";
+import { conveyorTheme } from "./components/Conveyor/theme";
+import { copyrightTheme } from "./components/Copyright/theme";
+import { datePickerTheme } from "./components/Datepicker/theme";
+import { directionHoverTheme } from "./components/DirectionHover/theme";
+import { dividerTheme } from "./components/Divider";
+import { dropdownTheme } from "./components/Dropdown/theme";
+import { dropzoneTheme } from "./components/Dropzone/theme";
+import { fileInputTheme } from "./components/FileInput/theme";
+import { focusEffectTheme } from "./components/FocusEffect/theme";
+import { followerPointerTheme } from "./components/FollowerPointer/theme";
+import { footerTheme } from "./components/Footer/theme";
+import { gaugeTheme } from "./components/Gauge/theme";
+import { hamburguerTheme } from "./components/Hamburguer/theme";
+import { helperTextTheme } from "./components/HelperText/theme";
+import { iconButtonTheme } from "./components/IconButton/theme";
+import { imageTrailTheme } from "./components/ImageTrail/theme";
+import { inputTheme } from "./components/Input/theme";
+import { kanbanTheme } from "./components/Kanban/theme";
+import { kbdTheme } from "./components/Kbd/theme";
+import { labelTheme } from "./components/Label/theme";
+import { linkTheme } from "./components/Link/theme";
+import { listGroupTheme } from "./components/ListGroup/theme";
+import { loaderTheme } from "./components/Loader/theme";
+import { messageTheme } from "./components/Message/theme";
+import { navbarTheme } from "./components/Navbar/theme";
+import { navigationMenuTheme } from "./components/NavigationMenu/theme";
+import { otpInputTheme } from "./components/OtpInput/theme";
+import { paginationTheme } from "./components/Pagination/theme";
+import { parallaxTextTheme } from "./components/ParallaxText";
+import { perspectiveCardTheme } from "./components/PerspectiveCard/theme";
+import { popoverTheme } from "./components/Popover";
+import { progressTheme } from "./components/Progress/theme";
+import { radioTheme } from "./components/Radio/theme";
+import { ratingTheme } from "./components/Rating/theme";
+import { selectTheme } from "./components/Select/theme";
+import { sidebarTheme } from "./components/Sidebar/theme";
+import { sliderTheme } from "./components/Slider/theme";
+import { stickyScrollTheme } from "./components/StickyScroll/theme";
+import { switchTheme } from "./components/Switch/theme";
+import { tabsTheme } from "./components/Tabs/theme";
+import { textGeneratorTheme } from "./components/TextGenerator/theme";
+import { timelineTheme } from "./components/Timeline/theme";
+import { toastTheme } from "./components/Toaster/theme";
+import { toggleTheme } from "./components/Toggle/theme";
+import { tooltipTheme } from "./components/Tooltip/theme";
+import type { PoluiTheme } from "./providers/PoluiProvider";
 
 export const theme: PoluiTheme = {
   accordion: accordionTheme,
@@ -117,7 +117,7 @@ export const theme: PoluiTheme = {
   otpInput: otpInputTheme,
   gauge: gaugeTheme,
   focusEffect: focusEffectTheme,
-}
+};
 
 /*
 "You see here kid? 

@@ -1,5 +1,5 @@
-export { Banner } from './Banner'
-export type { BannerComponentProps } from './Banner'
+export { Banner } from "./Banner";
+export type { BannerComponentProps } from "./Banner";
 
-export { bannerTheme } from './theme'
-export type { BannerTheme } from './theme'
+export { bannerTheme } from "./theme";
+export type { BannerTheme } from "./theme";

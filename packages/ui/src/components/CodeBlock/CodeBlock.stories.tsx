@@ -1,6 +1,6 @@
-import type { Meta, StoryFn } from "@storybook/react"
+import type { Meta } from "@storybook/react";
 
-import { CodeBlock, type CodeBlockProps } from "./CodeBlock"
+import { CodeBlock } from "./CodeBlock";
 
 export default {
   title: "Components/CodeBlock",
@@ -16,7 +16,7 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
 const code = `'use client'
  
@@ -63,12 +63,12 @@ function CodeBlock({ expandButtonTitle = 'View Code', className, children, ...pr
   )
 }
  
-`
+`;
 
 export const Default = () => {
   return (
     <CodeBlock>
       <pre>{code}</pre>
     </CodeBlock>
-  )
-}
+  );
+};

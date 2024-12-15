@@ -1,13 +1,13 @@
-import { useState } from "react"
-import type { Meta, StoryFn } from "@storybook/react"
-import { BiUserVoice } from "react-icons/bi"
-import { TbPlayerPauseFilled } from "react-icons/tb"
+import type { Meta, StoryFn } from "@storybook/react";
+import { useState } from "react";
+import { BiUserVoice } from "react-icons/bi";
+import { TbPlayerPauseFilled } from "react-icons/tb";
 
-import { useSpeechToText } from "../../hooks"
-import { IconButton } from "../IconButton"
-import { ListeningAnimation } from "../ListeningAnimation/ListeningAnimation"
-import { Toaster, toast } from "../Toaster"
-import { Textarea, type TextareaProps } from "./Textarea"
+import { useSpeechToText } from "../../hooks";
+import { IconButton } from "../IconButton";
+import { ListeningAnimation } from "../ListeningAnimation/ListeningAnimation";
+import { Toaster, toast } from "../Toaster";
+import { Textarea, type TextareaProps } from "./Textarea";
 
 export default {
   title: "Components/Inputs/Textarea",
@@ -26,47 +26,46 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
-const Template: StoryFn<TextareaProps> = (args) => <Textarea {...args} />
+const Template: StoryFn<TextareaProps> = (args) => <Textarea {...args} />;
 
-export const DefaultTextarea = Template.bind({})
-DefaultTextarea.storyName = "Textarea"
+export const DefaultTextarea = Template.bind({});
+DefaultTextarea.storyName = "Textarea";
 DefaultTextarea.args = {
   children: "Text",
-}
-export const CustomHeight = Template.bind({})
+};
+export const CustomHeight = Template.bind({});
 CustomHeight.args = {
   children: "Text",
   label: "That is a loooong textarea",
   className: "min-h-[300px]",
-}
-export const Resizeable = Template.bind({})
+};
+export const Resizeable = Template.bind({});
 Resizeable.args = {
   children: "Text",
   label: "You can resize me :)",
   innerClassName: "resize ",
-}
+};
 
 export const SpeechRecognition = () => {
-  const [hasError, setHasError] = useState(false)
+  const [hasError, setHasError] = useState(false);
   const handleError = (error: string) => {
-    setHasError(true)
+    setHasError(true);
     toast.error(error, {
-      description:
-        "Please make sure you have a microphone connected, maybe your browser doesn't support this feature",
-    })
-  }
-  const [text, setText] = useState("")
+      description: "Please make sure you have a microphone connected, maybe your browser doesn't support this feature",
+    });
+  };
+  const [text, setText] = useState("");
 
   const handleSuccess = (result: string) => {
-    toast(result)
-    setText(transcript)
-  }
+    toast(result);
+    setText(transcript);
+  };
   const { start, stop, transcript, isListening } = useSpeechToText({
     onError: handleError,
     onResult: handleSuccess,
-  })
+  });
 
   return (
     <div className="relative">
@@ -84,15 +83,11 @@ export const SpeechRecognition = () => {
         rightComponent={
           !hasError && (
             <IconButton onClick={isListening ? stop : start}>
-              {isListening ? (
-                <TbPlayerPauseFilled size={20} />
-              ) : (
-                <BiUserVoice size={20} />
-              )}
+              {isListening ? <TbPlayerPauseFilled size={20} /> : <BiUserVoice size={20} />}
             </IconButton>
           )
         }
       />
     </div>
-  )
-}
+  );
+};

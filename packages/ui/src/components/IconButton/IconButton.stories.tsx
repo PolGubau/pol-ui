@@ -1,10 +1,10 @@
-import type { Meta, StoryFn } from "@storybook/react"
-import { TbSearch, TbTrash } from "react-icons/tb"
+import type { Meta, StoryFn } from "@storybook/react";
+import { TbSearch, TbTrash } from "react-icons/tb";
 
-import { theme } from "../../theme"
-import type { Colors, MainSizes, RoundedSizes } from "../../types"
-import { ColorsEnum } from "../../types/enums"
-import { IconButton, type IconButtonProps } from "./IconButton"
+import { theme } from "../../theme";
+import type { Colors, MainSizes, RoundedSizes } from "../../types";
+import { ColorsEnum } from "../../types/enums";
+import { IconButton, type IconButtonProps } from "./IconButton";
 
 export default {
   title: "Components/IconButton",
@@ -33,58 +33,58 @@ export default {
       control: { type: "text" },
     },
   },
-} as Meta
+} as Meta;
 
-const Template: StoryFn<IconButtonProps> = (args) => <IconButton {...args} />
+const Template: StoryFn<IconButtonProps> = (args) => <IconButton {...args} />;
 
-export const DefaultButton = Template.bind({})
-DefaultButton.storyName = "Default"
+export const DefaultButton = Template.bind({});
+DefaultButton.storyName = "Default";
 DefaultButton.parameters = {
   docs: {
     description: {
       story: "The default for displaying icons as button",
     },
   },
-}
+};
 DefaultButton.args = {
   children: <TbSearch />,
   label: "Search",
-}
+};
 
-export const OutlineButton = Template.bind({})
-OutlineButton.storyName = "Outline"
+export const OutlineButton = Template.bind({});
+OutlineButton.storyName = "Outline";
 OutlineButton.args = {
   ...DefaultButton.args,
   variant: "outline",
-}
-export const WithoutTooltip = Template.bind({})
+};
+export const WithoutTooltip = Template.bind({});
 WithoutTooltip.parameters = {
   docs: {
     description: {
       story: "You can add a tooltip to the button by adding a `label` prop",
     },
   },
-}
+};
 WithoutTooltip.args = {
   ...DefaultButton.args,
   label: undefined,
-}
-export const Loading = Template.bind({})
+};
+export const Loading = Template.bind({});
 Loading.args = {
   ...DefaultButton.args,
   loading: true,
-}
-export const Disabled = Template.bind({})
+};
+export const Disabled = Template.bind({});
 Disabled.args = {
   ...DefaultButton.args,
   disabled: true,
-}
+};
 
-export const Filled = Template.bind({})
+export const Filled = Template.bind({});
 Filled.args = {
   ...DefaultButton.args,
   variant: "filled",
-}
+};
 
 export const Rounded = (args: IconButtonProps) => (
   <div className="flex gap-3 flex-wrap">
@@ -97,7 +97,7 @@ export const Rounded = (args: IconButtonProps) => (
       </div>
     ))}
   </div>
-)
+);
 export const Sizes = (args: IconButtonProps) => (
   <div className="flex gap-3 flex-wrap items-start text-center">
     {Object.keys(theme.button.size).map((size) => (
@@ -109,7 +109,7 @@ export const Sizes = (args: IconButtonProps) => (
       </div>
     ))}
   </div>
-)
+);
 export const AllColors = (args: IconButtonProps) => (
   <section className="flex gap-12 flex-wrap">
     <div className="flex gap-3 flex-col bg-secondary-50 p-4 rounded-xl">
@@ -139,4 +139,4 @@ export const AllColors = (args: IconButtonProps) => (
       </div>
     </div>
   </section>
-)
+);

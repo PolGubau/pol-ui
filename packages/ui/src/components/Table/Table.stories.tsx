@@ -1,55 +1,55 @@
-import type { Meta } from '@storybook/react'
-import { Table, TableBody, TableCell, TableFooter, TableHead, TableHeader, TableRow } from './Table'
+import type { Meta } from "@storybook/react";
+import { Table, TableBody, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "./Table";
 
 export default {
-  title: 'Components/Table',
+  title: "Components/Table",
   component: Table,
-  tags:['autodocs']
-} as Meta
+  tags: ["autodocs"],
+} as Meta;
 const components = [
   {
-    invoice: 'C1',
-    paymentStatus: 'Button',
-    downloads: '255',
-    description: 'Small clickable element',
+    invoice: "C1",
+    paymentStatus: "Button",
+    downloads: "255",
+    description: "Small clickable element",
   },
   {
-    invoice: 'C2',
-    paymentStatus: 'Input',
-    downloads: '151',
-    description: 'Text input field',
+    invoice: "C2",
+    paymentStatus: "Input",
+    downloads: "151",
+    description: "Text input field",
   },
   {
-    invoice: 'C3',
-    paymentStatus: 'Table',
-    downloads: '356',
-    description: 'Data grid with rows and columns',
+    invoice: "C3",
+    paymentStatus: "Table",
+    downloads: "356",
+    description: "Data grid with rows and columns",
   },
   {
-    invoice: 'C4',
-    paymentStatus: 'Avatar',
-    downloads: '450',
-    description: 'Profile picture or user icon',
+    invoice: "C4",
+    paymentStatus: "Avatar",
+    downloads: "450",
+    description: "Profile picture or user icon",
   },
   {
-    invoice: 'C5',
-    paymentStatus: 'Accordion',
-    downloads: '550',
-    description: 'Expandable content',
+    invoice: "C5",
+    paymentStatus: "Accordion",
+    downloads: "550",
+    description: "Expandable content",
   },
   {
-    invoice: 'C6',
-    paymentStatus: 'Radio',
-    downloads: '220',
-    description: 'Single choice input',
+    invoice: "C6",
+    paymentStatus: "Radio",
+    downloads: "220",
+    description: "Single choice input",
   },
   {
-    invoice: 'C7',
-    paymentStatus: 'Popover',
-    downloads: '303',
-    description: 'Floating content',
+    invoice: "C7",
+    paymentStatus: "Popover",
+    downloads: "303",
+    description: "Floating content",
   },
-]
+];
 
 export function TableDemo() {
   return (
@@ -63,7 +63,7 @@ export function TableDemo() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {components.map(invoice => (
+        {components.map((invoice) => (
           <TableRow key={invoice.invoice}>
             <TableCell className="font-medium">{invoice.invoice}</TableCell>
             <TableCell>{invoice.paymentStatus}</TableCell>
@@ -76,10 +76,10 @@ export function TableDemo() {
         <TableRow>
           <TableCell colSpan={3}>Total Downloads</TableCell>
           <TableCell className="text-right">
-            {components.reduce((acc, curr) => acc + parseInt(curr.downloads), 0)}
+            {components.reduce((acc, curr) => acc + Number.parseInt(curr.downloads), 0)}
           </TableCell>
         </TableRow>
       </TableFooter>
     </Table>
-  )
+  );
 }

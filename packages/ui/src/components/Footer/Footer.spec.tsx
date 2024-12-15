@@ -1,13 +1,9 @@
-import type { FC } from "react"
-import { render, screen } from "@testing-library/react"
-import { describe, expect, it } from "vitest"
+import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
 
-import { Copyright } from "../Copyright"
-import { Divider } from "../Divider"
-import { Link } from "../Link"
-import { Footer } from "./Footer"
-import { FooterBrand } from "./FooterBrand"
-import { FooterLinkGroup } from "./FooterLinkGroup"
+import { Copyright } from "../Copyright";
+import { Footer } from "./Footer";
+import { FooterBrand } from "./FooterBrand";
 
 describe("Components / Footer", () => {
   describe("Rendering", () => {
@@ -21,15 +17,15 @@ describe("Components / Footer", () => {
           >
             Pol-ui
           </FooterBrand>
-        </Footer>
-      )
-      const a = screen.getByTestId("ui-footer-brand")
-      const img = screen.getByAltText("PoluiProvider")
+        </Footer>,
+      );
+      const a = screen.getByTestId("ui-footer-brand");
+      const img = screen.getByAltText("PoluiProvider");
 
-      expect(a).toBeInTheDocument()
-      expect(a).toContainElement(img)
-    })
-  })
+      expect(a).toBeInTheDocument();
+      expect(a).toContainElement(img);
+    });
+  });
 
   it('should render an `<img>` on `Footer.Brand src=".."`', () => {
     render(
@@ -37,28 +33,24 @@ describe("Components / Footer", () => {
         <FooterBrand alt="PoluiProvider" src="">
           PoluiProvider
         </FooterBrand>
-      </Footer>
-    )
-    const img = screen.getByAltText("PoluiProvider")
+      </Footer>,
+    );
+    const img = screen.getByAltText("PoluiProvider");
 
-    expect(img).toBeInTheDocument()
-  })
+    expect(img).toBeInTheDocument();
+  });
 
   it('should render an `<a>` on `Footer.Copyright href=".."`', () => {
     render(
       <Footer>
-        <Copyright
-          by="PoluiProvider"
-          href="https://PoluiProvider.com"
-          year={2022}
-        >
+        <Copyright by="PoluiProvider" href="https://PoluiProvider.com" year={2022}>
           PoluiProvider
         </Copyright>
-      </Footer>
-    )
+      </Footer>,
+    );
 
-    expect(copyright()).toContainElement(screen.getByRole("link"))
-  })
-})
+    expect(copyright()).toContainElement(screen.getByRole("link"));
+  });
+});
 
-const copyright = () => screen.getByTestId("ui-footer-copyright")
+const copyright = () => screen.getByTestId("ui-footer-copyright");

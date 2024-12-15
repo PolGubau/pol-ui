@@ -1,26 +1,20 @@
-import React from "react"
-import type { Meta, StoryFn } from "@storybook/react"
+import type { Meta, StoryFn } from "@storybook/react";
+import React from "react";
 
-import { Button } from "../Button"
-import { Divider } from "../Divider"
-import { toast } from "../Toaster"
-import {
-  Select,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectProps,
-} from "./Select"
+import { Button } from "../Button";
+import { Divider } from "../Divider";
+import { toast } from "../Toaster";
+import { Select, SelectGroup, SelectItem, SelectLabel, type SelectProps } from "./Select";
 
 export default {
   title: "Components/Select",
   component: Select,
   tags: ["autodocs"],
-} as Meta
+} as Meta;
 
-const Template: StoryFn<SelectProps> = (args) => <Select {...args} />
+const Template: StoryFn<SelectProps> = (args) => <Select {...args} />;
 
-export const Default = Template.bind({})
+export const Default = Template.bind({});
 Default.args = {
   children: (
     <>
@@ -44,10 +38,10 @@ Default.args = {
       </SelectGroup>
     </>
   ),
-}
+};
 
 export const Controlled = () => {
-  const [value, setValue] = React.useState("apple")
+  const [value, setValue] = React.useState("apple");
   return (
     <>
       <p>Select value: {value}</p>
@@ -62,22 +56,18 @@ export const Controlled = () => {
         </SelectGroup>
       </Select>
     </>
-  )
-}
+  );
+};
 
 export const UncontrolledInForm = () => {
   return (
     <form
       onSubmit={(e) => {
-        e.preventDefault()
-        const formData = new FormData(e.target as HTMLFormElement)
+        e.preventDefault();
+        const formData = new FormData(e.target as HTMLFormElement);
         toast("Form submitted!", {
-          description: JSON.stringify(
-            Object.fromEntries(formData.entries()),
-            null,
-            2
-          ),
-        })
+          description: JSON.stringify(Object.fromEntries(formData.entries()), null, 2),
+        });
       }}
     >
       <Select
@@ -97,5 +87,5 @@ export const UncontrolledInForm = () => {
         Submit
       </Button>
     </form>
-  )
-}
+  );
+};

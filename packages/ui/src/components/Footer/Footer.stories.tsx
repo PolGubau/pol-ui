@@ -1,34 +1,34 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import { BsDribbble, BsGithub, BsInstagram } from 'react-icons/bs'
-import { Button } from '../Button'
-import { Copyright } from '../Copyright'
-import { Divider } from '../Divider'
-import { IconButton } from '../IconButton'
-import { Link } from '../Link'
-import { Footer } from './Footer'
-import { FooterBrand } from './FooterBrand'
-import { FooterLinkGroup } from './FooterLinkGroup'
+import type { Meta, StoryFn } from "@storybook/react";
+import { BsDribbble, BsGithub, BsInstagram } from "react-icons/bs";
+import { Button } from "../Button";
+import { Copyright } from "../Copyright";
+import { Divider } from "../Divider";
+import { IconButton } from "../IconButton";
+import { Link } from "../Link";
+import { Footer } from "./Footer";
+import { FooterBrand } from "./FooterBrand";
+import { FooterLinkGroup } from "./FooterLinkGroup";
 
 export default {
-  title: 'Components/Footer',
+  title: "Components/Footer",
   component: Footer,
-  tags: ['Footer', 'autodocs'],
+  tags: ["Footer", "autodocs"],
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col items-end justify-end h-full">
         <Story />
       </div>
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
-const Template: StoryFn = ({ children }) => <Footer>{children}</Footer>
-const thisYear = new Date().getFullYear()
-export const DefaultFooter = Template.bind({})
-DefaultFooter.storyName = 'Default'
+const Template: StoryFn = ({ children }) => <Footer>{children}</Footer>;
+const thisYear = new Date().getFullYear();
+export const DefaultFooter = Template.bind({});
+DefaultFooter.storyName = "Default";
 DefaultFooter.args = {
   children: (
     <div className="flex w-full justify-between p-6">
@@ -42,10 +42,10 @@ DefaultFooter.args = {
       </FooterLinkGroup>
     </div>
   ),
-}
+};
 
-export const WithLogoFooter = Template.bind({})
-WithLogoFooter.storyName = 'With Logo'
+export const WithLogoFooter = Template.bind({});
+WithLogoFooter.storyName = "With Logo";
 WithLogoFooter.args = {
   children: (
     <div className="w-full p-6 text-center">
@@ -62,10 +62,10 @@ WithLogoFooter.args = {
       <Copyright href="#" by="Pol-ui™" year={2022} />
     </div>
   ),
-}
+};
 
-export const WithSocialMediaFooter = Template.bind({})
-WithSocialMediaFooter.storyName = 'Social Media Icons'
+export const WithSocialMediaFooter = Template.bind({});
+WithSocialMediaFooter.storyName = "Social Media Icons";
 WithSocialMediaFooter.args = {
   container: true,
   children: (
@@ -76,19 +76,19 @@ WithSocialMediaFooter.args = {
         </div>
         <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
           <div>
-            <FooterLinkGroup col title="about">
+            <FooterLinkGroup col={true} title="about">
               <Link href="#">Pol-ui</Link>
               <Link href="#">Tailwind CSS</Link>
             </FooterLinkGroup>
           </div>
           <div>
-            <FooterLinkGroup col title="Follow us">
+            <FooterLinkGroup col={true} title="Follow us">
               <Link href="#">Github</Link>
               <Link href="#">Discord</Link>
             </FooterLinkGroup>
           </div>
           <div>
-            <FooterLinkGroup col title="Legal">
+            <FooterLinkGroup col={true} title="Legal">
               <Link href="#">Privacy Policy</Link>
               <Link href="#">Terms &amp; Conditions</Link>
             </FooterLinkGroup>
@@ -115,16 +115,16 @@ WithSocialMediaFooter.args = {
       </div>
     </div>
   ),
-}
+};
 
-export const SitemapLinksFooter = Template.bind({})
-SitemapLinksFooter.storyName = 'Sitemap Links'
+export const SitemapLinksFooter = Template.bind({});
+SitemapLinksFooter.storyName = "Sitemap Links";
 SitemapLinksFooter.args = {
   children: (
     <div className="w-full ">
       <div className="grid w-full grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">
         <div>
-          <FooterLinkGroup col title="Company">
+          <FooterLinkGroup col={true} title="Company">
             <Link href="#">About</Link>
             <Link href="#">Careers</Link>
             <Link href="#">Brand Center</Link>
@@ -132,7 +132,7 @@ SitemapLinksFooter.args = {
           </FooterLinkGroup>
         </div>
         <div>
-          <FooterLinkGroup col title="help center">
+          <FooterLinkGroup col={true} title="help center">
             <Link href="#">Discord Server</Link>
             <Link href="#">Twitter</Link>
             <Link href="#">Facebook</Link>
@@ -140,14 +140,14 @@ SitemapLinksFooter.args = {
           </FooterLinkGroup>
         </div>
         <div>
-          <FooterLinkGroup col title="legal">
+          <FooterLinkGroup col={true} title="legal">
             <Link href="#">Privacy Policy</Link>
             <Link href="#">Licensing</Link>
             <Link href="#">Terms &amp; Conditions</Link>
           </FooterLinkGroup>
         </div>
         <div>
-          <FooterLinkGroup col title="download">
+          <FooterLinkGroup col={true} title="download">
             <Link href="#">iOS</Link>
             <Link href="#">Android</Link>
             <Link href="#">Windows</Link>
@@ -174,4 +174,4 @@ SitemapLinksFooter.args = {
       </div>
     </div>
   ),
-}
+};

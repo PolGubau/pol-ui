@@ -1,1 +1,1 @@
-export { SizeIndiator, type SizeIndiatorProps } from './SizeIndiator'
+export { SizeIndiator, type SizeIndiatorProps } from "./SizeIndiator";

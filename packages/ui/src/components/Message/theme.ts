@@ -1,22 +1,22 @@
-import { IBoolean } from "../../types"
+import type { IBoolean } from "../../types";
 
 export interface MessageTheme {
   message: {
-    base: string
+    base: string;
     content: {
-      base: string
-      mine: IBoolean
-    }
-    date: string
+      base: string;
+      mine: IBoolean;
+    };
+    date: string;
     arrow: {
-      base: string
-      mine: IBoolean
-    }
-  }
+      base: string;
+      mine: IBoolean;
+    };
+  };
   messageGroup: {
-    base: string
-    mine: IBoolean
-  }
+    base: string;
+    mine: IBoolean;
+  };
 }
 export const messageTheme: MessageTheme = {
   message: {
@@ -45,4 +45,4 @@ export const messageTheme: MessageTheme = {
       off: "items-start",
     },
   },
-}
+};

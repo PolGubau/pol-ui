@@ -1,9 +1,9 @@
-import React from "react"
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
+import type React from "react";
 
-import { Button, Card, Toaster, toast } from "../../components"
-import { PoluiProvider } from "../../providers/PoluiProvider"
-import { useLongPress } from "./use-long-press"
+import { Button, Toaster, toast } from "../../components";
+import { PoluiProvider } from "../../providers/PoluiProvider";
+import { useLongPress } from "./use-long-press";
 
 export default {
   title: "Hooks/useLongPress",
@@ -21,14 +21,14 @@ export default {
     layout: "fullscreen",
   },
   tags: ["autodocs"],
-} as Meta
+} as Meta;
 export const Default: React.FC = () => {
   const { onMouseDown, onTouchStart, onMouseUp, onTouchEnd } = useLongPress({
     delay: 1000,
     onLongPress: () => {
-      toast("pressed for 1 second")
+      toast("pressed for 1 second");
     },
-  })
+  });
 
   return (
     <div className="flex justify-center flex-col gap-2 dark:text-secondary-50">
@@ -43,5 +43,5 @@ export const Default: React.FC = () => {
         Press and hold for 1 second
       </Button>
     </div>
-  )
-}
+  );
+};

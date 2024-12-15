@@ -1,9 +1,9 @@
-import React from "react"
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
+import type React from "react";
 
-import { Card, Toaster } from "../../components"
-import { PoluiProvider } from "../../providers/PoluiProvider"
-import { useLocation } from "./use-location"
+import { Card, Toaster } from "../../components";
+import { PoluiProvider } from "../../providers/PoluiProvider";
+import { useLocation } from "./use-location";
 
 export default {
   title: "Hooks/useLocation",
@@ -21,9 +21,9 @@ export default {
     layout: "fullscreen",
   },
   tags: ["autodocs"],
-} as Meta
+} as Meta;
 export const Default: React.FC = () => {
-  const location = useLocation()
+  const location = useLocation();
 
   return (
     <div className="flex justify-center flex-col gap-2">
@@ -34,10 +34,9 @@ export const Default: React.FC = () => {
         </pre>
       </Card>
       <p>
-        This hook requires the permission to access the user's location. If you
-        are on a desktop, you can use the Chrome DevTools to simulate location
-        events.
+        This hook requires the permission to access the user's location. If you are on a desktop, you can use the Chrome
+        DevTools to simulate location events.
       </p>
     </div>
-  )
-}
+  );
+};

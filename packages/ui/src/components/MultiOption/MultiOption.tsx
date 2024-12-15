@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useId } from "react"
+import { useId } from "react";
 
-import { Radio } from "../Radio"
-import { Select } from "../Select"
-import { SelectGroup, SelectItem } from "../Select/Select"
+import { Radio } from "../Radio";
+import { Select } from "../Select";
+import { SelectGroup, SelectItem } from "../Select/Select";
 
 /**
  * @name MultiOption
@@ -20,28 +20,22 @@ interface MultiOptionProps {
   /**
    * The array of options to choose from.
    */
-  options: string[]
+  options: string[];
   /**
    * The value of the selected option.
    */
-  value: string
+  value: string;
   /**
    * The callback function that is triggered when the selected option changes.
    */
-  onChange: (value: string) => void
+  onChange: (value: string) => void;
 }
-const MultiOption = ({
-  options = [],
-  value = "",
-  onChange,
-}: MultiOptionProps) => {
-  const length = options.length
-  const id = useId()
+const MultiOption = ({ options = [], value = "", onChange }: MultiOptionProps) => {
+  const length = options.length;
+  const id = useId();
 
   if (length < 2) {
-    throw new Error(
-      "You need to provide at least two options into the MultiOption UI"
-    )
+    throw new Error("You need to provide at least two options into the MultiOption UI");
   }
 
   if (length === 2) {
@@ -54,7 +48,7 @@ const MultiOption = ({
           </div>
         ))}
       </div>
-    )
+    );
   }
 
   if (length >= 3 && length < 10) {
@@ -68,8 +62,8 @@ const MultiOption = ({
           ))}
         </SelectGroup>
       </Select>
-    )
+    );
   }
-}
+};
 
-export { MultiOption, type MultiOptionProps }
+export { MultiOption, type MultiOptionProps };

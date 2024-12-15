@@ -1,92 +1,89 @@
-import { clsx } from 'clsx'
+import { clsx } from "clsx";
 
-import type { ClassProp, ClassValue, OmitUndefined, StringToBoolean } from './types'
+import type { ClassProp, ClassValue, OmitUndefined, StringToBoolean } from "./types";
 
 export type VariantProps<Component extends (...args: never) => unknown> = Omit<
   OmitUndefined<Parameters<Component>[0]>,
-  'class' | 'className'
->
+  "class" | "className"
+>;
 
 const falsyToString = <T>(value: T) => {
-  if (typeof value === 'boolean') {
-    return `${value}`
-  } else if (value === 0) {
-    return '0'
-  } else {
-    return value
+  if (typeof value === "boolean") {
+    return `${value}`;
   }
+  if (value === 0) {
+    return "0";
+  }
+  return value;
 
   // (typeof value === 'boolean' ? `${value}` : value === 0 ? '0' : value)
-}
+};
 
 /* cx
   ============================================ */
 
-export type CxOptions = Parameters<typeof clsx>
-export type CxReturn = ReturnType<typeof clsx>
+export type CxOptions = Parameters<typeof clsx>;
+export type CxReturn = ReturnType<typeof clsx>;
 
-export const cx = clsx
+export const cx = clsx;
 
 /* cva
   ============================================ */
 
-type ConfigSchema = Record<string, Record<string, ClassValue>>
+type ConfigSchema = Record<string, Record<string, ClassValue>>;
 
 type ConfigVariants<T extends ConfigSchema> = {
-  [Variant in keyof T]?: StringToBoolean<keyof T[Variant]> | null | undefined
-}
+  [Variant in keyof T]?: StringToBoolean<keyof T[Variant]> | null | undefined;
+};
 type ConfigVariantsMulti<T extends ConfigSchema> = {
-  [Variant in keyof T]?: StringToBoolean<keyof T[Variant]> | StringToBoolean<keyof T[Variant]>[] | undefined
-}
+  [Variant in keyof T]?: StringToBoolean<keyof T[Variant]> | StringToBoolean<keyof T[Variant]>[] | undefined;
+};
 
 type Config<T> = T extends ConfigSchema
   ? {
-      variants?: T
-      defaultVariants?: ConfigVariants<T>
+      variants?: T;
+      defaultVariants?: ConfigVariants<T>;
       compoundVariants?: (T extends ConfigSchema
         ? (ConfigVariants<T> | ConfigVariantsMulti<T>) & ClassProp
-        : ClassProp)[]
+        : ClassProp)[];
     }
-  : never
+  : never;
 
-type Props<T> = T extends ConfigSchema ? ConfigVariants<T> & ClassProp : ClassProp
+type Props<T> = T extends ConfigSchema ? ConfigVariants<T> & ClassProp : ClassProp;
 
 export const cva =
   <T>(base?: ClassValue, config?: Config<T>) =>
   (props?: Props<T>) => {
     if (config?.variants == null) {
-      return cx(base, props?.class, props?.className)
+      return cx(base, props?.class, props?.className);
     }
 
-    const { variants, defaultVariants } = config
+    const { variants, defaultVariants } = config;
 
     const getVariantClassNames = Object.keys(variants).map((variant: keyof typeof variants) => {
-      const variantProp = props?.[variant as keyof typeof props]
-      const defaultVariantProp = defaultVariants?.[variant]
+      const variantProp = props?.[variant as keyof typeof props];
+      const defaultVariantProp = defaultVariants?.[variant];
 
       if (variantProp === null) {
-        return null
+        return null;
       }
 
       const variantKey = (falsyToString(variantProp) ??
-        falsyToString(defaultVariantProp)) as keyof (typeof variants)[typeof variant]
+        falsyToString(defaultVariantProp)) as keyof (typeof variants)[typeof variant];
 
-      return variants[variant][variantKey]
-    })
+      return variants[variant][variantKey];
+    });
 
     const propsWithoutUndefined =
       props &&
-      Object.entries(props).reduce<Record<string, unknown>>(
-        (acc, [key, value]) => {
-          if (value === undefined) {
-            return acc
-          }
+      Object.entries(props).reduce<Record<string, unknown>>((acc, [key, value]) => {
+        if (value === undefined) {
+          return acc;
+        }
 
-          acc[key] = value
-          return acc
-        },
-        {},
-      )
+        acc[key] = value;
+        return acc;
+      }, {});
 
     const getCompoundVariantClassNames = config.compoundVariants?.reduce(
       (acc, { class: cvClass, className: cvClassName, ...compoundVariantOptions }) =>
@@ -106,7 +103,7 @@ export const cva =
           ? [...acc, cvClass, cvClassName]
           : acc,
       [] as ClassValue[],
-    )
+    );
 
-    return cx(base, getVariantClassNames, getCompoundVariantClassNames, props?.class, props?.className)
-  }
+    return cx(base, getVariantClassNames, getCompoundVariantClassNames, props?.class, props?.className);
+  };

@@ -1,6 +1,6 @@
-'use client'
+"use client";
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef } from "react";
 
 /**
  * Custom hook that sets up an interval to call the provided callback function.
@@ -9,22 +9,24 @@ import { useEffect, useRef } from 'react'
  * @param delay - The delay (in milliseconds) between each interval. Pass `null` to stop the interval.
  */
 export function useInterval(callback: () => void, delay: number | null) {
-  const savedCallback = useRef(callback)
+  const savedCallback = useRef(callback);
 
   useEffect(() => {
-    savedCallback.current = callback
-  }, [callback])
+    savedCallback.current = callback;
+  }, [callback]);
 
   useEffect(() => {
     function tick() {
-      savedCallback.current()
+      savedCallback.current();
     }
 
     if (delay !== null) {
-      tick()
+      tick();
 
-      const id = setInterval(tick, delay)
-      return () => { clearInterval(id); }
+      const id = setInterval(tick, delay);
+      return () => {
+        clearInterval(id);
+      };
     }
-  }, [delay])
+  }, [delay]);
 }

@@ -1,21 +1,21 @@
-import type { Meta } from '@storybook/react'
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from './Resizable'
+import type { Meta } from "@storybook/react";
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "./Resizable";
 
 export default {
-  title: 'Components/Resizable',
+  title: "Components/Resizable",
   component: ResizablePanelGroup,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col items-center  bg-secondary-50">
         <Story />
       </div>
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
 export const Default = () => {
   return (
@@ -36,5 +36,5 @@ export const Default = () => {
         </ResizablePanelGroup>
       </ResizablePanel>
     </ResizablePanelGroup>
-  )
-}
+  );
+};

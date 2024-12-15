@@ -1,9 +1,7 @@
-import type { Meta } from "@storybook/react"
-import { TbBold, TbHome, TbItalic, TbUnderline } from "react-icons/tb"
-
-import { useBoolean } from "../../hooks"
-import { Switch } from "../Switch"
-import { ToggleGroup, ToggleGroupItem } from "./ToggleGroup"
+import type { Meta } from "@storybook/react";
+import { TbBold, TbItalic, TbUnderline } from "react-icons/tb";
+import { Switch } from "../Switch";
+import { ToggleGroup, ToggleGroupItem } from "./ToggleGroup";
 
 export default {
   title: "Components/ToggleGroup",
@@ -18,7 +16,7 @@ export default {
       </div>
     ),
   ],
-} as Meta
+} as Meta;
 
 export const Default = () => {
   return (
@@ -38,5 +36,5 @@ export const Default = () => {
         </ToggleGroupItem>
       </ToggleGroup>
     </div>
-  )
-}
+  );
+};

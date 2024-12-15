@@ -1,31 +1,31 @@
-import type { Meta } from '@storybook/react'
-import { TbMoon, TbSettings, TbSun, TbUser } from 'react-icons/tb'
-import { useThemeMode } from '../../hooks'
-import { IconButton } from '../IconButton'
-import Toolbox from './Toolbox'
+import type { Meta } from "@storybook/react";
+import { TbMoon, TbSettings, TbSun, TbUser } from "react-icons/tb";
+import { useThemeMode } from "../../hooks";
+import { IconButton } from "../IconButton";
+import Toolbox from "./Toolbox";
 
 export default {
-  title: 'Components/Toolbox',
+  title: "Components/Toolbox",
   component: Toolbox,
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col items-center pt-20 min-h-[400px] bg-background w-full">
         <Story />
       </div>
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
 export const Default = () => {
-  const { computedMode, toggleMode } = useThemeMode()
+  const { computedMode, toggleMode } = useThemeMode();
 
   return (
     <Toolbox>
       <IconButton onClick={toggleMode} className="text-white">
-        {computedMode === 'light' ? <TbSun size={20} /> : <TbMoon size={20} />}
+        {computedMode === "light" ? <TbSun size={20} /> : <TbMoon size={20} />}
       </IconButton>
       <IconButton className="text-white">
         <TbSettings size={20} />
@@ -34,5 +34,5 @@ export const Default = () => {
         <TbUser size={20} />
       </IconButton>
     </Toolbox>
-  )
-}
+  );
+};

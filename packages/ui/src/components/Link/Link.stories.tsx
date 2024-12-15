@@ -1,17 +1,17 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import type { LinkProps } from './Link'
-import { Link } from './Link'
+import type { Meta, StoryFn } from "@storybook/react";
+import type { LinkProps } from "./Link";
+import { Link } from "./Link";
 
 export default {
-  title: 'Components/Link',
+  title: "Components/Link",
   component: Link,
-  tags: ['autodocs'],
-} as Meta
+  tags: ["autodocs"],
+} as Meta;
 
-const Template: StoryFn<LinkProps> = args => <Link {...args} />
+const Template: StoryFn<LinkProps> = (args) => <Link {...args} />;
 
-export const Default = Template.bind({})
+export const Default = Template.bind({});
 Default.args = {
-  children: 'Link',
-  href: '#',
-}
+  children: "Link",
+  href: "#",
+};

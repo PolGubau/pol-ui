@@ -1,1 +1,1 @@
-export * from "./LazyImage"
+export * from "./LazyImage";

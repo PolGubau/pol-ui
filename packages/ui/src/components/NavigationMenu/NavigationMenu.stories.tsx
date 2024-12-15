@@ -1,21 +1,21 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import type { NavigationMenuProps } from './NavigationMenu'
-import { NavigationMenu } from './NavigationMenu'
-import React from 'react'
-import { twMerge } from 'tailwind-merge'
-import { NavigationMenuTrigger } from './navigation-menu-trigger'
-import { NavigationMenuItem, NavigationMenuLink } from './navigation-menu-extras'
-import { Input } from '../Input'
-import { Checkbox } from '../Checkbox'
-import { NavigationMenuContent } from './navigation-menu-content'
+import type { Meta, StoryFn } from "@storybook/react";
+import React from "react";
+import { twMerge } from "tailwind-merge";
+import { Checkbox } from "../Checkbox";
+import { Input } from "../Input";
+import type { NavigationMenuProps } from "./NavigationMenu";
+import { NavigationMenu } from "./NavigationMenu";
+import { NavigationMenuContent } from "./navigation-menu-content";
+import { NavigationMenuItem, NavigationMenuLink } from "./navigation-menu-extras";
+import { NavigationMenuTrigger } from "./navigation-menu-trigger";
 
 export default {
-  title: 'Components/NavigationMenu',
+  title: "Components/NavigationMenu",
   component: NavigationMenu,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col w-full min-h-[400px] bg-secondary-200">
         <div className="">
           <Story />
@@ -24,21 +24,21 @@ export default {
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
-const Template: StoryFn<NavigationMenuProps> = args => <NavigationMenu {...args} />
+const Template: StoryFn<NavigationMenuProps> = (args) => <NavigationMenu {...args} />;
 
-const ListItem = React.forwardRef<React.ElementRef<'a'>, React.ComponentPropsWithoutRef<'a'>>(
+const ListItem = React.forwardRef<React.ElementRef<"a">, React.ComponentPropsWithoutRef<"a">>(
   ({ className, title, children, ...props }, ref) => {
     return (
       <li>
-        <NavigationMenuLink asChild>
+        <NavigationMenuLink asChild={true}>
           <a
             ref={ref}
             className={twMerge(
-              'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
+              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
               className,
             )}
             {...props}
@@ -48,10 +48,10 @@ const ListItem = React.forwardRef<React.ElementRef<'a'>, React.ComponentPropsWit
           </a>
         </NavigationMenuLink>
       </li>
-    )
+    );
   },
-)
-export const Default = Template.bind({})
+);
+export const Default = Template.bind({});
 Default.args = {
   children: (
     <>
@@ -61,7 +61,7 @@ Default.args = {
         <NavigationMenuContent>
           <ul className="one m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[500px] sm:grid-cols-[0.75fr_1fr]">
             <li className="row-span-3 grid">
-              <NavigationMenuLink asChild>
+              <NavigationMenuLink asChild={true}>
                 <a
                   className="focus:shadow-md from-primary to-primary/20 flex
             h-full w-full select-none flex-col justify-end rounded-[6px] bg-gradient-to-br p-[25px] no-underline outline-none"
@@ -102,7 +102,7 @@ Default.args = {
             </ListItem>
 
             <li className="row-span-3 grid">
-              <NavigationMenuLink asChild>
+              <NavigationMenuLink asChild={true}>
                 <a
                   className="focus:shadow-md from-primary to-primary/20 flex
             h-full w-full select-none flex-col justify-end rounded-[6px] bg-gradient-to-br p-[25px] no-underline outline-none"
@@ -123,24 +123,24 @@ Default.args = {
           <ul className="grid p-6 sm:w-[500px] sm:grid-cols-[0.50fr_1fr] gap-6">
             <h3>Login</h3>
             <div className="flex flex-col gap-2">
-              <Input placeholder="Your name" defaultValue={'polui'} label="Your name" />
-              <Input placeholder="Your email" defaultValue={'pol@ui.com'} label="Your email" />
+              <Input placeholder="Your name" defaultValue={"polui"} label="Your name" />
+              <Input placeholder="Your email" defaultValue={"pol@ui.com"} label="Your email" />
             </div>
             <h3>Security</h3>
             <div className="flex flex-col gap-2">
-              <Checkbox defaultChecked label="Sell my data please" />
+              <Checkbox defaultChecked={true} label="Sell my data please" />
             </div>
           </ul>
         </NavigationMenuContent>
       </NavigationMenuItem>
 
       <NavigationMenuItem>
-        <NavigationMenuLink active href="#">
+        <NavigationMenuLink active={true} href="#">
           Github
         </NavigationMenuLink>
       </NavigationMenuItem>
     </>
   ),
-}
+};
 
-ListItem.displayName = 'ListItem'
+ListItem.displayName = "ListItem";

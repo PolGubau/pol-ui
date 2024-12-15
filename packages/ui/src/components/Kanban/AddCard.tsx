@@ -1,21 +1,21 @@
-"use client"
+"use client";
 
-import { useState, type FormEvent } from "react"
+import { type FormEvent, useState } from "react";
 
-import type {} from "./Card"
-import { motion } from "framer-motion"
-import { TbPlus } from "react-icons/tb"
+import { motion } from "framer-motion";
+import { TbPlus } from "react-icons/tb";
+import type {} from "./Card";
 
-import { ColorsEnum } from "../../types"
-import { Button } from "../Button"
-import { Textarea } from "../Textarea"
-import type { KanbanProps } from "./Kanban"
+import { ColorsEnum } from "../../types";
+import { Button } from "../Button";
+import { Textarea } from "../Textarea";
+import type { KanbanProps } from "./Kanban";
 
 export interface AddCardProps {
-  column: string
-  labels: KanbanProps["labels"]
-  onCreate?: ({ column, title }: { column: string; title: string }) => void
-  theme: KanbanProps["theme"]
+  column: string;
+  labels: KanbanProps["labels"];
+  onCreate?: ({ column, title }: { column: string; title: string }) => void;
+  theme: KanbanProps["theme"];
 }
 
 export const AddKanbanCard = ({
@@ -25,29 +25,31 @@ export const AddKanbanCard = ({
 
   theme = {},
 }: AddCardProps) => {
-  const [text, setText] = useState("")
-  const [adding, setAdding] = useState(false)
+  const [text, setText] = useState("");
+  const [adding, setAdding] = useState(false);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    if (!text.trim().length) return
+    if (!text.trim().length) {
+      return;
+    }
 
-    onCreate?.({ column, title: text.trim() })
+    onCreate?.({ column, title: text.trim() });
 
-    setAdding(false)
-    setText("")
-  }
+    setAdding(false);
+    setText("");
+  };
 
-  const MotionButton = motion(Button)
+  const MotionButton = motion(Button);
 
   return (
     <>
       {adding ? (
-        <motion.form layout onSubmit={handleSubmit} className={theme.add?.form}>
+        <motion.form layout={true} onSubmit={handleSubmit} className={theme.add?.form}>
           <Textarea
             onChange={(e) => {
-              setText(e.target.value)
+              setText(e.target.value);
             }}
             placeholder={labels.placeholder}
             className={theme.add?.textarea}
@@ -57,18 +59,13 @@ export const AddKanbanCard = ({
               color={ColorsEnum.secondary}
               type="button"
               onClick={() => {
-                setAdding(false)
+                setAdding(false);
               }}
               size="sm"
             >
               <span className="first-letter:uppercase">{labels.cancel}</span>
             </Button>
-            <Button
-              color={ColorsEnum.primary}
-              type="submit"
-              size="sm"
-              disabled={!text.trim().length}
-            >
+            <Button color={ColorsEnum.primary} type="submit" size="sm" disabled={!text.trim().length}>
               <span className="first-letter:uppercase">{labels.add}</span>
               <TbPlus />
             </Button>
@@ -76,12 +73,12 @@ export const AddKanbanCard = ({
         </motion.form>
       ) : (
         <MotionButton
-          layout
+          layout={true}
           color={ColorsEnum.primary}
           type="submit"
           size="sm"
           onClick={() => {
-            setAdding(true)
+            setAdding(true);
           }}
           variant={"ghost"}
         >
@@ -90,5 +87,5 @@ export const AddKanbanCard = ({
         </MotionButton>
       )}
     </>
-  )
-}
+  );
+};

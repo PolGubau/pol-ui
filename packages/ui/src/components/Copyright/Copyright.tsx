@@ -1,17 +1,17 @@
-'use client'
+"use client";
 
-import type { FC } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import { getTheme } from '../../theme-store'
-import type { CopyrightProps } from './props'
-import { Link } from '../Link'
+import type { FC } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { getTheme } from "../../theme-store";
+import { Link } from "../Link";
+import type { CopyrightProps } from "./props";
 
 /**
  * @name Copyright
  * @description Functional component for rendering copyright information, with an optional link to the author's website.
  * @param {CopyrightProps} props - Props for the Copyright component.
- * @returns {JSX.Element}
+ * @returns {React.ReactNode}
  * @author Pol Gubau Amores - https://polgubau.com
  */
 export const Copyright: FC<CopyrightProps> = ({
@@ -21,8 +21,8 @@ export const Copyright: FC<CopyrightProps> = ({
   theme: customTheme = {},
   year = new Date().getFullYear(),
   ...props
-}: CopyrightProps): JSX.Element => {
-  const theme = mergeDeep(getTheme().copyright, customTheme)
+}: CopyrightProps): React.ReactNode => {
+  const theme = mergeDeep(getTheme().copyright, customTheme);
 
   return (
     <div data-testid="ui-footer-copyright" className={twMerge(theme.base, className)} {...props}>
@@ -37,5 +37,5 @@ export const Copyright: FC<CopyrightProps> = ({
         </span>
       )}
     </div>
-  )
-}
+  );
+};

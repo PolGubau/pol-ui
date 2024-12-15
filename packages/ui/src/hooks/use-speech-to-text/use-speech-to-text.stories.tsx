@@ -1,12 +1,12 @@
-import React from "react"
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
+import type React from "react";
 
-import { Button, Toaster, toast } from "../../components"
-import { useSpeechToText } from "./use-speech-to-text"
+import { Button, Toaster, toast } from "../../components";
+import { useSpeechToText } from "./use-speech-to-text";
 
 const Test = () => {
-  return "test"
-}
+  return "test";
+};
 
 export default {
   title: "Hooks/useSpeechToText",
@@ -22,19 +22,19 @@ export default {
   ],
 
   tags: ["autodocs"],
-} as Meta
+} as Meta;
 export const Default: React.FC = () => {
   const { start, stop, transcript, isListening } = useSpeechToText({
     lang: "en-US",
     continuous: true,
     maxAlternatives: 1,
     onResult: (result) => {
-      toast("Recognized speech:", { description: result })
+      toast("Recognized speech:", { description: result });
     },
     onError: (error) => {
-      toast.error("Error occurred:", { description: error })
+      toast.error("Error occurred:", { description: error });
     },
-  })
+  });
 
   return (
     <div>
@@ -50,19 +50,19 @@ export const Default: React.FC = () => {
         <p>{transcript}</p>
       </div>
     </div>
-  )
-}
+  );
+};
 export const NoCountuous: React.FC = () => {
   const { start, stop, transcript, isListening } = useSpeechToText({
     lang: "en-US",
     continuous: false,
     onResult: (result) => {
-      toast("Recognized speech:", { description: result })
+      toast("Recognized speech:", { description: result });
     },
     onError: (error) => {
-      toast.error("Error occurred:", { description: error })
+      toast.error("Error occurred:", { description: error });
     },
-  })
+  });
 
   return (
     <div>
@@ -78,19 +78,19 @@ export const NoCountuous: React.FC = () => {
         <p>{transcript}</p>
       </div>
     </div>
-  )
-}
+  );
+};
 export const Spanish: React.FC = () => {
   const { start, stop, transcript, isListening } = useSpeechToText({
     lang: "es-ES",
     continuous: false,
     onResult: (result) => {
-      toast("Recognized speech:", { description: result })
+      toast("Recognized speech:", { description: result });
     },
     onError: (error) => {
-      toast.error("Error occurred:", { description: error })
+      toast.error("Error occurred:", { description: error });
     },
-  })
+  });
 
   return (
     <div>
@@ -106,5 +106,5 @@ export const Spanish: React.FC = () => {
         <p>{transcript}</p>
       </div>
     </div>
-  )
-}
+  );
+};

@@ -1,31 +1,30 @@
-import type { Meta } from '@storybook/react'
-import type { TabsProps } from './Tabs'
-import { Tabs } from './Tabs'
-import React from 'react'
-import { Card } from '../Card'
-import { useStep } from '../../hooks'
-import { Button } from '../Button'
+import type { Meta } from "@storybook/react";
+import { useStep } from "../../hooks";
+import { Button } from "../Button";
+import { Card } from "../Card";
+import type { TabsProps } from "./Tabs";
+import { Tabs } from "./Tabs";
 const meta: Meta<typeof Tabs> = {
-  title: 'Components/Tabs',
-  tags: ['Tabs', 'autodocs'],
+  title: "Components/Tabs",
+  tags: ["Tabs", "autodocs"],
   component: Tabs,
 
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col min-h-[400px]">
         <Story />
       </div>
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-}
-export default meta
+};
+export default meta;
 
 const tabs = [
   {
-    name: 'Product',
+    name: "Product",
     content: (
       <Card className="flex-col">
         <h2 className="text-xl text-secondary-900 pb-2">Product</h2>
@@ -38,7 +37,7 @@ const tabs = [
     ),
   },
   {
-    name: 'Features',
+    name: "Features",
     content: (
       <Card className="flex-col">
         <h2 className="text-xl text-secondary-900 pb-2">Features</h2>
@@ -50,7 +49,7 @@ const tabs = [
     ),
   },
   {
-    name: 'Reviews',
+    name: "Reviews",
     content: (
       <Card className="flex-col">
         <h2 className="text-xl text-secondary-900 pb-2"> Reviews</h2>
@@ -63,7 +62,7 @@ const tabs = [
     ),
   },
   {
-    name: 'Customers',
+    name: "Customers",
     content: (
       <Card className="flex-col">
         <h2 className="text-xl text-secondary-900 pb-2"> Customers</h2>
@@ -77,32 +76,32 @@ const tabs = [
       </Card>
     ),
   },
-]
-export const TabsExample = (args: TabsProps): JSX.Element => (
+];
+export const TabsExample = (args: TabsProps): React.ReactNode => (
   <div className=" relative flex flex-col mx-auto w-full  items-start justify-start">
     <Tabs {...args} />
   </div>
-)
+);
 TabsExample.args = {
   tabs: tabs,
-}
-export const ContainedMode = (args: TabsProps): JSX.Element => TabsExample.bind({})(args)
+};
+export const ContainedMode = (args: TabsProps): React.ReactNode => TabsExample.bind({})(args);
 ContainedMode.args = {
   tabs: tabs,
-  mode: 'contained',
-}
+  mode: "contained",
+};
 
-export const WithoutAnyMotion = (args: TabsProps): JSX.Element => TabsExample.bind({})(args)
+export const WithoutAnyMotion = (args: TabsProps): React.ReactNode => TabsExample.bind({})(args);
 WithoutAnyMotion.args = {
   tabs: tabs,
   hasNavMotion: false,
   hasMotion: false,
-}
-export const Disabled = (args: TabsProps): JSX.Element => TabsExample.bind({})(args)
+};
+export const Disabled = (args: TabsProps): React.ReactNode => TabsExample.bind({})(args);
 Disabled.args = {
   tabs: [
     {
-      name: 'Enabled',
+      name: "Enabled",
       content: (
         <div className="bg-background-onPrimary p-6 rounded-2xl">
           <h2 className="text-3xl text-secondary-900 font-bold">Enabled Tab</h2>
@@ -116,7 +115,7 @@ Disabled.args = {
       ),
     },
     {
-      name: 'Disabled',
+      name: "Disabled",
       disabled: true,
       content: (
         <div className="bg-background-onPrimary p-6 rounded-2xl">
@@ -131,12 +130,12 @@ Disabled.args = {
       ),
     },
   ],
-}
+};
 
-export const Controlled = (): JSX.Element => {
+export const Controlled = (): React.ReactNode => {
   const [currentStep, { goToNextStep, goToPrevStep, canGoToNextStep, canGoToPrevStep, setStep, reset }] = useStep(
     tabs.length,
-  )
+  );
   return (
     <div className=" relative flex flex-col gap-8">
       <header className="flex flex-wrap gap-2">
@@ -154,5 +153,5 @@ export const Controlled = (): JSX.Element => {
       Current step: {currentStep.toString()}
       <Tabs value={currentStep} onTabChange={setStep} tabs={tabs} />
     </div>
-  )
-}
+  );
+};

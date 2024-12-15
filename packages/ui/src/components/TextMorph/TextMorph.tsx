@@ -1,38 +1,33 @@
-"use client"
+"use client";
 
-import { useId, useMemo } from "react"
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion";
+import { useId, useMemo } from "react";
 
-import { cn } from "../../helpers"
+import { cn } from "../../helpers";
 
 type TextMorphProps = {
-  children: string
-  as?: React.ElementType
-  className?: string
-  style?: React.CSSProperties
-}
+  children: string;
+  as?: React.ElementType;
+  className?: string;
+  style?: React.CSSProperties;
+};
 
-export function TextMorph({
-  children,
-  as: Component = "p",
-  className,
-  style,
-}: TextMorphProps) {
-  const uniqueId = useId()
+export function TextMorph({ children, as: Component = "p", className, style }: TextMorphProps) {
+  const uniqueId = useId();
 
   const characters = useMemo(() => {
-    const charCounts: Record<string, number> = {}
+    const charCounts: Record<string, number> = {};
 
     return children.split("").map((char, index) => {
-      const lowerChar = char.toLowerCase()
-      charCounts[lowerChar] = (charCounts[lowerChar] || 0) + 1
+      const lowerChar = char.toLowerCase();
+      charCounts[lowerChar] = (charCounts[lowerChar] || 0) + 1;
 
       return {
         id: `${uniqueId}-${lowerChar}${charCounts[lowerChar]}`,
         label: index === 0 ? char.toUpperCase() : lowerChar,
-      }
-    })
-  }, [children, uniqueId])
+      };
+    });
+  }, [children, uniqueId]);
 
   return (
     <Component className={cn(className)} aria-label={children} style={style}>
@@ -58,5 +53,5 @@ export function TextMorph({
         ))}
       </AnimatePresence>
     </Component>
-  )
+  );
 }

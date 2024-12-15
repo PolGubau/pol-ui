@@ -1,7 +1,5 @@
-import { PropsWithChildren } from "react"
+import type { PropsWithChildren } from "react";
 
 export const Weekday = (props: PropsWithChildren) => {
-  return (
-    <div className="flex items-center justify-center">{props.children}</div>
-  )
-}
+  return <div className="flex items-center justify-center">{props.children}</div>;
+};

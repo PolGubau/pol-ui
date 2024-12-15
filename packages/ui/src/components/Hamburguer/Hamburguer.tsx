@@ -1,32 +1,32 @@
-'use client'
+"use client";
 
-import type { SVGMotionProps } from 'framer-motion'
-import { motion } from 'framer-motion'
-import { type Colors, type RoundedSizes, type DeepPartial, ColorsEnum } from '../../types'
-import type { IconButtonTheme } from '../IconButton'
-import { Toggle } from '../Toggle'
-import { getTheme } from '../../theme-store'
-import { cn, mergeDeep } from '../../helpers'
+import type { SVGMotionProps } from "framer-motion";
+import { motion } from "framer-motion";
+import { cn, mergeDeep } from "../../helpers";
+import { getTheme } from "../../theme-store";
+import { type Colors, ColorsEnum, type DeepPartial, type RoundedSizes } from "../../types";
+import type { IconButtonTheme } from "../IconButton";
+import { Toggle } from "../Toggle";
 
-export interface HamburguerProps extends Omit<React.ComponentProps<'button'>, 'color' | 'onClick'> {
-  open: boolean
-  color?: Colors
-  strokeWidth?: string | number
-  lineProps?: SVGMotionProps<SVGLineElement>
-  theme?: DeepPartial<IconButtonTheme>
-  disabled?: boolean
-  rounded?: RoundedSizes
-  outline?: boolean
-  width?: number
-  height?: number
-  className?: string
-  iconClassName?: string
+export interface HamburguerProps extends Omit<React.ComponentProps<"button">, "color" | "onClick"> {
+  open: boolean;
+  color?: Colors;
+  strokeWidth?: string | number;
+  lineProps?: SVGMotionProps<SVGLineElement>;
+  theme?: DeepPartial<IconButtonTheme>;
+  disabled?: boolean;
+  rounded?: RoundedSizes;
+  outline?: boolean;
+  width?: number;
+  height?: number;
+  className?: string;
+  iconClassName?: string;
   /**
    * onClick event, the emitted event is the click event
    * @param e - the click event from the button
    * @returns  void
    */
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 /**
@@ -48,7 +48,7 @@ export const Hamburguer = ({
   iconClassName,
   ...props
 }: HamburguerProps) => {
-  const variant = open ? 'opened' : 'closed'
+  const variant = open ? "opened" : "closed";
   const top = {
     closed: {
       rotate: 0,
@@ -58,7 +58,7 @@ export const Hamburguer = ({
       rotate: 45,
       translateY: 2,
     },
-  }
+  };
   const center = {
     closed: {
       opacity: 1,
@@ -66,7 +66,7 @@ export const Hamburguer = ({
     opened: {
       opacity: 0,
     },
-  }
+  };
   const bottom = {
     closed: {
       rotate: 0,
@@ -76,20 +76,20 @@ export const Hamburguer = ({
       rotate: -45,
       translateY: -2,
     },
-  }
+  };
   lineProps = {
-    stroke: 'currentColor',
+    stroke: "currentColor",
     strokeWidth: strokeWidth as number,
-    vectorEffect: 'non-scaling-stroke',
-    initial: 'closed',
+    vectorEffect: "non-scaling-stroke",
+    initial: "closed",
     animate: variant,
-    transition: { type: 'spring', stiffness: 260, damping: 20 },
-    strokeLinecap: 'round',
+    transition: { type: "spring", stiffness: 260, damping: 20 },
+    strokeLinecap: "round",
     ...lineProps,
-  }
-  const unitHeight = 4
-  const unitWidth = (unitHeight * (width)) / (height)
-  const theme = mergeDeep(getTheme().hamburguer, customTheme)
+  };
+  const unitHeight = 4;
+  const unitWidth = (unitHeight * width) / height;
+  const theme = mergeDeep(getTheme().hamburguer, customTheme);
 
   return (
     <Toggle onClick={onClick} active={open} {...props} className={className}>
@@ -104,7 +104,7 @@ export const Hamburguer = ({
         <motion.line x1="0" x2={unitWidth} y1="0" y2="0" variants={top} {...lineProps} />
         <motion.line x1="0" x2={unitWidth} y1={unitHeight / 2} y2={unitHeight / 2} variants={center} {...lineProps} />
         <motion.line x1="0" x2={unitWidth} y1={unitHeight} y2={unitHeight} variants={bottom} {...lineProps} />
-      </motion.svg>{' '}
+      </motion.svg>{" "}
     </Toggle>
-  )
-}
+  );
+};

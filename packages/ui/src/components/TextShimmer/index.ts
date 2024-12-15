@@ -1,1 +1,1 @@
-export * from './TextShimmer';
+export * from "./TextShimmer";

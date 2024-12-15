@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { TbX } from "react-icons/tb"
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { TbX } from "react-icons/tb";
 
-import { Divider } from "../Divider"
-import { Input } from "../Input"
-import type { NavigationMenuProps } from "./MultiLevelSidebar"
-import NavigationLink from "./link"
+import { Divider } from "../Divider";
+import { Input } from "../Input";
+import type { NavigationMenuProps } from "./MultiLevelSidebar";
+import NavigationLink from "./link";
 
 const variants = {
   close: {
@@ -18,30 +18,25 @@ const variants = {
     x: 0,
     opacity: 100,
   },
-}
+};
 
 interface ProjectNavigationProps {
-  selectedProject: string
-  isOpen: boolean
-  menu: NavigationMenuProps | undefined
-  setSelectedProject: (project: string | null) => void
+  selectedProject: string;
+  isOpen: boolean;
+  menu: NavigationMenuProps | undefined;
+  setSelectedProject: (project: string | null) => void;
 }
 
-const ProjectNavigation = ({
-  selectedProject,
-  menu,
-  isOpen,
-  setSelectedProject,
-}: ProjectNavigationProps) => {
-  const [searched, setSearched] = useState("")
+const ProjectNavigation = ({ selectedProject, menu, isOpen, setSelectedProject }: ProjectNavigationProps) => {
+  const [searched, setSearched] = useState("");
 
-  if (!menu) return null
+  if (!menu) {
+    return null;
+  }
 
-  const links = menu.links
+  const links = menu.links;
 
-  const searchedLinks = links?.filter((link) =>
-    link.name.toLowerCase().includes(searched.toLowerCase())
-  )
+  const searchedLinks = links?.filter((link) => link.name.toLowerCase().includes(searched.toLowerCase()));
   return (
     <motion.nav
       variants={variants}
@@ -57,12 +52,10 @@ const ProjectNavigation = ({
       } border-r border-secondary-200 dark:border-secondary-800 p-5`}
     >
       <div className="flex flex-row w-full justify-between place-items-center">
-        <h1 className="tracking-wide dark:text-neutral-100 text-neutral-900 text-lg">
-          {selectedProject}
-        </h1>
+        <h1 className="tracking-wide dark:text-neutral-100 text-neutral-900 text-lg">{selectedProject}</h1>
         <button
           onClick={() => {
-            setSelectedProject(null)
+            setSelectedProject(null);
           }}
         >
           <TbX className="w-8 stroke-neutral-400" />
@@ -74,9 +67,7 @@ const ProjectNavigation = ({
         {searchedLinks?.map((props, index) => (
           <NavigationLink key={index} {...props} />
         ))}
-        {!searchedLinks?.length && (
-          <p className="text-neutral-400">No results found</p>
-        )}
+        {!searchedLinks?.length && <p className="text-neutral-400">No results found</p>}
       </div>
 
       {menu.children && (
@@ -86,7 +77,7 @@ const ProjectNavigation = ({
         </>
       )}
     </motion.nav>
-  )
-}
+  );
+};
 
-export default ProjectNavigation
+export default ProjectNavigation;

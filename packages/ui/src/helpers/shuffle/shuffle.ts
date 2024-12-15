@@ -13,15 +13,15 @@
  * // shuffledArray will be a new array with elements of array in random order, e.g., [3, 1, 4, 5, 2]
  */
 export function shuffle<T>(arr: readonly T[]): T[] {
-  const result = arr.slice()
+  const result = arr.slice();
 
   /**
    * https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
    */
   for (let i = result.length - 1; i >= 1; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[result[i], result[j]] = [result[j], result[i]]
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
   }
 
-  return result
+  return result;
 }

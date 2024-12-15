@@ -1,14 +1,14 @@
-import "@testing-library/jest-dom/vitest"
-import { cleanup } from "@testing-library/react"
-import { afterEach, vi } from "vitest"
+import "@testing-library/jest-dom/vitest";
+import { cleanup } from "@testing-library/react";
+import { afterEach, vi } from "vitest";
 
 afterEach(() => {
-  cleanup()
-})
+  cleanup();
+});
 class ResizeObserver {
-  callback: ResizeObserverCallback
+  callback: ResizeObserverCallback;
   constructor(callback: ResizeObserverCallback) {
-    this.callback = callback
+    this.callback = callback;
   }
   observe() {
     // Mock implementation
@@ -21,7 +21,7 @@ class ResizeObserver {
   }
 }
 
-global.ResizeObserver = ResizeObserver
+global.ResizeObserver = ResizeObserver;
 
 Object.defineProperty(window, "matchMedia", {
   writable: true,
@@ -35,4 +35,4 @@ Object.defineProperty(window, "matchMedia", {
     removeEventListener: vi.fn(),
     dispatchEvent: vi.fn(),
   })),
-})
+});

@@ -1,24 +1,24 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import ScrollImage, { ScrollImageProps } from './ScrollImage'
+import type { Meta, StoryFn } from "@storybook/react";
+import ScrollImage, { type ScrollImageProps } from "./ScrollImage";
 
 export default {
-  title: 'Components/ScrollImage',
+  title: "Components/ScrollImage",
   component: ScrollImage,
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col items-center  bg-secondary-50">
         <Story />
       </div>
     ),
   ],
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 const Template: StoryFn<ScrollImageProps> = (args: ScrollImageProps) => (
   <ScrollImage {...args} className="my-[50vh] h-[800px]" />
-)
+);
 
 export const Default = () => {
   return (
@@ -59,28 +59,28 @@ export const Default = () => {
         image="https://image.lexica.art/full_webp/24a0200b-abc5-4a99-9118-77a29468b21e"
       />
     </div>
-  )
-}
+  );
+};
 
-export const Base = Template.bind({})
+export const Base = Template.bind({});
 Base.args = {
-  image: 'https://image.lexica.art/full_webp/4aa6b4a9-a08d-4fa1-8979-0c4cd1c3c397',
-}
-export const CustomSpeed = Template.bind({})
+  image: "https://image.lexica.art/full_webp/4aa6b4a9-a08d-4fa1-8979-0c4cd1c3c397",
+};
+export const CustomSpeed = Template.bind({});
 CustomSpeed.args = {
   ...Base.args,
   speed: 5,
-}
-export const CustomDisplacement = Template.bind({})
+};
+export const CustomDisplacement = Template.bind({});
 CustomDisplacement.parameters = {
   docs: {
     description: {
-      story: 'Custom displacement scale',
+      story: "Custom displacement scale",
     },
   },
-}
+};
 
 CustomDisplacement.args = {
   ...Base.args,
   displacementScale: 555,
-}
+};

@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import type { ComponentProps, FC } from "react"
-import { TbMoon, TbSun } from "react-icons/tb"
+import type { ComponentProps, FC } from "react";
+import { TbMoon, TbSun } from "react-icons/tb";
 
-import { useThemeMode } from "../../hooks/use-theme-mode"
-import { IconButton, IconButtonProps } from "../IconButton"
+import { useThemeMode } from "../../hooks/use-theme-mode";
+import { IconButton, type IconButtonProps } from "../IconButton";
 
 export interface DarkThemeToggleProps extends IconButtonProps {
-  iconDark?: FC<ComponentProps<"svg">>
-  iconLight?: FC<ComponentProps<"svg">>
-  ref?: React.Ref<HTMLButtonElement>
-  hasMotion?: boolean
+  iconDark?: FC<ComponentProps<"svg">>;
+  iconLight?: FC<ComponentProps<"svg">>;
+  ref?: React.Ref<HTMLButtonElement>;
+  hasMotion?: boolean;
 }
 
 /**
@@ -21,7 +21,7 @@ export interface DarkThemeToggleProps extends IconButtonProps {
  * @param {DeepPartial<DarkThemeToggleTheme>} props.theme - The theme of the dark theme toggle
  *
  *
- * @returns JSX.Element
+ * @returns React.ReactNode
  *
  */
 export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
@@ -31,25 +31,16 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
   label = "Toggle dark mode",
   ...props
 }: DarkThemeToggleProps) => {
-  const { computedMode, toggleMode } = useThemeMode()
+  const { computedMode, toggleMode } = useThemeMode();
 
   return (
     <IconButton data-testid="dark-theme-toggle" onClick={toggleMode} {...props}>
-      {computedMode === "dark" && (
-        <IconDark
-          aria-label="Currently dark mode"
-          data-active={computedMode === "dark"}
-        />
-      )}
+      {computedMode === "dark" && <IconDark aria-label="Currently dark mode" data-active={computedMode === "dark"} />}
       {computedMode === "light" && (
-        <IconLight
-          aria-label="Currently light mode"
-          data-active={computedMode === "light"}
-          className={"dark:hidden"}
-        />
+        <IconLight aria-label="Currently light mode" data-active={computedMode === "light"} className={"dark:hidden"} />
       )}
     </IconButton>
-  )
-}
+  );
+};
 
-DarkThemeToggle.displayName = "DarkThemeToggle"
+DarkThemeToggle.displayName = "DarkThemeToggle";

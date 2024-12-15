@@ -1,11 +1,9 @@
-import React, { PropsWithChildren } from "react"
+import type { PropsWithChildren } from "react";
 
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "../src"
-import PhoneMockup from "../src/components/Mockups/Phone/Phone"
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "../src";
+import PhoneMockup from "../src/components/Mockups/Phone/Phone";
 
-export const PhoneDecorator = (props: PropsWithChildren) => (
-  <PhoneMockup>{props.children}</PhoneMockup>
-)
+export const PhoneDecorator = (props: PropsWithChildren) => <PhoneMockup>{props.children}</PhoneMockup>;
 
 export const ResponsiveDecorator = (props: PropsWithChildren) => (
   <ResizablePanelGroup direction="horizontal">
@@ -17,4 +15,4 @@ export const ResponsiveDecorator = (props: PropsWithChildren) => (
     <ResizableHandle />
     <ResizablePanel className="invisible hover:visible" />
   </ResizablePanelGroup>
-)
+);

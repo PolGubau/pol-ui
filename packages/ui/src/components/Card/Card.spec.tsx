@@ -1,24 +1,23 @@
-import { render, screen } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
-import { MesalvoProvider, type CustomMesalvoTheme } from '../../providers/MesalvoProvider'
-import { Card } from './Card'
+import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
+import { Card } from "./Card";
 
-describe('Components / Card', () => {
-  describe('A11y', () => {
-    it('should allow `aria-label`', () => {
-      render(<Card aria-label="My card" />)
+describe("Components / Card", () => {
+  describe("A11y", () => {
+    it("should allow `aria-label`", () => {
+      render(<Card aria-label="My card" />);
 
-      expect(card()).toHaveAccessibleName('My card')
-    })
-  })
+      expect(card()).toHaveAccessibleName("My card");
+    });
+  });
 
-  describe('Rendering', () => {
+  describe("Rendering", () => {
     it('should render an `<a>` given `href=".."`', () => {
-      render(<Card href="#" />)
+      render(<Card href="#" />);
 
-      expect(screen.getByRole('link')).toEqual(card())
-    })
-  })
-})
+      expect(screen.getByRole("link")).toEqual(card());
+    });
+  });
+});
 
-const card = () => screen.getByTestId('ui-card')
+const card = () => screen.getByTestId("ui-card");

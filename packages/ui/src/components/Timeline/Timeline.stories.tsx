@@ -1,15 +1,15 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import type { TimelineProps } from './Timeline'
-import { TimelineItem } from './TimelineItem'
-import { Timeline } from '.'
-import { TbStarFilled } from 'react-icons/tb'
+import type { Meta, StoryFn } from "@storybook/react";
+import { TbStarFilled } from "react-icons/tb";
+import { Timeline } from ".";
+import type { TimelineProps } from "./Timeline";
+import { TimelineItem } from "./TimelineItem";
 
 export default {
-  title: 'Components/Timeline',
+  title: "Components/Timeline",
   component: Timeline,
-} as Meta
+} as Meta;
 
-const Template: StoryFn<TimelineProps> = args => <Timeline {...args} />
+const Template: StoryFn<TimelineProps> = (args) => <Timeline {...args} />;
 
 const Example = () => (
   <>
@@ -29,14 +29,14 @@ const Example = () => (
       We have a lot of base components to help you build your application faster.
     </TimelineItem>
   </>
-)
-export const Default = Template.bind({})
+);
+export const Default = Template.bind({});
 Default.args = {
   children: <Example />,
-}
+};
 
-export const Horizontal = Template.bind({})
+export const Horizontal = Template.bind({});
 Horizontal.args = {
   horizontal: true,
   children: <Example />,
-}
+};

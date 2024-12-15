@@ -1,41 +1,35 @@
-import type {
-  ColorsType,
-  IBoolean,
-  MainSizesType,
-  Positions,
-  RoundedSizesTypes,
-} from "../../types"
-import type { AvatarStatus } from "./AvatarTypes"
+import type { ColorsType, IBoolean, MainSizesType, Positions, RoundedSizesTypes } from "../../types";
+import type { AvatarStatus } from "./AvatarTypes";
 
 export interface AvatarTheme {
-  root: AvatarRootTheme
-  group: string
-  groupCounter: string
+  root: AvatarRootTheme;
+  group: string;
+  groupCounter: string;
 }
 
 export interface AvatarRootTheme {
-  base: string
-  bordered: string
-  color: ColorsType
-  img: AvatarImageTheme
-  initials: AvatarInitialsTheme
-  rounded: RoundedSizesTypes
-  size: MainSizesType
-  stacked: string
+  base: string;
+  bordered: string;
+  color: ColorsType;
+  img: AvatarImageTheme;
+  initials: AvatarInitialsTheme;
+  rounded: RoundedSizesTypes;
+  size: MainSizesType;
+  stacked: string;
   status: AvatarStatus & {
-    base: string
-  }
-  statusPosition: Positions
+    base: string;
+  };
+  statusPosition: Positions;
 }
 
 export interface AvatarImageTheme extends IBoolean {
-  base: string
-  placeholder: string
+  base: string;
+  placeholder: string;
 }
 
 export interface AvatarInitialsTheme {
-  base: string
-  text: string
+  base: string;
+  text: string;
 }
 
 export const avatarTheme: AvatarTheme = {
@@ -102,4 +96,4 @@ export const avatarTheme: AvatarTheme = {
     "flex items-center -space-x-4 transition-space-x gap-0 hover:gap-4 transition-duration-200 ease-in-out transition-all",
   groupCounter:
     "relative grid place-content-center aspect-square h-10 text-xs font-medium text-white bg-secondary-700 rounded-full ring-2 ring-secondary-300 dark:bg-secondary-600 hover:bg-secondary-600 dark:ring-secondary-500",
-}
+};

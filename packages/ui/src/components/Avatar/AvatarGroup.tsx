@@ -1,32 +1,23 @@
-import type { ComponentProps } from "react"
+import type { ComponentProps } from "react";
 
-import { cn } from "../../helpers"
-import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
-import { getTheme } from "../../theme-store"
-import type { DeepPartial } from "../../types/types"
-import type { AvatarTheme } from "./theme"
+import { cn } from "../../helpers";
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types/types";
+import type { AvatarTheme } from "./theme";
 
 export interface AvatarGroupProps extends ComponentProps<"div"> {
-  theme?: DeepPartial<AvatarTheme>
+  theme?: DeepPartial<AvatarTheme>;
 }
 
-export const AvatarGroup: React.FC<AvatarGroupProps> = ({
-  children,
-  className,
-  theme: customTheme = {},
-  ...props
-}) => {
-  const theme = mergeDeep(getTheme().avatar, customTheme)
+export const AvatarGroup: React.FC<AvatarGroupProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
+  const theme = mergeDeep(getTheme().avatar, customTheme);
 
   return (
-    <div
-      data-testid="avatar-group-element"
-      className={cn(theme.group, className)}
-      {...props}
-    >
+    <div data-testid="avatar-group-element" className={cn(theme.group, className)} {...props}>
       {children}
     </div>
-  )
-}
+  );
+};
 
-AvatarGroup.displayName = "AvatarGroup"
+AvatarGroup.displayName = "AvatarGroup";

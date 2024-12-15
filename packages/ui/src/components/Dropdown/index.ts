@@ -10,7 +10,7 @@ export {
   DropdownPortal,
   DropdownSub,
   DropdownRadioGroup,
-} from './Dropdown'
-export { type DropdownTheme, dropdownTheme } from './theme'
+} from "./Dropdown";
+export { type DropdownTheme, dropdownTheme } from "./theme";
 
-export * from './components'
+export * from "./components";

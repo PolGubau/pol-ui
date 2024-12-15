@@ -1,26 +1,26 @@
-import { useState } from "react"
+import { useState } from "react";
 
-import { ColorsEnum } from "../../types"
-import { Button } from "../Button"
-import { DialogClose, DialogProps } from "../Dialog"
-import { DrawerProps } from "../Drawer"
-import { DrawerDialog } from "../DrawerDialog"
-import { TimedButton } from "../TimedButton"
+import { ColorsEnum } from "../../types";
+import { Button } from "../Button";
+import { DialogClose, type DialogProps } from "../Dialog";
+import type { DrawerProps } from "../Drawer";
+import { DrawerDialog } from "../DrawerDialog";
+import { TimedButton } from "../TimedButton";
 
-type DrawerDialogWithoutChildren = Omit<DrawerProps, "children">
+type DrawerDialogWithoutChildren = Omit<DrawerProps, "children">;
 
 export type ConfirmDialogProps = DrawerDialogWithoutChildren & {
-  isOpen?: boolean
-  title?: string
-  message?: string
-  onConfirm: () => void
-  onCancel?: () => void
-  cancelText?: string
-  confirmText?: string
-  hold?: boolean
-  dialogProps?: DialogProps
-  drawerProps?: DrawerProps
-}
+  isOpen?: boolean;
+  title?: string;
+  message?: string;
+  onConfirm: () => void;
+  onCancel?: () => void;
+  cancelText?: string;
+  confirmText?: string;
+  hold?: boolean;
+  dialogProps?: DialogProps;
+  drawerProps?: DrawerProps;
+};
 
 export const ConfirmDialog = ({
   title = "Are you sure?",
@@ -32,8 +32,8 @@ export const ConfirmDialog = ({
   hold = false,
   ...rest
 }: ConfirmDialogProps) => {
-  const drawerDialogProps = rest as DrawerProps
-  const [open, setOpen] = useState(false)
+  const drawerDialogProps = rest as DrawerProps;
+  const [open, setOpen] = useState(false);
   return (
     <DrawerDialog open={open} onOpenChange={setOpen} {...drawerDialogProps}>
       <header className="flex pb-2 p-4 md:bg-secondary/10">
@@ -44,12 +44,8 @@ export const ConfirmDialog = ({
       </main>
       <footer className="flex justify-end p-2 md:border-t gap-2">
         {onCancel && (
-          <DialogClose asChild>
-            <Button
-              variant={"ghost"}
-              color={ColorsEnum.secondary}
-              onClick={onCancel}
-            >
+          <DialogClose asChild={true}>
+            <Button variant={"ghost"} color={ColorsEnum.secondary} onClick={onCancel}>
               {cancelText}
             </Button>
           </DialogClose>
@@ -58,20 +54,20 @@ export const ConfirmDialog = ({
           <TimedButton
             color={ColorsEnum.error}
             onLongPress={() => {
-              onConfirm()
-              setOpen(false)
+              onConfirm();
+              setOpen(false);
             }}
           >
             {confirmText}
           </TimedButton>
         ) : (
-          <DialogClose asChild>
-            <Button autoFocus color={ColorsEnum.error} onClick={onConfirm}>
+          <DialogClose asChild={true}>
+            <Button autoFocus={true} color={ColorsEnum.error} onClick={onConfirm}>
               {confirmText}
             </Button>
           </DialogClose>
         )}
       </footer>
     </DrawerDialog>
-  )
-}
+  );
+};

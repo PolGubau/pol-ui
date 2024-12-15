@@ -1,6 +1,6 @@
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
 
-import { Skeleton } from "../../components"
+import { Skeleton } from "../../components";
 import {
   capitalize,
   formatString,
@@ -14,7 +14,7 @@ import {
   toTitleCase,
   toUpperCase,
   truncateString,
-} from "./text-transform"
+} from "./text-transform";
 
 export default {
   title: "Helpers/Text Transform",
@@ -28,10 +28,10 @@ export default {
   ],
 
   tags: ["autodocs"],
-} as Meta
+} as Meta;
 
 export const Default = () => {
-  const text = "pol Gubau Amores"
+  const text = "pol Gubau Amores";
 
   return (
     <div className="flex gap-4 flex-col w-full">
@@ -49,5 +49,5 @@ export const Default = () => {
       <span>To Upper Case: {toUpperCase(text)}</span>
       <span>Truncate: {truncateString(text, 5)}</span>
     </div>
-  )
-}
+  );
+};

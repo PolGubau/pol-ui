@@ -1,6 +1,6 @@
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
 
-import { MagneticButton } from "./MagneticButton"
+import { MagneticButton } from "./MagneticButton";
 
 export default {
   title: "Components/MagneticButton",
@@ -16,11 +16,11 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
 export const Default = () => {
-  return <MagneticButton>Test</MagneticButton>
-}
+  return <MagneticButton>Test</MagneticButton>;
+};
 
 /**
  * Using the freedom prop, customize the attachment amount of the magnet background
@@ -31,8 +31,8 @@ export const CustomFreedom = () => {
       <MagneticButton freedom={0.5}>Slow</MagneticButton>
       <MagneticButton freedom={2}>Fast</MagneticButton>
     </div>
-  )
-}
+  );
+};
 
 /**
  * You can always customize the magnet part (by default a div with the following tailwind classes:
@@ -52,5 +52,5 @@ export const CustomMagnet = () => {
         Funky button
       </MagneticButton>
     </div>
-  )
-}
+  );
+};

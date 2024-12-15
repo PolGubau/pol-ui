@@ -1,8 +1,8 @@
-import type { Meta, StoryFn } from "@storybook/react"
+import type { Meta, StoryFn } from "@storybook/react";
 
-import { Button } from "../Button"
-import { Dialog, DialogClose, DialogProps } from "./Dialog"
-import { DialogFooter, DialogHeader, DialogTitle } from "./extras"
+import { Button } from "../Button";
+import { Dialog, DialogClose, type DialogProps } from "./Dialog";
+import { DialogFooter, DialogHeader, DialogTitle } from "./extras";
 
 export default {
   title: "Components/Dialog",
@@ -20,7 +20,7 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
 const Template: StoryFn<DialogProps> = (args) => {
   return (
@@ -28,8 +28,7 @@ const Template: StoryFn<DialogProps> = (args) => {
       <DialogHeader>
         <DialogTitle>Are you absolutely sure?</DialogTitle>
         <p>
-          This action cannot be undone. This will permanently delete your
-          account and remove your data from our servers.
+          This action cannot be undone. This will permanently delete your account and remove your data from our servers.
         </p>
       </DialogHeader>
       <DialogFooter>
@@ -39,7 +38,7 @@ const Template: StoryFn<DialogProps> = (args) => {
         <Button color="error">Delete</Button>
       </DialogFooter>
     </Dialog>
-  )
-}
+  );
+};
 
-export const Default = Template.bind({})
+export const Default = Template.bind({});

@@ -1,9 +1,9 @@
-import React, { useRef } from "react"
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
+import { useRef } from "react";
 
-import { Card, Toaster, toast } from "../../components"
-import { PoluiProvider } from "../../providers/PoluiProvider"
-import { GestureConfig, useGesture } from "./use-gesture"
+import { Card, Toaster, toast } from "../../components";
+import { PoluiProvider } from "../../providers/PoluiProvider";
+import { type GestureConfig, useGesture } from "./use-gesture";
 
 export default {
   title: "Hooks/useGesture",
@@ -20,21 +20,21 @@ export default {
     layout: "fullscreen",
   },
   tags: ["autodocs"],
-} as Meta
+} as Meta;
 
 export const Default = () => {
-  const elementRef = useRef<HTMLDivElement>(null)
+  const elementRef = useRef<HTMLDivElement>(null);
 
   const handleSwipe: GestureConfig = {
     gesture: "zoom",
     touchCount: 1,
     callback: () => {
-      toast("zoom!")
+      toast("zoom!");
     },
     elementRef,
-  }
+  };
 
-  useGesture(handleSwipe)
+  useGesture(handleSwipe);
 
   return (
     <div ref={elementRef} className="cursor-move">
@@ -42,5 +42,5 @@ export const Default = () => {
         <p>Swipe me!</p>
       </Card>
     </div>
-  )
-}
+  );
+};

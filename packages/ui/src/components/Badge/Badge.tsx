@@ -1,26 +1,21 @@
-"use client"
+"use client";
 
-import type { ComponentProps, FC } from "react"
-import { twMerge } from "tailwind-merge"
+import type { ComponentProps, FC } from "react";
+import { twMerge } from "tailwind-merge";
 
-import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
-import { getTheme } from "../../theme-store"
-import { ColorsEnum, RoundedSizesEnum, SizesEnum } from "../../types/enums"
-import type {
-  Colors,
-  DeepPartial,
-  MainSizes,
-  RoundedSizes,
-} from "../../types/types"
-import type { BadgeTheme } from "./theme"
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { getTheme } from "../../theme-store";
+import { ColorsEnum, RoundedSizesEnum, SizesEnum } from "../../types/enums";
+import type { Colors, DeepPartial, MainSizes, RoundedSizes } from "../../types/types";
+import type { BadgeTheme } from "./theme";
 
 export interface BadgeProps extends Omit<ComponentProps<"span">, "color"> {
-  color?: Colors
-  href?: string
-  rounded?: RoundedSizes
-  icon?: FC<ComponentProps<"svg">>
-  size?: MainSizes
-  theme?: DeepPartial<BadgeTheme>
+  color?: Colors;
+  href?: string;
+  rounded?: RoundedSizes;
+  icon?: FC<ComponentProps<"svg">>;
+  size?: MainSizes;
+  theme?: DeepPartial<BadgeTheme>;
 }
 
 /**
@@ -38,7 +33,7 @@ export const Badge: FC<BadgeProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().badge, customTheme)
+  const theme = mergeDeep(getTheme().badge, customTheme);
 
   const Content: FC = () => (
     <span
@@ -48,21 +43,15 @@ export const Badge: FC<BadgeProps> = ({
         theme.root.size[size],
         theme.root.rounded[rounded],
         theme.icon[Icon ? "on" : "off"],
-        className
+        className,
       )}
       data-testid="ui-badge"
       {...props}
     >
-      {Icon && (
-        <Icon
-          aria-hidden
-          className={theme.icon.size[size]}
-          data-testid="ui-badge-icon"
-        />
-      )}
+      {Icon && <Icon aria-hidden={true} className={theme.icon.size[size]} data-testid="ui-badge-icon" />}
       {children && <span>{children}</span>}
     </span>
-  )
+  );
 
   // if has href prop, surround the entire component with an anchor.
   return href ? (
@@ -71,8 +60,8 @@ export const Badge: FC<BadgeProps> = ({
     </a>
   ) : (
     <Content />
-  )
-}
+  );
+};
 
 // Title of the component: Badge
-Badge.displayName = "Badge"
+Badge.displayName = "Badge";

@@ -1,13 +1,13 @@
-import type { Meta } from '@storybook/react'
+import type { Meta } from "@storybook/react";
 
-import { ParallaxText } from './ParallaxText'
+import { ParallaxText } from "./ParallaxText";
 
 export default {
-  title: 'Components/ParallaxText',
+  title: "Components/ParallaxText",
   component: ParallaxText,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col items-center justify-center overflow-hidden bg-primary">
         <div className="pt-20 min-h-[500px] my-20  ">
           <Story />
@@ -16,14 +16,14 @@ export default {
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
 // const Template: StoryFn<ParallaxTextProps> = args => <ParallaxText {...args} />
 
 export function Default() {
-  const text = 'Parallax text in Pol-ui'
+  const text = "Parallax text in Pol-ui";
   return (
     <section>
       <ParallaxText velocity={-5} className="">
@@ -32,11 +32,11 @@ export function Default() {
       <ParallaxText velocity={1}>{text}</ParallaxText>
       <ParallaxText>{text}</ParallaxText>
     </section>
-  )
+  );
 }
 
 export function Blurred() {
-  const text = 'Parallax text in Pol-ui'
+  const text = "Parallax text in Pol-ui";
   return (
     <section>
       <ParallaxText velocity={-2} className="blur-[5px]">
@@ -47,10 +47,10 @@ export function Blurred() {
       </ParallaxText>
       <ParallaxText>{text}</ParallaxText>
     </section>
-  )
+  );
 }
 export function SameDirection() {
-  const text = 'Parallax text in Pol-ui'
+  const text = "Parallax text in Pol-ui";
   return (
     <section>
       <ParallaxText velocity={1}>{text}</ParallaxText>
@@ -59,10 +59,10 @@ export function SameDirection() {
       <ParallaxText velocity={5}>{text}</ParallaxText>
       <ParallaxText velocity={6}>{text}</ParallaxText>
     </section>
-  )
+  );
 }
 export function CustomClass() {
-  const text = 'Parallax text in Pol-ui'
+  const text = "Parallax text in Pol-ui";
   return (
     <section>
       <ParallaxText className="text-error">{text}</ParallaxText>
@@ -71,10 +71,10 @@ export function CustomClass() {
       <ParallaxText className="text-warning">{text}</ParallaxText>
       <ParallaxText className="text-secondary">{text}</ParallaxText>
     </section>
-  )
+  );
 }
 export function CustomElementsAmount() {
-  const text = 'Parallax text in Pol-ui'
+  const text = "Parallax text in Pol-ui";
   return (
     <section>
       <ParallaxText className="text-sm" renderedElements={20}>
@@ -93,7 +93,7 @@ export function CustomElementsAmount() {
         {text}
       </ParallaxText>
     </section>
-  )
+  );
 }
 export function CustomElements() {
   return (
@@ -104,12 +104,12 @@ export function CustomElements() {
       <ParallaxText as="h3">I'm a H4</ParallaxText>
       <ParallaxText as="button">I'm a button 😵‍💫</ParallaxText>
     </section>
-  )
+  );
 }
 export function Resistence() {
   return (
     <section>
       <ParallaxText resistance={6000}>I'm a H1</ParallaxText>
     </section>
-  )
+  );
 }

@@ -1,15 +1,14 @@
-import type { ComponentProps } from "react"
+import type { ComponentProps } from "react";
 
-import type { Colors, DeepPartial } from "../../types"
-import type { CheckboxTheme } from "./theme"
+import type { Colors, DeepPartial } from "../../types";
+import type { CheckboxTheme } from "./theme";
 
 /**
  * @name CheckboxProps
  * @description Props for the Checkbox component.
  */
-export interface CheckboxProps
-  extends Omit<ComponentProps<"input">, "type" | "ref" | "color" | "checked"> {
-  theme?: DeepPartial<CheckboxTheme>
+export interface CheckboxProps extends Omit<ComponentProps<"input">, "type" | "ref" | "color" | "checked"> {
+  theme?: DeepPartial<CheckboxTheme>;
 
   /**
    * @name color
@@ -24,7 +23,7 @@ export interface CheckboxProps
    * <Checkbox color="success" />
    * ```
    */
-  color?: Colors
+  color?: Colors;
 
   /**
    * @name label
@@ -36,9 +35,9 @@ export interface CheckboxProps
    * <Checkbox label="Agree to terms" />
    * ```
    */
-  label?: string
+  label?: string;
 
-  checked?: CheckedState
+  checked?: CheckedState;
 }
 
-export type CheckedState = boolean | "indeterminate"
+export type CheckedState = boolean | "indeterminate";

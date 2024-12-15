@@ -1,9 +1,9 @@
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
 
-import { Button } from "../../components/Button"
-import { Input } from "../../components/Input"
-import { PoluiProvider } from "../../providers/PoluiProvider"
-import { useLocalStorage } from "./use-local-storage"
+import { Button } from "../../components/Button";
+import { Input } from "../../components/Input";
+import { PoluiProvider } from "../../providers/PoluiProvider";
+import { useLocalStorage } from "./use-local-storage";
 
 export default {
   title: "Hooks/useLocalStorage",
@@ -19,56 +19,49 @@ export default {
     layout: "fullscreen",
   },
   tags: ["autodocs"],
-} as Meta
+} as Meta;
 
 export const Default = () => {
-  const [value, setValue] = useLocalStorage("polUIStorybook", "initialValue")
+  const [value, setValue] = useLocalStorage("polUIStorybook", "initialValue");
   return (
     <div className="flex flex-col gap-3 w-full max-w-md">
       Current value decrypted from localstorage:{value}
       <Input
         value={value}
         onChange={(e) => {
-          setValue(e.target.value)
+          setValue(e.target.value);
         }}
       />
       <Button
         onClick={() => {
-          setValue("")
+          setValue("");
         }}
       >
         Clear
       </Button>
     </div>
-  )
-}
+  );
+};
 export const Encrypted = () => {
-  const [value, setValue] = useLocalStorage(
-    "polUIStorybook",
-    "initialValue",
-    "supersecretkey"
-  )
-  console.log(value)
+  const [value, setValue] = useLocalStorage("polUIStorybook", "initialValue", "supersecretkey");
+  console.log(value);
   return (
     <div className="flex flex-col gap-3 w-full max-w-md">
       Current value decrypted from localstorage:{value}
-      <span>
-        {" "}
-        Check the application tab in the devtools to see the encrypted value
-      </span>
+      <span> Check the application tab in the devtools to see the encrypted value</span>
       <Input
         value={value}
         onChange={(e) => {
-          setValue(e.target.value)
+          setValue(e.target.value);
         }}
       />
       <Button
         onClick={() => {
-          setValue("")
+          setValue("");
         }}
       >
         Clear
       </Button>
     </div>
-  )
-}
+  );
+};

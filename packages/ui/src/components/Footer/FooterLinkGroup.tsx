@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import type { ComponentProps, ElementType, FC } from "react"
-import { twMerge } from "tailwind-merge"
+import type { ComponentProps, ElementType, FC } from "react";
+import { twMerge } from "tailwind-merge";
 
-import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
-import { getTheme } from "../../theme-store"
-import type { DeepPartial } from "../../types/types"
-import type { FooterLinkGroupTheme } from "./theme"
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types/types";
+import type { FooterLinkGroupTheme } from "./theme";
 
 export interface FooterLinkGroupProps extends ComponentProps<"ul"> {
-  col?: boolean
-  theme?: DeepPartial<FooterLinkGroupTheme>
-  titleAs?: ElementType
-  title?: string
-  titleClassname?: string
+  col?: boolean;
+  theme?: DeepPartial<FooterLinkGroupTheme>;
+  titleAs?: ElementType;
+  title?: string;
+  titleClassname?: string;
 }
 
 export const FooterLinkGroup: FC<FooterLinkGroupProps> = ({
@@ -26,25 +26,18 @@ export const FooterLinkGroup: FC<FooterLinkGroupProps> = ({
   titleClassname,
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().footer.groupLink, customTheme)
+  const theme = mergeDeep(getTheme().footer.groupLink, customTheme);
 
   return (
     <div className="flex flex-col text-center ">
       {title && (
-        <Component
-          data-testid="ui-footer-title"
-          className={twMerge(theme.title, titleClassname)}
-        >
+        <Component data-testid="ui-footer-title" className={twMerge(theme.title, titleClassname)}>
           {title}
         </Component>
       )}
-      <ul
-        data-testid="footer-groupLink"
-        className={twMerge(theme.base, col && theme.col, className)}
-        {...props}
-      >
+      <ul data-testid="footer-groupLink" className={twMerge(theme.base, col && theme.col, className)} {...props}>
         {children}
       </ul>
     </div>
-  )
-}
+  );
+};

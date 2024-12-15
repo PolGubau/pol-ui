@@ -1,28 +1,28 @@
-"use client"
+"use client";
 
-import type { ComponentProps, FC } from "react"
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion";
+import type { ComponentProps, FC } from "react";
 
-import { cn } from "../../helpers"
-import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
-import { getTheme } from "../../theme-store"
-import type { DeepPartial } from "../../types/types"
-import { useAccordionContext } from "./AccordionPanelContext"
+import { cn } from "../../helpers";
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types/types";
+import { useAccordionContext } from "./AccordionPanelContext";
 
 export interface AccordionComponentTheme {
-  base: string
+  base: string;
 }
 
 export interface AccordionContentProps extends ComponentProps<"div"> {
-  theme?: DeepPartial<AccordionComponentTheme>
-  hasMotion?: boolean
+  theme?: DeepPartial<AccordionComponentTheme>;
+  hasMotion?: boolean;
 }
 
 /**
  * @name AccordionContent
  * @description AccordionContent is the content of the accordion panel that is shown when the panel is open.
  * @param {AccordionContentProps} props
- * @returns {JSX.Element}
+ * @returns {React.ReactNode}
  * @example
  * <AccordionContent>
  *  <p>Content</p>
@@ -40,36 +40,29 @@ export const AccordionContent: FC<AccordionContentProps> = ({
   hasMotion = true,
   ...props
 }) => {
-  const { isOpen } = useAccordionContext()
+  const { isOpen } = useAccordionContext();
 
-  const theme = mergeDeep(getTheme().accordion.content, customTheme)
+  const theme = mergeDeep(getTheme().accordion.content, customTheme);
 
   const animations = {
     init: { opacity: 0, height: 0, scale: 0.99 },
     open: { opacity: 1, height: "auto", scale: 1 },
-  }
+  };
 
   return (
     <AnimatePresence mode="wait">
       {isOpen && (
-        <div
-          className={cn(theme.base, className)}
-          data-testid="ui-accordion-content"
-          hidden={!isOpen}
-          {...props}
-        >
+        <div className={cn(theme.base, className)} data-testid="ui-accordion-content" hidden={!isOpen} {...props}>
           <motion.div
             initial={hasMotion ? animations.init : undefined}
             animate={hasMotion ? animations.open : undefined}
             exit={hasMotion ? animations.init : undefined}
-            transition={
-              hasMotion ? { ease: "linear", duration: 0.15 } : undefined
-            }
+            transition={hasMotion ? { ease: "linear", duration: 0.15 } : undefined}
           >
             {children}
           </motion.div>
         </div>
       )}
     </AnimatePresence>
-  )
-}
+  );
+};

@@ -1,15 +1,15 @@
-import type { Meta } from '@storybook/react'
-import { useCallback, useState } from 'react'
-import { Dropzone } from './Dropzone'
-import { FileList } from './FileList'
-import { Toaster } from '../Toaster'
+import type { Meta } from "@storybook/react";
+import { useCallback, useState } from "react";
+import { Toaster } from "../Toaster";
+import { Dropzone } from "./Dropzone";
+import { FileList } from "./FileList";
 
 export default {
-  title: 'Components/Dropzone',
+  title: "Components/Dropzone",
   component: Dropzone,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col ">
         <Story />
         <Toaster />
@@ -17,22 +17,22 @@ export default {
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
 export const Example = () => {
   // Create "active" state for dropzone:
   // Create state for dropped files:
-  const [files, setFiles] = useState<File[]>([])
+  const [files, setFiles] = useState<File[]>([]);
 
   // Create handler for dropzone's onFilesDrop:
   const onFilesDrop = useCallback(
     (newFiles: File[]) => {
-      setFiles([...files, ...newFiles])
+      setFiles([...files, ...newFiles]);
     },
     [files],
-  )
+  );
 
   return (
     <Dropzone onFilesDrop={onFilesDrop}>
@@ -43,17 +43,17 @@ export const Example = () => {
       {/* Render the file list */}
       <FileList files={files} setFiles={setFiles} />
     </Dropzone>
-  )
-}
+  );
+};
 
 export const CustomClass = () => {
-  const [files, setFiles] = useState<File[]>([])
+  const [files, setFiles] = useState<File[]>([]);
   const onFilesDrop = useCallback(
     (newFiles: File[]) => {
-      setFiles([...files, ...newFiles])
+      setFiles([...files, ...newFiles]);
     },
     [files],
-  )
+  );
   return (
     <div className="flex flex-col gap-4 w-full">
       <Dropzone onFilesDrop={onFilesDrop} className="bg-lime-200 w-full rounded-full border-lime-400 border-solid">
@@ -78,36 +78,36 @@ export const CustomClass = () => {
         {files.length === 0 ? <h3>No files to upload</h3> : <h3>Files to upload: {files.length}</h3>}
         <FileList files={files} setFiles={setFiles} />
       </Dropzone>
-      <Dropzone onFilesDrop={onFilesDrop} disabled>
+      <Dropzone onFilesDrop={onFilesDrop} disabled={true}>
         <h2>I am disabled!</h2>
         {files.length === 0 ? <h3>No files to upload</h3> : <h3>Files to upload: {files.length}</h3>}
         <FileList files={files} setFiles={setFiles} />
       </Dropzone>
     </div>
-  )
-}
+  );
+};
 
 export const Single = () => {
-  const [files, setFiles] = useState<File[]>([])
+  const [files, setFiles] = useState<File[]>([]);
   const onFilesDrop = useCallback((newFiles: File[]) => {
-    setFiles(newFiles)
-  }, [])
+    setFiles(newFiles);
+  }, []);
   return (
     <Dropzone onFilesDrop={onFilesDrop} multiple={false}>
       <h2>You can only take 1 file as MULTIPLE is setted to false</h2>
       <FileList files={files} setFiles={setFiles} />
     </Dropzone>
-  )
-}
+  );
+};
 export const CustomAccepts = () => {
-  const [files, setFiles] = useState<File[]>([])
+  const [files, setFiles] = useState<File[]>([]);
   const onFilesDrop = useCallback((newFiles: File[]) => {
-    setFiles(newFiles)
-  }, [])
+    setFiles(newFiles);
+  }, []);
   return (
     <Dropzone onFilesDrop={onFilesDrop} multiple={false} accept=".pdf">
       <h2>You can only import PDFs here</h2>
       <FileList files={files} setFiles={setFiles} />
     </Dropzone>
-  )
-}
+  );
+};

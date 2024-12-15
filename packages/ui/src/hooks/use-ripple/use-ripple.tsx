@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useCallback, useRef } from "react"
+import { useCallback, useRef } from "react";
 
-import { px } from "../../helpers/px/px"
+import { px } from "../../helpers/px/px";
 
 /**
  * @name Options
@@ -22,48 +22,48 @@ import { px } from "../../helpers/px/px"
  * @author Pol Gubau Amores - https://polgubau.com
  */
 export interface RippleOptions<T extends HTMLElement = any> {
-  duration: number
+  duration: number;
   // color: string;
-  timingFunction: string
-  disabled?: boolean
-  className: string
-  opacity: number
-  containerClassName: string
-  ignoreNonLeftClick: boolean
+  timingFunction: string;
+  disabled?: boolean;
+  className: string;
+  opacity: number;
+  containerClassName: string;
+  ignoreNonLeftClick: boolean;
   onSpawn?: (ctx: {
     /** the ripple element */
-    readonly ripple: HTMLDivElement
+    readonly ripple: HTMLDivElement;
 
     /** cancels the current ripple animation */
-    readonly cancelRipple: () => void
+    readonly cancelRipple: () => void;
 
     /** the ref to the ripple host element */
-    readonly ref: React.RefObject<T>
+    readonly ref: React.RefObject<T>;
 
     /** the event that triggered the ripple (ts: casting required) */
-    readonly event: unknown
+    readonly event: unknown;
 
     /** the ripple container element */
-    readonly container: HTMLDivElement
-  }) => void
-  cancelAutomatically: boolean
-  ref: React.RefObject<T>
+    readonly container: HTMLDivElement;
+  }) => void;
+  cancelAutomatically: boolean;
+  ref: React.RefObject<T>;
 }
 
 export interface MinimalEvent {
-  clientX: number
-  clientY: number
+  clientX: number;
+  clientY: number;
 
   nativeEvent?: {
-    which?: number
-    type?: string
-  }
+    which?: number;
+    type?: string;
+  };
 }
 
-const self = () => document
-const completedFactor = 0.4
-const className = "bg-secondary-50"
-const containerClassName = "ripple--container"
+const self = () => document;
+const completedFactor = 0.4;
+const className = "bg-secondary-50";
+const containerClassName = "ripple--container";
 
 /**
  * @name useRipple
@@ -77,10 +77,8 @@ const containerClassName = "ripple--container"
  * @author Pol Gubau Amores - https://polgubau.com
  */
 
-export default function useRipple<T extends HTMLElement = any>(
-  inputOptions?: Partial<RippleOptions<T>>
-) {
-  const internalRef = useRef<T>(null)
+export default function useRipple<T extends HTMLElement = any>(inputOptions?: Partial<RippleOptions<T>>) {
+  const internalRef = useRef<T>(null);
 
   const { ref, ...options }: RippleOptions = {
     duration: 850,
@@ -93,78 +91,76 @@ export default function useRipple<T extends HTMLElement = any>(
     ignoreNonLeftClick: true,
     ref: internalRef,
     ...(inputOptions ?? {}),
-  }
+  };
 
   const event = useCallback(
     (event: MinimalEvent) => {
       if (
         !ref.current ||
         (options.disabled ??
-          (options.ignoreNonLeftClick &&
-            event.nativeEvent?.which !== 1 &&
-            event.nativeEvent?.type === "mousedown"))
-      )
-        return
-      const target = ref.current
-      if (window.getComputedStyle(target).position === "static")
-        applyStyles([["position", "relative"]], target)
+          (options.ignoreNonLeftClick && event.nativeEvent?.which !== 1 && event.nativeEvent?.type === "mousedown"))
+      ) {
+        return;
+      }
+      const target = ref.current;
+      if (window.getComputedStyle(target).position === "static") {
+        applyStyles([["position", "relative"]], target);
+      }
 
-      if (!target) return
+      if (!target) {
+        return;
+      }
 
-      const existingContainer = target.querySelector(
-        `.${options.containerClassName}`
-      )
+      const existingContainer = target.querySelector(`.${options.containerClassName}`);
 
-      const container =
-        existingContainer ?? createRippleContainer(options.containerClassName)
+      const container = existingContainer ?? createRippleContainer(options.containerClassName);
 
-      if (!existingContainer) target.appendChild(container)
+      if (!existingContainer) {
+        target.appendChild(container);
+      }
 
       // Used to ensure overflow: hidden is registered properly on IOS Safari before ripple is shown
       requestAnimationFrame(() => {
-        const begun = Date.now()
-        const ripple = centerElementToPointer(
-          event,
-          target,
-          createRipple(target, event, options)
-        )
-        const events = ["mouseup", "touchend"] as const
+        const begun = Date.now();
+        const ripple = centerElementToPointer(event, target, createRipple(target, event, options));
+        const events = ["mouseup", "touchend"] as const;
         const cancelRipple = () => {
-          const now = Date.now()
-          const diff = now - begun
+          const now = Date.now();
+          const diff = now - begun;
           // Ensure the transform animation is complete before cancellation
           setTimeout(
             () => {
-              cancelRippleAnimation(ripple, options)
+              cancelRippleAnimation(ripple, options);
             },
-            diff > 0.4 * options.duration
-              ? 0
-              : completedFactor * options.duration - diff
-          )
-          for (const event of events)
-            self().removeEventListener(event, cancelRipple)
-        }
-        if (!options.cancelAutomatically && !isTouchDevice())
-          for (const event of events)
-            self().addEventListener(event, cancelRipple)
-        else
+            diff > 0.4 * options.duration ? 0 : completedFactor * options.duration - diff,
+          );
+          for (const event of events) {
+            self().removeEventListener(event, cancelRipple);
+          }
+        };
+        if (!options.cancelAutomatically && !isTouchDevice()) {
+          for (const event of events) {
+            self().addEventListener(event, cancelRipple);
+          }
+        } else {
           setTimeout(() => {
-            cancelRippleAnimation(ripple, options)
-          }, options.duration * completedFactor)
+            cancelRippleAnimation(ripple, options);
+          }, options.duration * completedFactor);
+        }
 
-        container.appendChild(ripple)
+        container.appendChild(ripple);
         options.onSpawn?.({
           ripple,
           cancelRipple,
           event,
           ref,
           container,
-        })
-      })
+        });
+      });
     },
-    [ref, options]
-  )
-  return [ref, event] as const
+    [ref, options],
+  );
+  return [ref, event] as const;
 }
 
 /**
@@ -183,14 +179,12 @@ export default function useRipple<T extends HTMLElement = any>(
  * @author Pol Gubau Amores - https://polgubau.com
  */
 
-export function customRipple<T extends HTMLElement = any>(
-  inputOptions?: Partial<Omit<RippleOptions<T>, "ref">>
-) {
+export function customRipple<T extends HTMLElement = any>(inputOptions?: Partial<Omit<RippleOptions<T>, "ref">>) {
   return (overrideOptions?: Partial<RippleOptions<T>>) =>
     useRipple({
       ...inputOptions,
       ...overrideOptions,
-    })
+    });
 }
 
 /**
@@ -209,15 +203,11 @@ export function customRipple<T extends HTMLElement = any>(
  *
  * @author Pol Gubau Amores - https://polgubau.com
  */
-function centerElementToPointer<T extends HTMLElement>(
-  event: MinimalEvent,
-  ref: HTMLElement,
-  element: T
-): T {
-  const { top, left } = ref.getBoundingClientRect()
-  element.style.setProperty("top", px(event.clientY - top))
-  element.style.setProperty("left", px(event.clientX - left))
-  return element
+function centerElementToPointer<T extends HTMLElement>(event: MinimalEvent, ref: HTMLElement, element: T): T {
+  const { top, left } = ref.getBoundingClientRect();
+  element.style.setProperty("top", px(event.clientY - top));
+  element.style.setProperty("left", px(event.clientX - left));
+  return element;
 }
 
 /**
@@ -243,14 +233,14 @@ function createRipple<T extends HTMLElement>(
   ref: T,
   event: MinimalEvent,
   { duration, timingFunction, className, opacity }: Omit<RippleOptions, "ref">,
-  ctx = document
+  ctx = document,
 ): HTMLDivElement {
-  const element = ctx.createElement("div")
-  const { clientX, clientY } = event
-  const { height, width, top, left } = ref.getBoundingClientRect()
-  const maxHeight = Math.max(clientY - top, height - clientY + top)
-  const maxWidth = Math.max(clientX - left, width - clientX + left)
-  const size = px(Math.hypot(maxHeight, maxWidth) * 2)
+  const element = ctx.createElement("div");
+  const { clientX, clientY } = event;
+  const { height, width, top, left } = ref.getBoundingClientRect();
+  const maxHeight = Math.max(clientY - top, height - clientY + top);
+  const maxWidth = Math.max(clientX - left, width - clientX + left);
+  const size = px(Math.hypot(maxHeight, maxWidth) * 2);
   const styles = [
     ["position", "absolute"],
     ["height", size],
@@ -263,15 +253,15 @@ function createRipple<T extends HTMLElement>(
       "transition",
       `transform ${duration * 0.6}ms ${timingFunction}, opacity ${Math.max(duration * 0.05, 140)}ms ease-out`,
     ],
-  ]
+  ];
 
-  element.classList.add(className)
+  element.classList.add(className);
 
   window.requestAnimationFrame(() => {
-    applyStyles([["transform", "translate(-50%, -50%) scale(1)"]], element)
-  })
+    applyStyles([["transform", "translate(-50%, -50%) scale(1)"]], element);
+  });
 
-  return applyStyles(styles, element)
+  return applyStyles(styles, element);
 }
 
 /**
@@ -289,12 +279,14 @@ function createRipple<T extends HTMLElement>(
  * @author Pol Gubau Amores - https://polgubau.com
  */
 function applyStyles<T extends HTMLElement>(styles: string[][], target: T): T {
-  if (!target) return target
+  if (!target) {
+    return target;
+  }
 
   for (const [property, value] of styles) {
-    target.style.setProperty(property, value)
+    target.style.setProperty(property, value);
   }
-  return target
+  return target;
 }
 
 /**
@@ -311,12 +303,9 @@ function applyStyles<T extends HTMLElement>(styles: string[][], target: T): T {
  */
 function cancelRippleAnimation<T extends HTMLElement>(
   element: T,
-  options: Omit<
-    RippleOptions<T>,
-    "color" | "ref" | "onSpawn" | "cancelAutomatically"
-  >
+  options: Omit<RippleOptions<T>, "color" | "ref" | "onSpawn" | "cancelAutomatically">,
 ) {
-  const { duration, timingFunction } = options
+  const { duration, timingFunction } = options;
   applyStyles(
     [
       ["opacity", "0"],
@@ -327,13 +316,15 @@ function cancelRippleAnimation<T extends HTMLElement>(
         }ms`,
       ],
     ],
-    element
-  )
+    element,
+  );
   window.requestAnimationFrame(() => {
     element.addEventListener("transitionend", (e) => {
-      if (e.propertyName === "opacity") element.remove()
-    })
-  })
+      if (e.propertyName === "opacity") {
+        element.remove();
+      }
+    });
+  });
 }
 
 /**
@@ -345,8 +336,8 @@ function cancelRippleAnimation<T extends HTMLElement>(
  * @author Pol Gubau Amores - https://polgubau.com
  */
 function createRippleContainer(className: string): HTMLDivElement {
-  const container = self().createElement("div")
-  container.classList.add(className)
+  const container = self().createElement("div");
+  container.classList.add(className);
 
   return applyStyles(
     [
@@ -359,8 +350,8 @@ function createRippleContainer(className: string): HTMLDivElement {
       ["pointer-events", "none"],
       ["overflow", "hidden"],
     ],
-    container
-  )
+    container,
+  );
 }
 
 /**
@@ -375,9 +366,5 @@ function createRippleContainer(className: string): HTMLDivElement {
  *  @see https://stackoverflow.com/a/4819886/13188385 - source
  */
 function isTouchDevice(): boolean {
-  return (
-    "ontouchstart" in window ||
-    navigator.maxTouchPoints > 0 ||
-    ((navigator as any)?.msMaxTouchPoints ?? 0 > 0)
-  )
+  return "ontouchstart" in window || navigator.maxTouchPoints > 0 || ((navigator as any)?.msMaxTouchPoints ?? 0 > 0);
 }

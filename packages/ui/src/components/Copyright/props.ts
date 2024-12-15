@@ -1,14 +1,14 @@
-import type { ComponentProps } from 'react'
-import type { DeepPartial } from '../../types'
-import type { CopyrightTheme } from './theme'
+import type { ComponentProps } from "react";
+import type { DeepPartial } from "../../types";
+import type { CopyrightTheme } from "./theme";
 
 /**
  * @name CopyrightProps
  * @description Props for the Copyright component.
  */
-export interface CopyrightProps extends ComponentProps<'div'> {
-  by?: string
-  href?: string
+export interface CopyrightProps extends ComponentProps<"div"> {
+  by?: string;
+  href?: string;
 
   /**
    * @name theme
@@ -20,7 +20,7 @@ export interface CopyrightProps extends ComponentProps<'div'> {
    * <Copyright theme={{ color: 'text-red-500' }} />
    * ```
    */
-  theme?: DeepPartial<CopyrightTheme>
+  theme?: DeepPartial<CopyrightTheme>;
 
   /**
    * @name year
@@ -32,5 +32,5 @@ export interface CopyrightProps extends ComponentProps<'div'> {
    * <Copyright year={2024} />
    * ```
    */
-  year?: number
+  year?: number;
 }

@@ -1,1 +1,1 @@
-export * from './TextMorph';
+export * from "./TextMorph";

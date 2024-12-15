@@ -1,8 +1,8 @@
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
 
-import { toast } from "../../components"
-import { PoluiProvider } from "../../providers/PoluiProvider"
-import { useClickHandlers } from "./use-click-handlers"
+import { toast } from "../../components";
+import { PoluiProvider } from "../../providers/PoluiProvider";
+import { useClickHandlers } from "./use-click-handlers";
 
 export default {
   title: "Hooks/useClickHandlers",
@@ -18,21 +18,21 @@ export default {
     layout: "fullscreen",
   },
   tags: ["autodocs"],
-} as Meta
+} as Meta;
 export const Default: React.FC = () => {
   const handleDoubleClick = () => {
-    toast("Double click detected")
-  }
+    toast("Double click detected");
+  };
 
   const handleHoldClick = () => {
-    toast("Hold click detected")
-  }
+    toast("Hold click detected");
+  };
 
   const buttonRef = useClickHandlers({
     onDoubleClick: handleDoubleClick,
     onHoldClick: handleHoldClick,
     holdTime: 1000, // optional, defaults to 500ms
-  })
+  });
 
   return (
     <div>
@@ -41,5 +41,5 @@ export const Default: React.FC = () => {
         <div>Double Click or Hold Me</div>
       </button>
     </div>
-  )
-}
+  );
+};

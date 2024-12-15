@@ -1,11 +1,11 @@
-import React, { PropsWithChildren } from "react"
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
+import type { PropsWithChildren } from "react";
 
-import { Button, Label } from "../../components"
-import { Locale, getSupportedLanguages } from "../../i18n"
-import { PoluiProvider } from "../../providers"
-import { LangAndText } from "../../types"
-import useTranslate from "./use-translate"
+import { Button, Label } from "../../components";
+import { type Locale, getSupportedLanguages } from "../../i18n";
+import { PoluiProvider } from "../../providers";
+import type { LangAndText } from "../../types";
+import useTranslate from "./use-translate";
 
 const translations1 = {
   "es-ES": {
@@ -14,9 +14,9 @@ const translations1 = {
   "en-US": {
     title: "Título",
   },
-}
+};
 const Provider = ({ children }: PropsWithChildren) => {
-  const langs = getSupportedLanguages(["en-US", "es-ES", "de-DE"])
+  const langs = getSupportedLanguages(["en-US", "es-ES", "de-DE"]);
   return (
     <PoluiProvider
       defaultLanguage={langs[0]}
@@ -26,12 +26,11 @@ const Provider = ({ children }: PropsWithChildren) => {
     >
       {children}
     </PoluiProvider>
-  )
-}
+  );
+};
 
 const App = () => {
-  const { lang, t, changeLanguage, getInAllLanguages, getDictionary } =
-    useTranslate()
+  const { lang, t, changeLanguage, getInAllLanguages, getDictionary } = useTranslate();
 
   return (
     <div className="flex flex-col gap-2 ">
@@ -46,14 +45,13 @@ const App = () => {
         ))}
       </div>
       <hr />
-      "Title" in all languages:{" "}
-      <pre>{JSON.stringify(getInAllLanguages("title"), null, 2)}</pre>
+      "Title" in all languages: <pre>{JSON.stringify(getInAllLanguages("title"), null, 2)}</pre>
       <hr />
       Selected Dictionary: <pre>{JSON.stringify(getDictionary(), null, 2)}</pre>
       <hr />
     </div>
-  )
-}
+  );
+};
 const meta: Meta<typeof Label> = {
   title: "Hooks/useTranslate",
   component: Label,
@@ -69,16 +67,16 @@ const meta: Meta<typeof Label> = {
   parameters: {
     layout: "fullscreen",
   },
-}
-export default meta
+};
+export default meta;
 
 export const Default = () => {
   return (
     <Provider>
       <App />
     </Provider>
-  )
-}
+  );
+};
 
 const translations2 = {
   "de-DE": {
@@ -88,9 +86,9 @@ const translations2 = {
   "de-AT": {
     title: "title in de-AT",
   },
-}
+};
 const Provider2 = ({ children }: PropsWithChildren) => {
-  const langs = getSupportedLanguages(["de-DE", "de-AT"])
+  const langs = getSupportedLanguages(["de-DE", "de-AT"]);
   return (
     <PoluiProvider
       defaultLanguage={langs[0]}
@@ -100,11 +98,11 @@ const Provider2 = ({ children }: PropsWithChildren) => {
     >
       {children}
     </PoluiProvider>
-  )
-}
+  );
+};
 
 const App2 = () => {
-  const { lang, t, changeLanguage, getInAllLanguages } = useTranslate()
+  const { lang, t, changeLanguage, getInAllLanguages } = useTranslate();
 
   return (
     <div className="flex flex-col gap-2 ">
@@ -124,9 +122,8 @@ const translations2 = {
         </code>
       </pre>
       <p>
-        In our example, we have two languages: de-DE and de-AT. de-DE has both
-        title and subtitle, while de-AT has only title, so subtitle will be in
-        the de-AT's "basedOn" language, which is de-DE.
+        In our example, we have two languages: de-DE and de-AT. de-DE has both title and subtitle, while de-AT has only
+        title, so subtitle will be in the de-AT's "basedOn" language, which is de-DE.
       </p>
       <div>language: {lang.locale}</div>
       <div>translation: {t("title")}</div>
@@ -145,29 +142,29 @@ const translations2 = {
       <hr />
       {JSON.stringify(getInAllLanguages("subtitle"), null, 2)}
     </div>
-  )
-}
+  );
+};
 
 export const BasedLanguage = () => {
   return (
     <Provider2>
       <App2 />
     </Provider2>
-  )
-}
+  );
+};
 
 export const GetCurrentLabel = () => {
   const labels: LangAndText[] = [
     { text: "indefinido", language: "es" },
     { text: "unbestimmt", language: "de" },
     { text: "indefinite", language: "en" },
-  ]
-  const { getCurrentLabel } = useTranslate()
+  ];
+  const { getCurrentLabel } = useTranslate();
   return (
     <div className="flex flex-col divide-y space-y-6">
       <h1>getCurrentLabel</h1>
       <pre>Data= {JSON.stringify(labels, null, 2)}</pre>
       <pre>{JSON.stringify(getCurrentLabel(labels), null, 2)}</pre>
     </div>
-  )
-}
+  );
+};

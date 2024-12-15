@@ -1,7 +1,8 @@
-import React, { HTMLAttributes, useRef, useState } from "react"
+import type React from "react";
+import { type HTMLAttributes, useRef, useState } from "react";
 
-import { cn } from "../../helpers"
-import { Button, ButtonProps } from "../Button"
+import { cn } from "../../helpers";
+import { Button, type ButtonProps } from "../Button";
 
 export interface MagneticButtonProps extends ButtonProps {
   /**
@@ -9,9 +10,9 @@ export interface MagneticButtonProps extends ButtonProps {
    * @description How much attracted the background will be to your cursor
    * @default 1
    */
-  freedom?: number
+  freedom?: number;
 
-  magnet?: HTMLAttributes<HTMLDivElement>
+  magnet?: HTMLAttributes<HTMLDivElement>;
 }
 /**
  * @name Magnetic Button
@@ -24,26 +25,26 @@ export interface MagneticButtonProps extends ButtonProps {
  */
 
 export const MagneticButton = (props: MagneticButtonProps) => {
-  const { freedom = 1 } = props
-  const ref = useRef<HTMLButtonElement>(null)
+  const { freedom = 1 } = props;
+  const ref = useRef<HTMLButtonElement>(null);
 
   const [hoverPosition, setHoverPosition] = useState({
     x: 0,
     y: 0,
-  })
+  });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const { clientX, clientY, currentTarget } = e
-    const { left, top, width, height } = currentTarget.getBoundingClientRect()
-    const x = (clientX - left - width / 2) * (freedom / 6)
-    const y = (clientY - top - height / 2) * (freedom / 6)
+    const { clientX, clientY, currentTarget } = e;
+    const { left, top, width, height } = currentTarget.getBoundingClientRect();
+    const x = (clientX - left - width / 2) * (freedom / 6);
+    const y = (clientY - top - height / 2) * (freedom / 6);
 
-    setHoverPosition({ x, y })
-  }
+    setHoverPosition({ x, y });
+  };
 
   const onMouseOut = () => {
-    setHoverPosition({ x: 0, y: 0 })
-  }
+    setHoverPosition({ x: 0, y: 0 });
+  };
 
   return (
     <>
@@ -60,7 +61,7 @@ export const MagneticButton = (props: MagneticButtonProps) => {
           {...props.magnet}
           className={cn(
             "absolute bottom-0 left-0 h-full w-full rounded-lg bg-secondary/60 transition-[opacity,transform] opacity-0 group-hover:opacity-100",
-            props.magnet?.className
+            props.magnet?.className,
           )}
           style={{
             transform: `translate(${hoverPosition.x}px, ${hoverPosition.y}px)`,
@@ -68,5 +69,5 @@ export const MagneticButton = (props: MagneticButtonProps) => {
         />
       </div>
     </>
-  )
-}
+  );
+};

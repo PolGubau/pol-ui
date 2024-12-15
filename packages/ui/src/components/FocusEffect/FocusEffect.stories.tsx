@@ -1,6 +1,6 @@
-import type { Meta, StoryFn } from "@storybook/react"
+import type { Meta } from "@storybook/react";
 
-import FocusEffect, { type FocusEffectProps } from "./FocusEffect"
+import FocusEffect from "./FocusEffect";
 
 export default {
   title: "Components/FocusEffect",
@@ -16,7 +16,7 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
 export const Default = () => {
   return (
@@ -24,5 +24,5 @@ export const Default = () => {
       <FocusEffect />
       Tab me
     </button>
-  )
-}
+  );
+};

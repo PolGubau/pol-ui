@@ -1,29 +1,24 @@
-"use client"
+"use client";
 
-import React, { useRef, type PropsWithChildren } from "react"
-import {
-  motion,
-  useScroll,
-  useTransform,
-  type MotionValue,
-} from "framer-motion"
+import { type MotionValue, motion, useScroll, useTransform } from "framer-motion";
+import React, { useRef, type PropsWithChildren } from "react";
 
-import { cn, mergeDeep } from "../../helpers"
-import { getTheme } from "../../theme-store"
-import type { ClassName, DeepPartial, WithClassName } from "../../types"
-import type { ContainerScrollTheme } from "./theme"
+import { cn, mergeDeep } from "../../helpers";
+import { getTheme } from "../../theme-store";
+import type { ClassName, DeepPartial, WithClassName } from "../../types";
+import type { ContainerScrollTheme } from "./theme";
 
 export interface ContainerScrollProps extends PropsWithChildren, WithClassName {
-  titleComponent?: string | React.ReactNode
-  top?: boolean
-  bottom?: boolean
-  rotation?: number
-  theme?: DeepPartial<ContainerScrollTheme>
-  perspective?: number
-  headerClassName?: ClassName
-  deviceWrapper?: boolean
-  deviceClassName?: ClassName
-  screenClassName?: ClassName
+  titleComponent?: string | React.ReactNode;
+  top?: boolean;
+  bottom?: boolean;
+  rotation?: number;
+  theme?: DeepPartial<ContainerScrollTheme>;
+  perspective?: number;
+  headerClassName?: ClassName;
+  deviceWrapper?: boolean;
+  deviceClassName?: ClassName;
+  screenClassName?: ClassName;
 }
 /**
  * ContainerScroll component
@@ -45,28 +40,28 @@ export const ContainerScroll = ({
   deviceClassName,
   screenClassName,
 }: ContainerScrollProps) => {
-  const containerRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-  })
-  const [isMobile, setIsMobile] = React.useState(false)
+  });
+  const [isMobile, setIsMobile] = React.useState(false);
 
-  const theme = mergeDeep(getTheme().containerScroll, customTheme)
+  const theme = mergeDeep(getTheme().containerScroll, customTheme);
 
   React.useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768)
-    }
-    checkMobile()
-    window.addEventListener("resize", checkMobile)
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
     return () => {
-      window.removeEventListener("resize", checkMobile)
-    }
-  }, [])
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
 
   const scaleDimensions = () => {
-    return isMobile ? [0.7, 0.9] : [1.05, 1]
-  }
+    return isMobile ? [0.7, 0.9] : [1.05, 1];
+  };
 
   const animations = (rotation: number) => {
     // we need to create the 0-1 range and the -20 0 20 range px scale
@@ -92,37 +87,35 @@ export const ContainerScroll = ({
 
     const checkpoints = () => {
       if (top && bottom) {
-        return [0, 0.5, 1]
-      } else if (top) {
-        return [0, 1]
-      } else if (bottom) {
-        return [0, 0.5]
-      } else {
-        return [0]
+        return [0, 0.5, 1];
       }
-    }
+      if (top) {
+        return [0, 1];
+      }
+      if (bottom) {
+        return [0, 0.5];
+      }
+      return [0];
+    };
     const rotations = () => {
       if (top && bottom) {
-        return [rotation, 0, -rotation]
-      } else if (top) {
-        return [0, -rotation]
-      } else if (bottom) {
-        return [rotation, 0]
-      } else {
-        return [0]
+        return [rotation, 0, -rotation];
       }
-    }
-    return { checkpoints: checkpoints(), rotations: rotations() }
-  }
+      if (top) {
+        return [0, -rotation];
+      }
+      if (bottom) {
+        return [rotation, 0];
+      }
+      return [0];
+    };
+    return { checkpoints: checkpoints(), rotations: rotations() };
+  };
 
-  const rotate = useTransform(
-    scrollYProgress,
-    animations(rotation).checkpoints,
-    animations(rotation).rotations
-  )
-  const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions())
-  const translate = useTransform(scrollYProgress, [0, 1], [0, -100])
-  const translateTitle = useTransform(scrollYProgress, [0, 1], [0, -300])
+  const rotate = useTransform(scrollYProgress, animations(rotation).checkpoints, animations(rotation).rotations);
+  const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions());
+  const translate = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const translateTitle = useTransform(scrollYProgress, [0, 1], [0, -300]);
 
   return (
     <div className={cn(theme.base, className)} ref={containerRef}>
@@ -155,17 +148,17 @@ export const ContainerScroll = ({
         </Card>
       </div>
     </div>
-  )
-}
+  );
+};
 
 interface CardProps extends PropsWithChildren {
-  rotate: MotionValue<number>
-  scale: MotionValue<number>
-  translate: MotionValue<number>
-  theme: ContainerScrollTheme
-  deviceWrapper: ContainerScrollProps["deviceWrapper"]
-  deviceClassName?: ClassName
-  screenClassName?: ClassName
+  rotate: MotionValue<number>;
+  scale: MotionValue<number>;
+  translate: MotionValue<number>;
+  theme: ContainerScrollTheme;
+  deviceWrapper: ContainerScrollProps["deviceWrapper"];
+  deviceClassName?: ClassName;
+  screenClassName?: ClassName;
 }
 export const Card = ({
   rotate,
@@ -193,5 +186,5 @@ export const Card = ({
         children
       )}
     </motion.div>
-  )
-}
+  );
+};

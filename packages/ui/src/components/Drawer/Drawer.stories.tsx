@@ -1,27 +1,27 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { Drawer, NestedDrawer } from './Drawer'
-import { TbDotsVertical } from 'react-icons/tb'
-import { IconButton } from '../IconButton'
-import React, { useState } from 'react'
-import { Button } from '../Button'
-import { cn } from '../../helpers'
+import type { Meta } from "@storybook/react";
+import React, { useState } from "react";
+import { TbDotsVertical } from "react-icons/tb";
+import { cn } from "../../helpers";
+import { Button } from "../Button";
+import { IconButton } from "../IconButton";
+import { Drawer, NestedDrawer } from "./Drawer";
 
 const meta: Meta<typeof Drawer> = {
-  title: 'Components/Drawer',
+  title: "Components/Drawer",
   component: Drawer,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col">
         <Story />
       </div>
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-} as Meta
-export default meta
+} as Meta;
+export default meta;
 
 const SampleContent = () => (
   <div className="flex flex-col h-full gap-4 pt-8">
@@ -34,15 +34,15 @@ const SampleContent = () => (
       <Button>Action 3</Button>
     </div>
   </div>
-)
+);
 
 export const Example = () => {
   return (
     <Drawer>
       <SampleContent />
     </Drawer>
-  )
-}
+  );
+};
 export const CustomTrigger = () => {
   return (
     <Drawer
@@ -54,29 +54,29 @@ export const CustomTrigger = () => {
     >
       <SampleContent />
     </Drawer>
-  )
-}
+  );
+};
 
 export const Controlled = () => {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = React.useState(false);
   return (
     <>
       <button onClick={() => setOpen(true)}>Open Drawer</button>
-      <pre> The drawer is {open ? 'open' : 'closed'} </pre>
+      <pre> The drawer is {open ? "open" : "closed"} </pre>
       <Drawer open={open} onClose={() => setOpen(false)} label="Now the state commes from the other button">
         <SampleContent />
       </Drawer>
     </>
-  )
-}
+  );
+};
 
 export const NotScaledBackground = () => {
   return (
     <Drawer shouldScaleBackground={false}>
       <SampleContent />
     </Drawer>
-  )
-}
+  );
+};
 export const Directions = () => {
   return (
     <div className="flex flex-col gap-4">
@@ -93,8 +93,8 @@ export const Directions = () => {
         <SampleContent />
       </Drawer>
     </div>
-  )
-}
+  );
+};
 export const DirectionsFilled = () => {
   return (
     <div className="flex flex-col gap-4">
@@ -111,23 +111,23 @@ export const DirectionsFilled = () => {
         <SampleContent />
       </Drawer>
     </div>
-  )
-}
+  );
+};
 export const Undismissible = () => {
   return (
     <Drawer dismissible={false}>
       <SampleContent />
     </Drawer>
-  )
-}
+  );
+};
 
 export const HandleOnly = () => {
   return (
-    <Drawer handleOnly>
+    <Drawer handleOnly={true}>
       <SampleContent />
     </Drawer>
-  )
-}
+  );
+};
 
 export const Nested = () => {
   return (
@@ -142,22 +142,22 @@ export const Nested = () => {
         </NestedDrawer>
       </NestedDrawer>
     </Drawer>
-  )
-}
+  );
+};
 export const Snapped = () => {
-  const [snap, setSnap] = useState<number | string | null>('148px')
+  const [snap, setSnap] = useState<number | string | null>("148px");
 
   return (
     <Drawer
-      snapPoints={['160px', '355px', 1]}
+      snapPoints={["160px", "355px", 1]}
       activeSnapPoint={snap}
       setActiveSnapPoint={setSnap}
       label="drag multiple times"
     >
       <div
-        className={cn('flex flex-col max-w-md mx-auto w-full p-4 pt-5', {
-          'overflow-y-auto': snap === 1,
-          'overflow-hidden': snap !== 1,
+        className={cn("flex flex-col max-w-md mx-auto w-full p-4 pt-5", {
+          "overflow-y-auto": snap === 1,
+          "overflow-hidden": snap !== 1,
         })}
       >
         <div className="flex items-center">
@@ -221,7 +221,7 @@ export const Snapped = () => {
               clip-rule="evenodd"
             ></path>
           </svg>
-        </div>{' '}
+        </div>{" "}
         <h1 className="text-2xl mt-2 font-medium">The Hidden Details</h1>
         <p className="text-sm mt-1 text-gray-600 mb-6">2 modules, 27 hours of video</p>
         <p className="text-gray-600">
@@ -276,7 +276,7 @@ export const Snapped = () => {
             </div>
           </div>
         </div>
-      </div>{' '}
+      </div>{" "}
     </Drawer>
-  )
-}
+  );
+};

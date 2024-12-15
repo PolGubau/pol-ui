@@ -6,11 +6,11 @@
  * @returns  { limitedArray: T[], remaining: number }
  */
 export const limitArray = <T>(arr: T[], limit = 3): { limitedArray: T[]; remaining: number } => {
-  const limitedArray = arr.slice(0, limit)
-  const remaining = arr.length - limit
+  const limitedArray = arr.slice(0, limit);
+  const remaining = arr.length - limit;
 
   return {
     limitedArray,
     remaining,
-  }
-}
+  };
+};

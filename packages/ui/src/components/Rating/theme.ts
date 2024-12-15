@@ -1,13 +1,13 @@
-import type { MainSizesType } from "../../types"
+import type { MainSizesType } from "../../types";
 
 export interface RatingTheme {
-  root: string
+  root: string;
 
   star: {
-    empty: string
-    filled: string
-    size: MainSizesType
-  }
+    empty: string;
+    filled: string;
+    size: MainSizesType;
+  };
 }
 
 export const ratingTheme: RatingTheme = {
@@ -24,4 +24,4 @@ export const ratingTheme: RatingTheme = {
       xl: "w-14 h-14",
     },
   },
-}
+};

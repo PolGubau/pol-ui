@@ -1,13 +1,13 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import { Toaster } from '../Toaster'
-import { CopyButton, type CopyButtonProps } from './CopyButton'
+import type { Meta, StoryFn } from "@storybook/react";
+import { Toaster } from "../Toaster";
+import { CopyButton, type CopyButtonProps } from "./CopyButton";
 
 export default {
-  title: 'Components/CopyButton',
+  title: "Components/CopyButton",
   component: CopyButton,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col justify-center items-center">
         <Story />
         <Toaster />
@@ -15,13 +15,13 @@ export default {
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
-const Template: StoryFn<CopyButtonProps> = args => <CopyButton {...args} />
+const Template: StoryFn<CopyButtonProps> = (args) => <CopyButton {...args} />;
 
-export const Default = Template.bind({})
+export const Default = Template.bind({});
 Default.args = {
-  toCopy: 'This is the text to copy',
-}
+  toCopy: "This is the text to copy",
+};

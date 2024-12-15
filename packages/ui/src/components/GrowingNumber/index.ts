@@ -1,1 +1,1 @@
-export { default as GrowingNumber } from "./GrowingNumber"
+export { default as GrowingNumber } from "./GrowingNumber";

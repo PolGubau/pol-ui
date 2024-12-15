@@ -1,2 +1,2 @@
-export { Chip, type ChipProps } from './Chip'
-export { chipTheme, type ChipTheme } from './theme'
+export { Chip, type ChipProps } from "./Chip";
+export { chipTheme, type ChipTheme } from "./theme";

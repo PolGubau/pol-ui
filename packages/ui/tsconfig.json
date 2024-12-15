@@ -28,6 +28,6 @@
     "./.next/",
     "postcss.config.js",
     "./storybook-static/",
-    "tailwind.config.cjs"
+    "tailwind.config.ts"
   ]
 }

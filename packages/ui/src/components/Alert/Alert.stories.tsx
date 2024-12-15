@@ -1,25 +1,25 @@
-import type { Meta, StoryFn } from '@storybook/react'
-import { HiX } from 'react-icons/hi'
-import { theme } from '../../theme'
-import type { AlertProps } from './Alert'
-import { Alert } from './Alert'
-import { ColorsEnum } from '../../types/enums'
-import { Button } from '../Button'
-import { BiCheck, BiTrash } from 'react-icons/bi'
-import { TbInfoCircle, TbBulb } from 'react-icons/tb'
+import type { Meta, StoryFn } from "@storybook/react";
+import { BiCheck, BiTrash } from "react-icons/bi";
+import { HiX } from "react-icons/hi";
+import { TbBulb, TbInfoCircle } from "react-icons/tb";
+import { theme } from "../../theme";
+import { ColorsEnum } from "../../types/enums";
+import { Button } from "../Button";
+import type { AlertProps } from "./Alert";
+import { Alert } from "./Alert";
 
 export default {
-  title: 'Components/Alert',
+  title: "Components/Alert",
   component: Alert,
   argTypes: {
     color: {
       options: Object.keys(theme.alert.color),
-      control: { type: 'inline-radio' },
+      control: { type: "inline-radio" },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col justify-center items-center">
         <div className="max-w-xl">
           <Story />
@@ -28,13 +28,13 @@ export default {
     ),
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
-const Template: StoryFn<AlertProps> = props => <Alert {...props} />
+const Template: StoryFn<AlertProps> = (props) => <Alert {...props} />;
 
-export const Default = Template.bind({})
+export const Default = Template.bind({});
 Default.args = {
   onDismiss: undefined,
   children: (
@@ -43,10 +43,10 @@ Default.args = {
       customize it's colors, actions and texts. Use it for feedback or warnings.
     </>
   ),
-}
+};
 
-export const AlertWithIcons = Template.bind({})
-AlertWithIcons.storyName = 'With Icon'
+export const AlertWithIcons = Template.bind({});
+AlertWithIcons.storyName = "With Icon";
 AlertWithIcons.args = {
   icon: TbBulb,
   onDismiss: undefined,
@@ -56,31 +56,33 @@ AlertWithIcons.args = {
       the alert is, examples could be a LightBulb, a question mark, a info symbol...
     </>
   ),
-}
+};
 
-export const AlertDismissible = Template.bind({})
-AlertDismissible.storyName = 'Dismissible'
+export const AlertDismissible = Template.bind({});
+AlertDismissible.storyName = "Dismissible";
 AlertDismissible.args = {
   color: ColorsEnum.success,
-  onDismiss: () => { alert('Alert dismissed!'); },
+  onDismiss: () => {
+    alert("Alert dismissed!");
+  },
   children: (
     <>
       Yeyy, that's a success alert! How the component has 'onDismiss' as a prop, you can trigger an action when clicking
       the cross.
     </>
   ),
-}
+};
 
-export const AlertRounded = Template.bind({})
+export const AlertRounded = Template.bind({});
 AlertRounded.args = {
   color: ColorsEnum.warning,
-  rounded: 'none',
+  rounded: "none",
   onDismiss: undefined,
   children: <>Warning alert! This alert is trying to advice you, be carefully that this actions is not undonable.</>,
-}
+};
 
-export const Alertbordered = Template.bind({})
-Alertbordered.storyName = 'Bordered'
+export const Alertbordered = Template.bind({});
+Alertbordered.storyName = "Bordered";
 Alertbordered.args = {
   color: ColorsEnum.warning,
   onDismiss: undefined,
@@ -88,11 +90,11 @@ Alertbordered.args = {
   children: (
     <>Easier to see, right? Use this border when you have complexe contrast to increase the Alert visual importance</>
   ),
-}
+};
 
-export const AlertWithAdditionalContent = Template.bind({})
+export const AlertWithAdditionalContent = Template.bind({});
 AlertWithAdditionalContent.args = {
-  color: 'info',
+  color: "info",
   icon: TbInfoCircle,
   onDismiss: undefined,
   bordered: true,
@@ -118,14 +120,16 @@ AlertWithAdditionalContent.args = {
       This content is the real one, the children.
     </>
   ),
-}
+};
 
-export const AlertWithAllOptions = Template.bind({})
+export const AlertWithAllOptions = Template.bind({});
 AlertWithAllOptions.args = {
   color: ColorsEnum.error,
-  rounded: 'none',
+  rounded: "none",
   bordered: true,
-  onDismiss: () => { alert('Alert dismissed!'); },
+  onDismiss: () => {
+    alert("Alert dismissed!");
+  },
   icon: BiTrash,
   additionalContent: (
     <>
@@ -139,4 +143,4 @@ AlertWithAllOptions.args = {
     </>
   ),
   children: <>Error Alert! Example: If you continue all data stored here will be deleted forever (a lot of time)</>,
-}
+};

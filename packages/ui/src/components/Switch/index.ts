@@ -1,3 +1,3 @@
-export { Switch as Switch } from './Switch'
-export type { SwitchProps as SwitchProps } from './Switch'
-export type { SwitchRootTheme, SwitchToggleTheme, SwitchTheme } from './theme'
+export { Switch } from "./Switch";
+export type { SwitchProps } from "./Switch";
+export type { SwitchRootTheme, SwitchToggleTheme, SwitchTheme } from "./theme";

@@ -1,25 +1,25 @@
-import type { ColorsType, IBoolean, MainSizesType } from "../../types"
+import type { ColorsType, IBoolean, MainSizesType } from "../../types";
 
 export interface SwitchTheme {
-  root: SwitchRootTheme
-  toggle: SwitchToggleTheme
+  root: SwitchRootTheme;
+  toggle: SwitchToggleTheme;
 }
 
 export interface SwitchRootTheme {
-  base: string
-  active: IBoolean
-  label: string
+  base: string;
+  active: IBoolean;
+  label: string;
 }
 
 export interface SwitchToggleTheme {
-  base: string
-  sizes: MainSizesType
-  color: ColorsType
-  handler: SwitchHandlerTheme
+  base: string;
+  sizes: MainSizesType;
+  color: ColorsType;
+  handler: SwitchHandlerTheme;
 }
 
 export interface SwitchHandlerTheme {
-  base: string
+  base: string;
 }
 
 export const switchTheme: SwitchTheme = {
@@ -29,8 +29,7 @@ export const switchTheme: SwitchTheme = {
       on: "cursor-pointer",
       off: "cursor-not-allowed opacity-50",
     },
-    label:
-      "ml-3 text-sm font-medium text-secondary-900 dark:text-secondary-300",
+    label: "ml-3 text-sm font-medium text-secondary-900 dark:text-secondary-300",
   },
   toggle: {
     base: "rounded-full border group-focus:ring-2 group-focus:ring-primary/25 flex items-center overflow-hidden aspect-video p-0.5 justify-start	bg-transparent data-[checked=true]:justify-end data-[checked=false]:opacity-50",
@@ -54,4 +53,4 @@ export const switchTheme: SwitchTheme = {
       base: "bg-secondary-50 rounded-full h-full aspect-square group-active:aspect-[4/3] transition-[aspect-ratio] ease-in-out duration-200",
     },
   },
-}
+};

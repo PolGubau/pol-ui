@@ -1,1 +1,1 @@
-export * from './get-main-field';
+export * from "./get-main-field";

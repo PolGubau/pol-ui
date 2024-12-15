@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { SpringOptions, motion, useScroll, useSpring } from "framer-motion"
+import { type SpringOptions, motion, useScroll, useSpring } from "framer-motion";
 
-import { cn } from "../../helpers"
+import { cn } from "../../helpers";
 
 export interface ScrollProgressProps {
-  className?: string
-  options?: SpringOptions
+  className?: string;
+  options?: SpringOptions;
 }
 
 /**
@@ -31,24 +31,21 @@ export interface ScrollProgressProps {
  * @returns JSX Element
  */
 export function ScrollProgress({ className, options }: ScrollProgressProps) {
-  const { scrollYProgress } = useScroll()
+  const { scrollYProgress } = useScroll();
 
   const scaleX = useSpring(scrollYProgress, {
     ...options,
     stiffness: options?.stiffness ?? 200,
     damping: options?.damping ?? 50,
     restDelta: options?.restDelta ?? 0.001,
-  })
+  });
 
   return (
     <motion.div
-      className={cn(
-        "fixed inset-x-0 top-0 z-[1000] left-0 h-1 origin-left bg-primary",
-        className
-      )}
+      className={cn("fixed inset-x-0 top-0 z-[1000] left-0 h-1 origin-left bg-primary", className)}
       style={{
         scaleX,
       }}
     />
-  )
+  );
 }

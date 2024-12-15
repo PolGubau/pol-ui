@@ -40,26 +40,26 @@
  */
 
 export function isObjectLike(value: unknown): value is object {
-  return typeof value === "object" && value !== null
+  return typeof value === "object" && value !== null;
 }
-export function merge<T, S>(target: T, source: S): T & S
+export function merge<T, S>(target: T, source: S): T & S;
 export function merge(target: any, source: any) {
-  const sourceKeys = Object.keys(source)
+  const sourceKeys = Object.keys(source);
 
   for (let i = 0; i < sourceKeys.length; i++) {
-    const key = sourceKeys[i]
+    const key = sourceKeys[i];
 
-    const sourceValue = source[key]
-    const targetValue = target[key]
+    const sourceValue = source[key];
+    const targetValue = target[key];
 
     if (Array.isArray(sourceValue)) {
-      target[key] = merge(targetValue ?? [], sourceValue)
+      target[key] = merge(targetValue ?? [], sourceValue);
     } else if (isObjectLike(targetValue) && isObjectLike(sourceValue)) {
-      target[key] = merge(targetValue ?? {}, sourceValue)
+      target[key] = merge(targetValue ?? {}, sourceValue);
     } else if (targetValue === undefined || sourceValue !== undefined) {
-      target[key] = sourceValue
+      target[key] = sourceValue;
     }
   }
 
-  return target
+  return target;
 }

@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { AnimatePresence, MotionConfig, motion } from "framer-motion"
-import { TbFolder, TbMessageCircle, TbUser, TbWallet } from "react-icons/tb"
+import { AnimatePresence, MotionConfig, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { TbFolder, TbMessageCircle, TbUser, TbWallet } from "react-icons/tb";
 
-import { cn } from "../../helpers"
-import { useMeasure } from "../../hooks"
-import { useClickOutside } from "../../hooks/use-click-outside"
+import { cn } from "../../helpers";
+import { useMeasure } from "../../hooks";
+import { useClickOutside } from "../../hooks/use-click-outside";
 
 const transition = {
   type: "spring",
   bounce: 0.1,
   duration: 0.25,
-}
+};
 
 const ITEMS = [
   {
@@ -91,25 +91,27 @@ const ITEMS = [
       </div>
     ),
   },
-]
+];
 
 export default function ToolbarExpandable() {
-  const [active, setActive] = useState<number | null>(null)
-  const { ref, bounds } = useMeasure<HTMLDivElement>()
+  const [active, setActive] = useState<number | null>(null);
+  const { ref, bounds } = useMeasure<HTMLDivElement>();
 
-  const [isOpen, setIsOpen] = useState(false)
-  const [maxWidth, setMaxWidth] = useState(0)
+  const [isOpen, setIsOpen] = useState(false);
+  const [maxWidth, setMaxWidth] = useState(0);
 
   useClickOutside(ref, () => {
-    setIsOpen(false)
-    setActive(null)
-  })
+    setIsOpen(false);
+    setActive(null);
+  });
 
   useEffect(() => {
-    if (!bounds.width || maxWidth > 0) return
+    if (!bounds.width || maxWidth > 0) {
+      return;
+    }
 
-    setMaxWidth(bounds.width)
-  }, [bounds.width, maxWidth])
+    setMaxWidth(bounds.width);
+  }, [bounds.width, maxWidth]);
 
   return (
     <MotionConfig transition={transition}>
@@ -129,7 +131,7 @@ export default function ToolbarExpandable() {
                 >
                   <div ref={ref} className="p-2">
                     {ITEMS.map((item) => {
-                      const isSelected = active === item.id
+                      const isSelected = active === item.id;
 
                       return (
                         <motion.div
@@ -138,16 +140,9 @@ export default function ToolbarExpandable() {
                           animate={{ opacity: isSelected ? 1 : 0 }}
                           exit={{ opacity: 0 }}
                         >
-                          <div
-                            className={cn(
-                              "px-2 pt-2 text-sm",
-                              isSelected ? "block" : "hidden"
-                            )}
-                          >
-                            {item.content}
-                          </div>
+                          <div className={cn("px-2 pt-2 text-sm", isSelected ? "block" : "hidden")}>{item.content}</div>
                         </motion.div>
-                      )
+                      );
                     })}
                   </div>
                 </motion.div>
@@ -161,18 +156,20 @@ export default function ToolbarExpandable() {
                 aria-label={item.label}
                 className={cn(
                   "relative flex h-9 w-9 shrink-0 scale-100 select-none appearance-none items-center justify-center rounded-lg text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-800 focus-visible:ring-2 active:scale-[0.98]",
-                  active === item.id ? "bg-zinc-100 text-zinc-800" : ""
+                  active === item.id ? "bg-zinc-100 text-zinc-800" : "",
                 )}
                 type="button"
                 onClick={() => {
-                  if (!isOpen) setIsOpen(true)
+                  if (!isOpen) {
+                    setIsOpen(true);
+                  }
                   if (active === item.id) {
-                    setIsOpen(false)
-                    setActive(null)
-                    return
+                    setIsOpen(false);
+                    setActive(null);
+                    return;
                   }
 
-                  setActive(item.id)
+                  setActive(item.id);
                 }}
               >
                 {item.title}
@@ -182,5 +179,5 @@ export default function ToolbarExpandable() {
         </div>
       </div>
     </MotionConfig>
-  )
+  );
 }

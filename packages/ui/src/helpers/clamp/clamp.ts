@@ -15,12 +15,12 @@
  * const result3 = clamp(2, 5, 15); // result3 will be 5, as 2 is clamped to the lower bound 5
  * const result4 = clamp(20, 5, 15); // result4 will be 15, as 20 is clamped to the upper bound 15
  */
-export function clamp(value: number, maximum: number): number
-export function clamp(value: number, minimum: number, maximum: number): number
+export function clamp(value: number, maximum: number): number;
+export function clamp(value: number, minimum: number, maximum: number): number;
 export function clamp(value: number, bound1: number, bound2?: number): number {
   if (bound2 == null) {
-    return Math.min(value, bound1)
+    return Math.min(value, bound1);
   }
 
-  return Math.min(Math.max(value, bound1), bound2)
+  return Math.min(Math.max(value, bound1), bound2);
 }

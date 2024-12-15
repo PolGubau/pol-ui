@@ -1,9 +1,9 @@
-import React from "react"
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
+import React from "react";
 
-import { theme } from "../../theme"
-import type { Colors } from "../../types"
-import { Radio } from "./Radio"
+import { theme } from "../../theme";
+import type { Colors } from "../../types";
+import { Radio } from "./Radio";
 
 export default {
   title: "Components/Radio",
@@ -29,11 +29,11 @@ export default {
       },
     },
   },
-} as Meta
+} as Meta;
 
-export const Default = (): JSX.Element => {
-  const options = ["Option 1", "Option 2", "Option 3"]
-  const [value, setValue] = React.useState(options[0])
+export const Default = (): React.ReactNode => {
+  const options = ["Option 1", "Option 2", "Option 3"];
+  const [value, setValue] = React.useState(options[0]);
   return (
     <div className="flex flex-col gap-2 p-4 rounded-xl">
       {options.map((option) => {
@@ -42,20 +42,20 @@ export const Default = (): JSX.Element => {
             key={option}
             checked={value === option}
             onChange={() => {
-              setValue(option)
+              setValue(option);
             }}
             value={option}
             label={option}
           />
-        )
+        );
       })}
     </div>
-  )
-}
+  );
+};
 
-export const WithIds = (): JSX.Element => {
-  const options = ["Option 1", "Option 2", "Option 3"]
-  const [value, setValue] = React.useState(options[0])
+export const WithIds = (): React.ReactNode => {
+  const options = ["Option 1", "Option 2", "Option 3"];
+  const [value, setValue] = React.useState(options[0]);
   return (
     <div className="flex flex-col gap-2 p-4 rounded-xl">
       {options.map((option) => {
@@ -65,37 +65,29 @@ export const WithIds = (): JSX.Element => {
             key={option}
             checked={value === option}
             onChange={() => {
-              setValue(option)
+              setValue(option);
             }}
             value={option}
             label={option}
           />
-        )
+        );
       })}
     </div>
-  )
-}
+  );
+};
 
-export const UnControlled = (): JSX.Element => {
-  const options = ["Option 1", "Option 2", "Option 3"]
+export const UnControlled = (): React.ReactNode => {
+  const options = ["Option 1", "Option 2", "Option 3"];
   return (
     <ul className="flex gap-2">
       {options.map((option) => {
-        return (
-          <Radio
-            name="2"
-            key={option}
-            value={option}
-            label={option}
-            defaultChecked={option === options[1]}
-          />
-        )
+        return <Radio name="2" key={option} value={option} label={option} defaultChecked={option === options[1]} />;
       })}
     </ul>
-  )
-}
-export const AllColors = (): JSX.Element => {
-  const options = ["1", "2", "3"]
+  );
+};
+export const AllColors = (): React.ReactNode => {
+  const options = ["1", "2", "3"];
   return (
     <ul className="flex gap-4">
       {Object.keys(theme.radio.color).map((color) => {
@@ -111,11 +103,11 @@ export const AllColors = (): JSX.Element => {
                   color={color as Colors}
                   defaultChecked={option === options[1]}
                 />
-              )
+              );
             })}
           </ul>
-        )
+        );
       })}
     </ul>
-  )
-}
+  );
+};

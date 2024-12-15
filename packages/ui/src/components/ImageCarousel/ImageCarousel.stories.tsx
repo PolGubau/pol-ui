@@ -1,6 +1,6 @@
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
 
-import ImageCarousel from "./ImageCarousel"
+import ImageCarousel from "./ImageCarousel";
 
 export default {
   title: "Components/ImageCarousel",
@@ -16,7 +16,7 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 const sampleData = [
   { id: 1, uri: "https://unsplash.it/600/600/?image=1079" },
   { id: 2, uri: "https://unsplash.it/600/600/?image=1080" },
@@ -42,7 +42,7 @@ const sampleData = [
   { id: 22, uri: "https://unsplash.it/600/600/?image=1063" },
   { id: 23, uri: "https://unsplash.it/600/600/?image=1062" },
   { id: 24, uri: "https://unsplash.it/600/600/?image=1061" },
-]
+];
 export const Default = () => {
-  return <ImageCarousel urls={sampleData.map((s) => s.uri)} />
-}
+  return <ImageCarousel urls={sampleData.map((s) => s.uri)} />;
+};

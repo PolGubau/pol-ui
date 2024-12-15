@@ -1,61 +1,61 @@
-import { CountryCode, Locale } from "../i18n"
-import {
-  type AlignEnum,
-  type BooleanEnum,
-  type BrandColorsEnum,
-  type ColorsEnum,
-  type DirEnum,
-  type DirectionEnum,
-  type GetValuesEnum,
-  type HeadingLevelEnum,
-  type MainSizesEnum,
-  type OrientationsEnum,
-  type RoundedSizesEnum,
-  type SidesEnum,
-  type SizesEnum,
-  type StateColorsEnum,
-  type TriggerReasonEnum,
-} from "./enums"
+import type { CountryCode, Locale } from "../i18n";
+import type {
+  AlignEnum,
+  BooleanEnum,
+  BrandColorsEnum,
+  ColorsEnum,
+  DirEnum,
+  DirectionEnum,
+  GetValuesEnum,
+  HeadingLevelEnum,
+  MainSizesEnum,
+  OrientationsEnum,
+  RoundedSizesEnum,
+  SidesEnum,
+  SizesEnum,
+  StateColorsEnum,
+  TriggerReasonEnum,
+} from "./enums";
 
-export type Identification = string | number
+export type Identification = string | number;
 
 export type DeepPartial<T> = T extends object
   ? {
-      [P in keyof T]?: DeepPartial<T[P]>
+      [P in keyof T]?: DeepPartial<T[P]>;
     }
-  : T
+  : T;
 
 export type Mutable<T> = {
-  -readonly [P in keyof T]: T[P]
-}
+  -readonly [P in keyof T]: T[P];
+};
 
 /**
  * @name IBoolean
  * @description Type for booleans, on and off states
  * @author Pol Gubau Amores - https://polgubau.com
  */
-export type IBoolean = Record<BooleanEnum, string>
+export type IBoolean = Record<BooleanEnum, string>;
 
 /**
  * @name StateColors
  * @description Type for the different state colors
  * @author Pol Gubau Amores - https://polgubau.com
  */
-export type StateColors = Record<StateColorsEnum, string>
+export type StateColors = Record<StateColorsEnum, string>;
 
 /**
  * @name BrandColors
  * @description Type for the different brand colors
  * @author Pol Gubau Amores - https://polgubau.com
  */
-export type BrandColors = Record<BrandColorsEnum, string>
+export type BrandColors = Record<BrandColorsEnum, string>;
 
 /**
  * @name ColorsType
  * @description Type for the different colors, including state and brand colors
  * @author Pol Gubau Amores - https://polgubau.com
  */
-export type ColorsType = Record<GetValuesEnum<typeof ColorsEnum>, string>
+export type ColorsType = Record<GetValuesEnum<typeof ColorsEnum>, string>;
 
 /**
  * @name Colors
@@ -63,14 +63,14 @@ export type ColorsType = Record<GetValuesEnum<typeof ColorsEnum>, string>
  * @author Pol Gubau Amores - https://polgubau.com
  */
 
-export type Colors = keyof typeof ColorsEnum
+export type Colors = keyof typeof ColorsEnum;
 
 /**
  * @name HeadingLevel
  * @description Type for the different heading levels, from h1 to h6
  * @author Pol Gubau Amores - https://polgubau.com
  */
-export type HeadingLevel = keyof typeof HeadingLevelEnum
+export type HeadingLevel = keyof typeof HeadingLevelEnum;
 
 /**
  * @name Positions
@@ -81,15 +81,15 @@ export type HeadingLevel = keyof typeof HeadingLevelEnum
  *
  */
 export interface Positions {
-  "bottom-left": string
-  "bottom-right": string
-  "bottom-center": string
-  "top-left": string
-  "top-center": string
-  "top-right": string
-  "center-left": string
-  center: string
-  "center-right": string
+  "bottom-left": string;
+  "bottom-right": string;
+  "bottom-center": string;
+  "top-left": string;
+  "top-center": string;
+  "top-right": string;
+  "center-left": string;
+  center: string;
+  "center-right": string;
 }
 
 /**
@@ -99,7 +99,7 @@ export interface Positions {
  * @author Pol Gubau Amores - https://polgubau.com
  */
 
-export type MainSizesType = Record<GetValuesEnum<typeof MainSizesEnum>, string>
+export type MainSizesType = Record<GetValuesEnum<typeof MainSizesEnum>, string>;
 
 /**
  * @name MainSizesElastic
@@ -108,7 +108,7 @@ export type MainSizesType = Record<GetValuesEnum<typeof MainSizesEnum>, string>
  * @property {string} [key] - Any value provided by the user
  * @author Pol Gubau Amores - https://polgubau.com
  */
-export type MainSizes = keyof typeof MainSizesEnum
+export type MainSizes = keyof typeof MainSizesEnum;
 
 /**
  * @name Sizes
@@ -116,7 +116,7 @@ export type MainSizes = keyof typeof MainSizesEnum
  * @see SizesEnum for the different sizes
  * @author Pol Gubau Amores - https://polgubau.com
  */
-export type Sizes = Record<GetValuesEnum<typeof SizesEnum>, string>
+export type Sizes = Record<GetValuesEnum<typeof SizesEnum>, string>;
 
 /**
  * @name RoundedSizes
@@ -124,7 +124,7 @@ export type Sizes = Record<GetValuesEnum<typeof SizesEnum>, string>
  * @see RoundedSizesEnum for the different sizes
  * @author Pol Gubau Amores - https://polgubau.com
  */
-export type RoundedSizes = keyof typeof RoundedSizesEnum
+export type RoundedSizes = keyof typeof RoundedSizesEnum;
 
 /**
  * @name RoundedSizesTypes
@@ -133,10 +133,7 @@ export type RoundedSizes = keyof typeof RoundedSizesEnum
  * @extends RoundedSizesType
  * @author Pol Gubau Amores - https://polgubau.com
  */
-export type RoundedSizesTypes = Record<
-  GetValuesEnum<typeof RoundedSizesEnum>,
-  string
->
+export type RoundedSizesTypes = Record<GetValuesEnum<typeof RoundedSizesEnum>, string>;
 
 /**
  * @name RoundedSizesElastic
@@ -148,7 +145,7 @@ export type RoundedSizesTypes = Record<
 
  */
 // use a record
-export type RoundedSizesElastic = RoundedSizesTypes & Record<string, string>
+export type RoundedSizesElastic = RoundedSizesTypes & Record<string, string>;
 
 /**
  * @name ContentPositions
@@ -156,7 +153,7 @@ export type RoundedSizesElastic = RoundedSizesTypes & Record<string, string>
  * @author Pol Gubau Amores - https://polgubau.com
  */
 export interface ContentPositions {
-  center: string
+  center: string;
 }
 
 /**
@@ -165,7 +162,7 @@ export interface ContentPositions {
  * @see TriggerReasonEnum for the different trigger reasons
  * @author Pol Gubau Amores - https://polgubau.com
  */
-export type TriggerReason = `${TriggerReasonEnum}`
+export type TriggerReason = `${TriggerReasonEnum}`;
 
 /**
  * @name Direction
@@ -173,17 +170,17 @@ export type TriggerReason = `${TriggerReasonEnum}`
  * @see DirectionEnum for the different directions
  * @author Pol Gubau Amores - https://polgubau.com
  */
-export type Direction = `${DirectionEnum}`
+export type Direction = `${DirectionEnum}`;
 
-export type Side = `${SidesEnum}`
+export type Side = `${SidesEnum}`;
 
-export type Align = `${AlignEnum}`
+export type Align = `${AlignEnum}`;
 
-export type Dir = `${DirEnum}`
+export type Dir = `${DirEnum}`;
 
-export type ClassName = string
+export type ClassName = string;
 export interface WithClassName {
-  className?: ClassName
+  className?: ClassName;
 }
 
 export enum Methods {
@@ -193,7 +190,7 @@ export enum Methods {
   DELETE = "DELETE",
   PATCH = "PATCH",
 }
-export type Method = `${Methods}`
+export type Method = `${Methods}`;
 
 export enum HttpStatusEnum {
   OK = 200,
@@ -207,26 +204,26 @@ export enum HttpStatusEnum {
   UNPROCESSABLE_ENTITY = 422,
   INTERNAL_SERVER_ERROR = 500,
 }
-export type HttpStatusLabel = keyof typeof HttpStatusEnum
-export type HttpStatus = `${HttpStatusEnum}`
+export type HttpStatusLabel = keyof typeof HttpStatusEnum;
+export type HttpStatus = `${HttpStatusEnum}`;
 
-export type Orientation = `${OrientationsEnum}`
+export type Orientation = `${OrientationsEnum}`;
 
 export interface IdName {
-  id: string
-  name: string
+  id: string;
+  name: string;
 }
 export interface Language {
-  locale: Locale
-  country?: CountryCode
-  language: string
-  flagCode?: CountryCode
-  basedOn?: Locale[]
+  locale: Locale;
+  country?: CountryCode;
+  language: string;
+  flagCode?: CountryCode;
+  basedOn?: Locale[];
 }
-export type Translation = Record<string, string>
-export type AllTranslations = Record<Locale, Translation>
-export type SomeTranslations = Partial<AllTranslations>
+export type Translation = Record<string, string>;
+export type AllTranslations = Record<Locale, Translation>;
+export type SomeTranslations = Partial<AllTranslations>;
 export interface LangAndText {
-  language: Locale
-  text: string
+  language: Locale;
+  text: string;
 }

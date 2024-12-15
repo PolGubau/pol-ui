@@ -1,12 +1,12 @@
-import React from "react"
-import type { Meta, StoryFn } from "@storybook/react"
+import type { Meta, StoryFn } from "@storybook/react";
+import type React from "react";
 
-import type { MainSizes, RoundedSizes } from "../../types"
-import { MainSizesEnum, RoundedSizesEnum } from "../../types/enums"
-import { Avatar, type AvatarProps } from "./Avatar"
-import { AvatarGroup } from "./AvatarGroup"
-import { AvatarGroupCounter } from "./AvatarGroupCounter"
-import { AvatarStatusEnum } from "./AvatarTypes"
+import type { MainSizes, RoundedSizes } from "../../types";
+import { MainSizesEnum, RoundedSizesEnum } from "../../types/enums";
+import { Avatar, type AvatarProps } from "./Avatar";
+import { AvatarGroup } from "./AvatarGroup";
+import { AvatarGroupCounter } from "./AvatarGroupCounter";
+import { AvatarStatusEnum } from "./AvatarTypes";
 
 export default {
   title: "Components/Avatar",
@@ -23,28 +23,28 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
-const Template: StoryFn<AvatarProps> = (args) => <Avatar {...args} />
+const Template: StoryFn<AvatarProps> = (args) => <Avatar {...args} />;
 
-export const DefaultAvatar = Template.bind({})
-DefaultAvatar.storyName = "Default"
+export const DefaultAvatar = Template.bind({});
+DefaultAvatar.storyName = "Default";
 DefaultAvatar.args = {
   title: "Pol Gubau",
   alt: "Your avatar",
   img: "https://avatars.githubusercontent.com/u/63197171?v=4",
-}
-export const WrongImage = Template.bind({})
+};
+export const WrongImage = Template.bind({});
 WrongImage.args = {
   alt: "Your avatar",
   img: "https://avatars.githubusercontent.com/u/63197171?v=4",
-}
-export const BorderedAvatar = Template.bind({})
+};
+export const BorderedAvatar = Template.bind({});
 BorderedAvatar.args = {
   alt: "Your avatar",
   bordered: true,
   img: "https://avatars.githubusercontent.com/u/63197171?v=4",
-}
+};
 
 export const CustomImage: StoryFn<AvatarProps> = (props) => (
   <>
@@ -52,30 +52,18 @@ export const CustomImage: StoryFn<AvatarProps> = (props) => (
       {...props}
       img={(props: React.ImgHTMLAttributes<HTMLImageElement>) => (
         <picture>
-          <source
-            media="(min-width: 900px)"
-            srcSet="https://avatars.githubusercontent.com/u/63197171?v=4"
-          />
-          <source
-            media="(min-width: 480px)"
-            srcSet="https://avatars.githubusercontent.com/u/63197171?v=4"
-          />
-          <img
-            alt="profile"
-            src="https://avatars.githubusercontent.com/u/63197171?v=4"
-            {...props}
-          />
+          <source media="(min-width: 900px)" srcSet="https://avatars.githubusercontent.com/u/63197171?v=4" />
+          <source media="(min-width: 480px)" srcSet="https://avatars.githubusercontent.com/u/63197171?v=4" />
+          <img alt="profile" src="https://avatars.githubusercontent.com/u/63197171?v=4" {...props} />
         </picture>
       )}
     />
-    <small className="block text-center text-gray-500">
-      Hint: Resize the viewport to change the image source
-    </small>
+    <small className="block text-center text-gray-500">Hint: Resize the viewport to change the image source</small>
   </>
-)
-CustomImage.storyName = "Custom Image Element"
+);
+CustomImage.storyName = "Custom Image Element";
 
-export const AllSizes = (): JSX.Element => (
+export const AllSizes = (): React.ReactNode => (
   <div className="flex flex-wrap gap-6">
     {Object.keys(MainSizesEnum).map((size) => (
       <div key={size} className="flex flex-col items-center justify-center">
@@ -89,9 +77,9 @@ export const AllSizes = (): JSX.Element => (
       </div>
     ))}
   </div>
-)
+);
 
-export const AllStatus = (): JSX.Element => (
+export const AllStatus = (): React.ReactNode => (
   <div className="flex flex-wrap gap-6">
     {Object.keys(AvatarStatusEnum).map((status) => (
       <div key={status} className="flex flex-col items-center justify-center">
@@ -105,8 +93,8 @@ export const AllStatus = (): JSX.Element => (
       </div>
     ))}
   </div>
-)
-export const AllRounded = (): JSX.Element => (
+);
+export const AllRounded = (): React.ReactNode => (
   <div className="flex flex-wrap gap-6">
     {Object.keys(RoundedSizesEnum).map((v) => (
       <div key={v} className="flex flex-col items-center justify-center">
@@ -120,29 +108,13 @@ export const AllRounded = (): JSX.Element => (
       </div>
     ))}
   </div>
-)
+);
 export const Grouped = () => (
   <AvatarGroup>
-    <Avatar
-      title="TrackUP"
-      img="https://avatars.githubusercontent.com/u/138794672?s=50&v=4"
-      stacked
-    />
-    <Avatar
-      title="Albert Arrebola"
-      img="https://avatars.githubusercontent.com/u/104431726?v=4"
-      stacked
-    />
-    <Avatar
-      title="Anna Camps"
-      img="https://avatars.githubusercontent.com/u/94074414?s=80&v=4"
-      stacked
-    />
-    <Avatar
-      img="https://avatars.githubusercontent.com/u/78301921?s=80&v=4"
-      stacked
-      title="Gerard Martínez"
-    />
+    <Avatar title="TrackUP" img="https://avatars.githubusercontent.com/u/138794672?s=50&v=4" stacked={true} />
+    <Avatar title="Albert Arrebola" img="https://avatars.githubusercontent.com/u/104431726?v=4" stacked={true} />
+    <Avatar title="Anna Camps" img="https://avatars.githubusercontent.com/u/94074414?s=80&v=4" stacked={true} />
+    <Avatar img="https://avatars.githubusercontent.com/u/78301921?s=80&v=4" stacked={true} title="Gerard Martínez" />
     <AvatarGroupCounter total={99} href="#" />
   </AvatarGroup>
-)
+);

@@ -1,2 +1,2 @@
-export { BubbleHeading } from './BubbleHeading'
-export type { BubbleHeadingProps } from './BubbleHeading'
+export { BubbleHeading } from "./BubbleHeading";
+export type { BubbleHeadingProps } from "./BubbleHeading";

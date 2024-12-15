@@ -1,16 +1,16 @@
-'use client'
+"use client";
 
-import type { ComponentProps, FC } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types/types'
+import type { ComponentProps, FC } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types/types";
 
-import type { FooterTheme } from './theme'
+import type { FooterTheme } from "./theme";
 
-export interface FooterProps extends ComponentProps<'footer'> {
-  container?: boolean
-  theme?: DeepPartial<FooterTheme>
+export interface FooterProps extends ComponentProps<"footer"> {
+  container?: boolean;
+  theme?: DeepPartial<FooterTheme>;
 }
 
 /**
@@ -26,7 +26,7 @@ export const Footer: FC<FooterProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().footer, customTheme)
+  const theme = mergeDeep(getTheme().footer, customTheme);
 
   return (
     <footer
@@ -36,5 +36,5 @@ export const Footer: FC<FooterProps> = ({
     >
       {children}
     </footer>
-  )
-}
+  );
+};

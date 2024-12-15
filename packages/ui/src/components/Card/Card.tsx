@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import type { ComponentProps, FC } from "react"
+import type { ComponentProps, FC } from "react";
 
-import { cn, mergeDeep, omit } from "../../helpers"
-import { getTheme } from "../../theme-store"
-import type { DeepPartial } from "../../types/types"
-import { FocusEffect } from "../FocusEffect"
-import type { CardTheme } from "./theme"
+import { cn, mergeDeep, omit } from "../../helpers";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types/types";
+import { FocusEffect } from "../FocusEffect";
+import type { CardTheme } from "./theme";
 
 export interface CardProps extends ComponentProps<"div"> {
-  href?: string
-  theme?: DeepPartial<CardTheme>
-  className?: string
-  disabled?: boolean
+  href?: string;
+  theme?: DeepPartial<CardTheme>;
+  className?: string;
+  disabled?: boolean;
 }
 
 /**
@@ -43,18 +43,12 @@ export interface CardProps extends ComponentProps<"div"> {
  * ```
  */
 export const Card: FC<CardProps> = (props): React.ReactNode => {
-  const { children, className, href, theme: customTheme = {} } = props
+  const { children, className, href, theme: customTheme = {} } = props;
 
   // Card component will be an Anchor link if href prop is passed.
-  const Component = typeof href === "undefined" ? "div" : "a"
-  const theme = mergeDeep(getTheme().card, customTheme)
-  const externalProps = omit([
-    "children",
-    "className",
-    "horizontal",
-    "href",
-    "theme",
-  ])(props)
+  const Component = typeof href === "undefined" ? "div" : "a";
+  const theme = mergeDeep(getTheme().card, customTheme);
+  const externalProps = omit(["children", "className", "horizontal", "href", "theme"])(props);
 
   return (
     <Component
@@ -67,5 +61,5 @@ export const Card: FC<CardProps> = (props): React.ReactNode => {
 
       {children}
     </Component>
-  )
-}
+  );
+};

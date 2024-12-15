@@ -1,6 +1,6 @@
-import { Language } from "../../types"
-import { Locales } from "../locales"
-import { countryCodes } from "../phones/metadata/countries"
+import type { Language } from "../../types";
+import { Locales } from "../locales";
+import { countryCodes } from "../phones/metadata/countries";
 
 /**
  * MESALVO SPANISH LANGUAGES PACK
@@ -87,4 +87,4 @@ export const spanishLanguagesPack: Language[] = [
     country: countryCodes.SV,
     basedOn: [Locales.ES],
   },
-]
+];

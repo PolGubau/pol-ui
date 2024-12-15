@@ -1,8 +1,8 @@
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
 
-import { Toaster, toast } from "../../components"
-import { PoluiProvider } from "../../providers/PoluiProvider"
-import { KeyPressItem, useKeyPress } from "./use-key-press"
+import { Toaster, toast } from "../../components";
+import { PoluiProvider } from "../../providers/PoluiProvider";
+import { type KeyPressItem, useKeyPress } from "./use-key-press";
 
 export default {
   title: "Hooks/useKeyPress",
@@ -19,15 +19,15 @@ export default {
     layout: "fullscreen",
   },
   tags: ["autodocs"],
-} as Meta
+} as Meta;
 export const Default: React.FC = () => {
   const saveFunction = () => {
-    toast("Save function triggered")
-  }
+    toast("Save function triggered");
+  };
 
   const undoFunction = () => {
-    toast("Undo function triggered")
-  }
+    toast("Undo function triggered");
+  };
 
   const shortcuts: KeyPressItem[] = [
     {
@@ -38,14 +38,14 @@ export const Default: React.FC = () => {
       key: ["Control", "KeyZ"],
       event: undoFunction,
     },
-  ]
+  ];
 
-  useKeyPress({ keyPressItems: shortcuts })
+  useKeyPress({ keyPressItems: shortcuts });
 
   return (
     <div>
       <h1>Keyboard Shortcuts Example</h1>
       <p>Press Ctrl+S to save and Ctrl+Z to undo.</p>
     </div>
-  )
-}
+  );
+};

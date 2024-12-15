@@ -1,19 +1,19 @@
-'use client'
+"use client";
 
-import { type ComponentProps, type FC } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import type { DeepPartial } from '../../types/types'
-import { useTimelineContext } from './TimelineContext'
-import type { TimelnePointProps } from './TimelinePoint'
-import { TimelinePoint } from './TimelinePoint'
-import type { TimelineItemTheme } from './theme'
+import type { ComponentProps, FC } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import type { DeepPartial } from "../../types/types";
+import { useTimelineContext } from "./TimelineContext";
+import type { TimelnePointProps } from "./TimelinePoint";
+import { TimelinePoint } from "./TimelinePoint";
+import type { TimelineItemTheme } from "./theme";
 
-export interface TimelineItemProps extends ComponentProps<'li'> {
-  theme?: DeepPartial<TimelineItemTheme>
-  iconContent?: TimelnePointProps['children']
-  icon?: TimelnePointProps['icon']
-  iconClassName?: TimelnePointProps['className']
+export interface TimelineItemProps extends ComponentProps<"li"> {
+  theme?: DeepPartial<TimelineItemTheme>;
+  iconContent?: TimelnePointProps["children"];
+  icon?: TimelnePointProps["icon"];
+  iconClassName?: TimelnePointProps["className"];
 }
 
 export const TimelineItem: FC<TimelineItemProps> = ({
@@ -25,9 +25,9 @@ export const TimelineItem: FC<TimelineItemProps> = ({
   iconClassName,
   ...props
 }) => {
-  const { theme: rootTheme, horizontal } = useTimelineContext()
+  const { theme: rootTheme, horizontal } = useTimelineContext();
 
-  const theme = mergeDeep(rootTheme.item, customTheme)
+  const theme = mergeDeep(rootTheme.item, customTheme);
 
   return (
     <li
@@ -42,5 +42,5 @@ export const TimelineItem: FC<TimelineItemProps> = ({
         {children}
       </div>
     </li>
-  )
-}
+  );
+};

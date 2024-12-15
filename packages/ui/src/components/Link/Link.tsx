@@ -1,21 +1,21 @@
-"use client"
+"use client";
 
-import type { ComponentProps, ElementType, FC } from "react"
+import type { ComponentProps, ElementType, FC } from "react";
 
-import { cn } from "../../helpers"
-import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
-import { getTheme } from "../../theme-store"
-import type { DeepPartial } from "../../types/types"
+import { cn } from "../../helpers";
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types/types";
 
 export interface LinkTheme {
-  base: string
-  href: string
+  base: string;
+  href: string;
 }
 
 export interface LinkProps extends ComponentProps<"a"> {
-  as?: ElementType
-  theme?: DeepPartial<LinkTheme>
-  underline?: boolean
+  as?: ElementType;
+  theme?: DeepPartial<LinkTheme>;
+  underline?: boolean;
 }
 
 /**
@@ -34,7 +34,7 @@ export const Link: FC<LinkProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().link, customTheme)
+  const theme = mergeDeep(getTheme().link, customTheme);
 
   return (
     <Component
@@ -42,11 +42,11 @@ export const Link: FC<LinkProps> = ({
         theme.base,
         theme.underline[underline ? "on" : "off"],
 
-        className
+        className,
       )}
       {...props}
     >
       {children}
     </Component>
-  )
-}
+  );
+};

@@ -1,6 +1,6 @@
-import type { ComponentProps, ReactNode } from 'react'
-import type { Colors, DeepPartial, MainSizes } from '../../types'
-import type { InputTheme } from './themeTypes'
+import type { ComponentProps, ReactNode } from "react";
+import type { Colors, DeepPartial, MainSizes } from "../../types";
+import type { InputTheme } from "./themeTypes";
 
 /**
  * @name InputLabelPositionsEnum
@@ -8,8 +8,8 @@ import type { InputTheme } from './themeTypes'
  * @enum [top, left]
  */
 export enum InputLabelPositionsEnum {
-  top = 'top',
-  left = 'left',
+  top = "top",
+  left = "left",
 }
 
 /**
@@ -17,7 +17,7 @@ export enum InputLabelPositionsEnum {
  * @description Type for label positions in the BaseInputs component.
  * @enum [top, left]
  */
-export type InputLabelPositions = keyof typeof InputLabelPositionsEnum
+export type InputLabelPositions = keyof typeof InputLabelPositionsEnum;
 
 /**
  * @name BaseInputsProps
@@ -35,7 +35,7 @@ export interface BaseInputsProps {
    * <BaseInputs color="primary" />
    * ```
    */
-  color?: Colors
+  color?: Colors;
 
   /**
    * @name helperText
@@ -47,7 +47,7 @@ export interface BaseInputsProps {
    * <BaseInputs helperText="This is a helper text" />
    * ```
    */
-  helperText?: ReactNode
+  helperText?: ReactNode;
 
   /**
    * @name leftComponent
@@ -59,7 +59,7 @@ export interface BaseInputsProps {
    * <BaseInputs leftComponent={<RandomIcon />} />
    * ```
    */
-  leftComponent?: ReactNode
+  leftComponent?: ReactNode;
 
   /**
    * @name rightComponent
@@ -71,7 +71,7 @@ export interface BaseInputsProps {
    * <BaseInputs rightComponent={<RandomIcon />} />
    * ```
    */
-  rightComponent?: ReactNode
+  rightComponent?: ReactNode;
 
   /**
    * @name size
@@ -84,7 +84,7 @@ export interface BaseInputsProps {
    * <BaseInputs size="md" />
    * ```
    */
-  size?: MainSizes
+  size?: MainSizes;
 
   /**
    * @name theme
@@ -96,7 +96,7 @@ export interface BaseInputsProps {
    * <BaseInputs theme={{ color: { primary: 'bg-red-500' } }} />
    * ```
    */
-  theme?: DeepPartial<InputTheme>
+  theme?: DeepPartial<InputTheme>;
 
   /**
    * @name border
@@ -108,7 +108,7 @@ export interface BaseInputsProps {
    * <BaseInputs border />
    * ```
    */
-  border?: boolean
+  border?: boolean;
 
   /**
    * @name label
@@ -120,7 +120,7 @@ export interface BaseInputsProps {
    * <BaseInputs label="Username" />
    * ```
    */
-  label?: string
+  label?: string;
 
   /**
    * @name labelPosition
@@ -133,7 +133,7 @@ export interface BaseInputsProps {
    * <BaseInputs label="Username" labelPosition="left" />
    * ```
    */
-  labelPosition?: InputLabelPositions
+  labelPosition?: InputLabelPositions;
 
   /**
    * @name labelClassName
@@ -145,7 +145,7 @@ export interface BaseInputsProps {
    * <BaseInputs label="Username" labelClassName="text-red-500" />
    * ```
    */
-  labelClassName?: string
+  labelClassName?: string;
 
   /**
    * @name innerClassName
@@ -157,9 +157,9 @@ export interface BaseInputsProps {
    * <BaseInputs innerClassName="border-red-500" />
    * ```
    */
-  innerClassName?: string
+  innerClassName?: string;
 
-  onTextChange?: (text: string) => void
+  onTextChange?: (text: string) => void;
 }
 
 /**
@@ -168,4 +168,4 @@ export interface BaseInputsProps {
  * @type BaseInputsProps
  * @property addon `ReactNode`
  */
-export interface InputProps extends Omit<ComponentProps<'input'>, 'ref' | 'color' | 'size'>, BaseInputsProps {}
+export interface InputProps extends Omit<ComponentProps<"input">, "ref" | "color" | "size">, BaseInputsProps {}

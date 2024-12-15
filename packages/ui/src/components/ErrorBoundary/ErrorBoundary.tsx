@@ -1,51 +1,48 @@
-import React, { ErrorInfo, PropsWithChildren, ReactNode } from "react"
-import { TbReload } from "react-icons/tb"
+import React, { type ErrorInfo, type PropsWithChildren, type ReactNode } from "react";
+import { TbReload } from "react-icons/tb";
 
-import { IconButton } from "../IconButton"
+import { IconButton } from "../IconButton";
 
 interface ErrorBoundaryProps
   extends PropsWithChildren<{
-    fallbackUI: ReactNode
-    onError?: (error: Error, errorInfo: ErrorInfo) => void
-    retry?: () => void
-    reloadText?: string
+    fallbackUI: ReactNode;
+    onError?: (error: Error, errorInfo: ErrorInfo) => void;
+    retry?: () => void;
+    reloadText?: string;
   }> {}
 
 interface ErrorBoundaryState {
-  hasError: boolean
+  hasError: boolean;
 }
 
-class ErrorBoundary extends React.Component<
-  ErrorBoundaryProps,
-  ErrorBoundaryState
-> {
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
-    super(props)
-    this.state = { hasError: false }
+    super(props);
+    this.state = { hasError: false };
   }
 
   static getDerivedStateFromError(): ErrorBoundaryState {
-    return { hasError: true }
+    return { hasError: true };
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    const { onError } = this.props
+    const { onError } = this.props;
     if (onError) {
-      onError(error, errorInfo)
+      onError(error, errorInfo);
     }
   }
 
   handleRetry = (): void => {
-    const { retry } = this.props
+    const { retry } = this.props;
     if (retry) {
-      retry()
-      this.setState({ hasError: false })
+      retry();
+      this.setState({ hasError: false });
     }
-  }
+  };
 
   render(): React.ReactNode {
-    const { fallbackUI, children, reloadText = "Reload" } = this.props
-    const { hasError } = this.state
+    const { fallbackUI, children, reloadText = "Reload" } = this.props;
+    const { hasError } = this.state;
 
     if (hasError) {
       return (
@@ -57,11 +54,11 @@ class ErrorBoundary extends React.Component<
             </IconButton>
           )}
         </div>
-      )
+      );
     }
 
-    return children
+    return children;
   }
 }
 
-export default ErrorBoundary
+export default ErrorBoundary;

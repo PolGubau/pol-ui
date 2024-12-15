@@ -1,9 +1,9 @@
-import React from "react"
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
+import type React from "react";
 
-import { Toaster, toast } from "../../components"
-import { PoluiProvider } from "../../providers/PoluiProvider"
-import { useInterval } from "./use-interval"
+import { Toaster, toast } from "../../components";
+import { PoluiProvider } from "../../providers/PoluiProvider";
+import { useInterval } from "./use-interval";
 
 export default {
   title: "Hooks/useInterval",
@@ -21,18 +21,16 @@ export default {
     layout: "fullscreen",
   },
   tags: ["autodocs"],
-} as Meta
+} as Meta;
 export const Default: React.FC = () => {
   useInterval(() => {
-    toast("interval")
-  }, 1000)
+    toast("interval");
+  }, 1000);
 
   return (
     <div className="flex justify-center flex-col gap-2">
       <h1>useInterval Example</h1>
-      <p>
-        This example will show a toast every 1 second using the useInterval hook
-      </p>
+      <p>This example will show a toast every 1 second using the useInterval hook</p>
     </div>
-  )
-}
+  );
+};

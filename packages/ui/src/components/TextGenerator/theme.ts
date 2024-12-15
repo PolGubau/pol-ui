@@ -1,9 +1,9 @@
 export interface TextGeneratorTheme {
-  base: string
-  wrapper: string
+  base: string;
+  wrapper: string;
 }
 
 export const textGeneratorTheme: TextGeneratorTheme = {
-  wrapper: '',
-  base: 'opacity-0',
-}
+  wrapper: "",
+  base: "opacity-0",
+};

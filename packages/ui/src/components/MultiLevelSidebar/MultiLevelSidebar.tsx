@@ -1,34 +1,34 @@
-"use client"
+"use client";
 
-import { useEffect, useState, type ComponentProps, type FC } from "react"
-import { AnimatePresence, motion, useAnimationControls } from "framer-motion"
+import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
+import { type ComponentProps, type FC, useEffect, useState } from "react";
 
-import { cn } from "../../helpers"
-import type { ButtonProps } from "../Button"
-import { Divider } from "../Divider"
-import { IconButton } from "../IconButton"
-import NavigationLink from "./link"
-import ProjectNavigation from "./menu"
-import ProjectLink from "./menu-link"
+import { cn } from "../../helpers";
+import type { ButtonProps } from "../Button";
+import { Divider } from "../Divider";
+import { IconButton } from "../IconButton";
+import NavigationLink from "./link";
+import ProjectNavigation from "./menu";
+import ProjectLink from "./menu-link";
 
 interface ItemProps extends Omit<ButtonProps, "name"> {
-  name: string
-  icon: FC<ComponentProps<"svg">>
+  name: string;
+  icon: FC<ComponentProps<"svg">>;
 }
 export interface NavigationPropsLink extends ItemProps {
-  navigate: (route: string) => void
-  active?: boolean
+  navigate: (route: string) => void;
+  active?: boolean;
 }
 
 export interface NavigationMenuProps extends ItemProps {
-  links?: NavigationPropsLink[]
-  children?: React.ReactNode
+  links?: NavigationPropsLink[];
+  children?: React.ReactNode;
 }
 
 export interface MultiLevelSidebarProps {
-  defaultOpen?: boolean
-  links: NavigationPropsLink[]
-  menus?: NavigationMenuProps[]
+  defaultOpen?: boolean;
+  links: NavigationPropsLink[];
+  menus?: NavigationMenuProps[];
 }
 
 const containerVariants = {
@@ -48,7 +48,7 @@ const containerVariants = {
       duration: 0.5,
     },
   },
-}
+};
 
 const svgVariants = {
   close: {
@@ -57,35 +57,31 @@ const svgVariants = {
   open: {
     rotate: 180,
   },
-}
+};
 
-const MultiLevelSidebar = ({
-  links,
-  menus,
-  ...rest
-}: MultiLevelSidebarProps) => {
-  const [isOpen, setIsOpen] = useState(rest.defaultOpen || false)
-  const [selectedProject, setSelectedProject] = useState<string | null>(null)
+const MultiLevelSidebar = ({ links, menus, ...rest }: MultiLevelSidebarProps) => {
+  const [isOpen, setIsOpen] = useState(rest.defaultOpen || false);
+  const [selectedProject, setSelectedProject] = useState<string | null>(null);
 
-  const containerControls = useAnimationControls()
-  const svgControls = useAnimationControls()
+  const containerControls = useAnimationControls();
+  const svgControls = useAnimationControls();
 
   useEffect(() => {
     if (isOpen) {
-      containerControls.start("open")
-      svgControls.start("open")
+      containerControls.start("open");
+      svgControls.start("open");
     } else {
-      containerControls.start("close")
-      svgControls.start("close")
+      containerControls.start("close");
+      svgControls.start("close");
     }
-  }, [containerControls, isOpen, svgControls])
+  }, [containerControls, isOpen, svgControls]);
 
   const handleOpenClose = () => {
-    setIsOpen(!isOpen)
-    setSelectedProject(null)
-  }
+    setIsOpen(!isOpen);
+    setSelectedProject(null);
+  };
 
-  const selectedMenu = menus?.find((menu) => menu.name === selectedProject)
+  const selectedMenu = menus?.find((menu) => menu.name === selectedProject);
 
   return (
     <>
@@ -101,12 +97,7 @@ const MultiLevelSidebar = ({
           ))}
           <Divider />
           {menus?.map((menu, index) => (
-            <ProjectLink
-              {...menu}
-              setSelectedProject={setSelectedProject}
-              key={index}
-              isOpen={isOpen}
-            />
+            <ProjectLink {...menu} setSelectedProject={setSelectedProject} key={index} isOpen={isOpen} />
           ))}
         </div>
 
@@ -115,14 +106,14 @@ const MultiLevelSidebar = ({
             "flex w-full p-3 px-5 transition-all justify-end",
             "bg-secondary-50 dark:bg-secondary-900",
             "bottom-0 sticky",
-            "border-t border-secondary-100 dark:border-secondary-800"
+            "border-t border-secondary-100 dark:border-secondary-800",
           )}
         >
           <IconButton
             variant={"ghost"}
             className="h-10 w-10 min-h-10 min-w-10"
             onClick={() => {
-              handleOpenClose()
+              handleOpenClose();
             }}
           >
             <svg
@@ -158,7 +149,7 @@ const MultiLevelSidebar = ({
         )}
       </AnimatePresence>
     </>
-  )
-}
+  );
+};
 
-export default MultiLevelSidebar
+export default MultiLevelSidebar;

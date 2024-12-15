@@ -1,18 +1,18 @@
-'use client'
-import { useEffect } from 'react'
-import { motion, stagger, useAnimate } from 'framer-motion'
-import { twMerge } from 'tailwind-merge'
-import { getTheme } from '../../theme-store'
-import { mergeDeep } from '../../helpers'
-import type { TextGeneratorTheme } from './theme'
-import type { DeepPartial } from '../../types'
+"use client";
+import { motion, stagger, useAnimate } from "framer-motion";
+import { useEffect } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { TextGeneratorTheme } from "./theme";
 
 export interface TextGeneratorProps {
-  text: string
-  speed?: number
-  delay?: number
-  className?: string
-  theme?: DeepPartial<TextGeneratorTheme>
+  text: string;
+  speed?: number;
+  delay?: number;
+  className?: string;
+  theme?: DeepPartial<TextGeneratorTheme>;
 }
 
 /**
@@ -31,11 +31,11 @@ export const TextGenerator = ({
   className,
   theme: customTheme = {},
 }: TextGeneratorProps) => {
-  const [scope, animate] = useAnimate()
-  const wordsArray = text.split(' ')
+  const [scope, animate] = useAnimate();
+  const wordsArray = text.split(" ");
   useEffect(() => {
     animate(
-      'span',
+      "span",
       {
         opacity: 1,
       },
@@ -43,21 +43,20 @@ export const TextGenerator = ({
         duration: speed,
         delay: stagger(delay),
       },
-    )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scope.current])
-  const theme = mergeDeep(getTheme().textGenerator, customTheme)
+  }, [animate, delay, speed]);
+  const theme = mergeDeep(getTheme().textGenerator, customTheme);
 
   return (
     <motion.div ref={scope} className={theme.wrapper}>
-      {wordsArray.map((word, idx) => {
+      {wordsArray.map((word) => {
         return (
-          <motion.span key={word + idx} className={twMerge(theme.base, className)}>
-            {word}
-            {` `}
+          <motion.span key={word} className={twMerge(theme.base, className)}>
+            {word}{" "}
           </motion.span>
-        )
+        );
       })}
     </motion.div>
-  )
-}
+  );
+};

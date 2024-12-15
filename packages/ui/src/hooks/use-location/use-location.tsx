@@ -1,25 +1,25 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
 interface LocationOptions {
-  enableHighAccuracy?: boolean
-  timeout?: number
-  maximumAge?: number
+  enableHighAccuracy?: boolean;
+  timeout?: number;
+  maximumAge?: number;
 }
 
 interface LocationState {
   coords: {
-    latitude: number | null
-    longitude: number | null
-    accuracy: number | null
-    altitude: number | null
-    altitudeAccuracy: number | null
-    heading: number | null
-    speed: number | null
-  }
-  locatedAt: number | null
-  error: string | null
+    latitude: number | null;
+    longitude: number | null;
+    accuracy: number | null;
+    altitude: number | null;
+    altitudeAccuracy: number | null;
+    heading: number | null;
+    speed: number | null;
+  };
+  locatedAt: number | null;
+  error: string | null;
 }
 
 const useLocation = (options: LocationOptions = {}) => {
@@ -35,17 +35,16 @@ const useLocation = (options: LocationOptions = {}) => {
     },
     locatedAt: null,
     error: null,
-  })
+  });
 
   useEffect(() => {
     // Ensuring this runs only in a client-side environment
     if (typeof window === "undefined" || !("geolocation" in navigator)) {
       setLocation((prevState) => ({
         ...prevState,
-        error:
-          "Geolocation is not supported by your browser or not available in the current environment",
-      }))
-      return
+        error: "Geolocation is not supported by your browser or not available in the current environment",
+      }));
+      return;
     }
 
     const handleSuccess = (position: GeolocationPosition) => {
@@ -61,34 +60,30 @@ const useLocation = (options: LocationOptions = {}) => {
         },
         locatedAt: position.timestamp,
         error: null,
-      })
-    }
+      });
+    };
 
     const handleError = (error: GeolocationPositionError) => {
       setLocation((prevState) => ({
         ...prevState,
         error: error.message,
-      }))
-    }
+      }));
+    };
 
     const geoOptions = {
       enableHighAccuracy: options.enableHighAccuracy ?? false,
-      timeout: options.timeout ?? Infinity,
+      timeout: options.timeout ?? Number.POSITIVE_INFINITY,
       maximumAge: options.maximumAge ?? 0,
-    }
+    };
 
-    const watcher = navigator.geolocation.watchPosition(
-      handleSuccess,
-      handleError,
-      geoOptions
-    )
+    const watcher = navigator.geolocation.watchPosition(handleSuccess, handleError, geoOptions);
 
     return () => {
-      navigator.geolocation.clearWatch(watcher)
-    }
-  }, [options.enableHighAccuracy, options.timeout, options.maximumAge])
+      navigator.geolocation.clearWatch(watcher);
+    };
+  }, [options.enableHighAccuracy, options.timeout, options.maximumAge]);
 
-  return location
-}
+  return location;
+};
 
-export { useLocation, type LocationState, type LocationOptions }
+export { useLocation, type LocationState, type LocationOptions };

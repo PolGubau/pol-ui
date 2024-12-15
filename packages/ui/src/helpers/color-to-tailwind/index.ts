@@ -1,1 +1,1 @@
-export * from './colorToTailwind';
+export * from "./colorToTailwind";

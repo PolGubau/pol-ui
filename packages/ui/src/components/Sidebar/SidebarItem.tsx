@@ -1,83 +1,69 @@
-"use client"
+"use client";
 
+import { motion } from "framer-motion";
 import {
-  forwardRef,
-  useId,
   type ComponentProps,
   type ElementType,
   type FC,
   type PropsWithChildren,
   type ReactNode,
-} from "react"
-import { motion } from "framer-motion"
-import { twMerge } from "tailwind-merge"
+  forwardRef,
+  useId,
+} from "react";
+import { twMerge } from "tailwind-merge";
 
-import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
-import { useRipple } from "../../hooks"
-import { ColorsEnum, RoundedSizesEnum, SidesEnum } from "../../types"
-import type {
-  Colors,
-  DeepPartial,
-  RoundedSizes,
-  RoundedSizesTypes,
-} from "../../types/types"
-import { Badge } from "../Badge"
-import { Tooltip } from "../Tooltip"
-import { useSidebarContext, useSidebarItemContext } from "./SidebarContext"
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { useRipple } from "../../hooks";
+import { ColorsEnum, RoundedSizesEnum, SidesEnum } from "../../types";
+import type { Colors, DeepPartial, RoundedSizes, RoundedSizesTypes } from "../../types/types";
+import { Badge } from "../Badge";
+import { Tooltip } from "../Tooltip";
+import { useSidebarContext, useSidebarItemContext } from "./SidebarContext";
 
 export interface SidebarItemTheme {
-  active: string
-  base: string
-  rounded: RoundedSizesTypes
+  active: string;
+  base: string;
+  rounded: RoundedSizesTypes;
   collapsed: {
-    insideCollapse: string
-    noIcon: string
-  }
+    insideCollapse: string;
+    noIcon: string;
+  };
   content: {
-    base: string
-  }
+    base: string;
+  };
   icon: {
-    base: string
-    active: string
-  }
-  badge: string
-  listItem: string
+    base: string;
+    active: string;
+  };
+  badge: string;
+  listItem: string;
 }
 
-export interface SidebarItemProps
-  extends Omit<ComponentProps<"div">, "ref">,
-    Record<string, unknown> {
-  active?: boolean
-  as?: ElementType
-  href?: string
-  icon?: FC<ComponentProps<"svg">>
-  badge?: string
-  rounded?: RoundedSizes
-  labelColor?: Colors
-  theme?: DeepPartial<SidebarItemTheme>
+export interface SidebarItemProps extends Omit<ComponentProps<"div">, "ref">, Record<string, unknown> {
+  active?: boolean;
+  as?: ElementType;
+  href?: string;
+  icon?: FC<ComponentProps<"svg">>;
+  badge?: string;
+  rounded?: RoundedSizes;
+  labelColor?: Colors;
+  theme?: DeepPartial<SidebarItemTheme>;
 }
 
 const ListItem: FC<
   PropsWithChildren<{
-    id: string
-    theme: SidebarItemTheme
-    collapsed?: boolean
-    tooltipChildren: ReactNode | undefined
-    className?: string
+    id: string;
+    theme: SidebarItemTheme;
+    collapsed?: boolean;
+    tooltipChildren: ReactNode | undefined;
+    className?: string;
   }>
-> = ({
-  id,
-  theme,
-  collapsed = false,
-  tooltipChildren,
-  children: wrapperChildren,
-  ...props
-}) => {
+> = ({ id, theme, collapsed = false, tooltipChildren, children: wrapperChildren, ...props }) => {
   const [ripple, event] = useRipple({
     // disabled: disabled || loading,
     opacity: 0.2,
     // className: colorToTailwind(color),
-  })
+  });
   return (
     <motion.li {...props} ref={ripple} onPointerDown={event}>
       {collapsed ? (
@@ -95,22 +81,16 @@ const ListItem: FC<
         wrapperChildren
       )}
     </motion.li>
-  )
-}
+  );
+};
 
-const Children: FC<
-  PropsWithChildren<{ id: string; theme: SidebarItemTheme }>
-> = ({ id, theme, children }) => {
+const Children: FC<PropsWithChildren<{ id: string; theme: SidebarItemTheme }>> = ({ id, theme, children }) => {
   return (
-    <span
-      data-testid="ui-sidebar-item-content"
-      id={`ui-sidebar-item-${id}`}
-      className={twMerge(theme.content.base)}
-    >
+    <span data-testid="ui-sidebar-item-content" id={`ui-sidebar-item-${id}`} className={twMerge(theme.content.base)}>
       {children}
     </span>
-  )
-}
+  );
+};
 
 export const SidebarItem = forwardRef<Element, SidebarItemProps>(
   (
@@ -126,28 +106,22 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
       theme: customTheme = {},
       ...props
     },
-    ref
+    ref,
   ) => {
-    const id = useId()
-    const { theme: rootTheme, open: collapsed, color } = useSidebarContext()
-    const { isInsideCollapse } = useSidebarItemContext()
+    const id = useId();
+    const { theme: rootTheme, open: collapsed, color } = useSidebarContext();
+    const { isInsideCollapse } = useSidebarItemContext();
 
-    const theme = mergeDeep(rootTheme.item, customTheme)
+    const theme = mergeDeep(rootTheme.item, customTheme);
     const itemVariants = {
       closed: {
         opacity: 0,
       },
 
       open: { opacity: 1 },
-    }
+    };
     return (
-      <ListItem
-        theme={theme}
-        className={theme.listItem}
-        id={id}
-        collapsed={collapsed}
-        tooltipChildren={children}
-      >
+      <ListItem theme={theme} className={theme.listItem} id={id} collapsed={collapsed} tooltipChildren={children}>
         <motion.div
           variants={itemVariants}
           transition={{
@@ -163,25 +137,20 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
               theme.rounded[rounded],
               isActive && theme.active,
               !collapsed && isInsideCollapse && theme.collapsed.insideCollapse,
-              className
+              className,
             )}
             style={{ backgroundColor: !isActive && color }}
             {...props}
           >
             {Icon && (
               <Icon
-                aria-hidden
+                aria-hidden={true}
                 data-testid="ui-sidebar-item-icon"
-                className={twMerge(
-                  theme.icon.base,
-                  isActive && theme.icon.active
-                )}
+                className={twMerge(theme.icon.base, isActive && theme.icon.active)}
               />
             )}
             {collapsed && !Icon && (
-              <span className={theme.collapsed.noIcon}>
-                {(children as string).charAt(0).toLocaleUpperCase()}
-              </span>
+              <span className={theme.collapsed.noIcon}>{(children as string).charAt(0).toLocaleUpperCase()}</span>
             )}
             {!collapsed && (
               <Children id={id} theme={theme}>
@@ -189,20 +158,15 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
               </Children>
             )}
             {!collapsed && badge && (
-              <Badge
-                color={labelColor}
-                data-testid="ui-sidebar-label"
-                hidden={collapsed}
-                className={theme.badge}
-              >
+              <Badge color={labelColor} data-testid="ui-sidebar-label" hidden={collapsed} className={theme.badge}>
                 {badge}
               </Badge>
             )}
           </Component>
         </motion.div>
       </ListItem>
-    )
-  }
-)
+    );
+  },
+);
 
-SidebarItem.displayName = "SidebarItem"
+SidebarItem.displayName = "SidebarItem";

@@ -1,8 +1,8 @@
-import type { Meta } from "@storybook/react"
-import { TbChevronRight } from "react-icons/tb"
+import type { Meta } from "@storybook/react";
+import { TbChevronRight } from "react-icons/tb";
 
-import { Toaster, toast } from "../Toaster"
-import { TimedButton } from "./TimedButton"
+import { Toaster, toast } from "../Toaster";
+import { TimedButton } from "./TimedButton";
 
 export default {
   title: "Components/TimedButton",
@@ -15,11 +15,11 @@ export default {
       </div>
     ),
   ],
-} as Meta
+} as Meta;
 
 export const Default = () => (
   <TimedButton onLongPress={() => toast("Action confirmed")}>
     Long Press me
     <TbChevronRight />
   </TimedButton>
-)
+);

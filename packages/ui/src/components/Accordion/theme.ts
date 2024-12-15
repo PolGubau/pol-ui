@@ -1,4 +1,4 @@
-import type { AccordionTheme } from "./Accordion"
+import type { AccordionTheme } from "./Accordion";
 
 export const accordionTheme: AccordionTheme = {
   root: {
@@ -30,4 +30,4 @@ export const accordionTheme: AccordionTheme = {
       on: "text-secondary-900 bg-secondary-100 dark:bg-secondary-800 dark:text-white",
     },
   },
-}
+};

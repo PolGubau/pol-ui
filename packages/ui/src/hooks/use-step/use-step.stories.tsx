@@ -1,12 +1,12 @@
-import React from "react"
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
+import type React from "react";
 
-import { Button, Toaster, toast } from "../../components"
-import { useStep } from "./use-step"
+import { Button, Toaster } from "../../components";
+import { useStep } from "./use-step";
 
 const Test = () => {
-  return "test"
-}
+  return "test";
+};
 
 export default {
   title: "Hooks/useStep",
@@ -22,19 +22,9 @@ export default {
   ],
 
   tags: ["autodocs"],
-} as Meta
+} as Meta;
 export const Default: React.FC = () => {
-  const [
-    currentStep,
-    {
-      goToNextStep,
-      goToPrevStep,
-      canGoToNextStep,
-      canGoToPrevStep,
-      setStep,
-      reset,
-    },
-  ] = useStep(5)
+  const [currentStep, { goToNextStep, goToPrevStep, canGoToNextStep, canGoToPrevStep, setStep, reset }] = useStep(5);
 
   return (
     <div>
@@ -50,5 +40,5 @@ export const Default: React.FC = () => {
       <Button onClick={reset}>Reset</Button>
       <Button onClick={() => setStep(3)}>Go to Step 3</Button>
     </div>
-  )
-}
+  );
+};

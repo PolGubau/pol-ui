@@ -1,18 +1,17 @@
-import type { Meta, StoryFn, StoryObj } from '@storybook/react'
-import type { CardProps } from './Card'
-import { Card } from './Card'
-import { toast } from '../Toaster'
-import React from 'react'
+import type { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { toast } from "../Toaster";
+import type { CardProps } from "./Card";
+import { Card } from "./Card";
 
-type Story = StoryObj<typeof Card>
+type Story = StoryObj<typeof Card>;
 
 const meta: Meta<typeof Card> = {
-  title: 'Components/Card',
+  title: "Components/Card",
   component: Card,
-  tags: ['autodocs'],
-  decorators: [(Story): JSX.Element => <div className="h-1/2 w-1/2">{Story()}</div>],
-}
-export default meta
+  tags: ["autodocs"],
+  decorators: [(Story): React.ReactNode => <div className="h-1/2 w-1/2">{Story()}</div>],
+};
+export default meta;
 
 const Template: StoryFn<CardProps> = (args: CardProps) => (
   <Card {...args}>
@@ -23,12 +22,12 @@ const Template: StoryFn<CardProps> = (args: CardProps) => (
       </p>
     </div>
   </Card>
-)
+);
 
-export const Default: Story = Template.bind({})
-Default.args = {}
+export const Default: Story = Template.bind({});
+Default.args = {};
 
-export const Clicable: Story = Template.bind({})
+export const Clicable: Story = Template.bind({});
 Clicable.args = {
-  onClick: () => toast('Click'),
-}
+  onClick: () => toast("Click"),
+};

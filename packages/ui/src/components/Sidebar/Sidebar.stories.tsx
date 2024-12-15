@@ -1,5 +1,4 @@
-import React from "react"
-import type { Meta, StoryFn } from "@storybook/react"
+import type { Meta, StoryFn } from "@storybook/react";
 import {
   TbArrowAutofitUp,
   TbArrowLeft,
@@ -22,20 +21,19 @@ import {
   TbShoppingBag,
   TbSignRight,
   TbUser,
-} from "react-icons/tb"
+} from "react-icons/tb";
 
-import { useBoolean } from "../../hooks"
-import { ColorsEnum } from "../../types"
-import { Avatar } from "../Avatar"
-import { Button } from "../Button"
-import { Divider } from "../Divider"
-import { IconButton } from "../IconButton"
-import { Input } from "../Input"
-import { Navbar } from "../Navbar"
-import { Sidebar, type SidebarProps } from "./Sidebar"
-import { SidebarCollapse } from "./SidebarCollapse"
-import { SidebarItem } from "./SidebarItem"
-import { SidebarLogo } from "./SidebarLogo"
+import { useBoolean } from "../../hooks";
+import { ColorsEnum } from "../../types";
+import { Avatar } from "../Avatar";
+import { Button } from "../Button";
+import { IconButton } from "../IconButton";
+import { Input } from "../Input";
+import { Navbar } from "../Navbar";
+import { Sidebar, type SidebarProps } from "./Sidebar";
+import { SidebarCollapse } from "./SidebarCollapse";
+import { SidebarItem } from "./SidebarItem";
+import { SidebarLogo } from "./SidebarLogo";
 
 export default {
   title: "Components/Sidebar",
@@ -51,24 +49,24 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 const Template: StoryFn<SidebarProps> = (args) => {
-  const { value, toggle } = useBoolean(false)
+  const { value, toggle } = useBoolean(false);
   return (
     <div className="bg-secondary-50">
       <Sidebar {...args} open={value} onOpenChange={toggle} />{" "}
     </div>
-  )
-}
+  );
+};
 
-export const Default = Template.bind({})
+export const Default = Template.bind({});
 Default.args = {
   children: (
     <>
       <SidebarItem href="#" icon={TbLayout}>
         Dashboard
       </SidebarItem>
-      <SidebarItem href="#" icon={TbLayoutKanban} active>
+      <SidebarItem href="#" icon={TbLayoutKanban} active={true}>
         Kanban
       </SidebarItem>
       <SidebarItem href="#" icon={TbAt} label="3">
@@ -82,10 +80,10 @@ Default.args = {
       </SidebarItem>
     </>
   ),
-}
+};
 
-export const WithoutIcons = Template.bind({})
-WithoutIcons.storyName = "No icons"
+export const WithoutIcons = Template.bind({});
+WithoutIcons.storyName = "No icons";
 WithoutIcons.args = {
   children: (
     <>
@@ -99,9 +97,9 @@ WithoutIcons.args = {
       <SidebarItem href="#">Settings</SidebarItem>
     </>
   ),
-}
+};
 export const HidingCollapse = () => {
-  const { value, toggle } = useBoolean(false)
+  const { value, toggle } = useBoolean(false);
 
   return (
     <div className="flex gap-4 items-start">
@@ -123,16 +121,14 @@ export const HidingCollapse = () => {
         </SidebarItem>
       </Sidebar>
       <div className="flex m-4">
-        <Button onClick={toggle}>
-          {value ? <TbArrowRight /> : <TbArrowLeft />}{" "}
-        </Button>
+        <Button onClick={toggle}>{value ? <TbArrowRight /> : <TbArrowLeft />} </Button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export const MultiLevelDropdown = Template.bind({})
-MultiLevelDropdown.storyName = "Multi-level dropdown"
+export const MultiLevelDropdown = Template.bind({});
+MultiLevelDropdown.storyName = "Multi-level dropdown";
 MultiLevelDropdown.args = {
   children: (
     <>
@@ -160,24 +156,24 @@ MultiLevelDropdown.args = {
       </SidebarItem>
     </>
   ),
-}
+};
 
-export const DefaultExpandedDropdown = Template.bind({})
+export const DefaultExpandedDropdown = Template.bind({});
 DefaultExpandedDropdown.args = {
   children: (
     <>
       <SidebarItem href="#" icon={TbGraph}>
         Dashboard
       </SidebarItem>
-      <SidebarCollapse icon={TbCoin} badge="Shop" defaultOpen>
+      <SidebarCollapse icon={TbCoin} badge="Shop" defaultOpen={true}>
         <SidebarItem icon={TbMoneybag} href="#">
           Products
         </SidebarItem>
       </SidebarCollapse>
-      <SidebarCollapse icon={TbShare} badge="Share" defaultOpen>
+      <SidebarCollapse icon={TbShare} badge="Share" defaultOpen={true}>
         <SidebarItem href="#">Usage Summary</SidebarItem>
       </SidebarCollapse>
-      <SidebarCollapse icon={TbShare} badge="Share" defaultOpen>
+      <SidebarCollapse icon={TbShare} badge="Share" defaultOpen={true}>
         <SidebarItem href="#">Usage Summary</SidebarItem>
       </SidebarCollapse>
       <SidebarItem href="#" icon={TbMail}>
@@ -191,10 +187,10 @@ DefaultExpandedDropdown.args = {
       </SidebarItem>
     </>
   ),
-}
+};
 
-export const ContentSeparator = Template.bind({})
-ContentSeparator.storyName = "Content separator"
+export const ContentSeparator = Template.bind({});
+ContentSeparator.storyName = "Content separator";
 ContentSeparator.args = {
   children: (
     <>
@@ -225,9 +221,9 @@ ContentSeparator.args = {
       </SidebarItem>
     </>
   ),
-}
-export const LogoBranding = Template.bind({})
-LogoBranding.storyName = "Logo branding"
+};
+export const LogoBranding = Template.bind({});
+LogoBranding.storyName = "Logo branding";
 LogoBranding.args = {
   children: (
     <>
@@ -248,10 +244,10 @@ LogoBranding.args = {
       </SidebarItem>
     </>
   ),
-}
+};
 
 export const CompleteExample = () => {
-  const { value, toggle } = useBoolean(true)
+  const { value, toggle } = useBoolean(true);
 
   return (
     <div className="flex w-full rounded-xl overflow-hidden border border-secondary-800 min-h-[400px]  bg-primary-100 flex-col">
@@ -271,13 +267,7 @@ export const CompleteExample = () => {
             label: "Contact",
           },
         ]}
-        leftContent={
-          <img
-            src="https://ui.polgubau.com/logo.png"
-            className="mr-3 h-6 sm:h-6"
-            alt="Pol-ui Logo"
-          />
-        }
+        leftContent={<img src="https://ui.polgubau.com/logo.png" className="mr-3 h-6 sm:h-6" alt="Pol-ui Logo" />}
       />
       <section className="flex h-full gap-4">
         <Sidebar
@@ -287,9 +277,7 @@ export const CompleteExample = () => {
           footer={
             <div className="flex justify-start gap-3 h-10 my-2">
               <Avatar img="https://avatars.githubusercontent.com/u/63197171?v=4" />
-              <p
-                className={`${value ? "hidden" : "flex"}  flex-col  items-start `}
-              >
+              <p className={`${value ? "hidden" : "flex"}  flex-col  items-start `}>
                 <strong>Pol Gubau</strong>
                 <span className="text-xs">Developer</span>
               </p>
@@ -297,16 +285,10 @@ export const CompleteExample = () => {
           }
         >
           <div className="flex flex-col gap-1 ">
-            <SidebarItem href="#" icon={TbDatabaseSearch} active rounded="full">
+            <SidebarItem href="#" icon={TbDatabaseSearch} active={true} rounded="full">
               Home
             </SidebarItem>
-            <SidebarItem
-              href="#"
-              icon={TbLayoutKanban}
-              label="Empty"
-              labelColor={ColorsEnum.primary}
-              rounded="full"
-            >
+            <SidebarItem href="#" icon={TbLayoutKanban} label="Empty" labelColor={ColorsEnum.primary} rounded="full">
               Menus
             </SidebarItem>
             <SidebarItem href="#" icon={TbAt} label="3" rounded="full">
@@ -329,11 +311,11 @@ export const CompleteExample = () => {
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
 export const WithSearch = () => {
-  const { value, toggle } = useBoolean(true)
+  const { value, toggle } = useBoolean(true);
 
   return (
     <div className="flex w-full rounded-xl overflow-hidden bg-secondary-50 min-h-[400px] flex-col">
@@ -353,13 +335,7 @@ export const WithSearch = () => {
             label: "Contact",
           },
         ]}
-        leftContent={
-          <img
-            src="https://ui.polgubau.com/logo.png"
-            className="mr-3 h-6 sm:h-6"
-            alt="Pol-ui Logo"
-          />
-        }
+        leftContent={<img src="https://ui.polgubau.com/logo.png" className="mr-3 h-6 sm:h-6" alt="Pol-ui Logo" />}
       />
       <section className="flex h-full">
         <div className="bg-secondary-50 w-fit shadow-lg">
@@ -370,23 +346,15 @@ export const WithSearch = () => {
                 placeholder="Search"
                 className={`w-full ${value ? "hidden" : "flex"}`}
               />
-              <IconButton
-                className={`w-full max-w-10 ${value ? "flex" : "hidden"}`}
-                onClick={toggle}
-              >
+              <IconButton className={`w-full max-w-10 ${value ? "flex" : "hidden"}`} onClick={toggle}>
                 <TbSearch />
               </IconButton>
             </div>
 
-            <SidebarItem href="#" icon={TbDatabaseSearch} active>
+            <SidebarItem href="#" icon={TbDatabaseSearch} active={true}>
               Home
             </SidebarItem>
-            <SidebarItem
-              href="#"
-              icon={TbLayoutKanban}
-              label="Empty"
-              labelColor={ColorsEnum.primary}
-            >
+            <SidebarItem href="#" icon={TbLayoutKanban} label="Empty" labelColor={ColorsEnum.primary}>
               Menus
             </SidebarItem>
             <SidebarItem href="#" icon={TbAt} label="3">
@@ -409,5 +377,5 @@ export const WithSearch = () => {
         </div>
       </section>
     </div>
-  )
-}
+  );
+};

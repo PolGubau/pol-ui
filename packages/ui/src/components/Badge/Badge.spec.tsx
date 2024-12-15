@@ -1,8 +1,8 @@
-import { render, screen } from "@testing-library/react"
-import { HiCheck } from "react-icons/hi"
-import { describe, expect, it } from "vitest"
+import { render, screen } from "@testing-library/react";
+import { HiCheck } from "react-icons/hi";
+import { describe, expect, it } from "vitest";
 
-import { Badge } from "./Badge"
+import { Badge } from "./Badge";
 
 describe("Components / Badge", () => {
   describe("Rendering", () => {
@@ -10,13 +10,13 @@ describe("Components / Badge", () => {
       render(
         <Badge href="/" icon={HiCheck}>
           A badge with a link
-        </Badge>
-      )
+        </Badge>,
+      );
 
-      expect(link()).toBeInTheDocument()
-      expect(link()).toHaveAttribute("href", "/")
-    })
-  })
-})
+      expect(link()).toBeInTheDocument();
+      expect(link()).toHaveAttribute("href", "/");
+    });
+  });
+});
 
-const link = () => screen.getByRole("link")
+const link = () => screen.getByRole("link");

@@ -1,31 +1,31 @@
-'use client'
+"use client";
 
-import { useMemo, type ComponentProps, type ElementType, type FC, useState } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types/types'
-import { SidebarContext, SidebarItemContext } from './SidebarContext'
-import type { SidebarTheme } from './theme'
-import { IconButton } from '../IconButton'
-import { TbChevronsLeft, TbChevronsRight } from 'react-icons/tb'
+import { type ComponentProps, type ElementType, type FC, useMemo, useState } from "react";
+import { TbChevronsLeft, TbChevronsRight } from "react-icons/tb";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types/types";
+import { IconButton } from "../IconButton";
+import { SidebarContext, SidebarItemContext } from "./SidebarContext";
+import type { SidebarTheme } from "./theme";
 
-export interface SidebarProps extends ComponentProps<'div'> {
-  as?: ElementType
-  collapseMode?: 'collapse' | 'hide'
-  theme?: DeepPartial<SidebarTheme>
-  open?: boolean
-  onOpenChange?: () => void
-  customBgColor?: string
-  innerClassName?: string
-  footer?: React.ReactNode
-  hasMotion?: boolean
+export interface SidebarProps extends ComponentProps<"div"> {
+  as?: ElementType;
+  collapseMode?: "collapse" | "hide";
+  theme?: DeepPartial<SidebarTheme>;
+  open?: boolean;
+  onOpenChange?: () => void;
+  customBgColor?: string;
+  innerClassName?: string;
+  footer?: React.ReactNode;
+  hasMotion?: boolean;
 }
 
 export const Sidebar: FC<SidebarProps> = ({
   children,
-  as: Component = 'nav',
-  collapseMode = 'collapse',
+  as: Component = "nav",
+  collapseMode = "collapse",
   theme: customTheme = {},
   open = true,
   onOpenChange,
@@ -36,8 +36,8 @@ export const Sidebar: FC<SidebarProps> = ({
   hasMotion,
   ...props
 }) => {
-  const theme: SidebarTheme = mergeDeep(getTheme().sidebar, customTheme)
-  const [childsOpened, setChildsOpened] = useState<string[]>([])
+  const theme: SidebarTheme = mergeDeep(getTheme().sidebar, customTheme);
+  const [childsOpened, setChildsOpened] = useState<string[]>([]);
   const value = useMemo(
     () => ({
       theme,
@@ -49,16 +49,16 @@ export const Sidebar: FC<SidebarProps> = ({
       setChildsOpened,
     }),
     [theme, onOpenChange, hasMotion, open, customBgColor, childsOpened],
-  )
+  );
 
-  const itemValue = useMemo(() => ({ isInsideCollapse: false }), [])
+  const itemValue = useMemo(() => ({ isInsideCollapse: false }), []);
 
-  const shouldHaveContent = !open || collapseMode === 'collapse'
+  const shouldHaveContent = !open || collapseMode === "collapse";
 
   const handleToggle = () => {
-    setChildsOpened([])
-    onOpenChange?.()
-  }
+    setChildsOpened([]);
+    onOpenChange?.();
+  };
 
   return (
     <SidebarContext.Provider value={value}>
@@ -66,8 +66,8 @@ export const Sidebar: FC<SidebarProps> = ({
         {shouldHaveContent && (
           <Component
             aria-label="Sidebar"
-            hidden={open && collapseMode === 'hide'}
-            className={twMerge(theme.root.base, theme.root.collapsed[open ? 'on' : 'off'], className)}
+            hidden={open && collapseMode === "hide"}
+            className={twMerge(theme.root.base, theme.root.collapsed[open ? "on" : "off"], className)}
             style={{ backgroundColor: customBgColor }}
             {...props}
           >
@@ -78,7 +78,7 @@ export const Sidebar: FC<SidebarProps> = ({
               <div>
                 {footer}
                 {onOpenChange && (
-                  <div className={twMerge(theme.closeButton.base, theme.closeButton[open ? 'collapsed' : 'expanded'])}>
+                  <div className={twMerge(theme.closeButton.base, theme.closeButton[open ? "collapsed" : "expanded"])}>
                     <IconButton onClick={handleToggle}>{open ? <TbChevronsRight /> : <TbChevronsLeft />}</IconButton>
                   </div>
                 )}
@@ -88,5 +88,5 @@ export const Sidebar: FC<SidebarProps> = ({
         )}
       </div>
     </SidebarContext.Provider>
-  )
-}
+  );
+};

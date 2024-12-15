@@ -1,24 +1,24 @@
-'use client'
+"use client";
 
-import type { ComponentProps, FC } from 'react'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import { getTheme } from '../../theme-store'
-import type { DeepPartial } from '../../types/types'
-import type { NavbarTheme } from './theme'
-import { NavbarCollapse } from './navbar-collapse'
-import { cn } from '../../helpers'
-export interface NavbarLink extends Omit<ComponentProps<'a'>, 'content'> {
-  href: string
-  label: string
-  content?: JSX.Element
-  active?: boolean
+import type { ComponentProps, FC } from "react";
+import { cn } from "../../helpers";
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types/types";
+import { NavbarCollapse } from "./navbar-collapse";
+import type { NavbarTheme } from "./theme";
+export interface NavbarLink extends Omit<ComponentProps<"a">, "content"> {
+  href: string;
+  label: string;
+  content?: React.ReactNode;
+  active?: boolean;
 }
-export interface NavbarProps extends Omit<ComponentProps<'nav'>, 'children'> {
-  theme?: DeepPartial<NavbarTheme>
-  rightContent?: JSX.Element
-  leftContent?: JSX.Element
-  links?: NavbarLink[]
-  linkClassName?: string
+export interface NavbarProps extends Omit<ComponentProps<"nav">, "children"> {
+  theme?: DeepPartial<NavbarTheme>;
+  rightContent?: React.ReactNode;
+  leftContent?: React.ReactNode;
+  links?: NavbarLink[];
+  linkClassName?: string;
 }
 
 /**
@@ -36,12 +36,12 @@ export const Navbar: FC<NavbarProps> = ({
   links,
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().navbar, customTheme)
+  const theme = mergeDeep(getTheme().navbar, customTheme);
   return (
     <nav className={cn(theme.base, className)} {...props}>
       {leftContent}
       <NavbarCollapse links={links} linkClassName={linkClassName} />
       {rightContent}
     </nav>
-  )
-}
+  );
+};

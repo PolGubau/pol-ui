@@ -1,7 +1,7 @@
-import { ScrollAreaProps } from "@radix-ui/react-scroll-area"
-import type { Meta, StoryFn } from "@storybook/react"
+import type { ScrollAreaProps } from "@radix-ui/react-scroll-area";
+import type { Meta, StoryFn } from "@storybook/react";
 
-import { ScrollArea } from "./ScrollArea"
+import { ScrollArea } from "./ScrollArea";
 
 export default {
   title: "Components/ScrollArea",
@@ -17,15 +17,11 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 const Template: StoryFn<ScrollAreaProps> = (args: ScrollAreaProps) => (
   <ScrollArea {...args} className="my-[50vh] h-[800px]" />
-)
+);
 
 export const Default = () => {
-  return (
-    <ScrollArea className="w-full flex flex-col gap-[50vh] mb-96">
-      Hello
-    </ScrollArea>
-  )
-}
+  return <ScrollArea className="w-full flex flex-col gap-[50vh] mb-96">Hello</ScrollArea>;
+};

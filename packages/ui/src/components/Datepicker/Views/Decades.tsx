@@ -1,56 +1,40 @@
-import type { FC } from "react"
-import { twMerge } from "tailwind-merge"
+import type { FC } from "react";
+import { twMerge } from "tailwind-merge";
 
-import { mergeDeep } from "../../../helpers/merge-deep/merge-deep"
-import type { IBoolean } from "../../../types"
-import { Button } from "../../Button"
-import { useDatePickerContext } from "../DatepickerContext"
-import {
-  Views,
-  addYears,
-  isDateInDecade,
-  isDateInRange,
-  startOfYearPeriod,
-} from "../helpers"
+import { mergeDeep } from "../../../helpers/merge-deep/merge-deep";
+import type { IBoolean } from "../../../types";
+import { Button } from "../../Button";
+import { useDatePickerContext } from "../DatepickerContext";
+import { Views, addYears, isDateInDecade, isDateInRange, startOfYearPeriod } from "../helpers";
 
 export interface DatepickerViewsDecadesTheme {
   items: {
-    base: string
+    base: string;
     item: {
-      base: string
-      selected: IBoolean
-      disabled: string
-    }
-  }
+      base: string;
+      selected: IBoolean;
+      disabled: string;
+    };
+  };
 }
 
 export interface DatepickerViewsDecadesProps {
-  theme?: DatepickerViewsDecadesTheme
+  theme?: DatepickerViewsDecadesTheme;
 }
 
-export const DatepickerViewsDecades: FC<DatepickerViewsDecadesProps> = ({
-  theme: customTheme = {},
-}) => {
-  const {
-    theme: rootTheme,
-    selectedDate,
-    viewDate,
-    setViewDate,
-    setView,
-    minDate,
-    maxDate,
-  } = useDatePickerContext()
+export const DatepickerViewsDecades: FC<DatepickerViewsDecadesProps> = ({ theme: customTheme = {} }) => {
+  const { theme: rootTheme, selectedDate, viewDate, setViewDate, setView, minDate, maxDate } = useDatePickerContext();
 
-  const theme = mergeDeep(rootTheme.views.decades, customTheme)
+  const theme = mergeDeep(rootTheme.views.decades, customTheme);
 
   return (
     <div className={theme.items.base}>
       {[...Array(12)].map((_year, index) => {
-        const first = startOfYearPeriod(viewDate, 100)
-        const year = first - 10 + index * 10
+        const first = startOfYearPeriod(viewDate, 100);
+        const year = first - 10 + index * 10;
 
-        const isSelected = isDateInDecade(viewDate, year)
-        const isDisabled = !isDateInRange(viewDate, minDate, maxDate)
+        const isSelected = isDateInDecade(viewDate, year);
+        const isDisabled = !isDateInRange(viewDate, minDate, maxDate);
 
         return (
           <Button
@@ -61,19 +45,21 @@ export const DatepickerViewsDecades: FC<DatepickerViewsDecadesProps> = ({
             className={twMerge(
               theme.items.item.base,
               theme.items.item.selected[isSelected ? "on" : "off"],
-              isDisabled && theme.items.item.disabled
+              isDisabled && theme.items.item.disabled,
             )}
             onClick={() => {
-              if (isDisabled) return
+              if (isDisabled) {
+                return;
+              }
 
-              setViewDate(addYears(viewDate, year - selectedDate.getFullYear()))
-              setView(Views.Years)
+              setViewDate(addYears(viewDate, year - selectedDate.getFullYear()));
+              setView(Views.Years);
             }}
           >
             {year}
           </Button>
-        )
+        );
       })}
     </div>
-  )
-}
+  );
+};

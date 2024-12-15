@@ -1,13 +1,13 @@
-import type { GetValuesEnum } from '../../types/enums'
+import type { GetValuesEnum } from "../../types/enums";
 
 export enum AvatarStatusEnum {
-  away = 'away',
-  busy = 'busy',
-  offline = 'offline',
-  online = 'online',
+  away = "away",
+  busy = "busy",
+  offline = "offline",
+  online = "online",
 }
 
-export type AvatarStatusType = Record<GetValuesEnum<typeof AvatarStatusEnum>, string>
+export type AvatarStatusType = Record<GetValuesEnum<typeof AvatarStatusEnum>, string>;
 
 /**
  * @name AvatarStatus
@@ -15,5 +15,5 @@ export type AvatarStatusType = Record<GetValuesEnum<typeof AvatarStatusEnum>, st
  * @author Pol Gubau - https://polgubau.com
  */
 export interface AvatarStatus extends AvatarStatusType {
-  [key: string]: string
+  [key: string]: string;
 }

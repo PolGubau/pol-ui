@@ -1,10 +1,10 @@
-import type { Meta } from "@storybook/react"
-import { TbChevronRight, TbSend } from "react-icons/tb"
+import type { Meta } from "@storybook/react";
+import { TbChevronRight, TbSend } from "react-icons/tb";
 
-import { Button } from "../Button"
-import { IconButton } from "../IconButton"
-import { Textarea } from "../Textarea"
-import ExpandableButton from "./ExpandableButton"
+import { Button } from "../Button";
+import { IconButton } from "../IconButton";
+import { Textarea } from "../Textarea";
+import ExpandableButton from "./ExpandableButton";
 
 export default {
   title: "Components/ExpandableButton",
@@ -14,13 +14,13 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
 export const Default = () => (
   <ExpandableButton showLabelInDrawer={false}>
     <div className="p-2 flex flex-col gap-2 rounded-b-lg py-3">
       <h4>Add comment</h4>
-      <Textarea className="w-full" placeholder="Write a comment" autoFocus />
+      <Textarea className="w-full" placeholder="Write a comment" autoFocus={true} />
       <nav className="flex flex-row-reverse justify-right w-full">
         <Button size={"sm"}>
           Send
@@ -29,7 +29,7 @@ export const Default = () => (
       </nav>
     </div>
   </ExpandableButton>
-)
+);
 
 export const CustomTrigger = () => (
   <div className="flex justify-center items-center">
@@ -52,9 +52,9 @@ export const CustomTrigger = () => (
       </div>
     </ExpandableButton>
   </div>
-)
+);
 export const Once = () => (
-  <ExpandableButton once>
+  <ExpandableButton once={true}>
     <div className="bg-secondary-100 p-2 flex flex-col gap-2 rounded-b-lg py-3">
       <h4>Add comment</h4>
       <Textarea className="w-full" placeholder="Write a comment" />
@@ -66,4 +66,4 @@ export const Once = () => (
       </nav>
     </div>
   </ExpandableButton>
-)
+);

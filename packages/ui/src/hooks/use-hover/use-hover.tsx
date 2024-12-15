@@ -1,34 +1,34 @@
-"use client"
+"use client";
 
-import { RefObject, useEffect } from "react"
+import { type RefObject, useEffect } from "react";
 
-import { useBoolean } from "../use-boolean"
+import { useBoolean } from "../use-boolean";
 
-export function useHover<T extends HTMLElement = HTMLElement>(
-  elementRef: RefObject<T>
-): boolean {
-  const { value, setFalse, setTrue } = useBoolean(false)
+export function useHover<T extends HTMLElement = HTMLElement>(elementRef: RefObject<T>): boolean {
+  const { value, setFalse, setTrue } = useBoolean(false);
   useEffect(() => {
-    const element = elementRef.current
-    if (!element) return
+    const element = elementRef.current;
+    if (!element) {
+      return;
+    }
 
     const handleMouseEnter = () => {
-      setTrue()
-    }
+      setTrue();
+    };
     const handleMouseLeave = () => {
-      setFalse()
-    }
+      setFalse();
+    };
 
-    element.addEventListener("mouseenter", handleMouseEnter)
-    element.addEventListener("mouseleave", handleMouseLeave)
-    document.addEventListener("mouseleave", handleMouseLeave)
+    element.addEventListener("mouseenter", handleMouseEnter);
+    element.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
-      element.removeEventListener("mouseenter", handleMouseEnter)
-      element.removeEventListener("mouseleave", handleMouseLeave)
-      document.removeEventListener("mouseleave", handleMouseLeave)
-    }
-  }, [elementRef])
+      element.removeEventListener("mouseenter", handleMouseEnter);
+      element.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, [elementRef]);
 
-  return value
+  return value;
 }

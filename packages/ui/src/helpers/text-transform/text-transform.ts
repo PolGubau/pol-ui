@@ -9,7 +9,7 @@
  * ```
  */
 function toCamelCase(str: string): string {
-  return str.replace(/[-_](.)/g, (_, c: string) => c.toUpperCase())
+  return str.replace(/[-_](.)/g, (_, c: string) => c.toUpperCase());
 }
 
 /**
@@ -18,10 +18,7 @@ function toCamelCase(str: string): string {
  * @returns {string} The title-cased string.
  */
 function toTitleCase(str: string): string {
-  return str.replace(
-    /\w\S*/g,
-    (txt) => txt.charAt(0).toUpperCase() + txt.slice(1).toLowerCase()
-  )
+  return str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.slice(1).toLowerCase());
 }
 /**
  * Converts a string to kebab case.
@@ -32,7 +29,7 @@ function toKebabCase(str: string): string {
   return str
     .replace(/([a-z])([A-Z])/g, "$1-$2")
     .replace(/\s+/g, "-")
-    .toLowerCase()
+    .toLowerCase();
 }
 
 /**
@@ -41,7 +38,7 @@ function toKebabCase(str: string): string {
  * @returns {string} The uppercased string.
  */
 function toUpperCase(str: string): string {
-  return str.toUpperCase()
+  return str.toUpperCase();
 }
 
 /**
@@ -50,7 +47,7 @@ function toUpperCase(str: string): string {
  * @returns {string} The lowercased string.
  */
 function toLowerCase(str: string): string {
-  return str.toLowerCase()
+  return str.toLowerCase();
 }
 /**
  * Capitalizes the first letter of a string.
@@ -58,7 +55,7 @@ function toLowerCase(str: string): string {
  * @returns {string} The capitalized string.
  */
 function capitalize(str: string): string {
-  return str.charAt(0).toUpperCase() + str.slice(1)
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 /**
@@ -67,7 +64,7 @@ function capitalize(str: string): string {
  * @returns {string} The whitespace-free string.
  */
 function removeWhitespace(str: string): string {
-  return str.replace(/\s/g, "")
+  return str.replace(/\s/g, "");
 }
 
 /**
@@ -76,7 +73,7 @@ function removeWhitespace(str: string): string {
  * @returns {string} The reversed string.
  */
 function reverseString(str: string): string {
-  return str.split("").reverse().join("")
+  return str.split("").reverse().join("");
 }
 
 /**
@@ -88,10 +85,10 @@ function reverseString(str: string): string {
  */
 
 function truncateString(str: string, length = 50, suffix = "..."): string {
-  if (str.length === 0) return str
-  return str.length > length
-    ? str.substring(0, length - suffix.length) + suffix
-    : str
+  if (str.length === 0) {
+    return str;
+  }
+  return str.length > length ? str.substring(0, length - suffix.length) + suffix : str;
 }
 
 /**
@@ -106,8 +103,8 @@ function truncateString(str: string, length = 50, suffix = "..."): string {
  *
  */
 function formatString(str: string): string {
-  const result = str.replace(/([a-z])([A-Z])/g, "$1 $2")
-  return capitalize(result.replace(/([A-Z])([A-Z][a-z])/g, "$1 $2").trim())
+  const result = str.replace(/([a-z])([A-Z])/g, "$1 $2");
+  return capitalize(result.replace(/([A-Z])([A-Z][a-z])/g, "$1 $2").trim());
 }
 
 /**
@@ -120,16 +117,16 @@ function formatString(str: string): string {
  * randomString(5); // 'aBcDe'
  * ```
  */
-const randomString = (length: number = 4): string => {
-  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-  let result = ""
+const randomString = (length = 4): string => {
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  let result = "";
 
   for (let i = 0; i < length; i++) {
-    const randomIndex = Math.floor(Math.random() * characters.length)
-    result += characters.charAt(randomIndex)
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    result += characters.charAt(randomIndex);
   }
-  return result
-}
+  return result;
+};
 
 // input: Global Wizard Flow
 // output: globalwizardflow
@@ -144,8 +141,8 @@ const randomString = (length: number = 4): string => {
  * ```
  *  */
 const lowerAndNoSpace = (str: string): string => {
-  return str.toLowerCase().replace(/\s/g, "")
-}
+  return str.toLowerCase().replace(/\s/g, "");
+};
 
 export {
   toCamelCase,
@@ -160,4 +157,4 @@ export {
   formatString,
   randomString,
   lowerAndNoSpace,
-}
+};

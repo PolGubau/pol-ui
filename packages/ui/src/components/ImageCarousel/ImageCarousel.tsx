@@ -1,13 +1,9 @@
-import React, { useEffect, useRef } from "react"
-import {
-  motion,
-  useMotionValue,
-  useTransform,
-  type MotionValue,
-} from "framer-motion"
+import { type MotionValue, motion, useMotionValue, useTransform } from "framer-motion";
+import type React from "react";
+import { useEffect, useRef } from "react";
 
-import { mergeRefs } from "../../helpers"
-import { useMeasure } from "../../hooks"
+import { mergeRefs } from "../../helpers";
+import { useMeasure } from "../../hooks";
 
 const ListItem = ({
   uri,
@@ -17,34 +13,25 @@ const ListItem = ({
   maxWidth,
   customRender,
 }: {
-  uri: string
-  scrollX: MotionValue<number>
-  index: number
-  dataLength: number
-  maxWidth: number
-  customRender?: (url: string, index: number) => React.ReactNode
+  uri: string;
+  scrollX: MotionValue<number>;
+  index: number;
+  dataLength: number;
+  maxWidth: number;
+  customRender?: (url: string, index: number) => React.ReactNode;
 }) => {
-  const lg = maxWidth
-  const md = lg * 0.5
-  const sm = md * 0.5
+  const lg = maxWidth;
+  const md = lg * 0.5;
+  const sm = md * 0.5;
 
-  const inputRange = [
-    (index - 2) * sm,
-    (index - 1) * sm,
-    index * sm,
-    (index + 1) * sm,
-  ]
+  const inputRange = [(index - 2) * sm, (index - 1) * sm, index * sm, (index + 1) * sm];
 
-  const isLastItem = dataLength === index + 1
-  const isSecondLastItem = dataLength === index + 2
+  const isLastItem = dataLength === index + 1;
+  const isSecondLastItem = dataLength === index + 2;
 
-  const outputRange = isLastItem
-    ? [sm, lg, lg, lg]
-    : isSecondLastItem
-      ? [sm, lg, md, md]
-      : [sm, md, lg, sm]
+  const outputRange = isLastItem ? [sm, lg, lg, lg] : isSecondLastItem ? [sm, lg, md, md] : [sm, md, lg, sm];
 
-  const width = useTransform(scrollX, inputRange, outputRange)
+  const width = useTransform(scrollX, inputRange, outputRange);
 
   return (
     <motion.div
@@ -70,74 +57,76 @@ const ListItem = ({
         />
       )}
     </motion.div>
-  )
-}
+  );
+};
 
 interface ImageCarouselProps {
-  urls: string[]
-  customRender?: (url: string, index: number) => React.ReactNode
+  urls: string[];
+  customRender?: (url: string, index: number) => React.ReactNode;
 }
 const ImageCarousel = (props: ImageCarouselProps) => {
-  const { urls, customRender } = props
-  const { ref, bounds } = useMeasure<HTMLDivElement>()
+  const { urls, customRender } = props;
+  const { ref, bounds } = useMeasure<HTMLDivElement>();
 
-  const containerWidth = bounds.width
+  const containerWidth = bounds.width;
 
-  const bigImageWidth = containerWidth * 0.5
+  const bigImageWidth = containerWidth * 0.5;
 
-  const containerRef = useRef<HTMLDivElement>(null!)
-  const scrollX = useMotionValue(0)
-  const isDragging = useRef(false)
-  const startX = useRef(0)
-  const scrollLeft = useRef(0)
+  const containerRef = useRef<HTMLDivElement>(null!);
+  const scrollX = useMotionValue(0);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    isDragging.current = true
-    startX.current = e.pageX - containerRef?.current?.offsetLeft
-    scrollLeft.current = containerRef.current.scrollLeft
-  }
+    isDragging.current = true;
+    startX.current = e.pageX - containerRef?.current?.offsetLeft;
+    scrollLeft.current = containerRef.current.scrollLeft;
+  };
 
   const handleMouseLeave = () => {
-    isDragging.current = false
-  }
+    isDragging.current = false;
+  };
 
   const handleMouseUp = () => {
-    isDragging.current = false
-  }
+    isDragging.current = false;
+  };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isDragging.current) return
-    e.preventDefault()
-    const x = e.pageX - containerRef.current.offsetLeft
-    const walk = (x - startX.current) * 0.6
-    containerRef.current.scrollLeft = scrollLeft.current - walk
-  }
+    if (!isDragging.current) {
+      return;
+    }
+    e.preventDefault();
+    const x = e.pageX - containerRef.current.offsetLeft;
+    const walk = (x - startX.current) * 0.6;
+    containerRef.current.scrollLeft = scrollLeft.current - walk;
+  };
 
   const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
-    e.preventDefault()
+    e.preventDefault();
     containerRef.current.scrollBy({
       left: e.deltaY,
       behavior: "smooth",
-    })
-  }
+    });
+  };
   useEffect(() => {
     const handleScroll = () => {
       if (containerRef.current) {
-        scrollX.set(containerRef.current?.scrollLeft)
+        scrollX.set(containerRef.current?.scrollLeft);
       }
-    }
+    };
 
-    const container = containerRef.current
+    const container = containerRef.current;
     if (container) {
-      container.addEventListener("scroll", handleScroll)
+      container.addEventListener("scroll", handleScroll);
     }
 
     return () => {
       if (container) {
-        container.removeEventListener("scroll", handleScroll)
+        container.removeEventListener("scroll", handleScroll);
       }
-    }
-  }, [scrollX])
+    };
+  }, [scrollX]);
 
   return (
     <div className="w-full max-w-4xl overflow-hidden rounded-3xl select-none w-full flex cursor-grab">
@@ -169,7 +158,7 @@ const ImageCarousel = (props: ImageCarouselProps) => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ImageCarousel
+export default ImageCarousel;

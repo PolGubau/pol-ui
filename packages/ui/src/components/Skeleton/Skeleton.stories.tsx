@@ -1,12 +1,12 @@
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
 
-import { Skeleton } from "./Skeleton"
+import { Skeleton } from "./Skeleton";
 
 export default {
   title: "Components/Skeleton",
   component: Skeleton,
   tags: ["autodocs"],
-} as Meta
+} as Meta;
 
 export const Default = () => {
   return (
@@ -17,5 +17,5 @@ export const Default = () => {
         <Skeleton className="h-full w-[160px] bg-secondary-600" />
       </div>
     </div>
-  )
-}
+  );
+};

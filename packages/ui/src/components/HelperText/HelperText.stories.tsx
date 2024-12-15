@@ -1,6 +1,6 @@
-import type { Meta, StoryFn } from "@storybook/react"
+import type { Meta, StoryFn } from "@storybook/react";
 
-import { HelperText, type HelperTextProps } from "./HelperText"
+import { HelperText, type HelperTextProps } from "./HelperText";
 
 export default {
   title: "Components/Texts/HelperText",
@@ -15,12 +15,12 @@ export default {
       </div>
     ),
   ],
-} as Meta
+} as Meta;
 
-const Template: StoryFn<HelperTextProps> = (args) => <HelperText {...args} />
+const Template: StoryFn<HelperTextProps> = (args) => <HelperText {...args} />;
 
-export const DefaultLabel = Template.bind({})
-DefaultLabel.storyName = "HelperText"
+export const DefaultLabel = Template.bind({});
+DefaultLabel.storyName = "HelperText";
 DefaultLabel.args = {
   children: "HelperText",
-}
+};

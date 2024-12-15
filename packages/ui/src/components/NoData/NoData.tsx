@@ -1,18 +1,16 @@
-"use client"
+"use client";
 
-import React, { type ComponentProps } from "react"
+import type React from "react";
+import type { ComponentProps } from "react";
 
-import { cn } from "../../helpers"
-import { MainSizesEnum, type MainSizes } from "../../types"
-import {
-  default as DefaultIllustration,
-  default as EmptySvg,
-} from "./default-illustration"
+import { cn } from "../../helpers";
+import { type MainSizes, MainSizesEnum } from "../../types";
+import { default as DefaultIllustration, default as EmptySvg } from "./default-illustration";
 
 export interface NoDataProps extends ComponentProps<"div"> {
-  description?: string
-  size?: MainSizes
-  illustration?: React.ReactNode
+  description?: string;
+  size?: MainSizes;
+  illustration?: React.ReactNode;
 }
 
 export const NoData: React.FC<NoDataProps> = ({
@@ -48,5 +46,5 @@ export const NoData: React.FC<NoDataProps> = ({
         </p>
       )}
     </div>
-  )
-}
+  );
+};

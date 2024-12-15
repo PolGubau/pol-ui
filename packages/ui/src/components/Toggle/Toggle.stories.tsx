@@ -1,15 +1,15 @@
-import type { Meta } from '@storybook/react'
-import { Toggle } from './Toggle'
-import { useBoolean } from '../../hooks'
-import { TbBold, TbHome, TbItalic, TbUnderline } from 'react-icons/tb'
-import { Button } from '../Button'
+import type { Meta } from "@storybook/react";
+import { TbBold, TbHome, TbItalic, TbUnderline } from "react-icons/tb";
+import { useBoolean } from "../../hooks";
+import { Button } from "../Button";
+import { Toggle } from "./Toggle";
 
 export default {
-  title: 'Components/Toggle',
+  title: "Components/Toggle",
   component: Toggle,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
-    Story => (
+    (Story) => (
       <div className="flex p-6 flex-col justify-center items-center">
         <div className="max-w-xl">
           <Story />
@@ -17,12 +17,12 @@ export default {
       </div>
     ),
   ],
-} as Meta
+} as Meta;
 
 export const Default = () => {
-  const { value, toggle } = useBoolean(false)
-  const { value: v2, toggle: t2 } = useBoolean(false)
-  const { value: v3, toggle: t3 } = useBoolean(false)
+  const { value, toggle } = useBoolean(false);
+  const { value: v2, toggle: t2 } = useBoolean(false);
+  const { value: v3, toggle: t3 } = useBoolean(false);
 
   return (
     <div className="flex gap-2">
@@ -36,16 +36,16 @@ export const Default = () => {
         <TbUnderline />
       </Toggle>
     </div>
-  )
-}
+  );
+};
 
 export const AllColors = () => {
-  const { value: v1, toggle: t1 } = useBoolean(false)
-  const { value: v2, toggle: t2 } = useBoolean(false)
-  const { value: v3, toggle: t3 } = useBoolean(false)
-  const { value: v4, toggle: t4 } = useBoolean(false)
-  const { value: v5, toggle: t5 } = useBoolean(false)
-  const { value: v6, toggle: t6 } = useBoolean(false)
+  const { value: v1, toggle: t1 } = useBoolean(false);
+  const { value: v2, toggle: t2 } = useBoolean(false);
+  const { value: v3, toggle: t3 } = useBoolean(false);
+  const { value: v4, toggle: t4 } = useBoolean(false);
+  const { value: v5, toggle: t5 } = useBoolean(false);
+  const { value: v6, toggle: t6 } = useBoolean(false);
   return (
     <div className="flex flex-col gap-2 flex-wrap">
       <div className="flex gap-2 flex-wrap p-2 bg-secondary-50">
@@ -90,5 +90,5 @@ export const AllColors = () => {
         </Toggle>
       </div>
     </div>
-  )
-}
+  );
+};

@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { forwardRef } from "react"
-import { Viewport } from "@radix-ui/react-navigation-menu"
+import { Viewport } from "@radix-ui/react-navigation-menu";
+import { forwardRef } from "react";
 
 export const NavigationMenuViewport = forwardRef<
   React.ElementRef<typeof Viewport>,
@@ -17,5 +17,5 @@ export const NavigationMenuViewport = forwardRef<
       }
     />
   </div>
-))
-NavigationMenuViewport.displayName = "NavigationMenuViewport"
+));
+NavigationMenuViewport.displayName = "NavigationMenuViewport";

@@ -1,8 +1,8 @@
-import React from "react"
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
+import React from "react";
 
-import { ColorsEnum } from "../../types"
-import Gauge from "./Gauge"
+import { ColorsEnum } from "../../types";
+import Gauge from "./Gauge";
 
 export default {
   title: "Components/Gauge",
@@ -18,28 +18,28 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
-export const Default = () => <Gauge value={55} />
+export const Default = () => <Gauge value={55} />;
 
-export const Empty = () => <Gauge value={0} />
+export const Empty = () => <Gauge value={0} />;
 
 export const Animated = () => {
-  const [value, setValue] = React.useState(0)
+  const [value, setValue] = React.useState(0);
   React.useEffect(() => {
     const interval = setInterval(() => {
-      setValue(Math.random() * 100)
-    }, 1000)
-    return () => clearInterval(interval)
-  }, [])
-  return <Gauge value={value} />
-}
+      setValue(Math.random() * 100);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+  return <Gauge value={value} />;
+};
 
-export const WithCustomValue = () => <Gauge value={75} />
-export const Complete = () => <Gauge value={100} />
-export const ABit = () => <Gauge value={10} />
-export const WithCustomMaxValue = () => <Gauge value={1} max={3} />
-export const ShowValue = () => <Gauge value={2} max={3} show="value" />
+export const WithCustomValue = () => <Gauge value={75} />;
+export const Complete = () => <Gauge value={100} />;
+export const ABit = () => <Gauge value={10} />;
+export const WithCustomMaxValue = () => <Gauge value={1} max={3} />;
+export const ShowValue = () => <Gauge value={2} max={3} show="value" />;
 
 export const AllColors = () => {
   return (
@@ -48,8 +48,8 @@ export const AllColors = () => {
         <Gauge key={color} value={55} color={color as any} />
       ))}
     </div>
-  )
-}
+  );
+};
 
 export const DifferentSizes = () => {
   return (
@@ -58,8 +58,8 @@ export const DifferentSizes = () => {
         <Gauge key={s} value={55} className={s} />
       ))}
     </div>
-  )
-}
+  );
+};
 export const DifferentStrokeWidth = () => {
   return (
     <div className="flex gap-4">
@@ -67,5 +67,5 @@ export const DifferentStrokeWidth = () => {
         <Gauge key={s} value={s} strokeWidth={s} />
       ))}
     </div>
-  )
-}
+  );
+};

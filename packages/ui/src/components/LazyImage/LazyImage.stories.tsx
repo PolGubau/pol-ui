@@ -1,12 +1,12 @@
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
 
-import { LazyImage } from "./LazyImage"
+import { LazyImage } from "./LazyImage";
 
 export default {
   title: "Components/LazyImage",
   component: LazyImage,
   tags: ["autodocs"],
-} as Meta
+} as Meta;
 
 export const Default = () => {
   return (
@@ -28,5 +28,5 @@ export const Default = () => {
         <LazyImage src="https://picsum.photos/588" className="rounded-lg" />
       </div>
     </section>
-  )
-}
+  );
+};

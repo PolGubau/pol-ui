@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import { forwardRef, useState, type ComponentProps, type FC } from "react"
-import { TbEye, TbEyeOff } from "react-icons/tb"
+import { type ComponentProps, type FC, forwardRef, useState } from "react";
+import { TbEye, TbEyeOff } from "react-icons/tb";
 
-import { MainSizesEnum } from "../../types/enums"
-import { IconButton } from "../IconButton"
-import { Input, type InputProps } from "../Input"
+import { MainSizesEnum } from "../../types/enums";
+import { IconButton } from "../IconButton";
+import { Input, type InputProps } from "../Input";
 
 export interface PasswordInputProps extends Omit<InputProps, "type"> {
-  showIcon?: FC<ComponentProps<"svg">>
-  hideIcon?: FC<ComponentProps<"svg">>
-  defaultVisibility?: boolean
+  showIcon?: FC<ComponentProps<"svg">>;
+  hideIcon?: FC<ComponentProps<"svg">>;
+  defaultVisibility?: boolean;
 }
 
 const EyeButton = ({
@@ -19,28 +19,24 @@ const EyeButton = ({
   showIcon: ShowIcon = TbEye,
   hideIcon: HideIcon = TbEyeOff,
 }: {
-  showPassword: boolean
-  setShowPassword: (value: boolean) => void
-  showIcon?: PasswordInputProps["showIcon"]
-  hideIcon?: PasswordInputProps["hideIcon"]
+  showPassword: boolean;
+  setShowPassword: (value: boolean) => void;
+  showIcon?: PasswordInputProps["showIcon"];
+  hideIcon?: PasswordInputProps["hideIcon"];
 }) => {
   return (
     <IconButton
       type="button"
       onClick={() => {
-        setShowPassword(!showPassword)
+        setShowPassword(!showPassword);
       }}
       size={MainSizesEnum.sm}
       tabIndex={-1}
     >
-      {showPassword ? (
-        <HideIcon data-testid="hide-icon" />
-      ) : (
-        <ShowIcon data-testid="show-icon" />
-      )}
+      {showPassword ? <HideIcon data-testid="hide-icon" /> : <ShowIcon data-testid="show-icon" />}
     </IconButton>
-  )
-}
+  );
+};
 
 export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
   (
@@ -51,9 +47,9 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
       placeholder = "*".repeat(8),
       ...props
     },
-    ref
+    ref,
   ) => {
-    const [showPassword, setShowPassword] = useState(defaultVisibility)
+    const [showPassword, setShowPassword] = useState(defaultVisibility);
     return (
       <Input
         {...props}
@@ -69,8 +65,8 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
           />
         }
       />
-    )
-  }
-)
+    );
+  },
+);
 
-PasswordInput.displayName = "PasswordInput"
+PasswordInput.displayName = "PasswordInput";

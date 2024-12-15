@@ -1,0 +1,67 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "extends": ["@polgubau/biome-config"],
+  "linter": {
+    "rules": {
+      "performance": {
+        "noReExportAll": {
+          "level": "off"
+        },
+        "noBarrelFile": {
+          "level": "off"
+        }
+      },
+      "correctness": {
+        "useImportExtensions": "off"
+      },
+
+      "style": {
+        "useBlockStatements": {
+          "fix": "safe",
+          "level": "warn"
+        },
+        "noUselessElse": {
+          "fix": "safe",
+          "level": "warn"
+        },
+        "useFilenamingConvention": "off",
+        "useNamingConvention": "off",
+        "noDefaultExport": "off",
+        "noNamespaceImport": "off"
+      },
+
+      "complexity": {
+        "noForEach": {
+          "level": "off"
+        },
+        "noExcessiveCognitiveComplexity": "off"
+      }
+    }
+  },
+  "javascript": {
+    "globals": ["$", "_", "externalVariable", "React"],
+    "jsxRuntime": "transparent"
+  },
+  "overrides": [
+    {
+      "include": ["tools/**"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noConsole": "off"
+          }
+        }
+      }
+    },
+    {
+      "include": ["src/index.ts"],
+      "linter": {
+        "rules": {
+          "performance": {
+            "noReExportAll": "off"
+          }
+        }
+      }
+    }
+  ]
+}

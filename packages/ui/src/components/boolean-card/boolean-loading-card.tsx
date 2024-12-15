@@ -1,5 +1,5 @@
-import { Card } from '../Card'
-import { Switch } from '../Switch'
+import { Card } from "../Card";
+import { Switch } from "../Switch";
 
 export const BooleanLoadingCard = () => {
   return (
@@ -10,8 +10,8 @@ export const BooleanLoadingCard = () => {
           <h5 className="text-sm w-fit bg-secondary/20 rounded-full text-transparent">lorem pisum lorem epson</h5>
         </header>
 
-        <Switch disabled checked={false} onChange={() => {}} />
+        <Switch disabled={true} checked={false} onChange={() => {}} />
       </div>
     </Card>
-  )
-}
+  );
+};

@@ -1,16 +1,16 @@
-'use client'
-import type { ComponentProps, FC } from 'react'
-import { twMerge } from 'tailwind-merge'
-import { mergeDeep } from '../../helpers/merge-deep/merge-deep'
-import { getTheme } from '../../theme-store'
-import type { Colors, DeepPartial, MainSizes } from '../../types/types'
-import { ColorsEnum, SizesEnum } from '../../types/enums'
-import type { LoaderTheme } from './theme'
+"use client";
+import type { ComponentProps, FC } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { getTheme } from "../../theme-store";
+import { ColorsEnum, SizesEnum } from "../../types/enums";
+import type { Colors, DeepPartial, MainSizes } from "../../types/types";
+import type { LoaderTheme } from "./theme";
 
-export interface LoaderProps extends Omit<ComponentProps<'span'>, 'color' | 'size'> {
-  color?: Colors
-  size?: MainSizes
-  theme?: DeepPartial<LoaderTheme>
+export interface LoaderProps extends Omit<ComponentProps<"span">, "color" | "size"> {
+  color?: Colors;
+  size?: MainSizes;
+  theme?: DeepPartial<LoaderTheme>;
 }
 
 /**
@@ -26,11 +26,11 @@ export const Loader: FC<LoaderProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().loader, customTheme)
+  const theme = mergeDeep(getTheme().loader, customTheme);
 
   return (
     <span
-      role={props.role ?? 'status'}
+      role={props.role ?? "status"}
       className={twMerge(theme.base, theme.color[color], theme.size[size], className)}
       aria-live="polite"
       data-testid="loader"
@@ -40,8 +40,8 @@ export const Loader: FC<LoaderProps> = ({
         Loading...
       </span>
     </span>
-  )
-}
+  );
+};
 
 // The name of the component will be Loader
-Loader.displayName = 'Loader'
+Loader.displayName = "Loader";

@@ -99,6 +99,6 @@ const Keys = {
   BackSlash: "\\",
   CloseBracket: "]",
   Quote: "'",
-} as const
+} as const;
 
-export { Keys }
+export { Keys };

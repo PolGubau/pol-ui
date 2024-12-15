@@ -1,1 +1,1 @@
-export type { OverrideProps } from './overrideProps'
+export type { OverrideProps } from "./overrideProps";

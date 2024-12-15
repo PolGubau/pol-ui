@@ -1,24 +1,24 @@
-"use client"
+"use client";
 
-import type { ComponentProps, FC, ReactNode } from "react"
-import { HiX } from "react-icons/hi"
-import { twMerge } from "tailwind-merge"
+import type { ComponentProps, FC, ReactNode } from "react";
+import { HiX } from "react-icons/hi";
+import { twMerge } from "tailwind-merge";
 
-import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
-import { getTheme } from "../../theme-store"
-import { ColorsEnum, RoundedSizesEnum } from "../../types/enums"
-import type { Colors, DeepPartial, RoundedSizes } from "../../types/types"
-import { IconButton } from "../IconButton"
-import type { AlertTheme } from "./theme"
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { getTheme } from "../../theme-store";
+import { ColorsEnum, RoundedSizesEnum } from "../../types/enums";
+import type { Colors, DeepPartial, RoundedSizes } from "../../types/types";
+import { IconButton } from "../IconButton";
+import type { AlertTheme } from "./theme";
 
 export interface AlertProps extends Omit<ComponentProps<"div">, "color"> {
-  additionalContent?: ReactNode
-  color?: Colors
-  icon?: FC<ComponentProps<"svg">>
-  onDismiss?: () => void
-  rounded?: RoundedSizes
-  theme?: DeepPartial<AlertTheme>
-  bordered?: boolean
+  additionalContent?: ReactNode;
+  color?: Colors;
+  icon?: FC<ComponentProps<"svg">>;
+  onDismiss?: () => void;
+  rounded?: RoundedSizes;
+  theme?: DeepPartial<AlertTheme>;
+  bordered?: boolean;
 }
 
 /**
@@ -27,7 +27,7 @@ export interface AlertProps extends Omit<ComponentProps<"div">, "color"> {
  *
  * @description The Alert component is used to display a message to the user
  *
- * @param {JSX.Element} props.additionalContent - The additional content of the alert
+ * @param {React.ReactNode} props.additionalContent - The additional content of the alert
  *
  * @param {Colors} props.color - The color of the alert
  *
@@ -43,7 +43,7 @@ export interface AlertProps extends Omit<ComponentProps<"div">, "color"> {
  *
  * @param {ComponentProps<'div'>} props - The props of the alert
  *
- * @returns JSX.Element
+ * @returns React.ReactNode
  *
  * @example
  * <Alert
@@ -67,12 +67,12 @@ export const Alert: FC<AlertProps> = ({
   theme: customTheme = {},
   bordered,
   ...props
-}: AlertProps): JSX.Element => {
-  const theme: AlertTheme = mergeDeep(getTheme().alert, customTheme)
+}: AlertProps): React.ReactNode => {
+  const theme: AlertTheme = mergeDeep(getTheme().alert, customTheme);
 
   const handleOnDismiss = () => {
-    onDismiss?.()
-  }
+    onDismiss?.();
+  };
 
   return (
     <div
@@ -81,7 +81,7 @@ export const Alert: FC<AlertProps> = ({
         theme.color[color],
         theme.rounded[rounded],
         bordered && theme.borderAccent,
-        className
+        className,
       )}
       role="alert"
       {...props}
@@ -98,11 +98,11 @@ export const Alert: FC<AlertProps> = ({
             onClick={handleOnDismiss}
             color={color}
           >
-            <HiX aria-hidden title="Dismiss" />
+            <HiX aria-hidden={true} title="Dismiss" />
           </IconButton>
         )}
       </div>
       {additionalContent && <div>{additionalContent}</div>}
     </div>
-  )
-}
+  );
+};

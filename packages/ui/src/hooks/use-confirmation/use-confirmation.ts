@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react";
 
 /**
  * Custom React hook for double-click confirmation for critical actions.
@@ -10,35 +10,35 @@ import { useCallback, useEffect, useRef, useState } from "react"
  * @returns The current unlocked state and the trigger function.
  */
 const useConfirmation = (action: () => void, timeout = 5000) => {
-  const [isUnlocked, setIsUnlocked] = useState<boolean>(false)
+  const [isUnlocked, setIsUnlocked] = useState<boolean>(false);
 
   // Using useRef to persist the timerId without causing re-renders
-  const timerId = useRef<ReturnType<typeof setTimeout>>()
+  const timerId = useRef<ReturnType<typeof setTimeout>>();
 
   const triggerSafeClick = useCallback(() => {
     if (isUnlocked) {
-      action()
-      setIsUnlocked(false)
+      action();
+      setIsUnlocked(false);
       if (timerId.current) {
-        clearTimeout(timerId.current)
+        clearTimeout(timerId.current);
       }
     } else {
-      setIsUnlocked(true)
+      setIsUnlocked(true);
       timerId.current = setTimeout(() => {
-        setIsUnlocked(false)
-      }, timeout)
+        setIsUnlocked(false);
+      }, timeout);
     }
-  }, [isUnlocked, action, timeout])
+  }, [isUnlocked, action, timeout]);
 
   useEffect(() => {
     return () => {
       if (timerId.current) {
-        clearTimeout(timerId.current)
+        clearTimeout(timerId.current);
       }
-    }
-  }, [])
+    };
+  }, []);
 
-  return { isUnlocked, triggerSafeClick }
-}
+  return { isUnlocked, triggerSafeClick };
+};
 
-export { useConfirmation }
+export { useConfirmation };

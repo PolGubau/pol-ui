@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { useMemo, useState, type FC } from "react"
+import { type FC, useMemo, useState } from "react";
 
-import { AccordionPanelContext } from "./AccordionPanelContext"
-import type { AccordionProps } from "./types"
+import { AccordionPanelContext } from "./AccordionPanelContext";
+import type { AccordionProps } from "./types";
 
 /**
  * @name PanelProps
@@ -32,18 +32,18 @@ export interface PanelProps extends AccordionProps {
    * @name isOpen
    * @description If true, the accordion will be open by default. If false, it will be closed by default. If undefined, it will be closed by default.
    */
-  isOpen?: boolean
+  isOpen?: boolean;
 
   /**
    * @name alwaysOpen
    * @description If true, the accordion will be always open. If false, the accordion will be closed by default. If undefined, the accordion will be closed by default.
    */
-  setOpen?: () => void
+  setOpen?: () => void;
 }
 
 export const AccordionPanel: FC<PanelProps> = ({ children, ...props }) => {
-  const { alwaysOpen } = props
-  const [isOpen, setIsOpen] = useState(props.isOpen)
+  const { alwaysOpen } = props;
+  const [isOpen, setIsOpen] = useState(props.isOpen);
 
   /**
    * @name provider
@@ -57,16 +57,12 @@ export const AccordionPanel: FC<PanelProps> = ({ children, ...props }) => {
         ...props,
         isOpen,
         setOpen: () => {
-          setIsOpen(!isOpen)
+          setIsOpen(!isOpen);
         },
-      }
+      };
     }
-    return props
-  }, [alwaysOpen, isOpen, props])
+    return props;
+  }, [alwaysOpen, isOpen, props]);
 
-  return (
-    <AccordionPanelContext.Provider value={provider}>
-      {children}
-    </AccordionPanelContext.Provider>
-  )
-}
+  return <AccordionPanelContext.Provider value={provider}>{children}</AccordionPanelContext.Provider>;
+};

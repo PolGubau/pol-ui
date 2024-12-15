@@ -1,12 +1,12 @@
-import React from "react"
-import type { Meta } from "@storybook/react"
+import type { Meta } from "@storybook/react";
+import type React from "react";
 
-import { Toaster, toast } from "../../components"
-import { ShareParams, useShare } from "./use-share"
+import { Toaster, toast } from "../../components";
+import { type ShareParams, useShare } from "./use-share";
 
 const Test = () => {
-  return "test"
-}
+  return "test";
+};
 
 export default {
   title: "Hooks/useShare",
@@ -22,34 +22,34 @@ export default {
   ],
 
   tags: ["autodocs"],
-} as Meta
+} as Meta;
 export const Default: React.FC = () => {
   const { share, isSupported, isReady, isShared } = useShare({
     onShare: (content: ShareParams) => {
-      toast("Sharing content:", { description: content.text })
+      toast("Sharing content:", { description: content.text });
     },
     onSuccess: (content: ShareParams) => {
-      toast("Successfully shared content:", { description: content.text })
+      toast("Successfully shared content:", { description: content.text });
     },
     onError: (error: unknown) => {
-      console.error("Error sharing content:", error)
+      console.error("Error sharing content:", error);
     },
     fallback: () => {
-      alert("Web Share API is not supported. Falling back to another method.")
+      alert("Web Share API is not supported. Falling back to another method.");
     },
     successTimeout: 3000,
-  })
+  });
 
   const handleShare = () => {
     void share({
       title: "Check this website",
       text: "Check how cool Pol's portfolio is! 🚀",
       url: "https://polgubau.com",
-    })
-  }
+    });
+  };
 
   if (!isReady) {
-    return <p>Checking support for the Web Share API...</p>
+    return <p>Checking support for the Web Share API...</p>;
   }
 
   return (
@@ -59,5 +59,5 @@ export const Default: React.FC = () => {
       </button>
       {isShared && <p>Content has been shared!</p>}
     </div>
-  )
-}
+  );
+};

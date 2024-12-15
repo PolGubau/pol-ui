@@ -1,22 +1,20 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client"
+"use client";
 
-import plugin from "tailwindcss/plugin.js"
-import { KeyValuePair } from "tailwindcss/types/config"
+import plugin from "tailwindcss/plugin.js";
+import type { KeyValuePair } from "tailwindcss/types/config";
 
-import { animations } from "./animations"
-import type { ThemeColors } from "./colors"
-import { colors } from "./colors/colors"
-import type { ColorScale } from "./colors/types"
-import { filterDefault, singleTimeline } from "./helpers"
-import type { CustomPluginConfig } from "./types"
-import { utilities } from "./utilities"
+import { animations } from "./animations";
+import type { ThemeColors } from "./colors";
+import { colors } from "./colors/colors";
+import type { ColorScale } from "./colors/types";
+import { filterDefault, singleTimeline } from "./helpers";
+import type { CustomPluginConfig } from "./types";
+import { utilities } from "./utilities";
 
-export const poluiPlugin = (
-  config: CustomPluginConfig = {}
-): ReturnType<typeof plugin> => {
-  const { colors: userColors = {} } = config
+export const poluiPlugin = (config: CustomPluginConfig = {}): ReturnType<typeof plugin> => {
+  const { colors: userColors = {} } = config;
 
   // allColors is the official object with all colors from pol-ui but the user can override them using the userColors object.
   // We merge the userColors with allColors to create a new object with the user's colors overriding the official ones.
@@ -26,29 +24,29 @@ export const poluiPlugin = (
     return {
       ...color,
       DEFAULT: color[500],
-    }
-  }
+    };
+  };
 
   const parsedColors: ThemeColors = Object.keys(colors).reduce<ThemeColors>(
     (acc, key) => {
-      const color = colors[key as keyof ThemeColors]
-      const userColor = userColors[key as keyof ThemeColors]
+      const color = colors[key as keyof ThemeColors];
+      const userColor = userColors[key as keyof ThemeColors];
 
       if (userColor) {
         acc[key as keyof ThemeColors] = addDefault({
           ...color,
           ...userColor,
-        })
+        });
       } else {
-        acc[key as keyof ThemeColors] = addDefault(color)
+        acc[key as keyof ThemeColors] = addDefault(color);
       }
 
-      return acc
+      return acc;
     },
     {
       ...colors,
-    }
-  )
+    },
+  );
 
   return plugin(
     ({ addUtilities, matchUtilities, theme }) => {
@@ -57,11 +55,11 @@ export const poluiPlugin = (
       type DynamicUtil = Record<
         string,
         {
-          css: string
-          values: KeyValuePair
-          generateValue?: (value: string) => string
+          css: string;
+          values: KeyValuePair;
+          generateValue?: (value: string) => string;
         }
-      >
+      >;
 
       const dynamicUtils: DynamicUtil = {
         "animate-delay": {
@@ -120,18 +118,16 @@ export const poluiPlugin = (
         "scroll-animate": {
           css: "scroll-timeline-name",
           values: theme("scrollTimeline"),
-          generateValue: (value: string) =>
-            `${singleTimeline(value)};\n  animation-timeline: ${singleTimeline(value)}`,
+          generateValue: (value: string) => `${singleTimeline(value)};\n  animation-timeline: ${singleTimeline(value)}`,
         },
         "view-animate": {
           css: "view-timeline-name",
           values: theme("viewTimeline"),
-          generateValue: (value: string) =>
-            `${singleTimeline(value)};\n  animation-timeline: ${singleTimeline(value)}`,
+          generateValue: (value: string) => `${singleTimeline(value)};\n  animation-timeline: ${singleTimeline(value)}`,
         },
-      }
+      };
 
-      const dynamicUtilsEntries = Object.entries(dynamicUtils)
+      const dynamicUtilsEntries = Object.entries(dynamicUtils);
 
       dynamicUtilsEntries.forEach(([name, { css, values, generateValue }]) => {
         matchUtilities(
@@ -142,11 +138,11 @@ export const poluiPlugin = (
           },
           {
             values,
-          }
-        )
-      })
+          },
+        );
+      });
 
-      addUtilities(utilities)
+      addUtilities(utilities);
       addUtilities({
         "@keyframes enter": theme("keyframes.enter"),
         "@keyframes exit": theme("keyframes.exit"),
@@ -168,31 +164,31 @@ export const poluiPlugin = (
           "--tw-exit-translate-x": "initial",
           "--tw-exit-translate-y": "initial",
         },
-      })
+      });
 
       matchUtilities(
         {
           "fade-in": (value: string) => ({ "--tw-enter-opacity": value }),
           "fade-out": (value) => ({ "--tw-exit-opacity": value }),
         },
-        { values: theme("animationOpacity") }
-      )
+        { values: theme("animationOpacity") },
+      );
 
       matchUtilities(
         {
           "zoom-in": (value: string) => ({ "--tw-enter-scale": value }),
           "zoom-out": (value) => ({ "--tw-exit-scale": value }),
         },
-        { values: theme("animationScale") }
-      )
+        { values: theme("animationScale") },
+      );
 
       matchUtilities(
         {
           "spin-in": (value: string) => ({ "--tw-enter-rotate": value }),
           "spin-out": (value) => ({ "--tw-exit-rotate": value }),
         },
-        { values: theme("animationRotate") }
-      )
+        { values: theme("animationRotate") },
+      );
 
       matchUtilities(
         {
@@ -221,43 +217,40 @@ export const poluiPlugin = (
             "--tw-exit-translate-x": value,
           }),
         },
-        { values: theme("animationTranslate") }
-      )
+        { values: theme("animationTranslate") },
+      );
 
       matchUtilities(
         { duration: (value) => ({ animationDuration: value }) },
-        { values: filterDefault(theme("animationDuration")) }
-      )
+        { values: filterDefault(theme("animationDuration")) },
+      );
 
-      matchUtilities(
-        { delay: (value: string) => ({ animationDelay: value }) },
-        { values: theme("animationDelay") }
-      )
+      matchUtilities({ delay: (value: string) => ({ animationDelay: value }) }, { values: theme("animationDelay") });
 
       matchUtilities(
         { ease: (value) => ({ animationTimingFunction: value }) },
-        { values: filterDefault(theme("animationTimingFunction")) }
-      )
+        { values: filterDefault(theme("animationTimingFunction")) },
+      );
 
       addUtilities({
         ".running": { animationPlayState: "running" },
         ".paused": { animationPlayState: "paused" },
-      })
+      });
 
       matchUtilities(
         { "fill-mode": (value: string) => ({ animationFillMode: value }) },
-        { values: theme("animationFillMode") }
-      )
+        { values: theme("animationFillMode") },
+      );
 
       matchUtilities(
         { direction: (value: string) => ({ animationDirection: value }) },
-        { values: theme("animationDirection") }
-      )
+        { values: theme("animationDirection") },
+      );
 
       matchUtilities(
         { repeat: (value: string) => ({ animationIterationCount: value }) },
-        { values: theme("animationRepeat") }
-      )
+        { values: theme("animationRepeat") },
+      );
     },
 
     {
@@ -298,6 +291,6 @@ export const poluiPlugin = (
           ...animations,
         },
       },
-    }
-  )
-}
+    },
+  );
+};

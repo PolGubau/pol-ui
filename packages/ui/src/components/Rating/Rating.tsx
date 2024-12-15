@@ -1,22 +1,22 @@
-"use client"
+"use client";
 
-import { type ComponentProps, type FC } from "react"
-import { TbStar } from "react-icons/tb"
+import type { ComponentProps, FC } from "react";
+import { TbStar } from "react-icons/tb";
 
-import { cn } from "../../helpers"
-import { mergeDeep } from "../../helpers/merge-deep/merge-deep"
-import { getTheme } from "../../theme-store"
-import { MainSizesEnum } from "../../types/enums"
-import type { DeepPartial, MainSizes } from "../../types/types"
-import type { RatingTheme } from "./theme"
+import { cn } from "../../helpers";
+import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { getTheme } from "../../theme-store";
+import { MainSizesEnum } from "../../types/enums";
+import type { DeepPartial, MainSizes } from "../../types/types";
+import type { RatingTheme } from "./theme";
 
 export interface RatingProps extends ComponentProps<"div"> {
-  size?: MainSizes
-  theme?: DeepPartial<RatingTheme>
-  stars?: number
-  filled?: number
-  starIcon?: FC<ComponentProps<"svg">>
-  starClassName?: string
+  size?: MainSizes;
+  theme?: DeepPartial<RatingTheme>;
+  stars?: number;
+  filled?: number;
+  starIcon?: FC<ComponentProps<"svg">>;
+  starClassName?: string;
 }
 
 export const Rating: FC<RatingProps> = ({
@@ -29,8 +29,8 @@ export const Rating: FC<RatingProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const { rating } = getTheme()
-  const theme: RatingTheme = mergeDeep(rating, customTheme)
+  const { rating } = getTheme();
+  const theme: RatingTheme = mergeDeep(rating, customTheme);
 
   return (
     <div className={cn(theme.root, className)} {...props}>
@@ -42,12 +42,12 @@ export const Rating: FC<RatingProps> = ({
           className={cn(
             starClassName,
             theme.star.size[size as keyof typeof theme.star.size],
-            theme.star[i < filled ? "filled" : "empty"]
+            theme.star[i < filled ? "filled" : "empty"],
           )}
         />
       ))}
     </div>
-  )
-}
+  );
+};
 
-Rating.displayName = "Rating"
+Rating.displayName = "Rating";

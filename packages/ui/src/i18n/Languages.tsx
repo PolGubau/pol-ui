@@ -1,7 +1,7 @@
-import { Language } from "../types"
-import { spanishLanguagesPack } from "./language-packs/spanish-pack"
-import { Locale, Locales } from "./locales"
-import { countryCodes } from "./phones/metadata/countries"
+import type { Language } from "../types";
+import { spanishLanguagesPack } from "./language-packs/spanish-pack";
+import { type Locale, Locales } from "./locales";
+import { countryCodes } from "./phones/metadata/countries";
 
 /**
  * @name languages
@@ -68,15 +68,14 @@ const rawLanguages: Language[] = [
     country: countryCodes.FR,
     language: Locales.FR,
   },
-] as const
+] as const;
 
-const languages = [...new Set(rawLanguages)] as Language[]
+const languages = [...new Set(rawLanguages)] as Language[];
 
-const defaultLanguage =
-  languages.find((lang) => lang.locale === Locales.EN_US) ?? languages[0]
+const defaultLanguage = languages.find((lang) => lang.locale === Locales.EN_US) ?? languages[0];
 
 // Extract unique language codes and country codes
-const allLocales = [...new Set(languages.map((lang) => lang.locale))] as const
+const allLocales = [...new Set(languages.map((lang) => lang.locale))] as const;
 // Create types based on these arrays
 
 /**
@@ -84,23 +83,13 @@ const allLocales = [...new Set(languages.map((lang) => lang.locale))] as const
  * @param countryCodes
  * @returns
  */
-const getSupportedLanguages = (
-  wantedLocales: Locale[] = []
-): typeof languages => {
-  const supportedLanguages = languages.filter((lang) =>
-    wantedLocales.includes(lang.locale)
-  )
-  return supportedLanguages
-}
+const getSupportedLanguages = (wantedLocales: Locale[] = []): typeof languages => {
+  const supportedLanguages = languages.filter((lang) => wantedLocales.includes(lang.locale));
+  return supportedLanguages;
+};
 
 const getLanguage = (locale: Locale): Language | undefined => {
-  return languages.find((lang) => lang.locale === locale)
-}
+  return languages.find((lang) => lang.locale === locale);
+};
 
-export {
-  allLocales,
-  defaultLanguage,
-  getSupportedLanguages,
-  languages,
-  getLanguage,
-}
+export { allLocales, defaultLanguage, getSupportedLanguages, languages, getLanguage };

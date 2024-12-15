@@ -1,17 +1,11 @@
-import type { Meta, StoryFn } from "@storybook/react"
-import {
-  TbAdjustmentsBolt,
-  TbCactus,
-  TbLayout,
-  TbPhoneCheck,
-  TbPhotoFilled,
-} from "react-icons/tb"
+import type { Meta, StoryFn } from "@storybook/react";
+import { TbAdjustmentsBolt, TbCactus, TbLayout, TbPhoneCheck, TbPhotoFilled } from "react-icons/tb";
 
-import { Rating, type RatingTheme } from "."
-import { theme } from "../../theme"
-import type { MainSizes } from "../../types"
-import { Progress } from "../Progress"
-import type { RatingProps } from "./Rating"
+import { Rating, type RatingTheme } from ".";
+import { theme } from "../../theme";
+import type { MainSizes } from "../../types";
+import { Progress } from "../Progress";
+import type { RatingProps } from "./Rating";
 
 export default {
   title: "Components/Rating",
@@ -21,22 +15,22 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta
+} as Meta;
 
-const Template: StoryFn<RatingProps> = (args) => <Rating {...args} />
+const Template: StoryFn<RatingProps> = (args) => <Rating {...args} />;
 
-const ratingTheme: RatingTheme = theme.rating
+const ratingTheme: RatingTheme = theme.rating;
 
-export const DefaultRating = Template.bind({})
-DefaultRating.storyName = "Default"
+export const DefaultRating = Template.bind({});
+DefaultRating.storyName = "Default";
 
-export const CustomStarAmount = Template.bind({})
-CustomStarAmount.storyName = "Custom stars amount"
+export const CustomStarAmount = Template.bind({});
+CustomStarAmount.storyName = "Custom stars amount";
 CustomStarAmount.args = {
   stars: 10,
-}
+};
 
-export const CustomFilledAmount = (): JSX.Element => (
+export const CustomFilledAmount = (): React.ReactNode => (
   <div className="flex flex-col gap-4 w-full">
     <Rating stars={2} filled={1} />
     <Rating stars={2} filled={3} />
@@ -44,15 +38,15 @@ export const CustomFilledAmount = (): JSX.Element => (
     <Rating stars={10} filled={5} />
     <Rating stars={10} filled={10} />
   </div>
-)
-export const CustomSize = (): JSX.Element => (
+);
+export const CustomSize = (): React.ReactNode => (
   <div className="flex flex-col gap-4 w-full">
     {Object.keys(ratingTheme.star.size).map((size) => (
       <Rating key={size} size={size as MainSizes} />
     ))}
   </div>
-)
-export const CustomIcon = (): JSX.Element => (
+);
+export const CustomIcon = (): React.ReactNode => (
   <div className="flex flex-col gap-4 w-full">
     <Rating starIcon={TbCactus} filled={1} />
     <Rating starIcon={TbAdjustmentsBolt} filled={2} />
@@ -60,8 +54,8 @@ export const CustomIcon = (): JSX.Element => (
     <Rating starIcon={TbLayout} filled={4} />
     <Rating starIcon={TbPhoneCheck} filled={5} />
   </div>
-)
-export const MoreDetails = (): JSX.Element => (
+);
+export const MoreDetails = (): React.ReactNode => (
   <div className="flex flex-col gap-4 w-full">
     <Rating />
     <section className="flex flex-col gap-2">
@@ -92,4 +86,4 @@ export const MoreDetails = (): JSX.Element => (
       </div>
     </section>
   </div>
-)
+);
