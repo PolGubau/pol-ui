@@ -82,7 +82,7 @@ export const ImageTrail = ({
 
     const rotation = Math.random() * rotationRange;
 
-    void animate(
+    animate(
       selector,
 
       {
@@ -95,7 +95,7 @@ export const ImageTrail = ({
       { type: "spring", damping: 15, stiffness: 200 },
     );
 
-    void animate(
+    animate(
       selector,
       {
         opacity: [1, 0],
@@ -103,7 +103,7 @@ export const ImageTrail = ({
       { ease: "linear", duration: 0.5, delay: disapearDelay },
     );
 
-    imageRenderCount.current = imageRenderCount.current + 1;
+    imageRenderCount.current += 1;
   };
 
   const theme = mergeDeep(getTheme().imageTrail, customTheme);
@@ -117,6 +117,7 @@ export const ImageTrail = ({
           className={cn(theme.image, imageClassName)}
           src={img}
           alt={`Mouse move ${index.toString()}`}
+          // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
           key={index}
           data-mouse-move-index={index}
         />

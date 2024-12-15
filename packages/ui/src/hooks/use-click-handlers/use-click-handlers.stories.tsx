@@ -37,7 +37,7 @@ export const Default: React.FC = () => {
   return (
     <div>
       <h1>Click Handlers Example</h1>
-      <button ref={buttonRef}>
+      <button ref={buttonRef} type="button">
         <div>Double Click or Hold Me</div>
       </button>
     </div>

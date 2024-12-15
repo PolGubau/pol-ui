@@ -32,7 +32,7 @@ export const Default = () => {
     toast.promise(fakePromise, {
       loading: "Loading...",
       success: () => {
-        return `Data deleted`;
+        return "Data deleted";
       },
       error: "Error",
     });
@@ -55,7 +55,7 @@ export const Hold = () => {
     toast.promise(fakePromise, {
       loading: "Loading...",
       success: () => {
-        return `Data deleted`;
+        return "Data deleted";
       },
       error: "Error",
     });

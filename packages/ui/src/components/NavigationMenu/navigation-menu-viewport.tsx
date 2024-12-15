@@ -11,10 +11,7 @@ export const NavigationMenuViewport = forwardRef<
     <Viewport
       {...props}
       ref={ref}
-      className={
-        className +
-        "data-[state=open]:animate-scaleIn data-[state=closed]:animate-scaleOut relative mt-[10px] h-[var(--radix-navigation-menu-viewport-height)] w-full origin-[top_center] overflow-hidden rounded-[6px] bg-white dark:bg-secondary-800 transition-[width,_height] duration-300 sm:w-[var(--radix-navigation-menu-viewport-width)]"
-      }
+      className={`${className}data-[state=open]:animate-scaleIn data-[state=closed]:animate-scaleOut relative mt-[10px] h-[var(--radix-navigation-menu-viewport-height)] w-full origin-[top_center] overflow-hidden rounded-[6px] bg-white dark:bg-secondary-800 transition-[width,_height] duration-300 sm:w-[var(--radix-navigation-menu-viewport-width)]`}
     />
   </div>
 ));

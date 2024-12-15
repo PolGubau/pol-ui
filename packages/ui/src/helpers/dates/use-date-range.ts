@@ -29,7 +29,7 @@ export function useDateRange(rangeMonths: Date[], options: UseDateRangeOptions =
       setRange((oldRange) => {
         const [start, end] = typeof newRange === "function" ? newRange(oldRange) : newRange;
         if (start && end && isDayBefore(end, start)) {
-          throw new RangeError(`Range end cannot be before the range start`);
+          throw new RangeError("Range end cannot be before the range start");
         }
 
         return [start, end];

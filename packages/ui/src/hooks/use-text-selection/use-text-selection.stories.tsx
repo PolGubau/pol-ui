@@ -51,6 +51,7 @@ export const Default: React.FC = () => {
         <h3>Rects:</h3>
         <ul>
           {rects.map((rect, index) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
             <li key={index}>
               Rect {index}: ({rect.x}, {rect.y}, {rect.width}, {rect.height})
             </li>
@@ -59,6 +60,7 @@ export const Default: React.FC = () => {
         <h3>Ranges:</h3>
         <ul>
           {ranges.map((range, index) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
             <li key={index}>
               Range {index}: {range.toString()}
             </li>

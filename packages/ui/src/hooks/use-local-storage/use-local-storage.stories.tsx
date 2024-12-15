@@ -44,7 +44,7 @@ export const Default = () => {
 };
 export const Encrypted = () => {
   const [value, setValue] = useLocalStorage("polUIStorybook", "initialValue", "supersecretkey");
-  console.log(value);
+  console.info(value);
   return (
     <div className="flex flex-col gap-3 w-full max-w-md">
       Current value decrypted from localstorage:{value}

@@ -21,6 +21,8 @@ import { px } from "../../helpers/px/px";
  * @returns <Options> The options to use for the ripple
  * @author Pol Gubau Amores - https://polgubau.com
  */
+
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export interface RippleOptions<T extends HTMLElement = any> {
   duration: number;
   // color: string;
@@ -77,6 +79,7 @@ const containerClassName = "ripple--container";
  * @author Pol Gubau Amores - https://polgubau.com
  */
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export default function useRipple<T extends HTMLElement = any>(inputOptions?: Partial<RippleOptions<T>>) {
   const internalRef = useRef<T>(null);
 
@@ -138,14 +141,14 @@ export default function useRipple<T extends HTMLElement = any>(inputOptions?: Pa
             self().removeEventListener(event, cancelRipple);
           }
         };
-        if (!options.cancelAutomatically && !isTouchDevice()) {
-          for (const event of events) {
-            self().addEventListener(event, cancelRipple);
-          }
-        } else {
+        if (options.cancelAutomatically || isTouchDevice()) {
           setTimeout(() => {
             cancelRippleAnimation(ripple, options);
           }, options.duration * completedFactor);
+        } else {
+          for (const event of events) {
+            self().addEventListener(event, cancelRipple);
+          }
         }
 
         container.appendChild(ripple);
@@ -179,6 +182,7 @@ export default function useRipple<T extends HTMLElement = any>(inputOptions?: Pa
  * @author Pol Gubau Amores - https://polgubau.com
  */
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export function customRipple<T extends HTMLElement = any>(inputOptions?: Partial<Omit<RippleOptions<T>, "ref">>) {
   return (overrideOptions?: Partial<RippleOptions<T>>) =>
     useRipple({
@@ -199,7 +203,7 @@ export function customRipple<T extends HTMLElement = any>(inputOptions?: Partial
  * const event = {clientX: 0, clientY: 0};
  * const ref = document.createElement('div');
  * const centeredElement = centerElementToPointer(event, ref, element);
- * console.log(centeredElement.style.top); // 0px
+ * console.info(centeredElement.style.top); // 0px
  *
  * @author Pol Gubau Amores - https://polgubau.com
  */
@@ -223,9 +227,9 @@ function centerElementToPointer<T extends HTMLElement>(event: MinimalEvent, ref:
  * const event = {clientX: 0, clientY: 0};
  * const options = {duration: 1000, timingFunction: 'ease-in-out', className: 'my-ripple', opacity: 0.5};
  * const ripple = createRipple(element, event, options);
- * console.log(ripple.style.opacity); // 0.5
- * console.log(ripple.style.transition); // transform 600ms ease-in-out, opacity 650ms ease-in-out 130ms
- * console.log(ripple.style.transform); // translate(-50%, -50%) scale(1)
+ * console.info(ripple.style.opacity); // 0.5
+ * console.info(ripple.style.transition); // transform 600ms ease-in-out, opacity 650ms ease-in-out 130ms
+ * console.info(ripple.style.transform); // translate(-50%, -50%) scale(1)
  *
  * @author Pol Gubau Amores - https://polgubau.com
  */
@@ -274,7 +278,7 @@ function createRipple<T extends HTMLElement>(
  * const element = document.createElement('div');
  * const styles = [['color', 'red'], ['background-color', 'blue']];
  * const styledElement = applyStyles(styles, element);
- * console.log(styledElement.style.color); // red
+ * console.info(styledElement.style.color); // red
  *
  * @author Pol Gubau Amores - https://polgubau.com
  */
@@ -366,5 +370,10 @@ function createRippleContainer(className: string): HTMLDivElement {
  *  @see https://stackoverflow.com/a/4819886/13188385 - source
  */
 function isTouchDevice(): boolean {
-  return "ontouchstart" in window || navigator.maxTouchPoints > 0 || ((navigator as any)?.msMaxTouchPoints ?? 0 > 0);
+  return (
+    "ontouchstart" in window ||
+    navigator.maxTouchPoints > 0 ||
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    ((navigator as any)?.msMaxTouchPoints ?? false)
+  );
 }

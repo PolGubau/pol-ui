@@ -37,10 +37,13 @@ export const Progress: FC<ProgressProps> = ({
   const theme = mergeDeep(getTheme().progress, customTheme);
 
   return (
-    <div id={id} aria-label={label} role="progressbar" {...props} aria-valuenow={progress}>
-      <label className={theme.label} data-testid="ui-progress-label-container">
-        {label && <span data-testid="ui-progress-label">{label}</span>}
-      </label>
+    <div id={id} aria-label={label} {...props} aria-valuenow={progress}>
+      {label && (
+        <div className={theme.label} data-testid="ui-progress-label-container">
+          <span data-testid="ui-progress-label">{label}</span>
+        </div>
+      )}
+
       <div className={twMerge(theme.base, theme.size[size], theme.rounded[rounded], className)}>
         <motion.div
           initial={hasMotion ? { width: 0 } : false}
@@ -48,7 +51,7 @@ export const Progress: FC<ProgressProps> = ({
           exit={{ width: 0 }}
           transition={{ ease: "easeOut", duration: 0.5 }}
           className={twMerge(theme.bar, theme.rounded[rounded], theme.color[color], theme.size[size], barClassName)}
-        ></motion.div>
+        />
       </div>
     </div>
   );

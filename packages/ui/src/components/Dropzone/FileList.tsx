@@ -1,7 +1,8 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 import React from "react";
-import { TbX } from "react-icons/tb";
 import { Chip } from "../Chip";
-import { Tooltip } from "../Tooltip";
+import { Tooltip } from "../Tooltip/Tooltip";
 
 export interface FileListProps {
   files: File[];
@@ -14,6 +15,9 @@ export const FileList = React.memo((props: React.PropsWithChildren<FileListProps
     <ul className="flex flex-wrap justify-center gap-4">
       {files.map((file: File) => (
         <Tooltip
+          onClick={(e) => {
+            e.preventDefault();
+          }}
           label={
             <div className="flex justify-normal flex-col items-start gap-1">
               {/* try to show the file */}
@@ -74,19 +78,11 @@ export const FileList = React.memo((props: React.PropsWithChildren<FileListProps
             onClick={(e) => {
               e.preventDefault();
             }}
-            actions={[
-              {
-                icon: <TbX />,
-                onClick: (e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  setFiles(files.filter((f) => f.name !== file.name));
-                },
-              },
-            ]}
-          >
-            {file.name}
-          </Chip>
+            onDelete={() => {
+              setFiles(files.filter((f) => f !== file));
+            }}
+            label={file.name}
+          />
         </Tooltip>
       ))}
     </ul>

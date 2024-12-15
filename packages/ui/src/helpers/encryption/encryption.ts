@@ -11,7 +11,7 @@ type StringOrWordArray = string | WordArray;
  * @returns {string} - Encrypted text in base64
  * @example
  * ```javascript
- * console.log(encrypt('Hello World', 'key')) // 'W1tYXV0aF1d'
+ * console.info(encrypt('Hello World', 'key')) // 'W1tYXV0aF1d'
  * ```
  */
 export function encrypt(value: StringOrWordArray, key: StringOrWordArray): string {
@@ -28,8 +28,8 @@ export function encrypt(value: StringOrWordArray, key: StringOrWordArray): strin
  * @example
  * ```javascript
  * const encryptedText = encrypt('Hello World', 'key')
- * console.log(encryptedText) // 'W1tYXV0aF1d'
- * console.log(decrypt(encryptedText, 'key')) // 'Hello World'
+ * console.info(encryptedText) // 'W1tYXV0aF1d'
+ * console.info(decrypt(encryptedText, 'key')) // 'Hello World'
  * ```
  */
 export const decrypt = (encryptedText: CipherParams | string, key: StringOrWordArray): string => {

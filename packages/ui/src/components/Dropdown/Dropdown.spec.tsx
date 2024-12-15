@@ -61,8 +61,8 @@ describe("Components / Dropdown", () => {
       expect(dropdown()).not.toBeInTheDocument();
     });
 
-    describe("Type of button", async () => {
-      it("should be of type `button`", async () => {
+    describe("Type of button", () => {
+      it("should be of type `button`", () => {
         render(<TestDropdown />);
         expect(button()).toHaveAttribute("type", "button");
       });
@@ -74,7 +74,7 @@ describe("Components / Dropdown", () => {
         <DropdownItem
           label="Undo"
           onClick={() => {
-            console.log("Undo");
+            console.info("Undo");
           }}
           shortcut="Ctrl+Z"
         />

@@ -46,14 +46,14 @@ export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({ theme: custo
   return (
     <>
       <div className={theme.header.base}>
-        {weekDays.map((day, index) => (
-          <span key={index} className={theme.header.title}>
+        {weekDays.map((day) => (
+          <span key={day} className={theme.header.title}>
             {day}
           </span>
         ))}
       </div>
       <div className={theme.items.base}>
-        {[...Array(42)].map((_date, index) => {
+        {[...new Array(42)].map((_date, index) => {
           const currentDate = addDays(startDate, index - 1);
           const day = getFormattedDate(language, currentDate, {
             day: "numeric",
@@ -66,7 +66,7 @@ export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({ theme: custo
             <Button
               variant={"ghost"}
               disabled={isDisabled}
-              key={index}
+              key={_date.toString()}
               type="button"
               className={twMerge(
                 theme.items.item.base,

@@ -157,6 +157,8 @@ const useGesture = (config: GestureConfig) => {
             triggerGesture();
           }
           break;
+        default:
+          break;
       }
 
       gestureStateRef.current.gestureTriggered = true;

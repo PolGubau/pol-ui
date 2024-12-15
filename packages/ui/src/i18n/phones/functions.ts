@@ -14,7 +14,10 @@ import {
 } from "./metadata/countries";
 import validations from "./metadata/phone-validations.json";
 import timezones from "./metadata/timezones.json";
-
+const countryCodePattern = /\+\d+/;
+const areaCodePattern = /^\+\d+\s\(?(\d+)/;
+const nonNumericSuffixRegex = /[.\s\D]+$/;
+const phoneAreaCodeRegex = /(\(\d+)$/;
 const slots = new Set(".");
 
 export const getMetadata = (
@@ -45,14 +48,17 @@ export const getRawValue = (value: PhoneNumber | string): string => {
 
 export const displayFormat = (value: string) => {
   /** Returns the formatted value that can be displayed as an actual input value */
-  return value.replace(/[.\s\D]+$/, "").replace(/(\(\d+)$/, "$1)");
+
+  return value.replace(nonNumericSuffixRegex, "").replace(phoneAreaCodeRegex, "$1)");
 };
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export const cleanInput = (input: any, pattern: string) => {
   input = input.match(/\d/g) || [];
   return Array.from(pattern, (c) => (input[0] === c || slots.has(c) ? input.shift() || c : c));
 };
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export const getFormattedNumber = (rawValue: any, pattern?: string) => {
   /** Returns the reformatted input value based on the given pattern */
 
@@ -63,6 +69,7 @@ export const getFormattedNumber = (rawValue: any, pattern?: string) => {
 
 export const checkValidity = (metadata: PhoneNumber, strict = false) => {
   /** Checks if both the area code and phone number match the validation pattern */
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   const pattern = (validations as any)[metadata.isoCode as keyof typeof validations][Number(strict)];
   return new RegExp(pattern).test([metadata.areaCode, metadata.phoneNumber].filter(Boolean).join(""));
 };
@@ -76,12 +83,11 @@ export const getDefaultISO2Code = (): CountryCode => {
 export const parsePhoneNumber = (
   formattedNumber: string,
   countriesList: typeof countries = countries,
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   country: any = null,
 ): PhoneNumber => {
   const value = getRawValue(formattedNumber);
   const isoCode = getMetadata(value, countriesList, country)?.[0] || getDefaultISO2Code();
-  const countryCodePattern = /\+\d+/;
-  const areaCodePattern = /^\+\d+\s\(?(\d+)/;
 
   /** Parses the matching partials of the phone number by predefined regex patterns */
   const countryCodeMatch = formattedNumber ? formattedNumber.match(countryCodePattern) || [] : [];
@@ -103,6 +109,7 @@ export const useMask = (pattern: string) => {
   const backRef = useRef<boolean>(false);
 
   const clean = useCallback(
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     (input: any) => {
       return cleanInput(input, pattern.replaceAll(/\d/g, "."));
     },
@@ -116,6 +123,7 @@ export const useMask = (pattern: string) => {
   const prev = useMemo(
     (j = 0) => {
       return Array.from(pattern.replaceAll(/\d/g, "."), (c, i) => {
+        // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
         return slots.has(c) ? (j = i + 1) : j;
       });
     },
@@ -128,6 +136,7 @@ export const useMask = (pattern: string) => {
 
   const onInput = useCallback(
     ({ target }: ChangeEvent<HTMLInputElement>) => {
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       const [i, j] = [target.selectionStart, target.selectionEnd].map((i: any) => {
         i = clean(target.value.slice(0, i)).findIndex((c) => slots.has(c));
         return i < 0 ? prev[prev.length - 1] : backRef.current ? prev[i - 1] || first : i;

@@ -59,8 +59,8 @@ export const AllColors = () => (
 
 export const AllRounded = () => (
   <div className="flex flex-col gap-4">
-    {Object.keys(RoundedSizesEnum).map((rounded, index) => (
-      <Banner key={index} rounded={rounded as RoundedSizes}>
+    {Object.keys(RoundedSizesEnum).map((rounded) => (
+      <Banner key={rounded} rounded={rounded as RoundedSizes}>
         {rounded}
       </Banner>
     ))}

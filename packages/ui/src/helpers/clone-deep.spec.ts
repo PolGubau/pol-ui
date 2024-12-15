@@ -10,6 +10,7 @@ describe("Helpers / cloneDeep", () => {
   });
 
   it("should handle null gracefully", () => {
+    // biome-ignore lint/suspicious/noEvolvingTypes: <explanation>
     const source = null;
     const cloned = cloneDeep(source);
     expect(cloned).toBeNull();

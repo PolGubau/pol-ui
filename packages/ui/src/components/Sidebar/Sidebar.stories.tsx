@@ -301,12 +301,12 @@ export const CompleteExample = () => {
         </Sidebar>
         <div className="flex flex-col gap-5 p-8 w-full bg-primary-200  rounded-xl">
           <h2>Content</h2>
-          <div className="bg-primary-400 rounded-2xl w-full h-20"></div>
-          <div className="bg-primary-400 rounded-2xl w-full h-10"></div>
-          <div className="bg-primary-300 rounded-2xl w-full h-14"></div>
+          <div className="bg-primary-400 rounded-2xl w-full h-20" />
+          <div className="bg-primary-400 rounded-2xl w-full h-10" />
+          <div className="bg-primary-300 rounded-2xl w-full h-14" />
           <div className="w-full h-20 flex gap-5">
-            <div className="bg-primary-300 rounded-2xl w-full h-14"></div>
-            <div className="bg-primary-300 rounded-2xl w-full h-14"></div>
+            <div className="bg-primary-300 rounded-2xl w-full h-14" />
+            <div className="bg-primary-300 rounded-2xl w-full h-14" />
           </div>
         </div>
       </section>
@@ -367,12 +367,12 @@ export const WithSearch = () => {
         </div>
         <div className="flex flex-col gap-5 p-8 w-full bg-primary-200 m-4 rounded-xl">
           <h2>Content</h2>
-          <div className="bg-primary-400 rounded-2xl w-full h-20"></div>
-          <div className="bg-primary-400 rounded-2xl w-full h-10"></div>
-          <div className="bg-primary-300 rounded-2xl w-full h-14"></div>
+          <div className="bg-primary-400 rounded-2xl w-full h-20" />
+          <div className="bg-primary-400 rounded-2xl w-full h-10" />
+          <div className="bg-primary-300 rounded-2xl w-full h-14" />
           <div className="w-full h-20 flex gap-5">
-            <div className="bg-primary-300 rounded-2xl w-full h-14"></div>
-            <div className="bg-primary-300 rounded-2xl w-full h-14"></div>
+            <div className="bg-primary-300 rounded-2xl w-full h-14" />
+            <div className="bg-primary-300 rounded-2xl w-full h-14" />
           </div>
         </div>
       </section>

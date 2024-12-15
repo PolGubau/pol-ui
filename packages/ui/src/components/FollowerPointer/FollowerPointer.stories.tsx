@@ -70,6 +70,6 @@ CustomIcon.args = {
 export const CustomElement = Template.bind({});
 CustomElement.args = {
   content: <div className="bg-info p-2 rounded-md">🚀🚀🚀🔥🔥🔥</div>,
-  icon: <div className="bg-info-700 rounded-full w-5 h-5 mb-2 flex justify-center items-center"></div>,
+  icon: <div className="bg-info-700 rounded-full w-5 h-5 mb-2 flex justify-center items-center" />,
   children: <CompleteCard />,
 };

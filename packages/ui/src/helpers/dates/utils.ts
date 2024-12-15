@@ -235,7 +235,7 @@ export function getDaysOfRangeMonth(
   key += `|${weekStartsOn}`;
 
   if (rangeMonthsCache.has(key)) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
     return rangeMonthsCache.get(key)!;
   }
 

@@ -75,10 +75,10 @@ export const Kanban: React.FC<KanbanProps> = ({
   const debouncedDragging = useDebounce(dragging, deleteDelay);
   const shouldRenderDeleteButton = onDelete && debouncedDragging;
 
-  if (!columns.length) {
+  if (columns.length === 0) {
     throw new Error("Kanban must have at least one column 🤔🤔🤔");
   }
-  if (!cards.length) {
+  if (cards.length === 0) {
     throw new Error("Kanban must have at least one card 🤔🤔🤔");
   }
   if (deleteButton && !onDelete) {

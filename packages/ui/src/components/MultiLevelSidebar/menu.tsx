@@ -54,6 +54,7 @@ const ProjectNavigation = ({ selectedProject, menu, isOpen, setSelectedProject }
       <div className="flex flex-row w-full justify-between place-items-center">
         <h1 className="tracking-wide dark:text-neutral-100 text-neutral-900 text-lg">{selectedProject}</h1>
         <button
+          type="button"
           onClick={() => {
             setSelectedProject(null);
           }}
@@ -65,9 +66,10 @@ const ProjectNavigation = ({ selectedProject, menu, isOpen, setSelectedProject }
 
       <div className="flex flex-col gap-3">
         {searchedLinks?.map((props, index) => (
+          // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
           <NavigationLink key={index} {...props} />
         ))}
-        {!searchedLinks?.length && <p className="text-neutral-400">No results found</p>}
+        {searchedLinks?.length === 0 && <p className="text-neutral-400">No results found</p>}
       </div>
 
       {menu.children && (

@@ -133,7 +133,7 @@ AlertWithAllOptions.args = {
   icon: BiTrash,
   additionalContent: (
     <>
-      <div className="mb-4 mt-2 text-sm text-green-700 dark:text-green-800"></div>
+      <div className="mb-4 mt-2 text-sm text-green-700 dark:text-green-800" />
       <div className="flex gap-2">
         <Button color={ColorsEnum.error}>
           <HiX /> Delete Data

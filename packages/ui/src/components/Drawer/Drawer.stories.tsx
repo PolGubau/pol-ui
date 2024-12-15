@@ -61,7 +61,9 @@ export const Controlled = () => {
   const [open, setOpen] = React.useState(false);
   return (
     <>
-      <button onClick={() => setOpen(true)}>Open Drawer</button>
+      <button type="button" onClick={() => setOpen(true)}>
+        Open Drawer
+      </button>
       <pre> The drawer is {open ? "open" : "closed"} </pre>
       <Drawer open={open} onClose={() => setOpen(false)} label="Now the state commes from the other button">
         <SampleContent />
@@ -171,7 +173,7 @@ export const Snapped = () => {
               fill-rule="evenodd"
               d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
               clip-rule="evenodd"
-            ></path>
+            />
           </svg>
           <svg
             className="text-yellow-400 h-5 w-5 flex-shrink-0"
@@ -183,7 +185,7 @@ export const Snapped = () => {
               fill-rule="evenodd"
               d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
               clip-rule="evenodd"
-            ></path>
+            />
           </svg>
           <svg
             className="text-yellow-400 h-5 w-5 flex-shrink-0"
@@ -195,7 +197,7 @@ export const Snapped = () => {
               fill-rule="evenodd"
               d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
               clip-rule="evenodd"
-            ></path>
+            />
           </svg>
           <svg
             className="text-yellow-400 h-5 w-5 flex-shrink-0"
@@ -207,7 +209,7 @@ export const Snapped = () => {
               fill-rule="evenodd"
               d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
               clip-rule="evenodd"
-            ></path>
+            />
           </svg>
           <svg
             className="text-gray-300 h-5 w-5 flex-shrink-0"
@@ -219,7 +221,7 @@ export const Snapped = () => {
               fill-rule="evenodd"
               d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
               clip-rule="evenodd"
-            ></path>
+            />
           </svg>
         </div>{" "}
         <h1 className="text-2xl mt-2 font-medium">The Hidden Details</h1>
@@ -228,7 +230,7 @@ export const Snapped = () => {
           The world of user interface design is an intricate landscape filled with hidden details and nuance. In this
           course, you will learn something cool. To the untrained eye, a beautifully designed UI.
         </p>
-        <button className="bg-black text-gray-50 mt-8 rounded-md h-[48px] flex-shrink-0 font-medium">
+        <button className="bg-black text-gray-50 mt-8 rounded-md h-[48px] flex-shrink-0 font-medium" type="button">
           Buy for $199
         </button>
         <div className="mt-12">

@@ -15,6 +15,8 @@
  * const result = omit(obj, ['b', 'c']);
  * // result will be { a: 1 }
  */
+
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export function omit<T extends Record<string, any>, K extends keyof T>(obj: T, keys: K[]): Omit<T, K> {
   const result = { ...obj };
 

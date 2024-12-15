@@ -27,6 +27,7 @@ export const NavbarCollapse: FC<NavbarCollapseProps> = ({ links = [], linkClassN
           const { label, content, active, ...rest } = link;
 
           return (
+            // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
             <NavigationMenuItem key={index}>
               {link.content ? (
                 <>

@@ -155,6 +155,7 @@ export function CardStack({ children, className }: Readonly<CardStackProps>) {
         {items.map((item, index) => {
           return (
             <CardStackItem
+              // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
               key={index}
               index={index}
               sendToBottom={sendToBottom}

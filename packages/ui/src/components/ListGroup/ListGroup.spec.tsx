@@ -38,7 +38,9 @@ describe("Components / List group", () => {
     render(
       <>
         <TestListGroup />
-        <button aria-label="Outside">Outside</button>
+        <button aria-label="Outside" type="button">
+          Outside
+        </button>
       </>,
     );
     const outsideButton = screen.getByLabelText("Outside");

@@ -75,6 +75,7 @@ export const BubbleHeading: React.FC<BubbleHeadingProps> = ({
           onMouseLeave={() => {
             setHoveredIndex(null);
           }}
+          // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
           key={idx}
         >
           {child}

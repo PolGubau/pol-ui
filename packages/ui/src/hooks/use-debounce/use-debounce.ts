@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
  * const debouncedValue = useDebounce<string>(value);
  *
  * useEffect(() => {
- * console.log(debouncedValue);
+ * console.info(debouncedValue);
  * }, [debouncedValue]);
  *
  *

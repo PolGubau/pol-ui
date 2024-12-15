@@ -99,6 +99,7 @@ export const ParallaxText = <T extends ElementType = "span">({
   return (
     <motion.div className={twMerge(theme.base, className)} style={{ x }} {...props}>
       {Array.from({ length: renderedElements }).map((_, i) => (
+        // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
         <Component key={i}>{children}</Component>
       ))}
     </motion.div>

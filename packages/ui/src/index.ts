@@ -1,6 +1,8 @@
 // 1. Tipos y definiciones
 export * from "./types"; // Independiente y sin dependencias cruzadas
 
+export * from "./constants";
+
 export * from "./i18n"; // Generalmente no tienen dependencias internas
 
 // 2. Funciones helper

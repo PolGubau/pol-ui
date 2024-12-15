@@ -42,8 +42,8 @@ const MultiOption = ({ options = [], value = "", onChange }: MultiOptionProps) =
     return (
       <div className="flex flex-col gap-2">
         {options.map((option) => (
-          <div className="flex gap-2">
-            <Radio key={option} value={option} name={id} />
+          <div className="flex gap-2" key={option}>
+            <Radio value={option} name={id} />
             {option}
           </div>
         ))}

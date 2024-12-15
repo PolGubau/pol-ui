@@ -28,7 +28,7 @@ export default {
           />
           <section className="grid grid-cols-[auto,1fr] h-full pt-[60px]">
             <Story />
-            <div className="w-full h-full bg-primary-100"></div>
+            <div className="w-full h-full bg-primary-100" />
           </section>
         </div>
       );
@@ -43,7 +43,7 @@ const links: NavigationPropsLink[] = [
   {
     name: "Dashboard",
     navigate: () => {
-      console.log("Navigate to Dashboard");
+      console.info("Navigate to Dashboard");
     },
     icon: TbUser,
     active: true,
@@ -51,35 +51,35 @@ const links: NavigationPropsLink[] = [
   {
     name: "Projects",
     navigate: () => {
-      console.log("Navigate to Dashboard");
+      console.info("Navigate to Dashboard");
     },
     icon: TbFaceId,
   },
   {
     name: "Team",
     navigate: () => {
-      console.log("Navigate to Dashboard");
+      console.info("Navigate to Dashboard");
     },
     icon: TbActivityHeartbeat,
   },
   {
     name: "Calendar",
     navigate: () => {
-      console.log("Navigate to Dashboard");
+      console.info("Navigate to Dashboard");
     },
     icon: TbHammer,
   },
   {
     name: "Documents",
     navigate: () => {
-      console.log("Navigate to Dashboard");
+      console.info("Navigate to Dashboard");
     },
     icon: TbProgress,
   },
   {
     name: "Reports",
     navigate: () => {
-      console.log("Navigate to Dashboard");
+      console.info("Navigate to Dashboard");
     },
     icon: TbUniverse,
   },
@@ -92,21 +92,21 @@ const menus: NavigationMenuProps[] = [
       {
         name: "Project 1",
         navigate: () => {
-          console.log("Navigate to Project 1");
+          console.info("Navigate to Project 1");
         },
         icon: TbUser,
       },
       {
         name: "Project 2",
         navigate: () => {
-          console.log("Navigate to Project 2");
+          console.info("Navigate to Project 2");
         },
         icon: TbUser,
       },
       {
         name: "Project 3",
         navigate: () => {
-          console.log("Navigate to Project 3");
+          console.info("Navigate to Project 3");
         },
         icon: TbUser,
       },
@@ -143,21 +143,21 @@ const menus: NavigationMenuProps[] = [
       {
         name: "Team 1",
         navigate: () => {
-          console.log("Navigate to Team 1");
+          console.info("Navigate to Team 1");
         },
         icon: TbUser,
       },
       {
         name: "Team 2",
         navigate: () => {
-          console.log("Navigate to Team 2");
+          console.info("Navigate to Team 2");
         },
         icon: TbUser,
       },
       {
         name: "Team 3",
         navigate: () => {
-          console.log("Navigate to Team 3");
+          console.info("Navigate to Team 3");
         },
         icon: TbUser,
       },
@@ -171,21 +171,21 @@ const menus: NavigationMenuProps[] = [
       {
         name: "Calendar 1",
         navigate: () => {
-          console.log("Navigate to Calendar 1");
+          console.info("Navigate to Calendar 1");
         },
         icon: TbUser,
       },
       {
         name: "Calendar 2",
         navigate: () => {
-          console.log("Navigate to Calendar 2");
+          console.info("Navigate to Calendar 2");
         },
         icon: TbUser,
       },
       {
         name: "Calendar 3",
         navigate: () => {
-          console.log("Navigate to Calendar 3");
+          console.info("Navigate to Calendar 3");
         },
         icon: TbUser,
       },

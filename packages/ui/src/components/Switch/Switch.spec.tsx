@@ -8,13 +8,13 @@ import { Switch } from "./Switch";
 describe("Components / Toggle switch", () => {
   describe("A11y", () => {
     it('should have `role="switch"` by default', () => {
-      render(<Switch checked={false} label="Enable" onChange={console.log} />);
+      render(<Switch checked={false} label="Enable" onChange={console.info} />);
 
       expect(toggleSwitch()).toBeInTheDocument();
     });
 
     it("should have an accessible name", () => {
-      render(<Switch checked={false} label="Enable notifications" name="notifications" onChange={console.log} />);
+      render(<Switch checked={false} label="Enable notifications" name="notifications" onChange={console.info} />);
 
       expect(toggleSwitch()).toHaveAccessibleName("Enable notifications");
     });
@@ -68,7 +68,7 @@ describe("Components / Toggle switch", () => {
             handleSubmit();
           }}
         >
-          <Switch checked={false} label="Enable notifications" name="notifications" onChange={console.log} />
+          <Switch checked={false} label="Enable notifications" name="notifications" onChange={console.info} />
         </form>,
       );
 
@@ -117,7 +117,7 @@ describe("Components / Toggle switch", () => {
 
     it("should focus when `Tab` is pressed", async () => {
       const user = userEvent.setup();
-      render(<Switch checked={false} label="Enable notifications" name="notifications" onChange={console.log} />);
+      render(<Switch checked={false} label="Enable notifications" name="notifications" onChange={console.info} />);
 
       await user.tab();
 
@@ -128,7 +128,7 @@ describe("Components / Toggle switch", () => {
       const user = userEvent.setup();
       render(
         <form>
-          <Switch checked={false} label="Enable notifications" name="notifications" onChange={console.log} />
+          <Switch checked={false} label="Enable notifications" name="notifications" onChange={console.info} />
           <Input type="text" />
         </form>,
       );
@@ -143,7 +143,7 @@ describe("Components / Toggle switch", () => {
 
   describe("Props", () => {
     it("should allow HTML attributes for `<button>`s", () => {
-      render(<Switch checked={false} label="Enable" onChange={console.log} type="submit" />);
+      render(<Switch checked={false} label="Enable" onChange={console.info} type="submit" />);
 
       expect(toggleSwitch()).toHaveAttribute("type", "submit");
     });

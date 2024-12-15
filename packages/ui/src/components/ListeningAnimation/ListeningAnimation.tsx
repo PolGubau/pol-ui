@@ -25,8 +25,10 @@ const ListeningAnimation: React.FC<ListeningAnimationProps> = ({
 }) => {
   return (
     <div className={cn("gap-2 flex w-[100px] justify-center items-center", className)} {...rest}>
+      {/* biome-ignore lint/style/useConsistentBuiltinInstantiation: <explanation> */}
       {[...Array(dotsAmount)].map((_, index) => (
         <motion.div
+          // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
           key={index}
           className={cn("w-full aspect-square rounded-full bg-primary", itemClassName)}
           animate={

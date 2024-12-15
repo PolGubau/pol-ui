@@ -13,6 +13,7 @@ export interface LabelProps extends Omit<ComponentProps<"label">, "color"> {
   disabled?: boolean;
   theme?: DeepPartial<LabelTheme>;
   value?: string;
+  htmlFor: string;
 }
 
 /**
@@ -26,12 +27,14 @@ export const Label: FC<LabelProps> = ({
   disabled = false,
   theme: customTheme = {},
   value,
+  htmlFor,
   ...props
 }) => {
   const theme: LabelTheme = mergeDeep(getTheme().label, customTheme);
 
   return (
     <label
+      htmlFor={htmlFor}
       className={twMerge(theme.base, theme.colors[color], disabled && theme.disabled, props.className)}
       data-testid="ui-label"
       {...props}

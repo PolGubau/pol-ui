@@ -89,8 +89,4 @@ const TestAlert: FC<AlertProps> = (props: AlertProps) => {
 
 const alert = () => screen.getByRole("alert");
 
-const wrapper = () => screen.getByTestId("ui-alert-wrapper");
-
-const icon = () => screen.getByTestId("ui-alert-icon");
-
 const dismiss = () => screen.getByTestId("ui-alert-dismiss");

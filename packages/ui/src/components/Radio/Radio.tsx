@@ -42,6 +42,9 @@ const AnimatedCheckIcon = ({
             xmlns="http://www.w3.org/2000/svg"
             className={twMerge(theme.floating.svg, theme.check.color[color], "stroke-current")}
           >
+            <title>
+              <span>Check</span>
+            </title>
             <motion.path
               d="M2.5 9.5L8.5 15.5L21.5 2.5"
               animate={{ pathLength: 1 }}

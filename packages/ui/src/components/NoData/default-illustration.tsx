@@ -1,6 +1,7 @@
 import type { SVGProps } from "react";
 const DefaultIllustration = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 500" {...props}>
+    <title>Illustration</title>
     <g id="freepik--background-complete--inject-6">
       <polygon
         points="666.95 150.27 657.38 196.62 651.22 190.61 640.74 198.09 632.73 188.14 614.77 201.2 599.42 175.53 582.3 185.56 575.51 176.2 553.77 188.45 547.23 174.44 562.47 100.63 644.17 117.5 666.95 150.27"

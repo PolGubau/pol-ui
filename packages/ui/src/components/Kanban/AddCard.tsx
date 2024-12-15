@@ -31,7 +31,7 @@ export const AddKanbanCard = ({
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!text.trim().length) {
+    if (text.trim().length === 0) {
       return;
     }
 
@@ -65,7 +65,7 @@ export const AddKanbanCard = ({
             >
               <span className="first-letter:uppercase">{labels.cancel}</span>
             </Button>
-            <Button color={ColorsEnum.primary} type="submit" size="sm" disabled={!text.trim().length}>
+            <Button color={ColorsEnum.primary} type="submit" size="sm" disabled={text.trim().length === 0}>
               <span className="first-letter:uppercase">{labels.add}</span>
               <TbPlus />
             </Button>

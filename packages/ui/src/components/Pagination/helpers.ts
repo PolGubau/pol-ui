@@ -3,5 +3,5 @@ export const range: (start: number, end: number) => number[] = (start, end) => {
     return [];
   }
 
-  return [...Array(end - start + 1).keys()].map((key: number): number => key + start);
+  return [...new Array(end - start + 1).keys()].map((key: number): number => key + start);
 };

@@ -74,7 +74,7 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
     }, []);
 
     const expandSpecificTargetedElements = useCallback((elements?: TreeViewElement[], selectId?: string) => {
-      if (!elements || !selectId) {
+      if (!(elements && selectId)) {
         return;
       }
       const findParent = (currentElement: TreeViewElement, currentPath: string[] = []) => {

@@ -96,7 +96,7 @@ export const OtpInput = ({
   };
 
   const isInputValueValid = (value: string) => {
-    const isTypeValid = isInputNum ? !isNaN(Number(value)) : typeof value === "string";
+    const isTypeValid = isInputNum ? !Number.isNaN(Number(value)) : typeof value === "string";
     return isTypeValid && value.trim().length === 1;
   };
 
@@ -204,7 +204,7 @@ export const OtpInput = ({
       .split("");
 
     // Prevent pasting if the clipboard data contains non-numeric values for number inputs
-    if (isInputNum && pastedData.some((value) => isNaN(Number(value)))) {
+    if (isInputNum && pastedData.some((value) => Number.isNaN(Number(value)))) {
       return;
     }
 
@@ -231,6 +231,7 @@ export const OtpInput = ({
               key={index}
               value={getOtpValue()[index] ?? ""}
               placeholder={getPlaceholderValue()?.[index] ?? undefined}
+              // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
               ref={(element) => (inputRefs.current[index] = element)}
               onChange={handleChange}
               onFocus={(event) => {

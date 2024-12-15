@@ -11,6 +11,7 @@ describe("Components / Button", () => {
     });
 
     it("should be able to use any other role permitted for `Slider`", () => {
+      // biome-ignore lint/a11y/useValidAriaRole: <explanation>
       render(<Slider role="rangeinput" />);
       expect(TestSlider("rangeinput")).toBeInTheDocument();
     });

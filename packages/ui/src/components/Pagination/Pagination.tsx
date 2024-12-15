@@ -69,10 +69,8 @@ export const Pagination: FC<PaginationProps> = ({
     <nav className={cn(theme.base, className)} {...props}>
       {hasLabels && (
         <div className={theme.layout.table.base}>
-          {labels.showing} <span className={theme.layout.table.span}>{firstPage}</span> {labels.to}
-          {` `}
-          <span className={theme.layout.table.span}>{lastPage}</span> {labels.of}
-          {` `}
+          {labels.showing} <span className={theme.layout.table.span}>{firstPage}</span> {labels.to}{" "}
+          <span className={theme.layout.table.span}>{lastPage}</span> {labels.of}{" "}
           <span className={theme.layout.table.span}>{totalPages}</span> {labels.entries}
         </div>
       )}

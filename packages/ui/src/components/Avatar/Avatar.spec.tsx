@@ -39,7 +39,8 @@ describe("Components / Avatar", () => {
     it("should support custom image elements", () => {
       render(
         <PoluiProvider>
-          <Avatar img={(props) => <img alt="" referrerPolicy="no-referrer" {...props} />} />
+          {/* biome-ignore lint/a11y/useAltText: <explanation> */}
+          <Avatar img={(props) => <img referrerPolicy="no-referrer" {...props} />} />
         </PoluiProvider>,
       );
 

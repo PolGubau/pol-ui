@@ -21,6 +21,7 @@ export type Props = Readonly<{
   live?: boolean;
   minPeriod?: number;
   maxPeriod?: number;
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   component?: string | React.ComponentType<any>;
   title?: string;
   formatter?: Formatter;
@@ -87,6 +88,7 @@ export default function TimeAgo({
   }, [date, now]);
 
   const Komponent: React.ElementType =
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     typeof component === "string" || typeof component === "function" ? component : ("time" as any);
 
   const then = dateParser(date)?.valueOf();

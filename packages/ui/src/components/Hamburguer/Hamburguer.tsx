@@ -101,6 +101,7 @@ export const Hamburguer = ({
         fill="none"
         className={cn(theme.base, theme.color[color], iconClassName)}
       >
+        <title>{open ? "Close" : "Open"} menu</title>
         <motion.line x1="0" x2={unitWidth} y1="0" y2="0" variants={top} {...lineProps} />
         <motion.line x1="0" x2={unitWidth} y1={unitHeight / 2} y2={unitHeight / 2} variants={center} {...lineProps} />
         <motion.line x1="0" x2={unitWidth} y1={unitHeight} y2={unitHeight} variants={bottom} {...lineProps} />

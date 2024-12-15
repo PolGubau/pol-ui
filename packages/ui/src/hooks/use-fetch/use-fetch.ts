@@ -51,7 +51,7 @@ function useFetch<T = unknown>(url: string, options?: RequestInit): FetchState<T
           isLoading: false,
           error: null,
           isCached,
-          refetch: () => void fetchData(true),
+          refetch: () => fetchData(true),
         });
       } catch (error) {
         setState((prevState) => ({
@@ -67,7 +67,7 @@ function useFetch<T = unknown>(url: string, options?: RequestInit): FetchState<T
 
   // Triggering the fetch operation when the URL or options change
   useEffect(() => {
-    void fetchData();
+    fetchData();
   }, [fetchData]);
 
   return state;

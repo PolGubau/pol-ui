@@ -19,6 +19,7 @@ export default {
 } as Meta;
 
 const dummyContent = Array.from({ length: 10 }, (_, i) => (
+  // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
   <p key={i} className="flex justify-center items-center p-4">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas
     congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero

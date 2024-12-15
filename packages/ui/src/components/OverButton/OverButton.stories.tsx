@@ -40,7 +40,6 @@ export function Default() {
         >
           <textarea
             className="h-full w-full resize-none rounded-md bg-transparent px-4 py-3 text-sm outline-none"
-            autoFocus={true}
             value={note}
             onChange={(e) => setNote(e.target.value)}
           />

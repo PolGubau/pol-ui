@@ -54,6 +54,7 @@ export const CustomImage: StoryFn<AvatarProps> = (props) => (
         <picture>
           <source media="(min-width: 900px)" srcSet="https://avatars.githubusercontent.com/u/63197171?v=4" />
           <source media="(min-width: 480px)" srcSet="https://avatars.githubusercontent.com/u/63197171?v=4" />
+          {/* biome-ignore lint/a11y/useAltText: <explanation> */}
           <img alt="profile" src="https://avatars.githubusercontent.com/u/63197171?v=4" {...props} />
         </picture>
       )}

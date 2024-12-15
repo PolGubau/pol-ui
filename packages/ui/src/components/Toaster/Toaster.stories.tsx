@@ -94,10 +94,10 @@ export const Examples: StoryFn<ToasterProps> = () => {
         onClick={() =>
           toast("I will autoclose in 5 seconds", {
             onDismiss: (t) => {
-              alert("You dismissed " + t.title);
+              alert(`You dismissed ${t.title}`);
             },
             onAutoClose: (t) => {
-              alert("autoclosed " + t.title);
+              alert(`autoclosed ${t.title}`);
             },
           })
         }

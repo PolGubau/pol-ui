@@ -35,7 +35,7 @@ const dashProps = (percentage: number) => {
   };
 };
 
-export interface GaugeProps extends React.SVGProps<SVGSVGElement> {
+export interface GaugeProps extends Omit<React.SVGProps<SVGSVGElement>, "color"> {
   max?: number;
   min?: number;
   value: number;
@@ -72,7 +72,7 @@ const Gauge: React.FC<GaugeProps> = ({
 
   const parsedPercent = (percent * 100).toFixed(0) ?? min;
 
-  const dShape = `M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92`;
+  const dShape = "M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92";
   return (
     <div className="relative flex justify-center items-center">
       <div>
@@ -86,6 +86,7 @@ const Gauge: React.FC<GaugeProps> = ({
           className={cn("w-24", rest.className)}
           {...rest}
         >
+          <title>Gauge</title>
           <defs>
             <mask id={id}>
               <path
@@ -98,7 +99,7 @@ const Gauge: React.FC<GaugeProps> = ({
                 d={dShape}
                 strokeWidth={strokeWidth}
                 fillOpacity="0"
-              ></path>
+              />
             </mask>
           </defs>
           <path
@@ -107,7 +108,7 @@ const Gauge: React.FC<GaugeProps> = ({
             strokeWidth={strokeWidth}
             fillOpacity="0"
             className="stroke-secondary-100"
-          ></path>
+          />
           <path
             className={cn(theme.color[color])}
             style={{
@@ -118,7 +119,7 @@ const Gauge: React.FC<GaugeProps> = ({
             strokeWidth={strokeWidth}
             fillOpacity="0"
             mask={`url(#${id})`}
-          ></path>
+          />
         </svg>
       </div>
       <div className="absolute w-full top-0 flex items-center justify-center h-full">

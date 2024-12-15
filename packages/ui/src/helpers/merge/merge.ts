@@ -19,7 +19,7 @@
  * const source = { b: { y: 3, z: 4 }, c: 5 };
  *
  * const result = merge(target, source);
- * console.log(result);
+ * console.info(result);
  * // Output: { a: 1, b: { x: 1, y: 3, z: 4 }, c: 5 }
  *
  * @example
@@ -27,7 +27,7 @@
  * const source = { a: [3], b: { y: 2 } };
  *
  * const result = merge(target, source);
- * console.log(result);
+ * console.info(result);
  * // Output: { a: [3, 2], b: { x: 1, y: 2 } }
  *
  * @example
@@ -35,7 +35,7 @@
  * const source = { a: [1, 2, 3] };
  *
  * const result = merge(target, source);
- * console.log(result);
+ * console.info(result);
  * // Output: { a: [1, 2, 3] }
  */
 
@@ -43,12 +43,11 @@ export function isObjectLike(value: unknown): value is object {
   return typeof value === "object" && value !== null;
 }
 export function merge<T, S>(target: T, source: S): T & S;
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export function merge(target: any, source: any) {
   const sourceKeys = Object.keys(source);
 
-  for (let i = 0; i < sourceKeys.length; i++) {
-    const key = sourceKeys[i];
-
+  for (const key of sourceKeys) {
     const sourceValue = source[key];
     const targetValue = target[key];
 

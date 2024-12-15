@@ -41,7 +41,7 @@ export const Default: React.FC = () => {
   });
 
   const handleShare = () => {
-    void share({
+    share({
       title: "Check this website",
       text: "Check how cool Pol's portfolio is! 🚀",
       url: "https://polgubau.com",
@@ -54,7 +54,7 @@ export const Default: React.FC = () => {
 
   return (
     <div>
-      <button onClick={handleShare} disabled={!isSupported}>
+      <button onClick={handleShare} disabled={!isSupported} type="button">
         {isSupported ? "Share this content" : "Sharing not supported"}
       </button>
       {isShared && <p>Content has been shared!</p>}

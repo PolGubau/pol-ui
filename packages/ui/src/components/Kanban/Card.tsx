@@ -7,8 +7,7 @@ import { KanbanIndicator } from "./KanbanDropIndicator";
 import type { KanbanTheme } from "./theme";
 
 export interface CompleteKanbanCardProps {
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  handleDragStart: Function;
+  handleDragStart: (e: MouseEvent | TouchEvent | PointerEvent, card: KanbanCardProps) => void;
   setDragging: (value: boolean) => void;
   dragable?: boolean;
   card: KanbanCardProps;
@@ -39,7 +38,7 @@ export const KanbanCard = ({
         onClick={card.onClick}
         layoutId={id}
         draggable={dragable}
-        onDragStart={(e) => handleDragStart(e, { title, id, column })}
+        onDragStart={(e) => handleDragStart(e, card)}
         onDragEnd={() => {
           setDragging(false);
         }}

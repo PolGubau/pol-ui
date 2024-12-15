@@ -30,6 +30,7 @@ export const UnderSheet = (props: UnderSheetProps) => {
   const actionAreaHeight = useTransform(contentHeight, [EXPANDED, COLLAPSED], [92, 20]);
   const actionButtonSize = useTransform(contentHeight, [EXPANDED, COLLAPSED], [28, 4]);
   const actionIconScale = useTransform(contentHeight, [EXPANDED, COLLAPSED], [1, 0]);
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   const onDragAdjustHeight = (_event: any, info: { delta: { y: number } }) => {
     const newHeight = contentHeight.get() + info.delta.y;
 

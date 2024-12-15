@@ -20,7 +20,7 @@ export default {
 
 export const Default = () => {
   return (
-    <button className="group relative overflow-hidden h-10 w-[60px] bg-gray-100">
+    <button className="group relative overflow-hidden h-10 w-[60px] bg-gray-100" type="button">
       <FocusEffect />
       Tab me
     </button>

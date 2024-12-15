@@ -38,6 +38,7 @@ export const DatepickerViewsMonth: FC<DatepickerViewsMonthsProps> = ({ theme: cu
 
   return (
     <div className={theme.items.base}>
+      {/* biome-ignore lint/style/useConsistentBuiltinInstantiation: <explanation> */}
       {[...Array(12)].map((_month, index) => {
         const newDate = new Date(viewDate.getTime());
         newDate.setMonth(index);
@@ -50,7 +51,7 @@ export const DatepickerViewsMonth: FC<DatepickerViewsMonthsProps> = ({ theme: cu
           <Button
             variant={"ghost"}
             disabled={isDisabled}
-            key={index}
+            key={_month}
             type="button"
             className={twMerge(
               theme.items.item.base,

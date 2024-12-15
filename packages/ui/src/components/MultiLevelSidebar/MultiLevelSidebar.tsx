@@ -60,7 +60,7 @@ const svgVariants = {
 };
 
 const MultiLevelSidebar = ({ links, menus, ...rest }: MultiLevelSidebarProps) => {
-  const [isOpen, setIsOpen] = useState(rest.defaultOpen || false);
+  const [isOpen, setIsOpen] = useState(rest.defaultOpen ?? false);
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
 
   const containerControls = useAnimationControls();
@@ -93,11 +93,18 @@ const MultiLevelSidebar = ({ links, menus, ...rest }: MultiLevelSidebarProps) =>
       >
         <div className="p-2 flex flex-col gap-2 h-full">
           {links.map((props, index) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
             <NavigationLink key={index} {...props} />
           ))}
           <Divider />
           {menus?.map((menu, index) => (
-            <ProjectLink {...menu} setSelectedProject={setSelectedProject} key={index} isOpen={isOpen} />
+            <ProjectLink
+              {...menu}
+              setSelectedProject={setSelectedProject}
+              // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+              key={index}
+              isOpen={isOpen ?? false}
+            />
           ))}
         </div>
 
@@ -123,6 +130,7 @@ const MultiLevelSidebar = ({ links, menus, ...rest }: MultiLevelSidebarProps) =>
               strokeWidth={1}
               stroke="currentColor"
             >
+              <title id="open-close">Open/Close</title>
               <motion.path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -144,7 +152,7 @@ const MultiLevelSidebar = ({ links, menus, ...rest }: MultiLevelSidebarProps) =>
             menu={selectedMenu}
             selectedProject={selectedProject}
             setSelectedProject={setSelectedProject}
-            isOpen={isOpen}
+            isOpen={isOpen ?? false}
           />
         )}
       </AnimatePresence>

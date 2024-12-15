@@ -115,8 +115,8 @@ DropdownExample.args = {
 export const AllColors = () => {
   return (
     <div className="flex flex-wrap gap-4 items-center justify-center p-3  rounded-3xl">
-      {Object.keys(ColorsEnum).map((color, index) => (
-        <Chip key={index} color={color as Colors}>
+      {Object.keys(ColorsEnum).map((color) => (
+        <Chip key={color} color={color as Colors}>
           {color}
         </Chip>
       ))}

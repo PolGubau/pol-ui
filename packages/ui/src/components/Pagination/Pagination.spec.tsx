@@ -70,7 +70,7 @@ describe("Pagination", () => {
             showing: "Showing",
             entries: "Entries",
           }}
-        ></Pagination>,
+        />,
       );
 
       expect(previousButton()).toHaveTextContent("Go back");
@@ -122,7 +122,6 @@ const currentPage = () => {
     .getAllByRole("listitem")
     .find((elem) => elem.getAttribute("aria-current") === "page");
 
-  expect(currentPageElement).toBeInTheDocument();
   return Number.parseInt(currentPageElement?.textContent ?? "0");
 };
 

@@ -9,7 +9,7 @@ export const durationRegex =
 export const emailRegex = /^(?!\.)(?!.*\.\.)([A-Z0-9_'+\-.]*)[A-Z0-9_+-]@([A-Z0-9][A-Z0-9-]*\.)+[A-Z]{2,}$/i;
 
 // from https://thekevinscott.com/emojis-in-javascript/#writing-a-regular-expression
-export const _emojiRegex = `^(\\p{Extended_Pictographic}|\\p{Emoji_Component})+$`;
+export const _emojiRegex = "^(\\p{Extended_Pictographic}|\\p{Emoji_Component})+$";
 export const emojiRegex = new RegExp(_emojiRegex, "u");
 
 // faster, simpler, safer
@@ -25,7 +25,9 @@ export const base64Regex = /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-
 // simple
 // export const dateRegexSource = `\\d{4}-\\d{2}-\\d{2}`;
 // no leap year validation
-export const dateRegexSourceNoLeapYear = `\\d{4}-((0[13578]|10|12)-31|(0[13-9]|1[0-2])-30|(0[1-9]|1[0-2])-(0[1-9]|1\\d|2\\d))`;
+export const dateRegexSourceNoLeapYear =
+  "\\d{4}-((0[13578]|10|12)-31|(0[13-9]|1[0-2])-30|(0[1-9]|1[0-2])-(0[1-9]|1\\d|2\\d))";
 // with leap year validation
-export const dateRegexSource = `((\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-((0[13578]|1[02])-(0[1-9]|[12]\\d|3[01])|(0[469]|11)-(0[1-9]|[12]\\d|30)|(02)-(0[1-9]|1\\d|2[0-8])))`;
+export const dateRegexSource =
+  "((\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-((0[13578]|1[02])-(0[1-9]|[12]\\d|3[01])|(0[469]|11)-(0[1-9]|[12]\\d|30)|(02)-(0[1-9]|1\\d|2[0-8])))";
 export const dateRegex = new RegExp(`^${dateRegexSource}$`);

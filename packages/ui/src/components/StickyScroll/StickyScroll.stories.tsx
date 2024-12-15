@@ -39,8 +39,8 @@ export const Simple = () => {
     <div className="">
       <StickyScroll colors={["#ffffff", "#b2b2b2", "#656565", "#181818"]}>
         <div className="  relative flex flex-col  ">
-          {content.map((item, index) => (
-            <div key={item.title + index} className="grid h-screen place-items-center">
+          {content.map((item) => (
+            <div key={item.title} className="grid h-screen place-items-center">
               <h2>{item.title}</h2>
             </div>
           ))}
@@ -59,6 +59,7 @@ export const BetweenContent = () => {
         <div className="div relative flex items-start px-4">
           <div className="max-w-4xl flex flex-col gap-40 pt-40 w-full ">
             {content.map((item, index) => (
+              // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
               <div key={item.title + index} className="grid grid-cols-2 gap-10">
                 <div className="flex flex-col gap-4">
                   <h2 className="text-2xl font-bold text-slate-100">{item.title}</h2>

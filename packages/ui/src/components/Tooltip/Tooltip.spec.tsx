@@ -6,7 +6,7 @@ describe("Tooltip Component", () => {
   it("renders the tooltip content when triggered", async () => {
     render(
       <Tooltip label="Tooltip content">
-        <button>Hover me</button>
+        <button type="button">Hover me</button>
       </Tooltip>,
     );
 
@@ -24,7 +24,7 @@ describe("Tooltip Component", () => {
 
     const { rerender } = render(
       <Tooltip label="Tooltip content 1" open={false} onOpenChange={onOpenChange}>
-        <button>Hover me</button>
+        <button type="button">Hover me</button>
       </Tooltip>,
     );
 
@@ -34,7 +34,7 @@ describe("Tooltip Component", () => {
     // Update the prop to open the tooltip
     rerender(
       <Tooltip label="Tooltip content 2" open={true} onOpenChange={onOpenChange}>
-        <button>Hover me</button>
+        <button type="button">Hover me</button>
       </Tooltip>,
     );
 
@@ -46,7 +46,7 @@ describe("Tooltip Component", () => {
     // Update the prop to close the tooltip
     rerender(
       <Tooltip label="Tooltip content 3" open={false} onOpenChange={onOpenChange}>
-        <button>Hover me</button>
+        <button type="button">Hover me</button>
       </Tooltip>,
     );
 
@@ -59,7 +59,7 @@ describe("Tooltip Component", () => {
   it("renders with an arrow by default", async () => {
     render(
       <Tooltip label="Tooltip content">
-        <button>Hover me</button>
+        <button type="button">Hover me</button>
       </Tooltip>,
     );
 
@@ -76,7 +76,7 @@ describe("Tooltip Component", () => {
   it("renders without an arrow when the arrow prop is false", async () => {
     render(
       <Tooltip label="Tooltip content" arrow={false}>
-        <button>Hover me</button>
+        <button type="button">Hover me</button>
       </Tooltip>,
     );
 
@@ -102,7 +102,7 @@ describe("Tooltip Component", () => {
 
     render(
       <Tooltip label="Tooltip content" theme={customTheme}>
-        <button>Hover me</button>
+        <button type="button">Hover me</button>
       </Tooltip>,
     );
 

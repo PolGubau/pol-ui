@@ -88,11 +88,11 @@ const useSpeechToText = ({
         const result = event.results[i];
         // If the result is final, append to the final transcript
         if (result.isFinal) {
-          finalTranscript += result[0].transcript + " ";
+          finalTranscript += `${result[0].transcript} `;
           setLastProcessedIndex(i + 1);
         } else {
           // Otherwise, append to the interim transcript
-          interimTranscript += result[0].transcript + " ";
+          interimTranscript += `${result[0].transcript} `;
         }
       }
 
@@ -117,7 +117,7 @@ const useSpeechToText = ({
   }, [recognition, isListening]);
 
   const stop = useCallback(() => {
-    if (!recognition || !isListening) {
+    if (!(recognition && isListening)) {
       return;
     }
     recognition.stop();
@@ -136,7 +136,7 @@ const useSpeechToText = ({
     recognition.maxAlternatives = maxAlternatives;
     recognition.onresult = handleResult;
     recognition.onerror = (event) => {
-      onError?.("Errror " + JSON.stringify(event));
+      onError?.(`Errror ${JSON.stringify(event)}`);
     };
     recognition.onend = () => {
       setIsListening(false);

@@ -4,6 +4,9 @@
   "linter": {
     "rules": {
       "performance": {
+        "noAccumulatingSpread": {
+          "level": "off"
+        },
         "noReExportAll": {
           "level": "off"
         },
@@ -12,10 +15,20 @@
         }
       },
       "correctness": {
+        "noNodejsModules": "off",
+        "useExhaustiveDependencies": "off",
         "useImportExtensions": "off"
       },
-
+      "suspicious": {
+        "noConsole": "off",
+        "noImplicitAnyLet": "off"
+      },
       "style": {
+        "noParameterAssign": "off",
+        "noUnusedTemplateLiteral": {
+          "fix": "safe",
+          "level": "warn"
+        },
         "useBlockStatements": {
           "fix": "safe",
           "level": "warn"

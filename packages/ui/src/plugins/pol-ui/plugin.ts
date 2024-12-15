@@ -262,28 +262,35 @@ export const poluiPlugin = (config: CustomPluginConfig = {}): ReturnType<typeof 
           colors: {
             ...parsedColors,
           },
+          // biome-ignore lint/suspicious/noExplicitAny: <explanation>
           animationDelay: ({ theme }: { theme: any }): any => ({
             ...theme("transitionDelay"),
           }),
+          // biome-ignore lint/suspicious/noExplicitAny: <explanation>
           animationDuration: ({ theme }: { theme: any }): any => ({
             0: "0ms",
             ...theme("transitionDuration"),
           }),
+          // biome-ignore lint/suspicious/noExplicitAny: <explanation>
           animationTimingFunction: ({ theme }: { theme: any }): any => ({
             ...theme("transitionTimingFunction"),
           }),
+          // biome-ignore lint/suspicious/noExplicitAny: <explanation>
           animationOpacity: ({ theme }: { theme: any }): any => ({
             DEFAULT: 0,
             ...theme("opacity"),
           }),
+          // biome-ignore lint/suspicious/noExplicitAny: <explanation>
           animationTranslate: ({ theme }: { theme: any }): any => ({
             DEFAULT: "100%",
             ...theme("translate"),
           }),
+          // biome-ignore lint/suspicious/noExplicitAny: <explanation>
           animationScale: ({ theme }: { theme: any }): any => ({
             DEFAULT: 0,
             ...theme("scale"),
           }),
+          // biome-ignore lint/suspicious/noExplicitAny: <explanation>
           animationRotate: ({ theme }: { theme: any }): any => ({
             DEFAULT: "30deg",
             ...theme("rotate"),

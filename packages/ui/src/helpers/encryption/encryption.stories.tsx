@@ -25,11 +25,11 @@ export default {
 export const Default = () => {
   const [value, setValue] = useState("Hello there");
   const supersecretkey = "supersecretkey";
-  const handleEncrypt = async () => {
+  const handleEncrypt = () => {
     const encrypted = encrypt(value, supersecretkey);
     setValue(encrypted);
   };
-  const handleDecrypt = async () => {
+  const handleDecrypt = () => {
     const decrypted = decrypt(value, supersecretkey);
     setValue(decrypted);
   };

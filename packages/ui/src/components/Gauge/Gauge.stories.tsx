@@ -1,7 +1,7 @@
 import type { Meta } from "@storybook/react";
 import React from "react";
 
-import { ColorsEnum } from "../../types";
+import { type Colors, ColorsEnum } from "../../types";
 import Gauge from "./Gauge";
 
 export default {
@@ -45,7 +45,7 @@ export const AllColors = () => {
   return (
     <div className="flex gap-4">
       {Object.keys(ColorsEnum).map((color) => (
-        <Gauge key={color} value={55} color={color as any} />
+        <Gauge key={color} value={55} color={color as Colors} />
       ))}
     </div>
   );

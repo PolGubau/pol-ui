@@ -10,7 +10,7 @@ export const BooleanLoadingCard = () => {
           <h5 className="text-sm w-fit bg-secondary/20 rounded-full text-transparent">lorem pisum lorem epson</h5>
         </header>
 
-        <Switch disabled={true} checked={false} onChange={() => {}} />
+        <Switch disabled={true} checked={false} onChange={() => null} />
       </div>
     </Card>
   );

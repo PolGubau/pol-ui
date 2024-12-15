@@ -1,9 +1,17 @@
-import React, { useId } from "react";
+import React, { useEffect, useId } from "react";
+import { RiUploadCloudFill } from "react-icons/ri";
+import { mimeTypesMap } from "../../constants/mimeTypesMap";
 import { cn, mergeDeep } from "../../helpers";
+import { useTranslate } from "../../hooks";
 import { getTheme } from "../../theme-store";
 import type { DeepPartial } from "../../types";
-import { toast } from "../Toaster";
+import { toast } from "../Toaster/Toaster";
 import type { DropzoneTheme } from "./theme";
+
+export interface ImportErrorState {
+  type: "fileType" | "upload" | "network" | null; // The error type
+  message: string | null; // The error message
+}
 
 // Define interface for component props/api:
 export interface DropzoneProps {
@@ -19,7 +27,10 @@ export interface DropzoneProps {
   className?: string;
   disabledClassName?: string;
   activeClassName?: string;
+  title?: string;
   theme?: DeepPartial<DropzoneTheme>;
+  error?: ImportErrorState | null;
+  setError?: (error: ImportErrorState | null) => void;
 }
 
 /**
@@ -43,6 +54,9 @@ export const Dropzone = React.memo((props: React.PropsWithChildren<DropzoneProps
     disabledClassName,
     activeClassName = "",
     theme: customTheme = {},
+    title,
+    error,
+    setError,
   } = props;
 
   // Create state to keep track when dropzone is active/non-active:
@@ -50,12 +64,17 @@ export const Dropzone = React.memo((props: React.PropsWithChildren<DropzoneProps
   // Prepare ref for dropzone element:
   const dropZoneRef = React.useRef<null | HTMLLabelElement>(null);
 
+  const { t } = useTranslate();
+
   // Create helper method to map file list to array of files:
   const mapFileListToArray = (files: FileList) => {
-    const array = [];
+    const array: File[] = [];
 
     for (let i = 0; i < files.length; i++) {
-      array.push(files.item(i));
+      const file = files.item(i);
+      if (file) {
+        array.push(file);
+      }
     }
 
     return array;
@@ -104,6 +123,7 @@ export const Dropzone = React.memo((props: React.PropsWithChildren<DropzoneProps
   );
 
   // Create handler for drop event:
+
   const handleDrop = React.useCallback(
     (event: DragEvent) => {
       event.preventDefault();
@@ -122,17 +142,46 @@ export const Dropzone = React.memo((props: React.PropsWithChildren<DropzoneProps
           // filtering the accept files
 
           if (accept) {
-            const acceptedFiles = filteredFiles.filter((file) => file.type.match(accept));
-            const rejectedFiles = filteredFiles.filter((file) => !file.type.match(accept));
+            // Convert accept string into an array of valid extensions (e.g., .csv, .pdf)
+            const acceptedExtensions = accept.split(",").map((ext) => ext.trim());
 
-            rejectedFiles.length > 0 &&
-              toast.error("Only " + accept + " files allowed.", {
-                description: `Rejected files: ${rejectedFiles.map((f) => f.name)} `,
+            // Define the corresponding MIME types for each extension
+
+            const acceptedFiles = filteredFiles.filter((file) => {
+              // Check if the file matches either the extension or the MIME type
+              const matchesExtension = acceptedExtensions.some((ext) => file.name.endsWith(ext));
+              const matchesMimeType = acceptedExtensions.some((ext) => file.type === mimeTypesMap[ext]);
+
+              return matchesExtension || matchesMimeType; // Only accept files that match either condition
+            });
+
+            const rejectedFiles = filteredFiles.filter((file) => {
+              // Reject files that do not match either the extension or the MIME type
+              const matchesExtension = acceptedExtensions.some((ext) => file.name.endsWith(ext));
+              const matchesMimeType = acceptedExtensions.some((ext) => file.type === mimeTypesMap[ext]);
+
+              return !(matchesExtension || matchesMimeType); // Reject if neither condition matches
+            });
+
+            if (rejectedFiles.length > 0) {
+              setError?.({
+                type: "fileType",
+                message: `Only ${accept} files allowed.`,
               });
 
-            onFilesDrop?.(multiple ? acceptedFiles : acceptedFiles.slice(0, 1));
-          } else {
-            filteredFiles && onFilesDrop?.(multiple ? filteredFiles : filteredFiles.slice(0, 1));
+              toast.error(`Only ${accept} files allowed.`, {
+                description: `Rejected files: ${rejectedFiles.map((f) => f.name).join(", ")}`,
+              });
+            } else {
+              // Clear error if no rejected files
+              setError?.(null);
+            }
+
+            if (acceptedFiles.length > 0) {
+              onFilesDrop?.(multiple ? acceptedFiles : acceptedFiles.slice(0, 1));
+            }
+          } else if (filteredFiles) {
+            onFilesDrop?.(multiple ? filteredFiles : filteredFiles.slice(0, 1));
           }
 
           event.dataTransfer.clearData();
@@ -145,14 +194,16 @@ export const Dropzone = React.memo((props: React.PropsWithChildren<DropzoneProps
   const id = useId();
 
   // Obser active state and emit changes:
-  React.useEffect(() => {
+
+  useEffect(() => {
     onDragStateChange?.(isDragActive);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDragActive]);
 
   // Attach listeners to dropzone on mount:
-  React.useEffect(() => {
-    const tempZoneRef = dropZoneRef.current;
+
+  useEffect(() => {
+    const tempZoneRef = dropZoneRef?.current;
     if (tempZoneRef) {
       tempZoneRef.addEventListener("dragenter", handleDragIn);
       tempZoneRef.addEventListener("dragleave", handleDragOut);
@@ -178,7 +229,7 @@ export const Dropzone = React.memo((props: React.PropsWithChildren<DropzoneProps
         onChange={(e) => {
           const fileList = e.target.files;
           if (fileList) {
-            const newFiles = Array.from(fileList).filter((file) => file !== null);
+            const newFiles = Array.from(fileList).filter((file) => file !== null) as File[];
             onFilesDrop?.(newFiles);
           }
         }}
@@ -202,8 +253,27 @@ export const Dropzone = React.memo((props: React.PropsWithChildren<DropzoneProps
           disabled && disabledClassName,
           !disabled && isDragActive && theme.active,
           !disabled && isDragActive && activeClassName,
+          error && theme.error, // Apply error class
         )}
       >
+        {!children && (
+          <div className="flex flex-col gap-4 items-center justify-center">
+            <h2
+              className={cn(
+                "text-secondary-300 dark:text-primary-300", // Default styles
+                error && "text-red-600 dark:text-red-400", // Error styles
+              )}
+            >
+              {error ? t("Error uploading file") : (title ?? t("Drop your file here or click to upload"))}
+            </h2>
+            <RiUploadCloudFill
+              className={cn(
+                "w-10 h-10 text-secondary-300 dark:text-primary-300", // Default styles
+                error && "text-red-600 dark:text-red-400", // Error styles
+              )}
+            />
+          </div>
+        )}
         {children}
       </label>
     </>

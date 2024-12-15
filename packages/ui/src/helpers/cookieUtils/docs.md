@@ -20,7 +20,7 @@ import { setCookie, getCookie, deleteCookie } from 'pol-ui'
 // Example usage
 setCookie('myCookie', 'cookieValue', 7)
 const value = getCookie('myCookie')
-console.log(value)
+console.info(value)
 deleteCookie('myCookie')
 ```
 

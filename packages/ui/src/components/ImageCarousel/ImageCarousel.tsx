@@ -72,7 +72,8 @@ const ImageCarousel = (props: ImageCarouselProps) => {
 
   const bigImageWidth = containerWidth * 0.5;
 
-  const containerRef = useRef<HTMLDivElement>(null!);
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  const containerRef = useRef<HTMLDivElement>(null as any);
   const scrollX = useMotionValue(0);
   const isDragging = useRef(false);
   const startX = useRef(0);

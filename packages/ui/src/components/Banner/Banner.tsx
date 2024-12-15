@@ -62,8 +62,6 @@ export const Banner: FC<BannerComponentProps> = ({
         >
           <header
             data-testid="pol-ui-banner"
-            role="banner"
-            tabIndex={-1}
             className={twMerge(
               theme.base,
               theme.bordered[bordered ? "on" : "off"],

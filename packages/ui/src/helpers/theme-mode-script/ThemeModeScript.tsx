@@ -9,6 +9,7 @@ export const ThemeModeScript = ({ mode, ...others }: ThemeModeScriptProps) => {
     <script
       {...others}
       data-ui-theme-mode-script={true}
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
       dangerouslySetInnerHTML={{
         __html: getScript({
           mode,

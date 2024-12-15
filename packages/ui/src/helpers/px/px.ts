@@ -5,7 +5,7 @@
  * @returns <string> The pixel string
  * @example
  * const pxString = px(10);
- * console.log(pxString); // 10px
+ * console.info(pxString); // 10px
  * const pxString = px('10'); // 10px
  *
  * @author Pol Gubau Amores - https://polgubau.com

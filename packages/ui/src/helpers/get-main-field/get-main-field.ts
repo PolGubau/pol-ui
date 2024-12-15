@@ -11,12 +11,14 @@ export const DEFAULT_KEYS = [
   "id",
 ];
 export type GetMainFieldType = (
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   item: Record<string, any>,
   preferenceLabels?: string[],
 ) => {
   key: string;
   value: string;
 };
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export const getMainField: GetMainFieldType = (item: Record<string, any>, preferenceLabels) => {
   // search for the first time a label is found in labelsToHighlight (1st position has preference over 2nd position)
   const lth = preferenceLabels ?? DEFAULT_KEYS;

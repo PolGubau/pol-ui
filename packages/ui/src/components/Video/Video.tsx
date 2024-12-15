@@ -92,6 +92,7 @@ const Video: React.FC<VideoProps> = ({
             height="40"
             className="rounded-full absolute z-10 pointer-events-none select-none text-secondary-900 dark:text-secondary-200"
           >
+            <title>Playback progress</title>
             <circle
               stroke="currentColor"
               strokeWidth="1"

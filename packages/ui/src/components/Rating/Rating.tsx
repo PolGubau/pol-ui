@@ -36,6 +36,7 @@ export const Rating: FC<RatingProps> = ({
     <div className={cn(theme.root, className)} {...props}>
       {Array.from({ length: stars }, (_, i) => (
         <Icon
+          // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
           key={i}
           data-filled={i < filled}
           data-testid="ui-rating-star"

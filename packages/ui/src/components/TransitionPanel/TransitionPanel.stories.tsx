@@ -50,7 +50,8 @@ export function Default() {
       <div className="mb-4 flex space-x-2">
         {items.map((item, index) => (
           <button
-            key={index}
+            type="button"
+            key={item.title}
             onClick={() => setActiveIndex(index)}
             className={`rounded-md px-3 py-1 text-sm font-medium ${
               activeIndex === index
@@ -72,8 +73,8 @@ export function Default() {
             exit: { opacity: 0, y: 50, filter: "blur(4px)" },
           }}
         >
-          {items.map((item, index) => (
-            <div key={index} className="py-2">
+          {items.map((item) => (
+            <div key={item.content} className="py-2">
               <h3 className="mb-2 font-medium text-zinc-800 dark:text-zinc-100">{item.subtitle}</h3>
               <p className="text-zinc-600 dark:text-zinc-400">{item.content}</p>
             </div>
@@ -126,27 +127,6 @@ export function TransitionPanelCard() {
     }
   }, [activeIndex]);
 
-  const variants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 364 : -364,
-      opacity: 0,
-    }),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction: number) => ({
-      zIndex: 0,
-      x: direction < 0 ? 364 : -364,
-      opacity: 0,
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%",
-    }),
-  };
-
   return (
     <div className="w-[364px] overflow-hidden rounded-xl border border-zinc-950/10 bg-white dark:bg-zinc-700">
       <TransitionPanel
@@ -180,6 +160,7 @@ export function TransitionPanelCard() {
         custom={direction}
       >
         {features.map((feature, index) => (
+          // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
           <div key={index} className="px-4 pt-4" ref={ref}>
             <h3 className="mb-0.5 font-medium text-zinc-800 dark:text-zinc-100">{feature.title}</h3>
             <p className="text-zinc-600 dark:text-zinc-400">{feature.description}</p>

@@ -40,6 +40,7 @@ export const FooterBrand: FC<FooterBrandProps & ComponentProps<"a"> & ComponentP
           {children}
         </a>
       ) : (
+        // biome-ignore lint/a11y/useAltText: <explanation>
         <img alt={alt} data-testid="ui-footer-brand" src={src} className={twMerge(theme.img, className)} {...props} />
       )}
     </div>

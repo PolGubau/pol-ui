@@ -21,7 +21,9 @@ export const Default: React.FC = () => {
       <p>Orientation: {JSON.stringify(orientation)}</p>
       <p>Permission granted: {isPermissionGranted ? "Yes" : "No"}</p>
       <p>Supported: {isSupported ? "Yes" : "No"}</p>
-      <button onClick={() => void requestPermission()}>Request permission</button>
+      <button type="button" onClick={() => requestPermission()}>
+        Request permission
+      </button>
 
       <p>Note: This hook will only work on devices that support the DeviceOrientationEvent API.</p>
       <p>If you are on a desktop, you can use the Chrome DevTools to simulate device orientation events.</p>

@@ -30,7 +30,7 @@ export const Default = () => {
               <TbPlus className="h-4 w-4" />
             </IconButton>
             <div className="text-center">Actions</div>
-            <IconButton size={"sm"} onClick={() => {}}>
+            <IconButton size={"sm"} onClick={() => null}>
               <TbX className="h-4 w-4" />
             </IconButton>
           </header>

@@ -665,6 +665,7 @@ describe("cva", () => {
           } as ButtonWithBaseWithoutDefaultsProps,
           "button font-semibold border rounded button--primary bg-blue-500 text-white border-transparent hover:bg-blue-600 adhoc-className",
         ],
+        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       ])("button(%o)", (options: any, expected: any) => {
         test(`returns ${expected}`, () => {
           expect(buttonWithBaseWithoutDefaultsString(options)).toBe(expected);

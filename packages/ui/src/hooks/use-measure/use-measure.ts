@@ -8,6 +8,7 @@ interface MeasureResult<T extends Element> {
 }
 
 const useMeasure = <T extends Element = Element>(): MeasureResult<T> => {
+  // biome-ignore lint/style/noNonNullAssertion: <explanation>
   const ref = useRef<T>(null!);
   const [bounds, setBounds] = useState<DOMRectReadOnly>(new DOMRectReadOnly());
 

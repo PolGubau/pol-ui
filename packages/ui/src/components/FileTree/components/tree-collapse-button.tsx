@@ -29,7 +29,7 @@ const TreeCollapseButton = ({ className, elements, expandAll = false, children, 
   }, []);
 
   useEffect(() => {
-    console.log(expandAll);
+    console.info(expandAll);
     if (expandAll) {
       expendAllTree(elements);
     }

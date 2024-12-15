@@ -27,7 +27,7 @@ const useTranslate = () => {
   };
 
   // if (!translations[lang.locale]) {
-  //   console.log(
+  //   console.info(
   //     `😯 The language "${lang.locale}" is not available in translations, back to "${defaultLanguage.locale}"`,
   //   )
   // }

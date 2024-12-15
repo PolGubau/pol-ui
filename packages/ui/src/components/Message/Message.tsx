@@ -25,7 +25,7 @@ const Message = ({ content, date, arrow, locale, mine = true, theme: customTheme
         {content}
         {date && <div className={theme.message.date}>{parsedDate}</div>}
       </div>
-      {arrow && <div className={cn(theme.message.arrow.base, theme.message.arrow.mine[mine ? "on" : "off"])}></div>}
+      {arrow && <div className={cn(theme.message.arrow.base, theme.message.arrow.mine[mine ? "on" : "off"])} />}
     </div>
   );
 };
@@ -41,6 +41,7 @@ const MessageGroup = ({ messages, theme: customTheme = {}, mine = true }: Messag
   return (
     <div className={cn(theme.messageGroup.base, theme.messageGroup.mine[mine ? "on" : "off"])}>
       {messages.map((message, index) => (
+        // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
         <Message key={index} mine={message.mine ?? mine} {...message} arrow={index === 0} />
       ))}
     </div>

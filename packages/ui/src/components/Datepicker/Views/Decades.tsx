@@ -29,7 +29,7 @@ export const DatepickerViewsDecades: FC<DatepickerViewsDecadesProps> = ({ theme:
 
   return (
     <div className={theme.items.base}>
-      {[...Array(12)].map((_year, index) => {
+      {[...new Array(12)].map((_year, index) => {
         const first = startOfYearPeriod(viewDate, 100);
         const year = first - 10 + index * 10;
 
@@ -40,7 +40,7 @@ export const DatepickerViewsDecades: FC<DatepickerViewsDecadesProps> = ({ theme:
           <Button
             variant={"ghost"}
             disabled={isDisabled}
-            key={index}
+            key={_year}
             type="button"
             className={twMerge(
               theme.items.item.base,

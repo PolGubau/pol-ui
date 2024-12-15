@@ -135,7 +135,7 @@ export const Switch: FC<SwitchProps> = ({
           />
         </div>
 
-        {label?.length ? (
+        {label && label?.length > 0 ? (
           <Label
             htmlFor={`${id}-ui-switch`}
             data-testid="ui-switch-label"

@@ -182,7 +182,6 @@ export const Datepicker: FC<DatepickerProps> = ({
         return <DatepickerViewsYears theme={theme.views.years} />;
       case Views.Months:
         return <DatepickerViewsMonth theme={theme.views.months} />;
-      case Views.Days:
       default:
         return <DatepickerViewsDays theme={theme.views.days} />;
     }
@@ -197,8 +196,9 @@ export const Datepicker: FC<DatepickerProps> = ({
         return Views.Years;
       case Views.Years:
         return Views.Decades;
+      default:
+        return Views.Days;
     }
-    return view;
   };
 
   // Get the view title based on active View
@@ -210,7 +210,7 @@ export const Datepicker: FC<DatepickerProps> = ({
         return `${startOfYearPeriod(viewDate, 10)} - ${startOfYearPeriod(viewDate, 10) + 9}`;
       case Views.Months:
         return getFormattedDate(language, viewDate, { year: "numeric" });
-      case Views.Days:
+
       default:
         return getFormattedDate(language, viewDate, {
           month: "long",
@@ -240,7 +240,7 @@ export const Datepicker: FC<DatepickerProps> = ({
       const clickedInsideDatepicker = datepickerRef.current?.contains(event.target as Node);
       const clickedInsideInput = inputRef.current?.contains(event.target as Node);
 
-      if (!clickedInsideDatepicker && !clickedInsideInput) {
+      if (!(clickedInsideDatepicker || clickedInsideInput)) {
         setIsOpen(false);
       }
     };

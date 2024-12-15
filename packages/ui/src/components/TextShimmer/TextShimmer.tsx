@@ -15,6 +15,7 @@ interface TextShimmerProps {
 }
 
 export function TextShimmer({ children, as: Component = "p", className, duration = 2, spread = 2 }: TextShimmerProps) {
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   const MotionComponent = motion(Component as keyof JSX.IntrinsicElements) as any;
 
   const dynamicSpread = useMemo(() => {
@@ -40,7 +41,7 @@ export function TextShimmer({ children, as: Component = "p", className, duration
       style={
         {
           "--spread": `${dynamicSpread}px`,
-          backgroundImage: `var(--bg), linear-gradient(var(--base-color), var(--base-color))`,
+          backgroundImage: "var(--bg), linear-gradient(var(--base-color), var(--base-color))",
         } as React.CSSProperties
       }
     >

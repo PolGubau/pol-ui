@@ -36,7 +36,7 @@ export const DrawerArray = <T extends object>({
 
   const [newProp, setNewProp] = useState<T>(initialProperty);
 
-  const handleCreateNew = (e: any) => {
+  const handleCreateNew = (e: React.FormEvent) => {
     e.preventDefault();
     push(newProp);
     setNewProp(initialProperty);
@@ -54,7 +54,11 @@ export const DrawerArray = <T extends object>({
       </header>
 
       {array.map((item, index) => (
-        <Card key={index} className="flex flex-row w-full justify-between items-center p-0 gap-0 overflow-hidden">
+        <Card
+          // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+          key={index}
+          className="flex flex-row w-full justify-between items-center p-0 gap-0 overflow-hidden"
+        >
           <Drawer
             direction="right"
             className="overflow-x-hidden"
@@ -64,9 +68,7 @@ export const DrawerArray = <T extends object>({
                   view(item)
                 ) : (
                   <p className="flex items-center gap-1">
-                    <span className="hidden md:flex">
-                      {index + 1}. {` `}
-                    </span>
+                    <span className="hidden md:flex">{index + 1}. </span>
                     {getMainField(item).value}
                   </p>
                 )}

@@ -29,7 +29,7 @@ const Folder = ({
   return (
     <AccordionPrimitive.Item {...props} value={value} className="relative overflow-hidden h-full ">
       <AccordionPrimitive.Trigger
-        className={cn(`flex items-center gap-1 text-sm rounded-md`, className, {
+        className={cn("flex items-center gap-1 text-sm rounded-md", className, {
           "bg-muted rounded-md": isSelect && isSelectable,
           "cursor-pointer": isSelectable,
           "cursor-not-allowed opacity-50": !isSelectable,

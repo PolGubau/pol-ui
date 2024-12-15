@@ -38,7 +38,9 @@ export const Loading = () => {
     <div className="flex flex-col gap-4">
       {value ? <BooleanLoadingCard /> : <BooleanCard title="Remember me" description="Your account will be saved" />}
 
-      <button onClick={toggle}>Toggle loading</button>
+      <button onClick={toggle} type="button">
+        Toggle loading
+      </button>
     </div>
   );
 };

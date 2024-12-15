@@ -61,7 +61,7 @@ export const AllSizes = (): React.ReactNode => (
 export const InForm = (): React.ReactNode => (
   <div className="flex flex-wrap gap-6">
     <form>
-      <Switch checked={false} label="Enable notifications" name="notifications" onChange={console.log} />
+      <Switch checked={false} label="Enable notifications" name="notifications" onChange={console.info} />
       <Input type="text" />
     </form>
   </div>
