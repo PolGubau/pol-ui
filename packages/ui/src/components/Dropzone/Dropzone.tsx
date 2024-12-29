@@ -253,7 +253,6 @@ export const Dropzone = React.memo((props: React.PropsWithChildren<DropzoneProps
           disabled && disabledClassName,
           !disabled && isDragActive && theme.active,
           !disabled && isDragActive && activeClassName,
-          error && theme.error, // Apply error class
         )}
       >
         {!children && (

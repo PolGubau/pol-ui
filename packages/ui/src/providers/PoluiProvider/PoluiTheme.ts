@@ -31,7 +31,6 @@ import type { InputTheme } from "../../components/Input";
 import type { KanbanTheme } from "../../components/Kanban/theme";
 import type { KbdTheme } from "../../components/Kbd";
 import type { LabelTheme } from "../../components/Label";
-import type { LinkTheme } from "../../components/Link/theme";
 import type { ListGroupTheme } from "../../components/ListGroup";
 import type { LoaderTheme } from "../../components/Loader";
 import type { MessageTheme } from "../../components/Message/theme";
@@ -90,7 +89,6 @@ export interface PoluiTheme {
   sidebar: SidebarTheme;
   progress: ProgressTheme;
   loader: LoaderTheme;
-  link: LinkTheme;
   tabs: TabsTheme;
   toast: ToastTheme;
   directionHover: DirectionHoverTheme;

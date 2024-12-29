@@ -4,7 +4,6 @@ import type { FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
 import { getTheme } from "../../theme-store";
-import { Link } from "../Link";
 import type { CopyrightProps } from "./props";
 
 /**
@@ -28,9 +27,9 @@ export const Copyright: FC<CopyrightProps> = ({
     <div data-testid="ui-footer-copyright" className={twMerge(theme.base, className)} {...props}>
       © {year}
       {href ? (
-        <Link href={href} className={theme.href}>
+        <a href={href} className={theme.href}>
           {by}
-        </Link>
+        </a>
       ) : (
         <span data-testid="ui-footer-copyright-span" className={theme.span}>
           {by}

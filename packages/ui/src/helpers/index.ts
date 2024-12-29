@@ -8,7 +8,6 @@ export * from "./cva";
 export * from "./encryption";
 export * from "./fetchers";
 export * from "./generateUUID";
-export * from "./generic-forward-ref";
 export * from "./getDocumentDirection";
 export * from "./group-by/group-by";
 export * from "./handle-json";

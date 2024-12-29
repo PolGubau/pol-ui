@@ -31,7 +31,6 @@ import { inputTheme } from "./components/Input/theme";
 import { kanbanTheme } from "./components/Kanban/theme";
 import { kbdTheme } from "./components/Kbd/theme";
 import { labelTheme } from "./components/Label/theme";
-import { linkTheme } from "./components/Link/theme";
 import { listGroupTheme } from "./components/ListGroup/theme";
 import { loaderTheme } from "./components/Loader/theme";
 import { messageTheme } from "./components/Message/theme";
@@ -67,7 +66,6 @@ export const theme: PoluiTheme = {
   breadcrumb: breadcrumbTheme,
   button: buttonTheme,
   iconButton: iconButtonTheme,
-  link: linkTheme,
   card: cardTheme,
   copyright: copyrightTheme,
   checkbox: checkboxTheme,

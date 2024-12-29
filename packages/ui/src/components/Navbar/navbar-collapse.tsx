@@ -5,7 +5,6 @@ import type { DeepPartial, IBoolean } from "../../types/types";
 
 import { cn } from "../../helpers";
 import { theme } from "../../theme";
-import { Link } from "../Link";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuTrigger } from "../NavigationMenu";
 import type { NavbarProps } from "./Navbar";
 export interface NavbarCollapseTheme {
@@ -35,15 +34,14 @@ export const NavbarCollapse: FC<NavbarCollapseProps> = ({ links = [], linkClassN
                   <NavigationMenuContent>{content}</NavigationMenuContent>
                 </>
               ) : (
-                <Link
+                <a
                   {...rest}
-                  underline={false}
                   className={cn(theme.navigationMenu.trigger.base, linkClassName, {
                     "text-primary-700": active,
                   })}
                 >
                   {label}
-                </Link>
+                </a>
               )}
             </NavigationMenuItem>
           );

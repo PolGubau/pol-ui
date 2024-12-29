@@ -7,7 +7,7 @@ import { KanbanIndicator } from "./KanbanDropIndicator";
 import type { KanbanTheme } from "./theme";
 
 export interface CompleteKanbanCardProps {
-  handleDragStart: (e: MouseEvent | TouchEvent | PointerEvent, card: KanbanCardProps) => void;
+  handleDragStart: (e: DragEvent, card: KanbanCardProps) => void;
   setDragging: (value: boolean) => void;
   dragable?: boolean;
   card: KanbanCardProps;
@@ -38,7 +38,7 @@ export const KanbanCard = ({
         onClick={card.onClick}
         layoutId={id}
         draggable={dragable}
-        onDragStart={(e) => handleDragStart(e, card)}
+        onDragStart={(e) => handleDragStart(e as DragEvent, card)}
         onDragEnd={() => {
           setDragging(false);
         }}

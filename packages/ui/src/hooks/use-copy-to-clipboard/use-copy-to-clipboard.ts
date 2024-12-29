@@ -25,12 +25,8 @@ type UseCopyToClipboard = {
 
  * @returns {UseCopyToClipboard} An object with the copied text, a function to copy text to the clipboard, and a boolean indicating if the text was copied.
  */
-export function useCopyToClipboard({
-  isCopiedDelay = 2000,
-  onCopyFailure,
-  onCopySuccess,
-  clearCopiedTextOnUnmount = false,
-}: UseCopyToClipboardProps): UseCopyToClipboard {
+export function useCopyToClipboard(props?: UseCopyToClipboardProps): UseCopyToClipboard {
+  const { isCopiedDelay = 2000, onCopyFailure, onCopySuccess, clearCopiedTextOnUnmount = false } = props || {};
   const [copiedText, setCopiedText] = useState<CopiedValue>(null);
   const [isCopied, setIsCopied] = useState(false);
 
