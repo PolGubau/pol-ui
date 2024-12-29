@@ -2,6 +2,13 @@
   Pol-ui
 </h1>
 
+[![Checked with Biome](https://img.shields.io/badge/Checked_with-Biome-60a5fa?style=flat&logo=biome)](https://biomejs.dev)
+[![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
+![GitHub License](https://img.shields.io/github/license/PolGubau/pol-ui)
+![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/PolGubau/pol-ui)
+![GitHub Issues or Pull Requests](https://img.shields.io/github/issues-pr/PolGubau/pol-ui)
+
+
 <p align="center">
 A complete UI solution for React projects, based on React, TypeScript, and tailwind.
   <br />

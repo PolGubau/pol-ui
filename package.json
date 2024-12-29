@@ -1,7 +1,7 @@
 {
   "name": "pol-ui",
-  "version": "0.0.1",
-  "description": "",
+  "version": "1.0.0",
+  "description": "Beauty and Performance React UI Library",
   "main": "index.js",
   "type": "module",
   "author": {
@@ -23,10 +23,8 @@
     "templates/*"
   ],
   "scripts": {
-    "--------------------------------------------------------------- GENERAL ---------": "---------------------------------------------",
     "dev": "turbo run dev --parallel",
     "build": "turbo run build",
-    "format": "prettier --write .",
     "--------------------------------------------------------------- FILTERS ---------": "---------------------------------------------",
     "ui": "pnpm --filter pol-ui",
     "cli": "pnpm --filter pol-ui-cli",
@@ -85,26 +83,14 @@
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
-    "@eslint/compat": "^1.0.3",
-    "@eslint/js": "^9.4.0",
-    "@types/eslint__js": "^8.42.3",
     "@types/node": "^20.11.27",
     "@types/react": "^18.2.65",
     "@types/react-dom": "^18.2.22",
-    "eslint": "~9.4.0",
-    "eslint-config-next": "13.3.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-config-turbo": "^1.9.9",
-    "eslint-plugin-prettier": "^5.1.3",
-    "eslint-plugin-react": "^7.34.2",
-    "eslint-plugin-tailwindcss": "^3.12.0",
     "globals": "^15.3.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.5",
-    "prettier": "^3.3.1",
-    "typescript": "^5.4.5",
-    "typescript-eslint": "^7.12.0",
-    "tsup": "^6.4.0"
+    "tsup": "^6.4.0",
+    "typescript": "^5.4.5"
   },
   "dependencies": {
     "@babel/core": "^7.22.1",
@@ -112,6 +98,7 @@
     "@changesets/cli": "^2.26.1",
     "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
     "@manypkg/cli": "^0.20.0",
+    "@polgubau/configs": "^1.0.1",
     "@typescript-eslint/parser": "^5.59.7",
     "autoprefixer": "^10.4.14",
     "concurrently": "^8.0.1",
