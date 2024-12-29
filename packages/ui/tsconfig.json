@@ -1,33 +1,39 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "incremental": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
-    "moduleResolution": "node",
-    "noEmit": false,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
+    "skipLibCheck": true,
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    /* Linting */
+    "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "ESNext",
-    "types": ["@testing-library/jest-dom", "node", "vitest"]
+    "noFallthroughCasesInSwitch": true
   },
-  "exclude": [
-    "./build/",
-    "./coverage/",
-    "./lib/",
-    "./.next/",
-    "postcss.config.js",
-    "./storybook-static/",
+  "include": [
+    "src",
+    "vite.config.ts",
     "tailwind.config.ts"
+  ],
+  "types": [
+    "vitest",
+    "node"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
   ]
 }

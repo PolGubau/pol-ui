@@ -1,6 +1,5 @@
 import type { Preview } from "@storybook/react";
 import type { PropsWithChildren } from "react";
-
 import "./style.css";
 
 const Provider = ({ children }: PropsWithChildren) => {

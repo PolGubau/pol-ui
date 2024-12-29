@@ -2,9 +2,9 @@ import { dirname, join } from "node:path";
 import type { StorybookConfig } from "@storybook/react-vite";
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.stories.@(ts|tsx)"],
+  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
 
-  addons: [getAbsolutePath("@storybook/addon-essentials"), getAbsolutePath("@chromatic-com/storybook")],
+  addons: [getAbsolutePath("@storybook/addon-essentials"), getAbsolutePath("@storybook/addon-interactions")],
 
   framework: {
     name: getAbsolutePath("@storybook/react-vite"),

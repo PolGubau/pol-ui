@@ -49,7 +49,9 @@
     "build-storybook": "storybook build",
     "serve-storybook": "serve storybook-static",
     "vercel": "vercel --prod",
-    "watch": "tsup src/index.ts --watch"
+    "watch": "tsup src/index.ts --watch",
+    "changelog": "npx conventional-changelog-cli -i CHANGELOG.md -s -t v -p angular"
+
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",
