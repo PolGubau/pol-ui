@@ -8,10 +8,10 @@ describe("Components / Conveyor", () => {
     it("Should render its children`", () => {
       render(<TestConveyor />);
 
-      numbers.forEach((item) => {
+      for (const item of numbers) {
         expect(screen.getAllByText(item)[0]).toBeInTheDocument();
         expect(screen.getAllByText(item)[1]).toBeInTheDocument();
-      });
+      }
     });
 
     it('Should have "scroller" animation', () => {

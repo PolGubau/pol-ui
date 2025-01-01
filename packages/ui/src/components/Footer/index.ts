@@ -7,4 +7,9 @@ export { Copyright as FooterCopyright } from "../Copyright/Copyright";
 export { FooterLinkGroup } from "./FooterLinkGroup";
 export type { FooterLinkGroupProps } from "./FooterLinkGroup";
 
-export type { FooterBrandTheme, FooterLinkGroupTheme, FooterRootTheme, FooterTheme } from "./theme";
+export type {
+  FooterBrandTheme,
+  FooterLinkGroupTheme,
+  FooterRootTheme,
+  FooterTheme,
+} from "./theme";

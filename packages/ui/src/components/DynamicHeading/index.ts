@@ -1,1 +1,4 @@
-export { default as DynamicHeading, type DynamicHeadingProps } from "./DynamicHeading";
+export {
+  default as DynamicHeading,
+  type DynamicHeadingProps,
+} from "./DynamicHeading";

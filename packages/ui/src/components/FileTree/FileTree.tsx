@@ -90,14 +90,14 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
           return;
         }
         if (isSelectable && currentElement.children && currentElement.children.length > 0) {
-          currentElement.children.forEach((child) => {
+          for (const child of currentElement.children) {
             findParent(child, newPath);
-          });
+          }
         }
       };
-      elements.forEach((element) => {
+      for (const element of elements) {
         findParent(element);
-      });
+      }
     }, []);
 
     useEffect(() => {
@@ -123,7 +123,7 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
         }}
       >
         <div className={cn("size-full", className)}>
-          <ScrollArea ref={ref} className="h-full relative px-2" dir={dir as Direction}>
+          <ScrollArea ref={ref} className="relative h-full px-2" dir={dir as Direction}>
             <AccordionPrimitive.Root
               {...props}
               type="multiple"

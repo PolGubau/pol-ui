@@ -24,7 +24,7 @@ function useKeyPress({
 }) {
   useEffect(() => {
     const keydownListener = (event: KeyboardEvent) => {
-      keyPressItems.forEach(({ key: keys, event: triggerEvent, preventDefault = true }) => {
+      for (const { key: keys, event: triggerEvent, preventDefault = true } of keyPressItems) {
         if (checkCombination(event, keys) && shouldFireEvent(event, tagsToIgnore, triggerOnContentEditable)) {
           if (preventDefault) {
             event.preventDefault();
@@ -32,7 +32,7 @@ function useKeyPress({
 
           triggerEvent(event);
         }
-      });
+      }
     };
 
     document.addEventListener("keydown", keydownListener);

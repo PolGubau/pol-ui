@@ -183,9 +183,9 @@ export const KanbanColumn = ({
   const clearHighlights = (els?: HTMLElement[]): void => {
     const indicators = els ?? getIndicators();
 
-    indicators.forEach((i) => {
+    for (const i of indicators) {
       i.style.opacity = "0";
-    });
+    }
   };
 
   const highlightIndicator = (e: DragEvent) => {

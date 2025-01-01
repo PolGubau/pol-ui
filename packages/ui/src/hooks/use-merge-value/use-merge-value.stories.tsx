@@ -23,7 +23,10 @@ export default meta;
 export const Default: StoryObj = {
   render: () => {
     const ControlledInput = ({ value, onChange }: { value?: string; onChange?: (value: string) => void }) => {
-      const [inputValue, setInputValue] = useMergeValue("", { value, onChange });
+      const [inputValue, setInputValue] = useMergeValue("", {
+        value,
+        onChange,
+      });
 
       return <Input value={inputValue} onChange={(e) => setInputValue(e.target.value)} label="Type something..." />;
     };

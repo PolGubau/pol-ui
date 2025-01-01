@@ -1,1 +1,4 @@
-export { default as ExpandableButton, type ExpandableButtonProps } from "./ExpandableButton";
+export {
+  default as ExpandableButton,
+  type ExpandableButtonProps,
+} from "./ExpandableButton";

@@ -160,7 +160,10 @@ describe("getFormattedDate", () => {
 
   it("returns the formatted date string using the specified options", () => {
     const date = new Date(2023, 0, 15); // January 15th, 2023
-    const options: Intl.DateTimeFormatOptions = { month: "short", year: "numeric" };
+    const options: Intl.DateTimeFormatOptions = {
+      month: "short",
+      year: "numeric",
+    };
     const formattedDate = getFormattedDate("en", date, options);
     expect(formattedDate).toBe("Jan 2023");
   });

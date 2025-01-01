@@ -82,7 +82,11 @@ export const Examples: StoryFn<ToasterProps> = () => {
       </Button>
       <Button
         color="secondary"
-        onClick={() => toast("Funky title", { description: "I am the description of the toast" })}
+        onClick={() =>
+          toast("Funky title", {
+            description: "I am the description of the toast",
+          })
+        }
       >
         Description Toast
       </Button>

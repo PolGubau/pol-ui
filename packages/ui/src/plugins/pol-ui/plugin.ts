@@ -129,7 +129,7 @@ export const poluiPlugin = (config: CustomPluginConfig = {}): ReturnType<typeof 
 
       const dynamicUtilsEntries = Object.entries(dynamicUtils);
 
-      dynamicUtilsEntries.forEach(([name, { css, values, generateValue }]) => {
+      for (const [name, { css, values, generateValue }] of dynamicUtilsEntries) {
         matchUtilities(
           {
             [name]: (value) => ({
@@ -140,7 +140,7 @@ export const poluiPlugin = (config: CustomPluginConfig = {}): ReturnType<typeof 
             values,
           },
         );
-      });
+      }
 
       addUtilities(utilities);
       addUtilities({
