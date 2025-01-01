@@ -8,6 +8,9 @@
 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/PolGubau/pol-ui)
 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues-pr/PolGubau/pol-ui)
 
+![NPM Version](https://img.shields.io/npm/v/pol-ui)
+
+
 
 <p align="center">
 A complete UI solution for React projects, based on React, TypeScript, and tailwind.
