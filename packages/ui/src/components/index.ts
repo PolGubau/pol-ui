@@ -102,6 +102,7 @@ export * from "./TimedButton";
 export * from "./Timeline";
 export * from "./Toaster";
 export * from "./Toggle";
+export * from "./for";
 export * from "./ToggleGroup";
 export * from "./Toolbox";
 export * from "./Tooltip";
