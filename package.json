@@ -68,14 +68,16 @@
     "vite"
   ],
   "devDependencies": {
+    "@polgubau/configs": "^1.0.1",
     "@types/node": "^20.11.27",
     "@types/react": "^18.2.65",
     "@types/react-dom": "^18.2.22",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.5",
+    "semantic-release": "24.2.0",
+    "semantic-release-monorepo": "^8.0.2",
     "tsup": "^6.4.0",
-    "typescript": "^5.4.5",
-    "@polgubau/configs": "^1.0.1"
+    "typescript": "^5.4.5"
   },
   "dependencies": {
     "autoprefixer": "^10.4.14",

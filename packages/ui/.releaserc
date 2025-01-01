@@ -8,6 +8,7 @@
     }
   ],
   "repositoryUrl": "https://github.com/PolGubau/pol-ui.git",
+  "extends": "semantic-release-monorepo",
 
   "plugins": [
     "@semantic-release/commit-analyzer",

@@ -62,6 +62,7 @@ jobs:
         run: pnpm test
 
       - name: Semantic Release
+        working-directory: packages/ui
         env:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }} 
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
