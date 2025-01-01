@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from "@storybook/react";
 
-import { Calendar, type CalendarProps } from "./Calendar";
+import { Calendar } from "./Calendar";
 
 export default {
   title: "Components/Calendar",
@@ -8,7 +8,7 @@ export default {
   tags: ["autodocs"],
 } as Meta;
 
-const Template: StoryFn<CalendarProps> = (args: CalendarProps) => <Calendar {...args} />;
+const Template: StoryFn = (args) => <Calendar {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};

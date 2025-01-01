@@ -37,7 +37,16 @@ export const Progress: FC<ProgressProps> = ({
   const theme = mergeDeep(getTheme().progress, customTheme);
 
   return (
-    <div id={id} aria-label={label} {...props} aria-valuenow={progress}>
+    <div
+      id={id}
+      aria-label={label}
+      {...props}
+      aria-valuenow={progress}
+      role="progressbar"
+      tabIndex={0}
+      aria-valuemin={0}
+      aria-valuemax={100}
+    >
       {label && (
         <div className={theme.label} data-testid="ui-progress-label-container">
           <span data-testid="ui-progress-label">{label}</span>

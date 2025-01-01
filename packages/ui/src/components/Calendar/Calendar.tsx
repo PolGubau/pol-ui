@@ -25,8 +25,8 @@ export const Calendar = () => {
   const monthName = monthNames[month.getMonth()];
 
   return (
-    <section className="flex flex-col gap-2 h-full">
-      <header className="flex gap-1 items-center justify-between">
+    <section className="flex h-full flex-col gap-2">
+      <header className="flex items-center justify-between gap-1">
         <IconButton onClick={prevMonth}>&lt;</IconButton>
         {monthName} {month.getFullYear()}
         <IconButton onClick={nextMonth}>&gt;</IconButton>
