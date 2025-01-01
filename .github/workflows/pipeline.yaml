@@ -24,9 +24,9 @@ jobs:
         run: |
           echo "Checking for changes in packages/ui..."
           if git diff --name-only HEAD^ HEAD | grep -q '^packages/ui/'; then
-            echo "ui-changed=true" >> $GITHUB_ENV
+            echo "::set-output name=ui-changed::true"
           else
-            echo "ui-changed=false" >> $GITHUB_ENV
+            echo "::set-output name=ui-changed::false"
           fi
         shell: bash
 
@@ -34,7 +34,7 @@ jobs:
     name: 🧪 Pol-UI (Lint, Build, Test, Deploy)
     needs: check-changes
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' # Ejecuta siempre que sea en la rama `main`
+    if: github.ref == 'refs/heads/main' || needs.check-changes.outputs.ui-changed == 'true'
     steps:
       - name: 👍 Checkout
         uses: actions/checkout@v3
@@ -57,39 +57,11 @@ jobs:
       - name: 🧪 Unit Tests and coverage
         run: pnpm test
 
-      - name: setup git config
-        run: |
-          git config user.name "Bot"
-          git config user.email ""
-
-      - name: Get run number
-        id: run_number
-        run: echo "RUN_NUMBER=${{ github.run_number }}" >> $GITHUB_ENV
-
-      - name: Update version in package.json
-        run: |
-          cd packages/ui
-          node -e "
-          let pkg = require('./package.json');
-          let versionParts = pkg.version.split('.');
-          versionParts[2] = '${{ env.RUN_NUMBER }}';
-          pkg.version = versionParts.join('.');
-          require('fs').writeFileSync('./package.json', JSON.stringify(pkg, null, 2));
-          "
-        shell: bash
-
-      - name: 🍀 Publish to NPM
-        if: github.ref == 'refs/heads/main'
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
-          cd packages/ui
-          if ! npm view pol-ui@$(node -pe "require('./package.json').version") > /dev/null 2>&1; then
-            pnpm publish --no-git-checks
-          else
-            echo "Version already published."
-          fi
+      - name: Semantic Release
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }} 
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
