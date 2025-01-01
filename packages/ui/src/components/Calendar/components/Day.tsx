@@ -14,7 +14,7 @@ interface DayProps {
 const Day = ({ day, selected, setSelected, events }: DayProps) => {
   return (
     <Button
-      className={cn("p-4 flex flex-col items-center justify-center rounded-lg", {
+      className={cn("flex flex-col items-center justify-center rounded-lg p-4", {
         "bg-primary-500 text-white": isSameDay(day.dateObj, selected),
         "opacity-50": !day.inCurrentMonth,
       })}

@@ -47,7 +47,6 @@
     "format:check": "turbo run format:check",
     "check": "turbo lint typecheck format:check",
     "prepare": "husky install",
-    "release": "semantic-release",
     "test": "turbo run test --force",
     "open:ide": "pnpm i && pnpm ui storybook"
   },
@@ -69,12 +68,6 @@
     "vite"
   ],
   "devDependencies": {
-    "@semantic-release/changelog": "6.0.3",
-    "@semantic-release/commit-analyzer": "13.0.0",
-    "@semantic-release/git": "10.0.1",
-    "@semantic-release/release-notes-generator": "14.0.2",
-    "conventional-changelog-conventionalcommits": "8.0.0",
-    "semantic-release": "24.2.0",
     "@types/node": "^20.11.27",
     "@types/react": "^18.2.65",
     "@types/react-dom": "^18.2.22",

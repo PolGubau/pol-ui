@@ -1,12 +1,14 @@
 {
   "branches": [
-    "master",
+    "main",
     "main",
     {
       "name": "next",
       "prerelease": true
     }
   ],
+  "repositoryUrl": "https://github.com/PolGubau/pol-ui.git",
+
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
