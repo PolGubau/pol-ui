@@ -38,6 +38,9 @@ jobs:
     steps:
       - name: 👍 Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
 
       - name: 💡 Install PNPM
         run: npm install -g pnpm
@@ -47,6 +50,7 @@ jobs:
         with:
           node-version: lts/*
           cache: "pnpm"
+          
 
       - name: 📥 Install Dependencies
         run: pnpm install
