@@ -25,7 +25,9 @@
 	"main": "./lib/cjs/index.js",
 	"module": "./lib/esm/index.js",
 	"types": "./lib/esm/index.d.ts",
-	"files": ["./lib/"],
+	"files": [
+		"./lib/"
+	],
 	"scripts": {
 		"build": "pnpm build:esm && pnpm build:cjs",
 		"build-storybook": "storybook build",
@@ -42,6 +44,7 @@
 		"lint-fix": "biome check --write .",
 		"prepublishOnly": "pnpm build",
 		"publish": "npm publish --access public",
+		"release": "semantic-release",
 		"serve-storybook": "serve storybook-static",
 		"storybook": "storybook dev -p 6006",
 		"test": "vitest",
@@ -51,8 +54,7 @@
 		"test:open": "vitest --ui",
 		"typecheck": "tsc --noEmit",
 		"vercel": "vercel --prod",
-		"watch": "tsup src/index.ts --watch",
-		"release": "semantic-release"
+		"watch": "tsup src/index.ts --watch"
 	},
 	"dependencies": {
 		"@gsap/react": "^2.1.1",
@@ -88,15 +90,12 @@
 		"zod": "^3.23.8"
 	},
 	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@chromatic-com/storybook": "3",
 		"@semantic-release/changelog": "6.0.3",
 		"@semantic-release/commit-analyzer": "13.0.0",
 		"@semantic-release/git": "10.0.1",
 		"@semantic-release/release-notes-generator": "14.0.2",
-		"conventional-changelog-conventionalcommits": "8.0.0",
-		"semantic-release": "24.2.0",
-		"@biomejs/biome": "1.9.4",
-		"@chromatic-com/storybook": "3",
-
 		"@storybook/addon-essentials": "^8.4.5",
 		"@storybook/addon-interactions": "^8.4.5",
 		"@storybook/addon-links": "^8.4.5",
@@ -106,12 +105,11 @@
 		"@storybook/react-vite": "^8.4.5",
 		"@storybook/test": "^8.4.5",
 		"@storybook/theming": "^8.4.5",
+		"@tailwindcss/container-queries": "^0.1.1",
 		"@testing-library/dom": "^9.3.4",
 		"@testing-library/jest-dom": "^6.1.4",
 		"@testing-library/react": "^14.3.1",
 		"@testing-library/user-event": "^14.5.1",
-		"@tailwindcss/container-queries": "^0.1.1",
-
 		"@types/crypto-js": "^4",
 		"@types/esm": "^3",
 		"@types/node": "^20.10.0",
@@ -122,11 +120,13 @@
 		"@vitest/coverage-v8": "^0.34.6",
 		"@vitest/ui": "^0.34.7",
 		"autoprefixer": "^10.4.20",
+		"conventional-changelog-conventionalcommits": "8.0.0",
 		"jsdom": "^22.1.0",
 		"postcss": "^8.4.49",
 		"react": "18.3.1",
 		"react-docgen-typescript": "^2.2.2",
 		"react-dom": "18.3.1",
+		"semantic-release": "24.2.0",
 		"storybook": "^8.4.5",
 		"tailwindcss": "^3.4.15",
 		"typescript": "^5.3.2",
