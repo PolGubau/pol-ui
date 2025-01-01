@@ -38,8 +38,6 @@
     "ui:coverage": "pnpm ui test:coverage",
     "build-storybook": "pnpm ui build-storybook",
     "watch": "pnpm ui watch",
-  
-    
     "--------------------------------------------------------------- EXTRA ---------": "---------------------------------------------",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
@@ -48,12 +46,8 @@
     "format:write": "turbo run format:write",
     "format:check": "turbo run format:check",
     "check": "turbo lint typecheck format:check",
-    
-    
     "prepare": "husky install",
-   
     "release": "semantic-release",
-
     "test": "turbo run test --force",
     "open:ide": "pnpm i && pnpm ui storybook"
   },
