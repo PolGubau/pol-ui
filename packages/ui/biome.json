@@ -19,9 +19,7 @@
         "useExhaustiveDependencies": "off",
         "useImportExtensions": "off"
       },
-      "suspicious": {
-        "noConsole": "off"
-      },
+
       "style": {
         "noParameterAssign": "off",
         "noUnusedTemplateLiteral": {
