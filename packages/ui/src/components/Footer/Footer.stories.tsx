@@ -4,7 +4,6 @@ import { Button } from "../Button";
 import { Copyright } from "../Copyright";
 import { Divider } from "../Divider";
 import { IconButton } from "../IconButton";
-import { Link } from "../Link";
 import { Footer } from "./Footer";
 import { FooterBrand } from "./FooterBrand";
 import { FooterLinkGroup } from "./FooterLinkGroup";
@@ -15,7 +14,7 @@ export default {
   tags: ["Footer", "autodocs"],
   decorators: [
     (Story) => (
-      <div className="flex p-6 flex-col items-end justify-end h-full">
+      <div className="flex h-full flex-col items-end justify-end p-6">
         <Story />
       </div>
     ),
@@ -32,12 +31,12 @@ DefaultFooter.storyName = "Default";
 DefaultFooter.args = {
   children: (
     <div className="flex w-full justify-between p-6">
-      <Copyright href="#" by="Pol-ui" year={thisYear} />
+      <Copyright href="#test" by="Pol-ui" year={thisYear} />
       <FooterLinkGroup>
-        <Link href="#">About</Link>
-        <Link href="#">Privacy Policy</Link>
-        <Link href="#">Licensing</Link>
-        <Link href="#">Contact</Link>
+        <a href="#test">About</a>
+        <a href="#test">Privacy Policy</a>
+        <a href="#test">Licensing</a>
+        <a href="#test">Contact</a>
         <Button size="sm">Get Started</Button>
       </FooterLinkGroup>
     </div>
@@ -52,14 +51,14 @@ WithLogoFooter.args = {
       <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
         <FooterBrand href="https://ui.polgubau.com" src="https://ui.polgubau.com/logo.png" alt="Pol-ui Logo" />
         <FooterLinkGroup>
-          <Link href="#">About</Link>
-          <Link href="#">Privacy Policy</Link>
-          <Link href="#">Licensing</Link>
-          <Link href="#">Contact</Link>
+          <a href="#test">About</a>
+          <a href="#test">Privacy Policy</a>
+          <a href="#test">Licensing</a>
+          <a href="#test">Contact</a>
         </FooterLinkGroup>
       </div>
       <Divider />
-      <Copyright href="#" by="Pol-ui™" year={2022} />
+      <Copyright href="#test" by="Pol-ui™" year={2022} />
     </div>
   ),
 };
@@ -77,27 +76,27 @@ WithSocialMediaFooter.args = {
         <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
           <div>
             <FooterLinkGroup col={true} title="about">
-              <Link href="#">Pol-ui</Link>
-              <Link href="#">Tailwind CSS</Link>
+              <a href="#test">Pol-ui</a>
+              <a href="#test">Tailwind CSS</a>
             </FooterLinkGroup>
           </div>
           <div>
             <FooterLinkGroup col={true} title="Follow us">
-              <Link href="#">Github</Link>
-              <Link href="#">Discord</Link>
+              <a href="#test">Github</a>
+              <a href="#test">Discord</a>
             </FooterLinkGroup>
           </div>
           <div>
             <FooterLinkGroup col={true} title="Legal">
-              <Link href="#">Privacy Policy</Link>
-              <Link href="#">Terms &amp; Conditions</Link>
+              <a href="#test">Privacy Policy</a>
+              <a href="#test">Terms &amp; Conditions</a>
             </FooterLinkGroup>
           </div>
         </div>
       </div>
       <Divider />
       <div className="w-full sm:flex sm:items-center sm:justify-between">
-        <Copyright href="#" by="Pol-ui™" year={2022} />
+        <Copyright href="#test" by="Pol-ui™" year={2022} />
         <div className="mt-4 flex space-x-2 sm:mt-0 sm:justify-center">
           <IconButton>
             <BsDribbble size={20} />
@@ -125,38 +124,38 @@ SitemapLinksFooter.args = {
       <div className="grid w-full grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">
         <div>
           <FooterLinkGroup col={true} title="Company">
-            <Link href="#">About</Link>
-            <Link href="#">Careers</Link>
-            <Link href="#">Brand Center</Link>
-            <Link href="#">Blog</Link>
+            <a href="#test">About</a>
+            <a href="#test">Careers</a>
+            <a href="#test">Brand Center</a>
+            <a href="#test">Blog</a>
           </FooterLinkGroup>
         </div>
         <div>
           <FooterLinkGroup col={true} title="help center">
-            <Link href="#">Discord Server</Link>
-            <Link href="#">Twitter</Link>
-            <Link href="#">Facebook</Link>
-            <Link href="#">Contact Us</Link>
+            <a href="#test">Discord Server</a>
+            <a href="#test">Twitter</a>
+            <a href="#test">Facebook</a>
+            <a href="#test">Contact Us</a>
           </FooterLinkGroup>
         </div>
         <div>
           <FooterLinkGroup col={true} title="legal">
-            <Link href="#">Privacy Policy</Link>
-            <Link href="#">Licensing</Link>
-            <Link href="#">Terms &amp; Conditions</Link>
+            <a href="#test">Privacy Policy</a>
+            <a href="#test">Licensing</a>
+            <a href="#test">Terms &amp; Conditions</a>
           </FooterLinkGroup>
         </div>
         <div>
           <FooterLinkGroup col={true} title="download">
-            <Link href="#">iOS</Link>
-            <Link href="#">Android</Link>
-            <Link href="#">Windows</Link>
-            <Link href="#">MacOS</Link>
+            <a href="#test">iOS</a>
+            <a href="#test">Android</a>
+            <a href="#test">Windows</a>
+            <a href="#test">MacOS</a>
           </FooterLinkGroup>
         </div>
       </div>
       <div className="w-full px-4 py-6 sm:flex sm:items-center sm:justify-between sm:px-10">
-        <Copyright href="#" by="Pol-ui" year={2022} />
+        <Copyright href="#test" by="Pol-ui" year={2022} />
         <div className="mt-4 flex space-x-2 sm:mt-0 sm:justify-center">
           <IconButton>
             <BsDribbble size={20} />

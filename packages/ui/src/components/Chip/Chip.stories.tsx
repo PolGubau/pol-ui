@@ -13,7 +13,7 @@ export default {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <div className="flex p-6 flex-col justify-center items-center">
+      <div className="flex flex-col items-center justify-center p-6">
         <Story />
         <Toaster />
       </div>
@@ -47,6 +47,7 @@ OnDelete.args = {
   children: "Chip",
   actions: [
     {
+      label: "Delete",
       onClick: () => {
         toast("Delete");
       },
@@ -59,12 +60,14 @@ MultipleActions.args = {
   children: "Custom Icon",
   actions: [
     {
+      label: "More actions",
       onClick: () => {
         toast("More actions");
       },
       icon: <TbDots />,
     },
     {
+      label: "Delete",
       onClick: () => {
         toast("Delete");
       },
@@ -77,6 +80,7 @@ DropdownExample.args = {
   children: "Custom Icon",
   actions: [
     {
+      label: "Delete",
       element: (
         <Dropdown
           label="Example"
@@ -114,7 +118,7 @@ DropdownExample.args = {
 };
 export const AllColors = () => {
   return (
-    <div className="flex flex-wrap gap-4 items-center justify-center p-3  rounded-3xl">
+    <div className="flex flex-wrap items-center justify-center gap-4 rounded-3xl p-3">
       {Object.keys(ColorsEnum).map((color) => (
         <Chip key={color} color={color as Colors}>
           {color}
