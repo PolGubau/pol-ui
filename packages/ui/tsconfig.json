@@ -2,7 +2,11 @@
   "compilerOptions": {
     "target": "ES2022",
     "useDefineForClassFields": true,
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
     "skipLibCheck": true,
     /* Bundler mode */
@@ -18,8 +22,12 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "vite.config.ts", "tailwind.config.ts"],
-  "types": ["vitest", "node"],
+  "include": [
+    "src",
+    "vite.config.ts",
+    "vitest.config.ts",
+    "tailwind.config.ts"
+  ],
   "references": [
     {
       "path": "./tsconfig.node.json"

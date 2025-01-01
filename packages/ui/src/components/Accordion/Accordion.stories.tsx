@@ -12,8 +12,8 @@ export default {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <div className="flex p-6 flex-col justify-center items-center ">
-        <div className="max-w-2xl w-full">
+      <div className="flex flex-col items-center justify-center p-6 ">
+        <div className="w-full max-w-2xl">
           <Story />
         </div>
       </div>
@@ -38,7 +38,7 @@ const Template: StoryFn<AccordionProps> = (args) => (
           As we use tailwind, you can style this accordion however you like. For example, you can add a border to the
           content.
         </p>
-        <p className="border border-green-400 px-2 py-1 w-fit rounded-xl bg-green-200 mt-2">You see :)</p>
+        <p className="mt-2 w-fit rounded-xl border border-green-400 bg-green-200 px-2 py-1">You see :)</p>
       </Accordion.Content>
     </Accordion.Panel>
     <Accordion.Panel>
@@ -52,7 +52,7 @@ const Template: StoryFn<AccordionProps> = (args) => (
           No problem, you can use the theme prop to style the accordion. You can also use the theme prop to override the
           default classes.
         </p>
-        <p className="bg-blue-200 border border-blue-400 px-2 py-1 w-fit rounded-xl mt-2">
+        <p className="mt-2 w-fit rounded-xl border border-blue-400 bg-blue-200 px-2 py-1">
           This text is blue but the main content is red.
         </p>
       </Accordion.Content>
@@ -61,7 +61,7 @@ const Template: StoryFn<AccordionProps> = (args) => (
       <Accordion.Title>What can I change by props</Accordion.Title>
       <Accordion.Content>
         <h3 className="mb-4 text-lg first-letter:uppercase">The main props for the accordion are:</h3>
-        <ol className="flex flex-col gap-2 divide-y w-fit">
+        <ol className="flex w-fit flex-col gap-2 divide-y">
           <li>
             <strong>alwaysOpen</strong> - if true, the accordion will always be open
           </li>
