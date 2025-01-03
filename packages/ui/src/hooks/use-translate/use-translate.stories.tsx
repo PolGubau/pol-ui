@@ -5,7 +5,7 @@ import { Button, Label } from "../../components";
 import { type Locale, getSupportedLanguages } from "../../i18n";
 import { PoluiProvider } from "../../providers";
 import type { LangAndText } from "../../types";
-import useTranslate from "./use-translate";
+import { useTranslate } from "./use-translate";
 
 const translations1 = {
   "es-ES": {
@@ -37,7 +37,7 @@ const App = () => {
       <div>language: {lang.locale}</div>
       <div>translation: {t("title")}</div>
       <hr />
-      <div className="flex gap-2 items-center">
+      <div className="flex items-center gap-2">
         {Object.keys(translations1).map((lang) => (
           <Button key={lang} onClick={() => changeLanguage(lang as Locale)}>
             Change language to {lang}
@@ -59,7 +59,7 @@ const meta: Meta<typeof Label> = {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <div className="flex p-6 flex-col ">
+      <div className="flex flex-col p-6 ">
         <Story />
       </div>
     ),
@@ -129,7 +129,7 @@ const translations2 = {
       <div>translation: {t("title")}</div>
       <div>translation: {t("subtitle")}</div>
       <hr />
-      <div className="flex gap-2 items-center">
+      <div className="flex items-center gap-2">
         {Object.keys(translations2).map((lang) => (
           <Button key={lang} onClick={() => changeLanguage(lang as Locale)}>
             Change language to {lang}
@@ -161,7 +161,7 @@ export const GetCurrentLabel = () => {
   ];
   const { getCurrentLabel } = useTranslate();
   return (
-    <div className="flex flex-col divide-y space-y-6">
+    <div className="flex flex-col space-y-6 divide-y">
       <h1>getCurrentLabel</h1>
       <pre>Data= {JSON.stringify(labels, null, 2)}</pre>
       <pre>{JSON.stringify(getCurrentLabel(labels), null, 2)}</pre>
