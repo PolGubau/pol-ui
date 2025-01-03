@@ -1,4 +1,13 @@
-import * as PrimitiveTooltip from "@radix-ui/react-tooltip";
+import {
+  Arrow,
+  Content,
+  Portal,
+  Provider,
+  Root,
+  TooltipArrowProps,
+  TooltipContentProps,
+  Trigger,
+} from "@radix-ui/react-tooltip";
 import type React from "react";
 
 import { cn, mergeDeep } from "../../helpers";
@@ -6,10 +15,10 @@ import { getTheme } from "../../theme-store";
 import type { DeepPartial } from "../../types";
 import type { TooltipTheme } from "./theme";
 
-export interface TooltipProps extends Omit<PrimitiveTooltip.TooltipContentProps, "content"> {
+export interface TooltipProps extends Omit<TooltipContentProps, "content"> {
   label: React.ReactNode | undefined;
   arrow?: boolean;
-  arrowProps?: PrimitiveTooltip.TooltipArrowProps & React.RefAttributes<SVGSVGElement>;
+  arrowProps?: TooltipArrowProps & React.RefAttributes<SVGSVGElement>;
   theme?: DeepPartial<TooltipTheme>;
   className?: string;
   children?: React.ReactNode;
@@ -59,30 +68,30 @@ export const Tooltip = ({
   const theme = mergeDeep(getTheme().tooltip, customTheme);
 
   return (
-    <PrimitiveTooltip.Provider>
-      <PrimitiveTooltip.Root
+    <Provider>
+      <Root
         open={open}
         defaultOpen={defaultOpen}
         onOpenChange={onOpenChange}
         delayDuration={delayDuration}
         disableHoverableContent={closeOnHover}
       >
-        <PrimitiveTooltip.Trigger asChild={true}>
+        <Trigger asChild={true}>
           <div>{children}</div>
-        </PrimitiveTooltip.Trigger>
+        </Trigger>
         {label && !disabled && (
-          <PrimitiveTooltip.Portal>
-            <PrimitiveTooltip.Content
+          <Portal>
+            <Content
               sideOffset={rest.sideOffset ?? 5}
               className={cn(theme.content.base, theme.content.animation, className)}
               {...rest}
             >
               {label}
-              {arrow && <PrimitiveTooltip.Arrow className={cn(theme.arrow, arrowProps?.className)} {...arrowProps} />}
-            </PrimitiveTooltip.Content>
-          </PrimitiveTooltip.Portal>
+              {arrow && <Arrow className={cn(theme.arrow, arrowProps?.className)} {...arrowProps} />}
+            </Content>
+          </Portal>
         )}
-      </PrimitiveTooltip.Root>
-    </PrimitiveTooltip.Provider>
+      </Root>
+    </Provider>
   );
 };
