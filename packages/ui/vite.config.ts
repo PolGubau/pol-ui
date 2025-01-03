@@ -1,5 +1,5 @@
-import path, { join, resolve } from "node:path";
 /// <reference types="vitest" />
+import path, { join, resolve } from "node:path";
 import react from "@vitejs/plugin-react-swc";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
@@ -12,14 +12,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  plugins: [
-    react(),
-    dts({
-      rollupTypes: true,
-      insertTypesEntry: true,
-      tsconfigPath: "./tsconfig.json",
-    }),
-  ],
+  plugins: [react(), dts()],
   build: {
     copyPublicDir: false,
     target: "esnext",

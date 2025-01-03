@@ -15,7 +15,7 @@ import { countryCodes } from "./phones/metadata/countries";
  *
  * @see https://www.fincher.org/Utilities/CountryLanguageList.shtml
  */
-const rawLanguages: Language[] = [
+export const rawLanguages: Language[] = [
   ...spanishLanguagesPack,
   {
     locale: Locales.DE,
@@ -70,12 +70,12 @@ const rawLanguages: Language[] = [
   },
 ] as const;
 
-const languages = [...new Set(rawLanguages)] as Language[];
+export const languages = [...new Set(rawLanguages)] as Language[];
 
-const defaultLanguage = languages.find((lang) => lang.locale === Locales.EN_US) ?? languages[0];
+export const defaultLanguage = languages.find((lang) => lang.locale === Locales.EN_US) ?? languages[0];
 
 // Extract unique language codes and country codes
-const allLocales = [...new Set(languages.map((lang) => lang.locale))] as const;
+export const allLocales = [...new Set(languages.map((lang) => lang.locale))] as const;
 // Create types based on these arrays
 
 /**
@@ -83,13 +83,11 @@ const allLocales = [...new Set(languages.map((lang) => lang.locale))] as const;
  * @param countryCodes
  * @returns
  */
-const getSupportedLanguages = (wantedLocales: Locale[] = []): typeof languages => {
+export const getSupportedLanguages = (wantedLocales: Locale[] = []): typeof languages => {
   const supportedLanguages = languages.filter((lang) => wantedLocales.includes(lang.locale));
   return supportedLanguages;
 };
 
-const getLanguage = (locale: Locale): Language | undefined => {
+export const getLanguage = (locale: Locale): Language | undefined => {
   return languages.find((lang) => lang.locale === locale);
 };
-
-export { allLocales, defaultLanguage, getSupportedLanguages, languages, getLanguage };
