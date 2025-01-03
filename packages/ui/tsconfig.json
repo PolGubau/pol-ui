@@ -3,6 +3,7 @@
   "compilerOptions": {
     // This is a component library, so "ESNext" is a good choice. Also it requires very little down-leveling during transpilation.
     "target": "ESNext",
+    "declarationDir": "./dist",
     // Include a list of type definitions for build-in JS APIs.
     "lib": [
       "DOM",

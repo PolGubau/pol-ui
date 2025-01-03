@@ -12,7 +12,14 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  plugins: [react(), dts({ rollupTypes: true })],
+  plugins: [
+    react(),
+    dts({
+      rollupTypes: true,
+      insertTypesEntry: true,
+      tsconfigPath: "./tsconfig.json",
+    }),
+  ],
   build: {
     copyPublicDir: false,
     target: "esnext",

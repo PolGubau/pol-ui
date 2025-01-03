@@ -7,7 +7,7 @@ import { PolUiContext } from "../../providers/PoluiProvider/PoluiProvider";
 import type { LangAndText, Language, Translation } from "../../types";
 import { useLocalStorage } from "../use-local-storage";
 
-const useTranslate = () => {
+export const useTranslate = () => {
   const cortexContext = React.useContext(PolUiContext);
   if (!cortexContext) {
     throw new Error(
@@ -38,6 +38,7 @@ const useTranslate = () => {
   const getTranslationsByMultipleLanguages = (locales: Locale[]): Translation => {
     // Ensure that translations from more specific locales (later in the array) override those from more general locales (earlier in the array).
     return locales.reduce((acc, locale) => {
+      // biome-ignore lint/performance/noAccumulatingSpread: <explanation>
       return { ...getTranslationsByLocale(locale), ...acc };
     }, {});
   };
@@ -100,7 +101,7 @@ const useTranslate = () => {
       if (!acc[key]) {
         acc[key] = [];
       }
-      acc[key].push(lang);
+      acc[key]?.push(lang);
       return acc;
     }, {});
     return languagesGrouped as Record<string, Language[]>;
@@ -118,5 +119,3 @@ const useTranslate = () => {
     languagesGrouped,
   };
 };
-
-export default useTranslate;

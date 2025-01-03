@@ -138,7 +138,11 @@ export function CardStack({ children, className }: Readonly<CardStackProps>) {
           order: childCount - 1,
         };
       }
-      if (items[index] && item.order > items[index].order) {
+      const currentItem = items[index];
+      if (!currentItem) {
+        return item;
+      }
+      if (currentItem && item.order > currentItem.order) {
         return {
           ...item,
           order: item.order - 1,

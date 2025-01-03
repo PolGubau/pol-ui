@@ -82,7 +82,7 @@ const Slider = React.forwardRef<React.ElementRef<typeof SliderPrimitive.Root>, S
             arrow={true}
             // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
             key={i}
-            label={value[i] ? value[i].toString() : ""}
+            label={value?.[i] ? value?.[i]?.toString() : ""}
             open={isDragging}
             disabled={props.disabled}
           >
@@ -92,7 +92,7 @@ const Slider = React.forwardRef<React.ElementRef<typeof SliderPrimitive.Root>, S
               aria-disabled={props.disabled}
               // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
               key={i}
-              className={cn(`border-${color} ring-${color}`, theme.thumb, classNames?.thumb)}
+              className={cn(`border-${color}ring-${color}`, theme.thumb, classNames?.thumb)}
             />
           </Tooltip>
         ))}
