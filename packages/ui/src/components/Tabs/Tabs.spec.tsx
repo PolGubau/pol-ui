@@ -24,7 +24,7 @@ describe("Components / Tabs", () => {
     await user.click(firstTab());
     expect(firstTab()).toHaveFocus();
 
-    const nextTab = tabs()[1];
+    const nextTab = tabs()[1] as HTMLElement;
 
     await user.click(nextTab);
 
@@ -172,6 +172,6 @@ const tabs = () => screen.queryAllByRole("tab");
 
 const activeTab = () => tabs().find((tab) => tab.getAttribute("aria-selected") === "true");
 
-const firstTab = () => tabs()[0];
+const firstTab = () => tabs()[0] as HTMLElement;
 
-const lastTab = () => tabs()[tabs().length - 1];
+const lastTab = () => tabs()[tabs().length - 1] as HTMLElement;

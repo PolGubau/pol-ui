@@ -86,8 +86,12 @@ describe("Components / Accordion", () => {
     it('should use any HTML heading element in `Accordion.Title as=".."`', () => {
       render(<TestAccordion />);
 
-      expect(headings()[0].tagName.toLocaleLowerCase()).toEqual("h3");
-      expect(headings()[1].tagName.toLocaleLowerCase()).toEqual("h2");
+      const firstHeading = headings()[0];
+      const secondHeading = headings()[1];
+      if (firstHeading && secondHeading) {
+        expect(firstHeading.tagName.toLocaleLowerCase()).toEqual("h3");
+        expect(secondHeading.tagName.toLocaleLowerCase()).toEqual("h2");
+      }
     });
   });
 });

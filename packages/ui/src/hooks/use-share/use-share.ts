@@ -61,6 +61,7 @@ const useShare = ({ onShare, onSuccess, onError, fallback, successTimeout = 3000
         } catch (error) {
           // Execute onError callback if provided
           onError?.(error);
+          return error;
         }
       } else {
         // Execute fallback function if provided

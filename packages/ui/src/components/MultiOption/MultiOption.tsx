@@ -64,6 +64,7 @@ const MultiOption = ({ options = [], value = "", onChange }: MultiOptionProps) =
       </Select>
     );
   }
+  return null;
 };
 
 export { MultiOption, type MultiOptionProps };

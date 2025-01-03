@@ -1,6 +1,6 @@
-import { act, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import type { FC } from "react";
+import { type FC, act } from "react";
 import { describe, expect, it } from "vitest";
 import { Dropdown, DropdownItem } from ".";
 import type { DropdownProps } from "./Dropdown";
@@ -41,7 +41,13 @@ describe("Components / Dropdown", () => {
     it("should collapse if CustomTriggerItem is clicked", async () => {
       const user = userEvent.setup();
       render(<TestDropdown trigger={<button type="button">A</button>} />);
-      await act(() => user.click(screen.getAllByRole("button")[0]));
+
+      const button = screen.getAllByRole("button")[0];
+      if (!button) {
+        return;
+      }
+
+      await act(() => user.click(button));
       await act(() => userEvent.click(dropdownItem()));
       expect(dropdown()).not.toBeInTheDocument();
     });

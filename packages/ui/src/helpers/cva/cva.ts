@@ -71,7 +71,10 @@ export const cva =
       const variantKey = (falsyToString(variantProp) ??
         falsyToString(defaultVariantProp)) as keyof (typeof variants)[typeof variant];
 
-      return variants[variant][variantKey];
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+      const selectedVariant = variants[variant] as any;
+      const selectedVariantValue = selectedVariant[variantKey];
+      return selectedVariant;
     });
 
     const propsWithoutUndefined =
@@ -100,7 +103,8 @@ export const cva =
                 ...propsWithoutUndefined,
               }[key] === value,
         )
-          ? [...acc, cvClass, cvClassName]
+          ? // biome-ignore lint/performance/noAccumulatingSpread: <explanation>
+            [...acc, cvClass, cvClassName]
           : acc,
       [] as ClassValue[],
     );

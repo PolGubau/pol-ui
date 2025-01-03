@@ -61,6 +61,7 @@ export function useCopyToClipboard(props?: UseCopyToClipboardProps): UseCopyToCl
     if (clearCopiedTextOnUnmount) {
       return () => setCopiedText(null);
     }
+    return undefined;
   }, [clearCopiedTextOnUnmount]);
 
   const copy: CopyFn = useCallback(async (text) => {

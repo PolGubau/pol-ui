@@ -27,10 +27,10 @@ const Folder = ({
   const { direction, handleExpand, expandedItems, indicator, setExpandedItems, openIcon, closeIcon } = useTree();
 
   return (
-    <AccordionPrimitive.Item {...props} value={value} className="relative overflow-hidden h-full ">
+    <AccordionPrimitive.Item {...props} value={value} className="relative h-full overflow-hidden ">
       <AccordionPrimitive.Trigger
-        className={cn("flex items-center gap-1 text-sm rounded-md", className, {
-          "bg-muted rounded-md": isSelect && isSelectable,
+        className={cn("flex items-center gap-1 rounded-md text-sm", className, {
+          "rounded-md bg-muted": isSelect && isSelectable,
           "cursor-pointer": isSelectable,
           "cursor-not-allowed opacity-50": !isSelectable,
         })}
@@ -42,16 +42,16 @@ const Folder = ({
           : (closeIcon ?? <TbFolder className="size-4" />)}
         <span>{element}</span>
       </AccordionPrimitive.Trigger>
-      <AccordionPrimitive.Content className="text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down relative overflow-hidden h-full">
+      <AccordionPrimitive.Content className="relative h-full overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
         {element && indicator && <TreeIndicator aria-hidden="true" />}
         <AccordionPrimitive.Root
           dir={direction}
           type="multiple"
-          className="flex flex-col gap-1 py-1 ml-5 rtl:mr-5 "
+          className="ml-5 flex flex-col gap-1 py-1 rtl:mr-5 "
           defaultValue={expandedItems}
           value={expandedItems}
           onValueChange={(value) => {
-            setExpandedItems?.((prev) => [...(prev ?? []), value[0]]);
+            setExpandedItems?.((prev) => [...(prev ?? []), value[0]].filter((v): v is string => v !== undefined));
           }}
         >
           {children}

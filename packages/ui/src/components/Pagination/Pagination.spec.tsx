@@ -125,6 +125,6 @@ const currentPage = () => {
   return Number.parseInt(currentPageElement?.textContent ?? "0");
 };
 
-const nextButton = () => buttons()[buttons().length - 1];
+const nextButton = () => buttons()[buttons().length - 1] as HTMLButtonElement;
 
-const previousButton = () => buttons()[0];
+const previousButton = () => buttons()[0] as HTMLButtonElement;

@@ -69,7 +69,7 @@ export const CardStackItem = ({
 
   return (
     <motion.div
-      className={twMerge(" cursor-grab w-fit h-fit", frontCard ? "relative" : "absolute top-0", className)}
+      className={twMerge(" h-fit w-fit cursor-grab", frontCard ? "relative" : "absolute top-0", className)}
       style={{
         zIndex: total - position,
         x,
@@ -111,7 +111,7 @@ export interface CardStackProps {
 /**
  *
  * @name CardStack
- * @description The CardStack component is usefull to create a stack of cards, like a tinder card stack. Interessting for a dating app, a social network, a forum...
+ * @description The CardStack component is useful to create a stack of cards, like a tinder card stack. Interesting for a dating app, a social network, a forum...
  * @returns
  */
 export function CardStack({ children, className }: Readonly<CardStackProps>) {
@@ -123,7 +123,7 @@ export function CardStack({ children, className }: Readonly<CardStackProps>) {
       };
     }) ?? [],
   );
-  const amountOfChilds = children?.length ?? 0;
+  const childCount = children?.length ?? 0;
 
   const sendToBottom = (index: number) => {
     // if we only have 1 child, we don't want to send it to the bottom
@@ -135,10 +135,10 @@ export function CardStack({ children, className }: Readonly<CardStackProps>) {
       if (i === index) {
         return {
           ...item,
-          order: amountOfChilds - 1,
+          order: childCount - 1,
         };
       }
-      if (item.order > items[index].order) {
+      if (items[index] && item.order > items[index].order) {
         return {
           ...item,
           order: item.order - 1,
@@ -159,7 +159,7 @@ export function CardStack({ children, className }: Readonly<CardStackProps>) {
               key={index}
               index={index}
               sendToBottom={sendToBottom}
-              total={amountOfChilds}
+              total={childCount}
               position={item.order}
               className={className}
             >

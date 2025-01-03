@@ -23,7 +23,7 @@ export const getCookie = (name: string): string | undefined => {
   for (const cookie of cookies) {
     const [cookieName, cookieValue] = cookie.split("=");
     if (cookieName === name) {
-      return decodeURIComponent(cookieValue);
+      return decodeURIComponent(cookieValue ?? "");
     }
   }
   return undefined;

@@ -13,9 +13,12 @@ const config: ViteConfig = {
   test: {
     coverage: {
       reporter: ["html", "json", "text"],
+      enabled: true,
+      all: false,
     },
 
     environment: "jsdom",
+
     exclude: ["lib/**/*", "node_modules"],
     globals: true,
     setupFiles: "./src/setup-tests.ts",

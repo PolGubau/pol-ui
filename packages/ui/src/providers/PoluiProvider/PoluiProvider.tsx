@@ -61,9 +61,9 @@ export const PoluiProvider: FC<ProviderProps> = ({
   children,
   theme,
   keys = {
-    language: "mesalvo-language",
+    language: "pol-ui",
   },
-  defaultLanguage = languages[0],
+  defaultLanguage = languages[0] as Language,
   isDebug,
   allLanguages = [],
   toaster,
@@ -74,17 +74,14 @@ export const PoluiProvider: FC<ProviderProps> = ({
   const locales = Object.keys(translations) as Locale[];
   type Locale = keyof typeof translations;
 
-  const context = React.useMemo(
-    () => ({
-      keys: { language: keys.language },
-      defaultLanguage,
-      translations,
-      locales,
-      allLanguages,
-      isDebug,
-    }),
-    [keys, defaultLanguage, translations, locales, allLanguages, isDebug],
-  );
+  const context = {
+    keys: { language: keys.language },
+    defaultLanguage,
+    translations,
+    locales,
+    allLanguages,
+    isDebug,
+  };
 
   const { computedMode } = useThemeMode();
 

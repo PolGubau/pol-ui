@@ -25,7 +25,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
     return { hasError: true };
   }
 
-  componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
+  override componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     const { onError } = this.props;
     if (onError) {
       onError(error, errorInfo);
@@ -40,13 +40,13 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
     }
   };
 
-  render(): React.ReactNode {
+  override render(): React.ReactNode {
     const { fallbackUI, children, reloadText = "Reload" } = this.props;
     const { hasError } = this.state;
 
     if (hasError) {
       return (
-        <div className="flex gap-2 items-center">
+        <div className="flex items-center gap-2">
           {fallbackUI}
           {this.props.retry && (
             <IconButton label={reloadText} onClick={this.handleRetry}>

@@ -28,5 +28,6 @@ export function useInterval(callback: () => void, delay: number | null) {
         clearInterval(id);
       };
     }
+    return undefined;
   }, [delay]);
 }

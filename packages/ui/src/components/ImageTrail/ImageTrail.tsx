@@ -104,6 +104,7 @@ export const ImageTrail = ({
     );
 
     imageRenderCount.current += 1;
+    return null;
   };
 
   const theme = mergeDeep(getTheme().imageTrail, customTheme);

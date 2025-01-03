@@ -158,7 +158,8 @@ export const KanbanColumn = ({
 
     // Get the value of the 'before' attribute from the indicator's dataset, defaulting to '-1'.
     // Before is the id of the card before which the dragged card should be placed.
-    const before = element.dataset.before ?? "-1";
+    // biome-ignore lint/complexity/useLiteralKeys: <explanation>
+    const before = element.dataset["before"] ?? "-1";
 
     // If the drop indicator is different from the cardId, proceed with reordering.
     if (before !== cardId) {
@@ -219,7 +220,7 @@ export const KanbanColumn = ({
       },
       {
         offset: Number.NEGATIVE_INFINITY,
-        element: indicators[indicators.length - 1],
+        element: indicators[indicators.length - 1] as HTMLElement,
       },
     );
 

@@ -98,7 +98,7 @@ export const Tabs: React.FC<TabsProps> = ({
           );
         })}
       </ul>
-      <TabContent content={tab.content} key={tab.name} className={cn("mt-4", contentClassName)} />
+      {tab && <TabContent content={tab.content} key={tab.name} className={cn("mt-4", contentClassName)} />}{" "}
     </div>
   );
 };
@@ -110,5 +110,5 @@ export const TabContent = ({
   className?: string;
   content: Tab["content"];
 }) => {
-  return <motion.div className={cn("relative w-full h-full transition-all ", className)}>{content}</motion.div>;
+  return <motion.div className={cn("relative h-full w-full transition-all ", className)}>{content}</motion.div>;
 };

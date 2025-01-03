@@ -17,6 +17,9 @@ const useMeasure = <T extends Element = Element>(): MeasureResult<T> => {
 
     if (ref.current) {
       observer = new ResizeObserver(([entry]) => {
+        if (!entry) {
+          return;
+        }
         setBounds(entry.contentRect);
       });
       observer.observe(ref.current);

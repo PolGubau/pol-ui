@@ -174,6 +174,7 @@ export function callIfExists<T extends unknown[], U = unknown>(
   if (typeof func === "function") {
     return func(...args);
   }
+  return undefined;
 }
 
 export function getDaysOfMonth(month: Date, weekStartsOn = DayName.MONDAY): Month {
@@ -202,7 +203,7 @@ export function getDaysOfMonth(month: Date, weekStartsOn = DayName.MONDAY): Mont
     return {
       __type: DayOfMonthSymbol,
       dateObj: day,
-      dayName: DaysOfTheWeek[(i + dayOffset) % 7],
+      dayName: DaysOfTheWeek[(i + dayOffset) % 7] as DayName,
       inCurrentMonth: isSameMonth(firstDate, day),
       ISODateString: toISODateString(day),
     };

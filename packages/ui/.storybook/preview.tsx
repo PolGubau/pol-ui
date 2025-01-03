@@ -11,7 +11,7 @@ const Provider = ({ children }: PropsWithChildren) => {
   const allLangs = getSupportedLanguages(availableLocales);
   return (
     <PoluiProvider defaultLanguage={defaultLanguage} allLanguages={allLangs}>
-      <main className="relative relative grid h-full min-h-[300px] w-full bg-secondary-50 p-2 pt-6 dark:bg-secondary-900">
+      <main className="relative relative grid h-full min-h-[300px] w-full w-full bg-secondary-50 p-2 pt-6 dark:bg-secondary-900">
         {children}
         <Toolbox>
           <DarkThemeToggle className="text-white dark:text-white" />

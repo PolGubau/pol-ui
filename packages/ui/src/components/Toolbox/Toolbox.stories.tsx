@@ -2,21 +2,11 @@ import type { Meta } from "@storybook/react";
 import { TbMoon, TbSettings, TbSun, TbUser } from "react-icons/tb";
 import { useThemeMode } from "../../hooks";
 import { IconButton } from "../IconButton";
-import Toolbox from "./Toolbox";
+import { Toolbox } from "./Toolbox";
 
 export default {
   title: "Components/Toolbox",
   component: Toolbox,
-  decorators: [
-    (Story) => (
-      <div className="flex p-6 flex-col items-center pt-20 min-h-[400px] bg-background w-full">
-        <Story />
-      </div>
-    ),
-  ],
-  parameters: {
-    layout: "fullscreen",
-  },
 } as Meta;
 
 export const Default = () => {

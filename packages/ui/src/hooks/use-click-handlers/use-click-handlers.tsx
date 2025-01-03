@@ -68,6 +68,7 @@ const useClickHandlers = ({ onDoubleClick, onHoldClick, holdTime = 500 }: UseCli
         element.removeEventListener("mouseleave", handleMouseUp);
       };
     }
+    return undefined;
   }, [handleClick, handleMouseDown, handleMouseUp]);
 
   return ref;

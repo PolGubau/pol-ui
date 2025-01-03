@@ -75,7 +75,7 @@ function useUndo<T extends string | Record<string, unknown>>(
       currentPositionRef.current = newPosition;
       const newValue = historyRef.current[newPosition];
       if (!newValue) {
-        setValue(newValue);
+        newValue && setValue(newValue);
       }
       localStorage.setItem(key, JSON.stringify(newValue));
     }
@@ -87,7 +87,7 @@ function useUndo<T extends string | Record<string, unknown>>(
       currentPositionRef.current = newPosition;
       const newValue = historyRef.current[newPosition];
       if (!newValue) {
-        setValue(newValue);
+        newValue && setValue(newValue);
       }
       localStorage.setItem(key, JSON.stringify(newValue));
     }

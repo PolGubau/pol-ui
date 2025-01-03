@@ -87,12 +87,15 @@ const useSpeechToText = ({
       for (let i = lastProcessedIndex; i < event.results.length; i++) {
         const result = event.results[i];
         // If the result is final, append to the final transcript
+        if (!result) {
+          continue;
+        }
         if (result.isFinal) {
-          finalTranscript += `${result[0].transcript} `;
+          finalTranscript += `${result[0]?.transcript} `;
           setLastProcessedIndex(i + 1);
         } else {
           // Otherwise, append to the interim transcript
-          interimTranscript += `${result[0].transcript} `;
+          interimTranscript += `${result[0]?.transcript} `;
         }
       }
 

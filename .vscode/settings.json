@@ -1,4 +1,7 @@
 {
   "editor.formatOnSave": true,
-  "eslint.nodePath": "node_modules"
+  "eslint.nodePath": "node_modules",
+  "cSpell.words": [
+    "Polui"
+  ]
 }

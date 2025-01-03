@@ -42,7 +42,7 @@ const useGesture = (config: GestureConfig) => {
       const touchEvent = e as TouchEvent;
       if (touchEvent.touches.length === config.touchCount) {
         e.preventDefault();
-        const touch = touchEvent.touches[0];
+        const touch = touchEvent.touches[0] as Touch;
         const hasTouch = Boolean(touch);
         if (!hasTouch) {
           return;
@@ -57,7 +57,7 @@ const useGesture = (config: GestureConfig) => {
         };
 
         if (config.gesture === "pinch" || config.gesture === "zoom") {
-          const touch2 = touchEvent.touches[1];
+          const touch2 = touchEvent.touches[1] as Touch;
           const hasTouch2 = Boolean(touch2);
           if (!hasTouch2) {
             return;
@@ -68,14 +68,16 @@ const useGesture = (config: GestureConfig) => {
             touch2.clientY - touch.clientY,
           );
         }
+        return false;
       }
+      return true;
     };
 
     const onTouchMove = (e: Event) => {
       const touchEvent = e as TouchEvent;
       if (touchEvent.touches.length === config.touchCount && !gestureStateRef.current.gestureTriggered) {
         e.preventDefault();
-        const touch = touchEvent.touches[0];
+        const touch = touchEvent.touches[0] as Touch;
         const hasTouch = Boolean(touch);
 
         if (!hasTouch) {
@@ -86,7 +88,7 @@ const useGesture = (config: GestureConfig) => {
         gestureStateRef.current.touchEndY = touch.clientY;
 
         if (config.gesture === "pinch" || config.gesture === "zoom") {
-          const touch2 = touchEvent.touches[1];
+          const touch2 = touchEvent.touches[1] as Touch;
           const hasTouch2 = Boolean(touch2);
 
           if (!hasTouch2) {
@@ -182,6 +184,7 @@ const useGesture = (config: GestureConfig) => {
         targetElement.removeEventListener("touchend", onTouchEnd);
       };
     }
+    return undefined;
   }, [config, targetElement]);
 
   return gestureStateRef.current;

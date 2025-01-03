@@ -46,6 +46,7 @@ function useDeviceOrientation() {
         window.removeEventListener("deviceorientation", handleOrientation);
       };
     }
+    return undefined;
   }, [isPermissionGranted, handleOrientation]);
 
   const requestPermission = useCallback(async () => {

@@ -20,7 +20,14 @@ export function shuffle<T>(arr: readonly T[]): T[] {
    */
   for (let i = result.length - 1; i >= 1; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [result[i], result[j]] = [result[j], result[i]];
+    let temp = result[i];
+    let resultJ = result[j];
+
+    if (!resultJ || !temp) {
+      continue;
+    }
+
+    [temp, resultJ] = [resultJ, temp];
   }
 
   return result;

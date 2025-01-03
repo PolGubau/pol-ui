@@ -182,7 +182,7 @@ export const OtpInput = ({
 
   const changeCodeAtFocus = (value: string) => {
     const otp = getOtpValue();
-    otp[activeInput] = value[0];
+    otp[activeInput] = value[0] ?? "";
     handleOtpChange(otp);
   };
 

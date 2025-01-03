@@ -23,7 +23,7 @@ export function SplitButton({ options, ...rest }: Readonly<SplitButtonProps>) {
   return (
     <div className="flex">
       <Button className="rounded-none rounded-l-lg" {...rest} {...options[selectedIndex]}>
-        {options[selectedIndex].label}
+        {options[selectedIndex]?.label}
       </Button>
 
       <Dropdown

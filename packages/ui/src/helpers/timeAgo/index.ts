@@ -1,3 +1,3 @@
-export { default as dateParser } from "./date-parser";
-export { default as formatter } from "./formatter";
-export { default as timeAgo } from "./time-ago";
+export { dateParser } from "./date-parser";
+export { defaultFormatter } from "./formatter";
+export { TimeAgo } from "./time-ago";

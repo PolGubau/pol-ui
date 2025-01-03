@@ -288,7 +288,7 @@ function applyStyles<T extends HTMLElement>(styles: string[][], target: T): T {
   }
 
   for (const [property, value] of styles) {
-    target.style.setProperty(property, value);
+    property && value && target.style.setProperty(property, value);
   }
   return target;
 }
