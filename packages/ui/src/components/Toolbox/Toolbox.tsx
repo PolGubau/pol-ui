@@ -11,7 +11,7 @@ export interface ToolboxProps {
   children: React.ReactNode;
 }
 
-const Toolbox = ({ children }: ToolboxProps) => {
+export const Toolbox = ({ children }: ToolboxProps) => {
   const { value: showDebug, toggle } = useBoolean(false);
 
   return (
@@ -21,7 +21,7 @@ const Toolbox = ({ children }: ToolboxProps) => {
         color={ColorsEnum.secondary}
         variant={"filled"}
         size={"sm"}
-        className="fixed bottom-2 left-1/2 -translate-x-1/2 z-50 bg-secondary-900 hover:bg-secondary-800"
+        className="-translate-x-1/2 fixed bottom-2 left-1/2 z-50 bg-secondary-900 hover:bg-secondary-800"
         style={{ zIndex: 999999 }}
       >
         <FaChevronUp
@@ -34,7 +34,7 @@ const Toolbox = ({ children }: ToolboxProps) => {
       <div
         style={{ zIndex: 999999 }}
         className={cn(
-          "bg-secondary-900 flex transition-all justify-center items-center rounded-full p-1 gap-1 fixed left-1/2 -translate-x-1/2 z-40 max-w-[90vw]",
+          "-translate-x-1/2 fixed left-1/2 z-40 flex max-w-[90vw] items-center justify-center gap-1 rounded-full bg-secondary-900 p-1 transition-all",
           {
             "bottom-12": showDebug,
             "-bottom-20": !showDebug,
@@ -46,5 +46,3 @@ const Toolbox = ({ children }: ToolboxProps) => {
     </>
   );
 };
-
-export default Toolbox;

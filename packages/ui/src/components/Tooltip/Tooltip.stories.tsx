@@ -12,15 +12,6 @@ import { Tooltip, type TooltipProps } from "./Tooltip";
 export default {
   title: "Components/Tooltip",
   component: Tooltip,
-  decorators: [
-    (Story) => (
-      <div className="grid place-items-center">
-        <Story />
-      </div>
-    ),
-  ],
-
-  tags: ["autodocs"],
 } as Meta;
 
 const Template: StoryFn<TooltipProps> = (args) => <Tooltip {...args} />;

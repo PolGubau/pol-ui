@@ -67,7 +67,9 @@ export const Tooltip = ({
         delayDuration={delayDuration}
         disableHoverableContent={closeOnHover}
       >
-        <PrimitiveTooltip.Trigger asChild={true}>{children}</PrimitiveTooltip.Trigger>
+        <PrimitiveTooltip.Trigger asChild={true}>
+          <div>{children}</div>
+        </PrimitiveTooltip.Trigger>
         {label && !disabled && (
           <PrimitiveTooltip.Portal>
             <PrimitiveTooltip.Content
