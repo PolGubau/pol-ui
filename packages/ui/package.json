@@ -1,163 +1,176 @@
 {
-	"name": "pol-ui",
-	"displayName": "Pol-UI",
-	"version": "2.2.0",
-	"description": "Beauty and Performance React UI Library",
-	"keywords": [
-		"design-system",
-		"pol gubau amores",
-		"react",
-		"tailwind",
-		"tailwindcss",
-		"ui"
-	],
-	"homepage": "https://ui.polgubau.com",
-	"bugs": "https://github.com/PolGubau/pol-ui/issues",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/PolGubau/pol-ui.git"
+  "name": "pol-ui",
+  "displayName": "Pol-UI",
+  "version": "2.2.0",
+  "description": "Beauty and Performance React UI Library",
+  "keywords": [
+    "design-system",
+    "pol gubau amores",
+    "react",
+    "tailwind",
+    "tailwindcss",
+    "ui"
+  ],
+  "homepage": "https://ui.polgubau.com",
+  "bugs": "https://github.com/PolGubau/pol-ui/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PolGubau/pol-ui.git"
+  },
+  "license": "MIT",
+  "author": "Pol Gubau Amores <gubaupol@gmail.com> (https://polgubau.com)",
+  "contributors": [
+    "Pol Gubau Amores <gubaupol@gmail.com> (https://polgubau.com)"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./css": "./dist/style.css"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && vite build",
+    "build-storybook": "storybook build",
+    "changelog": "npx conventional-changelog-cli -i CHANGELOG.md -s -t v -p angular",
+    "check": "biome lint --write .",
+    "commit": "cz",
+    "dev": "pnpm storybook",
+    "format": "biome format --write ./src",
+    "format-check": "biome format ./src",
+    "lint": "biome check .",
+    "lint-check": "biome lint ./src",
+    "lint-fix": "biome check --write .",
+    "prepublishOnly": "pnpm build",
+    "publish": "npm publish --access public",
+    "release": "semantic-release",
+    "serve-storybook": "serve storybook-static",
+    "storybook": "storybook dev -p 6006",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage --ui",
+    "test:e2e": "start-test 3000 ",
+    "test:e2e:open": "start-test 3000 ",
+    "test:open": "vitest --ui",
+    "typecheck": "tsc --noEmit",
+    "vercel": "vercel --prod",
+    "watch": "tsup src/index.ts --watch"
+  },
+  "dependencies": {
+    "@gsap/react": "^2.1.1",
+    "@polgubau/biome-config": "^0.0.3",
+    "@radix-ui/react-accordion": "^1.2.0",
+    "@radix-ui/react-collapsible": "^1.0.3",
+    "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
+    "@radix-ui/react-navigation-menu": "^1.1.4",
+    "@radix-ui/react-popover": "^1.0.7",
+    "@radix-ui/react-primitive": "^1.0.3",
+    "@radix-ui/react-scroll-area": "^1.1.0",
+    "@radix-ui/react-select": "^2.0.0",
+    "@radix-ui/react-slider": "^1.1.2",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-toggle-group": "^1.1.0",
+    "@radix-ui/react-tooltip": "^1.0.7",
+    "@storybook/addon-themes": "^8.4.7",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "crypto-js": "^4.2.0",
+    "date-fns": "^3.6.0",
+    "framer-motion": "^10.18.0",
+    "gsap": "^3.12.5",
+    "react-icons": "^4.12.0",
+    "react-image-file-resizer": "^0.4.8",
+    "react-resizable-panels": "^2.0.18",
+    "react-use-measure": "^2.1.1",
+    "sonner": "^1.7.0",
+    "tailwind-merge": "^2.0.0",
+    "tsup": "^6.4.0",
+    "vaul": "^0.9.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@semantic-release/changelog": "6.0.3",
+    "@semantic-release/commit-analyzer": "13.0.0",
+    "@semantic-release/git": "10.0.1",
+    "@semantic-release/release-notes-generator": "14.0.2",
+    "@storybook/addon-essentials": "^8.4.7",
+    "@storybook/addon-interactions": "^8.4.7",
+    "@storybook/addon-links": "^8.4.7",
+    "@storybook/blocks": "^8.4.7",
+    "@storybook/manager-api": "^8.4.7",
+    "@storybook/react": "^8.4.7",
+    "@storybook/react-vite": "^8.4.7",
+    "@storybook/test": "^8.4.7",
+    "@storybook/theming": "^8.4.7",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@testing-library/dom": "^9.3.4",
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.3.1",
+    "@testing-library/user-event": "^14.5.1",
+    "@types/crypto-js": "^4",
+    "@types/esm": "^3",
+    "@types/node": "^20.10.0",
+    "@types/react": "18.3.2",
+    "@types/react-dom": "18.3.0",
+    "@types/react-syntax-highlighter": "^15.5.10",
+    "@vitejs/plugin-react": "^4.2.0",
+    "@vitejs/plugin-react-swc": "^3.7.2",
+    "@vitest/coverage-v8": "^0.34.6",
+    "@vitest/ui": "^0.34.7",
+    "autoprefixer": "^10.4.20",
+    "conventional-changelog-conventionalcommits": "8.0.0",
+    "jsdom": "^22.1.0",
+    "postcss": "^8.4.49",
+    "react": "18.3.1",
+    "react-docgen-typescript": "^2.2.2",
+    "react-dom": "18.3.1",
+    "semantic-release": "24.2.0",
+    "storybook": "^8.4.7",
+    "tailwindcss": "^3.4.15",
+    "typescript": "^5.7.2",
+    "vite": "^4.1.0-beta.0",
+    "vite-plugin-dts": "^4.4.0",
+    "vite-tsconfig-paths": "^4.2.1",
+    "vitest": "^0.34.6"
+  },
+    "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "publishPath": "./",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
 	},
-	"license": "MIT",
-	"author": "Pol Gubau Amores <gubaupol@gmail.com> (https://polgubau.com)",
-	"contributors": [
-		"Pol Gubau Amores <gubaupol@gmail.com> (https://polgubau.com)"
-	],
-	"sideEffects": [
-		"**/*.css"
-	],
-	"exports": {
-		".": {
-			"import": {
-				"types": "./dist/index.d.ts",
-				"default": "./dist/index.js"
-			},
-			"require": {
-				"types": "./dist/index.d.ts",
-				"default": "./dist/index.cjs"
-			}
-		},
-		"./css": "./dist/style.css"
-	},
-	"main": "./dist/index.cjs",
-	"module": "./dist/index.js",
-	"types": "./dist/index.d.ts",
-	"files": [
-		"dist"
-	],
-	"scripts": {
-		"build": "tsc && vite build",
-		"build-storybook": "storybook build",
-		"changelog": "npx conventional-changelog-cli -i CHANGELOG.md -s -t v -p angular",
-		"check": "biome lint --write .",
-		"commit": "cz",
-		"dev": "pnpm storybook",
-		"format": "biome format --write ./src",
-		"format-check": "biome format ./src",
-		"lint": "biome check .",
-		"lint-check": "biome lint ./src",
-		"lint-fix": "biome check --write .",
-		"prepublishOnly": "pnpm build",
-		"publish": "npm publish --access public",
-		"release": "semantic-release",
-		"serve-storybook": "serve storybook-static",
-		"storybook": "storybook dev -p 6006",
-		"test": "vitest",
-		"test:coverage": "vitest run --coverage --ui",
-		"test:e2e": "start-test 3000 ",
-		"test:e2e:open": "start-test 3000 ",
-		"test:open": "vitest --ui",
-		"typecheck": "tsc --noEmit",
-		"vercel": "vercel --prod",
-		"watch": "tsup src/index.ts --watch"
-	},
-	"dependencies": {
-		"@gsap/react": "^2.1.1",
-		"@polgubau/biome-config": "^0.0.3",
-		"@radix-ui/react-accordion": "^1.2.0",
-		"@radix-ui/react-collapsible": "^1.0.3",
-		"@radix-ui/react-dialog": "^1.0.5",
-		"@radix-ui/react-dropdown-menu": "^2.0.6",
-		"@radix-ui/react-navigation-menu": "^1.1.4",
-		"@radix-ui/react-popover": "^1.0.7",
-		"@radix-ui/react-primitive": "^1.0.3",
-		"@radix-ui/react-scroll-area": "^1.1.0",
-		"@radix-ui/react-select": "^2.0.0",
-		"@radix-ui/react-slider": "^1.1.2",
-		"@radix-ui/react-slot": "^1.0.2",
-		"@radix-ui/react-toggle-group": "^1.1.0",
-		"@radix-ui/react-tooltip": "^1.0.7",
-		"@storybook/addon-themes": "^8.4.5",
-		"class-variance-authority": "^0.7.0",
-		"clsx": "^2.1.1",
-		"crypto-js": "^4.2.0",
-		"date-fns": "^3.6.0",
-		"framer-motion": "^10.18.0",
-		"gsap": "^3.12.5",
-		"react-icons": "^4.12.0",
-		"react-image-file-resizer": "^0.4.8",
-		"react-resizable-panels": "^2.0.18",
-		"react-use-measure": "^2.1.1",
-		"sonner": "^1.7.0",
-		"tailwind-merge": "^2.0.0",
-		"tsup": "^6.4.0",
-		"vaul": "^0.9.1",
-		"zod": "^3.23.8"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "1.9.4",
-		"@chromatic-com/storybook": "3",
-		"@semantic-release/changelog": "6.0.3",
-		"@semantic-release/commit-analyzer": "13.0.0",
-		"@semantic-release/git": "10.0.1",
-		"@semantic-release/release-notes-generator": "14.0.2",
-		"@storybook/addon-essentials": "^8.4.5",
-		"@storybook/addon-interactions": "^8.4.5",
-		"@storybook/addon-links": "^8.4.5",
-		"@storybook/blocks": "^8.4.5",
-		"@storybook/manager-api": "^8.4.5",
-		"@storybook/react": "^8.4.5",
-		"@storybook/react-vite": "^8.4.5",
-		"@storybook/test": "^8.4.5",
-		"@storybook/theming": "^8.4.5",
-		"@tailwindcss/container-queries": "^0.1.1",
-		"@testing-library/dom": "^9.3.4",
-		"@testing-library/jest-dom": "^6.1.4",
-		"@testing-library/react": "^14.3.1",
-		"@testing-library/user-event": "^14.5.1",
-		"@types/crypto-js": "^4",
-		"@types/esm": "^3",
-		"@types/node": "^20.10.0",
-		"@types/react": "18.3.2",
-		"@types/react-dom": "18.3.0",
-		"@types/react-syntax-highlighter": "^15.5.10",
-		"@vitejs/plugin-react": "^4.2.0",
-		"@vitejs/plugin-react-swc": "^3.7.2",
-		"@vitest/coverage-v8": "^0.34.6",
-		"@vitest/ui": "^0.34.7",
-		"autoprefixer": "^10.4.20",
-		"conventional-changelog-conventionalcommits": "8.0.0",
-		"jsdom": "^22.1.0",
-		"postcss": "^8.4.49",
-		"react": "18.3.1",
-		"react-docgen-typescript": "^2.2.2",
-		"react-dom": "18.3.1",
-		"semantic-release": "24.2.0",
-		"storybook": "^8.4.5",
-		"tailwindcss": "^3.4.15",
-		"typescript": "^5.3.2",
-		"vite": "^4.1.0-beta.0",
-		"vite-plugin-dts": "^4.4.0",
-		"vite-tsconfig-paths": "^4.2.1",
-		"vitest": "^0.34.6"
-	},
-	"peerDependencies": {
-		"react": "*",
-		"react-dom": "*",
-		"tailwindcss": "^3"
-	},
-	"publishConfig": {
-		"access": "public",
-		"publishPath": "./",
-		"registry": "https://registry.npmjs.org/"
+	"engines": {
+		"node": ">=20"
 	}
 }
