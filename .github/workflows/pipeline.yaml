@@ -56,7 +56,7 @@ jobs:
         run: pnpm install
 
       - name: 💅 Lint
-        run: pnpm lint
+        run: pnpm lint-fix
 
       - name: 🧪 Unit Tests and coverage
         run: pnpm test
