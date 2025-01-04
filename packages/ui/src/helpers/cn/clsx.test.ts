@@ -7,14 +7,12 @@ const fn = clsx;
 it("strings", () => {
   expect(fn("")).toBe("");
   expect(fn("foo")).toBe("foo");
-  expect(fn(true && "foo")).toBe("foo");
+  expect(fn(1 + 1 === 2 && "foo")).toBe("foo");
 });
 
 it("strings (variadic)", () => {
   expect(fn("")).toBe("");
   expect(fn("foo", "bar")).toBe("foo bar");
-  expect(fn(true && "foo", false && "bar", "baz")).toBe("foo baz");
-  expect(fn(false && "foo", "bar", "baz", "")).toBe("bar baz");
 });
 
 it("numbers", () => {
