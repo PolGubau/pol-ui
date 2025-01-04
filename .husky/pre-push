@@ -9,7 +9,6 @@ run_tests() {
   # Change directory to the specified directory
   cd "$directory" || exit
 
-  # Run linting
   lint_output=$(npm run build)
   if echo "$lint_output" | grep -E '(warning|error)' >/dev/null; then
     echo "Linting errors in $directory:"
