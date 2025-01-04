@@ -41,45 +41,47 @@
 	"types": "./dist/index.d.ts",
 	"files": ["dist"],
 	"scripts": {
+		"---------------": "----------------OTHER🔧",
+		"------------------": "----------------DOCS📚",
+		"-------------------": "----------------TEST🧪",
+		"---------------------": "----------------LINT🧹",
+		"----------------------": "----------------RELEASE🚀",
 		"-----------------------": "----------------BUILD🔧",
-		"prepublishOnly": "pnpm build",
 		"build": "tsc && vite build",
 		"build-storybook": "storybook build",
-
-		"----------------------": "----------------RELEASE🚀",
-		"commit": "cz",
 		"changelog": "npx conventional-changelog-cli -i CHANGELOG.md -s -t v -p angular",
-		"release": "semantic-release",
-		"vercel": "vercel --prod",
-
-		"---------------------": "----------------LINT🧹",
 		"check": "biome lint --write .",
+		"commit": "cz",
+		"coverage": "vitest run --coverage.enabled --coverage.reporter=json-summary && pnpm update-coverage",
+		"coverage-watch": "vitest run --coverage.enabled --coverage.reporter=json-summary --watch && pnpm update-coverage",
+		"coverage:ui": "vitest --coverage --ui",
+		"dev": "pnpm storybook",
 		"format": "biome format --write ./src",
 		"format-check": "biome format ./src",
 		"lint": "biome check .",
 		"lint-check": "biome lint ./src",
 		"lint-fix": "biome check --write .",
+		"prepublishOnly": "pnpm build",
 		"publish": "npm publish --access public",
-
-		"-------------------": "----------------TEST🧪",
+		"release": "semantic-release",
+		"serve-storybook": "serve storybook-static",
+		"storybook": "storybook dev -p 6006",
 		"test": "vitest",
 		"test-ui": "vitest --ui --coverage.enabled=true",
-		"update-coverage": "node ./src/scripts/coverage-summary.mjs",
-		"coverage": "vitest run --coverage.enabled --coverage.reporter=json-summary && pnpm update-coverage",
-		"coverage-watch": "vitest run --coverage.enabled --coverage.reporter=json-summary --watch && pnpm update-coverage",
-
-		"coverage:ui": "vitest --coverage --ui",
 		"test:e2e": "start-test 3000 ",
 		"test:e2e:open": "start-test 3000 ",
 		"test:open": "vitest --ui",
-
-		"------------------": "----------------DOCS📚",
-		"serve-storybook": "serve storybook-static",
-		"storybook": "storybook dev -p 6006",
-		"dev": "pnpm storybook",
-
-		"---------------": "----------------OTHER🔧",
-		"typecheck": "tsc --noEmit"
+		"typecheck": "tsc --noEmit",
+		"update-coverage": "node ./src/scripts/coverage-summary.mjs",
+		"vercel": "vercel --prod"
+	},
+	"browserslist": {
+		"production": [">0.2%", "not dead", "not op_mini all"],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
 	},
 	"dependencies": {
 		"@gsap/react": "^2.1.1",
@@ -138,8 +140,8 @@
 		"@types/react-dom": "18.3.0",
 		"@types/react-syntax-highlighter": "^15.5.10",
 		"@vitejs/plugin-react-swc": "^3.7.2",
-		"@vitest/coverage-v8": "^0.34.6",
-		"@vitest/ui": "^0.34.7",
+		"@vitest/coverage-v8": "^2.1.8",
+		"@vitest/ui": "^2.1.8",
 		"autoprefixer": "^10.4.20",
 		"conventional-changelog-conventionalcommits": "8.0.0",
 		"jsdom": "^22.1.0",
@@ -154,26 +156,18 @@
 		"vite": "^6.0.7",
 		"vite-plugin-dts": "^4.4.0",
 		"vite-tsconfig-paths": "^4.3.2",
-		"vitest": "^0.34.6"
+		"vitest": "^2.1.8"
 	},
 	"peerDependencies": {
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
 	},
+	"engines": {
+		"node": ">=20"
+	},
 	"publishConfig": {
 		"access": "public",
 		"publishPath": "./",
 		"registry": "https://registry.npmjs.org/"
-	},
-	"browserslist": {
-		"production": [">0.2%", "not dead", "not op_mini all"],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
-	},
-	"engines": {
-		"node": ">=20"
 	}
 }
