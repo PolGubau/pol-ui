@@ -1,35 +1,45 @@
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-export function clsx(...args: any[]): string {
-  return (
-    args
-      // Aplana el array para manejar anidamientos
-      .flat(Number.POSITIVE_INFINITY)
+export type ClassValue = string | number | boolean | null | undefined | ClassDictionary | ClassArray;
+export type ClassDictionary = Record<string, unknown>;
+export type ClassArray = ClassValue[];
 
-      // Filtra valores falsy como `false`, `0`, `null`, `undefined`, `NaN`, y `""`
-      .filter(Boolean)
+/**
+ * Helper function to recursively convert mixed input to a class string.
+ * @param mix - The input to convert into a class string.
+ * @returns The resulting class string.
+ */
+function toVal(mix: ClassValue): string {
+  let result = "";
 
-      .map((arg) => {
-        if (typeof arg === "string" || typeof arg === "number") {
-          // Convierte números a cadenas
-          return String(arg);
-        }
-        if (typeof arg === "object") {
-          return (
-            Object.keys(arg)
+  if (typeof mix === "string" || (typeof mix === "number" && !Number.isNaN(mix) && mix !== 0)) {
+    result += mix;
+  } else if (Array.isArray(mix)) {
+    for (const item of mix) {
+      const val = toVal(item);
+      if (val) {
+        result += (result ? " " : "") + val;
+      }
+    }
+  } else if (typeof mix === "object" && mix !== null) {
+    for (const key in mix) {
+      if (mix[key]) {
+        result += (result ? " " : "") + key;
+      }
+    }
+  } else if (mix === true) {
+    // Do nothing
+  }
 
-              // Incluye claves cuyos valores sean truthy
-              .filter((key) => arg[key])
-              .join(" ")
-          );
-        }
-        // Ignora funciones u otros tipos no soportados
-        return "";
-      })
+  return result;
+}
 
-      // Filtra resultados vacíos después del mapeo
-      .filter(Boolean)
-
-      // Une los valores en una cadena separada por espacios
-      .join(" ")
-  );
+/**
+ * Combines class names into a single string, filtering out falsy values.
+ * @param args - List of class names, objects, or arrays to combine.
+ * @returns A single string of combined class names.
+ */
+export function clsx(...args: ClassValue[]): string {
+  return args
+    .map(toVal) // Convert each argument to a string
+    .filter(Boolean) // Remove falsy values
+    .join(" "); // Combine into a single space-separated string
 }

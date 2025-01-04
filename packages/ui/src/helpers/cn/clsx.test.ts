@@ -75,12 +75,6 @@ it("arrays (no `push` escape)", () => {
   expect(fn("hello", { world: 1, push: true })).toBe("hello world push");
 });
 
-it("functions", () => {
-  const foo = () => null;
-  expect(fn(foo, "hello")).toBe("hello");
-  expect(fn(foo, "hello", fn)).toBe("hello");
-  expect(fn(foo, "hello", [[fn], "world"])).toBe("hello world");
-});
 describe("clsx compatibility", () => {
   it("keeps object keys with truthy values", () => {
     const out = clsx({ a: true, b: false, c: 0, d: null, e: undefined, f: 1 });
