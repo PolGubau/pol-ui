@@ -12,13 +12,13 @@ import { IconButton } from "../IconButton";
 import type { AlertTheme } from "./theme";
 
 export interface AlertProps extends Omit<ComponentProps<"div">, "color"> {
-  additionalContent?: ReactNode;
-  color?: Colors;
-  icon?: FC<ComponentProps<"svg">>;
-  onDismiss?: () => void;
-  rounded?: RoundedSizes;
-  theme?: DeepPartial<AlertTheme>;
-  bordered?: boolean;
+	additionalContent?: ReactNode;
+	color?: Colors;
+	icon?: FC<ComponentProps<"svg">>;
+	onDismiss?: () => void;
+	rounded?: RoundedSizes;
+	theme?: DeepPartial<AlertTheme>;
+	bordered?: boolean;
 }
 
 /**
@@ -57,52 +57,52 @@ export interface AlertProps extends Omit<ComponentProps<"div">, "color"> {
  * </Alert>
  */
 export const Alert: FC<AlertProps> = ({
-  additionalContent,
-  children,
-  className,
-  color = ColorsEnum.secondary,
-  icon: Icon,
-  onDismiss,
-  rounded = RoundedSizesEnum.md,
-  theme: customTheme = {},
-  bordered,
-  ...props
+	additionalContent,
+	children,
+	className,
+	color = ColorsEnum.secondary,
+	icon: Icon,
+	onDismiss,
+	rounded = RoundedSizesEnum.md,
+	theme: customTheme = {},
+	bordered,
+	...props
 }: AlertProps): React.ReactNode => {
-  const theme: AlertTheme = mergeDeep(getTheme().alert, customTheme);
+	const theme: AlertTheme = mergeDeep(getTheme().alert, customTheme);
 
-  const handleOnDismiss = () => {
-    onDismiss?.();
-  };
+	const handleOnDismiss = () => {
+		onDismiss?.();
+	};
 
-  return (
-    <div
-      className={twMerge(
-        theme.base,
-        theme.color[color],
-        theme.rounded[rounded],
-        bordered && theme.borderAccent,
-        className,
-      )}
-      role="alert"
-      {...props}
-    >
-      <div className={theme.wrapper} data-testid="ui-alert-wrapper">
-        {Icon && <Icon className={theme.icon} data-testid="ui-alert-icon" />}
-        <div>{children}</div>
-        {typeof onDismiss === "function" && (
-          <IconButton
-            label="Dismiss"
-            title="Dismiss"
-            data-testid="ui-alert-dismiss"
-            type="button"
-            onClick={handleOnDismiss}
-            color={color}
-          >
-            <HiX aria-hidden={true} title="Dismiss" />
-          </IconButton>
-        )}
-      </div>
-      {additionalContent && <div>{additionalContent}</div>}
-    </div>
-  );
+	return (
+		<div
+			className={twMerge(
+				theme.base,
+				theme.color[color],
+				theme.rounded[rounded],
+				bordered && theme.borderAccent,
+				className,
+			)}
+			role="alert"
+			{...props}
+		>
+			<div className={theme.wrapper} data-testid="ui-alert-wrapper">
+				{Icon && <Icon className={theme.icon} data-testid="ui-alert-icon" />}
+				<div>{children}</div>
+				{typeof onDismiss === "function" && (
+					<IconButton
+						label="Dismiss"
+						title="Dismiss"
+						data-testid="ui-alert-dismiss"
+						type="button"
+						onClick={handleOnDismiss}
+						color={color}
+					>
+						<HiX aria-hidden={true} title="Dismiss" />
+					</IconButton>
+				)}
+			</div>
+			{additionalContent && <div>{additionalContent}</div>}
+		</div>
+	);
 };

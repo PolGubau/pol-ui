@@ -1,89 +1,81 @@
 {
-  "name": "pol-ui",
-  "version": "1.2.0",
-  "description": "Beauty and Performance React UI Library",
-  "main": "index.js",
-  "type": "module",
-  "author": {
-    "name": "Pol Gubau Amores",
-    "url": "https://polgubau.com"
-  },
-  "license": "MIT",
-  "homepage": "https://ui.polgubau/",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PolGubau/pol-ui.git"
-  },
-  "bugs": {
-    "url": "https://github.com/PolGubau/pol-ui/issues"
-  },
-  "workspaces": [
-    "apps/*",
-    "packages/*",
-    "templates/*"
-  ],
-  "scripts": {
-    "dev": "turbo run dev --parallel",
-    "build": "turbo run build",
-    "--------------------------------------------------------------- FILTERS ---------": "---------------------------------------------",
-    "ui": "pnpm --filter pol-ui",
-    "cli": "pnpm --filter pol-ui-cli",
-    "icons": "pnpm --filter pol-icons",
-    "web-docs": "pnpm --filter pol-ui-docs",
-    "--------------------------------------------------------------- POL-UI ---------": "---------------------------------------------",
-    "storybook": "pnpm ui storybook",
-    "ui:test": "pnpm ui test",
-    "ui:build": "pnpm ui build",
-    "ui:lint": "pnpm ui lint",
-    "ui:coverage": "pnpm ui test:coverage",
-    "build-storybook": "pnpm ui build-storybook",
-    "watch": "pnpm ui watch",
-    "--------------------------------------------------------------- EXTRA ---------": "---------------------------------------------",
-    "lint": "turbo run lint",
-    "lint:fix": "turbo run lint:fix",
-    "preview": "turbo run preview",
-    "typecheck": "turbo run typecheck",
-    "format:write": "turbo run format:write",
-    "format:check": "turbo run format:check",
-    "check": "turbo lint typecheck format:check",
-    "test": "turbo run test --force",
-    "open:ide": "pnpm i && pnpm ui storybook"
-  },
-  "lint-staged": {
-    "**/*.{js,ts,tsx}": [
-      "eslint --fix"
-    ],
-    "**/*": "prettier --write --ignore-unknown"
-  },
-  "keywords": [
-    "react",
-    "ui",
-    "components",
-    "next",
-    "library",
-    "design",
-    "system",
-    "tailwindcss",
-    "vite"
-  ],
-  "devDependencies": {
-    "@polgubau/configs": "^1.0.1",
-    "@types/node": "^20.11.27",
-    "@types/react": "^18.2.65",
-    "@types/react-dom": "^18.2.22",
-    "lint-staged": "^15.2.5",
-    "semantic-release": "24.2.0",
-    "semantic-release-monorepo": "^8.0.2",
-    "tsup": "^6.4.0",
-    "typescript": "^5.4.5"
-  },
-  "dependencies": {
-    "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.24",
-    "tailwindcss": "^3.4.0",
-    "tailwindcss-animate": "^1.0.5",
-    "turbo": "^1.9.9",
-    "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^0.31.1"
-  }
+	"name": "pol-ui",
+	"version": "1.2.0",
+	"description": "Beauty and Performance React UI Library",
+	"main": "index.js",
+	"type": "module",
+	"author": {
+		"name": "Pol Gubau Amores",
+		"url": "https://polgubau.com"
+	},
+	"license": "MIT",
+	"homepage": "https://ui.polgubau/",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/PolGubau/pol-ui.git"
+	},
+	"bugs": {
+		"url": "https://github.com/PolGubau/pol-ui/issues"
+	},
+	"workspaces": ["apps/*", "packages/*", "templates/*"],
+	"scripts": {
+		"dev": "turbo run dev --parallel",
+		"build": "turbo run build",
+		"--------------------------------------------------------------- FILTERS ---------": "---------------------------------------------",
+		"ui": "pnpm --filter pol-ui",
+		"cli": "pnpm --filter pol-ui-cli",
+		"icons": "pnpm --filter pol-icons",
+		"web-docs": "pnpm --filter pol-ui-docs",
+		"--------------------------------------------------------------- POL-UI ---------": "---------------------------------------------",
+		"storybook": "pnpm ui storybook",
+		"ui:test": "pnpm ui test",
+		"ui:build": "pnpm ui build",
+		"ui:lint": "pnpm ui lint",
+		"ui:coverage": "pnpm ui test:coverage",
+		"build-storybook": "pnpm ui build-storybook",
+		"watch": "pnpm ui watch",
+		"--------------------------------------------------------------- EXTRA ---------": "---------------------------------------------",
+		"lint": "turbo run lint",
+		"lint:fix": "turbo run lint:fix",
+		"preview": "turbo run preview",
+		"typecheck": "turbo run typecheck",
+		"format:write": "turbo run format:write",
+		"format:check": "turbo run format:check",
+		"check": "turbo lint typecheck format:check",
+		"test": "turbo run test --force",
+		"open:ide": "pnpm i && pnpm ui storybook"
+	},
+	"lint-staged": {
+		"**/*.{js,ts,tsx}": ["eslint --fix"],
+		"**/*": "prettier --write --ignore-unknown"
+	},
+	"keywords": [
+		"react",
+		"ui",
+		"components",
+		"next",
+		"library",
+		"design",
+		"system",
+		"tailwindcss",
+		"vite"
+	],
+	"devDependencies": {
+		"@polgubau/configs": "^1.0.1",
+		"@types/node": "^20.11.27",
+		"@types/react": "^18.2.65",
+		"@types/react-dom": "^18.2.22",
+		"lint-staged": "^15.2.5",
+		"semantic-release": "24.2.0",
+		"semantic-release-monorepo": "^8.0.2",
+		"tsup": "^6.4.0",
+		"typescript": "^5.4.5"
+	},
+	"dependencies": {
+		"autoprefixer": "^10.4.14",
+		"postcss": "^8.4.24",
+		"tailwindcss": "^3.4.0",
+		"tailwindcss-animate": "^1.0.5",
+		"turbo": "^1.9.9"
+	}
 }
