@@ -116,7 +116,7 @@ export const WithError = () => {
         }
         return <div> {item.name}</div>;
       }}
-      error={(error, item, index) => (
+      error={(error, _item, index) => (
         <div>
           {error.message} (position #{index}){" "}
         </div>

@@ -10,7 +10,7 @@ export const generateUUID = (limit?: number): string => {
   const randomBytes6 = randomBytes[6];
   const randomBytes8 = randomBytes[8];
 
-  if (!randomBytes6 || !randomBytes8) {
+  if (!(randomBytes6 && randomBytes8)) {
     throw new Error("Uint8Array is not available in this environment");
   }
 

@@ -23,7 +23,7 @@ export function shuffle<T>(arr: readonly T[]): T[] {
     let temp = result[i];
     let resultJ = result[j];
 
-    if (!resultJ || !temp) {
+    if (!(resultJ && temp)) {
       continue;
     }
 

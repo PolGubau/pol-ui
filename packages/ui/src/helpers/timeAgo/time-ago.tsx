@@ -3,7 +3,7 @@
 import type * as React from "react";
 import { useEffect, useState } from "react";
 import { dateParser } from "./date-parser";
-import {defaultFormatter} from "./formatter";
+import { defaultFormatter } from "./formatter";
 
 export type Unit = "second" | "minute" | "hour" | "day" | "week" | "month" | "year";
 export type Suffix = "ago" | "from now";

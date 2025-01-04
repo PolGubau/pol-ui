@@ -38,7 +38,6 @@ export const useTranslate = () => {
   const getTranslationsByMultipleLanguages = (locales: Locale[]): Translation => {
     // Ensure that translations from more specific locales (later in the array) override those from more general locales (earlier in the array).
     return locales.reduce((acc, locale) => {
-      // biome-ignore lint/performance/noAccumulatingSpread: <explanation>
       return { ...getTranslationsByLocale(locale), ...acc };
     }, {});
   };

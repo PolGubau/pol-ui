@@ -10,7 +10,7 @@ export function dateParser(date: string | number | Date): Date {
     return parsed;
   }
   const [firstP, secondP, ...restPs] = parts.map((x) => Number.parseInt(x));
-  if (!firstP || !secondP) {
+  if (!(firstP && secondP)) {
     return parsed;
   }
 

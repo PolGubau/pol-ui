@@ -74,7 +74,7 @@ export const cva =
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       const selectedVariant = variants[variant] as any;
       const selectedVariantValue = selectedVariant[variantKey];
-      return selectedVariant;
+      return selectedVariantValue;
     });
 
     const propsWithoutUndefined =
@@ -103,8 +103,7 @@ export const cva =
                 ...propsWithoutUndefined,
               }[key] === value,
         )
-          ? // biome-ignore lint/performance/noAccumulatingSpread: <explanation>
-            [...acc, cvClass, cvClassName]
+          ? [...acc, cvClass, cvClassName]
           : acc,
       [] as ClassValue[],
     );
