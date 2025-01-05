@@ -47,23 +47,31 @@ jobs:
     needs: check-changes
     runs-on: ubuntu-latest
     if: needs.check-changes.outputs.ui-changed == 'true' || github.ref == 'refs/heads/main'
-    uses: ./.github/workflows/setup-env.yml
+    uses: ./.github/workflows/build-pol-ui.yml
 
-    steps:
-      - name: Lint Code
-        run: pnpm lint
-
-      - name: Build Project 🏗️
-        run: pnpm ui build
 
   # Job: Test
   test-pol-ui:
     name: 'Test Pol-ui 🧪'
     needs: build-pol-ui
     runs-on: ubuntu-latest
-    uses: ./.github/workflows/setup-env.yml
-
+ 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ inputs.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: "pnpm"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ inputs.pnpm-version }}
+          run_install: false
+          
       - name: Run Tests and Coverage
         run: pnpm ui coverage
 
@@ -76,10 +84,24 @@ jobs:
       contents: write
       packages: write
       id-token: write
-    uses: ./.github/workflows/setup-env.yml
-
+ 
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ inputs.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: "pnpm"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ inputs.pnpm-version }}
+          run_install: false
+
       - name: Run Semantic Release 🚀
         run: pnpm release
         env:
