@@ -6,12 +6,11 @@ on:
       node-version:
         type: string
         required: true
+        default: '22'
       pnpm-version:
         type: string
         required: true
-    secrets:
-      token:
-        required: true
+        default: '9'
 
 jobs:
   build:
