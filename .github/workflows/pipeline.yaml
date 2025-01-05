@@ -18,7 +18,6 @@ concurrency:
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
-  # Job: Check changes
   check-changes:
     runs-on: ubuntu-latest
     outputs:
