@@ -93,6 +93,13 @@ jobs:
       - name: Run Tests and Coverage
         run: pnpm ui coverage
       
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: PolGubau/pol-ui
+
+
       - name: Release
         run: pnpm release --cache-dir=.turbo
         env:
