@@ -3,40 +3,22 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@hooks/*": [
-        "./src/hooks/*"
-      ],
-      "@styles/*": [
-        "./src/styles/*"
-      ],
-      "@helpers/*": [
-        "./src/helpers/*"
-      ],
-      "@types/*": [
-        "./src/types/*"
-      ]
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@helpers/*": ["./src/helpers/*"],
+      "@types/*": ["./src/types/*"]
     },
     // This is a component library, so "ESNext" is a good choice. Also it requires very little down-leveling during transpilation.
     "target": "ESNext",
     "declarationDir": "./dist",
     // Include a list of type definitions for build-in JS APIs.
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     // Specify the module system for the output files. It's not required for Vite but good to have.
     "module": "ESNext",
     // The types defined in "vite/client" are included in global scope.
-    "types": [
-      "vite/client"
-    ],
+    "types": ["vite/client"],
     // Do not emit compiled output files, vite will take care of the that.
     "noEmit": true,
     // Vite will handle the resolution of the import paths.
@@ -77,11 +59,6 @@
     "noUnusedLocals": false,
     "noUnusedParameters": true
   },
-  "include": [
-    "./src/**/*.ts",
-    "./src/**/*.tsx"
-  ],
-  "exclude": [
-    "./src/**/*.stories.*"
-  ]
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"],
+  "exclude": ["./src/**/*.stories.*"]
 }
