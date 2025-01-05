@@ -43,10 +43,6 @@ jobs:
 
   # Job: Setup and Build
   build-pol-ui:
-    name: 'Pol-ui - Build & Setup 🧙'
-    needs: check-changes
-    runs-on: ubuntu-latest
-    if: needs.check-changes.outputs.ui-changed == 'true' || github.ref == 'refs/heads/main'
     uses: ./.github/workflows/build-pol-ui.yml
 
 
