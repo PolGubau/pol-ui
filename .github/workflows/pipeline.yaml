@@ -61,13 +61,6 @@ jobs:
           version: ${{ env.PNPM_VERSION }}
           run_install: false
 
-      - name: Cache pnpm dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.pnpm-store
-          key: pnpm-cache-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: pnpm-cache-
-
       - name: Install dependencies
         run: pnpm install
 
@@ -104,12 +97,8 @@ jobs:
           version: ${{ env.PNPM_VERSION }}
           run_install: false
 
-      - name: Cache pnpm dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.pnpm-store
-          key: pnpm-cache-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: pnpm-cache-
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Run Semantic Release 🚀
         run: pnpm release
