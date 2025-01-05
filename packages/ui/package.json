@@ -57,7 +57,7 @@
 		"lint-fix": "biome check --write .",
 		"prepublishOnly": "pnpm build",
 		"publish": "npm publish --access public",
-		"release": "release-it --ci",
+		"release": "semantic-release",
 		"serve-storybook": "serve storybook-static",
 		"storybook": "storybook dev -p 6006",
 		"test": "vitest",
