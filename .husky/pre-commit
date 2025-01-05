@@ -20,15 +20,9 @@ run_tests() {
   # Return to the parent directory
   cd ..
 }
-if git diff --cached --name-only --diff-filter=ACM | grep -E '^frontends/selfservicecheckin/.*\.(js|jsx|ts|tsx)$' >/dev/null 2>&1; then
-  run_tests "frontends/selfservicecheckin"
+if git diff --cached --name-only --diff-filter=ACM | grep -E '^packages/ui/.*\.(js|jsx|ts|tsx)$' >/dev/null 2>&1; then
+  run_tests "packages/ui"
 fi
 
-if git diff --cached --name-only --diff-filter=ACM | grep -E '^frontends/admin/.*\.(js|jsx|ts|tsx)$' >/dev/null 2>&1; then
-  run_tests "frontends/admin"
-fi
-# if git diff --cached --name-only --diff-filter=ACM | grep -E '^packages/react-ui/.*\.(js|jsx|ts|tsx)$' >/dev/null 2>&1; then
-#   run_tests "packages/react-ui"
-# fi
 
 exit 0
