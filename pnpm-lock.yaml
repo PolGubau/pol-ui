@@ -69,6 +69,9 @@ importers:
       semantic-release-monorepo:
         specifier: ^8.0.2
         version: 8.0.2(semantic-release@24.2.0(typescript@5.7.2))
+      semantic-release-npm-github-publish:
+        specifier: ^1.5.5
+        version: 1.5.5(@semantic-release/changelog@6.0.3(semantic-release@24.2.0(typescript@5.7.2)))(@semantic-release/commit-analyzer@13.0.0(semantic-release@24.2.0(typescript@5.7.2)))(@semantic-release/git@10.0.1(semantic-release@24.2.0(typescript@5.7.2)))(@semantic-release/github@11.0.1(semantic-release@24.2.0(typescript@5.7.2)))(@semantic-release/npm@12.0.1(semantic-release@24.2.0(typescript@5.7.2)))(@semantic-release/release-notes-generator@14.0.2(semantic-release@24.2.0(typescript@5.7.2)))(semantic-release@24.2.0(typescript@5.7.2))
       typescript:
         specifier: ^5.4.5
         version: 5.7.2
@@ -4411,6 +4414,17 @@ packages:
     resolution: {integrity: sha512-TQC6KKIA0ATjii1OT0ZmQqcVzBJoaetJaJBC8FmKkg1IbDR4wBsuX6gl6UHDdijRDl8YyXqahj2hkJNyV6m9Jg==}
     peerDependencies:
       semantic-release: '>=22.0.7'
+
+  semantic-release-npm-github-publish@1.5.5:
+    resolution: {integrity: sha512-VDXPQGFL9kJ26m4usq4N4+n4xe6bJ1MaQkwCNlVnz9LCJch33bFCCLLP7tNZk73T8E7GUjkq+Z24wnA5clO7wA==}
+    peerDependencies:
+      '@semantic-release/changelog': '>=6.0.0'
+      '@semantic-release/commit-analyzer': '>=9.0.0'
+      '@semantic-release/git': '>=10.0.0'
+      '@semantic-release/github': '>=8.0.0'
+      '@semantic-release/npm': '>=9.0.0'
+      '@semantic-release/release-notes-generator': '>=10.0.0'
+      semantic-release: '>=20.0.0'
 
   semantic-release-plugin-decorators@4.0.0:
     resolution: {integrity: sha512-5eqaITbgGJu7AWCqY/ZwDh3TCS84Q9i470AImwP9vw3YcFRyR8sEb499Zbnqa076bv02yFUn88GtloQMXQsBrg==}
@@ -9463,6 +9477,16 @@ snapshots:
       tempy: 1.0.1
     transitivePeerDependencies:
       - supports-color
+
+  semantic-release-npm-github-publish@1.5.5(@semantic-release/changelog@6.0.3(semantic-release@24.2.0(typescript@5.7.2)))(@semantic-release/commit-analyzer@13.0.0(semantic-release@24.2.0(typescript@5.7.2)))(@semantic-release/git@10.0.1(semantic-release@24.2.0(typescript@5.7.2)))(@semantic-release/github@11.0.1(semantic-release@24.2.0(typescript@5.7.2)))(@semantic-release/npm@12.0.1(semantic-release@24.2.0(typescript@5.7.2)))(@semantic-release/release-notes-generator@14.0.2(semantic-release@24.2.0(typescript@5.7.2)))(semantic-release@24.2.0(typescript@5.7.2)):
+    dependencies:
+      '@semantic-release/changelog': 6.0.3(semantic-release@24.2.0(typescript@5.7.2))
+      '@semantic-release/commit-analyzer': 13.0.0(semantic-release@24.2.0(typescript@5.7.2))
+      '@semantic-release/git': 10.0.1(semantic-release@24.2.0(typescript@5.7.2))
+      '@semantic-release/github': 11.0.1(semantic-release@24.2.0(typescript@5.7.2))
+      '@semantic-release/npm': 12.0.1(semantic-release@24.2.0(typescript@5.7.2))
+      '@semantic-release/release-notes-generator': 14.0.2(semantic-release@24.2.0(typescript@5.7.2))
+      semantic-release: 24.2.0(typescript@5.7.2)
 
   semantic-release-plugin-decorators@4.0.0(semantic-release@24.2.0(typescript@5.7.2)):
     dependencies:
