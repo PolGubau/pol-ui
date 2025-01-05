@@ -1,6 +1,6 @@
 {
 	"name": "pol-ui-root",
-	"version": "1.2.0",
+	"version": "0.0.0",
 	"description": "Beauty and Performance React UI Library",
 	"main": "index.js",
 	"type": "module",
