@@ -1085,6 +1085,7 @@ packages:
   '@polgubau/biome-config@0.0.3':
     resolution: {integrity: sha512-F85Z8e1scMWiNQd9chpBIVjzwyq/tF3p0uum9z69we2BhoNgUT3X17YsDysWjD+vrEGS18TaxZmwybWQcUn0KA==}
     engines: {node: '>=20.0.0'}
+    deprecated: Este paquete ha sido renombrado. Usa '@polgubau/configs' en su lugar.
     peerDependencies:
       '@biomejs/biome': '>=1.9.0'
 
