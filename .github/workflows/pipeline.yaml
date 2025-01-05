@@ -32,18 +32,21 @@ jobs:
         run: |
           echo "Checking for changes in packages/ui..."
           if git diff --name-only HEAD^ HEAD | grep -q '^packages/ui/'; then
+            echo "::set-output name=ui-changed::true"
             echo "Changes detected in packages/ui"
-            echo "ui-changed=true" >> $GITHUB_ENV
+            echo "Running build and tests for packages/ui"
           else
-            echo "No changes in packages/ui"
-            echo "ui-changed=false" >> $GITHUB_ENV
+            echo "::set-output name=ui-changed::false"
+            echo "No changes detected in packages/ui"
+            echo "Skipping build and tests for packages/ui"
+          fi
 
   # Job: Setup and Build
   build-pol-ui:
     name: 'Pol-ui - Build & Setup 🧙'
     needs: check-changes
     runs-on: ubuntu-latest
-    if: env.ui-changed == 'true' || github.ref == 'refs/heads/main'
+    if: needs.check-changes.outputs.ui-changed == 'true' || github.ref == 'refs/heads/main'
     steps:
       - name: Setup Project
         uses: ./.github/actions/setup-env
