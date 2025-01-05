@@ -83,7 +83,7 @@ jobs:
   # Job: Release
   release-pol-ui:
     name: '📦 Release'
-    needs: test-pol-ui
+    needs: build-pol-ui
     runs-on: ubuntu-latest
     permissions:
       contents: write
