@@ -17,15 +17,12 @@
  */
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-export function omit<T extends Record<string, any>, K extends keyof T>(
-	obj: T,
-	keys: K[],
-): Omit<T, K> {
-	const result = { ...obj };
+export function omit<T extends Record<string, any>, K extends keyof T>(obj: T, keys: K[]): Omit<T, K> {
+  const result = { ...obj };
 
-	for (const key of keys) {
-		delete result[key];
-	}
+  for (const key of keys) {
+    delete result[key];
+  }
 
-	return result as Omit<T, K>;
+  return result as Omit<T, K>;
 }
