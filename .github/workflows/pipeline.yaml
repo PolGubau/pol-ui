@@ -50,6 +50,9 @@ jobs:
     steps:
       - name: Setup Project
         uses: ./.github/actions/setup-env
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          pnpm-version: ${{ env.PNPM_VERSION }}
 
       - name: Lint Code
         run: pnpm lint
@@ -65,6 +68,9 @@ jobs:
     steps:
       - name: Setup Project
         uses: ./.github/actions/setup-env
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          pnpm-version: ${{ env.PNPM_VERSION }}
 
       - name: Run Tests and Coverage
         run: pnpm ui coverage
@@ -81,6 +87,9 @@ jobs:
     steps:
       - name: Setup Project
         uses: ./.github/actions/setup-env
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          pnpm-version: ${{ env.PNPM_VERSION }}
 
       - name: Run Semantic Release 🚀
         run: pnpm release
