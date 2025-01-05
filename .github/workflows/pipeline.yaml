@@ -98,21 +98,21 @@ jobs:
     needs: test-pol-ui
     permissions: write-all
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
         with:
-            fetch-depth: 0
-            token: ${{secrets.GH_USER_TOKEN}}
-            persist-credentials: false
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v4
-        with:
-            version: 9
+          version: 9
+          run_install: false
+       
       - name: Use Node.JS ${{env.NODE_VERSION}}
         uses: actions/setup-node@v4
         with:
-            node-version: ${{env.NODE_VERSION}}
-            cache: 'pnpm'
+          node-version: ${{env.NODE_VERSION}}
+          cache: 'pnpm'
+  
       - name: Install Dependencies 📥
         run: pnpm install
       - name: Run Semantic Release 🚀
