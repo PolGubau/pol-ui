@@ -63,7 +63,7 @@ jobs:
       - name: 💅 Lint
         run: pnpm lint  
       - name: Build packages 🏗️
-        run: pnpm build
+        run: pnpm ui build
  
   test-pol-ui:
     name: 'Test Pol-ui 🧪'
@@ -89,7 +89,7 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
       - name: 🧪 Unit Tests and coverage
-        run: pnpm coverage
+        run: pnpm ui coverage
 
 
   release-pol-ui:
