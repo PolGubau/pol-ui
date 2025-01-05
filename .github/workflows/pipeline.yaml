@@ -47,7 +47,7 @@ jobs:
     needs: check-changes
     runs-on: ubuntu-latest
     if: needs.check-changes.outputs.ui-changed == 'true' || github.ref == 'refs/heads/main'
-    uses: ./.github/actions/setup-env
+    uses: ./.github/workflows/setup-env.yml
 
     steps:
       - name: Lint Code
@@ -61,7 +61,8 @@ jobs:
     name: 'Test Pol-ui 🧪'
     needs: build-pol-ui
     runs-on: ubuntu-latest
-    uses: ./.github/actions/setup-env
+    uses: ./.github/workflows/setup-env.yml
+
     steps:
       - name: Run Tests and Coverage
         run: pnpm ui coverage
@@ -75,7 +76,8 @@ jobs:
       contents: write
       packages: write
       id-token: write
-    uses: ./.github/actions/setup-env
+    uses: ./.github/workflows/setup-env.yml
+
 
     steps:
       - name: Run Semantic Release 🚀
