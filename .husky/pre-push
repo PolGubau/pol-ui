@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# Function to run lint and tests for a given directory
+run_tests() {
+  local directory="$1"
+  local lint_output
+  local test_output
+
+  # Change directory to the specified directory
+  cd "$directory" || exit
+
+  # Run linting
+  lint_output=$(npm run build)
+  if echo "$lint_output" | grep -E '(warning|error)' >/dev/null; then
+    echo "Linting errors in $directory:"
+    echo "$lint_output"
+    echo "🔴🔴🔴 Aborting commit."
+    exit 1
+  fi   
+  # Return to the parent directory
+  cd ..
+}
+if git diff --cached --name-only --diff-filter=ACM | grep -E '^frontends/selfservicecheckin/.*\.(js|jsx|ts|tsx)$' >/dev/null 2>&1; then
+  run_tests "frontends/selfservicecheckin"
+fi
+
+if git diff --cached --name-only --diff-filter=ACM | grep -E '^frontends/admin/.*\.(js|jsx|ts|tsx)$' >/dev/null 2>&1; then
+  run_tests "frontends/admin"
+fi
+if git diff --cached --name-only --diff-filter=ACM | grep -E '^packages/react-ui/.*\.(js|jsx|ts|tsx)$' >/dev/null 2>&1; then
+  run_tests "packages/react-ui"
+fi
+
+exit 0
