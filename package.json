@@ -44,7 +44,7 @@
 		"format:check": "turbo run format:check",
 		"check": "turbo lint typecheck format:check",
 		"test": "turbo run test --force",
-		"open:ide": "pnpm i && pnpm ui storybook",
+		"open:ide": "pnpm i && pnpm ui storybook npx sort-package-json",
 		"commit": "cz",
 		"commit:help": "npx commitizen --help",
 		"release": "turbo release --concurrency=1",

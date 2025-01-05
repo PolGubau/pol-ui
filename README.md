@@ -8,7 +8,6 @@
 [![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/PolGubau/pol-ui)
 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues-pr/PolGubau/pol-ui)
-
 ![NPM Version](https://img.shields.io/npm/v/pol-ui)
 
 
