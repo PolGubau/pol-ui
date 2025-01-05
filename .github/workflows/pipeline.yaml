@@ -90,7 +90,7 @@ jobs:
   release-pol-ui:
     name: '📦 Release'
     runs-on: ubuntu-latest
-    needs: test.pol-ui
+    needs: test-pol-ui
     permissions: write-all
     steps:
         - name: Checkout Code
