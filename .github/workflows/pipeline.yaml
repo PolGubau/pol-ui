@@ -43,14 +43,17 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' || needs.check-changes.outputs.ui-changed == 'true'
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
         with:
-            version: 9
+          version: 9
+          run_install: false
+
       - name: Use Node.JS ${{env.NODE_VERSION}}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
             node-version: ${{env.NODE_VERSION}}
             cache: 'pnpm'
@@ -78,8 +81,9 @@ jobs:
           uses: pnpm/action-setup@v4
           with:
               version: 9
+              run_install: false
         - name: Use Node.JS ${{env.NODE_VERSION}}
-          uses: actions/setup-node@v3
+          uses: actions/setup-node@v4
           with:
               node-version: ${{env.NODE_VERSION}}
               cache: 'pnpm'
@@ -107,7 +111,7 @@ jobs:
           with:
               version: 9
         - name: Use Node.JS ${{env.NODE_VERSION}}
-          uses: actions/setup-node@v3
+          uses: actions/setup-node@v4
           with:
               node-version: ${{env.NODE_VERSION}}
               cache: 'pnpm'
