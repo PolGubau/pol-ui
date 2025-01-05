@@ -1,5 +1,5 @@
 {
-	"name": "pol-ui",
+	"name": "pol-ui-root",
 	"version": "1.2.0",
 	"description": "Beauty and Performance React UI Library",
 	"main": "index.js",
@@ -17,11 +17,7 @@
 	"bugs": {
 		"url": "https://github.com/PolGubau/pol-ui/issues"
 	},
-	"workspaces": [
-		"apps/*",
-		"packages/*",
-		"templates/*"
-	],
+	"workspaces": ["packages/*"],
 	"scripts": {
 		"dev": "turbo run dev --parallel",
 		"build": "turbo run build",
@@ -51,13 +47,11 @@
 		"open:ide": "pnpm i && pnpm ui storybook",
 		"commit": "cz",
 		"commit:help": "npx commitizen --help",
-		"release": "pnpm -r --workspace-concurrency=1 exec -- npx --no-install semantic-release -e semantic-release-monorepo",
+		"release": "turbo release --concurrency=1",
 		"publish:packages": "pnpm publish --filter ./packages/* --access public"
 	},
 	"lint-staged": {
-		"**/*.{js,ts,tsx}": [
-			"eslint --fix"
-		],
+		"**/*.{js,ts,tsx}": ["eslint --fix"],
 		"**/*": "prettier --write --ignore-unknown"
 	},
 	"keywords": [

@@ -55,13 +55,33 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
+      - name: Setup node cache
+        id: node-cache
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: yarn-${{ hashFiles('yarn.lock') }}-${{ hashFiles('package.json') }}
+          restore-keys: yarn-
+        
+      - name: Setup turbo cache
+        uses: actions/cache@v3
+        with:
+          path: '.turbo'
+          key: turbo-${{ github.ref_name }}-${{ github.sha }}
+          restore-keys: |
+            turbo-${{ github.ref_name }}-
+            turbo-master-
+
+      
+
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
           version: ${{ env.PNPM_VERSION }}
           run_install: false
 
-      - name: Install dependencies
+      - name: Install deps
+        if: steps.node-cache.outputs.cache-hit != 'true'
         run: pnpm install
 
       - name: Lint
@@ -72,39 +92,11 @@ jobs:
       
       - name: Run Tests and Coverage
         run: pnpm ui coverage
-
-  # Job: Release
-  release-pol-ui:
-    name: '📦 Release'
-    needs: build-pol-ui
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      packages: write
-      id-token: write
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: ${{ env.PNPM_VERSION }}
-          run_install: false
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Run Semantic Release 🚀
-        run: pnpm release
+      
+      - name: Release
+        run: pnpm release --cache-dir=.turbo
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish Package
-        run: pnpm run publish:packages
+ 

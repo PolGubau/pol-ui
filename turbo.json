@@ -1,44 +1,48 @@
 {
-  "$schema": "https://turbo.build/schema.json",
-  "globalEnv": ["NODE_ENV"],
-  "pipeline": {
-    "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**"]
-    },
-    "preview": {
-      "env": ["NEXT_PUBLIC_APP_URL"],
-      "outputs": ["dist/**", ".next/**"]
-    },
-    "start": {
-      "dependsOn": ["^build"]
-    },
-    "lint": {
-      "cache": false,
-      "outputs": []
-    },
-    "lint:fix": {
-      "cache": false,
-      "outputs": []
-    },
-    "format:check": {
-      "cache": false,
-      "outputs": []
-    },
-    "format:write": {
-      "cache": false,
-      "outputs": []
-    },
-    "typecheck": {},
-    "dev": {
-      "cache": false
-    },
-    "check": {
-      "cache": false
-    },
-    "test": {
-      "cache": false,
-      "outputs": []
-    }
-  }
+	"$schema": "https://turborepo.org/schema.json",
+	"globalEnv": ["NODE_ENV"],
+	"pipeline": {
+		"build": {
+			"dependsOn": ["^build"],
+			"outputs": ["dist/**", ".next/**"]
+		},
+		"preview": {
+			"env": ["NEXT_PUBLIC_APP_URL"],
+			"outputs": ["dist/**", ".next/**"]
+		},
+		"start": {
+			"dependsOn": ["^build"]
+		},
+		"lint": {
+			"cache": false,
+			"outputs": []
+		},
+		"lint:fix": {
+			"cache": false,
+			"outputs": []
+		},
+		"format:check": {
+			"cache": false,
+			"outputs": []
+		},
+		"format:write": {
+			"cache": false,
+			"outputs": []
+		},
+		"typecheck": {},
+		"dev": {
+			"cache": false
+		},
+		"check": {
+			"cache": false
+		},
+		"test": {
+			"cache": false,
+			"outputs": []
+		},
+		"release": {
+			"dependsOn": ["^release"],
+			"outputMode": "new-only"
+		}
+	}
 }
