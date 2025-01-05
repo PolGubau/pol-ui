@@ -1,15 +1,15 @@
 
 # Coverage Report
-> This report is generated from vitests unit tests and is updated on every test run.
+> This report is generated from unit tests and it's updated every test run.
 
 
 ## Summary
 
 | Metric              | Percentage              | Total      |  Grade  |
 |---------------------|------------|----------|--------------------|
-| Branches            | 65.59% | 654 |  🟡  |
-| Functions           | 38.29% |   376 | 🟠  |
-| Lines               | 28.88% | 12628 | 🔴  |
+| Branches            | 65.98% | 638 |  🟡  |
+| Functions           | 36.36% |   385 | 🟠  |
+| Lines               | 29.67% | 12600 | 🔴  |
 
 
 
@@ -57,7 +57,7 @@
 | DarkThemeToggle\DarkThemeToggle.tsx| 0% | 0% | 0% | 0 |🔴 |
 | Datepicker\Datepicker.tsx| 0% | 0% | 0% | 0 |🔴 |
 | Datepicker\DatepickerContext.tsx| 0% | 0% | 0% | 0 |🔴 |
-| Datepicker\helpers.ts| 100% | 58.33% | 59.16% | 72 |🟡 |
+| Datepicker\helpers.ts| 100% | 44.44% | 53.27% | 66 |🟡 |
 | Datepicker\Views\Days.tsx| 0% | 0% | 0% | 0 |🔴 |
 | Datepicker\Views\Decades.tsx| 0% | 0% | 0% | 0 |🔴 |
 | Datepicker\Views\Months.tsx| 0% | 0% | 0% | 0 |🔴 |
@@ -192,8 +192,8 @@
 
 | File                | Branches | Functions | Lines | Total |Grade |
 |---------------------|----------|-----------|-------|-------|-------|
-| defaultKeys.ts| 0% | 0% | 0% | 0 |🔴 |
-| mimeTypesMap.ts| 0% | 0% | 0% | 0 |🔴 |
+| defaultKeys.ts| 100% | 100% | 100% | 100 |🟢 |
+| mimeTypesMap.ts| 100% | 100% | 100% | 100 |🟢 |
 
 
 ### helpers
@@ -201,46 +201,45 @@
 | File                | Branches | Functions | Lines | Total |Grade |
 |---------------------|----------|-----------|-------|-------|-------|
 | clamp\clamp.ts| 100% | 100% | 100% | 100 |🟢 |
-| clone-deep.ts| 100% | 100% | 100% | 100 |🟢 |
+| clone-deps\clone-deep.ts| 100% | 100% | 100% | 100 |🟢 |
 | cn\clsx.ts| 100% | 100% | 100% | 100 |🟢 |
 | cn\cn.ts| 100% | 100% | 100% | 100 |🟢 |
 | color-to-tailwind\colorToTailwind.ts| 100% | 100% | 100% | 100 |🟢 |
 | cookieUtils\cookieUtils.ts| 75% | 100% | 100% | 92 |🟢 |
 | cva\cva.ts| 100% | 100% | 100% | 100 |🟢 |
 | cva\types.ts| 100% | 100% | 100% | 100 |🟢 |
-| dates\use-calendar.ts| 0% | 0% | 0% | 0 |🔴 |
-| dates\use-date-range.ts| 0% | 0% | 0% | 0 |🔴 |
-| dates\utils.ts| 100% | 100% | 0% | 67 |🟡 |
+| dates\use-calendar.ts| 100% | 0% | 6.89% | 36 |🟠 |
+| dates\use-date-range.ts| 100% | 0% | 7.4% | 36 |🟠 |
+| dates\utils.ts| 100% | 18.75% | 25.78% | 48 |🟠 |
+| docDir\getDocumentDirection.tsx| 100% | 0% | 14.28% | 38 |🟠 |
 | encryption\encryption.ts| 100% | 100% | 100% | 100 |🟢 |
 | fetchers\fetchData.ts| 100% | 0% | 25% | 42 |🟠 |
-| generateUUID.ts| 100% | 0% | 3.44% | 34 |🟠 |
-| get-main-field\get-main-field.ts| 0% | 0% | 0% | 0 |🔴 |
-| getDocumentDirection.tsx| 100% | 0% | 14.28% | 38 |🟠 |
+| get-main-field\get-main-field.ts| 100% | 0% | 11.76% | 37 |🟠 |
 | group-by\group-by.ts| 100% | 100% | 100% | 100 |🟢 |
 | handle-json\handle-json.tsx| 50% | 33.33% | 47.22% | 44 |🟠 |
-| http.ts| 100% | 0% | 16.66% | 39 |🟠 |
-| is-client.ts| 100% | 100% | 100% | 100 |🟢 |
 | is-equal\is-equal.ts| 100% | 100% | 100% | 100 |🟢 |
 | is-object\is-object.ts| 100% | 100% | 100% | 100 |🟢 |
+| isClient\is-client.ts| 100% | 100% | 100% | 100 |🟢 |
 | limit-array\limit-array.ts| 100% | 100% | 100% | 100 |🟢 |
 | ListTypes\ListTypes.tsx| 100% | 100% | 100% | 100 |🟢 |
+| localStorage\manageLocalStorage.ts| 100% | 0% | 26.66% | 42 |🟠 |
 | make-required\make-required.ts| 100% | 100% | 100% | 100 |🟢 |
-| manageLocalStorage.ts| 100% | 0% | 26.66% | 42 |🟠 |
 | merge-deep\merge-deep.ts| 100% | 100% | 100% | 100 |🟢 |
 | merge\merge.ts| 92.3% | 100% | 100% | 97 |🟢 |
 | mergeRefs\mergeRefs.ts| 50% | 100% | 69.23% | 73 |🟡 |
-| omit.ts| 100% | 100% | 100% | 100 |🟢 |
 | omit\omit.ts| 100% | 100% | 100% | 100 |🟢 |
 | overrideProps\overrideProps.ts| 100% | 100% | 100% | 100 |🟢 |
 | px\px.ts| 100% | 100% | 100% | 100 |🟢 |
 | regex\regex.ts| 100% | 100% | 100% | 100 |🟢 |
+| safeResJson\safeResJson.ts| 100% | 0% | 16.66% | 39 |🟠 |
 | shuffle\shuffle.ts| 66.66% | 100% | 84.61% | 84 |🟡 |
-| sleep\sleep.ts| 100% | 100% | 0% | 67 |🟡 |
+| sleep\sleep.ts| 100% | 0% | 11.11% | 37 |🟠 |
 | text-transform\text-transform.ts| 100% | 91.66% | 95.91% | 96 |🟢 |
 | theme-mode-script\ThemeModeScript.tsx| 100% | 0% | 8.33% | 36 |🟠 |
-| timeAgo\date-parser.ts| 0% | 0% | 0% | 0 |🔴 |
-| timeAgo\formatter.ts| 0% | 0% | 0% | 0 |🔴 |
-| timeAgo\time-ago.tsx| 0% | 0% | 0% | 0 |🔴 |
+| timeAgo\date-parser.ts| 100% | 0% | 5.88% | 35 |🟠 |
+| timeAgo\formatter.ts| 100% | 0% | 25% | 42 |🟠 |
+| timeAgo\time-ago.tsx| 100% | 0% | 10.71% | 37 |🟠 |
+| uuid\generateUUID.ts| 100% | 0% | 3.44% | 34 |🟠 |
 
 
 ### hooks
