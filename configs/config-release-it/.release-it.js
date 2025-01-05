@@ -16,14 +16,14 @@ module.exports = {
 	git: {
 		push: true,
 		tagName: `${packageName}-v${version}`,
-		pushRepo: "git@github.com:b12k/monorepo-semantic-releases.git",
+		pushRepo: "git@github.com:PolGubau/pol-ui.git",
 		commitsPath: ".",
 		commitMessage: `feat(${scope}): released version v${version} [no ci]`,
 		requireCommits: true,
 		requireCommitsFail: false,
 	},
 	npm: {
-		publish: false,
+		publish: true,
 		versionArgs: ["--workspaces false"],
 	},
 	github: {
