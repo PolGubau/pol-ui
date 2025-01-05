@@ -52,7 +52,7 @@ const mainTable = `
 `;
 
 const title = `# Coverage Report
-> This report is generated from vitests unit tests and is updated on every test run.
+> This report is generated from unit tests and it's updated every test run.
 `;
 
 /**
