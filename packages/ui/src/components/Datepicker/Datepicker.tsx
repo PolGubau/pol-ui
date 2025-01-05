@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { type FC, type ReactNode, useEffect, useRef, useState } from "react";
 import { TbArrowLeft, TbArrowRight, TbCalendar, TbTrash } from "react-icons/tb";
 
-import { cn } from "../../helpers";
+import { addMonths, addYears, cn } from "../../helpers";
 import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
 import { getTheme } from "../../theme-store";
 import type { DeepPartial } from "../../types/types";
@@ -15,16 +15,7 @@ import { DatepickerViewsDays, type DatepickerViewsDaysTheme } from "./Views/Days
 import { DatepickerViewsDecades, type DatepickerViewsDecadesTheme } from "./Views/Decades";
 import { DatepickerViewsMonth, type DatepickerViewsMonthsTheme } from "./Views/Months";
 import { DatepickerViewsYears, type DatepickerViewsYearsTheme } from "./Views/Years";
-import {
-  Views,
-  WeekStart,
-  addMonths,
-  addYears,
-  getFirstDateInRange,
-  getFormattedDate,
-  isDateEqual,
-  startOfYearPeriod,
-} from "./helpers";
+import { Views, WeekStart, getFirstDateInRange, getFormattedDate, isDateEqual, startOfYearPeriod } from "./helpers";
 
 export interface DatepickerTheme {
   root: {

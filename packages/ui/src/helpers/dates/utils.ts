@@ -57,21 +57,23 @@ export interface RangeMonths {
 const monthsCache = new Map<string, Month>();
 const rangeMonthsCache = new Map<string, RangeMonths>();
 
-export function addDays(date: Date, days: number): Date {
-  return setDay(date, date.getDate() + days);
-}
-
-export function addMonths(date: Date, months: number): Date {
-  const month = date.getMonth() + months;
-  const year = date.getFullYear() + Math.floor(month / 11);
-
-  const newDate = new Date(date.getTime());
-
-  newDate.setMonth(month % 11);
-  newDate.setFullYear(year);
-
+export const addDays = (date: Date, amount: number): Date => {
+  const newDate = new Date(date);
+  newDate.setDate(newDate.getDate() + amount);
   return newDate;
-}
+};
+
+export const addMonths = (date: Date, amount: number): Date => {
+  const newDate = new Date(date);
+  newDate.setMonth(newDate.getMonth() + amount);
+  return newDate;
+};
+
+export const addYears = (date: Date, amount: number): Date => {
+  const newDate = new Date(date);
+  newDate.setFullYear(newDate.getFullYear() + amount);
+  return newDate;
+};
 
 export function setDay(date: Date, day: number): Date {
   const newDate = new Date(date.getTime());

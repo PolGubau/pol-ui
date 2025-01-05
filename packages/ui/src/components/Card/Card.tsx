@@ -48,7 +48,8 @@ export const Card: FC<CardProps> = (props): React.ReactNode => {
   // Card component will be an Anchor link if href prop is passed.
   const Component = typeof href === "undefined" ? "div" : "a";
   const theme = mergeDeep(getTheme().card, customTheme);
-  const externalProps = omit(["children", "className", "horizontal", "href", "theme"])(props);
+  const propsToOmit: (keyof CardProps)[] = ["children", "className", "href", "theme"];
+  const externalProps = omit(props, propsToOmit);
 
   return (
     <Component
