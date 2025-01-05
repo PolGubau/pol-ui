@@ -47,13 +47,9 @@ jobs:
     needs: check-changes
     runs-on: ubuntu-latest
     if: needs.check-changes.outputs.ui-changed == 'true' || github.ref == 'refs/heads/main'
-    steps:
-      - name: Setup Project
-        uses: ./.github/actions/setup-env
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          pnpm-version: ${{ env.PNPM_VERSION }}
+    uses: ./.github/actions/setup-env
 
+    steps:
       - name: Lint Code
         run: pnpm lint
 
@@ -65,13 +61,8 @@ jobs:
     name: 'Test Pol-ui 🧪'
     needs: build-pol-ui
     runs-on: ubuntu-latest
+    uses: ./.github/actions/setup-env
     steps:
-      - name: Setup Project
-        uses: ./.github/actions/setup-env
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          pnpm-version: ${{ env.PNPM_VERSION }}
-
       - name: Run Tests and Coverage
         run: pnpm ui coverage
 
@@ -84,13 +75,9 @@ jobs:
       contents: write
       packages: write
       id-token: write
-    steps:
-      - name: Setup Project
-        uses: ./.github/actions/setup-env
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          pnpm-version: ${{ env.PNPM_VERSION }}
+    uses: ./.github/actions/setup-env
 
+    steps:
       - name: Run Semantic Release 🚀
         run: pnpm release
         env:
