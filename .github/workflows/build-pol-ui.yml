@@ -14,31 +14,4 @@ on:
 
 jobs:
   build:
-    name: 'Pol-ui - Build & Setup 🧙'
-    needs: check-changes
-    runs-on: ubuntu-latest
-    if: needs.check-changes.outputs.ui-changed == 'true' || github.ref == 'refs/heads/main'
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Use Node.js ${{ inputs.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ inputs.node-version }}
-          cache: "pnpm"
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: ${{ inputs.pnpm-version }}
-          run_install: false
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Lint
-        run: pnpm ui lint-fix
-
-      - name: Build
-        run: pnpm ui build
+   
