@@ -17,7 +17,11 @@
 	"bugs": {
 		"url": "https://github.com/PolGubau/pol-ui/issues"
 	},
-	"workspaces": ["apps/*", "packages/*", "templates/*"],
+	"workspaces": [
+		"apps/*",
+		"packages/*",
+		"templates/*"
+	],
 	"scripts": {
 		"dev": "turbo run dev --parallel",
 		"build": "turbo run build",
@@ -44,12 +48,13 @@
 		"check": "turbo lint typecheck format:check",
 		"test": "turbo run test --force",
 		"open:ide": "pnpm i && pnpm ui storybook",
-
 		"release": "pnpm -r --workspace-concurrency=1 exec -- npx --no-install semantic-release -e semantic-release-monorepo",
 		"publish:packages": "pnpm publish --filter ./packages/* --access public"
 	},
 	"lint-staged": {
-		"**/*.{js,ts,tsx}": ["eslint --fix"],
+		"**/*.{js,ts,tsx}": [
+			"eslint --fix"
+		],
 		"**/*": "prettier --write --ignore-unknown"
 	},
 	"keywords": [
@@ -69,6 +74,7 @@
 		"@types/react": "^18.2.65",
 		"@types/react-dom": "^18.2.22",
 		"semantic-release": "24.2.0",
+		"semantic-release-monorepo": "^8.0.2",
 		"typescript": "^5.4.5"
 	},
 	"dependencies": {
