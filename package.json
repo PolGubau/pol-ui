@@ -43,7 +43,10 @@
 		"format:check": "turbo run format:check",
 		"check": "turbo lint typecheck format:check",
 		"test": "turbo run test --force",
-		"open:ide": "pnpm i && pnpm ui storybook"
+		"open:ide": "pnpm i && pnpm ui storybook",
+
+		"release": "pnpm -r --workspace-concurrency=1 exec -- npx --no-install semantic-release -e semantic-release-monorepo",
+		"publish:packages": "pnpm publish --filter ./packages/* --access public"
 	},
 	"lint-staged": {
 		"**/*.{js,ts,tsx}": ["eslint --fix"],
