@@ -42,7 +42,7 @@ jobs:
 
   # Job: Setup and Build
   build-pol-ui:
-     name: 'Pol-ui - Build & Setup 🧙'
+    name: 'Pol-ui - Build & Setup 🧙'
     needs: check-changes
     runs-on: ubuntu-latest
     if: needs.check-changes.outputs.ui-changed == 'true' || github.ref == 'refs/heads/main'
@@ -50,17 +50,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Use Node.js ${{ inputs.node-version }}
+      - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ inputs.node-version }}
-          cache: "pnpm"
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: ${{ inputs.pnpm-version }}
+          version: ${{ env.PNPM_VERSION }}
           run_install: false
+
+      - name: Cache pnpm dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: pnpm-cache-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: pnpm-cache-
 
       - name: Install dependencies
         run: pnpm install
@@ -71,29 +77,33 @@ jobs:
       - name: Build
         run: pnpm ui build
 
-
   # Job: Test
   test-pol-ui:
     name: 'Test Pol-ui 🧪'
     needs: build-pol-ui
     runs-on: ubuntu-latest
- 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Use Node.js ${{ inputs.node-version }}
+      - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ inputs.node-version }}
-          cache: "pnpm"
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: ${{ inputs.pnpm-version }}
+          version: ${{ env.PNPM_VERSION }}
           run_install: false
-          
+
+      - name: Cache pnpm dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: pnpm-cache-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: pnpm-cache-
+
       - name: Run Tests and Coverage
         run: pnpm ui coverage
 
@@ -106,23 +116,27 @@ jobs:
       contents: write
       packages: write
       id-token: write
- 
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Use Node.js ${{ inputs.node-version }}
+      - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ inputs.node-version }}
-          cache: "pnpm"
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: ${{ inputs.pnpm-version }}
+          version: ${{ env.PNPM_VERSION }}
           run_install: false
+
+      - name: Cache pnpm dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: pnpm-cache-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: pnpm-cache-
 
       - name: Run Semantic Release 🚀
         run: pnpm release
