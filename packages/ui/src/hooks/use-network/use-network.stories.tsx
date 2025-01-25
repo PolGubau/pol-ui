@@ -5,25 +5,25 @@ import { Toaster } from "../../components";
 import { useNetwork } from "./use-network";
 
 const Test = () => {
-	return "test";
+  return "test";
 };
 
 export default {
-	title: "Hooks/useNetwork",
-	component: Test,
+  title: "Hooks/useNetwork",
+  component: Test,
 
-	decorators: [
-		(Story) => (
-			<div className="flex p-6 flex-col items-center pt-20 min-h-[400px] bg-secondary-50 ">
-				<Story />
-				<Toaster />
-			</div>
-		),
-	],
-	parameters: {
-		docs: {
-			description: {
-				story: ` 
+  decorators: [
+    (Story) => (
+      <div className="flex p-6 flex-col items-center pt-20 min-h-[400px] bg-secondary-50 ">
+        <Story />
+        <Toaster />
+      </div>
+    ),
+  ],
+  parameters: {
+    docs: {
+      description: {
+        story: ` 
   > Props 
   - The downlinkMax attribute represents the maximum downlink speed estimate in megabits per second, rounded to the nearest multiple of 25 kilobits per second.
       - downlink?: number | null
@@ -42,21 +42,21 @@ export default {
  
   - The isOnline attribute is a boolean that is true if the user is connected to the internet.
       - isOnline: boolean`,
-			},
-		},
-		layout: "fullscreen",
-	},
+      },
+    },
+    layout: "fullscreen",
+  },
 } as Meta;
 export const Default: React.FC = () => {
-	// Example media query for screen widths less than 600px
-	const networkState = useNetwork();
+  // Example media query for screen widths less than 600px
+  const networkState = useNetwork();
 
-	return (
-		<div>
-			<h1>useNetwork Example</h1>
-			<pre>
-				<code>{JSON.stringify(networkState, null, 2)}</code>
-			</pre>
-		</div>
-	);
+  return (
+    <div>
+      <h1>useNetwork Example</h1>
+      <pre>
+        <code>{JSON.stringify(networkState, null, 2)}</code>
+      </pre>
+    </div>
+  );
 };

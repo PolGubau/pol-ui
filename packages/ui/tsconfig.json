@@ -2,11 +2,7 @@
   "compilerOptions": {
     "target": "ES2022",
     "useDefineForClassFields": true,
-    "lib": [
-      "ES2022",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
     /* Bundler mode */
@@ -22,14 +18,9 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     /* Vitest */
-    "types": [
-      "vitest/globals"
-    ]
+    "types": ["vitest/globals"]
   },
-  "include": [
-    "src",
-    "scripts"
-  ],
+  "include": ["src", "scripts"],
   "references": [
     {
       "path": "./tsconfig.node.json"

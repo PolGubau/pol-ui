@@ -4,29 +4,27 @@ import type { TextGeneratorProps } from "./TextGenerator";
 import { TextGenerator } from "./TextGenerator";
 
 export default {
-	title: "Components/TextGenerator",
-	component: TextGenerator,
-	parameters: {
-		layout: "fullscreen",
-	},
+  title: "Components/TextGenerator",
+  component: TextGenerator,
+  parameters: {
+    layout: "fullscreen",
+  },
 } as Meta;
 
 export const Example = () => {
-	return (
-		<section className="min-h-[400px] w-full bg-black text-white text-4xl text-center font-bold py-20 flex flex-col justify-center">
-			<TextGenerator
-				text="Pol-ui, powering UI
+  return (
+    <section className="min-h-[400px] w-full bg-black text-white text-4xl text-center font-bold py-20 flex flex-col justify-center">
+      <TextGenerator
+        text="Pol-ui, powering UI
       "
-				delay={0.5}
-				speed={1.5}
-			/>
-		</section>
-	);
+        delay={0.5}
+        speed={1.5}
+      />
+    </section>
+  );
 };
 
-const Template: StoryFn<TextGeneratorProps> = (args) => (
-	<TextGenerator {...args} />
-);
+const Template: StoryFn<TextGeneratorProps> = (args) => <TextGenerator {...args} />;
 const words = `Oxygen gets you high. In a catastrophic emergency, we're taking giant, panicked breaths. Suddenly you become euphoric, docile. You accept your fate. It's all right here. Emergency water landing, six hundred miles an hour. Blank faces, calm as Hindu cows
 `;
 export const Default = Template.bind({});

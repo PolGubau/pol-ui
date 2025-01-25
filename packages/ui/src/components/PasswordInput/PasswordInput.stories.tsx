@@ -4,30 +4,28 @@ import type { PasswordInputProps } from "./PasswordInput";
 import { PasswordInput } from "./PasswordInput";
 
 export default {
-	title: "Components/Inputs/PasswordInput",
-	component: PasswordInput,
+  title: "Components/Inputs/PasswordInput",
+  component: PasswordInput,
 
-	decorators: [
-		(Story) => (
-			<div className="flex p-6 flex-col justify-center items-center ">
-				<div className="max-w-md w-full">
-					<Story />
-				</div>
-			</div>
-		),
-	],
-	parameters: {
-		layout: "fullscreen",
-	},
+  decorators: [
+    (Story) => (
+      <div className="flex p-6 flex-col justify-center items-center ">
+        <div className="max-w-md w-full">
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
+  parameters: {
+    layout: "fullscreen",
+  },
 } as Meta;
 
-const Template: StoryFn<PasswordInputProps> = (args) => (
-	<PasswordInput {...args} />
-);
+const Template: StoryFn<PasswordInputProps> = (args) => <PasswordInput {...args} />;
 
 export const Default = Template.bind({});
 Default.storyName = "Password input";
 Default.args = {
-	placeholder: "*********",
-	label: "Password",
+  placeholder: "*********",
+  label: "Password",
 };
