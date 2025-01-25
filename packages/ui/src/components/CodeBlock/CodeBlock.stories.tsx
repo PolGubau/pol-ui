@@ -3,19 +3,18 @@ import type { Meta } from "@storybook/react";
 import { CodeBlock } from "./CodeBlock";
 
 export default {
-  title: "Components/CodeBlock",
-  component: CodeBlock,
-  tags: ["autodocs"],
-  decorators: [
-    (Story) => (
-      <div className="flex flex-col justify-center items-center ">
-        <Story />
-      </div>
-    ),
-  ],
-  parameters: {
-    layout: "fullscreen",
-  },
+	title: "Components/CodeBlock",
+	component: CodeBlock,
+	decorators: [
+		(Story) => (
+			<div className="flex flex-col justify-center items-center ">
+				<Story />
+			</div>
+		),
+	],
+	parameters: {
+		layout: "fullscreen",
+	},
 } as Meta;
 
 const code = `'use client'
@@ -66,9 +65,9 @@ function CodeBlock({ expandButtonTitle = 'View Code', className, children, ...pr
 `;
 
 export const Default = () => {
-  return (
-    <CodeBlock>
-      <pre>{code}</pre>
-    </CodeBlock>
-  );
+	return (
+		<CodeBlock>
+			<pre>{code}</pre>
+		</CodeBlock>
+	);
 };

@@ -3,35 +3,34 @@ import type { Meta } from "@storybook/react";
 import { MagneticButton } from "./MagneticButton";
 
 export default {
-  title: "Components/MagneticButton",
-  component: MagneticButton,
-  tags: ["autodocs"],
-  decorators: [
-    (Story) => (
-      <div className="flex p-6 items-center justify-center w-full">
-        <Story />
-      </div>
-    ),
-  ],
-  parameters: {
-    layout: "fullscreen",
-  },
+	title: "Components/MagneticButton",
+	component: MagneticButton,
+	decorators: [
+		(Story) => (
+			<div className="flex p-6 items-center justify-center w-full">
+				<Story />
+			</div>
+		),
+	],
+	parameters: {
+		layout: "fullscreen",
+	},
 } as Meta;
 
 export const Default = () => {
-  return <MagneticButton>Test</MagneticButton>;
+	return <MagneticButton>Test</MagneticButton>;
 };
 
 /**
  * Using the freedom prop, customize the attachment amount of the magnet background
  */
 export const CustomFreedom = () => {
-  return (
-    <div className="flex gap-2 items-center">
-      <MagneticButton freedom={0.5}>Slow</MagneticButton>
-      <MagneticButton freedom={2}>Fast</MagneticButton>
-    </div>
-  );
+	return (
+		<div className="flex gap-2 items-center">
+			<MagneticButton freedom={0.5}>Slow</MagneticButton>
+			<MagneticButton freedom={2}>Fast</MagneticButton>
+		</div>
+	);
 };
 
 /**
@@ -42,15 +41,15 @@ export const CustomFreedom = () => {
  * *Note that has a opacity-0 by default when not hovering!*
  */
 export const CustomMagnet = () => {
-  return (
-    <div className="flex gap-2 items-center">
-      <MagneticButton
-        magnet={{
-          className: "bg-primary/50 opacity-100",
-        }}
-      >
-        Funky button
-      </MagneticButton>
-    </div>
-  );
+	return (
+		<div className="flex gap-2 items-center">
+			<MagneticButton
+				magnet={{
+					className: "bg-primary/50 opacity-100",
+				}}
+			>
+				Funky button
+			</MagneticButton>
+		</div>
+	);
 };
