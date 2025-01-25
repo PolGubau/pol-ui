@@ -363,8 +363,8 @@
   "scripts": {
     "build": "tsc  && vite build && pnpm generate-exports",
     "build-storybook": "storybook build",
-    "generate-exports": "node ./src/scripts/generate-exports.mjs",
-    "generate-docs": "node ./src/scripts/generate-docs.mjs",
+    "generate-exports": "node --experimental-strip-types --experimental-transform-types ./src/scripts/generate-exports.ts",
+    "generate-docs": "node --experimental-strip-types --experimental-transform-types ./src/scripts/generate-docs.ts",
     "changelog": "npx conventional-changelog-cli -i CHANGELOG.md -s -t v -p angular",
     "check": "biome lint --write .",
     "commit": "cz",
