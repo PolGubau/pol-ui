@@ -3,7 +3,7 @@ import type { StorybookConfig } from "@storybook/react-vite";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
-  staticDirs: ["../public"],
+  staticDirs: ["../api"],
   addons: [
     getAbsolutePath("@storybook/addon-essentials"),
     getAbsolutePath("@storybook/addon-interactions"),
@@ -11,6 +11,7 @@ const config: StorybookConfig = {
     getAbsolutePath("@storybook/addon-mdx-gfm"),
     getAbsolutePath("@storybook/addon-mdx-gfm"),
   ],
+
   docs: {
     defaultName: "Docs",
     autodocs: true,

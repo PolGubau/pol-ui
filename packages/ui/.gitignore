@@ -26,3 +26,8 @@ lib
 .turbo*
 build-storybook.log
 .vercel
+
+
+api/api-summary.json
+api/api.json
+

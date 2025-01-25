@@ -368,12 +368,11 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc  && vite build && pnpm generate-exports",
-    "build-storybook": "storybook build",
+    "build": "tsc  && vite build && pnpm type-docs",
+    "build-storybook": "pnpm build && storybook build",
     "parse-docs": "node --experimental-strip-types --experimental-transform-types ./scripts/parse-typedoc.ts",
     "type-docs": "typedoc && pnpm parse-docs",
     "generate-exports": "node --experimental-strip-types --experimental-transform-types ./scripts/generate-exports.ts",
-    "generate-docs": "node --experimental-strip-types --experimental-transform-types ./scripts/generate-docs.ts",
     "changelog": "npx conventional-changelog-cli -i CHANGELOG.md -s -t v -p angular",
     "check": "biome lint --write .",
     "commit": "cz",

@@ -41,7 +41,7 @@ const generateDocs = (): void => {
   }
 
   // Escribir el JSON en el directorio public
-  const apiJsonPath = join(dirname, "public", "api.json");
+  const apiJsonPath = join(dirname, "api", "api.json");
   writeFileSync(apiJsonPath, JSON.stringify(apiData, null, 2));
 
   console.info("🟢 Documentación generada correctamente en api.json");
