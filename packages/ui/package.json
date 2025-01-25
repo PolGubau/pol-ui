@@ -363,6 +363,8 @@
   "scripts": {
     "build": "tsc  && vite build && pnpm generate-exports",
     "build-storybook": "storybook build",
+    "parse-docs": "node --experimental-strip-types --experimental-transform-types ./src/scripts/parse-typedoc.ts",
+    "type-docs": "typedoc && pnpm parse-docs",
     "generate-exports": "node --experimental-strip-types --experimental-transform-types ./src/scripts/generate-exports.ts",
     "generate-docs": "node --experimental-strip-types --experimental-transform-types ./src/scripts/generate-docs.ts",
     "changelog": "npx conventional-changelog-cli -i CHANGELOG.md -s -t v -p angular",
@@ -472,6 +474,7 @@
     "storybook": "^8.5.1",
     "tailwind-merge": "^2.0.0",
     "tailwindcss": "^3.4.15",
+    "typedoc": "^0.27.6",
     "typescript": "5.4.2",
     "vaul": "^0.9.1",
     "vite": "^6.0.7",

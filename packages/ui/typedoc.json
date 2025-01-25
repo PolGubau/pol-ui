@@ -1,0 +1,38 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "exclude": [
+    "**/*+(test|stories|spec).ts"
+  ],
+  "excludeExternals": true,
+  "excludePrivate": true,
+  "theme": "minimal",
+  "excludeProtected": true,
+  "hideGenerator": true,
+  "cleanOutputDir": true,
+  "includeVersion": false,
+  "includeHierarchySummary": false,
+  "suppressCommentWarningsInDeclarationFiles": true,
+  "defaultCategory": "Other",
+  "excludeInternal": true,
+  "json": "./public/api2.json",
+  "pretty": true,
+  "readme": "none",
+  "sort": [
+    "kind",
+    "instance-first",
+    "alphabetical-ignoring-documents"
+  ],
+  "groupOrder": [
+    "index",
+    "classes",
+    "modules",
+    "enums",
+    "interfaces",
+    "typealiases",
+    "variables",
+    "functions"
+  ],
+  "entryPoints": [
+    "src/index.ts",
+  ],
+}

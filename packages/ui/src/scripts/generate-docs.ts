@@ -1,5 +1,5 @@
 import { readFileSync, writeFileSync } from "node:fs";
-import { basename, join, resolve } from "node:path";
+import { basename, extname, join, resolve } from "node:path";
 import { sync } from "glob";
 import { type Config, parse } from "react-docgen";
 import type { Documentation } from "react-docgen/dist/Documentation";
@@ -13,33 +13,36 @@ const options: Config = {};
 
 // Función para extraer la información de los componentes
 const generateDocs = (): void => {
+	// Buscar archivos .tsx dentro de los componentes, helpers y hooks
 	const components = sync(`${componentsPath}/**/*.tsx`);
 
-	// Filtrar componentes para excluir los que estén en test, stories o spec
-	const filteredComponents = components.filter(
-		(componentPath) =>
+	// Filtrar los archivos para excluir los que estén en test, stories o spec
+	const allFiles = [...components];
+	const filteredFiles = allFiles.filter(
+		(filePath) =>
 			!(
-				componentPath.includes("test") ||
-				componentPath.includes("stories") ||
-				componentPath.includes("spec")
+				filePath.includes("test") ||
+				filePath.includes("stories") ||
+				filePath.includes("spec")
 			),
 	);
 
 	const apiData: Record<string, Documentation[]> = {};
 
-	for (const componentPath of filteredComponents) {
-		const componentName = basename(componentPath, ".tsx");
-		const componentCode = readFileSync(componentPath, "utf-8");
+	// Procesar cada archivo
+	for (const filePath of filteredFiles) {
+		const fileName = basename(filePath, extname(filePath));
+		const fileCode = readFileSync(filePath, "utf-8");
 
 		try {
 			// Usamos react-docgen para extraer la información
-			const doc = parse(componentCode, options);
-			console.info("▶️ Parsing component", componentName);
-			apiData[componentName] = doc;
+			const doc = parse(fileCode, options);
+			console.info("▶️ Parsing file", fileName);
+			apiData[fileName] = doc;
 			// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 		} catch (error: any) {
 			console.error(
-				`Error al procesar el componente ${componentName}: ${error.message}`,
+				`Error al procesar el archivo ${fileName}: ${error.message}`,
 			);
 		}
 	}
