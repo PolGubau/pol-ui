@@ -89,6 +89,9 @@ jobs:
       - name: Lint
         run: pnpm ui lint-fix
 
+      - name: Update changelog
+        run: pnpm ui changelog
+
       - name: Build
         run: pnpm ui build
       

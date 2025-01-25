@@ -14,7 +14,7 @@ dist
 .contentlayer
 lib/
 .env*
-public
+
 
 examples
 
