@@ -20,6 +20,12 @@
 	"workspaces": [
 		"packages/*"
 	],
+	"maintainers": [
+		{
+			"name": "Pol Gubau Amores",
+			"email": "gubaupol@gmail.com"
+		}
+	],
 	"scripts": {
 		"dev": "turbo run dev --parallel",
 		"build": "turbo run build",

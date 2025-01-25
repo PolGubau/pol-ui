@@ -13,45 +13,38 @@ const options: Config = {};
 
 // Función para extraer la información de los componentes
 const generateDocs = (): void => {
-	// Buscar archivos .tsx dentro de los componentes, helpers y hooks
-	const components = sync(`${componentsPath}/**/*.tsx`);
+  // Buscar archivos .tsx dentro de los componentes, helpers y hooks
+  const components = sync(`${componentsPath}/**/*.tsx`);
 
-	// Filtrar los archivos para excluir los que estén en test, stories o spec
-	const allFiles = [...components];
-	const filteredFiles = allFiles.filter(
-		(filePath) =>
-			!(
-				filePath.includes("test") ||
-				filePath.includes("stories") ||
-				filePath.includes("spec")
-			),
-	);
+  // Filtrar los archivos para excluir los que estén en test, stories o spec
+  const allFiles = [...components];
+  const filteredFiles = allFiles.filter(
+    (filePath) => !(filePath.includes("test") || filePath.includes("stories") || filePath.includes("spec")),
+  );
 
-	const apiData: Record<string, Documentation[]> = {};
+  const apiData: Record<string, Documentation[]> = {};
 
-	// Procesar cada archivo
-	for (const filePath of filteredFiles) {
-		const fileName = basename(filePath, extname(filePath));
-		const fileCode = readFileSync(filePath, "utf-8");
+  // Procesar cada archivo
+  for (const filePath of filteredFiles) {
+    const fileName = basename(filePath, extname(filePath));
+    const fileCode = readFileSync(filePath, "utf-8");
 
-		try {
-			// Usamos react-docgen para extraer la información
-			const doc = parse(fileCode, options);
-			console.info("▶️ Parsing file", fileName);
-			apiData[fileName] = doc;
-			// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-		} catch (error: any) {
-			console.error(
-				`Error al procesar el archivo ${fileName}: ${error.message}`,
-			);
-		}
-	}
+    try {
+      // Usamos react-docgen para extraer la información
+      const doc = parse(fileCode, options);
+      console.info("▶️ Parsing file", fileName);
+      apiData[fileName] = doc;
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    } catch (error: any) {
+      console.error(`Error al procesar el archivo ${fileName}: ${error.message}`);
+    }
+  }
 
-	// Escribir el JSON en el directorio public
-	const apiJsonPath = join(dirname, "public", "api.json");
-	writeFileSync(apiJsonPath, JSON.stringify(apiData, null, 2));
+  // Escribir el JSON en el directorio public
+  const apiJsonPath = join(dirname, "public", "api.json");
+  writeFileSync(apiJsonPath, JSON.stringify(apiData, null, 2));
 
-	console.info("🟢 Documentación generada correctamente en api.json");
+  console.info("🟢 Documentación generada correctamente en api.json");
 };
 
 // Ejecutar la generación de documentación

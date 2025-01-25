@@ -22,6 +22,12 @@
   "contributors": [
     "Pol Gubau Amores <gubaupol@gmail.com> (https://polgubau.com)"
   ],
+  "maintainers": [
+    {
+      "name": "Pol Gubau Amores",
+      "email": "gubaupol@gmail.com"
+    }
+  ],
   "sideEffects": [
     "**/*.css"
   ],
@@ -355,6 +361,7 @@
     "yarn": "Please use pnpm instead of yarn to install dependencies",
     "pnpm": ">= 9"
   },
+  "type": "module",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -475,6 +482,7 @@
     "tailwind-merge": "^2.0.0",
     "tailwindcss": "^3.4.15",
     "typedoc": "^0.27.6",
+    "typedoc-better-json": "^0.9.4",
     "typescript": "5.4.2",
     "vaul": "^0.9.1",
     "vite": "^6.0.7",
