@@ -17,7 +17,9 @@
 	"bugs": {
 		"url": "https://github.com/PolGubau/pol-ui/issues"
 	},
-	"workspaces": ["packages/*"],
+	"workspaces": [
+		"packages/*"
+	],
 	"scripts": {
 		"dev": "turbo run dev --parallel",
 		"build": "turbo run build",
@@ -51,7 +53,9 @@
 		"publish:packages": "pnpm publish --filter ./packages/* --access public"
 	},
 	"lint-staged": {
-		"**/*.{js,ts,tsx}": ["eslint --fix"],
+		"**/*.{js,ts,tsx}": [
+			"eslint --fix"
+		],
 		"**/*": "prettier --write --ignore-unknown"
 	},
 	"keywords": [
@@ -82,14 +86,12 @@
 		"semantic-release": "24.2.0",
 		"semantic-release-monorepo": "^8.0.2",
 		"semantic-release-npm-github-publish": "^1.5.5",
-		"typescript": "^5.4.5"
-	},
-	"dependencies": {
 		"autoprefixer": "^10.4.14",
 		"postcss": "^8.4.24",
 		"tailwindcss": "^3.4.0",
 		"tailwindcss-animate": "^1.0.5",
-		"turbo": "^1.9.9"
+		"turbo": "^1.9.9",
+		"typescript": "^5.4.5"
 	},
 	"config": {
 		"commitizen": {
