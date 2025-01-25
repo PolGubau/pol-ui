@@ -1,36 +1,49 @@
-/// <reference types="vitest" />
-import tsconfigPaths from "vite-tsconfig-paths";
-
-import { join, resolve } from "node:path";
-import react from "@vitejs/plugin-react-swc";
+import { extname, relative, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import react from "@vitejs/plugin-react";
+import { glob } from "glob";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
+import { libInjectCss } from "vite-plugin-lib-inject-css";
 
-import { peerDependencies } from "./package.json";
-
+// https://vitejs.dev/config/
 export default defineConfig({
-  resolve: {
-    alias: {
-      "@/*": resolve(__dirname, "src/*"),
-      "@components/*": resolve(__dirname, "src/components/*"),
-      "@hooks/*": resolve(__dirname, "src/hooks/*"),
-      "@helpers/*": resolve(__dirname, "src/helpers/*"),
-      "@types/*": resolve(__dirname, "src/types/*"),
-    },
-  },
-  plugins: [react(), dts(), tsconfigPaths()],
+  plugins: [
+    react(),
+    libInjectCss(),
+    dts({
+      include: ["src"],
+      outDir: "dist",
+      insertTypesEntry: true,
+    }),
+  ],
   build: {
     copyPublicDir: false,
-    target: "esnext",
-    // minify: false,
     lib: {
-      entry: resolve(__dirname, join("src", "index.ts")),
-      fileName: "index",
+      entry: resolve(__dirname, "src/index.ts"),
       formats: ["es"],
     },
     rollupOptions: {
-      // Exclude peer dependencies from the bundle to reduce bundle size
-      external: ["react/jsx-runtime", ...Object.keys(peerDependencies)],
+      external: ["react", "react/jsx-runtime"],
+      input: Object.fromEntries(
+        // https://rollupjs.org/configuration-options/#input
+        glob
+          .sync("src/**/*.{ts,tsx}", {
+            ignore: ["src/**/*.d.ts"],
+          })
+          .map((file) => [
+            // 1. The name of the entry point
+            // src/nested/foo.js becomes nested/foo
+            relative("src", file.slice(0, file.length - extname(file).length)),
+            // 2. The absolute path to the entry file
+            // src/nested/foo.ts becomes /project/src/nested/foo.ts
+            fileURLToPath(new URL(file, import.meta.url)),
+          ]),
+      ),
+      output: {
+        assetFileNames: "assets/[name][extname]",
+        entryFileNames: "[name].js",
+      },
     },
   },
 });

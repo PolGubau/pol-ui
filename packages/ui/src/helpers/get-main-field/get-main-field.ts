@@ -1,4 +1,4 @@
-import { DEFAULT_KEYS } from "@/constants";
+import { DEFAULT_KEYS } from "../../constants";
 
 export type GetMainFieldType = (
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>

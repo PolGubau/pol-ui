@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { addYears } from "@/helpers";
+import { addYears } from "../../../helpers";
 import { mergeDeep } from "../../../helpers/merge-deep/merge-deep";
 import type { IBoolean } from "../../../types";
 import { Button } from "../../Button";

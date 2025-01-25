@@ -1,5 +1,5 @@
-import { addDays, addMonths, addYears } from "@/helpers";
 import { describe, expect, it } from "vitest";
+import { addDays, addMonths, addYears } from "../../helpers";
 import { getFirstDayOfTheMonth, getFormattedDate, isDateInRange, startOfYearPeriod } from "./helpers";
 
 describe("isDateInRange", () => {

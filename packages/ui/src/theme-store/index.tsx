@@ -1,6 +1,6 @@
 "use client";
 
-import { cloneDeep } from "@/helpers";
+import { cloneDeep } from "../helpers";
 import { mergeDeep } from "../helpers/merge-deep/merge-deep";
 import type { ThemeMode } from "../hooks/use-theme-mode";
 import type { CustomPoluiTheme, PoluiTheme } from "../providers/PoluiProvider";

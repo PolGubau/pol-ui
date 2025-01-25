@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { addDays } from "@/helpers/dates";
+import { addDays } from "../../../helpers";
 import { mergeDeep } from "../../../helpers/merge-deep/merge-deep";
 import type { DeepPartial, IBoolean } from "../../../types/types";
 import { Button } from "../../Button";

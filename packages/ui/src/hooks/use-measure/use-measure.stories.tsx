@@ -15,9 +15,7 @@ export default {
       </div>
     ),
   ],
-  parameters: {
-    layout: "fullscreen",
-  },
+
   tags: ["autodocs"],
 } as Meta;
 export const Default: React.FC = () => {

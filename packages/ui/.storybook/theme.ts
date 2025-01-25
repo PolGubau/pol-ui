@@ -4,12 +4,14 @@ export default create({
   base: "light",
   // Typography
   fontBase: '"Poppins", "Arial", "Open Sans", sans-serif',
-  fontCode: "monospace",
-
-  brandTitle: "Pol-ui Storybook",
+  fontCode:
+    '"SF Mono", "Menlo", "Monaco", "Consolas", "Ubuntu Mono", "Liberation Mono", "DejaVu Sans Mono", "Courier New", "Courier", monospace',
   brandUrl: "/",
   brandImage: "https://ui.polgubau.com/logo.png",
   brandTarget: "_self",
+
+  brandTitle: `<div style="font-size: 18px; color: #B49CFF; font-weight: 600; margin-top: -6px; margin-bottom: 2px;">@polgubau</div>
+                <div style="font-size: 14px;color: #7d7d7d;font-weight: 400;">UIKit</div>`,
 
   //
   colorPrimary: "#B49CFF",

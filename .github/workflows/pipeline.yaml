@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
 
 env:
   CI: true
@@ -101,7 +103,9 @@ jobs:
 
 
       - name: Release
-        run: pnpm release --cache-dir=.turbo
+        # run: pnpm release --cache-dir=.turbo
+        uses: zhumeisongsong/shared-actions/.github/workflows/reusable-semantic-release.yml@main
+ 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

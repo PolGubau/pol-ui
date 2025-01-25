@@ -1,4 +1,4 @@
-import { type Dir, DirEnum } from "@/types";
+import { type Dir, DirEnum } from "../../types";
 
 export function getDocumentDirection(): Dir {
   if (typeof window === "undefined") {

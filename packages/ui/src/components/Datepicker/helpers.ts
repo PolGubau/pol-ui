@@ -1,4 +1,4 @@
-import { addDays } from "@/helpers";
+import { addDays } from "../../helpers";
 
 export enum Views {
   Days = 0,
