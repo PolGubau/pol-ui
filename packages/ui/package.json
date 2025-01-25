@@ -370,10 +370,10 @@
   "scripts": {
     "build": "tsc  && vite build && pnpm generate-exports",
     "build-storybook": "storybook build",
-    "parse-docs": "node --experimental-strip-types --experimental-transform-types ./src/scripts/parse-typedoc.ts",
+    "parse-docs": "node --experimental-strip-types --experimental-transform-types ./scripts/parse-typedoc.ts",
     "type-docs": "typedoc && pnpm parse-docs",
-    "generate-exports": "node --experimental-strip-types --experimental-transform-types ./src/scripts/generate-exports.ts",
-    "generate-docs": "node --experimental-strip-types --experimental-transform-types ./src/scripts/generate-docs.ts",
+    "generate-exports": "node --experimental-strip-types --experimental-transform-types ./scripts/generate-exports.ts",
+    "generate-docs": "node --experimental-strip-types --experimental-transform-types ./scripts/generate-docs.ts",
     "changelog": "npx conventional-changelog-cli -i CHANGELOG.md -s -t v -p angular",
     "check": "biome lint --write .",
     "commit": "cz",
@@ -397,7 +397,7 @@
     "test:e2e:open": "start-test 3000 ",
     "test:open": "vitest --ui",
     "typecheck": "tsc --noEmit",
-    "update-coverage": "node ./src/scripts/coverage-summary.mjs",
+    "update-coverage": "node ./scripts/coverage-summary.mjs",
     "vercel": "vercel --prod"
   },
   "browserslist": {
