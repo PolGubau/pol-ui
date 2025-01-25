@@ -9,6 +9,7 @@
 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/PolGubau/pol-ui)
 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues-pr/PolGubau/pol-ui)
 ![NPM Version](https://img.shields.io/npm/v/pol-ui)
+[![Socket Badge](https://socket.dev/api/badge/npm/package/pol-ui/1.2.0)](https://socket.dev/npm/package/pol-ui/overview/1.2.0)
 
 
 

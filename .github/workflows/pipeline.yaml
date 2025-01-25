@@ -97,20 +97,9 @@ jobs:
       
       - name: Run Tests and Coverage
         run: pnpm ui coverage
-      
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v5
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          slug: PolGubau/pol-ui
-
 
       - name: Release
-        # run: pnpm release --cache-dir=.turbo
-        uses: zhumeisongsong/shared-actions/.github/workflows/reusable-semantic-release.yml@main
- 
+        run: pnpm release --cache-dir=.turbo
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
- 

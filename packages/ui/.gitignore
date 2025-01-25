@@ -14,18 +14,14 @@ dist
 .contentlayer
 lib/
 .env*
-
-
-examples
-
 data
-
 content
 lib
 .turbo
 .turbo*
 build-storybook.log
 .vercel
+
 
 
 api/api-summary.json
