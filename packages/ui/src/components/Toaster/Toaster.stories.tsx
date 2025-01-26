@@ -2,7 +2,7 @@ import type { Meta, StoryFn } from "@storybook/react";
 import { TbAlien } from "react-icons/tb";
 import { Toaster, toast } from ".";
 import { Button } from "../Button";
-import type { ToasterProps } from "./types";
+import type { ToasterProps } from "./Toaster";
 
 export default {
   title: "Components/Toaster ",

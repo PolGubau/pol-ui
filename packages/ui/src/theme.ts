@@ -3,7 +3,6 @@ import { alertTheme } from "./components/Alert/theme";
 import { animatedHeadingTheme } from "./components/AnimatedHeading/theme";
 import { avatarTheme } from "./components/Avatar/theme";
 import { badgeTheme } from "./components/Badge/theme";
-import { bannerTheme } from "./components/Banner/theme";
 import { breadcrumbTheme } from "./components/Breadcrumb/theme";
 import { bubbleHeadingTheme } from "./components/BubbleHeading/theme";
 import { buttonTheme } from "./components/Button/theme";
@@ -61,7 +60,6 @@ export const theme: PoluiTheme = {
   alert: alertTheme,
   avatar: avatarTheme,
   badge: badgeTheme,
-  banner: bannerTheme,
   breadcrumb: breadcrumbTheme,
   button: buttonTheme,
   iconButton: iconButtonTheme,

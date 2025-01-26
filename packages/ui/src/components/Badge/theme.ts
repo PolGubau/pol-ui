@@ -1,4 +1,4 @@
-import type { ColorsType, IBoolean, MainSizesType, RoundedSizesTypes } from "../../types";
+import type { ColorsType, MainSizesType, OnOff, RoundedSizesTypes } from "../../types";
 
 export interface BadgeTheme {
   root: BadgeRootTheme;
@@ -13,7 +13,7 @@ export interface BadgeRootTheme {
   size: MainSizesType;
 }
 
-export interface BadgeIconTheme extends IBoolean {
+export interface BadgeIconTheme extends OnOff {
   size: MainSizesType;
 }
 

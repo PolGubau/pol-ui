@@ -1,4 +1,7 @@
-export { Badge } from "./Badge";
-export type { BadgeProps } from "./Badge";
-export type { BadgeTheme } from "./theme";
-export { badgeTheme } from "./theme";
+export { Badge, type BadgeProps } from "./badge";
+export {
+  badgeTheme,
+  type BadgeIconTheme,
+  type BadgeRootTheme,
+  type BadgeTheme,
+} from "./theme";

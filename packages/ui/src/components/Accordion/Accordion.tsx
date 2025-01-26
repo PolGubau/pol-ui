@@ -1,95 +1,80 @@
 "use client";
-
-import { Children, type FC, cloneElement, useMemo, useState } from "react";
-import { HiChevronDown } from "react-icons/hi";
-import { twMerge } from "tailwind-merge";
-
-import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { type ComponentProps, type FC, useRef, useState } from "react";
+import { RiArrowDropDownLine } from "react-icons/ri";
+import { cn, mergeDeep } from "../../helpers";
 import { getTheme } from "../../theme-store";
-import type { IBoolean } from "../../types/types";
-import { type AccordionComponentTheme, AccordionContent } from "./AccordionContent";
-import { AccordionPanel } from "./AccordionPanel";
-import { AccordionTitle, type AccordionTitleTheme } from "./AccordionTitle";
-import type { AccordionProps } from "./types";
+import type { DeepPartial } from "../../types";
+import type { AccordionTheme } from "./theme";
 
-export interface AccordionTheme {
-  root: AccordionRootTheme;
-  content: AccordionComponentTheme;
-  title: AccordionTitleTheme;
+interface AccordionItemProps {
+  data: AccordionData;
+  isOpen: boolean;
+  onClick: () => void;
+  theme: AccordionTheme;
 }
-
-export interface AccordionRootTheme {
-  base: string;
-  isBordered: IBoolean;
-}
-
-/**
- * @name Accordion
- *
- * @description The accordion component is used to display a list of items that can be expanded or collapsed.
- *
- * @returns <Accordion /> : React.ReactNode
- * 
- * @example ```
- *   <Accordion>
- *   <Accordion.Panel>
-  *    <Accordion.Title>Title</Accordion.Title>
-  *   <Accordion.Content>
-  *        Content
-  *   </Accordion.Content>
- *   </Accordion.Panel>
- * </Accordion>
- * ```
-
- */
-const AccordionComponent: FC<AccordionProps> = ({
-  alwaysOpen = false,
-  arrowIcon = HiChevronDown,
-  children,
-  isBordered = true,
-  collapseAll = false,
-  className,
-  theme: customTheme = {},
-  ...props
-}) => {
-  const [isOpen, setIsOpen] = useState<number>(collapseAll ? -1 : 0);
-
-  const panels = useMemo(
-    () =>
-      Children.map(children, (child, i) =>
-        cloneElement(child, {
-          alwaysOpen,
-          arrowIcon,
-          isBordered,
-          isOpen: isOpen === i,
-          setOpen: () => {
-            setIsOpen(isOpen === i ? -1 : i);
-          },
-        }),
-      ),
-    [alwaysOpen, arrowIcon, children, isBordered, isOpen],
-  );
-
-  const theme = mergeDeep(getTheme().accordion.root, customTheme);
-
+const AccordionItem = ({
+  data: { header, content, arrowIcon: ArrowIcon = RiArrowDropDownLine },
+  isOpen,
+  onClick,
+  theme,
+}: AccordionItemProps) => {
+  const contentHeight = useRef<HTMLDivElement>(null);
   return (
-    <div
-      className={twMerge(theme.base, theme.isBordered[isBordered ? "on" : "off"], className)}
-      data-testid="ui-accordion"
-      {...props}
-    >
-      {panels}
-    </div>
+    <li className={`${theme.wrapper} wrapper`} data-testid="ui-accordion-item">
+      <button
+        data-testid="ui-accordion-header"
+        type="button"
+        data-open={String(isOpen)}
+        className={` ${theme.headerContainer} ${isOpen ? "active" : ""}`}
+        onClick={onClick}
+      >
+        {header}
+        <ArrowIcon className={theme.arrow} data-open={String(isOpen)} />
+      </button>
+
+      <div
+        data-testid="ui-accordion-content"
+        ref={contentHeight}
+        data-open={String(isOpen)}
+        className={theme.contentContainer}
+        style={isOpen ? { height: contentHeight.current?.scrollHeight } : { height: "0px" }}
+      >
+        <div className={theme.contentContent}>{content}</div>
+      </div>
+    </li>
   );
 };
 
-AccordionComponent.displayName = "Accordion";
-AccordionPanel.displayName = "Accordion.Panel";
-AccordionTitle.displayName = "Accordion.Title";
-AccordionContent.displayName = "Accordion.Content";
+export interface AccordionData {
+  header: React.ReactNode;
+  content: React.ReactNode;
+  arrowIcon?: FC<ComponentProps<"svg">>;
+}
+export interface AccordionProps extends ComponentProps<"ul"> {
+  alwaysOpen?: boolean;
+  theme?: DeepPartial<AccordionTheme>;
+  data: AccordionData[];
+}
+export const Accordion = ({ alwaysOpen, data, theme: customTheme = {}, ...rest }: AccordionProps) => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-export const Accordion = Object.assign(AccordionComponent, {
-  Panel: AccordionPanel,
-  Title: AccordionTitle,
-  Content: AccordionContent,
-});
+  const handleItemClick = (index: number) => {
+    setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
+  };
+
+  const theme: AccordionTheme = mergeDeep(getTheme().accordion, customTheme);
+  return (
+    <ul className={cn(theme.container, rest.className)} {...rest} data-testid="ui-accordion">
+      {data.map((item, index) => (
+        <AccordionItem
+          theme={theme}
+          // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+          key={index}
+          data={item}
+          isOpen={activeIndex === index}
+          onClick={() => handleItemClick(index)}
+        />
+      ))}
+    </ul>
+  );
+};

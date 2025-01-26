@@ -79,7 +79,7 @@ interface ToastOptions {
   classNames?: ToastClassnames;
 }
 type CnFunction = (...classes: (string | undefined)[]) => string;
-interface ToasterProps {
+interface PrimitiveToasterProps {
   invert?: boolean;
   theme?: "light" | "dark" | "system";
   position?: Position;
@@ -109,7 +109,7 @@ export type {
   ToastT,
   ToastClassnames,
   ToastOptions,
-  ToasterProps,
+  PrimitiveToasterProps,
   ToastIcons,
   PromiseData,
   PromiseT,

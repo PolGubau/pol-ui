@@ -1,11 +1,12 @@
-import type { Meta, StoryFn } from "@storybook/react";
-import { HiCheck } from "react-icons/hi";
+import type { Meta, StoryObj } from "@storybook/react";
 import { theme } from "../../theme";
-import { ColorsEnum } from "../../types/enums";
-import type { BadgeProps } from "./Badge";
-import { Badge } from "./Badge";
+import { Badge } from "./badge";
+import { badgeExampleProps } from "./test/props";
+import { itsDisplayed, shouldAcceptRoundessAndSize, shouldBeLink, shouldHaveIcon } from "./test/utils";
 
-export default {
+type Story = StoryObj<typeof Badge>;
+
+const meta: Meta<typeof Badge> = {
   title: "Components/Badge",
   component: Badge,
   argTypes: {
@@ -25,44 +26,47 @@ export default {
       </div>
     ),
   ],
-  parameters: {
-    layout: "fullscreen",
+};
+export default meta;
+
+export const Default: Story = {
+  args: badgeExampleProps.default,
+  play: async ({ args, canvasElement, step }) => {
+    await step("Basic Usage", async () => {
+      await itsDisplayed(canvasElement, args);
+    });
   },
-} as Meta;
-
-const Template: StoryFn<BadgeProps> = (args) => (
-  <div className="flex items-center">
-    <Badge {...args} />
-  </div>
-);
-
-export const DefaultBadge = Template.bind({});
-DefaultBadge.args = {
-  children: "Default",
 };
-
-export const BadgeWithIcon = Template.bind({});
-BadgeWithIcon.args = {
-  color: ColorsEnum.error,
-  icon: HiCheck,
-  children: "2 minutes ago",
+export const WithIcon: Story = {
+  args: badgeExampleProps.withIcon,
+  play: async ({ args, canvasElement, step }) => {
+    await step("Basic Usage", async () => {
+      await itsDisplayed(canvasElement, args);
+    });
+    await step("Should have icon", async () => {
+      await shouldHaveIcon(canvasElement);
+    });
+  },
 };
-
-export const BadgeOnlyIcon = Template.bind({});
-BadgeOnlyIcon.args = {
-  color: ColorsEnum.success,
-  icon: HiCheck,
+export const AsLink: Story = {
+  args: badgeExampleProps.asLink,
+  play: async ({ args, canvasElement, step }) => {
+    await step("Basic Usage", async () => {
+      await itsDisplayed(canvasElement, args);
+    });
+    await step("Basic be a link", async () => {
+      await shouldBeLink(canvasElement, args);
+    });
+  },
 };
-
-export const BadgeAsLink = Template.bind({});
-BadgeAsLink.storyName = "As link";
-BadgeAsLink.args = {
-  href: "/badges",
-  children: "Read more →",
-};
-export const SmallRounded = Template.bind({});
-SmallRounded.args = {
-  size: "lg",
-  rounded: "sm",
-  children: "Read more →",
+export const SmallAndRounded: Story = {
+  args: badgeExampleProps.smallAndRounded,
+  play: async ({ args, canvasElement, step }) => {
+    await step("Basic Usage", async () => {
+      await itsDisplayed(canvasElement, args);
+    });
+    await step("Correct classes", async () => {
+      await shouldAcceptRoundessAndSize(canvasElement, args);
+    });
+  },
 };

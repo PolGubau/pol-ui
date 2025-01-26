@@ -1,9 +1,7 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
-import { twMerge } from "tailwind-merge";
-
-import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { cn, mergeDeep } from "../../helpers";
 import { getTheme } from "../../theme-store";
 import { ColorsEnum, RoundedSizesEnum, SizesEnum } from "../../types/enums";
 import type { Colors, DeepPartial, MainSizes, RoundedSizes } from "../../types/types";
@@ -37,7 +35,7 @@ export const Badge: FC<BadgeProps> = ({
 
   const Content: FC = () => (
     <span
-      className={twMerge(
+      className={cn(
         theme.root.base,
         theme.root.color[color],
         theme.root.size[size],

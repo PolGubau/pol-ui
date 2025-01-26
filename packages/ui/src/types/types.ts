@@ -227,3 +227,8 @@ export interface LangAndText {
   language: Locale;
   text: string;
 }
+/**
+ * @name OnOff
+ * @description Type for booleans, on and off states
+ */
+export type OnOff = Record<BooleanEnum, string>;

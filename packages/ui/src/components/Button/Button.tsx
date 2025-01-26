@@ -3,7 +3,7 @@ import { type VariantProps, cva } from "class-variance-authority";
 import * as React from "react";
 
 import { cn, mergeRefs } from "../../helpers";
-import { useRipple } from "../../hooks";
+import { useRipple } from "../../hooks/use-ripple";
 import type { RippleOptions } from "../../hooks/use-ripple/use-ripple";
 import type { DeepPartial } from "../../types";
 import { FocusEffect } from "../FocusEffect";

@@ -1,9 +1,8 @@
+import type { AlertTheme } from "../../components";
 import type { AccordionTheme } from "../../components/Accordion";
-import type { AlertTheme } from "../../components/Alert";
 import type { AnimateHeadingTheme } from "../../components/AnimatedHeading/theme";
 import type { AvatarTheme } from "../../components/Avatar";
 import type { BadgeTheme } from "../../components/Badge";
-import type { BannerTheme } from "../../components/Banner";
 import type { BreadcrumbTheme } from "../../components/Breadcrumb";
 import type { BubbleHeadingTheme } from "../../components/BubbleHeading/theme";
 import type { ButtonTheme } from "../../components/Button";
@@ -70,7 +69,6 @@ export interface PoluiTheme {
   badge: BadgeTheme;
   popover: PopoverTheme;
   gauge: GaugeTheme;
-  banner: BannerTheme;
   breadcrumb: BreadcrumbTheme;
   message: MessageTheme;
   button: ButtonTheme;

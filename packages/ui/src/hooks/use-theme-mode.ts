@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import { isClient } from "../helpers/isClient/is-client";
 import { getThemeMode } from "../theme-store";
-import { useWatchLocalStorage } from "./use-watch-localstorage-value";
+import { useWatchLocalStorage } from "./use-watch-localstorage-value/use-watch-localstorage-value";
 
 const DEFAULT_MODE: ThemeMode = "light";
 const STORAGE_THEME_MODE = "pol-theme";
@@ -39,7 +39,7 @@ export const useThemeMode = () => {
   useEffect(() => {
     setModeInLs(mode);
     setModeInDom(mode);
-  }, []);
+  }, [mode]);
 
   /**
    * Sync all tabs with the latest theme mode value
@@ -116,7 +116,7 @@ const useSyncMode = (onChange: (mode: ThemeMode) => void) => {
     return () => {
       document.removeEventListener(SYNC_THEME_MODE, handleSync);
     };
-  }, []);
+  }, [onChange]);
 };
 
 /**

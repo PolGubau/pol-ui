@@ -1,128 +1,140 @@
-import type { Meta, StoryFn } from "@storybook/react";
-import { TbDots, TbTrash, TbX } from "react-icons/tb";
-
-import { type Colors, ColorsEnum } from "../../types";
+import type { Meta } from "@storybook/react";
+import { TbDots, TbTrash } from "react-icons/tb";
+import type { Colors } from "../../types";
+import { ColorsEnum } from "../../types";
 import { Divider } from "../Divider";
-import { Dropdown, DropdownItem } from "../Dropdown";
-import { Toaster, toast } from "../Toaster";
-import { Chip, type ChipProps } from "./Chip";
+import { Dropdown } from "../Dropdown/Dropdown";
+import { DropdownItem } from "../Dropdown/components/items";
+import { toast } from "../Toaster/Toaster";
+import { Chip } from "./chip";
 
-export default {
+const meta: Meta<typeof Chip> = {
   title: "Components/Chip",
   component: Chip,
   decorators: [
     (Story) => (
-      <div className="flex flex-col items-center justify-center p-6">
+      <div className="flex p-6 flex-col justify-center items-center">
         <Story />
-        <Toaster />
       </div>
     ),
   ],
   parameters: {
     layout: "fullscreen",
   },
-} as Meta;
+};
+export default meta;
 
-const Template: StoryFn<ChipProps> = (args) => <Chip {...args} />;
+export const Default = () => {
+  return <Chip>Chip</Chip>;
+};
+export const OnClick = () => {
+  return <Chip onClick={() => toast("Clicked")}>Chip</Chip>;
+};
 
-export const Default = Template.bind({});
-Default.args = {
-  children: "Chip",
+export const Disabled = () => {
+  return <Chip disabled={true}>disabled</Chip>;
 };
-export const OnClick = Template.bind({});
-OnClick.args = {
-  children: "Chip",
-  onClick: () => {
-    toast("Clicked");
-  },
-};
-export const Disabled = Template.bind({});
-Disabled.args = {
-  children: "disabled",
-  disabled: true,
-};
-export const OnDelete = Template.bind({});
-OnDelete.args = {
-  children: "Chip",
-  actions: [
-    {
-      label: "Delete",
-      onClick: () => {
+
+export const OnDelete = () => {
+  return (
+    <Chip
+      onDelete={() => {
         toast("Delete");
-      },
-      icon: <TbX />,
-    },
-  ],
+      }}
+    >
+      Chip
+    </Chip>
+  );
 };
-export const MultipleActions = Template.bind({});
-MultipleActions.args = {
-  children: "Custom Icon",
-  actions: [
-    {
-      label: "More actions",
-      onClick: () => {
-        toast("More actions");
-      },
-      icon: <TbDots />,
-    },
-    {
-      label: "Delete",
-      onClick: () => {
-        toast("Delete");
-      },
-      icon: <TbTrash />,
-    },
-  ],
+
+export const MultipleActions = () => {
+  return (
+    <Chip
+      actions={[
+        {
+          label: "More actions",
+          onClick: () => {
+            toast("More actions");
+          },
+          icon: <TbDots />,
+        },
+        {
+          label: "Delete",
+          onClick: () => {
+            toast("Delete");
+          },
+          icon: <TbTrash />,
+        },
+      ]}
+    >
+      Custom Icon
+    </Chip>
+  );
 };
-export const DropdownExample = Template.bind({});
-DropdownExample.args = {
-  children: "Custom Icon",
-  actions: [
-    {
-      label: "Delete",
-      element: (
-        <Dropdown
-          label="Example"
-          trigger={
-            <div className="flex items-center justify-center pr-1">
-              <TbDots color="#000" />
-            </div>
-          }
-        >
-          <DropdownItem
-            label="Undo"
-            onClick={() => {
-              alert("Undo");
-            }}
-            shortcut="⌘Z"
-          />
-          <DropdownItem
-            label="Redo"
-            shortcut="⌘Y"
-            onClick={() => {
-              alert("Redo");
-            }}
-          />
-          <Divider />
-          <DropdownItem
-            label="More actions"
-            onClick={() => {
-              alert("More actions");
-            }}
-          />
-        </Dropdown>
-      ),
-    },
-  ],
+
+export const DropdownExample = () => {
+  return (
+    <Chip
+      actions={[
+        {
+          label: "More actions",
+          element: (
+            <Dropdown
+              label="Example"
+              trigger={
+                <div className="flex items-center justify-center pr-1">
+                  <TbDots color="#000" />
+                </div>
+              }
+            >
+              <DropdownItem
+                label="Undo"
+                onClick={() => {
+                  alert("Undo");
+                }}
+                shortcut="⌘Z"
+              />
+              <DropdownItem
+                label="Redo"
+                shortcut="⌘Y"
+                onClick={() => {
+                  alert("Redo");
+                }}
+              />
+              <Divider />
+              <DropdownItem
+                label="More actions"
+                onClick={() => {
+                  alert("More actions");
+                }}
+              />
+            </Dropdown>
+          ),
+        },
+      ]}
+    >
+      Custom Icon
+    </Chip>
+  );
 };
+
 export const AllColors = () => {
   return (
-    <div className="flex flex-wrap items-center justify-center gap-4 rounded-3xl p-3">
-      {Object.keys(ColorsEnum).map((color) => (
-        <Chip key={color} color={color as Colors}>
-          {color}
-        </Chip>
-      ))}
+    <div className="flex gap-4 items-center justify-center flex-col">
+      <div className="flex gap-4 items-center justify-center p-3  rounded-3xl">
+        {Object.keys(ColorsEnum).map((color) => (
+          <Chip key={color} color={color as Colors}>
+            {color}
+          </Chip>
+        ))}
+      </div>
+      <div className="flex gap-4 items-center justify-center dark p-3 bg-secondary-900 rounded-3xl">
+        {Object.keys(ColorsEnum).map((color) => (
+          <Chip key={color} color={color as Colors}>
+            {color}
+          </Chip>
+        ))}
+      </div>
     </div>
   );
 };

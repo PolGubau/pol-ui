@@ -4,7 +4,7 @@ import type { ComponentProps, FC, PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
 import { colorToTailwind } from "../../helpers";
 import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
-import { useRipple } from "../../hooks";
+import { useRipple } from "../../hooks/use-ripple";
 import { getTheme } from "../../theme-store";
 import { ColorsEnum } from "../../types";
 import type { Colors, DeepPartial } from "../../types/types";

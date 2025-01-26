@@ -14,7 +14,7 @@ type OnChange<T> = (value: T) => void;
 
 type UseArray = <T>(defaultValue: T[], callbackOnUpdate?: (array: T[]) => void) => Return<T>;
 
-const useArray: UseArray = <T>(defaultValue: T[], callbackOnUpdate: OnChange<T[]> = () => null) => {
+export const useArray: UseArray = <T>(defaultValue: T[], callbackOnUpdate: OnChange<T[]> = () => null) => {
   const [array, setArray] = useState(defaultValue);
 
   const set = (a: T[]) => {
@@ -44,5 +44,3 @@ const useArray: UseArray = <T>(defaultValue: T[], callbackOnUpdate: OnChange<T[]
 
   return { array, set, push, filter, update, remove, clear };
 };
-
-export default useArray;

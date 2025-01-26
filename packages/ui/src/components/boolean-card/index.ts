@@ -1,2 +1,2 @@
-export * from "./boolean-card";
-export * from "./boolean-loading-card";
+export { BooleanCard, type BooleanCardProps } from "./booleanCard";
+export { BooleanLoadingCard } from "./booleanLoadingCard";

@@ -12,7 +12,12 @@ interface DrawerContentProps<T> extends Pick<DrawerArrayProps<T>, "form"> {
   handelRemove: () => void;
   handleUpdate: (e: T) => void;
 }
-export const DrawerContent = <T extends object>({ form, item, handleUpdate, handelRemove }: DrawerContentProps<T>) => {
+export const DrawerArrayContent = <T extends object>({
+  form,
+  item,
+  handleUpdate,
+  handelRemove,
+}: DrawerContentProps<T>) => {
   const { t } = useTranslate();
 
   const [innerState, setInnerState] = useState<T>(item);
@@ -48,4 +53,4 @@ export const DrawerContent = <T extends object>({ form, item, handleUpdate, hand
   );
 };
 
-export default DrawerContent;
+export default DrawerArrayContent;

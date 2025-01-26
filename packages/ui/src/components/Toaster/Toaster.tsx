@@ -10,7 +10,7 @@ import { getTheme } from "../../theme-store";
 import type { DeepPartial } from "../../types";
 import { Loader } from "../Loader";
 import type { ToastTheme } from "./theme";
-import type { ToasterProps as PrimitiveToasterProps } from "./types";
+import type { PrimitiveToasterProps } from "./types";
 
 export interface ToasterProps extends Omit<PrimitiveToasterProps, "theme"> {
   theme?: DeepPartial<ToastTheme>;

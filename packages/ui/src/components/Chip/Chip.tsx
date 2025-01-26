@@ -4,8 +4,8 @@ import type React from "react";
 import type { ElementType } from "react";
 import { TbX } from "react-icons/tb";
 import { cn, colorToTailwind, mergeDeep } from "../../helpers";
-import { useRipple } from "../../hooks";
 import type { MinimalEvent } from "../../hooks/use-ripple/use-ripple";
+import { useRipple } from "../../hooks/use-ripple/use-ripple";
 import { getTheme } from "../../theme-store";
 import { type Colors, ColorsEnum, type DeepPartial, type RoundedSizes } from "../../types";
 import { IconButton } from "../IconButton/IconButton";
@@ -60,7 +60,7 @@ export interface ChipProps<T extends ElementType = BaseComponentType> {
  * actions={[
  *  {
  *   icon: <TbX />,
- *  onClick: () => console.info('close'),
+ *  onClick: () => console.log('close'),
  * },
  * ]}
  * />
@@ -104,6 +104,7 @@ export const Chip = <T extends ElementType = BaseComponentType>({
       onPointerDown={(e: MinimalEvent) => onClick && event(e)}
       ref={onClick && ripple}
       onClick={onClick}
+      data-testid="chip"
     >
       <div className={cn(theme.text, textClassName)}>{label ?? children}</div>
 

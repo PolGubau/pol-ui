@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { TbEdit, TbPlus } from "react-icons/tb";
 
-import { cn } from "../../helpers";
-import { getMainField } from "../../helpers/get-main-field";
-import useArray from "../../hooks/use-array/use-array";
+import { cn, getMainField } from "../../helpers";
+import { useArray } from "../../hooks/use-array/use-array";
 import { Button } from "../Button";
 import { Card } from "../Card";
 import { DeleteButton } from "../DeleteButton";

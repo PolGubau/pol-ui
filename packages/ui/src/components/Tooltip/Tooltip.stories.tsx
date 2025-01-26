@@ -6,7 +6,6 @@ import { type Align, AlignEnum, type Side, SidesEnum } from "../../types";
 import { Badge } from "../Badge";
 import { Button } from "../Button";
 import { IconButton } from "../IconButton";
-import ToolbarExpandable from "../Toolbox/ExpandableToolbox";
 import { Tooltip, type TooltipProps } from "./Tooltip";
 
 export default {
@@ -37,8 +36,6 @@ IconUseCase.args = {
     </IconButton>
   ),
 };
-
-export const New = () => <ToolbarExpandable />;
 
 export const Controlled = () => {
   const { value, toggle } = useBoolean(false);

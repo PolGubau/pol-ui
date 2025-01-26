@@ -80,7 +80,7 @@ const containerClassName = "ripple--container";
  */
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-export default function useRipple<T extends HTMLElement = any>(inputOptions?: Partial<RippleOptions<T>>) {
+export function useRipple<T extends HTMLElement = any>(inputOptions?: Partial<RippleOptions<T>>) {
   const internalRef = useRef<T>(null);
 
   const { ref, ...options }: RippleOptions = {
@@ -161,7 +161,7 @@ export default function useRipple<T extends HTMLElement = any>(inputOptions?: Pa
         });
       });
     },
-    [ref, options],
+    [ref],
   );
   return [ref, event] as const;
 }

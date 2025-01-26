@@ -1,13 +1,8 @@
 "use client";
 
-import { type Dispatch, type SetStateAction, useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 
-const Directions = {
-  STATIC: 0,
-  FORWARD: 1,
-  BACKWARD: -1,
-} as const;
-type Direction = (typeof Directions)[keyof typeof Directions];
+import type { Dispatch, SetStateAction } from "react";
 
 interface UseStepActions {
   goToNextStep: () => void;
@@ -16,59 +11,53 @@ interface UseStepActions {
   canGoToNextStep: boolean;
   canGoToPrevStep: boolean;
   setStep: Dispatch<SetStateAction<number>>;
-  direction: Direction;
 }
 
 type SetStepCallbackType = (step: number | ((step: number) => number)) => void;
 
-export function useStep(maxStep: number, startingStep = 1): [number, UseStepActions] {
-  const [currentStep, setCurrentStep] = useState(startingStep);
+/**
+ * Custom hook to manage steps in a wizard
+ * @param maxStep The maximum step
+ * @param minStep The minimum step (default 0)
+ * @param step The initial step (default 1)
+ * @returns The current step and the actions to manage the steps
+ */
+export function useStep(maxStep: number, minStep = 0, step = 1): [number, UseStepActions] {
+  const [currentStep, setCurrentStep] = useState(minStep);
 
-  /**
-   * Direction is used to determine if the user is going forward or backward
-   * If 0 = no direction
-   * If 1 = forward
-   * If -1 = backward
-   */
-  const [direction, setDirection] = useState<Direction>(1);
-  const canGoToNextStep = currentStep + 1 <= maxStep;
-  const canGoToPrevStep = currentStep - 1 > 0;
+  const canGoToNextStep = currentStep + step + 1 <= maxStep;
+  const canGoToPrevStep = currentStep - step >= minStep;
 
   const setStep = useCallback<SetStepCallbackType>(
     (step) => {
       // Allow value to be a function so we have the same API as useState
       const newStep = step instanceof Function ? step(currentStep) : step;
 
-      setDirection(newStep > currentStep ? 1 : -1);
-
-      if (newStep >= 1 && newStep <= maxStep) {
+      if (newStep >= minStep && newStep <= maxStep) {
         setCurrentStep(newStep);
         return;
       }
 
       throw new Error("Step not valid");
     },
-    [maxStep, currentStep],
+    [maxStep, currentStep, minStep],
   );
 
   const goToNextStep = useCallback(() => {
     if (canGoToNextStep) {
-      setDirection(1);
-      setCurrentStep((step) => step + 1);
+      setCurrentStep((s) => s + step);
     }
-  }, [canGoToNextStep]);
+  }, [canGoToNextStep, step]);
 
   const goToPrevStep = useCallback(() => {
     if (canGoToPrevStep) {
-      setDirection(-1);
-      setCurrentStep((step) => step - 1);
+      setCurrentStep((s) => s - step);
     }
-  }, [canGoToPrevStep]);
+  }, [canGoToPrevStep, step]);
 
   const reset = useCallback(() => {
-    setDirection(0);
-    setCurrentStep(1);
-  }, []);
+    setCurrentStep(minStep);
+  }, [minStep]);
 
   return [
     currentStep,
@@ -79,7 +68,6 @@ export function useStep(maxStep: number, startingStep = 1): [number, UseStepActi
       canGoToPrevStep,
       setStep,
       reset,
-      direction,
     },
   ];
 }

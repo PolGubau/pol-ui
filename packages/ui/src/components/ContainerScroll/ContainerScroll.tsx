@@ -135,7 +135,7 @@ export const ContainerScroll = ({
             {titleComponent}
           </motion.div>
         )}
-        <Card
+        <ContainerScrollCard
           rotate={rotate}
           translate={translate}
           scale={scale}
@@ -145,7 +145,7 @@ export const ContainerScroll = ({
           screenClassName={screenClassName}
         >
           {children}
-        </Card>
+        </ContainerScrollCard>
       </div>
     </div>
   );
@@ -160,7 +160,7 @@ interface CardProps extends PropsWithChildren {
   deviceClassName?: ClassName;
   screenClassName?: ClassName;
 }
-export const Card = ({
+export const ContainerScrollCard = ({
   rotate,
   scale,
   translate,

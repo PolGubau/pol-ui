@@ -1,33 +1,29 @@
 "use client";
 
-import type { ComponentProps, FC, ReactNode } from "react";
+import type { ComponentProps, FC } from "react";
 import { HiX } from "react-icons/hi";
-import { twMerge } from "tailwind-merge";
-
-import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { TbAlertTriangle, TbBulb, TbCheck, TbChevronRight, TbExclamationCircle, TbInfoCircle } from "react-icons/tb";
+import { cn, mergeDeep } from "../../helpers";
 import { getTheme } from "../../theme-store";
 import { ColorsEnum, RoundedSizesEnum } from "../../types/enums";
 import type { Colors, DeepPartial, RoundedSizes } from "../../types/types";
-import { IconButton } from "../IconButton";
+import { IconButton } from "../IconButton/IconButton";
 import type { AlertTheme } from "./theme";
 
 export interface AlertProps extends Omit<ComponentProps<"div">, "color"> {
-  additionalContent?: ReactNode;
   color?: Colors;
   icon?: FC<ComponentProps<"svg">>;
   onDismiss?: () => void;
   rounded?: RoundedSizes;
   theme?: DeepPartial<AlertTheme>;
   bordered?: boolean;
+  withIcon?: boolean;
 }
 
 /**
+ * The Alert component is used to display a message to the user
  *
- * @name Alert
- *
- * @description The Alert component is used to display a message to the user
- *
- * @param {React.ReactNode} props.additionalContent - The additional content of the alert
+ * @param {JSX.Element} props.additionalContent - The additional content of the alert
  *
  * @param {Colors} props.color - The color of the alert
  *
@@ -43,7 +39,7 @@ export interface AlertProps extends Omit<ComponentProps<"div">, "color"> {
  *
  * @param {ComponentProps<'div'>} props - The props of the alert
  *
- * @returns React.ReactNode
+ * @returns JSX.Element
  *
  * @example
  * <Alert
@@ -56,53 +52,55 @@ export interface AlertProps extends Omit<ComponentProps<"div">, "color"> {
  * This is a primary alert with a check icon
  * </Alert>
  */
+
 export const Alert: FC<AlertProps> = ({
-  additionalContent,
   children,
   className,
   color = ColorsEnum.secondary,
   icon: Icon,
   onDismiss,
+  withIcon = true,
   rounded = RoundedSizesEnum.md,
   theme: customTheme = {},
   bordered,
   ...props
-}: AlertProps): React.ReactNode => {
+}: AlertProps) => {
   const theme: AlertTheme = mergeDeep(getTheme().alert, customTheme);
 
-  const handleOnDismiss = () => {
-    onDismiss?.();
+  const defaultIcons = {
+    error: TbExclamationCircle,
+    success: TbCheck,
+    warning: TbAlertTriangle,
+    info: TbInfoCircle,
+    primary: TbBulb,
+    secondary: TbChevronRight,
   };
 
+  const DefaultIcon = Icon || defaultIcons[color];
+
   return (
-    <div
-      className={twMerge(
-        theme.base,
-        theme.color[color],
-        theme.rounded[rounded],
-        bordered && theme.borderAccent,
-        className,
-      )}
+    <section
+      className={cn(theme.base, theme.color[color], theme.rounded[rounded], bordered && theme.borderAccent, className)}
       role="alert"
       {...props}
     >
       <div className={theme.wrapper} data-testid="ui-alert-wrapper">
-        {Icon && <Icon className={theme.icon} data-testid="ui-alert-icon" />}
+        {withIcon && <DefaultIcon className={theme.icon} data-testid="ui-alert-icon" />}
         <div>{children}</div>
         {typeof onDismiss === "function" && (
           <IconButton
+            size="sm"
             label="Dismiss"
             title="Dismiss"
             data-testid="ui-alert-dismiss"
             type="button"
-            onClick={handleOnDismiss}
+            onClick={onDismiss}
             color={color}
           >
-            <HiX aria-hidden={true} title="Dismiss" />
+            <HiX aria-hidden={true} title="Dismiss" size={17} />
           </IconButton>
         )}
       </div>
-      {additionalContent && <div>{additionalContent}</div>}
-    </div>
+    </section>
   );
 };

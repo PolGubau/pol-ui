@@ -1,0 +1,15 @@
+{
+  "name": "docs",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "sync-data": "node --experimental-strip-types --experimental-transform-types ./scripts/sync-data.ts"
+  },
+  "dependencies": {
+    "astro": "^5.1.9"
+  }
+}

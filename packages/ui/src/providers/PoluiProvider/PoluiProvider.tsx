@@ -31,7 +31,7 @@ export interface ThemeProps {
  * @author Pol Gubau - https://polgubau.com
 
  */
-interface ProviderProps {
+export interface ProviderProps {
   children: React.ReactNode;
   theme?: ThemeProps;
   keys?: {
