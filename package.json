@@ -94,8 +94,6 @@
 		"semantic-release-npm-github-publish": "^1.5.5",
 		"autoprefixer": "^10.4.14",
 		"postcss": "^8.4.24",
-		"tailwindcss": "^3.4.0",
-		"tailwindcss-animate": "^1.0.5",
 		"turbo": "^1.9.9",
 		"typescript": "^5.4.5"
 	},
