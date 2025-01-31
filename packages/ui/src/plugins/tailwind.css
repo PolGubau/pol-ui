@@ -1,6 +1,7 @@
 @theme {
-  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+
   --color-error-50: oklch(0.971 0.013 17.38);
   --color-error-100: oklch(0.936 0.032 17.717);
   --color-error-200: oklch(0.885 0.062 18.334);
@@ -13,7 +14,7 @@
   --color-error-800: oklch(0.444 0.177 26.899);
   --color-error-900: oklch(0.396 0.141 25.723);
   --color-error-950: oklch(0.258 0.092 26.042);
- 
+
   --color-warning-50: oklch(0.987 0.022 95.277);
   --color-warning-100: oklch(0.962 0.059 95.617);
   --color-warning-200: oklch(0.924 0.12 95.746);
@@ -26,7 +27,7 @@
   --color-warning-800: oklch(0.473 0.137 46.201);
   --color-warning-900: oklch(0.414 0.112 45.904);
   --color-warning-950: oklch(0.279 0.077 45.635);
- 
+
   --color-success-50: oklch(0.982 0.018 155.826);
   --color-success-100: oklch(0.962 0.044 156.743);
   --color-success-200: oklch(0.925 0.084 155.995);
@@ -39,7 +40,6 @@
   --color-success-800: oklch(0.448 0.119 151.328);
   --color-success-900: oklch(0.393 0.095 152.535);
   --color-success-950: oklch(0.266 0.065 152.934);
- 
 
   --color-info-50: oklch(0.977 0.013 236.62);
   --color-info-100: oklch(0.951 0.026 236.824);
@@ -79,6 +79,4 @@
   --color-secondary-800: oklch(0.269 0 0);
   --color-secondary-900: oklch(0.205 0 0);
   --color-secondary-950: oklch(0.145 0 0);
- 
-
 }
