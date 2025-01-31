@@ -1,7 +1,4 @@
 @import "tailwindcss";
-@plugin '../src/plugins/pol-ui/plugin.ts';
-
-@reference "../src/plugins/pol-ui/plugin.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -94,7 +91,7 @@
   --color-secondary-950: oklch(0.145 0 0);
 }
 :root {
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
 }
 
 /*  */

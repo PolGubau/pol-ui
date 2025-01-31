@@ -26,7 +26,7 @@ interface Exports {
 const generateExports = (): Exports => {
   const exports: Exports = {
     ".": "./dist/index.js",
-    "./tailwind-plugin": "./dist/plugins/tailwind.css",
+    "./tailwind-plugin": "./dist/assets/plugins/tailwind.css",
   };
 
   // Iterar sobre las carpetas principales
