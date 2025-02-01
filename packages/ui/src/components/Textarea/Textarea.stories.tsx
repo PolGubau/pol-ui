@@ -1,92 +1,89 @@
-import type { Meta, StoryFn } from "@storybook/react";
-import { useState } from "react";
-import { BiUserVoice } from "react-icons/bi";
-import { TbPlayerPauseFilled } from "react-icons/tb";
+import type { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { TbAlt, TbAt, TbUser } from "react-icons/tb";
+import type { Colors, MainSizes } from "../../types";
+import { ColorsEnum, MainSizesEnum } from "../../types/enums";
+import { TextArea, type TextAreaProps } from "./Textarea";
+type Story = StoryObj<typeof TextArea>;
 
-import { useSpeechToText } from "../../hooks";
-import { IconButton } from "../IconButton";
-import { ListeningAnimation } from "../ListeningAnimation/ListeningAnimation";
-import { Toaster, toast } from "../Toaster";
-import { Textarea, type TextareaProps } from "./Textarea";
+const meta: Meta<typeof TextArea> = {
+	title: "Components/Inputs/TextArea",
+	component: TextArea,
 
-export default {
-  title: "Components/Inputs/Textarea",
-  component: Textarea,
-  decorators: [
-    (Story) => (
-      <div className="flex p-6 flex-col justify-center items-center bg-secondary-50">
-        <div className="max-w-xl">
-          <Story />
-          <Toaster />
-        </div>
-      </div>
-    ),
-  ],
-  parameters: {
-    layout: "fullscreen",
-  },
-} as Meta;
-
-const Template: StoryFn<TextareaProps> = (args) => <Textarea {...args} />;
-
-export const DefaultTextarea = Template.bind({});
-DefaultTextarea.storyName = "Textarea";
-DefaultTextarea.args = {
-  children: "Text",
+	decorators: [
+		(Story) => (
+			<div className="max-w-xl">
+				<Story />
+			</div>
+		),
+	],
 };
-export const CustomHeight = Template.bind({});
-CustomHeight.args = {
-  children: "Text",
-  label: "That is a loooong textarea",
-  className: "min-h-[300px]",
-};
-export const Resizeable = Template.bind({});
-Resizeable.args = {
-  children: "Text",
-  label: "You can resize me :)",
-  innerClassName: "resize ",
+export default meta;
+
+const Template: StoryFn<TextAreaProps> = (args) => <TextArea {...args} />;
+
+export const Default: Story = Template.bind({});
+Default.storyName = "Text input";
+Default.args = {
+	label: "Username",
 };
 
-export const SpeechRecognition = () => {
-  const [hasError, setHasError] = useState(false);
-  const handleError = (error: string) => {
-    setHasError(true);
-    toast.error(error, {
-      description: "Please make sure you have a microphone connected, maybe your browser doesn't support this feature",
-    });
-  };
-  const [text, setText] = useState("");
-
-  const handleSuccess = (result: string) => {
-    toast(result);
-    setText(transcript);
-  };
-  const { start, stop, transcript, isListening } = useSpeechToText({
-    onError: handleError,
-    onResult: handleSuccess,
-  });
-
-  return (
-    <div className="relative">
-      {isListening && (
-        <ListeningAnimation
-          isListening={isListening}
-          className="absolute top-1/2 left-0 transform -translate-y-1/2 translate-x-1/3"
-        />
-      )}
-      <Textarea
-        value={isListening ? transcript : text}
-        onChange={(e) => setText(e.target.value)}
-        disabled={isListening}
-        onBlur={stop}
-        rightComponent={
-          !hasError && (
-            <IconButton onClick={isListening ? stop : start}>
-              {isListening ? <TbPlayerPauseFilled size={20} /> : <BiUserVoice size={20} />}
-            </IconButton>
-          )
-        }
-      />
-    </div>
-  );
+export const WithIcon: Story = Template.bind({});
+WithIcon.args = {
+	label: "Username",
+	icon: TbUser,
 };
+export const RightIcon: Story = Template.bind({});
+RightIcon.args = {
+	label: "Username",
+	icon: TbUser,
+	iconPosition: "right",
+};
+export const WithLeftContent: Story = Template.bind({});
+WithLeftContent.args = {
+	label: "Username",
+	leftContent: (
+		<div className="flex">
+			<TbUser className="ml-1" />
+			<TbAlt className="ml-1" />
+		</div>
+	),
+};
+export const Higher: Story = Template.bind({});
+Higher.args = {
+	label: "Username",
+	className: "h-96",
+};
+
+export const WithHelperText: Story = Template.bind({});
+WithHelperText.args = {
+	label: "Username",
+	helperText: "This is a helper text",
+};
+
+export const AllColors = () => (
+	<div className="flex flex-col gap-4 p-4 ">
+		{Object.keys(ColorsEnum).map((color) => (
+			<TextArea key={color} label={color} color={color as Colors} icon={TbAt} />
+		))}
+	</div>
+);
+export const AllSizes = () => (
+	<div className="flex flex-col gap-4 p-4 ">
+		{Object.keys(MainSizesEnum).map((size) => (
+			<TextArea key={size} label={size} size={size as MainSizes} />
+		))}
+	</div>
+);
+export const AllColorsFilled = () => (
+	<div className="flex flex-col gap-4 p-4 ">
+		{Object.keys(ColorsEnum).map((color) => (
+			<TextArea
+				key={color}
+				label={color}
+				color={color as Colors}
+				icon={TbAt}
+				defaultValue="I am in light mode"
+			/>
+		))}
+	</div>
+);
