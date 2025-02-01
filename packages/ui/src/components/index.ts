@@ -1,6 +1,6 @@
 export * from "./Accordion/Accordion";
 export * from "./Accordion/theme";
-export * from "./Alert/Alert";
+export * from "./Alert/Alert-ui";
 export * from "./Alert/theme";
 export * from "./AnimatedHeading/AnimatedHeading";
 export * from "./Avatar/Avatar";
@@ -8,7 +8,7 @@ export * from "./Avatar/AvatarGroup";
 export * from "./Avatar/AvatarGroupCounter";
 export * from "./Avatar/AvatarTypes";
 export * from "./Avatar/theme";
-export * from "./Badge/badge";
+export * from "./Badge/badge-ui";
 export * from "./Badge/theme";
 export * from "./Breadcrumb/Breadcrumb";
 export * from "./Breadcrumb/BreadcrumbItem";
