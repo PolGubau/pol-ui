@@ -163,7 +163,7 @@
 | Sidebar\SidebarContext.tsx| 0% | 0% | 0% | 0 |🔴 |
 | Sidebar\SidebarItem.tsx| 0% | 0% | 0% | 0 |🔴 |
 | Sidebar\SidebarLogo.tsx| 0% | 0% | 0% | 0 |🔴 |
-| SizeIndiator\SizeIndiator.tsx| 0% | 0% | 0% | 0 |🔴 |
+| SizeIndicator\SizeIndicator.tsx| 0% | 0% | 0% | 0 |🔴 |
 | Skeleton\Skeleton.tsx| 0% | 0% | 0% | 0 |🔴 |
 | Slider\Slider.tsx| 28.57% | 0% | 89.55% | 39 |🟠 |
 | SplitButton\SplitButton.tsx| 0% | 0% | 0% | 0 |🔴 |

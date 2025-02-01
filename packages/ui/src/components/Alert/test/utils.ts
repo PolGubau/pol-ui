@@ -1,7 +1,7 @@
 import { expect, within } from "@storybook/test";
 
 import { shouldExist, shouldHaveClass } from "../../../tests/shared-tests/assertions";
-import type { AlertProps } from "../alert";
+import type { AlertProps } from "../Alert";
 import { alertTheme } from "../theme";
 
 export const itsDisplayed = (ui: HTMLElement, props: AlertProps) => {

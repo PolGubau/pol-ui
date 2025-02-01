@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Accordion } from "./accordion";
+import { Accordion } from "./Accordion";
 import { accordionExampleProps } from "./test/props";
 import {
   canBeUsedWithKeyboard,

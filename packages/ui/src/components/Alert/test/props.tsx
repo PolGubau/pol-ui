@@ -1,6 +1,6 @@
 import { HiCheck } from "react-icons/hi";
 import { ColorsEnum } from "../../../types";
-import type { AlertProps } from "../alert";
+import type { AlertProps } from "../Alert";
 
 const defaultProps: AlertProps = {
   children:

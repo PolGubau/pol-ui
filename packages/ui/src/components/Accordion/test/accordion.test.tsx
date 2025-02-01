@@ -1,8 +1,8 @@
 import { composeStories } from "@storybook/react";
 import { render } from "@testing-library/react";
 import { describe, it } from "vitest";
-import type { AccordionProps } from "../accordion";
-import * as stories from "../accordion.stories";
+import type { AccordionProps } from "../Accordion";
+import * as stories from "../Accordion.stories";
 import {
   canBeUsedWithKeyboard,
   itsDisplayedAndWorks,

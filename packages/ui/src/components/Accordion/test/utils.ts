@@ -2,7 +2,7 @@ import { expect, within } from "@storybook/test";
 import userEvent from "@testing-library/user-event";
 import { shouldExist } from "../../../tests/shared-tests/assertions";
 import { click } from "../../../tests/shared-tests/user-interactions";
-import type { AccordionProps } from "../accordion";
+import type { AccordionProps } from "../Accordion";
 
 export const itsDisplayedAndWorks = async (ui: HTMLElement, props: AccordionProps) => {
   const canvas = within(ui);
