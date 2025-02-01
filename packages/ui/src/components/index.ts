@@ -64,7 +64,6 @@ export * from "./DirectionHover/theme";
 export * from "./DirectionHover/types";
 export * from "./Divider/Divider";
 export * from "./Divider/theme";
-export * from "./Dot/Dot";
 export * from "./Drawer/Drawer";
 export * from "./DrawerArray/DrawerArray";
 export * from "./DrawerArray/DrawerContent";
