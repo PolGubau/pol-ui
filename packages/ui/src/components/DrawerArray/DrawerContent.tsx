@@ -24,7 +24,7 @@ export const DrawerArrayContent = <T extends object>({
 
   return (
     <form
-      className="grid h-full grid-rows-[1fr,auto] gap-4  min-w-[350px] pt-6"
+      className="grid h-full grid-rows-[1fr_auto] gap-4  min-w-[350px] pt-6"
       onSubmit={(e) => {
         e.preventDefault();
         handleUpdate(innerState);

@@ -1,6 +1,5 @@
 import { accordionTheme } from "./components/Accordion/theme";
 import { alertTheme } from "./components/Alert/theme";
-import { animatedHeadingTheme } from "./components/AnimatedHeading/theme";
 import { avatarTheme } from "./components/Avatar/theme";
 import { badgeTheme } from "./components/Badge/theme";
 import { breadcrumbTheme } from "./components/Breadcrumb/theme";
@@ -36,7 +35,6 @@ import { messageTheme } from "./components/Message/theme";
 import { navbarTheme } from "./components/Navbar/theme";
 import { navigationMenuTheme } from "./components/NavigationMenu/theme";
 import { otpInputTheme } from "./components/OtpInput/theme";
-import { paginationTheme } from "./components/Pagination/theme";
 import { parallaxTextTheme } from "./components/ParallaxText";
 import { perspectiveCardTheme } from "./components/PerspectiveCard/theme";
 import { popoverTheme } from "./components/Popover";
@@ -78,7 +76,6 @@ export const theme: PoluiTheme = {
   label: labelTheme,
   listGroup: listGroupTheme,
   navbar: navbarTheme,
-  pagination: paginationTheme,
   progress: progressTheme,
   radio: radioTheme,
   slider: sliderTheme,
@@ -102,7 +99,6 @@ export const theme: PoluiTheme = {
   imageTrail: imageTrailTheme,
   message: messageTheme,
   containerScroll: containerScrollTheme,
-  animatedText: animatedHeadingTheme,
   toggle: toggleTheme,
   Hamburger: HamburgerTheme,
   navigationMenu: navigationMenuTheme,

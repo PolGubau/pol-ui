@@ -3,7 +3,8 @@
 import { forwardRef, useEffect, useState } from "react";
 
 import { useDebounce } from "../../hooks";
-import { Input, type InputProps } from "../Input";
+import { Input } from "../Input/Input";
+import type { InputProps } from "../Input/props";
 
 export interface DebouncedInputProps extends Omit<InputProps, "ref" | "onChange" | "value"> {
   delay?: number;

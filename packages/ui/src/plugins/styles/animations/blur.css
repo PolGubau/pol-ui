@@ -1,0 +1,13 @@
+@theme {
+  --animate-blur: from-blur 0.5s ease-in-out;
+  --animate-to-blur: from-blur 0.5s ease-in-out reverse;
+
+  @keyframes from-blur {
+    from {
+      filter: blur(var(--blurred-amount));
+    }
+    to {
+      filter: blur(0);
+    }
+  }
+}

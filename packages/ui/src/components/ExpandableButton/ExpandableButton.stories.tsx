@@ -3,7 +3,7 @@ import { TbChevronRight, TbSend } from "react-icons/tb";
 
 import { Button } from "../Button";
 import { IconButton } from "../IconButton";
-import { Textarea } from "../Textarea";
+import { TextArea } from "../Textarea/Textarea";
 import ExpandableButton from "./ExpandableButton";
 
 export default {
@@ -19,7 +19,7 @@ export const Default = () => (
   <ExpandableButton showLabelInDrawer={false}>
     <div className="p-2 flex flex-col gap-2 rounded-b-lg py-3">
       <h4>Add comment</h4>
-      <Textarea className="w-full" placeholder="Write a comment" autoFocus={true} />
+      <TextArea className="w-full" label="Write a comment" />
       <nav className="flex flex-row-reverse justify-right w-full">
         <Button size={"sm"}>
           Send
@@ -41,7 +41,7 @@ export const CustomTrigger = () => (
     >
       <div className="bg-secondary-100 p-2 flex flex-col gap-2 rounded-b-lg py-3">
         <h4>Add comment</h4>
-        <Textarea className="w-full" placeholder="Write a comment" />
+        <TextArea className="w-full" label="Write a comment" />
         <nav className="flex flex-row-reverse justify-right w-full">
           <Button size={"sm"}>
             Send
@@ -56,7 +56,7 @@ export const Once = () => (
   <ExpandableButton once={true}>
     <div className="bg-secondary-100 p-2 flex flex-col gap-2 rounded-b-lg py-3">
       <h4>Add comment</h4>
-      <Textarea className="w-full" placeholder="Write a comment" />
+      <TextArea className="w-full" label="Write a comment" />
       <nav className="flex flex-row-reverse justify-right w-full">
         <Button size={"sm"}>
           Send

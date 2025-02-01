@@ -123,7 +123,7 @@ export function Default() {
         <BiCloud className="mr-2 h-4 w-4" />
         <span>API</span>
       </DropdownItem>
-      <DropdownExpandableTextArea />
+      <DropdownExpandableTextArea label="Content" />
 
       <Divider />
       <DropdownItem icon={BiLogOut} className="text-error focus:bg-error/10">

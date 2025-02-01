@@ -1,31 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "../src/plugins/tailwind.css";
+
 @font-face {
   font-family: "Poppins";
   src: url("./Poppins-Regular.ttf") format("truetype");
 }
-h1,
-h2,
-h3,
-h5,
-h4,
-h6,
-input,
-textarea,
-button {
-  font-family: "Poppins", Arial, Helvetica, sans-serif !important;
-}
-:root {
-  font-family: "Poppins", Arial, Helvetica, sans-serif !important;
-}
-
-/*  */
-.provider {
-  transition: transform 0.3s ease;
-}
-:has(.drawer-open) .provider {
-  --c: 1;
-  transform: scale(calc(1 - (var(--c) * 0.01))) translateY(0.87rem);
-  will-change: transform;
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
 }

@@ -1,11 +1,12 @@
-import type { Meta, StoryFn } from "@storybook/react";
-import type { AnimatedHeadingProps } from "./AnimatedHeading";
-import { AnimatedHeading } from "./AnimatedHeading";
-import { AnimatedHeadingAnimationsEnum } from "./types";
+import type { Meta } from "@storybook/react";
+import { useState } from "react";
+import { TbReload } from "react-icons/tb";
+import { Button } from "../Button";
+import { AnimatedSplitText } from "./AnimatedHeading";
 
 export default {
   title: "Components/AnimatedText",
-  component: AnimatedHeading,
+  component: AnimatedSplitText,
   decorators: [
     (Story) => (
       <div className="flex p-6 text-center w-full justify-center">
@@ -18,49 +19,53 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<AnimatedHeadingProps> = (args) => <AnimatedHeading {...args} />;
+export const Default = () => {
+  const [key, setKey] = useState(0);
+  return (
+    <article className="flex flex-col gap-4">
+      <Button onClick={() => setKey(key + 1)} type="button">
+        <TbReload />
+        Render again
+      </Button>
+      <div className="flex flex-col gap-4" key={key}>
+        <p className="animate-slide-in-right">Slide from right</p>
+        <p className="animate-slide-in-left">Slide from left</p>
+        <p className="animate-slide-in-top">Slide from top</p>
+        <p className="animate-slide-in-bottom">Slide from bottom</p>
+        <p className="animate-grow-x">Grow Horizontal</p>
+        <p className="animate-grow-y">Grow vertical</p>
+        <p className="animate-wiggle">Wiggle</p>
+        <p className="animate-grow">Grow text</p>
+        <p className="animate-grow-complete">Complete Grow text</p>
+        <p className="animate-[wiggle_1s_ease-in-out_infinite]">Infinite Wiggle</p>
+        <p className="animate-shake">Shaking</p>
+        <p className="animate-[shake_1s_ease-in-out_infinite]">Infinite Shaking</p>
+        <p className="animate-blur">Slide from top</p>
+        <p className="animate-to-blur" style={{ animationFillMode: "both" }}>
+          Slide from bottom
+        </p>
+      </div>
+    </article>
+  );
+};
+export const AnimateEachWords = () => {
+  const [key, setKey] = useState(0);
+  return (
+    <div className="flex flex-col gap-4">
+      <Button onClick={() => setKey((prev) => prev + 1)} type="button">
+        Render again
+      </Button>
 
-export const Default = Template.bind({});
-Default.args = {
-  children: "Pol-ui, powering web development",
-};
-export const FadeLeft = Template.bind({});
-FadeLeft.args = {
-  ...Default.args,
-  animation: AnimatedHeadingAnimationsEnum["fade-left"],
-};
-export const FadeRight = Template.bind({});
-FadeRight.args = {
-  ...Default.args,
-  animation: AnimatedHeadingAnimationsEnum["fade-right"],
-};
-export const FadeBottom = Template.bind({});
-FadeBottom.args = {
-  ...Default.args,
-  animation: AnimatedHeadingAnimationsEnum["fade-up"],
-};
-export const Blur = Template.bind({});
-Blur.args = {
-  ...Default.args,
-  animation: AnimatedHeadingAnimationsEnum.blur,
-};
-export const PullUp = Template.bind({});
-PullUp.args = {
-  ...Default.args,
-  animation: AnimatedHeadingAnimationsEnum["pull-up"],
-};
-export const StaggeredFadeIn = Template.bind({});
-StaggeredFadeIn.args = {
-  ...Default.args,
-  animation: AnimatedHeadingAnimationsEnum["staggered-fade-in"],
-};
-export const Gradual = Template.bind({});
-Gradual.args = {
-  ...Default.args,
-  animation: AnimatedHeadingAnimationsEnum.gradual,
-};
-export const LetterPullUp = Template.bind({});
-LetterPullUp.args = {
-  ...Default.args,
-  animation: AnimatedHeadingAnimationsEnum["letter-pull-up"],
+      <div className="grid grid-cols-4 gap-4 *:p-2 *:rounded-xl *:bg-primary-100 ">
+        <AnimatedSplitText key={`right-${key}`} text="slide from right" animation="slide-right" />
+        <AnimatedSplitText key={`left-${key}`} text="slide from left" animation="slide-left" />
+        <AnimatedSplitText key={`top-${key}`} text="slide from left" animation="slide-top" />
+        <AnimatedSplitText key={`bottom-${key}`} text="slide from left" animation="slide-bottom" />
+        <AnimatedSplitText key={`blurred-${key}`} text="Blurred text" animation="blur" />
+        <AnimatedSplitText key={`left-alt-${key}`} text="Lettered" wrapperClassName="space-x-0" separator="" />
+        <AnimatedSplitText key={`grow-x-${key}`} text="Horizontal text" animation="grow-x" />
+        <AnimatedSplitText key={`grow-y-${key}`} text="Vertical text" animation="grow-y" />
+      </div>
+    </div>
+  );
 };

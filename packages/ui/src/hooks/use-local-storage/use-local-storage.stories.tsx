@@ -1,7 +1,7 @@
 import type { Meta } from "@storybook/react";
 
 import { Button } from "../../components/Button";
-import { Input } from "../../components/Input";
+import { Input } from "../../components/Input/Input";
 import { PoluiProvider } from "../../providers/PoluiProvider";
 import { useLocalStorage } from "./use-local-storage";
 
@@ -24,13 +24,8 @@ export const Default = () => {
   const [value, setValue] = useLocalStorage("polUIStorybook", "initialValue");
   return (
     <div className="flex flex-col gap-3 w-full max-w-md">
-      Current value decrypted from localstorage:{value}
-      <Input
-        value={value}
-        onChange={(e) => {
-          setValue(e.target.value);
-        }}
-      />
+      Current value decrypted from local storage:{value}
+      <Input label="Enter a value" value={value} onChangeValue={setValue} />
       <Button
         onClick={() => {
           setValue("");
@@ -46,14 +41,9 @@ export const Encrypted = () => {
   console.info(value);
   return (
     <div className="flex flex-col gap-3 w-full max-w-md">
-      Current value decrypted from localstorage:{value}
+      Current value decrypted from local storage:{value}
       <span> Check the application tab in the devtools to see the encrypted value</span>
-      <Input
-        value={value}
-        onChange={(e) => {
-          setValue(e.target.value);
-        }}
-      />
+      <Input label="Enter a value" value={value} onChangeValue={setValue} />
       <Button
         onClick={() => {
           setValue("");

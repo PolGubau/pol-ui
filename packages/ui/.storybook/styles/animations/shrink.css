@@ -1,0 +1,46 @@
+@theme {
+  --animate-shrink: shrink-in 0.2s ease-in-out;
+  --animate-shrink-out: shrink-out 0.2s ease-in-out;
+  --animate-shrink-x: shrink-x 0.2s ease-in-out;
+  --animate-shrink-y: shrink-y 0.2s ease-in-out;
+
+  --smaller-scale: 0.8;
+  --smaller-scale-x: 0.8;
+  --smaller-scale-y: 0.8;
+
+  @keyframes shrink-in {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(var(--smaller-scale));
+    }
+  }
+
+  @keyframes shrink-out {
+    from {
+      transform: scale(var(--smaller-scale));
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes shrink-x {
+    from {
+      transform: scaleX(1);
+    }
+    to {
+      transform: scaleX(var(--smaller-scale-x));
+    }
+  }
+
+  @keyframes shrink-y {
+    from {
+      transform: scaleY(1);
+    }
+    to {
+      transform: scaleY(var(--smaller-scale-y));
+    }
+  }
+}

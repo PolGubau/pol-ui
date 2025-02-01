@@ -42,32 +42,26 @@ export const BubbleHeading: React.FC<BubbleHeadingProps> = ({
 
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
 
-  const distanceFromHovered = (idx: number) => {
-    if (hoveredIndex === null) {
-      return 999;
-    }
-    return Math.abs(hoveredIndex - idx);
-  };
-
-  const weight = (idx: number) => {
-    if (hoveredIndex === null) {
-      return opposite ? maxWeight : minWeight;
-    }
-    const distance = distanceFromHovered(idx);
-
-    const hoverMeansBold = maxWeight - distance * step;
-    const hoverMeansLight = minWeight + distance * step;
-
-    return opposite ? hoverMeansLight : hoverMeansBold;
-  };
+  const weights = React.useMemo(() => {
+    return Array.from(children).map((_, idx) => {
+      if (hoveredIndex === null) {
+        return opposite ? maxWeight : minWeight;
+      }
+      const distance = Math.abs(hoveredIndex - idx);
+      return opposite
+        ? Math.min(maxWeight, minWeight + distance * step)
+        : Math.max(minWeight, maxWeight - distance * step);
+    });
+  }, [hoveredIndex, children, minWeight, maxWeight, step, opposite]);
 
   return (
     <DynamicHeading as={as} className={cn(theme.base, className)}>
-      {children.split("").map((child, idx) => (
+      {Array.from(children).map((char, idx) => (
         <span
           style={{
-            transition: `font-weight ${transitionDuration}s ease-in-out`,
-            fontWeight: weight(idx),
+            transition: `font-weight ${transitionDuration} ease-in-out`,
+            willChange: "font-weight",
+            fontWeight: weights[idx],
           }}
           onMouseEnter={() => {
             setHoveredIndex(idx);
@@ -78,7 +72,7 @@ export const BubbleHeading: React.FC<BubbleHeadingProps> = ({
           // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
           key={idx}
         >
-          {child}
+          {char}
         </span>
       ))}
     </DynamicHeading>

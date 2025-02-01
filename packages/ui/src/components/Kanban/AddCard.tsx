@@ -8,7 +8,7 @@ import type {} from "./Card";
 
 import { ColorsEnum } from "../../types";
 import { Button } from "../Button";
-import { Textarea } from "../Textarea";
+import { TextArea } from "../Textarea/Textarea";
 import type { KanbanProps } from "./Kanban";
 
 export interface AddCardProps {
@@ -47,11 +47,11 @@ export const AddKanbanCard = ({
     <>
       {adding ? (
         <motion.form layout={true} onSubmit={handleSubmit} className={theme.add?.form}>
-          <Textarea
+          <TextArea
             onChange={(e) => {
               setText(e.target.value);
             }}
-            placeholder={labels.placeholder}
+            label={labels.placeholder ?? ""}
             className={theme.add?.textarea}
           />
           <div className={theme.add?.buttonGroup}>

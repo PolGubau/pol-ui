@@ -58,7 +58,7 @@ export const Alert: FC<AlertProps> = ({
   className,
   color = ColorsEnum.secondary,
   icon: Icon,
-  onDismiss,
+  onDismiss = undefined,
   withIcon = true,
   rounded = RoundedSizesEnum.md,
   theme: customTheme = {},
@@ -87,7 +87,7 @@ export const Alert: FC<AlertProps> = ({
       <div className={theme.wrapper} data-testid="ui-alert-wrapper">
         {withIcon && <DefaultIcon className={theme.icon} data-testid="ui-alert-icon" />}
         <div>{children}</div>
-        {typeof onDismiss === "function" && (
+        {onDismiss && typeof onDismiss === "function" && (
           <IconButton
             size="sm"
             label="Dismiss"

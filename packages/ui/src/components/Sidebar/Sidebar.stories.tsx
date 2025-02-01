@@ -28,7 +28,7 @@ import { ColorsEnum } from "../../types";
 import { Avatar } from "../Avatar";
 import { Button } from "../Button";
 import { IconButton } from "../IconButton";
-import { Input } from "../Input";
+import { Input } from "../Input/Input";
 import { Navbar } from "../Navbar";
 import { Sidebar, type SidebarProps } from "./Sidebar";
 import { SidebarCollapse } from "./SidebarCollapse";
@@ -340,11 +340,7 @@ export const WithSearch = () => {
         <div className="bg-secondary-50 w-fit shadow-lg">
           <Sidebar open={value} onOpenChange={toggle}>
             <div>
-              <Input
-                leftComponent={<TbSearch />}
-                placeholder="Search"
-                className={`w-full ${value ? "hidden" : "flex"}`}
-              />
+              <Input icon={TbSearch} label="Search" className={`w-full ${value ? "hidden" : "flex"}`} />
               <IconButton className={`w-full max-w-10 ${value ? "flex" : "hidden"}`} onClick={toggle}>
                 <TbSearch />
               </IconButton>

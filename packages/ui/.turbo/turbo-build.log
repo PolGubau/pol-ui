@@ -1,0 +1,1748 @@
+
+> pol-ui@1.2.1 build C:\Users\pol.gubau\dev\mine\ui\pol-ui\packages\ui
+> tsc  && vite build && pnpm type-docs
+
+[36mvite v6.0.7 [32mbuilding for production...[36m[39m
+[96msrc/components/Resizable/Resizable.tsx[0m:[93m25[0m:[93m7[0m - [91merror[0m[90m TS2742: [0mThe inferred type of 'ResizableHandle' cannot be named without a reference to '../../../node_modules/react-resizable-panels/dist/declarations/src/PanelResizeHandleRegistry'. This is likely not portable. A type annotation is necessary.
+
+[7m25[0m const ResizableHandle = ({
+[7m  [0m [91m      ~~~~~~~~~~~~~~~[0m
+
+transforming...
+[32m✓[39m 1282 modules transformed.
+Export "IconButton" of module "src/components/IconButton/IconButton.tsx" was reexported through module "src/components/IconButton/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Video/Video.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/SplitButton/SplitButton.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "IconButton" of module "src/components/IconButton/IconButton.tsx" was reexported through module "src/components/IconButton/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Calendar/Calendar.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/CodeBlock/CodeBlock.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/ConfirmDialog/ConfirmDialog.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "IconButton" of module "src/components/IconButton/IconButton.tsx" was reexported through module "src/components/IconButton/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/CopyButton/CopyButton.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "IconButton" of module "src/components/IconButton/IconButton.tsx" was reexported through module "src/components/IconButton/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/DarkThemeToggle/DarkThemeToggle.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Datepicker/Datepicker.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/DeleteButton/DeleteButton.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "IconButton" of module "src/components/IconButton/IconButton.tsx" was reexported through module "src/components/IconButton/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/DeleteButton/DeleteButton.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Tooltip" of module "src/components/Tooltip/Tooltip.tsx" was reexported through module "src/components/Tooltip/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/IconButton/IconButton.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/IconButton/IconButton.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/MagneticButton/MagneticButton.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/TimedButton/TimedButton.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Loader" of module "src/components/Loader/Loader.tsx" was reexported through module "src/components/Loader/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Toaster/Toaster.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "IconButton" of module "src/components/IconButton/IconButton.tsx" was reexported through module "src/components/IconButton/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Toggle/Toggle.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/ExpandableButton/ExpandableButton.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "IconButton" of module "src/components/IconButton/IconButton.tsx" was reexported through module "src/components/IconButton/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/ErrorBoundary/ErrorBoundary.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "IconButton" of module "src/components/IconButton/IconButton.tsx" was reexported through module "src/components/IconButton/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Toolbox/Toolbox.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Tooltip" of module "src/components/Tooltip/Tooltip.tsx" was reexported through module "src/components/Tooltip/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Slider/Slider.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "IconButton" of module "src/components/IconButton/IconButton.tsx" was reexported through module "src/components/IconButton/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Popover/Popover.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Popover/Popover.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "IconButton" of module "src/components/IconButton/IconButton.tsx" was reexported through module "src/components/IconButton/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Drawer/Drawer.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Drawer/Drawer.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/DrawerArray/DrawerContent.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "IconButton" of module "src/components/IconButton/IconButton.tsx" was reexported through module "src/components/IconButton/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/DrawerArray/DrawerContent.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "IconButton" of module "src/components/IconButton/IconButton.tsx" was reexported through module "src/components/IconButton/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/DrawerArray/DrawerArray.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/DrawerArray/DrawerArray.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Tooltip" of module "src/components/Tooltip/Tooltip.tsx" was reexported through module "src/components/Tooltip/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Avatar/Avatar.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Loader" of module "src/components/Loader/Loader.tsx" was reexported through module "src/components/Loader/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Button/Button.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "IconButton" of module "src/components/IconButton/IconButton.tsx" was reexported through module "src/components/IconButton/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Dialog/components/content.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Dialog/Dialog.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "IconButton" of module "src/components/IconButton/IconButton.tsx" was reexported through module "src/components/IconButton/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Sidebar/Sidebar.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Tooltip" of module "src/components/Tooltip/Tooltip.tsx" was reexported through module "src/components/Tooltip/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Sidebar/SidebarCollapse.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Tooltip" of module "src/components/Tooltip/Tooltip.tsx" was reexported through module "src/components/Tooltip/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Sidebar/SidebarItem.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Datepicker/Views/Days.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Datepicker/Views/Decades.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Datepicker/Views/Months.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Datepicker/Views/Years.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Calendar/components/Day.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Dropdown/components/items.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Dropdown/Dropdown.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/FileTree/components/tree-collapse-button.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Export "Button" of module "src/components/Button/Button.tsx" was reexported through module "src/components/Button/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
+Either change the import in "src/components/Kanban/AddCard.tsx" to point directly to the exporting module or reconfigure "output.manualChunks" to ensure these modules end up in the same chunk.
+Generated an empty chunk: "i18n\phones\types".
+Generated an empty chunk: "helpers\cva\types".
+Generated an empty chunk: "helpers\get\get.types".
+Generated an empty chunk: "helpers\make-required\make-required".
+Generated an empty chunk: "helpers\overrideProps\overrideProps".
+Generated an empty chunk: "helpers\make-required\index".
+Generated an empty chunk: "helpers\ListTypes\index".
+rendering chunks...
+
+[vite:dts] Start generate declaration files...
+computing gzip size...
+[2mdist/[22m[35massets/plugins/styles/animations/wiggle.css                         [39m[1m[2m  0.19 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[35massets/plugins/styles/animations/blur.css                           [39m[1m[2m  0.20 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[35massets/plugins/styles/animations/pump.css                           [39m[1m[2m  0.22 kB[22m[1m[22m[2m │ gzip:  0.15 kB[22m
+[2mdist/[22m[35massets/plugins/styles/animations/fade.css                           [39m[1m[2m  0.23 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[35massets/plugins/styles/animations/shake.css                          [39m[1m[2m  0.25 kB[22m[1m[22m[2m │ gzip:  0.14 kB[22m
+[2mdist/[22m[35massets/plugins/styles/constants.css                                 [39m[1m[2m  0.26 kB[22m[1m[22m[2m │ gzip:  0.15 kB[22m
+[2mdist/[22m[35massets/plugins/styles/animations/zoom.css                           [39m[1m[2m  0.38 kB[22m[1m[22m[2m │ gzip:  0.15 kB[22m
+[2mdist/[22m[35massets/plugins/styles/animations/shrink.css                         [39m[1m[2m  0.65 kB[22m[1m[22m[2m │ gzip:  0.20 kB[22m
+[2mdist/[22m[35massets/plugins/styles/animations/grow.css                           [39m[1m[2m  1.05 kB[22m[1m[22m[2m │ gzip:  0.24 kB[22m
+[2mdist/[22m[35massets/plugins/styles/animations/slide.css                          [39m[1m[2m  1.63 kB[22m[1m[22m[2m │ gzip:  0.28 kB[22m
+[2mdist/[22m[35massets/plugins/styles/colors.css                                    [39m[1m[2m  3.18 kB[22m[1m[22m[2m │ gzip:  0.79 kB[22m
+[2mdist/[22m[35massets/plugins/styles/animations.css                                [39m[1m[2m  4.78 kB[22m[1m[22m[2m │ gzip:  0.74 kB[22m
+[2mdist/[22m[35massets/plugins/tailwind.css                                         [39m[1m[2m114.04 kB[22m[1m[22m[2m │ gzip: 19.33 kB[22m
+[2mdist/[22m[36mi18n\phones\types.js                                                [39m[1m[2m  0.00 kB[22m[1m[22m[2m │ gzip:  0.02 kB[22m
+[2mdist/[22m[36mhelpers\cva\types.js                                                [39m[1m[2m  0.00 kB[22m[1m[22m[2m │ gzip:  0.02 kB[22m
+[2mdist/[22m[36mhelpers\get\get.types.js                                            [39m[1m[2m  0.00 kB[22m[1m[22m[2m │ gzip:  0.02 kB[22m
+[2mdist/[22m[36mhelpers\make-required\make-required.js                              [39m[1m[2m  0.00 kB[22m[1m[22m[2m │ gzip:  0.02 kB[22m
+[2mdist/[22m[36mhelpers\overrideProps\overrideProps.js                              [39m[1m[2m  0.00 kB[22m[1m[22m[2m │ gzip:  0.02 kB[22m
+[2mdist/[22m[36mhelpers\make-required\index.js                                      [39m[1m[2m  0.00 kB[22m[1m[22m[2m │ gzip:  0.02 kB[22m
+[2mdist/[22m[36mhelpers\ListTypes\index.js                                          [39m[1m[2m  0.00 kB[22m[1m[22m[2m │ gzip:  0.02 kB[22m
+[2mdist/[22m[36mhooks\use-fetch\index.js                                            [39m[1m[2m  0.05 kB[22m[1m[22m[2m │ gzip:  0.06 kB[22m
+[2mdist/[22m[36mhelpers\cva\index.js                                                [39m[1m[2m  0.06 kB[22m[1m[22m[2m │ gzip:  0.07 kB[22m
+[2mdist/[22m[36mhelpers\isClient\is-client.js                                       [39m[1m[2m  0.07 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\for\index.js                                             [39m[1m[2m  0.07 kB[22m[1m[22m[2m │ gzip:  0.08 kB[22m
+[2mdist/[22m[36mhelpers\px\px.js                                                    [39m[1m[2m  0.07 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\Dot\index.js                                             [39m[1m[2m  0.07 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mhooks\use-undo\index.js                                             [39m[1m[2m  0.07 kB[22m[1m[22m[2m │ gzip:  0.08 kB[22m
+[2mdist/[22m[36mhooks\use-step\index.js                                             [39m[1m[2m  0.07 kB[22m[1m[22m[2m │ gzip:  0.08 kB[22m
+[2mdist/[22m[36mcomponents\Mockups\index.js                                         [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mhooks\use-share\index.js                                            [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.08 kB[22m
+[2mdist/[22m[36mhelpers\is-object\index.js                                          [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.08 kB[22m
+[2mdist/[22m[36mcomponents\Toggle\index.js                                          [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\Switch\index.js                                          [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\NoData\index.js                                          [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\Navbar\index.js                                          [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\Mockups\Phone\index.js                                   [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.08 kB[22m
+[2mdist/[22m[36mcomponents\Toolbox\index.js                                         [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mhooks\use-cookie\index.js                                           [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.08 kB[22m
+[2mdist/[22m[36mhooks\use-list\index.js                                             [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\Skeleton\index.js                                        [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mhooks\use-network\index.js                                          [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.08 kB[22m
+[2mdist/[22m[36mhooks\use-mounted\index.js                                          [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.08 kB[22m
+[2mdist/[22m[36mhooks\use-measure\index.js                                          [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.08 kB[22m
+[2mdist/[22m[36mhooks\use-hover\index.js                                            [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mhooks\use-counter\index.js                                          [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.08 kB[22m
+[2mdist/[22m[36mhelpers\limit-array\index.js                                        [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.08 kB[22m
+[2mdist/[22m[36mcomponents\TextMorph\index.js                                       [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\LazyImage\index.js                                       [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\Hamburger\index.js                                       [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\FileInput\index.js                                       [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\Copyright\index.js                                       [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\CodeBlock\index.js                                       [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\CardStack\index.js                                       [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\UnderSheet\index.js                                      [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\ImageTrail\index.js                                      [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\HelperText\index.js                                      [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\CopyButton\index.js                                      [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mhooks\use-interval\index.js                                         [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mhooks\use-debounce\index.js                                         [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mindex-CxNOZmcj.js                                                   [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2mdist/[22m[36mhooks\use-gesture\index.js                                          [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2mdist/[22m[36mhooks\use-boolean\index.js                                          [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2mdist/[22m[36mcomponents\TimedButton\index.js                                     [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\TextShimmer\index.js                                     [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\SplitButton\index.js                                     [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\MultiOption\index.js                                     [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\FocusEffect\index.js                                     [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\DrawerArray\index.js                                     [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mhooks\use-lazy-ref\index.js                                         [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2mdist/[22m[36mhooks\use-merge-value\index.js                                      [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2mdist/[22m[36mhooks\use-location\index.js                                         [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2mdist/[22m[36mplugins\index.js                                                    [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\SizeIndiator\index.js                                    [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\DrawerDialog\index.js                                    [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\DeleteButton\index.js                                    [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mhooks\use-translate\index.js                                        [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2mdist/[22m[36mcomponents\ConfirmDialog\index.js                                   [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\BubbleHeading\index.js                                   [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mhooks\use-long-press\index.js                                       [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2mdist/[22m[36mhooks\use-media-query\index.js                                      [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\MagneticButton\index.js                                  [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2mdist/[22m[36mcomponents\DynamicHeading\index.js                                  [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2mdist/[22m[36mcomponents\DebouncedInput\index.js                                  [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2mdist/[22m[36mcomponents\scroll-progress\index.js                                 [39m[1m[2m  0.09 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2mdist/[22m[36mcomponents\TransitionPanel\index.js                                 [39m[1m[2m  0.10 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2mdist/[22m[36mcomponents\DarkThemeToggle\index.js                                 [39m[1m[2m  0.10 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2mdist/[22m[36mhelpers\color-to-tailwind\index.js                                  [39m[1m[2m  0.10 kB[22m[1m[22m[2m │ gzip:  0.08 kB[22m
+[2mdist/[22m[36mcomponents\ExpandableButton\index.js                                [39m[1m[2m  0.10 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2mdist/[22m[36mhooks\use-confirmation\index.js                                     [39m[1m[2m  0.10 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mhooks\use-local-storage\index.js                                    [39m[1m[2m  0.10 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mhooks\use-speech-to-text\index.js                                   [39m[1m[2m  0.10 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2mdist/[22m[36mhooks\use-click-handlers\index.js                                   [39m[1m[2m  0.10 kB[22m[1m[22m[2m │ gzip:  0.11 kB[22m
+[2mdist/[22m[36mcomponents\ListeningAnimation\index.js                              [39m[1m[2m  0.10 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2mdist/[22m[36mhooks\use-text-selection\index.js                                   [39m[1m[2m  0.10 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2mdist/[22m[36mhooks\use-event-listener\index.js                                   [39m[1m[2m  0.10 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mhooks\use-event-callback\index.js                                   [39m[1m[2m  0.10 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mhelpers\encryption\index.js                                         [39m[1m[2m  0.11 kB[22m[1m[22m[2m │ gzip:  0.09 kB[22m
+[2mdist/[22m[36mcomponents\ListGroup\index.js                                       [39m[1m[2m  0.11 kB[22m[1m[22m[2m │ gzip:  0.11 kB[22m
+[2mdist/[22m[36mcomponents\Kanban\index.js                                          [39m[1m[2m  0.11 kB[22m[1m[22m[2m │ gzip:  0.11 kB[22m
+[2mdist/[22m[36mhelpers\isTouchDevice\isTouchDevice.js                              [39m[1m[2m  0.11 kB[22m[1m[22m[2m │ gzip:  0.12 kB[22m
+[2mdist/[22m[36muse-unmount-effect-DXltRGm5.js                                      [39m[1m[2m  0.11 kB[22m[1m[22m[2m │ gzip:  0.11 kB[22m
+[2mdist/[22m[36mhooks\use-copy-to-clipboard\index.js                                [39m[1m[2m  0.11 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2mdist/[22m[36mhelpers\fetchers\index.js                                           [39m[1m[2m  0.11 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2mdist/[22m[36mcomponents\ScrollArea\index.js                                      [39m[1m[2m  0.11 kB[22m[1m[22m[2m │ gzip:  0.11 kB[22m
+[2mdist/[22m[36mcomponents\FileTree\hooks\index.js                                  [39m[1m[2m  0.11 kB[22m[1m[22m[2m │ gzip:  0.11 kB[22m
+[2mdist/[22m[36mhooks\use-ripple\index.js                                           [39m[1m[2m  0.11 kB[22m[1m[22m[2m │ gzip:  0.11 kB[22m
+[2mdist/[22m[36mhooks\use-device-orientation\index.js                               [39m[1m[2m  0.11 kB[22m[1m[22m[2m │ gzip:  0.10 kB[22m
+[2mdist/[22m[36mhelpers\timeAgo\formatter.js                                        [39m[1m[2m  0.11 kB[22m[1m[22m[2m │ gzip:  0.12 kB[22m
+[2mdist/[22m[36mhelpers\clamp\clamp.js                                              [39m[1m[2m  0.12 kB[22m[1m[22m[2m │ gzip:  0.11 kB[22m
+[2mdist/[22m[36mcomponents\Dialog\components\index.js                               [39m[1m[2m  0.12 kB[22m[1m[22m[2m │ gzip:  0.11 kB[22m
+[2mdist/[22m[36mhelpers\omit\omit.js                                                [39m[1m[2m  0.12 kB[22m[1m[22m[2m │ gzip:  0.11 kB[22m
+[2mdist/[22m[36mcomponents\ToggleGroup\index.js                                     [39m[1m[2m  0.12 kB[22m[1m[22m[2m │ gzip:  0.11 kB[22m
+[2mdist/[22m[36mhelpers\is-object\is-object.js                                      [39m[1m[2m  0.12 kB[22m[1m[22m[2m │ gzip:  0.12 kB[22m
+[2mdist/[22m[36mcomponents\Breadcrumb\index.js                                      [39m[1m[2m  0.12 kB[22m[1m[22m[2m │ gzip:  0.11 kB[22m
+[2mdist/[22m[36mcomponents\Calendar\components\index.js                             [39m[1m[2m  0.13 kB[22m[1m[22m[2m │ gzip:  0.11 kB[22m
+[2mdist/[22m[36muse-motion-value-event-DYeiUxCV.js                                  [39m[1m[2m  0.13 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mcomponents\boolean-card\index.js                                    [39m[1m[2m  0.13 kB[22m[1m[22m[2m │ gzip:  0.12 kB[22m
+[2mdist/[22m[36mhooks\use-isomorphic-layout-effect\index.js                         [39m[1m[2m  0.13 kB[22m[1m[22m[2m │ gzip:  0.11 kB[22m
+[2mdist/[22m[36mhelpers\safeResJson\safeResJson.js                                  [39m[1m[2m  0.13 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mcomponents\Kbd\index.js                                             [39m[1m[2m  0.14 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mcomponents\Badge\index.js                                           [39m[1m[2m  0.14 kB[22m[1m[22m[2m │ gzip:  0.12 kB[22m
+[2mdist/[22m[36mcomponents\Chip\index.js                                            [39m[1m[2m  0.14 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mcomponents\Card\index.js                                            [39m[1m[2m  0.14 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36muse-lazy-ref-CDDh2ul5.js                                            [39m[1m[2m  0.14 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mcomponents\Dialog\extras\index.js                                   [39m[1m[2m  0.14 kB[22m[1m[22m[2m │ gzip:  0.12 kB[22m
+[2mdist/[22m[36mcomponents\Radio\index.js                                           [39m[1m[2m  0.14 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mcomponents\Label\index.js                                           [39m[1m[2m  0.14 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mhooks\use-isomorphic-layout-effect\use-isomorphic-layout-effect.js  [39m[1m[2m  0.15 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mcomponents\Slider\index.js                                          [39m[1m[2m  0.15 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mcomponents\Rating\index.js                                          [39m[1m[2m  0.15 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mcomponents\Loader\index.js                                          [39m[1m[2m  0.15 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mcomponents\Tooltip\index.js                                         [39m[1m[2m  0.15 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mcomponents\Popover\index.js                                         [39m[1m[2m  0.15 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mcomponents\Divider\index.js                                         [39m[1m[2m  0.15 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mcomponents\Resizable\index.js                                       [39m[1m[2m  0.15 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mcomponents\Avatar\index.js                                          [39m[1m[2m  0.15 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mcomponents\Progress\index.js                                        [39m[1m[2m  0.15 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mcomponents\Conveyor\index.js                                        [39m[1m[2m  0.15 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mcomponents\Checkbox\index.js                                        [39m[1m[2m  0.15 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mhelpers\cn\cn.js                                                    [39m[1m[2m  0.15 kB[22m[1m[22m[2m │ gzip:  0.14 kB[22m
+[2mdist/[22m[36mhelpers\debounce\debounce.js                                        [39m[1m[2m  0.15 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mhelpers\cookieUtils\index.js                                        [39m[1m[2m  0.15 kB[22m[1m[22m[2m │ gzip:  0.11 kB[22m
+[2mdist/[22m[36mcomponents\Accordion\index.js                                       [39m[1m[2m  0.16 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mcomponents\Collapsible\index.js                                     [39m[1m[2m  0.16 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mhelpers\sleep\sleep.js                                              [39m[1m[2m  0.16 kB[22m[1m[22m[2m │ gzip:  0.14 kB[22m
+[2mdist/[22m[36mhelpers\limit-array\limit-array.js                                  [39m[1m[2m  0.16 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mcomponents\IconButton\index.js                                      [39m[1m[2m  0.16 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mcomponents\StickyScroll\index.js                                    [39m[1m[2m  0.16 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mhooks\use-mounted\use-mounted.js                                    [39m[1m[2m  0.16 kB[22m[1m[22m[2m │ gzip:  0.15 kB[22m
+[2mdist/[22m[36mconstants\index.js                                                  [39m[1m[2m  0.16 kB[22m[1m[22m[2m │ gzip:  0.12 kB[22m
+[2mdist/[22m[36mcomponents\ParallaxText\index.js                                    [39m[1m[2m  0.17 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mcomponents\TextGenerator\index.js                                   [39m[1m[2m  0.17 kB[22m[1m[22m[2m │ gzip:  0.13 kB[22m
+[2mdist/[22m[36mhelpers\group-by\group-by.js                                        [39m[1m[2m  0.17 kB[22m[1m[22m[2m │ gzip:  0.14 kB[22m
+[2mdist/[22m[36mDynamicHeading-hZ1Kb2Q6.js                                          [39m[1m[2m  0.17 kB[22m[1m[22m[2m │ gzip:  0.16 kB[22m
+[2mdist/[22m[36mcomponents\DirectionHover\index.js                                  [39m[1m[2m  0.17 kB[22m[1m[22m[2m │ gzip:  0.14 kB[22m
+[2mdist/[22m[36mcomponents\FollowerPointer\index.js                                 [39m[1m[2m  0.17 kB[22m[1m[22m[2m │ gzip:  0.14 kB[22m
+[2mdist/[22m[36mcomponents\ContainerScroll\index.js                                 [39m[1m[2m  0.17 kB[22m[1m[22m[2m │ gzip:  0.14 kB[22m
+[2mdist/[22m[36mcomponents\FileTree\components\index.js                             [39m[1m[2m  0.18 kB[22m[1m[22m[2m │ gzip:  0.15 kB[22m
+[2mdist/[22m[36mcomponents\Dropzone\index.js                                        [39m[1m[2m  0.18 kB[22m[1m[22m[2m │ gzip:  0.15 kB[22m
+[2mdist/[22m[36mcomponents\Button\index.js                                          [39m[1m[2m  0.18 kB[22m[1m[22m[2m │ gzip:  0.14 kB[22m
+[2mdist/[22m[36mcomponents\Message\index.js                                         [39m[1m[2m  0.18 kB[22m[1m[22m[2m │ gzip:  0.14 kB[22m
+[2mdist/[22m[36mhelpers\is-equal\is-equal.js                                        [39m[1m[2m  0.18 kB[22m[1m[22m[2m │ gzip:  0.14 kB[22m
+[2mdist/[22m[36mcomponents\OtpInput\index.js                                        [39m[1m[2m  0.18 kB[22m[1m[22m[2m │ gzip:  0.15 kB[22m
+[2mdist/[22m[36mconstants\defaultKeys.js                                            [39m[1m[2m  0.19 kB[22m[1m[22m[2m │ gzip:  0.15 kB[22m
+[2mdist/[22m[36mcomponents\Tabs\index.js                                            [39m[1m[2m  0.19 kB[22m[1m[22m[2m │ gzip:  0.15 kB[22m
+[2mdist/[22m[36mcomponents\Calendar\index.js                                        [39m[1m[2m  0.20 kB[22m[1m[22m[2m │ gzip:  0.15 kB[22m
+[2mdist/[22m[36mhelpers\clone-deps\clone-deep.js                                    [39m[1m[2m  0.20 kB[22m[1m[22m[2m │ gzip:  0.16 kB[22m
+[2mdist/[22m[36mcomponents\Datepicker\Views\index.js                                [39m[1m[2m  0.21 kB[22m[1m[22m[2m │ gzip:  0.15 kB[22m
+[2mdist/[22m[36mcomponents\Toaster\index.js                                         [39m[1m[2m  0.21 kB[22m[1m[22m[2m │ gzip:  0.15 kB[22m
+[2mdist/[22m[36mhelpers\copyToClipboard\copyToClipboard.js                          [39m[1m[2m  0.21 kB[22m[1m[22m[2m │ gzip:  0.17 kB[22m
+[2mdist/[22m[36mhelpers\encryption\encryption.js                                    [39m[1m[2m  0.22 kB[22m[1m[22m[2m │ gzip:  0.17 kB[22m
+[2mdist/[22m[36mcomponents\Footer\index.js                                          [39m[1m[2m  0.22 kB[22m[1m[22m[2m │ gzip:  0.16 kB[22m
+[2mdist/[22m[36mhelpers\get-value-path\get-value-path.js                            [39m[1m[2m  0.23 kB[22m[1m[22m[2m │ gzip:  0.17 kB[22m
+[2mdist/[22m[36mcomponents\Table\index.js                                           [39m[1m[2m  0.23 kB[22m[1m[22m[2m │ gzip:  0.16 kB[22m
+[2mdist/[22m[36muse-tree-Q9E86zbl.js                                                [39m[1m[2m  0.23 kB[22m[1m[22m[2m │ gzip:  0.18 kB[22m
+[2mdist/[22m[36mhooks\use-key-press\index.js                                        [39m[1m[2m  0.24 kB[22m[1m[22m[2m │ gzip:  0.16 kB[22m
+[2mdist/[22m[36mhelpers\shuffle\shuffle.js                                          [39m[1m[2m  0.24 kB[22m[1m[22m[2m │ gzip:  0.19 kB[22m
+[2mdist/[22m[36mhelpers\mergeRefs\mergeRefs.js                                      [39m[1m[2m  0.24 kB[22m[1m[22m[2m │ gzip:  0.16 kB[22m
+[2mdist/[22m[36mcomponents\Sidebar\index.js                                         [39m[1m[2m  0.24 kB[22m[1m[22m[2m │ gzip:  0.17 kB[22m
+[2mdist/[22m[36mhelpers\isDeepKey\isDeepKey.js                                      [39m[1m[2m  0.25 kB[22m[1m[22m[2m │ gzip:  0.16 kB[22m
+[2mdist/[22m[36mcomponents\Drawer\index.js                                          [39m[1m[2m  0.25 kB[22m[1m[22m[2m │ gzip:  0.17 kB[22m
+[2mdist/[22m[36mhooks\use-key-press\isValidKeyCombination.js                        [39m[1m[2m  0.25 kB[22m[1m[22m[2m │ gzip:  0.19 kB[22m
+[2mdist/[22m[36muse-isomorphic-effect-OtOb2wrt.js                                   [39m[1m[2m  0.27 kB[22m[1m[22m[2m │ gzip:  0.21 kB[22m
+[2mdist/[22m[36mtheme-Dn0cqfbF.js                                                   [39m[1m[2m  0.27 kB[22m[1m[22m[2m │ gzip:  0.20 kB[22m
+[2mdist/[22m[36mcomponents\Dropdown\components\index.js                             [39m[1m[2m  0.27 kB[22m[1m[22m[2m │ gzip:  0.17 kB[22m
+[2mdist/[22m[36mhooks\use-debounce\use-debounce.js                                  [39m[1m[2m  0.28 kB[22m[1m[22m[2m │ gzip:  0.19 kB[22m
+[2mdist/[22m[36mindex-CX8l_p9w.js                                                   [39m[1m[2m  0.28 kB[22m[1m[22m[2m │ gzip:  0.19 kB[22m
+[2mdist/[22m[36muse-merge-value-dgz4vSHe.js                                         [39m[1m[2m  0.29 kB[22m[1m[22m[2m │ gzip:  0.22 kB[22m
+[2mdist/[22m[36mhooks\use-watch-localstorage-value\use-watch-localstorage-value.js  [39m[1m[2m  0.30 kB[22m[1m[22m[2m │ gzip:  0.22 kB[22m
+[2mdist/[22m[36mcomponents\Select\index.js                                          [39m[1m[2m  0.31 kB[22m[1m[22m[2m │ gzip:  0.20 kB[22m
+[2mdist/[22m[36mhelpers\timeAgo\date-parser.js                                      [39m[1m[2m  0.33 kB[22m[1m[22m[2m │ gzip:  0.22 kB[22m
+[2mdist/[22m[36mcomponents\FileTree\index.js                                        [39m[1m[2m  0.34 kB[22m[1m[22m[2m │ gzip:  0.21 kB[22m
+[2mdist/[22m[36muse-animate-epacllz9.js                                             [39m[1m[2m  0.35 kB[22m[1m[22m[2m │ gzip:  0.24 kB[22m
+[2mdist/[22m[36mhelpers\get-main-field\get-main-field.js                            [39m[1m[2m  0.35 kB[22m[1m[22m[2m │ gzip:  0.25 kB[22m
+[2mdist/[22m[36mhelpers\merge\merge.js                                              [39m[1m[2m  0.36 kB[22m[1m[22m[2m │ gzip:  0.24 kB[22m
+[2mdist/[22m[36mhooks\use-counter\use-counter.js                                    [39m[1m[2m  0.36 kB[22m[1m[22m[2m │ gzip:  0.22 kB[22m
+[2mdist/[22m[36mhooks\use-interval\use-interval.js                                  [39m[1m[2m  0.36 kB[22m[1m[22m[2m │ gzip:  0.22 kB[22m
+[2mdist/[22m[36mcomponents\NavigationMenu\index.js                                  [39m[1m[2m  0.36 kB[22m[1m[22m[2m │ gzip:  0.19 kB[22m
+[2mdist/[22m[36mhelpers\localStorage\manageLocalStorage.js                          [39m[1m[2m  0.36 kB[22m[1m[22m[2m │ gzip:  0.23 kB[22m
+[2mdist/[22m[36muse-motion-value-CuAOXrUy.js                                        [39m[1m[2m  0.37 kB[22m[1m[22m[2m │ gzip:  0.25 kB[22m
+[2mdist/[22m[36mcomponents\Dialog\index.js                                          [39m[1m[2m  0.37 kB[22m[1m[22m[2m │ gzip:  0.21 kB[22m
+[2mdist/[22m[36mSkeleton-DCjfquam.js                                                [39m[1m[2m  0.37 kB[22m[1m[22m[2m │ gzip:  0.27 kB[22m
+[2mdist/[22m[36mhooks\use-measure\use-measure.js                                    [39m[1m[2m  0.39 kB[22m[1m[22m[2m │ gzip:  0.26 kB[22m
+[2mdist/[22m[36muse-boolean-CKz6YSej.js                                             [39m[1m[2m  0.40 kB[22m[1m[22m[2m │ gzip:  0.24 kB[22m
+[2mdist/[22m[36mhooks\use-event-callback\use-event-callback.js                      [39m[1m[2m  0.41 kB[22m[1m[22m[2m │ gzip:  0.26 kB[22m
+[2mdist/[22m[36mhelpers\merge-deep\merge-deep.js                                    [39m[1m[2m  0.42 kB[22m[1m[22m[2m │ gzip:  0.25 kB[22m
+[2mdist/[22m[36mhelpers\generateUUID\generate-uuid.js                               [39m[1m[2m  0.43 kB[22m[1m[22m[2m │ gzip:  0.27 kB[22m
+[2mdist/[22m[36mresolve-element-CCg_qM77.js                                         [39m[1m[2m  0.43 kB[22m[1m[22m[2m │ gzip:  0.30 kB[22m
+[2mdist/[22m[36mhelpers\cn\clsx.js                                                  [39m[1m[2m  0.45 kB[22m[1m[22m[2m │ gzip:  0.27 kB[22m
+[2mdist/[22m[36mfor-D6ISMxRU.js                                                     [39m[1m[2m  0.45 kB[22m[1m[22m[2m │ gzip:  0.28 kB[22m
+[2mdist/[22m[36mhooks\use-click-outside\use-click-outside.js                        [39m[1m[2m  0.45 kB[22m[1m[22m[2m │ gzip:  0.27 kB[22m
+[2mdist/[22m[36mhooks\use-confirmation\use-confirmation.js                          [39m[1m[2m  0.46 kB[22m[1m[22m[2m │ gzip:  0.27 kB[22m
+[2mdist/[22m[36mcomponents\Fieldset\index.js                                        [39m[1m[2m  0.46 kB[22m[1m[22m[2m │ gzip:  0.30 kB[22m
+[2mdist/[22m[36mhelpers\color-to-tailwind\colorToTailwind.js                        [39m[1m[2m  0.47 kB[22m[1m[22m[2m │ gzip:  0.22 kB[22m
+[2mdist/[22m[36mFocusEffect-CDhU4pX3.js                                             [39m[1m[2m  0.49 kB[22m[1m[22m[2m │ gzip:  0.28 kB[22m
+[2mdist/[22m[36mindex-CXNiy2hy.js                                                   [39m[1m[2m  0.49 kB[22m[1m[22m[2m │ gzip:  0.31 kB[22m
+[2mdist/[22m[36mhelpers\arrayUtils\arrayUtils.js                                    [39m[1m[2m  0.52 kB[22m[1m[22m[2m │ gzip:  0.27 kB[22m
+[2mdist/[22m[36mDrawerDialog-CFZCOgns.js                                            [39m[1m[2m  0.52 kB[22m[1m[22m[2m │ gzip:  0.30 kB[22m
+[2mdist/[22m[36mhelpers\toPath\toPath.js                                            [39m[1m[2m  0.53 kB[22m[1m[22m[2m │ gzip:  0.29 kB[22m
+[2mdist/[22m[36mhooks\use-cookie\use-cookie.js                                      [39m[1m[2m  0.53 kB[22m[1m[22m[2m │ gzip:  0.29 kB[22m
+[2mdist/[22m[36muse-sticky-scroll-CKPpwSGG.js                                       [39m[1m[2m  0.53 kB[22m[1m[22m[2m │ gzip:  0.32 kB[22m
+[2mdist/[22m[36mhooks\use-array\use-array.js                                        [39m[1m[2m  0.55 kB[22m[1m[22m[2m │ gzip:  0.28 kB[22m
+[2mdist/[22m[36muse-list-2rqpZ-0y.js                                                [39m[1m[2m  0.55 kB[22m[1m[22m[2m │ gzip:  0.29 kB[22m
+[2mdist/[22m[36mhelpers\cookieUtils\cookieUtils.js                                  [39m[1m[2m  0.56 kB[22m[1m[22m[2m │ gzip:  0.33 kB[22m
+[2mdist/[22m[36mhooks\use-event-listener\use-event-listener.js                      [39m[1m[2m  0.58 kB[22m[1m[22m[2m │ gzip:  0.31 kB[22m
+[2mdist/[22m[36mHelperText-D4AXKEwr.js                                              [39m[1m[2m  0.58 kB[22m[1m[22m[2m │ gzip:  0.36 kB[22m
+[2mdist/[22m[36mhelpers\handle-json\index.js                                        [39m[1m[2m  0.58 kB[22m[1m[22m[2m │ gzip:  0.25 kB[22m
+[2mdist/[22m[36mKbd-s4PT7xIK.js                                                     [39m[1m[2m  0.59 kB[22m[1m[22m[2m │ gzip:  0.36 kB[22m
+[2mdist/[22m[36mindex-zCMOPMqf.js                                                   [39m[1m[2m  0.61 kB[22m[1m[22m[2m │ gzip:  0.39 kB[22m
+[2mdist/[22m[36muse-hover-DdvkzdVa.js                                               [39m[1m[2m  0.62 kB[22m[1m[22m[2m │ gzip:  0.29 kB[22m
+[2mdist/[22m[36mcomponents\Dropdown\index.js                                        [39m[1m[2m  0.65 kB[22m[1m[22m[2m │ gzip:  0.30 kB[22m
+[2mdist/[22m[36mplugins\css-variables.js                                            [39m[1m[2m  0.65 kB[22m[1m[22m[2m │ gzip:  0.20 kB[22m
+[2mdist/[22m[36mhooks\use-media-query\use-media-query.js                            [39m[1m[2m  0.67 kB[22m[1m[22m[2m │ gzip:  0.38 kB[22m
+[2mdist/[22m[36mcomponents\GrowingNumber\index.js                                   [39m[1m[2m  0.68 kB[22m[1m[22m[2m │ gzip:  0.40 kB[22m
+[2mdist/[22m[36mhooks\use-step\use-step.js                                          [39m[1m[2m  0.69 kB[22m[1m[22m[2m │ gzip:  0.37 kB[22m
+[2mdist/[22m[36mLabel-CfLQbOwQ.js                                                   [39m[1m[2m  0.69 kB[22m[1m[22m[2m │ gzip:  0.42 kB[22m
+[2mdist/[22m[36mindex.esm-DFAo5TTb.js                                               [39m[1m[2m  0.70 kB[22m[1m[22m[2m │ gzip:  0.39 kB[22m
+[2mdist/[22m[36muse-key-press-t8kCJggB.js                                           [39m[1m[2m  0.70 kB[22m[1m[22m[2m │ gzip:  0.43 kB[22m
+[2mdist/[22m[36mStickyScroll-Xffgskco.js                                            [39m[1m[2m  0.71 kB[22m[1m[22m[2m │ gzip:  0.41 kB[22m
+[2mdist/[22m[36mTransitionPanel-rhE77x5r.js                                         [39m[1m[2m  0.72 kB[22m[1m[22m[2m │ gzip:  0.39 kB[22m
+[2mdist/[22m[36mhelpers\timeAgo\utils\timeUtils.js                                  [39m[1m[2m  0.73 kB[22m[1m[22m[2m │ gzip:  0.42 kB[22m
+[2mdist/[22m[36mhelpers\dates\use-calendar.js                                       [39m[1m[2m  0.74 kB[22m[1m[22m[2m │ gzip:  0.39 kB[22m
+[2mdist/[22m[36mCopyright-P8YOY_q0.js                                               [39m[1m[2m  0.74 kB[22m[1m[22m[2m │ gzip:  0.41 kB[22m
+[2mdist/[22m[36muse-perspective-BevGsEYk.js                                         [39m[1m[2m  0.76 kB[22m[1m[22m[2m │ gzip:  0.44 kB[22m
+[2mdist/[22m[36mDivider-DLDLmztM.js                                                 [39m[1m[2m  0.76 kB[22m[1m[22m[2m │ gzip:  0.43 kB[22m
+[2mdist/[22m[36mIconButton-DydVRTvO.js                                              [39m[1m[2m  0.77 kB[22m[1m[22m[2m │ gzip:  0.43 kB[22m
+[2mdist/[22m[36mscroll-progress-Cgae3JXp.js                                         [39m[1m[2m  0.78 kB[22m[1m[22m[2m │ gzip:  0.44 kB[22m
+[2mdist/[22m[36mToggle-2oPPIN3r.js                                                  [39m[1m[2m  0.78 kB[22m[1m[22m[2m │ gzip:  0.41 kB[22m
+[2mdist/[22m[36mDebouncedInput-Cm26ITph.js                                          [39m[1m[2m  0.80 kB[22m[1m[22m[2m │ gzip:  0.42 kB[22m
+[2mdist/[22m[36mcomponents\Datepicker\index.js                                      [39m[1m[2m  0.80 kB[22m[1m[22m[2m │ gzip:  0.38 kB[22m
+[2mdist/[22m[36muse-long-press-CNM2wgcn.js                                          [39m[1m[2m  0.81 kB[22m[1m[22m[2m │ gzip:  0.41 kB[22m
+[2mdist/[22m[36mDarkThemeToggle-B9o_GtEW.js                                         [39m[1m[2m  0.81 kB[22m[1m[22m[2m │ gzip:  0.45 kB[22m
+[2mdist/[22m[36mListeningAnimation-BBfojqY3.js                                      [39m[1m[2m  0.83 kB[22m[1m[22m[2m │ gzip:  0.52 kB[22m
+[2mdist/[22m[36mCard-CiW3pb5x.js                                                    [39m[1m[2m  0.84 kB[22m[1m[22m[2m │ gzip:  0.45 kB[22m
+[2mdist/[22m[36mMultiOption-CuRqy28x.js                                             [39m[1m[2m  0.85 kB[22m[1m[22m[2m │ gzip:  0.45 kB[22m
+[2mdist/[22m[36mLoader-CoiEzmlT.js                                                  [39m[1m[2m  0.85 kB[22m[1m[22m[2m │ gzip:  0.51 kB[22m
+[2mdist/[22m[36mtitle-BPz3yK1N.js                                                   [39m[1m[2m  0.87 kB[22m[1m[22m[2m │ gzip:  0.43 kB[22m
+[2mdist/[22m[36mDot-BhWYayCH.js                                                     [39m[1m[2m  0.87 kB[22m[1m[22m[2m │ gzip:  0.41 kB[22m
+[2mdist/[22m[36mhooks\use-share\use-share.js                                        [39m[1m[2m  0.88 kB[22m[1m[22m[2m │ gzip:  0.44 kB[22m
+[2mdist/[22m[36mhelpers\dates\use-date-range.js                                     [39m[1m[2m  0.88 kB[22m[1m[22m[2m │ gzip:  0.47 kB[22m
+[2mdist/[22m[36mToaster-CcrFXor0.js                                                 [39m[1m[2m  0.89 kB[22m[1m[22m[2m │ gzip:  0.45 kB[22m
+[2mdist/[22m[36mhelpers\fetchers\fetchData.js                                       [39m[1m[2m  0.93 kB[22m[1m[22m[2m │ gzip:  0.45 kB[22m
+[2mdist/[22m[36mRating-VK2Idyis.js                                                  [39m[1m[2m  0.93 kB[22m[1m[22m[2m │ gzip:  0.51 kB[22m
+[2mdist/[22m[36mhooks\use-text-selection\use-text-selection.js                      [39m[1m[2m  0.95 kB[22m[1m[22m[2m │ gzip:  0.48 kB[22m
+[2mdist/[22m[36mhelpers\get\get.js                                                  [39m[1m[2m  0.96 kB[22m[1m[22m[2m │ gzip:  0.42 kB[22m
+[2mdist/[22m[36mhelpers\dates\index.js                                              [39m[1m[2m  0.96 kB[22m[1m[22m[2m │ gzip:  0.39 kB[22m
+[2mdist/[22m[36mSizeIndiator-DkGd9IXF.js                                            [39m[1m[2m  0.97 kB[22m[1m[22m[2m │ gzip:  0.40 kB[22m
+[2mdist/[22m[36mLazyImage-BdlIK3w1.js                                               [39m[1m[2m  0.97 kB[22m[1m[22m[2m │ gzip:  0.52 kB[22m
+[2mdist/[22m[36mPhone-C0dp__a6.js                                                   [39m[1m[2m  1.02 kB[22m[1m[22m[2m │ gzip:  0.37 kB[22m
+[2mdist/[22m[36muse-spring-BjgiIQV3.js                                              [39m[1m[2m  1.02 kB[22m[1m[22m[2m │ gzip:  0.58 kB[22m
+[2mdist/[22m[36mhooks\use-copy-to-clipboard\use-copy-to-clipboard.js                [39m[1m[2m  1.04 kB[22m[1m[22m[2m │ gzip:  0.54 kB[22m
+[2mdist/[22m[36mhelpers\cva\cva.js                                                  [39m[1m[2m  1.04 kB[22m[1m[22m[2m │ gzip:  0.49 kB[22m
+[2mdist/[22m[36muse-click-handlers-ChEWzAUf.js                                      [39m[1m[2m  1.06 kB[22m[1m[22m[2m │ gzip:  0.44 kB[22m
+[2mdist/[22m[36mhooks\use-device-orientation\use-device-orientation.js              [39m[1m[2m  1.07 kB[22m[1m[22m[2m │ gzip:  0.48 kB[22m
+[2mdist/[22m[36mindex.esm-QV4Pt72O.js                                               [39m[1m[2m  1.08 kB[22m[1m[22m[2m │ gzip:  0.42 kB[22m
+[2mdist/[22m[36mSplitButton-bx-F89XG.js                                             [39m[1m[2m  1.09 kB[22m[1m[22m[2m │ gzip:  0.51 kB[22m
+[2mdist/[22m[36mFileInput-BoBVAaEE.js                                               [39m[1m[2m  1.09 kB[22m[1m[22m[2m │ gzip:  0.53 kB[22m
+[2mdist/[22m[36mi18n\locales.js                                                     [39m[1m[2m  1.10 kB[22m[1m[22m[2m │ gzip:  0.51 kB[22m
+[2mdist/[22m[36mhooks\use-fetch\use-fetch.js                                        [39m[1m[2m  1.14 kB[22m[1m[22m[2m │ gzip:  0.53 kB[22m
+[2mdist/[22m[36mThemeModeScript-BrIYVUgH.js                                         [39m[1m[2m  1.15 kB[22m[1m[22m[2m │ gzip:  0.59 kB[22m
+[2mdist/[22m[36mi18n\language-packs\spanish-pack.js                                 [39m[1m[2m  1.15 kB[22m[1m[22m[2m │ gzip:  0.29 kB[22m
+[2mdist/[22m[36mTextMorph-B5bkzqZ9.js                                               [39m[1m[2m  1.17 kB[22m[1m[22m[2m │ gzip:  0.61 kB[22m
+[2mdist/[22m[36mbadge-TkJA03Z3.js                                                   [39m[1m[2m  1.18 kB[22m[1m[22m[2m │ gzip:  0.56 kB[22m
+[2mdist/[22m[36mCalendar-rUoQ31mO.js                                                [39m[1m[2m  1.19 kB[22m[1m[22m[2m │ gzip:  0.57 kB[22m
+[2mdist/[22m[36mcomponents\ErrorBoundary\index.js                                   [39m[1m[2m  1.19 kB[22m[1m[22m[2m │ gzip:  0.62 kB[22m
+[2mdist/[22m[36muse-transform-D7FKpWsv.js                                           [39m[1m[2m  1.22 kB[22m[1m[22m[2m │ gzip:  0.60 kB[22m
+[2mdist/[22m[36mBubbleHeading-xF_nlcJM.js                                           [39m[1m[2m  1.23 kB[22m[1m[22m[2m │ gzip:  0.63 kB[22m
+[2mdist/[22m[36mLanguages-NJP0fnO9.js                                               [39m[1m[2m  1.24 kB[22m[1m[22m[2m │ gzip:  0.43 kB[22m
+[2mdist/[22m[36mhelpers\fuzzyFinder\fuzzyFinder.js                                  [39m[1m[2m  1.26 kB[22m[1m[22m[2m │ gzip:  0.61 kB[22m
+[2mdist/[22m[36mi18n\index.js                                                       [39m[1m[2m  1.29 kB[22m[1m[22m[2m │ gzip:  0.52 kB[22m
+[2mdist/[22m[36mMessage-B8ndM_b3.js                                                 [39m[1m[2m  1.32 kB[22m[1m[22m[2m │ gzip:  0.60 kB[22m
+[2mdist/[22m[36mhelpers\text-transform\text-transform.js                            [39m[1m[2m  1.35 kB[22m[1m[22m[2m │ gzip:  0.59 kB[22m
+[2mdist/[22m[36mTextShimmer-CM_My6IT.js                                             [39m[1m[2m  1.37 kB[22m[1m[22m[2m │ gzip:  0.64 kB[22m
+[2mdist/[22m[36mBreadcrumbItem-CZa0q3oV.js                                          [39m[1m[2m  1.38 kB[22m[1m[22m[2m │ gzip:  0.62 kB[22m
+[2mdist/[22m[36mTextGenerator-ab1kGHY7.js                                           [39m[1m[2m  1.38 kB[22m[1m[22m[2m │ gzip:  0.72 kB[22m
+[2mdist/[22m[36mMagneticButton-CUCWPwta.js                                          [39m[1m[2m  1.40 kB[22m[1m[22m[2m │ gzip:  0.72 kB[22m
+[2mdist/[22m[36mCodeBlock-Cpf8WJor.js                                               [39m[1m[2m  1.41 kB[22m[1m[22m[2m │ gzip:  0.68 kB[22m
+[2mdist/[22m[36muse-location-B56HuWSD.js                                            [39m[1m[2m  1.43 kB[22m[1m[22m[2m │ gzip:  0.57 kB[22m
+[2mdist/[22m[36mCopyButton-sdnNt9YR.js                                              [39m[1m[2m  1.44 kB[22m[1m[22m[2m │ gzip:  0.73 kB[22m
+[2mdist/[22m[36mhooks\use-network\use-network.js                                    [39m[1m[2m  1.46 kB[22m[1m[22m[2m │ gzip:  0.50 kB[22m
+[2mdist/[22m[36mNavbar-DZnO4WzE.js                                                  [39m[1m[2m  1.47 kB[22m[1m[22m[2m │ gzip:  0.67 kB[22m
+[2mdist/[22m[36mTimedButton-COYMV4y2.js                                             [39m[1m[2m  1.49 kB[22m[1m[22m[2m │ gzip:  0.69 kB[22m
+[2mdist/[22m[36mConfirmDialog-UObNFU5Z.js                                           [39m[1m[2m  1.51 kB[22m[1m[22m[2m │ gzip:  0.67 kB[22m
+[2mdist/[22m[36mProgress-0LGRr_17.js                                                [39m[1m[2m  1.53 kB[22m[1m[22m[2m │ gzip:  0.72 kB[22m
+[2mdist/[22m[36mhooks\use-undo\use-undo.js                                          [39m[1m[2m  1.59 kB[22m[1m[22m[2m │ gzip:  0.63 kB[22m
+[2mdist/[22m[36mhooks\use-speech-to-text\use-speech-to-text.js                      [39m[1m[2m  1.59 kB[22m[1m[22m[2m │ gzip:  0.79 kB[22m
+[2mdist/[22m[36mhooks\use-key-press\valid-keys.js                                   [39m[1m[2m  1.61 kB[22m[1m[22m[2m │ gzip:  0.69 kB[22m
+[2mdist/[22m[36mhooks\use-local-storage\use-local-storage.js                        [39m[1m[2m  1.63 kB[22m[1m[22m[2m │ gzip:  0.70 kB[22m
+[2mdist/[22m[36mhooks\use-theme-mode.js                                             [39m[1m[2m  1.66 kB[22m[1m[22m[2m │ gzip:  0.76 kB[22m
+[2mdist/[22m[36mWeekdays-tx3Az8RD.js                                                [39m[1m[2m  1.68 kB[22m[1m[22m[2m │ gzip:  0.76 kB[22m
+[2mdist/[22m[36mFooterLinkGroup-BEO7fper.js                                         [39m[1m[2m  1.77 kB[22m[1m[22m[2m │ gzip:  0.68 kB[22m
+[2mdist/[22m[36mconstants\mimeTypesMap.js                                           [39m[1m[2m  1.78 kB[22m[1m[22m[2m │ gzip:  0.72 kB[22m
+[2mdist/[22m[36mToolbox-CJDMNCNw.js                                                 [39m[1m[2m  1.80 kB[22m[1m[22m[2m │ gzip:  0.85 kB[22m
+[2mdist/[22m[36mListItem-BygxzrfW.js                                                [39m[1m[2m  1.82 kB[22m[1m[22m[2m │ gzip:  0.79 kB[22m
+[2mdist/[22m[36mbooleanLoadingCard-DevhOxk7.js                                      [39m[1m[2m  1.83 kB[22m[1m[22m[2m │ gzip:  0.73 kB[22m
+[2mdist/[22m[36maccordion-Bki2gHih.js                                               [39m[1m[2m  1.84 kB[22m[1m[22m[2m │ gzip:  0.77 kB[22m
+[2mdist/[22m[36mindex-CEWzwStZ.js                                                   [39m[1m[2m  1.85 kB[22m[1m[22m[2m │ gzip:  0.76 kB[22m
+[2mdist/[22m[36miconBase-C6DV9qqL.js                                                [39m[1m[2m  1.86 kB[22m[1m[22m[2m │ gzip:  0.81 kB[22m
+[2mdist/[22m[36mhelpers\regex\regex.js                                              [39m[1m[2m  1.89 kB[22m[1m[22m[2m │ gzip:  0.75 kB[22m
+[2mdist/[22m[36mindex-Cg1Us84d.js                                                   [39m[1m[2m  1.95 kB[22m[1m[22m[2m │ gzip:  0.85 kB[22m
+[2mdist/[22m[36mExpandableButton-C6O_YJMk.js                                        [39m[1m[2m  1.96 kB[22m[1m[22m[2m │ gzip:  0.87 kB[22m
+[2mdist/[22m[36mTable-B9_p7MPC.js                                                   [39m[1m[2m  1.98 kB[22m[1m[22m[2m │ gzip:  0.67 kB[22m
+[2mdist/[22m[36mchip-BdGeDj_A.js                                                    [39m[1m[2m  2.02 kB[22m[1m[22m[2m │ gzip:  0.87 kB[22m
+[2mdist/[22m[36mHamburger-DZar6pnH.js                                               [39m[1m[2m  2.08 kB[22m[1m[22m[2m │ gzip:  0.88 kB[22m
+[2mdist/[22m[36mParallaxText-D-ojdvU7.js                                            [39m[1m[2m  2.11 kB[22m[1m[22m[2m │ gzip:  1.07 kB[22m
+[2mdist/[22m[36mFileTree-BK16z4iD.js                                                [39m[1m[2m  2.24 kB[22m[1m[22m[2m │ gzip:  0.97 kB[22m
+[2mdist/[22m[36mImageTrail-DJtmQuVY.js                                              [39m[1m[2m  2.29 kB[22m[1m[22m[2m │ gzip:  1.08 kB[22m
+[2mdist/[22m[36mindex-C_mEhHGU.js                                                   [39m[1m[2m  2.32 kB[22m[1m[22m[2m │ gzip:  0.92 kB[22m
+[2mdist/[22m[36mtheme-D78LRCh5.js                                                   [39m[1m[2m  2.35 kB[22m[1m[22m[2m │ gzip:  0.69 kB[22m
+[2mdist/[22m[36mDeleteButton-L0h78u_b.js                                            [39m[1m[2m  2.43 kB[22m[1m[22m[2m │ gzip:  0.80 kB[22m
+[2mdist/[22m[36mDialog-5s1zQe2N.js                                                  [39m[1m[2m  2.44 kB[22m[1m[22m[2m │ gzip:  1.04 kB[22m
+[2mdist/[22m[36mTabs-S3iczAgR.js                                                    [39m[1m[2m  2.48 kB[22m[1m[22m[2m │ gzip:  1.03 kB[22m
+[2mdist/[22m[36mindex-BQWK3NUK.js                                                   [39m[1m[2m  2.48 kB[22m[1m[22m[2m │ gzip:  1.04 kB[22m
+[2mdist/[22m[36mindex-CTtG1hj7.js                                                   [39m[1m[2m  2.49 kB[22m[1m[22m[2m │ gzip:  0.98 kB[22m
+[2mdist/[22m[36mRadio-BxRdyOZd.js                                                   [39m[1m[2m  2.51 kB[22m[1m[22m[2m │ gzip:  1.07 kB[22m
+[2mdist/[22m[36mhelpers-BmiNRlDF.js                                                 [39m[1m[2m  2.53 kB[22m[1m[22m[2m │ gzip:  0.87 kB[22m
+[2mdist/[22m[36mContainerScroll-BdgWLNBC.js                                         [39m[1m[2m  2.63 kB[22m[1m[22m[2m │ gzip:  1.04 kB[22m
+[2mdist/[22m[36mCardStack-UQFGvrNt.js                                               [39m[1m[2m  2.66 kB[22m[1m[22m[2m │ gzip:  1.14 kB[22m
+[2mdist/[22m[36mFollowerPointer-CRAyb6qE.js                                         [39m[1m[2m  2.76 kB[22m[1m[22m[2m │ gzip:  1.08 kB[22m
+[2mdist/[22m[36menums-CpZHSsLP.js                                                   [39m[1m[2m  2.98 kB[22m[1m[22m[2m │ gzip:  0.75 kB[22m
+[2mdist/[22m[36mcomponents\Gauge\index.js                                           [39m[1m[2m  2.98 kB[22m[1m[22m[2m │ gzip:  1.10 kB[22m
+[2mdist/[22m[36mCollapsible-BxXsYWqU.js                                             [39m[1m[2m  3.00 kB[22m[1m[22m[2m │ gzip:  1.17 kB[22m
+[2mdist/[22m[36mDirectionHover-BGfQOD62.js                                          [39m[1m[2m  3.06 kB[22m[1m[22m[2m │ gzip:  1.14 kB[22m
+[2mdist/[22m[36mcomponents\ImageCarousel\index.js                                   [39m[1m[2m  3.12 kB[22m[1m[22m[2m │ gzip:  1.26 kB[22m
+[2mdist/[22m[36mSwitch-BlX9iayG.js                                                  [39m[1m[2m  3.16 kB[22m[1m[22m[2m │ gzip:  1.24 kB[22m
+[2mdist/[22m[36muse-gesture-DTYjqgmH.js                                             [39m[1m[2m  3.18 kB[22m[1m[22m[2m │ gzip:  0.88 kB[22m
+[2mdist/[22m[36mAvatarGroupCounter-3yBONZLS.js                                      [39m[1m[2m  3.41 kB[22m[1m[22m[2m │ gzip:  1.24 kB[22m
+[2mdist/[22m[36mInput-D0pAKmr2.js                                                   [39m[1m[2m  3.52 kB[22m[1m[22m[2m │ gzip:  1.10 kB[22m
+[2mdist/[22m[36mTextarea-CFyUoKmt.js                                                [39m[1m[2m  3.62 kB[22m[1m[22m[2m │ gzip:  1.13 kB[22m
+[2mdist/[22m[36mhooks\index.js                                                      [39m[1m[2m  3.72 kB[22m[1m[22m[2m │ gzip:  1.14 kB[22m
+[2mdist/[22m[36muse-translate-RgiAXAAe.js                                           [39m[1m[2m  3.76 kB[22m[1m[22m[2m │ gzip:  1.57 kB[22m
+[2mdist/[22m[36mOtpInput-DVprpB9w.js                                                [39m[1m[2m  3.76 kB[22m[1m[22m[2m │ gzip:  1.58 kB[22m
+[2mdist/[22m[36mindex-C5KmeTOu.js                                                   [39m[1m[2m  3.86 kB[22m[1m[22m[2m │ gzip:  1.54 kB[22m
+[2mdist/[22m[36mCheckbox-DtfDfTjl.js                                                [39m[1m[2m  3.89 kB[22m[1m[22m[2m │ gzip:  1.21 kB[22m
+[2mdist/[22m[36mcomponents\Video\index.js                                           [39m[1m[2m  3.99 kB[22m[1m[22m[2m │ gzip:  1.34 kB[22m
+[2mdist/[22m[36muse-ripple-DmgwQDuU.js                                              [39m[1m[2m  4.01 kB[22m[1m[22m[2m │ gzip:  1.64 kB[22m
+[2mdist/[22m[36mYears-BaUXn53J.js                                                   [39m[1m[2m  4.24 kB[22m[1m[22m[2m │ gzip:  1.30 kB[22m
+[2mdist/[22m[36mhelpers\dates\utils.js                                              [39m[1m[2m  4.32 kB[22m[1m[22m[2m │ gzip:  1.45 kB[22m
+[2mdist/[22m[36mindex-Cor4-dJk.js                                                   [39m[1m[2m  4.51 kB[22m[1m[22m[2m │ gzip:  1.76 kB[22m
+[2mdist/[22m[36mindex-DCmTHPA6.js                                                   [39m[1m[2m  4.83 kB[22m[1m[22m[2m │ gzip:  1.62 kB[22m
+[2mdist/[22m[36mDrawerArray-DChZ6i0w.js                                             [39m[1m[2m  4.88 kB[22m[1m[22m[2m │ gzip:  1.52 kB[22m
+[2mdist/[22m[36mUnderSheet-C95mWFRR.js                                              [39m[1m[2m  5.03 kB[22m[1m[22m[2m │ gzip:  1.58 kB[22m
+[2mdist/[22m[36mindex-BjJL3sET.js                                                   [39m[1m[2m  5.54 kB[22m[1m[22m[2m │ gzip:  2.19 kB[22m
+[2mdist/[22m[36mConveyor-DBO0apfi.js                                                [39m[1m[2m  5.77 kB[22m[1m[22m[2m │ gzip:  2.23 kB[22m
+[2mdist/[22m[36mhelpers\index.js                                                    [39m[1m[2m  5.96 kB[22m[1m[22m[2m │ gzip:  1.97 kB[22m
+[2mdist/[22m[36mButton-DdYRs4xg.js                                                  [39m[1m[2m  6.11 kB[22m[1m[22m[2m │ gzip:  1.97 kB[22m
+[2mdist/[22m[36mindex-3mK4c9zO.js                                                   [39m[1m[2m  6.23 kB[22m[1m[22m[2m │ gzip:  1.95 kB[22m
+[2mdist/[22m[36mPerspectiveCard-Bv0UX80L.js                                         [39m[1m[2m  6.60 kB[22m[1m[22m[2m │ gzip:  2.43 kB[22m
+[2mdist/[22m[36manimate-CYpcBfe0.js                                                 [39m[1m[2m  7.01 kB[22m[1m[22m[2m │ gzip:  2.76 kB[22m
+[2mdist/[22m[36mDatepicker-BZakclzo.js                                              [39m[1m[2m  7.83 kB[22m[1m[22m[2m │ gzip:  2.01 kB[22m
+[2mdist/[22m[36muse-scroll-Caq8qcAt.js                                              [39m[1m[2m  7.96 kB[22m[1m[22m[2m │ gzip:  2.96 kB[22m
+[2mdist/[22m[36mSidebarLogo-BAzL_rCY.js                                             [39m[1m[2m  8.20 kB[22m[1m[22m[2m │ gzip:  2.65 kB[22m
+[2mdist/[22m[36mFileList-DMJoa9Lp.js                                                [39m[1m[2m  8.22 kB[22m[1m[22m[2m │ gzip:  2.47 kB[22m
+[2mdist/[22m[36mPopover-qK2hqNh1.js                                                 [39m[1m[2m  8.71 kB[22m[1m[22m[2m │ gzip:  2.76 kB[22m
+[2mdist/[22m[36mKanban-BylJgrBh.js                                                  [39m[1m[2m  9.45 kB[22m[1m[22m[2m │ gzip:  3.13 kB[22m
+[2mdist/[22m[36mToggleGroup-C1G4NnWx.js                                             [39m[1m[2m  9.79 kB[22m[1m[22m[2m │ gzip:  3.06 kB[22m
+[2mdist/[22m[36mTooltip-C7Z9Mwv1.js                                                 [39m[1m[2m 12.21 kB[22m[1m[22m[2m │ gzip:  3.80 kB[22m
+[2mdist/[22m[36mcomponents\index.js                                                 [39m[1m[2m 12.58 kB[22m[1m[22m[2m │ gzip:  4.26 kB[22m
+[2mdist/[22m[36mtree-collapse-button-1W98yX4z.js                                    [39m[1m[2m 12.84 kB[22m[1m[22m[2m │ gzip:  3.78 kB[22m
+[2mdist/[22m[36mSlider-Qw1rZAxX.js                                                  [39m[1m[2m 13.55 kB[22m[1m[22m[2m │ gzip:  4.31 kB[22m
+[2mdist/[22m[36mindex.esm-7GvBDNyr.js                                               [39m[1m[2m 15.20 kB[22m[1m[22m[2m │ gzip:  1.75 kB[22m
+[2mdist/[22m[36mindex-DNexvCQ0.js                                                   [39m[1m[2m 17.70 kB[22m[1m[22m[2m │ gzip:  6.06 kB[22m
+[2mdist/[22m[36mScrollArea-Dg_z0xp9.js                                              [39m[1m[2m 18.96 kB[22m[1m[22m[2m │ gzip:  5.11 kB[22m
+[2mdist/[22m[36mnavigation-menu-content-CTSBDeEO.js                                 [39m[1m[2m 20.20 kB[22m[1m[22m[2m │ gzip:  5.97 kB[22m
+[2mdist/[22m[36mCombination-q2qUhLUU.js                                             [39m[1m[2m 21.97 kB[22m[1m[22m[2m │ gzip:  7.03 kB[22m
+[2mdist/[22m[36mindex.js                                                            [39m[1m[2m 25.72 kB[22m[1m[22m[2m │ gzip:  8.37 kB[22m
+[2mdist/[22m[36mSelect-DszwhrMU.js                                                  [39m[1m[2m 29.43 kB[22m[1m[22m[2m │ gzip:  8.63 kB[22m
+[2mdist/[22m[36mi18n\phones\metadata\countries.js                                   [39m[1m[2m 33.08 kB[22m[1m[22m[2m │ gzip:  6.64 kB[22m
+[2mdist/[22m[36mi18n\phones\functions.js                                            [39m[1m[2m 33.78 kB[22m[1m[22m[2m │ gzip: 10.63 kB[22m
+[2mdist/[22m[36mindex-DY5kqXFK.js                                                   [39m[1m[2m 34.34 kB[22m[1m[22m[2m │ gzip:  9.24 kB[22m
+[2mdist/[22m[36mDropdown-Bm6tZh8X.js                                                [39m[1m[2m 35.59 kB[22m[1m[22m[2m │ gzip:  8.95 kB[22m
+[2mdist/[22m[36mDrawer-BfSn1_n4.js                                                  [39m[1m[2m 37.71 kB[22m[1m[22m[2m │ gzip: 10.36 kB[22m
+[2mdist/[22m[36mResizable-D57XdjEw.js                                               [39m[1m[2m 38.70 kB[22m[1m[22m[2m │ gzip: 11.12 kB[22m
+[2mdist/[22m[36mindex-DFAu32OI.js                                                   [39m[1m[2m 41.68 kB[22m[1m[22m[2m │ gzip: 12.81 kB[22m
+[2mdist/[22m[36mindex-Bq-8z8sG.js                                                   [39m[1m[2m 42.45 kB[22m[1m[22m[2m │ gzip:  9.29 kB[22m
+[2mdist/[22m[36mSVGVisualElement-Cc9ruUcn.js                                        [39m[1m[2m 50.95 kB[22m[1m[22m[2m │ gzip: 17.06 kB[22m
+[2mdist/[22m[36mNoData-GpGWMqwn.js                                                  [39m[1m[2m 55.45 kB[22m[1m[22m[2m │ gzip: 14.63 kB[22m
+[2mdist/[22m[36mbundle-mjs-LL9626Nh.js                                              [39m[1m[2m 58.10 kB[22m[1m[22m[2m │ gzip: 10.20 kB[22m
+[2mdist/[22m[36mmotion-CInqouOL.js                                                  [39m[1m[2m 76.73 kB[22m[1m[22m[2m │ gzip: 21.24 kB[22m
+[2mdist/[22m[36mindex-FO9Ud3T3.js                                                   [39m[1m[2m166.54 kB[22m[1m[22m[2m │ gzip: 35.81 kB[22m
+[2mdist/[22m[36mcomponents\ScrollImage\index.js                                     [39m[1m[2m167.86 kB[22m[1m[22m[2m │ gzip: 54.22 kB[22m
+[vite:dts] Outside emitted: C:/Users/pol.gubau/dev/mine/ui/pol-ui/packages/ui/scripts/generate-docs.d.ts
+[vite:dts] Outside emitted: C:/Users/pol.gubau/dev/mine/ui/pol-ui/packages/ui/scripts/generate-exports.d.ts
+[vite:dts] Outside emitted: C:/Users/pol.gubau/dev/mine/ui/pol-ui/packages/ui/scripts/parse-typedoc.d.ts
+[vite:dts] Declaration files built in 14132ms.
+
+[32m✓ built in 21.29s[39m
+
+> pol-ui@1.2.1 type-docs C:\Users\pol.gubau\dev\mine\ui\pol-ui\packages\ui
+> typedoc && pnpm parse-docs
+
+[96m./src/types/enums.ts[0m:[93m6[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m6[0m     * @name GetValuesEnum
+
+[96m./src/types/enums.ts[0m:[93m7[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m7[0m     * @description Helper type to get the values of an enum dynamically
+
+[96m./src/types/enums.ts[0m:[93m13[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m13[0m     * @name MainSizesEnum
+
+[96m./src/types/enums.ts[0m:[93m14[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m14[0m     * @description Enum for the different sizes of the components
+
+[96m./src/types/enums.ts[0m:[93m26[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m26[0m       * @name ExtraSmall
+
+[96m./src/types/enums.ts[0m:[93m27[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m27[0m       * @description Extra small size for the components
+
+[96m./src/types/enums.ts[0m:[93m34[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m34[0m       * @name Small
+
+[96m./src/types/enums.ts[0m:[93m35[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m35[0m       * @description Small size for the components
+
+[96m./src/types/enums.ts[0m:[93m42[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m42[0m       * @name Medium
+
+[96m./src/types/enums.ts[0m:[93m43[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m43[0m       * @description Medium size for the components
+
+[96m./src/types/enums.ts[0m:[93m50[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m50[0m       * @name Large
+
+[96m./src/types/enums.ts[0m:[93m51[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m51[0m       * @description Large size for the components
+
+[96m./src/types/enums.ts[0m:[93m58[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m58[0m       * @name ExtraLarge
+
+[96m./src/types/enums.ts[0m:[93m59[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m59[0m       * @description Extra large size for the components
+
+[96m./src/types/enums.ts[0m:[93m67[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m67[0m     * @name SizesEnum
+
+[96m./src/types/enums.ts[0m:[93m68[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m68[0m     * @description Enum for the different sizes of the components including the main sizes
+
+[96m./src/types/enums.ts[0m:[93m88[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m88[0m       * @name 2xl
+
+[96m./src/types/enums.ts[0m:[93m89[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m89[0m       * @description 2 extra large size for the components
+
+[96m./src/types/enums.ts[0m:[93m96[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m96[0m       * @name 3xl
+
+[96m./src/types/enums.ts[0m:[93m97[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m97[0m       * @description 3 extra large size for the components
+
+[96m./src/types/enums.ts[0m:[93m104[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m104[0m       * @name 4xl
+
+[96m./src/types/enums.ts[0m:[93m105[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m105[0m       * @description 4 extra large size for the components
+
+[96m./src/types/enums.ts[0m:[93m112[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m112[0m       * @name 5xl
+
+[96m./src/types/enums.ts[0m:[93m113[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m113[0m       * @description 5 extra large size for the components
+
+[96m./src/types/enums.ts[0m:[93m120[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m120[0m       * @name 6xl
+
+[96m./src/types/enums.ts[0m:[93m121[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m121[0m       * @description 6 extra large size for the components
+
+[96m./src/types/enums.ts[0m:[93m128[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m128[0m       * @name 7xl
+
+[96m./src/types/enums.ts[0m:[93m129[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m129[0m       * @description 7 extra large size for the components
+
+[96m./src/types/enums.ts[0m:[93m137[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m137[0m     * @name RoundedSizesEnum
+
+[96m./src/types/enums.ts[0m:[93m138[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m138[0m     * @description Enum for the different rounded sizes of the components including full and none
+
+[96m./src/types/enums.ts[0m:[93m149[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m149[0m       * @name 2xl
+
+[96m./src/types/enums.ts[0m:[93m150[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m150[0m       * @description 2 extra large rounded size for the components
+
+[96m./src/types/enums.ts[0m:[93m157[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m157[0m       * @name 3xl
+
+[96m./src/types/enums.ts[0m:[93m158[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m158[0m       * @description 3 extra large rounded size for the components
+
+[96m./src/types/enums.ts[0m:[93m165[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m165[0m       * @name Full
+
+[96m./src/types/enums.ts[0m:[93m166[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m166[0m       * @description Full rounded size for the components
+
+[96m./src/types/enums.ts[0m:[93m173[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m173[0m       * @name None
+
+[96m./src/types/enums.ts[0m:[93m174[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m174[0m       * @description No rounded size for the components
+
+[96m./src/types/enums.ts[0m:[93m182[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m182[0m     * @name BooleanEnum
+
+[96m./src/types/enums.ts[0m:[93m183[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m183[0m     * @description Enum for booleans, on and off states
+
+[96m./src/types/enums.ts[0m:[93m195[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m195[0m     * @name StateColorsEnum
+
+[96m./src/types/enums.ts[0m:[93m196[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m196[0m     * @description Enum for the different state colors
+
+[96m./src/types/enums.ts[0m:[93m211[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m211[0m       * @description Color for giving information to the user
+
+[96m./src/types/enums.ts[0m:[93m219[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m219[0m       * @description Color for expressing error states
+
+[96m./src/types/enums.ts[0m:[93m227[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m227[0m       * @description Color for expressing success states
+
+[96m./src/types/enums.ts[0m:[93m235[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m235[0m       * @description Color for expressing warning states
+
+[96m./src/types/enums.ts[0m:[93m243[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m243[0m     * @name BrandColorsEnum
+
+[96m./src/types/enums.ts[0m:[93m244[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m244[0m     * @description Enum for the different brand colors
+
+[96m./src/types/enums.ts[0m:[93m255[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m255[0m       * @description Primary color for the brand
+
+[96m./src/types/enums.ts[0m:[93m263[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m263[0m       * @description Secondary color for the brand, also used for backgrounds, etc.
+
+[96m./src/types/enums.ts[0m:[93m271[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m271[0m     * @name HeadingLevelEnum
+
+[96m./src/types/enums.ts[0m:[93m272[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m272[0m     * @description Enum for the different heading levels
+
+[96m./src/types/enums.ts[0m:[93m292[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m292[0m       * @description The master title of the page, maximum one per page and 150 characters maximum to avoid SEO problems
+
+[96m./src/types/enums.ts[0m:[93m301[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m301[0m       * @description Main titles of the page, multiple but not too many to avoid SEO problems
+
+[96m./src/types/enums.ts[0m:[93m310[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m310[0m       * @description Subtitles of the page, you can use some to structure the content
+
+[96m./src/types/enums.ts[0m:[93m319[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m319[0m       * @description Subtitles of the page, usable to structure the content and to separate sections
+
+[96m./src/types/enums.ts[0m:[93m328[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m328[0m       * @description Subtitles of the page, usable to structure the content and to separate small sections
+
+[96m./src/types/enums.ts[0m:[93m337[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m337[0m       * @description Small subtitles, usable to structure the content and to separate small sections under a h5
+
+[96m./src/types/enums.ts[0m:[93m346[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m346[0m     * @name ColorsEnum
+
+[96m./src/types/enums.ts[0m:[93m347[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m347[0m     * @description Enum for the different colors, merging state and brand colors
+
+[96m./src/types/enums.ts[0m:[93m353[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m353[0m     * @name TriggerReasonEnum
+
+[96m./src/types/enums.ts[0m:[93m354[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m354[0m     * @description Enum for the different trigger reasons, hover and click
+
+[96m./src/types/enums.ts[0m:[93m364[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m364[0m       * @name Hover
+
+[96m./src/types/enums.ts[0m:[93m365[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m365[0m       * @description Hover trigger
+
+[96m./src/types/enums.ts[0m:[93m371[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m371[0m       * @name Click
+
+[96m./src/types/enums.ts[0m:[93m372[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m372[0m       * @description Click trigger
+
+[96m./src/types/enums.ts[0m:[93m380[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m380[0m     * @name DirectionEnum
+
+[96m./src/types/enums.ts[0m:[93m381[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m381[0m     * @description Enum for the different directions, top, right, bottom and left
+
+[96m./src/types/enums.ts[0m:[93m402[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m402[0m     * @name AlignEnum
+
+[96m./src/types/enums.ts[0m:[93m403[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m403[0m     * @description Enum for the different alignments, start, center and end
+
+[96m./src/types/enums.ts[0m:[93m417[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m417[0m     * @name DirEnum
+
+[96m./src/types/enums.ts[0m:[93m418[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m418[0m     * @description Enum for the different directions, rtl, ltr and auto
+
+[96m./src/types/types.ts[0m:[93m33[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m33[0m     * @name IBoolean
+
+[96m./src/types/types.ts[0m:[93m34[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m34[0m     * @description Type for booleans, on and off states
+
+[96m./src/types/types.ts[0m:[93m40[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m40[0m     * @name StateColors
+
+[96m./src/types/types.ts[0m:[93m41[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m41[0m     * @description Type for the different state colors
+
+[96m./src/types/types.ts[0m:[93m47[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m47[0m     * @name BrandColors
+
+[96m./src/types/types.ts[0m:[93m48[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m48[0m     * @description Type for the different brand colors
+
+[96m./src/types/types.ts[0m:[93m54[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m54[0m     * @name ColorsType
+
+[96m./src/types/types.ts[0m:[93m55[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m55[0m     * @description Type for the different colors, including state and brand colors
+
+[96m./src/types/types.ts[0m:[93m61[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m61[0m     * @name Colors
+
+[96m./src/types/types.ts[0m:[93m62[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m62[0m     * @description Type for the different colors, including state and brand colors, and custom colors if provided by the user
+
+[96m./src/types/types.ts[0m:[93m69[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m69[0m     * @name HeadingLevel
+
+[96m./src/types/types.ts[0m:[93m70[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m70[0m     * @description Type for the different heading levels, from h1 to h6
+
+[96m./src/types/types.ts[0m:[93m76[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m76[0m     * @name Positions
+
+[96m./src/types/types.ts[0m:[93m77[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m77[0m     * @description Type for the different positions, from top-left to bottom-right, and center, center-left, center-right, top-center and bottom-center
+
+[96m./src/types/types.ts[0m:[93m79[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @alias
+
+[47m[30m79[0m     * @alias PositionsEnum
+
+[96m./src/types/types.ts[0m:[93m96[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m96[0m     * @name MainSizes
+
+[96m./src/types/types.ts[0m:[93m97[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m97[0m     * @description Type for the main different sizes, from xs to xl
+
+[96m./src/types/types.ts[0m:[93m105[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m105[0m     * @name MainSizesElastic
+
+[96m./src/types/types.ts[0m:[93m106[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m106[0m     * @description Type for the main different sizes, from xs to xl, it also includes any value provided by the user
+
+[96m./src/types/types.ts[0m:[93m114[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m114[0m     * @name Sizes
+
+[96m./src/types/types.ts[0m:[93m115[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m115[0m     * @description Type for the different sizes, from xs to 7xl, dynamic from the SizesEnum enum
+
+[96m./src/types/types.ts[0m:[93m122[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m122[0m     * @name RoundedSizes
+
+[96m./src/types/types.ts[0m:[93m123[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m123[0m     * @description Type for the different rounded sizes, from xs to 7xl, dynamic from the RoundedSizesEnum enum
+
+[96m./src/types/types.ts[0m:[93m130[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m130[0m     * @name RoundedSizesTypes
+
+[96m./src/types/types.ts[0m:[93m131[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m131[0m     * @description Type for the different rounded sizes, from xs to 7xl, dynamic from the RoundedSizesEnum enum
+
+[96m./src/types/types.ts[0m:[93m139[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m139[0m     * @name RoundedSizesElastic
+
+[96m./src/types/types.ts[0m:[93m140[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m140[0m     * @description Type for the different rounded sizes, from xs to 7xl, dynamic from the RoundedSizesEnum enum, it also includes any value provided by the user
+
+[96m./src/types/types.ts[0m:[93m151[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m151[0m     * @name ContentPositions
+
+[96m./src/types/types.ts[0m:[93m152[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m152[0m     * @description Interface for the different content positions
+
+[96m./src/types/types.ts[0m:[93m160[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m160[0m     * @name TriggerReason
+
+[96m./src/types/types.ts[0m:[93m161[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m161[0m     * @description Type for the different trigger reasons, from click to hover, dynamic from the TriggerReasonEnum enum
+
+[96m./src/types/types.ts[0m:[93m168[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m168[0m     * @name Direction
+
+[96m./src/types/types.ts[0m:[93m169[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m169[0m     * @description Type for the different directions, from top to bottom, dynamic from the DirectionEnum enum
+
+[96m./src/types/types.ts[0m:[93m231[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m231[0m     * @name OnOff
+
+[96m./src/types/types.ts[0m:[93m232[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m232[0m     * @description Type for booleans, on and off states
+
+[96m./src/i18n/Languages.tsx[0m:[93m7[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m7[0m     * @name languages
+
+[96m./src/i18n/Languages.tsx[0m:[93m8[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m8[0m     * @description language object describes the information for each country and language, user in the interface will choose between languages.
+
+[96m./src/i18n/language-packs/spanish-pack.ts[0m:[93m7[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m7[0m     * @description Spanish languages pack for all the countries that speak Spanish
+
+[96m./src/helpers/ListTypes/ListTypes.tsx[0m:[93m2[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m2[0m     * @name ListTypes
+
+[96m./src/helpers/ListTypes/ListTypes.tsx[0m:[93m3[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m3[0m     * @description ListTypes is a generic type that takes an object and returns a list of types
+
+[96m./src/helpers/color-to-tailwind/colorToTailwind.ts[0m:[93m5[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m5[0m     * @name colorToTailwind
+
+[96m./src/helpers/color-to-tailwind/colorToTailwind.ts[0m:[93m6[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m6[0m     * @description colorToTailwind function takes a color from the Colors enum and generates a corresponding Tailwind CSS class for the ripple effect. It switches on the provided color and returns the appropriate Tailwind CSS class based on the color type. If the color is not recognized, it defaults to the primary color. This function ensures consistency in applying ripple effects based on predefined colors in the application.
+
+[96m./src/helpers/encryption/encryption.ts[0m:[93m7[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m7[0m     * @name encrypt
+
+[96m./src/helpers/encryption/encryption.ts[0m:[93m8[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m8[0m     * @description Encrypts a text using a key
+
+[96m./src/helpers/encryption/encryption.ts[0m:[93m23[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m23[0m     * @name decrypt
+
+[96m./src/helpers/encryption/encryption.ts[0m:[93m24[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m24[0m     * @description Decrypts an encrypted text
+
+[96m./src/helpers/isTouchDevice/isTouchDevice.ts[0m:[93m2[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m2[0m     * @name isTouchDevice
+
+[96m./src/helpers/isTouchDevice/isTouchDevice.ts[0m:[93m3[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m3[0m     * @description Checks if the current device is a touch device
+
+[96m./src/helpers/px/px.ts[0m:[93m2[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m2[0m     * @name px
+
+[96m./src/helpers/px/px.ts[0m:[93m3[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m3[0m     * @description Converts the specified number to a pixel string
+
+[96m./src/helpers/text-transform/text-transform.ts[0m:[93m111[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m111[0m     * @name randomString
+
+[96m./src/helpers/text-transform/text-transform.ts[0m:[93m112[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m112[0m     * @description Generates a random string of a specified length.
+
+[96m./src/helpers/text-transform/text-transform.ts[0m:[93m115[0m:[93m12[0m - [93m[warning][0m The first line of an example tag will be taken literally as the example name, and should only contain text
+
+[47m[30m115[0m     * @example ```javascript
+
+[96m./src/helpers/text-transform/text-transform.ts[0m:[93m134[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m134[0m     * @name lowerAndNoSpace
+
+[96m./src/helpers/text-transform/text-transform.ts[0m:[93m135[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m135[0m     * @description Converts a string to lowercase and removes all whitespace.
+
+[96m./src/helpers/text-transform/text-transform.ts[0m:[93m138[0m:[93m12[0m - [93m[warning][0m The first line of an example tag will be taken literally as the example name, and should only contain text
+
+[47m[30m138[0m     * @example ```javascript
+
+[96m./src/providers/PoluiProvider/PoluiProvider.tsx[0m:[93m15[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m15[0m     * @name ThemeProps
+
+[96m./src/providers/PoluiProvider/PoluiProvider.tsx[0m:[93m16[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m16[0m     * @description Interface to define the props of the PoluiProvider theme component
+
+[96m./src/providers/PoluiProvider/PoluiProvider.tsx[0m:[93m27[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m27[0m     * @name ProviderProps
+
+[96m./src/providers/PoluiProvider/PoluiProvider.tsx[0m:[93m28[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m28[0m     * @description Interface to define the props of the PoluiProvider component
+
+[96m./src/providers/PoluiProvider/PoluiProvider.tsx[0m:[93m53[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m53[0m     * @name PoluiProvider
+
+[96m./src/providers/PoluiProvider/PoluiProvider.tsx[0m:[93m54[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m54[0m     * @description The PoluiProvider component is a wrapper component that provides the theme to all the components in the Polui library. It also initializes the theme mode and the custom theme if provided.
+
+[96m./src/providers/PoluiProvider/PoluiTheme.ts[0m:[93m59[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m59[0m     * @name PoluiTheme
+
+[96m./src/providers/PoluiProvider/PoluiTheme.ts[0m:[93m60[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m60[0m     * @description Interface for the PoluiTheme, it includes all the different components themes, and the different colors, sizes, etc. that are used in the library
+
+[96m./src/components/Input/theme.ts[0m:[93m4[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m4[0m     * @name InputTheme
+
+[96m./src/components/Input/theme.ts[0m:[93m5[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m5[0m     * @description Interface for the theme of the Input component
+
+[96m./src/hooks/use-click-outside/use-click-outside.ts[0m:[93m7[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m7[0m     * @name useClickOutside
+
+[96m./src/hooks/use-click-outside/use-click-outside.ts[0m:[93m8[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m8[0m     * @description A custom hook that calls a callback function when a click or touch event occurs outside of a specified element.
+
+[96m./src/hooks/use-click-outside/use-click-outside.ts[0m:[93m9[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @fileoverview
+
+[47m[30m9[0m     * @fileoverview This file contains the source code for the useOnClickOutside hook.
+
+[96m./src/hooks/use-debounce/use-debounce.ts[0m:[93m6[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m6[0m     * @name useDebounce
+
+[96m./src/hooks/use-debounce/use-debounce.ts[0m:[93m7[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m7[0m     * @description Debounce a value for a given delay
+
+[96m./src/hooks/use-local-storage/use-local-storage.ts[0m:[93m19[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m19[0m     * @name useLocalStorage
+
+[96m./src/hooks/use-local-storage/use-local-storage.ts[0m:[93m20[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m20[0m     * @description A hook to use localStorage with ease and encriptation
+
+[96m./src/hooks/use-ripple/use-ripple.tsx[0m:[93m71[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m71[0m     * @name useRipple
+
+[96m./src/hooks/use-ripple/use-ripple.tsx[0m:[93m72[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m72[0m     * @description Creates a ripple hook with the specified options
+
+[96m./src/hooks/use-ripple/use-ripple.tsx[0m:[93m9[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m9[0m     * @name Options
+
+[96m./src/hooks/use-ripple/use-ripple.tsx[0m:[93m10[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m10[0m     * @description The options to use for the ripple
+
+[96m./src/hooks/use-ripple/use-ripple.tsx[0m:[93m170[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m170[0m     * @name customRipple
+
+[96m./src/hooks/use-ripple/use-ripple.tsx[0m:[93m171[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m171[0m     * @description Creates a custom ripple hook with the specified options
+
+[96m./src/hooks/use-text-selection/use-text-selection.ts[0m:[93m6[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m6[0m     * @name useTextSelection
+
+[96m./src/hooks/use-text-selection/use-text-selection.ts[0m:[93m7[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m7[0m     * @description Hook to get the current text selection in the document.
+
+[96m./src/hooks/use-theme-mode.ts[0m:[93m14[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m14[0m     * @name ThemeModeEnum
+
+[96m./src/hooks/use-theme-mode.ts[0m:[93m15[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m15[0m     * @description Enum for the different theme modes
+
+[96m./src/hooks/use-theme-mode.ts[0m:[93m27[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m27[0m     * @name ThemeMode
+
+[96m./src/hooks/use-theme-mode.ts[0m:[93m28[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m28[0m     * @description Type for the different theme modes
+
+[96m./src/components/Avatar/Avatar.tsx[0m:[93m36[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m36[0m     * @name Avatar
+
+[96m./src/components/Avatar/Avatar.tsx[0m:[93m37[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m37[0m     * @description The Avatar component is used to display a user's profile picture or initials, and can also display a status indicator or a counter. Usefull in a chat application, a social network, a forum...
+
+[96m./src/components/Avatar/AvatarTypes.ts[0m:[93m13[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m13[0m     * @name AvatarStatus
+
+[96m./src/components/Avatar/AvatarTypes.ts[0m:[93m14[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m14[0m     * @description Avatar status types for indicating user status
+
+[96m./src/components/Badge/badge.tsx[0m:[93m20[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m20[0m     * @name Badge
+
+[96m./src/components/Breadcrumb/Breadcrumb.tsx[0m:[93m26[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m26[0m     * @name Breadcrumb
+
+[96m./src/components/Breadcrumb/Breadcrumb.tsx[0m:[93m27[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m27[0m     * @description The Breadcrumb component is used to display the current location within a hierarchy of content and provide a way to navigate back to the root of the hierarchy.
+
+[96m./src/components/Breadcrumb/BreadcrumbItem.tsx[0m:[93m23[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m23[0m     * @name Breadcrumb.Item
+
+[96m./src/components/Breadcrumb/BreadcrumbItem.tsx[0m:[93m24[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m24[0m     * @description A Breadcrumb.Item component that can be used to display content in a breadcrumb-like style.
+
+[96m./src/components/BubbleHeading/BubbleHeading.tsx[0m:[93m27[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m27[0m     * @description The BubbleHeading component is used to create an important text that changes it's weight when hovered over with a smooth transition. Useful for titles and headings.
+
+[96m./src/components/Card/Card.tsx[0m:[93m19[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m19[0m     * @name Card
+
+[96m./src/components/Card/Card.tsx[0m:[93m20[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m20[0m     * @description A Card component that can be used to display content in a card-like style. Usefull in a blog, a social network, a forum... It can be horizontal or vertical and can contain an image.
+
+[96m./src/components/Card/Card.tsx[0m:[93m36[0m:[93m12[0m - [93m[warning][0m The first line of an example tag will be taken literally as the example name, and should only contain text
+
+[47m[30m36[0m     * @example ```
+
+[96m./src/components/CardStack/CardStack.tsx[0m:[93m113[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m113[0m     * @name CardStack
+
+[96m./src/components/CardStack/CardStack.tsx[0m:[93m114[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m114[0m     * @description The CardStack component is useful to create a stack of cards, like a tinder card stack. Interesting for a dating app, a social network, a forum...
+
+[96m./src/components/CardStack/CardStack.tsx[0m:[93m20[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m20[0m     * @name CardStackItem
+
+[96m./src/components/CardStack/CardStack.tsx[0m:[93m21[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m21[0m     * @description The CardStackItem component is used to create a card stack item
+
+[96m./src/components/Checkbox/Checkbox.tsx[0m:[93m108[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m108[0m     * @name Checkbox
+
+[96m./src/components/Checkbox/Checkbox.tsx[0m:[93m110[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m110[0m     * @description Checkbox component for user input, it can be used to select multiple options from a list. It can be used in forms, surveys, etc.
+
+[96m./src/components/Checkbox/props.ts[0m:[93m7[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m7[0m     * @name CheckboxProps
+
+[96m./src/components/Checkbox/props.ts[0m:[93m8[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m8[0m     * @description Props for the Checkbox component.
+
+[96m./src/components/Checkbox/props.ts[0m:[93m14[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m14[0m       * @name color
+
+[96m./src/components/Checkbox/props.ts[0m:[93m15[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m15[0m       * @description Optional prop to specify the color of the checkbox.
+
+[96m./src/components/Checkbox/props.ts[0m:[93m29[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m29[0m       * @name label
+
+[96m./src/components/Checkbox/props.ts[0m:[93m30[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m30[0m       * @description Optional prop to add a label to the checkbox.
+
+[96m./src/components/Chip/chip.tsx[0m:[93m40[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m40[0m     * @description The chip component is used to display information in a compact way and can be used to trigger actions when clicked or to display actions when hovered over. It can be used to display tags, categories, actions...
+
+[96m./src/components/ContainerScroll/ContainerScroll.tsx[0m:[93m26[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m26[0m     * @description The ContainerScroll component is used to create a container that will rotate and scale the content based on the scroll position
+
+[96m./src/components/Copyright/Copyright.tsx[0m:[93m10[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m10[0m     * @name Copyright
+
+[96m./src/components/Copyright/Copyright.tsx[0m:[93m11[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m11[0m     * @description Functional component for rendering copyright information, with an optional link to the author's website.
+
+[96m./src/components/Copyright/props.ts[0m:[93m6[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m6[0m     * @name CopyrightProps
+
+[96m./src/components/Copyright/props.ts[0m:[93m7[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m7[0m     * @description Props for the Copyright component.
+
+[96m./src/components/Copyright/props.ts[0m:[93m14[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m14[0m       * @name theme
+
+[96m./src/components/Copyright/props.ts[0m:[93m15[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m15[0m       * @description Optional prop to change the theme of the copyright text.
+
+[96m./src/components/Copyright/props.ts[0m:[93m26[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m26[0m       * @name year
+
+[96m./src/components/Copyright/props.ts[0m:[93m27[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m27[0m       * @description Optional prop to specify the year for the copyright.
+
+[96m./src/components/DarkThemeToggle/DarkThemeToggle.tsx[0m:[93m17[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m17[0m     * @name DarkThemeToggle
+
+[96m./src/components/DarkThemeToggle/DarkThemeToggle.tsx[0m:[93m18[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m18[0m     * @description The DarkThemeToggle component is used to toggle between dark and light mode, you can assign your own icons or use the default ones (sun and moon)
+
+[96m./src/components/Input/props.ts[0m:[93m138[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m138[0m       * @name error
+
+[96m./src/components/Input/props.ts[0m:[93m139[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m139[0m       * @description Optional prop to specify if the input has an error.
+
+[96m./src/components/Input/props.ts[0m:[93m28[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m28[0m       * @name color
+
+[96m./src/components/Input/props.ts[0m:[93m29[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m29[0m       * @description Optional prop to specify the color of the input.
+
+[96m./src/components/Input/props.ts[0m:[93m65[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m65[0m       * @name size
+
+[96m./src/components/Input/props.ts[0m:[93m66[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m66[0m       * @description Optional prop to specify the size of the input.
+
+[96m./src/components/Input/props.ts[0m:[93m41[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m41[0m       * @name helperText
+
+[96m./src/components/Input/props.ts[0m:[93m42[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m42[0m       * @description Optional prop to provide helper text for the input.
+
+[96m./src/components/Input/props.ts[0m:[93m53[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m53[0m       * @name icon
+
+[96m./src/components/Input/props.ts[0m:[93m54[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m54[0m       * @description Optional prop to add a component to the right of the input. Recommended to icons
+
+[96m./src/components/Input/props.ts[0m:[93m114[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m114[0m       * @name innerClassName
+
+[96m./src/components/Input/props.ts[0m:[93m115[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m115[0m       * @description Optional prop to add additional classes to the inner input container.
+
+[96m./src/components/Input/props.ts[0m:[93m102[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m102[0m       * @name labelClassName
+
+[96m./src/components/Input/props.ts[0m:[93m103[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m103[0m       * @description Optional prop to add additional classes to the label.
+
+[96m./src/components/Input/props.ts[0m:[93m156[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m156[0m       * @description Callback function that is triggered when the input value has stopped changing
+
+[96m./src/components/Input/props.ts[0m:[93m161[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m161[0m       * @description Callback function that is triggered when the input value changes
+
+[96m./src/components/Datepicker/Datepicker.tsx[0m:[93m90[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m90[0m     * @name Datepicker
+
+[96m./src/components/Datepicker/Datepicker.tsx[0m:[93m92[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m92[0m     * @description The Datepicker component is used to select a date, it can be used as a popup or inline. You can also set the default date, min and max date, and the language.
+
+[96m./src/components/Input/props.ts[0m:[93m90[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m90[0m       * @name label
+
+[96m./src/components/Input/props.ts[0m:[93m91[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m91[0m       * @description Optional prop to add a label to the input.
+
+[96m./src/components/Input/props.ts[0m:[93m78[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m78[0m       * @name theme
+
+[96m./src/components/Input/props.ts[0m:[93m79[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m79[0m       * @description Optional prop to change the theme of the input.
+
+[96m./src/components/DebouncedInput/DebouncedInput.tsx[0m:[93m17[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m17[0m     * @description The DebouncedInput component is used to create an input that debounces the value before calling the onChange callback, useful for search inputs
+
+[96m./src/components/DirectionHover/DirectionHover.tsx[0m:[93m17[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m17[0m     * @name DirectionHover
+
+[96m./src/components/DirectionHover/DirectionHover.tsx[0m:[93m18[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m18[0m     * @description The DirectionHover component is used to display a hover effect with a direction, useful for displaying a list of items in a small space.
+
+[96m./src/components/Divider/Divider.tsx[0m:[93m26[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m26[0m     * @name Divider
+
+[96m./src/components/Divider/Divider.tsx[0m:[93m27[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m27[0m     * @description The Divider component is used to separate content within a section or a page, and it is used to create a visual separation between different sections of a page.
+
+[96m./src/components/Dropzone/Dropzone.tsx[0m:[93m38[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m38[0m     * @description The Dropzone component is used to create a drag and drop area for files, where the user can drop files to upload them.
+
+[96m./src/components/FileInput/FileInput.tsx[0m:[93m19[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m19[0m     * @name FileInput
+
+[96m./src/components/FileInput/FileInput.tsx[0m:[93m20[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m20[0m     * @description The FileInput component is used to upload files from the user's device, useful in forms where you need to upload files as images, documents, etc.
+
+[96m./src/components/FollowerPointer/FollowerPointer.tsx[0m:[93m25[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m25[0m     * @name FollowerPointer
+
+[96m./src/components/FollowerPointer/FollowerPointer.tsx[0m:[93m26[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m26[0m     * @description The FollowerPointer component is used to display a pointer that follows the mouse and displays content, such as a tooltip or a popover. It is a decorative component that is used to enhance the user experience in certain scenarios.
+
+[96m./src/components/Footer/Footer.tsx[0m:[93m18[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m18[0m     * @name Footer
+
+[96m./src/components/Footer/Footer.tsx[0m:[93m19[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m19[0m     * @description The Footer component is used to display the footer of a page, it is usually used to display the author, the date, and the contact information of the page.
+
+[96m./src/components/Hamburger/Hamburger.tsx[0m:[93m34[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m34[0m     * @name Hamburger
+
+[96m./src/components/Hamburger/Hamburger.tsx[0m:[93m35[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m35[0m     * @description The Hamburger component is used to display a Hamburger icon that can be opened or closed, it can be used to display a menu or to trigger an action.
+
+[96m./src/components/HelperText/HelperText.tsx[0m:[93m18[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m18[0m     * @name HelperText
+
+[96m./src/components/HelperText/HelperText.tsx[0m:[93m19[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m19[0m     * @description The HelperText component is used to display a helper text to the user in a form or any other component that needs it.
+
+[96m./src/components/IconButton/IconButton.tsx[0m:[93m18[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m18[0m     * @name IconButton
+
+[96m./src/components/IconButton/IconButton.tsx[0m:[93m20[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m20[0m     * @description Base component for displaying icons as button with ripple effect, tooltip, and loading state
+
+[96m./src/components/ImageTrail/ImageTrail.tsx[0m:[93m24[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m24[0m     * @description The ImageTrail component is used to create a trail of images that follow the mouse, it is a decorative component that can be used to create a visual effect on the page, interesting for landing pages and other creative uses.
+
+[96m./src/components/Input/Input.tsx[0m:[93m10[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m10[0m     * @name Input
+
+[96m./src/components/Input/props.ts[0m:[93m167[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m167[0m     * @name InputProps
+
+[96m./src/components/Input/props.ts[0m:[93m168[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m168[0m     * @description Props for the Input component.
+
+[96m./src/components/Input/props.ts[0m:[93m6[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m6[0m     * @name InputLabelPositionsEnum
+
+[96m./src/components/Input/props.ts[0m:[93m7[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m7[0m     * @description Enum for different label positions in the BaseInputs component.
+
+[96m./src/components/Input/props.ts[0m:[93m16[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m16[0m     * @name InputLabelPositions
+
+[96m./src/components/Input/props.ts[0m:[93m17[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m17[0m     * @description Type for label positions in the BaseInputs component.
+
+[96m./src/components/Input/props.ts[0m:[93m23[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m23[0m     * @name BaseInputsProps
+
+[96m./src/components/Input/props.ts[0m:[93m24[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m24[0m     * @description Base props for input components.
+
+[96m./src/components/Input/props.ts[0m:[93m126[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m126[0m       * @name required
+
+[96m./src/components/Input/props.ts[0m:[93m127[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m127[0m       * @description Optional prop to specify if the input is required.
+
+[96m./src/components/Input/theme.ts[0m:[93m163[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m163[0m     * @name InputFieldTheme
+
+[96m./src/components/Input/theme.ts[0m:[93m164[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m164[0m     * @description Interface for the theme of the field part of the Input component
+
+[96m./src/components/Input/theme.ts[0m:[93m127[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m127[0m     * @name InputProps
+
+[96m./src/components/Input/theme.ts[0m:[93m128[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m128[0m     * @description Interface for the icons of the Input component
+
+[96m./src/components/Input/theme.ts[0m:[93m141[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m141[0m     * @name InputInputTheme
+
+[96m./src/components/Input/theme.ts[0m:[93m142[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m142[0m     * @description Interface for the theme of the input part of the Input component
+
+[96m./src/components/Kanban/Column.tsx[0m:[93m29[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @component
+
+[47m[30m29[0m     * @component
+
+[96m./src/components/Kanban/Kanban.tsx[0m:[93m49[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m49[0m     * @name Kanban
+
+[96m./src/components/Kanban/Kanban.tsx[0m:[93m50[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m50[0m     * @description The Kanban component is used to display a kanban board, it is used to display cards in columns and allows the user to drag and drop the cards between columns. It's a great way to visualize the flow of work and to see what's in progress, what's done, and what's coming up.
+
+[96m./src/components/Kbd/Kbd.tsx[0m:[93m16[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m16[0m     * @name Kbd
+
+[96m./src/components/Kbd/Kbd.tsx[0m:[93m17[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m17[0m     * @description The Kbd component is used to define keyboard input in a document, it is used to display the keyboard input in a monospaced font.
+
+[96m./src/components/Label/Label.tsx[0m:[93m20[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m20[0m     * @name Label
+
+[96m./src/components/Label/Label.tsx[0m:[93m21[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m21[0m     * @description The Label component is used to display a label to the user in a form or any other component that needs it.
+
+[96m./src/components/ListGroup/ListGroup.tsx[0m:[93m17[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m17[0m     * @name ListGroup
+
+[96m./src/components/ListGroup/ListGroup.tsx[0m:[93m18[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m18[0m     * @description The ListGroup component is used to display a list of items in a list format, it is usually used to display a list of items as buttons or links, usefull for navigation in mobile devices.
+
+[96m./src/components/Loader/Loader.tsx[0m:[93m17[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m17[0m     * @name Loader
+
+[96m./src/components/Loader/Loader.tsx[0m:[93m18[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m18[0m     * @description The Loader component is used to display a loader to the user, it is used to indicate that the page or any other component is loading.
+
+[96m./src/components/MagneticButton/MagneticButton.tsx[0m:[93m9[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m9[0m       * @name Freedom
+
+[96m./src/components/MagneticButton/MagneticButton.tsx[0m:[93m10[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m10[0m       * @description How much attracted the background will be to your cursor
+
+[96m./src/components/MagneticButton/MagneticButton.tsx[0m:[93m18[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m18[0m     * @name Magnetic Button
+
+[96m./src/components/MagneticButton/MagneticButton.tsx[0m:[93m20[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m20[0m     * @description A button attracted by your cursor.
+
+[96m./src/components/MagneticButton/MagneticButton.tsx[0m:[93m22[0m:[93m12[0m - [93m[warning][0m The first line of an example tag will be taken literally as the example name, and should only contain text
+
+[47m[30m22[0m     * @example ```
+
+[96m./src/components/MultiOption/MultiOption.tsx[0m:[93m10[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m10[0m     * @name MultiOption
+
+[96m./src/components/MultiOption/MultiOption.tsx[0m:[93m11[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m11[0m     * @description A input component that merges multiple various-choice-but-select-one options into one input field.
+
+[96m./src/components/Navbar/Navbar.tsx[0m:[93m25[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m25[0m     * @name Navbar
+
+[96m./src/components/Navbar/Navbar.tsx[0m:[93m26[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m26[0m     * @description The Navbar component is used to display a navigation bar in the top of the page, it is usually used to navigate to different pages or sections of the same page.
+
+[96m./src/components/NavigationMenu/NavigationMenu.tsx[0m:[93m22[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m22[0m     * @name NavigationMenu
+
+[96m./src/components/NavigationMenu/NavigationMenu.tsx[0m:[93m23[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m23[0m     * @description Used to travel from one route to another, it is usually used to navigate to different pages or sections of the same page, it is usually used in the sidebar of a page as a main navigation system.
+
+[96m./src/components/ParallaxText/ParallaxText.tsx[0m:[93m33[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m33[0m       * @name renderedElements
+
+[96m./src/components/ParallaxText/ParallaxText.tsx[0m:[93m34[0m:[93m5[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m34[0m       * @description
+
+[96m./src/components/PerspectiveCard/PerspectiveCard.tsx[0m:[93m22[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @component
+
+[47m[30m22[0m     * @component
+
+[96m./src/components/Toggle/Toggle.tsx[0m:[93m18[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m18[0m     * @name Toggle
+
+[96m./src/components/Toggle/Toggle.tsx[0m:[93m20[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m20[0m     * @description A simple toggle component that can be used to switch between two states as a button
+
+[96m./src/components/scroll-progress/scroll-progress.tsx[0m:[93m13[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @name
+
+[47m[30m13[0m     * @name ScrollProgress
+
+[96m./src/components/scroll-progress/scroll-progress.tsx[0m:[93m15[0m:[93m3[0m - [93m[warning][0m Encountered an unknown block tag @description
+
+[47m[30m15[0m     * @description An animated bar that indicates the scroll progress of the scroll
+
+[93m[warning][0m The signature getSupportedLanguages has an @param with name "countryCodes", which was not used
+[93m[warning][0m The signature clamp has an @param with name "minimum", which was not used
+[93m[warning][0m The signature encrypt has an @param with name "text", which was not used
+[93m[warning][0m The signature isObjectLike has an @param with name "target", which was not used
+[93m[warning][0m The signature isObjectLike has an @param with name "source", which was not used
+[93m[warning][0m The signature PoluiProvider has an @param with name "{", which was not used
+[93m[warning][0m The signature useCopyToClipboard has an @param with name "isCopiedDelay", which was not used
+[93m[warning][0m The signature useCopyToClipboard has an @param with name "onCopySuccess", which was not used
+[93m[warning][0m The signature useCopyToClipboard has an @param with name "onCopyFailure", which was not used
+[93m[warning][0m The signature useCopyToClipboard has an @param with name "clearCopiedTextOnUnmount", which was not used
+[93m[warning][0m The signature Alert has an @param with name "props.additionalContent", which was not used
+[93m[warning][0m The signature Card has an @param with name "props.href,", which was not used
+[93m[warning][0m The signature Card has an @param with name "props.theme,", which was not used
+[93m[warning][0m The signature Card has an @param with name "props.childrenClass,", which was not used
+[93m[warning][0m The signature CardStackItem has an @param with name "props.position", which was not used
+[93m[warning][0m The signature Chip has an @param with name "ChipProps.as", which was not used
+[93m[warning][0m The signature Chip has an @param with name "ChipProps.children", which was not used
+[93m[warning][0m The signature Chip has an @param with name "ChipProps.label", which was not used
+[93m[warning][0m The signature Chip has an @param with name "props.onClick", which was not used
+[93m[warning][0m The signature Chip has an @param with name "ChipProps.color", which was not used
+[93m[warning][0m The signature Chip has an @param with name "ChipProps.disabled", which was not used
+[93m[warning][0m The signature Chip has an @param with name "ChipProps.rounded", which was not used
+[93m[warning][0m The signature Chip has an @param with name "ChipProps.actions", which was not used
+[93m[warning][0m The signature Chip has an @param with name "ChipProps.theme", which was not used
+[93m[warning][0m The signature Chip has an @param with name "ChipProps.className", which was not used
+[93m[warning][0m The signature Chip has an @param with name "ChipProps.elementClassName", which was not used
+[93m[warning][0m The signature Chip has an @param with name "ChipProps.textClassName", which was not used
+[93m[warning][0m The signature DirectionHover has an @param with name "props.imageUrl", which was not used
+[93m[warning][0m The signature DirectionHover has an @param with name "props.children", which was not used
+[93m[warning][0m The signature DirectionHover has an @param with name "props.childrenClassName", which was not used
+[93m[warning][0m The signature DirectionHover has an @param with name "props.speed", which was not used
+[93m[warning][0m The signature DirectionHover has an @param with name "props.imageClassName", which was not used
+[93m[warning][0m The signature DirectionHover has an @param with name "props.alt", which was not used
+[93m[warning][0m The signature DirectionHover has an @param with name "props.className", which was not used
+[93m[warning][0m The signature DirectionHover has an @param with name "props.rounded", which was not used
+[93m[warning][0m The signature DirectionHover has an @param with name "props.theme", which was not used
+[93m[warning][0m The signature TextGenerator has an @param with name "text", which was not used
+[93m[warning][0m The signature TextGenerator has an @param with name "speed", which was not used
+[93m[warning][0m The signature TextGenerator has an @param with name "delay", which was not used
+[93m[warning][0m The signature TextGenerator has an @param with name "className", which was not used
+[93m[warning][0m The signature TextGenerator has an @param with name "theme", which was not used
+[93m[warning][0m The signature ScrollProgress has an @param with name "className", which was not used
+[93m[warning][0m The signature ScrollProgress has an @param with name "options", which was not used
+[93m[warning][0m __object.variant, defined in ./src/components/Button/Button.tsx, is referenced by ButtonVariants but not included in the documentation
+[93m[warning][0m DrawerDialogWithoutChildren, defined in ./src/components/ConfirmDialog/ConfirmDialog.tsx, is referenced by ConfirmDialogProps but not included in the documentation
+[93m[warning][0m OptionalProps, defined in ./src/components/DeleteButton/DeleteButton.tsx, is referenced by DeleteButtonProps but not included in the documentation
+[93m[warning][0m FieldWithPossiblyUndefined, defined in ./src/helpers/get/get.types.ts, is referenced by Get but not included in the documentation
+[93m[warning][0m IndexedFieldWithPossiblyUndefined, defined in ./src/helpers/get/get.types.ts, is referenced by Get but not included in the documentation
+[93m[warning][0m variants, defined in ./src/components/Button/Button.tsx, is referenced by Variants but not included in the documentation
+[93m[warning][0m DatepickerContextProps, defined in ./src/components/Datepicker/DatepickerContext.tsx, is referenced by DatepickerContext but not included in the documentation
+[93m[warning][0m BaseComponentType, defined in ./src/components/Chip/chip.tsx, is referenced by ChipProps.T but not included in the documentation
+[93m[warning][0m CnFunction, defined in ./src/components/Toaster/types.ts, is referenced by PrimitiveToasterProps.cn but not included in the documentation
+[93m[warning][0m EaseString, defined in ./src/components/ScrollImage/ScrollImage.tsx, is referenced by ScrollImageProps.ease but not included in the documentation
+[93m[warning][0m Tab, defined in ./src/components/Tabs/Tabs.tsx, is referenced by TabsProps.tabs but not included in the documentation
+[93m[warning][0m DrawerContentProps, defined in ./src/components/Drawer/Drawer.tsx, is referenced by DrawerContent.defaultProps but not included in the documentation
+[93m[warning][0m KanbanDeleteCardsButtonProps, defined in ./src/components/Kanban/BurnBarrel.tsx, is referenced by KanbanDeleteCardsButton.defaultProps but not included in the documentation
+[93m[warning][0m TreeViewComponentProps, defined in ./src/components/FileTree/FileTree.tsx, is referenced by Tree.defaultProps but not included in the documentation
+[93m[warning][0m Return, defined in ./src/hooks/use-array/use-array.ts, is referenced by useArray but not included in the documentation
+[93m[warning][0m UseBooleanOutput, defined in ./src/hooks/use-boolean/use-boolean.tsx, is referenced by useBoolean but not included in the documentation
+[93m[warning][0m UseCopyToClipboard, defined in ./src/hooks/use-copy-to-clipboard/use-copy-to-clipboard.ts, is referenced by useCopyToClipboard but not included in the documentation
+[93m[warning][0m UseCounterReturn, defined in ./src/hooks/use-counter/use-counter.ts, is referenced by useCounter but not included in the documentation
+[93m[warning][0m SetValue, defined in ./src/hooks/use-local-storage/use-local-storage.ts, is referenced by useLocalStorage but not included in the documentation
+[93m[warning][0m UseStepActions, defined in ./src/hooks/use-step/use-step.ts, is referenced by useStep but not included in the documentation
+[93m[warning][0m UseTextSelectionReturn, defined in ./src/hooks/use-text-selection/use-text-selection.ts, is referenced by useTextSelection but not included in the documentation
+[93m[warning][0m AnimatedSplitTextProps, defined in ./src/components/AnimatedHeading/AnimatedHeading.tsx, is referenced by AnimatedSplitText.__namedParameters but not included in the documentation
+[93m[warning][0m CollapseButtonProps, defined in ./src/components/FileTree/components/tree-collapse-button.tsx, is referenced by CollapseButton.__namedParameters but not included in the documentation
+[93m[warning][0m CardProps, defined in ./src/components/ContainerScroll/ContainerScroll.tsx, is referenced by ContainerScrollCard.__namedParameters but not included in the documentation
+[93m[warning][0m Config, defined in ./src/helpers/cva/cva.ts, is referenced by cva.config but not included in the documentation
+[93m[warning][0m StringOrWordArray, defined in ./src/helpers/encryption/encryption.ts, is referenced by decrypt.key but not included in the documentation
+[93m[warning][0m DrawerContentProps, defined in ./src/components/DrawerArray/DrawerContent.tsx, is referenced by DrawerArrayContent.__namedParameters but not included in the documentation
+[93m[warning][0m Options, defined in ./src/helpers/fetchers/fetchData.ts, is referenced by fetchData.options but not included in the documentation
+[93m[warning][0m FolderComponentProps, defined in ./src/components/FileTree/components/folder.tsx, is referenced by Folder.__namedParameters but not included in the documentation
+[93m[warning][0m Option, defined in ./src/helpers/get-value-path/get-value-path.ts, is referenced by getValueFromPath.option but not included in the documentation
+[93m[warning][0m MessageGroupProps, defined in ./src/components/Message/Message.tsx, is referenced by MessageGroup.__namedParameters but not included in the documentation
+[93m[warning][0m TextMorphProps, defined in ./src/components/TextMorph/TextMorph.tsx, is referenced by TextMorph.__namedParameters but not included in the documentation
+[93m[warning][0m TextShimmerProps, defined in ./src/components/TextShimmer/TextShimmer.tsx, is referenced by TextShimmer.__namedParameters but not included in the documentation
+[93m[warning][0m UseClickHandlersOptions, defined in ./src/hooks/use-click-handlers/use-click-handlers.tsx, is referenced by useClickHandlers.__namedParameters but not included in the documentation
+[93m[warning][0m Handler, defined in ./src/hooks/use-click-outside/use-click-outside.ts, is referenced by useClickOutside.handler but not included in the documentation
+[93m[warning][0m UseCopyToClipboardProps, defined in ./src/hooks/use-copy-to-clipboard/use-copy-to-clipboard.ts, is referenced by useCopyToClipboard.props but not included in the documentation
+[93m[warning][0m UseMediaQueryOptions, defined in ./src/hooks/use-media-query/use-media-query.ts, is referenced by useMediaQuery.__namedParameters but not included in the documentation
+[93m[warning][0m UseMergeValueOptions, defined in ./src/hooks/use-merge-value/use-merge-value.tsx, is referenced by useMergeValue.options but not included in the documentation
+[93m[warning][0m OnReorder, defined in ./src/components/Kanban/Kanban.tsx, is referenced by KanbanColumnProps.onReorder.__type.__namedParameters but not included in the documentation
+[93m[warning][0m Props, defined in ./src/helpers/cva/cva.ts, is referenced by cva.__type.props but not included in the documentation
+[93m[warning][0m Failed to resolve link to "ComponentClass.contextType" in comment for ThemeProps.theme.__type.footer.__type.groupLink.__type.titleAs.__type.contextTypes
+[93m[warning][0m Failed to resolve link to "ComponentClass.contextType" in comment for setTheme.theme.__type.footer.__type.groupLink.__type.titleAs.__type.contextTypes
+[93m[warning][0m Failed to resolve link to "ComponentClass.contextType" in comment for FooterProps.theme.__type.groupLink.__type.titleAs.__type.contextTypes
+[93m[warning][0m Failed to resolve link to "ComponentClass.contextType" in comment for FooterLinkGroupProps.theme.__type.titleAs.__type.contextTypes
+[93m[warning][0m Failed to resolve link to "PanInfo" in comment for PerspectiveCardProps.onPan.info
+[93m[warning][0m Failed to resolve link to "PanInfo" in comment for PerspectiveCardProps.onPanStart.info
+[93m[warning][0m Failed to resolve link to "EventInfo" in comment for PerspectiveCardProps.onPanSessionStart.info
+[93m[warning][0m Failed to resolve link to "PanInfo" in comment for PerspectiveCardProps.onPanEnd.info
+[93m[warning][0m Failed to resolve link to "TapInfo" in comment for PerspectiveCardProps.onTap.info
+[93m[warning][0m Failed to resolve link to "TapInfo" in comment for PerspectiveCardProps.onTapStart.info
+[93m[warning][0m Failed to resolve link to "TapInfo" in comment for PerspectiveCardProps.onTapCancel.info
+[96m[info][0m json generated at ./api/api.json
+[93m[warning][0m Found 0 errors and 375 warnings
+
+> pol-ui@1.2.1 parse-docs C:\Users\pol.gubau\dev\mine\ui\pol-ui\packages\ui
+> node --experimental-strip-types --experimental-transform-types ./scripts/parse-typedoc.ts
+
+(node:18000) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)

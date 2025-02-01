@@ -9,7 +9,7 @@ import { useMediaQuery } from "../../../hooks";
 import { Button, type ButtonProps } from "../../Button";
 import { ExpandableButton } from "../../ExpandableButton";
 import { FocusEffect } from "../../FocusEffect";
-import { Textarea, type TextareaProps } from "../../Textarea";
+import { TextArea, type TextAreaProps } from "../../Textarea/Textarea";
 import { DropdownShortcut } from "../Dropdown";
 
 interface DropdownItemProps extends ComponentProps<typeof Item> {
@@ -125,8 +125,7 @@ const DropdownExpandable = ({
   );
 };
 
-interface DropdownExpandableTextAreaProps extends TextareaProps {
-  label?: string;
+interface DropdownExpandableTextAreaProps extends TextAreaProps {
   icon?: FC<ComponentProps<"svg">>;
   shortcut?: React.ReactNode;
   shortcutClassName?: string;
@@ -143,7 +142,7 @@ const DropdownExpandableTextArea = ({
 }: DropdownExpandableTextAreaProps) => (
   <DropdownExpandable icon={TbMessage} label="Write a comment" className={cn("py-2", className)}>
     <form className="flex flex-col gap-2 p-2 pt-1 border-b-lg">
-      <Textarea autoFocus={true} {...props} innerClassName="w-full bg-white p-2" />
+      <TextArea autoFocus={true} {...props} innerClassName="w-full bg-white p-2" />
       <nav className="flex flex-row-reverse justify-right w-full">
         <Button size={"sm"} {...button} type="submit">
           {button.label}

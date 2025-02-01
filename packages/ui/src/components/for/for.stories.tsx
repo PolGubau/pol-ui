@@ -55,7 +55,7 @@ export const Default: Story = {
   args: {
     items: fakeData,
     render: (item) => (
-      <div className="grid grid-cols-[auto,1fr] items-center gap-4 p-2">
+      <div className="grid grid-cols-[auto_1fr] items-center gap-4 p-2">
         <Avatar img={item.avatar} alt={item.company} />
         <div>
           <header className="flex items-center gap-2">

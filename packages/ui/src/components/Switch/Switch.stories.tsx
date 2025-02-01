@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import type { Colors, MainSizes } from "../../types";
 import { ColorsEnum, MainSizesEnum } from "../../types/enums";
-import { Input } from "../Input";
+import { Input } from "../Input/Input";
 import { Switch, type SwitchProps } from "./Switch";
 
 export default {
@@ -61,7 +61,7 @@ export const InForm = (): React.ReactNode => (
   <div className="flex flex-wrap gap-6">
     <form>
       <Switch checked={false} label="Enable notifications" name="notifications" onChange={console.info} />
-      <Input type="text" />
+      <Input label="text" />
     </form>
   </div>
 );

@@ -9,7 +9,9 @@ import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
 import { getTheme } from "../../theme-store";
 import type { DeepPartial } from "../../types/types";
 import { Button } from "../Button";
-import { Input, type InputProps, type InputTheme } from "../Input";
+import { Input } from "../Input/Input";
+import type { InputProps } from "../Input/props";
+import type { InputTheme } from "../Input/theme";
 import { DatepickerContext } from "./DatepickerContext";
 import { DatepickerViewsDays, type DatepickerViewsDaysTheme } from "./Views/Days";
 import { DatepickerViewsDecades, type DatepickerViewsDecadesTheme } from "./Views/Decades";
@@ -63,7 +65,8 @@ export interface DatepickerPopupTheme {
   };
 }
 
-export interface DatepickerProps extends Omit<InputProps, "theme"> {
+export interface DatepickerProps extends Omit<InputProps, "theme" | "label"> {
+  label?: string;
   open?: boolean;
   inline?: boolean;
   autoHide?: boolean;
@@ -111,8 +114,6 @@ export interface DatepickerProps extends Omit<InputProps, "theme"> {
  * @param {Date} props.minDate - The minDate state of the datepicker
  *
  * @param {Date} props.maxDate - The maxDate state of the datepicker
- *
- * @returns React.FC<DatepickerProps>
  */
 
 export const Datepicker: FC<DatepickerProps> = ({
@@ -123,6 +124,7 @@ export const Datepicker: FC<DatepickerProps> = ({
   showClearButton = true,
   labelClearButton = "Clear",
   clearIcon = <TbTrash />,
+  label = "Date",
   showTodayButton = true,
   todayIcon = <TbCalendar />,
   labelTodayButton = "Today",
@@ -266,8 +268,9 @@ export const Datepicker: FC<DatepickerProps> = ({
         <motion.div className={cn(theme.root.base, className)}>
           {!inline && (
             <Input
+              label={label}
               theme={theme.root.input}
-              leftComponent={<TbCalendar />}
+              leftContent={<TbCalendar />}
               ref={inputRef}
               onFocus={() => {
                 if (!isDateEqual(viewDate, selectedDate)) {

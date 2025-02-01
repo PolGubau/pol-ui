@@ -4,7 +4,7 @@ import { cn } from "../../helpers";
 import { Button } from "../Button";
 import { Dialog } from "../Dialog";
 import type { DrawerProps } from "../Drawer/Drawer";
-import { Input } from "../Input";
+import { Input } from "../Input/Input";
 import { Label } from "../Label";
 import { DrawerDialog } from "./DrawerDialog";
 type Story = StoryObj<typeof DrawerDialog>;

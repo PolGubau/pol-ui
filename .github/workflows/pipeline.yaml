@@ -93,7 +93,7 @@ jobs:
         run: pnpm ui changelog
 
       - name: Build
-        run: pnpm ui build
+        run: pnpm ui b # complete build with types and api generation
       
       - name: Run Tests and Coverage
         run: pnpm ui coverage

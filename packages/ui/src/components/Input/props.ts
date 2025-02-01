@@ -1,6 +1,6 @@
 import type { ComponentProps, ReactNode } from "react";
 import type { Colors, DeepPartial, MainSizes } from "../../types";
-import type { InputTheme } from "./themeTypes";
+import type { InputTheme } from "./theme";
 
 /**
  * @name InputLabelPositionsEnum
@@ -50,28 +50,16 @@ export interface BaseInputsProps {
   helperText?: ReactNode;
 
   /**
-   * @name leftComponent
-   * @description Optional prop to add a component to the left of the input.Recommended to icons
-   * @default null
-   * @type ReactNode
-   * @example
-   * ```tsx
-   * <BaseInputs leftComponent={<RandomIcon />} />
-   * ```
-   */
-  leftComponent?: ReactNode;
-
-  /**
-   * @name rightComponent
+   * @name icon
    * @description Optional prop to add a component to the right of the input. Recommended to icons
    * @default null
    * @type ReactNode
    * @example
    * ```tsx
-   * <BaseInputs rightComponent={<RandomIcon />} />
+   * <BaseInputs icon={<RandomIcon />} />
    * ```
    */
-  rightComponent?: ReactNode;
+  icon?: React.FC<ComponentProps<"svg">>;
 
   /**
    * @name size
@@ -99,18 +87,6 @@ export interface BaseInputsProps {
   theme?: DeepPartial<InputTheme>;
 
   /**
-   * @name border
-   * @description Optional prop to add a border to the input.
-   * @default false
-   * @type boolean
-   * @example
-   * ```tsx
-   * <BaseInputs border />
-   * ```
-   */
-  border?: boolean;
-
-  /**
    * @name label
    * @description Optional prop to add a label to the input.
    * @default null
@@ -120,20 +96,7 @@ export interface BaseInputsProps {
    * <BaseInputs label="Username" />
    * ```
    */
-  label?: string;
-
-  /**
-   * @name labelPosition
-   * @description Optional prop to specify the position of the label.
-   * @default top
-   * @type InputLabelPositions
-   * @enum [top, left]
-   * @example
-   * ```tsx
-   * <BaseInputs label="Username" labelPosition="left" />
-   * ```
-   */
-  labelPosition?: InputLabelPositions;
+  label: string;
 
   /**
    * @name labelClassName
@@ -159,7 +122,45 @@ export interface BaseInputsProps {
    */
   innerClassName?: string;
 
-  onTextChange?: (text: string) => void;
+  /**
+   * @name required
+   * @description Optional prop to specify if the input is required.
+   * @default false
+   * @type boolean
+   * @example
+   * ```tsx
+   * <BaseInputs required />
+   * ```
+   */
+  required?: boolean;
+
+  /**
+   * @name error
+   * @description Optional prop to specify if the input has an error.
+   * @default undefined
+   * @type string
+   * @example
+   * ```tsx
+   * <Input label="hola" error="This is an error" />
+   * ```
+   */
+  error?: string;
+
+  rightContent?: ReactNode;
+  leftContent?: ReactNode;
+
+  iconPosition?: "left" | "right";
+
+  //
+  /**
+   * @description Callback function that is triggered when the input value has stopped changing
+   */
+  onChangeEnd?: (value: string) => void;
+
+  /**
+   * @description Callback function that is triggered when the input value changes
+   */
+  onChangeValue?: (value: string) => void;
 }
 
 /**
@@ -168,4 +169,6 @@ export interface BaseInputsProps {
  * @type BaseInputsProps
  * @property addon `ReactNode`
  */
-export interface InputProps extends Omit<ComponentProps<"input">, "ref" | "color" | "size">, BaseInputsProps {}
+export interface InputProps
+  extends Omit<ComponentProps<"input">, "ref" | "color" | "size" | "placeholder">,
+    BaseInputsProps {}

@@ -34,7 +34,7 @@ const Dropdown = ({
   return (
     <D.Root>
       <D.Trigger disabled={disabled} asChild={true}>
-        {triggerNode}
+        <div>{triggerNode}</div>
       </D.Trigger>
       {!disabled && (
         <DropdownContent sideOffset={props.sideOffset ?? 5} {...props}>

@@ -51,7 +51,7 @@ const variants = {
 export type Variants = typeof variants;
 
 export const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50 relative group overflow-hidden gap-2",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50 relative group overflow-hidden gap-2 cursor-pointer",
   {
     variants: variants,
     compoundVariants: [

@@ -2,6 +2,7 @@
 /// <reference types="vitest" />
 import path, { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { globSync } from "glob";
 import { defineConfig } from "vite";
@@ -14,6 +15,7 @@ export default defineConfig({
     react(),
     // https://github.com/vitejs/vite/issues/1579#issuecomment-1483756199
     libInjectCss(),
+    tailwindcss(),
     dts({
       exclude: ["**/*.stories.ts", "src/test", "**/*.test.tsx"],
       entryRoot: "src",
@@ -33,6 +35,7 @@ export default defineConfig({
           "src/hooks/**/*.ts", // Hooks
           "src/helpers/**/*.ts", // Helpers
           "src/plugins/**/*.ts", // Plugins
+          "src/plugins/**/*.css", // Plugins
           "src/theme/**/*.ts", // Tema y configuración
           "src/constants/**/*.ts", // Constantes
           "src/i18n/**/*.ts", // Internacionalización

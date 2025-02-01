@@ -48,7 +48,6 @@ const Template: StoryFn<DebouncedInputProps> = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   label: "The returned value is debounced by 500ms (default)",
-  placeholder: "Type something...",
 };
 export const LessDelay = Template.bind({});
 LessDelay.args = {
@@ -66,7 +65,6 @@ export const WithInitialValue = Template.bind({});
 WithInitialValue.args = {
   value: "Initial value",
   label: "The returned value is debounced by 500ms (default)",
-  placeholder: "Type something...",
 };
 
 export const WithError = Template.bind({});
@@ -74,5 +72,4 @@ WithError.args = {
   color: "error",
   helperText: "This is an error",
   label: "The returned value is debounced by 500ms (default)",
-  placeholder: "Type something...",
 };

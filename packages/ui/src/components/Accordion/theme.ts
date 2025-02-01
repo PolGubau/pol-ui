@@ -11,7 +11,7 @@ export const accordionTheme: AccordionTheme = {
   wrapper: "border-b border-secondary/50 overflow-hidden",
 
   headerContainer:
-    "w-full text-left p-4 flex items-center justify-between cursor-pointer hover:bg-secondary/10 data-[open=true]:bg-blue data-[open=true]:bg-secondary/30 transition-colors outline-none focus:bg-secondary/20",
+    "w-full text-left p-4 flex items-center justify-between cursor-pointer hover:bg-secondary/10 data-[open=true]:bg-secondary/30 transition-colors outline-none focus:bg-secondary/20",
 
   arrow: "text-2xl transition-transform duration-300 data-[open=true]:rotate-180",
 

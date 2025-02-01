@@ -24,12 +24,6 @@ export default {
     weekStart: {
       options: Object.values(WeekStart).filter((x) => typeof x === "string"),
       mapping: WeekStart,
-      control: {
-        type: "select",
-        labels: Object.entries(WeekStart)
-          .filter(([, value]) => typeof value !== "string")
-          .reduce((acc, [key, value]) => ({ ...acc, [value]: key }), {}),
-      },
     },
   },
 } as Meta;

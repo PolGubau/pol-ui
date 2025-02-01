@@ -25,7 +25,9 @@ const AccordionItem = ({
         data-testid="ui-accordion-header"
         type="button"
         data-open={String(isOpen)}
-        className={` ${theme.headerContainer} ${isOpen ? "active" : ""}`}
+        className={cn(theme.headerContainer, {
+          active: isOpen,
+        })}
         onClick={onClick}
       >
         {header}

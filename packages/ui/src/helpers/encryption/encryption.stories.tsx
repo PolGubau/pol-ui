@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { Skeleton } from "../../components";
 import { Button } from "../../components/Button";
-import { Input } from "../../components/Input";
+import { Input } from "../../components/Input/Input";
 import { decrypt, encrypt } from "./encryption";
 
 export default {
@@ -37,6 +37,7 @@ export const Default = () => {
       Current value: {value}
       <div>
         <Input
+          label="Value"
           value={value}
           onChange={(e) => {
             setValue(e.target.value);

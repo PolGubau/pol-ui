@@ -37,9 +37,9 @@ export const Default: Story = {
 };
 export const WithJSX: Story = {
   args: accordionExampleProps.withJSX,
-  play: async ({ args, canvasElement, step }) => {
-    await step("A11y tests", async () => {
-      await shouldUseAriaLabelledBy(canvasElement, args);
+  play: ({ args, canvasElement, step }) => {
+    step("A11y tests", () => {
+      shouldUseAriaLabelledBy(canvasElement, args);
     });
   },
 };

@@ -4,9 +4,17 @@ import { TbDotsVertical } from "react-icons/tb";
 import * as ResizablePrimitive from "react-resizable-panels";
 
 import { cn } from "../../helpers";
-
-const ResizablePanelGroup = ({ className, ...props }: React.ComponentProps<typeof ResizablePrimitive.PanelGroup>) => (
+export interface ResizablePanelGroupProps
+  extends Omit<React.ComponentProps<typeof ResizablePrimitive.PanelGroup>, "direction"> {
+  direction?: "horizontal" | "vertical";
+}
+const ResizablePanelGroup = ({
+  className,
+  direction = "horizontal",
+  ...props
+}: React.ComponentProps<typeof ResizablePrimitive.PanelGroup>) => (
   <ResizablePrimitive.PanelGroup
+    direction={direction}
     className={cn("flex h-full w-full data-[panel-group-direction=vertical]:flex-col", className)}
     {...props}
   />

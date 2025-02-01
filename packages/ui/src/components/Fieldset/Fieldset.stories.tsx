@@ -3,8 +3,8 @@ import { TbReload } from "react-icons/tb";
 
 import { Button } from "../Button";
 import { IconButton } from "../IconButton";
-import { Input } from "../Input";
-import { PasswordInput } from "../PasswordInput";
+import { Input } from "../Input/Input";
+import { PasswordInput } from "../PasswordInput/PasswordInput";
 import { toast } from "../Toaster";
 import Fieldset from "./Fieldset";
 
@@ -38,7 +38,7 @@ export const Default = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Fieldset legend="Form">
-        <Input required={true} placeholder="Pol Gub..." label="Name" name="name" />
+        <Input required={true} label="Name" name="name" />
         <PasswordInput required={true} name="password" label="Password" />
 
         <footer className="flex gap-1 items-center justify-end">

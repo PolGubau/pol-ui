@@ -2,7 +2,7 @@ import type { Meta, StoryFn } from "@storybook/react";
 import React from "react";
 import { twMerge } from "tailwind-merge";
 import { Checkbox } from "../Checkbox";
-import { Input } from "../Input";
+import { Input } from "../Input/Input";
 import type { NavigationMenuProps } from "./NavigationMenu";
 import { NavigationMenu } from "./NavigationMenu";
 import { NavigationMenuContent } from "./navigation-menu-content";
@@ -119,17 +119,17 @@ Default.args = {
         <NavigationMenuTrigger>Account</NavigationMenuTrigger>
 
         <NavigationMenuContent>
-          <ul className="grid p-6 sm:w-[500px] sm:grid-cols-[0.50fr_1fr] gap-6">
+          <div className="grid p-6 sm:w-[500px] sm:grid-cols-[0.50fr_1fr] gap-6">
             <h3>Login</h3>
             <div className="flex flex-col gap-2">
-              <Input placeholder="Your name" defaultValue={"polui"} label="Your name" />
-              <Input placeholder="Your email" defaultValue={"pol@ui.com"} label="Your email" />
+              <Input defaultValue={"polui"} label="Your name" />
+              <Input defaultValue={"pol@ui.com"} label="Your email" />
             </div>
             <h3>Security</h3>
             <div className="flex flex-col gap-2">
               <Checkbox defaultChecked={true} label="Sell my data please" />
             </div>
-          </ul>
+          </div>
         </NavigationMenuContent>
       </NavigationMenuItem>
 

@@ -18,7 +18,7 @@ export default create({
   // colorSecondary: '#BFBFBF',
 
   // // UI
-  appBg: "#F3F0FD",
+  appBg: "#F6F6F6",
   appContentBg: "#F6F6F6",
   appPreviewBg: "#F6F6F6",
   appBorderColor: "#585C6D",

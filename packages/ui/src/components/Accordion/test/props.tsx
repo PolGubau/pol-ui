@@ -62,7 +62,7 @@ const dataWithJSX: AccordionData[] = [
   },
   {
     header: <h1>Can i create an accordion component with a different framework?</h1>,
-    content: <p>Yes of course, it is very possible to create an accordion component with another framework.</p>,
+    content: "Yes of course, it is very possible to create an accordion component with another framework",
   },
 ];
 const customIcons: AccordionData[] = [

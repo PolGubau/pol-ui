@@ -1,72 +1,181 @@
-import type { InputTheme } from "./themeTypes";
+import type { ColorsType, MainSizesType, OnOff } from "../../types";
+
+/**
+ * @name InputTheme
+ * @description Interface for the theme of the Input component
+ * @property base `string`
+ * @property field `InputFieldTheme`
+ * @author SUS
+
+ */
+export interface InputTheme {
+  base: string;
+  icon: {
+    base: string;
+    position: {
+      left: string;
+      right: string;
+    };
+  };
+  textarea: {
+    icon: string;
+    null: string;
+    label: string;
+  };
+  input: {
+    base: string;
+    size: MainSizesType;
+    textareaSizes: MainSizesType;
+    hasLeftIcon: OnOff;
+  };
+  label: {
+    base: string;
+    hasLeftContent: OnOff;
+    colors: ColorsType;
+    hasLeftIcon: OnOff;
+  };
+  field: InputFieldTheme;
+  helperText: { base: string; error: string };
+}
 
 export const inputTheme: InputTheme = {
-  root: {
-    base: "flex  w-full",
-    labelPosition: {
-      left: "flex-row items-center gap-3",
-      top: "flex-col gap-1 w-full",
+  base: "relative flex gap-1 group/input items-center w-full text-secondary-900 dark:text-secondary-50",
+  icon: {
+    base: "absolute top-1/2 transform -translate-y-1/2 inset- x - 0 flex items-center z-10 pointer-events-none",
+    position: {
+      left: "left-0 pl-3",
+      right: "right-0 pr-3",
     },
   },
-  base: "flex rounded-lg",
+  textarea: {
+    null: "",
+    icon: "absolute pt-3 flex items-center z-10 right-0 pr-3 top-5",
+    label: "peer-placeholder-shown:top-7",
+  },
+  input: {
+    base: "bg-transparent h-full outline-none peer w-full ",
+    hasLeftIcon: {
+      on: "pl-[30px]",
+      off: "pl-3",
+    },
+    size: {
+      xs: "text-xs px-2 py-1.5 ",
+      sm: "text-sm px-2.5 py-2 ",
+      md: "text-base px-3 py-4 ",
+      lg: "text-lg px-3.5 py-5 ",
+      xl: "text-xl px-4 py-6 ",
+    },
+    textareaSizes: {
+      xs: "text-xs px-2 pb-1.5 ",
+      sm: "text-sm px-2.5 pb-2 ",
+      md: "text-base px-3 pb-4 ",
+      lg: "text-lg px-3.5 pb-5 ",
+      xl: "text-xl px-4 pb-6 ",
+    },
+  },
+  label: {
+    base: "absolute text-secondary dark:text-secondary-100 transition-all duration-200 transform pointer-events-none select-none top-px left-[9px] px-1 -translate-y-1/2 text-xs group-focus-within/input:!top-px group-focus-within/input:!text-xs group-focus-within/input:!left-[9px]",
 
-  label: "ml-2",
+    hasLeftContent: {
+      on: "",
+      off: "peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-[1em] peer-placeholder-shown:opacity-80 dark:peer-placeholder-shown:opacity-100", // styles when the input is empty',
+    },
+    hasLeftIcon: {
+      on: "peer-placeholder-shown:left-[27px]",
+      off: "",
+    },
+    colors: {
+      primary: "group-focus-within/input:text-primary",
+      secondary: "group-focus-within:text-secondary-700 dark:group-focus-within/input:text-secondary-200",
+
+      success: "group-focus-within/input:text-success",
+      error: "group-focus-within/input:text-error text-error",
+      warning: "group-focus-within/input:text-warning",
+      info: "group-focus-within/input:text-info",
+    },
+  },
 
   field: {
-    base: "relative w-full",
-    icons: {
-      base: " absolute inset-y-0 flex items-center z-10",
-      svg: "text-secondary-800 dark:text-secondary-100 fill-secondary-800 dark:fill-secondary-100 z-10",
-      left: "left-0 pl-2",
-      right: "right-0 pr-2",
+    base: "inset-0 absolute border border-secondary rounded-xl pointer-events-none mt-[-9px] transition-color group-focus-within/input:border-2 border-opacity-60 group-hover/input:border-opacity-100",
+    unfilled: "invisible peer-placeholder-shown:visible",
+    filled: "visible peer-placeholder-shown:invisible",
+    color: {
+      primary: "group-focus-within/input:!border-primary",
+      secondary: "group-focus-within/input:!border-secondary",
+      success: "group-focus-within/input:!border-success",
+      error: "border-error group-hover/input:!border-error group-focus-within/input:!border-error",
+      warning: "group-focus-within/input:!border-warning",
+      info: "group-focus-within/input:!border-info",
     },
-
-    input: {
-      base: "block w-full group  disabled:cursor-not-allowed disabled:opacity-50 outline-none focus:outline-none focus:ring-2 focus:ring-opacity-50 transition resize-none rounded-lg dark:text-white text-black",
-      border: {
-        on: "border-2 border-opacity-30 group-focus:border-opacity-100",
-        off: "",
+    legend: {
+      base: "ml-2 text-xs whitespace-nowrap invisible",
+      unfilled: "px-0 transition-all duration-200 group-focus-within/input:max-w-full group-focus-within/input:px-1",
+      static: {
+        on: "px-1",
+        off: "max-w-[0.01px]",
       },
-      sizes: {
-        xs: "p-1.5 text-xs",
-        sm: "p-2 sm:text-xs",
-        md: "p-2.5 text-sm",
-        lg: "sm:text-md p-4",
-        xl: "sm:text-lg p-5",
-      },
-      colors: {
-        primary:
-          "bg-primary/20 border-primary  focus:ring-primary dark:border-primary-700 placeholder:primary-800 dark:placeholder-primary-300",
-        secondary:
-          "bg-secondary/20 border-secondary focus:ring-secondary-500 dark:border-secondary-600 dark:placeholder-secondary-400  dark:focus:ring-secondary-500",
-
-        info: "bg-info/20 border-info focus:border-info-500 focus:ring-info-500 dark:border-info-600 dark:placeholder-info-400 dark:focus:border-info-500 dark:focus:ring-info-500",
-        success:
-          "bg-success/20 border-success focus:border-success-500 focus:ring-success-500 dark:border-success-600 dark:placeholder-success-400 dark:focus:border-success-500 dark:focus:ring-success-500",
-        error:
-          "bg-error/20 border-error focus:border-error-500 focus:ring-error-500 dark:border-error-600 dark:placeholder-error-400 dark:focus:border-error-500 dark:focus:ring-error-500",
-        warning:
-          "bg-warning/20 border-warning focus:border-warning-500 focus:ring-warning-500 dark:border-warning-600 dark:placeholder-warning-400 dark:focus:border-warning-500 dark:focus:ring-warning-500",
-      },
-      label: {
-        base: "absolute left-2.5 top-4 z-10 origin-[0] -translate-y-4 scale-75 transition-transform text-sm text-secondary-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-blue-600 dark:text-secondary-400 peer-focus:dark:text-blue-500",
-      },
-      withRightIcon: {
-        on: "pr-10",
-        off: "",
-      },
-      withIcon: {
-        on: "pl-10",
-        off: "",
-      },
-      withAddon: {
-        on: "rounded-r-lg",
-        off: "rounded-lg",
-      },
-      multiline: {
-        on: "resize-none h-full",
-        off: "",
-      },
+      filled: "px-1 max-w-full",
     },
   },
+  helperText: {
+    base: "text-xs pl-2 text-secondary/70 dark:text-secondary-100 mt-1",
+    error: "text-error",
+  },
 };
+
+/**
+ * @name InputProps
+ * @description Interface for the icons of the Input component
+ * @property base `string`
+ * @property svg `string`
+ * @property left `string`
+ * @property right `string`
+ */
+export interface InputFieldIconTheme {
+  base: string;
+  svg: string;
+  left: string;
+  right: string;
+}
+/**
+ * @name InputInputTheme
+ * @description Interface for the theme of the input part of the Input component
+ * @property base `string`
+ * @property sizes `MainSizes`
+ * @property colors `Colors`
+ * @property label `object`
+ * @property withIcon `OnOff`
+ * @property withRightIcon `OnOff`
+ * @property withAddon `OnOff`
+ * @property withShadow `OnOff`
+ 
+ */
+export interface InputInputTheme {
+  base: string;
+  sizes: MainSizesType;
+  colors: ColorsType;
+
+  withIcon: OnOff;
+  withRightIcon: OnOff;
+  multiline: OnOff;
+}
+/**
+ * @name InputFieldTheme
+ * @description Interface for the theme of the field part of the Input component
+ * @property base `string`
+ * @property icons `InputFieldIconTheme`
+ * @property input `InputInputTheme`
+ 
+ */
+export interface InputFieldTheme {
+  base: string;
+  unfilled: string;
+  filled: string;
+  color: ColorsType;
+  legend: {
+    base: string;
+    static: OnOff;
+    unfilled: string;
+    filled: string;
+  };
+}

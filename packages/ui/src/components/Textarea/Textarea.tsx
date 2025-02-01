@@ -1,84 +1,124 @@
 import { type ComponentProps, forwardRef, useId } from "react";
-
-import { cn } from "../../helpers";
-import { mergeDeep } from "../../helpers/merge-deep/merge-deep";
+import { cn, mergeDeep } from "../../helpers";
 import { getTheme } from "../../theme-store";
-import { ColorsEnum, MainSizesEnum } from "../../types/enums";
-import { HelperText } from "../HelperText";
+import { ColorsEnum, MainSizesEnum } from "../../types";
+import { makeLabelContent } from "../Input/Input";
 import type { BaseInputsProps } from "../Input/props";
-import { Label } from "../Label";
+import type { InputTheme } from "../Input/theme";
 
-export interface TextareaProps extends Omit<ComponentProps<"textarea">, "color" | "ref" | "size">, BaseInputsProps {}
+export interface TextAreaProps
+  extends Omit<ComponentProps<"textarea">, "ref" | "color" | "size" | "placeholder">,
+    BaseInputsProps {
+  wrapperClassName?: string;
+}
 
-export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (
     {
       className,
-      color = ColorsEnum.primary,
+      error,
+      color = error ? ColorsEnum.error : ColorsEnum.primary,
       helperText,
-      leftComponent,
-      rightComponent,
+      icon: Icon,
+      iconPosition = "left",
       size = MainSizesEnum.md,
       theme: customTheme = {},
       label,
-      labelPosition = "top",
-      border = false,
+      wrapperClassName,
+      rightContent,
+      leftContent,
       labelClassName = "",
-      innerClassName = "",
+      onChangeEnd,
+      onChangeValue,
       ...props
     },
     ref,
   ) => {
-    const theme = mergeDeep(getTheme().textInput, customTheme);
-    const randomId = useId();
-
+    const theme: InputTheme = mergeDeep(getTheme().textInput, customTheme);
+    const ui = useId();
     return (
-      <div className={cn(theme.root.base, theme.root.labelPosition[labelPosition])}>
-        {label && (
-          <Label className={cn(theme.label, labelClassName)} htmlFor={randomId}>
-            {label}
-          </Label>
-        )}
-        <div className={cn(theme.base, className)}>
-          <div className={cn(theme.field.base)}>
-            {leftComponent && (
-              <div
-                data-testid="left-icon"
-                className={cn(theme.field.icons.base, theme.field.icons.svg, theme.field.icons.left)}
-              >
-                {leftComponent}
-              </div>
+      <div className="pt-1 flex-1">
+        <div className={cn(theme.base, wrapperClassName)}>
+          {Icon && (
+            <div className={cn(theme.icon.base, theme.textarea.icon, theme.icon.position[iconPosition])}>
+              <Icon data-testid="icon" />
+            </div>
+          )}
+          {leftContent && <div className={cn("pl-2")}>{leftContent}</div>}
+
+          <textarea
+            autoComplete={props.autoComplete ?? "off"}
+            autoCapitalize={props.autoCapitalize ?? "off"}
+            ref={ref}
+            name={props.name ?? ui}
+            onChange={(e) => {
+              onChangeValue?.(e.target.value);
+              props.onChange?.(e);
+            }}
+            onBlur={(e) => {
+              onChangeEnd?.(e.target.value);
+              props.onBlur?.(e);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                onChangeEnd?.(e.currentTarget.value);
+              }
+              props.onKeyDown?.(e);
+            }}
+            {...props}
+            className={cn(
+              "field-sizing-content min-h-20 max-h-48",
+              theme.input.base,
+              theme.input.size[size],
+              theme.input.hasLeftIcon[Icon && iconPosition === "left" ? "on" : "off"],
+              className,
             )}
-            {rightComponent && (
-              <div
-                data-testid="right-icon"
-                className={cn(theme.field.icons.base, theme.field.icons.svg, theme.field.icons.right)}
-              >
-                {rightComponent}
-              </div>
+            placeholder=" "
+          />
+          {rightContent && <div className={cn("pr-2")}>{rightContent}</div>}
+
+          <label
+            className={cn(
+              theme.label.base,
+              theme.label.colors[color],
+              theme.label.hasLeftContent[label && leftContent ? "on" : "off"],
+              theme.label.hasLeftIcon[Icon && iconPosition === "left" ? "on" : "off"],
+              // theme.textarea.label,
+              theme.textarea[label && leftContent ? "null" : "label"],
+
+              labelClassName,
             )}
-            <textarea
-              ref={ref}
-              name={randomId}
-              id={randomId}
+            htmlFor={props.name ?? ui}
+          >
+            {makeLabelContent(label, props.required ?? false)}
+          </label>
+
+          {/* Field when no hover */}
+          <fieldset className={cn(theme.field.base, theme.field.unfilled, theme.field.color[color])}>
+            <legend
               className={cn(
-                theme.field.input.base,
-                theme.field.input.multiline.on,
-                theme.field.input.border[border ? "on" : "off"],
-                theme.field.input.colors[color],
-                theme.field.input.sizes[size],
-                theme.field.input.withIcon[leftComponent ? "on" : "off"],
-                theme.field.input.withRightIcon[rightComponent ? "on" : "off"],
-                innerClassName,
+                theme.field.legend.base,
+                theme.field.legend.unfilled,
+                theme.field.legend.static[leftContent ? "on" : "off"],
               )}
-              {...props}
-            />
-            {helperText && <HelperText color={color}>{helperText}</HelperText>}
-          </div>
+            >
+              {makeLabelContent(label, props.required ?? false)}
+            </legend>
+          </fieldset>
+
+          {/* Fieldset when input is filled */}
+          <fieldset className={cn(theme.field.base, theme.field.filled, theme.field.color[color])}>
+            <legend className={cn(theme.field.legend.base, theme.field.legend.filled)}>
+              {makeLabelContent(label, props.required ?? false)}
+            </legend>
+          </fieldset>
         </div>
+        {(error || helperText) && (
+          <p className={cn(theme.helperText.base, color === "error" && theme.helperText.error)}>
+            {error ?? helperText}
+          </p>
+        )}
       </div>
     );
   },
 );
-
-Textarea.displayName = "Textarea";

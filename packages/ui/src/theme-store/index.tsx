@@ -35,6 +35,7 @@ export function getTheme(): PoluiTheme {
 }
 
 export type ThemeKey = keyof PoluiTheme;
+export const themeKeys = Object.keys(defaultTheme) as ThemeKey[];
 
 export type ThemeOfPart<T extends ThemeKey> = PoluiTheme[T];
 export type PartOfTheme<T extends ThemeKey> = DeepPartial<ThemeOfPart<T>>;

@@ -45,7 +45,7 @@ const DrawerContent = React.forwardRef<React.ElementRef<typeof DrawerPrimitive.C
         <DrawerPrimitive.Content
           ref={ref}
           className={cn(
-            "fixed z-50 p-4 flex h-auto flex-col border bg-background dark:bg-secondary-900 overflow-y-auto overflow-hidden",
+            "fixed z-50 p-4 flex h-auto flex-col border bg-secondary-50 text-secondary-950 dark:bg-secondary-900 dark:text-secondary-50 overflow-y-auto overflow-hidden",
             {
               "bottom-0": direction !== DirectionEnum.top,
               "top-0": direction !== DirectionEnum.bottom,

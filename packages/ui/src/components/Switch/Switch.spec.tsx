@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { type FC, useState } from "react";
 import { describe, expect, it, vi } from "vitest";
-import { Input } from "../Input";
+import { Input } from "../Input/Input";
 import { Switch } from "./Switch";
 
 describe("Components / Toggle switch", () => {
@@ -129,7 +129,7 @@ describe("Components / Toggle switch", () => {
       render(
         <form>
           <Switch checked={false} label="Enable notifications" name="notifications" onChange={console.info} />
-          <Input type="text" />
+          <Input label="text" />
         </form>,
       );
 
