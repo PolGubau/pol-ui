@@ -10,5 +10,6 @@
  *  @see https://stackoverflow.com/a/4819886/13188385 - source
  */
 export function isTouchDevice(): boolean {
-  return window.matchMedia("(pointer: coarse)").matches;
+	if (typeof window === "undefined") return false;
+	return window.matchMedia("(pointer: coarse)").matches;
 }
