@@ -1,5 +1,6 @@
 @import "tailwindcss";
-@import "./animations.css";
+@import "./styles/animations.css";
+@import "./styles/colors.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -10,90 +11,11 @@
 @theme {
   --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
     "Noto Color Emoji";
-
-  --color-error-50: oklch(0.971 0.013 17.38);
-  --color-error-100: oklch(0.936 0.032 17.717);
-  --color-error-200: oklch(0.885 0.062 18.334);
-  --color-error-300: oklch(0.808 0.114 19.571);
-  --color-error-400: oklch(0.704 0.191 22.216);
-  --color-error: oklch(0.637 0.237 25.331);
-  --color-error-500: oklch(0.637 0.237 25.331);
-  --color-error-600: oklch(0.577 0.245 27.325);
-  --color-error-700: oklch(0.505 0.213 27.518);
-  --color-error-800: oklch(0.444 0.177 26.899);
-  --color-error-900: oklch(0.396 0.141 25.723);
-  --color-error-950: oklch(0.258 0.092 26.042);
-
-  --color-warning-50: oklch(0.987 0.022 95.277);
-  --color-warning-100: oklch(0.962 0.059 95.617);
-  --color-warning-200: oklch(0.924 0.12 95.746);
-  --color-warning-300: oklch(0.879 0.169 91.605);
-  --color-warning-400: oklch(0.828 0.189 84.429);
-  --color-warning: oklch(0.769 0.188 70.08);
-  --color-warning-500: oklch(0.769 0.188 70.08);
-  --color-warning-600: oklch(0.666 0.179 58.318);
-  --color-warning-700: oklch(0.555 0.163 48.998);
-  --color-warning-800: oklch(0.473 0.137 46.201);
-  --color-warning-900: oklch(0.414 0.112 45.904);
-  --color-warning-950: oklch(0.279 0.077 45.635);
-
-  --color-success-50: oklch(0.982 0.018 155.826);
-  --color-success-100: oklch(0.962 0.044 156.743);
-  --color-success-200: oklch(0.925 0.084 155.995);
-  --color-success-300: oklch(0.871 0.15 154.449);
-  --color-success-400: oklch(0.792 0.209 151.711);
-  --color-success: oklch(0.723 0.219 149.579);
-  --color-success-500: oklch(0.723 0.219 149.579);
-  --color-success-600: oklch(0.627 0.194 149.214);
-  --color-success-700: oklch(0.527 0.154 150.069);
-  --color-success-800: oklch(0.448 0.119 151.328);
-  --color-success-900: oklch(0.393 0.095 152.535);
-  --color-success-950: oklch(0.266 0.065 152.934);
-
-  --color-info-50: oklch(0.977 0.013 236.62);
-  --color-info-100: oklch(0.951 0.026 236.824);
-  --color-info-200: oklch(0.901 0.058 230.902);
-  --color-info-300: oklch(0.828 0.111 230.318);
-  --color-info-400: oklch(0.746 0.16 232.661);
-  --color-info: oklch(0.685 0.169 237.323);
-  --color-info-500: oklch(0.685 0.169 237.323);
-  --color-info-600: oklch(0.588 0.158 241.966);
-  --color-info-700: oklch(0.5 0.134 242.749);
-  --color-info-800: oklch(0.443 0.11 240.79);
-  --color-info-900: oklch(0.391 0.09 240.876);
-  --color-info-950: oklch(0.293 0.066 243.157);
-
-  --color-primary-50: oklch(0.969 0.016 293.756);
-  --color-primary-100: oklch(0.943 0.029 294.588);
-  --color-primary-200: oklch(0.894 0.057 293.283);
-  --color-primary-300: oklch(0.811 0.111 293.571);
-  --color-primary-400: oklch(0.702 0.183 293.541);
-  --color-primary: oklch(0.606 0.25 292.717);
-  --color-primary-500: oklch(0.606 0.25 292.717);
-  --color-primary-600: oklch(0.541 0.281 293.009);
-  --color-primary-700: oklch(0.491 0.27 292.581);
-  --color-primary-800: oklch(0.432 0.232 292.759);
-  --color-primary-900: oklch(0.38 0.189 293.745);
-  --color-primary-950: oklch(0.283 0.141 291.089);
-
-  --color-secondary-50: oklch(0.985 0 0);
-  --color-secondary-100: oklch(0.97 0 0);
-  --color-secondary-200: oklch(0.922 0 0);
-  --color-secondary-300: oklch(0.87 0 0);
-  --color-secondary-400: oklch(0.708 0 0);
-  --color-secondary: oklch(0.556 0 0);
-  --color-secondary-500: oklch(0.556 0 0);
-  --color-secondary-600: oklch(0.439 0 0);
-  --color-secondary-700: oklch(0.371 0 0);
-  --color-secondary-800: oklch(0.269 0 0);
-  --color-secondary-900: oklch(0.205 0 0);
-  --color-secondary-950: oklch(0.145 0 0);
 }
 :root {
   font-family: var(--font-sans);
 }
 
-/*  */
 .provider {
   transition: transform 0.3s ease;
 }

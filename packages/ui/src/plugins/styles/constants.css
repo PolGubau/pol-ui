@@ -1,0 +1,14 @@
+@theme {
+  --shrink-scale: 0.8;
+  --shrink-scale-x: 0.8;
+  --shrink-scale-y: 0.8;
+  --pumping-amount: 1.05;
+
+  --blurred-amount: 8px;
+
+  --slide-amount: 20px;
+  --slide-amount-negative: calc(-1 * var(--slide-amount));
+
+  --wiggle-rotate: 3deg;
+  --wiggle-rotate-negative: calc(-1 * var(--wiggle-rotate));
+}

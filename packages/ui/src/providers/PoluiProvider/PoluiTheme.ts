@@ -1,6 +1,5 @@
 import type { AccordionTheme } from "../../components/Accordion";
 import type { AlertTheme } from "../../components/Alert/theme";
-import type { AnimateHeadingTheme } from "../../components/AnimatedHeading/theme";
 import type { AvatarTheme } from "../../components/Avatar";
 import type { BadgeTheme } from "../../components/Badge";
 import type { BreadcrumbTheme } from "../../components/Breadcrumb";
@@ -109,7 +108,6 @@ export interface PoluiTheme {
   bubbleHeading: BubbleHeadingTheme;
   imageTrail: ImageTrailTheme;
   containerScroll: ContainerScrollTheme;
-  animatedText: AnimateHeadingTheme;
   toggle: ToggleTheme;
   Hamburger: HamburgerTheme;
   navigationMenu: NavigationMenuTheme;

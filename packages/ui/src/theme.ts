@@ -1,6 +1,5 @@
 import { accordionTheme } from "./components/Accordion/theme";
 import { alertTheme } from "./components/Alert/theme";
-import { animatedHeadingTheme } from "./components/AnimatedHeading/theme";
 import { avatarTheme } from "./components/Avatar/theme";
 import { badgeTheme } from "./components/Badge/theme";
 import { breadcrumbTheme } from "./components/Breadcrumb/theme";
@@ -100,7 +99,6 @@ export const theme: PoluiTheme = {
   imageTrail: imageTrailTheme,
   message: messageTheme,
   containerScroll: containerScrollTheme,
-  animatedText: animatedHeadingTheme,
   toggle: toggleTheme,
   Hamburger: HamburgerTheme,
   navigationMenu: navigationMenuTheme,

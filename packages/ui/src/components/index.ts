@@ -3,8 +3,6 @@ export * from "./Accordion/theme";
 export * from "./Alert/alert";
 export * from "./Alert/theme";
 export * from "./AnimatedHeading/AnimatedHeading";
-export * from "./AnimatedHeading/theme";
-export * from "./AnimatedHeading/types";
 export * from "./Avatar/Avatar";
 export * from "./Avatar/AvatarGroup";
 export * from "./Avatar/AvatarGroupCounter";
