@@ -1,12 +1,11 @@
 import { render } from "@testing-library/react";
-import clsx from "clsx";
-import { twMerge } from "tailwind-merge";
 import { describe, expect, it, vi } from "vitest";
+import { cn } from "../../helpers";
 import { ColorsEnum, MainSizesEnum } from "../../types";
 import { Dot } from "./Dot";
 vi.mock("../../helpers", () => ({
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  cn: (...classes: any) => twMerge(clsx(...classes)),
+  cn: (...classes: any) => cn(...classes),
 }));
 
 describe("Dot Component", () => {
