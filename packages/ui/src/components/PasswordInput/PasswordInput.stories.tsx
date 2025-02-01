@@ -1,15 +1,16 @@
-import type { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 
 import type { PasswordInputProps } from "./PasswordInput";
 import { PasswordInput } from "./PasswordInput";
+type Story = StoryObj<typeof PasswordInput>;
 
-export default {
+const meta: Meta<typeof PasswordInput> = {
   title: "Components/Inputs/PasswordInput",
   component: PasswordInput,
 
   decorators: [
     (Story) => (
-      <div className="flex p-6 flex-col justify-center items-center ">
+      <div className="flex p-6 flex-col w-full">
         <div className="max-w-md w-full">
           <Story />
         </div>
@@ -19,13 +20,13 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
-} as Meta;
+};
+export default meta;
 
 const Template: StoryFn<PasswordInputProps> = (args) => <PasswordInput {...args} />;
 
-export const Default = Template.bind({});
+export const Default: Story = Template.bind({});
 Default.storyName = "Password input";
 Default.args = {
-  placeholder: "*********",
   label: "Password",
 };
