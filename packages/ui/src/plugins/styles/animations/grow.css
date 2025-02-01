@@ -20,7 +20,7 @@
 
   @keyframes grow {
     from {
-      transform: scale(0.8);
+      transform: scale(var(--smaller-scale));
     }
     to {
       transform: scale(1);
@@ -29,7 +29,7 @@
 
   @keyframes grow-y {
     from {
-      transform: scaleY(0.8);
+      transform: scale(var(--smaller-scale));
     }
     to {
       transform: scaleY(1);
@@ -38,7 +38,7 @@
 
   @keyframes grow-x {
     from {
-      transform: scaleX(0.8);
+      transform: scale(var(--smaller-scale));
     }
     to {
       transform: scaleX(1);
@@ -50,7 +50,7 @@
       transform: scale(1);
     }
     to {
-      transform: scale(0.8);
+      transform: scale(var(--smaller-scale));
     }
   }
 
@@ -59,7 +59,7 @@
       transform: scaleX(1);
     }
     to {
-      transform: scaleX(0.8);
+      transform: scale(var(--smaller-scale));
     }
   }
 
@@ -68,7 +68,7 @@
       transform: scaleY(1);
     }
     to {
-      transform: scaleY(0.8);
+      transform: scale(var(--smaller-scale));
     }
   }
 }

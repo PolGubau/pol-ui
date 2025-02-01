@@ -1,7 +1,7 @@
 @theme {
-  --shrink-scale: 0.8;
-  --shrink-scale-x: 0.8;
-  --shrink-scale-y: 0.8;
+  --smaller-scale: 0.8;
+  --larger-scale: 1.2;
+  
   --pumping-amount: 1.05;
 
   --blurred-amount: 8px;

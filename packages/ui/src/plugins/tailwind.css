@@ -4,3 +4,15 @@
 @import "./styles/colors.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  font-family: var(--font-sans);
+}
+.provider {
+  transition: transform 0.3s ease;
+}
+:has(.drawer-open) .provider {
+  --c: 1;
+  transform: scale(calc(1 - (var(--c) * 0.01))) translateY(0.87rem);
+  will-change: transform;
+}

@@ -4,22 +4,22 @@
   --animate-shrink-x: shrink-x 0.2s ease-in-out;
   --animate-shrink-y: shrink-y 0.2s ease-in-out;
 
-  --shrink-scale: 0.8;
-  --shrink-scale-x: 0.8;
-  --shrink-scale-y: 0.8;
+  --smaller-scale: 0.8;
+  --smaller-scale-x: 0.8;
+  --smaller-scale-y: 0.8;
 
   @keyframes shrink-in {
     from {
       transform: scale(1);
     }
     to {
-      transform: scale(var(--shrink-scale));
+      transform: scale(var(--smaller-scale));
     }
   }
 
   @keyframes shrink-out {
     from {
-      transform: scale(var(--shrink-scale));
+      transform: scale(var(--smaller-scale));
     }
     to {
       transform: scale(1);
@@ -31,7 +31,7 @@
       transform: scaleX(1);
     }
     to {
-      transform: scaleX(var(--shrink-scale-x));
+      transform: scaleX(var(--smaller-scale-x));
     }
   }
 
@@ -40,7 +40,7 @@
       transform: scaleY(1);
     }
     to {
-      transform: scaleY(var(--shrink-scale-y));
+      transform: scaleY(var(--smaller-scale-y));
     }
   }
 }
