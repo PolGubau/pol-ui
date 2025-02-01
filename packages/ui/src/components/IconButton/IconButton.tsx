@@ -9,9 +9,9 @@ import { Tooltip } from "../Tooltip";
 import type { IconButtonTheme } from "./theme";
 
 export interface IconButtonProps extends ButtonProps {
-  theme?: DeepPartial<IconButtonTheme>;
-  label?: string;
-  allowTooltip?: boolean;
+	theme?: DeepPartial<IconButtonTheme>;
+	label?: string;
+	allowTooltip?: boolean;
 }
 
 /**
@@ -41,25 +41,25 @@ export interface IconButtonProps extends ButtonProps {
  * @author Pol Gubau Amores - https://polgubau.com
  */
 export const IconButton = ({
-  className,
-  variant = "ghost",
-  rounded = "full",
-  theme: customTheme = {},
-  label = undefined,
-  allowTooltip = true,
-  ...props
+	className,
+	variant = "ghost",
+	rounded = "full",
+	theme: customTheme = {},
+	label = undefined,
+	allowTooltip = true,
+	...props
 }: IconButtonProps) => {
-  const theme = mergeDeep(getTheme().iconButton, customTheme);
+	const theme = mergeDeep(getTheme().iconButton, customTheme);
 
-  return (
-    <Tooltip label={allowTooltip && label}>
-      <Button
-        {...props}
-        variant={variant}
-        type={props.type ?? "button"}
-        rounded={rounded}
-        className={cn(theme.base, className)}
-      />
-    </Tooltip>
-  );
+	return (
+		<Tooltip label={allowTooltip && label}>
+			<Button
+				{...props}
+				variant={variant}
+				type={props.type ?? "button"}
+				rounded={rounded}
+				className={cn(theme.base, className)}
+			/>
+		</Tooltip>
+	);
 };

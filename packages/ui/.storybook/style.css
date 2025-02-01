@@ -10,8 +10,6 @@
   --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
     "Noto Color Emoji";
 
-  --color-mint-500: oklch(0.72 0.11 178);
-
   --color-error-50: oklch(0.971 0.013 17.38);
   --color-error-100: oklch(0.936 0.032 17.717);
   --color-error-200: oklch(0.885 0.062 18.334);
@@ -89,6 +87,32 @@
   --color-secondary-800: oklch(0.269 0 0);
   --color-secondary-900: oklch(0.205 0 0);
   --color-secondary-950: oklch(0.145 0 0);
+  --animate-zoom: zoom-in 0.2s ease-in-out;
+  --animate-pump: pumping 2s ease-in-out infinite;
+  @keyframes zoom-in {
+    from {
+      transform: scale(0);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  } 
+  @keyframes pumping {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.8;
+     }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+     }
+  }
 }
 :root {
   font-family: var(--font-sans);

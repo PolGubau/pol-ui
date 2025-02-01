@@ -10,6 +10,6 @@ export * from "./providers";
 export * from "./hooks"; // Pueden depender de helpers o types
 
 export * from "./theme"; // Define temas globales
-export * from "./theme-store"; // Accesores de tema
+export * from "./theme-store"; //
 
 export * from "./components"; // Dependen de temas, hooks, y posiblemente plugins
