@@ -1,0 +1,66 @@
+@theme {
+
+  --animate-complete-grow: complete-grow 0.2s ease-in-out;
+  --animate-grow: grow 0.2s ease-in-out;
+  --animate-pump: pumping 2s ease-in-out infinite;
+  --animate-slide-in-right: slide-in-right 0.5s ease-in-out;
+  --animate-slide-in-left: slide-in-left 0.5s ease-in-out;
+  --animate-slide-in-top: slide-in-top 0.5s ease-in-out;
+  --animate-slide-in-bottom: slide-in-bottom 0.5s ease-in-out;
+  --animate-blur: from-blur 0.5s ease-in-out;
+  --animate-to-blur: from-blur 0.5s ease-in-out reverse;
+  --animate-grow-x: grow-x 0.5s ease-in-out;
+  --animate-grow-y: grow-y 0.5s ease-in-out;
+
+ 
+  @keyframes pumping {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-right {
+    from {opacity: 0; transform: translateX(-20px)}
+    to {opacity: 1; transform: translateX(0)}
+  }
+  @keyframes slide-in-left {
+    from {opacity: 0; transform: translateX(15px)}
+    to {opacity: 1; transform: translateX(0)}
+  }
+  @keyframes slide-in-top {
+    from {opacity: 0; transform: translateY(-15px)}
+    to {opacity: 1; transform: translateY(0)}
+  }
+  @keyframes slide-in-bottom {
+    from {opacity: 0; transform: translateY(15px)}
+    to {opacity: 1; transform: translateY(0)}
+  }
+  @keyframes from-blur {
+    from {filter: blur(8px)}
+    to {filter: blur(0)}
+  }
+  @keyframes grow-x {
+    from {transform: scaleX(0)}
+    to {transform: scaleX(1)}
+  }
+  @keyframes grow-y {
+    from {transform: scaleY(0)}
+    to {transform: scaleY(1)}
+  }
+  @keyframes complete-grow {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+  }
+  @keyframes grow {
+    from {transform: scale(0.8)}
+    to {transform: scale(1)}
+  }
+}

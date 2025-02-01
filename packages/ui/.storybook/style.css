@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./animations.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -87,32 +88,7 @@
   --color-secondary-800: oklch(0.269 0 0);
   --color-secondary-900: oklch(0.205 0 0);
   --color-secondary-950: oklch(0.145 0 0);
-  --animate-zoom: zoom-in 0.2s ease-in-out;
-  --animate-pump: pumping 2s ease-in-out infinite;
-  @keyframes zoom-in {
-    from {
-      transform: scale(0);
-      opacity: 0;
-    }
-    to {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-  @keyframes pumping {
-    0% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(1.05);
-      opacity: 0.8;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
+
 }
 :root {
   font-family: var(--font-sans);
