@@ -99,7 +99,7 @@ export const DrawerArray = <T extends object>({
           </Button>
         }
       >
-        <form onSubmit={handleCreateNew} className="grid h-full grid-rows-[1fr,auto] gap-4 overflow pt-10">
+        <form onSubmit={handleCreateNew} className="grid h-full grid-rows-[1fr_auto] gap-4 overflow pt-10">
           <div className={cn("w-[40vw] max-w-4xl flex flex-col gap-4", drawerContentClassName)}>
             {form({ value: newProp, onChange: setNewProp })}
           </div>
