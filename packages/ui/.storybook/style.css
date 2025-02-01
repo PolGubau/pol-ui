@@ -88,7 +88,6 @@
   --color-secondary-800: oklch(0.269 0 0);
   --color-secondary-900: oklch(0.205 0 0);
   --color-secondary-950: oklch(0.145 0 0);
-
 }
 :root {
   font-family: var(--font-sans);
