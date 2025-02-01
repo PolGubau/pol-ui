@@ -356,7 +356,7 @@
   ],
   "scripts": {
     "build": "tsc  && vite build && pnpm type-docs",
-    "b": "gather-variables && pnpm build && pnpm generate-exports",
+    "b": "pnpm gather-variables && pnpm build && pnpm generate-exports",
     "build-storybook": "pnpm build && storybook build",
     "parse-docs": "node --experimental-strip-types --experimental-transform-types ./scripts/parse-typedoc.ts",
     "type-docs": "typedoc && pnpm parse-docs",
