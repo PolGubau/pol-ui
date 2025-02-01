@@ -174,7 +174,7 @@ describe("Components / Toggle switch", () => {
 						name="notifications"
 						onChange={console.info}
 					/>
-					<Input type="text" />
+					<Input label="text" />
 				</form>,
 			);
 
