@@ -1,9 +1,9 @@
 @theme {
-  --animate-grow: grow 0.2s ease-in-out;
-  --animate-grow-x: grow-x 0.5s ease-in-out;
-  --animate-grow-y: grow-y 0.5s ease-in-out;
+  --animate-zoom: zoom 0.2s ease-in-out;
+  --animate-zoom-x: zoom-x 0.5s ease-in-out;
+  --animate-zoom-y: zoom-y 0.5s ease-in-out;
 
-  @keyframes grow {
+  @keyframes zoom {
     from {
       transform: scale(1);
     }
@@ -12,7 +12,7 @@
     }
   }
 
-  @keyframes grow-x {
+  @keyframes zoom-x {
     from {
       transform: scaleX(1);
     }
@@ -21,7 +21,7 @@
     }
   }
 
-  @keyframes grow-y {
+  @keyframes zoom-y {
     from {
       transform: scaleY(1);
     }
