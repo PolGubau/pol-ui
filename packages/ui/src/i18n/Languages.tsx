@@ -16,69 +16,66 @@ import { countryCodes } from "./phones/metadata/countries";
  * @see https://www.fincher.org/Utilities/CountryLanguageList.shtml
  */
 export const rawLanguages: Language[] = [
-	...spanishLanguagesPack,
-	{
-		locale: Locales.DE,
-		language: Locales.DE,
-		country: countryCodes.DE,
-	},
-	{
-		locale: Locales.EN,
-		language: Locales.EN,
-		country: countryCodes.US,
-	},
-	{
-		locale: Locales.DE_DE,
-		country: countryCodes.DE,
-		language: Locales.DE,
-		basedOn: [Locales.DE],
-	},
-	{
-		locale: Locales.EN_US,
-		country: countryCodes.US,
-		language: Locales.EN,
-		basedOn: [Locales.EN],
-	},
-	{
-		locale: Locales.EN_GB,
-		country: countryCodes.GB,
-		language: Locales.EN,
-		basedOn: [Locales.EN_US, Locales.EN],
-	},
-	{
-		locale: Locales.ES_ES,
-		country: countryCodes.ES,
-		language: Locales.ES,
-		basedOn: [Locales.ES],
-	},
-	{
-		locale: Locales.DE_AT,
-		country: countryCodes.AT,
-		language: Locales.DE,
-		basedOn: [Locales.DE],
-	},
-	{
-		locale: Locales.DE_CH,
-		country: countryCodes.CH,
-		language: Locales.DE,
-		basedOn: [Locales.DE_DE],
-	},
-	{
-		locale: Locales.FR,
-		country: countryCodes.FR,
-		language: Locales.FR,
-	},
+  ...spanishLanguagesPack,
+  {
+    locale: Locales.DE,
+    language: Locales.DE,
+    country: countryCodes.DE,
+  },
+  {
+    locale: Locales.EN,
+    language: Locales.EN,
+    country: countryCodes.US,
+  },
+  {
+    locale: Locales.DE_DE,
+    country: countryCodes.DE,
+    language: Locales.DE,
+    basedOn: [Locales.DE],
+  },
+  {
+    locale: Locales.EN_US,
+    country: countryCodes.US,
+    language: Locales.EN,
+    basedOn: [Locales.EN],
+  },
+  {
+    locale: Locales.EN_GB,
+    country: countryCodes.GB,
+    language: Locales.EN,
+    basedOn: [Locales.EN_US, Locales.EN],
+  },
+  {
+    locale: Locales.ES_ES,
+    country: countryCodes.ES,
+    language: Locales.ES,
+    basedOn: [Locales.ES],
+  },
+  {
+    locale: Locales.DE_AT,
+    country: countryCodes.AT,
+    language: Locales.DE,
+    basedOn: [Locales.DE],
+  },
+  {
+    locale: Locales.DE_CH,
+    country: countryCodes.CH,
+    language: Locales.DE,
+    basedOn: [Locales.DE_DE],
+  },
+  {
+    locale: Locales.FR,
+    country: countryCodes.FR,
+    language: Locales.FR,
+  },
 ] as const;
 
 export const languages = [...new Set(rawLanguages)] as Language[];
 
-export const defaultLanguage =
-	languages.find((lang) => lang.locale === Locales.EN_US) ?? languages[0];
+export const defaultLanguage = languages.find((lang) => lang.locale === Locales.EN_US) ?? languages[0];
 
 // Extract unique language codes and country codes
-export const allLocales = [
-	...new Set(languages.map((lang) => lang.locale)),
-] as const;
+export const allLocales = [...new Set(languages.map((lang) => lang.locale))] as const;
 // Create types based on these arrays
 
 /**
@@ -86,15 +83,11 @@ export const allLocales = [
  * @param countryCodes
  * @returns
  */
-export const getSupportedLanguages = (
-	wantedLocales: Locale[] = [],
-): typeof languages => {
-	const supportedLanguages = languages.filter((lang) =>
-		wantedLocales.includes(lang.locale),
-	);
-	return supportedLanguages;
+export const getSupportedLanguages = (wantedLocales: Locale[] = []): typeof languages => {
+  const supportedLanguages = languages.filter((lang) => wantedLocales.includes(lang.locale));
+  return supportedLanguages;
 };
 
 export const getLanguage = (locale: Locale): Language | undefined => {
-	return languages.find((lang) => lang.locale === locale);
+  return languages.find((lang) => lang.locale === locale);
 };

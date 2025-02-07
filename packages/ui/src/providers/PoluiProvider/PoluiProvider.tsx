@@ -19,8 +19,8 @@ import type { CustomPoluiTheme } from "./PoluiTheme";
  * @property {CustomPoluiTheme} theme - The custom theme to be used
  */
 export interface ThemeProps {
-	mode?: ThemeMode;
-	theme?: CustomPoluiTheme;
+  mode?: ThemeMode;
+  theme?: CustomPoluiTheme;
 }
 
 /**
@@ -32,29 +32,22 @@ export interface ThemeProps {
 
  */
 export interface ProviderProps {
-	children: React.ReactNode;
-	theme?: ThemeProps;
-	keys?: {
-		language: string;
-	};
-	defaultLanguage?: Language;
-	toaster?: ToasterProps;
-	allLanguages?: Language[];
-	translations?: SomeTranslations;
-	isDebug?: boolean;
+  children: React.ReactNode;
+  theme?: ThemeProps;
+  keys?: {
+    language: string;
+  };
+  defaultLanguage?: Language;
+  toaster?: ToasterProps;
+  allLanguages?: Language[];
+  translations?: SomeTranslations;
+  isDebug?: boolean;
 }
 
 export interface PolUiContextProps
-	extends MakeRequired<
-		Pick<
-			ProviderProps,
-			"defaultLanguage" | "translations" | "keys" | "allLanguages"
-		>
-	> {}
+  extends MakeRequired<Pick<ProviderProps, "defaultLanguage" | "translations" | "keys" | "allLanguages">> {}
 
-export const PolUiContext = React.createContext<PolUiContextProps | undefined>(
-	undefined,
-);
+export const PolUiContext = React.createContext<PolUiContextProps | undefined>(undefined);
 
 /**
  * @name PoluiProvider
@@ -65,46 +58,46 @@ export const PolUiContext = React.createContext<PolUiContextProps | undefined>(
 
  */
 export const PoluiProvider: FC<ProviderProps> = ({
-	children,
-	theme,
-	keys = {
-		language: "pol-ui",
-	},
-	defaultLanguage = languages[0] as Language,
-	isDebug,
-	allLanguages = [],
-	toaster,
-	translations = {
-		"en-US": {},
-	},
+  children,
+  theme,
+  keys = {
+    language: "pol-ui",
+  },
+  defaultLanguage = languages[0] as Language,
+  isDebug,
+  allLanguages = [],
+  toaster,
+  translations = {
+    "en-US": {},
+  },
 }: ProviderProps): React.ReactNode => {
-	const locales = Object.keys(translations) as Locale[];
-	type Locale = keyof typeof translations;
+  const locales = Object.keys(translations) as Locale[];
+  type Locale = keyof typeof translations;
 
-	const context = {
-		keys: { language: keys.language },
-		defaultLanguage,
-		translations,
-		locales,
-		allLanguages,
-		isDebug,
-	};
+  const context = {
+    keys: { language: keys.language },
+    defaultLanguage,
+    translations,
+    locales,
+    allLanguages,
+    isDebug,
+  };
 
-	const { computedMode } = useThemeMode();
+  const { computedMode } = useThemeMode();
 
-	return (
-		<PolUiContext.Provider value={context}>
-			<div
-				className={cn({
-					dark: computedMode === "dark",
-				})}
-			>
-				{children}
-				<Toaster {...toaster} />
-			</div>
-			<ThemeInit mode={theme?.mode ?? computedMode} theme={theme?.theme} />
-		</PolUiContext.Provider>
-	);
+  return (
+    <PolUiContext.Provider value={context}>
+      <div
+        className={cn({
+          dark: computedMode === "dark",
+        })}
+      >
+        {children}
+        <Toaster {...toaster} />
+      </div>
+      <ThemeInit mode={theme?.mode ?? computedMode} theme={theme?.theme} />
+    </PolUiContext.Provider>
+  );
 };
 
 // Set display name for PoluiProvider component
