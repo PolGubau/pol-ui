@@ -76,6 +76,10 @@ importers:
         version: 5.1.9(@types/node@22.10.10)(jiti@2.4.2)(lightningcss@1.29.1)(rollup@4.29.1)(terser@5.37.0)(typescript@5.7.2)(yaml@2.6.1)
 
   packages/ui:
+    dependencies:
+      '@polgubau/animated':
+        specifier: ^1.0.7
+        version: 1.0.7
     devDependencies:
       '@biomejs/biome':
         specifier: 1.9.4
@@ -1166,6 +1170,9 @@ packages:
   '@pnpm/npm-conf@2.3.1':
     resolution: {integrity: sha512-c83qWb22rNRuB0UaVCI0uRPNRr8Z0FWnEIvT47jiHAmOIUHbBOg5XvV7pM5x+rKn9HRpjxquDbXYSXr3fAKFcw==}
     engines: {node: '>=12'}
+
+  '@polgubau/animated@1.0.7':
+    resolution: {integrity: sha512-7QuwFlqK50DvxwRSx7eIzQBW3dvI1/a7HReK3v0Fg804l280KHttWDEGKkTRU0fchkJkcuoT4U4KDHKauValaw==}
 
   '@polgubau/biome-config@0.0.3':
     resolution: {integrity: sha512-F85Z8e1scMWiNQd9chpBIVjzwyq/tF3p0uum9z69we2BhoNgUT3X17YsDysWjD+vrEGS18TaxZmwybWQcUn0KA==}
@@ -7365,6 +7372,10 @@ snapshots:
       '@pnpm/config.env-replace': 1.1.0
       '@pnpm/network.ca-file': 1.0.2
       config-chain: 1.1.13
+
+  '@polgubau/animated@1.0.7':
+    dependencies:
+      esbuild: 0.24.2
 
   '@polgubau/biome-config@0.0.3(@biomejs/biome@1.9.4)':
     dependencies:

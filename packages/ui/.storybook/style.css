@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 @import "../src/plugins/tailwind.css";
 
 @font-face {
@@ -6,6 +7,6 @@
   src: url("./Poppins-Regular.ttf") format("truetype");
 }
 @theme {
-  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    "Noto Color Emoji";
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }

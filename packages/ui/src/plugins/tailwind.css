@@ -1,6 +1,5 @@
 @import "tailwindcss";
-@import "./styles/constants.css";
-@import "./styles/animations.css";
+@import "@polgubau/animated";
 @import "./styles/colors.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
