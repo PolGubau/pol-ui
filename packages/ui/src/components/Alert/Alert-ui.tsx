@@ -2,7 +2,14 @@
 
 import type { ComponentProps, FC } from "react";
 import { HiX } from "react-icons/hi";
-import { TbAlertTriangle, TbBulb, TbCheck, TbChevronRight, TbExclamationCircle, TbInfoCircle } from "react-icons/tb";
+import {
+	TbAlertTriangle,
+	TbBulb,
+	TbCheck,
+	TbChevronRight,
+	TbExclamationCircle,
+	TbInfoCircle,
+} from "react-icons/tb";
 import { cn, mergeDeep } from "../../helpers";
 import { getTheme } from "../../theme-store";
 import { ColorsEnum, RoundedSizesEnum } from "../../types/enums";
@@ -11,13 +18,13 @@ import { IconButton } from "../IconButton/IconButton";
 import type { AlertTheme } from "./theme";
 
 export interface AlertProps extends Omit<ComponentProps<"div">, "color"> {
-  color?: Colors;
-  icon?: FC<ComponentProps<"svg">>;
-  onDismiss?: () => void;
-  rounded?: RoundedSizes;
-  theme?: DeepPartial<AlertTheme>;
-  bordered?: boolean;
-  withIcon?: boolean;
+	color?: Colors;
+	icon?: FC<ComponentProps<"svg">>;
+	onDismiss?: () => void;
+	rounded?: RoundedSizes;
+	theme?: DeepPartial<AlertTheme>;
+	bordered?: boolean;
+	withIcon?: boolean;
 }
 
 /**
@@ -54,53 +61,61 @@ export interface AlertProps extends Omit<ComponentProps<"div">, "color"> {
  */
 
 export const Alert: FC<AlertProps> = ({
-  children,
-  className,
-  color = ColorsEnum.secondary,
-  icon: Icon,
-  onDismiss = undefined,
-  withIcon = true,
-  rounded = RoundedSizesEnum.md,
-  theme: customTheme = {},
-  bordered,
-  ...props
+	children,
+	className,
+	color = ColorsEnum.secondary,
+	icon: Icon,
+	onDismiss = undefined,
+	withIcon = true,
+	rounded = RoundedSizesEnum.md,
+	theme: customTheme = {},
+	bordered,
+	...props
 }: AlertProps) => {
-  const theme: AlertTheme = mergeDeep(getTheme().alert, customTheme);
+	const theme: AlertTheme = mergeDeep(getTheme().alert, customTheme);
 
-  const defaultIcons = {
-    error: TbExclamationCircle,
-    success: TbCheck,
-    warning: TbAlertTriangle,
-    info: TbInfoCircle,
-    primary: TbBulb,
-    secondary: TbChevronRight,
-  };
+	const defaultIcons = {
+		error: TbExclamationCircle,
+		success: TbCheck,
+		warning: TbAlertTriangle,
+		info: TbInfoCircle,
+		primary: TbBulb,
+		secondary: TbChevronRight,
+	};
 
-  const DefaultIcon = Icon || defaultIcons[color];
+	const DefaultIcon = Icon || defaultIcons[color];
 
-  return (
-    <section
-      className={cn(theme.base, theme.color[color], theme.rounded[rounded], bordered && theme.borderAccent, className)}
-      role="alert"
-      {...props}
-    >
-      <div className={theme.wrapper} data-testid="ui-alert-wrapper">
-        {withIcon && <DefaultIcon className={theme.icon} data-testid="ui-alert-icon" />}
-        <div>{children}</div>
-        {onDismiss && typeof onDismiss === "function" && (
-          <IconButton
-            size="sm"
-            label="Dismiss"
-            title="Dismiss"
-            data-testid="ui-alert-dismiss"
-            type="button"
-            onClick={onDismiss}
-            color={color}
-          >
-            <HiX aria-hidden={true} title="Dismiss" size={17} />
-          </IconButton>
-        )}
-      </div>
-    </section>
-  );
+	return (
+		<section
+			className={cn(
+				theme.base,
+				theme.color[color],
+				theme.rounded[rounded],
+				bordered && theme.borderAccent,
+				className,
+			)}
+			role="alert"
+			{...props}
+		>
+			<div className={theme.wrapper} data-testid="ui-alert-wrapper">
+				{withIcon && (
+					<DefaultIcon className={theme.icon} data-testid="ui-alert-icon" />
+				)}
+				<div>{children}</div>
+				{onDismiss && typeof onDismiss === "function" && (
+					<IconButton
+						size="sm"
+						label="Dismiss"
+						title="Dismiss"
+						data-testid="ui-alert-dismiss"
+						type="button"
+						onClick={onDismiss}
+						color={color}
+					>
+						<HiX aria-hidden={true} title="Dismiss" size={17} />
+					</IconButton>
+				)}
+			</div>
+		</section>
+	);
 };
