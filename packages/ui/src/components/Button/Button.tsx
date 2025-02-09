@@ -1,4 +1,4 @@
-import { Slot } from "radix-ui";
+import { Slot } from "@radix-ui/react-slot";
 import * as React from "react";
 import { type VariantProps, cva } from "../../helpers/cva/cva";
 
@@ -181,6 +181,7 @@ export const Button = React.forwardRef<
 			disabled: isDisabled,
 			...rippleOptions,
 		});
+		// const refs = mergeRefs([ripple, ref])
 		const Comp = asChild ? Slot : "button";
 
 		const label = props.label ?? props.children;
