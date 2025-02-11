@@ -88,8 +88,6 @@
     "./components/DirectionHover/types": "./dist/components/DirectionHover/index.d.ts",
     "./components/Divider": "./dist/components/Divider/index.js",
     "./components/Divider/types": "./dist/components/Divider/index.d.ts",
-    "./components/Dot": "./dist/components/Dot/index.js",
-    "./components/Dot/types": "./dist/components/Dot/index.d.ts",
     "./components/Drawer": "./dist/components/Drawer/index.js",
     "./components/Drawer/types": "./dist/components/Drawer/index.d.ts",
     "./components/DrawerArray": "./dist/components/DrawerArray/index.js",
@@ -187,8 +185,6 @@
     "./components/Select/types": "./dist/components/Select/index.d.ts",
     "./components/Sidebar": "./dist/components/Sidebar/index.js",
     "./components/Sidebar/types": "./dist/components/Sidebar/index.d.ts",
-    "./components/SizeIndicator": "./dist/components/SizeIndicator/index.js",
-    "./components/SizeIndicator/types": "./dist/components/SizeIndicator/index.d.ts",
     "./components/Skeleton": "./dist/components/Skeleton/index.js",
     "./components/Skeleton/types": "./dist/components/Skeleton/index.d.ts",
     "./components/Slider": "./dist/components/Slider/index.js",
@@ -351,6 +347,7 @@
     "build": "tsc  && vite build && pnpm type-docs",
     "b": "pnpm gather-variables && pnpm build && pnpm generate-exports",
     "build-storybook": "pnpm build && storybook build",
+    "generate-docs": "node --experimental-strip-types --experimental-transform-types ./scripts/generate-docs.ts",
     "parse-docs": "node --experimental-strip-types --experimental-transform-types ./scripts/parse-typedoc.ts",
     "type-docs": "typedoc && pnpm parse-docs",
     "generate-exports": "node --experimental-strip-types --experimental-transform-types ./scripts/generate-exports.ts",
@@ -482,5 +479,5 @@
     "access": "public",
     "publishPath": "./",
     "registry": "https://registry.npmjs.org/"
-  },
+  }
 }
