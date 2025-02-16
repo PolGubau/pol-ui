@@ -48,7 +48,6 @@
 | Checkbox\Checkbox.tsx| 36.36% | 66.66% | 53.71% | 52 |🟠 |
 | Chip\Chip.tsx| 0% | 0% | 0% | 0 |🔴 |
 | CodeBlock\CodeBlock.tsx| 0% | 0% | 0% | 0 |🔴 |
-| Collapsible\Collapsible.tsx| 0% | 0% | 0% | 0 |🔴 |
 | ConfirmDialog\ConfirmDialog.tsx| 0% | 0% | 0% | 0 |🔴 |
 | ContainerScroll\ContainerScroll.tsx| 0% | 0% | 0% | 0 |🔴 |
 | Conveyor\Conveyor.tsx| 30% | 20% | 72.6% | 41 |🟠 |

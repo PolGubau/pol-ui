@@ -31,7 +31,6 @@ export * from "./Checkbox/theme";
 export * from "./Chip/chip-ui";
 export * from "./Chip/theme";
 export * from "./CodeBlock/CodeBlock";
-export * from "./Collapsible/Collapsible";
 export * from "./ConfirmDialog/ConfirmDialog";
 export * from "./ContainerScroll/ContainerScroll";
 export * from "./ContainerScroll/theme";
