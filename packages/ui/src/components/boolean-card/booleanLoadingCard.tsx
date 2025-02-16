@@ -4,11 +4,15 @@ import { Switch } from "../Switch/Switch";
 
 interface BooleanLoadingCardProps {
 	defaultChecked?: boolean;
-	title: string;
+	title?: string;
 	description?: string;
 }
 export const BooleanLoadingCard = (props: BooleanLoadingCardProps) => {
-	const { defaultChecked = false, title, description } = props;
+	const {
+		defaultChecked = false,
+		title = "Title of the card",
+		description = "Description of a loading card",
+	} = props;
 	return (
 		<Card
 			className={cn(
@@ -21,10 +25,10 @@ export const BooleanLoadingCard = (props: BooleanLoadingCardProps) => {
 			<div className="flex justify-between gap-4 w-full">
 				<header className="flex flex-col gap-1 w-full">
 					<h4 className="bg-secondary/40 w-fit rounded-full text-transparent">
-						{title || "Title of the card"}
+						{title}
 					</h4>
 					<h5 className="text-sm w-fit bg-secondary/20 rounded-full text-transparent">
-						{description || "Description of a loading card"}
+						{description}
 					</h5>
 				</header>
 

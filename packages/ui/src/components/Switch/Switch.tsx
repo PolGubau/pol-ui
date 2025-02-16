@@ -121,7 +121,8 @@ export const Switch: FC<SwitchProps> = ({
         <div
           data-checked={value}
           data-testid="ui-switch-toggle"
-          className={cn("",
+          className={cn(
+            "",
             theme.toggle.base,
             theme.toggle.color[color],
             theme.toggle.sizes[size as keyof typeof theme.toggle.sizes],
