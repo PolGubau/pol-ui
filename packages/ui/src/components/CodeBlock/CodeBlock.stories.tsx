@@ -3,8 +3,8 @@ import type { Meta } from "@storybook/react";
 import { CodeBlock } from "./CodeBlock";
 
 export default {
-	title: "Components/CodeBlock",
-	component: CodeBlock,
+  title: "Components/CodeBlock",
+  component: CodeBlock,
 } as Meta;
 
 const code = `"use client";
@@ -69,9 +69,9 @@ export { CodeBlock, type CodeBlockProps };
 `;
 
 export const Default = () => {
-	return (
-		<CodeBlock>
-			<pre className="overflow-hidden">{code}</pre>
-		</CodeBlock>
-	);
+  return (
+    <CodeBlock>
+      <pre className="overflow-hidden">{code}</pre>
+    </CodeBlock>
+  );
 };
