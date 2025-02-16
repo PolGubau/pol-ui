@@ -10,13 +10,12 @@ import { NavigationMenuList } from "./navigation-menu-list";
 import { NavigationMenuViewport } from "./navigation-menu-viewport";
 import type { NavigationMenuThemeRoot } from "./theme";
 
-export interface NavigationMenuProps
-	extends React.ComponentPropsWithoutRef<typeof N.Root> {
-	children: React.ReactNode;
-	hasIndicator?: boolean;
-	listClassName?: string;
-	ref?: React.Ref<HTMLDivElement>;
-	theme?: DeepPartial<NavigationMenuThemeRoot>;
+export interface NavigationMenuProps extends React.ComponentPropsWithoutRef<typeof N.Root> {
+  children: React.ReactNode;
+  hasIndicator?: boolean;
+  listClassName?: string;
+  ref?: React.Ref<HTMLDivElement>;
+  theme?: DeepPartial<NavigationMenuThemeRoot>;
 }
 
 /**
@@ -25,22 +24,22 @@ export interface NavigationMenuProps
  * @returns React.FC<NavigationMenuProps>
  */
 export const NavigationMenu = ({
-	className,
-	children,
-	hasIndicator = true,
-	listClassName = "",
-	theme: customTheme = {},
-	...props
+  className,
+  children,
+  hasIndicator = true,
+  listClassName = "",
+  theme: customTheme = {},
+  ...props
 }: NavigationMenuProps) => {
-	const theme = mergeDeep(getTheme().navigationMenu.root, customTheme);
+  const theme = mergeDeep(getTheme().navigationMenu.root, customTheme);
 
-	return (
-		<N.Root className={twMerge(theme.base, className)} {...props}>
-			<NavigationMenuList className={listClassName} hasIndicator={hasIndicator}>
-				{children}
-			</NavigationMenuList>
+  return (
+    <N.Root className={twMerge(theme.base, className)} {...props}>
+      <NavigationMenuList className={listClassName} hasIndicator={hasIndicator}>
+        {children}
+      </NavigationMenuList>
 
-			<NavigationMenuViewport />
-		</N.Root>
-	);
+      <NavigationMenuViewport />
+    </N.Root>
+  );
 };

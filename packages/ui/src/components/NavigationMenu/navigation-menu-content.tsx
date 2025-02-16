@@ -10,23 +10,15 @@ import type { DeepPartial } from "../../types";
 import type { NavigationMenuContentTheme } from "./theme";
 
 export interface NavigationMenuContentProps
-	extends React.ComponentPropsWithoutRef<
-		typeof NavigationMenuPrimitive.Content
-	> {
-	theme?: DeepPartial<NavigationMenuContentTheme>;
+  extends React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Content> {
+  theme?: DeepPartial<NavigationMenuContentTheme>;
 }
 export const NavigationMenuContent = forwardRef<
-	React.ElementRef<typeof NavigationMenuPrimitive.Content>,
-	NavigationMenuContentProps
+  React.ElementRef<typeof NavigationMenuPrimitive.Content>,
+  NavigationMenuContentProps
 >(({ className, theme: customTheme = {}, ...props }, ref) => {
-	const theme = mergeDeep(getTheme().navigationMenu.content, customTheme);
+  const theme = mergeDeep(getTheme().navigationMenu.content, customTheme);
 
-	return (
-		<NavigationMenuPrimitive.Content
-			ref={ref}
-			className={twMerge(theme.base, className)}
-			{...props}
-		/>
-	);
+  return <NavigationMenuPrimitive.Content ref={ref} className={twMerge(theme.base, className)} {...props} />;
 });
 NavigationMenuContent.displayName = "NavigationMenuContent";
