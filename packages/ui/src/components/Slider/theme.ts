@@ -15,12 +15,12 @@ export const sliderTheme: SliderTheme = {
 
   track: {
     base: cn(
-      "relative grow overflow-hidden rounded-full bg-secondary-200 dark:bg-secondary-800 cursor-ew-resize h-3 w-full",
+      "relative grow overflow-hidden rounded-full bg-secondary-200 dark:bg-secondary-800 cursor-ew-resize h-2 w-full",
       "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-3",
     ),
 
     vertical: "w-3 h-full",
-    horizontal: "h-3 w-full",
+    horizontal: "h-2 w-full",
   },
 
   range: "absolute h-full data-[orientation=vertical]:w-full",
