@@ -1,6 +1,6 @@
 "use client";
 
-import { Item, Link } from "@radix-ui/react-navigation-menu";
+import { NavigationMenu as N } from "radix-ui";
 
-export const NavigationMenuLink = Link;
-export const NavigationMenuItem = Item;
+export const NavigationMenuLink = N.Link;
+export const NavigationMenuItem = N.Item;

@@ -1,17 +1,22 @@
 "use client";
 
-import { Title } from "@radix-ui/react-dialog";
-import { forwardRef } from "react";
+import { Dialog as D } from "radix-ui";
 
 import { cn } from "../../../helpers";
+const { Title } = D;
 
-export const DialogTitle = forwardRef<React.ElementRef<typeof Title>, React.ComponentPropsWithoutRef<typeof Title>>(
-  ({ className, ...props }, ref) => (
-    <Title
-      ref={ref}
-      className={cn("text-lg font-semibold leading-none tracking-tight text-black dark:text-white", className)}
-      {...props}
-    />
-  ),
+interface DialogTitleProps
+	extends React.ComponentPropsWithoutRef<typeof Title> {
+	ref?: React.Ref<HTMLHeadingElement>;
+}
+
+export const DialogTitle = ({ className, ref, ...props }: DialogTitleProps) => (
+	<Title
+		ref={ref}
+		className={cn(
+			"text-lg font-semibold leading-none tracking-tight text-black dark:text-white",
+			className,
+		)}
+		{...props}
+	/>
 );
-DialogTitle.displayName = Title.displayName;
