@@ -6,6 +6,7 @@ import { useId } from "react";
 import { cn, mergeDeep } from "../../helpers";
 import { useMergeValue } from "../../hooks";
 import { getTheme } from "../../theme-store";
+import { TransitionPanel } from "../TransitionPanel";
 import type { TabsTheme } from "./theme";
 
 type Tab = {
@@ -26,7 +27,6 @@ export interface TabsProps {
   activeTabClassName?: string;
   tabClassName?: string;
   contentClassName?: string;
-  hasNavMotion?: boolean;
   mode?: TabModeType;
   theme?: Partial<TabsTheme>;
   value?: number;
@@ -40,7 +40,6 @@ export const Tabs: React.FC<TabsProps> = ({
   activeTabClassName,
   tabClassName,
   contentClassName,
-  hasNavMotion = true,
   mode = TabMode.underlined,
   theme: customTheme = {},
   value,
@@ -57,60 +56,50 @@ export const Tabs: React.FC<TabsProps> = ({
   });
 
   const theme: TabsTheme = mergeDeep(getTheme().tabs, customTheme);
+
+  const selectedTab = propTabs[activeIdx];
+  const setSelectedTab = (tab: Tab) => {
+    const index = propTabs.indexOf(tab);
+    setActiveIdx(index);
+  };
   const id = useId();
-  const isActive = (idx: number) => activeIdx === idx;
-  const tab = propTabs[activeIdx];
-
   return (
-    <div className="flex flex-col gap-4">
-      <ul className={cn(theme.base, containerClassName)}>
-        {propTabs.map((tab) => {
-          const idx = propTabs.indexOf(tab);
-          const isThisActive = isActive(idx);
-          const setThisActive = () => setActiveIdx(idx);
-          return (
-            <button
+    <div className={theme.container}>
+      <nav>
+        <ul className={cn(theme.nav, containerClassName)}>
+          {propTabs.map((item) => (
+            <motion.button
+              key={item.name}
               type="button"
-              disabled={tab.disabled}
-              key={tab.name}
-              role="tab"
-              aria-selected={isThisActive}
+              initial={false}
+              className={cn(theme.navItem?.base, item.disabled && theme.disabled, tabClassName)}
               onClick={() => {
-                onTabChange?.(idx);
-                setThisActive();
+                if (!item.disabled) {
+                  setSelectedTab(item);
+                }
               }}
-              className={cn(theme.navItem?.base, tab.disabled && theme.disabled, tabClassName)}
             >
-              {isThisActive && (
+              {item.name}
+              {item === selectedTab ? (
                 <motion.div
-                  layoutId={hasNavMotion ? id : undefined}
-                  transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
-                  className={cn(
-                    theme.navItem.marker?.base,
-                    theme.navItem.marker?.active.on,
-                    theme.navItem.marker?.mode[mode],
-                    activeTabClassName,
-                  )}
+                  className={cn(theme.navItem.marker?.base, theme.navItem.marker?.mode[mode], activeTabClassName)}
+                  layoutId={id}
+                  id={id}
                 />
-              )}
-
-              <span className={cn(theme.navItem.text)}>{tab.name}</span>
-            </button>
-          );
-        })}
-      </ul>
-      {activeIdx}
-      {tab && <TabContent content={tab.content} key={tab.name} className={cn("mt-4", contentClassName)} />}
+              ) : null}
+            </motion.button>
+          ))}
+        </ul>
+      </nav>
+      <section>
+        <TransitionPanel activeIndex={activeIdx} className={contentClassName}>
+          {propTabs.map((item) => (
+            <div key={item.name} className="py-2">
+              {item.content}
+            </div>
+          ))}
+        </TransitionPanel>
+      </section>
     </div>
   );
-};
-
-export const TabContent = ({
-  className,
-  content,
-}: {
-  className?: string;
-  content: Tab["content"];
-}) => {
-  return <motion.div className={cn("relative h-full w-full transition-all ", className)}>{content}</motion.div>;
 };

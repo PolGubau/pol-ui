@@ -10,7 +10,7 @@ export default {
   component: TransitionPanel,
   decorators: [
     (Story) => (
-      <div className="flex p-6 grid place-items-center min-h-[200px] bg-secondary-50">
+      <div className="p-6 grid place-items-center min-h-[200px] bg-secondary-50">
         <Story />
       </div>
     ),
@@ -49,7 +49,7 @@ export function Default() {
             type="button"
             key={item.title}
             onClick={() => setActiveIndex(index)}
-            className={`rounded-md px-3 py-1 text-sm font-medium ${
+            className={`rounded-md px-3 py-1 text-sm font-medium cursor-pointer ${
               activeIndex === index
                 ? "bg-zinc-200 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100"
                 : "bg-zinc-100 text-zinc-600 dark:bg-zinc-700 dark:text-zinc-400"

@@ -86,12 +86,6 @@ ContainedMode.args = {
   mode: "contained",
 };
 
-export const WithoutAnyMotion = (args: TabsProps): React.ReactNode => TabsExample.bind({})(args);
-WithoutAnyMotion.args = {
-  tabs: tabs,
-  hasNavMotion: false,
-  hasMotion: false,
-};
 export const Disabled = (args: TabsProps): React.ReactNode => TabsExample.bind({})(args);
 Disabled.args = {
   tabs: [
